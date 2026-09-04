@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import 'tailwindcss' source('../../src');
 
 /* Fonty self-hosted. Cinzel — inskrypcyjna antykwa (rzymski ryt, wersaliki),
    Manrope — neutralny grotesk do tekstu i UI. Podzbiór latin-ext niesie polskie

@@ -1,0 +1,42 @@
+---
+/**
+ * Ikony rysowane, jeden zestaw, jedna grubość kreski (1.5 przy 24).
+ * Emoji i glify Unicode nie zastępują tu ikony.
+ *
+ * Rdzeń niesie mechanizm — siatkę 24×24, kreskę, currentColor, set:html —
+ * a nie słownik. Zestaw nazw należy do witryny i przychodzi w `paths`:
+ * u każdej witryny jest inny i w jej własnym języku.
+ */
+interface Props {
+  name: string;
+  paths: Record<string, string>;
+  size?: number;
+  class?: string;
+}
+
+const { name, paths, size = 20, class: className } = Astro.props;
+
+// Nazwa jest tu zwykłym stringiem, więc typ już nie broni przed literówką.
+// Broni to: brakująca ikona roni budowanie, a nie rysuje pustego miejsca.
+const path = paths[name];
+if (path === undefined) {
+  throw new Error(
+    `Icon: zestaw witryny nie zawiera nazwy "${name}". Dostępne: ${Object.keys(paths).join(", ")}.`,
+  );
+}
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.5"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+  set:html={path}
+/>

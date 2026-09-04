@@ -6,6 +6,19 @@ import Icon from './Icon.astro';
 import { eras } from '../data/site';
 
 const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
+
+/*
+  Wartości powyżej 100vw są celowe. `sizes` opisuje szerokość, a panel
+  pierwszego ekranu jest niemal kwadratowy, podczas gdy kluczowy art ma
+  proporcję 3:1. Przy object-fit: cover przeglądarka musi pokryć wysokość,
+  więc realnie potrzebuje około 3,1 × wysokości panelu w pikselach źródła
+  — prawie trzy razy więcej, niż wynika z samej szerokości. Bez tego
+  wybierała wariant 979 px i rozciągała go 2,5-krotnie.
+
+  Komentarz stoi w części skryptowej, a nie w liście atrybutów: tam Astro
+  parsuje słowa komentarza blokowego jako atrybuty komponentu — stąd ts(2322).
+*/
+const heroSizes = '(max-width: 1024px) 200vw, 170vw';
 ---
 
 <section class="hero" aria-labelledby="hero-tytul">
@@ -13,15 +26,7 @@ const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
     <EraMedia
       slot="hero"
       widths={[1200, 1600, 2400, 3200]}
-      /*
-        Wartości powyżej 100vw są celowe. `sizes` opisuje szerokość, a panel
-        pierwszego ekranu jest niemal kwadratowy, podczas gdy kluczowy art ma
-        proporcję 3:1. Przy object-fit: cover przeglądarka musi pokryć wysokość,
-        więc realnie potrzebuje około 3,1 × wysokości panelu w pikselach źródła
-        — prawie trzy razy więcej, niż wynika z samej szerokości. Bez tego
-        wybierała wariant 979 px i rozciągała go 2,5-krotnie.
-      */
-      sizes="(max-width: 1024px) 200vw, 170vw"
+      sizes={heroSizes}
       loading="eager"
       credit={false}
     />

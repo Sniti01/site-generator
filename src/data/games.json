@@ -1,0 +1,45 @@
+{
+  "_": "Mapowanie epok na gry w witrynie Steam. appid sprawdzone przez API. Panel epoki bierze zrzut ekranu o indeksie shot: zrzuty sa 16:9, wiec w panel 21:13 wchodza bez wielkiego przyciecia, a library_hero (3:1) zostaje pierwszemu ekranowi. Liste zrzutow pokazuje: npm run gameart -- --shots <epoka>.",
+  "hero": {
+    "appid": 3159330,
+    "name": "Assassin's Creed Shadows",
+    "asset": "library_hero"
+  },
+  "games": [
+    {
+      "era": "jerozolima",
+      "appid": 15100,
+      "name": "Assassin's Creed: Director's Cut Edition",
+      "shot": 9,
+      "uwaga": "AC1: zrzuty 0-2 maja HUD; 9 to widok z dachu bez interfejsu"
+    },
+    {
+      "era": "wlochy",
+      "appid": 33230,
+      "name": "Assassin's Creed 2",
+      "shot": 0,
+      "uwaga": "dachy Wenecji, bez HUD"
+    },
+    {
+      "era": "japonia",
+      "appid": 3159330,
+      "name": "Assassin's Creed Shadows",
+      "shot": 6,
+      "uwaga": "czerwona pagoda o zachodzie — trafia w cynober epoki, bez HUD"
+    },
+    {
+      "era": "karaiby",
+      "appid": 242050,
+      "name": "Assassin's Creed IV Black Flag",
+      "shot": 0,
+      "uwaga": "abordaz, bez HUD"
+    },
+    {
+      "era": "londyn",
+      "appid": 368500,
+      "name": "Assassin's Creed Syndicate",
+      "shot": 6,
+      "uwaga": "zrzuty 0-5 maja znak wodny AC; 6 to nocna ulica przy latarniach"
+    }
+  ]
+}

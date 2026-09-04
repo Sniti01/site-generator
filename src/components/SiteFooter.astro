@@ -1,0 +1,250 @@
+---
+import Wordmark from './Wordmark.astro';
+import { eras } from '../data/site';
+import type { ArtCredit } from '../data/art';
+import artCredits from '../data/art-credits.json';
+import gameCredits from '../data/game-art.json';
+
+// Atrybucja zdjęć: licencje CC BY i CC BY-SA jej wymagają, a przy miniaturach
+// podpis przy kadrze jest nieczytelny — więc zbiorczo, raz, tutaj.
+const zdjecia = Object.values(artCredits as Record<string, ArtCredit>);
+
+// Materiały gier nie mają wolnej licencji, więc zamiast listy autorów idzie
+// jedna nota o prawach i o tym, po co ich tu używamy.
+const gry = Object.values(gameCredits as Record<string, { game: string }>);
+const tytulyGier = [...new Set(gry.map((item) => item.game))].sort();
+
+const kolumny = [
+  {
+    title: 'Poradniki',
+    links: [
+      { label: 'Przejścia', href: '/przejscia/' },
+      { label: 'Mapy i znajdźki', href: '/mapy/' },
+      { label: 'Walka i sprzęt', href: '/sprzet/' },
+      { label: 'Fabuła i świat', href: '/fabula/' },
+    ],
+  },
+  {
+    title: 'Epoki',
+    links: eras.map((era) => ({ label: `${era.year} · ${era.place}`, href: `/epoki/${era.id}/` })),
+  },
+  {
+    title: 'Serwis',
+    links: [
+      { label: 'O nas', href: '/o-nas/' },
+      { label: 'Jak piszemy poradniki', href: '/redakcja/' },
+      { label: 'Kontakt', href: '/kontakt/' },
+      { label: 'Polityka prywatności', href: '/prywatnosc/' },
+    ],
+  },
+];
+---
+
+<footer class="ft">
+  <div class="ft__inner container">
+    <div class="ft__brand">
+      <Wordmark size="lg" />
+      <p class="ft__pitch t-body measure">
+        Piszemy o serii od strony gracza: gdzie iść, co wziąć i czego nie da się przegapić.
+      </p>
+    </div>
+
+    {
+      kolumny.map((column) => (
+        <nav class="ft__col" aria-label={column.title}>
+          <h2 class="ft__col-title t-label">{column.title}</h2>
+          <ul class="ft__list">
+            {column.links.map((link) => (
+              <li>
+                <a class="ft__link t-body" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  {
+    tytulyGier.length > 0 && (
+      <div class="ft__foto">
+        <div class="container">
+          <h2 class="ft__foto-title t-label">Materiały graficzne</h2>
+          <p class="ft__foto-note t-caption">
+            Kluczowy art i zrzuty ekranu pochodzą z kart gier w witrynie Steam i pozostają
+            własnością <strong>Ubisoft Entertainment</strong>. Użyto ich wyłącznie po to, by
+            wskazać, której gry dotyczy dany poradnik. Serwis nie korzysta z logotypów
+            wydawcy we własnej identyfikacji. Gry: {tytulyGier.join(', ')}.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    zdjecia.length > 0 && (
+      <div class="ft__foto">
+        <div class="container">
+          <h2 class="ft__foto-title t-label">Zdjęcia</h2>
+          <ul class="ft__foto-list t-caption">
+            {zdjecia.map((foto) => (
+              <li>
+                <a href={foto.source} target="_blank" rel="noopener nofollow">
+                  {foto.title}
+                </a>
+                {' — '}
+                {foto.author}
+                {', '}
+                {foto.licenseUrl ? (
+                  <a href={foto.licenseUrl} target="_blank" rel="noopener nofollow license">
+                    {foto.license}
+                  </a>
+                ) : (
+                  foto.license
+                )}
+              </li>
+            ))}
+          </ul>
+          <p class="ft__foto-note t-caption">
+            Kadry pochodzą z Wikimedia Commons i są użyte na warunkach swoich licencji;
+            zmieniono w nich kadrowanie i kolor.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
+  <div class="ft__legal">
+    <div class="container ft__legal-inner">
+      <p class="t-caption">
+        Serwis nieoficjalny i niezwiązany z wydawcą. <i>Assassin’s Creed</i> oraz nazwy gier
+        należą do ich właścicieli i użyto ich wyłącznie w celu opisania, o czym są te poradniki.
+        Bez logotypów, krojów i barw wydawcy.
+      </p>
+      <p class="t-caption ft__copy tabular">© 2026 Bractwo</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ft {
+    background: var(--bg-band);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .ft__inner {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-md);
+    padding-block: var(--space-3xl) var(--space-2xl);
+  }
+
+  .ft__pitch {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .ft__col-title {
+    color: var(--ink);
+  }
+
+  .ft__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin: var(--space-md) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ft__link {
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .ft__link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .ft__foto {
+    border-top: 1px solid var(--hairline);
+    padding-block: var(--space-lg);
+    color: var(--ink-muted);
+  }
+
+  .ft__foto-title {
+    color: var(--ink);
+  }
+
+  .ft__foto-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3xs) var(--space-lg);
+    margin: var(--space-md) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ft__foto-list a {
+    color: inherit;
+  }
+
+  .ft__foto-list a:hover {
+    color: var(--ink);
+  }
+
+  .ft__foto-note {
+    margin-top: var(--space-md);
+  }
+
+  .ft__legal {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .ft__legal-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .ft__legal i {
+    font-style: normal;
+    color: var(--ink);
+  }
+
+  .ft__copy {
+    flex: none;
+  }
+
+  @media (max-width: 900px) {
+    .ft__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ft__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .ft__foto-list {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .ft__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .ft__legal-inner {
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+  }
+</style>

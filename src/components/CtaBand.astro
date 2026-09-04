@@ -1,0 +1,86 @@
+---
+import Icon from './Icon.astro';
+---
+
+<section class="cta" aria-labelledby="cta-tytul">
+  <svg class="cta__art" viewBox="0 0 1600 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+    <defs>
+      <linearGradient id="cta-glow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#dc4e40" stop-opacity="0" />
+        <stop offset="100%" stop-color="#dc4e40" stop-opacity="0.22" />
+      </linearGradient>
+    </defs>
+    <rect width="1600" height="320" fill="url(#cta-glow)" />
+    <g fill="#0a0908">
+      <path
+        d="M0 268h84v-40h58v40h96v-58h56v58h120v-34h58v34h104v-52h60v52h128v-42h56v42h140v-30h46v30h60v52H0z"
+      ></path>
+    </g>
+    <g fill="#0a0908" opacity="0.6">
+      <path d="M600 232c-8 22-8 40 0 56h-14c-8-16-8-34 0-56z"></path>
+      <path d="M1004 214c-10 28-10 52 0 74h-16c-10-22-10-46 0-74z"></path>
+    </g>
+  </svg>
+
+  <div class="cta__scrim"></div>
+
+  <div class="cta__inner container">
+    <h2 class="t-headline cta__title" id="cta-tytul">Nie wiesz, od której części zacząć?</h2>
+    <p class="t-lead cta__lead">
+      Jeden tekst układa całą serię chronologicznie i mówi, co można spokojnie pominąć.
+    </p>
+    <a class="btn btn-primary t-button cta__btn" href="/poradniki/od-czego-zaczac/">
+      Przeczytaj przewodnik dla nowych
+      <Icon name="strzalka-w-prawo" size={18} />
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    overflow: hidden;
+    border-block: 1px solid var(--hairline);
+    background: var(--bg);
+  }
+
+  .cta__art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .cta__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgb(13 12 10 / 0.9) 0 32%, rgb(13 12 10 / 0.55) 100%);
+  }
+
+  .cta__inner {
+    position: relative;
+    z-index: 1;
+    padding-block: var(--space-3xl);
+    text-align: center;
+  }
+
+  .cta__title {
+    color: var(--ink);
+  }
+
+  .cta__lead {
+    max-width: 54ch;
+    margin: var(--space-md) auto 0;
+    color: var(--ink-muted);
+  }
+
+  .cta__btn {
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 560px) {
+    .cta__btn {
+      width: 100%;
+    }
+  }
+</style>

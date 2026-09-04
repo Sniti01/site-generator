@@ -1,0 +1,32 @@
+{
+  "name": "site-generator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "contrast": "node tools/check-contrast.mjs",
+    "gates": "node tools/check-contrast.mjs && node tools/check-tokens.mjs",
+    "art": "node tools/fetch-art.mjs",
+    "art:check": "node tools/fetch-art.mjs --dry-run",
+    "art:sheet": "node tools/contact-sheet.mjs",
+    "gameart": "node tools/fetch-game-art.mjs",
+    "gameart:check": "node tools/fetch-game-art.mjs --dry-run"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/cinzel": "^5.2.9",
+    "@fontsource/manrope": "^5.2.9",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.6",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3",
+    "sharp": "^0.35.4"
+  }
+}

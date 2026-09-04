@@ -1,0 +1,198 @@
+{
+  "slots": [
+    {
+      "id": "hero",
+      "subject": "Panorama starego miasta z góry",
+      "queries": [
+        "Jerusalem Old City panorama view",
+        "Dubrovnik old town rooftops panorama",
+        "Florence skyline panorama city view"
+      ],
+      "must": [
+        "panorama",
+        "skyline",
+        "rooftops",
+        "cityscape",
+        "view of"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "interior",
+        "detail",
+        "relief",
+        "statue",
+        "aerial view of the"
+      ],
+      "minAspect": 1.6,
+      "minWidth": 2400,
+      "crop": {
+        "bottom": 0.14
+      }
+    },
+    {
+      "id": "jerozolima",
+      "subject": "Jerozolima, Wzgórze Świątynne i mury starego miasta",
+      "queries": [
+        "Dome of the Rock Jerusalem",
+        "Jerusalem Old City walls Damascus Gate",
+        "Jerusalem city walls ramparts"
+      ],
+      "must": [
+        "dome of the rock",
+        "jerusalem",
+        "damascus gate",
+        "city walls"
+      ],
+      "avoid": [
+        "aerial",
+        "silwan",
+        "highway",
+        "car",
+        "map",
+        "plan",
+        "interior",
+        "model",
+        "mosaic",
+        "detail",
+        "tile",
+        "night"
+      ],
+      "minAspect": 1.5,
+      "minWidth": 2000
+    },
+    {
+      "id": "wlochy",
+      "subject": "Florencja, kopuła katedry nad dachami miasta",
+      "queries": [
+        "Florence panorama Piazzale Michelangelo cityscape",
+        "Florence skyline Duomo panorama",
+        "San Gimignano towers panorama skyline"
+      ],
+      "must": [
+        "panorama",
+        "skyline",
+        "cityscape",
+        "veduta",
+        "view of"
+      ],
+      "avoid": [
+        "relief",
+        "bas",
+        "detail",
+        "interior",
+        "door",
+        "statue",
+        "fresco",
+        "mosaic",
+        "plan",
+        "map",
+        "campanile di giotto"
+      ],
+      "minAspect": 1.5,
+      "minWidth": 2000
+    },
+    {
+      "id": "japonia",
+      "subject": "Japoński zamek z okresu Sengoku",
+      "queries": [
+        "Himeji Castle panorama",
+        "Matsumoto Castle keep exterior",
+        "Japanese castle tenshu exterior"
+      ],
+      "must": [
+        "castle",
+        "himeji",
+        "matsumoto",
+        "tenshu"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "model",
+        "interior",
+        "diagram",
+        "garden",
+        "detail",
+        "gate"
+      ],
+      "minAspect": 1.4,
+      "minWidth": 1800
+    },
+    {
+      "id": "karaiby",
+      "subject": "Karaibska twierdza kolonialna nad morzem",
+      "queries": [
+        "Castillo San Felipe del Morro San Juan Puerto Rico",
+        "El Morro fortress Havana sea walls",
+        "Castillo de la Real Fuerza Havana"
+      ],
+      "must": [
+        "morro",
+        "castillo",
+        "fortress"
+      ],
+      "avoid": [
+        "interior",
+        "map",
+        "plan",
+        "model",
+        "painting",
+        "drawing",
+        "museum",
+        "night",
+        "lighthouse lamp",
+        "cannon detail",
+        "capitolio",
+        "skyline",
+        "panorama of havana",
+        "city of havana"
+      ],
+      "minAspect": 1.35,
+      "minWidth": 2000,
+      "crop": {
+        "left": 0.085,
+        "right": 0.065,
+        "top": 0.055,
+        "bottom": 0.05
+      }
+    },
+    {
+      "id": "londyn",
+      "subject": "Wiktoriańska architektura Londynu",
+      "queries": [
+        "St Pancras Renaissance Hotel London facade",
+        "Royal Courts of Justice London facade",
+        "Tower Bridge London from river"
+      ],
+      "must": [
+        "pancras",
+        "royal courts",
+        "tower bridge"
+      ],
+      "avoid": [
+        "interior",
+        "platform",
+        "train shed",
+        "map",
+        "plan",
+        "shard",
+        "gherkin",
+        "london eye",
+        "night",
+        "concourse",
+        "hotel room",
+        "sign",
+        "signage",
+        "plaque",
+        "statue",
+        "clock face",
+        "lamp",
+        "bench",
+        "logo"
+      ],
+      "minAspect": 1.35,
+      "minWidth": 2000
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+---
+import { catalog } from '../data/site';
+import Icon from './Icon.astro';
+
+/**
+ * Stóg: koniec zejścia. Cztery działy katalogu, każdy jako lista prawdziwych
+ * wejść, nie jako kafel z ikoną i akapitem.
+ */
+---
+
+<section class="stack section" id="katalog" aria-labelledby="katalog-tytul">
+  <div class="container">
+    <div class="stack__head">
+      <h2 class="t-headline" id="katalog-tytul">Stóg</h2>
+      <p class="stack__lead t-lead">
+        Wylądowałeś. Cały katalog leży tutaj — ułożony według tego, co chcesz zrobić, a nie
+        według tego, w którą część grasz.
+      </p>
+    </div>
+
+    <div class="stack__grid">
+      {
+        catalog.map((group) => (
+          <div class="stack__group">
+            <a class="stack__group-head" href={group.href}>
+              <h3 class="t-title stack__group-title">{group.title}</h3>
+              <span class="stack__count t-title tabular">{group.count}</span>
+            </a>
+            <ul class="stack__list">
+              {group.items.map((item) => (
+                <li>
+                  <a class="stack__link t-body" href={item.href}>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <a class="btn btn-secondary t-button stack__all" href="/poradniki/">
+      Otwórz pełny katalog
+      <Icon name="strzalka-w-prawo" size={18} />
+    </a>
+  </div>
+</section>
+
+<style>
+  .stack__head {
+    max-width: 62ch;
+  }
+
+  .stack__lead {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .stack__grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-lg);
+    margin-top: var(--space-xl);
+    border-top: 1px solid var(--hairline-strong);
+    padding-top: var(--space-lg);
+  }
+
+  .stack__group {
+    padding-inline-start: var(--space-md);
+    border-inline-start: 1px solid var(--hairline);
+  }
+
+  .stack__group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2xs);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--hairline);
+    text-decoration: none;
+  }
+
+  .stack__group-title {
+    color: var(--ink);
+    transition: color 180ms var(--ease-out);
+  }
+
+  .stack__group-head:hover .stack__group-title {
+    color: var(--accent-text);
+  }
+
+  .stack__count {
+    flex: none;
+    color: var(--accent-2);
+    font-family: var(--font-display);
+    font-weight: 600;
+  }
+
+  .stack__list {
+    margin: var(--space-xs) 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .stack__link {
+    display: block;
+    color: var(--ink-muted);
+    text-decoration: none;
+    text-wrap: pretty;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .stack__link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .stack__all {
+    margin-top: var(--space-2xl);
+  }
+
+  @media (max-width: 900px) {
+    .stack__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: var(--space-xl) var(--space-md);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .stack__grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .stack__group {
+      padding-inline-start: var(--space-sm);
+    }
+    .stack__all {
+      width: 100%;
+    }
+  }
+</style>

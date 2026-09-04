@@ -1,0 +1,65 @@
+---
+/**
+ * Znak własny serwisu: pierścień punktu widokowego i ostrze skierowane w dół —
+ * skok wiary. Nie jest to symbolika wydawcy i nie ma jej naśladować.
+ */
+interface Props {
+  size?: 'sm' | 'lg';
+  class?: string;
+}
+
+const { size = 'sm', class: className } = Astro.props;
+---
+
+<span class:list={['wordmark', `wordmark--${size}`, className]}>
+  <svg class="wordmark__mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+    <path d="M3 9h26v2.4H3z" fill="currentColor" opacity="0.55" />
+    <path d="M16 30 9.2 13.4 16 10.2l6.8 3.2z" fill="currentColor" />
+    <path d="M16 22.6 12.6 14l3.4-1.6 3.4 1.6z" fill="#0d0c0a" opacity="0.5" />
+  </svg>
+  <span class="wordmark__text">
+    <span class:list={['wordmark__name', size === 'lg' ? 't-wordmark' : 't-title']}>Bractwo</span>
+    {size === 'lg' && <span class="wordmark__sub t-label">nieoficjalny przewodnik</span>}
+  </span>
+</span>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .wordmark__mark {
+    flex: none;
+    width: 28px;
+    height: 28px;
+    color: var(--accent);
+  }
+
+  .wordmark__text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+  }
+
+  .wordmark__name {
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .wordmark__sub {
+    color: var(--ink-muted);
+  }
+
+  .wordmark--lg .wordmark__mark {
+    width: 40px;
+    height: 40px;
+  }
+
+
+</style>

@@ -1,0 +1,195 @@
+---
+import type { EraId } from '../data/site';
+
+/**
+ * Panoramy epok. Rysowane, nie fotografowane: sylwetka miasta w kolorze
+ * epoki, perspektywa powietrzna — im dalej, tym jaśniej i bardziej w kolorze,
+ * pierwszy plan czarny. Dekoracja, więc aria-hidden.
+ */
+interface Props {
+  era: EraId;
+  class?: string;
+}
+
+const { era, class: className } = Astro.props;
+const near = '#0a0908';
+---
+
+<div class:list={['skyline', className]} aria-hidden="true">
+  <svg viewBox="0 0 1600 460" preserveAspectRatio="xMidYMax slice" role="presentation">
+    <defs>
+      <linearGradient id={`sky-${era}`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="currentColor" stop-opacity="0" />
+        <stop offset="58%" stop-color="currentColor" stop-opacity="0.2" />
+        <stop offset="100%" stop-color="currentColor" stop-opacity="0.46" />
+      </linearGradient>
+      <linearGradient id={`fade-${era}`} x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#0d0c0a" stop-opacity="0" />
+        <stop offset="100%" stop-color="#0d0c0a" stop-opacity="0.42" />
+      </linearGradient>
+    </defs>
+
+    <rect width="1600" height="460" fill={`url(#sky-${era})`} />
+
+    {
+      era === 'jerozolima' && (
+        <>
+          <g fill="currentColor" opacity="0.44">
+            <path d="M0 352 118 300l96 30 132-52 118 40 140-58 126 46 152-62 130 48 148-40 130 36 210-30v152H0z" />
+            <rect x="286" y="236" width="15" height="96" />
+            <path d="M286 236h15l-7.5-26z" />
+            <rect x="1204" y="248" width="14" height="84" />
+            <path d="M1204 248h14l-7-24z" />
+          </g>
+          <g fill="currentColor" opacity="0.26">
+            <path d="M544 326h332v134H544z" />
+            <path d="M620 326a90 70 0 0 1 180 0z" />
+            <path d="M300 352h120v108H300zM1140 344h150v116h-150z" />
+            <path d="M300 352h120l-60-30zM1140 344h150l-75-28z" />
+            <path d="M700 268c14 0 20 8 20 18s-6 14-10 18h-20c-4-4-10-8-10-18s6-18 20-18z" />
+            <rect x="694" y="248" width="12" height="24" />
+            <path d="M340 344h160v116H340zM1080 336h190v124h-190z" />
+          </g>
+          <g fill={near}>
+            <path d="M0 402h1600v58H0z" />
+            <path d="M0 380h96v22H0zm128 0h96v22h-96zm128 0h96v22H256zm128 0h96v22H384zm128 0h96v22H512zm128 0h96v22H640zm128 0h96v22H768zm128 0h96v22H896zm128 0h96v22h-96zm128 0h96v22h-96zm128 0h96v22h-96zm128 0h96v22h-96z" />
+            <path d="M172 404c-6-26-2-52 10-70-16 8-30 4-40-8 4 20-2 34-14 44 18-2 30 6 34 34z" />
+            <rect x="176" y="396" width="7" height="20" />
+            <path d="M1420 404c-6-30-2-58 12-78-18 10-34 6-46-8 6 22-2 38-16 50 20-2 34 6 38 36z" />
+            <rect x="1425" y="396" width="8" height="22" />
+          </g>
+        </>
+      )
+    }
+
+    {
+      era === 'wlochy' && (
+        <>
+          <g fill="currentColor" opacity="0.44">
+            <path d="M0 336 180 292l150 34 176-46 158 38 190-56 178 44 168-32 200 38v148H0z" />
+            <rect x="1156" y="214" width="22" height="120" />
+            <path d="M1156 214h22l-11-30z" />
+          </g>
+          <g fill="currentColor" opacity="0.26">
+            <rect x="470" y="286" width="34" height="174" />
+            <path d="M470 286h34l-17-30z" />
+            <path d="M636 332h248v128H636z" />
+            <path d="M660 332c0-70 44-116 100-116s100 46 100 116z" />
+            <rect x="748" y="184" width="24" height="34" />
+            <path d="M748 184h24l-12-22z" />
+            <path d="M240 356h150v104H240zm940 22h190v82h-190z" />
+          </g>
+          <g fill={near}>
+            <path d="M0 404h1600v56H0z" />
+            <path d="M0 372h140l24-24h120l24 24h150l22-20h130l22 20h180l26-26h130l26 26h150l24-22h120l24 22h188v32H0z" />
+            <path d="M120 396c0-46 8-78 20-78s20 32 20 78zM1468 400c0-52 9-88 22-88s22 36 22 88z" />
+            <rect x="136" y="392" width="8" height="24" />
+            <rect x="1486" y="396" width="8" height="24" />
+          </g>
+        </>
+      )
+    }
+
+    {
+      era === 'karaiby' && (
+        <>
+          <g fill="currentColor" opacity="0.44">
+            <path d="M0 372c120-16 210 8 320 4s180-30 300-26 210 26 330 20 220-28 350-22 200 22 300 14v98H0z" />
+            <path d="M1290 322h120v56h-120z" />
+            <path d="M1290 322h120l-14-18h-92z" />
+          </g>
+          <g fill="currentColor" opacity="0.26">
+            <path d="M300 396h1000v64H300z" />
+          </g>
+          <g fill={near}>
+            <path d="M690 300h6v96h-6zM806 268h7v128h-7zM918 306h6v90h-6z" />
+            <path d="M700 306c46 6 74 20 82 34-30 8-56 8-82 2zM700 348c44 6 70 18 78 30-28 8-52 8-78 2z" />
+            <path d="M786 274c-46 8-72 22-80 38 30 8 56 8 80 2zM786 320c-44 8-68 20-76 34 28 8 52 8 76 2z" />
+            <path d="M818 312c42 6 66 18 74 32-28 8-52 8-74 2z" />
+            <path d="M636 392h330l-34 42H672z" />
+            <path d="M636 392h330v10H636z" />
+            <path d="M0 424h1600v36H0z" />
+            <path d="M186 424c-8-34-4-68 12-92-22 12-42 8-56-10 8 26-2 46-20 60 24-2 42 8 46 42z" />
+            <rect x="192" y="414" width="9" height="26" />
+            <path d="M1362 424c-9-40-4-80 14-108-26 14-49 9-65-12 9 30-3 54-24 70 28-2 49 10 54 50z" />
+            <rect x="1369" y="412" width="10" height="28" />
+          </g>
+        </>
+      )
+    }
+
+    {
+      era === 'londyn' && (
+        <>
+          <g fill="currentColor" opacity="0.44">
+            <path d="M0 356h150v-38h96v38h174v-56h104v56h206v-30h110v30h188v-48h112v48h202v-34h124v34h134v104H0z" />
+            <path d="M240 196h44v152h-44zM402 168h40v180h-40zM1120 208h42v140h-42zM1290 182h38v166h-38z" />
+            <path d="M232 196h60l-8-16h-44zM394 168h56l-8-16h-40zM1112 208h58l-8-16h-42zM1282 182h54l-8-16h-38z" />
+          </g>
+          <g fill="currentColor" opacity="0.26">
+            <rect x="700" y="212" width="76" height="248" />
+            <path d="M700 212h76l-38-42z" />
+            <rect x="690" y="240" width="96" height="12" />
+            <path d="M0 372h1600v88H0z" />
+          </g>
+          <g fill={near}>
+            <circle cx="738" cy="288" r="26" />
+            <path d="M0 400h1600v60H0z" />
+            <path d="M60 400v-46h72v46zm112 0v-58h84v58zm124 0v-40h70v40zm110 0v-54h90v54zm130 0v-44h76v44z" />
+            <path d="M980 400v-52h88v52zm128 0v-38h72v38zm112 0v-56h92v56zm132 0v-42h80v42z" />
+            <path d="M60 354h72l-36-22zM296 360h70l-35-20zM1108 362h72l-36-20z" />
+            <path d="M0 418h1600v42H0z" />
+            <path d="M120 418v-24h1360v24z" />
+            <path d="M180 418c0-30 26-54 58-54s58 24 58 54zm256 0c0-30 26-54 58-54s58 24 58 54zm256 0c0-30 26-54 58-54s58 24 58 54zm256 0c0-30 26-54 58-54s58 24 58 54zm256 0c0-30 26-54 58-54s58 24 58 54z" />
+          </g>
+        </>
+      )
+    }
+
+    {
+      era === 'japonia' && (
+        <>
+          <g fill="currentColor" opacity="0.44">
+            <path d="M0 380 300 214l180 166zM620 380 980 168l340 212zM1180 380l260-140 160 140z" />
+          </g>
+          <g fill="currentColor" opacity="0.26">
+            <path d="M340 380h180v80H340z" />
+            <path d="M312 380h236l-40-30H352zM334 350h192l-34-28H368zM356 322h148l-30-26H386zM380 296h100l-28-26h-44zM414 270h32l-16-22z" />
+            <rect x="426" y="230" width="8" height="20" />
+            <path d="M1120 380h250v80h-250z" />
+            <path d="M1094 380h302l-46-34h-210zM1122 346h246l-40-32h-166zM1152 314h186l-32-30h-122zM1186 284h118l-28-28h-62z" />
+          </g>
+          <g fill={near}>
+            <path d="M0 408h1600v52H0z" />
+            <path d="M700 408V262h34v146zm166 0V262h34v146z" />
+            <path d="M676 262h248v18H676zM662 236h276v16H662z" />
+            <path d="M662 236h276l-14-14H676z" />
+            <path d="M690 296h220v12H690z" />
+            <path d="M120 408c22-42 40-70 40-106 0 36 18 64 40 106zm90 0c18-34 32-56 32-84 0 28 14 50 32 84z" />
+            <rect x="156" y="380" width="8" height="30" />
+            <rect x="238" y="386" width="7" height="24" />
+            <path d="M1440 408c26-50 46-82 46-124 0 42 22 74 48 124zm104 0c20-38 36-62 36-94 0 32 16 56 36 94z" />
+            <rect x="1482" y="376" width="9" height="34" />
+          </g>
+        </>
+      )
+    }
+
+    <rect width="1600" height="460" fill={`url(#fade-${era})`} />
+  </svg>
+</div>
+
+<style>
+  .skyline {
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 100%;
+    color: var(--era);
+    pointer-events: none;
+  }
+
+  .skyline svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>

@@ -1,0 +1,125 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import type { EraId } from '../data/site';
+import { artSlots, type ArtCredit } from '../data/art';
+import EraSkyline from './EraSkyline.astro';
+import photoCredits from '../data/art-credits.json';
+import gameCredits from '../data/game-art.json';
+
+/**
+ * Kadr epoki, trzy poziomy źródła, w tej kolejności:
+ *
+ * 1. materiał gry ze Steama (`src/assets/gry/`) — kluczowy art w pełnym
+ *    kolorze, tak jak robi to każdy serwis o grach;
+ * 2. zdjęcie z Wikimedia Commons (`src/assets/foto/`) — duoton w kolorze epoki;
+ * 3. rysowana panorama `EraSkyline` — gdy nie pobrano niczego.
+ *
+ * Dzięki temu świeży klon szablonu składa się i wygląda skończenie, zanim
+ * ktokolwiek uruchomi skrypty pobierania, a zmiana źródła to zmiana katalogu,
+ * nie przepisywanie komponentów.
+ */
+interface Props {
+  /** Epoka albo `hero`: klucz pliku i wpisu w plikach kredytowych. */
+  slot: EraId | 'hero';
+  /** Do koloru duotonu, gdy w grę wchodzi wariant fotograficzny. */
+  era?: EraId;
+  /** Domyślnie opis z manifestu (foto) albo nazwa gry (materiał gry). */
+  alt?: string;
+  sizes: string;
+  widths: number[];
+  loading?: 'lazy' | 'eager';
+  /** Podpis w kadrze. Przy materiałach gry domyślnie zbędny: nazwę gry niesie
+   *  tabliczka obok, a notę o prawach — stopka. */
+  credit?: boolean;
+  class?: string;
+}
+
+const {
+  slot,
+  era,
+  alt,
+  sizes,
+  widths,
+  loading = 'lazy',
+  credit = true,
+  class: className,
+} = Astro.props;
+
+// Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
+// niż panele epok, które siedzą w kolumnie o połowie szerokości.
+const jakoscGry = slot === 'hero' ? 80 : 72;
+
+const gry = import.meta.glob<{ default: ImageMetadata }>('../assets/gry/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+});
+const foto = import.meta.glob<{ default: ImageMetadata }>('../assets/foto/*.{jpg,jpeg,png,webp}', {
+  eager: true,
+});
+
+const znajdz = (zbior: Record<string, { default: ImageMetadata }>) =>
+  Object.entries(zbior).find(([path]) => path.endsWith(`/${slot}.jpg`))?.[1].default;
+
+const gra = znajdz(gry);
+const zdjecie = gra ? undefined : znajdz(foto);
+
+const gameMeta = (gameCredits as Record<string, { game: string; source: string }>)[slot];
+const photoMeta = (photoCredits as Record<string, ArtCredit>)[slot];
+
+const opis =
+  alt ??
+  (gra
+    ? `${gameMeta?.game ?? 'Assassin’s Creed'} — materiał wydawcy`
+    : (artSlots.find((item) => item.id === slot)?.subject ?? ''));
+---
+
+{
+  gra ? (
+    <div class:list={['foto', 'foto--gra', className]}>
+      <Image
+        src={gra}
+        alt={opis}
+        widths={widths}
+        sizes={sizes}
+        loading={loading}
+        decoding="async"
+        quality={jakoscGry}
+      />
+      {credit && gameMeta && (
+        <p class="foto__credit t-micro">
+          <a href={gameMeta.source} target="_blank" rel="noopener nofollow">
+            {gameMeta.game}
+          </a>
+        </p>
+      )}
+    </div>
+  ) : zdjecie ? (
+    <div class:list={['foto', className]}>
+      <Image
+        src={zdjecie}
+        alt={opis}
+        widths={widths}
+        sizes={sizes}
+        loading={loading}
+        decoding="async"
+        quality={62}
+      />
+      {credit && photoMeta && (
+        <p class="foto__credit t-micro">
+          <a href={photoMeta.source} target="_blank" rel="noopener nofollow">
+            {photoMeta.author}
+          </a>
+          {photoMeta.licenseUrl ? (
+            <a href={photoMeta.licenseUrl} target="_blank" rel="noopener nofollow license">
+              {photoMeta.license}
+            </a>
+          ) : (
+            <span>{photoMeta.license}</span>
+          )}
+        </p>
+      )}
+    </div>
+  ) : (
+    <EraSkyline era={era ?? 'jerozolima'} class={className} />
+  )
+}

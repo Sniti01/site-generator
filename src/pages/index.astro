@@ -1,0 +1,42 @@
+---
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import EraLayer from '../components/EraLayer.astro';
+import CreedBand from '../components/CreedBand.astro';
+import GuideRail from '../components/GuideRail.astro';
+import CatalogStack from '../components/CatalogStack.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { eras } from '../data/site';
+
+/**
+ * Rytm strony: iglica → dwie warstwy → pauza (maksyma) → dwie warstwy →
+ * szyna świeżych tekstów → ostatnia warstwa → stóg → wezwanie → stopka.
+ * Strona obrazu w warstwach jest lustrzana, a środowisko zmienia się co
+ * dwie–trzy sekcje.
+ */
+const [jerozolima, wlochy, japonia, karaiby, londyn] = eras;
+---
+
+<Base
+  title="Bractwo — nieoficjalny przewodnik po serii Assassin’s Creed"
+  description="Cała seria Assassin’s Creed ułożona według epok: od Jerozolimy 1191 po Japonię 1579. Przejścia, mapy, znajdźki i buildy — poszukaj po latach, nie po tagach."
+>
+  <Hero />
+
+  <div id="zejscie">
+    <EraLayer era={jerozolima} flip={false} band={false} />
+    <EraLayer era={wlochy} flip={true} band={true} />
+
+    <CreedBand />
+
+    <EraLayer era={japonia} flip={false} band={false} />
+    <EraLayer era={karaiby} flip={true} band={true} />
+
+    <GuideRail />
+
+    <EraLayer era={londyn} flip={false} band={true} />
+  </div>
+
+  <CatalogStack />
+  <CtaBand />
+</Base>

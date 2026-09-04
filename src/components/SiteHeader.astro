@@ -1,0 +1,311 @@
+---
+import Wordmark from './Wordmark.astro';
+import Icon from './Icon.astro';
+import { nav } from '../data/site';
+---
+
+<header class="hdr">
+  <div class="hdr__inner container">
+    <a class="hdr__brand" href="/" aria-label="Bractwo — strona główna">
+      <Wordmark />
+    </a>
+
+    <nav class="hdr__nav" aria-label="Główne">
+      <ul class="hdr__list">
+        {
+          nav.map((item) => (
+            <li>
+              <a class="hdr__link t-label" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <form class="hdr__search" role="search" action="/szukaj/" method="get">
+      <label class="visually-hidden" for="q">Szukaj poradnika</label>
+      <span class="hdr__search-icon"><Icon name="szukaj" size={18} /></span>
+      <input
+        class="hdr__input t-caption"
+        id="q"
+        name="q"
+        type="search"
+        placeholder="Szukaj poradnika…"
+        autocomplete="off"
+      />
+      <kbd class="hdr__kbd t-micro">/</kbd>
+    </form>
+
+    <button class="hdr__burger" type="button" aria-expanded="false" aria-controls="menu-mobilne">
+      <span class="hdr__burger-open"><Icon name="menu" size={22} /></span>
+      <span class="hdr__burger-close"><Icon name="zamknij" size={22} /></span>
+      <span class="visually-hidden">Menu i wyszukiwarka</span>
+    </button>
+  </div>
+
+  <div class="hdr__drawer" id="menu-mobilne" hidden>
+    <div class="container">
+      <form class="hdr__drawer-search" role="search" action="/szukaj/" method="get">
+        <label class="visually-hidden" for="q-mobilne">Szukaj poradnika</label>
+        <span class="hdr__search-icon"><Icon name="szukaj" size={18} /></span>
+        <input
+          class="hdr__input t-caption"
+          id="q-mobilne"
+          name="q"
+          type="search"
+          placeholder="Szukaj poradnika…"
+          autocomplete="off"
+        />
+      </form>
+      <ul class="hdr__drawer-list">
+        {
+          nav.map((item) => (
+            <li>
+              <a class="hdr__drawer-link t-title" href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>('.hdr__burger');
+  const drawer = document.querySelector<HTMLElement>('.hdr__drawer');
+
+  const close = () => {
+    burger?.setAttribute('aria-expanded', 'false');
+    if (drawer) drawer.hidden = true;
+    document.documentElement.classList.remove('menu-otwarte');
+  };
+
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    if (open) {
+      close();
+      return;
+    }
+    burger.setAttribute('aria-expanded', 'true');
+    if (drawer) drawer.hidden = false;
+    document.documentElement.classList.add('menu-otwarte');
+  });
+
+  drawer?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).closest('a')) close();
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && burger?.getAttribute('aria-expanded') === 'true') {
+      close();
+      burger.focus();
+      return;
+    }
+
+    // Ukośnik skacze do wyszukiwania — tak jak w każdym serwisie z poradnikami.
+    if (event.key !== '/' || event.metaKey || event.ctrlKey || event.altKey) return;
+    const active = document.activeElement;
+    if (active instanceof HTMLInputElement || active instanceof HTMLTextAreaElement) return;
+    const field = document.querySelector<HTMLInputElement>('.hdr__search .hdr__input');
+    if (!field || field.offsetParent === null) return;
+    event.preventDefault();
+    field.focus();
+  });
+</script>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    border-bottom: 1px solid var(--hairline);
+    backdrop-filter: blur(14px);
+  }
+
+  .hdr__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    height: 68px;
+  }
+
+  .hdr__brand {
+    flex: none;
+    text-decoration: none;
+  }
+
+  .hdr__nav {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .hdr__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .hdr__link {
+    display: inline-block;
+    padding-block: var(--space-2xs);
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .hdr__link:hover {
+    color: var(--ink);
+  }
+
+  .hdr__search,
+  .hdr__drawer-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .hdr__search {
+    flex: none;
+    width: 280px;
+  }
+
+  .hdr__search-icon {
+    position: absolute;
+    left: var(--space-xs);
+    display: flex;
+    color: var(--ink-muted);
+    pointer-events: none;
+  }
+
+  .hdr__input {
+    width: 100%;
+    height: 40px;
+    padding-inline: var(--space-xl) var(--space-lg);
+    background: var(--surface);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    color: var(--ink);
+  }
+
+  .hdr__input::placeholder {
+    color: var(--ink-muted);
+  }
+
+  .hdr__input:hover {
+    border-color: var(--hairline-strong);
+  }
+
+  .hdr__input:focus-visible {
+    border-color: var(--accent);
+    outline-offset: 1px;
+  }
+
+  .hdr__input::-webkit-search-cancel-button {
+    filter: invert(1) opacity(0.5);
+  }
+
+  .hdr__kbd {
+    position: absolute;
+    right: var(--space-2xs);
+    display: grid;
+    place-items: center;
+    width: 20px;
+    height: 20px;
+    color: var(--ink-muted);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    pointer-events: none;
+  }
+
+  .hdr__burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: calc(var(--space-xs) * -1);
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .hdr__burger-open,
+  .hdr__burger-close {
+    display: flex;
+  }
+
+  .hdr__burger-close,
+  .hdr__burger[aria-expanded='true'] .hdr__burger-open {
+    display: none;
+  }
+
+  .hdr__burger[aria-expanded='true'] .hdr__burger-close {
+    display: flex;
+  }
+
+  .hdr__drawer {
+    border-top: 1px solid var(--hairline);
+    background: var(--bg-band);
+  }
+
+  .hdr__drawer-search {
+    margin-block: var(--space-md) var(--space-2xs);
+  }
+
+  .hdr__drawer-search .hdr__input {
+    height: 48px;
+    padding-inline: var(--space-xl) var(--space-md);
+  }
+
+  .hdr__drawer-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding-block: var(--space-2xs) var(--space-sm);
+    list-style: none;
+  }
+
+  .hdr__drawer-link {
+    display: block;
+    padding-block: var(--space-xs);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  @media (max-width: 1180px) {
+    .hdr__search {
+      width: 220px;
+    }
+    .hdr__list {
+      gap: var(--space-sm);
+    }
+  }
+
+  @media (max-width: 960px) {
+    .hdr__nav,
+    .hdr__search {
+      display: none;
+    }
+    .hdr__inner {
+      justify-content: space-between;
+    }
+    .hdr__burger {
+      display: inline-flex;
+    }
+  }
+
+  @media (min-width: 961px) {
+    .hdr__drawer {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,281 @@
+---
+import type { Era } from '../data/site';
+import EraMedia from './EraMedia.astro';
+import Icon from './Icon.astro';
+
+/**
+ * Warstwa zejścia: jedna epoka serii. Strona tekstu, strona panoramy.
+ * Strona obrazu zmienia się co warstwę — sąsiednie warstwy są lustrzane.
+ */
+interface Props {
+  era: Era;
+  flip: boolean;
+  band: boolean;
+}
+
+const { era, flip, band } = Astro.props;
+---
+
+<section
+  class:list={['layer', `layer--${era.id}`, flip && 'layer--flip', band && 'band']}
+  id={`epoka-${era.id}`}
+  data-era-section={era.id}
+  aria-labelledby={`epoka-${era.id}-tytul`}
+>
+  <div class="layer__inner container">
+    <div class="layer__text">
+      <p class="layer__year t-year">{era.year}</p>
+      <h2 class="layer__headline t-headline" id={`epoka-${era.id}-tytul`}>{era.headline}</h2>
+      <p class="layer__meta t-caption">
+        {era.place} · {era.span} · <span class="layer__hero">{era.hero}</span>
+      </p>
+      <p class="layer__body t-body measure">{era.body}</p>
+
+      <ul class="layer__guides">
+        {
+          era.guides.map((guide) => (
+            <li class="layer__guide">
+              <a class="layer__guide-link" href={guide.href}>
+                <span class="layer__guide-title t-title">{guide.title}</span>
+                <span class="layer__guide-time t-caption tabular">
+                  <Icon name="czas" size={14} />
+                  {guide.minutes} min
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <a class="btn-link t-button" href={`/epoki/${era.id}/`}>
+        Wszystkie poradniki z tej epoki
+        <Icon name="strzalka-w-prawo" size={18} />
+      </a>
+    </div>
+
+    <div class="layer__media">
+      <div class="layer__art">
+        <EraMedia
+          slot={era.id}
+          era={era.id}
+          widths={[640, 960, 1280]}
+          sizes="(max-width: 1024px) 92vw, 46vw"
+          credit={false}
+        />
+      </div>
+      <div class="layer__plate">
+        <p class="layer__plate-game t-title">{era.game}</p>
+        <p class="layer__plate-meta t-caption tabular">Premiera {era.released}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .layer {
+    position: relative;
+    padding-block: var(--section-y);
+  }
+
+  .layer--jerozolima {
+    --era: var(--era-jerozolima);
+    --era-text: var(--era-jerozolima-text);
+    --era-ink: var(--era-jerozolima-ink);
+  }
+  .layer--wlochy {
+    --era: var(--era-wlochy);
+    --era-text: var(--era-wlochy-text);
+    --era-ink: var(--era-wlochy-ink);
+  }
+  .layer--karaiby {
+    --era: var(--era-karaiby);
+    --era-text: var(--era-karaiby-text);
+    --era-ink: var(--era-karaiby-ink);
+  }
+  .layer--londyn {
+    --era: var(--era-londyn);
+    --era-text: var(--era-londyn-text);
+    --era-ink: var(--era-londyn-ink);
+  }
+  .layer--japonia {
+    --era: var(--era-japonia);
+    --era-text: var(--era-japonia-text);
+    --era-ink: var(--era-japonia-ink);
+  }
+
+  .layer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .layer--flip .layer__text {
+    order: 2;
+  }
+
+  .layer__year {
+    color: var(--era);
+    opacity: 0.9;
+  }
+
+  .layer__headline {
+    margin-top: var(--space-xs);
+    color: var(--ink);
+  }
+
+  .layer__meta {
+    margin-top: var(--space-xs);
+    color: var(--ink-muted);
+  }
+
+  .layer__hero {
+    color: var(--era-text);
+  }
+
+  .layer__body {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .layer__guides {
+    margin: var(--space-xl) 0 var(--space-md);
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .layer__guide {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .layer__guide-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    text-decoration: none;
+    transition: transform 180ms var(--ease-out);
+  }
+
+  .layer__guide-link:hover {
+    transform: translateX(var(--space-2xs));
+  }
+
+  .layer__guide-title {
+    color: var(--ink);
+    text-wrap: pretty;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .layer__guide-link:hover .layer__guide-title {
+    color: var(--era-text);
+  }
+
+  .layer__guide-time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    flex: none;
+    color: var(--ink-muted);
+  }
+
+  .layer__media {
+    position: relative;
+  }
+
+  .layer__art :global(.foto),
+  .layer__art :global(.skyline) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .layer__art {
+    position: relative;
+    aspect-ratio: 21 / 13;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    background: var(--bg);
+  }
+
+  .layer__plate {
+    position: relative;
+    z-index: 1;
+    max-width: 330px;
+    margin-top: calc(var(--space-2xl) * -1);
+    margin-inline-start: var(--space-xl);
+    padding: var(--space-md);
+    /* Papier, nie swatch: włókno w tle, nierówna krawędź dolna, oddzielenie
+       kreską wtopioną w arkusz zamiast rozmytego cienia pod prostokątem. */
+    background-color: var(--parchment);
+    background-image:
+      repeating-linear-gradient(
+        96deg,
+        transparent 0 3px,
+        rgb(30 25 19 / 0.028) 3px 4px
+      ),
+      repeating-linear-gradient(
+        6deg,
+        transparent 0 7px,
+        rgb(30 25 19 / 0.02) 7px 8px
+      );
+    color: var(--ink-parchment);
+    border-radius: var(--radius-none);
+    box-shadow: inset 0 0 0 1px rgb(30 25 19 / 0.16);
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 5px),
+      88% 100%,
+      74% calc(100% - 4px),
+      58% calc(100% - 1px),
+      41% calc(100% - 5px),
+      27% 100%,
+      12% calc(100% - 3px),
+      0 calc(100% - 6px)
+    );
+  }
+
+  .layer--flip .layer__plate {
+    margin-inline: auto var(--space-xl);
+  }
+
+  .layer__plate-game {
+    color: var(--ink-parchment);
+    text-wrap: balance;
+  }
+
+  .layer__plate-meta {
+    margin-top: var(--space-3xs);
+    color: var(--ink-parchment-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .layer__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+    }
+    .layer--flip .layer__text {
+      order: 0;
+    }
+    .layer__plate,
+    .layer--flip .layer__plate {
+      margin-inline: var(--space-md) auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .layer__guide-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3xs);
+    }
+    .layer__plate,
+    .layer--flip .layer__plate {
+      margin-inline: 0;
+      max-width: none;
+    }
+  }
+</style>

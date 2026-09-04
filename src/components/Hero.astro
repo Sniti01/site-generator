@@ -1,0 +1,250 @@
+---
+import Viewpoint from './Viewpoint.astro';
+import EraMedia from './EraMedia.astro';
+import gameArt from '../data/game-art.json';
+import Icon from './Icon.astro';
+import { eras } from '../data/site';
+
+const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
+---
+
+<section class="hero" aria-labelledby="hero-tytul">
+  <div class="hero__art">
+    <EraMedia
+      slot="hero"
+      widths={[1200, 1600, 2400, 3200]}
+      /*
+        Wartości powyżej 100vw są celowe. `sizes` opisuje szerokość, a panel
+        pierwszego ekranu jest niemal kwadratowy, podczas gdy kluczowy art ma
+        proporcję 3:1. Przy object-fit: cover przeglądarka musi pokryć wysokość,
+        więc realnie potrzebuje około 3,1 × wysokości panelu w pikselach źródła
+        — prawie trzy razy więcej, niż wynika z samej szerokości. Bez tego
+        wybierała wariant 979 px i rozciągała go 2,5-krotnie.
+      */
+      sizes="(max-width: 1024px) 200vw, 170vw"
+      loading="eager"
+      credit={false}
+    />
+    {!kluczowyArt && <Viewpoint bare />}
+  </div>
+  <div class="hero__scrim"></div>
+
+  <div class="hero__inner container">
+    <div class="hero__text">
+      <h1 class="hero__title t-display" id="hero-tytul">
+        Cała seria według lat
+      </h1>
+      <p class="hero__lead t-lead measure">
+        Zaczynasz na iglicy, schodzisz przez pięć stuleci i lądujesz w tym poradniku, po który
+        przyszedłeś. Nieoficjalny przewodnik po <i>Assassin’s Creed</i> — bez tagów, po latach.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn-primary t-button" href="#zejscie">
+          Zacznij zejście
+          <Icon name="w-dol" size={18} />
+        </a>
+        <a class="btn btn-secondary t-button" href="#katalog">Katalog poradników</a>
+      </div>
+
+      <nav class="hero__jump" aria-label="Skok do epoki">
+        {
+          eras.map((era) => (
+            <a class:list={['hero__chip', `hero__chip--${era.id}`]} href={`#epoka-${era.id}`}>
+              <span class="hero__chip-year t-caption tabular">{era.year}</span>
+              <span class="hero__chip-place t-caption">{era.place}</span>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+
+  {
+    !kluczowyArt && (
+      <span class="hero__height t-micro tabular" aria-hidden="true">
+        wysokość 42 m
+      </span>
+    )
+  }
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(600px, 90vh, 920px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .hero__art {
+    position: absolute;
+    inset: 0 0 0 32%;
+    /* Duoton dotyczy tylko wariantu fotograficznego; kluczowy art gry idzie
+       w pełnym kolorze. Mosiądz zostaje jako kolor miasta pod sylwetką. */
+    --era: var(--accent-2);
+  }
+
+  .hero__art :global(.foto),
+  .hero__art :global(.skyline) {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Skrim: tekst nigdy nie leży na surowym obrazie. */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgb(13 12 10 / 0.96) 0 30%,
+        rgb(13 12 10 / 0.74) 52%,
+        rgb(13 12 10 / 0.12) 78%,
+        rgb(13 12 10 / 0) 100%
+      ),
+      linear-gradient(0deg, rgb(13 12 10 / 0.88), rgb(13 12 10 / 0) 42%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-block: var(--space-3xl);
+  }
+
+  .hero__text {
+    max-width: 720px;
+  }
+
+  .hero__title {
+    color: var(--ink);
+  }
+
+  .hero__lead {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .hero__lead i {
+    font-style: normal;
+    color: var(--ink);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xl);
+  }
+
+  .hero__jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .hero__chip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-2xs) var(--space-xs);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    text-decoration: none;
+    transition:
+      border-color 180ms var(--ease-out),
+      background-color 180ms var(--ease-out);
+  }
+
+  .hero__chip:hover {
+    border-color: var(--era-text);
+    background: var(--wash);
+  }
+
+  .hero__chip-year {
+    color: var(--era-text);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .hero__chip-place {
+    color: var(--ink-muted);
+  }
+
+  .hero__chip--jerozolima {
+    --era-text: var(--era-jerozolima-text);
+  }
+  .hero__chip--wlochy {
+    --era-text: var(--era-wlochy-text);
+  }
+  .hero__chip--karaiby {
+    --era-text: var(--era-karaiby-text);
+  }
+  .hero__chip--londyn {
+    --era-text: var(--era-londyn-text);
+  }
+  .hero__chip--japonia {
+    --era-text: var(--era-japonia-text);
+  }
+
+  .hero__height {
+    position: absolute;
+    right: var(--gutter);
+    bottom: var(--space-md);
+    z-index: 1;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .hero__art {
+      inset: 0 -20% 0 20%;
+      opacity: 0.75;
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* Pierwszy ekran telefonu: najpierw sylwetka, pod nią tytuł. Przy
+       przesunięciu obrazu w bok postać wypadała z kadru. */
+    .hero {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .hero__art {
+      position: relative;
+      inset: auto;
+      flex: none;
+      height: 40vh;
+      min-height: 260px;
+      opacity: 1;
+    }
+    .hero__scrim {
+      bottom: auto;
+      height: 40vh;
+      min-height: 260px;
+      background: linear-gradient(
+        0deg,
+        rgb(13 12 10 / 1) 0 6%,
+        rgb(13 12 10 / 0.55) 34%,
+        rgb(13 12 10 / 0) 72%
+      );
+    }
+    .hero__inner {
+      padding-block: var(--space-lg) var(--space-2xl);
+    }
+    .hero__actions .btn {
+      flex: 1 1 100%;
+    }
+    .hero__height {
+      display: none;
+    }
+  }
+
+</style>

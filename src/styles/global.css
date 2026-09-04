@@ -1,0 +1,585 @@
+@import 'tailwindcss';
+
+/* Fonty self-hosted. Cinzel — inskrypcyjna antykwa (rzymski ryt, wersaliki),
+   Manrope — neutralny grotesk do tekstu i UI. Podzbiór latin-ext niesie polskie
+   znaki diakrytyczne: ą ć ę ł ń ó ś ź ż. */
+@import '@fontsource/cinzel/latin-ext-400.css';
+@import '@fontsource/cinzel/latin-ext-600.css';
+@import '@fontsource/cinzel/latin-ext-700.css';
+@import '@fontsource/manrope/latin-ext-400.css';
+@import '@fontsource/manrope/latin-ext-500.css';
+@import '@fontsource/manrope/latin-ext-600.css';
+
+/* ------------------------------------------------------------------ *
+ * Tokeny. Źródłem prawdy jest DESIGN.md; ten blok jest jego emisją.
+ * Szasi (bg…danger) nie zmienia się między projektami. Motyw gry to
+ * cztery tokeny marki plus pięć trójek epok — akcent wędruje po zejściu.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #0d0c0a;
+  --color-bg-band: #131110;
+  --color-surface: #191614;
+  --color-surface-2: #211d1a;
+  --color-ink: #ede8de;
+  --color-ink-muted: #a8a199;
+  --color-danger: #e1584f;
+
+  --color-accent: #dc4e40;
+  --color-accent-text: #f0736a;
+  --color-ink-on-accent: #14100e;
+  --color-accent-2: #b08d57;
+
+  --color-parchment: #e4dac4;
+  --color-ink-parchment: #1e1913;
+  --color-ink-parchment-muted: #4a4136;
+
+  --font-display: 'Cinzel', ui-serif, Georgia, serif;
+  --font-text: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Powtórzone jako zwykłe custom properties: gate kontrastu czyta ten plik,
+     a komponenty używają krótkich nazw. */
+  --bg: #0d0c0a;
+  --bg-band: #131110;
+  --surface: #191614;
+  --surface-2: #211d1a;
+  --ink: #ede8de;
+  --ink-muted: #a8a199;
+  --danger: #e1584f;
+
+  --accent: #dc4e40;
+  --accent-text: #f0736a;
+  --ink-on-accent: #14100e;
+  --accent-2: #b08d57;
+
+  --parchment: #e4dac4;
+  --ink-parchment: #1e1913;
+  --ink-parchment-muted: #4a4136;
+
+  --hairline: rgb(237 232 222 / 0.12);
+  --hairline-strong: rgb(237 232 222 / 0.26);
+  /* Rozjaśnienie pod kursorem i cień podniesienia: jedne wartości na cały serwis. */
+  --wash: rgb(237 232 222 / 0.06);
+  --wash-strong: rgb(237 232 222 / 0.1);
+  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.45);
+
+  /* Epoki zejścia. Trójka na epokę: wypełnienie, tekst, napis na wypełnieniu. */
+  --era-jerozolima: #c9b489;
+  --era-jerozolima-text: #dccba6;
+  --era-jerozolima-ink: #14100e;
+
+  --era-wlochy: #c9a227;
+  --era-wlochy-text: #e3c158;
+  --era-wlochy-ink: #14100e;
+
+  --era-karaiby: #17a9a2;
+  --era-karaiby-text: #4ed8d0;
+  --era-karaiby-ink: #06100f;
+
+  --era-londyn: #8fa3b8;
+  --era-londyn-text: #b9cbde;
+  --era-londyn-ink: #0c1116;
+
+  /* Japonia dzieli ton z marką: czerwień Kreda wypada w środku zejścia,
+     bo epoki idą po latach, a 1579 leży między Włochami a Karaibami.
+     Zamknięcie czerwienią bierze na siebie pasmo CTA pod stogiem. */
+  --era-japonia: #dc4e40;
+  --era-japonia-text: #f0736a;
+  --era-japonia-ink: #14100e;
+
+  /* Kolor bieżącej epoki. Podmienia go sekcja, nie skrypt. */
+  --era: var(--accent);
+  --era-text: var(--accent-text);
+  --era-ink: var(--ink-on-accent);
+
+  /* Skala odstępów: 4-based, jedenaście stopni, bez wartości pośrednich. */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+  --space-5xl: 160px;
+
+  /* Świat ciężki i historyczny: kąty ostre. Cały zestaw zwinięty do 0/2px. */
+  --radius-none: 0;
+  --radius-sharp: 2px;
+
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --rail: 84px; /* szerokość skali wysokości po lewej krawędzi */
+  --section-y: clamp(72px, 9vw, 128px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ * Baza
+ * ------------------------------------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Przyklejona szapka ma 68px: bez tego skok z kafla epoki ląduje na
+     nagłówku schowanym pod paskiem. */
+  --header-h: 68px;
+}
+
+:target,
+[id^='epoka-'] {
+  scroll-margin-top: calc(var(--header-h) + var(--space-lg));
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Powierzchnie, których nie rysowaliśmy, też noszą projekt. */
+::selection {
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-band);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border: 3px solid var(--bg-band);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+
+* {
+  scrollbar-color: var(--surface-2) var(--bg-band);
+  scrollbar-width: thin;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: var(--radius-sharp);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+/* Cyfry lat i liczników muszą stać w kolumnie. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+/* ------------------------------------------------------------------ *
+ * Role typograficzne. Każdy literalny rozmiar na stronie należy do
+ * jednej z tych ról — inaczej gate tokenów wywala build.
+ * ------------------------------------------------------------------ */
+
+.t-display {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 1.5rem + 4.4vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.t-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.t-title {
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.t-year {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 0.9;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  margin: 0;
+}
+
+.t-lead {
+  font-family: var(--font-text);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.t-body {
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.t-caption {
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.t-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Najmniejszy stopień: lata na skali, wysokość, klawisz skrótu. */
+.t-micro {
+  font-family: var(--font-text);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.t-label {
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.t-button {
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.measure {
+  max-width: 62ch;
+}
+
+/* ------------------------------------------------------------------ *
+ * Układ
+ * ------------------------------------------------------------------ */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.band {
+  background: var(--bg-band);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------------ *
+ * Przyciski
+ * ------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  height: 52px;
+  padding-inline: var(--space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+.btn-primary:hover {
+  background: color-mix(in oklab, var(--accent) 88%, var(--ink));
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: var(--wash);
+}
+
+.btn-quiet {
+  background: var(--surface-2);
+  color: var(--ink);
+  height: 44px;
+  padding-inline: var(--space-md);
+}
+.btn-quiet:hover {
+  background: var(--wash-strong);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--era-text);
+  text-decoration: none;
+  transition: gap 180ms var(--ease-out);
+}
+.btn-link:hover {
+  text-decoration: underline;
+  gap: var(--space-xs);
+}
+
+/* ------------------------------------------------------------------ *
+ * Karta
+ * ------------------------------------------------------------------ */
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sharp);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 180ms var(--ease-out),
+    transform 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out);
+}
+
+.card:hover {
+  border-color: var(--hairline-strong);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lift);
+}
+
+.card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-band);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding: var(--space-md);
+}
+
+/* ------------------------------------------------------------------ *
+ * Fotografia
+ * ------------------------------------------------------------------ */
+
+/* Duoton na tokenach, bez drugiego zapisu barw: kadr w skali szarości, nad nim
+   kolor epoki w trybie „multiply" (cienie schodzą do czerni, światła biorą
+   barwę), nad tym grunt strony w trybie „lighten", który podnosi czernie do tła.
+   Dzięki temu zdjęcia z różnych źródeł i z różnych stuleci czytają się jak jedna
+   inscenizacja, a wędrujący akcent działa również na fotografii.
+
+   Kolejność jest istotna: barwa epoki leży NAD kadrem, nie pod nim. Gdyby była
+   tłem kontenera, panel z jeszcze niedoczytanym zdjęciem świeciłby płachtą
+   nasyconego koloru — a tak zostaje ciemny jak reszta strony. */
+.foto {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.foto::before,
+.foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.foto::before {
+  z-index: 1;
+  background: var(--era);
+  mix-blend-mode: multiply;
+}
+
+.foto::after {
+  z-index: 2;
+  background: var(--bg);
+  mix-blend-mode: lighten;
+}
+
+/* Materiał gry idzie w pełnym kolorze: kluczowy art jest już zestrojony przez
+   wydawcę, a duoton zabrałby to, po co się go bierze. Zostaje sam skrim, żeby
+   jasny kadr osiadł na ciemnej stronie i nie odklejał się od reszty. */
+.foto--gra img {
+  filter: none;
+}
+
+.foto--gra::before {
+  background: linear-gradient(0deg, rgb(13 12 10 / 0.4), rgb(13 12 10 / 0) 46%);
+  mix-blend-mode: normal;
+}
+
+.foto--gra::after {
+  display: none;
+}
+
+/* Podpis autora siedzi nad duotonem, nie w nim. Przy górnej krawędzi, bo
+   dolną zasłania tabliczka z pergaminu. */
+.foto__credit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  gap: var(--space-3xs);
+  padding: var(--space-3xs) var(--space-2xs);
+  mix-blend-mode: normal;
+  background: color-mix(in oklab, var(--bg) 78%, transparent);
+  color: var(--ink-muted);
+}
+
+.foto__credit a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.foto__credit a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------------ *
+ * Ruch
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-sm);
+  top: var(--space-sm);
+  z-index: 100;
+  transform: translateY(-200%);
+  background: var(--accent);
+  color: var(--ink-on-accent);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sharp);
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  transform: translateY(0);
+}

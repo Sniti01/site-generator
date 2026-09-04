@@ -1,0 +1,248 @@
+---
+import { fresh, eras } from '../data/site';
+import EraMedia from './EraMedia.astro';
+import Icon from './Icon.astro';
+
+const eraName = new Map(eras.map((era) => [era.id, era.place]));
+---
+
+<section class="rail-sec section" aria-labelledby="swieze-tytul">
+  <div class="container">
+    <div class="rail-sec__head">
+      <div>
+        <h2 class="t-headline" id="swieze-tytul">Świeżo z Animusa</h2>
+        <p class="rail-sec__lead t-body">Ostatnie teksty, niezależnie od epoki.</p>
+      </div>
+      <div class="rail-sec__nav">
+        <button class="rail-sec__arrow" type="button" data-rail-prev>
+          <Icon name="strzalka-w-lewo" size={20} />
+          <span class="visually-hidden">Poprzednie karty</span>
+        </button>
+        <button class="rail-sec__arrow" type="button" data-rail-next>
+          <Icon name="strzalka-w-prawo" size={20} />
+          <span class="visually-hidden">Następne karty</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="rail-sec__track" data-rail tabindex="0" aria-label="Świeże teksty, przewijane poziomo">
+    {
+      fresh.map((item) => (
+        <li class:list={['rail-sec__item', `rail-sec__item--${item.era}`]}>
+          <a class="card rail-sec__card" href={item.href}>
+            <span class="card__media rail-sec__media">
+              <EraMedia
+                slot={item.era}
+                era={item.era}
+                widths={[320, 640]}
+                sizes="320px"
+                credit={false}
+              />
+            </span>
+            <span class="card__body">
+              <span class="t-title rail-sec__title">{item.title}</span>
+              <span class="rail-sec__meta t-caption">
+                <time class="rail-sec__date tabular" datetime={item.date}>
+                  {item.dateLabel}
+                </time>
+                <span class="rail-sec__kind">{item.kind}</span>
+                <span class="rail-sec__place">{eraName.get(item.era)}</span>
+              </span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="container">
+    <a class="btn btn-quiet t-button rail-sec__all" href="/aktualnosci/">
+      Wszystkie teksty
+      <Icon name="strzalka-w-prawo" size={18} />
+    </a>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector<HTMLElement>('[data-rail]');
+  const prev = document.querySelector<HTMLButtonElement>('[data-rail-prev]');
+  const next = document.querySelector<HTMLButtonElement>('[data-rail-next]');
+
+  if (track && prev && next) {
+    const step = () => {
+      const card = track.querySelector<HTMLElement>('.rail-sec__item');
+      return card ? card.offsetWidth + 24 : 320;
+    };
+
+    const sync = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    };
+
+    // Reset CSS zeruje scroll-behavior, ale nie opcję przekazaną do scrollBy.
+    const spokojnie = matchMedia('(prefers-reduced-motion: reduce)');
+    const behavior = (): ScrollBehavior => (spokojnie.matches ? 'auto' : 'smooth');
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: behavior() }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: behavior() }));
+    track.addEventListener('scroll', sync, { passive: true });
+    addEventListener('resize', sync, { passive: true });
+    sync();
+  }
+</script>
+
+<style>
+  .rail-sec__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xl);
+  }
+
+  .rail-sec__lead {
+    margin-top: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__nav {
+    display: flex;
+    gap: var(--space-2xs);
+    flex: none;
+  }
+
+  .rail-sec__arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-sharp);
+    cursor: pointer;
+    transition:
+      border-color 180ms var(--ease-out),
+      background-color 180ms var(--ease-out),
+      opacity 180ms var(--ease-out);
+  }
+
+  .rail-sec__arrow:hover:not(:disabled) {
+    border-color: var(--ink);
+    background: var(--wash);
+  }
+
+  .rail-sec__arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .rail-sec__track {
+    display: flex;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0 var(--gutter) var(--space-sm);
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .rail-sec__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Pierwsza karta staje w kolumnie kontenera, a nie przy krawędzi ekranu. */
+  .rail-sec__track::before,
+  .rail-sec__track::after {
+    content: '';
+    flex: none;
+    width: max(0px, calc((100vw - var(--container)) / 2 - var(--gutter)));
+  }
+
+  .rail-sec__item {
+    flex: none;
+    width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .rail-sec__item--jerozolima {
+    --era: var(--era-jerozolima);
+    --era-text: var(--era-jerozolima-text);
+  }
+  .rail-sec__item--wlochy {
+    --era: var(--era-wlochy);
+    --era-text: var(--era-wlochy-text);
+  }
+  .rail-sec__item--karaiby {
+    --era: var(--era-karaiby);
+    --era-text: var(--era-karaiby-text);
+  }
+  .rail-sec__item--londyn {
+    --era: var(--era-londyn);
+    --era-text: var(--era-londyn-text);
+  }
+  .rail-sec__item--japonia {
+    --era: var(--era-japonia);
+    --era-text: var(--era-japonia-text);
+  }
+
+  .rail-sec__card {
+    height: 100%;
+  }
+
+  .rail-sec__media {
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+
+  .rail-sec__media :global(.foto),
+  .rail-sec__media :global(.skyline) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rail-sec__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__kind {
+    color: var(--era-text);
+  }
+
+  .rail-sec__kind::before,
+  .rail-sec__place::before {
+    content: '·';
+    margin-right: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__title {
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .rail-sec__date {
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__all {
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 560px) {
+    .rail-sec__item {
+      width: 268px;
+    }
+    .rail-sec__nav {
+      display: none;
+    }
+  }
+</style>

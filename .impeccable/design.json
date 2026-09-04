@@ -1,0 +1,399 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-01T00:00:00Z",
+  "title": "Design System: Skok wiary",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Киноварь Кредо",
+        "canonical": "#dc4e40",
+        "tonalRamp": ["#2b0d09", "#4d1712", "#71241d", "#95322a", "#b93f35", "#dc4e40", "#eb8279", "#f7c3bd"]
+      },
+      "accent-text": {
+        "role": "primary",
+        "displayName": "Киноварь по тексту",
+        "canonical": "#f0736a",
+        "tonalRamp": ["#33110e", "#57201b", "#7c2f28", "#a14036", "#c65647", "#e0655a", "#f0736a", "#fbb9b2"]
+      },
+      "ink-on-accent": {
+        "role": "primary",
+        "displayName": "Чернила на киновари",
+        "canonical": "#14100e",
+        "tonalRamp": ["#0a0807", "#14100e", "#241d19", "#3a2f28", "#57463c", "#7d685b", "#ab958708", "#ded3c9"]
+      },
+      "accent-2": {
+        "role": "secondary",
+        "displayName": "Латунь",
+        "canonical": "#b08d57",
+        "tonalRamp": ["#231a0f", "#3d2d1a", "#584127", "#745635", "#916c44", "#b08d57", "#cdae7f", "#e9dcc4"]
+      },
+      "parchment": {
+        "role": "tertiary",
+        "displayName": "Пергамент",
+        "canonical": "#e4dac4",
+        "tonalRamp": ["#241f16", "#3d3527", "#574c39", "#72654d", "#8e7f64", "#ab9b7e", "#c8b9a0", "#e4dac4"]
+      },
+      "ink-parchment": {
+        "role": "tertiary",
+        "displayName": "Чернила по пергаменту",
+        "canonical": "#1e1913",
+        "tonalRamp": ["#0f0c09", "#1e1913", "#31281e", "#483c2d", "#61513e", "#7d6a52", "#9b8569", "#bba284"]
+      },
+      "ink-parchment-muted": {
+        "role": "tertiary",
+        "displayName": "Приглушённые чернила по пергаменту",
+        "canonical": "#4a4136",
+        "tonalRamp": ["#161310", "#28231c", "#3a3329", "#4a4136", "#5e5344", "#786a58", "#94836d", "#b2a189"]
+      },
+      "era-jerozolima": {
+        "role": "tertiary",
+        "displayName": "Песчаник, 1191",
+        "canonical": "#c9b489",
+        "tonalRamp": ["#262015", "#413826", "#5c5037", "#786a49", "#95855d", "#b29f74", "#c9b489", "#e4d9bd"]
+      },
+      "era-jerozolima-text": {
+        "role": "tertiary",
+        "displayName": "Песчаник по тексту",
+        "canonical": "#dccba6",
+        "tonalRamp": ["#2a2418", "#463d2a", "#63563c", "#80714f", "#9e8e64", "#bcab7d", "#dccba6", "#efe6d0"]
+      },
+      "era-wlochy": {
+        "role": "tertiary",
+        "displayName": "Золото, 1476",
+        "canonical": "#c9a227",
+        "tonalRamp": ["#271e05", "#43340a", "#5f4a10", "#7c6217", "#9a7b1d", "#b98f23", "#c9a227", "#e6cf7d"]
+      },
+      "era-wlochy-text": {
+        "role": "tertiary",
+        "displayName": "Золото по тексту",
+        "canonical": "#e3c158",
+        "tonalRamp": ["#2c2308", "#4a3c11", "#69551a", "#886f24", "#a88a2f", "#c6a53d", "#e3c158", "#f2e0a6"]
+      },
+      "era-japonia": {
+        "role": "tertiary",
+        "displayName": "Киноварь, 1579",
+        "canonical": "#dc4e40",
+        "tonalRamp": ["#2b0d09", "#4d1712", "#71241d", "#95322a", "#b93f35", "#dc4e40", "#eb8279", "#f7c3bd"]
+      },
+      "era-japonia-text": {
+        "role": "tertiary",
+        "displayName": "Киноварь эпохи по тексту",
+        "canonical": "#f0736a",
+        "tonalRamp": ["#33110e", "#57201b", "#7c2f28", "#a14036", "#c65647", "#e0655a", "#f0736a", "#fbb9b2"]
+      },
+      "era-karaiby": {
+        "role": "tertiary",
+        "displayName": "Бирюза, 1715",
+        "canonical": "#17a9a2",
+        "tonalRamp": ["#04211f", "#073936", "#0a524e", "#0e6b66", "#12857f", "#159f99", "#17a9a2", "#7ad9d3"]
+      },
+      "era-karaiby-text": {
+        "role": "tertiary",
+        "displayName": "Бирюза по тексту",
+        "canonical": "#4ed8d0",
+        "tonalRamp": ["#0a2725", "#0f423f", "#145d59", "#1a7874", "#219490", "#31b0ab", "#4ed8d0", "#a9ede9"]
+      },
+      "era-londyn": {
+        "role": "tertiary",
+        "displayName": "Олово, 1868",
+        "canonical": "#8fa3b8",
+        "tonalRamp": ["#181e24", "#28323c", "#3a4754", "#4d5d6d", "#617486", "#768ba0", "#8fa3b8", "#c4d1de"]
+      },
+      "era-londyn-text": {
+        "role": "tertiary",
+        "displayName": "Олово по тексту",
+        "canonical": "#b9cbde",
+        "tonalRamp": ["#1c232a", "#2e3a45", "#425261", "#576a7d", "#6d8399", "#849cb4", "#9db4cb", "#b9cbde"]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Тёплая чернота",
+        "canonical": "#0d0c0a",
+        "tonalRamp": ["#0d0c0a", "#131110", "#191614", "#211d1a", "#332d28", "#4d453d", "#6e6459", "#a8a199"]
+      },
+      "bg-band": {
+        "role": "neutral",
+        "displayName": "Полоса",
+        "canonical": "#131110",
+        "tonalRamp": ["#0d0c0a", "#131110", "#191614", "#211d1a", "#332d28", "#4d453d", "#6e6459", "#a8a199"]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Поверхность",
+        "canonical": "#191614",
+        "tonalRamp": ["#0d0c0a", "#131110", "#191614", "#211d1a", "#332d28", "#4d453d", "#6e6459", "#a8a199"]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Приподнятая поверхность",
+        "canonical": "#211d1a",
+        "tonalRamp": ["#0d0c0a", "#131110", "#191614", "#211d1a", "#332d28", "#4d453d", "#6e6459", "#a8a199"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Чернила",
+        "canonical": "#ede8de",
+        "tonalRamp": ["#1a1815", "#2f2b26", "#484239", "#635b4f", "#807768", "#a8a199", "#cdc7bc", "#ede8de"]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Приглушённые чернила",
+        "canonical": "#a8a199",
+        "tonalRamp": ["#1a1815", "#2f2b26", "#484239", "#635b4f", "#807768", "#a8a199", "#cdc7bc", "#ede8de"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Волос",
+        "canonical": "rgb(237 232 222 / 0.12)"
+      },
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Сильный волос",
+        "canonical": "rgb(237 232 222 / 0.26)"
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Опасность",
+        "canonical": "#e1584f",
+        "tonalRamp": ["#2c100d", "#4c1b17", "#6d2822", "#8f352d", "#b14239", "#d24f45", "#e1584f", "#f2a9a3"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "H1 первого экрана, капслоком. Один на страницу." },
+      "headline": { "displayName": "Headline", "purpose": "Заголовок эпохи, максима, каталог, полоса CTA." },
+      "title": { "displayName": "Title", "purpose": "Название гайда, группа каталога, игра на пергаменте, знак в шапке." },
+      "year": { "displayName": "Year", "purpose": "Год эпохи как высотная отметка; tabular-nums обязательны." },
+      "lead": { "displayName": "Lead", "purpose": "Подводка первого экрана и секций." },
+      "body": { "displayName": "Body", "purpose": "Корпус, строка не длиннее 62ch через .measure." },
+      "caption": { "displayName": "Caption", "purpose": "Метаданные, время чтения, дата, поле поиска, чип эпохи." },
+      "label": { "displayName": "Label", "purpose": "Пункт главного меню, заголовок колонки подвала. Капслок." },
+      "micro": { "displayName": "Micro", "purpose": "Подписи шкалы, отметка высоты, клавиша поиска. Самый мелкий кегль." },
+      "wordmark": { "displayName": "Wordmark", "purpose": "Знак в подвале, трекинг 0.2em." },
+      "button": { "displayName": "Button", "purpose": "Любой .btn и .btn-link." }
+    },
+    "shadows": [
+      {
+        "name": "shadow-lift",
+        "value": "0 12px 32px rgb(0 0 0 / 0.45)",
+        "purpose": "Единственная тень системы. Только на :hover карточки, вместе с translateY(-3px)."
+      },
+      {
+        "name": "parchment-edge",
+        "value": "inset 0 0 0 1px rgb(30 25 19 / 0.16)",
+        "purpose": "Кромка пергаментной таблички: линия, впаянная в лист, вместо подъёма."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Единственная кривая. Все переходы состояния."
+      },
+      {
+        "name": "duration-state",
+        "value": "180ms",
+        "purpose": "Наведение, фокус, сдвиг элемента списка, рост зазора у ссылки-стрелки."
+      },
+      {
+        "name": "duration-era",
+        "value": "320ms",
+        "purpose": "Смена цвета заливки и маркера шкалы при переходе между эпохами."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media (prefers-reduced-motion: reduce) { animation/transition-duration: 0.001ms; scroll-behavior: auto }",
+        "purpose": "Движение снимается целиком, включая плавную прокрутку."
+      }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "560px" },
+      { "name": "phone-wide", "value": "640px" },
+      { "name": "tablet", "value": "1024px" },
+      { "name": "rail", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Главное действие. Ровно одна залитая кнопка в пределах экрана.",
+      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#zejscie\">Zacznij zejście<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m6 9 6 6 6-6\"/></svg></a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; padding-inline: 32px; border: 1px solid transparent; border-radius: 2px; text-decoration: none; white-space: nowrap; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.9375rem; font-weight: 600; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: background-color 180ms cubic-bezier(0.16,1,0.3,1), border-color 180ms cubic-bezier(0.16,1,0.3,1), color 180ms cubic-bezier(0.16,1,0.3,1), transform 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-primary { background: var(--accent, #dc4e40); color: var(--ink-on-accent, #14100e); } .ds-btn-primary:hover { background: color-mix(in oklab, var(--accent, #dc4e40) 88%, var(--ink, #ede8de)); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Второе действие рядом с главным: контур вместо заливки.",
+      "html": "<a class=\"ds-btn ds-btn-secondary\" href=\"#katalog\">Katalog poradników</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 52px; padding-inline: 32px; border: 1px solid var(--hairline-strong, rgb(237 232 222 / 0.26)); border-radius: 2px; background: transparent; color: var(--ink, #ede8de); text-decoration: none; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.9375rem; font-weight: 600; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), background-color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-secondary:hover { border-color: var(--ink, #ede8de); background: rgb(237 232 222 / 0.06); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Link Button",
+      "kind": "button",
+      "refersTo": "button-link",
+      "description": "Выход из блока эпохи. Цвет берёт у текущей эпохи, на наведении растёт зазор до стрелки.",
+      "html": "<a class=\"ds-btn-link\" href=\"/epoki/wlochy/\">Wszystkie poradniki z tej epoki<svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15\"/><path d=\"m13 6 6 6-6 6\"/></svg></a>",
+      "css": ".ds-btn-link { display: inline-flex; align-items: center; gap: 8px; color: var(--era-text, #f0736a); text-decoration: none; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.9375rem; font-weight: 600; line-height: 1; letter-spacing: 0.06em; text-transform: uppercase; transition: gap 180ms cubic-bezier(0.16,1,0.3,1); } .ds-btn-link:hover { text-decoration: underline; text-underline-offset: 0.22em; gap: 12px; } .ds-btn-link:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Guide Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Карточка свежего текста в горизонтальной шине. Плоская в покое, поднимается только на наведении.",
+      "html": "<a class=\"ds-card\" href=\"/poradniki/ac2-glify/\"><span class=\"ds-card-media\"></span><span class=\"ds-card-body\"><span class=\"ds-card-title\">Dwadzieścia glifów i układanki Podmiotu 16</span><span class=\"ds-card-meta\"><time datetime=\"2026-08-12\">12.08.2026</time> · poradnik · Włochy</span></span></a>",
+      "css": ".ds-card { position: relative; display: flex; flex-direction: column; width: 300px; background: var(--surface, #191614); border: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); border-radius: 2px; text-decoration: none; color: inherit; transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), transform 180ms cubic-bezier(0.16,1,0.3,1), box-shadow 180ms cubic-bezier(0.16,1,0.3,1); } .ds-card:hover { border-color: var(--hairline-strong, rgb(237 232 222 / 0.26)); transform: translateY(-3px); box-shadow: 0 12px 32px rgb(0 0 0 / 0.45); } .ds-card-media { display: block; aspect-ratio: 16 / 10; background: var(--bg-band, #131110); overflow: hidden; } .ds-card-body { display: flex; flex-direction: column; gap: 8px; padding: 24px; } .ds-card-title { font-family: var(--font-display, 'Cinzel', serif); font-size: 1.3125rem; font-weight: 600; line-height: 1.28; letter-spacing: 0.03em; color: var(--ink, #ede8de); } .ds-card-meta { font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.8125rem; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--ink-muted, #a8a199); font-variant-numeric: tabular-nums; } .ds-card:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Search Field",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Закреплённый в шапке поиск: лупа слева, клавиша-подсказка справа, край становится киноварью в фокусе.",
+      "html": "<form class=\"ds-search\" role=\"search\" action=\"/szukaj/\"><span class=\"ds-search-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"6.25\"/><path d=\"M15.6 15.6 20 20\"/></svg></span><input class=\"ds-search-input\" type=\"search\" name=\"q\" placeholder=\"Szukaj poradnika\" aria-label=\"Szukaj poradnika\"><kbd class=\"ds-search-kbd\">/</kbd></form>",
+      "css": ".ds-search { position: relative; display: flex; align-items: center; width: 280px; } .ds-search-icon { position: absolute; left: 12px; display: flex; color: var(--ink-muted, #a8a199); pointer-events: none; } .ds-search-input { width: 100%; height: 40px; padding-inline: 48px 32px; background: var(--surface, #191614); border: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); border-radius: 2px; color: var(--ink, #ede8de); font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.8125rem; font-weight: 500; letter-spacing: 0.02em; } .ds-search-input::placeholder { color: var(--ink-muted, #a8a199); } .ds-search-input:hover { border-color: var(--hairline-strong, rgb(237 232 222 / 0.26)); } .ds-search-input:focus-visible { border-color: var(--accent, #dc4e40); outline: 2px solid var(--accent-text, #f0736a); outline-offset: 1px; } .ds-search-kbd { position: absolute; right: 8px; display: grid; place-items: center; width: 20px; height: 20px; color: var(--ink-muted, #a8a199); border: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); border-radius: 2px; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.16em; pointer-events: none; }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Липкая шапка 68px: полупрозрачный фон с размытием, волос по нижнему краю, пункты капслоком.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Główne\"><ul class=\"ds-nav-list\"><li><a class=\"ds-nav-link\" href=\"#zejscie\" aria-current=\"page\">Epoki</a></li><li><a class=\"ds-nav-link\" href=\"#katalog\">Poradniki</a></li><li><a class=\"ds-nav-link\" href=\"/mapy/\">Mapy</a></li><li><a class=\"ds-nav-link\" href=\"/postacie/\">Postacie</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; height: 68px; padding-inline: 24px; background: color-mix(in oklab, var(--bg, #0d0c0a) 88%, transparent); border-bottom: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); backdrop-filter: blur(14px); } .ds-nav-list { display: flex; align-items: center; gap: 24px; margin: 0; padding: 0; list-style: none; } .ds-nav-link { display: inline-block; padding-block: 8px; color: var(--ink-muted, #a8a199); text-decoration: none; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.75rem; font-weight: 600; line-height: 1.2; letter-spacing: 0.14em; text-transform: uppercase; transition: color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-nav-link:hover { color: var(--ink, #ede8de); } .ds-nav-link[aria-current] { color: var(--accent-text, #f0736a); } .ds-nav-link:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Era Chip",
+      "kind": "chip",
+      "refersTo": "era-chip",
+      "description": "Прыжок к эпохе с первого экрана. Год цветом своей эпохи, место приглушённым. Замена шкалы на узком экране.",
+      "html": "<nav class=\"ds-chips\" aria-label=\"Skok do epoki\"><a class=\"ds-chip ds-chip-wlochy\" href=\"#epoka-wlochy\"><span class=\"ds-chip-year\">1476</span><span class=\"ds-chip-place\">Włochy</span></a><a class=\"ds-chip ds-chip-karaiby\" href=\"#epoka-karaiby\"><span class=\"ds-chip-year\">1715</span><span class=\"ds-chip-place\">Karaiby</span></a></nav>",
+      "css": ".ds-chips { display: flex; flex-wrap: wrap; gap: 8px; } .ds-chip { display: flex; flex-direction: column; gap: 2px; padding: 8px 12px; border: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); border-radius: 2px; text-decoration: none; transition: border-color 180ms cubic-bezier(0.16,1,0.3,1), background-color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-chip:hover { border-color: var(--chip-era, #f0736a); background: rgb(237 232 222 / 0.06); } .ds-chip-year { font-family: var(--font-display, 'Cinzel', serif); font-size: 0.8125rem; font-weight: 600; line-height: 1.45; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; color: var(--chip-era, #f0736a); } .ds-chip-place { font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.8125rem; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; color: var(--ink-muted, #a8a199); } .ds-chip-wlochy { --chip-era: var(--era-wlochy-text, #e3c158); } .ds-chip-karaiby { --chip-era: var(--era-karaiby-text, #4ed8d0); } .ds-chip:focus-visible { outline: 2px solid var(--accent-text, #f0736a); outline-offset: 3px; }"
+    },
+    {
+      "name": "Descent Rail",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Подпись мира: шкала высоты по левому краю. Отметка года стоит там, где реально лежит центр слоя; заливка и ромб-маркер едут с прокруткой и красятся цветом активной эпохи.",
+      "html": "<aside class=\"ds-rail\" aria-hidden=\"true\" style=\"--progress: 34%\"><span class=\"ds-rail-cap\">iglica</span><div class=\"ds-rail-track\"><span class=\"ds-rail-fill\"></span><span class=\"ds-rail-tick\" style=\"--at: 12%\"><span class=\"ds-rail-dash\"></span><span class=\"ds-rail-year\">1191</span></span><span class=\"ds-rail-tick is-active\" style=\"--at: 34%\"><span class=\"ds-rail-dash\"></span><span class=\"ds-rail-year\">1476</span></span><span class=\"ds-rail-tick\" style=\"--at: 58%\"><span class=\"ds-rail-dash\"></span><span class=\"ds-rail-year\">1715</span></span><span class=\"ds-rail-marker\"></span></div><span class=\"ds-rail-cap\">stóg</span></aside>",
+      "css": ".ds-rail { --era-fill: var(--era-wlochy, #c9a227); --era-text: var(--era-wlochy-text, #e3c158); position: relative; display: flex; flex-direction: column; align-items: center; gap: 16px; width: 84px; height: 420px; padding-block: 32px; border-right: 1px solid var(--hairline, rgb(237 232 222 / 0.12)); background: color-mix(in oklab, var(--bg, #0d0c0a) 82%, transparent); backdrop-filter: blur(10px); } .ds-rail-cap { color: var(--ink-muted, #a8a199); font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.6875rem; font-weight: 600; line-height: 1.2; letter-spacing: 0.16em; text-transform: uppercase; } .ds-rail-track { position: relative; flex: 1; width: 1px; background: var(--hairline-strong, rgb(237 232 222 / 0.26)); } .ds-rail-fill { position: absolute; inset: 0 auto auto 0; width: 1px; height: var(--progress, 0%); background: var(--era-fill); transition: background-color 320ms cubic-bezier(0.16,1,0.3,1); } .ds-rail-tick { position: absolute; top: var(--at); left: 0; display: flex; align-items: center; gap: 4px; transform: translate(-50%, -50%); color: var(--ink-muted, #a8a199); transition: color 180ms cubic-bezier(0.16,1,0.3,1); } .ds-rail-dash { width: 9px; height: 1px; background: currentColor; } .ds-rail-year { font-family: var(--font-display, 'Cinzel', serif); font-size: 0.6875rem; font-weight: 600; line-height: 1.2; letter-spacing: 0.06em; font-variant-numeric: tabular-nums; } .ds-rail-tick.is-active { color: var(--era-text); } .ds-rail-tick.is-active .ds-rail-dash { width: 15px; height: 2px; } .ds-rail-marker { position: absolute; top: var(--progress, 0%); left: 50%; width: 7px; height: 7px; background: var(--era-fill); transform: translate(-50%, -50%) rotate(45deg); transition: background-color 320ms cubic-bezier(0.16,1,0.3,1); }"
+    },
+    {
+      "name": "Era Plate",
+      "kind": "custom",
+      "refersTo": "era-plate",
+      "description": "Пергаментная табличка игры под панорамой эпохи. Единственное светлое пятно мира: волокно вместо плашки, рваная нижняя кромка, врезанная линия вместо тени.",
+      "html": "<div class=\"ds-plate\"><p class=\"ds-plate-game\">Assassin’s Creed II</p><p class=\"ds-plate-meta\">Premiera 2009</p></div>",
+      "css": ".ds-plate { max-width: 330px; padding: 24px; background-color: var(--parchment, #e4dac4); background-image: repeating-linear-gradient(96deg, transparent 0 3px, rgb(30 25 19 / 0.028) 3px 4px), repeating-linear-gradient(6deg, transparent 0 7px, rgb(30 25 19 / 0.02) 7px 8px); color: var(--ink-parchment, #1e1913); border-radius: 0; box-shadow: inset 0 0 0 1px rgb(30 25 19 / 0.16); clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5px), 88% 100%, 74% calc(100% - 4px), 58% calc(100% - 1px), 41% calc(100% - 5px), 27% 100%, 12% calc(100% - 3px), 0 calc(100% - 6px)); } .ds-plate-game { margin: 0; font-family: var(--font-display, 'Cinzel', serif); font-size: 1.3125rem; font-weight: 600; line-height: 1.28; letter-spacing: 0.03em; text-wrap: balance; } .ds-plate-meta { margin: 4px 0 0; font-family: var(--font-text, 'Manrope', sans-serif); font-size: 0.8125rem; font-weight: 500; line-height: 1.45; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--ink-parchment-muted, #4a4136); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Спуск с иглицы",
+    "overview": "Мир собран вокруг одного движения: посетитель стоит на шпиле, прыгает и падает сквозь пять столетий в стог. Высота здесь — не метафора глубины страницы, а буквальная единица измерения: левая шкала переводит проценты прокрутки в годы (1191 → 1476 → 1579 → 1715 → 1868), и цвет всей страницы переезжает вместе с отметкой. Навигацию задаёт эпоха, а не тег.\n\nМатериал — тёплая почти-чернота #0d0c0a, инскрипционная антиква Cinzel капслоком и нейтральный гротеск Manrope. Углы острые (0 / 2px), разделяет волосяная линия, а не тень; глубину даёт зерно поверх всей страницы и слоистость тёмных поверхностей. Единственное светлое пятно во всём мире — пергаментная табличка эпохи, и она никогда не становится фоном.\n\nВся графика — авторские SVG: панорама первого экрана, пять панорам эпох, силуэт крыш под полосой CTA, орнамент максимы, знак и иконки. Растровых ассетов сборка не выпускает вовсе. Сайт неофициальный: ни логотипов, ни фирменных гарнитур, ни точной палитры издателя; киноварь и латунь взяты как исторические краски, а не как бренд.",
+    "keyCharacteristics": [
+      "Тёмная тёплая база, единственное светлое пятно — пергамент таблички.",
+      "Один акцент на экране, и он принадлежит текущей эпохе, а не странице.",
+      "Волос вместо тени; тень появляется только как отклик на наведение.",
+      "Две гарнитуры: Cinzel капслоком на заголовках и годах, Manrope на тексте и UI.",
+      "Спуск слева: шкала высоты, отметки лет, ромб-маркер, едущий с прокруткой.",
+      "Каждая цифра в колонке — tabular-nums; годы стоят ровно.",
+      "Оба гейта (check-contrast, check-tokens) роняют билд, а не предупреждают."
+    ],
+    "rules": [
+      {
+        "name": "Правило одной эпохи",
+        "body": "Цвет эпохи живёт только внутри своего слоя. Секция EraLayer объявляет --era, --era-text, --era-ink у себя на классе .layer--<id>, и всё внутри берёт их через var(). Ни один компонент не хардкодит цвет конкретной эпохи; исключений два, и оба обязаны быть списком из пяти правил рядом (DescentRail, чипы эпох в Hero).",
+        "section": "colors"
+      },
+      {
+        "name": "Правило одной заливки",
+        "body": "В пределах экрана акцентом залита ровно одна кнопка. Вторая — контурная или тихая. Акцент занимает единицы процентов площади, и это его работа.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило посчитанного контраста",
+        "body": "Ни одна пара не принимается на глаз. node tools/check-contrast.mjs читает src/styles/global.css, считает все 39 реально встречающихся пар и роняет билд: текст ≥ 4,5:1, элементы UI ≥ 3:1. Новый цвет приходит вместе со своей парой в списке.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило пергамента",
+        "body": "Светлая поверхность бывает только табличкой эпохи — максимум 330px, всегда поверх тёмного. Пергамент никогда не становится фоном секции и никогда не несёт длинный текст.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило одиннадцати ролей",
+        "body": "Каждый литеральный font-size в src/ принадлежит одной из ролей .t-* (базовый корпус 1.0625rem включён). Проверяет node tools/check-tokens.mjs, читая роли прямо из global.css. Нужен новый кегль — сначала роль, потом разметка.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило капслока",
+        "body": "Капслоком набирается только антиква: display, headline, wordmark — и мелкие гротескные роли label / micro / button. Корпус, лид и caption капслока не знают никогда.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило колонки цифр",
+        "body": "Любой ряд чисел, который посетитель сравнивает глазом — годы, минуты чтения, счётчики каталога, даты — несёт .tabular.",
+        "section": "typography"
+      },
+      {
+        "name": "Правило шкалы отступов",
+        "body": "Каждый литеральный padding, margin, gap в src/ стоит на одной из одиннадцати ступеней. Вне шкалы разрешены только конструктивные 1px, 2px, 3px, -1px — толщина волоса и обводки, не отступ.",
+        "section": "layout"
+      },
+      {
+        "name": "Правило смены среды",
+        "body": "Секции разделяются сменой среды, а не пустотой: полоса --bg-band через одну, орнамент максимы, зеркальный переворот слоя, смена ритма.",
+        "section": "layout"
+      },
+      {
+        "name": "Правило зеркала",
+        "body": "Два соседних слоя эпох не могут держать панораму с одной стороны. Порядок flip в index.astro — часть системы, а не украшение конкретной страницы.",
+        "section": "layout"
+      },
+      {
+        "name": "Правило покоя",
+        "body": "Поверхность в покое плоская. Тень — отклик на состояние (наведение), никогда не декор и никогда не постоянное свойство.",
+        "section": "elevation"
+      },
+      {
+        "name": "Правило скрима",
+        "body": "Текст никогда не лежит на сыром арте. Под каждым текстовым блоком поверх SVG стоит градиентная подложка, и контраст меряется после неё.",
+        "section": "elevation"
+      },
+      {
+        "name": "Правило волоса",
+        "body": "Границу рисует линия в 1px, а не тень и не радиус. Обычный волос — обрамление и разделитель списка; сильный волос — контурная кнопка, вертикаль шкалы, верх сетки каталога.",
+        "section": "shapes"
+      },
+      {
+        "name": "Правило острого угла",
+        "body": "Радиусов больше 2px в этом мире не бывает. Скруглённая карточка ломает материал раньше, чем это заметит гейт.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do брать цвет эпохи только через var(--era) / var(--era-text) внутри её слоя; акцент страницы принадлежит эпохе, а не компоненту.",
+      "Do прогонять node tools/check-contrast.mjs и node tools/check-tokens.mjs перед сдачей: сейчас 39/39 пар и 17 файлов проходят чисто, и это состояние нормативно.",
+      "Do добавлять новую пару цветов в список check-contrast.mjs вместе с самим цветом.",
+      "Do ставить любой новый кегль сначала ролью .t-* в global.css, а уже потом в разметке.",
+      "Do рисовать иллюстрации и иконки как SVG в репозитории: одна сетка 24×24, одна толщина штриха 1.5, stroke=\"currentColor\".",
+      "Do подкладывать скрим под любой текст поверх арта и мерить контраст после него.",
+      "Do держать подписи шкалы, отметку высоты и клавишу поиска на роли micro, а числа — на .tabular.",
+      "Do дублировать смысл, переданный цветом, словом или атрибутом (aria-current, подпись, aria-expanded).",
+      "Do отключать всё движение в prefers-reduced-motion и зерно в prefers-reduced-transparency."
+    ],
+    "donts": [
+      "Don't ставить отступ вне одиннадцати ступеней или кегль вне ролей: гейт роняет билд, а не предупреждает.",
+      "Don't скруглять углы больше чем на 2px.",
+      "Don't класть тень на поверхность в покое; тень — только отклик на наведение.",
+      "Don't делать пергамент фоном секции или сажать на него длинный текст: его место — табличка эпохи.",
+      "Don't заливать акцентом больше одной кнопки в пределах экрана.",
+      "Don't снимать обводку фокуса — на тёмном фоне это единственный ориентир с клавиатуры.",
+      "Don't подставлять эмодзи или юникод-глиф вместо иконки из Icon.",
+      "Don't ставить системную дисплейную гарнитуру: заголовок без Cinzel с подгруженным подмножеством latin-ext теряет польскую диакритику и вместе с ней весь регистр.",
+      "Don't задавать позиции отметок шкалы руками в данных: depth — запасное значение, а не источник истины.",
+      "Don't приносить логотипы, фирменные гарнитуры и точную палитру издателя; дисклеймер о неофициальном статусе остаётся в подвале.",
+      "Don't выдумывать таблицу происхождения растровых ассетов: их в сборке нет, вся графика — авторский SVG. PNG-файлы в .impeccable/review/ — снимки ревью, а не ассеты выпуска."
+    ]
+  }
+}

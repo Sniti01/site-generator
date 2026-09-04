@@ -1,0 +1,76 @@
+{
+  "hero": {
+    "file": "hero.jpg",
+    "game": "Assassin’s Creed Shadows",
+    "appid": 3159330,
+    "kind": "kluczowy art (library_hero_2x.jpg)",
+    "source": "https://store.steampowered.com/app/3159330/",
+    "width": 3840,
+    "height": 1240
+  },
+  "jerozolima": {
+    "file": "jerozolima.jpg",
+    "cover": "jerozolima-okladka.jpg",
+    "game": "Assassin's Creed™: Director's Cut Edition",
+    "appid": 15100,
+    "kind": "zrzut ekranu [9]",
+    "shot": 9,
+    "source": "https://store.steampowered.com/app/15100/",
+    "width": 1077,
+    "height": 605,
+    "coverWidth": 460,
+    "coverHeight": 215
+  },
+  "wlochy": {
+    "file": "wlochy.jpg",
+    "cover": "wlochy-okladka.jpg",
+    "game": "Assassin's Creed 2",
+    "appid": 33230,
+    "kind": "zrzut ekranu [0]",
+    "shot": 0,
+    "source": "https://store.steampowered.com/app/33230/",
+    "width": 1280,
+    "height": 720,
+    "coverWidth": 300,
+    "coverHeight": 450
+  },
+  "japonia": {
+    "file": "japonia.jpg",
+    "cover": "japonia-okladka.jpg",
+    "game": "Assassin’s Creed Shadows",
+    "appid": 3159330,
+    "kind": "zrzut ekranu [6]",
+    "shot": 6,
+    "source": "https://store.steampowered.com/app/3159330/",
+    "width": 1920,
+    "height": 1080,
+    "coverWidth": 300,
+    "coverHeight": 450
+  },
+  "karaiby": {
+    "file": "karaiby.jpg",
+    "cover": "karaiby-okladka.jpg",
+    "game": "Assassin’s Creed® IV Black Flag™",
+    "appid": 242050,
+    "kind": "zrzut ekranu [0]",
+    "shot": 0,
+    "source": "https://store.steampowered.com/app/242050/",
+    "width": 1920,
+    "height": 1080,
+    "coverWidth": 300,
+    "coverHeight": 450
+  },
+  "londyn": {
+    "file": "londyn.jpg",
+    "cover": "londyn-okladka.jpg",
+    "game": "Assassin's Creed® Syndicate",
+    "appid": 368500,
+    "kind": "zrzut ekranu [6]",
+    "shot": 6,
+    "source": "https://store.steampowered.com/app/368500/",
+    "width": 1904,
+    "height": 1042,
+    "coverWidth": 300,
+    "coverHeight": 450
+  }
+}

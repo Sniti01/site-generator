@@ -1,5 +1,9 @@
 @import 'tailwindcss' source('../../src');
-@source '../../../../core';
+/* Tylko komponenty: `core/` niesie też skrypty bramek, a Tailwind czyta
+   każdy plik w strefie jako źródło kandydatów. Bez zawężenia słowo `block`
+   z wyrażenia regularnego w core/gates/check-tokens.mjs wchodziło do CSS
+   produkcyjnego jako utylita .block. */
+@source '../../../../core/**/*.astro';
 
 /* Fonty self-hosted. Cinzel — inskrypcyjna antykwa (rzymski ryt, wersaliki),
    Manrope — neutralny grotesk do tekstu i UI. Podzbiór latin-ext niesie polskie

@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://bractwo.example',
+  site: 'https://ac4bf-thewatch.com',
   trailingSlash: 'always',
   build: { format: 'directory' },
   integrations: [sitemap()],

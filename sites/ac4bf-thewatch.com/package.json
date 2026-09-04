@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "npm run gates && astro build",
     "preview": "astro preview",
     "check": "astro check",
     "contrast": "node tools/check-contrast.mjs",

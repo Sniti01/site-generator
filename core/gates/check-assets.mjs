@@ -16,10 +16,16 @@
 // składać, zanim ktokolwiek uruchomi skrypty pobierania, i to jest cały sens
 // rozgałęzienia źródeł w SmartImage.
 //
-// Czego ta bramka NIE sprawdza: czy wzorzec globa w rdzeniu wskazuje tam,
-// gdzie te pliki leżą. Tego bramka przed `astro build` zobaczyć nie może.
-// Żywotność wzorca potwierdza się jednorazową próbą przy wynoszeniu
-// komponentu — tak jak żywotność `@source` (DECISIONS.md, wpis o markerze).
+// Czego ta bramka NIE sprawdza: czy wzorzec globa trafia tam, gdzie te pliki
+// leżą. Tego bramka przed `astro build` zobaczyć nie może. Żywotność wzorca
+// potwierdza się jednorazową próbą przy wynoszeniu komponentu — tak jak
+// żywotność `@source` (DECISIONS.md, wpis o markerze).
+//
+// Sam glob mieszka po stronie witryny, nie w rdzeniu: umowa na zasoby jest
+// propsowa i rdzeń dostaje gotowe `ImageMetadata` (decyzja П4 właściciela
+// z 2026-09-07). Próba przy wynoszeniu `SmartImage` dała 11 kluczy w `gry/`
+// i zero w nieistniejącym `foto/` — drugi wynik to poprawny pierwszy stan,
+// nie usterka.
 
 import { existsSync, statSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';

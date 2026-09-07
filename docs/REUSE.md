@@ -62,7 +62,7 @@
 |---|---|---|---|---|---|---|
 | `hero-key-art` | `Hero.astro` | `hero-key-art` | `core/blocks/HeroKeyArt.astro` | ядро ¹ | P3 | |
 | `story-row` | `EraLayer.astro` | `story-row` + `link-list` | `core/blocks/StoryRow.astro` + `LinkList.astro` | ядро, расщепить | P3 | |
-| `band-quote` | `CreedBand.astro` | `band-quote` | `core/blocks/BandQuote.astro` | ядро ¹ | P2 | |
+| `band-quote` | `CreedBand.astro` | `band-quote` | `core/blocks/BandQuote.astro` | **измерено:** ядро, шасси + слоты | P2 | |
 | `card-rail` | `GuideRail.astro` | `card-rail` | `core/blocks/CardRail.astro` | ядро | P2 | |
 | `cta-band` | `CtaBand.astro` | `cta-band` | `core/blocks/CtaBand.astro` | **измерено:** ядро, шасси + слоты | P2 | |
 | `footer-columns` | `SiteFooter.astro` | `footer-columns` | `core/chrome/SiteFooter.astro` | ядро, шасси + слоты | P2 | |
@@ -87,11 +87,12 @@
 неверно выбранного довода.
 
 ¹ **Свой арт — ожидается расщепление по прецеденту `cta-band`**
-(`DECISIONS.md`, запись от 2026-09-07). Правило, позиционирующее арт,
-неотделимо от самого арта: `data-astro-cid-*` связывает их по скруту,
-и арт в одном компоненте с правилом в другом теряет позиционирование молча.
-У `Hero` и `CreedBand` арт свой, значит их ждёт та же граница. Это ожидание,
-а не классификация: графа меняется при выносе и по измерению.
+(`DECISIONS.md`, записи от 2026-09-07). Правило, рисующее арт, неотделимо
+от самого арта: `data-astro-cid-*` связывает их по скруту, и арт в одном
+компоненте с правилом в другом теряет оформление молча. Это ожидание,
+а не классификация: графа меняется при выносе и по измерению — так строка
+`band-quote` и перестала быть сноской, когда `CreedBand` был вынесен
+и прогноз сошёлся.
 
 Графа «второй вариант» пуста намеренно. Фаза 2 требует у каждого блока
 минимум два варианта подачи, а у всех пятнадцати сегодня ровно по одному;

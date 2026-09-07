@@ -9,12 +9,14 @@
 // Nowa bramka dochodzi tutaj, do listy — nie do package.json każdej witryny.
 
 import { resolve } from 'node:path';
+import checkAssets from './check-assets.mjs';
 import checkContrast from './check-contrast.mjs';
 import checkTokens from './check-tokens.mjs';
 
 const gates = [
   ['kontrast', checkContrast],
   ['tokeny', checkTokens],
+  ['zasoby', checkAssets],
 ];
 
 const siteRoot = process.argv[2] ? resolve(process.argv[2]) : process.cwd();

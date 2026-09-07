@@ -1,4 +1,20 @@
 ---
+/**
+ * Stopka tej witryny. Plik istnieje po to, żeby `Base.astro` zostało przy
+ * samym `<SiteFooter />`, a dane kolumn, znak, polskie zdania i cały dół
+ * stopki mieszkały po tej stronie granicy.
+ *
+ * Szasi jest w rdzeniu: `@factory/core/chrome/SiteFooter.astro`.
+ *
+ * Dół stopki — noty kredytowe i pasmo prawne — został tutaj w całości,
+ * razem ze swoimi regułami, a nie tylko z tekstem. Powód jest mechaniczny:
+ * reguła `.ft__legal i` kompiluje się do
+ * `.ft__legal[data-astro-cid-X] i[data-astro-cid-X]`, więc skrót musi być
+ * na obu elementach. Gdyby `<div class="ft__legal">` został w rdzeniu,
+ * a tekst z `<i>` przyszedł slotem, skróty by się rozjechały i reguła
+ * przestałaby działać — po cichu.
+ */
+import CoreSiteFooter from '@factory/core/chrome/SiteFooter.astro';
 import Wordmark from './Wordmark.astro';
 import { eras } from '../data/site';
 import type { ArtCredit } from '../data/art';
@@ -40,34 +56,13 @@ const kolumny = [
 ];
 ---
 
-<footer class="ft">
-  <div class="ft__inner container">
-    <div class="ft__brand">
-      <Wordmark size="lg" />
-      <p class="ft__pitch t-body measure">
+<CoreSiteFooter columns={kolumny}>
+  <Wordmark slot="znak" size="lg" />
+  <Fragment slot="pitch">
         Piszemy o serii od strony gracza: gdzie iść, co wziąć i czego nie da się przegapić.
-      </p>
-    </div>
+      </Fragment>
 
-    {
-      kolumny.map((column) => (
-        <nav class="ft__col" aria-label={column.title}>
-          <h2 class="ft__col-title t-label">{column.title}</h2>
-          <ul class="ft__list">
-            {column.links.map((link) => (
-              <li>
-                <a class="ft__link t-body" href={link.href}>
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      ))
-    }
-  </div>
-
-  {
+  <Fragment slot="dol">{
     tytulyGier.length > 0 && (
       <div class="ft__foto">
         <div class="container">
@@ -125,51 +120,10 @@ const kolumny = [
       </p>
       <p class="t-caption ft__copy tabular">© 2026 Bractwo</p>
     </div>
-  </div>
-</footer>
+  </div></Fragment>
+</CoreSiteFooter>
 
 <style>
-  .ft {
-    background: var(--bg-band);
-    border-top: 1px solid var(--hairline);
-  }
-
-  .ft__inner {
-    display: grid;
-    grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
-    gap: var(--space-xl) var(--space-md);
-    padding-block: var(--space-3xl) var(--space-2xl);
-  }
-
-  .ft__pitch {
-    margin-top: var(--space-md);
-    color: var(--ink-muted);
-  }
-
-  .ft__col-title {
-    color: var(--ink);
-  }
-
-  .ft__list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-2xs);
-    margin: var(--space-md) 0 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  .ft__link {
-    color: var(--ink-muted);
-    text-decoration: none;
-    transition: color 180ms var(--ease-out);
-  }
-
-  .ft__link:hover {
-    color: var(--ink);
-    text-decoration: underline;
-  }
-
   .ft__foto {
     border-top: 1px solid var(--hairline);
     padding-block: var(--space-lg);
@@ -224,24 +178,12 @@ const kolumny = [
   }
 
   @media (max-width: 900px) {
-    .ft__inner {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .ft__brand {
-      grid-column: 1 / -1;
-    }
-  }
-
-  @media (max-width: 900px) {
     .ft__foto-list {
       grid-template-columns: minmax(0, 1fr);
     }
   }
 
   @media (max-width: 560px) {
-    .ft__inner {
-      grid-template-columns: minmax(0, 1fr);
-    }
     .ft__legal-inner {
       flex-direction: column;
       gap: var(--space-2xs);

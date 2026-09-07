@@ -1,0 +1,119 @@
+---
+/**
+ * `footer-columns` — шасси подвала: полоса, бренд и колонки ссылок.
+ *
+ * Механизм, не содержание. Ядро держит сетку `1.6fr + 3×1fr`, которая
+ * складывается в две колонки на 900 и в одну на 560, а также вид самих
+ * колонок: заголовок, список, ссылка с подчёркиванием по наведению.
+ * Знак, фраза о сайте и весь низ подвала приходят слотами; сами колонки —
+ * пропсом `columns`, потому что это данные, а не разметка.
+ *
+ * ПОЧЕМУ НИЗ ПОДВАЛА ЦЕЛИКОМ У САЙТА, включая правовую полосу, хотя её
+ * раскладка выглядит механизмом. В правилах сайта есть потомковый селектор
+ * `.ft__legal i`, а Astro компилирует его в
+ * `.ft__legal[data-astro-cid-X] i[data-astro-cid-X]` — скрут требуется
+ * на ОБОИХ элементах. Оставить `<div class="ft__legal">` в ядре, а текст
+ * с `<i>` подать слотом значит развести эти два скрута и потерять правило
+ * молча. Правило и всё, что оно выбирает, живут в одном компоненте — это
+ * общий случай того же, что раньше было записано про арт и его правило.
+ *
+ * Пробелы вокруг `<slot />` не ставятся там, где содержимое приходит
+ * с собственными отступами: они живут в обёртке.
+ */
+interface Column {
+  title: string;
+  links: { label: string; href: string }[];
+}
+
+interface Props {
+  columns: Column[];
+}
+
+const { columns } = Astro.props;
+---
+
+<footer class="ft">
+  <div class="ft__inner container">
+    <div class="ft__brand">
+      <slot name="znak" />
+      <p class="ft__pitch t-body measure"><slot name="pitch" /></p>
+    </div>
+
+    {
+      columns.map((column) => (
+        <nav class="ft__col" aria-label={column.title}>
+          <h2 class="ft__col-title t-label">{column.title}</h2>
+          <ul class="ft__list">
+            {column.links.map((link) => (
+              <li>
+                <a class="ft__link t-body" href={link.href}>
+                  {link.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))
+    }
+  </div>
+
+  <slot name="dol" />
+</footer>
+
+<style>
+  .ft {
+    background: var(--bg-band);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .ft__inner {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl) var(--space-md);
+    padding-block: var(--space-3xl) var(--space-2xl);
+  }
+
+  .ft__pitch {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .ft__col-title {
+    color: var(--ink);
+  }
+
+  .ft__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    margin: var(--space-md) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ft__link {
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .ft__link:hover {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .ft__inner {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ft__brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .ft__inner {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+</style>

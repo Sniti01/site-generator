@@ -1,0 +1,308 @@
+---
+/**
+ * `card-rail` — лента карточек, прокручиваемая по горизонтали: заголовок,
+ * две стрелки, дорожка со снапом и ссылка «все» под ней.
+ *
+ * КАРТОЧКИ ПРИХОДЯТ ДАННЫМИ, а не разметкой, и это вынужденно: слот
+ * содержимое не размножает, а карточек в ленте сколько угодно. Ровно поэтому
+ * `SmartImage` вынесен раньше — ядру нужно чем-то рисовать медиа карточки
+ * самому (`DECISIONS.md`, записи от 2026-09-07 о порядке P2 и о договоре П4).
+ *
+ * ЧТО ЗНАЕТ ЯДРО И ЧЕГО НЕ ЗНАЕТ. Ядро знает геометрию ленты — ширину
+ * карточки, снап, отступы по краям контейнера — и потому само выбирает
+ * `widths` и `sizes` кадра. Ядро не знает ни палитры сайта, ни его словаря:
+ * цвет карточки приходит именем класса-модификатора в записи карточки,
+ * а правило, которое этот класс красит, живёт у сайта.
+ *
+ * ЗАПАСНОЙ ГРАФИКИ У КАРТОЧКИ НЕТ, и это следствие того же ограничения:
+ * подать её можно было бы только слотом, а слот в цикле не размножается.
+ * Карточка без `media` рисуется без медиа-места вовсе, а не пустой рамкой.
+ * У одиночных кадров (`SmartImage`) запас по-прежнему есть.
+ */
+import type { ImageMetadata } from 'astro';
+import SmartImage from '../media/SmartImage.astro';
+
+interface CardMedia {
+  /** Метаданные, уже разрешённые сайтом; нет — карточка идёт без кадра. */
+  src?: ImageMetadata;
+  alt: string;
+  quality?: number;
+  /** Модификаторы оболочки `.foto` — например `foto--gra`. */
+  class?: string;
+}
+
+interface Card {
+  href: string;
+  title: string;
+  /** Машинная дата для `<time datetime>` и подпись к ней. */
+  date?: string;
+  dateLabel?: string;
+  /** Вид текста и место — две приписки под заголовком. */
+  kind?: string;
+  place?: string;
+  /** Класс-модификатор `<li>`: сайт красит карточку своей палитрой. */
+  modifier?: string;
+  media?: CardMedia;
+}
+
+interface Props {
+  cards: Card[];
+  title: string;
+  lead?: string;
+  /** Связывает секцию с её заголовком. */
+  titleId?: string;
+  /** Подписи для скринридера: сама дорожка и обе стрелки. */
+  trackLabel: string;
+  prevLabel: string;
+  nextLabel: string;
+  /** Ссылка «все» под лентой; нет адреса — нет и ссылки. */
+  allHref?: string;
+  allLabel?: string;
+}
+
+const {
+  cards,
+  title,
+  lead,
+  titleId = 'card-rail-tytul',
+  trackLabel,
+  prevLabel,
+  nextLabel,
+  allHref,
+  allLabel,
+} = Astro.props;
+
+// Ширины кадра выведены из геометрии ленты, которую держит правило
+// `.rail-sec__item` ниже: 320 пикселей карточка, 640 — она же на экране
+// с удвоенной плотностью.
+const KADR_SZEROKOSCI = [320, 640];
+const KADR_SIZES = '320px';
+---
+
+<section class="rail-sec section" aria-labelledby={titleId}>
+  <div class="container">
+    <div class="rail-sec__head">
+      <div>
+        <h2 class="t-headline" id={titleId}>{title}</h2>
+        {lead && <p class="rail-sec__lead t-body">{lead}</p>}
+      </div>
+      <div class="rail-sec__nav">
+        <button class="rail-sec__arrow" type="button" data-rail-prev>
+          <slot name="ikona-wstecz" />
+          <span class="visually-hidden">{prevLabel}</span>
+        </button>
+        <button class="rail-sec__arrow" type="button" data-rail-next>
+          <slot name="ikona-dalej" />
+          <span class="visually-hidden">{nextLabel}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ul class="rail-sec__track" data-rail tabindex="0" aria-label={trackLabel}>
+    {
+      cards.map((card) => (
+        <li class:list={['rail-sec__item', card.modifier]}>
+          <a class="card rail-sec__card" href={card.href}>
+            {card.media && (
+              <span class="card__media rail-sec__media">
+                <SmartImage
+                  src={card.media.src}
+                  alt={card.media.alt}
+                  widths={KADR_SZEROKOSCI}
+                  sizes={KADR_SIZES}
+                  quality={card.media.quality}
+                  class={card.media.class}
+                />
+              </span>
+            )}
+            <span class="card__body">
+              <span class="t-title rail-sec__title">{card.title}</span>
+              <span class="rail-sec__meta t-caption">
+                {card.date && (
+                  <time class="rail-sec__date tabular" datetime={card.date}>
+                    {card.dateLabel}
+                  </time>
+                )}
+                {card.kind && <span class="rail-sec__kind">{card.kind}</span>}
+                {card.place && <span class="rail-sec__place">{card.place}</span>}
+              </span>
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  {
+    allHref && (
+      <div class="container">
+        <a class="btn btn-quiet t-button rail-sec__all" href={allHref}>
+          {allLabel}
+          <slot name="ikona-wszystkie" />
+        </a>
+      </div>
+    )
+  }
+</section>
+
+<script>
+  const track = document.querySelector<HTMLElement>('[data-rail]');
+  const prev = document.querySelector<HTMLButtonElement>('[data-rail-prev]');
+  const next = document.querySelector<HTMLButtonElement>('[data-rail-next]');
+
+  if (track && prev && next) {
+    const step = () => {
+      const card = track.querySelector<HTMLElement>('.rail-sec__item');
+      return card ? card.offsetWidth + 24 : 320;
+    };
+
+    const sync = () => {
+      const max = track.scrollWidth - track.clientWidth - 2;
+      prev.disabled = track.scrollLeft <= 2;
+      next.disabled = track.scrollLeft >= max;
+    };
+
+    // Reset CSS zeruje scroll-behavior, ale nie opcję przekazaną do scrollBy.
+    const spokojnie = matchMedia('(prefers-reduced-motion: reduce)');
+    const behavior = (): ScrollBehavior => (spokojnie.matches ? 'auto' : 'smooth');
+
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: behavior() }));
+    next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: behavior() }));
+    track.addEventListener('scroll', sync, { passive: true });
+    addEventListener('resize', sync, { passive: true });
+    sync();
+  }
+</script>
+
+<style>
+  .rail-sec__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-xl);
+  }
+
+  .rail-sec__lead {
+    margin-top: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__nav {
+    display: flex;
+    gap: var(--space-2xs);
+    flex: none;
+  }
+
+  .rail-sec__arrow {
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-sharp);
+    cursor: pointer;
+    transition:
+      border-color 180ms var(--ease-out),
+      background-color 180ms var(--ease-out),
+      opacity 180ms var(--ease-out);
+  }
+
+  .rail-sec__arrow:hover:not(:disabled) {
+    border-color: var(--ink);
+    background: var(--wash);
+  }
+
+  .rail-sec__arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+  }
+
+  .rail-sec__track {
+    display: flex;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0 var(--gutter) var(--space-sm);
+    list-style: none;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .rail-sec__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Pierwsza karta staje w kolumnie kontenera, a nie przy krawędzi ekranu. */
+  .rail-sec__track::before,
+  .rail-sec__track::after {
+    content: '';
+    flex: none;
+    width: max(0px, calc((100vw - var(--container)) / 2 - var(--gutter)));
+  }
+
+  .rail-sec__item {
+    flex: none;
+    width: 320px;
+    scroll-snap-align: start;
+  }
+
+  .rail-sec__card {
+    height: 100%;
+  }
+
+  .rail-sec__media {
+    display: block;
+    aspect-ratio: 16 / 9;
+  }
+
+  .rail-sec__media :global(.foto) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .rail-sec__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__kind {
+    color: var(--era-text);
+  }
+
+  .rail-sec__kind::before,
+  .rail-sec__place::before {
+    content: '·';
+    margin-right: var(--space-2xs);
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__title {
+    color: var(--ink);
+    text-wrap: pretty;
+  }
+
+  .rail-sec__date {
+    color: var(--ink-muted);
+  }
+
+  .rail-sec__all {
+    margin-top: var(--space-lg);
+  }
+
+  @media (max-width: 560px) {
+    .rail-sec__item {
+      width: 268px;
+    }
+    .rail-sec__nav {
+      display: none;
+    }
+  }
+</style>

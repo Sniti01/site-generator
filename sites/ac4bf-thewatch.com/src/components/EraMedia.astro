@@ -1,36 +1,22 @@
 ---
-import type { ImageMetadata } from 'astro';
 import type { EraId } from '../data/site';
-import { artSlots, type ArtCredit } from '../data/art';
+import { mediaFor } from '../data/media';
 import SmartImage from '@factory/core/media/SmartImage.astro';
 import EraSkyline from './EraSkyline.astro';
-import photoCredits from '../data/art-credits.json';
-import gameCredits from '../data/game-art.json';
 
 /**
- * Kadr epoki, trzy poziomy źródła, w tej kolejności:
+ * Kadr epoki: cienka warstwa między rozstrzygaczem źródła a rdzeniem.
  *
- * 1. materiał gry ze Steama (`src/assets/gry/`) — kluczowy art w pełnym
- *    kolorze, tak jak robi to każdy serwis o grach;
- * 2. zdjęcie z Wikimedia Commons (`src/assets/foto/`) — duoton w kolorze epoki;
- * 3. rysowana panorama `EraSkyline` — gdy nie pobrano niczego.
+ * Trzy poziomy źródła — materiał gry, zdjęcie z Commons, rysowana panorama —
+ * rozstrzyga `src/data/media.ts`. Ramkę, `astro:assets` i dwa miejsca daje
+ * rdzeń: `@factory/core/media/SmartImage.astro`. Tutaj zostaje tylko to, czego
+ * nie umie ani jeden, ani drugi: forma podpisu przy każdym źródle i to, że
+ * zapasem tej witryny jest `EraSkyline`.
  *
- * Dzięki temu świeży klon szablonu składa się i wygląda skończenie, zanim
- * ktokolwiek uruchomi skrypty pobierania, a zmiana źródła to zmiana katalogu,
- * nie przepisywanie komponentów.
- *
- * Ramka, podpis i wywołanie `astro:assets` są w rdzeniu:
- * `@factory/core/media/SmartImage.astro`. Tutaj został sam rozstrzygacz
- * źródła — to on wie o katalogach tej witryny, o dwóch plikach kredytowych
- * i o tym, że kadr pierwszego ekranu zasługuje na wyższą jakość niż panel
- * epoki. Rdzeń dostaje gotowe `ImageMetadata` propsem i sam na dysk nie
- * zagląda: umowa jest propsowa, witryna podaje, rdzeń przyjmuje.
- *
- * GLOB MIESZKA PO TEJ STRONIE GRANICY, i nie z wygody. Wzorzec relatywny
- * jedzie razem z modułem: przeniesiony do `core/`, wskazywałby na
- * `core/assets/gry/` i zwracał zero dopasowań — cicho, przy zielonej budowie.
- * Wzorzec od korzenia (`/src/assets/gry/*`) działa i z rdzenia, ale to byłaby
- * druga umowa na zasoby obok propsowej, a dwóch w jednym rdzeniu nie trzymamy.
+ * DLACZEGO ROZSTRZYGACZ WYPROWADZONY DO MODUŁU. `CardRail` rysuje karty
+ * z danych, więc metadane kadru muszą powstać w części skryptowej, zanim
+ * zacznie się rysowanie — a komponentu z frontmattera nie wywołasz. Jeden
+ * rozstrzygacz obsługuje oba wywołania; drugiego globa w witrynie nie ma.
  */
 interface Props {
   /** Epoka albo `hero`: klucz pliku i wpisu w plikach kredytowych. */
@@ -59,69 +45,44 @@ const {
   class: className,
 } = Astro.props;
 
-const gry = import.meta.glob<{ default: ImageMetadata }>('../assets/gry/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-});
-const foto = import.meta.glob<{ default: ImageMetadata }>('../assets/foto/*.{jpg,jpeg,png,webp}', {
-  eager: true,
-});
-
-const znajdz = (zbior: Record<string, { default: ImageMetadata }>) =>
-  Object.entries(zbior).find(([path]) => path.endsWith(`/${slot}.jpg`))?.[1].default;
-
-const gra = znajdz(gry);
-const zdjecie = gra ? undefined : znajdz(foto);
-const zrodlo = gra ?? zdjecie;
-
-// Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
-// niż panele epok, które siedzą w kolumnie o połowie szerokości. Zdjęcie
-// z Commons schodzi niżej: duoton i tak zjada część detalu.
-const jakosc = gra ? (slot === 'hero' ? 80 : 72) : 62;
-
-// Materiał wydawcy idzie w pełnym kolorze — modyfikator zdejmuje duoton.
-// Klasa składana tutaj, bo to witryna wie, które źródło wypadło.
-const klasy = [gra ? 'foto--gra' : null, className].filter(Boolean).join(' ') || undefined;
-
-const gameMeta = (gameCredits as Record<string, { game: string; source: string }>)[slot];
-const photoMeta = (photoCredits as Record<string, ArtCredit>)[slot];
-
-const opis =
-  alt ??
-  (gra
-    ? `${gameMeta?.game ?? 'Assassin’s Creed'} — materiał wydawcy`
-    : (artSlots.find((item) => item.id === slot)?.subject ?? ''));
+const kadr = mediaFor(slot, alt);
+const klasy = [kadr.class, className].filter(Boolean).join(' ') || undefined;
 ---
 
 <SmartImage
-  src={zrodlo}
-  alt={opis}
+  src={kadr.src}
+  alt={kadr.alt}
   widths={widths}
   sizes={sizes}
   loading={loading}
-  quality={jakosc}
+  quality={kadr.quality}
   class={klasy}
 >
   {
-    credit && gra && gameMeta && (
+    credit && kadr.game && kadr.gameCredit && (
       <Fragment slot="podpis">
-        <a href={gameMeta.source} target="_blank" rel="noopener nofollow">
-          {gameMeta.game}
+        <a href={kadr.gameCredit.source} target="_blank" rel="noopener nofollow">
+          {kadr.gameCredit.game}
         </a>
       </Fragment>
     )
   }
   {
-    credit && zdjecie && photoMeta && (
+    credit && !kadr.game && kadr.src && kadr.photoCredit && (
       <Fragment slot="podpis">
-        <a href={photoMeta.source} target="_blank" rel="noopener nofollow">
-          {photoMeta.author}
+        <a href={kadr.photoCredit.source} target="_blank" rel="noopener nofollow">
+          {kadr.photoCredit.author}
         </a>
-        {photoMeta.licenseUrl ? (
-          <a href={photoMeta.licenseUrl} target="_blank" rel="noopener nofollow license">
-            {photoMeta.license}
+        {kadr.photoCredit.licenseUrl ? (
+          <a
+            href={kadr.photoCredit.licenseUrl}
+            target="_blank"
+            rel="noopener nofollow license"
+          >
+            {kadr.photoCredit.license}
           </a>
         ) : (
-          <span>{photoMeta.license}</span>
+          <span>{kadr.photoCredit.license}</span>
         )}
       </Fragment>
     )

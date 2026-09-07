@@ -65,8 +65,8 @@
 | `band-quote` | `CreedBand.astro` | `band-quote` | `core/blocks/BandQuote.astro` | **измерено:** ядро, шасси + слоты | P2 | |
 | `card-rail` | `GuideRail.astro` | `card-rail` | `core/blocks/CardRail.astro` | ядро | P2 | |
 | `cta-band` | `CtaBand.astro` | `cta-band` | `core/blocks/CtaBand.astro` | **измерено:** ядро, шасси + слоты | P2 | |
-| `footer-columns` | `SiteFooter.astro` | `footer-columns` | `core/chrome/SiteFooter.astro` | ядро, шасси + слоты | P2 | |
-| — | `CatalogStack.astro` | `link-columns` | `core/blocks/LinkColumns.astro` | ядро, новое имя | P2 | |
+| `footer-columns` | `SiteFooter.astro` | `footer-columns` | `core/chrome/SiteFooter.astro` | **измерено:** ядро, шасси + слоты; низ подвала целиком посайтовый ² | P2 | |
+| — | `CatalogStack.astro` | `link-columns` | `core/blocks/LinkColumns.astro` | **измерено:** ядро, новое имя; данные пропсом, без `<style>` у обёртки | P2 | |
 | — | `SiteHeader.astro` | `site-header` | `core/chrome/SiteHeader.astro` | ядро | P2 | |
 | — | `EraMedia.astro` | `smart-image` | `core/media/SmartImage.astro` | ядро, обобщить `slot` | P2 | |
 | — | `Icon.astro` | `icon` | `core/primitives/Icon.astro` | **измерено:** ядро, набор посайтовый | P1 | |
@@ -93,6 +93,15 @@
 а не классификация: графа меняется при выносе и по измерению — так строка
 `band-quote` и перестала быть сноской, когда `CreedBand` был вынесен
 и прогноз сошёлся.
+
+² **Низ подвала — ноты кредитов и правовая полоса — остался посайтовым
+целиком, вместе со своими правилами.** Не потому, что его раскладка
+посайтовая (она как раз механизм), а потому, что правило `.ft__legal i`
+компилируется в `.ft__legal[data-astro-cid-X] i[data-astro-cid-X]`: скрут
+требуется на **обоих** элементах селектора. Потомковый селектор привязывает
+к одному компоненту всё поддерево, которое он затрагивает. Прецедент
+`cta-band` — «арт неотделим от своего правила» — оказался частным случаем
+этого; проверять при каждом расщеплении, а не только там, где есть арт.
 
 Графа «второй вариант» пуста намеренно. Фаза 2 требует у каждого блока
 минимум два варианта подачи, а у всех пятнадцати сегодня ровно по одному;

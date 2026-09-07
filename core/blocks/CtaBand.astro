@@ -1,0 +1,89 @@
+---
+/**
+ * `cta-band` — pasmo wezwania do działania na pełną szerokość.
+ *
+ * Mechanizm, nie treść. Rdzeń trzyma to, co czyni pasmo pasmem: pełna
+ * szerokość z przycięciem, obowiązkowy `.cta__scrim` nad artem, wyśrodkowana
+ * kolumna i dokładnie jeden wypełniony akcentem przycisk. Słowa, adres i art
+ * przychodzą z witryny — pierwsze dwa propsami, art i ikona slotami.
+ *
+ * Podział jak przy `Icon`: mechanizm do rdzenia, słownik zostaje przy witrynie.
+ * Art trafia slotem, a nie propsem, z powodu, który widać dopiero w zbudowanym
+ * CSS: reguła pozycjonująca art musi mieszkać w tym samym komponencie co sam
+ * art, inaczej rozjadą się skróty `data-astro-cid-*` i art zgubi pozycję.
+ * Dlatego `.cta__art` NIE należy do tego pliku — należy do witryny.
+ */
+interface Props {
+  /** Nagłówek pasma. */
+  title: string;
+  /** Zdanie pod nagłówkiem. */
+  lead: string;
+  /** Dokąd prowadzi jedyny przycisk. */
+  href: string;
+  /** Napis na przycisku. */
+  label: string;
+  /** Id nagłówka; wiąże `aria-labelledby` sekcji z samym nagłówkiem. */
+  id?: string;
+}
+
+const { title, lead, href, label, id = 'cta-tytul' } = Astro.props;
+---
+
+<section class="cta" aria-labelledby={id}>
+  <slot name="art" />
+
+  <div class="cta__scrim"></div>
+
+  <div class="cta__inner container">
+    <h2 class="t-headline cta__title" id={id}>{title}</h2>
+    <p class="t-lead cta__lead">
+      {lead}
+    </p>
+    <a class="btn btn-primary t-button cta__btn" href={href}>
+      {label}
+      <slot name="akcja" />
+    </a>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    overflow: hidden;
+    border-block: 1px solid var(--hairline);
+    background: var(--bg);
+  }
+
+  .cta__scrim {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgb(13 12 10 / 0.9) 0 32%, rgb(13 12 10 / 0.55) 100%);
+  }
+
+  .cta__inner {
+    position: relative;
+    z-index: 1;
+    padding-block: var(--space-3xl);
+    text-align: center;
+  }
+
+  .cta__title {
+    color: var(--ink);
+  }
+
+  .cta__lead {
+    max-width: 54ch;
+    margin: var(--space-md) auto 0;
+    color: var(--ink-muted);
+  }
+
+  .cta__btn {
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 560px) {
+    .cta__btn {
+      width: 100%;
+    }
+  }
+</style>

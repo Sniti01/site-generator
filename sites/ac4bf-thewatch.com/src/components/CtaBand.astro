@@ -1,9 +1,31 @@
 ---
+/**
+ * Pasmo wezwania do działania tej witryny. Plik istnieje po to, żeby
+ * `index.astro` zostało przy samym `<CtaBand />`, a wszystko, co należy
+ * do witryny — polskie zdania, adres poradnika, rysowana panorama i ikona —
+ * mieszkało po tej stronie granicy.
+ *
+ * Mechanizm pasma jest w rdzeniu: `@factory/core/blocks/CtaBand.astro`.
+ * Tutaj zostaje sam art i reguła, która go pozycjonuje — muszą być w jednym
+ * komponencie, bo `data-astro-cid-*` wiąże regułę z elementem po skrócie.
+ */
+import CoreCtaBand from '@factory/core/blocks/CtaBand.astro';
 import Icon from './Icon.astro';
 ---
 
-<section class="cta" aria-labelledby="cta-tytul">
-  <svg class="cta__art" viewBox="0 0 1600 320" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+<CoreCtaBand
+  title="Nie wiesz, od której części zacząć?"
+  lead="Jeden tekst układa całą serię chronologicznie i mówi, co można spokojnie pominąć."
+  href="/poradniki/od-czego-zaczac/"
+  label="Przeczytaj przewodnik dla nowych"
+>
+  <svg
+    slot="art"
+    class="cta__art"
+    viewBox="0 0 1600 320"
+    preserveAspectRatio="xMidYMax slice"
+    aria-hidden="true"
+  >
     <defs>
       <linearGradient id="cta-glow" x1="0" y1="0" x2="0" y2="1">
         <stop offset="0%" stop-color="#dc4e40" stop-opacity="0" />
@@ -22,65 +44,14 @@ import Icon from './Icon.astro';
     </g>
   </svg>
 
-  <div class="cta__scrim"></div>
-
-  <div class="cta__inner container">
-    <h2 class="t-headline cta__title" id="cta-tytul">Nie wiesz, od której części zacząć?</h2>
-    <p class="t-lead cta__lead">
-      Jeden tekst układa całą serię chronologicznie i mówi, co można spokojnie pominąć.
-    </p>
-    <a class="btn btn-primary t-button cta__btn" href="/poradniki/od-czego-zaczac/">
-      Przeczytaj przewodnik dla nowych
-      <Icon name="strzalka-w-prawo" size={18} />
-    </a>
-  </div>
-</section>
+  <Icon slot="akcja" name="strzalka-w-prawo" size={18} />
+</CoreCtaBand>
 
 <style>
-  .cta {
-    position: relative;
-    overflow: hidden;
-    border-block: 1px solid var(--hairline);
-    background: var(--bg);
-  }
-
   .cta__art {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-  }
-
-  .cta__scrim {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, rgb(13 12 10 / 0.9) 0 32%, rgb(13 12 10 / 0.55) 100%);
-  }
-
-  .cta__inner {
-    position: relative;
-    z-index: 1;
-    padding-block: var(--space-3xl);
-    text-align: center;
-  }
-
-  .cta__title {
-    color: var(--ink);
-  }
-
-  .cta__lead {
-    max-width: 54ch;
-    margin: var(--space-md) auto 0;
-    color: var(--ink-muted);
-  }
-
-  .cta__btn {
-    margin-top: var(--space-xl);
-  }
-
-  @media (max-width: 560px) {
-    .cta__btn {
-      width: 100%;
-    }
   }
 </style>

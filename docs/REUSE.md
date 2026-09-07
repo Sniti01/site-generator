@@ -60,21 +60,38 @@
 
 | archiv-имя | файл в `src/components/` | имя блока | файл в `core/` | ядро / посайтовый | P | второй вариант |
 |---|---|---|---|---|---|---|
-| `hero-key-art` | `Hero.astro` | `hero-key-art` | `core/blocks/HeroKeyArt.astro` | ядро | P3 | |
+| `hero-key-art` | `Hero.astro` | `hero-key-art` | `core/blocks/HeroKeyArt.astro` | ядро ¹ | P3 | |
 | `story-row` | `EraLayer.astro` | `story-row` + `link-list` | `core/blocks/StoryRow.astro` + `LinkList.astro` | ядро, расщепить | P3 | |
-| `band-quote` | `CreedBand.astro` | `band-quote` | `core/blocks/BandQuote.astro` | ядро | P2 | |
+| `band-quote` | `CreedBand.astro` | `band-quote` | `core/blocks/BandQuote.astro` | ядро ¹ | P2 | |
 | `card-rail` | `GuideRail.astro` | `card-rail` | `core/blocks/CardRail.astro` | ядро | P2 | |
-| `cta-band` | `CtaBand.astro` | `cta-band` | `core/blocks/CtaBand.astro` | ядро | P2 | |
+| `cta-band` | `CtaBand.astro` | `cta-band` | `core/blocks/CtaBand.astro` | **измерено:** ядро, шасси + слоты | P2 | |
 | `footer-columns` | `SiteFooter.astro` | `footer-columns` | `core/chrome/SiteFooter.astro` | ядро, шасси + слоты | P2 | |
 | — | `CatalogStack.astro` | `link-columns` | `core/blocks/LinkColumns.astro` | ядро, новое имя | P2 | |
 | — | `SiteHeader.astro` | `site-header` | `core/chrome/SiteHeader.astro` | ядро | P2 | |
 | — | `EraMedia.astro` | `smart-image` | `core/media/SmartImage.astro` | ядро, обобщить `slot` | P2 | |
-| — | `Icon.astro` | `icon` | `core/primitives/Icon.astro` | ядро, набор посайтовый | P1 | |
-| — | `Grain.astro` | `grain` | `core/effects/Grain.astro` | ядро, без правок | P1 | |
+| — | `Icon.astro` | `icon` | `core/primitives/Icon.astro` | **измерено:** ядро, набор посайтовый | P1 | |
+| — | `Grain.astro` | `grain` | `core/effects/Grain.astro` | **измерено:** ядро, без правок | P1 | |
 | — | `Wordmark.astro` | — | — | **посайтовый**: знак — собственная символика | — | |
 | — | `DescentRail.astro` | — | — | **посайтовый**: подпись мира | — | |
 | — | `Viewpoint.astro` | — | — | **посайтовый**: авторский SVG | — | |
 | — | `EraSkyline.astro` | — | — | **посайтовый**: авторский SVG | — | |
+
+**Графа «ядро / посайтовый» различает проверенное и ожидаемое.** Пометка
+**измерено** стоит там, где компонент уже вынесен и приёмка пройдена; всё
+остальное в этой графе — **ожидание**, которое проверяется выносом, а не
+установленный факт. Разметка заведена по поводу: у `cta-band` здесь стояло
+просто «ядро», без пометки о расщеплении, какая есть у `story-row`
+и `footer-columns`, — то есть таблица обещала чистый перенос. Перенос
+оказался невозможен: посайтового в файле больше, чем механизма, и вынос
+потребовал шасси со слотами. Ожидание, записанное как факт, стоило сессии
+неверно выбранного довода.
+
+¹ **Свой арт — ожидается расщепление по прецеденту `cta-band`**
+(`DECISIONS.md`, запись от 2026-09-07). Правило, позиционирующее арт,
+неотделимо от самого арта: `data-astro-cid-*` связывает их по скруту,
+и арт в одном компоненте с правилом в другом теряет позиционирование молча.
+У `Hero` и `CreedBand` арт свой, значит их ждёт та же граница. Это ожидание,
+а не классификация: графа меняется при выносе и по измерению.
 
 Графа «второй вариант» пуста намеренно. Фаза 2 требует у каждого блока
 минимум два варианта подачи, а у всех пятнадцати сегодня ровно по одному;

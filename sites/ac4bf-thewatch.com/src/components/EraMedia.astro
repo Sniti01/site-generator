@@ -1,8 +1,8 @@
 ---
-import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import type { EraId } from '../data/site';
 import { artSlots, type ArtCredit } from '../data/art';
+import SmartImage from '@factory/core/media/SmartImage.astro';
 import EraSkyline from './EraSkyline.astro';
 import photoCredits from '../data/art-credits.json';
 import gameCredits from '../data/game-art.json';
@@ -18,6 +18,19 @@ import gameCredits from '../data/game-art.json';
  * Dzięki temu świeży klon szablonu składa się i wygląda skończenie, zanim
  * ktokolwiek uruchomi skrypty pobierania, a zmiana źródła to zmiana katalogu,
  * nie przepisywanie komponentów.
+ *
+ * Ramka, podpis i wywołanie `astro:assets` są w rdzeniu:
+ * `@factory/core/media/SmartImage.astro`. Tutaj został sam rozstrzygacz
+ * źródła — to on wie o katalogach tej witryny, o dwóch plikach kredytowych
+ * i o tym, że kadr pierwszego ekranu zasługuje na wyższą jakość niż panel
+ * epoki. Rdzeń dostaje gotowe `ImageMetadata` propsem i sam na dysk nie
+ * zagląda: umowa jest propsowa, witryna podaje, rdzeń przyjmuje.
+ *
+ * GLOB MIESZKA PO TEJ STRONIE GRANICY, i nie z wygody. Wzorzec relatywny
+ * jedzie razem z modułem: przeniesiony do `core/`, wskazywałby na
+ * `core/assets/gry/` i zwracał zero dopasowań — cicho, przy zielonej budowie.
+ * Wzorzec od korzenia (`/src/assets/gry/*`) działa i z rdzenia, ale to byłaby
+ * druga umowa na zasoby obok propsowej, a dwóch w jednym rdzeniu nie trzymamy.
  */
 interface Props {
   /** Epoka albo `hero`: klucz pliku i wpisu w plikach kredytowych. */
@@ -46,10 +59,6 @@ const {
   class: className,
 } = Astro.props;
 
-// Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
-// niż panele epok, które siedzą w kolumnie o połowie szerokości.
-const jakoscGry = slot === 'hero' ? 80 : 72;
-
 const gry = import.meta.glob<{ default: ImageMetadata }>('../assets/gry/*.{jpg,jpeg,png,webp}', {
   eager: true,
 });
@@ -62,6 +71,16 @@ const znajdz = (zbior: Record<string, { default: ImageMetadata }>) =>
 
 const gra = znajdz(gry);
 const zdjecie = gra ? undefined : znajdz(foto);
+const zrodlo = gra ?? zdjecie;
+
+// Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
+// niż panele epok, które siedzą w kolumnie o połowie szerokości. Zdjęcie
+// z Commons schodzi niżej: duoton i tak zjada część detalu.
+const jakosc = gra ? (slot === 'hero' ? 80 : 72) : 62;
+
+// Materiał wydawcy idzie w pełnym kolorze — modyfikator zdejmuje duoton.
+// Klasa składana tutaj, bo to witryna wie, które źródło wypadło.
+const klasy = [gra ? 'foto--gra' : null, className].filter(Boolean).join(' ') || undefined;
 
 const gameMeta = (gameCredits as Record<string, { game: string; source: string }>)[slot];
 const photoMeta = (photoCredits as Record<string, ArtCredit>)[slot];
@@ -73,53 +92,39 @@ const opis =
     : (artSlots.find((item) => item.id === slot)?.subject ?? ''));
 ---
 
-{
-  gra ? (
-    <div class:list={['foto', 'foto--gra', className]}>
-      <Image
-        src={gra}
-        alt={opis}
-        widths={widths}
-        sizes={sizes}
-        loading={loading}
-        decoding="async"
-        quality={jakoscGry}
-      />
-      {credit && gameMeta && (
-        <p class="foto__credit t-micro">
-          <a href={gameMeta.source} target="_blank" rel="noopener nofollow">
-            {gameMeta.game}
+<SmartImage
+  src={zrodlo}
+  alt={opis}
+  widths={widths}
+  sizes={sizes}
+  loading={loading}
+  quality={jakosc}
+  class={klasy}
+>
+  {
+    credit && gra && gameMeta && (
+      <Fragment slot="podpis">
+        <a href={gameMeta.source} target="_blank" rel="noopener nofollow">
+          {gameMeta.game}
+        </a>
+      </Fragment>
+    )
+  }
+  {
+    credit && zdjecie && photoMeta && (
+      <Fragment slot="podpis">
+        <a href={photoMeta.source} target="_blank" rel="noopener nofollow">
+          {photoMeta.author}
+        </a>
+        {photoMeta.licenseUrl ? (
+          <a href={photoMeta.licenseUrl} target="_blank" rel="noopener nofollow license">
+            {photoMeta.license}
           </a>
-        </p>
-      )}
-    </div>
-  ) : zdjecie ? (
-    <div class:list={['foto', className]}>
-      <Image
-        src={zdjecie}
-        alt={opis}
-        widths={widths}
-        sizes={sizes}
-        loading={loading}
-        decoding="async"
-        quality={62}
-      />
-      {credit && photoMeta && (
-        <p class="foto__credit t-micro">
-          <a href={photoMeta.source} target="_blank" rel="noopener nofollow">
-            {photoMeta.author}
-          </a>
-          {photoMeta.licenseUrl ? (
-            <a href={photoMeta.licenseUrl} target="_blank" rel="noopener nofollow license">
-              {photoMeta.license}
-            </a>
-          ) : (
-            <span>{photoMeta.license}</span>
-          )}
-        </p>
-      )}
-    </div>
-  ) : (
-    <EraSkyline era={era ?? 'jerozolima'} class={className} />
-  )
-}
+        ) : (
+          <span>{photoMeta.license}</span>
+        )}
+      </Fragment>
+    )
+  }
+  <EraSkyline slot="zapas" era={era ?? 'jerozolima'} class={className} />
+</SmartImage>

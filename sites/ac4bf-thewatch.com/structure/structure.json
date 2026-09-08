@@ -6,7 +6,3742 @@
   "semantics_date": "2026-09-07",
   "total_queries": 1426
  },
- "pages": [],
- "exclusions": [],
- "no_page": []
+ "pages": [
+  {
+   "url": "/",
+   "type": "home",
+   "h1": "Cała seria Assassin’s Creed, część po części",
+   "title": "Assassin’s Creed — wszystkie części serii i poradniki",
+   "description": "Nieoficjalny przewodnik po serii Assassin’s Creed: każda część opisana osobno, w kolejności epok, oraz poradniki — od czego zacząć i co pominąć.",
+   "cluster": "assassins",
+   "keywords": [
+    "ac creed",
+    "acacin creed",
+    "assassin s creed",
+    "assassins creed",
+    "assassins creed assassins creed",
+    "assassins",
+    "assassin ps4",
+    "assassin s creed ps4",
+    "assassins creed ps4",
+    "assassins creed ps 5",
+    "assassins creed ps5",
+    "assassin creed nintendo switch",
+    "assassin s creed ps3",
+    "assassins creed ps3",
+    "assassins creed steam",
+    "assassin creed nexus",
+    "assassin ps5",
+    "assassins creed xbox",
+    "assassins creed xbox one",
+    "assassin creed renesans",
+    "assassin ps3",
+    "assassins creed pc",
+    "assassins creed playstation 3",
+    "ps3 assassin",
+    "assassins creed nintendo",
+    "assassin nintendo switch",
+    "assassin steam",
+    "assassin xbox",
+    "assassins creed ps",
+    "templariusze assassins creed",
+    "xbox assassin",
+    "assassin creed 2 steam",
+    "assassin na ps4",
+    "assassins creed macbook",
+    "assassins creed na ps4",
+    "assassins creed po polsku",
+    "assassins creed porzuceni",
+    "creed assassins creed",
+    "assassin creed game pass",
+    "assassin multiplayer",
+    "assassin nintendo",
+    "assassin pc",
+    "assassin remastered",
+    "assassin switch",
+    "assassins creed bractwo",
+    "assassins creed game pass",
+    "assassins creed pegi",
+    "assassins creed pl",
+    "assassins creed pojednanie",
+    "assassins creed pustynna przysięga",
+    "assassins creed xbox one s",
+    "assassins creed xbox series s",
+    "ps5 assassin",
+    "ac ps4",
+    "ac xbox",
+    "ac xbox 360",
+    "as creed",
+    "assassin creed nds",
+    "assassin creed xbox game pass",
+    "assassin creed youtube",
+    "assassin ppsspp",
+    "assassin rebel collection",
+    "assassins assassins creed",
+    "assassins creed 2019",
+    "assassins creed 3ds",
+    "assassins creed anthology xbox 360",
+    "assassins creed avatar",
+    "assassins creed collection pc",
+    "assassins creed dead kings ps4",
+    "assassins creed epic",
+    "assassins creed eshop",
+    "assassins creed exclusive",
+    "assassins creed gameloft",
+    "assassins creed hd",
+    "assassins creed heritage collection pc",
+    "assassins creed heritage collection ps3",
+    "assassins creed heritage collection ps4",
+    "assassins creed heritage collection xbox 360",
+    "assassins creed i pc",
+    "assassins creed i ps4",
+    "assassins creed leila",
+    "assassins creed maxime béland",
+    "assassins creed na ps3",
+    "assassins creed nintendo 3ds",
+    "assassins creed nintendo ds",
+    "assassins creed nintendo eshop",
+    "assassins creed nokia",
+    "assassins creed openbaring anton gill",
+    "assassins creed pc steam",
+    "assassins creed pegi 16",
+    "assassins creed platinum ps3",
+    "assassins creed playstation 4",
+    "assassins creed playstation 5",
+    "assassins creed switch 3",
+    "assassins creed switch eshop",
+    "assassins creed the chain",
+    "assassins creed uplay",
+    "assassins creed uprising 1",
+    "assassins creed vi",
+    "assassins creed w",
+    "assassins creed xbox pass",
+    "assassins creed xbox series",
+    "avatar assassins creed",
+    "creed steam",
+    "epic assassins creed",
+    "epic games assassins creed",
+    "eva assassins creed",
+    "game pass assassins creed",
+    "nintendo switch assassin",
+    "nintendo switch oled assassins creed",
+    "parkour assassins creed",
+    "playstation 5 assassins creed",
+    "pod ubisoft",
+    "templariusze a asasyni",
+    "the flight assassins creed",
+    "torres assassins creed",
+    "ubisoft 15",
+    "xbox cloud gaming assassins creed",
+    "assassins creed 2022 ps4",
+    "assassins creed iii steven masters",
+    "assassins creed ps4 2022",
+    "assassins creed15"
+   ],
+   "parent": null,
+   "related": [
+    "/poradniki/od-czego-zaczac/",
+    "/poradniki/",
+    "/o-serii/",
+    "/mapa-miejsc-historycznych/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "band-quote",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-columns",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 178790
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "type": "game",
+   "h1": "Assassin’s Creed 1 — początek serii i historia Altaïra",
+   "title": "Assassin’s Creed 1 z 2007 roku — Altaïr i Ziemia Święta",
+   "description": "Gra z 2007 roku, od której zaczęła się seria: Altaïr, trzecia krucjata i skradanie się po dachach. Co wniosła do cyklu i czym różni się od kolejnych odsłon.",
+   "cluster": "assassins 1",
+   "keywords": [
+    "assassin s creed 1",
+    "assassins creed 1",
+    "assassin s creed psp",
+    "assassins creed psp",
+    "assassin xbox 360",
+    "assassins creed 1 ps3",
+    "assassins creed 360 xbox",
+    "assassins creed xbox 360",
+    "assassins creed 2007",
+    "assassins 1",
+    "assassins creed 1 ps4",
+    "assassins creed 1ps4",
+    "assassin creed 1 steam",
+    "assassin creed i",
+    "assassins creed 1 pc",
+    "assassins creed java",
+    "assassins creed 1 xbox 360",
+    "assassins creed gog",
+    "assassin creed 1 xbox",
+    "assassins creed 1 pl",
+    "assassins creed 1 xbox one",
+    "assassins creed xbox 360 pl",
+    "ac 1 ps3",
+    "ac 1 ps4",
+    "ac creed 1",
+    "assassin na xbox 360",
+    "assassins creed 1 100",
+    "assassins creed 1 2 3",
+    "assassins creed 1 2 3 ps4",
+    "assassins creed 1 gog",
+    "assassins creed 1 java",
+    "assassins creed 1 playstation 4",
+    "assassins creed 1 ps",
+    "assassins creed 1 psp",
+    "assassins creed 1 ubisoft",
+    "assassins creed 1 ubisoft connect",
+    "assassins creed 1 uplay",
+    "assassins creed 1 xbox series s",
+    "assassins creed 1 youtube",
+    "assassins creed 100",
+    "assassins creed 2007 ps4",
+    "assassins creed 2007 steam",
+    "assassins creed 2008",
+    "assassins creed 5 xbox 360",
+    "assassins creed jar",
+    "assassins creed na xbox 360",
+    "assassins creed ps1",
+    "steam assassins creed 1"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-2/",
+    "/ezio-auditore/",
+    "/poradniki/od-czego-zaczac/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 6840
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "type": "game",
+   "h1": "Assassin’s Creed 2 — druga część serii i debiut Ezia",
+   "title": "Assassin’s Creed 2 — Ezio Auditore i renesansowe Włochy",
+   "description": "Druga odsłona cyklu przenosi akcję do renesansowych Włoch. Skąd wziął się Ezio Auditore, co zmieniło się względem pierwszej części i jak wygląda rozgrywka.",
+   "cluster": "assassins 2",
+   "keywords": [
+    "assassins creed 2",
+    "assassins creed ii",
+    "assassinscreed 2",
+    "assassins 2",
+    "assassins creed 2 ps4",
+    "assassins creed 2 xbox 360",
+    "assassins creed ii xbox 360",
+    "assassins creed 2 xbox one",
+    "assassins creed ii xbox one",
+    "ac 2 pc",
+    "ac creed 2",
+    "assassin creed 2 pc",
+    "assassin creed 2 xbox",
+    "assassins creed 2 100",
+    "assassins creed 2 aquilus",
+    "assassins creed 2 assassins creed",
+    "assassins creed 2 black edition",
+    "assassins creed 2 hd",
+    "assassins creed 2 java",
+    "assassins creed 2 multiplayer",
+    "assassins creed 2 nintendo ds",
+    "assassins creed 2 nintendo switch",
+    "assassins creed 2 ubisoft",
+    "assassins creed 2 ubisoft connect",
+    "assassins creed 2 uplay",
+    "assassins creed 2 xbox series s",
+    "assassins creed 2 youtube",
+    "assassins creed 2 za darmo",
+    "assassins creed 2018",
+    "assassins creed 22",
+    "assassins creed aquilus",
+    "assassins creed assassins creed 2",
+    "assassins creed creed 2",
+    "assassins creed dante",
+    "assassins creed ii discovery 2009",
+    "assassins creed ii pc",
+    "assassins creed ii ps5",
+    "assassins creed ii xbox",
+    "creed 2 ps4",
+    "dante assassins creed 2",
+    "assassins creed switch 2022"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-brotherhood/",
+    "/ezio-auditore/",
+    "/assassins-creed-1/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 9450
+  },
+  {
+   "url": "/assassins-creed-2/discovery/",
+   "type": "game",
+   "h1": "Assassin’s Creed II: Discovery, czyli Ezio w Hiszpanii",
+   "title": "Osobna gra na Nintendo DS — Assassin’s Creed II: Discovery",
+   "description": "To nie tryb w Assassin’s Creed II, tylko samodzielna gra 2D z 2009 roku, wydana też na iOS. Ezio wyrusza do Hiszpanii, a rozgrywka toczy się w rzucie z boku.",
+   "cluster": "assassins creed discovery",
+   "keywords": [
+    "assassins creed discovery",
+    "assassins creed 2 discovery"
+   ],
+   "parent": "/assassins-creed-2/",
+   "related": [
+    "/assassins-creed-2/",
+    "/assassins-creed-pirates/",
+    "/assassins-creed-chronicles/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 2,
+   "status": "planned",
+   "volume": 80
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "type": "game",
+   "h1": "Assassin’s Creed Brotherhood — odbudowa bractwa w Rzymie",
+   "title": "Assassin’s Creed Brotherhood — Ezio i Rzym rodu Borgiów",
+   "description": "Bezpośrednia kontynuacja dwójki: Ezio w Rzymie stawia bractwo na nogi i mierzy się z Borgiami. Nowości w rozgrywce, rekruci i miejsce gry w chronologii.",
+   "cluster": "assassin brotherhood",
+   "keywords": [
+    "assassin brotherhood",
+    "assassin s creed brotherhood",
+    "brotherhood assassins creed",
+    "ac brotherhood ps3",
+    "assassin creed brotherhood ps3",
+    "assassin creed ps3 brotherhood",
+    "assassins creed brotherhood ps4",
+    "ac brotherhood xbox 360",
+    "assassins creed brotherhood 2",
+    "assassins creed brotherhood xbox 360",
+    "assassin creed brotherhood pc",
+    "assassins creed 2010",
+    "assassins creed br",
+    "assassins creed brotherhood 100",
+    "assassins creed brotherhood romulus",
+    "assassins creed brotherhood xbox series s"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-2/",
+    "/assassins-creed-revelations/",
+    "/ezio-auditore/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 7590
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "type": "game",
+   "h1": "Assassin’s Creed Revelations — koniec historii Ezia",
+   "title": "Assassin’s Creed Revelations — Ezio w Konstantynopolu",
+   "description": "Rok 2011, Konstantynopol i starzejący się Ezio śladami Altaïra. Czym Revelations domyka trylogię i co nowego wnosi do formuły znanej z Brotherhood.",
+   "cluster": "assassin revelation",
+   "keywords": [
+    "ac revelation",
+    "assassin revelation",
+    "ezio auditore revelations",
+    "assassins creed re",
+    "assassin creed revelation ps4",
+    "assassins creed 2011",
+    "assassins creed objawienia",
+    "ezio auditore da firenze revelations"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-brotherhood/",
+    "/ezio-auditore/",
+    "/ezio-auditore/the-ezio-collection/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 3970
+  },
+  {
+   "url": "/ezio-auditore/",
+   "type": "topic",
+   "h1": "Ezio Auditore — postać, historia i miejsce w serii",
+   "title": "Ezio Auditore da Firenze — kim jest bohater trzech gier",
+   "description": "Florencki szlachcic, który został asasynem: droga Ezia od rodowej zemsty po przywództwo w bractwie. W których grach występuje i co go ukształtowało.",
+   "cluster": "ezio auditore",
+   "keywords": [
+    "ezio auditore",
+    "ezio auditore da firenze",
+    "assassin ezio collection ps4",
+    "assassins creed ezio collection ps4",
+    "ezio collection ps4",
+    "ezio auditore brotherhood",
+    "ezio ps4",
+    "ac ezio auditore",
+    "animus ezio",
+    "assassins creed assassins creed ezio trilogy",
+    "assassins creed ezio auditore da firenze",
+    "ezio animus",
+    "ezio auditore 4k",
+    "ezio auditore ac 2",
+    "ezio auditore avatar",
+    "ezio auditore cape",
+    "ezio auditore collection",
+    "ezio auditore da",
+    "ezio auditore da firenze brotherhood",
+    "ezio auditore da firenze games",
+    "ezio auditore game",
+    "ezio auditore hd",
+    "ezio de auditore",
+    "ezio auditore collection switch"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-2/",
+    "/assassins-creed-brotherhood/",
+    "/assassins-creed-revelations/",
+    "/ezio-auditore/the-ezio-collection/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 3100
+  },
+  {
+   "url": "/ezio-auditore/the-ezio-collection/",
+   "type": "game",
+   "h1": "Assassin’s Creed: The Ezio Collection — co obejmuje zestaw",
+   "title": "The Ezio Collection — trzy gry Assassin’s Creed w zestawie",
+   "description": "Zbiór odświeżonych wersji trzech gier o Eziu: części drugiej, Brotherhood i Revelations. Co dokładnie wchodzi w skład wydania i dla kogo taki wybór ma sens.",
+   "cluster": "assassin ezio",
+   "keywords": [
+    "assassin ezio",
+    "assassin creed ezio auditore",
+    "assassin ezio auditore",
+    "assassins creed trilogy ps4",
+    "ezio auditore trilogy"
+   ],
+   "parent": "/ezio-auditore/",
+   "related": [
+    "/ezio-auditore/",
+    "/assassins-creed-2/",
+    "/assassins-creed-brotherhood/",
+    "/assassins-creed-revelations/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 660
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "type": "game",
+   "h1": "Assassin’s Creed 3 i amerykańska wojna o niepodległość",
+   "title": "Assassin’s Creed 3 — Connor, kolonie i remaster na PS4",
+   "description": "Trzecia odsłona serii przenosi gracza do kolonialnej Ameryki. Kim jest Connor, jak wygląda rozgrywka na lądzie i morzu, czym remaster różni się od oryginału.",
+   "cluster": "assassins 3",
+   "keywords": [
+    "ac creed 3",
+    "ac iii",
+    "assassin creed 3",
+    "assassin s creed 3",
+    "assassins iii",
+    "assassins creed creed 3",
+    "assassins creed iii",
+    "assassins 3",
+    "desmond miles assassins creed 3",
+    "assassin creed 3 ps4",
+    "3 assassins creed",
+    "ac 3 steam",
+    "ac 3 xbox 360",
+    "assassin creed 3 steam",
+    "assassins creed 3 xbox 360",
+    "assassins creed iii xbox 360",
+    "connor assassin",
+    "assassin creed 3 nintendo switch",
+    "assassins creed 3 pc",
+    "assassins creed 3 xbox one",
+    "ac 3 pc",
+    "ac 3 xbox one",
+    "ac3 ps3",
+    "assa 3",
+    "assassins creed 2012",
+    "assassins creed 23",
+    "assassins creed 3 100",
+    "assassins creed 3 deluxe edition",
+    "assassins creed 3 gameloft",
+    "assassins creed 3 java",
+    "assassins creed 3 nintendo",
+    "assassins creed 3 ubisoft",
+    "assassins creed 3 uplay",
+    "assassins creed 3 xbox",
+    "assassins creed 3 xbox series s",
+    "assassins creed 3 youtube",
+    "assassins creed assassins creed iii",
+    "assassins creed iii deluxe edition",
+    "assassins creed iii java",
+    "assassins creed iii nintendo switch",
+    "assassins creed iii pc",
+    "assassins creed iii steam",
+    "assassins creed iii xbox",
+    "assassins creed iii xbox one",
+    "assassins creed assassins creed iii benedict arnold"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-liberation/",
+    "/assassins-creed-rogue/",
+    "/assassins-creed-4-black-flag/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 29480
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "type": "game",
+   "h1": "Assassin’s Creed Liberation HD: pierwsza bohaterka serii",
+   "title": "Liberation HD — Aveline de Grandpré w Nowym Orleanie",
+   "description": "Pierwotnie gra na PS Vitę, w wersji HD trafiła też na konsole i PC. Aveline działa w Nowym Orleanie drugiej połowy XVIII wieku i zmienia tożsamości.",
+   "cluster": "assassin liberation",
+   "keywords": [
+    "ac liberation hd",
+    "assassins creed liberation hd",
+    "liberation assassins creed",
+    "ac liberation ps vita",
+    "assassin creed ps vita",
+    "assassin ps vita",
+    "assassins creed iii ps vita",
+    "assassins creed liberation ps vita",
+    "ac 3 liberation",
+    "assassin liberation",
+    "ac liberation ps3",
+    "assassin creed liberation ps3",
+    "assassins creed 3 liberation ps3",
+    "assassins creed liberation hd ps3",
+    "assassins creed liberation hd ps4",
+    "assassins creed liberation hd xbox 360",
+    "assassins creed liberation ps4",
+    "ac liberation pc",
+    "ac liberation ps4",
+    "assassin creed liberation steam",
+    "assassins creed 3 liberation ps4",
+    "assassins creed iii liberation hd",
+    "assassins creed iii liberation pc",
+    "assassins creed liberation hd pc",
+    "assassins creed liberation pc",
+    "assassins creed liberation ubisoft",
+    "liberation hd"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-3/",
+    "/assassins-creed-4-black-flag/",
+    "/assassins-creed-rogue/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 3940
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "type": "game",
+   "h1": "Assassin’s Creed IV: Black Flag — piracka odsłona serii",
+   "title": "Assassin’s Creed IV: Black Flag — Karaiby i Jackdaw",
+   "description": "Gra z 2013 roku: Edward Kenway trafia na Karaiby w złotym wieku piractwa. Żeglowanie Jackdawem, bitwy morskie i abordaże zamiast samego skradania się.",
+   "cluster": "assassin black flag",
+   "keywords": [
+    "assassin black flag",
+    "assassin creed black",
+    "assassin creed iv",
+    "assassin s creed 4",
+    "assassin s creed iv",
+    "assassins creed 4",
+    "assassins creed 4 black",
+    "assassins iv black flag",
+    "assassin creed 4 ps4",
+    "assassins creed iv steam",
+    "assassin 4",
+    "assassin black flag xbox 360",
+    "assassins creed 4 xbox 360",
+    "assassins creed black flag xbox 360",
+    "assassins creed iv black flag xbox 360",
+    "ac black flag ps4",
+    "assassin black flag ps3",
+    "assassin creed black flag pc",
+    "assassins creed 4 xbox",
+    "assassins creed 4 xbox one",
+    "assassins creed iv ps3",
+    "assassins creed iv xbox one",
+    "assassins creed czarna bandera",
+    "black flag 4",
+    "assassin black flag steam",
+    "assassins creed 4 steam",
+    "assassins creed black flag kody",
+    "assassins creed iv black flag",
+    "assassins creed 2013",
+    "assassins creed 4 xbox series s",
+    "assassins creed black flag 100",
+    "pancerz templariuszy black flag",
+    "assassins creed iv black flag eric baptizat"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-4-black-flag/freedom-cry/",
+    "/assassins-creed-rogue/",
+    "/assassins-creed-3/",
+    "/assassins-creed-pirates/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 120300
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/freedom-cry/",
+   "type": "game",
+   "h1": "Freedom Cry: Adéwalé i wolność na Saint-Domingue",
+   "title": "Freedom Cry — dodatek do Assassin’s Creed IV: Black Flag",
+   "description": "Adéwalé, dawny kwatermistrz Jackdawa, ląduje na Saint-Domingue i uderza w handel niewolnikami. Krótsza, zamknięta historia, wydana też jako osobna gra.",
+   "cluster": "assassins creed cry",
+   "keywords": [
+    "assassins creed iv freedom cry",
+    "assassins freedom cry",
+    "freedom cry ps4",
+    "assassins creed cry",
+    "assassins creed freedom",
+    "assassins creed freedom cry ps3",
+    "assassins creed freedom cry xbox 360"
+   ],
+   "parent": "/assassins-creed-4-black-flag/",
+   "related": [
+    "/assassins-creed-4-black-flag/",
+    "/assassins-creed-liberation/",
+    "/assassins-creed-rogue/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 1240
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "type": "game",
+   "h1": "Assassin’s Creed Rogue: asasyn po stronie templariuszy",
+   "title": "Assassin’s Creed Rogue — zdrada w Ameryce Północnej",
+   "description": "Shay Patrick Cormac odwraca się od Bractwa i zaczyna polować na dawnych sojuszników. Zimny Atlantyk Północny, statek Morrigan i druga strona konfliktu.",
+   "cluster": "creed rogue",
+   "keywords": [
+    "creed rogue",
+    "rogue assassins creed",
+    "acrogue",
+    "assassins rogue",
+    "assassin rogue ps4",
+    "assassins creed rogue ps4",
+    "ac rogue ps3",
+    "assassins creed rogue ps3",
+    "rogue ps3",
+    "assassins creed rogue xbox 360",
+    "ac rogue ps4",
+    "assassins creed rogue xbox one",
+    "ac rogue xbox one",
+    "assassins creed ro",
+    "assassins creed rogue 100",
+    "assassins creed rogue one"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-4-black-flag/",
+    "/assassins-creed-3/",
+    "/assassins-creed-unity/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 6380
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "type": "game",
+   "h1": "Assassin’s Creed Unity i rewolucja francuska",
+   "title": "Assassin’s Creed Unity — Paryż, Arno i tryb kooperacji",
+   "description": "Rewolucyjny Paryż, Arno Dorian i zatłoczone ulice. Co Unity zmieniło w skradaniu i wspinaczce, jak działa kooperacja i dla kogo jest ta część.",
+   "cluster": "assassin unity",
+   "keywords": [
+    "assassin s creed unity",
+    "assassin unity",
+    "creed unity",
+    "assassins creed unity ps 4",
+    "assassins creed unity ps4",
+    "assassins creed 5",
+    "ac unity ps4",
+    "assassins creed unity pc",
+    "assassins creed unity xbox one",
+    "assassins creed unity xbox",
+    "assassins creed 2014",
+    "assassins creed unity ps3",
+    "assassins creed unity xbox 360",
+    "ac unity 100",
+    "ac unity ps3",
+    "assassin unity creed ps4",
+    "assassins creed u",
+    "assassins creed unity 100",
+    "assassins creed unity deluxe edition",
+    "assassins creed unity playstation 3",
+    "assassins creed unity switch",
+    "assassins creed unity ubisoft",
+    "assassins creed unity xbox one s",
+    "assassins creed unity xbox series s",
+    "assassins creed unity za darmo"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-syndicate/",
+    "/assassins-creed-rogue/",
+    "/mapa-miejsc-historycznych/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 14130
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "type": "game",
+   "h1": "Assassin’s Creed Syndicate: Londyn epoki przemysłowej",
+   "title": "Londyn i bliźnięta Frye — Assassin’s Creed Syndicate",
+   "description": "Wiktoriańska Anglia, rodzeństwo Frye, linka z hakiem i walki na pięści w zaułkach. Wyjaśniamy też, dlaczego gra bywa nazywana Assassin’s Creed 6.",
+   "cluster": "assassin syndicate",
+   "keywords": [
+    "assassin creed sindicate",
+    "assassin syndicate",
+    "assassins creed synd",
+    "ac syndicate ps4",
+    "assassins creed syndicate ps 4",
+    "assassins creed syndicate ps4",
+    "syndicate ps4",
+    "assassins creed 6",
+    "ac syndicate xbox one",
+    "assassin creed syndicate xbox",
+    "assassins creed syndicate xbox one",
+    "assassins creed victory",
+    "assassins creed syndicate pc",
+    "assassin s creed syndicate",
+    "assassins creed syndicate 100",
+    "assassins creed syndicate allegro",
+    "assassins creed syndicate cena",
+    "assassins creed syndicate deluxe edition",
+    "assassins creed syndicate gold edition ps4",
+    "assassins creed syndicate ps3",
+    "assassins creed syndicate ubisoft",
+    "assassins creed syndicate xbox 360",
+    "syndicate ps5"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-unity/",
+    "/mapa-miejsc-historycznych/",
+    "/assassins-creed-chronicles/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 11970
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "type": "game",
+   "h1": "Assassin’s Creed Chronicles — trzy gry, trzy epoki",
+   "title": "Chiny, Indie i Rosja — Assassin’s Creed Chronicles w 2D",
+   "description": "Trylogia poza główną serią: skradanie w dwóch wymiarach, inni bohaterowie i inna kamera niż w dużych częściach. Osobne gry w Chinach, Indiach i Rosji.",
+   "cluster": "assassin chronicles",
+   "keywords": [
+    "ac chronicles",
+    "assassin chronicles",
+    "assassin s creed chronicles",
+    "assassins creed chronicles",
+    "assassin chronicles china",
+    "assassin creed russia",
+    "assassin s creed chronicles india",
+    "assassin creed chronicles ps4",
+    "assassin creed 2d",
+    "assassins creed chronicles ps vita",
+    "assassins creed chronicles psvita",
+    "ac chronicles ps4",
+    "assassins creed chronicles pc",
+    "assassins creed chronicles russia ps4",
+    "assassins creed chronicles xbox",
+    "assassins creed chronicles xbox one"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-2/discovery/",
+    "/assassins-creed-pirates/",
+    "/assassins-creed-syndicate/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 2820
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "type": "game",
+   "h1": "Assassin’s Creed Pirates: gra mobilna, nie główna część serii",
+   "title": "Pirates — Assassin’s Creed na telefon, same bitwy morskie",
+   "description": "Mobilna gra na iOS i Androida ogranicza się do żeglowania i starć na pełnym morzu. Bez skradania, bez wspinaczki, bez fabuły z głównych części.",
+   "cluster": "assassins pirates",
+   "keywords": [
+    "ac pirates",
+    "assassin s creed pirates",
+    "assassins creed pirates",
+    "assassins pirates",
+    "assassins creed pirates ios"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-4-black-flag/",
+    "/assassins-creed-2/discovery/",
+    "/assassins-creed-chronicles/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 660
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "type": "game",
+   "h1": "Assassin’s Creed Origins: Bayek i Egipt sprzed naszej ery",
+   "title": "Assassin’s Creed Origins — Egipt i początki asasynów",
+   "description": "Egipt schyłku dynastii Ptolemeuszy i otwarty świat, który przestawił serię na nowe tory. Co Origins zmieniło w walce, eksploracji i rozwoju postaci.",
+   "cluster": "assassin origins",
+   "keywords": [
+    "assassin creed origins",
+    "assassin origins",
+    "assassins creed origins origins",
+    "ac origin",
+    "assassin origins ps4",
+    "assassin s creed origins ps4",
+    "assassins creed origins ps 4",
+    "assassins creed origins ps4",
+    "assassin creed origins ps5",
+    "assassin origins xbox one",
+    "assassins creed origins steam",
+    "assassins creed origins xbox",
+    "assassins creed origins xbox one",
+    "ac origins ps4",
+    "assassins creed origins pc",
+    "assassins creed origins cena",
+    "assassins creed origins odyssey",
+    "100 assassins creed origins",
+    "ac origins 100",
+    "ac origins epic",
+    "ac origins pc",
+    "ac origins xbox",
+    "ac origins za darmo",
+    "assassin creed origins za darmo",
+    "assassin s creed origins",
+    "assassins creed odyssey origins",
+    "assassins creed odyssey origins ps4",
+    "assassins creed ori",
+    "assassins creed origins 1",
+    "assassins creed origins 1.6",
+    "assassins creed origins 1.60",
+    "assassins creed origins 100",
+    "assassins creed origins 2",
+    "assassins creed origins 4k",
+    "assassins creed origins 60fps ps5",
+    "assassins creed origins assassins creed odyssey",
+    "assassins creed origins odyssey ps4",
+    "assassins creed origins pegi",
+    "assassins creed origins ps",
+    "assassins creed origins ps3",
+    "assassins creed origins ps4 cena",
+    "assassins creed origins ps4 pro",
+    "assassins creed origins ps5 60fps",
+    "assassins creed origins ubisoft",
+    "assassins creed origins uplay",
+    "assassins creed origins valhalla",
+    "assassins creed origins xbox 360",
+    "assassins creed origins xbox one s",
+    "assassins creed origins xbox series s",
+    "creed origins",
+    "discovery tour ancient egypt",
+    "discovery tour assassins creed origins",
+    "discovery tour by assassins creed",
+    "origins assassins creed ps4",
+    "origins game pass",
+    "origins ps4",
+    "origins ps5 60fps",
+    "origins ubisoft",
+    "origins xbox",
+    "ubisoft connect assassins creed origins",
+    "ac origins 1.60",
+    "assassins creed eric baptizat",
+    "assassins creed origins eric baptizat",
+    "origin assassins creed valhalla"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-odyssey/",
+    "/assassins-creed-mirage/",
+    "/mapa-miejsc-historycznych/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 23080
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "type": "game",
+   "h1": "Assassin’s Creed Odyssey: antyczna Grecja w wersji RPG",
+   "title": "Kassandra, Alexios i decyzje — Assassin’s Creed Odyssey",
+   "description": "Grecja czasów wojny peloponeskiej, wybór między Kassandrą a Alexiosem i dialogi wpływające na fabułę. Czym Odyssey różni się od Origins i dla kogo jest ta gra.",
+   "cluster": "assassin odyssey",
+   "keywords": [
+    "assassin creed odyssey",
+    "acodyssey",
+    "assassin odyssey",
+    "assassins creed odyssey ps4",
+    "assassin creed odyssey ps5",
+    "assassins creed odyssey ps 5",
+    "assassins creed odyssey steam",
+    "assassins creed odyssey xbox",
+    "assassin odyssey ps5",
+    "assassins creed odyssey pc",
+    "assassins creed odyssey xbox one",
+    "ac odyssey ps4",
+    "assassin odyssey ps4",
+    "assassin creed odyssey cena",
+    "ac odyssey xbox",
+    "assassin creed valhalla nintendo switch",
+    "assassin odyssey xbox",
+    "assassins creed odyssey kody ps4",
+    "assassins creed odyssey książę persji",
+    "assassins creed odyssey symmachia spartańska",
+    "assassins creed odyssey włócznia leonidasa",
+    "anonymous assassins creed",
+    "as odyssey",
+    "assassin creed odyssey ps3",
+    "assassin odyssey pc",
+    "assassin odyssey switch",
+    "assassin odyssey xbox one",
+    "assassin s creed odyssey",
+    "assassins creed assassins creed odyssey",
+    "assassins creed odysse",
+    "assassins creed odyssey 100",
+    "assassins creed odyssey 18",
+    "assassins creed odyssey 2",
+    "assassins creed odyssey 4k",
+    "assassins creed odyssey ile gb",
+    "assassins creed odyssey kody xbox one",
+    "assassins creed odyssey kosmos",
+    "assassins creed odyssey nintendo",
+    "assassins creed odyssey pc steam",
+    "assassins creed odyssey pegi",
+    "assassins creed odyssey playstation 4",
+    "assassins creed odyssey ps",
+    "assassins creed odyssey ps 4",
+    "assassins creed odyssey ps4 cena",
+    "assassins creed odyssey statek",
+    "assassins creed odyssey ubisoft",
+    "assassins creed odyssey windows 11",
+    "assassins creed odyssey xbox 360",
+    "assassins creed odyssey xbox one s",
+    "assassins creed odyssey xbox series",
+    "assassins creed odyssey xbox series s",
+    "assassins creed odyssey youtube",
+    "assassins creed odyssey za darmo",
+    "assassins creed ps4 odyssey",
+    "dlc odyssey ps4",
+    "hades assassins creed odyssey",
+    "kody do assassins creed odyssey ps4",
+    "kosmos assassins creed odyssey",
+    "kosmos odyssey",
+    "książe persji assassins creed odyssey",
+    "odyssey game pass",
+    "odyssey ps4",
+    "odyssey xbox",
+    "odyssey xbox one",
+    "odyssey xbox series s",
+    "ps4 odyssey",
+    "ubisoft assassins creed odyssey",
+    "ubisoft odyssey",
+    "włócznia leonidasa assassins creed",
+    "xbox odyssey",
+    "anonymous assassins creed odyssey",
+    "epic assassins creed odyssey",
+    "odyssey gamepass"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-origins/",
+    "/assassins-creed-valhalla/",
+    "/mapa-miejsc-historycznych/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 15800
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "type": "game",
+   "h1": "Assassin’s Creed Mirage: Basim, Bagdad i kameralna skala",
+   "title": "Assassin’s Creed Mirage — powrót do skradania w Bagdadzie",
+   "description": "Bagdad z IX wieku, Basim i rozgrywka nastawiona na ciche eliminacje. Po rozległych Odyssey i Valhalli seria wraca do krótszej i bardziej zwartej kampanii.",
+   "cluster": "assassin mirage",
+   "keywords": [
+    "assassin creed mirage",
+    "acmirage",
+    "assassin mirage",
+    "assassins mirage",
+    "assassin creed mirage ps5",
+    "assassins creed mirage ps5",
+    "assassins creed mirage ps4",
+    "mirage assassins creed",
+    "ac mirage ps5",
+    "assassin creed mirage xbox",
+    "assassins creed mirage xbox",
+    "assassin creed mirage pc",
+    "assassins creed mirage pc",
+    "assassin creed mirage xbox one",
+    "assassins creed mirage xbox one",
+    "mirage assassin",
+    "ac mirage ps4",
+    "assassin mirage ps4",
+    "mirage ps5",
+    "ac mirage xbox",
+    "ac mirage pc",
+    "assassins creed mirage cena",
+    "creed mirage",
+    "ac creed mirage",
+    "ac mirage ubisoft",
+    "ac mirage xbox one",
+    "assassin creed rift",
+    "assassin playstation 4",
+    "assassin rift",
+    "assassin s creed mirage",
+    "assassins creed 2023",
+    "assassins creed mirage ps 4",
+    "assassins creed mirage psn",
+    "assassins creed mirage ubisoft",
+    "assassins creed mirage uplay",
+    "assassins creed mirage xbox one s",
+    "assassins creed mirage xbox series s",
+    "assassins creed mirage youtube",
+    "assassins creed origins mirage",
+    "assassins creed ps4 mirage",
+    "assassinscreed mirage",
+    "mirage ps4",
+    "mirage xbox",
+    "ps4 assassins creed mirage",
+    "ubisoft ac mirage",
+    "ubisoft assassins creed mirage",
+    "assassin s creed rift",
+    "assassins creed rift ps4",
+    "assassins rift",
+    "rift assassins creed"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-1/",
+    "/assassins-creed-valhalla/",
+    "/assassins-creed-origins/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 15920
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "type": "game",
+   "h1": "Wikińska Anglia w Assassin’s Creed Valhalla: od czego zacząć",
+   "title": "Assassin’s Creed Valhalla — poradniki, regiony i znajdźki",
+   "description": "Wyprawa Eivora do Anglii w Assassin’s Creed Valhalla: kolejność regionów, rozbudowa osady, walka i buildy, a także to, na co uważać na starcie.",
+   "cluster": "assassin valhalla",
+   "keywords": [
+    "assassin creed valhalla",
+    "acvalhalla",
+    "asc valhalla",
+    "assassin valhalla",
+    "assassins creed valhalla ps5",
+    "assassin creed valhalla ps 4",
+    "assassin s creed valhalla ps4",
+    "assassins creed valhalla ps4",
+    "valhalla assassins creed",
+    "valhalla assassins",
+    "assassin creed valhalla steam",
+    "assassins creed valhalla pc",
+    "ac valhalla ps 5",
+    "ac valhalla ps5",
+    "assassins creed valhalla xbox",
+    "assassins creed valhalla xbox one",
+    "assassin valhalla ps4",
+    "assassin valhalla ps5",
+    "valhalla ac",
+    "valhalla ps 5",
+    "valhalla ps5",
+    "valhalla steam",
+    "ac valhalla ps 4",
+    "ac valhalla ps4",
+    "assassin creed v",
+    "assassins creed valhalla xbox series s",
+    "valhalla ps 4",
+    "valhalla ps4",
+    "ac valhalla dlss",
+    "ac valhalla pc",
+    "ac valhalla xbox",
+    "as valhalla",
+    "assassin creed valhalla dlss",
+    "assassin valhalla steam",
+    "assassin valhalla xbox one",
+    "assassins creed valhalla orlog",
+    "assassins creed valhalla xbox one s",
+    "assassins creed valhalla zeloci",
+    "creed valhalla",
+    "orlog valhalla",
+    "ps4 assassin creed valhalla",
+    "valhalla xbox",
+    "zeloci valhalla",
+    "ac ragnarok ps5",
+    "ac valhalla 1.5",
+    "ac valhalla 1.6 2",
+    "ac valhalla 100",
+    "ac valhalla 4k",
+    "ac valhalla 7.20",
+    "ac valhalla dawn of ragnarok pc",
+    "ac valhalla game pass",
+    "ac valhalla ps",
+    "ac valhalla ps4 pro",
+    "ac valhalla ragnarok pc",
+    "ac valhalla ragnarok ps4",
+    "ac valhalla ragnarok ps5",
+    "ac valhalla ragnarok xbox",
+    "ac valhalla ubisoft",
+    "ac valhalla uplay",
+    "ac valhalla włócznia leonidasa",
+    "ac valhalla xbox one",
+    "ac valhalla xbox one s",
+    "ac valhalla xbox series s",
+    "ac valhalla za darmo",
+    "anomalia assassins creed valhalla",
+    "assassin creed valhalla discovery tour",
+    "assassin creed valhalla game pass",
+    "assassin creed valhalla gold",
+    "assassin creed valhalla pc steam",
+    "assassin creed valhalla ps",
+    "assassin creed valhalla ps3",
+    "assassin creed valhalla youtube",
+    "assassin creed valhalla za darmo",
+    "assassin s creed valhalla",
+    "assassin valhalla multiplayer",
+    "assassin valhalla pc",
+    "assassin valhalla ragnarok",
+    "assassin valhalla xbox",
+    "assassin valhalla za darmo",
+    "assassins assassins creed valhalla",
+    "assassins creed 2020",
+    "assassins creed odyssey eivor",
+    "assassins creed odyssey valhalla",
+    "assassins creed ps4 valhalla",
+    "assassins creed ragnarok edition ps5",
+    "assassins creed ragnarok pc",
+    "assassins creed ragnarok ps4",
+    "assassins creed ragnarok ps5",
+    "assassins creed ragnarok xbox",
+    "assassins creed valhalla 1.1 2",
+    "assassins creed valhalla 100",
+    "assassins creed valhalla 18",
+    "assassins creed valhalla 2",
+    "assassins creed valhalla 2020",
+    "assassins creed valhalla 2023",
+    "assassins creed valhalla 21 9",
+    "assassins creed valhalla alvar",
+    "assassins creed valhalla bjorn",
+    "assassins creed valhalla cena pc",
+    "assassins creed valhalla cena ps4",
+    "assassins creed valhalla complete",
+    "assassins creed valhalla dawn of ragnarok pc",
+    "assassins creed valhalla dawn of ragnarok xbox",
+    "assassins creed valhalla deluxe ps4 & ps5",
+    "assassins creed valhalla dolby vision",
+    "assassins creed valhalla dx11",
+    "assassins creed valhalla elamigos",
+    "assassins creed valhalla eurogamer",
+    "assassins creed valhalla game pass xbox",
+    "assassins creed valhalla gog",
+    "assassins creed valhalla gunnar",
+    "assassins creed valhalla kody pc",
+    "assassins creed valhalla kody ps4",
+    "assassins creed valhalla konstruktor",
+    "assassins creed valhalla m",
+    "assassins creed valhalla microsoft",
+    "assassins creed valhalla mirage",
+    "assassins creed valhalla na pc",
+    "assassins creed valhalla na steam",
+    "assassins creed valhalla nintendo",
+    "assassins creed valhalla odyssey",
+    "assassins creed valhalla origin",
+    "assassins creed valhalla osada",
+    "assassins creed valhalla pa4",
+    "assassins creed valhalla pc cena",
+    "assassins creed valhalla pc ubisoft",
+    "assassins creed valhalla pegi",
+    "assassins creed valhalla pl",
+    "assassins creed valhalla playstation 3",
+    "assassins creed valhalla playstation 4",
+    "assassins creed valhalla po polsku",
+    "assassins creed valhalla ppsspp",
+    "assassins creed valhalla ps 5",
+    "assassins creed valhalla ps4 & ps5",
+    "assassins creed valhalla ps4 cena",
+    "assassins creed valhalla ps4 ps5",
+    "assassins creed valhalla ps4 ragnarok",
+    "assassins creed valhalla ps4 ubisoft connect",
+    "assassins creed valhalla ps5 4k 60fps",
+    "assassins creed valhalla ps5 60fps",
+    "assassins creed valhalla ps5 cena",
+    "assassins creed valhalla ps5 digital",
+    "assassins creed valhalla psn",
+    "assassins creed valhalla ragnarok edition pc",
+    "assassins creed valhalla ragnarok edition ps5",
+    "assassins creed valhalla ragnarok pc",
+    "assassins creed valhalla ragnarok ps4",
+    "assassins creed valhalla ragnarok ps5",
+    "assassins creed valhalla ragnarok xbox",
+    "assassins creed valhalla series s",
+    "assassins creed valhalla tekla",
+    "assassins creed valhalla ubisoft",
+    "assassins creed valhalla ubisoft+",
+    "assassins creed valhalla upgrade ps5",
+    "assassins creed valhalla uplay",
+    "assassins creed valhalla valhalla",
+    "assassins creed valhalla windows 8.1",
+    "assassins creed valhalla włócznia leonidasa",
+    "assassins creed valhalla xbox 360",
+    "assassins creed valhalla xbox pass",
+    "assassins creed valhalla xbox s",
+    "assassins creed valhalla xbox series",
+    "assassins creed valhalla za darmo",
+    "assassins creed xbox one valhalla",
+    "bjorn assassins creed valhalla",
+    "creed valhalla ps4",
+    "creed valhalla ps5",
+    "creed valhalla xbox",
+    "dawn of ragnarok pc",
+    "dawn of ragnarök pc",
+    "dawn of ragnarok ps4",
+    "dawn of ragnarök ps4",
+    "dawn of ragnarok ubisoft",
+    "discovery tour assassins creed valhalla",
+    "discovery tour valhalla",
+    "dlc assassins creed valhalla",
+    "dlc ragnarok",
+    "dlss assassins creed valhalla",
+    "dlss valhalla",
+    "eivor vikings",
+    "eivor wolfsmal",
+    "epic ac valhalla",
+    "ezio auditore valhalla",
+    "game pass ac valhalla",
+    "game pass assassins creed valhalla",
+    "game pass valhalla",
+    "gunnar assassins creed valhalla",
+    "holger assassins creed valhalla",
+    "microsoft assassins creed valhalla",
+    "odyssey valhalla",
+    "orlog ubisoft",
+    "playstation 4 assassins creed valhalla",
+    "playstation 5 assassins creed valhalla",
+    "playstation 5 valhalla",
+    "playstation valhalla",
+    "ps assassins creed valhalla",
+    "ps3 assassins creed valhalla",
+    "ps4 ac valhalla",
+    "ps4 pro assassins creed valhalla",
+    "ps4 valhalla",
+    "psn valhalla",
+    "ragnarok xbox",
+    "ragnarok xbox one",
+    "steam valhalla assassins creed",
+    "ubisoft ac valhalla",
+    "ubisoft connect assassins creed valhalla",
+    "ubisoft valhalla",
+    "ubisoft+ valhalla",
+    "uplay ac valhalla",
+    "uplay assassins creed valhalla",
+    "uplay valhalla",
+    "valhalla 1.6",
+    "valhalla 1.6 1",
+    "valhalla 4k",
+    "valhalla assassins creed pc",
+    "valhalla assassins creed ps4",
+    "valhalla assassins creed ps5",
+    "valhalla assassins creed steam",
+    "valhalla assassins creed xbox",
+    "valhalla assassins creed xbox one",
+    "valhalla dawn of ragnarok xbox",
+    "valhalla dx11",
+    "valhalla epic",
+    "valhalla game pass",
+    "valhalla gunnar",
+    "valhalla odyssey",
+    "valhalla orlog",
+    "valhalla pc",
+    "valhalla pc steam",
+    "valhalla ps",
+    "valhalla ps3",
+    "valhalla ragnarok pc",
+    "valhalla ragnarok ps4",
+    "valhalla ragnarok ps5",
+    "valhalla ragnarok xbox",
+    "valhalla s",
+    "valhalla series s",
+    "valhalla ubisoft",
+    "valhalla upgrade ps5",
+    "valhalla xbox 360",
+    "valhalla xbox game pass",
+    "valhalla xbox one",
+    "valhalla xbox one s",
+    "valhalla xbox series s",
+    "valhalla za darmo",
+    "valhalla zeloci",
+    "vikings eivor",
+    "warzyciel assassins creed valhalla",
+    "włócznia leonidasa assassins creed valhalla",
+    "xbox 360 assassins creed valhalla",
+    "xbox ac valhalla",
+    "xbox one assassins creed valhalla",
+    "xbox one s assassins creed valhalla",
+    "xbox series s assassins creed valhalla",
+    "xbox series s valhalla",
+    "xbox valhalla",
+    "youtube assassins creed valhalla",
+    "ac valhalla 1.4 2",
+    "ac valhalla 1.5 0",
+    "ac valhalla 1.5 1",
+    "ac valhalla 1.6",
+    "ac valhalla 1.6 1",
+    "ac valhalla 6.0",
+    "ac valhalla 6.01",
+    "ac valhalla 7.0",
+    "ac valhalla 7.10",
+    "assassin creed valhalla 2022",
+    "assassins creed valhalla 1.4 1",
+    "assassins creed valhalla 1.4 2",
+    "assassins creed valhalla 1.5",
+    "assassins creed valhalla 1.5 0",
+    "assassins creed valhalla 1.5 2",
+    "assassins creed valhalla 1.6",
+    "assassins creed valhalla 1.6 0",
+    "assassins creed valhalla 1.6 1",
+    "assassins creed valhalla 1.6 2",
+    "assassins creed valhalla 4k 60fps",
+    "assassins creed valhalla 5.10",
+    "assassins creed valhalla 5.20",
+    "assassins creed valhalla 6.0",
+    "assassins creed valhalla 6.00",
+    "assassins creed valhalla 6.01",
+    "assassins creed valhalla 6.11",
+    "assassins creed valhalla 6.20",
+    "assassins creed valhalla 7.0",
+    "assassins creed valhalla 7.00",
+    "assassins creed valhalla 7.10",
+    "assassins creed valhalla 7.20",
+    "assassins creed valhalla dlc 1",
+    "assassins creed valhalla dlc 2",
+    "assassins creed valhalla platforme",
+    "assassins creed valhalla ps4 za darmo",
+    "assassins creed valhalla ragnarök pc",
+    "assassins creed valhalla steam 2021",
+    "assassins creed valhalla version 5.20",
+    "assassins creed valhalla version 7.0",
+    "assassins creed valhalla xbox live",
+    "edwin assassins creed valhalla",
+    "ubisoft ragnarok",
+    "valhalla 1.5 2",
+    "valhalla 1.6 2",
+    "valhalla game pass xbox",
+    "valhalla gamepass",
+    "valhalla playstation 4",
+    "valhalla uplay"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-valhalla/eivor/",
+    "/assassins-creed-valhalla/dawn-of-ragnarok/",
+    "/assassins-creed-odyssey/",
+    "/assassins-creed-mirage/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 21420
+  },
+  {
+   "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+   "type": "game",
+   "h1": "Dawn of Ragnarök, czyli mitologiczny dodatek do Valhalli",
+   "title": "Dawn of Ragnarök w Assassin’s Creed Valhalla — przewodnik",
+   "description": "Dodatek Dawn of Ragnarök do Assassin’s Creed Valhalla: kraina Svartalfheim, moce Odyna i nowy ekwipunek — co daje graczowi i komu się przyda.",
+   "cluster": "valhalla ragnarok",
+   "keywords": [
+    "assassins creed valhalla ragnarok",
+    "ac valhalla ragnarok",
+    "valhalla ragnarok",
+    "dawn of ragnarök",
+    "assassins creed ragnarok",
+    "assassin ragnarok",
+    "assassin creed ragnarok",
+    "assassin dawn of ragnarok",
+    "assassins creed dawn of ragnarök",
+    "assassins valhalla ragnarok",
+    "creed ragnarok",
+    "dawn of ragnarok ps5",
+    "dawn of the ragnarok",
+    "dawn ragnarok",
+    "ragnarok assassins creed valhalla",
+    "valhalla assassins creed ragnarok",
+    "valhalla dawn of ragnarok ps5"
+   ],
+   "parent": "/assassins-creed-valhalla/",
+   "related": [
+    "/assassins-creed-valhalla/",
+    "/assassins-creed-valhalla/eivor/",
+    "/assassins-creed-odyssey/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 370
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "type": "topic",
+   "h1": "Kim jest Eivor w Assassin’s Creed Valhalla?",
+   "title": "Eivor z Valhalli — historia wikińskiego wojownika z Norwegii",
+   "description": "Eivor z klanu Kruka: skąd pochodzi, dlaczego płynie do Anglii i co zmienia wybór płci bohatera w Assassin’s Creed Valhalla. Bez zbędnych spoilerów.",
+   "cluster": "assassin eivor",
+   "keywords": [
+    "eivor valhalla",
+    "eivor assassins creed",
+    "assassins creed valhalla eivor",
+    "ac valhalla eivor",
+    "eivor assassins creed valhalla",
+    "assassin eivor",
+    "eivor assassin",
+    "valhalla eivor"
+   ],
+   "parent": "/assassins-creed-valhalla/",
+   "related": [
+    "/assassins-creed-valhalla/",
+    "/assassins-creed-valhalla/dawn-of-ragnarok/",
+    "/ezio-auditore/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 310
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "type": "game",
+   "h1": "Assassin’s Creed Shadows, dawniej Red: dwoje bohaterów",
+   "title": "Japonia w Assassin’s Creed Shadows — dawnym projekcie Red",
+   "description": "Assassin’s Creed Shadows to odsłona zapowiadana wcześniej jako Red: feudalna Japonia, dwoje grywalnych bohaterów i to, czym różni się od poprzednich części.",
+   "cluster": "assassin red",
+   "keywords": [
+    "assassin creed red",
+    "assassin red",
+    "assassins creed 2024",
+    "assassins creed red ps4"
+   ],
+   "parent": "/",
+   "related": [
+    "/o-serii/",
+    "/assassins-creed-mirage/",
+    "/poradniki/od-czego-zaczac/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 150
+  },
+  {
+   "url": "/poradniki/",
+   "type": "hub",
+   "h1": "Który Assassin’s Creed jest najlepszy",
+   "title": "Najlepszy Assassin’s Creed — porównanie i poradniki",
+   "description": "Która odsłona serii Assassin’s Creed wciąga najbardziej, która się zestarzała i po co wracać do starszych części. Obok tego spis poradników do gier.",
+   "cluster": "najlepszy assasin creed",
+   "keywords": [
+    "najlepszy assasin creed",
+    "najlepszy assassin creed",
+    "najlepszy assassins creed",
+    "najlepszy assassin"
+   ],
+   "parent": "/",
+   "related": [
+    "/poradniki/od-czego-zaczac/",
+    "/o-serii/",
+    "/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-columns",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 830
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "type": "guide",
+   "h1": "Od której części zacząć: Assassin’s Creed po kolei",
+   "title": "Assassin’s Creed po kolei — chronologia i premiery serii",
+   "description": "Chronologia wydarzeń i kolejność premier obok siebie: gdzie najlepiej wejść w serię, które wątki łączą się ze sobą i co da się pominąć bez szkody dla fabuły.",
+   "cluster": "assassin creed po kolei",
+   "keywords": [
+    "assassin creed po kolei",
+    "assassin po kolei",
+    "assassins creed 9"
+   ],
+   "parent": "/poradniki/",
+   "related": [
+    "/poradniki/",
+    "/assassins-creed-1/",
+    "/assassins-creed-4-black-flag/",
+    "/o-serii/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 400
+  },
+  {
+   "url": "/o-serii/",
+   "type": "topic",
+   "h1": "Assassin’s Creed od Ubisoftu: jak ułożona jest seria",
+   "title": "Seria Assassin’s Creed od Ubisoftu — historia i numeracja",
+   "description": "Co łączy kolejne odsłony, dlaczego w tytułach nowszych części nie ma już numerów i jak poukładana jest cała seria Assassin’s Creed od Ubisoftu.",
+   "cluster": "assassin ubisoft",
+   "keywords": [
+    "ubisoft assassins creed",
+    "assassins creed 7",
+    "assassin ubisoft",
+    "assassins creed 8",
+    "ac ubisoft",
+    "assassins creed 12",
+    "assassins creed 2021",
+    "assassins creed ff",
+    "ubisoft ac"
+   ],
+   "parent": "/",
+   "related": [
+    "/poradniki/od-czego-zaczac/",
+    "/assassins-creed-shadows/",
+    "/assassins-creed-ii-wojna-swiatowa/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 260
+  },
+  {
+   "url": "/assassins-creed-za-darmo/",
+   "type": "topic",
+   "h1": "Jak zagrać w Assassin’s Creed za darmo i legalnie",
+   "title": "Assassin’s Creed za darmo — legalne sposoby i pułapki",
+   "description": "Kiedy w Assassin’s Creed można zagrać za darmo legalnie: rozdania Ubisoftu, darmowe weekendy i abonamenty. Wyjaśniamy, dlaczego lepiej omijać pirackie kopie.",
+   "cluster": "assassin creed za darmo",
+   "keywords": [
+    "assassin creed za darmo",
+    "assassins creed za darmo",
+    "assassin za darmo",
+    "assassins creed za darmo 2022"
+   ],
+   "parent": "/",
+   "related": [
+    "/poradniki/",
+    "/o-serii/",
+    "/assassins-creed-mirage/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 120
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "type": "topic",
+   "h1": "Rodowód, czyli film o ojcu Ezia z Assassin’s Creed II",
+   "title": "Assassin’s Creed: Rodowód — prequel w wersji aktorskiej",
+   "description": "Rodowód to krótkometrażowy film aktorski z 2009 roku o Giovannim Auditore. Tłumaczymy, jak wiąże się z fabułą Assassin’s Creed II i czy warto go obejrzeć.",
+   "cluster": "assassins lineage",
+   "keywords": [
+    "assassins creed rodowód",
+    "assassins creed filmy",
+    "assassins creed lineage ps4",
+    "assassins lineage"
+   ],
+   "parent": "/",
+   "related": [
+    "/ezio-auditore/",
+    "/o-serii/",
+    "/assassins-creed-2/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 160
+  },
+  {
+   "url": "/assassins-creed-ii-wojna-swiatowa/",
+   "type": "topic",
+   "h1": "Dlaczego nie ma Assassin’s Creed o II wojnie światowej?",
+   "title": "II wojna światowa a Assassin’s Creed — brakująca epoka",
+   "description": "Pełnoprawnej odsłony Assassin’s Creed w realiach II wojny światowej nie ma. Tłumaczymy, skąd bierze się to pytanie i co utrudnia serii wejście w tę epokę.",
+   "cluster": "assassins creed world war",
+   "keywords": [
+    "assassins creed world war 2",
+    "assassins creed empire",
+    "assassin world war 2",
+    "assassin ww2",
+    "assassins creed 1492",
+    "assassins creed 1944",
+    "assassins creed mars",
+    "assassins creed titans",
+    "assassins creed world war",
+    "assassins creed world war 1",
+    "assassins creed world war 2 ps4",
+    "spin off assassins creed"
+   ],
+   "parent": "/",
+   "related": [
+    "/o-serii/",
+    "/assassins-creed-shadows/",
+    "/poradniki/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 210
+  },
+  {
+   "url": "/mapa-miejsc-historycznych/",
+   "type": "map",
+   "h1": "Mapa miejsc i postaci historycznych w Assassin’s Creed",
+   "title": "Gdzie naprawdę leżą miejsca z gier Assassin’s Creed",
+   "description": "Notre Dame, Big Ben, Stonehenge, Luksor, Sparta: prawdziwe miejsca, po których chodzi się w grach serii, i postacie, które naprawdę istniały.",
+   "cluster": null,
+   "keywords": [
+    "al mualim",
+    "assassins creed notre dame",
+    "assassins creed syndicate kuba rozpruwacz",
+    "assassins creed unity notre dame",
+    "stonehenge valhalla",
+    "ac syndicate kuba rozpruwacz",
+    "argolida assassins creed odyssey",
+    "assassins creed odyssey pitagoras",
+    "assassins creed unity nostradamus",
+    "brazydas odyssey",
+    "kuba rozpruwacz assassins creed",
+    "alfred assassins creed valhalla",
+    "assassin creed valhalla ragnar",
+    "assassin creed valhalla ragnar lothbrok",
+    "assassins creed big ben",
+    "assassins creed da vinci",
+    "assassins creed kuba rozpruwacz",
+    "assassins creed odyssey archidamos",
+    "assassins creed odyssey brazydas",
+    "assassins creed odyssey elis",
+    "assassins creed odyssey sparta",
+    "assassins creed olympia",
+    "assassins creed origins dolina królów",
+    "assassins creed origins luxor",
+    "assassins creed piri reis",
+    "assassins creed sparta",
+    "assassins creed syndicate big ben edition",
+    "assassins creed valhalla alfred",
+    "assassins creed valhalla burgred",
+    "assassins creed valhalla cynewulf",
+    "assassins creed valhalla derby",
+    "assassins creed valhalla harald",
+    "assassins creed valhalla ivar",
+    "assassins creed valhalla ivarr",
+    "assassins creed valhalla winchester",
+    "brasidas assassins creed odyssey",
+    "burgred assassins creed valhalla",
+    "cynewulf assassins creed valhalla",
+    "elis assassins creed odyssey",
+    "fokida assassins creed",
+    "hornigold assassins creed",
+    "housesteads valhalla",
+    "ivar assassins creed valhalla",
+    "jacques de molay assassins creed",
+    "kitt assassins creed valhalla",
+    "ludovico ariosto assassins creed",
+    "marco polo assassins creed",
+    "notre dame ubisoft",
+    "odyssey atlantis",
+    "piri reis assassins creed",
+    "pitagoras assassins creed odyssey",
+    "ragnar assassins creed valhalla",
+    "sokrates assassins creed odyssey",
+    "valhalla ragnar lothbrok"
+   ],
+   "parent": "/",
+   "related": [
+    "/assassins-creed-unity/",
+    "/assassins-creed-syndicate/",
+    "/assassins-creed-origins/",
+    "/assassins-creed-odyssey/",
+    "/assassins-creed-valhalla/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 890,
+   "owner": true
+  }
+ ],
+ "exclusions": [
+  {
+   "query": "0100670014482000",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "0x70000d04",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "ac 15 ubisoft",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "ac valhalla 1.5 3",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "acodyssey exe",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed black flag 992 442",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed exe",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed horizon",
+   "reason": "чужая вселенная: «horizon»"
+  },
+  {
+   "query": "assassins creed iv 179 593",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed odyssey 1.5 3",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed odyssey 1.5 6",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed odyssey 1.56",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed rogue 500 501",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed valhalla 1.2 1",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed valhalla 1.5 3",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "assassins creed valhalla exe",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "blus31193",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "blus31465",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "god of war valhalla",
+   "reason": "чужая вселенная: «god of war»"
+  },
+  {
+   "query": "god of war valhalla ps4",
+   "reason": "чужая вселенная: «god of war»"
+  },
+  {
+   "query": "hitman iv",
+   "reason": "чужая вселенная: «hitman»"
+  },
+  {
+   "query": "ninja s creed",
+   "reason": "чужая вселенная: «ninja s creed»"
+  },
+  {
+   "query": "pcsb00074",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "syndicate 1993",
+   "reason": "чужая вселенная: «syndicate 1993»"
+  },
+  {
+   "query": "syndicate pc",
+   "reason": "чужая вселенная: «syndicate 1993»"
+  },
+  {
+   "query": "tom clancy 2 the division",
+   "reason": "чужая вселенная: «tom clancy»"
+  },
+  {
+   "query": "ubisoft 0x30010001",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "valhalla 1.5",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "valhalla 1.6 0",
+   "reason": "код, артикул или номер патча — не тема запроса"
+  },
+  {
+   "query": "vikings ps5",
+   "reason": "чужая вселенная: «vikings ps5»"
+  },
+  {
+   "query": "vikings valhalla playstation",
+   "reason": "чужая вселенная: «vikings valhalla»"
+  },
+  {
+   "query": "vikings valhalla ps4",
+   "reason": "чужая вселенная: «vikings valhalla»"
+  },
+  {
+   "query": "watch dogs legion grobowiec asasynów",
+   "reason": "чужая вселенная: «watch dogs»"
+  },
+  {
+   "query": "witcher2",
+   "reason": "чужая вселенная: «witcher2»"
+  }
+ ],
+ "no_page": [
+  {
+   "query": "ac black flag eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "ac mirage deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "ac odyssey deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "ac odyssey eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "ac origins eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "ac ragnarok season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "ac ragnarok xbox",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "ac rogue pc",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "ac syndicate eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "ac unity notre dame edition",
+   "reason": "магазинное слово в имени кластера: «notre dame edition»"
+  },
+  {
+   "query": "ac valhalla allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "ac valhalla cena",
+   "reason": "магазинное слово в имени кластера: «cena»"
+  },
+  {
+   "query": "ac valhalla ceneo",
+   "reason": "магазинное слово в имени кластера: «ceneo»"
+  },
+  {
+   "query": "ac valhalla complete edition ps4",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "ac valhalla deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "ac valhalla g2a",
+   "reason": "магазинное слово в имени кластера: «g2a»"
+  },
+  {
+   "query": "ac valhalla gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "ac valhalla gold edition ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "ac valhalla ragnarok edition",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "ac valhalla ragnarok edition ps5",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "ac valhalla ragnarok season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "ac valhalla season pass playstation",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "ac valhalla ultimate",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "ac valhalla ultimate edition ps4",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "allegro assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "amazon gaming assassins creed",
+   "reason": "магазинное слово в имени кластера: «amazon»"
+  },
+  {
+   "query": "assassin creed deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassin creed fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "assassin creed mirage deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassin creed odyssey g2a",
+   "reason": "магазинный интент: «g2a»"
+  },
+  {
+   "query": "assassin creed odyssey gold",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassin creed odyssey ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassin creed origins eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassin creed origins gold edition",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "assassin creed rogue pc",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassin creed ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassin creed unity eneba",
+   "reason": "магазинный интент: «eneba»"
+  },
+  {
+   "query": "assassin creed valhalla allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassin creed valhalla cena",
+   "reason": "магазинное слово в имени кластера: «cena»"
+  },
+  {
+   "query": "assassin creed valhalla deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassin creed valhalla gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassin creed valhalla olx",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassin creed valhalla ps4 allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassin creed valhalla ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassin creed valhalla xbox one allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassin fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "assassin s creed 2022",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassin valhalla cena",
+   "reason": "магазинное слово в имени кластера: «cena»"
+  },
+  {
+   "query": "assassin valhalla season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed 1 eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed 1 g2a",
+   "reason": "магазинное слово в имени кластера: «g2a»"
+  },
+  {
+   "query": "assassins creed 18",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed 2 2022",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed 2 deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed 2 g2a",
+   "reason": "магазинный интент: «g2a»"
+  },
+  {
+   "query": "assassins creed 2004",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed 2015",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed 2017",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed 2022",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed 3 digital version",
+   "reason": "магазинный интент: «digital version»"
+  },
+  {
+   "query": "assassins creed 3 eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed 3 g2a",
+   "reason": "магазинный интент: «g2a»"
+  },
+  {
+   "query": "assassins creed 4 deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed allegro",
+   "reason": "магазинный интент: «allegro»"
+  },
+  {
+   "query": "assassins creed amazon",
+   "reason": "магазинное слово в имени кластера: «amazon»"
+  },
+  {
+   "query": "assassins creed anniversary edition",
+   "reason": "магазинный интент: «anniversary edition»"
+  },
+  {
+   "query": "assassins creed assassins creed rogue limited edition",
+   "reason": "магазинный интент: «limited edition»"
+  },
+  {
+   "query": "assassins creed assassins creed syndicate special edition",
+   "reason": "магазинный интент: «special edition»"
+  },
+  {
+   "query": "assassins creed assassins creed unity limited edition",
+   "reason": "магазинный интент: «limited edition»"
+  },
+  {
+   "query": "assassins creed assassins creed valhalla season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed big ben edition",
+   "reason": "магазинный интент: «big ben edition»"
+  },
+  {
+   "query": "assassins creed black flag cena",
+   "reason": "магазинный интент: «cena»"
+  },
+  {
+   "query": "assassins creed black flag eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed box",
+   "reason": "магазинный интент: «box»"
+  },
+  {
+   "query": "assassins creed brotherhood auditore edition",
+   "reason": "магазинный интент: «auditore edition»"
+  },
+  {
+   "query": "assassins creed brotherhood deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed brotherhood eneba",
+   "reason": "магазинный интент: «eneba»"
+  },
+  {
+   "query": "assassins creed cena",
+   "reason": "магазинный интент: «cena»"
+  },
+  {
+   "query": "assassins creed complete edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed deluxe",
+   "reason": "магазинный интент: «deluxe»"
+  },
+  {
+   "query": "assassins creed edition",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed g2a",
+   "reason": "магазинное слово в имени кластера: «g2a»"
+  },
+  {
+   "query": "assassins creed gold edition ps4",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed ii deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed iv black flag deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed media expert",
+   "reason": "магазинное слово в имени кластера: «media expert»"
+  },
+  {
+   "query": "assassins creed media markt",
+   "reason": "магазинный интент: «media markt»"
+  },
+  {
+   "query": "assassins creed mirage amazon",
+   "reason": "магазинный интент: «amazon»"
+  },
+  {
+   "query": "assassins creed mirage deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed mirage kolekcjonerska",
+   "reason": "магазинное слово в имени кластера: «collectors»"
+  },
+  {
+   "query": "assassins creed mirage media expert",
+   "reason": "магазинный интент: «media expert»"
+  },
+  {
+   "query": "assassins creed mirage ps5 collectors edition",
+   "reason": "магазинное слово в имени кластера: «collectors»"
+  },
+  {
+   "query": "assassins creed notre dame edition",
+   "reason": "магазинное слово в имени кластера: «notre dame edition»"
+  },
+  {
+   "query": "assassins creed odyssey allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed odyssey ceneo",
+   "reason": "магазинный интент: «ceneo»"
+  },
+  {
+   "query": "assassins creed odyssey deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed odyssey deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed odyssey deluxe edition ps4",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed odyssey eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed odyssey gold edition pc",
+   "reason": "магазинный интент: «gold edition»"
+  },
+  {
+   "query": "assassins creed odyssey gold edition ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed odyssey gold ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed odyssey gold xbox",
+   "reason": "магазинный интент: «gold xbox»"
+  },
+  {
+   "query": "assassins creed odyssey kinguin",
+   "reason": "магазинный интент: «kinguin»"
+  },
+  {
+   "query": "assassins creed odyssey media expert",
+   "reason": "магазинный интент: «media expert»"
+  },
+  {
+   "query": "assassins creed odyssey olx",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassins creed odyssey omega edition",
+   "reason": "магазинное слово в имени кластера: «omega edition»"
+  },
+  {
+   "query": "assassins creed odyssey pantheon edition",
+   "reason": "магазинный интент: «pantheon edition»"
+  },
+  {
+   "query": "assassins creed odyssey ps4 allegro",
+   "reason": "магазинный интент: «allegro»"
+  },
+  {
+   "query": "assassins creed odyssey ps4 deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed odyssey ps4 gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed odyssey ps4 olx",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassins creed odyssey ps4 ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassins creed odyssey ultimate",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassins creed odyssey ultimate edition ps4",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassins creed odyssey ultimate ps4",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassins creed odyssey ultimate xbox",
+   "reason": "магазинный интент: «ultimate»"
+  },
+  {
+   "query": "assassins creed odyssey xbox one allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed olx",
+   "reason": "магазинный интент: «olx»"
+  },
+  {
+   "query": "assassins creed omega edition",
+   "reason": "магазинное слово в имени кластера: «omega edition»"
+  },
+  {
+   "query": "assassins creed origins allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed origins amazon",
+   "reason": "магазинный интент: «amazon»"
+  },
+  {
+   "query": "assassins creed origins ceneo",
+   "reason": "магазинный интент: «ceneo»"
+  },
+  {
+   "query": "assassins creed origins deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed origins deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed origins deluxe edition ps4",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed origins edition",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed origins gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed origins gold edition ps4",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed origins gold ps4",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed origins gold xbox",
+   "reason": "магазинный интент: «gold xbox»"
+  },
+  {
+   "query": "assassins creed origins ile gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed origins kinguin",
+   "reason": "магазинный интент: «kinguin»"
+  },
+  {
+   "query": "assassins creed origins media expert",
+   "reason": "магазинный интент: «media expert»"
+  },
+  {
+   "query": "assassins creed origins ps4 allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed origins ps4 olx",
+   "reason": "магазинный интент: «olx»"
+  },
+  {
+   "query": "assassins creed playstation 2",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed ps4 allegro",
+   "reason": "магазинный интент: «allegro»"
+  },
+  {
+   "query": "assassins creed ps4 amazon",
+   "reason": "магазинное слово в имени кластера: «amazon»"
+  },
+  {
+   "query": "assassins creed ragnarok edition",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed ragnarok xbox one",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed reebok",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "assassins creed rogue deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed rogue deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed rogue eneba",
+   "reason": "магазинный интент: «eneba»"
+  },
+  {
+   "query": "assassins creed rogue ubisoft",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed season pass ps4",
+   "reason": "магазинный интент: «season pass»"
+  },
+  {
+   "query": "assassins creed shop",
+   "reason": "магазинный интент: «shop»"
+  },
+  {
+   "query": "assassins creed standard edition",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins creed syndicate eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed unity allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed unity cena",
+   "reason": "магазинный интент: «cena»"
+  },
+  {
+   "query": "assassins creed unity kinguin",
+   "reason": "магазинный интент: «kinguin»"
+  },
+  {
+   "query": "assassins creed unity notre dame edition",
+   "reason": "магазинное слово в имени кластера: «notre dame edition»"
+  },
+  {
+   "query": "assassins creed unity ps4 allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed valhalla amazon",
+   "reason": "магазинный интент: «amazon»"
+  },
+  {
+   "query": "assassins creed valhalla box",
+   "reason": "магазинный интент: «box»"
+  },
+  {
+   "query": "assassins creed valhalla ceneo",
+   "reason": "магазинное слово в имени кластера: «ceneo»"
+  },
+  {
+   "query": "assassins creed valhalla complete edition eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed valhalla complete edition pc",
+   "reason": "в топе снимка 5 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed valhalla complete edition ps4",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla definitive edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla deluxe edition pc",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla deluxe edition ps4",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla deluxe edition xbox",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla deluxe ps4",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla edition",
+   "reason": "в топе снимка 5 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed valhalla empik",
+   "reason": "магазинный интент: «empik»"
+  },
+  {
+   "query": "assassins creed valhalla eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed valhalla fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "assassins creed valhalla g2a",
+   "reason": "магазинное слово в имени кластера: «g2a»"
+  },
+  {
+   "query": "assassins creed valhalla gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed valhalla gb ps4",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed valhalla gold edition pc",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla gold edition ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla gold edition ps5",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla gold ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla gold xbox",
+   "reason": "магазинное слово в имени кластера: «gold xbox»"
+  },
+  {
+   "query": "assassins creed valhalla ile gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed valhalla ile zajmuje gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed valhalla kinguin",
+   "reason": "магазинное слово в имени кластера: «kinguin»"
+  },
+  {
+   "query": "assassins creed valhalla olx ps4",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassins creed valhalla pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed valhalla pc allegro",
+   "reason": "магазинный интент: «allegro»"
+  },
+  {
+   "query": "assassins creed valhalla pc ceneo",
+   "reason": "магазинное слово в имени кластера: «ceneo»"
+  },
+  {
+   "query": "assassins creed valhalla pc eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "assassins creed valhalla pc gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla pc media expert",
+   "reason": "магазинное слово в имени кластера: «media expert»"
+  },
+  {
+   "query": "assassins creed valhalla pc ultimate edition",
+   "reason": "в топе снимка 5 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed valhalla ps4 amazon",
+   "reason": "магазинное слово в имени кластера: «amazon»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 ceneo",
+   "reason": "магазинное слово в имени кластера: «ceneo»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 complete edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 media expert",
+   "reason": "магазинное слово в имени кластера: «media expert»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 media markt",
+   "reason": "магазинное слово в имени кластера: «media markt»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 olx",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed valhalla ps4 ultimate edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 allegro",
+   "reason": "магазинный интент: «allegro»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 ceneo",
+   "reason": "магазинный интент: «ceneo»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 complete edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 media markt",
+   "reason": "магазинное слово в имени кластера: «media markt»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 olx",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "assassins creed valhalla ps5 ultimate edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarök edition",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarok edition ps4",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarok edition xbox",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarök edition xbox",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarok edition xbox one",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarok season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed valhalla ragnarok xbox one",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "assassins creed valhalla reebok",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "assassins creed valhalla season pass pc",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed valhalla season pass ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "assassins creed valhalla ultimate",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "assassins creed valhalla ultimate edition pc",
+   "reason": "в топе снимка 5 маркетплейсов из 10"
+  },
+  {
+   "query": "assassins creed valhalla ultimate edition ps5",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ultimate edition xbox",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ultimate ps4",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla ultimate xbox",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla xbox allegro",
+   "reason": "магазинное слово в имени кластера: «allegro»"
+  },
+  {
+   "query": "assassins creed valhalla xbox complete edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "assassins creed valhalla xbox gold",
+   "reason": "магазинное слово в имени кластера: «gold xbox»"
+  },
+  {
+   "query": "assassins creed2022",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "assassins odyssey gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "black chest edition",
+   "reason": "магазинный интент: «black chest edition»"
+  },
+  {
+   "query": "black flag eneba",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "brotherhood deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "complete edition valhalla",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "deluxe edition assassins creed odyssey",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "deluxe edition assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "deluxe edition valhalla",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "einar selvik assassins creed valhalla",
+   "reason": "побочная тема серии: «einar selvik»"
+  },
+  {
+   "query": "eivor fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "emp assassins creed",
+   "reason": "побочная тема серии: «emp»"
+  },
+  {
+   "query": "eneba assassins creed odyssey",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "eneba assassins creed origins",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "eneba assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «eneba»"
+  },
+  {
+   "query": "ezio auditore da firenze fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "ezio auditore fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "ezio auditore in fortnite",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "fortnite assassin",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "fortnite eivor",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "fortnite ezio",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "fortnite ezio auditore",
+   "reason": "кроссовер с чужой игрой: «fortnite»"
+  },
+  {
+   "query": "forward ubisoft",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "kinguin assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «kinguin»"
+  },
+  {
+   "query": "kufel assassins creed",
+   "reason": "побочная тема серии: «kufel»"
+  },
+  {
+   "query": "lego assassins creed",
+   "reason": "побочная тема серии: «lego»"
+  },
+  {
+   "query": "media expert assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «media expert»"
+  },
+  {
+   "query": "media markt assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «media markt»"
+  },
+  {
+   "query": "mirage collector",
+   "reason": "магазинный интент: «collector»"
+  },
+  {
+   "query": "odyssey deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "odyssey gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "odyssey gold edition ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "odyssey ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "olx assassins creed valhalla",
+   "reason": "магазинное слово в имени кластера: «olx»"
+  },
+  {
+   "query": "origins deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "origins gold edition",
+   "reason": "в топе снимка 6 маркетплейсов из 10"
+  },
+  {
+   "query": "origins season pass ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "pakiet zmierzchu valhalla",
+   "reason": "магазинный интент: «pakiet»"
+  },
+  {
+   "query": "playmobil assassins creed",
+   "reason": "побочная тема серии: «playmobil»"
+  },
+  {
+   "query": "pure arts assassins creed",
+   "reason": "побочная тема серии: «pure arts»"
+  },
+  {
+   "query": "pure arts assassins creed valhalla",
+   "reason": "побочная тема серии: «pure arts»"
+  },
+  {
+   "query": "ragnarök edition",
+   "reason": "магазинный интент: «ragnarök edition»"
+  },
+  {
+   "query": "ragnarok edition assassins creed",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "reebok ac valhalla",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "reebok assassins creed",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "reebok assassins creed valhalla",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "reebok valhalla",
+   "reason": "побочная тема серии: «reebok»"
+  },
+  {
+   "query": "sabaton assassins creed",
+   "reason": "побочная тема серии: «sabaton»"
+  },
+  {
+   "query": "season pass ac odyssey ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass ac valhalla ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass assassins creed odyssey xbox",
+   "reason": "магазинный интент: «season pass»"
+  },
+  {
+   "query": "season pass assassins creed valhalla ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass odyssey",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass odyssey ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass origins ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass valhalla",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass valhalla ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass valhalla ps5",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "season pass valhalla xbox",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "ubisoft forward",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "ubisoft forward 2022",
+   "reason": "хвост (< 70/мес), тема не восстановлена ни по имени, ни по фразам"
+  },
+  {
+   "query": "ubisoft merchandise assassins creed",
+   "reason": "побочная тема серии: «merchandise»"
+  },
+  {
+   "query": "uno assassins creed",
+   "reason": "побочная тема серии: «uno»"
+  },
+  {
+   "query": "valhalla ceneo",
+   "reason": "магазинное слово в имени кластера: «ceneo»"
+  },
+  {
+   "query": "valhalla complete",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla complete edition",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla complete edition pc",
+   "reason": "в топе снимка 5 маркетплейсов из 10"
+  },
+  {
+   "query": "valhalla complete edition ps4",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla complete edition ps5",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla complete edition xbox",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla deluxe",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "valhalla deluxe edition",
+   "reason": "магазинное слово в имени кластера: «deluxe»"
+  },
+  {
+   "query": "valhalla g2a",
+   "reason": "магазинное слово в имени кластера: «g2a»"
+  },
+  {
+   "query": "valhalla gb",
+   "reason": "магазинное слово в имени кластера: «gb»"
+  },
+  {
+   "query": "valhalla gold edition",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "valhalla gold edition ps4",
+   "reason": "магазинное слово в имени кластера: «gold edition»"
+  },
+  {
+   "query": "valhalla gold edition xbox",
+   "reason": "магазинное слово в имени кластера: «gold xbox»"
+  },
+  {
+   "query": "valhalla media expert",
+   "reason": "магазинное слово в имени кластера: «media expert»"
+  },
+  {
+   "query": "valhalla ps4 season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "valhalla ragnarok edition",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "valhalla ragnarok edition ps5",
+   "reason": "магазинное слово в имени кластера: «ragnarok edition»"
+  },
+  {
+   "query": "valhalla ragnarok edition xbox",
+   "reason": "магазинный интент: «ragnarok edition»"
+  },
+  {
+   "query": "valhalla ragnarok season pass",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "valhalla season pass pc",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "valhalla season pass ps4",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "valhalla season pass xbox",
+   "reason": "магазинное слово в имени кластера: «season pass»"
+  },
+  {
+   "query": "valhalla ultimate",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "valhalla ultimate edition",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "valhalla ultimate edition ps4",
+   "reason": "магазинное слово в имени кластера: «ultimate»"
+  },
+  {
+   "query": "valhalla ultimate edition xbox",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  },
+  {
+   "query": "valhalla ultimate xbox",
+   "reason": "магазинное слово в имени кластера: «complete edition»"
+  }
+ ]
 }

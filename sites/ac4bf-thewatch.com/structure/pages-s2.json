@@ -1,0 +1,407 @@
+{
+  "версия": "s2-2026-09-08",
+  "статус": "черновик S2 — состав дерева на приёмку владельцу",
+  "источник": "docs/04_STRUCTURE_DECISIONS.md, Части C и D; docs/05_STRUCTURE_TASK.md, стадия S2; решения П24 и П25",
+  "как_читать": [
+    "Файл — вход инструмента tools/build-tree.mjs и единственное место, где объявлен состав дерева.",
+    "Инструмент ничего не придумывает: страницы, слияния и маршруты фраз стоят здесь, судьбы кластеров — в structure/s0-recon.json.",
+    "`cluster` — кластер, на котором стоит страница; `слияния` — кластеры, чьи ключи уходят сюда же, своей страницы у них нет.",
+    "`судьбы` — судьбы кластеров разведки, которые целиком забирает эта страница (так карта мест забирает «карта_мест» и «люди_истории»).",
+    "`темы` — сквозные темы «Некластеризовано» целиком; `ключи` — отдельные фразы, разложенные поимённо.",
+    "Порядок разбора: ключ сильнее темы, тема сильнее кластера.",
+    "`volume`, `parent`, `blocks` и `keywords` считает инструмент — здесь их нет."
+  ],
+  "почему_слияния": [
+    "Четыре слияния вынуждены: пересечение топов ≥ 50 % значит, что две страницы будут конкурировать между собой (Часть C.6), и гейт роняет сборку.",
+    "«assassins iv black flag» → «assassin black flag» — одна игра, разведённая кластеризатором надвое (S0, раздел 9).",
+    "«assassins creed 6» → «assassin syndicate» — пересечение 100 %: вопрос «какая часть шестая», и ответ на него Syndicate.",
+    "«dawn ragnarok» → «valhalla ragnarok» — одно дополнение, 50 % общей выдачи.",
+    "«assassins creed 7» → «assassin ubisoft» — 50 % общей выдачи; обе фразы про серию целиком и её нумерацию.",
+    "Три слияния по смыслу: «assassins creed 1ps4» — платформенный запрос той же игры (Часть C.3); «assassin creed russia» — часть той же трилогии Chronicles; «ezio auditore revelations» — тот же персонаж в той же игре.",
+    "Кластеры «assassin ezio», «assassin eivor» и «assassins creed discovery» разведка приписала хабам, а здесь у них свои страницы: Часть C.4 оставляет середине оба исхода, а выдача у них своя (пересечение с хабом ниже 40 %) и говорит о другом предмете — издании, персонаже, отдельной игре."
+  ],
+
+  "страницы": [
+    {
+      "url": "/",
+      "type": "home",
+      "cluster": "assassins",
+      "wave": 1,
+      "темы": ["ksiazki", "rating", "lokalizacja"],
+      "ключи": [
+        "assassin creed nexus",
+        "templariusze assassins creed",
+        "assassins creed bractwo",
+        "templariusze a asasyni",
+        "assassin ppsspp",
+        "assassins creed gameloft",
+        "assassins creed nokia"
+      ],
+      "related": ["/poradniki/od-czego-zaczac/", "/poradniki/", "/o-serii/", "/mapa-miejsc-historycznych/"],
+      "h1": "Cała seria Assassin’s Creed, część po części",
+      "title": "Assassin’s Creed — wszystkie części serii i poradniki",
+      "description": "Nieoficjalny przewodnik po serii Assassin’s Creed: każda część opisana osobno, w kolejności epok, oraz poradniki — od czego zacząć i co pominąć."
+    },
+    {
+      "url": "/assassins-creed-1/",
+      "type": "game",
+      "cluster": "assassins 1",
+      "слияния": ["assassins creed 1ps4"],
+      "wave": 1,
+      "related": ["/assassins-creed-2/", "/ezio-auditore/", "/poradniki/od-czego-zaczac/"],
+      "h1": "Assassin’s Creed 1 — początek serii i historia Altaïra",
+      "title": "Assassin’s Creed 1 z 2007 roku — Altaïr i Ziemia Święta",
+      "description": "Gra z 2007 roku, od której zaczęła się seria: Altaïr, trzecia krucjata i skradanie się po dachach. Co wniosła do cyklu i czym różni się od kolejnych odsłon."
+    },
+    {
+      "url": "/assassins-creed-2/",
+      "type": "game",
+      "cluster": "assassins 2",
+      "wave": 1,
+      "ключи": ["assassins creed 2 100", "assassins creed 2 java"],
+      "related": ["/assassins-creed-brotherhood/", "/ezio-auditore/", "/assassins-creed-1/"],
+      "h1": "Assassin’s Creed 2 — druga część serii i debiut Ezia",
+      "title": "Assassin’s Creed 2 — Ezio Auditore i renesansowe Włochy",
+      "description": "Druga odsłona cyklu przenosi akcję do renesansowych Włoch. Skąd wziął się Ezio Auditore, co zmieniło się względem pierwszej części i jak wygląda rozgrywka."
+    },
+    {
+      "url": "/assassins-creed-2/discovery/",
+      "type": "game",
+      "cluster": "assassins creed discovery",
+      "wave": 2,
+      "related": ["/assassins-creed-2/", "/assassins-creed-pirates/", "/assassins-creed-chronicles/"],
+      "h1": "Assassin’s Creed II: Discovery, czyli Ezio w Hiszpanii",
+      "title": "Osobna gra na Nintendo DS — Assassin’s Creed II: Discovery",
+      "description": "To nie tryb w Assassin’s Creed II, tylko samodzielna gra 2D z 2009 roku, wydana też na iOS. Ezio wyrusza do Hiszpanii, a rozgrywka toczy się w rzucie z boku."
+    },
+    {
+      "url": "/assassins-creed-brotherhood/",
+      "type": "game",
+      "cluster": "assassin brotherhood",
+      "wave": 1,
+      "ключи": ["assassins creed brotherhood 100"],
+      "related": ["/assassins-creed-2/", "/assassins-creed-revelations/", "/ezio-auditore/"],
+      "h1": "Assassin’s Creed Brotherhood — odbudowa bractwa w Rzymie",
+      "title": "Assassin’s Creed Brotherhood — Ezio i Rzym rodu Borgiów",
+      "description": "Bezpośrednia kontynuacja dwójki: Ezio w Rzymie stawia bractwo na nogi i mierzy się z Borgiami. Nowości w rozgrywce, rekruci i miejsce gry w chronologii."
+    },
+    {
+      "url": "/assassins-creed-revelations/",
+      "type": "game",
+      "cluster": "assassin revelation",
+      "слияния": ["ezio auditore revelations"],
+      "wave": 1,
+      "related": ["/assassins-creed-brotherhood/", "/ezio-auditore/", "/ezio-auditore/the-ezio-collection/"],
+      "h1": "Assassin’s Creed Revelations — koniec historii Ezia",
+      "title": "Assassin’s Creed Revelations — Ezio w Konstantynopolu",
+      "description": "Rok 2011, Konstantynopol i starzejący się Ezio śladami Altaïra. Czym Revelations domyka trylogię i co nowego wnosi do formuły znanej z Brotherhood."
+    },
+    {
+      "url": "/ezio-auditore/",
+      "type": "topic",
+      "cluster": "ezio auditore",
+      "wave": 1,
+      "related": [
+        "/assassins-creed-2/",
+        "/assassins-creed-brotherhood/",
+        "/assassins-creed-revelations/",
+        "/ezio-auditore/the-ezio-collection/"
+      ],
+      "h1": "Ezio Auditore — postać, historia i miejsce w serii",
+      "title": "Ezio Auditore da Firenze — kim jest bohater trzech gier",
+      "description": "Florencki szlachcic, który został asasynem: droga Ezia od rodowej zemsty po przywództwo w bractwie. W których grach występuje i co go ukształtowało."
+    },
+    {
+      "url": "/ezio-auditore/the-ezio-collection/",
+      "type": "game",
+      "cluster": "assassin ezio",
+      "wave": 1,
+      "related": [
+        "/ezio-auditore/",
+        "/assassins-creed-2/",
+        "/assassins-creed-brotherhood/",
+        "/assassins-creed-revelations/"
+      ],
+      "h1": "Assassin’s Creed: The Ezio Collection — co obejmuje zestaw",
+      "title": "The Ezio Collection — trzy gry Assassin’s Creed w zestawie",
+      "description": "Zbiór odświeżonych wersji trzech gier o Eziu: części drugiej, Brotherhood i Revelations. Co dokładnie wchodzi w skład wydania i dla kogo taki wybór ma sens."
+    },
+    {
+      "url": "/assassins-creed-3/",
+      "type": "game",
+      "cluster": "assassins 3",
+      "wave": 1,
+      "ключи": ["assassins creed 3 100", "desmond miles assassins creed 3"],
+      "related": ["/assassins-creed-liberation/", "/assassins-creed-rogue/", "/assassins-creed-4-black-flag/"],
+      "h1": "Assassin’s Creed 3 i amerykańska wojna o niepodległość",
+      "title": "Assassin’s Creed 3 — Connor, kolonie i remaster na PS4",
+      "description": "Trzecia odsłona serii przenosi gracza do kolonialnej Ameryki. Kim jest Connor, jak wygląda rozgrywka na lądzie i morzu, czym remaster różni się od oryginału."
+    },
+    {
+      "url": "/assassins-creed-liberation/",
+      "type": "game",
+      "cluster": "assassin liberation",
+      "wave": 1,
+      "related": ["/assassins-creed-3/", "/assassins-creed-4-black-flag/", "/assassins-creed-rogue/"],
+      "h1": "Assassin’s Creed Liberation HD: pierwsza bohaterka serii",
+      "title": "Liberation HD — Aveline de Grandpré w Nowym Orleanie",
+      "description": "Pierwotnie gra na PS Vitę, w wersji HD trafiła też na konsole i PC. Aveline działa w Nowym Orleanie drugiej połowy XVIII wieku i zmienia tożsamości."
+    },
+    {
+      "url": "/assassins-creed-4-black-flag/",
+      "type": "game",
+      "cluster": "assassin black flag",
+      "слияния": ["assassins iv black flag"],
+      "wave": 1,
+      "ключи": ["assassins creed black flag 100"],
+      "related": [
+        "/assassins-creed-4-black-flag/freedom-cry/",
+        "/assassins-creed-rogue/",
+        "/assassins-creed-3/",
+        "/assassins-creed-pirates/"
+      ],
+      "h1": "Assassin’s Creed IV: Black Flag — piracka odsłona serii",
+      "title": "Assassin’s Creed IV: Black Flag — Karaiby i Jackdaw",
+      "description": "Gra z 2013 roku: Edward Kenway trafia na Karaiby w złotym wieku piractwa. Żeglowanie Jackdawem, bitwy morskie i abordaże zamiast samego skradania się."
+    },
+    {
+      "url": "/assassins-creed-4-black-flag/freedom-cry/",
+      "type": "game",
+      "cluster": "assassins creed cry",
+      "wave": 1,
+      "related": ["/assassins-creed-4-black-flag/", "/assassins-creed-liberation/", "/assassins-creed-rogue/"],
+      "h1": "Freedom Cry: Adéwalé i wolność na Saint-Domingue",
+      "title": "Freedom Cry — dodatek do Assassin’s Creed IV: Black Flag",
+      "description": "Adéwalé, dawny kwatermistrz Jackdawa, ląduje na Saint-Domingue i uderza w handel niewolnikami. Krótsza, zamknięta historia, wydana też jako osobna gra."
+    },
+    {
+      "url": "/assassins-creed-rogue/",
+      "type": "game",
+      "cluster": "creed rogue",
+      "wave": 1,
+      "ключи": ["assassins creed rogue 100"],
+      "related": ["/assassins-creed-4-black-flag/", "/assassins-creed-3/", "/assassins-creed-unity/"],
+      "h1": "Assassin’s Creed Rogue: asasyn po stronie templariuszy",
+      "title": "Assassin’s Creed Rogue — zdrada w Ameryce Północnej",
+      "description": "Shay Patrick Cormac odwraca się od Bractwa i zaczyna polować na dawnych sojuszników. Zimny Atlantyk Północny, statek Morrigan i druga strona konfliktu."
+    },
+    {
+      "url": "/assassins-creed-unity/",
+      "type": "game",
+      "cluster": "assassin unity",
+      "wave": 1,
+      "related": ["/assassins-creed-syndicate/", "/assassins-creed-rogue/", "/mapa-miejsc-historycznych/"],
+      "h1": "Assassin’s Creed Unity i rewolucja francuska",
+      "title": "Assassin’s Creed Unity — Paryż, Arno i tryb kooperacji",
+      "description": "Rewolucyjny Paryż, Arno Dorian i zatłoczone ulice. Co Unity zmieniło w skradaniu i wspinaczce, jak działa kooperacja i dla kogo jest ta część."
+    },
+    {
+      "url": "/assassins-creed-syndicate/",
+      "type": "game",
+      "cluster": "assassin syndicate",
+      "слияния": ["assassins creed 6"],
+      "wave": 1,
+      "ключи": ["assassins creed syndicate 100"],
+      "related": ["/assassins-creed-unity/", "/mapa-miejsc-historycznych/", "/assassins-creed-chronicles/"],
+      "h1": "Assassin’s Creed Syndicate: Londyn epoki przemysłowej",
+      "title": "Londyn i bliźnięta Frye — Assassin’s Creed Syndicate",
+      "description": "Wiktoriańska Anglia, rodzeństwo Frye, linka z hakiem i walki na pięści w zaułkach. Wyjaśniamy też, dlaczego gra bywa nazywana Assassin’s Creed 6."
+    },
+    {
+      "url": "/assassins-creed-chronicles/",
+      "type": "game",
+      "cluster": "assassin chronicles",
+      "слияния": ["assassin creed russia"],
+      "wave": 1,
+      "related": ["/assassins-creed-2/discovery/", "/assassins-creed-pirates/", "/assassins-creed-syndicate/"],
+      "h1": "Assassin’s Creed Chronicles — trzy gry, trzy epoki",
+      "title": "Chiny, Indie i Rosja — Assassin’s Creed Chronicles w 2D",
+      "description": "Trylogia poza główną serią: skradanie w dwóch wymiarach, inni bohaterowie i inna kamera niż w dużych częściach. Osobne gry w Chinach, Indiach i Rosji."
+    },
+    {
+      "url": "/assassins-creed-pirates/",
+      "type": "game",
+      "cluster": "assassins pirates",
+      "wave": 1,
+      "related": ["/assassins-creed-4-black-flag/", "/assassins-creed-2/discovery/", "/assassins-creed-chronicles/"],
+      "h1": "Assassin’s Creed Pirates: gra mobilna, nie główna część serii",
+      "title": "Pirates — Assassin’s Creed na telefon, same bitwy morskie",
+      "description": "Mobilna gra na iOS i Androida ogranicza się do żeglowania i starć na pełnym morzu. Bez skradania, bez wspinaczki, bez fabuły z głównych części."
+    },
+    {
+      "url": "/assassins-creed-origins/",
+      "type": "game",
+      "cluster": "assassin origins",
+      "wave": 1,
+      "related": ["/assassins-creed-odyssey/", "/assassins-creed-mirage/", "/mapa-miejsc-historycznych/"],
+      "h1": "Assassin’s Creed Origins: Bayek i Egipt sprzed naszej ery",
+      "title": "Assassin’s Creed Origins — Egipt i początki asasynów",
+      "description": "Egipt schyłku dynastii Ptolemeuszy i otwarty świat, który przestawił serię na nowe tory. Co Origins zmieniło w walce, eksploracji i rozwoju postaci."
+    },
+    {
+      "url": "/assassins-creed-odyssey/",
+      "type": "game",
+      "cluster": "assassin odyssey",
+      "wave": 1,
+      "ключи": ["assassins creed odyssey 100"],
+      "related": ["/assassins-creed-origins/", "/assassins-creed-valhalla/", "/mapa-miejsc-historycznych/"],
+      "h1": "Assassin’s Creed Odyssey: antyczna Grecja w wersji RPG",
+      "title": "Kassandra, Alexios i decyzje — Assassin’s Creed Odyssey",
+      "description": "Grecja czasów wojny peloponeskiej, wybór między Kassandrą a Alexiosem i dialogi wpływające na fabułę. Czym Odyssey różni się od Origins i dla kogo jest ta gra."
+    },
+    {
+      "url": "/assassins-creed-mirage/",
+      "type": "game",
+      "cluster": "assassin mirage",
+      "wave": 1,
+      "related": ["/assassins-creed-1/", "/assassins-creed-valhalla/", "/assassins-creed-origins/"],
+      "h1": "Assassin’s Creed Mirage: Basim, Bagdad i kameralna skala",
+      "title": "Assassin’s Creed Mirage — powrót do skradania w Bagdadzie",
+      "description": "Bagdad z IX wieku, Basim i rozgrywka nastawiona na ciche eliminacje. Po rozległych Odyssey i Valhalli seria wraca do krótszej i bardziej zwartej kampanii."
+    },
+    {
+      "url": "/assassins-creed-valhalla/",
+      "type": "game",
+      "cluster": "assassin valhalla",
+      "wave": 1,
+      "ключи": ["assassins creed valhalla ppsspp"],
+      "related": [
+        "/assassins-creed-valhalla/eivor/",
+        "/assassins-creed-valhalla/dawn-of-ragnarok/",
+        "/assassins-creed-odyssey/",
+        "/assassins-creed-mirage/"
+      ],
+      "h1": "Wikińska Anglia w Assassin’s Creed Valhalla: od czego zacząć",
+      "title": "Assassin’s Creed Valhalla — poradniki, regiony i znajdźki",
+      "description": "Wyprawa Eivora do Anglii w Assassin’s Creed Valhalla: kolejność regionów, rozbudowa osady, walka i buildy, a także to, na co uważać na starcie."
+    },
+    {
+      "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+      "type": "game",
+      "cluster": "valhalla ragnarok",
+      "слияния": ["dawn ragnarok"],
+      "wave": 1,
+      "related": [
+        "/assassins-creed-valhalla/",
+        "/assassins-creed-valhalla/eivor/",
+        "/assassins-creed-odyssey/"
+      ],
+      "h1": "Dawn of Ragnarök, czyli mitologiczny dodatek do Valhalli",
+      "title": "Dawn of Ragnarök w Assassin’s Creed Valhalla — przewodnik",
+      "description": "Dodatek Dawn of Ragnarök do Assassin’s Creed Valhalla: kraina Svartalfheim, moce Odyna i nowy ekwipunek — co daje graczowi i komu się przyda."
+    },
+    {
+      "url": "/assassins-creed-valhalla/eivor/",
+      "type": "topic",
+      "cluster": "assassin eivor",
+      "wave": 1,
+      "related": [
+        "/assassins-creed-valhalla/",
+        "/assassins-creed-valhalla/dawn-of-ragnarok/",
+        "/ezio-auditore/"
+      ],
+      "h1": "Kim jest Eivor w Assassin’s Creed Valhalla?",
+      "title": "Eivor z Valhalli — historia wikińskiego wojownika z Norwegii",
+      "description": "Eivor z klanu Kruka: skąd pochodzi, dlaczego płynie do Anglii i co zmienia wybór płci bohatera w Assassin’s Creed Valhalla. Bez zbędnych spoilerów."
+    },
+    {
+      "url": "/assassins-creed-shadows/",
+      "type": "game",
+      "cluster": "assassin red",
+      "wave": 1,
+      "related": ["/o-serii/", "/assassins-creed-mirage/", "/poradniki/od-czego-zaczac/"],
+      "h1": "Assassin’s Creed Shadows, dawniej Red: dwoje bohaterów",
+      "title": "Japonia w Assassin’s Creed Shadows — dawnym projekcie Red",
+      "description": "Assassin’s Creed Shadows to odsłona zapowiadana wcześniej jako Red: feudalna Japonia, dwoje grywalnych bohaterów i to, czym różni się od poprzednich części."
+    },
+    {
+      "url": "/poradniki/",
+      "type": "hub",
+      "cluster": "najlepszy assasin creed",
+      "wave": 1,
+      "related": ["/poradniki/od-czego-zaczac/", "/o-serii/", "/"],
+      "h1": "Który Assassin’s Creed jest najlepszy",
+      "title": "Najlepszy Assassin’s Creed — porównanie i poradniki",
+      "description": "Która odsłona serii Assassin’s Creed wciąga najbardziej, która się zestarzała i po co wracać do starszych części. Obok tego spis poradników do gier."
+    },
+    {
+      "url": "/poradniki/od-czego-zaczac/",
+      "type": "guide",
+      "cluster": "assassin creed po kolei",
+      "wave": 1,
+      "темы": ["kolejnosc"],
+      "related": ["/poradniki/", "/assassins-creed-1/", "/assassins-creed-4-black-flag/", "/o-serii/"],
+      "h1": "Od której części zacząć: Assassin’s Creed po kolei",
+      "title": "Assassin’s Creed po kolei — chronologia i premiery serii",
+      "description": "Chronologia wydarzeń i kolejność premier obok siebie: gdzie najlepiej wejść w serię, które wątki łączą się ze sobą i co da się pominąć bez szkody dla fabuły."
+    },
+    {
+      "url": "/o-serii/",
+      "type": "topic",
+      "cluster": "assassin ubisoft",
+      "слияния": ["assassins creed 7"],
+      "wave": 1,
+      "related": ["/poradniki/od-czego-zaczac/", "/assassins-creed-shadows/", "/assassins-creed-ii-wojna-swiatowa/"],
+      "h1": "Assassin’s Creed od Ubisoftu: jak ułożona jest seria",
+      "title": "Seria Assassin’s Creed od Ubisoftu — historia i numeracja",
+      "description": "Co łączy kolejne odsłony, dlaczego w tytułach nowszych części nie ma już numerów i jak poukładana jest cała seria Assassin’s Creed od Ubisoftu."
+    },
+    {
+      "url": "/assassins-creed-za-darmo/",
+      "type": "topic",
+      "cluster": "assassin creed za darmo",
+      "wave": 1,
+      "related": ["/poradniki/", "/o-serii/", "/assassins-creed-mirage/"],
+      "h1": "Jak zagrać w Assassin’s Creed za darmo i legalnie",
+      "title": "Assassin’s Creed za darmo — legalne sposoby i pułapki",
+      "description": "Kiedy w Assassin’s Creed można zagrać za darmo legalnie: rozdania Ubisoftu, darmowe weekendy i abonamenty. Wyjaśniamy, dlaczego lepiej omijać pirackie kopie."
+    },
+    {
+      "url": "/assassins-creed-rodowod/",
+      "type": "topic",
+      "cluster": "assassins lineage",
+      "wave": 1,
+      "темы": ["film"],
+      "related": ["/ezio-auditore/", "/o-serii/", "/assassins-creed-2/"],
+      "h1": "Rodowód, czyli film o ojcu Ezia z Assassin’s Creed II",
+      "title": "Assassin’s Creed: Rodowód — prequel w wersji aktorskiej",
+      "description": "Rodowód to krótkometrażowy film aktorski z 2009 roku o Giovannim Auditore. Tłumaczymy, jak wiąże się z fabułą Assassin’s Creed II i czy warto go obejrzeć."
+    },
+    {
+      "url": "/assassins-creed-ii-wojna-swiatowa/",
+      "type": "topic",
+      "cluster": "assassins creed world war",
+      "wave": 1,
+      "темы": ["epoki"],
+      "related": ["/o-serii/", "/assassins-creed-shadows/", "/poradniki/"],
+      "h1": "Dlaczego nie ma Assassin’s Creed o II wojnie światowej?",
+      "title": "II wojna światowa a Assassin’s Creed — brakująca epoka",
+      "description": "Pełnoprawnej odsłony Assassin’s Creed w realiach II wojny światowej nie ma. Tłumaczymy, skąd bierze się to pytanie i co utrudnia serii wejście w tę epokę."
+    },
+    {
+      "url": "/mapa-miejsc-historycznych/",
+      "type": "map",
+      "cluster": null,
+      "owner": true,
+      "wave": 1,
+      "судьбы": ["карта_мест", "люди_истории"],
+      "темы": ["карта мест", "люди истории"],
+      "related": [
+        "/assassins-creed-unity/",
+        "/assassins-creed-syndicate/",
+        "/assassins-creed-origins/",
+        "/assassins-creed-odyssey/",
+        "/assassins-creed-valhalla/"
+      ],
+      "h1": "Mapa miejsc i postaci historycznych w Assassin’s Creed",
+      "title": "Gdzie naprawdę leżą miejsca z gier Assassin’s Creed",
+      "description": "Notre Dame, Big Ben, Stonehenge, Luksor, Sparta: prawdziwe miejsca, po których chodzi się w grach serii, i postacie, które naprawdę istniały."
+    }
+  ],
+
+  "чего_здесь_нет": [
+    "Страниц под сквозные темы «ksiazki», «lore», «przejscie», «mobilne», «rating» и «lokalizacja»: у них нет кластера, а `cluster` обязателен всем, кроме страницы владельца. Фразы разложены ключами по ближайшим страницам, строки о нехватке стоят в docs/UNRESOLVED.md.",
+    "Страницы под фразу «assassin creed nexus» (210/мес): кластера с таким именем в выгрузке нет, хотя словарь игр rules-s0.json на него ссылается. Фраза принята ключом на главную.",
+    "Ни одной страницы типа `legal`: служебные страницы спроса не имеют, а `cluster: null` контракт разрешает только владельцу. Вопрос владельцу вместе с закрытием списка типов."
+  ]
+}

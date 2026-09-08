@@ -14,7 +14,9 @@
     "art:check": "node tools/fetch-art.mjs --dry-run",
     "art:sheet": "node tools/contact-sheet.mjs",
     "gameart": "node tools/fetch-game-art.mjs",
-    "gameart:check": "node tools/fetch-game-art.mjs --dry-run"
+    "gameart:check": "node tools/fetch-game-art.mjs --dry-run",
+    "corpus": "node tools/fetch-corpus.mjs",
+    "corpus:check": "node tools/fetch-corpus.mjs --dry-run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

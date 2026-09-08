@@ -23,9 +23,7 @@
     "assassins",
     "assassin ps4",
     "assassin s creed ps4",
-    "assassin s creed psp",
     "assassins creed ps4",
-    "assassins creed psp",
     "assassins creed ps 5",
     "assassins creed ps5",
     "assassin creed nintendo switch",
@@ -44,6 +42,8 @@
     "assassins creed pc",
     "assassins creed playstation 3",
     "ps3 assassin",
+    "ubisoft assassins creed",
+    "assassins creed 7",
     "assassins creed nintendo",
     "assassin nintendo switch",
     "assassin steam",
@@ -53,6 +53,7 @@
     "xbox assassin",
     "assassin creed 2 steam",
     "assassin na ps4",
+    "assassin ubisoft",
     "assassins creed 1 xbox 360",
     "assassins creed macbook",
     "assassins creed na ps4",
@@ -65,6 +66,7 @@
     "assassin pc",
     "assassin remastered",
     "assassin switch",
+    "assassins creed 8",
     "assassins creed bractwo",
     "assassins creed game pass",
     "assassins creed pegi",
@@ -76,6 +78,7 @@
     "assassins creed xbox series s",
     "ps5 assassin",
     "ac ps4",
+    "ac ubisoft",
     "ac xbox",
     "ac xbox 360",
     "as creed",
@@ -86,10 +89,12 @@
     "assassin ppsspp",
     "assassin rebel collection",
     "assassins assassins creed",
-    "assassins creed 1 psp",
+    "assassins creed 12",
     "assassins creed 2019",
+    "assassins creed 2021",
     "assassins creed 3ds",
     "assassins creed 5 xbox 360",
+    "assassins creed 9",
     "assassins creed anthology xbox 360",
     "assassins creed avatar",
     "assassins creed collection pc",
@@ -97,6 +102,7 @@
     "assassins creed epic",
     "assassins creed eshop",
     "assassins creed exclusive",
+    "assassins creed ff",
     "assassins creed gameloft",
     "assassins creed hd",
     "assassins creed heritage collection pc",
@@ -139,10 +145,12 @@
     "parkour assassins creed",
     "playstation 5 assassins creed",
     "pod ubisoft",
+    "spin off assassins creed",
     "templariusze a asasyni",
     "the flight assassins creed",
     "torres assassins creed",
     "ubisoft 15",
+    "ubisoft ac",
     "xbox cloud gaming assassins creed",
     "assassins creed 2022 ps4",
     "assassins creed iii steven masters",
@@ -153,7 +161,7 @@
    "related": [
     "/poradniki/od-czego-zaczac/",
     "/poradniki/",
-    "/o-serii/",
+    "/assassins-creed-4-black-flag/",
     "/mapa-miejsc-historycznych/"
    ],
    "blocks": [
@@ -186,11 +194,17 @@
      "block": "cta-band",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "role": "numeracja-serii",
+     "source": "manual",
+     "confidence": "high"
     }
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 181100
+   "volume": 179930
   },
   {
    "url": "/assassins-creed-1/",
@@ -203,6 +217,7 @@
     "assassin s creed 1",
     "assassins creed 1",
     "assassins creed 1 ps3",
+    "al mualim",
     "assassins creed 2007",
     "assassins 1",
     "assassins creed 1 ps4",
@@ -241,6 +256,7 @@
    "parent": "/",
    "related": [
     "/assassins-creed-2/",
+    "/assassins-creed-bloodlines/",
     "/ezio-auditore/",
     "/poradniki/od-czego-zaczac/"
    ],
@@ -268,7 +284,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 4530
+   "volume": 4740
   },
   {
    "url": "/assassins-creed-2/",
@@ -391,7 +407,7 @@
      "confidence": "low"
     }
    ],
-   "wave": 2,
+   "wave": 1,
    "status": "planned",
    "volume": 100
   },
@@ -473,7 +489,7 @@
    "related": [
     "/assassins-creed-brotherhood/",
     "/ezio-auditore/",
-    "/ezio-auditore/the-ezio-collection/"
+    "/assassins-creed-2/"
    ],
    "blocks": [
     {
@@ -506,33 +522,44 @@
    "type": "topic",
    "h1": "Ezio Auditore — postać, historia i miejsce w serii",
    "title": "Ezio Auditore da Firenze — kim jest bohater trzech gier",
-   "description": "Florencki szlachcic, który został asasynem: droga Ezia od rodowej zemsty po przywództwo w bractwie. W których grach występuje i co go ukształtowało.",
+   "description": "Florencki szlachcic, który został asasynem: droga Ezia od zemsty po przywództwo w bractwie, oraz co zawiera zestaw The Ezio Collection.",
    "cluster": "ezio auditore",
    "keywords": [
     "ezio auditore",
+    "assassin ezio",
     "ezio auditore da firenze",
+    "assassin ezio collection ps4",
+    "assassins creed ezio collection ps4",
+    "ezio collection ps4",
+    "assassin creed ezio auditore",
     "ezio auditore brotherhood",
+    "ezio ps4",
     "ac ezio auditore",
     "animus ezio",
+    "assassin ezio auditore",
+    "assassins creed assassins creed ezio trilogy",
     "assassins creed ezio auditore da firenze",
+    "assassins creed trilogy ps4",
     "ezio animus",
     "ezio auditore 4k",
     "ezio auditore ac 2",
     "ezio auditore avatar",
     "ezio auditore cape",
+    "ezio auditore collection",
     "ezio auditore da",
     "ezio auditore da firenze brotherhood",
     "ezio auditore da firenze games",
     "ezio auditore game",
     "ezio auditore hd",
-    "ezio de auditore"
+    "ezio auditore trilogy",
+    "ezio de auditore",
+    "ezio auditore collection switch"
    ],
    "parent": "/",
    "related": [
     "/assassins-creed-2/",
     "/assassins-creed-brotherhood/",
     "/assassins-creed-revelations/",
-    "/ezio-auditore/the-ezio-collection/",
     "/assassins-creed-rodowod/"
    ],
    "blocks": [
@@ -550,39 +577,35 @@
      "block": "cta-band",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "role": "the-ezio-collection",
+     "source": "manual",
+     "confidence": "high"
     }
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 2550
+   "volume": 3760
   },
   {
-   "url": "/ezio-auditore/the-ezio-collection/",
+   "url": "/assassins-creed-bloodlines/",
    "type": "game",
-   "h1": "Assassin’s Creed: The Ezio Collection — co obejmuje zestaw",
-   "title": "The Ezio Collection — trzy gry Assassin’s Creed w zestawie",
-   "description": "Zbiór odświeżonych wersji trzech gier o Eziu: części drugiej, Brotherhood i Revelations. Co dokładnie wchodzi w skład wydania i dla kogo taki wybór ma sens.",
-   "cluster": "assassin ezio",
+   "h1": "Assassin’s Creed: Bloodlines — odsłona na PSP",
+   "title": "Bloodlines na PSP — Altaïr na Cyprze po pierwszej części",
+   "description": "Gra z 2009 roku na PlayStation Portable: Altaïr rusza na Cypr tropem templariuszy. Co Bloodlines dopowiada między pierwszą a drugą częścią serii.",
+   "cluster": "assassins creed psp",
    "keywords": [
-    "assassin ezio",
-    "assassin ezio collection ps4",
-    "assassins creed ezio collection ps4",
-    "ezio collection ps4",
-    "assassin creed ezio auditore",
-    "ezio ps4",
-    "assassin ezio auditore",
-    "assassins creed assassins creed ezio trilogy",
-    "assassins creed trilogy ps4",
-    "ezio auditore collection",
-    "ezio auditore trilogy",
-    "ezio auditore collection switch"
+    "assassin s creed psp",
+    "assassins creed psp",
+    "assassins creed 1 psp"
    ],
-   "parent": "/ezio-auditore/",
+   "parent": "/",
    "related": [
-    "/ezio-auditore/",
-    "/assassins-creed-2/",
-    "/assassins-creed-brotherhood/",
-    "/assassins-creed-revelations/"
+    "/assassins-creed-1/",
+    "/",
+    "/poradniki/od-czego-zaczac/"
    ],
    "blocks": [
     {
@@ -608,7 +631,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 1210
+   "volume": 1450
   },
   {
    "url": "/assassins-creed-3/",
@@ -961,7 +984,9 @@
     "ac unity ps4",
     "assassins creed unity pc",
     "assassins creed unity xbox one",
+    "assassins creed notre dame",
     "assassins creed unity xbox",
+    "assassins creed unity notre dame",
     "assassins creed 2014",
     "assassins creed unity ps3",
     "assassins creed unity xbox 360",
@@ -1008,7 +1033,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 14130
+   "volume": 14200
   },
   {
    "url": "/assassins-creed-syndicate/",
@@ -1028,12 +1053,18 @@
     "assassins creed 6",
     "ac syndicate xbox one",
     "assassin creed syndicate xbox",
+    "assassins creed syndicate kuba rozpruwacz",
     "assassins creed syndicate xbox one",
     "assassins creed victory",
+    "ac syndicate kuba rozpruwacz",
     "assassins creed syndicate pc",
+    "kuba rozpruwacz assassins creed",
     "assassin s creed syndicate",
+    "assassins creed big ben",
+    "assassins creed kuba rozpruwacz",
     "assassins creed syndicate 100",
     "assassins creed syndicate allegro",
+    "assassins creed syndicate big ben edition",
     "assassins creed syndicate cena",
     "assassins creed syndicate deluxe edition",
     "assassins creed syndicate gold edition ps4",
@@ -1072,7 +1103,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 11970
+   "volume": 12070
   },
   {
    "url": "/assassins-creed-chronicles/",
@@ -1222,6 +1253,8 @@
     "assassins creed origins 4k",
     "assassins creed origins 60fps ps5",
     "assassins creed origins assassins creed odyssey",
+    "assassins creed origins gb",
+    "assassins creed origins ile gb",
     "assassins creed origins odyssey ps4",
     "assassins creed origins pegi",
     "assassins creed origins ps",
@@ -1281,7 +1314,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 23100
+   "volume": 23120
   },
   {
    "url": "/assassins-creed-odyssey/",
@@ -1545,6 +1578,7 @@
     "ac valhalla 4k",
     "ac valhalla 7.20",
     "ac valhalla game pass",
+    "ac valhalla gb",
     "ac valhalla ps",
     "ac valhalla ps4 pro",
     "ac valhalla ubisoft",
@@ -1590,8 +1624,11 @@
     "assassins creed valhalla elamigos",
     "assassins creed valhalla eurogamer",
     "assassins creed valhalla game pass xbox",
+    "assassins creed valhalla gb",
     "assassins creed valhalla gog",
     "assassins creed valhalla gunnar",
+    "assassins creed valhalla ile gb",
+    "assassins creed valhalla ile zajmuje gb",
     "assassins creed valhalla kody pc",
     "assassins creed valhalla kody ps4",
     "assassins creed valhalla konstruktor",
@@ -1687,6 +1724,7 @@
     "valhalla dx11",
     "valhalla epic",
     "valhalla game pass",
+    "valhalla gb",
     "valhalla gunnar",
     "valhalla odyssey",
     "valhalla orlog",
@@ -1793,7 +1831,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 21040
+   "volume": 21090
   },
   {
    "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
@@ -1953,7 +1991,7 @@
    ],
    "parent": "/",
    "related": [
-    "/o-serii/",
+    "/",
     "/assassins-creed-mirage/",
     "/poradniki/od-czego-zaczac/"
    ],
@@ -1999,7 +2037,6 @@
    "parent": "/",
    "related": [
     "/poradniki/od-czego-zaczac/",
-    "/o-serii/",
     "/assassins-creed-za-darmo/",
     "/"
    ],
@@ -2045,7 +2082,7 @@
     "/poradniki/",
     "/assassins-creed-1/",
     "/assassins-creed-4-black-flag/",
-    "/o-serii/"
+    "/"
    ],
    "blocks": [
     {
@@ -2069,53 +2106,6 @@
    "volume": 390
   },
   {
-   "url": "/o-serii/",
-   "type": "topic",
-   "h1": "Assassin’s Creed od Ubisoftu: jak ułożona jest seria",
-   "title": "Seria Assassin’s Creed od Ubisoftu — historia i numeracja",
-   "description": "Co łączy kolejne odsłony, dlaczego w tytułach nowszych części nie ma już numerów i jak poukładana jest cała seria Assassin’s Creed od Ubisoftu.",
-   "cluster": "assassin ubisoft",
-   "keywords": [
-    "ubisoft assassins creed",
-    "assassins creed 7",
-    "assassin ubisoft",
-    "assassins creed 8",
-    "ac ubisoft",
-    "assassins creed 12",
-    "assassins creed 2021",
-    "assassins creed 9",
-    "assassins creed ff",
-    "spin off assassins creed",
-    "ubisoft ac"
-   ],
-   "parent": "/",
-   "related": [
-    "/poradniki/od-czego-zaczac/",
-    "/assassins-creed-shadows/",
-    "/assassins-creed-ii-wojna-swiatowa/"
-   ],
-   "blocks": [
-    {
-     "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "cta-band",
-     "source": "type-default",
-     "confidence": "low"
-    }
-   ],
-   "wave": 1,
-   "status": "planned",
-   "volume": 280
-  },
-  {
    "url": "/assassins-creed-za-darmo/",
    "type": "topic",
    "h1": "Jak zagrać w Assassin’s Creed za darmo i legalnie",
@@ -2131,7 +2121,7 @@
    "parent": "/",
    "related": [
     "/poradniki/",
-    "/o-serii/",
+    "/",
     "/assassins-creed-mirage/"
    ],
    "blocks": [
@@ -2171,7 +2161,7 @@
    "parent": "/",
    "related": [
     "/ezio-auditore/",
-    "/o-serii/",
+    "/",
     "/assassins-creed-2/"
    ],
    "blocks": [
@@ -2215,7 +2205,7 @@
    ],
    "parent": "/",
    "related": [
-    "/o-serii/",
+    "/",
     "/assassins-creed-shadows/",
     "/poradniki/"
    ],
@@ -2248,23 +2238,15 @@
    "description": "Notre Dame, Big Ben, Stonehenge, Luksor, Sparta: prawdziwe miejsca, po których chodzi się w grach serii, i postacie, które naprawdę istniały.",
    "cluster": null,
    "keywords": [
-    "al mualim",
-    "assassins creed notre dame",
-    "assassins creed syndicate kuba rozpruwacz",
-    "assassins creed unity notre dame",
     "stonehenge valhalla",
-    "ac syndicate kuba rozpruwacz",
     "argolida assassins creed odyssey",
     "assassins creed odyssey pitagoras",
     "assassins creed unity nostradamus",
     "brazydas odyssey",
-    "kuba rozpruwacz assassins creed",
     "alfred assassins creed valhalla",
     "assassin creed valhalla ragnar",
     "assassin creed valhalla ragnar lothbrok",
-    "assassins creed big ben",
     "assassins creed da vinci",
-    "assassins creed kuba rozpruwacz",
     "assassins creed odyssey archidamos",
     "assassins creed odyssey brazydas",
     "assassins creed odyssey elis",
@@ -2274,7 +2256,6 @@
     "assassins creed origins luxor",
     "assassins creed piri reis",
     "assassins creed sparta",
-    "assassins creed syndicate big ben edition",
     "assassins creed valhalla alfred",
     "assassins creed valhalla burgred",
     "assassins creed valhalla cynewulf",
@@ -2330,7 +2311,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 890,
+   "volume": 510,
    "owner": true
   }
  ],
@@ -2536,10 +2517,6 @@
   {
    "query": "ac valhalla g2a",
    "reason": "магазинное слово в имени кластера: «g2a»"
-  },
-  {
-   "query": "ac valhalla gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
   },
   {
    "query": "ac valhalla gold edition ps4",
@@ -2986,10 +2963,6 @@
    "reason": "в топе снимка 6 маркетплейсов из 10"
   },
   {
-   "query": "assassins creed origins gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
-  },
-  {
    "query": "assassins creed origins gold edition ps4",
    "reason": "в топе снимка 6 маркетплейсов из 10"
   },
@@ -3000,10 +2973,6 @@
   {
    "query": "assassins creed origins gold xbox",
    "reason": "магазинный интент: «gold xbox»"
-  },
-  {
-   "query": "assassins creed origins ile gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
   },
   {
    "query": "assassins creed origins kinguin",
@@ -3166,10 +3135,6 @@
    "reason": "магазинное слово в имени кластера: «g2a»"
   },
   {
-   "query": "assassins creed valhalla gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
-  },
-  {
    "query": "assassins creed valhalla gb ps4",
    "reason": "магазинное слово в имени кластера: «gb»"
   },
@@ -3192,14 +3157,6 @@
   {
    "query": "assassins creed valhalla gold xbox",
    "reason": "магазинное слово в имени кластера: «gold xbox»"
-  },
-  {
-   "query": "assassins creed valhalla ile gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
-  },
-  {
-   "query": "assassins creed valhalla ile zajmuje gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
   },
   {
    "query": "assassins creed valhalla kinguin",
@@ -3672,10 +3629,6 @@
   {
    "query": "valhalla g2a",
    "reason": "магазинное слово в имени кластера: «g2a»"
-  },
-  {
-   "query": "valhalla gb",
-   "reason": "магазинное слово в имени кластера: «gb»"
   },
   {
    "query": "valhalla gold edition",

@@ -133,14 +133,18 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
       }
     }
 
-    if (page.cluster === null && page.owner !== true) {
-      err(`${where}: \`cluster: null\` wolno tylko stronie właściciela (\`owner: true\`)`);
+    // Bez klastra wolno żyć dwóm stronom: właściciela — ta stoi poza progiem
+    // częstotliwości — i służbowej, bo polityka prywatności popytu w wyszukiwarce
+    // nie ma z definicji, a poza strukturą strona istnieć nie może (P24,
+    // rozwidlenie 1). Decyzja właściciela z 2026-09-08, punkt W2.
+    if (page.cluster === null && page.owner !== true && page.type !== 'legal') {
+      err(`${where}: \`cluster: null\` wolno tylko stronie właściciela (\`owner: true\`) albo służbowej (\`type: legal\`)`);
     }
     if (page.cluster && semantics && !semantics.clusters.has(page.cluster)) {
       err(`${where}: klaster «${page.cluster}» nie występuje w wyliczeniu`);
     }
-    if (Array.isArray(page.keywords) && page.keywords.length === 0 && page.owner !== true) {
-      err(`${where}: pusta lista \`keywords\` — strona bez popytu; wolno to tylko stronie właściciela`);
+    if (Array.isArray(page.keywords) && page.keywords.length === 0 && page.owner !== true && page.type !== 'legal') {
+      err(`${where}: pusta lista \`keywords\` — strona bez popytu; wolno to tylko stronie właściciela albo służbowej`);
     }
 
     /* — bloki — */

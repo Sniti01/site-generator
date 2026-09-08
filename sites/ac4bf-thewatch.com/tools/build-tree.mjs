@@ -69,13 +69,28 @@ const claim = (map, key, url, what) => {
 };
 
 for (const p of pages) {
-  for (const c of [p.cluster, ...(p['слияния'] ?? [])].filter(Boolean)) claim(pageByCluster, c, p.url, 'кластер');
+  const merges = [...(p['слияния'] ?? []), ...(p['возвращено_из_no_page'] ?? [])];
+  for (const c of [p.cluster, ...merges].filter(Boolean)) claim(pageByCluster, c, p.url, 'кластер');
   for (const f of p['судьбы'] ?? []) claim(pageByFate, f, p.url, 'судьба');
   for (const t of p['темы'] ?? []) claim(pageByTheme, t, p.url, 'тема');
   for (const k of p['ключи'] ?? []) claim(pageByKey, k, p.url, 'ключ');
 }
 
 const clusterFate = new Map(recon['кластеры'].map((c) => [c['кластер'], c]));
+
+// Возврат из `no_page` — не рядовое слияние: он отменяет строку пачки,
+// подтверждённой владельцем, поэтому объявляется отдельным полем, печатается
+// отдельной строкой и требует, чтобы у кластера действительно стояла судьба
+// «no_page». Разрешение на конкретные кластеры даёт владелец, не инструмент.
+const returned = [];
+for (const p of pages) {
+  for (const c of p['возвращено_из_no_page'] ?? []) {
+    const row = clusterFate.get(c);
+    if (!row) fail(`возврат из no_page: кластера «${c}» нет в разведке`);
+    else if (row['судьба'] !== 'no_page') fail(`возврат из no_page: у «${c}» судьба «${row['судьба']}», а не «no_page» — это обычное слияние`);
+    else returned.push({ cluster: c, url: p.url, reason: row['причина'] });
+  }
+}
 const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
 
 /* ---------------------------------------------------------------- *
@@ -154,9 +169,14 @@ for (const phrase of data.phrases) {
   if (fate === 'exclusions') {
     exclusions.push({ query: phrase.phrase, reason: row['причина'] });
     seen.set(phrase.phrase, 'exclusions');
-  } else if (fate === 'no_page') {
+  } else if (fate === 'no_page' && !pageByCluster.has(phrase.cluster)) {
     noPage.push({ query: phrase.phrase, reason: row['причина'] });
     seen.set(phrase.phrase, 'no_page');
+  } else if (fate === 'no_page') {
+    // Сюда попадают только кластеры из `возвращено_из_no_page`: обычное
+    // слияние такой судьбы не перекрывает — проверка выше это гарантирует.
+    toPage(pageByCluster.get(phrase.cluster), phrase);
+    seen.set(phrase.phrase, pageByCluster.get(phrase.cluster));
   } else if (fate === 'страница' || fate === 'волна_2') {
     const url = pageByCluster.get(phrase.cluster);
     if (!url) lost.push(`${phrase.phrase} — кластер «${phrase.cluster}» (${fate}) не взят ни одной страницей`);
@@ -175,8 +195,11 @@ for (const phrase of data.phrases) {
       seen.set(phrase.phrase, url);
     }
   } else {
-    const url = pageByFate.get(fate);
+    // Кластер, названный страницей поимённо, сильнее судьбы: так с карты мест
+    // уходят запросы про дополнение и коллекционные издания, оставаясь при
+    // этом в своей судьбе разведки (решение владельца от 2026-09-08, В4).
     usedFates.add(fate);
+    const url = pageByCluster.get(phrase.cluster) ?? pageByFate.get(fate);
     if (!url) lost.push(`${phrase.phrase} — судьба «${fate}» ни на одну страницу не заведена`);
     else {
       toPage(url, phrase);
@@ -229,7 +252,19 @@ const built = pages.map((p) => {
     keywords: list.map((k) => k.phrase),
     parent: parentOf(p.url),
     related: p.related ?? [],
-    blocks: (defaults ?? []).map((block) => ({ block, source: 'type-default', confidence: 'low' })),
+    // Умолчания типа задают скелет, объявленные вручную блоки прибавляются
+    // к нему: решение «этот раздел на странице обязан быть» принято рукой,
+    // и `source: manual` отличает его от умолчания. Порядок разделов уточняет
+    // анатомия S3, которая перепишет список целиком.
+    blocks: [
+      ...(defaults ?? []).map((block) => ({ block, source: 'type-default', confidence: 'low' })),
+      ...(p['блоки'] ?? []).map((b) => ({
+        block: b.block,
+        ...(b.role ? { role: b.role } : {}),
+        source: 'manual',
+        confidence: b.confidence ?? 'high',
+      })),
+    ],
     wave: p.wave,
     status: p.status ?? 'planned',
     volume: list.reduce((s, k) => s + k.google, 0),
@@ -272,6 +307,12 @@ console.log('');
 console.log(
   `учёт: ${onPages} на страницах + ${exclusions.length} exclusions + ${noPage.length} no_page = ${tally} из ${data.meta.phrases}`
 );
+
+if (returned.length) {
+  console.log('');
+  console.log(`возвращено из no_page решением владельца: ${returned.length}`);
+  for (const r of returned) console.log(`  «${r.cluster}» → ${r.url}  (было: ${r.reason})`);
+}
 
 if (lost.length) {
   console.error('');

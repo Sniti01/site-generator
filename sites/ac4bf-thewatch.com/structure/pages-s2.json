@@ -38,9 +38,9 @@
       "url": "/",
       "type": "home",
       "cluster": "assassins",
-      "слияния": ["assassins creed psp", "assassin xbox 360"],
+      "слияния": ["assassin xbox 360", "assassin ubisoft", "assassins creed 7"],
       "wave": 1,
-      "темы": ["ksiazki", "rating", "lokalizacja"],
+      "темы": ["ksiazki", "rating", "lokalizacja", "kolejnosc"],
       "ключи": [
         "assassin creed nexus",
         "templariusze assassins creed",
@@ -48,9 +48,11 @@
         "templariusze a asasyni",
         "assassin ppsspp",
         "assassins creed gameloft",
-        "assassins creed nokia"
+        "assassins creed nokia",
+        "spin off assassins creed"
       ],
-      "related": ["/poradniki/od-czego-zaczac/", "/poradniki/", "/o-serii/", "/mapa-miejsc-historycznych/"],
+      "блоки": [{ "block": "link-list", "role": "numeracja-serii" }],
+      "related": ["/poradniki/od-czego-zaczac/", "/poradniki/", "/assassins-creed-4-black-flag/", "/mapa-miejsc-historycznych/"],
       "h1": "Cała seria Assassin’s Creed, część po części",
       "title": "Assassin’s Creed — wszystkie części serii i poradniki",
       "description": "Nieoficjalny przewodnik po serii Assassin’s Creed: każda część opisana osobno, w kolejności epok, oraz poradniki — od czego zacząć i co pominąć."
@@ -61,7 +63,8 @@
       "cluster": "assassins 1",
       "слияния": ["assassins creed 1ps4"],
       "wave": 1,
-      "related": ["/assassins-creed-2/", "/ezio-auditore/", "/poradniki/od-czego-zaczac/"],
+      "ключи": ["al mualim"],
+      "related": ["/assassins-creed-2/", "/assassins-creed-bloodlines/", "/ezio-auditore/", "/poradniki/od-czego-zaczac/"],
       "h1": "Assassin’s Creed 1 — początek serii i historia Altaïra",
       "title": "Assassin’s Creed 1 z 2007 roku — Altaïr i Ziemia Święta",
       "description": "Gra z 2007 roku, od której zaczęła się seria: Altaïr, trzecia krucjata i skradanie się po dachach. Co wniosła do cyklu i czym różni się od kolejnych odsłon."
@@ -82,7 +85,7 @@
       "type": "game",
       "cluster": "assassins creed discovery",
       "слияния": ["assassins creed 2 nintendo ds"],
-      "wave": 2,
+      "wave": 1,
       "related": ["/assassins-creed-2/", "/assassins-creed-pirates/", "/assassins-creed-chronicles/"],
       "h1": "Assassin’s Creed II: Discovery, czyli Ezio w Hiszpanii",
       "title": "Osobna gra na Nintendo DS — Assassin’s Creed II: Discovery",
@@ -105,7 +108,7 @@
       "cluster": "assassin revelation",
       "слияния": ["ezio auditore revelations"],
       "wave": 1,
-      "related": ["/assassins-creed-brotherhood/", "/ezio-auditore/", "/ezio-auditore/the-ezio-collection/"],
+      "related": ["/assassins-creed-brotherhood/", "/ezio-auditore/", "/assassins-creed-2/"],
       "h1": "Assassin’s Creed Revelations — koniec historii Ezia",
       "title": "Assassin’s Creed Revelations — Ezio w Konstantynopolu",
       "description": "Rok 2011, Konstantynopol i starzejący się Ezio śladami Altaïra. Czym Revelations domyka trylogię i co nowego wnosi do formuły znanej z Brotherhood."
@@ -114,34 +117,29 @@
       "url": "/ezio-auditore/",
       "type": "topic",
       "cluster": "ezio auditore",
+      "слияния": ["assassin ezio", "ezio ps4"],
       "wave": 1,
+      "ключи": ["ezio auditore collection switch"],
+      "блоки": [{ "block": "card-rail", "role": "the-ezio-collection" }],
       "related": [
         "/assassins-creed-2/",
         "/assassins-creed-brotherhood/",
         "/assassins-creed-revelations/",
-        "/ezio-auditore/the-ezio-collection/",
         "/assassins-creed-rodowod/"
       ],
       "h1": "Ezio Auditore — postać, historia i miejsce w serii",
       "title": "Ezio Auditore da Firenze — kim jest bohater trzech gier",
-      "description": "Florencki szlachcic, który został asasynem: droga Ezia od rodowej zemsty po przywództwo w bractwie. W których grach występuje i co go ukształtowało."
+      "description": "Florencki szlachcic, który został asasynem: droga Ezia od zemsty po przywództwo w bractwie, oraz co zawiera zestaw The Ezio Collection."
     },
     {
-      "url": "/ezio-auditore/the-ezio-collection/",
+      "url": "/assassins-creed-bloodlines/",
       "type": "game",
-      "cluster": "assassin ezio",
-      "слияния": ["ezio ps4"],
+      "cluster": "assassins creed psp",
       "wave": 1,
-      "ключи": ["ezio auditore collection switch"],
-      "related": [
-        "/ezio-auditore/",
-        "/assassins-creed-2/",
-        "/assassins-creed-brotherhood/",
-        "/assassins-creed-revelations/"
-      ],
-      "h1": "Assassin’s Creed: The Ezio Collection — co obejmuje zestaw",
-      "title": "The Ezio Collection — trzy gry Assassin’s Creed w zestawie",
-      "description": "Zbiór odświeżonych wersji trzech gier o Eziu: części drugiej, Brotherhood i Revelations. Co dokładnie wchodzi w skład wydania i dla kogo taki wybór ma sens."
+      "related": ["/assassins-creed-1/", "/", "/poradniki/od-czego-zaczac/"],
+      "h1": "Assassin’s Creed: Bloodlines — odsłona na PSP",
+      "title": "Bloodlines na PSP — Altaïr na Cyprze po pierwszej części",
+      "description": "Gra z 2009 roku na PlayStation Portable: Altaïr rusza na Cypr tropem templariuszy. Co Bloodlines dopowiada między pierwszą a drugą częścią serii."
     },
     {
       "url": "/assassins-creed-3/",
@@ -206,6 +204,7 @@
       "url": "/assassins-creed-unity/",
       "type": "game",
       "cluster": "assassin unity",
+      "слияния": ["assassins creed notre dame"],
       "wave": 1,
       "related": ["/assassins-creed-syndicate/", "/assassins-creed-rogue/", "/mapa-miejsc-historycznych/"],
       "h1": "Assassin’s Creed Unity i rewolucja francuska",
@@ -216,7 +215,7 @@
       "url": "/assassins-creed-syndicate/",
       "type": "game",
       "cluster": "assassin syndicate",
-      "слияния": ["assassins creed 6"],
+      "слияния": ["assassins creed 6", "ac syndicate kuba rozpruwacz", "assassins creed big ben"],
       "wave": 1,
       "ключи": ["assassins creed syndicate 100"],
       "related": ["/assassins-creed-unity/", "/mapa-miejsc-historycznych/", "/assassins-creed-chronicles/"],
@@ -249,6 +248,7 @@
       "url": "/assassins-creed-origins/",
       "type": "game",
       "cluster": "assassin origins",
+      "возвращено_из_no_page": ["assassins creed origins gb"],
       "wave": 1,
       "ключи": ["assassins creed empire"],
       "related": ["/assassins-creed-odyssey/", "/assassins-creed-mirage/", "/mapa-miejsc-historycznych/"],
@@ -281,6 +281,7 @@
       "url": "/assassins-creed-valhalla/",
       "type": "game",
       "cluster": "assassin valhalla",
+      "возвращено_из_no_page": ["assassins creed valhalla gb"],
       "wave": 1,
       "ключи": ["assassins creed valhalla ppsspp"],
       "related": [
@@ -347,7 +348,7 @@
       "cluster": "assassin red",
       "wave": 1,
       "ключи": ["assassins creed titans"],
-      "related": ["/o-serii/", "/assassins-creed-mirage/", "/poradniki/od-czego-zaczac/"],
+      "related": ["/", "/assassins-creed-mirage/", "/poradniki/od-czego-zaczac/"],
       "h1": "Assassin’s Creed Shadows, dawniej Red: dwoje bohaterów",
       "title": "Japonia w Assassin’s Creed Shadows — dawnym projekcie Red",
       "description": "Assassin’s Creed Shadows to odsłona zapowiadana wcześniej jako Red: feudalna Japonia, dwoje grywalnych bohaterów i to, czym różni się od poprzednich części."
@@ -357,7 +358,7 @@
       "type": "hub",
       "cluster": "najlepszy assasin creed",
       "wave": 1,
-      "related": ["/poradniki/od-czego-zaczac/", "/o-serii/", "/assassins-creed-za-darmo/", "/"],
+      "related": ["/poradniki/od-czego-zaczac/", "/assassins-creed-za-darmo/", "/"],
       "h1": "Który Assassin’s Creed jest najlepszy",
       "title": "Najlepszy Assassin’s Creed — porównanie i poradniki",
       "description": "Która odsłona serii Assassin’s Creed wciąga najbardziej, która się zestarzała i po co wracać do starszych części. Obok tego spis poradników do gier."
@@ -367,30 +368,17 @@
       "type": "guide",
       "cluster": "assassin creed po kolei",
       "wave": 1,
-      "related": ["/poradniki/", "/assassins-creed-1/", "/assassins-creed-4-black-flag/", "/o-serii/"],
+      "related": ["/poradniki/", "/assassins-creed-1/", "/assassins-creed-4-black-flag/", "/"],
       "h1": "Od której części zacząć: Assassin’s Creed po kolei",
       "title": "Assassin’s Creed po kolei — chronologia i premiery serii",
       "description": "Chronologia wydarzeń i kolejność premier obok siebie: gdzie najlepiej wejść w serię, które wątki łączą się ze sobą i co da się pominąć bez szkody dla fabuły."
-    },
-    {
-      "url": "/o-serii/",
-      "type": "topic",
-      "cluster": "assassin ubisoft",
-      "слияния": ["assassins creed 7"],
-      "wave": 1,
-      "темы": ["kolejnosc"],
-      "ключи": ["spin off assassins creed"],
-      "related": ["/poradniki/od-czego-zaczac/", "/assassins-creed-shadows/", "/assassins-creed-ii-wojna-swiatowa/"],
-      "h1": "Assassin’s Creed od Ubisoftu: jak ułożona jest seria",
-      "title": "Seria Assassin’s Creed od Ubisoftu — historia i numeracja",
-      "description": "Co łączy kolejne odsłony, dlaczego w tytułach nowszych części nie ma już numerów i jak poukładana jest cała seria Assassin’s Creed od Ubisoftu."
     },
     {
       "url": "/assassins-creed-za-darmo/",
       "type": "topic",
       "cluster": "assassin creed za darmo",
       "wave": 1,
-      "related": ["/poradniki/", "/o-serii/", "/assassins-creed-mirage/"],
+      "related": ["/poradniki/", "/", "/assassins-creed-mirage/"],
       "h1": "Jak zagrać w Assassin’s Creed za darmo i legalnie",
       "title": "Assassin’s Creed za darmo — legalne sposoby i pułapki",
       "description": "Kiedy w Assassin’s Creed można zagrać za darmo legalnie: rozdania Ubisoftu, darmowe weekendy i abonamenty. Wyjaśniamy, dlaczego lepiej omijać pirackie kopie."
@@ -401,7 +389,7 @@
       "cluster": "assassins lineage",
       "wave": 1,
       "темы": ["film"],
-      "related": ["/ezio-auditore/", "/o-serii/", "/assassins-creed-2/"],
+      "related": ["/ezio-auditore/", "/", "/assassins-creed-2/"],
       "h1": "Rodowód, czyli film o ojcu Ezia z Assassin’s Creed II",
       "title": "Assassin’s Creed: Rodowód — prequel w wersji aktorskiej",
       "description": "Rodowód to krótkometrażowy film aktorski z 2009 roku o Giovannim Auditore. Tłumaczymy, jak wiąże się z fabułą Assassin’s Creed II i czy warto go obejrzeć."
@@ -412,7 +400,7 @@
       "cluster": "assassins creed world war",
       "wave": 1,
       "темы": ["epoki"],
-      "related": ["/o-serii/", "/assassins-creed-shadows/", "/poradniki/"],
+      "related": ["/", "/assassins-creed-shadows/", "/poradniki/"],
       "h1": "Dlaczego nie ma Assassin’s Creed o II wojnie światowej?",
       "title": "II wojna światowa a Assassin’s Creed — brakująca epoka",
       "description": "Pełnoprawnej odsłony Assassin’s Creed w realiach II wojny światowej nie ma. Tłumaczymy, skąd bierze się to pytanie i co utrudnia serii wejście w tę epokę."

@@ -130,6 +130,29 @@
         }
       },
       "ждём": "tym samym klastrze"
+    },
+    {
+      "имя": "служебная без кластера — можно",
+      "правка": {
+        "pages.2": {
+          "url": "/prywatnosc/", "type": "legal", "h1": "Prywatność", "title": "Polityka prywatności — Alfa",
+          "description": "Opis strony służbowej, która popytu nie ma.", "cluster": null, "keywords": [],
+          "parent": "/", "blocks": [], "wave": 1, "status": "planned"
+        }
+      },
+      "ждём": null
+    },
+    {
+      "имя": "cluster null не тому типу",
+      "правка": {
+        "pages.2": {
+          "url": "/gamma/", "type": "topic", "h1": "Gamma bez klastra", "title": "Gamma — strona bez klastra",
+          "description": "Opis strony, której klaster się należy.", "cluster": null, "keywords": ["gra gamma"],
+          "parent": "/", "blocks": [], "wave": 1, "status": "planned"
+        },
+        "no_page": []
+      },
+      "ждём": "wolno tylko stronie właściciela"
     }
   ]
 }

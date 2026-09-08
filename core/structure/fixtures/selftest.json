@@ -1,0 +1,135 @@
+{
+  "почему_файл": [
+    "Гейт, который никто не видел падающим, — обещание, а не проверка.",
+    "Здесь одно правильное дерево и по случаю на каждое правило контракта; каждый случай получается правкой правильного, поэтому видно ровно одно нарушение.",
+    "Семантика игрушечная и намеренно крошечная: у кластеров «beta» и «gamma» три общих адреса из четырёх — этого хватает, чтобы поймать каннибализацию."
+  ],
+
+  "семантика_комментарий": "phrase → кластер и адреса топа; форма та же, что даёт адаптер выгрузки.",
+  "семантика": [
+    { "phrase": "gra alfa", "cluster": "alfa", "urls": ["https://a.pl/1", "https://a.pl/2", "https://a.pl/3", "https://a.pl/4"] },
+    { "phrase": "alfa poradnik", "cluster": "alfa", "urls": ["https://a.pl/1", "https://a.pl/2"] },
+    { "phrase": "gra beta", "cluster": "beta", "urls": ["https://b.pl/1", "https://b.pl/2", "https://b.pl/3", "https://b.pl/4"] },
+    { "phrase": "beta cennik", "cluster": "beta", "urls": ["https://b.pl/1", "https://b.pl/2"] },
+    { "phrase": "gra gamma", "cluster": "gamma", "urls": ["https://b.pl/1", "https://b.pl/2", "https://b.pl/3", "https://g.pl/4"] },
+    { "phrase": "gamma sklep", "cluster": "gamma", "urls": ["https://g.pl/4"] }
+  ],
+
+  "base": {
+    "site": {
+      "domain": "https://przyklad.test",
+      "lang": "pl",
+      "semantics": "input/przyklad.xlsx",
+      "semantics_date": "2026-01-01",
+      "total_queries": 6
+    },
+    "pages": [
+      {
+        "url": "/",
+        "type": "home",
+        "h1": "Alfa — strona główna",
+        "title": "Alfa — wszystko o grze",
+        "description": "Opis strony głównej, jeden na cały serwis.",
+        "cluster": "alfa",
+        "keywords": ["gra alfa", "alfa poradnik"],
+        "parent": null,
+        "related": ["/beta/"],
+        "blocks": [{ "block": "hero-key-art", "source": "type-default", "confidence": "medium" }],
+        "wave": 1,
+        "status": "planned"
+      },
+      {
+        "url": "/beta/",
+        "type": "game",
+        "h1": "Beta",
+        "title": "Beta — gra",
+        "description": "Opis strony o grze Beta.",
+        "cluster": "beta",
+        "keywords": ["gra beta"],
+        "parent": "/",
+        "related": ["/"],
+        "blocks": [{ "block": "story-row", "source": "manual", "confidence": "high" }],
+        "wave": 1,
+        "status": "planned"
+      }
+    ],
+    "exclusions": [{ "query": "beta cennik", "reason": "intencja zakupowa" }],
+    "no_page": [
+      { "query": "gra gamma", "reason": "obca uniwersum" },
+      { "query": "gamma sklep", "reason": "intencja zakupowa" }
+    ]
+  },
+
+  "случаи": [
+    { "имя": "правильное дерево", "правка": {}, "ждём": null },
+
+    { "имя": "нет обязательного поля", "правка": { "pages.0.title": "__usuń__" }, "ждём": "brak obowiązkowego pola `title`" },
+    { "имя": "тип вне списка", "правка": { "pages.1.type": "artykul" }, "ждём": "lista zamknięta" },
+    { "имя": "адрес не по образцу", "правка": { "pages.1.url": "/Beta/" }, "ждём": "nie pasuje do wzorca" },
+    { "имя": "повтор title", "правка": { "pages.1.title": "Alfa — wszystko o grze" }, "ждём": "powtórzone" },
+    { "имя": "повтор h1", "правка": { "pages.1.h1": "Alfa — strona główna" }, "ждём": "powtórzone" },
+
+    { "имя": "сирота", "правка": { "pages.1.parent": "/nie-ma/" }, "ждём": "sierota" },
+    { "имя": "related в никуда", "правка": { "pages.1.related": ["/nie-ma/"] }, "ждём": "nieistniejące" },
+    {
+      "имя": "родитель не из адреса",
+      "правка": {
+        "pages.2": {
+          "url": "/beta/dziecko/", "type": "topic", "h1": "Dziecko", "title": "Dziecko — strona",
+          "description": "Opis strony potomnej.", "cluster": null, "keywords": [], "parent": "/",
+          "blocks": [], "wave": 1, "status": "planned", "owner": true
+        }
+      },
+      "ждём": "okruszki"
+    },
+    {
+      "имя": "глубже MAX_DEPTH",
+      "правка": {
+        "pages.2": {
+          "url": "/a/b/c/", "type": "topic", "h1": "Głęboko", "title": "Głęboko — strona",
+          "description": "Opis strony zbyt głębokiej.", "cluster": null, "keywords": [], "parent": "/",
+          "blocks": [], "wave": 1, "status": "planned", "owner": true
+        }
+      },
+      "ждём": "MAX_DEPTH"
+    },
+    { "имя": "волна 1 под волной 2", "правка": { "pages.0.wave": 2 }, "ждём": "fali 1, a jej rodzic" },
+
+    { "имя": "запрос учтён дважды", "правка": { "exclusions.1": { "query": "gra beta", "reason": "próba" } }, "ждём": "rozliczone 2 razy" },
+    { "имя": "запрос потерян", "правка": { "no_page.1": "__usuń__" }, "ждём": "nierozliczonych" },
+    { "имя": "запрос вне выгрузки", "правка": { "pages.1.keywords": ["gra delta"] }, "ждём": "nie występuje w wyliczeniu" },
+    { "имя": "пустые keywords", "правка": { "pages.1.keywords": [] }, "ждём": "pusta lista" },
+    { "имя": "total_queries врёт", "правка": { "site.total_queries": 7 }, "ждём": "total_queries" },
+
+    { "имя": "блок вне словаря", "правка": { "pages.0.blocks.0.block": "hero" }, "ждём": "spoza słownika" },
+    { "имя": "блок не секция", "правка": { "pages.0.blocks.0.block": "grain" }, "ждём": "tylko sekcje" },
+    { "имя": "evidence без анатомии", "правка": { "pages.0.blocks.0.evidence": "7/9" }, "ждём": "evidence" },
+    { "имя": "source вне списка", "правка": { "pages.0.blocks.0.source": "wymyślone" }, "ждём": "lista zamknięta" },
+
+    {
+      "имя": "каннибализация",
+      "правка": {
+        "pages.2": {
+          "url": "/gamma/", "type": "game", "h1": "Gamma", "title": "Gamma — gra",
+          "description": "Opis strony o grze Gamma.", "cluster": "gamma",
+          "keywords": ["gra gamma", "gamma sklep"], "parent": "/",
+          "blocks": [{ "block": "card-rail", "source": "manual", "confidence": "high" }],
+          "wave": 1, "status": "planned"
+        },
+        "no_page": []
+      },
+      "ждём": "pokrywają się"
+    },
+    {
+      "имя": "два кластера одной страницы",
+      "правка": {
+        "pages.2": {
+          "url": "/beta-dwa/", "type": "game", "h1": "Beta jeszcze raz", "title": "Beta — druga strona",
+          "description": "Opis drugiej strony o Becie.", "cluster": "beta", "keywords": [],
+          "parent": "/", "blocks": [], "wave": 1, "status": "planned", "owner": true
+        }
+      },
+      "ждём": "tym samym klastrze"
+    }
+  ]
+}

@@ -11,12 +11,14 @@
 import { resolve } from 'node:path';
 import checkAssets from './check-assets.mjs';
 import checkContrast from './check-contrast.mjs';
+import checkStructure from './check-structure.mjs';
 import checkTokens from './check-tokens.mjs';
 
 const gates = [
   ['kontrast', checkContrast],
   ['tokeny', checkTokens],
   ['zasoby', checkAssets],
+  ['struktura', checkStructure],
 ];
 
 const siteRoot = process.argv[2] ? resolve(process.argv[2]) : process.cwd();

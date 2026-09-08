@@ -1,0 +1,182 @@
+{
+  "версия": "s0-2026-09-08",
+  "статус": "предложение S0, подтверждает владелец",
+  "источник": "docs/04_STRUCTURE_DECISIONS.md, Часть C; docs/05_STRUCTURE_TASK.md, стадия S0",
+  "как_читать": [
+    "Файл — вход инструмента tools/recon-s0.mjs, а не запись в коде.",
+    "Пороги и словари меняются здесь; правки кода для этого не нужно.",
+    "Каждая судьба, выведенная по этим правилам, несёт причину и уверенность."
+  ],
+
+  "хвост": {
+    "метод": "доли суммарного объёма Google, а не круглые числа",
+    "голова_доля": 0.95,
+    "середина_доля": 0.99,
+    "почему": [
+      "Распределение сумм по кластерам крайне неравномерно: десять кластеров держат 85 % объёма, медиана кластера — 40 запросов в месяц.",
+      "Круглый порог на таком распределении произволен: между 200 и 300 в месяц разрыва нет, есть ровный склон.",
+      "Доля объёма — величина, у которой есть смысл: 'кластеры, за пределами которых лежит меньше процента спроса'.",
+      "Числа, которые эти доли дают на выгрузке 2026-09-07, записаны в structure/s0-recon.json (раздел «хвост»)."
+    ]
+  },
+
+  "магазинный_интент": {
+    "почему_не_по_колонке": "Колонка «% Агрегаторов» в выгрузке пуста: 1415 фраз из 1426 несут 0, остальные 11 — 10 %. Признак из Части C.2 по ней не считается; вместо неё работают состав топа и отказы корпуса.",
+    "маркетплейсов_в_топе": 5,
+    "маркетплейсов_в_топе_из": 10,
+    "отказ_корпуса_доля": 0.5,
+    "отказ_корпуса_минимум_урлов": 5,
+    "почему_минимум_урлов": "У короткой выдачи (3–4 адреса) два отказа дают половину и объявляют магазинным любой узкий запрос. Признак включается только там, где выдача полная.",
+    "порядок_признаков": [
+      "чужая вселенная — exclusions;",
+      "магазинное слово в имени кластера — no_page;",
+      "платформенный кластер — слияние в хаб игры (Часть C.3 сильнее признака выдачи: спрос информационный, магазинной выдачу делает рынок);",
+      "маркетплейсы в топе — no_page;",
+      "недобор корпуса отказами магазинов — no_page;",
+      "историческое место — кандидат в карту мест;",
+      "полоса объёма."
+    ],
+    "почему_сторы_платформ_не_в_счёт": "Steam, PlayStation Store, Xbox, Ubisoft Store и Epic стоят в выдаче любого игрового запроса, включая чисто информационные. Считать их признаком покупки — значит объявить магазинными все хабы игр.",
+    "маркетплейсы": [
+      "allegro.pl", "allegrolokalnie.pl", "ceneo.pl", "olx.pl", "www.eneba.com", "eneba.com",
+      "www.g2a.com", "g2a.com", "www.kinguin.net", "kinguin.net", "amazon.pl", "m.media-amazon.com",
+      "www.empik.com", "empik.com", "mediaexpert.pl", "mediamarkt.pl", "www.morele.net", "morele.net",
+      "x-kom.pl", "komputronik.pl", "gaming.komputronik.pl", "muve.pl", "ultima.pl", "www.ultima.pl",
+      "keysforgames.pl", "dlcompare.pl", "instant-gaming.com", "lowcygier.pl", "xxlgamer.pl",
+      "gamefinity.pl", "bluegames.pl", "miastogier.pl", "psprices.com", "perfectblue.pl",
+      "cdp.pl", "neonet.pl", "avans.pl", "euro.com.pl", "skapiec.pl", "nokaut.pl", "gexe.pl",
+      "grymel.pl", "poptoys.pl", "flamberg.com.pl", "footshop.pl", "bstn.com", "grailify.com",
+      "gildia.pl", "planszeo.pl", "ustatkowanygracz.pl"
+    ],
+    "площадки_платформ": [
+      "store.steampowered.com", "steamcommunity.com", "store.playstation.com", "playstation.com",
+      "xbox.com", "store.ubisoft.com", "store.epicgames.com", "nintendo.com", "www.gog.com",
+      "gog.com", "apps.microsoft.com", "apps.apple.com", "play.google.com"
+    ],
+    "слова": [
+      "allegro", "ceneo", "olx", "eneba", "g2a", "kinguin", "amazon", "empik",
+      "media expert", "media markt", "mediaexpert", "sklep", "shop", "cena", "cennik",
+      "kup", "kupic", "kupić", "promocja", "przecena", "tanio", "gold edition", "gold xbox",
+      "gold pc", "deluxe", "ultimate", "complete edition", "limited edition", "collectors",
+      "collector", "anniversary edition", "special edition", "pantheon edition", "omega edition",
+      "ragnarok edition", "ragnarök edition", "black chest edition", "big ben edition",
+      "auditore edition", "notre dame edition", "season pass", "pakiet", "box", "pudełko",
+      "gb", "gb ps4", "key", "klucz", "kod aktywacyjny", "digital version"
+    ],
+    "мусорные_слова_в_счёт_не_идут": [
+      "«gb» встречается и как объём памяти, и как обозначение издания; засчитывается только вместе с площадкой или ценой в той же фразе."
+    ]
+  },
+
+  "побочные_темы": {
+    "почему": "Мерч, музыка и коллаборации — тема серии, но не тема сайта: страницу не делаем, причину записываем. От exclusions отличается тем, что запрос всё-таки об Assassin's Creed.",
+    "имена": [
+      "lego", "playmobil", "reebok", "pure arts", "uno", "kufel", "emp", "figurka", "funko",
+      "merchandise", "sabaton", "einar selvik", "koszulka", "bluza", "plakat", "kubek"
+    ]
+  },
+
+  "антиканнибализация": {
+    "почему": "Часть C.6 и прецедент 1weekinvr: два кластера с общей выдачей — одна страница, иначе они съедят друг друга.",
+    "пересечение_топов": 0.5
+  },
+
+  "платформы": {
+    "почему": "Часть C.3: платформенный кластер по умолчанию сливается ключами в хаб игры, отдельная страница — только при информационной выдаче и заметном объёме.",
+    "слова": [
+      "ps3", "ps4", "ps5", "ps vita", "psp", "playstation", "playstation 2", "playstation 4",
+      "xbox", "xbox 360", "xbox one", "xbox series s", "xbox series x", "switch", "nintendo",
+      "nintendo ds", "nintendo switch", "3ds", "nds", "pc", "steam", "epic", "uplay",
+      "ubisoft connect", "gog", "game pass", "eshop", "java", "jar", "ppsspp", "macbook",
+      "windows", "windows 11", "windows 8.1", "ios", "android", "nokia", "cloud gaming"
+    ]
+  },
+
+  "чужие_вселенные": {
+    "почему": "Часть C.5: чужие вселенные — exclusions. Кроссоверы с чужими играми отделены: тема наша, страница — нет.",
+    "не_наша_вселенная": [
+      "witcher", "witcher2", "wiedźmin", "god of war", "hitman", "tom clancy", "the division",
+      "ninja s creed", "ninja creed", "watch dogs", "vikings valhalla", "vikings ps5",
+      "syndicate 1993", "syndicate pc", "horizon", "tomb raider",
+      "prince of persia", "far cry"
+    ],
+    "кроссовер": ["fortnite", "brawlhalla", "rainbow six", "for honor", "smite"]
+  },
+
+  "коды_и_артикулы": {
+    "почему": "Ошибка драйвера, номер прошивки и артикул диска — не тема страницы и не запрос ниши.",
+    "образцы": [
+      "^0x[0-9a-f]+$",
+      "^b[a-z]{3}\\d{5}$",
+      "^pcsb\\d+$",
+      "^\\d{10,}$",
+      "^\\d{3} \\d{3}$",
+      "\\b\\d{3} \\d{3}$",
+      "\\bexe\\b",
+      "^ac ?\\d+ ubisoft$",
+      "^ubisoft 0x"
+    ],
+    "версии_и_патчи": "^(ac |assassins creed |assassin creed )?(valhalla |odyssey |origins )?v?\\d+\\.\\d+( ?\\d+)?$"
+  },
+
+  "исторические_места": {
+    "почему": "Страница владельца — карта исторических мест из игр (Часть D.2). Кандидаты ищутся по именам мест, а не по названиям игр.",
+    "имена": [
+      "stonehenge", "housesteads", "hadrian", "winchester", "jorvik", "york", "lunden",
+      "notre dame", "big ben", "wieża eiffla", "bastylia", "wersal", "luxor", "luksor",
+      "dolina królów", "giza", "aleksandria", "memfis", "siwa", "faijum", "teby",
+      "atlantis", "atlantyda", "olympia", "olimpia", "sparta", "ateny", "delfy", "mykeny",
+      "korynt", "kefalonia", "argolida", "fokida", "elis", "thera", "jerozolima", "masyaf",
+      "akka", "damaszek", "konstantynopol", "monteriggioni", "florencja", "wenecja",
+      "koloseum", "watykan", "panteon", "hagia", "bagdad", "aleppo", "derby", "asgard",
+      "jotunheim", "vinland", "ravensthorpe"
+    ]
+  },
+
+  "исторические_лица": {
+    "почему": "Тема-спутник карты мест: реальные люди, попавшие в игры. Отдельная тема или раздел — решение владельца при приёмке дерева.",
+    "имена": [
+      "al mualim", "marco polo", "ludovico ariosto", "jacques de molay", "sokrates",
+      "leonidas", "brasidas", "archidamos", "pitagoras", "piri reis", "da vinci",
+      "nostradamus", "hornigold", "alfred", "harald", "ivar", "ragnar", "kuba rozpruwacz",
+      "burgred", "cynewulf"
+    ]
+  },
+
+  "серийные_темы": {
+    "почему": "Запросы, которые не про одну игру, а про серию: порядок прохождения, выбор лучшей части, возрастной рейтинг, экранизации.",
+    "kolejnosc": ["po kolei", "kolejnosc", "kolejność", "chronologia", "assassins creed 7", "assassins creed 8", "assassins creed 9", "assassins creed 12", "wszystkie czesci", "wszystkie części"],
+    "wybor": ["najlepszy", "najlepsze", "ranking", "warto"],
+    "rating": ["pegi", "18", "16", "dla dzieci"],
+    "film": ["film", "filmy", "serial", "rodowód", "lineage", "netflix", "ekranizacja"],
+    "lore": ["templariusze", "asasyni", "bractwo", "animus", "isu", "pierwsza cywilizacja", "desmond", "abstergo"],
+    "przejscie": ["100", "platyna", "trofea", "osiągnięcia", "poradnik", "solucja"],
+    "lokalizacja": ["po polsku", "polski dubbing", "spolszczenie", "pl"],
+    "ksiazki": ["porzuceni", "pojednanie", "pustynna przysięga", "tajemna krucjata", "openbaring", "anton gill", "oliver bowden", "uprising", "the chain", "komiks", "powieść", "książka", "renesans"],
+    "epoki": ["1492", "1944", "ww2", "world war", "wojna światowa", "mars", "empire", "titans", "spin off", "wikingowie", "piraci", "starożytny egipt", "rewolucja francuska"],
+    "mobilne": ["gameloft", "nokia", "java", "jar", "ppsspp", "android", "ios", "symbian", "mobile"]
+  },
+
+  "игры": {
+    "почему": "Соответствие «псевдоним → хаб игры». По нему некластеризованная фраза уходит ключом в существующий кластер (Часть C.5).",
+    "assassin black flag": ["black flag", "czarna bandera", "ac4", "ac 4", "assassins creed 4", "assassins creed iv", "edward kenway", "freedom cry", "pancerz templariuszy black flag"],
+    "assassins 3": ["assassins creed 3", "ac3", "ac 3", "connor", "desmond miles", "benedict arnold", "assa 3"],
+    "assassin origins": ["origins", "bayek", "ancient egypt", "starożytny egipt"],
+    "assassin valhalla": ["valhalla", "eivor", "ragnarok", "ragnarök", "orlog", "zeloci", "osada", "drengr", "wolfsmal", "tekla", "holger", "gunnar", "alvar", "edwin", "warzyciel", "anomalia"],
+    "assassin mirage": ["mirage", "basim", "rift", "bagdad"],
+    "assassin odyssey": ["odyssey", "kassandra", "alexios", "kosmos", "symmachia", "włócznia leonidasa", "statek", "elis", "hades"],
+    "assassin unity": ["unity", "arno", "notre dame", "paryż"],
+    "assassin syndicate": ["syndicate", "jacob", "evie", "victory", "big ben", "londyn"],
+    "assassins 2": ["assassins creed 2", "ac2", "ac 2", "renesans", "dante", "aquilus", "da vinci"],
+    "assassin brotherhood": ["brotherhood", "bractwo", "romulus"],
+    "assassin revelation": ["revelations", "revelation", "objawienia"],
+    "creed rogue": ["rogue", "shay"],
+    "assassin liberation": ["liberation", "aveline"],
+    "assassin chronicles": ["chronicles", "china", "india", "russia"],
+    "assassins 1": ["assassins creed 1", "ac1", "altair", "al mualim", "2007"],
+    "ezio auditore": ["ezio", "auditore"],
+    "assassin red": ["assassins creed red", "codename red", "shadows", "2024"],
+    "assassins pirates": ["assassins creed pirates", "ac pirates"],
+    "assassin creed nexus": ["nexus", "vr"]
+  }
+}

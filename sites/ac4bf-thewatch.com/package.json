@@ -16,6 +16,8 @@
     "gameart": "node tools/fetch-game-art.mjs",
     "gameart:check": "node tools/fetch-game-art.mjs --dry-run",
     "corpus": "node tools/fetch-corpus.mjs",
+    "recon": "node tools/recon-s0.mjs",
+    "recon:check": "node tools/recon-s0.mjs --dry-run",
     "corpus:check": "node tools/fetch-corpus.mjs --dry-run"
   },
   "dependencies": {

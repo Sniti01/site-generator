@@ -1,0 +1,117 @@
+{
+  "версия": "s3-2026-09-08",
+  "статус": "измеритель S3 — пороги и словари; выводы предлагает инструмент, имена блоков решает владелец",
+  "источник": "docs/05_STRUCTURE_TASK.md, стадия S3; docs/BACKLOG.md, пункт 1 (два прохода по одному корпусу)",
+  "как_читать": [
+    "Файл — вход инструмента tools/anatomy-s3.mjs. Пороги меняются здесь, правок кода для этого не нужно.",
+    "Из корпуса извлекается структура и мера, а не текст: словари ниже нужны, чтобы узнать элемент, а его формулировка нигде не сохраняется.",
+    "Заголовок, не легший ни в одну тему, считается неопознанным: в выход идут только число и адреса документов — примером служит документ, а не фраза."
+  ],
+
+  "план_содержания": {
+    "коридор": 0.15,
+    "минимум_документов": 4,
+    "почему_минимум": "Меньше четырёх своих документов — медиана считается по всему корпусу ниши и помечается ориентиром, а не нормой страницы (перенос VOLUME_MIN_DOCS конвейера 1weekinvr).",
+    "почему_коридор": "±15 % — тот же VOLUME_TOLERANCE. Коридор, а не точка: попадание в объём ниши важнее совпадения с медианой."
+  },
+
+  "анатомия": {
+    "обязателен_от": 0.7,
+    "решение_от": 0.4,
+    "минимум_документов": 4,
+    "почему_пороги": "Элемент у 7 документов из 10 — норма жанра, и на странице он обязателен; 4–6 из 10 — зона решения человека; ниже — не норма. Мера документная: доля документов, а не число вхождений."
+  },
+
+  "корзины": {
+    "low_только_план": true,
+    "почему": "Часть D.3: у страниц корзины low корпус мал, анатомия на трёх документах не считается — им остаётся только план содержания."
+  },
+
+  "исключить_хосты": {
+    "почему": "Карточка товара на маркетплейсе устроена как карточка товара, а не как страница жанра. Если считать их вместе с обзорами и вики, нормой ниши окажется корзина покупок. Список тот же, что у разведки S0.",
+    "берётся_из": "structure/rules-s0.json, магазинный_интент.маркетплейсы"
+  },
+
+  "элементы": {
+    "почему_так": "Каждый признак — либо разметка (её нельзя спутать), либо имя класса, либо счётный факт. Догадок по тексту нет.",
+    "breadcrumbs": {
+      "разметка": ["BreadcrumbList"],
+      "классы": ["breadcrumb", "breadcrumbs", "okruszk", "sciezka", "ścieżka", "path-nav"],
+      "что_это": "хлебные крошки"
+    },
+    "spis-tresci": {
+      "классы": ["toc", "table-of-contents", "spis-tresci", "spis_tresci", "spisTresci", "article-toc", "js-toc"],
+      "что_это": "оглавление страницы"
+    },
+    "faq": {
+      "разметка": ["FAQPage", "Question"],
+      "классы": ["faq", "pytania", "accordion"],
+      "тег_details_от": 3,
+      "что_это": "блок вопросов и ответов"
+    },
+    "podobne": {
+      "классы": ["related", "podobne", "powiazane", "powiązane", "zobacz-tez", "zobacz-takze", "similar", "recommend"],
+      "что_это": "блок похожего"
+    },
+    "tabela": { "тег": "table", "минимум": 1, "что_это": "таблица" },
+    "galeria": {
+      "тег": "figure",
+      "минимум": 4,
+      "классы": ["gallery", "galeria", "lightbox", "slider", "carousel"],
+      "что_это": "галерея кадров"
+    },
+    "wideo": {
+      "признаки": ["youtube.com/embed", "player.vimeo.com", "<video"],
+      "что_это": "встроенное видео"
+    },
+    "autor-data": {
+      "разметка": ["datePublished", "dateModified"],
+      "свойства": ["itemprop=\"author\"", "rel=\"author\""],
+      "классы": ["author", "autor", "byline", "published", "data-publikacji"],
+      "что_это": "подпись автора и дата"
+    },
+    "ocena": {
+      "разметка": ["AggregateRating", "Review", "ratingValue"],
+      "классы": ["rating", "ocena", "score"],
+      "что_это": "оценка или рейтинг"
+    },
+    "komentarze": {
+      "классы": ["comment", "komentarz", "disqus"],
+      "что_это": "комментарии"
+    },
+    "schema-org": {
+      "признаки": ["application/ld+json"],
+      "что_это": "разметка schema.org"
+    }
+  },
+
+  "темы_заголовков": {
+    "почему": "Заголовки конкурентов в выход не идут. Тема узнаётся по словарю и записывается нашим именем; всё, что словарь не узнал, идёт в «неопознанное» числом и адресами.",
+    "как_рос_словарь": "Первая редакция узнавала одну строку из семи: остальное оказалось разделами Википедии (przypisy, odbiór, produkcja), витриной Steam и списком актёров. Слова добавлены по факту корпуса, а не по догадке; что осталось неузнанным — либо название соседней статьи, либо имя актёра, и темой страницы оно не является.",
+    "opis": ["opis", "o grze", "o tej grze", "about this game", "informacje o grze", "charakterystyka", "streszczenie"],
+    "produkcja": ["produkcja", "deweloper", "wydawca", "dystrybucja", "twórcy", "tworcy", "development", "silnik"],
+    "zrodla": ["przypisy", "linki zewnętrzne", "linki zewnetrzne", "bibliografia", "uwagi", "źródła", "zrodla", "referencje"],
+    "obsada": ["obsada", "aktorzy", "głosy", "glosy", "dubbing", "voice"],
+    "gatunek": ["gatunek", "akcja", "przygodow", "rpg", "skradank", "strzelank"],
+    "fabula": ["fabuła", "fabula", "historia", "opowieść", "opowiesc", "watek", "wątek", "zakończenie", "zakonczenie", "spoiler"],
+    "rozgrywka": ["rozgrywka", "gameplay", "mechanik", "sterowanie", "walka", "skradanie", "parkour", "eksploracja", "system"],
+    "swiat": ["świat", "swiat", "mapa", "lokacj", "region", "miasto", "otwarty świat", "otwarty swiat"],
+    "postacie": ["postać", "postac", "postaci", "bohater", "protagonist", "przeciwnik", "wróg", "wrog"],
+    "wersje": ["wersj", "edycj", "wydani", "remaster", "port", "platform", "konsol", "pc", "ps4", "ps5", "xbox", "switch"],
+    "wymagania": ["wymagania", "specyfikacj", "optymalizacj", "wydajność", "wydajnosc", "fps", "rozmiar", "miejsca na dysku", "kwestie techniczne", "błęd", "bled"],
+    "premiera": ["premiera", "data wydania", "kiedy", "zapowiedź", "zapowiedz", "trailer", "zwiastun"],
+    "dlc": ["dlc", "dodatek", "dodatki", "season pass", "rozszerzeni"],
+    "poradnik": ["poradnik", "solucja", "przejści", "przejsci", "jak ", "krok po kroku", "trofea", "osiągnięcia", "osiagniecia", "znajdźki", "znajdzki"],
+    "opinie": ["recenzj", "ocena", "oceny", "opinie", "warto", "ranking", "podsumowanie", "werdykt", "plusy", "minusy", "odbiór", "odbior", "recepcja", "sprzedaż", "sprzedaz", "krytyka"],
+    "cena": ["cena", "ceny", "gdzie kupić", "gdzie kupic", "promocj", "przecena", "za darmo", "gratis"],
+    "ciekawostki": ["ciekawostk", "wiedz", "lore", "historia prawdziwa", "fakty"],
+    "seria": ["seria", "chronologi", "kolejnoś", "kolejnos", "wszystkie części", "wszystkie czesci", "spis gier"],
+    "media": ["galeria", "screeny", "zrzuty", "wideo", "video", "filmy", "obsada"],
+    "faq-tema": ["najczęściej zadawane", "najczesciej zadawane", "pytania", "faq", "q&a"]
+  },
+
+  "служебные_заголовки": {
+    "почему": "Заголовки обвязки сайта (меню, подвал, согласие на куки) к жанру страницы отношения не имеют и в счёт тем не идут.",
+    "слова": ["menu", "nawigacja", "szukaj", "wyszukiwarka", "newsletter", "polityka prywatności", "polityka prywatnosci", "cookie", "ciasteczka", "zgoda", "reklama", "logowanie", "rejestracja", "koszyk", "kontakt", "stopka", "obserwuj", "social", "udostępnij", "udostepnij", "subskrybuj", "zaloguj", "regulamin", "publicystyka", "wiadomości", "wiadomosci", "gry z serii", "pliki do pobrania", "inne tytuły", "inne tytuly", "inne lubiane", "graj z", "sign in", "zdaniem kuratorów", "zdaniem kuratorow", "what curators say", "popularne tagi", "popular user-defined tags", "przepraszamy", "niestety", "dziękujemy", "dziekujemy", "odwiedź inne kanały", "odwiedz inne kanaly", "{num}", "{title}", "{feature_title}"]
+  }
+}

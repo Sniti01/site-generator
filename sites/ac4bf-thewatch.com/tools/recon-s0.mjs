@@ -24,7 +24,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { readClustering, groupPhrases, clusterUrls, hostOf, UNCLUSTERED } from './lib/clustering.mjs';
+import { readClustering, groupPhrases, clusterUrls, hostOf, UNCLUSTERED } from '@factory/core/structure/clustering.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const source = join(root, 'input/clustering-google-2026-09-07.xlsx');

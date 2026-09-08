@@ -1,0 +1,75 @@
+/* ------------------------------------------------------------------ *
+ * Кнопки: одна геометрия, четыре вида. Заполненная, обведённая, тихая
+ * и ссылка-со-стрелкой.
+ *
+ * Порядок правил внутри файла значим: `.btn` задаёт `border` сокращением
+ * и `height`, а `.btn-secondary` и `.btn-quiet` их перекрывают при равной
+ * специфичности. Переставить — потерять обводку вторичной кнопки.
+ *
+ * Вынесено из `sites/ac4bf-thewatch.com/src/styles/global.css` шагом 2
+ * закрытия P2. Правила перенесены дословно; что ядро ожидает от сайта —
+ * `core/styles/ROLES.md`.
+ * ------------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  height: 52px;
+  padding-inline: var(--space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sharp);
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    background-color 180ms var(--ease-out),
+    border-color 180ms var(--ease-out),
+    color 180ms var(--ease-out),
+    transform 180ms var(--ease-out);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+.btn-primary:hover {
+  background: color-mix(in oklab, var(--accent) 88%, var(--ink));
+}
+.btn-primary:active {
+  transform: translateY(1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--hairline-strong);
+}
+.btn-secondary:hover {
+  border-color: var(--ink);
+  background: var(--wash);
+}
+
+.btn-quiet {
+  background: var(--surface-2);
+  color: var(--ink);
+  height: 44px;
+  padding-inline: var(--space-md);
+}
+.btn-quiet:hover {
+  background: var(--wash-strong);
+}
+
+.btn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  color: var(--era-text);
+  text-decoration: none;
+  transition: gap 180ms var(--ease-out);
+}
+.btn-link:hover {
+  text-decoration: underline;
+  gap: var(--space-xs);
+}

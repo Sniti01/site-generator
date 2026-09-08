@@ -1,0 +1,37 @@
+/* ------------------------------------------------------------------ *
+ * Раскладка: мера строки, колонка страницы, вертикальный ритм секции,
+ * полоса и линейка.
+ *
+ * `.container` совпадает по имени со встроенной утилитой Tailwind. Правило
+ * ядра неслоёное и выигрывает у `@layer utilities` независимо от порядка —
+ * но знать об этом совпадении нужно.
+ *
+ * Вынесено из `sites/ac4bf-thewatch.com/src/styles/global.css` шагом 2
+ * закрытия P2. Правила перенесены дословно; что ядро ожидает от сайта —
+ * `core/styles/ROLES.md`.
+ * ------------------------------------------------------------------ */
+
+.measure {
+  max-width: 62ch;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.band {
+  background: var(--bg-band);
+}
+
+.rule {
+  border: 0;
+  border-top: 1px solid var(--hairline);
+  margin: 0;
+}

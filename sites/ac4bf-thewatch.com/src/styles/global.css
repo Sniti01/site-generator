@@ -129,11 +129,7 @@
  * Baza
  * ------------------------------------------------------------------ */
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@import '@factory/core/styles/reset.css';
 
 html {
   scroll-behavior: smooth;
@@ -159,56 +155,7 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Powierzchnie, których nie rysowaliśmy, też noszą projekt. */
-::selection {
-  background: var(--accent);
-  color: var(--ink-on-accent);
-}
-
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-band);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--surface-2);
-  border: 3px solid var(--bg-band);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-2);
-}
-
-* {
-  scrollbar-color: var(--surface-2) var(--bg-band);
-  scrollbar-width: thin;
-}
-
-:focus-visible {
-  outline: 2px solid var(--accent-text);
-  outline-offset: 3px;
-  border-radius: var(--radius-sharp);
-}
-
-img,
-svg {
-  display: block;
-  max-width: 100%;
-}
-
-a {
-  color: inherit;
-  text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
-  text-underline-offset: 0.22em;
-  text-decoration-thickness: 1px;
-}
-
-/* Cyfry lat i liczników muszą stać w kolumnie. */
-.tabular {
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
-}
+@import '@factory/core/styles/base.css';
 
 /* ------------------------------------------------------------------ *
  * Role typograficzne. Każdy literalny rozmiar na stronie należy do
@@ -321,186 +268,25 @@ a {
   text-transform: uppercase;
 }
 
-.measure {
-  max-width: 62ch;
-}
-
-/* ------------------------------------------------------------------ *
- * Układ
- * ------------------------------------------------------------------ */
-
-.container {
-  width: 100%;
-  max-width: var(--container);
-  margin-inline: auto;
-  padding-inline: var(--gutter);
-}
-
-.section {
-  padding-block: var(--section-y);
-}
-
-.band {
-  background: var(--bg-band);
-}
-
-.rule {
-  border: 0;
-  border-top: 1px solid var(--hairline);
-  margin: 0;
-}
+@import '@factory/core/styles/layout.css';
 
 /* ------------------------------------------------------------------ *
  * Przyciski
  * ------------------------------------------------------------------ */
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2xs);
-  height: 52px;
-  padding-inline: var(--space-lg);
-  border: 1px solid transparent;
-  border-radius: var(--radius-sharp);
-  cursor: pointer;
-  text-decoration: none;
-  white-space: nowrap;
-  transition:
-    background-color 180ms var(--ease-out),
-    border-color 180ms var(--ease-out),
-    color 180ms var(--ease-out),
-    transform 180ms var(--ease-out);
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--ink-on-accent);
-}
-.btn-primary:hover {
-  background: color-mix(in oklab, var(--accent) 88%, var(--ink));
-}
-.btn-primary:active {
-  transform: translateY(1px);
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--hairline-strong);
-}
-.btn-secondary:hover {
-  border-color: var(--ink);
-  background: var(--wash);
-}
-
-.btn-quiet {
-  background: var(--surface-2);
-  color: var(--ink);
-  height: 44px;
-  padding-inline: var(--space-md);
-}
-.btn-quiet:hover {
-  background: var(--wash-strong);
-}
-
-.btn-link {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2xs);
-  color: var(--era-text);
-  text-decoration: none;
-  transition: gap 180ms var(--ease-out);
-}
-.btn-link:hover {
-  text-decoration: underline;
-  gap: var(--space-xs);
-}
+@import '@factory/core/styles/button.css';
 
 /* ------------------------------------------------------------------ *
  * Karta
  * ------------------------------------------------------------------ */
 
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: var(--surface);
-  border: 1px solid var(--hairline);
-  border-radius: var(--radius-sharp);
-  text-decoration: none;
-  color: inherit;
-  transition:
-    border-color 180ms var(--ease-out),
-    transform 180ms var(--ease-out),
-    box-shadow 180ms var(--ease-out);
-}
-
-.card:hover {
-  border-color: var(--hairline-strong);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lift);
-}
-
-.card__media {
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-band);
-}
-
-.card__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-  padding: var(--space-md);
-}
+@import '@factory/core/styles/card.css';
 
 /* ------------------------------------------------------------------ *
  * Fotografia
  * ------------------------------------------------------------------ */
 
-/* Duoton na tokenach, bez drugiego zapisu barw: kadr w skali szarości, nad nim
-   kolor epoki w trybie „multiply" (cienie schodzą do czerni, światła biorą
-   barwę), nad tym grunt strony w trybie „lighten", który podnosi czernie do tła.
-   Dzięki temu zdjęcia z różnych źródeł i z różnych stuleci czytają się jak jedna
-   inscenizacja, a wędrujący akcent działa również na fotografii.
-
-   Kolejność jest istotna: barwa epoki leży NAD kadrem, nie pod nim. Gdyby była
-   tłem kontenera, panel z jeszcze niedoczytanym zdjęciem świeciłby płachtą
-   nasyconego koloru — a tak zostaje ciemny jak reszta strony. */
-.foto {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: var(--bg);
-}
-
-.foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.08);
-}
-
-.foto::before,
-.foto::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.foto::before {
-  z-index: 1;
-  background: var(--era);
-  mix-blend-mode: multiply;
-}
-
-.foto::after {
-  z-index: 2;
-  background: var(--bg);
-  mix-blend-mode: lighten;
-}
+@import '@factory/core/styles/foto.css';
 
 /* Materiał gry idzie w pełnym kolorze: kluczowy art jest już zestrojony przez
    wydawcę, a duoton zabrałby to, po co się go bierze. Zostaje sam skrim, żeby
@@ -518,73 +304,12 @@ a {
   display: none;
 }
 
-/* Podpis autora siedzi nad duotonem, nie w nim. Przy górnej krawędzi, bo
-   dolną zasłania tabliczka z pergaminu. */
-.foto__credit {
-  position: absolute;
-  right: 0;
-  top: 0;
-  z-index: 3;
-  display: flex;
-  gap: var(--space-3xs);
-  padding: var(--space-3xs) var(--space-2xs);
-  mix-blend-mode: normal;
-  background: color-mix(in oklab, var(--bg) 78%, transparent);
-  color: var(--ink-muted);
-}
-
-.foto__credit a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.foto__credit a:hover {
-  color: var(--ink);
-  text-decoration: underline;
-}
+@import '@factory/core/styles/credit.css';
 
 /* ------------------------------------------------------------------ *
  * Ruch
  * ------------------------------------------------------------------ */
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
-}
+@import '@factory/core/styles/motion.css';
 
-.visually-hidden {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
-}
-
-.skip-link {
-  position: absolute;
-  left: var(--space-sm);
-  top: var(--space-sm);
-  z-index: 100;
-  transform: translateY(-200%);
-  background: var(--accent);
-  color: var(--ink-on-accent);
-  padding: var(--space-xs) var(--space-md);
-  border-radius: var(--radius-sharp);
-  text-decoration: none;
-}
-.skip-link:focus-visible {
-  transform: translateY(0);
-}
+@import '@factory/core/styles/a11y.css';

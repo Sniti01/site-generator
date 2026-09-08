@@ -1,0 +1,24 @@
+/* ------------------------------------------------------------------ *
+ * Уважение к системной настройке «меньше движения». Блок гасит длительности
+ * и сглаженную прокрутку.
+ *
+ * От порядка не зависит: держится на `!important`, а не на позиции.
+ *
+ * Вынесено из `sites/ac4bf-thewatch.com/src/styles/global.css` шагом 2
+ * закрытия P2. Правила перенесены дословно; что ядро ожидает от сайта —
+ * `core/styles/ROLES.md`.
+ * ------------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

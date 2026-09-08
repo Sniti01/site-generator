@@ -1,0 +1,54 @@
+/* ------------------------------------------------------------------ *
+ * Оболочка кадра `.foto` — дуотон на токенах. Её надевает `SmartImage`.
+ *
+ * Файл несёт только общий случай. Посайтовые варианты (`.foto--gra`
+ * и прочие модификаторы) остаются у сайта и обязаны подключаться ПОСЛЕ
+ * этого файла: у них равная специфичность, и порядок решает исход.
+ *
+ * Вынесено из `sites/ac4bf-thewatch.com/src/styles/global.css` шагом 2
+ * закрытия P2. Правила перенесены дословно; что ядро ожидает от сайта —
+ * `core/styles/ROLES.md`.
+ * ------------------------------------------------------------------ */
+
+/* Duoton na tokenach, bez drugiego zapisu barw: kadr w skali szarości, nad nim
+   kolor epoki w trybie „multiply" (cienie schodzą do czerni, światła biorą
+   barwę), nad tym grunt strony w trybie „lighten", który podnosi czernie do tła.
+   Dzięki temu zdjęcia z różnych źródeł i z różnych stuleci czytają się jak jedna
+   inscenizacja, a wędrujący akcent działa również na fotografii.
+
+   Kolejność jest istotna: barwa epoki leży NAD kadrem, nie pod nim. Gdyby była
+   tłem kontenera, panel z jeszcze niedoczytanym zdjęciem świeciłby płachtą
+   nasyconego koloru — a tak zostaje ciemny jak reszta strony. */
+.foto {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.08);
+}
+
+.foto::before,
+.foto::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.foto::before {
+  z-index: 1;
+  background: var(--era);
+  mix-blend-mode: multiply;
+}
+
+.foto::after {
+  z-index: 2;
+  background: var(--bg);
+  mix-blend-mode: lighten;
+}

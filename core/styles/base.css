@@ -1,0 +1,66 @@
+/* ------------------------------------------------------------------ *
+ * База страницы: выделение, полоса прокрутки, кольцо фокуса, поведение
+ * изображений и ссылок, табличные цифры.
+ *
+ * Всё, что здесь есть, — форма; цвета приходят токенами сайта. Правило
+ * `img, svg` — единственная опора `Icon` на лист стилей, `:focus-visible` —
+ * единственная жёсткая опора `SiteHeader`.
+ *
+ * `.tabular` обязан стоять РАНЬШЕ ролей `.t-*`: у них равная специфичность,
+ * обе задают `letter-spacing`, и роль должна побеждать.
+ *
+ * Вынесено из `sites/ac4bf-thewatch.com/src/styles/global.css` шагом 2
+ * закрытия P2. Правила перенесены дословно; что ядро ожидает от сайта —
+ * `core/styles/ROLES.md`.
+ * ------------------------------------------------------------------ */
+
+/* Powierzchnie, których nie rysowaliśmy, też noszą projekt. */
+::selection {
+  background: var(--accent);
+  color: var(--ink-on-accent);
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-band);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border: 3px solid var(--bg-band);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+
+* {
+  scrollbar-color: var(--surface-2) var(--bg-band);
+  scrollbar-width: thin;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 3px;
+  border-radius: var(--radius-sharp);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+
+/* Cyfry lat i liczników muszą stać w kolumnie. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}

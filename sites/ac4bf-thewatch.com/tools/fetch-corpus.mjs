@@ -591,6 +591,12 @@ function writeRun(done, { attempted, counts, startedAt, hosts }) {
   const times = [...done.values()].map((r) => r.fetched_at).filter(Boolean).sort();
   const stamps = { first: times[0] ?? null, last: times.at(-1) ?? null };
 
+  // Строк в манифесте больше, чем адресов: повтор дописывается новой записью,
+  // прежняя остаётся историей попытки. Считается последняя запись по адресу.
+  const lines = existsSync(manifestPath)
+    ? readFileSync(manifestPath, 'utf8').split('\n').filter((l) => l.trim()).length
+    : 0;
+
   const run = {
     tool: 'tools/fetch-corpus.mjs',
     source: 'input/clustering-google-2026-09-07.xlsx',
@@ -608,6 +614,8 @@ function writeRun(done, { attempted, counts, startedAt, hosts }) {
     summary_written_at: new Date().toISOString(),
     urls_total: collect().length,
     urls_in_manifest: done.size,
+    manifest_lines: lines,
+    manifest_note: 'строк больше, чем адресов: повтор дописывается новой записью. Считается последняя запись по адресу.',
     hosts: new Set([...done.values()].map((r) => r.host).filter(Boolean)).size,
     outcomes: Object.fromEntries([...tally].sort()),
     bytes_raw: [...done.values()].reduce((a, r) => a + (r.bytes || 0), 0),

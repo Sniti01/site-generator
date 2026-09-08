@@ -8,9 +8,11 @@
  "language": "pl",
  "first_fetch_at": "2026-09-08T07:00:01.427Z",
  "last_fetch_at": "2026-09-08T07:18:11.202Z",
- "summary_written_at": "2026-09-08T07:33:22.476Z",
+ "summary_written_at": "2026-09-08T07:36:20.820Z",
  "urls_total": 3479,
  "urls_in_manifest": 3479,
+ "manifest_lines": 3543,
+ "manifest_note": "строк больше, чем адресов: повтор дописывается новой записью. Считается последняя запись по адресу.",
  "hosts": 537,
  "outcomes": {
   "http-error": 757,

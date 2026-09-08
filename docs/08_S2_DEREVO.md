@@ -28,36 +28,36 @@
 
 | Адрес | Тип | В | Кластер | Google | Запросов | Корпус |
 |---|---|---:|---|---:|---:|---|
-| `/` | home | 1 | `assassins` | 178790 | 122 | high 9/10 |
+| `/` | home | 1 | `assassins` + `assassins creed psp` + `assassin xbox 360` | 181100 | 133 | high 9/10 |
 | `/assassins-creed-4-black-flag/` | game | 1 | `assassin black flag` + `assassins iv black flag` | 120300 | 33 | high 10/10 |
 | └ `/assassins-creed-4-black-flag/freedom-cry/` | game | 1 | `assassins creed cry` | 1240 | 7 | high 8/10 |
 | `/assassins-creed-3/` | game | 1 | `assassins 3` | 29480 | 45 | mid 6/10 |
-| `/assassins-creed-origins/` | game | 1 | `assassin origins` | 23080 | 64 | high 7/10 |
-| `/assassins-creed-valhalla/` | game | 1 | `assassin valhalla` | 21420 | 305 | high 9/10 |
-| └ `/assassins-creed-valhalla/dawn-of-ragnarok/` | game | 1 | `valhalla ragnarok` + `dawn ragnarok` | 370 | 17 | high 9/10 |
-| └ `/assassins-creed-valhalla/eivor/` | topic | 1 | `assassin eivor` | 310 | 8 | mid 6/10 |
+| `/assassins-creed-origins/` | game | 1 | `assassin origins` | 23100 | 65 | high 7/10 |
+| `/assassins-creed-valhalla/` | game | 1 | `assassin valhalla` | 21040 | 265 | high 9/10 |
+| └ `/assassins-creed-valhalla/dawn-of-ragnarok/` | game | 1 | `valhalla ragnarok` + `dawn ragnarok` и ещё девять кластеров дополнения | 710 | 53 | high 9/10 |
+| └ `/assassins-creed-valhalla/eivor/` | topic | 1 | `assassin eivor` + `eivor vikings` | 350 | 12 | mid 6/10 |
 | `/assassins-creed-mirage/` | game | 1 | `assassin mirage` | 15920 | 50 | high 8/10 |
 | `/assassins-creed-odyssey/` | game | 1 | `assassin odyssey` | 15800 | 73 | high 8/10 |
 | `/assassins-creed-unity/` | game | 1 | `assassin unity` | 14130 | 25 | high 9/10 |
 | `/assassins-creed-syndicate/` | game | 1 | `assassin syndicate` + `assassins creed 6` | 11970 | 23 | high 9/10 |
-| `/assassins-creed-2/` | game | 1 | `assassins 2` | 9450 | 41 | high 9/10 |
-| └ `/assassins-creed-2/discovery/` | game | **2** | `assassins creed discovery` | 80 | 2 | low 3/6 |
+| `/assassins-creed-2/` | game | 1 | `assassins 2` | 9430 | 39 | high 9/10 |
+| └ `/assassins-creed-2/discovery/` | game | **2** | `assassins creed discovery` + `assassins creed 2 nintendo ds` | 100 | 4 | low 3/6 |
 | `/assassins-creed-brotherhood/` | game | 1 | `assassin brotherhood` | 7590 | 16 | high 7/10 |
-| `/assassins-creed-1/` | game | 1 | `assassins 1` + `assassins creed 1ps4` | 6840 | 48 | high 7/10 |
 | `/assassins-creed-rogue/` | game | 1 | `creed rogue` | 6380 | 16 | high 8/10 |
+| `/assassins-creed-1/` | game | 1 | `assassins 1` + `assassins creed 1ps4` | 4530 | 37 | high 7/10 |
 | `/assassins-creed-revelations/` | game | 1 | `assassin revelation` + `ezio auditore revelations` | 3970 | 8 | high 7/10 |
 | `/assassins-creed-liberation/` | game | 1 | `assassin liberation` | 3940 | 27 | high 8/10 |
-| `/ezio-auditore/` | topic | 1 | `ezio auditore` | 3100 | 24 | high 7/10 |
-| └ `/ezio-auditore/the-ezio-collection/` | game | 1 | `assassin ezio` | 660 | 5 | high 7/10 |
 | `/assassins-creed-chronicles/` | game | 1 | `assassin chronicles` + `assassin creed russia` | 2820 | 16 | high 8/10 |
+| `/ezio-auditore/` | topic | 1 | `ezio auditore` | 2550 | 17 | high 7/10 |
+| └ `/ezio-auditore/the-ezio-collection/` | game | 1 | `assassin ezio` + `ezio ps4` | 1210 | 12 | high 7/10 |
 | `/mapa-miejsc-historycznych/` | map | 1 | — (страница владельца) | 890 | 54 | — |
 | `/poradniki/` | hub | 1 | `najlepszy assasin creed` | 830 | 4 | mid 4/10 |
-| └ `/poradniki/od-czego-zaczac/` | guide | 1 | `assassin creed po kolei` | 400 | 3 | mid 6/8 |
+| └ `/poradniki/od-czego-zaczac/` | guide | 1 | `assassin creed po kolei` | 390 | 2 | mid 6/8 |
 | `/assassins-creed-pirates/` | game | 1 | `assassins pirates` | 660 | 5 | high 7/10 |
-| `/o-serii/` | topic | 1 | `assassin ubisoft` + `assassins creed 7` | 260 | 9 | high 10/10 |
-| `/assassins-creed-ii-wojna-swiatowa/` | topic | 1 | `assassins creed world war` | 210 | 12 | mid 4/7 |
+| `/o-serii/` | topic | 1 | `assassin ubisoft` + `assassins creed 7` | 280 | 11 | high 10/10 |
+| `/assassins-creed-ii-wojna-swiatowa/` | topic | 1 | `assassins creed world war` | 170 | 9 | mid 4/7 |
+| `/assassins-creed-shadows/` | game | 1 | `assassin red` | 160 | 5 | low 3/5 |
 | `/assassins-creed-rodowod/` | topic | 1 | `assassins lineage` | 160 | 4 | low 3/3 |
-| `/assassins-creed-shadows/` | game | 1 | `assassin red` | 150 | 4 | low 3/5 |
 | `/assassins-creed-za-darmo/` | topic | 1 | `assassin creed za darmo` | 120 | 4 | high 7/9 |
 
 **31 страница: 30 в волне 1, одна в волне 2.**
@@ -66,25 +66,47 @@
 
 Правила Части C дали пул кластеров, из которых страница вообще может
 получиться, — 37 штук: 20 головы и 17 середины. Всё остальное правила уже
-израсходовали: 141 кластер отдаёт ключи хабам, 64 ушли в `no_page`, 3 —
-в `exclusions`. Кластеров хвоста среди страниц нет ни одного.
+израсходовали. Счёт по всем 257 кластерам выгрузки:
 
-| Откуда | Кластеров | Страниц | Слито |
-|---|---:|---:|---:|
-| голова (≥ 830/мес) | 20 | 19 | 1 |
-| середина (70–830/мес) | 17 | 11 | 6 |
-| страница владельца | — | 1 | — |
-| **итого** | **37** | **31** | **7** |
+| Куда ушёл кластер | Кластеров |
+|---|---:|
+| пул страниц: голова | 20 |
+| пул страниц: середина | 17 |
+| ключами в хабы игр | 141 |
+| `no_page` | 64 |
+| материал страницы владельца (4 карта мест + 8 люди истории) | 12 |
+| `exclusions` | 3 |
+| **всего** | **257** |
+
+Из пула в 37 кластеров получилась 31 страница: голова дала 19 страниц
+при одном слиянии, середина — 11 при шести, плюс страница владельца,
+у которой кластера нет вовсе.
 
 Волна 1 — тридцать сильнейших по Google-сумме, как велит Часть D.3; волна 2 —
 то, что осталось после тридцатой строки. Осталась ровно одна страница:
-`/assassins-creed-2/discovery/`, 80 запросов в месяц, корзина low. **Это факт,
+`/assassins-creed-2/discovery/`, 100 запросов в месяц, корзина low. **Это факт,
 а не недосмотр,** и он же — главный вопрос владельцу ниже.
 
-### Семь слияний
+**Десять кластеров середины стоят в волне 1** — `assassin ezio`, `assassins
+pirates`, `assassin creed po kolei`, `assassin eivor`, `valhalla ragnarok`,
+`assassin ubisoft`, `assassin creed za darmo`, `assassin red`, `assassins
+lineage`, `assassins creed world war`. Разведка пометила их «волна_2», и
+основание для подъёма — **Часть D.3, добор до тридцати**: голова даёт только
+19 страниц, а с картой мест двадцать, и без середины тридцати не набирается.
+Это ровно тот счёт, который стоит в S0, раздел 10. Части C.4 такого исхода
+не знает — там у середины два выхода, волна 2 и слияние; третий появляется
+из D.3, и назвать его надо честно.
 
-Четыре вынуждены гейтом: пересечение топов ≥ 50 % означает, что две страницы
-будут отбирать выдачу друг у друга (Часть C.6).
+**`wave` — ручное объявление, не вычисленное значение.** Пороги хвоста
+записаны долями и при пересъёмке семантики пересчитаются сами; правило
+«тридцать сильнейших» живёт прозой Части D.3 и полем `wave` у каждой
+страницы. На новой выгрузке пороги сдвинутся молча, а раскладка по волнам
+не сдвинется — её придётся пересматривать глазами.
+
+### Двадцать одно слияние, три разных рода
+
+**Род 1 — вынуждено гейтом, четыре.** Пересечение топов ≥ 50 % означает,
+что две страницы будут отбирать выдачу друг у друга (Часть C.6).
 
 | Кластер | Уходит в | Пересечение | Почему |
 |---|---|---:|---|
@@ -93,21 +115,52 @@
 | `dawn ragnarok` | `valhalla ragnarok` | 50 % | одно дополнение под двумя именами |
 | `assassins creed 7` | `assassin ubisoft` | 50 % | обе фразы о серии целиком и её нумерации |
 
-Три — по смыслу, без принуждения гейта: `assassins creed 1ps4` — платформенный
-запрос той же игры (Часть C.3); `assassin creed russia` — часть той же трилогии
-Chronicles, а страниц у Китая и Индии нет; `ezio auditore revelations` — тот же
-персонаж в той же игре.
+**Род 2 — по смыслу, три.** `assassins creed 1ps4` — платформенный запрос той
+же игры (Часть C.3); `assassin creed russia` — часть той же трилогии
+Chronicles, а страниц у Китая и Индии нет; `ezio auditore revelations` — тот
+же персонаж в той же игре.
 
-### Три кластера, которым разведка назначила хаб, а здесь у них своя страница
+**Род 3 — поправка хаба по выдаче, четырнадцать.** Разведка узнаёт хаб
+по словам во фразах, и в этих случаях выдача называет другую страницу.
+Это не отход от подтверждённой пачки: хабы слияний в пачки П25 не входили,
+а правило C.3 «платформенный кластер — в хаб игры» соблюдено; поправлено
+то, **какая** это игра.
 
-Часть C.4 оставляет середине оба исхода — «волна 2 либо слияние по смыслу», —
-поэтому это решение стадии S2, а не отход от подтверждённой пачки.
-
-| Кластер | Разведка предлагала | Стало | Основание |
+| Кластеры | Стояли на | Стали на | Что говорит выдача |
 |---|---|---|---|
-| `assassin ezio` (660) | в `ezio auditore` | `/ezio-auditore/the-ezio-collection/` | выдача другая: у `assassin ezio` в топе карточки издания The Ezio Collection, у `ezio auditore` — статьи о персонаже; общих адресов 3 из 10 |
-| `assassin eivor` (260) | в `assassin valhalla` | `/assassins-creed-valhalla/eivor/` | персонаж, а не игра; прецедент — Ezio, у которого своя страница при 2460 |
-| `assassins creed discovery` (80) | в `assassins 2` | `/assassins-creed-2/discovery/` | это отдельная игра 2009 года на Nintendo DS и iOS, а не режим внутри AC II |
+| девять кластеров дополнения (`ac valhalla ragnarok pc`, `valhalla ragnarok ps5`, …) | `assassin valhalla` | `/assassins-creed-valhalla/dawn-of-ragnarok/` | у фразы `assassin valhalla ragnarok` пересечение с якорем дополнения 6 из 10, с якорем игры — 0 из 10 |
+| `ezio ps4` (550/мес) | `ezio auditore` | `/ezio-auditore/the-ezio-collection/` | вся выдача — карточки издания The Ezio Collection |
+| `assassins creed psp` (730/мес) | `assassins 1` | `/` | все десять адресов топа про Assassin's Creed: Bloodlines, про AC1 нет ни одного |
+| `assassin xbox 360` (600/мес) | `assassins 1` | `/` | витрины магазинов плюс страница серии, а не первой части |
+| `assassins creed 2 nintendo ds` | `assassins 2` | `/assassins-creed-2/discovery/` | выдача целиком про AC II: Discovery |
+| `eivor vikings` | `assassin valhalla` | `/assassins-creed-valhalla/eivor/` | выдача про персонажа, а не про игру |
+
+Первая строка — самая важная: без неё дочерняя страница дополнения дралась
+бы с родителем за один и тот же интент, **и гейт бы этого не увидел** —
+обе группы фраз лежали внутри одного кластера, а гейт сравнивает кластеры,
+а не страницы.
+
+### Четыре кластера, которым разведка назначила хаб, а здесь у них своя страница
+
+| Кластер | Разведка предлагала | Стало | Пересечение с хабом |
+|---|---|---|---:|
+| `assassin ezio` (660) | в `ezio auditore` | `/ezio-auditore/the-ezio-collection/` | 30 % |
+| `assassin eivor` (260) | в `assassin valhalla` | `/assassins-creed-valhalla/eivor/` | 10 % |
+| `valhalla ragnarok` (250) | в `assassin valhalla` | `/assassins-creed-valhalla/dawn-of-ragnarok/` | 0 % |
+| `assassins creed discovery` (80) | в `assassins 2` | `/assassins-creed-2/discovery/` | 0 % |
+
+Пересечение (общих адресов у топов кластера и хаба) объясняет, почему они **не слиты**; почему они в волне 1 —
+объясняет Часть D.3 (добор до тридцати), а не C.4. Предмет у каждого свой:
+издание, персонаж, дополнение, отдельная игра 2009 года на Nintendo DS.
+
+**Разведка предлагала для `assassins creed 6` и `7` иное.** S0, раздел 9:
+«оба в тему „kolejność“ вместе с `assassin creed po kolei`». Машинный
+`s0-recon.json` при этом рекомендовал ровно то, что сделано здесь: шестую —
+в Syndicate, ключи седьмой — в сильный кластер пары. Разведка разошлась сама
+с собой, прозой и машиной; дерево пошло за машиной, потому что оба слияния
+вынуждены порогом каннибализации, а тема «kolejność» от этого не пустеет —
+фраза `assassins creed 9` и вопросы о нумерации собраны на `/o-serii/`.
+Раздел 9 в подтверждённые пачки не входил, ответа владельца на него нет.
 
 ## Учёт запросов
 
@@ -119,7 +172,9 @@ Chronicles, а страниц у Китая и Индии нет; `ezio auditore
 | **всего** | **1426** из 1426 |
 
 Числа сходятся с подтверждёнными пачками П25 построчно: `exclusions` — 6 фраз
-кластеров плюс 28 некластеризованных; `no_page` — 252 плюс 66.
+кластеров плюс 28 некластеризованных; `no_page` — 252 плюс 66. Ни одна фраза
+не добавлена в эти списки и ни одна не убрана: правки S2 переносят ключи
+между страницами, а состав `no_page` и `exclusions` — решение владельца.
 
 **`volume` страницы и Google-сумма кластера — разные числа, и это нормально.**
 `volume` считается сложением частотностей фраз страницы, а колонка «Кластеры»
@@ -136,34 +191,56 @@ Chronicles, а страниц у Китая и Индии нет; `ezio auditore
 - **Единственный CTA главной ведёт на `/poradniki/od-czego-zaczac/`** —
   страница есть, волна 1. Вторая ссылка главной, «Otwórz pełny katalog» из
   `CatalogStack`, ведёт на `/poradniki/` — тоже есть.
-- Глубина 2 при `MAX_DEPTH = 2`, сирот нет, адреса не расходятся с родителями.
+- Глубина 2 при `MAX_DEPTH = 2`, сирот нет, адреса не расходятся с родителями,
+  `related` у всех 31 страницы ведут на существующие страницы.
 
-Остальные 47 внутренних адресов вёрстки в дерево не входят: это
-демонстрационный материал `src/data/site.ts` («tytuły poradników, daty
-i liczniki to materiał demonstracyjny do podmiany») плюс служебные ссылки
-подвала. Правкой вёрстки S2 не занимается; список — в отчёте сессии.
+**Остальные 47 внутренних адресов вёрстки в дерево не входят, и они трёх
+разных сортов.** Тридцать пять — демонстрационный материал `src/data/site.ts`
+(заголовки поradников, даты, счётчики), о чём сказано в самом файле. Семь —
+**вторая схема навигации**, а не демонстрация: разделы подвала `/przejscia/`,
+`/mapy/`, `/sprzet/`, `/fabula/`, слой эпох `/epoki/<id>/` (одна строка кода,
+пять живых адресов), `/postacie/`, `/aktualnosci/`. Четыре — служебные входы
+`/prywatnosc/`, `/redakcja/`, `/kontakt/`, `/o-nas/`. Сорок седьмой —
+`/favicon.svg`, не страница. Оговорка в `site.ts` про демонстрационность
+на навигацию и служебные входы не распространяется. Дерево не содержит ни одного из них: хаб в нём
+один, `/poradniki/`, а карте мест отведён адрес `/mapa-miejsc-historycznych/`,
+а не `/mapy/`. **Вопрос владельцу — ниже; правкой вёрстки S2 не занимается.**
 
 ## Чего в дереве нет и почему
 
 **1. Шести сквозных тем «Некластеризовано».** `ksiazki` (210/мес), `lore`
 (210), `przejscie` (70), `mobilne` (50), `rating` (30), `lokalizacja` (30) —
-26 фраз. У каждой темы есть спрос, но **нет кластера**, а `cluster` контракт
-требует у всех, кроме страницы владельца. Фразы разложены ключами по ближайшим
-страницам: `desmond miles assassins creed 3` — на страницу AC3, `assassins
-creed valhalla ppsspp` — на Valhalla, остальные на главную. Строка о нехватке
-стоит в `docs/UNRESOLVED.md`.
+26 фраз, 600 запросов в месяц. У четырёх тем кластера нет вовсе; у `mobilne`
+и `przejscie` кластер есть (`assassins creed java`, `assassins creed 100`),
+но оба хвостовые и уже израсходованы хабом `assassins 1`. Страницами они
+стать не могут: `cluster` контракт требует у всех, кроме страницы владельца.
 
-Четыре темы, у которых одноимённый кластер нашёлся, страницами стали:
-`film` → `/assassins-creed-rodowod/`, `epoki` →
-`/assassins-creed-ii-wojna-swiatowa/`, `kolejnosc` → `/poradniki/od-czego-zaczac/`,
-`карта мест` и `люди истории` → страница владельца.
+Разложены они по-разному, и это стоит знать при чтении `pages-s2.json`:
+`ksiazki`, `rating` и `lokalizacja` главная забирает целиком полем `темы`;
+`lore` и `mobilne` разложены ключами поимённо (`desmond miles assassins creed
+3` — на страницу AC3, `assassins creed valhalla ppsspp` — на Valhalla,
+остальные на главную); тема `przejscie` целиком живёт на семи страницах игр,
+каждая фраза на своей. Строка о нехватке стоит в `docs/UNRESOLVED.md`.
+
+Три темы, у которых нашёлся смысловой кластер, страницами стали: `film` →
+`/assassins-creed-rodowod/` (кластер `assassins lineage`), `epoki` →
+`/assassins-creed-ii-wojna-swiatowa/` (`assassins creed world war`),
+`kolejnosc` → `/o-serii/` (`assassin ubisoft`). Одноимённого кластера нет
+ни у одной — совпадает предмет, а не имя. Темы «карта мест» и «люди истории»
+кластера не имеют вовсе: их держит страница владельца, живущая вне порога
+по признаку `owner: true`.
 
 **2. Страницы под `assassin creed nexus` (210/мес).** Разведка отправила фразу
 «к кластеру `assassin creed nexus`», а кластера с таким именем в выгрузке нет:
 имя стоит в словаре игр `rules-s0.json`, но кластеризатор его не создал. Фраза
 принята ключом на главную, строка — в `UNRESOLVED.md`.
 
-**3. Ни одной страницы типа `legal`.** Служебные страницы спроса не имеют,
+**3. Страницы под `Assassin's Creed: Bloodlines`.** Кластер `assassins creed
+psp` (730/мес) весь про эту игру, а страницы у неё нет: судьба кластера —
+«слить_в_хаб», а страницей может стать только кластер судьбы «страница» или
+«волна_2». Ключи ушли на главную. **Вопрос владельцу.**
+
+**4. Ни одной страницы типа `legal`.** Служебные страницы спроса не имеют,
 а `cluster: null` контракт разрешает только владельцу. При этом подвал сайта
 ведёт на `/prywatnosc/`, `/redakcja/`, `/kontakt/` и `/o-nas/` — четыре
 настоящих входа, которые контракт сегодня выразить не может. Вопрос владельцу.
@@ -192,17 +269,18 @@ node tools/build-tree.mjs                    # пишет structure/structure.js
 npm run gates -w ac4bf-thewatch.com          # девять проверок структуры среди четырёх гейтов
 ```
 
-Инструмент падает, если хотя бы одному запросу не нашлось места, если кластер
-назначен двум страницам или если объявленный ключ не встречается в выгрузке
-знак в знак. **Тихой потери части семантики быть не может** — это тот же
+Инструмент падает, если хотя бы одному запросу не нашлось места; если кластер
+назначен двум страницам; если объявленный ключ не встречается в выгрузке знак
+в знак; если ключ совпал с именем кластера (почти всегда это описка — хотели
+забрать кластер целиком); если объявленная тема или судьба в разведке никому
+не назначена. **Тихой потери части семантики быть не может** — это тот же
 довод, по которому заведён сам гейт.
 
 ## Что дальше
 
-S3 — анатомия корпуса: два прохода по одному корпусу заполняют `blocks[]`
-страниц волны 1 доказательствами (`source: anatomy`, `evidence`). Сегодня
-у всех страниц стоят умолчания типа (`source: type-default`, `confidence:
-low`) — они законны, но это ещё не анатомия. Страницы корзины low
-(`/assassins-creed-2/discovery/`, `/assassins-creed-rodowod/`,
-`/assassins-creed-shadows/`) получат только план содержания: анатомия на трёх
-документах не считается (Часть D.3).
+S3 — анатомия корпуса: два прохода заполняют `blocks[]` страниц волны 1
+доказательствами (`source: anatomy`, `evidence`). Сегодня у всех страниц стоят
+умолчания типа (`source: type-default`, `confidence: low`) — они законны, но
+это ещё не анатомия. Страницы корзины low (`/assassins-creed-2/discovery/`,
+`/assassins-creed-rodowod/`, `/assassins-creed-shadows/`) получат только план
+содержания: анатомия на трёх документах не считается (Часть D.3).

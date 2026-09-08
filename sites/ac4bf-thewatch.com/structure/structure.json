@@ -23,13 +23,18 @@
     "assassins",
     "assassin ps4",
     "assassin s creed ps4",
+    "assassin s creed psp",
     "assassins creed ps4",
+    "assassins creed psp",
     "assassins creed ps 5",
     "assassins creed ps5",
     "assassin creed nintendo switch",
     "assassin s creed ps3",
+    "assassin xbox 360",
+    "assassins creed 360 xbox",
     "assassins creed ps3",
     "assassins creed steam",
+    "assassins creed xbox 360",
     "assassin creed nexus",
     "assassin ps5",
     "assassins creed xbox",
@@ -48,6 +53,7 @@
     "xbox assassin",
     "assassin creed 2 steam",
     "assassin na ps4",
+    "assassins creed 1 xbox 360",
     "assassins creed macbook",
     "assassins creed na ps4",
     "assassins creed po polsku",
@@ -65,6 +71,7 @@
     "assassins creed pl",
     "assassins creed pojednanie",
     "assassins creed pustynna przysięga",
+    "assassins creed xbox 360 pl",
     "assassins creed xbox one s",
     "assassins creed xbox series s",
     "ps5 assassin",
@@ -75,11 +82,14 @@
     "assassin creed nds",
     "assassin creed xbox game pass",
     "assassin creed youtube",
+    "assassin na xbox 360",
     "assassin ppsspp",
     "assassin rebel collection",
     "assassins assassins creed",
+    "assassins creed 1 psp",
     "assassins creed 2019",
     "assassins creed 3ds",
+    "assassins creed 5 xbox 360",
     "assassins creed anthology xbox 360",
     "assassins creed avatar",
     "assassins creed collection pc",
@@ -98,6 +108,7 @@
     "assassins creed leila",
     "assassins creed maxime béland",
     "assassins creed na ps3",
+    "assassins creed na xbox 360",
     "assassins creed nintendo 3ds",
     "assassins creed nintendo ds",
     "assassins creed nintendo eshop",
@@ -179,7 +190,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 178790
+   "volume": 181100
   },
   {
    "url": "/assassins-creed-1/",
@@ -191,12 +202,7 @@
    "keywords": [
     "assassin s creed 1",
     "assassins creed 1",
-    "assassin s creed psp",
-    "assassins creed psp",
-    "assassin xbox 360",
     "assassins creed 1 ps3",
-    "assassins creed 360 xbox",
-    "assassins creed xbox 360",
     "assassins creed 2007",
     "assassins 1",
     "assassins creed 1 ps4",
@@ -205,16 +211,13 @@
     "assassin creed i",
     "assassins creed 1 pc",
     "assassins creed java",
-    "assassins creed 1 xbox 360",
     "assassins creed gog",
     "assassin creed 1 xbox",
     "assassins creed 1 pl",
     "assassins creed 1 xbox one",
-    "assassins creed xbox 360 pl",
     "ac 1 ps3",
     "ac 1 ps4",
     "ac creed 1",
-    "assassin na xbox 360",
     "assassins creed 1 100",
     "assassins creed 1 2 3",
     "assassins creed 1 2 3 ps4",
@@ -222,7 +225,6 @@
     "assassins creed 1 java",
     "assassins creed 1 playstation 4",
     "assassins creed 1 ps",
-    "assassins creed 1 psp",
     "assassins creed 1 ubisoft",
     "assassins creed 1 ubisoft connect",
     "assassins creed 1 uplay",
@@ -232,9 +234,7 @@
     "assassins creed 2007 ps4",
     "assassins creed 2007 steam",
     "assassins creed 2008",
-    "assassins creed 5 xbox 360",
     "assassins creed jar",
-    "assassins creed na xbox 360",
     "assassins creed ps1",
     "steam assassins creed 1"
    ],
@@ -268,7 +268,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 6840
+   "volume": 4530
   },
   {
    "url": "/assassins-creed-2/",
@@ -298,7 +298,6 @@
     "assassins creed 2 hd",
     "assassins creed 2 java",
     "assassins creed 2 multiplayer",
-    "assassins creed 2 nintendo ds",
     "assassins creed 2 nintendo switch",
     "assassins creed 2 ubisoft",
     "assassins creed 2 ubisoft connect",
@@ -312,7 +311,6 @@
     "assassins creed assassins creed 2",
     "assassins creed creed 2",
     "assassins creed dante",
-    "assassins creed ii discovery 2009",
     "assassins creed ii pc",
     "assassins creed ii ps5",
     "assassins creed ii xbox",
@@ -350,7 +348,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 9450
+   "volume": 9430
   },
   {
    "url": "/assassins-creed-2/discovery/",
@@ -361,7 +359,9 @@
    "cluster": "assassins creed discovery",
    "keywords": [
     "assassins creed discovery",
-    "assassins creed 2 discovery"
+    "assassins creed 2 discovery",
+    "assassins creed 2 nintendo ds",
+    "assassins creed ii discovery 2009"
    ],
    "parent": "/assassins-creed-2/",
    "related": [
@@ -393,7 +393,7 @@
    ],
    "wave": 2,
    "status": "planned",
-   "volume": 80
+   "volume": 100
   },
   {
    "url": "/assassins-creed-brotherhood/",
@@ -511,35 +511,29 @@
    "keywords": [
     "ezio auditore",
     "ezio auditore da firenze",
-    "assassin ezio collection ps4",
-    "assassins creed ezio collection ps4",
-    "ezio collection ps4",
     "ezio auditore brotherhood",
-    "ezio ps4",
     "ac ezio auditore",
     "animus ezio",
-    "assassins creed assassins creed ezio trilogy",
     "assassins creed ezio auditore da firenze",
     "ezio animus",
     "ezio auditore 4k",
     "ezio auditore ac 2",
     "ezio auditore avatar",
     "ezio auditore cape",
-    "ezio auditore collection",
     "ezio auditore da",
     "ezio auditore da firenze brotherhood",
     "ezio auditore da firenze games",
     "ezio auditore game",
     "ezio auditore hd",
-    "ezio de auditore",
-    "ezio auditore collection switch"
+    "ezio de auditore"
    ],
    "parent": "/",
    "related": [
     "/assassins-creed-2/",
     "/assassins-creed-brotherhood/",
     "/assassins-creed-revelations/",
-    "/ezio-auditore/the-ezio-collection/"
+    "/ezio-auditore/the-ezio-collection/",
+    "/assassins-creed-rodowod/"
    ],
    "blocks": [
     {
@@ -560,7 +554,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 3100
+   "volume": 2550
   },
   {
    "url": "/ezio-auditore/the-ezio-collection/",
@@ -571,10 +565,17 @@
    "cluster": "assassin ezio",
    "keywords": [
     "assassin ezio",
+    "assassin ezio collection ps4",
+    "assassins creed ezio collection ps4",
+    "ezio collection ps4",
     "assassin creed ezio auditore",
+    "ezio ps4",
     "assassin ezio auditore",
+    "assassins creed assassins creed ezio trilogy",
     "assassins creed trilogy ps4",
-    "ezio auditore trilogy"
+    "ezio auditore collection",
+    "ezio auditore trilogy",
+    "ezio auditore collection switch"
    ],
    "parent": "/ezio-auditore/",
    "related": [
@@ -607,7 +608,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 660
+   "volume": 1210
   },
   {
    "url": "/assassins-creed-3/",
@@ -1199,6 +1200,7 @@
     "assassins creed origins xbox one",
     "ac origins ps4",
     "assassins creed origins pc",
+    "assassins creed empire",
     "assassins creed origins cena",
     "assassins creed origins odyssey",
     "100 assassins creed origins",
@@ -1279,7 +1281,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 23080
+   "volume": 23100
   },
   {
    "url": "/assassins-creed-odyssey/",
@@ -1537,20 +1539,14 @@
     "ps4 assassin creed valhalla",
     "valhalla xbox",
     "zeloci valhalla",
-    "ac ragnarok ps5",
     "ac valhalla 1.5",
     "ac valhalla 1.6 2",
     "ac valhalla 100",
     "ac valhalla 4k",
     "ac valhalla 7.20",
-    "ac valhalla dawn of ragnarok pc",
     "ac valhalla game pass",
     "ac valhalla ps",
     "ac valhalla ps4 pro",
-    "ac valhalla ragnarok pc",
-    "ac valhalla ragnarok ps4",
-    "ac valhalla ragnarok ps5",
-    "ac valhalla ragnarok xbox",
     "ac valhalla ubisoft",
     "ac valhalla uplay",
     "ac valhalla włócznia leonidasa",
@@ -1570,19 +1566,12 @@
     "assassin s creed valhalla",
     "assassin valhalla multiplayer",
     "assassin valhalla pc",
-    "assassin valhalla ragnarok",
     "assassin valhalla xbox",
     "assassin valhalla za darmo",
     "assassins assassins creed valhalla",
     "assassins creed 2020",
-    "assassins creed odyssey eivor",
     "assassins creed odyssey valhalla",
     "assassins creed ps4 valhalla",
-    "assassins creed ragnarok edition ps5",
-    "assassins creed ragnarok pc",
-    "assassins creed ragnarok ps4",
-    "assassins creed ragnarok ps5",
-    "assassins creed ragnarok xbox",
     "assassins creed valhalla 1.1 2",
     "assassins creed valhalla 100",
     "assassins creed valhalla 18",
@@ -1595,8 +1584,6 @@
     "assassins creed valhalla cena pc",
     "assassins creed valhalla cena ps4",
     "assassins creed valhalla complete",
-    "assassins creed valhalla dawn of ragnarok pc",
-    "assassins creed valhalla dawn of ragnarok xbox",
     "assassins creed valhalla deluxe ps4 & ps5",
     "assassins creed valhalla dolby vision",
     "assassins creed valhalla dx11",
@@ -1630,19 +1617,12 @@
     "assassins creed valhalla ps4 & ps5",
     "assassins creed valhalla ps4 cena",
     "assassins creed valhalla ps4 ps5",
-    "assassins creed valhalla ps4 ragnarok",
     "assassins creed valhalla ps4 ubisoft connect",
     "assassins creed valhalla ps5 4k 60fps",
     "assassins creed valhalla ps5 60fps",
     "assassins creed valhalla ps5 cena",
     "assassins creed valhalla ps5 digital",
     "assassins creed valhalla psn",
-    "assassins creed valhalla ragnarok edition pc",
-    "assassins creed valhalla ragnarok edition ps5",
-    "assassins creed valhalla ragnarok pc",
-    "assassins creed valhalla ragnarok ps4",
-    "assassins creed valhalla ragnarok ps5",
-    "assassins creed valhalla ragnarok xbox",
     "assassins creed valhalla series s",
     "assassins creed valhalla tekla",
     "assassins creed valhalla ubisoft",
@@ -1662,19 +1642,11 @@
     "creed valhalla ps4",
     "creed valhalla ps5",
     "creed valhalla xbox",
-    "dawn of ragnarok pc",
-    "dawn of ragnarök pc",
-    "dawn of ragnarok ps4",
-    "dawn of ragnarök ps4",
-    "dawn of ragnarok ubisoft",
     "discovery tour assassins creed valhalla",
     "discovery tour valhalla",
     "dlc assassins creed valhalla",
-    "dlc ragnarok",
     "dlss assassins creed valhalla",
     "dlss valhalla",
-    "eivor vikings",
-    "eivor wolfsmal",
     "epic ac valhalla",
     "ezio auditore valhalla",
     "game pass ac valhalla",
@@ -1695,8 +1667,6 @@
     "ps4 pro assassins creed valhalla",
     "ps4 valhalla",
     "psn valhalla",
-    "ragnarok xbox",
-    "ragnarok xbox one",
     "steam valhalla assassins creed",
     "ubisoft ac valhalla",
     "ubisoft connect assassins creed valhalla",
@@ -1714,7 +1684,6 @@
     "valhalla assassins creed steam",
     "valhalla assassins creed xbox",
     "valhalla assassins creed xbox one",
-    "valhalla dawn of ragnarok xbox",
     "valhalla dx11",
     "valhalla epic",
     "valhalla game pass",
@@ -1725,10 +1694,6 @@
     "valhalla pc steam",
     "valhalla ps",
     "valhalla ps3",
-    "valhalla ragnarok pc",
-    "valhalla ragnarok ps4",
-    "valhalla ragnarok ps5",
-    "valhalla ragnarok xbox",
     "valhalla s",
     "valhalla series s",
     "valhalla ubisoft",
@@ -1740,7 +1705,6 @@
     "valhalla xbox series s",
     "valhalla za darmo",
     "valhalla zeloci",
-    "vikings eivor",
     "warzyciel assassins creed valhalla",
     "włócznia leonidasa assassins creed valhalla",
     "xbox 360 assassins creed valhalla",
@@ -1786,13 +1750,11 @@
     "assassins creed valhalla dlc 2",
     "assassins creed valhalla platforme",
     "assassins creed valhalla ps4 za darmo",
-    "assassins creed valhalla ragnarök pc",
     "assassins creed valhalla steam 2021",
     "assassins creed valhalla version 5.20",
     "assassins creed valhalla version 7.0",
     "assassins creed valhalla xbox live",
     "edwin assassins creed valhalla",
-    "ubisoft ragnarok",
     "valhalla 1.5 2",
     "valhalla 1.6 2",
     "valhalla game pass xbox",
@@ -1831,7 +1793,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 21420
+   "volume": 21040
   },
   {
    "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
@@ -1847,17 +1809,53 @@
     "dawn of ragnarök",
     "assassins creed ragnarok",
     "assassin ragnarok",
+    "ac ragnarok ps5",
+    "ac valhalla dawn of ragnarok pc",
+    "ac valhalla ragnarok pc",
+    "ac valhalla ragnarok ps4",
+    "ac valhalla ragnarok ps5",
+    "ac valhalla ragnarok xbox",
     "assassin creed ragnarok",
     "assassin dawn of ragnarok",
+    "assassin valhalla ragnarok",
     "assassins creed dawn of ragnarök",
+    "assassins creed ragnarok edition ps5",
+    "assassins creed ragnarok pc",
+    "assassins creed ragnarok ps4",
+    "assassins creed ragnarok ps5",
+    "assassins creed ragnarok xbox",
+    "assassins creed valhalla dawn of ragnarok pc",
+    "assassins creed valhalla dawn of ragnarok xbox",
+    "assassins creed valhalla ps4 ragnarok",
+    "assassins creed valhalla ragnarok edition pc",
+    "assassins creed valhalla ragnarok edition ps5",
+    "assassins creed valhalla ragnarok pc",
+    "assassins creed valhalla ragnarok ps4",
+    "assassins creed valhalla ragnarok ps5",
+    "assassins creed valhalla ragnarok xbox",
     "assassins valhalla ragnarok",
     "creed ragnarok",
+    "dawn of ragnarok pc",
+    "dawn of ragnarök pc",
+    "dawn of ragnarok ps4",
+    "dawn of ragnarök ps4",
     "dawn of ragnarok ps5",
+    "dawn of ragnarok ubisoft",
     "dawn of the ragnarok",
     "dawn ragnarok",
+    "dlc ragnarok",
     "ragnarok assassins creed valhalla",
+    "ragnarok xbox",
+    "ragnarok xbox one",
     "valhalla assassins creed ragnarok",
-    "valhalla dawn of ragnarok ps5"
+    "valhalla dawn of ragnarok ps5",
+    "valhalla dawn of ragnarok xbox",
+    "valhalla ragnarok pc",
+    "valhalla ragnarok ps4",
+    "valhalla ragnarok ps5",
+    "valhalla ragnarok xbox",
+    "assassins creed valhalla ragnarök pc",
+    "ubisoft ragnarok"
    ],
    "parent": "/assassins-creed-valhalla/",
    "related": [
@@ -1889,7 +1887,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 370
+   "volume": 710
   },
   {
    "url": "/assassins-creed-valhalla/eivor/",
@@ -1905,8 +1903,12 @@
     "ac valhalla eivor",
     "eivor assassins creed valhalla",
     "assassin eivor",
+    "assassins creed odyssey eivor",
     "eivor assassin",
-    "valhalla eivor"
+    "eivor vikings",
+    "eivor wolfsmal",
+    "valhalla eivor",
+    "vikings eivor"
    ],
    "parent": "/assassins-creed-valhalla/",
    "related": [
@@ -1933,7 +1935,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 310
+   "volume": 350
   },
   {
    "url": "/assassins-creed-shadows/",
@@ -1946,7 +1948,8 @@
     "assassin creed red",
     "assassin red",
     "assassins creed 2024",
-    "assassins creed red ps4"
+    "assassins creed red ps4",
+    "assassins creed titans"
    ],
    "parent": "/",
    "related": [
@@ -1978,7 +1981,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 150
+   "volume": 160
   },
   {
    "url": "/poradniki/",
@@ -1997,6 +2000,7 @@
    "related": [
     "/poradniki/od-czego-zaczac/",
     "/o-serii/",
+    "/assassins-creed-za-darmo/",
     "/"
    ],
    "blocks": [
@@ -2034,8 +2038,7 @@
    "cluster": "assassin creed po kolei",
    "keywords": [
     "assassin creed po kolei",
-    "assassin po kolei",
-    "assassins creed 9"
+    "assassin po kolei"
    ],
    "parent": "/poradniki/",
    "related": [
@@ -2063,7 +2066,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 400
+   "volume": 390
   },
   {
    "url": "/o-serii/",
@@ -2080,7 +2083,9 @@
     "ac ubisoft",
     "assassins creed 12",
     "assassins creed 2021",
+    "assassins creed 9",
     "assassins creed ff",
+    "spin off assassins creed",
     "ubisoft ac"
    ],
    "parent": "/",
@@ -2108,7 +2113,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 260
+   "volume": 280
   },
   {
    "url": "/assassins-creed-za-darmo/",
@@ -2199,17 +2204,14 @@
    "cluster": "assassins creed world war",
    "keywords": [
     "assassins creed world war 2",
-    "assassins creed empire",
     "assassin world war 2",
     "assassin ww2",
     "assassins creed 1492",
     "assassins creed 1944",
     "assassins creed mars",
-    "assassins creed titans",
     "assassins creed world war",
     "assassins creed world war 1",
-    "assassins creed world war 2 ps4",
-    "spin off assassins creed"
+    "assassins creed world war 2 ps4"
    ],
    "parent": "/",
    "related": [
@@ -2236,7 +2238,7 @@
    ],
    "wave": 1,
    "status": "planned",
-   "volume": 210
+   "volume": 170
   },
   {
    "url": "/mapa-miejsc-historycznych/",

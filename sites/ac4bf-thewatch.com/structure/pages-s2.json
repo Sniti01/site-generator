@@ -9,16 +9,28 @@
     "`судьбы` — судьбы кластеров разведки, которые целиком забирает эта страница (так карта мест забирает «карта_мест» и «люди_истории»).",
     "`темы` — сквозные темы «Некластеризовано» целиком; `ключи` — отдельные фразы, разложенные поимённо.",
     "Порядок разбора: ключ сильнее темы, тема сильнее кластера.",
+    "Кластер, названный в `слияния`, уходит на эту страницу, а не в хаб, назначенный разведкой: хаб там угадан по словам во фразах, а выдача иногда называет другую игру.",
     "`volume`, `parent`, `blocks` и `keywords` считает инструмент — здесь их нет."
   ],
   "почему_слияния": [
-    "Четыре слияния вынуждены: пересечение топов ≥ 50 % значит, что две страницы будут конкурировать между собой (Часть C.6), и гейт роняет сборку.",
+    "Слияний двадцать одно, и они трёх разных родов.",
+
+    "РОД 1 — вынуждено гейтом, четыре штуки: пересечение топов ≥ 50 % значит, что две страницы будут конкурировать между собой (Часть C.6), и сборка падает.",
     "«assassins iv black flag» → «assassin black flag» — одна игра, разведённая кластеризатором надвое (S0, раздел 9).",
     "«assassins creed 6» → «assassin syndicate» — пересечение 100 %: вопрос «какая часть шестая», и ответ на него Syndicate.",
     "«dawn ragnarok» → «valhalla ragnarok» — одно дополнение, 50 % общей выдачи.",
     "«assassins creed 7» → «assassin ubisoft» — 50 % общей выдачи; обе фразы про серию целиком и её нумерацию.",
-    "Три слияния по смыслу: «assassins creed 1ps4» — платформенный запрос той же игры (Часть C.3); «assassin creed russia» — часть той же трилогии Chronicles; «ezio auditore revelations» — тот же персонаж в той же игре.",
-    "Кластеры «assassin ezio», «assassin eivor» и «assassins creed discovery» разведка приписала хабам, а здесь у них свои страницы: Часть C.4 оставляет середине оба исхода, а выдача у них своя (пересечение с хабом ниже 40 %) и говорит о другом предмете — издании, персонаже, отдельной игре."
+
+    "РОД 2 — по смыслу, три штуки: «assassins creed 1ps4» — платформенный запрос той же игры (Часть C.3); «assassin creed russia» — часть той же трилогии Chronicles; «ezio auditore revelations» — тот же персонаж в той же игре.",
+
+    "РОД 3 — поправка хаба по выдаче, четырнадцать штук. Разведка узнаёт хаб по словам во фразах, и в этих случаях выдача называет другую страницу.",
+    "Девять кластеров дополнения Dawn of Ragnarök («ac valhalla ragnarok pc», «valhalla ragnarok ps5» и остальные) стояли на игре, а не на дополнении: у фразы «assassin valhalla ragnarok» пересечение с якорем дополнения 6 из 10, с якорем игры — 0 из 10. Без этой поправки дочерняя страница дралась бы с родителем за один интент, а гейт этого не видит: обе группы фраз лежали внутри одного кластера.",
+    "«ezio ps4» (550/мес) — вся выдача про издание The Ezio Collection, поэтому кластер стоит на странице издания, а не на странице персонажа.",
+    "«assassins creed psp» (730/мес) и «assassin xbox 360» (600/мес) разведка приписала к «assassins 1»; в топе первого все десять адресов про Assassin's Creed: Bloodlines, в топе второго — витрины магазинов и страница серии. Оба уходят на главную, к остальным платформенным кластерам серии (S0, раздел 4.3).",
+    "«assassins creed 2 nintendo ds» — выдача целиком про Assassin's Creed II: Discovery, у которой в дереве своя страница.",
+    "«eivor vikings» — выдача про персонажа, а не про игру.",
+
+    "Кластеры «assassin ezio», «assassin eivor», «assassins creed discovery» и «valhalla ragnarok» разведка приписала хабам, а здесь у них свои страницы. Основание — Часть D.3 (добор до тридцати), а не C.4: своей страницы волны 1 в C.4 нет вовсе. Выдача при этом подтверждает, что они не должны быть слиты: пересечение с хабом 30 %, 10 %, ниже 40 % и 0 %."
   ],
 
   "страницы": [
@@ -26,6 +38,7 @@
       "url": "/",
       "type": "home",
       "cluster": "assassins",
+      "слияния": ["assassins creed psp", "assassin xbox 360"],
       "wave": 1,
       "темы": ["ksiazki", "rating", "lokalizacja"],
       "ключи": [
@@ -68,6 +81,7 @@
       "url": "/assassins-creed-2/discovery/",
       "type": "game",
       "cluster": "assassins creed discovery",
+      "слияния": ["assassins creed 2 nintendo ds"],
       "wave": 2,
       "related": ["/assassins-creed-2/", "/assassins-creed-pirates/", "/assassins-creed-chronicles/"],
       "h1": "Assassin’s Creed II: Discovery, czyli Ezio w Hiszpanii",
@@ -105,7 +119,8 @@
         "/assassins-creed-2/",
         "/assassins-creed-brotherhood/",
         "/assassins-creed-revelations/",
-        "/ezio-auditore/the-ezio-collection/"
+        "/ezio-auditore/the-ezio-collection/",
+        "/assassins-creed-rodowod/"
       ],
       "h1": "Ezio Auditore — postać, historia i miejsce w serii",
       "title": "Ezio Auditore da Firenze — kim jest bohater trzech gier",
@@ -115,7 +130,9 @@
       "url": "/ezio-auditore/the-ezio-collection/",
       "type": "game",
       "cluster": "assassin ezio",
+      "слияния": ["ezio ps4"],
       "wave": 1,
+      "ключи": ["ezio auditore collection switch"],
       "related": [
         "/ezio-auditore/",
         "/assassins-creed-2/",
@@ -233,6 +250,7 @@
       "type": "game",
       "cluster": "assassin origins",
       "wave": 1,
+      "ключи": ["assassins creed empire"],
       "related": ["/assassins-creed-odyssey/", "/assassins-creed-mirage/", "/mapa-miejsc-historycznych/"],
       "h1": "Assassin’s Creed Origins: Bayek i Egipt sprzed naszej ery",
       "title": "Assassin’s Creed Origins — Egipt i początki asasynów",
@@ -279,8 +297,25 @@
       "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
       "type": "game",
       "cluster": "valhalla ragnarok",
-      "слияния": ["dawn ragnarok"],
+      "слияния": [
+        "dawn ragnarok",
+        "ac valhalla dawn of ragnarok pc",
+        "ac valhalla ragnarok pc",
+        "assassins creed ragnarok pc",
+        "assassins creed valhalla dawn of ragnarok xbox",
+        "assassins creed valhalla ragnarok xbox",
+        "dawn of ragnarok ps4",
+        "ragnarok xbox",
+        "valhalla ragnarok ps4",
+        "valhalla ragnarok ps5"
+      ],
       "wave": 1,
+      "ключи": [
+        "assassin valhalla ragnarok",
+        "dawn of ragnarok ubisoft",
+        "dlc ragnarok",
+        "ubisoft ragnarok"
+      ],
       "related": [
         "/assassins-creed-valhalla/",
         "/assassins-creed-valhalla/eivor/",
@@ -294,7 +329,9 @@
       "url": "/assassins-creed-valhalla/eivor/",
       "type": "topic",
       "cluster": "assassin eivor",
+      "слияния": ["eivor vikings"],
       "wave": 1,
+      "ключи": ["eivor wolfsmal", "assassins creed odyssey eivor"],
       "related": [
         "/assassins-creed-valhalla/",
         "/assassins-creed-valhalla/dawn-of-ragnarok/",
@@ -309,6 +346,7 @@
       "type": "game",
       "cluster": "assassin red",
       "wave": 1,
+      "ключи": ["assassins creed titans"],
       "related": ["/o-serii/", "/assassins-creed-mirage/", "/poradniki/od-czego-zaczac/"],
       "h1": "Assassin’s Creed Shadows, dawniej Red: dwoje bohaterów",
       "title": "Japonia w Assassin’s Creed Shadows — dawnym projekcie Red",
@@ -319,7 +357,7 @@
       "type": "hub",
       "cluster": "najlepszy assasin creed",
       "wave": 1,
-      "related": ["/poradniki/od-czego-zaczac/", "/o-serii/", "/"],
+      "related": ["/poradniki/od-czego-zaczac/", "/o-serii/", "/assassins-creed-za-darmo/", "/"],
       "h1": "Który Assassin’s Creed jest najlepszy",
       "title": "Najlepszy Assassin’s Creed — porównanie i poradniki",
       "description": "Która odsłona serii Assassin’s Creed wciąga najbardziej, która się zestarzała i po co wracać do starszych części. Obok tego spis poradników do gier."
@@ -329,7 +367,6 @@
       "type": "guide",
       "cluster": "assassin creed po kolei",
       "wave": 1,
-      "темы": ["kolejnosc"],
       "related": ["/poradniki/", "/assassins-creed-1/", "/assassins-creed-4-black-flag/", "/o-serii/"],
       "h1": "Od której części zacząć: Assassin’s Creed po kolei",
       "title": "Assassin’s Creed po kolei — chronologia i premiery serii",
@@ -341,6 +378,8 @@
       "cluster": "assassin ubisoft",
       "слияния": ["assassins creed 7"],
       "wave": 1,
+      "темы": ["kolejnosc"],
+      "ключи": ["spin off assassins creed"],
       "related": ["/poradniki/od-czego-zaczac/", "/assassins-creed-shadows/", "/assassins-creed-ii-wojna-swiatowa/"],
       "h1": "Assassin’s Creed od Ubisoftu: jak ułożona jest seria",
       "title": "Seria Assassin’s Creed od Ubisoftu — historia i numeracja",
@@ -400,7 +439,8 @@
   ],
 
   "чего_здесь_нет": [
-    "Страниц под сквозные темы «ksiazki», «lore», «przejscie», «mobilne», «rating» и «lokalizacja»: у них нет кластера, а `cluster` обязателен всем, кроме страницы владельца. Фразы разложены ключами по ближайшим страницам, строки о нехватке стоят в docs/UNRESOLVED.md.",
+    "Страниц под сквозные темы «ksiazki», «lore», «przejscie», «mobilne», «rating» и «lokalizacja». У четырёх кластера нет вовсе; у «mobilne» и «przejscie» кластер есть («assassins creed java», «assassins creed 100»), но оба хвостовые и уже израсходованы хабом «assassins 1». Страницами они стать не могут: `cluster` обязателен всем, кроме страницы владельца.",
+    "Три темы — «ksiazki», «rating», «lokalizacja» — главная забирает целиком полем `темы`; «lore» и «mobilne» разложены ключами поимённо; «przejscie» живёт на семи страницах игр, каждая фраза на своей. Строки о нехватке стоят в docs/UNRESOLVED.md.",
     "Страницы под фразу «assassin creed nexus» (210/мес): кластера с таким именем в выгрузке нет, хотя словарь игр rules-s0.json на него ссылается. Фраза принята ключом на главную.",
     "Ни одной страницы типа `legal`: служебные страницы спроса не имеют, а `cluster: null` контракт разрешает только владельцу. Вопрос владельцу вместе с закрытием списка типов."
   ]

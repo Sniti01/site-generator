@@ -87,6 +87,8 @@ const exclusions = [];
 const noPage = [];
 const seen = new Map();
 const lost = [];
+const usedThemes = new Set();
+const usedFates = new Set();
 
 const toPage = (url, phrase) => {
   if (!keywords.has(url)) {
@@ -131,6 +133,7 @@ for (const phrase of data.phrases) {
       }
     } else if (fate === 'новая_тема') {
       const url = pageByTheme.get(row['цель']);
+      usedThemes.add(row['цель']);
       if (!url) lost.push(`${phrase.phrase} — тема «${row['цель']}», а страницы у темы нет`);
       else {
         toPage(url, phrase);
@@ -162,7 +165,10 @@ for (const phrase of data.phrases) {
       seen.set(phrase.phrase, url);
     }
   } else if (fate === 'слить_в_хаб') {
-    const url = pageByCluster.get(row['цель']);
+    // Кластер, названный в «слияния» страницы, сильнее хаба из разведки: хаб
+    // там угадан по словам во фразах, а выдача иногда называет другую игру
+    // (пример S2: «assassins creed psp» — весь топ про Bloodlines, не про AC1).
+    const url = pageByCluster.get(phrase.cluster) ?? pageByCluster.get(row['цель']);
     if (!url) lost.push(`${phrase.phrase} — слияние в «${row['цель']}», а страницы у хаба нет`);
     else {
       toPage(url, phrase);
@@ -170,6 +176,7 @@ for (const phrase of data.phrases) {
     }
   } else {
     const url = pageByFate.get(fate);
+    usedFates.add(fate);
     if (!url) lost.push(`${phrase.phrase} — судьба «${fate}» ни на одну страницу не заведена`);
     else {
       toPage(url, phrase);
@@ -180,6 +187,17 @@ for (const phrase of data.phrases) {
 
 for (const [key, url] of pageByKey) {
   if (!seen.has(key)) fail(`ключ «${key}» (страница ${url}) в выгрузке не встречается — сверь знак в знак`);
+  // Имена кластеров в этой выгрузке — те же строки, что фразы («ezio auditore»,
+  // «assassins 1»). Ключ, совпавший с именем кластера, почти наверняка описка:
+  // хотели забрать кластер, а забрали одну фразу. Кластер объявляют в «слияния».
+  if (clusterFate.has(key)) fail(`ключ «${key}» (страница ${url}) совпадает с именем кластера — если нужен кластер целиком, объяви его в «слияния»`);
+}
+// Мёртвое объявление молчать не должно — тем же доводом, что и ключ с опиской.
+for (const [theme, url] of pageByTheme) {
+  if (!usedThemes.has(theme)) fail(`тема «${theme}» (страница ${url}) в разведке никому не назначена`);
+}
+for (const [f, url] of pageByFate) {
+  if (!usedFates.has(f)) fail(`судьба «${f}» (страница ${url}) в разведке ни у одного кластера не стоит`);
 }
 
 /* ---------------------------------------------------------------- *

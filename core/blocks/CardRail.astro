@@ -157,9 +157,22 @@ const KADR_SIZES = '320px';
       return card ? card.offsetWidth + 24 : 320;
     };
 
+    // Дорожка в покое стоит не на нуле. Распорка `::before` и снап уводят
+    // первую карточку вправо на её ширину с зазором, и это положение —
+    // начало: сравнение с нулём не даёт `prev.disabled` никогда.
+    // Величина берётся измерением, а не повторением формулы распорки:
+    // положение карточки в содержимом дорожки минус отступ снапа.
+    const start = () => {
+      const card = track.querySelector<HTMLElement>('.rail-sec__item');
+      if (!card) return 0;
+      const pole = card.getBoundingClientRect().left - track.getBoundingClientRect().left;
+      const wciecie = parseFloat(getComputedStyle(track).scrollPaddingLeft) || 0;
+      return Math.max(0, pole + track.scrollLeft - wciecie);
+    };
+
     const sync = () => {
       const max = track.scrollWidth - track.clientWidth - 2;
-      prev.disabled = track.scrollLeft <= 2;
+      prev.disabled = track.scrollLeft <= start() + 2;
       next.disabled = track.scrollLeft >= max;
     };
 

@@ -1,0 +1,98 @@
+#!/usr/bin/env node
+/**
+ * Самопроверка инструментов приёмки.
+ *
+ *   node core/accept/selftest.mjs <папка сайта>
+ *
+ * Инструмент приёмки, которого никто не видел считающим правильно, —
+ * обещание, а не проверка. Тот же довод, по которому у гейта структуры
+ * есть `--selftest`.
+ *
+ * Проверка здесь особая: инструменты обязаны **воспроизвести числа, уже
+ * записанные в отчётах прошлых сессий**. Числа взяты не из головы и не из
+ * сегодняшнего прогона — они лежат в `docs/reports/` и в `MIGRATION.md` §6,
+ * и если новый код даёт другие, разошлись либо код, либо сборка, и разбираться
+ * надо до того, как инструментом начнут принимать выносы.
+ *
+ * Требуется собранный `dist/` сайта и снятый `_baseline/`.
+ */
+
+import { existsSync, readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { snapshot } from './manifest.mjs';
+import { measure } from './css-triples.mjs';
+import { decodePng, comparePixels } from './pixels.mjs';
+import { normalizeScopes } from './html-diff.mjs';
+
+const site = process.argv[2];
+if (!site) {
+  console.error('node core/accept/selftest.mjs <папка сайта>');
+  process.exit(2);
+}
+
+const dist = join(site, 'dist');
+const baseline = join(site, '_baseline');
+if (!existsSync(dist)) {
+  console.error(`нет сборки: ${dist} — самопроверке нужен свежий npm run build`);
+  process.exit(2);
+}
+
+const cases = [];
+const check = (имя, ждём, факт, откуда) =>
+  cases.push({ имя, ждём, факт, откуда, ok: String(ждём) === String(факт) });
+
+/* — манифест: 50 файлов, MIGRATION.md §6, подтверждение 1 — */
+const snap = snapshot(dist);
+check('файлов в dist/', 50, snap.файлов, 'MIGRATION.md §6, подтверждение 1');
+
+/* — CSS: 331 правило и 24 @media-блока — */
+const cssFiles = readdirSync(join(dist, '_astro')).filter((f) => f.endsWith('.css'));
+check('файлов CSS в сборке', 1, cssFiles.length, 'отчёты P2: «index.html и единственный CSS»');
+if (cssFiles.length === 1) {
+  const m = measure(readFileSync(join(dist, '_astro', cssFiles[0]), 'utf8'));
+  check('правил CSS', 331, m.правил, 'отчёты 2026-09-07-p2-header и -linkcolumns');
+  check('@media-блоков', 24, m.media_вхождений, 'REUSE §6: «24 вместо 22» после расщепления SiteFooter');
+}
+
+/* — разметка: скруты находятся и приводятся к порядковому виду — */
+const html = readFileSync(join(dist, 'index.html'), 'utf8');
+const { map, html: normalized } = normalizeScopes(html);
+check('скрутов в index.html', true, map.size > 0, 'вынос меняет data-astro-cid-*, значит они там есть');
+check('после приведения скрутов не осталось исходных', true, !/data-astro-cid-[a-z0-9]{6,}\b/.test(normalized), 'нормализация');
+
+/* — пиксели: знаменатель и чувствительность в один субпиксель — */
+if (existsSync(baseline)) {
+  const hero = readdirSync(baseline).find((f) => f.includes('desktop-hero'));
+  if (hero) {
+    const img = decodePng(readFileSync(join(baseline, hero)));
+    const same = comparePixels(img, img);
+    check('субпикселей в кадре 1440×900', 3888000, same.субпикселей, 'отчёты P2: «1 из 3 888 000»');
+    check('кадр против себя даёт ноль различий', 0, same.различных, 'здравый смысл сравнения');
+
+    // Один инвертированный субпиксель обязан быть найден: копия отличается
+    // ровно на единицу в первом канале первого пикселя.
+    const twin = { ...img, data: Buffer.from(img.data) };
+    twin.data[0] = twin.data[0] ^ 0xff;
+    const one = comparePixels(img, twin);
+    check('один инвертированный субпиксель найден', 1, one.различных, 'отчёт 2026-09-07-p2-cta: «ловит один из 3 888 000»');
+    check('рамка различий сжалась до одного пикселя', '1×1', `${one.рамка.ширина}×${one.рамка.высота}`, 'рамка');
+  }
+} else {
+  cases.push({ имя: 'пиксельные проверки', ждём: '_baseline/', факт: 'нет папки', откуда: '', ok: false, пропуск: true });
+}
+
+/* — вывод — */
+let failed = 0;
+for (const c of cases) {
+  if (!c.ok && !c.пропуск) failed += 1;
+  const mark = c.пропуск ? 'нет ' : c.ok ? 'ok  ' : 'ЗЛЕ ';
+  console.log(`${mark} ${String(c.имя).padEnd(44)} ждём ${String(c.ждём).padEnd(9)} факт ${String(c.факт).padEnd(9)} ${c.откуда}`);
+}
+console.log('');
+console.log(`${cases.filter((c) => c.ok).length}/${cases.length} чисел воспроизведены из записей прошлых сессий`);
+if (failed) {
+  console.error('');
+  console.error('Расхождение с записью. Разошлись либо инструмент, либо сборка — разбираться до того,');
+  console.error('как этим инструментом начнут принимать выносы.');
+  process.exit(1);
+}

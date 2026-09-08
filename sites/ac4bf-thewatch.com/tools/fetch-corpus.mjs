@@ -265,6 +265,29 @@ function safeHost(u) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * Undici роняет отказ сокета мимо промиса: сервер закрывает HTTP/2-соединение,
+ * и событие `error` приходит на поток, которого никто не ждёт. Прогон из трёх
+ * с половиной тысяч адресов такой отказ убивал целиком — упало на 2425-м.
+ * Здесь он записывается и работа идёт дальше; всё остальное по-прежнему
+ * валит процесс, потому что молчаливо продолжать после неизвестной ошибки
+ * хуже, чем остановиться.
+ */
+const SOCKET_CODES = new Set([
+  'UND_ERR_SOCKET', 'ECONNRESET', 'EPIPE', 'ETIMEDOUT', 'ECONNABORTED',
+  'ERR_HTTP2_STREAM_ERROR', 'ERR_HTTP2_STREAM_CANCEL', 'ERR_HTTP2_SESSION_ERROR',
+]);
+let strayErrors = 0;
+process.on('uncaughtException', (err) => {
+  const socketish = SOCKET_CODES.has(err?.code) || /socket|http2/i.test(String(err?.message || ''));
+  if (!socketish) {
+    console.error(err);
+    process.exit(1);
+  }
+  strayErrors += 1;
+  console.error(`  отказ сокета мимо запроса (${err.code || err.name}) — прогон продолжается`);
+});
+
 async function getRobots(origin) {
   try {
     const res = await fetch(origin + '/robots.txt', {
@@ -356,7 +379,15 @@ async function main() {
       try { const r = JSON.parse(line); done.set(r.url, r); } catch {}
     }
   }
-  const pending = items.filter((i) => !(done.get(i.url)?.outcome === 'ok'));
+  // Повторяем только временные отказы. Запрет robots, 403 и «не HTML»
+  // повтором другими не станут, а стучаться в них заново — невежливо.
+  const settled = (r) => {
+    if (!r) return false;
+    if (['ok', 'robots-disallowed', 'not-html', 'too-large'].includes(r.outcome)) return true;
+    if (r.outcome === 'http-error') return r.status >= 400 && r.status < 500 && r.status !== 429;
+    return false;
+  };
+  const pending = items.filter((i) => !settled(done.get(i.url)));
   const work = limit ? pending.slice(0, limit) : pending;
 
   const hosts = new Map();
@@ -421,6 +452,7 @@ async function main() {
     urls_attempted: work.length,
     hosts: hosts.size,
     outcomes: Object.fromEntries([...counts].sort()),
+    stray_socket_errors: strayErrors,
     user_agent: UA,
     host_delay_ms: HOST_DELAY_MS,
     storage: 'raw/<host>/<sha1(url)>.html.gz — gzip; в git не идёт (.gitignore)',

@@ -1,0 +1,3705 @@
+{
+ "tool": "tools/fetch-corpus.mjs",
+ "source": "input/clustering-google-2026-09-07.xlsx",
+ "source_sha256": "466f2042e98703a7d490d8547a651d28770476ea75e4916190a2bb6347ea355c",
+ "serp_snapshot_date": "2026-09-07",
+ "engine": "google",
+ "geo": "PL",
+ "language": "pl",
+ "first_fetch_at": "2026-09-08T07:00:01.427Z",
+ "last_fetch_at": "2026-09-08T07:18:11.202Z",
+ "summary_written_at": "2026-09-08T07:30:19.275Z",
+ "urls_total": 3479,
+ "urls_in_manifest": 3479,
+ "hosts": 537,
+ "outcomes": {
+  "http-error": 757,
+  "network-error": 3,
+  "not-html": 103,
+  "ok": 2098,
+  "robots-disallowed": 517,
+  "timeout": 1
+ },
+ "bytes_raw": 1229778890,
+ "bytes_stored": 220919116,
+ "user_agent": "ac4bf-thewatch-corpus/1.0 (+page-structure research; contact: site owner)",
+ "host_delay_ms": 1500,
+ "storage": "raw/<host>/<sha1(url)>.html.gz — gzip; в git не идёт (.gitignore)",
+ "queries": "queries.json — соответствие «фраза → группа и адреса»; в записи документа фразы не дублируются",
+ "note": "Сырой HTML в git не идёт; корпус пересобирается этим инструментом по манифесту.",
+ "coverage": {
+  "правило": [
+   "high: скачано ≥7 из выдачи кластера — анатомия с порогом частоты",
+   "mid: скачано 4–6 из выдачи кластера — анатомия с оговоркой",
+   "low: скачано ≤3 из выдачи кластера — только план содержания"
+  ],
+  "кластеры": {
+   "всего": 257,
+   "корзины": {
+    "high": 102,
+    "mid": 86,
+    "low": 69
+   },
+   "медиана_скачано": 6,
+   "список": [
+    {
+     "name": "assassin black flag",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed game pass",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed valhalla olx",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin ubisoft",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft assassins creed mirage",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft connect assassins creed valhalla",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac origins eneba",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin syndicate",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin unity",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin valhalla",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins 2",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 ubisoft",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla 18",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla eneba",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla g2a",
+     "urls": 9,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla ragnarok",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla steam",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac syndicate kuba rozpruwacz",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac valhalla za darmo",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin chronicles",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed 1 steam",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed 2 xbox",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed 3 steam",
+     "urls": 9,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed valhalla discovery tour",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed valhalla ragnar",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin liberation",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin mirage",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin odyssey",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin odyssey pc",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 nintendo",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed complete edition",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed cry",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed mirage uplay",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey kody ps4",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed psp",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed rogue deluxe",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity xbox",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla edition",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "creed rogue",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "season pass valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "syndicate ps4",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft forward",
+     "urls": 9,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla pc",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla ps5",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac valhalla dawn of ragnarok pc",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac valhalla ragnarok pc",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac valhalla włócznia leonidasa",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin black flag xbox 360",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin brotherhood",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed deluxe edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed ultimate edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed za darmo",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin ezio",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin origins",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin pc",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin playstation 4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin ps3",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin revelation",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin rogue ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin steam",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin switch",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins 1",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 2022",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 4 deluxe edition",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 4 xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 7",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed brotherhood xbox 360",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed liberation ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed mirage deluxe",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey olx",
+     "urls": 7,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey origins",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins ps5 60fps",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla gb",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla ragnarok xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins pirates",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "dawn ragnarok",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "dlss valhalla",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ezio auditore",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ezio ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "fortnite ezio",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "game pass valhalla",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "mirage xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "odyssey deluxe edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "odyssey gold edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "origins ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "origins xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "rogue ps3",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft odyssey",
+     "urls": 8,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla 1.6",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla 1.6 2",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla 4k",
+     "urls": 7,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla complete edition xbox",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla deluxe",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla ragnarok ps5",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla ultimate",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "xbox odyssey",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "100 assassins creed origins",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac black flag eneba",
+     "urls": 9,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin black flag steam",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed black flag pc",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed po kolei",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed syndicate xbox",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed valhalla youtube",
+     "urls": 6,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin eivor",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin odyssey ps5",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin ps vita",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins 3",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1 ps4",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2015",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 3 java",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 3 xbox 360",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed chronicles ps vita",
+     "urls": 9,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed chronicles xbox",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed g2a",
+     "urls": 6,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed heritage collection ps3",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed java",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey steam",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed ragnarok edition",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed reebok",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 1.1 2",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 1.6",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla gb ps4",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla ps4 media markt",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla ragnarok edition xbox",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ps4 valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla gold edition",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla orlog",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla ragnarok edition ps5",
+     "urls": 8,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla xbox",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "xbox assassin",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac origins za darmo",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac valhalla 1.5 0",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac valhalla cena",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed 1 xbox",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed rift",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin odyssey switch",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin xbox 360",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2010",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey eneba",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed omega edition",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed unity ps3",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 1.5",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 4k 60fps",
+     "urls": 6,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla cynewulf",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins iv black flag",
+     "urls": 6,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "creed 2 ps4",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "discovery tour by assassins creed",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "dlc assassins creed valhalla",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "odyssey game pass",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "odyssey valhalla",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "origins season pass ps4",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "season pass odyssey",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla ragnarok ps4",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac unity notre dame edition",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac valhalla 1.4 2",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "animus ezio",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin ps5",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1 2 3",
+     "urls": 4,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1 ps3",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1 uplay",
+     "urls": 4,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2 deluxe edition",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2 uplay",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed eshop",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey elis",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey książę persji",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey pitagoras",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed piri reis",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed ragnarok pc",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed unity 100",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla dawn of ragnarok xbox",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla dx11",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla gold xbox",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla gunnar",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla ivar",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla kody pc",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla zeloci",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed world war",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "brotherhood deluxe edition",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "dawn of ragnarok ps4",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "kosmos odyssey",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "najlepszy assasin creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ragnarok xbox",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac syndicate eneba",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin black flag ps3",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin creed russia",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin red",
+     "urls": 5,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin valhalla multiplayer",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 100",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 18",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2 nintendo ds",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2022 ps4",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 6",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed amazon",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed aquilus",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed dante",
+     "urls": 5,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed discovery",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed edition",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins pc",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins uplay",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed ps4 amazon",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed sparta",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla 100",
+     "urls": 5,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla complete",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla gold edition pc",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla season pass pc",
+     "urls": 5,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed xbox series s",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins lineage",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "brasidas assassins creed odyssey",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "eivor fortnite",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "god of war valhalla",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "syndicate 1993",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "valhalla 1.5 2",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "valhalla epic",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "valhalla ragnarok season pass",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "valhalla s",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "valhalla season pass xbox",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "vikings valhalla playstation",
+     "urls": 3,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "alfred assassins creed valhalla",
+     "urls": 5,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 1ps4",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2 nintendo switch",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2024",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 3ds",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed big ben",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed eric baptizat",
+     "urls": 5,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed gog",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed media expert",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed mirage ps5 collectors edition",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed nintendo ds",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey 18",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins 1.60",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins gb",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins valhalla",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla upgrade ps5",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "eivor vikings",
+     "urls": 5,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ezio auditore revelations",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "season pass valhalla ps5",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ac valhalla ceneo",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "anonymous assassins creed",
+     "urls": 3,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2018",
+     "urls": 3,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed epic",
+     "urls": 7,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey włócznia leonidasa",
+     "urls": 6,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed unity allegro",
+     "urls": 5,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla bjorn",
+     "urls": 4,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla kinguin",
+     "urls": 7,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ac valhalla allegro",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin creed valhalla xbox one allegro",
+     "urls": 7,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin fortnite",
+     "urls": 3,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin rift",
+     "urls": 4,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed notre dame",
+     "urls": 4,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey allegro",
+     "urls": 3,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins allegro",
+     "urls": 4,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    }
+   ]
+  },
+  "некластеризованные_фразы": {
+   "всего": 264,
+   "корзины": {
+    "high": 114,
+    "mid": 120,
+    "low": 30
+   },
+   "список": [
+    {
+     "name": "assassin creed youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin ppsspp",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 1 youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 2 youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed media markt",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed mirage youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey youtube",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed olx",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins ps4 olx",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity ubisoft",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla eurogamer",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "0100670014482000",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "0x70000d04",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac 15 ubisoft",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "anomalia assassins creed valhalla",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assa 3",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed liberation steam",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 2 za darmo",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 digital version",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed deluxe",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed macbook",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed mirage amazon",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey 4k",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins amazon",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed shop",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla gog",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla konstruktor",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla ppsspp",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "pod ubisoft",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "pure arts assassins creed",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "sabaton assassins creed",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla 1.5",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "xbox cloud gaming assassins creed",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin chronicles china",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin creed 2 steam",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin remastered",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassin s creed chronicles india",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 2 java",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed assassins creed unity limited edition",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed dead kings ps4",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed exe",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed hd",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey za darmo",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins 4k",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins gold xbox",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins steam",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed pegi",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed rogue 500 501",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed syndicate 100",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity nostradamus",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity za darmo",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed uplay",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla ps4 ubisoft connect",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla winchester",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla windows 8.1",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed15",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "blus31193",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "burgred assassins creed valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "housesteads valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ninja s creed",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "origins game pass",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "orlog ubisoft",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "pure arts assassins creed valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "stonehenge valhalla",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "tom clancy 2 the division",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft merchandise assassins creed",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft ragnarok",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "valhalla xbox 360",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "argolida assassins creed odyssey",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 3 100",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed 9",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed anniversary edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed assassins creed odyssey",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed black flag 100",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed black flag 992 442",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed black flag cena",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed black flag kody",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed box",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed brotherhood eneba",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed cena",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed collection pc",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed filmy",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed lineage ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed maxime béland",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey 1.56",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey pantheon edition",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed odyssey windows 11",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins dolina królów",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed origins ps4 pro",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed po polsku",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed season pass ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity cena",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed unity xbox series s",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla amazon",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla box",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla derby",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla exe",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla osada",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "assassins creed valhalla version 7.0",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "dlc odyssey ps4",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "dlc ragnarok",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "emp assassins creed",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ezio auditore collection switch",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "fokida assassins creed",
+     "urls": 9,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "hitman iv",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "pancerz templariuszy black flag",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "pcsb00074",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "templariusze a asasyni",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "the flight assassins creed",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft 0x30010001",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ubisoft 15",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "watch dogs legion grobowiec asasynów",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "witcher2",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "ac valhalla 1.5 3",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed nexus",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed odyssey g2a",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed unity eneba",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin multiplayer",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin rebel collection",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin valhalla ragnarok",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1944",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2 g2a",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2 hd",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 3 g2a",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 3 pc",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed anthology xbox 360",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed assassins creed rogue limited edition",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed assassins creed syndicate special edition",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed big ben edition",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed bractwo",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed czarna bandera",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed exclusive",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed gameloft",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed horizon",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed iii steven masters",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed iv 179 593",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey 1.5 3",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey gold edition pc",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey gold xbox",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey statek",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey symmachia spartańska",
+     "urls": 9,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed pegi 16",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed porzuceni",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed rift ps4",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed rogue 100",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed the chain",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 1.2 1",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla alvar",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla elamigos",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla mirage",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla tekla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins rogue",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "dawn of ragnarok ubisoft",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "discovery tour ancient egypt",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "edwin assassins creed valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "einar selvik assassins creed valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "eva assassins creed",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore da firenze games",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore game",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "holger assassins creed valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "hornigold assassins creed",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "kufel assassins creed",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "odyssey atlantis",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "spin off assassins creed",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "templariusze assassins creed",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla 1.6 0",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "vikings ps5",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "warzyciel assassins creed valhalla",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed valhalla gold",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin ww2",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 2 black edition",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed brotherhood 100",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed brotherhood auditore edition",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed brotherhood romulus",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed empire",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed ezio auditore da firenze",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey 1.5 6",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey 100",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey eivor",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey ultimate xbox",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed unity switch",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed uprising 1",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 1.5 3",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla 21 9",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla dolby vision",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla harald",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla origin",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed victory",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed world war 1",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed world war 2 ps4",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "black chest edition",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "desmond miles assassins creed 3",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "eivor wolfsmal",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "hades assassins creed odyssey",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "lego assassins creed",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ludovico ariosto assassins creed",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "marco polo assassins creed",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "notre dame ubisoft",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "pakiet zmierzchu valhalla",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "playmobil assassins creed",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "season pass assassins creed odyssey xbox",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "valhalla ragnarok edition xbox",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "acodyssey exe",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassin creed renesans",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed 1492",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed iv black flag eric baptizat",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed leila",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed odyssey archidamos",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed olympia",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed openbaring anton gill",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed origins luxor",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed platinum ps3",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed pojednanie",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed pustynna przysięga",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed rogue eneba",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed titans",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla burgred",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "assassins creed valhalla fortnite",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "avatar assassins creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "blus31465",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore 4k",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore avatar",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore hd",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ezio auditore in fortnite",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "jacques de molay assassins creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "mirage collector",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "parkour assassins creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ragnarök edition",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "sokrates assassins creed odyssey",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "torres assassins creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "uno assassins creed",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "xbox one assassins creed valhalla",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "ac origins epic",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ac valhalla ps4 pro",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "al mualim",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed assassins creed iii benedict arnold",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed avatar",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed da vinci",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed mars",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed nokia",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed objawienia",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey media expert",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins kinguin",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "connor assassin",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "epic assassins creed odyssey",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassin creed fortnite",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed 2 100",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed mirage media expert",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla pc allegro",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ezio auditore cape",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "ivar assassins creed valhalla",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey ceneo",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey kinguin",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins media expert",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed ps4 allegro",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed unity kinguin",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla empik",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla ps5 ceneo",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed allegro",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed odyssey ps4 allegro",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed origins ceneo",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "assassins creed valhalla ps5 allegro",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    }
+   ]
+  }
+ }
+}

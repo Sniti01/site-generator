@@ -46,8 +46,16 @@
 
 ## 2. Токены — тридцать два имени
 
-Все объявляются сайтом в `:root` (и цветовая часть дублируется в `@theme`
-для Tailwind). Ядро читает их из `<style>` компонентов и из файлов шасси.
+Тридцать один токен объявлен сайтом в `:root`, цветовая часть дублируется
+в `@theme` для Tailwind. Исключение одно: `--font-display` объявлен **только**
+в `@theme` — в собранный CSS Tailwind выносит его сам, поэтому ядро его видит,
+но в блоке `:root` витрины его нет. Ядро читает токены из `<style>`
+компонентов и из файлов шасси.
+
+**«Все шесть компонентов» в таблицах ниже** — это `BandQuote`, `CardRail`,
+`CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`. Со своим `<style>`
+компонентов в ядре семь, но седьмой — `Grain` — не читает ни одного токена
+и в перечнях читателей не появляется.
 
 ### Поверхности и текст — 7
 
@@ -57,8 +65,8 @@
 | `--bg-band` | `BandQuote`, `SiteFooter`, `SiteHeader`, `base.css`, `card.css`, `layout.css` |
 | `--surface` | `SiteHeader`, `card.css` |
 | `--surface-2` | `base.css`, `button.css` |
-| `--ink` | все шесть компонентов с `<style>`, `button.css`, `credit.css` |
-| `--ink-muted` | все шесть компонентов с `<style>`, `credit.css` |
+| `--ink` | все шесть компонентов, `button.css`, `credit.css` |
+| `--ink-muted` | все шесть компонентов, `credit.css` |
 | `--ink-on-accent` | `a11y.css`, `base.css`, `button.css` |
 
 ### Акцент — 3

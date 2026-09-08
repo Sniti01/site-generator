@@ -10,6 +10,11 @@
 // Brakującej pary bramka nie wykryje: nie ma jej, więc nie liczy.
 
 // Epoki: akcent wędruje po zejściu, więc każda para liczy się osobno.
+//
+// Para `era-*` / `bg` ma próg 3 i to nie jest pomyłka. Token wypełnia
+// duotonę kadru (`core/styles/foto.css`) — element UI — oraz maluje rok
+// warstwy `.layer__year`, a ten ma 88px, czyli jest tekstem dużym.
+// Dla obu zastosowań właściwy próg to 3.
 const eras = ['jerozolima', 'wlochy', 'karaiby', 'londyn', 'japonia'];
 
 const pairs = [
@@ -29,7 +34,9 @@ const pairs = [
   ['accent-text', 'surface-2', 4.5, 'link/akcent tekstowy na karcie podniesionej'],
   ['ink-on-accent', 'accent', 4.5, 'napis w wypełnionym przycisku'],
   ['accent', 'bg', 3, 'wypełnienie akcentu jako element UI'],
-  ['accent-2', 'bg', 3, 'mosiądz jako element UI'],
+  // Mosiądz maluje licznik grupy `.stack__count` — 21px/600, tekst duży,
+  // więc próg 3 jest dla niego właściwy; opis mówi teraz o obu rolach.
+  ['accent-2', 'bg', 3, 'mosiądz: element UI i licznik grupy 21px/600'],
   ['accent-2', 'surface', 3, 'mosiądz na karcie'],
   // pergamin (karta epoki)
   ['ink-parchment', 'parchment', 4.5, 'tekst na pergaminie'],
@@ -40,8 +47,13 @@ const pairs = [
 
 for (const era of eras) {
   pairs.push([`era-${era}-text`, 'bg', 4.5, `akcent tekstowy epoki ${era} na tle strony`]);
+  // Dopisane 2026-09-08 (decyzja П20): akcent tekstowy epoki występuje na
+  // paśmie sześć razy — `.layer__hero` i `.btn-link` — a pary na to
+  // zestawienie nie było wcale. Przechodzi z zapasem (6,60…11,78 przy 4,5),
+  // ale brak pary znaczył, że bramka tego zestawienia po prostu nie liczy.
+  pairs.push([`era-${era}-text`, 'bg-band', 4.5, `akcent tekstowy epoki ${era} na paśmie`]);
   pairs.push([`era-${era}-text`, 'surface', 4.5, `akcent tekstowy epoki ${era} na karcie`]);
-  pairs.push([`era-${era}`, 'bg', 3, `wypełnienie epoki ${era} jako element UI`]);
+  pairs.push([`era-${era}`, 'bg', 3, `wypełnienie epoki ${era} i rok warstwy na tle strony`]);
   pairs.push([`era-${era}-ink`, `era-${era}`, 4.5, `napis na wypełnieniu epoki ${era}`]);
 }
 

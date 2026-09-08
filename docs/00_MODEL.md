@@ -153,7 +153,7 @@ pages[]: { url, type, h1, title, description, cluster, keys[], parent, text_ref 
 ## 7. Репозиторий: ядро + темы
 
 ```
-site-generator/            ← workspace root: { "workspaces": ["sites/*"] }
+site-generator/            ← workspace root: { "workspaces": ["core", "sites/*"] }
 ├─ core/                  ← общее, растёт от проекта к проекту
 │  ├─ blocks/             ← библиотека блоков (варианты, контракты данных)
 │  ├─ layouts/            ← шаблоны типов страниц

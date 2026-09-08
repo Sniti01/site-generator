@@ -23,7 +23,7 @@
  * в `pages-s2.json` от руки, корпус конкурентов этот инструмент не открывает.
  */
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readClustering, UNCLUSTERED } from '@factory/core/structure/clustering.mjs';
@@ -38,6 +38,8 @@ const typeBlocks = JSON.parse(
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const declPath = join(root, 'structure/pages-s2.json');
 const reconPath = join(root, 'structure/s0-recon.json');
+const rulesS3Path = join(root, 'structure/rules-s3.json');
+const anatomyPath = join(root, 'structure/s3-anatomy.json');
 const docPath = join(root, 'structure/structure.json');
 
 const dryRun = process.argv.includes('--dry-run');
@@ -45,6 +47,12 @@ const dryRun = process.argv.includes('--dry-run');
 const decl = JSON.parse(readFileSync(declPath, 'utf8'));
 const recon = JSON.parse(readFileSync(reconPath, 'utf8'));
 const doc = JSON.parse(readFileSync(docPath, 'utf8'));
+
+// Анатомия — необязательный вход: до S3 её нет, и дерево собирается
+// на одних умолчаниях типа. Появилась — блоки получают доказательство.
+const rulesS3 = existsSync(rulesS3Path) ? JSON.parse(readFileSync(rulesS3Path, 'utf8')) : null;
+const anatomy = existsSync(anatomyPath) ? JSON.parse(readFileSync(anatomyPath, 'utf8')) : null;
+const anatomyByUrl = new Map((anatomy?.['страницы'] ?? []).map((p) => [p.url, p]));
 const data = readClustering(join(root, doc.site.semantics));
 
 const pages = decl['страницы'];
@@ -234,6 +242,48 @@ const parentOf = (url) => {
   return parts.length ? `/${parts.join('/')}/` : '/';
 };
 
+/**
+ * Блоки, подтверждённые анатомией корпуса (S3). Имя элементу даёт словарь
+ * `имена_блоков` из `rules-s3.json`: элемент без имени в `blocks[]` не идёт —
+ * назвать блок вправе только владелец. `evidence` — доля документов, из
+ * которых вердикт получен, в том же виде, что просит контракт: «17/24».
+ */
+function anatomyBlocks(url) {
+  if (!anatomy || !rulesS3) return [];
+  const page = anatomyByUrl.get(url);
+  if (!page) return [];
+  const names = rulesS3['имена_блоков'] ?? {};
+  const confidence = rulesS3['уверенность'] ?? {};
+  const out = [];
+  for (const [element, measured] of Object.entries(page['элементы'] ?? {})) {
+    const block = names[element];
+    if (!block) continue;
+    const level = confidence[measured['вердикт']];
+    if (!level) continue; // «не норма» и «не считается» блоками не становятся
+    out.push({
+      block,
+      source: 'anatomy',
+      confidence: level,
+      evidence: `${measured['документов']}/${measured['из']}`,
+    });
+  }
+  return out;
+}
+
+/**
+ * Порядок в списке — порядок на странице (`core/structure/type-blocks.json`).
+ * Анатомия места не мерила, поэтому порядок берётся редакторским умолчанием
+ * из `rules-s3.json`; имя вне списка встаёт в конец, сохраняя свой порядок.
+ */
+function orderBlocks(blocks) {
+  const order = rulesS3?.['порядок_на_странице']?.['список'] ?? [];
+  const rank = (b) => {
+    const i = order.indexOf(b.block);
+    return i < 0 ? order.length : i;
+  };
+  return blocks.map((b, i) => ({ b, i })).sort((x, y) => rank(x.b) - rank(y.b) || x.i - y.i).map((x) => x.b);
+}
+
 const built = pages.map((p) => {
   const list = keywords
     .get(p.url)
@@ -252,19 +302,20 @@ const built = pages.map((p) => {
     keywords: list.map((k) => k.phrase),
     parent: parentOf(p.url),
     related: p.related ?? [],
-    // Умолчания типа задают скелет, объявленные вручную блоки прибавляются
-    // к нему: решение «этот раздел на странице обязан быть» принято рукой,
-    // и `source: manual` отличает его от умолчания. Порядок разделов уточняет
-    // анатомия S3, которая перепишет список целиком.
-    blocks: [
+    // Умолчания типа задают скелет; анатомия корпуса прибавляет к нему то,
+    // что оказалось нормой жанра, с доказательством; рука — то, что решено
+    // человеком. Три источника не смешиваются: у каждого блока стоит свой
+    // `source`, и умолчание всегда отличимо от измерения.
+    blocks: orderBlocks([
       ...(defaults ?? []).map((block) => ({ block, source: 'type-default', confidence: 'low' })),
+      ...anatomyBlocks(p.url),
       ...(p['блоки'] ?? []).map((b) => ({
         block: b.block,
         ...(b.role ? { role: b.role } : {}),
         source: 'manual',
         confidence: b.confidence ?? 'high',
       })),
-    ],
+    ]),
     wave: p.wave,
     status: p.status ?? 'planned',
     volume: list.reduce((s, k) => s + k.google, 0),

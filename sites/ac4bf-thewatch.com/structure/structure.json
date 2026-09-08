@@ -171,6 +171,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "10/21"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -186,6 +192,18 @@
      "confidence": "low"
     },
     {
+     "block": "link-list",
+     "role": "numeracja-serii",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "12/21"
+    },
+    {
      "block": "link-columns",
      "source": "type-default",
      "confidence": "low"
@@ -194,12 +212,6 @@
      "block": "cta-band",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "link-list",
-     "role": "numeracja-serii",
-     "source": "manual",
-     "confidence": "high"
     }
    ],
    "wave": 1,
@@ -267,6 +279,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -275,6 +299,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/7"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/7"
     },
     {
      "block": "cta-band",
@@ -347,6 +383,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/9"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -355,6 +397,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/9"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/9"
     },
     {
      "block": "cta-band",
@@ -449,6 +503,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/7"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -457,6 +517,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/7"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
     },
     {
      "block": "cta-band",
@@ -498,6 +570,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/9"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -506,6 +584,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/9"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/9"
     },
     {
      "block": "cta-band",
@@ -564,6 +654,18 @@
    ],
    "blocks": [
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "7/15"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "7/15"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -574,15 +676,27 @@
      "confidence": "low"
     },
     {
-     "block": "cta-band",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "card-rail",
      "role": "the-ezio-collection",
      "source": "manual",
      "confidence": "high"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "8/15"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "10/15"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
     }
    ],
    "wave": 1,
@@ -622,6 +736,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/8"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/8"
     },
     {
      "block": "cta-band",
@@ -700,6 +826,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/6"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -708,6 +846,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/6"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/6"
     },
     {
      "block": "cta-band",
@@ -768,6 +918,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/7"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -776,6 +938,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/7"
     },
     {
      "block": "cta-band",
@@ -843,6 +1017,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/11"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/11"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -851,6 +1037,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "8/11"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "10/11"
     },
     {
      "block": "cta-band",
@@ -891,6 +1089,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -899,6 +1103,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/7"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/7"
     },
     {
      "block": "cta-band",
@@ -948,6 +1164,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/6"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -956,6 +1184,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/6"
     },
     {
      "block": "cta-band",
@@ -1016,6 +1256,12 @@
      "confidence": "low"
     },
     {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "5/8"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1024,6 +1270,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/8"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "8/8"
     },
     {
      "block": "cta-band",
@@ -1086,6 +1344,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "11/17"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "7/17"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1094,6 +1364,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "13/17"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "14/17"
     },
     {
      "block": "cta-band",
@@ -1143,6 +1425,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/9"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1151,6 +1439,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/9"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "8/9"
     },
     {
      "block": "cta-band",
@@ -1189,6 +1489,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1197,6 +1503,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "5/6"
     },
     {
      "block": "cta-band",
@@ -1297,6 +1615,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/9"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/9"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1305,6 +1635,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "6/9"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/9"
     },
     {
      "block": "cta-band",
@@ -1411,6 +1753,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/7"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/7"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1419,6 +1773,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/7"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/7"
     },
     {
      "block": "cta-band",
@@ -1502,6 +1868,18 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "5/8"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "5/8"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1510,6 +1888,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/8"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "7/8"
     },
     {
      "block": "cta-band",
@@ -1824,6 +2214,18 @@
      "confidence": "low"
     },
     {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "8/13"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "7/13"
+    },
+    {
      "block": "cta-band",
      "source": "type-default",
      "confidence": "low"
@@ -1908,6 +2310,12 @@
      "confidence": "low"
     },
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "12/28"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1916,6 +2324,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "21/28"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "20/28"
     },
     {
      "block": "cta-band",
@@ -1956,6 +2376,18 @@
    ],
    "blocks": [
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/6"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1964,6 +2396,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/6"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "3/6"
     },
     {
      "block": "cta-band",
@@ -2086,6 +2530,12 @@
    ],
    "blocks": [
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "6/6"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -2125,6 +2575,12 @@
     "/assassins-creed-mirage/"
    ],
    "blocks": [
+    {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "4/6"
+    },
     {
      "block": "story-row",
      "source": "type-default",
@@ -2211,6 +2667,12 @@
    ],
    "blocks": [
     {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "4/4"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -2219,6 +2681,18 @@
      "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "gallery",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "2/4"
+    },
+    {
+     "block": "verdict-box",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "2/4"
     },
     {
      "block": "cta-band",
@@ -2297,6 +2771,12 @@
      "block": "hero-key-art",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "byline",
+     "source": "anatomy",
+     "confidence": "high",
+     "evidence": "43/46"
     },
     {
      "block": "story-row",

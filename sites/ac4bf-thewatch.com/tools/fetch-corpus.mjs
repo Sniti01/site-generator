@@ -351,6 +351,15 @@ function buildCoverage(done) {
       всего: clusters.length,
       корзины: count(clusters),
       медиана_скачано: clusters.length ? [...clusters].map((c) => c.ok).sort((a, b) => a - b)[Math.floor(clusters.length / 2)] : 0,
+      // Корзина задана абсолютным числом, а выдача кластера не всегда
+      // десять: у части кластеров в снимке было три адреса и меньше.
+      // Такой кластер попадает в `low`, ничего при этом не потеряв, —
+      // и путать его с недобранным нельзя.
+      нижняя_корзина: {
+        выдача_была_короткой: clusters.filter((c) => c.bucket === 'low' && c.urls <= 3).length,
+        недобрано: clusters.filter((c) => c.bucket === 'low' && c.urls >= 4).length,
+        скачано_ноль: clusters.filter((c) => c.ok === 0).length,
+      },
       список: clusters,
     },
     некластеризованные_фразы: {
@@ -622,6 +631,8 @@ function printCoverage(cov) {
     console.log(`  ${b.key.padEnd(5)} ${String(c['корзины'][b.key]).padStart(4)} из ${c['всего']}  — ${b.verdict}`);
   }
   console.log(`  медиана скачанного на кластер: ${c['медиана_скачано']}`);
+  const n = c['нижняя_корзина'];
+  console.log(`  из нижней корзины: ${n['выдача_была_короткой']} с короткой выдачей (терять нечего), ${n['недобрано']} недобрано, ${n['скачано_ноль']} пусты`);
   console.log(`некластеризованных фраз: ${f['всего']} — high ${f['корзины'].high}, mid ${f['корзины'].mid}, low ${f['корзины'].low}`);
 }
 

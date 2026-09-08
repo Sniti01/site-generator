@@ -260,6 +260,108 @@ function safeHost(u) {
 }
 
 /* ---------------------------------------------------------------- *
+ * Покрытие по кластерам — вход сессии структуры.
+ * ---------------------------------------------------------------- */
+
+/**
+ * Сколько документов кластера удалось забрать, и что с этим можно делать.
+ * Три корзины заданы владельцем:
+ *
+ *   ≥7 из десяти — анатомию страницы считаем с порогом частоты;
+ *   4–6          — считаем с оговоркой;
+ *   ≤3           — анатомию по кластеру не считаем вовсе, только план
+ *                  содержания.
+ *
+ * Порог `VOLUME_MIN_DOCS = 4` у `../1weekinvr.com` стоит ровно между второй
+ * и третьей корзиной и придуман там же по той же причине: меньше четырёх
+ * своих документов — число перестаёт быть нормой ниши.
+ *
+ * **«Некластеризовано» кластером не считается.** Это 264 фразы, у каждой
+ * своя выдача; сведённые в одну строку, они дали бы 2397 адресов и покрытие,
+ * не означающее ничего. Для них покрытие считается по фразе.
+ */
+const BUCKETS = [
+  { key: 'high', min: 7, range: '≥7', verdict: 'анатомия с порогом частоты' },
+  { key: 'mid', min: 4, range: '4–6', verdict: 'анатомия с оговоркой' },
+  { key: 'low', min: 0, range: '≤3', verdict: 'только план содержания' },
+];
+
+const bucketOf = (ok) => BUCKETS.find((b) => ok >= b.min);
+
+function readSnapshot() {
+  const rows = readSheet(unzip(readFileSync(source)));
+  const head = rows[0];
+  const col = {};
+  for (const [letter, title] of Object.entries(head)) col[title] = letter;
+
+  const urlsOf = (raw) =>
+    (raw || '')
+      .split(/[\s,]+/)
+      .map((s) => s.replace(/[.,;]+$/, ''))
+      .filter((s) => /^https?:\/\//i.test(s));
+
+  const byGroup = new Map();
+  const byPhrase = new Map();
+  for (const cells of rows.slice(1)) {
+    const phrase = (cells[col['Поисковые запросы']] || '').trim();
+    const group = (cells[col['Название группы']] || '').trim();
+    const urls = urlsOf(cells[col['URLs группы']]);
+    if (!urls.length) continue;
+    if (group) {
+      if (!byGroup.has(group)) byGroup.set(group, new Set());
+      for (const u of urls) byGroup.get(group).add(u);
+    }
+    if (phrase) {
+      if (!byPhrase.has(phrase)) byPhrase.set(phrase, { group, urls: new Set() });
+      for (const u of urls) byPhrase.get(phrase).urls.add(u);
+    }
+  }
+  return { byGroup, byPhrase };
+}
+
+const UNCLUSTERED = 'Некластеризовано';
+
+function buildCoverage(done) {
+  const { byGroup, byPhrase } = readSnapshot();
+  const okUrl = (u) => done.get(u)?.outcome === 'ok';
+
+  const tally = (name, urls) => {
+    const list = [...urls];
+    const ok = list.filter(okUrl).length;
+    const b = bucketOf(ok);
+    return { name, urls: list.length, ok, bucket: b.key, verdict: b.verdict };
+  };
+
+  const clusters = [...byGroup]
+    .filter(([g]) => g !== UNCLUSTERED)
+    .map(([g, urls]) => tally(g, urls))
+    .sort((a, b) => b.ok - a.ok || a.name.localeCompare(b.name));
+
+  const phrases = [...byPhrase]
+    .filter(([, v]) => v.group === UNCLUSTERED)
+    .map(([p, v]) => tally(p, v.urls))
+    .sort((a, b) => b.ok - a.ok || a.name.localeCompare(b.name));
+
+  const count = (list) =>
+    Object.fromEntries(BUCKETS.map((b) => [b.key, list.filter((x) => x.bucket === b.key).length]));
+
+  return {
+    правило: BUCKETS.map((b) => `${b.key}: скачано ${b.range} из выдачи кластера — ${b.verdict}`),
+    кластеры: {
+      всего: clusters.length,
+      корзины: count(clusters),
+      медиана_скачано: clusters.length ? [...clusters].map((c) => c.ok).sort((a, b) => a - b)[Math.floor(clusters.length / 2)] : 0,
+      список: clusters,
+    },
+    некластеризованные_фразы: {
+      всего: phrases.length,
+      корзины: count(phrases),
+      список: phrases,
+    },
+  };
+}
+
+/* ---------------------------------------------------------------- *
  * Скачивание.
  * ---------------------------------------------------------------- */
 
@@ -372,12 +474,16 @@ async function main() {
   const total = items.length;
   if (onlyHost) items = items.filter((i) => i.host === onlyHost);
 
-  const done = new Map();
-  if (existsSync(manifestPath) && !force) {
-    for (const line of readFileSync(manifestPath, 'utf8').split('\n')) {
-      if (!line.trim()) continue;
-      try { const r = JSON.parse(line); done.set(r.url, r); } catch {}
-    }
+  const done = force ? new Map() : loadManifest();
+
+  // `--report` пересчитывает сводку по уже собранному манифесту и ничего
+  // не качает: покрытие по кластерам нужно и после прогона, и после его
+  // падения, и просто чтобы посмотреть.
+  if (flag('--report')) {
+    const run = writeRun(done, { attempted: 0, counts: new Map(), startedAt: null });
+    printCoverage(run.coverage);
+    console.log(`\nсводка пересчитана: input/corpus/run.json`);
+    return;
   }
   // Повторяем только временные отказы. Запрет robots, 403 и «не HTML»
   // повтором другими не станут, а стучаться в них заново — невежливо.
@@ -441,30 +547,82 @@ async function main() {
 
   await Promise.all(Array.from({ length: Math.min(concurrency, queue.length) }, worker));
 
+  const run = writeRun(loadManifest(), { attempted: work.length, counts, startedAt, hosts: hosts.size });
+
+  console.log('\nитог прогона:');
+  for (const [k, v] of [...counts].sort()) console.log(`  ${k.padEnd(18)} ${v}`);
+  printCoverage(run.coverage);
+  console.log(`\nманифест: input/corpus/manifest.jsonl`);
+  console.log(`сводка:   input/corpus/run.json`);
+}
+
+function loadManifest() {
+  const done = new Map();
+  if (!existsSync(manifestPath)) return done;
+  for (const line of readFileSync(manifestPath, 'utf8').split('\n')) {
+    if (!line.trim()) continue;
+    try { const r = JSON.parse(line); done.set(r.url, r); } catch {}
+  }
+  return done;
+}
+
+function writeRun(done, { attempted, counts, startedAt, hosts }) {
+  const tally = new Map();
+  for (const r of done.values()) tally.set(r.outcome, (tally.get(r.outcome) || 0) + 1);
+
+  // `--report` пересчитывает сводку, но прогона не делает: поля, которые
+  // знает только прогон, берутся из прежней сводки, а не обнуляются.
+  // Прежняя сводка читается только затем, чтобы не потерять ничего
+  // при пересчёте; сегодня всё выводится из манифеста и prev не нужен.
+  let prev = {};
+  if (existsSync(runPath)) {
+    try { prev = JSON.parse(readFileSync(runPath, 'utf8')); } catch {}
+  }
+
+  const times = [...done.values()].map((r) => r.fetched_at).filter(Boolean).sort();
+  const stamps = { first: times[0] ?? null, last: times.at(-1) ?? null };
+
   const run = {
     tool: 'tools/fetch-corpus.mjs',
     source: 'input/clustering-google-2026-09-07.xlsx',
     source_sha256: createHash('sha256').update(readFileSync(source)).digest('hex'),
     serp_snapshot_date: '2026-09-07',
-    started_at: startedAt,
-    finished_at: new Date().toISOString(),
-    urls_total: total,
-    urls_attempted: work.length,
-    hosts: hosts.size,
-    outcomes: Object.fromEntries([...counts].sort()),
-    stray_socket_errors: strayErrors,
+    engine: 'google',
+    geo: 'PL',
+    language: 'pl',
+    // Всё, что ниже, выводится из манифеста, а не из хода прогона: сводка
+    // обязана быть верной, чем бы её ни пересчитали и сколько бы заходов
+    // ни потребовалось. Первая версия хранила поля прогона и потеряла их
+    // при первом же `--report`.
+    first_fetch_at: stamps.first,
+    last_fetch_at: stamps.last,
+    summary_written_at: new Date().toISOString(),
+    urls_total: collect().length,
+    urls_in_manifest: done.size,
+    hosts: new Set([...done.values()].map((r) => r.host).filter(Boolean)).size,
+    outcomes: Object.fromEntries([...tally].sort()),
+    bytes_raw: [...done.values()].reduce((a, r) => a + (r.bytes || 0), 0),
+    bytes_stored: [...done.values()].reduce((a, r) => a + (r.bytes_stored || 0), 0),
     user_agent: UA,
     host_delay_ms: HOST_DELAY_MS,
     storage: 'raw/<host>/<sha1(url)>.html.gz — gzip; в git не идёт (.gitignore)',
     queries: 'queries.json — соответствие «фраза → группа и адреса»; в записи документа фразы не дублируются',
     note: 'Сырой HTML в git не идёт; корпус пересобирается этим инструментом по манифесту.',
+    coverage: buildCoverage(done),
   };
   writeFileSync(runPath, JSON.stringify(run, null, 1) + '\n');
+  return run;
+}
 
-  console.log('\nитог:');
-  for (const [k, v] of [...counts].sort()) console.log(`  ${k.padEnd(18)} ${v}`);
-  console.log(`\nманифест: input/corpus/manifest.jsonl`);
-  console.log(`сводка:   input/corpus/run.json`);
+function printCoverage(cov) {
+  const c = cov['кластеры'];
+  const f = cov['некластеризованные_фразы'];
+  console.log('\nпокрытие кластеров — скачано документов из выдачи кластера:');
+  for (const b of BUCKETS) {
+    console.log(`  ${b.key.padEnd(5)} ${String(c['корзины'][b.key]).padStart(4)} из ${c['всего']}  — ${b.verdict}`);
+  }
+  console.log(`  медиана скачанного на кластер: ${c['медиана_скачано']}`);
+  console.log(`некластеризованных фраз: ${f['всего']} — high ${f['корзины'].high}, mid ${f['корзины'].mid}, low ${f['корзины'].low}`);
 }
 
 function safeOrigin(u) {

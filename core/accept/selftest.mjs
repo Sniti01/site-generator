@@ -22,7 +22,7 @@ import { join } from 'node:path';
 import { snapshot } from './manifest.mjs';
 import { measure } from './css-triples.mjs';
 import { decodePng, comparePixels } from './pixels.mjs';
-import { normalizeScopes } from './html-diff.mjs';
+import { normalizeScopes, flattenScopes, scopeLedger } from './html-diff.mjs';
 
 const site = process.argv[2];
 if (!site) {
@@ -79,6 +79,34 @@ if (existsSync(baseline)) {
   }
 } else {
   cases.push({ имя: 'пиксельные проверки', ждём: '_baseline/', факт: 'нет папки', откуда: '', ok: false, пропуск: true });
+}
+
+/* — плоское гашение: проверяются ИНВАРИАНТЫ режима, а не сегодняшние числа —
+   Числа сборки для этой пары проверок не годятся: они меняются каждым
+   расщеплением, а константа, которую двигают руками, ничего не проверяет.
+   Поэтому здесь два утверждения, верных при любой сборке. */
+{
+  const образец = '<p class="a" data-astro-cid-abc12345>текст</p><i data-astro-cid-abc12345>i</i>';
+  const { html: погашено, скрутов } = flattenScopes(образец);
+  // Сравниваем с образцом, у которого заменён ТОЛЬКО хеш: если гашение тронет
+  // хоть один другой байт, равенство не выполнится.
+  check(
+    'гашение стирает только хеш',
+    true,
+    погашено === образец.replaceAll('abc12345', '@'),
+    'REUSE §6: «стирает только хеш и ничего больше»'
+  );
+  check('гашение считает различные скруты', 1, скрутов, 'счёт — компенсация за потерю различий');
+
+  // Модель расщепления: один скрут файла становится тремя, причём скрут
+  // обёртки уцелевает — он выводится из пути, а обёртка пути не меняет.
+  const до = '<a data-astro-cid-aaaaaaaa></a><b data-astro-cid-aaaaaaaa></b><c data-astro-cid-aaaaaaaa></c>';
+  const после = '<a data-astro-cid-aaaaaaaa></a><b data-astro-cid-bbbbbbbb></b><c data-astro-cid-cccccccc></c>';
+  const л = scopeLedger(до, после);
+  check('расщепление: скрутов 1 → 3', '1→3', `${л.до}→${л.после}`, 'REUSE §6, требование владельца П30 п.1');
+  check('расщепление: скрут обёртки уцелел', 1, л.уцелели.length, 'скрут выводится из пути файла, а не из содержимого');
+  check('расщепление: новых скрутов ровно два', 2, л.новые.length, 'иное число — остановка и разбор');
+  check('расщепление: не исчез ни один', 0, л.ушли.length, 'исчезнувший скрут означает переезд файла, а не расщепление');
 }
 
 /* — вывод — */

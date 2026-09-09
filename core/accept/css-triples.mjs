@@ -3,7 +3,11 @@
  * Приёмка, шаг 3: разбор CSS в тройки «условие + селектор + объявления».
  *
  *   node core/accept/css-triples.mjs count   <файл.css>
- *   node core/accept/css-triples.mjs compare <до.css> <после.css>
+ *   node core/accept/css-triples.mjs compare <до.css> <после.css> [--flat]
+ *
+ * Флаг `--flat` гасит скруты перед разбором и печатает их раскладку. Без него
+ * при расщеплении разойдётся каждая тройка, где скрут вообще есть, и число
+ * расхождений скажет только «скруты сменились» — то есть ничего.
  *
  * Дополнение к правилу приёмки (`docs/REUSE.md` §6, решение владельца
  * от 2026-09-07): диффа собранного CSS принимается как перегруппировка
@@ -26,6 +30,10 @@
 
 import { readFileSync } from 'node:fs';
 import { sep } from 'node:path';
+// Гашение скрутов живёт в html-diff.mjs — там же, где порядковое приведение,
+// и реализация у обоих инструментов одна. Разводить её надвое значило бы
+// однажды получить два разных ответа на один вопрос.
+import { flattenScopes, scopeLedger } from './html-diff.mjs';
 
 const NESTING = /^@(media|supports|layer|container|scope)\b/;
 
@@ -127,8 +135,17 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(sep).join(
     console.log(`правил: ${m.правил}, at-правил: ${m.at_правил}, блоков всего: ${m.блоков}`);
     console.log(`@media: ${m.media_вхождений} вхождений, ${m.media_условий} различных условий`);
   } else if (cmd === 'compare' && one && two) {
-    const a = measure(readFileSync(one, 'utf8'));
-    const b = measure(readFileSync(two, 'utf8'));
+    const плоско = process.argv.includes('--flat');
+    const сырьёA = readFileSync(one, 'utf8');
+    const сырьёB = readFileSync(two, 'utf8');
+    if (плоско) {
+      const л = scopeLedger(сырьёA, сырьёB);
+      console.log(`скрутов погашено: ${л.до} до, ${л.после} после`);
+      for (const s of л.новые) console.log(`  НОВЫЙ ${s.скрут.replace('data-astro-cid-', '')}: ${s.вхождений} вхождений в листе`);
+      for (const s of л.ушли) console.log(`  ИСЧЕЗ ${s.скрут.replace('data-astro-cid-', '')}: было ${s.было}`);
+    }
+    const a = measure(плоско ? flattenScopes(сырьёA).html : сырьёA);
+    const b = measure(плоско ? flattenScopes(сырьёB).html : сырьёB);
     console.log(`правил: ${a.правил} → ${b.правил}${a.правил === b.правил ? ' (условие 1 выполнено)' : ' — РАЗОШЛОСЬ'}`);
     console.log(`@media-блоков: ${a.media_вхождений} → ${b.media_вхождений}, различных условий: ${a.media_условий} → ${b.media_условий}`);
     const diff = multisetDiff(a.тройки, b.тройки);
@@ -153,7 +170,8 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(sep).join(
     }
   } else {
     console.error('node core/accept/css-triples.mjs count   <файл.css>');
-    console.error('node core/accept/css-triples.mjs compare <до.css> <после.css>');
+    console.error('node core/accept/css-triples.mjs compare <до.css> <после.css> [--flat]');
+    console.error('  --flat — плоское гашение скрутов: для РАСЩЕПЛЕНИЙ');
     process.exit(2);
   }
 }

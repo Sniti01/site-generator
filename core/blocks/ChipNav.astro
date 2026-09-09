@@ -1,0 +1,92 @@
+---
+/**
+ * `chip-nav` — полоса чипов-ссылок: в каждом две строки, верхняя набрана
+ * заголовочной гарнитурой и акцентом эпохи, нижняя приглушена.
+ *
+ * Механизм, не содержание. Ядро держит раскладку полосы, геометрию чипа,
+ * рамку, скругление и состояние наведения. Адреса, надписи и классы-модификаторы
+ * приходят с витрины записями.
+ *
+ * ЗАПИСИ ПРИХОДЯТ ДАННЫМИ, а не разметкой: слот содержимое не размножает,
+ * а чипов в полосе сколько угодно (`docs/REUSE.md` §1.1, сноска ⁶).
+ *
+ * ПАЛИТРА ЯДРУ НЕ ПРИНАДЛЕЖИТ. Чип красится через `--era-text`, а объявляет
+ * его витрина правилом на классе-модификаторе — и правило это обязано быть
+ * `:global`: чип печатает ядро, значит он несёт ЕГО скрут, и обычная запись
+ * у витрины получила бы скрут витрины и молча перестала совпадать.
+ * Прецедент — палитра ленты у `CardRail` и палитра рядов у `StoryRow`.
+ *
+ * ОБЕ СТРОКИ ЧИПА ОБЯЗАТЕЛЬНЫ. Чип с одной строкой — не этот блок, поэтому
+ * `meta` не сделан необязательным: необязательность завела бы ветку, которую
+ * на сегодняшней витрине нечем проверить.
+ */
+interface Chip {
+  /** Адрес чипа. */
+  href: string;
+  /** Верхняя строка: то, по чему полосу читают глазами. */
+  title: string;
+  /** Нижняя строка, приглушённая. */
+  meta: string;
+  /** Класс-модификатор чипа: витрина красит его своей палитрой. */
+  modifier?: string;
+}
+
+interface Props {
+  chips: Chip[];
+  /** Подпись полосы для скринридера. */
+  label: string;
+}
+
+const { chips, label } = Astro.props;
+---
+
+<nav class="hero__jump" aria-label={label}>
+  {
+    chips.map((chip) => (
+      <a class:list={['hero__chip', chip.modifier]} href={chip.href}>
+        <span class="hero__chip-year t-caption tabular">{chip.title}</span>
+        <span class="hero__chip-place t-caption">{chip.meta}</span>
+      </a>
+    ))
+  }
+</nav>
+
+<style>
+  .hero__jump {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xl);
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .hero__chip {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3xs);
+    padding: var(--space-2xs) var(--space-xs);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    text-decoration: none;
+    transition:
+      border-color 180ms var(--ease-out),
+      background-color 180ms var(--ease-out);
+  }
+
+  .hero__chip:hover {
+    border-color: var(--era-text);
+    background: var(--wash);
+  }
+
+  .hero__chip-year {
+    color: var(--era-text);
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .hero__chip-place {
+    color: var(--ink-muted);
+  }
+</style>

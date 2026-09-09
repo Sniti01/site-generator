@@ -1,10 +1,38 @@
 ---
+import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
+import ChipNav from '@factory/core/blocks/ChipNav.astro';
 import Viewpoint from './Viewpoint.astro';
 import EraMedia from './EraMedia.astro';
 import gameArt from '../data/game-art.json';
 import Icon from './Icon.astro';
 import { eras } from '../data/site';
 
+/**
+ * Pierwszy ekran tej witryny. Plik istnieje po to, żeby `index.astro` zostało
+ * przy samym `<Hero />`, a wszystko, co należy do witryny — art i jego duoton,
+ * polskie zdania z własnym `<i>`, adresy kotwic, słownik epok i ich paleta —
+ * mieszkało po tej stronie granicy.
+ *
+ * Mechanizm ekranu jest w rdzeniu: `@factory/core/blocks/HeroKeyArt.astro`,
+ * polska czipów — `@factory/core/blocks/ChipNav.astro`.
+ *
+ * DLACZEGO ART ZOSTAJE TUTAJ. Reguła ustawiająca art jest nieodłączna
+ * od samego artu: `data-astro-cid-*` wiąże je po skrócie, więc reguła w jednym
+ * komponencie, a element w drugim — to ciche zgubienie oprawy
+ * (`docs/REUSE.md` §1.1, przypis ² i ¹). Razem z `.hero__art` zostają jego
+ * duoton, obie reguły w medizapytaniach i podpis wysokości.
+ *
+ * DLACZEGO PALETA CZIPÓW MA `:global`. Czip rysuje rdzeń, więc niesie JEGO
+ * skrót; reguła zapisana tutaj zwyczajnie dostałaby skrót tego pliku i po cichu
+ * przestałaby pasować. Element przenieść się nie może — przenosi się zasięg
+ * reguły. Tak samo jak przy palecie taśmy w `CardRail` i palecie rzędów
+ * w `StoryRow`.
+ *
+ * DLACZEGO LID IDZIE MIEJSCEM. Ma własne formatowanie: zagnieżdżone `<i>`
+ * i przełamanie wiersza wewnątrz węzła tekstowego. Props-łańcuch odtworzyłby
+ * je spacjami, a wtedy znacznik rozjechałby się tam, gdzie wygląd się nie
+ * zmienia (zapis `DECISIONS.md` z 2026-09-07 o propsach i slotach).
+ */
 const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
 
 /*
@@ -21,8 +49,15 @@ const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
 const heroSizes = '(max-width: 1024px) 200vw, 170vw';
 ---
 
-<section class="hero" aria-labelledby="hero-tytul">
-  <div class="hero__art">
+<HeroKeyArt
+  title="Cała seria według lat"
+  titleId="hero-tytul"
+  primaryHref="#zejscie"
+  primaryLabel="Zacznij zejście"
+  secondaryHref="#katalog"
+  secondaryLabel="Katalog poradników"
+>
+  <div class="hero__art" slot="art">
     <EraMedia
       klucz="hero"
       widths={[1200, 1600, 2400, 3200]}
@@ -32,58 +67,37 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
     />
     {!kluczowyArt && <Viewpoint bare />}
   </div>
-  <div class="hero__scrim"></div>
 
-  <div class="hero__inner container">
-    <div class="hero__text">
-      <h1 class="hero__title t-display" id="hero-tytul">
-        Cała seria według lat
-      </h1>
+  <Fragment slot="lead">
       <p class="hero__lead t-lead measure">
         Zaczynasz na iglicy, schodzisz przez pięć stuleci i lądujesz w tym poradniku, po który
         przyszedłeś. Nieoficjalny przewodnik po <i>Assassin’s Creed</i> — bez tagów, po latach.
       </p>
+  </Fragment>
 
-      <div class="hero__actions">
-        <a class="btn btn-primary t-button" href="#zejscie">
-          Zacznij zejście
-          <Icon name="w-dol" size={18} />
-        </a>
-        <a class="btn btn-secondary t-button" href="#katalog">Katalog poradników</a>
-      </div>
+  <Icon slot="ikona-glowna" name="w-dol" size={18} />
 
-      <nav class="hero__jump" aria-label="Skok do epoki">
-        {
-          eras.map((era) => (
-            <a class:list={['hero__chip', `hero__chip--${era.id}`]} href={`#epoka-${era.id}`}>
-              <span class="hero__chip-year t-caption tabular">{era.year}</span>
-              <span class="hero__chip-place t-caption">{era.place}</span>
-            </a>
-          ))
-        }
-      </nav>
-    </div>
-  </div>
+  <ChipNav
+    slot="nawigacja"
+    label="Skok do epoki"
+    chips={eras.map((era) => ({
+      href: `#epoka-${era.id}`,
+      title: era.year,
+      meta: era.place,
+      modifier: `hero__chip--${era.id}`,
+    }))}
+  />
 
   {
     !kluczowyArt && (
-      <span class="hero__height t-micro tabular" aria-hidden="true">
+      <span class="hero__height t-micro tabular" slot="dopisek" aria-hidden="true">
         wysokość 42 m
       </span>
     )
   }
-</section>
+</HeroKeyArt>
 
 <style>
-  .hero {
-    position: relative;
-    display: flex;
-    align-items: center;
-    min-height: clamp(600px, 90vh, 920px);
-    overflow: hidden;
-    border-bottom: 1px solid var(--hairline);
-  }
-
   .hero__art {
     position: absolute;
     inset: 0 0 0 32%;
@@ -98,36 +112,6 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
     height: 100%;
   }
 
-  /* Skrim: tekst nigdy nie leży na surowym obrazie. */
-  .hero__scrim {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(
-        90deg,
-        rgb(13 12 10 / 0.96) 0 30%,
-        rgb(13 12 10 / 0.74) 52%,
-        rgb(13 12 10 / 0.12) 78%,
-        rgb(13 12 10 / 0) 100%
-      ),
-      linear-gradient(0deg, rgb(13 12 10 / 0.88), rgb(13 12 10 / 0) 42%);
-  }
-
-  .hero__inner {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    padding-block: var(--space-3xl);
-  }
-
-  .hero__text {
-    max-width: 720px;
-  }
-
-  .hero__title {
-    color: var(--ink);
-  }
-
   .hero__lead {
     margin-top: var(--space-md);
     color: var(--ink-muted);
@@ -138,64 +122,19 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
     color: var(--ink);
   }
 
-  .hero__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    margin-top: var(--space-xl);
-  }
-
-  .hero__jump {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2xs);
-    margin-top: var(--space-2xl);
-    padding-top: var(--space-md);
-    border-top: 1px solid var(--hairline);
-  }
-
-  .hero__chip {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-3xs);
-    padding: var(--space-2xs) var(--space-xs);
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-sharp);
-    text-decoration: none;
-    transition:
-      border-color 180ms var(--ease-out),
-      background-color 180ms var(--ease-out);
-  }
-
-  .hero__chip:hover {
-    border-color: var(--era-text);
-    background: var(--wash);
-  }
-
-  .hero__chip-year {
-    color: var(--era-text);
-    font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: 0.08em;
-  }
-
-  .hero__chip-place {
-    color: var(--ink-muted);
-  }
-
-  .hero__chip--jerozolima {
+  :global(.hero__chip--jerozolima) {
     --era-text: var(--era-jerozolima-text);
   }
-  .hero__chip--wlochy {
+  :global(.hero__chip--wlochy) {
     --era-text: var(--era-wlochy-text);
   }
-  .hero__chip--karaiby {
+  :global(.hero__chip--karaiby) {
     --era-text: var(--era-karaiby-text);
   }
-  .hero__chip--londyn {
+  :global(.hero__chip--londyn) {
     --era-text: var(--era-londyn-text);
   }
-  .hero__chip--japonia {
+  :global(.hero__chip--japonia) {
     --era-text: var(--era-japonia-text);
   }
 
@@ -215,13 +154,6 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
   }
 
   @media (max-width: 640px) {
-    /* Pierwszy ekran telefonu: najpierw sylwetka, pod nią tytuł. Przy
-       przesunięciu obrazu w bok postać wypadała z kadru. */
-    .hero {
-      flex-direction: column;
-      align-items: stretch;
-      min-height: 0;
-    }
     .hero__art {
       position: relative;
       inset: auto;
@@ -230,26 +162,8 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
       min-height: 260px;
       opacity: 1;
     }
-    .hero__scrim {
-      bottom: auto;
-      height: 40vh;
-      min-height: 260px;
-      background: linear-gradient(
-        0deg,
-        rgb(13 12 10 / 1) 0 6%,
-        rgb(13 12 10 / 0.55) 34%,
-        rgb(13 12 10 / 0) 72%
-      );
-    }
-    .hero__inner {
-      padding-block: var(--space-lg) var(--space-2xl);
-    }
-    .hero__actions .btn {
-      flex: 1 1 100%;
-    }
     .hero__height {
       display: none;
     }
   }
-
 </style>

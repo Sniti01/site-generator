@@ -1,0 +1,159 @@
+---
+/**
+ * `hero-key-art` — первый экран: арт во всю высоту, обязательный скрим над ним,
+ * заголовок страницы, лид и ровно две кнопки — залитая и контурная.
+ *
+ * Механизм, не содержание. Ядро держит то, что делает первый экран первым
+ * экраном: высоту секции, скрим, колонку с ограниченной мерой текста,
+ * `h1`, связанный с секцией через `aria-labelledby`, полосу действий
+ * и обрушение всего этого в столбик на телефоне. Арт, слова, адреса и всё,
+ * что ниже кнопок, приходят с витрины местами.
+ *
+ * АРТ — МЕСТО, И ЭТО ПРЕЦЕДЕНТ `cta-band`. Правило, позиционирующее арт,
+ * неотделимо от самого арта: `data-astro-cid-*` связывает их по скруту,
+ * и правило в одном компоненте с элементом в другом теряет силу молча
+ * (`docs/REUSE.md` §1.1, сноска ² и сноска ¹). Поэтому `.hero__art`
+ * этому файлу НЕ принадлежит — он принадлежит витрине вместе со своим
+ * правилом, своим дуотоном и своими медиазапросами.
+ *
+ * СКРИМ ПРИНАДЛЕЖИТ ЯДРУ, И ЭТО НЕ СИММЕТРИЧНО АРТУ. `archiv` требует скрима
+ * обязательно: текст первого экрана никогда не лежит на сыром изображении.
+ * Требование — часть блока, а не витрины, поэтому `.hero__scrim` рисует
+ * и красит ядро; витрина может дать другой арт, но не может отменить скрим.
+ *
+ * ЛИД — МЕСТО, А НЕ ПРОПС. У лида есть авторское форматирование: вложенный
+ * `<i>` и перенос строки внутри текстового узла. Строковый пропс воспроизвёл
+ * бы их пробелами, и разметка разошлась бы там, где вид не меняется, —
+ * запись `DECISIONS.md` от 2026-09-07 о пропсах и слотах. Заодно правило
+ * `.hero__lead i` остаётся при своём элементе: оба его конца рисует витрина.
+ *
+ * КНОПКИ РИСУЕТ ЯДРО, обе. Их две по договору блока, а не по случаю
+ * («ровно одна залитая кнопка плюс одна контурная», `REUSE` §1.2), и правило
+ * `@media { .hero__actions .btn }` требует скрута на обоих концах — значит
+ * и полоса, и кнопки обязаны выйти из одного файла. Слова и адреса приходят
+ * пропсами, иконка залитой кнопки — местом, как у `cta-band`.
+ *
+ * ДОГОВОР ПРОПСОВЫЙ, тип объявлен здесь и у витрины не импортируется:
+ * направление зависимости только вниз.
+ */
+interface Props {
+  /** Заголовок страницы. Однострочная надпись — пропс, а не место. */
+  title: string;
+  /** Id заголовка; вяжет `aria-labelledby` секции с самим `<h1>`. */
+  titleId?: string;
+  /** Залитая кнопка: адрес и надпись. */
+  primaryHref: string;
+  primaryLabel: string;
+  /** Контурная кнопка: адрес и надпись. */
+  secondaryHref: string;
+  secondaryLabel: string;
+}
+
+const {
+  title,
+  titleId = 'hero-tytul',
+  primaryHref,
+  primaryLabel,
+  secondaryHref,
+  secondaryLabel,
+} = Astro.props;
+---
+
+<section class="hero" aria-labelledby={titleId}>
+  <slot name="art" />
+  <div class="hero__scrim"></div>
+
+  <div class="hero__inner container">
+    <div class="hero__text">
+      <h1 class="hero__title t-display" id={titleId}>{title}</h1>
+      <slot name="lead" />
+
+      <div class="hero__actions">
+        <a class="btn btn-primary t-button" href={primaryHref}>
+          {primaryLabel}
+          <slot name="ikona-glowna" />
+        </a>
+        <a class="btn btn-secondary t-button" href={secondaryHref}>{secondaryLabel}</a>
+      </div>
+
+      <slot name="nawigacja" />
+    </div>
+  </div>
+
+  <slot name="dopisek" />
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: clamp(600px, 90vh, 920px);
+    overflow: hidden;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  /* Skrim: tekst nigdy nie leży na surowym obrazie. */
+  .hero__scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(
+        90deg,
+        rgb(13 12 10 / 0.96) 0 30%,
+        rgb(13 12 10 / 0.74) 52%,
+        rgb(13 12 10 / 0.12) 78%,
+        rgb(13 12 10 / 0) 100%
+      ),
+      linear-gradient(0deg, rgb(13 12 10 / 0.88), rgb(13 12 10 / 0) 42%);
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-block: var(--space-3xl);
+  }
+
+  .hero__text {
+    max-width: 720px;
+  }
+
+  .hero__title {
+    color: var(--ink);
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xl);
+  }
+
+  @media (max-width: 640px) {
+    /* Pierwszy ekran telefonu: najpierw sylwetka, pod nią tytuł. Przy
+       przesunięciu obrazu w bok postać wypadała z kadru. */
+    .hero {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .hero__scrim {
+      bottom: auto;
+      height: 40vh;
+      min-height: 260px;
+      background: linear-gradient(
+        0deg,
+        rgb(13 12 10 / 1) 0 6%,
+        rgb(13 12 10 / 0.55) 34%,
+        rgb(13 12 10 / 0) 72%
+      );
+    }
+    .hero__inner {
+      padding-block: var(--space-lg) var(--space-2xl);
+    }
+    .hero__actions .btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>

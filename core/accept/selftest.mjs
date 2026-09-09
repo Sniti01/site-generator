@@ -51,7 +51,7 @@ check('файлов CSS в сборке', 1, cssFiles.length, 'отчёты P2: 
 if (cssFiles.length === 1) {
   const m = measure(readFileSync(join(dist, '_astro', cssFiles[0]), 'utf8'));
   check('правил CSS', 331, m.правил, 'отчёты 2026-09-07-p2-header и -linkcolumns');
-  check('@media-блоков', 24, m.media_вхождений, 'REUSE §6: «24 вместо 22» после расщепления SiteFooter');
+  check('@media-блоков', 26, m.media_вхождений, 'отчёт 2026-09-09-p3-storyrow: «24 → 26» после расщепления EraLayer');
 }
 
 /* — разметка: скруты находятся и приводятся к порядковому виду — */

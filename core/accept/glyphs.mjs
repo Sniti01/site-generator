@@ -66,6 +66,10 @@ export const БУКВЫ = [
 export const РОЛИ = [
   't-display', 't-headline', 't-title', 't-lead', 't-body',
   't-caption', 't-label', 't-micro', 't-year', 't-button',
+  // Одиннадцатая: `§7.4` считает ролей одиннадцать, а первая редакция
+  // проверки знала десять. `t-wordmark` — Cinzel под uppercase, то есть
+  // ровно тот случай, ради которого раздел «под защитой» и заведён.
+  't-wordmark',
 ];
 
 /**

@@ -100,6 +100,20 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(sep).join(
     const base = readdirSync(two).filter((f) => f.endsWith('.png')).sort();
     const got = new Set(readdirSync(one).filter((f) => f.endsWith('.png')));
     console.log(`эталонных кадров: ${base.length}, снятых: ${got.size}`);
+
+    // Число неработающих судей печатается ОТДЕЛЬНОЙ СТРОКОЙ при каждой сверке.
+    // Решение владельца 2026-09-09: молчание про неработающего судью равно
+    // красному `accept`, которого три сессии никто не видел. Список ведётся
+    // в `_baseline/ne-sudyi.json` и обнуляется вместе с кадрами.
+    const списокПуть = join(two, 'ne-sudyi.json');
+    if (existsSync(списокПуть)) {
+      const список = JSON.parse(readFileSync(списокПуть, 'utf8'));
+      const н = (список.кадры ?? []).length;
+      console.log(`НЕ СУДЬИ: ${н} из ${base.length} — сверка против них ничего не значит.`);
+      for (const к of список.кадры ?? []) console.log(`  ${к.кадр}: ${к.причина} (с ${к.перестал})`);
+    } else {
+      console.log('НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.');
+    }
     let missing = 0;
     for (const name of base) {
       if (!got.has(name)) {

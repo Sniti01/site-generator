@@ -31,10 +31,21 @@ await Promise.all(imgs.map(i => i.complete ? null : new Promise(r => { i.onload 
  * Прокрутка до низа и обратно: без неё ленивые изображения не занимают место,
  * и полный кадр выходит короче — именно отсюда разные высоты у старых снимков
  * `.impeccable/review/` (8678 и 8659).
+ *
+ * **Ступенями, а не одним прыжком.** Ленивое изображение грузится, когда
+ * попадает в поле зрения; мгновенный прыжок вниз и обратно середину страницы
+ * не показывает. Измерено 2026-09-09 на 1440×900: один прыжок будит 3 из 11
+ * изображений, ступени по 0,9 высоты окна — 11 из 11. Цена пропуска — полный
+ * кадр расходится с эталоном на 2 131 290 субпикселей из 38 098 080.
  */
 // `'instant'`, а не `'auto'`: по спецификации `'auto'` значит «как велит CSS»,
 // а `src/styles/global.css` ставит `html { scroll-behavior: smooth }`.
-export const ПРОКРУТКА = `window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
+export const ПРОКРУТКА = `const шаг = Math.round(window.innerHeight * 0.9);
+for (let y = 0; y <= document.body.scrollHeight; y += шаг) {
+  window.scrollTo({ top: y, behavior: 'instant' });
+  await new Promise(r => setTimeout(r, 60));
+}
+window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
 await new Promise(r => setTimeout(r, 400));
 window.scrollTo({ top: 0, behavior: 'instant' });
 await new Promise(r => setTimeout(r, 200));

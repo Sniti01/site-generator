@@ -1,7 +1,16 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import { getPage } from '../lib/structure';
+import slownik from '@factory/core/structure/blocks.json';
+import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
+import StoryRow from '@factory/core/blocks/StoryRow.astro';
+import LinkList from '@factory/core/blocks/LinkList.astro';
+import CardRail from '@factory/core/blocks/CardRail.astro';
+import CtaBand from '@factory/core/blocks/CtaBand.astro';
+import EraMedia from '../components/EraMedia.astro';
+import Icon from '../components/Icon.astro';
+import type { EraId } from '../data/site';
 
 /**
  * Jedna trasa dla całej treści fali 1. Adres bierze się z pola `url` we front
@@ -9,12 +18,20 @@ import { getPage } from '../lib/structure';
  * `structure.json` wywala build (П24 punkt 1, rozwidlenie 1).
  *
  * Tytuł, opis i h1 idą ze struktury, nie z pliku treści (П24 punkt 3).
+ * Kolejność sekcji też: mówi ją `blocks[]`. Z pliku treści przychodzą
+ * wyłącznie zdania i adresy.
  *
- * DLACZEGO STRONA GŁÓWNA TU JESZCZE NIE MIESZKA. Jej pięć pól w strukturze
- * różni się od tego, co dziś drukuje `index.astro` — łącznie z `h1`, który
- * jest widoczny i trzyma piksel `_baseline/`. Przeprowadzka głównej to zmiana
- * wyglądu, a П29 punkt 4 oddaje ją jednej wspólnej przesiadce wzorca razem
- * z punktami 5 i 6 backlogu. Zmierzone i opisane w raporcie sesji 4.
+ * BLOKI JESZCZE NIEZROBIONE POMIJA SIĘ GŁOŚNO. Które są gotowe, mówi pole
+ * `реализован` w `core/structure/blocks.json` — nie lista w tym pliku.
+ * Każdy pominięty blok jest wypisywany po imieniu przy budowaniu: cicha
+ * zaślepka jest tu zakazana, bo strona z brakiem wygląda tak samo jak strona
+ * bez braku. `byline`, `toc`, `gallery` i `verdict-box` wchodzą w sesji 6,
+ * i ta sama strona jest jej stendem (П29 punkt 2).
+ *
+ * DLACZEGO STRONA GŁÓWNA TU NIE MIESZKA. Jej pięć pól w strukturze różni się
+ * od tego, co drukuje `index.astro` — łącznie z widocznym `h1`, który trzyma
+ * piksel `_baseline/`. Przeprowadzka głównej jest czwartym punktem П32
+ * i jedzie razem z jedyną przesiadką wzorca.
  */
 export async function getStaticPaths() {
   const wpisy = await getCollection('tresc');
@@ -29,10 +46,156 @@ export async function getStaticPaths() {
 
 const { wpis } = Astro.props;
 const strona = getPage(wpis.data.url);
-const { Content } = await render(wpis);
+const dane = wpis.data;
+
+const gotowy = (imie: string) =>
+  Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
+
+const zadeklarowane = strona.blocks.map((b) => b.block);
+const pominiete = zadeklarowane.filter((b) => !gotowy(b));
+const doZrobienia = zadeklarowane.filter(gotowy);
+
+if (pominiete.length) {
+  console.log(`  ${strona.url} — bloki zadeklarowane, ale nie w rdzeniu: ${pominiete.join(', ')}`);
+}
+
+/**
+ * Kolejność drukowana niżej jest wpisana ręcznie, więc musi być pilnowana
+ * maszyną, a nie pamięcią: rozejście się z `blocks[]` przerywa budowanie.
+ * Dyspozytor ogólny — sprawa sesji 6, kiedy bloków będzie osiem, nie cztery.
+ */
+const oczekiwana = ['hero-key-art', 'story-row', 'card-rail', 'cta-band'];
+if (doZrobienia.join(',') !== oczekiwana.join(',')) {
+  throw new Error(
+    `Kolejność bloków w strukturze (${doZrobienia.join(', ')}) rozeszła się z tą, ` +
+      `którą drukuje szablon (${oczekiwana.join(', ')}). Adres: ${strona.url}. ` +
+      'Popraw szablon albo strukturę — ale nie zostawiaj rozejścia.'
+  );
+}
+
+/**
+ * `link-list` NIE JEST zadeklarowany w `blocks[]` tej strony, a jest tu
+ * drukowany: niesie pole `related` ze struktury. Czy `blocks[]` ma nosić
+ * `link-list` dla stron z `related` — pytanie do właściciela, zapisane
+ * w raporcie sesji 5. Do rozstrzygnięcia sekcja stoi, bo `related` musi
+ * dojść do strony, a to jest blok, którego to robota.
+ */
+const pokrewne = (strona.related ?? []).map((url) => {
+  const cel = getPage(url);
+  return { href: url, title: cel.h1, meta: cel.type === 'game' ? 'Gra' : 'Tekst' };
+});
 ---
 
 <Base title={strona.title} description={strona.description}>
-  <h1 class="t-display">{strona.h1}</h1>
-  <Content />
+  <HeroKeyArt
+    title={strona.h1}
+    titleId="strona-tytul"
+    primaryHref={dane.primary.href}
+    primaryLabel={dane.primary.label}
+    secondaryHref={dane.secondary.href}
+    secondaryLabel={dane.secondary.label}
+  >
+    {
+      dane.art && (
+        <EraMedia
+          slot="art"
+          klucz={dane.art as EraId}
+          widths={[1200, 1600, 2400, 3200]}
+          sizes="(max-width: 1024px) 200vw, 170vw"
+          loading="eager"
+          credit={false}
+        />
+      )
+    }
+    <p class="hero__lead t-lead measure" slot="lead">{dane.lead}</p>
+    <Icon slot="ikona-glowna" name="w-dol" size={18} />
+  </HeroKeyArt>
+
+  {
+    dane.rows.map((rzad) => (
+      <StoryRow
+        title={rzad.title}
+        titleId={`${rzad.id}-tytul`}
+        id={rzad.id}
+        modifier={`layer--${dane.art ?? 'karaiby'}`}
+        flip={rzad.flip}
+        band={rzad.band}
+      >
+        <p class="layer__year t-year" slot="nadtytul">
+          {rzad.year}
+        </p>
+
+        <Fragment slot="tresc">
+          <p class="layer__meta t-caption">{rzad.meta}</p>
+          {rzad.body.map((akapit) => (
+            <p class="layer__body t-body measure">{akapit}</p>
+          ))}
+        </Fragment>
+
+        {
+          rzad.art && (
+            <EraMedia
+              slot="kadr"
+              klucz={rzad.art as EraId}
+              era={rzad.art as EraId}
+              widths={[640, 960, 1280]}
+              sizes="(max-width: 1024px) 92vw, 46vw"
+              credit={false}
+            />
+          )
+        }
+      </StoryRow>
+    ))
+  }
+
+  {
+    pokrewne.length > 0 && (
+      <section class="pokrewne container" aria-labelledby="pokrewne-tytul">
+        <h2 class="pokrewne__title t-title" id="pokrewne-tytul">
+          Powiązane strony
+        </h2>
+        <LinkList items={pokrewne}>
+          <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+        </LinkList>
+      </section>
+    )
+  }
+
+  {
+    dane.cards && (
+      <CardRail
+        cards={dane.cards.items}
+        title={dane.cards.title}
+        titleId="dokad-tytul"
+        lead={dane.cards.lead}
+        trackLabel="Sąsiednie części, przewijane poziomo"
+        prevLabel="Poprzednie karty"
+        nextLabel="Następne karty"
+      >
+        <Icon slot="ikona-wstecz" name="strzalka-w-lewo" size={20} />
+        <Icon slot="ikona-dalej" name="strzalka-w-prawo" size={20} />
+        <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+      </CardRail>
+    )
+  }
+
+  {
+    dane.cta && (
+      <CtaBand title={dane.cta.title} lead={dane.cta.lead} href={dane.cta.href} label={dane.cta.label} id="cta-tytul">
+        <Icon slot="akcja" name="strzalka-w-prawo" size={18} />
+      </CtaBand>
+    )
+  }
 </Base>
+
+<style>
+  /* Sekcja `related`: rdzeń drukuje samą listę, ramka i nagłówek należą
+     do witryny — tak samo jak przy `link-list` w warstwach epok. */
+  .pokrewne {
+    padding-block: var(--space-xl);
+  }
+
+  .pokrewne__title {
+    margin-bottom: var(--space-md);
+  }
+</style>

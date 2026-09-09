@@ -184,8 +184,12 @@ body {
   margin: 0;
 }
 
+/* НЕ `--font-display`. Cinzel — капитель, и восемь её строчных польских
+   диакритик (`ą ć ę ł ń ś ź ż`) нарисованы ПРОПИСНЫМИ глифами; верна одна `ó`.
+   Роль печатает строчный польский текст, поэтому набрана `--font-text`.
+   Измерено и решено 2026-09-09; проверка — `core/accept/glyphs.mjs`. */
 .t-title {
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-size: 1.3125rem;
   font-weight: 600;
   line-height: 1.28;
@@ -193,8 +197,10 @@ body {
   margin: 0;
 }
 
+/* НЕ `--font-display`, по той же причине, что у `.t-title`. Сегодня роль
+   печатает только цифры, но первое же слово в ней вернуло бы дефект. */
 .t-year {
-  font-family: var(--font-display);
+  font-family: var(--font-text);
   font-size: clamp(3rem, 2rem + 5vw, 5.5rem);
   font-weight: 400;
   line-height: 0.9;

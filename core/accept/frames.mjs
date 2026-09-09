@@ -32,14 +32,16 @@ await Promise.all(imgs.map(i => i.complete ? null : new Promise(r => { i.onload 
  * и полный кадр выходит короче — именно отсюда разные высоты у старых снимков
  * `.impeccable/review/` (8678 и 8659).
  */
-export const ПРОКРУТКА = `window.scrollTo({ top: document.body.scrollHeight, behavior: 'auto' });
+// `'instant'`, а не `'auto'`: по спецификации `'auto'` значит «как велит CSS»,
+// а `src/styles/global.css` ставит `html { scroll-behavior: smooth }`.
+export const ПРОКРУТКА = `window.scrollTo({ top: document.body.scrollHeight, behavior: 'instant' });
 await new Promise(r => setTimeout(r, 400));
-window.scrollTo({ top: 0, behavior: 'auto' });
+window.scrollTo({ top: 0, behavior: 'instant' });
 await new Promise(r => setTimeout(r, 200));
 ({ высота: document.body.scrollHeight, scrollY: window.scrollY })`;
 
-/** Прокрутка к полосе для оконного кадра: явный 'auto' и проверка scrollY. */
-export const К_ПОЛОСЕ = (y) => `window.scrollTo({ top: ${y}, behavior: 'auto' });
+/** Прокрутка к полосе для оконного кадра: мгновенный прыжок и проверка scrollY. */
+export const К_ПОЛОСЕ = (y) => `window.scrollTo({ top: ${y}, behavior: 'instant' });
 await new Promise(r => setTimeout(r, 200));
 ({ scrollY: window.scrollY, ожидали: ${y} })`;
 

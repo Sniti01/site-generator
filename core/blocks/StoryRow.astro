@@ -1,0 +1,141 @@
+---
+/**
+ * `story-row` — ряд рассказа: половина текста, половина кадра; у соседнего
+ * ряда половины зеркальны.
+ *
+ * Механизм, не содержание. Ядро держит то, что делает ряд рядом: секцию с её
+ * ритмом, двухколонник с обрушением в одну колонку, переключение порядка
+ * половин у `layer--flip`, заголовок, связанный с секцией через
+ * `aria-labelledby`, и рамку кадра с её пропорцией. Надстрочник, метаданные,
+ * тело, кадр и подпись над кадром приходят с витрины местами; заголовок,
+ * якорь и модификатор — пропсами.
+ *
+ * ЗЕРКАЛЬНОСТЬ ЖИВЁТ ЗДЕСЬ ЦЕЛИКОМ, и это она задала форму расщепления.
+ * Правило `.layer--flip .layer__text` требует скрута на ОБОИХ концах
+ * (`docs/REUSE.md` §1.1, сноска ²), а собственных правил нет ни у
+ * `.layer--flip`, ни у `.layer__text`: они существуют только в паре.
+ * Значит и секцию, и текстовую обёртку обязан печатать один файл — этот.
+ * Витрина их наполняет, но ни одной из двух не создаёт.
+ *
+ * ПОДПИСЬ НАД КАДРОМ — МЕСТО БЕЗ ОБЁРТКИ. Ядро печатает `<slot name="tabliczka" />`
+ * голым, внутри колонки медиа, сразу за кадром. Сам `<div>` подписи, его фактура
+ * и его зеркальный отступ принадлежат витрине: в правиле подписи склеены механика
+ * и внешний вид, а разрезать правило надвое значит поднять счёт правил
+ * в собранном листе — чего не делал ни один принятый вынос. Пустое место рисует
+ * пустоту, поэтому идиома `Astro.slots.has`/`render` здесь не нужна: в отличие
+ * от `SmartImage`, ядро вокруг места ничего не рисует.
+ *
+ * ПАЛИТРА ЯДРУ НЕ ПРИНАДЛЕЖИТ. Класс-модификатор приходит пропсом `modifier`,
+ * а правила, которые он включает, объявляет витрина записью `:global(…)`:
+ * секцию печатает ядро, она несёт ЕГО скрут, и правило витрины, записанное
+ * обычно, получило бы скрут витрины и молча перестало совпадать. Элемент
+ * переехать не может — переезжает область действия правила. Прецедент —
+ * палитра эпох у `CardRail`/`GuideRail` (`REUSE` §1.1, сноска ⁶).
+ *
+ * КРЮЧКИ КОРНЯ ПРИХОДЯТ СПРЕДОМ. Витрина вешает на секцию свои атрибуты —
+ * у ac4bf это `data-era-section`, за который держится полоса прокрутки, —
+ * и ядро о них знать не обязано. Спред печатается ровно там, где написан:
+ * между `id` и `aria-labelledby`, как было до выноса.
+ *
+ * ДОГОВОР ПРОПСОВЫЙ, тип объявлен здесь и у витрины не импортируется:
+ * направление зависимости только вниз.
+ */
+interface Props {
+  /** Заголовок ряда. Однострочная надпись — пропс, а не место. */
+  title: string;
+  /** Id заголовка; вяжет `aria-labelledby` секции с самим `<h2>`. */
+  titleId?: string;
+  /** Якорь секции; байты адреса приходят с витрины целиком. */
+  id?: string;
+  /** Класс-модификатор секции: витрина красит ряд своей палитрой. */
+  modifier?: string;
+  /** Зеркальное расположение половин у соседнего ряда. */
+  flip?: boolean;
+  /** Полоса другого фона — класс `.band` из шасси. */
+  band?: boolean;
+  /** Посайтовые крючки корня секции; печатаются третьим атрибутом. */
+  attrs?: Record<string, string>;
+}
+
+const {
+  title,
+  titleId = 'story-row-tytul',
+  id,
+  modifier,
+  flip = false,
+  band = false,
+  attrs,
+} = Astro.props;
+---
+
+<section
+  class:list={['layer', modifier, flip && 'layer--flip', band && 'band']}
+  id={id}
+  {...attrs}
+  aria-labelledby={titleId}
+>
+  <div class="layer__inner container">
+    <div class="layer__text">
+      <slot name="nadtytul" />
+      <h2 class="layer__headline t-headline" id={titleId}>{title}</h2>
+      <slot name="tresc" />
+    </div>
+
+    <div class="layer__media">
+      <div class="layer__art"><slot name="kadr" /></div>
+      <slot name="tabliczka" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .layer {
+    position: relative;
+    padding-block: var(--section-y);
+  }
+
+  .layer__inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    gap: var(--space-3xl);
+    align-items: center;
+  }
+
+  .layer--flip .layer__text {
+    order: 2;
+  }
+
+  .layer__headline {
+    margin-top: var(--space-xs);
+    color: var(--ink);
+  }
+
+  .layer__media {
+    position: relative;
+  }
+
+  .layer__art :global(.foto),
+  .layer__art :global(.skyline) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .layer__art {
+    position: relative;
+    aspect-ratio: 21 / 13;
+    overflow: hidden;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius-sharp);
+    background: var(--bg);
+  }
+
+  @media (max-width: 1024px) {
+    .layer__inner {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--space-xl);
+    }
+    .layer--flip .layer__text {
+      order: 0;
+    }
+  }
+</style>

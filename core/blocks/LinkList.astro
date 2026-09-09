@@ -1,0 +1,124 @@
+---
+/**
+ * `link-list` — список настоящих ссылок с припиской справа и одной ссылкой
+ * «все» под ним.
+ *
+ * Механизм, не содержание. Ядро держит строку списка целиком: волосяные линии
+ * между строками, раскладку «заголовок слева, приписка справа», сдвиг строки
+ * при наведении и обрушение строки в столбик на узком экране. Адреса, надписи
+ * и приписки приходят с витрины записями, иконки — местами.
+ *
+ * ЗАПИСИ ПРИХОДЯТ ДАННЫМИ, а не разметкой. Слот содержимое не размножает,
+ * а пунктов в списке сколько угодно — поэтому `items` пропс, а не место.
+ * Тот же довод, что у `CardRail` (`docs/REUSE.md` §1.1, сноска ⁶).
+ *
+ * ИКОНКА ПРИПИСКИ — ОДНО МЕСТО НА ВСЕ СТРОКИ. Она одинакова во всех строках,
+ * а слот в цикле не размножается: место рендерится один раз и повторяется
+ * в каждой строке. Набор имён иконок — словарь витрины, и в договор блока он
+ * не въезжает. Нет места — нет и иконки.
+ *
+ * ПРИПИСКА — СТРОКА, А НЕ ЧИСЛО. Слово-единица («min», «cz.», год) принадлежит
+ * языку витрины, и не у всякого списка приписка означает время чтения.
+ *
+ * ЧЕГО ЗДЕСЬ НЕТ НАМЕРЕННО: заголовка, рамки `<section>`, счётчика у пункта,
+ * второго уровня вложенности. Ни у одного из них в Фазе 3 нет потребителя,
+ * а второй вариант подачи придумывается не здесь (`REUSE` §1.1).
+ */
+interface Pozycja {
+  /** Адрес ссылки. */
+  href: string;
+  /** Надпись ссылки. */
+  title: string;
+  /** Приписка справа, уже собранная витриной. Нет приписки — нет и `<span>`. */
+  meta?: string;
+}
+
+interface Props {
+  /** Записи списка. */
+  items: Pozycja[];
+  /** Адрес ссылки «все»; нет адреса — нет и всей нижней ссылки. */
+  allHref?: string;
+  /** Надпись ссылки «все». */
+  allLabel?: string;
+}
+
+const { items, allHref, allLabel } = Astro.props;
+
+// Спрашиваем не «подан ли слот», а «есть ли в нём что-нибудь»: у витрины место
+// иконки может занимать выражение с ложным условием, и слот всё равно считается
+// поданным. Идиома и её довод — `SmartImage`, запись DECISIONS от 2026-09-07.
+// `.trim()` обязателен: отрендеренное место идёт вплотную к приписке, и лишний
+// пробел был бы расхождением в собранной странице.
+const ikona = Astro.slots.has('ikona-dopisku')
+  ? (await Astro.slots.render('ikona-dopisku')).trim()
+  : '';
+---
+
+<ul class="layer__guides">
+  {
+    items.map((item) => (
+      <li class="layer__guide">
+        <a class="layer__guide-link" href={item.href}>
+          <span class="layer__guide-title t-title">{item.title}</span>
+          {item.meta && (
+            <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
+          )}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+{allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
+
+<style>
+  .layer__guides {
+    margin: var(--space-xl) 0 var(--space-md);
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .layer__guide {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .layer__guide-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-sm);
+    text-decoration: none;
+    transition: transform 180ms var(--ease-out);
+  }
+
+  .layer__guide-link:hover {
+    transform: translateX(var(--space-2xs));
+  }
+
+  .layer__guide-title {
+    color: var(--ink);
+    text-wrap: pretty;
+    transition: color 180ms var(--ease-out);
+  }
+
+  .layer__guide-link:hover .layer__guide-title {
+    color: var(--era-text);
+  }
+
+  .layer__guide-time {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3xs);
+    flex: none;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 560px) {
+    .layer__guide-link {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-3xs);
+    }
+  }
+</style>

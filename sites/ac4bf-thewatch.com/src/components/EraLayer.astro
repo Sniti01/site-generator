@@ -1,11 +1,33 @@
 ---
 import type { Era } from '../data/site';
+import StoryRow from '@factory/core/blocks/StoryRow.astro';
+import LinkList from '@factory/core/blocks/LinkList.astro';
 import EraMedia from './EraMedia.astro';
 import Icon from './Icon.astro';
 
 /**
- * Warstwa zejścia: jedna epoka serii. Strona tekstu, strona panoramy.
- * Strona obrazu zmienia się co warstwę — sąsiednie warstwy są lustrzane.
+ * Warstwa zejścia: jedna epoka serii. Plik istnieje po to, żeby `index.astro`
+ * zostało przy samym `<EraLayer />`, a wszystko, co należy do witryny —
+ * słownik epok i ich paleta, nadtytuł w roli `t-year` (rdzeń jej nie zna),
+ * wiersz metadanych z własną interpunkcją, tekst i pergaminowa tabliczka —
+ * mieszkało po tej stronie granicy.
+ *
+ * Mechanizm rzędu jest w rdzeniu: `@factory/core/blocks/StoryRow.astro`,
+ * lista poradników — `@factory/core/blocks/LinkList.astro`.
+ *
+ * DLACZEGO PALETA I TABLICZKA MAJĄ `:global`, a reszta nie. Sekcję rysuje
+ * rdzeń, więc niesie ona JEGO skrót `data-astro-cid-*`; reguła zapisana tutaj
+ * zwyczajnie dostałaby skrót tego pliku i po cichu przestałaby pasować
+ * (`docs/REUSE.md` §1.1, przypis ²). Dlatego pięć reguł palety jest globalnych
+ * w całości. Przy tabliczce globalny jest sam PRZODEK — `:global(.layer--flip)
+ * .layer__plate` — bo skrót zostaje na tabliczce, którą rysuje ten plik;
+ * forma zmierzona kompilatorem przed wynoszeniem (raport 2026-09-09).
+ * Odwrotna forma, `:global` na potomku, jest zakazana: obniżyłaby swoistość
+ * pierwszego członu grupy i tabliczka po cichu przestałaby się centrować.
+ *
+ * Pozostałe reguły — nadtytuł, meta, tekst, tabliczka i jej dwa akapity —
+ * zwyczajne: te elementy rysuje ten plik, więc noszą jego skrót. Elementy
+ * wewnątrz `<Fragment slot="…">` też noszą skrót OWIJKI, nie rdzenia.
  */
 interface Props {
   era: Era;
@@ -16,112 +38,82 @@ interface Props {
 const { era, flip, band } = Astro.props;
 ---
 
-<section
-  class:list={['layer', `layer--${era.id}`, flip && 'layer--flip', band && 'band']}
+<StoryRow
+  title={era.headline}
+  titleId={`epoka-${era.id}-tytul`}
   id={`epoka-${era.id}`}
-  data-era-section={era.id}
-  aria-labelledby={`epoka-${era.id}-tytul`}
+  modifier={`layer--${era.id}`}
+  flip={flip}
+  band={band}
+  attrs={{ 'data-era-section': era.id }}
 >
-  <div class="layer__inner container">
-    <div class="layer__text">
-      <p class="layer__year t-year">{era.year}</p>
-      <h2 class="layer__headline t-headline" id={`epoka-${era.id}-tytul`}>{era.headline}</h2>
-      <p class="layer__meta t-caption">
-        {era.place} · {era.span} · <span class="layer__hero">{era.hero}</span>
-      </p>
-      <p class="layer__body t-body measure">{era.body}</p>
+  <p class="layer__year t-year" slot="nadtytul">{era.year}</p>
 
-      <ul class="layer__guides">
-        {
-          era.guides.map((guide) => (
-            <li class="layer__guide">
-              <a class="layer__guide-link" href={guide.href}>
-                <span class="layer__guide-title t-title">{guide.title}</span>
-                <span class="layer__guide-time t-caption tabular">
-                  <Icon name="czas" size={14} />
-                  {guide.minutes} min
-                </span>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
+  <Fragment slot="tresc">
+    <p class="layer__meta t-caption">
+      {era.place} · {era.span} · <span class="layer__hero">{era.hero}</span>
+    </p>
+    <p class="layer__body t-body measure">{era.body}</p>
 
-      <a class="btn-link t-button" href={`/epoki/${era.id}/`}>
-        Wszystkie poradniki z tej epoki
-        <Icon name="strzalka-w-prawo" size={18} />
-      </a>
-    </div>
+    <LinkList
+      items={era.guides.map((guide) => ({
+        href: guide.href,
+        title: guide.title,
+        meta: `${guide.minutes} min`,
+      }))}
+      allHref={`/epoki/${era.id}/`}
+      allLabel="Wszystkie poradniki z tej epoki"
+    >
+      <Icon slot="ikona-dopisku" name="czas" size={14} />
+      <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+    </LinkList>
+  </Fragment>
 
-    <div class="layer__media">
-      <div class="layer__art">
-        <EraMedia
-          klucz={era.id}
-          era={era.id}
-          widths={[640, 960, 1280]}
-          sizes="(max-width: 1024px) 92vw, 46vw"
-          credit={false}
-        />
-      </div>
-      <div class="layer__plate">
-        <p class="layer__plate-game t-title">{era.game}</p>
-        <p class="layer__plate-meta t-caption tabular">Premiera {era.released}</p>
-      </div>
-    </div>
+  <EraMedia
+    slot="kadr"
+    klucz={era.id}
+    era={era.id}
+    widths={[640, 960, 1280]}
+    sizes="(max-width: 1024px) 92vw, 46vw"
+    credit={false}
+  />
+
+  <div class="layer__plate" slot="tabliczka">
+    <p class="layer__plate-game t-title">{era.game}</p>
+    <p class="layer__plate-meta t-caption tabular">Premiera {era.released}</p>
   </div>
-</section>
+</StoryRow>
 
 <style>
-  .layer {
-    position: relative;
-    padding-block: var(--section-y);
-  }
-
-  .layer--jerozolima {
+  :global(.layer--jerozolima) {
     --era: var(--era-jerozolima);
     --era-text: var(--era-jerozolima-text);
     --era-ink: var(--era-jerozolima-ink);
   }
-  .layer--wlochy {
+  :global(.layer--wlochy) {
     --era: var(--era-wlochy);
     --era-text: var(--era-wlochy-text);
     --era-ink: var(--era-wlochy-ink);
   }
-  .layer--karaiby {
+  :global(.layer--karaiby) {
     --era: var(--era-karaiby);
     --era-text: var(--era-karaiby-text);
     --era-ink: var(--era-karaiby-ink);
   }
-  .layer--londyn {
+  :global(.layer--londyn) {
     --era: var(--era-londyn);
     --era-text: var(--era-londyn-text);
     --era-ink: var(--era-londyn-ink);
   }
-  .layer--japonia {
+  :global(.layer--japonia) {
     --era: var(--era-japonia);
     --era-text: var(--era-japonia-text);
     --era-ink: var(--era-japonia-ink);
   }
 
-  .layer__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
-    gap: var(--space-3xl);
-    align-items: center;
-  }
-
-  .layer--flip .layer__text {
-    order: 2;
-  }
-
   .layer__year {
     color: var(--era);
     opacity: 0.9;
-  }
-
-  .layer__headline {
-    margin-top: var(--space-xs);
-    color: var(--ink);
   }
 
   .layer__meta {
@@ -136,68 +128,6 @@ const { era, flip, band } = Astro.props;
   .layer__body {
     margin-top: var(--space-md);
     color: var(--ink-muted);
-  }
-
-  .layer__guides {
-    margin: var(--space-xl) 0 var(--space-md);
-    padding: 0;
-    list-style: none;
-    border-top: 1px solid var(--hairline);
-  }
-
-  .layer__guide {
-    border-bottom: 1px solid var(--hairline);
-  }
-
-  .layer__guide-link {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: var(--space-md);
-    padding-block: var(--space-sm);
-    text-decoration: none;
-    transition: transform 180ms var(--ease-out);
-  }
-
-  .layer__guide-link:hover {
-    transform: translateX(var(--space-2xs));
-  }
-
-  .layer__guide-title {
-    color: var(--ink);
-    text-wrap: pretty;
-    transition: color 180ms var(--ease-out);
-  }
-
-  .layer__guide-link:hover .layer__guide-title {
-    color: var(--era-text);
-  }
-
-  .layer__guide-time {
-    display: inline-flex;
-    align-items: center;
-    gap: var(--space-3xs);
-    flex: none;
-    color: var(--ink-muted);
-  }
-
-  .layer__media {
-    position: relative;
-  }
-
-  .layer__art :global(.foto),
-  .layer__art :global(.skyline) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .layer__art {
-    position: relative;
-    aspect-ratio: 21 / 13;
-    overflow: hidden;
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius-sharp);
-    background: var(--bg);
   }
 
   .layer__plate {
@@ -238,7 +168,7 @@ const { era, flip, band } = Astro.props;
     );
   }
 
-  .layer--flip .layer__plate {
+  :global(.layer--flip) .layer__plate {
     margin-inline: auto var(--space-xl);
   }
 
@@ -253,27 +183,15 @@ const { era, flip, band } = Astro.props;
   }
 
   @media (max-width: 1024px) {
-    .layer__inner {
-      grid-template-columns: minmax(0, 1fr);
-      gap: var(--space-xl);
-    }
-    .layer--flip .layer__text {
-      order: 0;
-    }
     .layer__plate,
-    .layer--flip .layer__plate {
+    :global(.layer--flip) .layer__plate {
       margin-inline: var(--space-md) auto;
     }
   }
 
   @media (max-width: 560px) {
-    .layer__guide-link {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: var(--space-3xs);
-    }
     .layer__plate,
-    .layer--flip .layer__plate {
+    :global(.layer--flip) .layer__plate {
       margin-inline: 0;
       max-width: none;
     }

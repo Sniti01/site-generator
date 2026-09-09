@@ -23,6 +23,7 @@ import { snapshot } from './manifest.mjs';
 import { measure } from './css-triples.mjs';
 import { decodePng, comparePixels } from './pixels.mjs';
 import { normalizeScopes, flattenScopes, scopeLedger } from './html-diff.mjs';
+import { одинКласс, словоЕсть, ссылки, утилитаЛи } from './zero-view.mjs';
 
 const site = process.argv[2];
 if (!site) {
@@ -135,6 +136,58 @@ if (existsSync(baseline)) {
   check('расщепление: скрут обёртки уцелел', 1, л.уцелели.length, 'скрут выводится из пути файла, а не из содержимого');
   check('расщепление: новых скрутов ровно два', 2, л.новые.length, 'иное число — остановка и разбор');
   check('расщепление: не исчез ни один', 0, л.ушли.length, 'исчезнувший скрут означает переезд файла, а не расщепление');
+}
+
+/* — предикат «нулевая витрина»: разбор на рукописных образцах —
+   Числа здесь не из сборки, а из устройства: образцы написаны руками,
+   и ответ известен заранее. Проверяется то, чем предикат отличает утилиту
+   сканера от правила витрины, — на случаях, которые сессии и создают. */
+{
+  const SEP = '␟';
+  const тройка = (усл, сел, объ) => [усл, сел, объ].join(SEP);
+
+  check('витрина: селектор — один класс', 'underline', одинКласс('.underline'), 'утилита сканера всегда такова');
+  check('витрина: скрут не класс', 'null', String(одинКласс('.layer__plate[data-astro-cid-@]')), 'правило витрины несёт скрут');
+  check('витрина: составной селектор не класс', 'null', String(одинКласс('.a .b')), 'два класса — не утилита');
+  check('витрина: экранированный класс читается', 'w-1/2', одинКласс('.w-1\\/2'), 'утилиты Tailwind несут / и : экранированными');
+
+  check('витрина: слово целиком, не подстрока', false, словоЕсть('const blocks = []', 'block'), '`block` внутри `blocks` — не вхождение');
+  check('витрина: слово находится', true, словоЕсть('{ block: string }', 'block'), 'имя поля контракта и есть источник утилиты');
+
+  const образецHtml =
+    '<html><head><link rel="stylesheet" href="/_astro/Base.CxtPq8QU.css">' +
+    '<link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/_astro/index.Ck0Kjnc0.css">' +
+    '</head><body><script src="/_astro/x.AbCdEfGh.js"></script></body></html>';
+  const с = ссылки(образецHtml);
+  check('витрина: ссылок в образце', 3, с.length, 'два листа и скрипт; favicon не лист и не считается');
+  check('витрина: порядок ссылок', '/_astro/Base.ХЕШ.css', с[0], 'проверка 2 сторожит порядок, а не имена');
+
+  const новые = new Map([['sites/x/src/lib/structure.ts', 'blocks: Array<{ block: string }>']]);
+  const старые = new Map([['core/blocks/LinkColumns.astro', 'text-decoration: underline;']]);
+  check(
+    'витрина: утилита с нового файла принята',
+    true,
+    утилитаЛи(тройка('@layer components && @layer utilities', '.block', 'display:block'), новые, старые).да,
+    'слово block стоит в новом файле'
+  );
+  check(
+    'витрина: правило вне @layer utilities отклонено',
+    false,
+    утилитаЛи(тройка('@media (max-width: 640px)', '.block', 'display:block'), новые, старые).да,
+    'утилиты сканера живут только в своём слое'
+  );
+  check(
+    'витрина: неатрибутированная утилита отклонена',
+    false,
+    утилитаЛи(тройка('@layer utilities', '.underline', 'text-decoration-line:underline'), новые, старые).да,
+    'слова нет ни в одном новом файле'
+  );
+  check(
+    'витрина: слово в старом файле — не отказ',
+    true,
+    утилитаЛи(тройка('@layer utilities', '.block', 'display:block'), новые, старые).да,
+    'измерено 2026-09-09: underline был в LinkColumns, а утилиты не было'
+  );
 }
 
 /* — вывод — */

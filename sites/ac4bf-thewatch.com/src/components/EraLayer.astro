@@ -1,5 +1,5 @@
 ---
-import type { Era } from '../data/site';
+import { stronaEpoki, type Era } from '../data/site';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import EraMedia from './EraMedia.astro';
@@ -61,8 +61,8 @@ const { era, flip, band } = Astro.props;
         title: guide.title,
         meta: `${guide.minutes} min`,
       }))}
-      allHref={`/epoki/${era.id}/`}
-      allLabel="Wszystkie poradniki z tej epoki"
+      allHref={stronaEpoki[era.id]}
+      allLabel="Strona gry z tej epoki"
     >
       <Icon slot="ikona-dopisku" name="czas" size={14} />
       <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />

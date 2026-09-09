@@ -9,15 +9,34 @@ export const site = {
   lang: 'pl',
 };
 
+/**
+ * Menu główne. Trzy ostatnie pozycje prowadziły pod `/mapy/`, `/postacie/`
+ * i `/aktualnosci/` — adresy drugiej schematyki, których w drzewie nie ma
+ * (П27 punkt 3). Zastąpione adresami z drzewa; kotwice `#zejscie`
+ * i `#katalog` zostają, bo to miejsca na stronie, nie adresy.
+ */
 export const nav = [
   { label: 'Epoki', href: '#zejscie' },
   { label: 'Poradniki', href: '#katalog' },
-  { label: 'Mapy', href: '/mapy/' },
-  { label: 'Postacie', href: '/postacie/' },
-  { label: 'Aktualności', href: '/aktualnosci/' },
+  { label: 'Mapa miejsc', href: '/mapa-miejsc-historycznych/' },
+  { label: 'Rodowód serii', href: '/assassins-creed-rodowod/' },
 ];
 
 export type EraId = 'jerozolima' | 'wlochy' | 'karaiby' | 'londyn' | 'japonia';
+
+/**
+ * Strona gry, w której epoka jest osadzona. Warstwy prowadziły pod
+ * `/epoki/<id>/` — siódmy adres drugiej schematyki, którego w drzewie nie ma
+ * (П27 punkt 3). Epoka nie ma własnej strony i mieć jej nie planuje: prowadzi
+ * do gry, która ją niesie.
+ */
+export const stronaEpoki: Record<EraId, string> = {
+  jerozolima: '/assassins-creed-1/',
+  wlochy: '/assassins-creed-2/',
+  karaiby: '/assassins-creed-4-black-flag/',
+  londyn: '/assassins-creed-syndicate/',
+  japonia: '/assassins-creed-shadows/',
+};
 
 export interface Guide {
   title: string;

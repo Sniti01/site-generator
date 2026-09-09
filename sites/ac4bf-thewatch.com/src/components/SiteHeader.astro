@@ -9,8 +9,10 @@
  * elementu, który rysuje rdzeń — łącznie z dwoma `<span>`-ami stanów
  * burgera. Rdzeń tworzy miejsca, witryna je wypełnia.
  *
- * Ikona szukania idzie dwoma slotami, bo formularze są dwa: w pasku
- * i w szufladzie. Slot zawartości nie powiela.
+ * FORMULARZA SZUKANIA TU NIE MA i to jest decyzja, nie przeoczenie.
+ * `searchAction` jest w rdzeniu opcjonalny; brak adresu znaczy brak obu form.
+ * Póki `/szukaj/` nie istnieje, żywy formularz prowadzi donikąd — П25 punkt 3,
+ * rozwidlenie 5 (П24). Wraca razem z wyszukiwarką w fali 2, jednym propsem.
  */
 import CoreSiteHeader from '@factory/core/chrome/SiteHeader.astro';
 import Wordmark from './Wordmark.astro';
@@ -22,14 +24,9 @@ import { nav } from '../data/site';
   items={nav}
   brandLabel="Bractwo — strona główna"
   navLabel="Główne"
-  searchAction="/szukaj/"
-  searchLabel="Szukaj poradnika"
-  searchPlaceholder="Szukaj poradnika…"
-  burgerLabel="Menu i wyszukiwarka"
+  burgerLabel="Menu"
 >
   <Wordmark slot="znak" />
-  <Icon slot="ikona-szukaj" name="szukaj" size={18} />
-  <Icon slot="ikona-szukaj-mobilne" name="szukaj" size={18} />
   <Icon slot="ikona-menu" name="menu" size={22} />
   <Icon slot="ikona-zamknij" name="zamknij" size={22} />
 </CoreSiteHeader>

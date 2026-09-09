@@ -16,7 +16,7 @@
  */
 import CoreSiteFooter from '@factory/core/chrome/SiteFooter.astro';
 import Wordmark from './Wordmark.astro';
-import { eras } from '../data/site';
+import { eras, stronaEpoki } from '../data/site';
 import type { ArtCredit } from '../data/art';
 import artCredits from '../data/art-credits.json';
 import gameCredits from '../data/game-art.json';
@@ -31,18 +31,22 @@ const gry = Object.values(gameCredits as Record<string, { game: string }>);
 const tytulyGier = [...new Set(gry.map((item) => item.game))].sort();
 
 const kolumny = [
+  // Cztery adresy pierwszej kolumny i `/epoki/<id>/` w drugiej były drugą
+  // schematyką nawigacji, której w drzewie nie ma — П27 punkt 3. Zastąpione
+  // adresami z drzewa. Że większość z nich jeszcze nie jest zbudowana, to inna
+  // sprawa: adres planowany różni się od adresu widmo.
   {
     title: 'Poradniki',
     links: [
-      { label: 'Przejścia', href: '/przejscia/' },
-      { label: 'Mapy i znajdźki', href: '/mapy/' },
-      { label: 'Walka i sprzęt', href: '/sprzet/' },
-      { label: 'Fabuła i świat', href: '/fabula/' },
+      { label: 'Od czego zacząć', href: '/poradniki/od-czego-zaczac/' },
+      { label: 'Wszystkie poradniki', href: '/poradniki/' },
+      { label: 'Rodowód serii', href: '/assassins-creed-rodowod/' },
+      { label: 'Mapa miejsc historycznych', href: '/mapa-miejsc-historycznych/' },
     ],
   },
   {
     title: 'Epoki',
-    links: eras.map((era) => ({ label: `${era.year} · ${era.place}`, href: `/epoki/${era.id}/` })),
+    links: eras.map((era) => ({ label: `${era.year} · ${era.place}`, href: stronaEpoki[era.id] })),
   },
   {
     title: 'Serwis',

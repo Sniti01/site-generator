@@ -36,11 +36,13 @@ interface Props {
   brandLabel: string;
   /** Подпись самого меню для скринридера. */
   navLabel: string;
-  /** Куда уходит форма поиска. */
-  searchAction: string;
+  /** Куда уходит форма поиска. **Нет адреса — нет и обеих форм.**
+   *  Необязательность заведена 2026-09-09 по П25 п.3: пока поиска на сайте
+   *  нет, живая форма ведёт в никуда, а это хуже её отсутствия. */
+  searchAction?: string;
   /** Подпись поля и подсказка в нём — одни и те же в обеих формах. */
-  searchLabel: string;
-  searchPlaceholder: string;
+  searchLabel?: string;
+  searchPlaceholder?: string;
   /** Подпись кнопки-бургера для скринридера. */
   burgerLabel: string;
   /** Идентификаторы в DOM: связывают label с полем и кнопку с ящиком. */
@@ -84,19 +86,27 @@ const {
       </ul>
     </nav>
 
-    <form class="hdr__search" role="search" action={searchAction} method="get">
-      <label class="visually-hidden" for={searchId}>{searchLabel}</label>
-      <span class="hdr__search-icon"><slot name="ikona-szukaj" /></span>
-      <input
-        class="hdr__input t-caption"
-        id={searchId}
-        name="q"
-        type="search"
-        placeholder={searchPlaceholder}
-        autocomplete="off"
-      />
-      <kbd class="hdr__kbd t-micro">/</kbd>
-    </form>
+    {
+      searchAction && (
+        <form class="hdr__search" role="search" action={searchAction} method="get">
+          <label class="visually-hidden" for={searchId}>
+            {searchLabel}
+          </label>
+          <span class="hdr__search-icon">
+            <slot name="ikona-szukaj" />
+          </span>
+          <input
+            class="hdr__input t-caption"
+            id={searchId}
+            name="q"
+            type="search"
+            placeholder={searchPlaceholder}
+            autocomplete="off"
+          />
+          <kbd class="hdr__kbd t-micro">/</kbd>
+        </form>
+      )
+    }
 
     <button class="hdr__burger" type="button" aria-expanded="false" aria-controls={drawerId}>
       <span class="hdr__burger-open"><slot name="ikona-menu" /></span>
@@ -107,18 +117,26 @@ const {
 
   <div class="hdr__drawer" id={drawerId} hidden>
     <div class="container">
-      <form class="hdr__drawer-search" role="search" action={searchAction} method="get">
-        <label class="visually-hidden" for={drawerSearchId}>{searchLabel}</label>
-        <span class="hdr__search-icon"><slot name="ikona-szukaj-mobilne" /></span>
-        <input
-          class="hdr__input t-caption"
-          id={drawerSearchId}
-          name="q"
-          type="search"
-          placeholder={searchPlaceholder}
-          autocomplete="off"
-        />
-      </form>
+      {
+        searchAction && (
+          <form class="hdr__drawer-search" role="search" action={searchAction} method="get">
+            <label class="visually-hidden" for={drawerSearchId}>
+              {searchLabel}
+            </label>
+            <span class="hdr__search-icon">
+              <slot name="ikona-szukaj-mobilne" />
+            </span>
+            <input
+              class="hdr__input t-caption"
+              id={drawerSearchId}
+              name="q"
+              type="search"
+              placeholder={searchPlaceholder}
+              autocomplete="off"
+            />
+          </form>
+        )
+      }
       <ul class="hdr__drawer-list">
         {
           items.map((item) => (

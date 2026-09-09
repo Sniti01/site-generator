@@ -1,0 +1,38 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { getPage } from '../lib/structure';
+
+/**
+ * Jedna trasa dla całej treści fali 1. Adres bierze się z pola `url` we front
+ * matterze, a `getPage` sprawdza go przy budowaniu: strona spoza
+ * `structure.json` wywala build (П24 punkt 1, rozwidlenie 1).
+ *
+ * Tytuł, opis i h1 idą ze struktury, nie z pliku treści (П24 punkt 3).
+ *
+ * DLACZEGO STRONA GŁÓWNA TU JESZCZE NIE MIESZKA. Jej pięć pól w strukturze
+ * różni się od tego, co dziś drukuje `index.astro` — łącznie z `h1`, który
+ * jest widoczny i trzyma piksel `_baseline/`. Przeprowadzka głównej to zmiana
+ * wyglądu, a П29 punkt 4 oddaje ją jednej wspólnej przesiadce wzorca razem
+ * z punktami 5 i 6 backlogu. Zmierzone i opisane w raporcie sesji 4.
+ */
+export async function getStaticPaths() {
+  const wpisy = await getCollection('tresc');
+  return wpisy.map((wpis) => {
+    getPage(wpis.data.url); // bramka: adres spoza struktury przerywa budowanie
+    return {
+      params: { slug: wpis.data.url.replace(/^\/|\/$/g, '') },
+      props: { wpis },
+    };
+  });
+}
+
+const { wpis } = Astro.props;
+const strona = getPage(wpis.data.url);
+const { Content } = await render(wpis);
+---
+
+<Base title={strona.title} description={strona.description}>
+  <h1 class="t-display">{strona.h1}</h1>
+  <Content />
+</Base>

@@ -19,8 +19,16 @@ import EraSkyline from './EraSkyline.astro';
  * rozstrzygacz obsługuje oba wywołania; drugiego globa w witrynie nie ma.
  */
 interface Props {
-  /** Epoka albo `hero`: klucz pliku i wpisu w plikach kredytowych. */
-  slot: EraId | 'hero';
+  /** Epoka albo `hero`: klucz pliku i wpisu w plikach kredytowych.
+   *
+   *  NAZWA `slot` JEST ZAKAZANA i to nie jest kwestia gustu. Gdy komponent
+   *  trafia do miejsca rodzica, kompilator czyta `slot={…}` jako ADRES
+   *  miejsca, a nie jako props: `<Fragment slot="kadr"><EraMedia slot={id} />`
+   *  kompiluje się do `renderComponent(Fragment, …, { [id]: … })`, a Fragment
+   *  rysuje wyłącznie miejsce bez nazwy. Kadr znika po cichu, przy zielonym
+   *  buildzie i zielonych bramkach. Zmierzone kompilatorem przy wynoszeniu
+   *  `story-row` (raport 2026-09-09). */
+  klucz: EraId | 'hero';
   /** Do koloru duotonu, gdy w grę wchodzi wariant fotograficzny. */
   era?: EraId;
   /** Domyślnie opis z manifestu (foto) albo nazwa gry (materiał gry). */
@@ -35,7 +43,7 @@ interface Props {
 }
 
 const {
-  slot,
+  klucz,
   era,
   alt,
   sizes,
@@ -45,7 +53,7 @@ const {
   class: className,
 } = Astro.props;
 
-const kadr = mediaFor(slot, alt);
+const kadr = mediaFor(klucz, alt);
 const klasy = [kadr.class, className].filter(Boolean).join(' ') || undefined;
 ---
 

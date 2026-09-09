@@ -20,25 +20,40 @@
 
 ---
 
-## 1. Роли типографики — восемь из одиннадцати
+## 1. Роли типографики — девять из одиннадцати
 
 Ядро **надевает** эти классы на разметку, а объявляет их сайт в своём
 `global.css`. Ядро не знает ни кегля, ни гарнитуры — только имя роли.
 
 | Роль | Кто надевает |
 |---|---|
+| `.t-display` | `HeroKeyArt` |
 | `.t-headline` | `BandQuote`, `CardRail`, `CtaBand`, `LinkColumns`, `StoryRow` |
 | `.t-title` | `CardRail`, `LinkColumns`, `LinkList`, `SiteHeader` |
 | `.t-lead` | `BandQuote`, `CtaBand`, `LinkColumns` |
 | `.t-body` | `CardRail`, `LinkColumns`, `SiteFooter` |
-| `.t-caption` | `CardRail`, `LinkList`, `SiteHeader` |
+| `.t-caption` | `CardRail`, `ChipNav`, `LinkList`, `SiteHeader` |
 | `.t-label` | `SiteFooter`, `SiteHeader` |
 | `.t-micro` | `SiteHeader`, `SmartImage` |
-| `.t-button` | `CardRail`, `CtaBand`, `LinkColumns`, `LinkList` |
+| `.t-button` | `CardRail`, `CtaBand`, `HeroKeyArt`, `LinkColumns`, `LinkList` |
 
-Ещё три роли — `.t-display`, `.t-year`, `.t-wordmark` — на витрине ac4bf есть,
+Ещё две роли — `.t-year` и `.t-wordmark` — на витрине ac4bf есть,
 но ядро их не называет: они целиком посайтовые. Заводить их новому сайту
 не обязательно.
+
+**`.t-display` перешла из посайтовых в требуемые ядром 2026-09-09, выносом
+`hero-key-art`, и это единственное имя, на которое договор вырос за две
+сессии расщеплений.** Причина не в удобстве: `h1` страницы печатает сам блок —
+иначе он не может связать секцию с заголовком через `aria-labelledby`,
+а `archiv` прямо относит H1 к `hero-key-art`. Роль надевается на элемент,
+который рисует ядро, значит имя роли становится частью договора. Обойти это
+можно было бы, только отдав заголовок витрине местом, — но тогда блок первого
+экрана перестал бы владеть собственным заголовком.
+
+**Цена названа прямо: новый сайт обязан объявить `.t-display`.** Роль
+`.t-year` при этом осталась посайтовой (выносом `story-row`, 2026-09-09),
+и это не непоследовательность: надстрочник ряда — украшение витрины,
+а H1 — обязательная часть страницы.
 
 **`.t-year` осталась посайтовой и при выносе `story-row`, и это проверка
 границы, а не случайность.** Надстрочник ряда приходит в ядро местом
@@ -60,10 +75,10 @@
 
 **«Все шесть компонентов» в таблицах ниже** — это `BandQuote`, `CardRail`,
 `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`. Формула сохранена
-дословно: `StoryRow` и `LinkList`, добавленные выносом `story-row`, читают
-не все токены этих таблиц и перечислены поимённо. Со своим `<style>`
-компонентов в ядре девять, но `Grain` не читает ни одного токена
-и в перечнях читателей не появляется.
+дословно: `StoryRow`, `LinkList`, `HeroKeyArt` и `ChipNav`, добавленные
+выносами `story-row` и `hero-key-art`, читают не все токены этих таблиц
+и перечислены поимённо. Со своим `<style>` компонентов в ядре одиннадцать,
+но `Grain` не читает ни одного токена и в перечнях читателей не появляется.
 
 ### Поверхности и текст — 7
 
@@ -73,8 +88,8 @@
 | `--bg-band` | `BandQuote`, `SiteFooter`, `SiteHeader`, `base.css`, `card.css`, `layout.css` |
 | `--surface` | `SiteHeader`, `card.css` |
 | `--surface-2` | `base.css`, `button.css` |
-| `--ink` | все шесть компонентов, `StoryRow`, `LinkList`, `button.css`, `credit.css` |
-| `--ink-muted` | все шесть компонентов, `LinkList`, `credit.css` |
+| `--ink` | все шесть компонентов, `StoryRow`, `LinkList`, `HeroKeyArt`, `button.css`, `credit.css` |
+| `--ink-muted` | все шесть компонентов, `LinkList`, `ChipNav`, `credit.css` |
 | `--ink-on-accent` | `a11y.css`, `base.css`, `button.css` |
 
 ### Акцент — 3
@@ -89,9 +104,9 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `StoryRow`, `LinkList`, `card.css`, `layout.css` |
+| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `StoryRow`, `LinkList`, `HeroKeyArt`, `ChipNav`, `card.css`, `layout.css` |
 | `--hairline-strong` | `CardRail`, `LinkColumns`, `SiteHeader`, `button.css`, `card.css` |
-| `--wash` | `CardRail`, `button.css` |
+| `--wash` | `CardRail`, `ChipNav`, `button.css` |
 | `--wash-strong` | `button.css` |
 | `--shadow-lift` | `card.css` |
 
@@ -100,7 +115,7 @@
 | Токен | Кто читает |
 |---|---|
 | `--era` | `foto.css` — цвет дуотона кадра |
-| `--era-text` | `CardRail`, `LinkList`, `button.css` |
+| `--era-text` | `CardRail`, `LinkList`, `ChipNav`, `button.css` |
 
 Это **бегущие** значения: сайт объявляет их по умолчанию в `:root` и подменяет
 секцией. Сайту без такой механики достаточно объявить их равными акценту —
@@ -110,7 +125,7 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--font-display` | `LinkColumns` |
+| `--font-display` | `LinkColumns`, `ChipNav` |
 
 Второй шрифтовой токен, `--font-text`, ядро напрямую не читает — он приходит
 через `body` и роли, то есть остаётся делом сайта целиком.
@@ -122,7 +137,7 @@
 | `--container` | `CardRail`, `layout.css` |
 | `--gutter` | `CardRail`, `layout.css` |
 | `--section-y` | `StoryRow`, `layout.css` |
-| `--radius-sharp` | `CardRail`, `SiteHeader`, `StoryRow`, `a11y.css`, `base.css`, `button.css`, `card.css` |
+| `--radius-sharp` | `CardRail`, `SiteHeader`, `StoryRow`, `ChipNav`, `a11y.css`, `base.css`, `button.css`, `card.css` |
 
 ### Шкала отступов — 9 ступеней
 
@@ -141,7 +156,7 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--ease-out` | `CardRail`, `LinkColumns`, `LinkList`, `SiteFooter`, `SiteHeader`, `button.css`, `card.css` |
+| `--ease-out` | `CardRail`, `LinkColumns`, `LinkList`, `ChipNav`, `SiteFooter`, `SiteHeader`, `button.css`, `card.css` |
 
 ## 3. Что ядро приносит само
 

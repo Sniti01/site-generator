@@ -25,8 +25,8 @@
 
   "блоки": {
     "hero-key-art": { "уровень": "секция", "файл": "core/blocks/HeroKeyArt.astro", "реализован": false, "примечание": "P3: расщепление `Hero.astro`, ожидается по прецеденту `cta-band`" },
-    "story-row": { "уровень": "секция", "файл": "core/blocks/StoryRow.astro", "реализован": false, "примечание": "P3: расщепление `EraLayer.astro` на `story-row` и `link-list`" },
-    "link-list": { "уровень": "секция", "файл": "core/blocks/LinkList.astro", "реализован": false, "примечание": "P3: вторая половина `EraLayer.astro`" },
+    "story-row": { "уровень": "секция", "файл": "core/blocks/StoryRow.astro", "реализован": true },
+    "link-list": { "уровень": "секция", "файл": "core/blocks/LinkList.astro", "реализован": true, "примечание": "рисует `<ul>` и ссылку «все», без рамки `<section>` и без своего заголовка: «уровень» говорит о допустимости имени в `blocks[]`, а не о внешнем теге файла" },
     "band-quote": { "уровень": "секция", "файл": "core/blocks/BandQuote.astro", "реализован": true },
     "card-rail": { "уровень": "секция", "файл": "core/blocks/CardRail.astro", "реализован": true },
     "cta-band": { "уровень": "секция", "файл": "core/blocks/CtaBand.astro", "реализован": true },

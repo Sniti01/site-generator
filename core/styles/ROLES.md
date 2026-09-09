@@ -27,18 +27,24 @@
 
 | Роль | Кто надевает |
 |---|---|
-| `.t-headline` | `BandQuote`, `CardRail`, `CtaBand`, `LinkColumns` |
-| `.t-title` | `CardRail`, `LinkColumns`, `SiteHeader` |
+| `.t-headline` | `BandQuote`, `CardRail`, `CtaBand`, `LinkColumns`, `StoryRow` |
+| `.t-title` | `CardRail`, `LinkColumns`, `LinkList`, `SiteHeader` |
 | `.t-lead` | `BandQuote`, `CtaBand`, `LinkColumns` |
 | `.t-body` | `CardRail`, `LinkColumns`, `SiteFooter` |
-| `.t-caption` | `CardRail`, `SiteHeader` |
+| `.t-caption` | `CardRail`, `LinkList`, `SiteHeader` |
 | `.t-label` | `SiteFooter`, `SiteHeader` |
 | `.t-micro` | `SiteHeader`, `SmartImage` |
-| `.t-button` | `CardRail`, `CtaBand`, `LinkColumns` |
+| `.t-button` | `CardRail`, `CtaBand`, `LinkColumns`, `LinkList` |
 
 Ещё три роли — `.t-display`, `.t-year`, `.t-wordmark` — на витрине ac4bf есть,
 но ядро их не называет: они целиком посайтовые. Заводить их новому сайту
 не обязательно.
+
+**`.t-year` осталась посайтовой и при выносе `story-row`, и это проверка
+границы, а не случайность.** Надстрочник ряда приходит в ядро местом
+`nadtytul`, а не пропсом, — надень ядро роль само, каждый новый сайт был бы
+обязан завести роль, названную по миру ac4bf. Тем же доводом остались
+у витрины мета с авторской пунктуацией и тело ряда.
 
 **Роли обязаны оставаться в `<сайт>/src/styles/global.css`**, а не уезжать
 в подключаемый файл: `core/gates/check-tokens.mjs` читает оттуда список
@@ -53,20 +59,22 @@
 компонентов и из файлов шасси.
 
 **«Все шесть компонентов» в таблицах ниже** — это `BandQuote`, `CardRail`,
-`CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`. Со своим `<style>`
-компонентов в ядре семь, но седьмой — `Grain` — не читает ни одного токена
+`CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`. Формула сохранена
+дословно: `StoryRow` и `LinkList`, добавленные выносом `story-row`, читают
+не все токены этих таблиц и перечислены поимённо. Со своим `<style>`
+компонентов в ядре девять, но `Grain` не читает ни одного токена
 и в перечнях читателей не появляется.
 
 ### Поверхности и текст — 7
 
 | Токен | Кто читает |
 |---|---|
-| `--bg` | `CtaBand`, `SiteHeader`, `credit.css`, `foto.css` |
+| `--bg` | `CtaBand`, `SiteHeader`, `StoryRow`, `credit.css`, `foto.css` |
 | `--bg-band` | `BandQuote`, `SiteFooter`, `SiteHeader`, `base.css`, `card.css`, `layout.css` |
 | `--surface` | `SiteHeader`, `card.css` |
 | `--surface-2` | `base.css`, `button.css` |
-| `--ink` | все шесть компонентов, `button.css`, `credit.css` |
-| `--ink-muted` | все шесть компонентов, `credit.css` |
+| `--ink` | все шесть компонентов, `StoryRow`, `LinkList`, `button.css`, `credit.css` |
+| `--ink-muted` | все шесть компонентов, `LinkList`, `credit.css` |
 | `--ink-on-accent` | `a11y.css`, `base.css`, `button.css` |
 
 ### Акцент — 3
@@ -81,7 +89,7 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `card.css`, `layout.css` |
+| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `StoryRow`, `LinkList`, `card.css`, `layout.css` |
 | `--hairline-strong` | `CardRail`, `LinkColumns`, `SiteHeader`, `button.css`, `card.css` |
 | `--wash` | `CardRail`, `button.css` |
 | `--wash-strong` | `button.css` |
@@ -92,7 +100,7 @@
 | Токен | Кто читает |
 |---|---|
 | `--era` | `foto.css` — цвет дуотона кадра |
-| `--era-text` | `CardRail`, `button.css` |
+| `--era-text` | `CardRail`, `LinkList`, `button.css` |
 
 Это **бегущие** значения: сайт объявляет их по умолчанию в `:root` и подменяет
 секцией. Сайту без такой механики достаточно объявить их равными акценту —
@@ -113,8 +121,8 @@
 |---|---|
 | `--container` | `CardRail`, `layout.css` |
 | `--gutter` | `CardRail`, `layout.css` |
-| `--section-y` | `layout.css` |
-| `--radius-sharp` | `CardRail`, `SiteHeader`, `a11y.css`, `base.css`, `button.css`, `card.css` |
+| `--section-y` | `StoryRow`, `layout.css` |
+| `--radius-sharp` | `CardRail`, `SiteHeader`, `StoryRow`, `a11y.css`, `base.css`, `button.css`, `card.css` |
 
 ### Шкала отступов — 9 ступеней
 
@@ -133,7 +141,7 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--ease-out` | `CardRail`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `button.css`, `card.css` |
+| `--ease-out` | `CardRail`, `LinkColumns`, `LinkList`, `SiteFooter`, `SiteHeader`, `button.css`, `card.css` |
 
 ## 3. Что ядро приносит само
 
@@ -151,7 +159,7 @@
 | `motion.css` | уважение к `prefers-reduced-motion` |
 | `a11y.css` | `.visually-hidden`, `.skip-link` |
 
-## 4. Три ожидания сверх токенов
+## 4. Четыре ожидания сверх токенов
 
 **Шасси подключается только через `@import` из `global.css` сайта — никогда
 напрямую из `.astro`.** Причина не в стиле, а в механике: Lightning CSS
@@ -165,6 +173,15 @@
 раньше ролей `.t-*`, `.btn` — раньше `.btn-secondary` и `.btn-quiet`,
 `foto.css` — раньше посайтовых модификаторов вроде `.foto--gra`. Специфичность
 у этих пар равная, и ошибка не проявится ни в сборке, ни в гейтах.
+
+**Запасная графика витрины обязана нести класс `.skyline`.** `StoryRow`
+растягивает содержимое рамки кадра правилом
+`.layer__art :global(.foto), .layer__art :global(.skyline)`: первое имя ядро
+приносит само (`foto.css`), второе — нет. Витрина, у которой запас называется
+иначе, получит запасную графику неверного размера — при зелёной сборке.
+Это второй случай после `html.menu-otwarte` (§5), когда ядро требует имя
+на чужом элементе; отличие в том, что правило пишет ядро, а витрине нужно
+лишь совпасть именем. Заведено выносом `story-row` 2026-09-09.
 
 **Ядро рассчитывает на `preflight` Tailwind.** Универсальный сброс
 `* { margin: 0; padding: 0; border: 0 solid }` приходит из

@@ -90,7 +90,11 @@ const SIZES = '(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw';
     padding: 0;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    /* `auto-fit`, а не `auto-fill`: пустые дорожки схлопываются, и два кадра
+       занимают ширину секции, а не жмутся влево, оставляя третью колонку
+       пустой. Замечание владельца при приёмке сессии 6; сегодня у страницы
+       ровно два кадра, остальные принесёт `fetch-art.mjs`. */
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: var(--space-md);
   }
 

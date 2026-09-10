@@ -121,9 +121,11 @@
   --gutter: clamp(16px, 4vw, 32px);
   --rail: 84px; /* szerokość skali wysokości po lewej krawędzi */
   --section-y: clamp(72px, 9vw, 128px);
-  /* Lekki rytm sekcji służbowych. Krok 2: tożsamy ze zwykłym — przejście
-     sześciu bloków na klasę ma być zerowe pikselowo. Krok 3 daje mu liczbę. */
-  --section-y-light: var(--section-y);
+  /* Lekki rytm sekcji służbowych: podpis, spis treści, galeria, werdykt,
+     lista powiązanych. Dokładnie połowa `--section-y`, człon w człon —
+     gdyby kiedyś zmienić go na `calc(var(--section-y) / 2)`, piksel nie
+     drgnie, a liczba przestanie się rozjeżdżać przy zmianie rytmu. */
+  --section-y-light: clamp(36px, 4.5vw, 64px);
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }

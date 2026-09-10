@@ -65,9 +65,15 @@
 в подключаемый файл: `core/gates/check-tokens.mjs` читает оттуда список
 разрешённых кеглей регулярным выражением по `.t-*` и по `@import` не идёт.
 
-## 2. Токены — тридцать два имени
+## 2. Токены — тридцать три имени
 
-Тридцать один токен объявлен сайтом в `:root`, цветовая часть дублируется
+**Договор вырос на одно имя 2026-09-10, приёмкой вида сессии 6:
+`--section-y-light`.** Это второй случай после `.t-display`, и цена та же —
+новый сайт обязан объявить токен, иначе служебные секции останутся без
+отбивки вовсе (`var(--нет-такого)` не роняет сборку, а молчит). Величина
+на ac4bf — ровно половина `--section-y`, член в член.
+
+Тридцать два токена объявлены сайтом в `:root`, цветовая часть дублируется
 в `@theme` для Tailwind. Исключение одно: `--font-display` объявлен **только**
 в `@theme` — в собранный CSS Tailwind выносит его сам, поэтому ядро его видит,
 но в блоке `:root` витрины его нет. Ядро читает токены из `<style>`
@@ -130,13 +136,14 @@
 Второй шрифтовой токен, `--font-text`, ядро напрямую не читает — он приходит
 через `body` и роли, то есть остаётся делом сайта целиком.
 
-### Геометрия — 4
+### Геометрия — 5
 
 | Токен | Кто читает |
 |---|---|
 | `--container` | `CardRail`, `layout.css` |
 | `--gutter` | `CardRail`, `layout.css` |
-| `--section-y` | `StoryRow`, `layout.css` |
+| `--section-y` | `layout.css` |
+| `--section-y-light` | `layout.css` |
 | `--radius-sharp` | `CardRail`, `SiteHeader`, `StoryRow`, `ChipNav`, `a11y.css`, `base.css`, `button.css`, `card.css` |
 
 ### Шкала отступов — 9 ступеней
@@ -166,7 +173,7 @@
 |---|---|
 | `reset.css` | `box-sizing: border-box` на всё |
 | `base.css` | выделение, полоса прокрутки, кольцо фокуса, `img/svg`, `a`, `.tabular` |
-| `layout.css` | `.measure`, `.container`, `.section`, `.band`, `.rule` |
+| `layout.css` | `.measure`, `.container`, `.section`, `.section--light`, `.band`, `.rule` |
 | `button.css` | `.btn`, `.btn-primary`, `.btn-secondary`, `.btn-quiet`, `.btn-link` |
 | `card.css` | `.card`, `.card__media`, `.card__body` |
 | `foto.css` | оболочка кадра `.foto` с дуотоном |

@@ -60,13 +60,13 @@ const {
 ---
 
 <section class="hero" aria-labelledby={titleId}>
-  <slot name="art" />
+  <div class="hero__art"><slot name="art" /></div>
   <div class="hero__scrim"></div>
 
   <div class="hero__inner container">
     <div class="hero__text">
       <h1 class="hero__title t-display" id={titleId}>{title}</h1>
-      <slot name="lead" />
+      <p class="hero__lead t-lead measure"><slot name="lead" /></p>
 
       <div class="hero__actions">
         <a class="btn btn-primary t-button" href={primaryHref}>
@@ -130,6 +130,35 @@ const {
     margin-top: var(--space-xl);
   }
 
+  /* Рама арта и лид печатает ядро — шаг Г2, П34. Рама держит конструкцию
+     экрана наравне со скримом и колонкой текста, а правило ядра не может
+     достать элемент, напечатанный витриной в место: у него чужой скрут.
+     ЗНАЧЕНИЕ токена здесь не назначается: `--era` для дуотона объявляет
+     витрина правилом `:global(.hero__art)`, потому что выбор цвета —
+     посайтовое решение, а не вид блока. */
+  .hero__art {
+    position: absolute;
+    inset: 0 0 0 32%;
+  }
+
+  .hero__art :global(.foto),
+  .hero__art :global(.skyline) {
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero__lead {
+    margin-top: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 1024px) {
+    .hero__art {
+      inset: 0 -20% 0 20%;
+      opacity: 0.75;
+    }
+  }
+
   @media (max-width: 640px) {
     /* Pierwszy ekran telefonu: najpierw sylwetka, pod nią tytuł. Przy
        przesunięciu obrazu w bok postać wypadała z kadru. */
@@ -154,6 +183,14 @@ const {
     }
     .hero__actions .btn {
       flex: 1 1 100%;
+    }
+    .hero__art {
+      position: relative;
+      inset: auto;
+      flex: none;
+      height: 40vh;
+      min-height: 260px;
+      opacity: 1;
     }
   }
 </style>

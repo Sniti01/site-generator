@@ -57,7 +57,7 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
   secondaryHref="#katalog"
   secondaryLabel="Katalog poradników"
 >
-  <div class="hero__art" slot="art">
+  <Fragment slot="art">
     <EraMedia
       klucz="hero"
       widths={[1200, 1600, 2400, 3200]}
@@ -66,13 +66,11 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
       credit={false}
     />
     {!kluczowyArt && <Viewpoint bare />}
-  </div>
+  </Fragment>
 
   <Fragment slot="lead">
-      <p class="hero__lead t-lead measure">
-        Zaczynasz na iglicy, schodzisz przez pięć stuleci i lądujesz w tym poradniku, po który
-        przyszedłeś. Nieoficjalny przewodnik po <i>Assassin’s Creed</i> — bez tagów, po latach.
-      </p>
+    Zaczynasz na iglicy, schodzisz przez pięć stuleci i lądujesz w tym poradniku, po który
+    przyszedłeś. Nieoficjalny przewodnik po <i>Assassin’s Creed</i> — bez tagów, po latach.
   </Fragment>
 
   <Icon slot="ikona-glowna" name="w-dol" size={18} />
@@ -98,26 +96,22 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
 </HeroKeyArt>
 
 <style>
-  .hero__art {
-    position: absolute;
-    inset: 0 0 0 32%;
-    /* Duoton dotyczy tylko wariantu fotograficznego; kluczowy art gry idzie
-       w pełnym kolorze. Mosiądz zostaje jako kolor miasta pod sylwetką. */
+  /* Рама арта и лид уехали в ядро шагом Г2. Здесь осталось ОДНО объявление —
+     присвоение значения токену, и это не шкура и не геометрия, а канал,
+     который П34 закрепляет за витриной: «значения приходят токенами сайта».
+     Duoton dotyczy tylko wariantu fotograficznego; kluczowy art gry idzie
+     w pełnym kolorze. Mosiądz zostaje jako kolor miasta pod sylwetką.
+     `:global`, потому что раму печатает ядро и она несёт ЕГО скрут. */
+  :global(.hero__art) {
     --era: var(--accent-2);
   }
 
-  .hero__art :global(.foto),
-  .hero__art :global(.skyline) {
-    width: 100%;
-    height: 100%;
-  }
-
-  .hero__lead {
-    margin-top: var(--space-md);
-    color: var(--ink-muted);
-  }
-
-  .hero__lead i {
+  /* `:global` НА ПРЕДКЕ, а не на потомке. Лид печатает ядро, поэтому предок
+     несёт скрут ядра; правило `.hero__lead i` со скрутом витрины на обоих
+     членах промахнулось бы левой частью и умерло молча — сноска ² `REUSE`
+     §1.1. Обратная форма, `:global` на потомке, запрещена той же записью:
+     она обрушила бы специфичность. */
+  :global(.hero__lead) i {
     font-style: normal;
     color: var(--ink);
   }
@@ -146,22 +140,7 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
     color: var(--ink-muted);
   }
 
-  @media (max-width: 1024px) {
-    .hero__art {
-      inset: 0 -20% 0 20%;
-      opacity: 0.75;
-    }
-  }
-
   @media (max-width: 640px) {
-    .hero__art {
-      position: relative;
-      inset: auto;
-      flex: none;
-      height: 40vh;
-      min-height: 260px;
-      opacity: 1;
-    }
     .hero__height {
       display: none;
     }

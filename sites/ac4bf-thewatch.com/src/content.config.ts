@@ -67,6 +67,47 @@ export const collections = {
         })
         .optional(),
 
+      /* — byline — */
+      byline: z
+        .object({
+          author: z.string(),
+          /** Машинная дата: только она едет в `<time datetime>`. */
+          date: z.string(),
+          dateLabel: z.string(),
+          role: z.string().optional(),
+        })
+        .optional(),
+
+      /* — toc: пункты называет страница, из разметки они не выводятся — */
+      toc: z
+        .object({
+          title: z.string(),
+          items: z.array(z.object({ href: z.string(), title: z.string() })).nonempty(),
+        })
+        .optional(),
+
+      /* — gallery: кадры идут ДАННЫМИ, по прецеденту card-rail — */
+      gallery: z
+        .object({
+          title: z.string(),
+          lead: z.string().optional(),
+          items: z
+            .array(z.object({ art: z.string(), alt: z.string(), caption: z.string().optional() }))
+            .nonempty(),
+        })
+        .optional(),
+
+      /* — verdict-box: БАЛЛА НЕТ, и его негде подать — */
+      verdict: z
+        .object({
+          label: z.string(),
+          body: z.array(z.string()).nonempty(),
+        })
+        .optional(),
+
+      /* — link-list: заголовок секции; сами ссылки приходят из `related` — */
+      related: z.object({ title: z.string() }).optional(),
+
       /* — cta-band — */
       cta: z
         .object({

@@ -1,0 +1,99 @@
+---
+/**
+ * Оглавление страницы. Имя заведено решением П28 — 40 % документов корпуса,
+ * объявлено 12 страницами из 30.
+ *
+ * СТОИТ В ПОТОКЕ, А НЕ В ЛЕВОЙ КОЛОНКЕ — решение владельца 2026-09-10,
+ * вариант (а). Довод: `blocks[]` объявляет `toc` между `byline` и
+ * `story-row`, то есть место у него уже назначено контрактом, а левая
+ * колонка была бы выходом из объявленного порядка — и машинная сверка
+ * «порядок шаблона совпадает с `blocks[]`» о таком исключении не знает.
+ * Заводить исключение на двенадцати страницах дороже, чем оставить порядок
+ * машинно проверяемым.
+ *
+ * ЧТО ПЕЧАТАЕТ ЯДРО: `<nav>`, заголовок, нумерованный список и каждую ссылку.
+ * ЧТО ОТДАЁТ ВИТРИНА: `items` данными — адрес якоря и надпись. Оглавление
+ * не выводится из разметки само: что считать разделом, знает страница,
+ * а не блок.
+ */
+interface Pozycja {
+  /** Адрес якоря на этой же странице: `#co-jest-w-grze`. */
+  href: string;
+  /** Надпись пункта. */
+  title: string;
+}
+
+interface Props {
+  items: Pozycja[];
+  /** Заголовок оглавления. */
+  title: string;
+  /** Id заголовка; вяжет `aria-labelledby` навигации с самим заголовком. */
+  titleId?: string;
+}
+
+const { items, title, titleId } = Astro.props;
+---
+
+<nav class="toc" aria-labelledby={titleId}>
+  <div class="container">
+    <h2 class="toc__title t-title" id={titleId}>{title}</h2>
+    <ol class="toc__list">
+      {
+        items.map((item) => (
+          <li class="toc__item">
+            <a class="toc__link t-body" href={item.href}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</nav>
+
+<style>
+  .toc {
+    padding-block: var(--section-y);
+  }
+
+  .toc__title {
+    margin-bottom: var(--space-sm);
+    color: var(--ink);
+  }
+
+  .toc__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    gap: var(--space-2xs);
+    max-width: var(--measure);
+  }
+
+  .toc__item {
+    counter-increment: toc;
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-xs);
+  }
+
+  /* Номер рисуется счётчиком, а не текстом: порядок пунктов принадлежит
+     списку, и переставлять его руками в данных не придётся. */
+  .toc__item::before {
+    content: counter(toc, decimal-leading-zero);
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .toc__link {
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--hairline-strong);
+    padding-bottom: 2px;
+  }
+
+  .toc__link:hover {
+    border-bottom-color: var(--accent);
+  }
+</style>

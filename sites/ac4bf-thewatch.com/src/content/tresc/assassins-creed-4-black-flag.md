@@ -11,6 +11,46 @@ primary:
 secondary:
   href: /poradniki/od-czego-zaczac/
   label: Od czego zacząć serię
+byline:
+  role: Redakcja
+  author: Bractwo
+  date: '2026-09-10'
+  dateLabel: 10 września 2026
+toc:
+  title: Na tej stronie
+  items:
+    - href: '#co-jest-w-grze-tytul'
+      title: Morze zamiast miasta
+    - href: '#dokad-tytul'
+      title: Dokąd stąd
+    - href: '#galeria-tytul'
+      title: Kadry z gry
+    - href: '#werdykt-tytul'
+      title: Werdykt
+    - href: '#powiazane-tytul'
+      title: Powiązane strony
+gallery:
+  title: Kadry z gry
+  lead: Materiał wydawcy ze strony gry w Steamie.
+  items:
+    - art: karaiby
+      alt: 'Assassin’s Creed IV: Black Flag — abordaż'
+      caption: 'Abordaż: zwarcie burta w burtę kończy się na pokładzie.'
+    - art: karaiby-okladka
+      alt: 'Assassin’s Creed IV: Black Flag — okładka'
+      caption: 'Okładka wydania na Steamie.'
+verdict:
+  label: Werdykt
+  body:
+    - >-
+      Najlepsza odsłona dla kogoś, kto przyszedł po świat, a nie po skradanie
+      się. Żeglowanie niesie tu całą grę i trzyma tempo lepiej niż misje
+      na lądzie.
+    - >-
+      Jeśli szukasz klasycznego Assassin’s Creed z miastem i dachami, zacznij
+      od dwójki albo Rewelacji — tutaj miasta są przystankiem między rejsami.
+related:
+  title: Powiązane strony
 rows:
   - id: co-jest-w-grze
     year: '2013'

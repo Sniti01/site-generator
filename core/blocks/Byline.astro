@@ -1,0 +1,66 @@
+---
+/**
+ * Подпись: кто написал и когда. Имя заведено решением П28 по измеренной
+ * частоте — 62 % документов корпуса, объявлена 23 страницами из 30.
+ *
+ * ЧТО ПЕЧАТАЕТ ЯДРО И ЧТО ОСТАЁТСЯ ВИТРИНЕ — решено до стилей (сессия 6,
+ * шаг 0, требование владельца). Ядро печатает обёртку и `<time datetime>`:
+ * машинная дата — механизм, а не оформление, и оставлять её витрине значило
+ * бы отдать разметку, которую читают роботы. Витрина отдаёт ДАННЫМИ автора,
+ * машинную дату и её подпись словами.
+ *
+ * ОТБИВКА — `--section-y`, как у всех блоков ленты, с самого начала
+ * (требование владельца 2026-09-10: у секции `pokrewne` она была своя, 48,
+ * и это стоило прохода приёмки глазами).
+ *
+ * «Уровень: секция» в словаре говорит о допустимости имени в `blocks[]`,
+ * а не о внешнем теге файла — тот же довод, что записан у `link-list`.
+ */
+interface Props {
+  /** Кто написал. */
+  author: string;
+  /** Машинная дата для `<time datetime>` — только она едет в атрибут. */
+  date: string;
+  /** Та же дата словами, как её читает человек. */
+  dateLabel: string;
+  /** Приписка перед автором: «Redakcja», «Tekst». Нет — нет и приписки. */
+  role?: string;
+}
+
+const { author, date, dateLabel, role } = Astro.props;
+---
+
+<div class="byline">
+  <p class="byline__line t-caption container">
+    {role && <span class="byline__role">{role}</span>}
+    <span class="byline__author">{author}</span>
+    <time class="byline__date" datetime={date}>{dateLabel}</time>
+  </p>
+</div>
+
+<style>
+  .byline {
+    padding-block: var(--section-y);
+  }
+
+  .byline__line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-2xs) var(--space-sm);
+    margin: 0;
+    color: var(--ink-muted);
+  }
+
+  .byline__role {
+    color: var(--ink-muted);
+  }
+
+  .byline__author {
+    color: var(--ink);
+  }
+
+  .byline__date {
+    color: var(--ink-muted);
+  }
+</style>

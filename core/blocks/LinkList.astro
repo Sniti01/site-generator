@@ -36,13 +36,41 @@ interface Pozycja {
 interface Props {
   /** Записи списка. */
   items: Pozycja[];
+  /** Заголовок. Есть — блок печатает свою секцию; нет — остаётся голым `<ul>`. */
+  title?: string;
+  /** Id заголовка; вяжет `aria-labelledby` секции с самим заголовком. */
+  titleId?: string;
   /** Адрес ссылки «все»; нет адреса — нет и всей нижней ссылки. */
   allHref?: string;
   /** Надпись ссылки «все». */
   allLabel?: string;
 }
 
-const { items, allHref, allLabel } = Astro.props;
+const { items, allHref, allLabel, title, titleId } = Astro.props;
+
+// Рамка и заголовок — НЕОБЯЗАТЕЛЬНЫЕ, по прецеденту `CardRail`. Без заголовка
+// блок остаётся голым `<ul>`, каким он и жил внутри `story-row` на главной,
+// и вид главной от этой правки не меняется ни на пиксель — это и есть её
+// судья. С заголовком он становится секцией: имя `link-list` объявлено
+// в `blocks[]` двадцати семи страницам с `related` (вариант «б» владельца),
+// а секция без рамки и заголовка собиралась бы маршрутом — ровно тот дефект
+// «чужой секции», из-за которого правка и затевалась.
+const самостоятельный = Boolean(title);
+
+// СПИСОК УДВОЕН В ДВУХ ВЕТКАХ НАМЕРЕННО, и обе прежние попытки обойтись
+// без удвоения измерены и отброшены, 2026-09-10:
+//
+//   1. Динамический тег (`section` против `Fragment`) ОТОРВАЛ от компонента
+//      весь его `<style>`: скрут исчез с семидесяти мест главной, правил
+//      в собранном листе стало 335 → 327. Astro скоупит по элементам
+//      шаблона, и динамический корень скоупить нечем.
+//   2. Одна обёртка `<div>` с условными классами вернула стили, но добавила
+//      лишний узел внутрь `story-row` — и главная разошлась на 100 561
+//      субпикселе при максимуме 13: схлопывание полей изменилось,
+//      и слой уехал на доли пикселя.
+//
+// Отсюда две ветки со статическими корнями. Цена — четырнадцать строк
+// в двух местах; если правите список, правьте оба.
 
 // Спрашиваем не «подан ли слот», а «есть ли в нём что-нибудь»: у витрины место
 // иконки может занимать выражение с ложным условием, и слот всё равно считается
@@ -54,23 +82,93 @@ const ikona = Astro.slots.has('ikona-dopisku')
   : '';
 ---
 
-<ul class="layer__guides">
-  {
-    items.map((item) => (
-      <li class="layer__guide">
-        <a class="layer__guide-link" href={item.href}>
-          <span class="layer__guide-title t-title">{item.title}</span>
-          {item.meta && (
-            <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
-          )}
-        </a>
-      </li>
-    ))
-  }
-</ul>
-{allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
+{
+  самостоятельный ? (
+    <section class="link-list container" aria-labelledby={titleId}>
+      <h2 class="link-list__title t-headline" id={titleId}>{title}</h2>
+    <ul class="layer__guides">
+      {
+        items.map((item) => (
+          <li class="layer__guide">
+            <a class="layer__guide-link" href={item.href}>
+              <span class="layer__guide-title t-title">{item.title}</span>
+              {item.meta && (
+                <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
+    </section>
+  ) : (
+    <Fragment>
+    <ul class="layer__guides">
+      {
+        items.map((item) => (
+          <li class="layer__guide">
+            <a class="layer__guide-link" href={item.href}>
+              <span class="layer__guide-title t-title">{item.title}</span>
+              {item.meta && (
+                <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
+              )}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+    {allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
+    </Fragment>
+  )
+}
+
+<style>`: измерено 2026-09-10, скрут исчез с семидесяти мест главной,
+// правил в собранном листе стало 335 → 327. Astro скоупит по элементам
+// шаблона, и динамический корень скоупить нечем. Корень обязан быть
+// статическим — не удваивайте разметку и не возвращайте динамический тег.
+
+// Спрашиваем не «подан ли слот», а «есть ли в нём что-нибудь»: у витрины место
+// иконки может занимать выражение с ложным условием, и слот всё равно считается
+// поданным. Идиома и её довод — `SmartImage`, запись DECISIONS от 2026-09-07.
+// `.trim()` обязателен: отрендеренное место идёт вплотную к приписке, и лишний
+// пробел был бы расхождением в собранной странице.
+const ikona = Astro.slots.has('ikona-dopisku')
+  ? (await Astro.slots.render('ikona-dopisku')).trim()
+  : '';
+---
+
+<div class:list={[самостоятельный && 'link-list', самостоятельный && 'container']}>
+  {самостоятельный && <h2 class="link-list__title t-headline" id={titleId}>{title}</h2>}
+  <ul class="layer__guides">
+    {
+      items.map((item) => (
+        <li class="layer__guide">
+          <a class="layer__guide-link" href={item.href}>
+            <span class="layer__guide-title t-title">{item.title}</span>
+            {item.meta && (
+              <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  {allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
+</div>
 
 <style>
+  /* Рамка появляется только у самостоятельного блока; внутри `story-row`
+     этих правил не на чем сработать — там нет ни `.link-list`, ни заголовка. */
+  .link-list {
+    padding-block: var(--section-y);
+  }
+
+  .link-list__title {
+    margin: 0 0 var(--space-xs);
+    color: var(--ink);
+  }
+
   .layer__guides {
     margin: var(--space-xl) 0 var(--space-md);
     padding: 0;

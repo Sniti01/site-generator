@@ -8,6 +8,11 @@ import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import CardRail from '@factory/core/blocks/CardRail.astro';
 import CtaBand from '@factory/core/blocks/CtaBand.astro';
+import Byline from '@factory/core/blocks/Byline.astro';
+import Toc from '@factory/core/blocks/Toc.astro';
+import Gallery from '@factory/core/blocks/Gallery.astro';
+import VerdictBox from '@factory/core/blocks/VerdictBox.astro';
+import { mediaFor } from '../data/media';
 import EraMedia from '../components/EraMedia.astro';
 import Icon from '../components/Icon.astro';
 import type { EraId } from '../data/site';
@@ -71,7 +76,7 @@ if (pominiete.length) {
  * maszyną, a nie pamięcią: rozejście się z `blocks[]` przerywa budowanie.
  * Dyspozytor ogólny — sprawa sesji 6, kiedy bloków będzie osiem, nie cztery.
  */
-const oczekiwana = ['hero-key-art', 'story-row', 'card-rail', 'cta-band'];
+const oczekiwana = ['hero-key-art', 'byline', 'toc', 'story-row', 'card-rail', 'gallery', 'verdict-box', 'link-list', 'cta-band'];
 if (doZrobienia.join(',') !== oczekiwana.join(',')) {
   throw new Error(
     `Kolejność bloków w strukturze (${doZrobienia.join(', ')}) rozeszła się z tą, ` +
@@ -119,6 +124,19 @@ const pokrewne = (strona.related ?? []).map((url) => {
   </HeroKeyArt>
 
   {
+    dane.byline && (
+      <Byline
+        author={dane.byline.author}
+        date={dane.byline.date}
+        dateLabel={dane.byline.dateLabel}
+        role={dane.byline.role}
+      />
+    )
+  }
+
+  {dane.toc && <Toc items={dane.toc.items} title={dane.toc.title} titleId="toc-tytul" />}
+
+  {
     dane.rows.map((rzad) => (
       <StoryRow
         title={rzad.title}
@@ -157,19 +175,6 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    pokrewne.length > 0 && (
-      <section class="pokrewne container" aria-labelledby="pokrewne-tytul">
-        <h2 class="pokrewne__title t-title" id="pokrewne-tytul">
-          Powiązane strony
-        </h2>
-        <LinkList items={pokrewne}>
-          <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
-        </LinkList>
-      </section>
-    )
-  }
-
-  {
     dane.cards && (
       <CardRail
         cards={dane.cards.items}
@@ -188,6 +193,38 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
+    dane.gallery && (
+      <Gallery
+        items={dane.gallery.items.map((k) => {
+          const m = mediaFor(k.art, k.alt);
+          return { src: m.src, alt: k.alt, caption: k.caption, quality: m.quality, class: m.class };
+        })}
+        title={dane.gallery.title}
+        titleId="galeria-tytul"
+        lead={dane.gallery.lead}
+      />
+    )
+  }
+
+  {
+    dane.verdict && (
+      <VerdictBox label={dane.verdict.label} labelId="werdykt-tytul">
+        {dane.verdict.body.map((akapit) => (
+          <p>{akapit}</p>
+        ))}
+      </VerdictBox>
+    )
+  }
+
+  {
+    pokrewne.length > 0 && dane.related && (
+      <LinkList items={pokrewne} title={dane.related.title} titleId="powiazane-tytul">
+        <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+      </LinkList>
+    )
+  }
+
+  {
     dane.cta && (
       <CtaBand title={dane.cta.title} lead={dane.cta.lead} href={dane.cta.href} label={dane.cta.label} id="cta-tytul">
         <Icon slot="akcja" name="strzalka-w-prawo" size={18} />
@@ -196,14 +233,4 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 </Base>
 
-<style>
-  /* Sekcja `related`: rdzeń drukuje samą listę, ramka i nagłówek należą
-     do witryny — tak samo jak przy `link-list` w warstwach epok. */
-  .pokrewne {
-    padding-block: var(--space-xl);
-  }
 
-  .pokrewne__title {
-    margin-bottom: var(--space-md);
-  }
-</style>

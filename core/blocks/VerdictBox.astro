@@ -1,0 +1,67 @@
+---
+/**
+ * Вывод о предмете страницы — словами. Имя заведено решением П28: 64 %
+ * документов корпуса, объявлено 22 страницами из 30.
+ *
+ * БАЛЛА В ДОГОВОРЕ НЕТ ВОВСЕ — ни пропса, ни места под число, ни поля
+ * в данных. Это решение П28 п.4, и оно держится **формой, а не
+ * дисциплиной**: шкалу «10 из 10» заводят по инерции, а снимают потом
+ * с боем, поэтому её здесь нечем завести. Тот же приём, которым в схеме
+ * коллекции запрещены SEO-поля, а в гейте контраста — расходящиеся пары.
+ *
+ * ЧТО ПЕЧАТАЕТ ЯДРО: `<section>`, ярлык и контейнер вывода.
+ * ЧТО ОТДАЁТ ВИТРИНА: текст ярлыка и текст вывода — словами, местом.
+ * Вывод приходит местом, а не пропсом, потому что в нём бывает больше
+ * одного абзаца и бывает выделение внутри фразы.
+ */
+interface Props {
+  /** Надпись-ярлык над выводом: «Werdykt», «Krótko». */
+  label: string;
+  /** Id ярлыка; вяжет `aria-labelledby` секции с самим ярлыком. */
+  labelId?: string;
+}
+
+const { label, labelId } = Astro.props;
+---
+
+<section class="verdict" aria-labelledby={labelId}>
+  <div class="container">
+    <div class="verdict__box">
+      <p class="verdict__label t-label" id={labelId}>{label}</p>
+      <div class="verdict__body t-lead measure">
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .verdict {
+    padding-block: var(--section-y);
+  }
+
+  .verdict__box {
+    border-inline-start: 2px solid var(--accent);
+    padding-inline-start: var(--space-md);
+  }
+
+  .verdict__label {
+    margin: 0;
+    color: var(--accent-text);
+  }
+
+  .verdict__body {
+    margin-top: var(--space-xs);
+    color: var(--ink);
+  }
+
+  /* Абзацы приходят из витрины и несут ЕЁ скрут, а правит их собственный
+     контейнер ядра — прецедент `.layer__body > :global(p + p)` из шага 5б. */
+  .verdict__body > :global(p) {
+    margin: 0;
+  }
+
+  .verdict__body > :global(p + p) {
+    margin-top: var(--space-sm);
+  }
+</style>

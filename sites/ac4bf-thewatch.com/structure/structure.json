@@ -296,11 +296,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "high",
@@ -399,11 +394,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -457,11 +447,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -529,11 +514,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -597,11 +577,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -763,11 +738,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -878,11 +848,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "high",
@@ -971,11 +936,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1079,11 +1039,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "high",
@@ -1146,11 +1101,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1232,11 +1182,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1323,11 +1268,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1426,11 +1366,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "high",
@@ -1506,11 +1441,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -1571,11 +1501,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1708,11 +1633,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -1855,11 +1775,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -1971,11 +1886,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -2304,11 +2214,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -2417,11 +2322,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -2557,11 +2457,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },

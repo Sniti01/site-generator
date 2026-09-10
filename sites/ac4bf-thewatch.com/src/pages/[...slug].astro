@@ -75,8 +75,17 @@ if (pominiete.length) {
  * Kolejność drukowana niżej jest wpisana ręcznie, więc musi być pilnowana
  * maszyną, a nie pamięcią: rozejście się z `blocks[]` przerywa budowanie.
  * Dyspozytor ogólny — sprawa sesji 6, kiedy bloków będzie osiem, nie cztery.
+ *
+ * LISTA JEST TERAZ FILTREM, NIE STAŁĄ, i to nie kosmetyka. Do 2026-09-10
+ * stała `oczekiwana` wymieniała wszystkie dziewięć nazw naraz, więc żądała,
+ * by KAŻDA strona fali 1 deklarowała komplet. Decyzja właściciela — zdjąć
+ * `card-rail` ze stron typu `game` — złamałaby ją natychmiast, a strony
+ * `topic` i `hub`, które `card-rail` zachowują, złamałyby ją w drugą stronę.
+ * `PORZADEK` mówi teraz jedno: w jakiej kolejności bloki wolno drukować.
+ * Sprawdzenie zostaje to samo — `blocks[]` musi się z tą kolejnością zgadzać.
  */
-const oczekiwana = ['hero-key-art', 'byline', 'toc', 'story-row', 'card-rail', 'gallery', 'verdict-box', 'link-list', 'cta-band'];
+const PORZADEK = ['hero-key-art', 'byline', 'toc', 'story-row', 'card-rail', 'gallery', 'verdict-box', 'link-list', 'cta-band'];
+const oczekiwana = PORZADEK.filter((b) => doZrobienia.includes(b));
 if (doZrobienia.join(',') !== oczekiwana.join(',')) {
   throw new Error(
     `Kolejność bloków w strukturze (${doZrobienia.join(', ')}) rozeszła się z tą, ` +
@@ -175,7 +184,11 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    dane.cards && (
+    /* Warunek jest podwójny celowo: `blocks[]` mówi CZY blok tu stoi,
+       a treść — CZY jest czym go wypełnić. Strony `game` od 2026-09-10
+       `card-rail` nie deklarują (decyzja właściciela, punkt 20 backlogu),
+       więc pierwszy człon je odsiewa; `topic` i `hub` deklarują nadal. */
+    zadeklarowane.includes('card-rail') && dane.cards && (
       <CardRail
         cards={dane.cards.items}
         title={dane.cards.title}

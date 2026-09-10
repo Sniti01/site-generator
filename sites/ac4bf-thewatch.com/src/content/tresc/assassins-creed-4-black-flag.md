@@ -70,26 +70,11 @@ rows:
         Fabularnie to prequel trójki: Edward jest dziadkiem Connora, a wątek
         współczesny przenosi się do biur Abstergo. Rogue opowiada tę samą epokę
         z drugiej strony — dlatego obie gry czyta się parami, a nie osobno.
-cards:
-  title: Dokąd stąd
-  lead: Sąsiednie części tej samej epoki i dodatek, który wypada zagrać po głównym wątku.
-  items:
-    - href: /assassins-creed-4-black-flag/freedom-cry/
-      title: Freedom Cry
-      kind: Dodatek
-      place: Port-au-Prince
-    - href: /assassins-creed-rogue/
-      title: Assassin’s Creed Rogue
-      kind: Ta sama epoka
-      place: Atlantyk Północny
-    - href: /assassins-creed-3/
-      title: Assassin’s Creed III
-      kind: Wątek rodzinny
-      place: Kolonie
-    - href: /assassins-creed-pirates/
-      title: Assassin’s Creed Pirates
-      kind: Odsłona mobilna
-      place: Karaiby
+# Pola `cards` tu nie ma i to decyzja, nie przeoczenie: strony `game` od
+# 2026-09-10 nie deklarują `card-rail` w `blocks[]` (decyzja właściciela,
+# punkt 20 backlogu). Cztery karty, które tu stały, powtarzały `related`
+# ze struktury co do adresu — dlatego blok zdjęto. Wróci razem z własną
+# treścią, nie z kopią `related`.
 cta:
   title: Nie wiesz, od czego zacząć serię?
   lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.

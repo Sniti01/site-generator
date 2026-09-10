@@ -1,11 +1,26 @@
 ---
-import { eras } from '../data/site';
+import { eras, type EraId } from '../data/site';
 
 /**
  * Skala zejścia. Po lewej krawędzi, przez całą stronę: wysokość zamienia się
  * w lata. Znacznik jedzie ze scrollem, aktywna epoka podświetla się swoim
  * kolorem — to ten sam token, którym maluje się jej sekcja.
+ *
+ * JEDNA EPOKA NA STRONACH GIER — decyzja П35, nie przeoczenie. Strona gry jest
+ * już wewnątrz jednej epoki, więc cudze lata na niej są szumem. `IGLICA`
+ * i `STÓG` zostają krawędziami skali, a romb jedzie po całej jej długości:
+ * jego położenie liczy się z przewinięcia strony, nie ze znaczników.
+ *
+ * Bez propsa pokazywane są wszystkie pięć — dlatego wydruk strony głównej
+ * nie zmienia się ani o bajt.
  */
+interface Props {
+  /** Które epoki pokazać. Brak — wszystkie. */
+  epoki?: EraId[];
+}
+
+const { epoki } = Astro.props;
+const pokazane = epoki ? eras.filter((era) => epoki.includes(era.id)) : eras;
 ---
 
 <aside class="rail" aria-hidden="true">
@@ -14,7 +29,7 @@ import { eras } from '../data/site';
   <div class="rail__track">
     <span class="rail__fill"></span>
     {
-      eras.map((era) => (
+      pokazane.map((era) => (
         <span class="rail__tick" data-era={era.id} style={`--at:${era.depth}%`}>
           <span class="rail__dash" />
           <span class="rail__year t-micro tabular">{era.year}</span>

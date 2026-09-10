@@ -93,7 +93,7 @@ const pokrewne = (strona.related ?? []).map((url) => {
 });
 ---
 
-<Base title={strona.title} description={strona.description}>
+<Base title={strona.title} description={strona.description} epoki={dane.art ? [dane.art as EraId] : undefined}>
   <HeroKeyArt
     title={strona.h1}
     titleId="strona-tytul"
@@ -127,6 +127,7 @@ const pokrewne = (strona.related ?? []).map((url) => {
         modifier={`layer--${dane.art ?? 'karaiby'}`}
         flip={rzad.flip}
         band={rzad.band}
+        attrs={rzad.art ? { 'data-era-section': rzad.art } : undefined}
       >
         <p class="layer__year t-year" slot="nadtytul">
           {rzad.year}

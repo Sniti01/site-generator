@@ -51,17 +51,47 @@ export const collections = {
         )
         .default([]),
 
-      /* — card-rail — */
+      /* — card-rail —
+         LISTA, NIE POJEDYNCZY OBIEKT, i to nie zapas: `blocks[]` wolno
+         zadeklarować dwie taśmy na jednej stronie, jeśli różni je `role`
+         (`/ezio-auditore/`). Trasa dopasowuje wpis do wystąpienia po tym
+         polu; wpis bez `role` obsługuje wystąpienie bez `role`.
+         Zmiana kształtu nic nie kosztowała: pole `cards` nie miało w tej
+         chwili ani jednego użycia w treści. */
       cards: z
+        .array(
+          z.object({
+            role: z.string().optional(),
+            title: z.string(),
+            lead: z.string().optional(),
+            items: z.array(
+              z.object({
+                href: z.string(),
+                title: z.string(),
+                kind: z.string().optional(),
+                place: z.string().optional(),
+              })
+            ),
+          })
+        )
+        .optional(),
+
+      /* — link-columns —
+         Cztery kolumny prawdziwych linków. Kształt grup taki sam, jakiego
+         `LinkColumns` żąda propsem, i taki sam, jaki `CatalogStack` podaje
+         na głównej ze `src/data/site.ts`. */
+      columns: z
         .object({
           title: z.string(),
-          lead: z.string().optional(),
-          items: z.array(
+          lead: z.string(),
+          label: z.string(),
+          href: z.string(),
+          groups: z.array(
             z.object({
-              href: z.string(),
               title: z.string(),
-              kind: z.string().optional(),
-              place: z.string().optional(),
+              href: z.string(),
+              count: z.number(),
+              items: z.array(z.object({ label: z.string(), href: z.string() })),
             })
           ),
         })

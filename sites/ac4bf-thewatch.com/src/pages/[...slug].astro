@@ -7,6 +7,7 @@ import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import CardRail from '@factory/core/blocks/CardRail.astro';
+import LinkColumns from '@factory/core/blocks/LinkColumns.astro';
 import CtaBand from '@factory/core/blocks/CtaBand.astro';
 import Byline from '@factory/core/blocks/Byline.astro';
 import Toc from '@factory/core/blocks/Toc.astro';
@@ -63,77 +64,141 @@ const dane = wpis.data;
 const gotowy = (imie: string) =>
   Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
 
-const zadeklarowane = strona.blocks.map((b) => b.block);
-const pominiete = zadeklarowane.filter((b) => !gotowy(b));
-const doZrobienia = zadeklarowane.filter(gotowy);
+/**
+ * WYSTĄPIENIE, NIE NAZWA. `blocks[]` wolno wymienić ten sam blok dwa razy,
+ * jeśli wystąpienia różni pole `role` — umowa już to dopuszcza i już z tego
+ * korzysta: `/ezio-auditore/` ma dwie taśmy (`type-default` i `manual`
+ * z `role: the-ezio-collection`), a główna ma `link-list` z `role`.
+ * Klucz `nazwa#role` jest tu jedyną tożsamością bloku na stronie.
+ */
+const kluczOd = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
+const wystapienia = strona.blocks as { block: string; role?: string }[];
+const pominiete = wystapienia.filter((b) => !gotowy(b.block)).map(kluczOd);
+const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(kluczOd);
 
 if (pominiete.length) {
   console.log(`  ${strona.url} — bloki zadeklarowane, ale nie w rdzeniu: ${pominiete.join(', ')}`);
 }
 
 /**
- * Kolejność drukowana niżej jest wpisana ręcznie, więc musi być pilnowana
- * maszyną, a nie pamięcią: rozejście się z `blocks[]` przerywa budowanie.
- * Dyspozytor ogólny — sprawa sesji 6, kiedy bloków będzie osiem, nie cztery.
- *
- * LISTA JEST TERAZ FILTREM, NIE STAŁĄ, i to nie kosmetyka. Do 2026-09-10
- * stała `oczekiwana` wymieniała wszystkie dziewięć nazw naraz, więc żądała,
- * by KAŻDA strona fali 1 deklarowała komplet. Decyzja właściciela — zdjąć
- * `card-rail` ze stron typu `game` — złamałaby ją natychmiast, a strony
- * `topic` i `hub`, które `card-rail` zachowują, złamałyby ją w drugą stronę.
- * `PORZADEK` mówi teraz jedno: w jakiej kolejności bloki wolno drukować.
- * Sprawdzenie zostaje to samo — `blocks[]` musi się z tą kolejnością zgadzać.
- */
-const PORZADEK = ['hero-key-art', 'byline', 'toc', 'story-row', 'card-rail', 'gallery', 'verdict-box', 'link-list', 'cta-band'];
-const oczekiwana = PORZADEK.filter((b) => doZrobienia.includes(b));
-if (doZrobienia.join(',') !== oczekiwana.join(',')) {
-  throw new Error(
-    `Kolejność bloków w strukturze (${doZrobienia.join(', ')}) rozeszła się z tą, ` +
-      `którą drukuje szablon (${oczekiwana.join(', ')}). Adres: ${strona.url}. ` +
-      'Popraw szablon albo strukturę — ale nie zostawiaj rozejścia.'
-  );
-}
-
-/**
- * `link-list` NIE JEST zadeklarowany w `blocks[]` tej strony, a jest tu
- * drukowany: niesie pole `related` ze struktury. Czy `blocks[]` ma nosić
- * `link-list` dla stron z `related` — pytanie do właściciela, zapisane
- * w raporcie sesji 5. Do rozstrzygnięcia sekcja stoi, bo `related` musi
- * dojść do strony, a to jest blok, którego to robota.
+ * `link-list` niesie pole `related` ze struktury, a nie z pliku treści.
+ * Od 2026-09-10 jest zadeklarowany w `blocks[]` wszystkich trzydziestu stron
+ * (decyzja właściciela, wariant „b"), więc dawne pytanie z raportu sesji 5 —
+ * czy ma być deklarowany — jest zamknięte.
  */
 const pokrewne = (strona.related ?? []).map((url) => {
   const cel = getPage(url);
   return { href: url, title: cel.h1, meta: cel.type === 'game' ? 'Gra' : 'Tekst' };
 });
+
+/** Taśmy z pliku treści, dopasowywane do wystąpień po `role`. */
+const tasmy = dane.cards ?? [];
+const tasmaDla = (role?: string) => tasmy.find((t) => (t.role ?? undefined) === role);
+
+/**
+ * CZY STRONA MA CZYM WYPEŁNIĆ BLOK — po jednym predykacie na nazwę. Te same
+ * predykaty stoją w warunkach druku niżej: lista i rozmieszczenie liczą się
+ * z jednego źródła, więc nie mogą się rozejść.
+ */
+const maTresc: Record<string, (role?: string) => boolean> = {
+  'hero-key-art': () => true, // schemat treści wymaga `lead`, `primary` i `secondary`
+  byline: () => Boolean(dane.byline),
+  toc: () => Boolean(dane.toc),
+  'story-row': () => (dane.rows ?? []).length > 0,
+  'card-rail': (role) => Boolean(tasmaDla(role)),
+  gallery: () => Boolean(dane.gallery),
+  'link-columns': () => Boolean(dane.columns),
+  'verdict-box': () => Boolean(dane.verdict),
+  'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
+  'cta-band': () => Boolean(dane.cta),
+};
+
+/**
+ * Kolejność drukowana niżej jest wpisana ręcznie, więc musi być pilnowana
+ * maszyną, a nie pamięcią. `PORZADEK` mówi jedno: w jakiej kolejności bloki
+ * wolno drukować. Ustalony 2026-09-10 sortowaniem topologicznym po `blocks[]`
+ * wszystkich 29 stron trasy — porządek spójny istnieje i jest jeden.
+ * `band-quote` go nie ma celowo: na trasie nie występuje ani razu, stoi tylko
+ * na głównej. Główna wjeżdża na trasę czwartym punktem П32 i przyniesie ze
+ * sobą DWA konflikty kolejności (`link-list` przed `gallery` i przed
+ * `link-columns`) — jedyne dwa w całym drzewie. Wtedy albo `blocks[]` głównej
+ * się porządkuje, albo szablon dostaje prawdziwego dyspozytora; dopóki
+ * główna ma własną stronę, wybierać nie ma czego.
+ */
+const PORZADEK = [
+  'hero-key-art',
+  'byline',
+  'toc',
+  'story-row',
+  'card-rail',
+  'gallery',
+  'link-columns',
+  'verdict-box',
+  'link-list',
+  'cta-band',
+];
+
+/**
+ * CO SZABLON NAPRAWDĘ WYDRUKUJE — i to jest ta lista, której sprawdzenie
+ * dotąd nie miało. Do 2026-09-10 porównywano `blocks[]` z `blocks[]`
+ * przefiltrowanym: obie strony równania pochodziły z deklaracji, więc druk
+ * nie był pilnowany NIGDY. Blok drukowany bezwarunkowo — a taki był
+ * `hero-key-art` — przechodził przez to sprawdzenie niewidzialny.
+ * Teraz każdy warunek druku niżej brzmi `drukowane.includes(klucz)`, więc
+ * lista i rozmieszczenie mają jedno źródło, a rozejście przerywa budowanie.
+ */
+const drukowane = PORZADEK.flatMap((nazwa) =>
+  wystapienia
+    .filter((b) => b.block === nazwa && gotowy(nazwa) && (maTresc[nazwa]?.(b.role) ?? false))
+    .map(kluczOd)
+);
+
+if (doZrobienia.join(',') !== drukowane.join(',')) {
+  const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
+  throw new Error(
+    `Blocks[] i druk rozeszły się na ${strona.url}.\n` +
+      `  struktura deklaruje i rdzeń umie: ${doZrobienia.join(', ') || '—'}\n` +
+      `  szablon wydrukuje:                ${drukowane.join(', ') || '—'}\n` +
+      (brakujace.length
+        ? `  bez treści albo bez miejsca w PORZADEK: ${brakujace.join(', ')}\n`
+        : '  rozeszła się sama kolejność\n') +
+      'Popraw treść, szablon albo strukturę — ale nie zostawiaj rozejścia.'
+  );
+}
 ---
 
 <Base title={strona.title} description={strona.description} skala={false}>
-  <HeroKeyArt
-    title={strona.h1}
-    titleId="strona-tytul"
-    primaryHref={dane.primary.href}
-    primaryLabel={dane.primary.label}
-    secondaryHref={dane.secondary.href}
-    secondaryLabel={dane.secondary.label}
-  >
-    {
-      dane.art && (
-        <EraMedia
-          slot="art"
-          klucz={dane.art as EraId}
-          widths={[1200, 1600, 2400, 3200]}
-          sizes="(max-width: 1024px) 200vw, 170vw"
-          loading="eager"
-          credit={false}
-        />
-      )
-    }
-    <Fragment slot="lead">{dane.lead}</Fragment>
-    <Icon slot="ikona-glowna" name="w-dol" size={18} />
-  </HeroKeyArt>
+  {
+    /* Do 2026-09-10 hero drukował się BEZWARUNKOWO, a sześć stron fali 1 go
+       nie deklaruje. To ten sam defekt, co podwójne linki: szablon drukował,
+       czego umowa nie zamawiała. Teraz warunek jest taki sam jak u reszty. */
+    drukowane.includes('hero-key-art') && (
+      <HeroKeyArt
+        title={strona.h1}
+        titleId="strona-tytul"
+        primaryHref={dane.primary.href}
+        primaryLabel={dane.primary.label}
+        secondaryHref={dane.secondary.href}
+        secondaryLabel={dane.secondary.label}
+      >
+        {dane.art && (
+          <EraMedia
+            slot="art"
+            klucz={dane.art as EraId}
+            widths={[1200, 1600, 2400, 3200]}
+            sizes="(max-width: 1024px) 200vw, 170vw"
+            loading="eager"
+            credit={false}
+          />
+        )}
+        <Fragment slot="lead">{dane.lead}</Fragment>
+        <Icon slot="ikona-glowna" name="w-dol" size={18} />
+      </HeroKeyArt>
+    )
+  }
 
   {
-    dane.byline && (
+    drukowane.includes('byline') && dane.byline && (
       <Byline
         author={dane.byline.author}
         date={dane.byline.date}
@@ -143,9 +208,10 @@ const pokrewne = (strona.related ?? []).map((url) => {
     )
   }
 
-  {dane.toc && <Toc items={dane.toc.items} title={dane.toc.title} titleId="toc-tytul" />}
+  {drukowane.includes('toc') && dane.toc && <Toc items={dane.toc.items} title={dane.toc.title} titleId="toc-tytul" />}
 
   {
+    drukowane.includes('story-row') &&
     dane.rows.map((rzad) => (
       <StoryRow
         title={rzad.title}
@@ -184,29 +250,36 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    /* Warunek jest podwójny celowo: `blocks[]` mówi CZY blok tu stoi,
-       a treść — CZY jest czym go wypełnić. Strony `game` od 2026-09-10
-       `card-rail` nie deklarują (decyzja właściciela, punkt 20 backlogu),
-       więc pierwszy człon je odsiewa; `topic` i `hub` deklarują nadal. */
-    zadeklarowane.includes('card-rail') && dane.cards && (
-      <CardRail
-        cards={dane.cards.items}
-        title={dane.cards.title}
-        titleId="dokad-tytul"
-        lead={dane.cards.lead}
-        trackLabel="Sąsiednie części, przewijane poziomo"
-        prevLabel="Poprzednie karty"
-        nextLabel="Następne karty"
-      >
-        <Icon slot="ikona-wstecz" name="strzalka-w-lewo" size={20} />
-        <Icon slot="ikona-dalej" name="strzalka-w-prawo" size={20} />
-        <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
-      </CardRail>
-    )
+    /* JEDYNY BLOK DRUKOWANY W PĘTLI PO WYSTĄPIENIACH, i to nie zapas na
+       przyszłość: `/ezio-auditore/` deklaruje dwie taśmy — bezpodstawną
+       `type-default` i świadomą `manual` z `role: the-ezio-collection`.
+       Treść dopasowuje się po `role`, więc druga taśma dostaje swoje karty,
+       a nie kopię pierwszej. Strony `game` od 2026-09-10 taśmy nie deklarują
+       wcale (punkt 20 backlogu), więc pętla jest u nich pusta. */
+    wystapienia
+      .filter((b) => b.block === 'card-rail' && drukowane.includes(kluczOd(b)))
+      .map((b) => {
+        const t = tasmaDla(b.role)!;
+        return (
+          <CardRail
+            cards={t.items}
+            title={t.title}
+            titleId={b.role ? `dokad-${b.role}-tytul` : 'dokad-tytul'}
+            lead={t.lead}
+            trackLabel="Sąsiednie części, przewijane poziomo"
+            prevLabel="Poprzednie karty"
+            nextLabel="Następne karty"
+          >
+            <Icon slot="ikona-wstecz" name="strzalka-w-lewo" size={20} />
+            <Icon slot="ikona-dalej" name="strzalka-w-prawo" size={20} />
+            <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+          </CardRail>
+        );
+      })
   }
 
   {
-    dane.gallery && (
+    drukowane.includes('gallery') && dane.gallery && (
       <Gallery
         items={dane.gallery.items.map((k) => {
           const m = mediaFor(k.art, k.alt);
@@ -220,7 +293,26 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    dane.verdict && (
+    /* `link-columns` szablon drukuje od 2026-09-10. Do tej daty blok był
+       zadeklarowany na `/poradniki/`, zaimplementowany w rdzeniu i nieznany
+       szablonowi naraz — czyli ściana, o którą strona rozbiłaby się przy
+       pierwszej treści. Grupy przychodzą polem `columns`, tak jak `catalog`
+       przychodzi do `CatalogStack` na głównej. */
+    drukowane.includes('link-columns') && dane.columns && (
+      <LinkColumns
+        groups={dane.columns.groups}
+        title={dane.columns.title}
+        label={dane.columns.label}
+        href={dane.columns.href}
+      >
+        <Fragment slot="lead">{dane.columns.lead}</Fragment>
+        <Icon slot="akcja" name="strzalka-w-prawo" size={18} />
+      </LinkColumns>
+    )
+  }
+
+  {
+    drukowane.includes('verdict-box') && dane.verdict && (
       <VerdictBox label={dane.verdict.label} labelId="werdykt-tytul">
         {dane.verdict.body.map((akapit) => (
           <p>{akapit}</p>
@@ -230,7 +322,7 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    pokrewne.length > 0 && dane.related && (
+    drukowane.includes('link-list') && pokrewne.length > 0 && dane.related && (
       <LinkList items={pokrewne} title={dane.related.title} titleId="powiazane-tytul">
         <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
       </LinkList>
@@ -238,7 +330,7 @@ const pokrewne = (strona.related ?? []).map((url) => {
   }
 
   {
-    dane.cta && (
+    drukowane.includes('cta-band') && dane.cta && (
       <CtaBand title={dane.cta.title} lead={dane.cta.lead} href={dane.cta.href} label={dane.cta.label} id="cta-tytul">
         <Icon slot="akcja" name="strzalka-w-prawo" size={18} />
       </CtaBand>

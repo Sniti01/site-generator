@@ -28,7 +28,6 @@
  * прочитать вход. Вердикт читается из вывода.
  */
 
-import { readFileSync } from 'node:fs';
 import { прочитатьCss } from './build-css.mjs';
 import { sep } from 'node:path';
 // Гашение скрутов живёт в html-diff.mjs — там же, где порядковое приведение,

@@ -672,11 +672,6 @@
     },
     {
      "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "role": "the-ezio-collection",
      "source": "manual",
      "confidence": "high"
@@ -2398,11 +2393,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "gallery",
      "source": "anatomy",
      "confidence": "medium",
@@ -2497,11 +2487,6 @@
    "blocks": [
     {
      "block": "hero-key-art",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -2602,11 +2587,6 @@
      "confidence": "low"
     },
     {
-     "block": "card-rail",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
      "block": "link-list",
      "source": "manual",
      "confidence": "high"
@@ -2643,11 +2623,6 @@
    "blocks": [
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },
@@ -2699,11 +2674,6 @@
     },
     {
      "block": "story-row",
-     "source": "type-default",
-     "confidence": "low"
-    },
-    {
-     "block": "card-rail",
      "source": "type-default",
      "confidence": "low"
     },

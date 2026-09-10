@@ -1,33 +1,56 @@
 #!/usr/bin/env node
 /**
- * Pobiera zdjęcia epok z Wikimedia Commons według manifestu src/data/art.json.
+ * Pobiera zdjęcia epok z Wikimedia Commons według manifestu `src/data/art.json`
+ * WITRYNY, której korzeń dostaje pierwszym argumentem.
  *
- *   node tools/fetch-art.mjs             — pobiera brakujące
- *   node tools/fetch-art.mjs --dry-run   — tylko pokazuje, co by wybrał
- *   node tools/fetch-art.mjs --force     — pobiera wszystko od nowa
- *   node tools/fetch-art.mjs --only hero,londyn
+ *   node core/media/fetch-art.mjs <korzeń witryny>             — pobiera brakujące
+ *   node core/media/fetch-art.mjs <korzeń> --dry-run           — tylko pokazuje, co by wybrał
+ *   node core/media/fetch-art.mjs <korzeń> --force             — pobiera wszystko od nowa
+ *   node core/media/fetch-art.mjs <korzeń> --only hero,londyn
+ *
+ * Bez argumentu bierze katalog bieżący — tak samo jak `core/gates/run.mjs`.
  *
  * Bierze wyłącznie licencje, które wolno użyć komercyjnie i zmodyfikować
  * (kadrowanie, duoton), a autora razem z licencją zapisuje do
- * src/data/art-credits.json. Podpis pod zdjęciem stawia potem komponent —
- * atrybucji nikt nie przepisuje ręcznie.
+ * `src/data/art-credits.json` witryny. Podpis pod zdjęciem stawia potem
+ * komponent — atrybucji nikt nie przepisuje ręcznie.
+ *
+ * WYNIESIONE Z `sites/ac4bf-thewatch.com/tools/` 2026-09-10, trzecim
+ * i ostatnim krokiem P3 (`docs/REUSE.md` §6, П29 p. 5). Adres wzięty
+ * z `REUSE` §1.5, graf «Куда w `core/`».
+ *
+ * `sharp` JEST ZADEKLAROWANY W `core/package.json` JAKO PEER, i to nie
+ * formalność. Przed wyniesieniem pakiet stał wyłącznie w `devDependencies`
+ * witryny, a fizycznie leżał w korzeniu repozytorium przez hoisting
+ * workspace'ów — czyli po przeprowadzce import rozwiązałby się sam, cicho,
+ * a rdzeń miałby zależność, której nigdzie nie zgłosił. Cena deklaracji jest
+ * zerowa: `sharp` to `optionalDependencies` samego Astro (7.2.10), więc
+ * każda witryna na Astro już go ma. Rdzeń zostaje bez `dependencies` —
+ * ta sama zasada, dla której `core/accept/pixels.mjs` czyta PNG własnym
+ * kodem zamiast ciągnąć pakiet binarny.
  */
 
 import sharp from 'sharp';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-
-const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const outDir = join(root, 'src/assets/foto');
-const creditsPath = join(root, 'src/data/art-credits.json');
-const manifestPath = join(root, 'src/data/art.json');
+import { join, resolve } from 'node:path';
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const force = args.includes('--force');
 const onlyArg = args.indexOf('--only');
 const only = onlyArg >= 0 && args[onlyArg + 1] ? new Set(args[onlyArg + 1].split(',')) : null;
+
+// KORZEŃ WITRYNY PRZYCHODZI ARGUMENTEM, nie liczy się od miejsca modułu.
+// Przed wyniesieniem stały tu trzy ścieżki liczone od `import.meta.url` —
+// po przeprowadzce do `core/media/` czytałyby `core/src/data/art.json`
+// i pisały do `core/src/assets/foto/`. To ta sama pułapka, którą `REUSE` §6
+// opisał dla względnego globa, tylko głośniejsza: `readFileSync` wywala się
+// z ENOENT zamiast milczeć. Idiom wzięty z `core/gates/run.mjs`
+// i `core/accept/selftest.mjs`: argument albo katalog bieżący.
+const siteRoot = args[0] && !args[0].startsWith('--') ? resolve(args[0]) : process.cwd();
+const outDir = join(siteRoot, 'src/assets/foto');
+const creditsPath = join(siteRoot, 'src/data/art-credits.json');
+const manifestPath = join(siteRoot, 'src/data/art.json');
 
 // Wikimedia prosi o opisowy User-Agent. Bez niego API potrafi odmówić.
 const UA = 'bractwo-site-generator/0.1 (statyczny serwis o grach; skrypt pobierania ilustracji)';
@@ -182,10 +205,22 @@ async function pick(slot) {
   return null;
 }
 
-const slots = JSON.parse(readFileSync(manifestPath, 'utf8')).slots.filter(
-  (slot) => !only || only.has(slot.id),
-);
+const wszystkie = JSON.parse(readFileSync(manifestPath, 'utf8')).slots;
+const slots = wszystkie.filter((slot) => !only || only.has(slot.id));
 const credits = existsSync(creditsPath) ? JSON.parse(readFileSync(creditsPath, 'utf8')) : {};
+
+// PRÓBA ŻYWOTNOŚCI ŚCIEŻEK, drukowana zawsze i przed pierwszym zapytaniem.
+// Obowiązkowa po wyniesieniu z tego samego powodu, dla którego nagłówek
+// `core/gates/check-assets.mjs` żąda jednorazowej próby żywotności globa:
+// narzędzie w rdzeniu nie ma jak pokazać, że trafia do WITRYNY, a nie obok
+// niej. Liczby w tych trzech wierszach są tym dowodem — i tym, co odczyta
+// każdy, kto uruchomi narzędzie z niewłaściwego katalogu.
+console.log(`korzeń witryny: ${siteRoot}`);
+console.log(`manifest:       ${manifestPath} — slotów ${wszystkie.length}, w robocie ${slots.length}`);
+console.log(
+  `zapis:          ${outDir} (${existsSync(outDir) ? 'jest' : 'będzie utworzony'}), ` +
+    `atrybucje ${creditsPath} — wpisów ${Object.keys(credits).length}`,
+);
 
 if (!dryRun) mkdirSync(outDir, { recursive: true });
 

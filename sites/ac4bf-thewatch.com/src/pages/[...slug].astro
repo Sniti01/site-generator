@@ -33,6 +33,13 @@ import type { EraId } from '../data/site';
  * piksel `_baseline/`. Przeprowadzka głównej jest czwartym punktem П32
  * i jedzie razem z jedyną przesiadką wzorca.
  */
+/**
+ * ГДЕ ТЕПЕРЬ ГРАНИЦА ПЕЧАТИ (шаг 5б, П34). Маршрут больше не печатает абзацы
+ * блоков сам: лид, мету и тело печатает ядро, а сюда приходят только зёрна —
+ * текст и адреса. До 5б маршрут печатал их своими `<p>`, они несли ЕГО скрут,
+ * и правила ядра на них не совпадали: страница получала разметку без вида.
+ * Стена скрутов односторонняя — П34, третья строка уточнения.
+ */
 export async function getStaticPaths() {
   const wpisy = await getCollection('tresc');
   return wpisy.map((wpis) => {
@@ -107,7 +114,7 @@ const pokrewne = (strona.related ?? []).map((url) => {
         />
       )
     }
-    <p class="hero__lead t-lead measure" slot="lead">{dane.lead}</p>
+    <Fragment slot="lead">{dane.lead}</Fragment>
     <Icon slot="ikona-glowna" name="w-dol" size={18} />
   </HeroKeyArt>
 
@@ -125,10 +132,11 @@ const pokrewne = (strona.related ?? []).map((url) => {
           {rzad.year}
         </p>
 
-        <Fragment slot="tresc">
-          <p class="layer__meta t-caption">{rzad.meta}</p>
+        <Fragment slot="meta">{rzad.meta}</Fragment>
+
+        <Fragment slot="body">
           {rzad.body.map((akapit) => (
-            <p class="layer__body t-body measure">{akapit}</p>
+            <p>{akapit}</p>
           ))}
         </Fragment>
 

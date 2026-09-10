@@ -97,9 +97,9 @@ const {
         </p>
       )}
       {Astro.slots.has('body') && (
-        <p class="layer__body t-body measure">
+        <div class="layer__body t-body measure">
           <slot name="body" />
-        </p>
+        </div>
       )}
       <slot name="tresc" />
     </div>
@@ -143,9 +143,22 @@ const {
     color: var(--ink-muted);
   }
 
+  /* Тело ряда — контейнер, а не абзац: витрина кладёт в него либо текст
+     одной строкой, либо несколько `<p>`. Тег сменён с `p` на `div` шагом 5б,
+     когда первой странице волны 1 понадобились два абзаца; на главной внутри
+     текст без `<p>`, поэтому правило ритма ниже не срабатывает и вид
+     не меняется. `.t-body` уже гасит поля, так что смена тега пикселя
+     не трогает. */
   .layer__body {
     margin-top: var(--space-md);
     color: var(--ink-muted);
+  }
+
+  /* `:global` на потомке здесь законен и обязателен: абзацы приходят
+     из витрины и несут ЕЁ скрут, а правит их собственный контейнер ядра.
+     Та же форма, что `.layer__art :global(.foto)`. */
+  .layer__body > :global(p + p) {
+    margin-top: var(--space-sm);
   }
 
   .layer__media {

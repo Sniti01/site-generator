@@ -82,7 +82,7 @@ const {
 ---
 
 <section
-  class:list={['layer', modifier, flip && 'layer--flip', band && 'band']}
+  class:list={['layer', 'section', modifier, flip && 'layer--flip', band && 'band']}
   id={id}
   {...attrs}
   aria-labelledby={titleId}
@@ -112,9 +112,11 @@ const {
 </section>
 
 <style>
+  /* Отбивка ушла на класс `.section` (`core/styles/layout.css`), правило
+     осталось ради `position`. Ряд рассказа — содержательный блок, ритм у него
+     обычный; лёгкий ритм `.section--light` носят служебные секции. */
   .layer {
     position: relative;
-    padding-block: var(--section-y);
   }
 
   .layer__inner {

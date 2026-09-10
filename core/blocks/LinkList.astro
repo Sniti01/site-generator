@@ -84,7 +84,7 @@ const ikona = Astro.slots.has('ikona-dopisku')
 
 {
   самостоятельный ? (
-    <section class="link-list container" aria-labelledby={titleId}>
+    <section class="link-list section--light container" aria-labelledby={titleId}>
       <h2 class="link-list__title t-headline" id={titleId}>{title}</h2>
     <ul class="layer__guides">
       {
@@ -126,11 +126,9 @@ const ikona = Astro.slots.has('ikona-dopisku')
 
 <style>
   /* Рамка появляется только у самостоятельного блока; внутри `story-row`
-     этих правил не на чем сработать — там нет ни `.link-list`, ни заголовка. */
-  .link-list {
-    padding-block: var(--section-y);
-  }
-
+     этих правил не на чем сработать — там нет ни `.link-list`, ни заголовка.
+     Отбивку самостоятельной ветки задаёт `.section--light`
+     (`core/styles/layout.css`); голая ветка внутри ряда её не носит. */
   .link-list__title {
     margin: 0 0 var(--space-xs);
     color: var(--ink);

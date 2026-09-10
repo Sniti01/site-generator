@@ -24,7 +24,7 @@ interface Props {
 const { label, labelId } = Astro.props;
 ---
 
-<section class="verdict" aria-labelledby={labelId}>
+<section class="verdict section--light" aria-labelledby={labelId}>
   <div class="container">
     <div class="verdict__box">
       <p class="verdict__label t-label" id={labelId}>{label}</p>
@@ -36,10 +36,7 @@ const { label, labelId } = Astro.props;
 </section>
 
 <style>
-  .verdict {
-    padding-block: var(--section-y);
-  }
-
+  /* Отбивку задаёт `.section--light` (`core/styles/layout.css`). */
   .verdict__box {
     border-inline-start: 2px solid var(--accent);
     padding-inline-start: var(--space-md);

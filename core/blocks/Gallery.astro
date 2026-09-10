@@ -44,7 +44,7 @@ const SZEROKOSCI = [480, 720, 960];
 const SIZES = '(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw';
 ---
 
-<section class="gallery" aria-labelledby={titleId}>
+<section class="gallery section--light" aria-labelledby={titleId}>
   <div class="container">
     <h2 class="gallery__title t-headline" id={titleId}>{title}</h2>
     {lead && <p class="gallery__lead t-body measure">{lead}</p>}
@@ -74,10 +74,7 @@ const SIZES = '(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 30vw';
 </section>
 
 <style>
-  .gallery {
-    padding-block: var(--section-y);
-  }
-
+  /* Отбивку задаёт `.section--light` (`core/styles/layout.css`). */
   .gallery__title {
     margin: 0;
     color: var(--ink);

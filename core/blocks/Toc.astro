@@ -34,7 +34,7 @@ interface Props {
 const { items, title, titleId } = Astro.props;
 ---
 
-<nav class="toc" aria-labelledby={titleId}>
+<nav class="toc section--light" aria-labelledby={titleId}>
   <div class="container">
     <h2 class="toc__title t-title" id={titleId}>{title}</h2>
     <ol class="toc__list">
@@ -52,10 +52,7 @@ const { items, title, titleId } = Astro.props;
 </nav>
 
 <style>
-  .toc {
-    padding-block: var(--section-y);
-  }
-
+  /* Отбивку задаёт `.section--light` (`core/styles/layout.css`). */
   .toc__title {
     margin-bottom: var(--space-sm);
     color: var(--ink);

@@ -121,11 +121,11 @@
   --gutter: clamp(16px, 4vw, 32px);
   --rail: 84px; /* szerokość skali wysokości po lewej krawędzi */
   --section-y: clamp(72px, 9vw, 128px);
-  /* Lekki rytm sekcji służbowych: podpis, spis treści, galeria, werdykt,
-     lista powiązanych. Dokładnie połowa `--section-y`, człon w człon —
-     gdyby kiedyś zmienić go na `calc(var(--section-y) / 2)`, piksel nie
-     drgnie, a liczba przestanie się rozjeżdżać przy zmianie rytmu. */
-  --section-y-light: clamp(36px, 4.5vw, 64px);
+  /* Lekkiego rytmu sekcji służbowych NIE MA TU OSOBNYM TOKENEM, i to decyzja,
+     nie przeoczenie: `.section--light` w rdzeniu liczy go jako połowę tej
+     wartości. Był token `--section-y-light`, zdjęty 2026-09-10 — jego liczba
+     pokrywała się z połową co do członu, więc umowa rdzenia rosła o nazwę
+     obowiązkową dla każdej witryny, nic za to nie kupując. */
 
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }

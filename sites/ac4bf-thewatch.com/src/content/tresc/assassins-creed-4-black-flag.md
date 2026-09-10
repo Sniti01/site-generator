@@ -21,8 +21,9 @@ toc:
   items:
     - href: '#co-jest-w-grze-tytul'
       title: Morze zamiast miasta
-    - href: '#dokad-tytul'
-      title: Dokąd stąd
+    # Pozycji „Dokąd stąd" tu nie ma od 2026-09-10: `card-rail` zdjęto
+    # z `blocks[]` stron gier, a kotwica `#dokad-tytul` została i prowadziła
+    # donikąd — sprawdzone w dist. Wróci razem z taśmą (punkt 20 backlogu).
     - href: '#galeria-tytul'
       title: Kadry z gry
     - href: '#werdykt-tytul'

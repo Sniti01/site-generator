@@ -67,9 +67,12 @@ const gotowy = (imie: string) =>
 /**
  * WYSTĄPIENIE, NIE NAZWA. `blocks[]` wolno wymienić ten sam blok dwa razy,
  * jeśli wystąpienia różni pole `role` — umowa już to dopuszcza i już z tego
- * korzysta: `/ezio-auditore/` ma dwie taśmy (`type-default` i `manual`
- * z `role: the-ezio-collection`), a główna ma `link-list` z `role`.
- * Klucz `nazwa#role` jest tu jedyną tożsamością bloku na stronie.
+ * korzysta. Klucz `nazwa#role` jest tu jedyną tożsamością bloku na stronie.
+ *
+ * Dwóch wystąpień jednej nazwy nie ma dziś na trasie ani razu: druga taśma
+ * `/ezio-auditore/` została sama, gdy pierwszą — bezpodstawną `type-default` —
+ * zdjęto drugim zajściem punktu 20. Rola w strukturze jednak żyje:
+ * `card-rail#the-ezio-collection` tam i `link-list#numeracja-serii` na głównej.
  */
 const kluczOd = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
 const wystapienia = strona.blocks as { block: string; role?: string }[];
@@ -152,6 +155,63 @@ const drukowane = PORZADEK.flatMap((nazwa) =>
     .filter((b) => b.block === nazwa && gotowy(nazwa) && (maTresc[nazwa]?.(b.role) ?? false))
     .map(kluczOd)
 );
+
+/**
+ * ROLĘ UMIE DZIŚ JEDEN BLOK, i reszta musi się o to rozbić GŁOŚNO.
+ *
+ * Dziura znaleziona 2026-09-10 przeglądem przeciwnika, tego samego dnia,
+ * którego powstała. `drukowane` niesie klucze `nazwa#role`, a dziewięć
+ * warunków druku niżej pyta o gołą nazwę — więc blok z rolą przechodziłby
+ * sprawdzenie i NIE drukował się. To dokładnie ta klasa defektu, dla której
+ * całe sprawdzenie przepisano: szablon i umowa rozeszłyby się po cichu.
+ * Główna już nosi taki przypadek: `link-list` z `role: numeracja-serii`.
+ *
+ * Zamiast udawać, że rola działa wszędzie, granica jest nazwana: umie ją
+ * `card-rail` (pętla po wystąpieniach plus dopasowanie treści po `role`),
+ * a każde inne wystąpienie z rolą przerywa budowanie z imieniem winowajcy.
+ * Dzięki temu dziewięć warunków niżej wolno pytać o gołą nazwę: wystąpienie
+ * z rolą do nich nie dojdzie.
+ */
+const ROLE_UMIE = new Set(['card-rail']);
+const zRola = wystapienia.filter((b) => b.role && !ROLE_UMIE.has(b.block));
+if (zRola.length) {
+  throw new Error(
+    `Drugie wystąpienie bloku z rolą, którego trasa jeszcze nie umie — ${strona.url}.\n` +
+      `  ${zRola.map(kluczOd).join(', ')}\n` +
+      `  rolę umieją dziś: ${[...ROLE_UMIE].join(', ')}\n` +
+      'Naucz trasę tego bloku (pętla po wystąpieniach plus treść dopasowana po `role`) ' +
+      'albo zdejmij rolę ze struktury. Cichego pominięcia tu nie ma i nie będzie.'
+  );
+}
+
+/**
+ * STRONA BEZ `h1` NIE ZBIERZE SIĘ, i ten warunek postawiono dziś, bo dziś
+ * powstał na niego powód.
+ *
+ * Do 2026-09-10 `hero-key-art` drukował się BEZWARUNKOWO, więc `h1` był
+ * zawsze — przypadkiem. Zdjęcie tej bezwarunkowości (ściana 3) było
+ * poprawne, ale zabrało ze sobą jedyne `<h1>` w całym repozytorium:
+ * `core/blocks/HeroKeyArt.astro:68`, innych wystąpień nie ma ani w rdzeniu,
+ * ani w witrynie (sprawdzone grepem). Sześć stron fali 1 tego bloku nie
+ * deklaruje — i zbudowałyby się BEZ NAGŁÓWKA, przy zielonych bramkach.
+ *
+ * `core/structure/schema.json:40` żąda `h1` od KAŻDEJ strony jako pola
+ * obowiązkowego i unikalnego. Bramka struktury pilnuje pola w umowie,
+ * a nie znacznika w HTML — więc bez tego warunku brak byłby niemy.
+ *
+ * KTÓRY BLOK NIESIE `h1` NA STRONIE BEZ HERO — to pytanie do właściciela,
+ * nie do tego pliku. Tu stoi odmowa, nie odpowiedź.
+ */
+const NIESIE_H1 = new Set(['hero-key-art']);
+if (!drukowane.some((k) => NIESIE_H1.has(k.split('#')[0]))) {
+  throw new Error(
+    `Strona zbudowałaby się bez \`h1\` — ${strona.url}.\n` +
+      `  drukowane bloki: ${drukowane.join(', ') || '—'}\n` +
+      `  \`h1\` niesie dziś tylko: ${[...NIESIE_H1].join(', ')} (core/blocks/HeroKeyArt.astro)\n` +
+      `  struktura żąda h1 od każdej strony: «${strona.h1}»\n` +
+      'Rozstrzygnięcie należy do właściciela: który blok niesie nagłówek na stronie bez hero.'
+  );
+}
 
 if (doZrobienia.join(',') !== drukowane.join(',')) {
   const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
@@ -250,11 +310,10 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
   }
 
   {
-    /* JEDYNY BLOK DRUKOWANY W PĘTLI PO WYSTĄPIENIACH, i to nie zapas na
-       przyszłość: `/ezio-auditore/` deklaruje dwie taśmy — bezpodstawną
-       `type-default` i świadomą `manual` z `role: the-ezio-collection`.
-       Treść dopasowuje się po `role`, więc druga taśma dostaje swoje karty,
-       a nie kopię pierwszej. Strony `game` od 2026-09-10 taśmy nie deklarują
+    /* JEDYNY BLOK DRUKOWANY W PĘTLI PO WYSTĄPIENIACH — i jedyny, któremu
+       wolno nosić `role` (patrz `ROLE_UMIE` wyżej). Treść dopasowuje się
+       po `role`, więc druga taśma dostaje swoje karty, a nie kopię pierwszej.
+       Strony `game` i większość `topic` od 2026-09-10 taśmy nie deklarują
        wcale (punkt 20 backlogu), więc pętla jest u nich pusta. */
     wystapienia
       .filter((b) => b.block === 'card-rail' && drukowane.includes(kluczOd(b)))

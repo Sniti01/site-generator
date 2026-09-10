@@ -26,6 +26,7 @@ import { decodePng, comparePixels } from './pixels.mjs';
 import { normalizeScopes, flattenScopes, scopeLedger } from './html-diff.mjs';
 import { одинКласс, словоЕсть, ссылки, утилитаЛи } from './zero-view.mjs';
 import { разбор as разборГлифа } from './glyphs.mjs';
+import { встроенные } from './build-css.mjs';
 
 const site = process.argv[2];
 if (!site) {
@@ -283,6 +284,26 @@ if (existsSync(baseline)) {
   check('глифы: `ł` сломанная', 'сломана',
     разборГлифа(ч(проф([0, 40]), проф([12, 40]), проф([5, 40]), true)).исход,
     'полная высота ушла от роста строчной больше чем на 0,12');
+}
+
+/* — весь CSS сборки: встроенные блоки находятся —
+   Мера читала только подключённые листы и была слепа: на первой странице
+   волны 1 счёт показал рост на два правила там, где их прибавилось тридцать.
+   Образец рукописный, ответ известен заранее. */
+{
+  // Перевод строки собирается кодом: обратные слэши в этом файле уже дважды
+  // схлопывались при правке через оболочку, и образец молча становился другим.
+  const перевод = String.fromCharCode(10);
+  const html =
+    '<html><head><link rel="stylesheet" href="/_astro/a.css">' +
+    '<style>.a{color:red}</style></head><body>' +
+    '<style type="text/css">.b{color:blue}' + перевод + '.c{color:green}</style>' +
+    '<p>текст</p></body></html>';
+  const куски = встроенные(html);
+  check('весь CSS: встроенных блоков найдено', 2, куски.length, 'два `<style>`, один из них с атрибутом');
+  check('весь CSS: содержимое первого', '.a{color:red}', куски[0], 'берётся тело, а не тег');
+  check('весь CSS: второй блок целиком', true, куски[1].includes('.c{color:green}'), 'многострочный блок не обрезается');
+  check('весь CSS: подключённый лист сюда не попадает', false, куски.join('').includes('a.css'), 'листы собираются отдельно');
 }
 
 /* — вывод — */

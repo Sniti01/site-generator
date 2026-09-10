@@ -52,6 +52,7 @@ import { extname, join, relative, sep } from 'node:path';
 import { snapshot } from './manifest.mjs';
 import { measure } from './css-triples.mjs';
 import { flattenScopes, normalizeHashedNames } from './html-diff.mjs';
+import { весьCss } from './build-css.mjs';
 
 /** Разделитель тройки — тот же U+241F, что в `css-triples.mjs`. */
 const SEP = '␟';
@@ -166,14 +167,17 @@ export function сканируемыеФайлы(сайт, корень) {
   return out;
 }
 
-function листыВПорядкеСсылок(dist, html) {
-  const порядок = [];
-  for (const m of html.matchAll(/<link\b[^>]*>/gi)) {
-    if (!/rel\s*=\s*["']?stylesheet/i.test(m[0])) continue;
-    const адрес = m[0].match(/href\s*=\s*["']([^"']+)["']/i);
-    if (адрес) порядок.push(адрес[1].replace(/^\//, ''));
-  }
-  return порядок.map((rel) => readFileSync(join(dist, rel.split('/').join(sep)), 'utf8')).join('\n');
+/**
+ * Весь CSS сборки, а НЕ только подключённые листы.
+ *
+ * Прежняя редакция читала `<link rel=stylesheet>` из `index.html` и была
+ * слепа ровно так же, как сверка троек: Astro встраивает стили страницы
+ * в её же HTML, когда лист мал, и такие правила в проверки 4 и 5 не попадали.
+ * Измерено 2026-09-10 на первой странице волны 1: двадцать восемь правил
+ * из тридцати лежали во встроенном блоке. Сбор — `build-css.mjs`.
+ */
+function весьЛистСборки(dist) {
+  return весьCss(dist).css;
 }
 
 const считать = (xs) => {
@@ -236,8 +240,8 @@ export function нулеваяВитрина({ доDist, послеDist, сай�
   }
 
   // 4 и 5. Тройки CSS: скруты гасятся плоско, как велит REUSE §6.
-  const cssА = flattenScopes(листыВПорядкеСсылок(доDist, доHtml)).html;
-  const cssБ = flattenScopes(листыВПорядкеСсылок(послеDist, послеHtml)).html;
+  const cssА = flattenScopes(весьЛистСборки(доDist)).html;
+  const cssБ = flattenScopes(весьЛистСборки(послеDist)).html;
   const тА = считать(measure(cssА).тройки);
   const тБ = считать(measure(cssБ).тройки);
   let правилДо = 0;

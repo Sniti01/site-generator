@@ -29,6 +29,7 @@
  */
 
 import { readFileSync } from 'node:fs';
+import { прочитатьCss } from './build-css.mjs';
 import { sep } from 'node:path';
 // Гашение скрутов живёт в html-diff.mjs — там же, где порядковое приведение,
 // и реализация у обоих инструментов одна. Разводить её надвое значило бы
@@ -131,13 +132,21 @@ function multisetDiff(a, b) {
 if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(sep).join('/'))) {
   const [, , cmd, one, two] = process.argv;
   if (cmd === 'count' && one) {
-    const m = measure(readFileSync(one, 'utf8'));
+    // Папка на входе — считается ВЕСЬ CSS сборки, включая встроенные `<style>`.
+    // Счёт по одним листам был слеп: `build-css.mjs`, запись от 2026-09-10.
+    const вход = прочитатьCss(one);
+    if (вход.откуда) console.log(вход.откуда);
+    const m = measure(вход.текст);
     console.log(`правил: ${m.правил}, at-правил: ${m.at_правил}, блоков всего: ${m.блоков}`);
     console.log(`@media: ${m.media_вхождений} вхождений, ${m.media_условий} различных условий`);
   } else if (cmd === 'compare' && one && two) {
     const плоско = process.argv.includes('--flat');
-    const сырьёA = readFileSync(one, 'utf8');
-    const сырьёB = readFileSync(two, 'utf8');
+    const вхA = прочитатьCss(one);
+    const вхB = прочитатьCss(two);
+    if (вхA.откуда) console.log(`до — ${вхA.откуда}`);
+    if (вхB.откуда) console.log(`после — ${вхB.откуда}`);
+    const сырьёA = вхA.текст;
+    const сырьёB = вхB.текст;
     if (плоско) {
       const л = scopeLedger(сырьёA, сырьёB);
       console.log(`скрутов погашено: ${л.до} до, ${л.после} после`);
@@ -169,8 +178,9 @@ if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split(sep).join(
       if (diff.length > 20) console.log(`  … ещё ${diff.length - 20}`);
     }
   } else {
-    console.error('node core/accept/css-triples.mjs count   <файл.css>');
-    console.error('node core/accept/css-triples.mjs compare <до.css> <после.css> [--flat]');
+    console.error('node core/accept/css-triples.mjs count   <файл.css|папка dist>');
+    console.error('node core/accept/css-triples.mjs compare <до|dist> <после|dist> [--flat]');
+    console.error('  папка на входе — ВЕСЬ CSS сборки: листы плюс встроенные <style>');
     console.error('  --flat — плоское гашение скрутов: для РАСЩЕПЛЕНИЙ');
     process.exit(2);
   }

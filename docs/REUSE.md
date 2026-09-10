@@ -274,7 +274,7 @@
 |---|---|---|---|
 | Гейт контраста | `tools/check-contrast.mjs` | `core/gates/check-contrast.mjs` | P1 |
 | Гейт токенов | `tools/check-tokens.mjs` | `core/gates/check-tokens.mjs` | P1 |
-| Фото из Wikimedia Commons по манифесту запросов | `tools/fetch-art.mjs` + `src/data/art.ts` | `core/media/fetch-art.mjs` | P3 ⁵ |
+| Фото из Wikimedia Commons по манифесту запросов | `tools/fetch-art.mjs` + `src/data/art.ts` | `core/media/fetch-art.mjs` **+ `core/media/art.ts`** | **сделано 2026-09-10** ⁵ |
 | Материалы игр из витрины Steam | `tools/fetch-game-art.mjs` | `core/adapters/steam/` | P3 |
 | Шасси стилей: сброс, `.btn*`, `.card*`, `.container/.section/.band`, `.foto`, подпись автора, `prefers-reduced-motion`, `.visually-hidden`, `.skip-link` | `src/styles/global.css` | `core/styles/` | P2, шаг 2 ⁵ ⁷ |
 
@@ -726,7 +726,17 @@ sitemap, Pagefind, `@fontsource`. 87 страниц, пройденный QA.
    `hero-key-art` + `chip-nav` — **сделано 2026-09-09**, сноска ⁹:
 диффа локализовалась в скруты целиком, семь кадров против `_baseline/`
 расхождений вёрстки не дали.
-3. **`fetch-art.mjs`** — последним.
+3. **`fetch-art.mjs`** — последним. **Сделано 2026-09-10:** инструмент
+   в `core/media/fetch-art.mjs`, типы манифеста в `core/media/art.ts`,
+   данные (`art.json`, `art-credits.json`) остались витрине. Судья — манифест
+   `dist/`: **56 → 56, диффа пуста**, то есть шаг 2 правила приёмки, вынос
+   принят без пикселя. Два капкана сняты при переезде и названы в отчёте:
+   пути отсчитывались от места модуля (стали аргументом — корнем сайта),
+   `sharp` не был объявлен ядром и разрешался хойстом (стал peer-зависимостью
+   рядом с `astro`; цена нулевая — он `optionalDependencies` самого Astro).
+   Проба живости путей, обязательная по шапке `check-assets.mjs`: из папки
+   сайта — **6 слотов манифеста** и запись в папки сайта, из корня
+   репозитория — **ENOENT и `exit=1`**, то есть громко, а не молча.
 
 Ветка P3 заводится от `56ab807` — коммита, которым Фаза 2 влита в `main`.
 

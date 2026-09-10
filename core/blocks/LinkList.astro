@@ -123,39 +123,6 @@ const ikona = Astro.slots.has('ikona-dopisku')
   )
 }
 
-<style>`: измерено 2026-09-10, скрут исчез с семидесяти мест главной,
-// правил в собранном листе стало 335 → 327. Astro скоупит по элементам
-// шаблона, и динамический корень скоупить нечем. Корень обязан быть
-// статическим — не удваивайте разметку и не возвращайте динамический тег.
-
-// Спрашиваем не «подан ли слот», а «есть ли в нём что-нибудь»: у витрины место
-// иконки может занимать выражение с ложным условием, и слот всё равно считается
-// поданным. Идиома и её довод — `SmartImage`, запись DECISIONS от 2026-09-07.
-// `.trim()` обязателен: отрендеренное место идёт вплотную к приписке, и лишний
-// пробел был бы расхождением в собранной странице.
-const ikona = Astro.slots.has('ikona-dopisku')
-  ? (await Astro.slots.render('ikona-dopisku')).trim()
-  : '';
----
-
-<div class:list={[самостоятельный && 'link-list', самостоятельный && 'container']}>
-  {самостоятельный && <h2 class="link-list__title t-headline" id={titleId}>{title}</h2>}
-  <ul class="layer__guides">
-    {
-      items.map((item) => (
-        <li class="layer__guide">
-          <a class="layer__guide-link" href={item.href}>
-            <span class="layer__guide-title t-title">{item.title}</span>
-            {item.meta && (
-              <span class="layer__guide-time t-caption tabular">{ikona && <Fragment set:html={ikona} />}{item.meta}</span>
-            )}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-  {allHref && <a class="btn-link t-button" href={allHref}>{allLabel}<slot name="ikona-wszystkie" /></a>}
-</div>
 
 <style>
   /* Рамка появляется только у самостоятельного блока; внутри `story-row`

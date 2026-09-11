@@ -12,12 +12,26 @@
 //
 // RAMA — CAŁY SERWIS: strony z listy `pages` haka `astro:build:done`, jak
 // u dwóch bramek obok (lekcja `after-build.mjs`: nie po `*.html` w dist).
-// Sprawdzany jest każdy `href` względny od korzenia (`/…`) i bezwzględny
-// tej samej domeny (`site` z konfiguracji). Adres bierze się bez fragmentu
-// (`#…`) i bez zapytania (`?…`); `/_astro/` i pliki z rozszerzeniem
-// (obrazy, ikona, mapa serwisu) nie są stronami i nie są sprawdzane;
-// `#…`, `mailto:`, `tel:` i obce domeny — poza ramą. Komentarze HTML
-// wycinane przed czytaniem (lekcja `after-build.mjs`).
+// Czytany jest każdy atrybut `href` i `action` w znacznikach (także `HREF`,
+// `xlink:href`; `action` — bo szukajka wraca w fali 2 formularzem, П24 rozw. 5);
+// tekst nie jest znacznikiem, a wnętrze `<script>` i `<style>` jest wycinane.
+// POZA RAMĄ, nazwane: `og:url`, JSON-LD (`url`, `@id`, `item`), `data-*`,
+// adresy w skryptach, `src`/`srcset` — rozszerzyć, gdy pojawi się `core/seo`.
+// Astro `base` inny niż `/` nie jest obsługiwany — ta fabryka go nie używa.
+// Adres rozbiera
+// `new URL(href, site)` — tak samo, jak zrobi przeglądarka: `//host/…`,
+// `http://` i `https://`, `..`, `%`-kodowanie i tabulatory w środku
+// normalizują się jednakowo. Dalej trzy pytania:
+//   1. ta sama domena? — `hostname` równy hostowi `site` (schemat nieważny);
+//      obca domena, `mailto:`, `tel:` — poza ramą;
+//   2. plik czy strona? — ostatni segment z kropką to plik: liczy się tylko,
+//      czy ISTNIEJE w `dist/` (ikona, mapa serwisu, `/_astro/…`); brak pliku —
+//      odmowa. Strona nie ma kropki (schemat adresu struktury) — sprawdzana
+//      w strukturze bez `#…` i `?…`;
+//   3. adres bez korzenia (`poradniki/`) — ODMOWA, nie pominięcie: trasa
+//      drukuje `primary`/`secondary`/`cta` z treści dosłownie, a taki adres
+//      na `/gra/` wiedzie na `/gra/poradniki/` — 404 przy zielonej bramce.
+// Komentarze HTML wycinane przed czytaniem (lekcja `after-build.mjs`).
 //
 // ŹRÓDŁO PRAWDY — `structure.json` witryny (П24 punkt 1): strona spoza
 // struktury nie istnieje, więc link do niej wisi w próżni. Strona ze
@@ -25,78 +39,130 @@
 // różni się od adresu-widma, i dopóki treści nie ma, link czeka. Ścieżkę
 // do struktury podaje konfiguracja witryny — rdzeń jej nie zgaduje.
 //
-// SĘDZIEGO OSĄDZONO PRZED ZAUFANIEM (reguła `CLAUDE.md`): bateria wzorców
-// w `core/accept/selftest.mjs` — link do strony drzewa, widmo, fragment
-// i zapytanie zdjęte, bezwzględny tej samej domeny, obca domena, `/_astro/`,
-// plik z rozszerzeniem, brak końcowego ukośnika, komentarz, zero stron.
+// SĘDZIEGO OSĄDZONO W DNIU NARODZIN (reguła `CLAUDE.md`, 2026-09-11):
+// pierwsza wersja porównywała napisy, nie adresy — `//host/…` brała za
+// ścieżkę od korzenia (fałszywa odmowa), `http://swoja/…` za obcą domenę
+// (fałszywy przepust), `/o-nas.html` za plik (przepust), `/site.webmanifest`
+// za widmo (odmowa), adres bez korzenia pomijała z nieprawdziwym
+// uzasadnieniem, `HREF=` nie widziała, a błąd ścieżki do struktury kończyła
+// stosem zamiast wyroku. Wszystko z tej listy jest w baterii
+// `core/accept/selftest.mjs`.
 //
-// CZEGO TA BRAMKA NIE ROBI: nie sprawdza, czy strona docelowa jest zbudowana
-// (to powie struktura polem `status`, nie link); nie czyta `src`; nie ocenia,
-// czy link prowadzi TAM, gdzie powinien.
+// CZEGO TA BRAMKA NIE ROBI: nie sprawdza, czy strona docelowa jest ZBUDOWANA —
+// o tym mówi lista `pages` haka i `dist/`, nie struktura (pole `status` stoi
+// dziś u wszystkich na `planned` i nikt go nie prowadzi); nie czyta `src`
+// ani `srcset`; nie ocenia, czy link prowadzi TAM, gdzie powinien. Trzy bramki
+// wyniku rzucają po kolei — pierwsza odmowa zasłania dwie następne; przyjęte.
 
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
+import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { plikStrony } from './after-build.mjs';
 
 const bezKomentarzy = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
 
-/** Wszystkie wartości `href` w dokumencie, w kolejności wystąpienia. */
-function hrefy(html) {
-  return [...html.matchAll(/\shref\s*=\s*"([^"]*)"/g)].map((m) => m[1]);
+/**
+ * Wszystkie wartości `href` i `action` w ZNACZNIKACH dokumentu, w kolejności
+ * wystąpienia. Tylko podwójne cudzysłowy — Astro innych nie drukuje
+ * (normalizuje `'…'` i bez cudzysłowów do `"…"`, dynamiczne przez
+ * `addAttribute` też). Znacznik czytany z uwzględnieniem cudzysłowów:
+ * literalny `>` w wartości statycznego atrybutu (`title="a>b"`) nie kończy go.
+ */
+export function hrefy(html) {
+  const out = [];
+  // Wnętrze <script> to nie znaczniki strony, choć może zawierać napis „<a href=…">" —
+  // wycinane przed czytaniem; <style> także.
+  const bezSkryptow = html.replace(/<script\b[\s\S]*?<\/script\s*>/gi, '').replace(/<style\b[\s\S]*?<\/style\s*>/gi, '');
+  for (const tag of bezSkryptow.matchAll(/<[a-zA-Z](?:[^>"']|"[^"]*"|'[^']*')*>/g)) {
+    for (const m of tag[0].matchAll(/[\s:](?:href|action)\s*=\s*"([^"]*)"/gi)) out.push(m[1]);
+  }
+  return out;
 }
 
 /**
- * Adres strony z `href` albo `null`, gdy `href` jest poza ramą bramki.
- * Czysta funkcja: to ją sprawdza bateria wzorców.
+ * Klasyfikacja jednego `href`. Czysta funkcja: to ją sprawdza bateria.
  * @param {string} href
  * @param {string|undefined} site — `site` z konfiguracji, np. `https://ac4bf-thewatch.com`
- * @returns {string|null}
+ * @returns {{ rodzaj: 'poza', adres?: undefined }
+ *        | { rodzaj: 'strona', adres: string }
+ *        | { rodzaj: 'plik', adres: string }
+ *        | { rodzaj: 'bez-korzenia', adres: string }}
  */
-export function adresZHref(href, site) {
-  let h = href.trim();
-  if (!h || h.startsWith('#')) return null;
-  if (/^(mailto|tel|javascript):/i.test(h)) return null;
-  if (/^https?:\/\//i.test(h)) {
-    if (!site) return null;
-    const origin = site.replace(/\/+$/, '');
-    if (!h.toLowerCase().startsWith(origin.toLowerCase() + '/') && h.toLowerCase() !== origin.toLowerCase()) return null;
-    h = h.slice(origin.length) || '/';
+export function klasyfikujHref(href, site) {
+  const h = href.trim();
+  if (!h || h.startsWith('#')) return { rodzaj: 'poza' };
+  const zeSchematem = /^[a-z][a-z0-9+.-]*:/i.test(h);
+  const odKorzenia = h.startsWith('/');
+  if (!zeSchematem && !odKorzenia) return { rodzaj: 'bez-korzenia', adres: h };
+
+  let url;
+  try {
+    url = new URL(h, site ?? 'http://localhost/');
+  } catch {
+    return { rodzaj: 'bez-korzenia', adres: h };
   }
-  if (!h.startsWith('/')) return null; // adres względny bez korzenia — poza ramą, trasa ich nie drukuje
-  h = h.split('#')[0].split('?')[0];
-  if (h.startsWith('/_astro/')) return null;
-  if (/\.[a-z0-9]{2,5}$/i.test(h)) return null; // plik, nie strona
-  return h;
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return { rodzaj: 'poza' };
+
+  if (zeSchematem || h.startsWith('//')) {
+    // Adres z hostem: swoja domena tylko, gdy host równy hostowi `site`.
+    if (!site) return { rodzaj: 'poza' };
+    let hostSite;
+    try {
+      hostSite = new URL(site).hostname.toLowerCase();
+    } catch {
+      return { rodzaj: 'poza' };
+    }
+    const host = url.hostname.toLowerCase();
+    if (host !== hostSite && host !== `www.${hostSite}` && `www.${host}` !== hostSite) return { rodzaj: 'poza' };
+  }
+
+  let adres = url.pathname || '/';
+  try {
+    adres = decodeURIComponent(adres);
+  } catch {
+    // niepoprawne %-kodowanie — porównujemy surowo
+  }
+  const ostatni = adres.slice(adres.lastIndexOf('/') + 1);
+  if (ostatni.includes('.')) return { rodzaj: 'plik', adres };
+  return { rodzaj: 'strona', adres };
 }
 
 /**
- * Ocena jednej strony: lista widm — adresów spoza `drzewo` — w kolejności
- * wystąpienia, bez powtórzeń. Pusta lista — strona w porządku.
+ * Ocena jednej strony: lista problemów w kolejności wystąpienia, bez powtórzeń.
+ * Pusta lista — strona w porządku.
  * @param {string} html
  * @param {Set<string>} drzewo — adresy ze struktury
  * @param {string|undefined} site
- * @returns {string[]}
+ * @param {(adres: string) => boolean} plikIstnieje — czy plik pod adresem leży w `dist/`
+ * @returns {{ adres: string, powod: 'spoza struktury' | 'plik nie istnieje' | 'bez korzenia' }[]}
  */
-export function ocenLinki(html, drzewo, site) {
+export function ocenLinki(html, drzewo, site, plikIstnieje = () => true) {
   const h = bezKomentarzy(html);
-  const widma = [];
+  const problemy = [];
+  const dodaj = (adres, powod) => {
+    if (!problemy.some((p) => p.adres === adres && p.powod === powod)) problemy.push({ adres, powod });
+  };
   for (const href of hrefy(h)) {
-    const adres = adresZHref(href, site);
-    if (adres === null) continue;
-    if (!drzewo.has(adres) && !widma.includes(adres)) widma.push(adres);
+    const k = klasyfikujHref(href, site);
+    if (k.rodzaj === 'poza') continue;
+    if (k.rodzaj === 'bez-korzenia') dodaj(k.adres, 'bez korzenia');
+    else if (k.rodzaj === 'plik') {
+      if (!plikIstnieje(k.adres)) dodaj(k.adres, 'plik nie istnieje');
+    } else if (!drzewo.has(k.adres)) dodaj(k.adres, 'spoza struktury');
   }
-  return widma;
+  return problemy;
 }
 
 /**
- * Ocena zbioru stron: rzuca przy zerze stron i przy pierwszym widmie,
- * z pełną listą. Wejście — pary {pathname, html}.
+ * Ocena zbioru stron: rzuca przy zerze stron, pustej strukturze i przy
+ * pierwszym problemie, z pełną listą. Wejście — pary {pathname, html}.
  * @param {{pathname: string, html: string}[]} strony
  * @param {Set<string>} drzewo
  * @param {string|undefined} site
+ * @param {(adres: string) => boolean} plikIstnieje
  * @returns {{stron: number, linkow: number}}
  */
-export function ocenStronyLinki(strony, drzewo, site) {
+export function ocenStronyLinki(strony, drzewo, site, plikIstnieje = () => true) {
   if (!strony.length) {
     throw new Error(
       'Zbudowano zero stron — bramka linków nie ma czego sprawdzać, a zielone «0 stron» ' +
@@ -109,16 +175,16 @@ export function ocenStronyLinki(strony, drzewo, site) {
   const zle = [];
   let linkow = 0;
   for (const { pathname, html } of strony) {
-    linkow += hrefy(bezKomentarzy(html)).filter((h) => adresZHref(h, site) !== null).length;
+    linkow += hrefy(bezKomentarzy(html)).filter((h) => klasyfikujHref(h, site).rodzaj !== 'poza').length;
     // Główna przychodzi z haka jako pusty `pathname` — w odmowie ma być `/`, nie pusta kolumna.
-    for (const adres of ocenLinki(html, drzewo, site)) zle.push({ pathname: pathname || '/', adres });
+    for (const p of ocenLinki(html, drzewo, site, plikIstnieje)) zle.push({ pathname: pathname || '/', ...p });
   }
   if (zle.length) {
-    const opis = zle.map((z) => `  ${z.pathname}: ${z.adres}`).join('\n');
+    const opis = zle.map((z) => `  ${z.pathname}: ${z.adres} — ${z.powod}`).join('\n');
     throw new Error(
-      `Linki do adresów spoza struktury — ${zle.length} na ${new Set(zle.map((z) => z.pathname)).size} z ${strony.length} stron:\n${opis}\n` +
+      `Linki bez celu — ${zle.length} na ${new Set(zle.map((z) => z.pathname)).size} z ${strony.length} stron:\n${opis}\n` +
         'Struktura jest źródłem prawdy o stronach (П24 punkt 1): dopisz stronę do structure.json ' +
-        'albo popraw adres w treści, szablonie lub stopce — nie tę bramkę.'
+        'albo popraw adres w treści, szablonie lub stopce — adres strony pisze się od korzenia, z końcowym ukośnikiem; nie tę bramkę.'
     );
   }
   return { stron: strony.length, linkow };
@@ -146,22 +212,34 @@ export default function links({ structure } = {}) {
       },
       'astro:build:done': ({ dir, pages, logger }) => {
         const dist = fileURLToPath(dir);
-        const sciezka = new URL(structure, `file:///${korzen.replace(/\\/g, '/').replace(/\/?$/, '/')}`);
-        const doc = JSON.parse(readFileSync(sciezka, 'utf8'));
-        const drzewo = new Set((doc.pages ?? []).map((p) => p.url));
-        const strony_ = [];
-        const brak = [];
-        for (const { pathname } of pages) {
-          const p = plikStrony(dist, pathname);
-          if (!p) brak.push(pathname);
-          else strony_.push({ pathname, html: readFileSync(p, 'utf8') });
-        }
-        if (brak.length) throw new Error(`Strony z listy budowania bez pliku w dist: ${brak.join(', ')}`);
         try {
-          const { stron: n, linkow } = ocenStronyLinki(strony_, drzewo, site);
-          logger.info(`linki: ${stron(n)}, ${linkow} linków wewnętrznych, każdy na adres ze struktury (${drzewo.size} stron)`);
+          if (!site) {
+            throw new Error('links(): witryna bez `site` w konfiguracji — bezwzględnych linków nie da się przypisać do domeny, bramka nie zawęża ramy po cichu.');
+          }
+          const sciezka = resolve(korzen, structure);
+          if (!existsSync(sciezka)) {
+            throw new Error(`Nie ma pliku struktury: ${sciezka} — bramka linków nie ma z czym porównać. Popraw ścieżkę w links({ structure }).`);
+          }
+          let doc;
+          try {
+            doc = JSON.parse(readFileSync(sciezka, 'utf8'));
+          } catch (e) {
+            throw new Error(`Struktura ${sciezka} nie jest poprawnym JSON: ${e.message}`);
+          }
+          const drzewo = new Set((doc.pages ?? []).map((p) => p.url));
+          const strony_ = [];
+          const brak = [];
+          for (const { pathname } of pages) {
+            const p = plikStrony(dist, pathname);
+            if (!p) brak.push(pathname || '/');
+            else strony_.push({ pathname, html: readFileSync(p, 'utf8') });
+          }
+          if (brak.length) throw new Error(`Strony z listy budowania bez pliku w dist: ${brak.join(', ')}`);
+          const plikIstnieje = (adres) => existsSync(join(dist, adres));
+          const { stron: n, linkow } = ocenStronyLinki(strony_, drzewo, site, plikIstnieje);
+          logger.info(`linki: ${stron(n)}, ${linkow} linków wewnętrznych, każdy na adres ze struktury (${drzewo.size} stron) albo istniejący plik`);
         } catch (e) {
-          logger.error(`linki: ${stron(strony_.length)} — odmowa`);
+          logger.error(`linki: odmowa`);
           throw e;
         }
       },

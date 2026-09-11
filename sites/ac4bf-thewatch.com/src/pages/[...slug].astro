@@ -185,33 +185,23 @@ if (zRola.length) {
 }
 
 /**
- * STRONA BEZ `h1` NIE ZBIERZE SIĘ, i ten warunek postawiono dziś, bo dziś
- * powstał na niego powód.
+ * `h1` — HISTORIA JEDNEGO DNIA, zostawiona tu, żeby nikt jej nie powtórzył.
  *
  * Do 2026-09-10 `hero-key-art` drukował się BEZWARUNKOWO, więc `h1` był
- * zawsze — przypadkiem. Zdjęcie tej bezwarunkowości (ściana 3) było
- * poprawne, ale zabrało ze sobą jedyne `<h1>` w całym repozytorium:
- * `core/blocks/HeroKeyArt.astro:68`, innych wystąpień nie ma ani w rdzeniu,
- * ani w witrynie (sprawdzone grepem). Sześć stron fali 1 tego bloku nie
- * deklaruje — i zbudowałyby się BEZ NAGŁÓWKA, przy zielonych bramkach.
+ * zawsze — przypadkiem: jedyne `<h1>` w repozytorium siedziało w rdzeniu,
+ * w `HeroKeyArt.astro`. Zdjęcie bezwarunkowości (ściana 3) było poprawne
+ * i zabrało nagłówek sześciu stronom fali 1, które hero nie deklarują —
+ * przy zielonych bramkach, bo `check-structure.mjs` pilnuje POLA `h1`
+ * w umowie, a nie ZNACZNIKA w HTML (ta sama ślepota, co u miary bez
+ * wbudowanych stylów; lista takich pól — `docs/UNRESOLVED.md`, 2026-09-11).
  *
- * `core/structure/schema.json:40` żąda `h1` od KAŻDEJ strony jako pola
- * obowiązkowego i unikalnego. Bramka struktury pilnuje pola w umowie,
- * a nie znacznika w HTML — więc bez tego warunku brak byłby niemy.
- *
- * KTÓRY BLOK NIESIE `h1` NA STRONIE BEZ HERO — to pytanie do właściciela,
- * nie do tego pliku. Tu stoi odmowa, nie odpowiedź.
+ * Przez jeden dzień stała tu odmowa: strona bez bloku niosącego `h1`
+ * nie budowała się. 2026-09-11 właściciel rozstrzygnął (punkt 23, wariant a):
+ * NAGŁÓWEK NALEŻY DO STRONY, drukuje go trasa, w obu gałęziach niżej.
+ * Odmowa poszła stąd do sborki: `core/gates/after-build.mjs` liczy `<h1`
+ * w każdym zbudowanym HTML i przerywa, gdy nie jest dokładnie jeden.
+ * Sprawdzenie wyniku, nie zamiaru — dlatego tam, a nie tu.
  */
-const NIESIE_H1 = new Set(['hero-key-art']);
-if (!drukowane.some((k) => NIESIE_H1.has(k.split('#')[0]))) {
-  throw new Error(
-    `Strona zbudowałaby się bez \`h1\` — ${strona.url}.\n` +
-      `  drukowane bloki: ${drukowane.join(', ') || '—'}\n` +
-      `  \`h1\` niesie dziś tylko: ${[...NIESIE_H1].join(', ')} (core/blocks/HeroKeyArt.astro)\n` +
-      `  struktura żąda h1 od każdej strony: «${strona.h1}»\n` +
-      'Rozstrzygnięcie należy do właściciela: który blok niesie nagłówek na stronie bez hero.'
-  );
-}
 
 if (doZrobienia.join(',') !== drukowane.join(',')) {
   const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
@@ -229,18 +219,27 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
 
 <Base title={strona.title} description={strona.description} skala={false}>
   {
-    /* Do 2026-09-10 hero drukował się BEZWARUNKOWO, a sześć stron fali 1 go
+    /* `<h1>` DRUKUJE TRASA, W OBU GAŁĘZIACH — decyzja właściciela 2026-09-11,
+       punkt 23 backlogu: nagłówek należy do strony, nie do sekcji. Z hero —
+       trafia w jego miejsce `tytul`; bez hero — stoi w nagłówku strony niżej.
+       Tekst w obu gałęziach ten sam: `strona.h1` ze struktury (П24 p. 3).
+       Że nagłówek jest dokładnie jeden, sprawdza sborka po zbudowaniu —
+       `core/gates/after-build.mjs` — a nie ten plik ani oko.
+
+       Do 2026-09-10 hero drukował się BEZWARUNKOWO, a sześć stron fali 1 go
        nie deklaruje. To ten sam defekt, co podwójne linki: szablon drukował,
        czego umowa nie zamawiała. Teraz warunek jest taki sam jak u reszty. */
-    drukowane.includes('hero-key-art') && (
+    drukowane.includes('hero-key-art') ? (
       <HeroKeyArt
-        title={strona.h1}
         titleId="strona-tytul"
         primaryHref={dane.primary.href}
         primaryLabel={dane.primary.label}
         secondaryHref={dane.secondary.href}
         secondaryLabel={dane.secondary.label}
       >
+        <h1 class="hero__title t-display" id="strona-tytul" slot="tytul">
+          {strona.h1}
+        </h1>
         {dane.art && (
           <EraMedia
             slot="art"
@@ -254,6 +253,16 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
         <Fragment slot="lead">{dane.lead}</Fragment>
         <Icon slot="ikona-glowna" name="w-dol" size={18} />
       </HeroKeyArt>
+    ) : (
+      /* Strona bez hero. Nagłówek jest, wygląd — nie: ta gałąź nie ma jeszcze
+         ani jednej strony z treścią (sześć kandydatek fali 1 czeka na tekst),
+         więc wymyślać jej kształt tu nie ma na czym. Rola `.t-display`
+         i kolumna `.container` to wszystko, co dostaje; reszta — gdy właściciel
+         zobaczy pierwszą taką stronę. Obowiązek strukturalny spełniony,
+         decyzja o wyglądzie nie podjęta po cichu. */
+      <header class="page-head container section">
+        <h1 class="t-display" id="strona-tytul">{strona.h1}</h1>
+      </header>
     )
   }
 

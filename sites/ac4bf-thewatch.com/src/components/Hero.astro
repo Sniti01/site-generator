@@ -50,13 +50,17 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
 ---
 
 <HeroKeyArt
-  title="Cała seria według lat"
   titleId="hero-tytul"
   primaryHref="#zejscie"
   primaryLabel="Zacznij zejście"
   secondaryHref="#katalog"
   secondaryLabel="Katalog poradników"
 >
+  {/* `<h1>` drukuje witryna, nie rdzeń — od 2026-09-11 nagłówek należy
+      do strony (punkt 23 backlogu). `id` musi być tym samym, co `titleId`
+      wyżej: to nim sekcja wiąże się z nagłówkiem przez `aria-labelledby`. */}
+  <h1 class="hero__title t-display" id="hero-tytul" slot="tytul">Cała seria według lat</h1>
+
   <Fragment slot="art">
     <EraMedia
       klucz="hero"

@@ -65,6 +65,22 @@ const {
   secondaryHref,
   secondaryLabel,
 } = Astro.props;
+
+// МЕСТО `tytul` ОБЯЗАТЕЛЬНО, и это отказ, а не договорённость на комментарии.
+// Секция ниже ссылается на заголовок через `aria-labelledby={titleId}`; если
+// витрина место не подала, ссылка повиснет на несуществующем id при зелёной
+// сборке — сторож `after-build.mjs` считает только число `<h1>` на странице
+// и связь с секцией не видит. Найдено состязательной проверкой 2026-09-11.
+// `Astro.slots.has` здесь надёжен: ложь он даёт на месте, которого нет вовсе;
+// врёт он на выражении с ложным условием (запись у `StoryRow`), а такое
+// выражение для заголовка страницы не пишут.
+if (!Astro.slots.has('tytul')) {
+  throw new Error(
+    `hero-key-art: nie podano miejsca \`tytul\` — sekcja wskazuje aria-labelledby="${titleId}", ` +
+      'a nagłówka, który niósłby ten id, nie ma. Nagłówek drukuje ten, kto drukuje stronę ' +
+      '(punkt 23 backlogu): <h1 id={titleId} slot="tytul">…</h1>.'
+  );
+}
 ---
 
 <section class="hero" aria-labelledby={titleId}>

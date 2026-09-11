@@ -256,10 +256,13 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
     ) : (
       /* Strona bez hero. Nagłówek jest, wygląd — nie: ta gałąź nie ma jeszcze
          ani jednej strony z treścią (sześć kandydatek fali 1 czeka na tekst),
-         więc wymyślać jej kształt tu nie ma na czym. Rola `.t-display`
-         i kolumna `.container` to wszystko, co dostaje; reszta — gdy właściciel
-         zobaczy pierwszą taką stronę. Obowiązek strukturalny spełniony,
-         decyzja o wyglądzie nie podjęta po cichu. */
+         więc wymyślać jej kształt tu nie ma na czym. Dostaje trzy klasy
+         i nic ponad to: `.container` (kolumna), `.section` (rytm sekcji
+         z góry i z dołu, `--section-y`) i `.t-display` (rola nagłówka).
+         `.page-head` to nazwa-hak BEZ ŻADNEJ REGUŁY w żadnym CSS — stoi tu,
+         żeby reguła miała gdzie się przyczepić, gdy właściciel zobaczy
+         pierwszą taką stronę. Obowiązek strukturalny spełniony, decyzja
+         o wyglądzie nie podjęta po cichu. */
       <header class="page-head container section">
         <h1 class="t-display" id="strona-tytul">{strona.h1}</h1>
       </header>

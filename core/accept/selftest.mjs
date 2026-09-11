@@ -27,6 +27,7 @@ import { normalizeScopes, flattenScopes, scopeLedger } from './html-diff.mjs';
 import { одинКласс, словоЕсть, ссылки, утилитаЛи } from './zero-view.mjs';
 import { разбор as разборГлифа } from './glyphs.mjs';
 import { встроенные } from './build-css.mjs';
+import { policzH1 } from '../gates/after-build.mjs';
 
 const site = process.argv[2];
 if (!site) {
@@ -304,6 +305,20 @@ if (existsSync(baseline)) {
   check('весь CSS: содержимое первого', '.a{color:red}', куски[0], 'берётся тело, а не тег');
   check('весь CSS: второй блок целиком', true, куски[1].includes('.c{color:green}'), 'многострочный блок не обрезается');
   check('весь CSS: подключённый лист сюда не попадает', false, куски.join('').includes('a.css'), 'листы собираются отдельно');
+}
+
+/* — сторож h1 сборки: `core/gates/after-build.mjs` —
+   Образцы рукописные, как у меры CSS. Каждый случай — находка
+   состязательной проверки 2026-09-11, а не догадка: комментарий HTML
+   с `<h1` внутри давал ложное срабатывание и ложный пропуск. */
+{
+  check('h1: один заголовок', 1, policzH1('<body><h1 class="x">t</h1><h2>u</h2></body>'), 'обычная страница');
+  check('h1: ни одного', 0, policzH1('<body><h2>u</h2></body>'), 'страница без заголовка — отказ сборки');
+  check('h1: два', 2, policzH1('<h1>a</h1><h1>b</h1>'), 'второй заголовок — отказ сборки');
+  check('h1: комментарий не считается', 1, policzH1('<!-- <h1> stary --><h1>t</h1>'), 'Astro оставляет `<!-- -->` из шаблона в выводе');
+  check('h1: комментарий без заголовка — ноль', 0, policzH1('<!-- <h1> --><p>x</p>'), 'без этого — молчаливый пропуск');
+  check('h1: перенос после тега', 1, policzH1('<h1' + String.fromCharCode(10) + 'class="x">t</h1>'), 'compressHTML не гарантирует пробел');
+  check('h1: h10 не заголовок', 0, policzH1('<h10>x</h10>'), 'граница тега — пробел или `>`');
 }
 
 /* — вывод — */

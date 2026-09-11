@@ -28,6 +28,7 @@ import { одинКласс, словоЕсть, ссылки, утилитаЛ�
 import { разбор as разборГлифа } from './glyphs.mjs';
 import { встроенные } from './build-css.mjs';
 import { policzH1 } from '../gates/after-build.mjs';
+import { ocenKotwice, ocenStrony } from '../gates/anchors.mjs';
 
 const site = process.argv[2];
 if (!site) {
@@ -319,6 +320,26 @@ if (existsSync(baseline)) {
   check('h1: комментарий без заголовка — ноль', 0, policzH1('<!-- <h1> --><p>x</p>'), 'без этого — молчаливый пропуск');
   check('h1: перенос после тега', 1, policzH1('<h1' + String.fromCharCode(10) + 'class="x">t</h1>'), 'compressHTML не гарантирует пробел');
   check('h1: h10 не заголовок', 0, policzH1('<h10>x</h10>'), 'граница тега — пробел или `>`');
+}
+
+/* — гейт якорей: `core/gates/anchors.mjs` (П40) —
+   Батарея, которую владелец назвал до того, как гейту доверять: висячий
+   href, висячий aria, дубль id, страница без якорей — зелёная, ноль
+   страниц — отказ. Плюс границы из урока сторожа h1. */
+{
+  const рода = (html) => ocenKotwice(html).map((p) => p.rodzaj + ':' + p.kotwica).join(' ');
+  check('якоря: страница без якорей — чисто', '', рода('<body><p>tekst</p><a href="/inna/">x</a></body>'), 'нет id, нет #-ссылок — проблем нет');
+  check('якоря: ссылка на живой id — чисто', '', рода('<h2 id="a">A</h2><a href="#a">do A</a>'), 'цель есть');
+  check('якоря: висячий href', 'href:#nie-ma', рода('<h2 id="a">A</h2><a href="#nie-ma">x</a>'), 'цели нет — имя якоря в отказе');
+  check('якоря: висячий aria-labelledby', 'aria:aria-labelledby="ghost"', рода('<section aria-labelledby="ghost"><p id="x">t</p></section>'), 'секция ссылается в никуда');
+  check('якоря: aria со списком, один висит', 'aria:aria-describedby="b"', рода('<p id="a">t</p><div aria-describedby="a b">u</div>'), 'список id через пробел — проверяется каждый');
+  check('якоря: дубль id', 'dubel:a', рода('<p id="a">1</p><p id="a">2</p>'), 'дубль ломает якорь молча — второй элемент без адреса');
+  check('якоря: href="#" не проверяется', '', рода('<a href="#">na górę</a>'), '«наверх», а не отсылка к элементу');
+  check('якоря: межстраничная /#x вне рамки', '', рода('<a href="/#zejscie">x</a>'), 'адрес, а не якорь — рамка внутри страницы (П40)');
+  check('якоря: id в комментарии не считается', 'href:#a', рода('<!-- <p id="a"></p> --><a href="#a">x</a>'), 'комментарии вырезаются, как у сторожа h1');
+  check('якоря: ноль страниц — отказ', 'отказ', (() => { try { ocenStrony([]); return 'прошло'; } catch { return 'отказ'; } })(), 'правда о пустом множестве — не правда о сайте');
+  check('якоря: две чистые страницы — счёт', 2, ocenStrony([{ pathname: '/', html: '<p id="a"></p>' }, { pathname: '/b/', html: '<p>x</p>' }]), 'возвращает число проверенных');
+  check('якоря: отказ называет страницу', true, (() => { try { ocenStrony([{ pathname: '/gra/', html: '<a href="#nie">x</a>' }]); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('#nie'); } })(), 'страница и якорь — оба в сообщении');
 }
 
 /* — вывод — */

@@ -242,6 +242,16 @@ const KADR_SIZES = '320px';
     list-style: none;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
+    /* Pierwsza karta staje w kolumnie kontenera NAPRAWDĘ — пункт 5, П18,
+       решение владельца 2026-09-11 (П32 п.1): распорка `::before` ниже одна
+       этого не давала, потому что снап без `scroll-padding` прижимает карточку
+       к началу окна прокрутки. Отступ снапа считается от ширины самой дорожки,
+       а не от `100vw`, как распорка: дорожка на ≥1200 короче на `--rail`,
+       и между распоркой и карточкой стоит `gap` — при `scrollLeft = 0`
+       карточка встала бы на 208, а не 174. Измерено: 84 → 174 на 1440,
+       0 → 16 на 390; кнопка «назад» в покое выключена, `start()` в скрипте
+       выше читает этот отступ. */
+    scroll-padding-left: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter)));
     scrollbar-width: none;
   }
 

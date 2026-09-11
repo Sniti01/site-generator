@@ -1,8 +1,9 @@
 ---
 import CardRail from '@factory/core/blocks/CardRail.astro';
 import Icon from './Icon.astro';
-import { fresh, eras } from '../data/site';
+import { fresh, eras, rodzaj } from '../data/site';
 import { mediaFor } from '../data/media';
+import { getPage } from '../lib/structure';
 
 /**
  * Taśma świeżych tekstów. Mechanizm jest w rdzeniu:
@@ -21,14 +22,17 @@ import { mediaFor } from '../data/media';
  */
 const eraName = new Map(eras.map((era) => [era.id, era.place]));
 
+// Tytuł i rodzaj karty — ze struktury (`getPage` przerywa budowanie na adresie
+// spoza drzewa); epoka, data i kadr — z `site.ts`. Od 2026-09-11, odpowiedź 3а.
 const cards = fresh.map((item) => {
   const kadr = mediaFor(item.era);
+  const cel = getPage(item.href);
   return {
     href: item.href,
-    title: item.title,
+    title: cel.h1,
     date: item.date,
     dateLabel: item.dateLabel,
-    kind: item.kind,
+    kind: rodzaj[cel.type] ?? cel.type,
     place: eraName.get(item.era),
     modifier: `rail-sec__item--${item.era}`,
     media: kadr.src

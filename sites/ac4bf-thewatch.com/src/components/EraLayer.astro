@@ -1,5 +1,6 @@
 ---
-import { stronaEpoki, type Era } from '../data/site';
+import { stronaEpoki, rodzaj, type Era } from '../data/site';
+import { getPage } from '../lib/structure';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import EraMedia from './EraMedia.astro';
@@ -36,6 +37,17 @@ interface Props {
 }
 
 const { era, flip, band } = Astro.props;
+
+/**
+ * Lista w warstwie: adresy z `site.ts`, tytuły i dopiski ZE STRUKTURY.
+ * `getPage` przerywa budowanie na adresie spoza drzewa — to bramka przeciw
+ * widmom, których do 2026-09-11 stało tu piętnaście (odpowiedź właściciela 3а).
+ * Ikona zegara zdjęta razem z minutami czytania: dopisek to teraz typ strony.
+ */
+const pozycje = era.guides.map((guide) => {
+  const cel = getPage(guide.href);
+  return { href: guide.href, title: cel.h1, meta: rodzaj[cel.type] ?? cel.type };
+});
 ---
 
 <StoryRow
@@ -56,18 +68,20 @@ const { era, flip, band } = Astro.props;
   <Fragment slot="body">{era.body}</Fragment>
 
   <Fragment slot="tresc">
-    <LinkList
-      items={era.guides.map((guide) => ({
-        href: guide.href,
-        title: guide.title,
-        meta: `${guide.minutes} min`,
-      }))}
-      allHref={stronaEpoki[era.id]}
-      allLabel="Strona gry z tej epoki"
-    >
-      <Icon slot="ikona-dopisku" name="czas" size={14} />
-      <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
-    </LinkList>
+    {
+      /* Epoka bez innych stron w drzewie (Japonia, Londyn) dostaje sam
+         link do gry — `.btn-link` to klasa szasi, ta sama, którą drukuje
+         `LinkList`; pusty `<ul>` nie jest drukowany. */
+      pozycje.length > 0 ? (
+        <LinkList items={pozycje} allHref={stronaEpoki[era.id]} allLabel="Strona gry z tej epoki">
+          <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
+        </LinkList>
+      ) : (
+        <a class="btn-link t-button" href={stronaEpoki[era.id]}>
+          Strona gry z tej epoki<Icon name="strzalka-w-prawo" size={18} />
+        </a>
+      )
+    }
   </Fragment>
 
   <EraMedia

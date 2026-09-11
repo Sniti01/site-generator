@@ -46,10 +46,16 @@ export const stronaEpoki: Record<EraId, string> = {
   japonia: '/assassins-creed-shadows/',
 };
 
+/**
+ * Pozycja listy w warstwie: TYLKO ADRES. Tytuł i dopisek bierze `EraLayer`
+ * ze struktury (`getPage(href).h1`, typ strony), więc adres spoza drzewa
+ * przerywa budowanie zamiast wisieć martwym linkiem. Do 2026-09-11 stały tu
+ * tytuły i minuty czytania piętnastu poradników, których w drzewie nie było
+ * (43 adresy-widma na głównej, odpowiedź właściciela 3а): zamienione na strony
+ * epoki istniejące w fali 1 — 7 zamian, 8 zdjęć (Japonia i Londyn bez listy).
+ */
 export interface Guide {
-  title: string;
   href: string;
-  minutes: number;
 }
 
 export interface Era {
@@ -80,11 +86,8 @@ export const eras: Era[] = [
     headline: 'Trzecia krucjata',
     body: 'Jerozolima, Akka i Damaszek w czasie trzeciej krucjaty. Altaïr traci rangę mistrza i odzyskuje ją, likwidując dziewięć celów wskazanych przez Al Mualima. Stąd wzięło się wszystko, co seria robi do dziś: punkty widokowe, tłum jako osłona i ukryte ostrze.',
     depth: 8,
-    guides: [
-      { title: 'Dziewięć celów Al Mualima — kolejność i najkrótsza droga', href: '/poradniki/ac1-cele/', minutes: 12 },
-      { title: 'Wszystkie sto flag Templariuszy, miasto po mieście', href: '/poradniki/ac1-flagi/', minutes: 21 },
-      { title: 'Punkty widokowe: pełna mapa trzech miast', href: '/poradniki/ac1-punkty-widokowe/', minutes: 9 },
-    ],
+    // Cypr 1191, prosto po Jerozolimie: jedyna strona drzewa z tej epoki poza samą grą.
+    guides: [{ href: '/assassins-creed-bloodlines/' }],
   },
   {
     id: 'wlochy',
@@ -98,9 +101,9 @@ export const eras: Era[] = [
     body: 'Florencja, Wenecja, Forlì i San Gimignano. Syn bankiera zostaje asasynem w ciągu jednej nocy, a gra otwiera się na rzeczy, które seria potem powtarza przez dekadę: własna posiadłość, sześć grobowców, dwadzieścia glifów i prawda ukryta pod nimi.',
     depth: 26,
     guides: [
-      { title: 'Zbroja Altaïra: sześć grobowców asasynów krok po kroku', href: '/poradniki/ac2-grobowce/', minutes: 18 },
-      { title: 'Sto piór Petruccia — mapy wszystkich dzielnic', href: '/poradniki/ac2-piora/', minutes: 24 },
-      { title: 'Dwadzieścia glifów i układanki Podmiotu 16', href: '/poradniki/ac2-glify/', minutes: 16 },
+      { href: '/assassins-creed-brotherhood/' },
+      { href: '/assassins-creed-revelations/' },
+      { href: '/ezio-auditore/' },
     ],
   },
   {
@@ -114,11 +117,8 @@ export const eras: Era[] = [
     headline: 'Okres Sengoku',
     body: 'Prowincja Yamashiro i okolice pod koniec okresu walczących prowincji. Dwoje bohaterów o przeciwnych metodach: shinobi, która żyje z cienia, i samuraj, który cienia nie potrzebuje. Pory roku zmieniają nie tylko widok, ale i to, gdzie da się przejść.',
     depth: 46,
-    guides: [
-      { title: 'Naoe czy Yasuke: kogo brać do jakiego zadania', href: '/poradniki/shadows-bohaterowie/', minutes: 10 },
-      { title: 'Kryjówka — co budować w pierwszej kolejności', href: '/poradniki/shadows-kryjowka/', minutes: 13 },
-      { title: 'Pory roku a skradanie się: zima kontra lato', href: '/poradniki/shadows-pory-roku/', minutes: 9 },
-    ],
+    // W drzewie fali 1 nie ma innej strony z Japonii poza samą grą — lista zdjęta.
+    guides: [],
   },
   {
     id: 'karaiby',
@@ -132,9 +132,9 @@ export const eras: Era[] = [
     body: 'Hawana, Nassau i Kingston, a między nimi otwarte morze. Walijski korsarz wchodzi w spór asasynów z templariuszami dla pieniędzy i zostaje w nim na dobre. Kawka jest tu drugą postacią, a nie środkiem transportu.',
     depth: 66,
     guides: [
-      { title: 'Cztery legendarne okręty: taktyka na każdy z osobna', href: '/poradniki/ac4-legendarne-okrety/', minutes: 14 },
-      { title: 'Pełne ulepszenia Kawki — w jakiej kolejności', href: '/poradniki/ac4-kawka/', minutes: 11 },
-      { title: 'Mapy skarbów: gdzie kopać i czego szukać', href: '/poradniki/ac4-mapy-skarbow/', minutes: 26 },
+      { href: '/assassins-creed-4-black-flag/freedom-cry/' },
+      { href: '/assassins-creed-rogue/' },
+      { href: '/assassins-creed-pirates/' },
     ],
   },
   {
@@ -148,116 +148,154 @@ export const eras: Era[] = [
     headline: 'Rewolucja przemysłowa',
     body: 'Wiktoriański Londyn podzielony na dzielnice, które przejmuje się gang po gangu. Bliźnięta Frye grają dwa różne style: Jacob wchodzi drzwiami, Evie oknem. Linka z hakiem po raz pierwszy zmienia geometrię wspinaczki.',
     depth: 88,
-    guides: [
-      { title: 'Przejmowanie dzielnic: od Whitechapel do City', href: '/poradniki/syndicate-dzielnice/', minutes: 15 },
-      { title: 'Jacob czy Evie — kto do czego się nadaje', href: '/poradniki/syndicate-blizniaki/', minutes: 8 },
-      { title: 'Wszystkie punkty widokowe i skrzynie nad Tamizą', href: '/poradniki/syndicate-tamiza/', minutes: 19 },
-    ],
+    // W drzewie fali 1 nie ma innej strony z Londynu poza samą grą — lista zdjęta.
+    guides: [],
   },
 ];
 
+/**
+ * Słownik typów strony ze struktury → słowo przy linku. Jedyne miejsce,
+ * które zna te słowa; trasa ma własne dwa («Gra»/«Tekst»).
+ */
+export const rodzaj: Record<string, string> = {
+  game: 'Gra',
+  topic: 'Tekst',
+  guide: 'Poradnik',
+  hub: 'Katalog',
+  map: 'Mapa',
+  home: 'Główna',
+};
+
+/**
+ * Karta taśmy «Świeżo z Animusa»: adres, epoka (paleta i kadr) i data.
+ * Tytuł i rodzaj bierze `GuideRail` ze struktury. Daty pozostają materiałem
+ * demonstracyjnym — strony w strukturze są `planned` i daty publikacji nie mają.
+ * 2026-09-11: cztery z pięciu adresów były widmami — zamienione na strony
+ * TEJ SAMEJ EPOKI z drzewa, żeby paleta i kadr karty zostały (4 zamiany, 0 zdjęć).
+ */
 export interface FreshGuide {
-  title: string;
   href: string;
   era: EraId;
-  kind: string;
   date: string;
   dateLabel: string;
 }
 
 export const fresh: FreshGuide[] = [
-  {
-    title: 'Kolejność chronologiczna serii — od Isu do dnia dzisiejszego',
-    href: '/poradniki/kolejnosc-chronologiczna/',
-    era: 'wlochy',
-    kind: 'Przewodnik',
-    date: '2026-08-24',
-    dateLabel: '24 sierpnia 2026',
-  },
-  {
-    title: 'Od czego zacząć w 2026 roku, jeśli nie grałeś w nic',
-    href: '/poradniki/od-czego-zaczac/',
-    era: 'japonia',
-    kind: 'Dla nowych',
-    date: '2026-08-19',
-    dateLabel: '19 sierpnia 2026',
-  },
-  {
-    title: 'Parkour przez trzy pokolenia silnika: co się naprawdę zmieniło',
-    href: '/artykuly/parkour-trzy-pokolenia/',
-    era: 'londyn',
-    kind: 'Analiza',
-    date: '2026-08-11',
-    dateLabel: '11 sierpnia 2026',
-  },
-  {
-    title: 'Wszystkie ukryte ostrza serii i jak działały naprawdę',
-    href: '/artykuly/ukryte-ostrza/',
-    era: 'jerozolima',
-    kind: 'Sprzęt',
-    date: '2026-08-03',
-    dateLabel: '3 sierpnia 2026',
-  },
-  {
-    title: 'Żeglowanie w Black Flag: pełny poradnik dla powracających',
-    href: '/poradniki/ac4-zeglowanie/',
-    era: 'karaiby',
-    kind: 'Poradnik',
-    date: '2026-07-28',
-    dateLabel: '28 lipca 2026',
-  },
+  { href: '/ezio-auditore/', era: 'wlochy', date: '2026-08-24', dateLabel: '24 sierpnia 2026' },
+  { href: '/poradniki/od-czego-zaczac/', era: 'japonia', date: '2026-08-19', dateLabel: '19 sierpnia 2026' },
+  { href: '/assassins-creed-syndicate/', era: 'londyn', date: '2026-08-11', dateLabel: '11 sierpnia 2026' },
+  { href: '/assassins-creed-1/', era: 'jerozolima', date: '2026-08-03', dateLabel: '3 sierpnia 2026' },
+  { href: '/assassins-creed-4-black-flag/', era: 'karaiby', date: '2026-07-28', dateLabel: '28 lipca 2026' },
 ];
 
+/**
+ * Dział stogu: nagłówek działu prowadzi pod `href` (strona z drzewa),
+ * `pages` to WSZYSTKIE strony działu — licznik działu jest ich liczbą,
+ * a `CatalogStack` pokazuje pierwsze cztery. Etykiety bierze ze struktury.
+ * Do 2026-09-11 katalog niósł cztery działy drugiej schematyki (`/przejscia/`,
+ * `/mapy/`, `/sprzet/`, `/fabula/`) z szesnastoma podstronami — 20 widm.
+ * Zamienione na cztery działy DRZEWA: 20 zamian, 0 zdjęć; liczniki prawdziwe
+ * (6 + 6 + 9 + 7 = 28 stron poza główną i hubem).
+ */
 export interface CatalogGroup {
   title: string;
   href: string;
-  count: number;
-  items: { label: string; href: string }[];
+  pages: string[];
 }
 
 export const catalog: CatalogGroup[] = [
   {
-    title: 'Przejścia',
-    href: '/przejscia/',
-    count: 42,
-    items: [
-      { label: 'Wątek główny, część po części', href: '/przejscia/watek-glowny/' },
-      { label: 'Zadania poboczne warte czasu', href: '/przejscia/poboczne/' },
-      { label: 'Zakończenia i sceny po napisach', href: '/przejscia/zakonczenia/' },
-      { label: 'Trofea i osiągnięcia na sto procent', href: '/przejscia/trofea/' },
+    title: 'Altaïr i Ezio',
+    href: '/assassins-creed-1/',
+    pages: [
+      '/assassins-creed-1/',
+      '/assassins-creed-2/',
+      '/assassins-creed-brotherhood/',
+      '/assassins-creed-revelations/',
+      '/assassins-creed-2/discovery/',
+      '/assassins-creed-bloodlines/',
     ],
   },
   {
-    title: 'Mapy i znajdźki',
-    href: '/mapy/',
-    count: 68,
-    items: [
-      { label: 'Skrzynie, pióra, flagi, glify', href: '/mapy/znajdzki/' },
-      { label: 'Punkty widokowe wszystkich części', href: '/mapy/punkty-widokowe/' },
-      { label: 'Mapy skarbów i wraki', href: '/mapy/skarby/' },
-      { label: 'Grobowce i lochy', href: '/mapy/grobowce/' },
+    title: 'Nowy Świat i morza',
+    href: '/assassins-creed-4-black-flag/',
+    pages: [
+      '/assassins-creed-3/',
+      '/assassins-creed-4-black-flag/',
+      '/assassins-creed-rogue/',
+      '/assassins-creed-liberation/',
+      '/assassins-creed-4-black-flag/freedom-cry/',
+      '/assassins-creed-pirates/',
     ],
   },
   {
-    title: 'Walka i sprzęt',
-    href: '/sprzet/',
-    count: 37,
-    items: [
-      { label: 'Buildy pod skradanie i pod otwartą walkę', href: '/sprzet/buildy/' },
-      { label: 'Broń: co realnie się opłaca', href: '/sprzet/bron/' },
-      { label: 'Zbroje i komplety bonusów', href: '/sprzet/zbroje/' },
-      { label: 'Umiejętności — kolejność odblokowania', href: '/sprzet/umiejetnosci/' },
+    title: 'Rewolucje i era RPG',
+    href: '/assassins-creed-shadows/',
+    pages: [
+      '/assassins-creed-unity/',
+      '/assassins-creed-syndicate/',
+      '/assassins-creed-origins/',
+      '/assassins-creed-odyssey/',
+      '/assassins-creed-chronicles/',
+      '/assassins-creed-mirage/',
+      '/assassins-creed-valhalla/',
+      '/assassins-creed-valhalla/dawn-of-ragnarok/',
+      '/assassins-creed-shadows/',
     ],
   },
   {
-    title: 'Fabuła i świat',
-    href: '/fabula/',
-    count: 51,
-    items: [
-      { label: 'Chronologia serii bez spoilerów', href: '/fabula/chronologia/' },
-      { label: 'Isu, Eden i cała reszta mitologii', href: '/fabula/isu/' },
-      { label: 'Kim jest kto: asasyni i templariusze', href: '/fabula/postacie/' },
-      { label: 'Historia kontra gra: co jest prawdą', href: '/fabula/historia/' },
+    title: 'Poradniki, postacie, miejsca',
+    href: '/poradniki/',
+    pages: [
+      '/poradniki/od-czego-zaczac/',
+      '/assassins-creed-za-darmo/',
+      '/ezio-auditore/',
+      '/mapa-miejsc-historycznych/',
+      '/assassins-creed-ii-wojna-swiatowa/',
+      '/assassins-creed-rodowod/',
+      '/assassins-creed-valhalla/eivor/',
     ],
   },
 ];
+
+/**
+ * Numeracja serii — czternaście numerowanych części głównej linii w kolejności
+ * premier. Blok `link-list#numeracja-serii` stoi w `blocks[]` głównej od
+ * strony struktury (`manual`, `high`) i do 2026-09-11 nie był drukowany;
+ * sprawdzenie «`blocks[]` równa się wydrukowi» (П32 p.4, wariant b) tego nie
+ * przepuszcza — więc lista jest. Fakty o grach prawdziwe, adresy z drzewa.
+ */
+export interface Czesc {
+  href: string;
+  title: string;
+  year: string;
+}
+
+export const numeracja: Czesc[] = [
+  { href: '/assassins-creed-1/', title: 'Assassin’s Creed', year: '2007' },
+  { href: '/assassins-creed-2/', title: 'Assassin’s Creed II', year: '2009' },
+  { href: '/assassins-creed-brotherhood/', title: 'Assassin’s Creed: Brotherhood', year: '2010' },
+  { href: '/assassins-creed-revelations/', title: 'Assassin’s Creed: Revelations', year: '2011' },
+  { href: '/assassins-creed-3/', title: 'Assassin’s Creed III', year: '2012' },
+  { href: '/assassins-creed-4-black-flag/', title: 'Assassin’s Creed IV: Black Flag', year: '2013' },
+  { href: '/assassins-creed-rogue/', title: 'Assassin’s Creed: Rogue', year: '2014' },
+  { href: '/assassins-creed-unity/', title: 'Assassin’s Creed: Unity', year: '2014' },
+  { href: '/assassins-creed-syndicate/', title: 'Assassin’s Creed: Syndicate', year: '2015' },
+  { href: '/assassins-creed-origins/', title: 'Assassin’s Creed: Origins', year: '2017' },
+  { href: '/assassins-creed-odyssey/', title: 'Assassin’s Creed: Odyssey', year: '2018' },
+  { href: '/assassins-creed-valhalla/', title: 'Assassin’s Creed: Valhalla', year: '2020' },
+  { href: '/assassins-creed-mirage/', title: 'Assassin’s Creed: Mirage', year: '2023' },
+  { href: '/assassins-creed-shadows/', title: 'Assassin’s Creed: Shadows', year: '2025' },
+];
+
+/**
+ * Podpis głównej (`byline`, П32 p.3, odpowiedź właściciela 2): jak u strony gry —
+ * «Redakcja · Bractwo»; data — DZIEŃ PRZESIADKI WZORCA, nie dzień poprawki.
+ * Jeśli przesiadka przesunie się na inny dzień, zmienia się ta jedna para.
+ */
+export const podpis = {
+  role: 'Redakcja',
+  author: 'Bractwo',
+  date: '2026-09-11',
+  dateLabel: '11 września 2026',
+};

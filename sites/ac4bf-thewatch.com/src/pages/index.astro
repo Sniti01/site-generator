@@ -6,37 +6,163 @@ import CreedBand from '../components/CreedBand.astro';
 import GuideRail from '../components/GuideRail.astro';
 import CatalogStack from '../components/CatalogStack.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { eras } from '../data/site';
+import Byline from '@factory/core/blocks/Byline.astro';
+import Gallery from '@factory/core/blocks/Gallery.astro';
+import LinkList from '@factory/core/blocks/LinkList.astro';
+import slownik from '@factory/core/structure/blocks.json';
+import { getPage } from '../lib/structure';
+import { mediaFor } from '../data/media';
+import gameArt from '../data/game-art.json';
+import { eras, fresh, catalog, numeracja, podpis } from '../data/site';
 
 /**
  * Rytm strony: iglica → dwie warstwy → pauza (maksyma) → dwie warstwy →
- * szyna świeżych tekstów → ostatnia warstwa → stóg → wezwanie → stopka.
- * Strona obrazu w warstwach jest lustrzana, a środowisko zmienia się co
- * dwie–trzy sekcje.
+ * szyna świeżych tekstów → ostatnia warstwa → numeracja serii → kadry →
+ * stóg → wezwanie → stopka. Strona obrazu w warstwach jest lustrzana,
+ * a środowisko zmienia się co dwie–trzy sekcje.
+ *
+ * GŁÓWNA ZOSTAJE WŁASNYM SZABLONEM — decyzja właściciela 2026-09-11 (П32 p.4,
+ * wariant b). Trasa `[...slug].astro` drukuje rzędy jednym ciągiem, nie zna
+ * czipów, poradników w warstwach, pasma-cytatu ani skali; przenieść tam
+ * główną znaczyłoby zgubić jej zamysł. Zamiast tego ten plik bierze od trasy
+ * DWIE rzeczy: pola SEO i `h1` ze struktury (П24 p.3) oraz sprawdzenie
+ * «`blocks[]` równa się wydrukowi» tą samą konstrukcją (`drukowane`).
+ *
+ * Do 2026-09-11 pięć pól tej strony — `title`, `description`, `og:*`, `h1` —
+ * różniło się od struktury, a `blocks[]` deklarował `byline`, `gallery`
+ * i `link-list#numeracja-serii`, których strona nie drukowała (П29 p.4,
+ * П32 p.3). Wszystko to zmienia piksel pierwszego ekranu, dlatego czekało
+ * na jedyną przesiadkę wzorca — i teraz do niej należy.
  */
+const strona = getPage('/');
 const [jerozolima, wlochy, japonia, karaiby, londyn] = eras;
+
+const gotowy = (imie: string) =>
+  Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
+const kluczOd = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
+const wystapienia = strona.blocks as { block: string; role?: string }[];
+const pominiete = wystapienia.filter((b) => !gotowy(b.block)).map(kluczOd);
+const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(kluczOd);
+if (pominiete.length) {
+  console.log(`  ${strona.url} — bloki zadeklarowane, ale nie w rdzeniu: ${pominiete.join(', ')}`);
+}
+
+/**
+ * Galeria — pięć artów epok z podpisami z `game-art.json` (odpowiedź właściciela 2,
+ * 2026-09-11). Znaki ™ i ® z nazw sklepu Steam zdjęte tylko w podpisie.
+ */
+const galeria = eras.map((era) => {
+  const kadr = mediaFor(era.id);
+  const credit = (gameArt as Record<string, { game?: string }>)[era.id];
+  return {
+    src: kadr.src,
+    alt: kadr.alt,
+    caption: (credit?.game ?? era.game).replace(/[™®]/g, ''),
+    quality: kadr.quality,
+    class: kadr.class,
+  };
+});
+
+/**
+ * CZY STRONA MA CZYM WYPEŁNIĆ BLOK — po jednym predykacie na nazwę, jak
+ * u trasy. Źródłem jest `site.ts` i ten plik, nie plik treści. Te same
+ * predykaty stoją w warunkach druku niżej: lista i rozmieszczenie liczą się
+ * z jednego źródła, więc nie mogą się rozejść.
+ */
+const maTresc: Record<string, (role?: string) => boolean> = {
+  'hero-key-art': () => true,
+  byline: () => Boolean(podpis.author && podpis.date),
+  'story-row': () => eras.length > 0,
+  'band-quote': () => true, // `CreedBand` niesie własne zdania
+  'card-rail': () => fresh.length > 0,
+  'link-list': (role) => role === 'numeracja-serii' && numeracja.length > 0,
+  gallery: () => galeria.length > 0,
+  'link-columns': () => catalog.length > 0,
+  'cta-band': () => true,
+};
+
+/**
+ * Kolejność druku TEGO szablonu — pierwsze wystąpienia bloków w porządku
+ * znaczników niżej. `story-row` drukuje się pięć razy, przecięty pasmem
+ * i szyną — jako blok liczy się raz, w miejscu pierwszej warstwy. Odbiega
+ * od `PORZADEK` trasy celowo: to jest ten rytm, dla którego główna została
+ * własnym szablonem. Rozejście z `blocks[]` przerywa budowanie niżej.
+ */
+const PORZADEK = [
+  'hero-key-art',
+  'byline',
+  'story-row',
+  'band-quote',
+  'card-rail',
+  'link-list',
+  'gallery',
+  'link-columns',
+  'cta-band',
+];
+
+const drukowane = PORZADEK.flatMap((nazwa) =>
+  wystapienia
+    .filter((b) => b.block === nazwa && gotowy(nazwa) && (maTresc[nazwa]?.(b.role) ?? false))
+    .map(kluczOd)
+);
+
+if (doZrobienia.join(',') !== drukowane.join(',')) {
+  const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
+  throw new Error(
+    `Blocks[] i druk rozeszły się na ${strona.url}.\n` +
+      `  struktura deklaruje i rdzeń umie: ${doZrobienia.join(', ') || '—'}\n` +
+      `  szablon wydrukuje:                ${drukowane.join(', ') || '—'}\n` +
+      (brakujace.length
+        ? `  bez treści albo bez miejsca w PORZADEK: ${brakujace.join(', ')}\n`
+        : '  rozeszła się sama kolejność\n') +
+      'Popraw treść, szablon albo strukturę — ale nie zostawiaj rozejścia.'
+  );
+}
 ---
 
-<Base
-  title="Bractwo — nieoficjalny przewodnik po serii Assassin’s Creed"
-  description="Cała seria Assassin’s Creed ułożona według epok: od Jerozolimy 1191 po Japonię 1579. Przejścia, mapy, znajdźki i buildy — poszukaj po latach, nie po tagach."
->
-  <Hero />
+<Base title={strona.title} description={strona.description}>
+  {drukowane.includes('hero-key-art') && <Hero h1={strona.h1} />}
+
+  {
+    drukowane.includes('byline') && (
+      <Byline author={podpis.author} date={podpis.date} dateLabel={podpis.dateLabel} role={podpis.role} />
+    )
+  }
 
   <div id="zejscie">
-    <EraLayer era={jerozolima} flip={false} band={false} />
-    <EraLayer era={wlochy} flip={true} band={true} />
+    {drukowane.includes('story-row') && <EraLayer era={jerozolima} flip={false} band={false} />}
+    {drukowane.includes('story-row') && <EraLayer era={wlochy} flip={true} band={true} />}
 
-    <CreedBand />
+    {drukowane.includes('band-quote') && <CreedBand />}
 
-    <EraLayer era={japonia} flip={false} band={false} />
-    <EraLayer era={karaiby} flip={true} band={true} />
+    {drukowane.includes('story-row') && <EraLayer era={japonia} flip={false} band={false} />}
+    {drukowane.includes('story-row') && <EraLayer era={karaiby} flip={true} band={true} />}
 
-    <GuideRail />
+    {drukowane.includes('card-rail') && <GuideRail />}
 
-    <EraLayer era={londyn} flip={false} band={true} />
+    {drukowane.includes('story-row') && <EraLayer era={londyn} flip={false} band={true} />}
   </div>
 
-  <CatalogStack />
-  <CtaBand />
+  {
+    /* `link-list#numeracja-serii` — czternaście numerowanych części w kolejności
+       premier. Blok stoi w `blocks[]` głównej od strony struktury (`manual`,
+       `high`) i do 2026-09-11 nie był drukowany; sprawdzenie wyżej tego nie
+       przepuszcza. Sekcja samodzielna: ma tytuł, więc `LinkList` drukuje ramę. */
+    drukowane.includes('link-list#numeracja-serii') && (
+      <LinkList
+        items={numeracja.map((czesc) => ({ href: czesc.href, title: czesc.title, meta: czesc.year }))}
+        title="Seria po kolei"
+        titleId="numeracja-tytul"
+      />
+    )
+  }
+
+  {
+    drukowane.includes('gallery') && (
+      <Gallery items={galeria} title="Pięć epok w kadrze" titleId="galeria-tytul" lead="Materiał wydawcy ze stron gier w Steamie." />
+    )
+  }
+
+  {drukowane.includes('link-columns') && <CatalogStack />}
+  {drukowane.includes('cta-band') && <CtaBand />}
 </Base>

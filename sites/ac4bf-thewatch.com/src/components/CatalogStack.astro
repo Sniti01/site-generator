@@ -10,13 +10,29 @@
  */
 import LinkColumns from '@factory/core/blocks/LinkColumns.astro';
 import { catalog } from '../data/site';
+import { getPage } from '../lib/structure';
 import Icon from './Icon.astro';
+
+/**
+ * Działy stogu — z `site.ts`, etykiety — ze struktury (`getPage` przerywa
+ * budowanie na adresie spoza drzewa). Licznik działu to liczba wszystkich jego
+ * stron; pokazane są pierwsze cztery. Do 2026-09-11 stały tu cztery działy
+ * drugiej schematyki z demonstracyjnymi licznikami (42, 68, 37, 51) —
+ * 20 adresów-widm; odpowiedź właściciela 3а.
+ */
+const POKAZANE = 4;
+const groups = catalog.map((dzial) => ({
+  title: dzial.title,
+  href: dzial.href,
+  count: dzial.pages.length,
+  items: dzial.pages.slice(0, POKAZANE).map((href) => ({ label: getPage(href).h1, href })),
+}));
 ---
 
-<LinkColumns groups={catalog} title="Stóg" label="Otwórz pełny katalog" href="/poradniki/">
+<LinkColumns groups={groups} title="Stóg" label="Otwórz pełny katalog" href="/poradniki/">
   <Fragment slot="lead">
-        Wylądowałeś. Cały katalog leży tutaj — ułożony według tego, co chcesz zrobić, a nie
-        według tego, w którą część grasz.
+        Wylądowałeś. Cały katalog leży tutaj — ułożony według epok i części serii, a obok
+        poradniki, postacie i miejsca.
       </Fragment>
 
   <Icon slot="akcja" name="strzalka-w-prawo" size={18} />

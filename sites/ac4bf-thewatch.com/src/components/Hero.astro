@@ -47,6 +47,17 @@ const kluczowyArt = Boolean((gameArt as Record<string, unknown>).hero);
   parsuje słowa komentarza blokowego jako atrybuty komponentu — stąd ts(2322).
 */
 const heroSizes = '(max-width: 1024px) 200vw, 170vw';
+
+/**
+ * Tekst `<h1>` przychodzi propsem: od 2026-09-11 (П32 p.4, wariant b) główna
+ * bierze go ze struktury, jak każda strona trasy. Literał «Cała seria według
+ * lat» stał tu od Fazy 0 i trzymał piksel `_baseline/`; przesiadka wzorca
+ * to jedyny moment, w którym wolno go było zmienić.
+ */
+interface Props {
+  h1: string;
+}
+const { h1 } = Astro.props;
 ---
 
 <HeroKeyArt
@@ -59,7 +70,7 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
   {/* `<h1>` drukuje witryna, nie rdzeń — od 2026-09-11 nagłówek należy
       do strony (punkt 23 backlogu). `id` musi być tym samym, co `titleId`
       wyżej: to nim sekcja wiąże się z nagłówkiem przez `aria-labelledby`. */}
-  <h1 class="hero__title t-display" id="hero-tytul" slot="tytul">Cała seria według lat</h1>
+  <h1 class="hero__title t-display" id="hero-tytul" slot="tytul">{h1}</h1>
 
   <Fragment slot="art">
     <EraMedia

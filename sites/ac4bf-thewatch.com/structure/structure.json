@@ -2798,6 +2798,32 @@
    "status": "planned",
    "volume": 510,
    "owner": true
+  },
+  {
+   "url": "/prywatnosc/",
+   "type": "legal",
+   "h1": "Polityka prywatności",
+   "title": "Polityka prywatności — Bractwo",
+   "description": "Jakie dane przetwarza serwis Bractwo i na jakiej podstawie: bez analityki, bez własnych plików cookie, bez formularzy. Co zapisuje hosting i jakie prawa ma czytelnik.",
+   "cluster": null,
+   "keywords": [],
+   "parent": "/",
+   "related": [],
+   "blocks": [
+    {
+     "block": "byline",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
+     "block": "story-row",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "status": "planned",
+   "volume": 0
   }
  ],
  "exclusions": [

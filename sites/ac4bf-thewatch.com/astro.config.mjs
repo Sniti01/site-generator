@@ -4,6 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import afterBuild from '@factory/core/gates/after-build.mjs';
 import anchors from '@factory/core/gates/anchors.mjs';
+import links from '@factory/core/gates/links.mjs';
 
 export default defineConfig({
   site: 'https://ac4bf-thewatch.com',
@@ -14,7 +15,9 @@ export default defineConfig({
   // `afterBuild` (h1) od 2026-09-11 rano; `anchors` (kotwice) tego samego dnia
   // po południu, tą samą poprawką, co `/#zejscie` w `src/data/site.ts` —
   // punkt 24 backlogu, П40 krok 2: bramka zielona od pierwszego budowania.
-  integrations: [sitemap(), afterBuild(), anchors()],
+  // `links` — trzecia bramka wyniku (П42, 2026-09-11): każdy link wewnętrzny
+  // na adres ze struktury; rama — cały serwis, przed pierwszą paczką tekstów.
+  integrations: [sitemap(), afterBuild(), anchors(), links({ structure: 'structure/structure.json' })],
   vite: {
     plugins: [tailwindcss()],
   },

@@ -29,6 +29,7 @@ import { разбор as разборГлифа } from './glyphs.mjs';
 import { встроенные } from './build-css.mjs';
 import { policzH1 } from '../gates/after-build.mjs';
 import { ocenKotwice, ocenStrony } from '../gates/anchors.mjs';
+import { adresZHref, ocenLinki, ocenStronyLinki } from '../gates/links.mjs';
 import { сравнитьГеометрию, счётГеометрии } from './frames.mjs';
 
 const site = process.argv[2];
@@ -341,6 +342,33 @@ if (existsSync(baseline)) {
   check('якоря: ноль страниц — отказ', 'отказ', (() => { try { ocenStrony([]); return 'прошло'; } catch { return 'отказ'; } })(), 'правда о пустом множестве — не правда о сайте');
   check('якоря: две чистые страницы — счёт', 2, ocenStrony([{ pathname: '/', html: '<p id="a"></p>' }, { pathname: '/b/', html: '<p>x</p>' }]), 'возвращает число проверенных');
   check('якоря: отказ называет страницу', true, (() => { try { ocenStrony([{ pathname: '/gra/', html: '<a href="#nie">x</a>' }]); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('#nie'); } })(), 'страница и якорь — оба в сообщении');
+}
+
+/* — гейт внутренних ссылок: `core/gates/links.mjs` (П42) —
+   Рамка — весь сайт: каждый href на адрес вне структуры роняет сборку.
+   Батарея названа до доверия: адрес дерева, призрак, фрагмент и запрос
+   снимаются, абсолютный той же домены, чужая домена, /_astro/, файл
+   с расширением, без конечной косой, комментарий, ноль страниц, пустая
+   структура. */
+{
+  const drzewo = new Set(['/', '/poradniki/', '/assassins-creed-1/']);
+  const site = 'https://ac4bf-thewatch.com';
+  const w = (html) => ocenLinki(html, drzewo, site).join(' ');
+  check('ссылки: адрес дерева — чисто', '', w('<a href="/poradniki/">x</a>'), 'страница структуры');
+  check('ссылки: призрак назван', '/o-nas/', w('<a href="/o-nas/">x</a>'), 'адрес вне structure.json — имя в отказе');
+  check('ссылки: фрагмент и запрос снимаются', '', w('<a href="/poradniki/#lista">x</a><a href="/?utm=1">y</a>'), 'адрес страницы — без #… и ?…');
+  check('ссылки: абсолютный своей домены проверяется', '/nie-ma/', w('<a href="https://ac4bf-thewatch.com/nie-ma/">x</a><link rel="canonical" href="https://ac4bf-thewatch.com/">'), 'canonical на себя чист, чужой путь на своей домене — призрак');
+  check('ссылки: чужая домена вне рамки', '', w('<a href="https://store.steampowered.com/app/1/">x</a><a href="mailto:a@b.c">m</a>'), 'Steam, Commons, почта — не страницы сайта');
+  check('ссылки: /_astro/ и файлы не страницы', '', w('<link href="/_astro/a.css"><link href="/favicon.svg"><a href="/sitemap-index.xml">s</a>'), 'лист, иконка, карта сайта');
+  check('ссылки: без конечной косой — призрак', '/poradniki', w('<a href="/poradniki">x</a>'), 'trailingSlash: always — адрес без косой не совпадает со структурой');
+  check('ссылки: якорь # вне рамки', '', w('<a href="#tresc">x</a><a href="#">y</a>'), 'внутристраничные — дело anchors.mjs');
+  check('ссылки: комментарий не считается', '', w('<!-- <a href="/stary/"> --><a href="/">x</a>'), 'Astro оставляет комментарии шаблона в выводе');
+  check('ссылки: повтор призрака — одна строка', '/x/', w('<a href="/x/">1</a><a href="/x/#a">2</a>'), 'один адрес — одно имя');
+  check('ссылки: относительный без корня вне рамки', null, adresZHref('poradniki/', site), 'маршрут таких не печатает; сравнивать нечем');
+  check('ссылки: ноль страниц — отказ', 'отказ', (() => { try { ocenStronyLinki([], drzewo, site); return 'прошло'; } catch { return 'отказ'; } })(), 'правда о пустом множестве — не правда о сайте');
+  check('ссылки: пустая структура — отказ', 'отказ', (() => { try { ocenStronyLinki([{ pathname: '/', html: '<a href="/">x</a>' }], new Set(), site); return 'прошло'; } catch { return 'отказ'; } })(), 'неверный путь к structure.json не должен давать зелёный');
+  check('ссылки: счёт ссылок', '2/3', (() => { const r = ocenStronyLinki([{ pathname: '/', html: '<a href="/poradniki/">a</a><a href="/">b</a><a href="https://x.y/">c</a>' }, { pathname: '/poradniki/', html: '<a href="/assassins-creed-1/">d</a>' }], drzewo, site); return r.stron + '/' + r.linkow; })(), 'две страницы, три внутренних ссылки; чужая не считается');
+  check('ссылки: отказ называет страницу и адрес', true, (() => { try { ocenStronyLinki([{ pathname: '/gra/', html: '<a href="/widmo/">x</a>' }], drzewo, site); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('/widmo/'); } })(), 'страница и адрес — оба в сообщении');
 }
 
 /* — сверка геометрии: `core/accept/frames.mjs` (П39, пункт 14) —

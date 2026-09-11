@@ -50,12 +50,13 @@ const kolumny = [
   },
   {
     title: 'Serwis',
-    links: [
-      { label: 'O nas', href: '/o-nas/' },
-      { label: 'Jak piszemy poradniki', href: '/redakcja/' },
-      { label: 'Kontakt', href: '/kontakt/' },
-      { label: 'Polityka prywatności', href: '/prywatnosc/' },
-    ],
+    // Trzy adresy zdjęte 2026-09-11 (odpowiedź właściciela «podwał: a», П41):
+    // `/o-nas/`, `/redakcja/`, `/kontakt/` nie istnieją w drzewie fali 1
+    // i nie są zbudowane — link-widmo w stopce każdej strony. Wrócą razem
+    // ze swoimi stronami. `Polityka prywatności` zostaje: to obietnica,
+    // nie link — jej strona idzie wczesnym punktem kolejki tekstów fali 1,
+    // do tego dnia jedyny adres-widmo w serwisie jest nazwany tutaj.
+    links: [{ label: 'Polityka prywatności', href: '/prywatnosc/' }],
   },
 ];
 ---

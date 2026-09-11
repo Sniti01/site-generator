@@ -12,12 +12,20 @@ export const site = {
 /**
  * Menu główne. Trzy ostatnie pozycje prowadziły pod `/mapy/`, `/postacie/`
  * i `/aktualnosci/` — adresy drugiej schematyki, których w drzewie nie ma
- * (П27 punkt 3). Zastąpione adresami z drzewa; kotwice `#zejscie`
- * i `#katalog` zostają, bo to miejsca na stronie, nie adresy.
+ * (П27 punkt 3). Zastąpione adresami z drzewa.
+ *
+ * Kotwice `#zejscie` i `#katalog` są ADRESAMI BEZWZGLĘDNYMI od 2026-09-11
+ * (punkt 24 backlogu, П40 krok 2). Do tego dnia stały gołe — «to miejsca
+ * na stronie, nie adresy» — i dowód był prawdziwy dla głównej, i tylko dla
+ * niej: szapka drukuje się na każdej stronie, a `#zejscie` istnieje na jednej.
+ * Na `/assassins-creed-4-black-flag/` cztery linki z menu wiodły donikąd
+ * (szapka i szuflada, po dwa). Z `/` z przodu prowadzą z każdej strony
+ * na główną do właściwego miejsca; na samej głównej przeglądarka traktuje
+ * `/#zejscie` jak kotwicę tej samej strony. Pilnuje tego `core/gates/anchors.mjs`.
  */
 export const nav = [
-  { label: 'Epoki', href: '#zejscie' },
-  { label: 'Poradniki', href: '#katalog' },
+  { label: 'Epoki', href: '/#zejscie' },
+  { label: 'Poradniki', href: '/#katalog' },
   { label: 'Mapa miejsc', href: '/mapa-miejsc-historycznych/' },
   { label: 'Rodowód serii', href: '/assassins-creed-rodowod/' },
 ];

@@ -3,14 +3,18 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import afterBuild from '@factory/core/gates/after-build.mjs';
+import anchors from '@factory/core/gates/anchors.mjs';
 
 export default defineConfig({
   site: 'https://ac4bf-thewatch.com',
   trailingSlash: 'always',
   build: { format: 'directory' },
-  // `afterBuild` — jedyna bramka, która czyta WYNIK (dist/), nie źródła;
-  // dlatego jest integracją, a nie pozycją w `npm run gates`. Od 2026-09-11.
-  integrations: [sitemap(), afterBuild()],
+  // `afterBuild` i `anchors` — dwie bramki, które czytają WYNIK (dist/), nie
+  // źródła; dlatego są integracjami, a nie pozycjami w `npm run gates`.
+  // `afterBuild` (h1) od 2026-09-11 rano; `anchors` (kotwice) tego samego dnia
+  // po południu, tą samą poprawką, co `/#zejscie` w `src/data/site.ts` —
+  // punkt 24 backlogu, П40 krok 2: bramka zielona od pierwszego budowania.
+  integrations: [sitemap(), afterBuild(), anchors()],
   vite: {
     plugins: [tailwindcss()],
   },

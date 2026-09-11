@@ -27,8 +27,12 @@ const zdjecia = Object.values(artCredits as Record<string, ArtCredit>);
 
 // Materiały gier nie mają wolnej licencji, więc zamiast listy autorów idzie
 // jedna nota o prawach i o tym, po co ich tu używamy.
-const gry = Object.values(gameCredits as Record<string, { game: string }>);
+const gry = Object.values(gameCredits as Record<string, { game: string; licencja?: string }>);
 const tytulyGier = [...new Set(gry.map((item) => item.game))].sort();
+// Klasa licencji materiału wydawcy — z kredytów, nie z głowy: każda pozycja
+// `game-art.json` niesie to samo zdanie (П42, «Steam — tak»); w stopce idzie
+// osobnym wierszem, żeby czytelnik widział, na jakich warunkach jest art.
+const klasyLicencji = [...new Set(gry.map((item) => item.licencja).filter((x): x is string => Boolean(x)))];
 
 const kolumny = [
   // Cztery adresy pierwszej kolumny i `/epoki/<id>/` w drugiej były drugą
@@ -78,6 +82,11 @@ const kolumny = [
             wskazać, której gry dotyczy dany poradnik. Serwis nie korzysta z logotypów
             wydawcy we własnej identyfikacji. Gry: {tytulyGier.join(', ')}.
           </p>
+          {klasyLicencji.length > 0 && (
+            <p class="ft__foto-note t-caption">
+              Klasa licencji: {klasyLicencji.join('; ')}.
+            </p>
+          )}
         </div>
       </div>
     )

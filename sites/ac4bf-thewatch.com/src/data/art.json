@@ -1,37 +1,7 @@
 {
   "slots": [
     {
-      "id": "hero",
-      "subject": "Panorama starego miasta z góry",
-      "queries": [
-        "Jerusalem Old City panorama view",
-        "Dubrovnik old town rooftops panorama",
-        "Florence skyline panorama city view"
-      ],
-      "must": [
-        "panorama",
-        "skyline",
-        "rooftops",
-        "cityscape",
-        "view of"
-      ],
-      "avoid": [
-        "map",
-        "plan",
-        "interior",
-        "detail",
-        "relief",
-        "statue",
-        "aerial view of the"
-      ],
-      "minAspect": 1.6,
-      "minWidth": 2400,
-      "crop": {
-        "bottom": 0.14
-      }
-    },
-    {
-      "id": "jerozolima",
+      "id": "foto-jerozolima",
       "subject": "Jerozolima, Wzgórze Świątynne i mury starego miasta",
       "queries": [
         "Dome of the Rock Jerusalem",
@@ -62,7 +32,7 @@
       "minWidth": 2000
     },
     {
-      "id": "wlochy",
+      "id": "foto-wlochy",
       "subject": "Florencja, kopuła katedry nad dachami miasta",
       "queries": [
         "Florence panorama Piazzale Michelangelo cityscape",
@@ -93,7 +63,7 @@
       "minWidth": 2000
     },
     {
-      "id": "japonia",
+      "id": "foto-japonia",
       "subject": "Japoński zamek z okresu Sengoku",
       "queries": [
         "Himeji Castle panorama",
@@ -120,12 +90,12 @@
       "minWidth": 1800
     },
     {
-      "id": "karaiby",
+      "id": "foto-karaiby",
       "subject": "Karaibska twierdza kolonialna nad morzem",
       "queries": [
-        "Castillo San Felipe del Morro San Juan Puerto Rico",
-        "El Morro fortress Havana sea walls",
-        "Castillo de la Real Fuerza Havana"
+        "El Morro San Juan Puerto Rico fortress ocean",
+        "Castillo San Felipe del Morro lighthouse walls",
+        "Castillo de los Tres Reyes del Morro Havana lighthouse"
       ],
       "must": [
         "morro",
@@ -146,7 +116,12 @@
         "capitolio",
         "skyline",
         "panorama of havana",
-        "city of havana"
+        "city of havana",
+        "HABS",
+        "survey",
+        "tif",
+        "black and white",
+        "monochrome"
       ],
       "minAspect": 1.35,
       "minWidth": 2000,
@@ -158,7 +133,7 @@
       }
     },
     {
-      "id": "londyn",
+      "id": "foto-londyn",
       "subject": "Wiktoriańska architektura Londynu",
       "queries": [
         "St Pancras Renaissance Hotel London facade",
@@ -193,6 +168,97 @@
       ],
       "minAspect": 1.35,
       "minWidth": 2000
+    },
+    {
+      "id": "assassins-creed-bloodlines",
+      "subject": "Cypr, zamek krzyżowców nad morzem — Bloodlines, 1191",
+      "queries": [
+        "Kyrenia Castle Cyprus",
+        "Saint Hilarion Castle Kyrenia mountains",
+        "Larnaca Castle Cyprus seafront"
+      ],
+      "must": [
+        "castle",
+        "cyprus"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "interior",
+        "model",
+        "aerial",
+        "night",
+        "detail",
+        "coat of arms",
+        "panorama",
+        "panoramic"
+      ],
+      "minAspect": 1.6,
+      "minWidth": 2400,
+      "crop": {
+        "bottom": 0.14
+      }
+    },
+    {
+      "id": "assassins-creed-pirates",
+      "subject": "Karaiby, żaglowiec na otwartym morzu — Pirates, 1716",
+      "queries": [
+        "Frigate Shtandart under sail",
+        "sailing ship Kruzenshtern under full sail",
+        "brig under sail at sea",
+        "tall ship under sail ocean"
+      ],
+      "must": [
+        "ship",
+        "sail"
+      ],
+      "avoid": [
+        "model",
+        "painting",
+        "drawing",
+        "engraving",
+        "map",
+        "harbour",
+        "interior",
+        "detail",
+        "museum",
+        "cruise",
+        "poster"
+      ],
+      "minAspect": 1.6,
+      "minWidth": 2400,
+      "crop": {
+        "bottom": 0.14
+      }
+    },
+    {
+      "id": "discovery",
+      "subject": "Hiszpania końca XV wieku, Alhambra nad Grenadą — II: Discovery, 1491",
+      "queries": [
+        "Alhambra Granada panorama from Albaicin",
+        "Alhambra Granada view Sierra Nevada",
+        "Granada Alhambra palace hill panorama"
+      ],
+      "must": [
+        "alhambra",
+        "granada"
+      ],
+      "avoid": [
+        "interior",
+        "detail",
+        "ceiling",
+        "map",
+        "plan",
+        "night",
+        "model",
+        "garden detail"
+      ],
+      "minAspect": 1.6,
+      "minWidth": 2400,
+      "crop": {
+        "bottom": 0.14
+      }
     }
-  ]
+  ],
+  "_": "Slot nazywa się jak pole `art` w pliku treści i jak klucz kredytu. NIE WOLNO nazywać slotu tak, jak klucz `game-art.json` (hero, jerozolima, wlochy, japonia, karaiby, londyn): rozstrzygacz media.ts oddaje wtedy materiał gry, a zdjęcia nikt nie zobaczy (punkt 22 backlogu, 2026-09-10). 2026-09-11 (P4 paczka 0): pięć widoków epok dostało przedrostek `foto-` — kadry do galerii stron gier z tej epoki; slot `hero` zdjęty (pierwszy ekran głównej to art gry); trzy nowe sloty — pierwszy ekran stron gier, których nie ma w Steam."
 }

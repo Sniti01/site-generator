@@ -1,1 +1,82 @@
-{}
+{
+  "foto-jerozolima": {
+    "file": "foto-jerozolima.jpg",
+    "author": "Berthold Werner",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Jerusalem_Dome_of_the_rock_BW_3.JPG",
+    "title": "Jerusalem Dome of the rock BW 3.JPG",
+    "width": 2000,
+    "height": 1260
+  },
+  "foto-wlochy": {
+    "file": "foto-wlochy.jpg",
+    "author": "PROPOLI87",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Firenze_-_Panorama_del_centro_storico.jpg",
+    "title": "Firenze - Panorama del centro storico.jpg",
+    "width": 2000,
+    "height": 965
+  },
+  "foto-japonia": {
+    "file": "foto-japonia.jpg",
+    "author": "Appie Verschoor",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Himeji_Panorama_(643622).jpeg",
+    "title": "Himeji Panorama (643622).jpeg",
+    "width": 2000,
+    "height": 1350
+  },
+  "foto-karaiby": {
+    "file": "foto-karaiby.jpg",
+    "author": "P. Hughes",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:El_Morro_-_Walls_1.jpg",
+    "title": "El Morro - Walls 1.jpg",
+    "width": 2000,
+    "height": 1253
+  },
+  "foto-londyn": {
+    "file": "foto-londyn.jpg",
+    "author": "www.mgaylard.co.uk",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:St_Pancras_Renaissance_Hotel_and_Station_Facade-6333.jpg",
+    "title": "St Pancras Renaissance Hotel and Station Facade-6333.jpg",
+    "width": 2000,
+    "height": 1333
+  },
+  "assassins-creed-bloodlines": {
+    "file": "assassins-creed-bloodlines.jpg",
+    "author": "Michal Klajban",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Courtyard,_Kyrenia_Castle,_Kyrenia,_Northen_Cyprus_10.jpg",
+    "title": "Courtyard, Kyrenia Castle, Kyrenia, Northen Cyprus 10.jpg",
+    "width": 2000,
+    "height": 1009
+  },
+  "assassins-creed-pirates": {
+    "file": "assassins-creed-pirates.jpg",
+    "author": "TS SHTANART captain",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:TS_SHTANDART_under_sail_3.jpg",
+    "title": "TS SHTANDART under sail 3.jpg",
+    "width": 2000,
+    "height": 968
+  },
+  "discovery": {
+    "file": "discovery.jpg",
+    "author": "Robert Bovington",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Alhambra_Granada_panorama.jpg",
+    "title": "Alhambra Granada panorama.jpg",
+    "width": 2000,
+    "height": 968
+  }
+}

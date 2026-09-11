@@ -40,6 +40,20 @@
       "name": "Assassin's Creed Syndicate",
       "shot": 6,
       "uwaga": "zrzuty 0-5 maja znak wodny AC; 6 to nocna ulica przy latarniach"
-    }
-  ]
+    },
+    { "slot": "assassins-creed-3", "appid": 911400, "kind": "keyart", "uwaga": "Remastered — jedyne wydanie w Steam; strona jest o grze, nie o wydaniu" },
+    { "slot": "assassins-creed-origins", "appid": 582160, "kind": "keyart" },
+    { "slot": "assassins-creed-valhalla", "appid": 2208920, "kind": "keyart" },
+    { "slot": "assassins-creed-mirage", "appid": 3035570, "kind": "keyart" },
+    { "slot": "assassins-creed-odyssey", "appid": 812140, "kind": "keyart" },
+    { "slot": "assassins-creed-unity", "appid": 289650, "kind": "keyart" },
+    { "slot": "assassins-creed-brotherhood", "appid": 48190, "kind": "keyart" },
+    { "slot": "assassins-creed-rogue", "appid": 311560, "kind": "keyart" },
+    { "slot": "assassins-creed-revelations", "appid": 201870, "kind": "keyart" },
+    { "slot": "assassins-creed-liberation", "appid": 260210, "kind": "keyart", "uwaga": "Liberation HD — wydanie na PC" },
+    { "slot": "assassins-creed-chronicles", "appid": 354380, "kind": "keyart", "uwaga": "trylogia; kluczowy art z China (pierwsza czesc); India 359610, Russia 359600" },
+    { "slot": "freedom-cry", "appid": 277590, "kind": "keyart", "uwaga": "samodzielne wydanie dodatku; strona /assassins-creed-4-black-flag/freedom-cry/" },
+    { "slot": "dawn-of-ragnarok", "appid": 2210140, "kind": "keyart", "uwaga": "dodatek do Valhalli; strona /assassins-creed-valhalla/dawn-of-ragnarok/" }
+  ],
+  "_bez_steam": "Bloodlines (PSP), Pirates (mobilna), II: Discovery (DS) — materialu wydawcy w Steam nie ma; ich strony dostaja kadr z Wikimedia Commons przez art.json i fetch-art.mjs (reszta punktu 22); rozstrzygacz media.ts oddaje zdjecie, gdy materialu gry brak."
 }

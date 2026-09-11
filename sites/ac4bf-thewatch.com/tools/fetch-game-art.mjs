@@ -15,7 +15,22 @@
  * wolnej licencji. Używamy ich do identyfikacji gier, o których są poradniki.
  * Logotypów gier (logo.png) skrypt NIE pobiera — własna identyfikacja serwisu
  * nie może korzystać z symboliki wydawcy (PRODUCT.md).
+ *
+ * KLASA LICENCJI zapisywana przy każdej pozycji kredytów (`licencja`) —
+ * decyzja właściciela П42 (2026-09-11, «Steam — tak»): klasa idzie do
+ * `game-art.json` i osobnym wierszem do stopki, PRZED pobraniem artu.
+ *
+ * DWA RODZAJE SLOTÓW od 2026-09-11 (paczka 0 P4). `era` — pięć epok
+ * głównej: zrzut ekranu o wskazanym indeksie plus okładka (jak było).
+ * `slot` z `kind: 'keyart'` — strona gry fali 1: kluczowy art biblioteki
+ * (library_hero, 3:1, bez HUD z definicji) pod nazwą slotu plus okładka.
+ * Slot nazywa się jak strona (ostatni segment adresu), bo tak nazywa go
+ * pole `art` w pliku treści i rozstrzygacz `media.ts`.
  */
+
+/** Klasa licencji materiału wydawcy — jedno zdanie, to samo w każdej pozycji. */
+const LICENCJA =
+  'materiał wydawcy (Ubisoft Entertainment), bez wolnej licencji — użyty wyłącznie w celu identyfikacji gry, o której jest strona';
 
 import sharp from 'sharp';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
@@ -108,7 +123,7 @@ if (shotsFor) {
   const game =
     shotsFor === 'hero'
       ? manifest.hero
-      : manifest.games.find((item) => item.era === shotsFor);
+      : manifest.games.find((item) => (item.slot ?? item.era) === shotsFor);
   if (!game) {
     console.error(`Nie znam "${shotsFor}" w src/data/games.json`);
     process.exit(1);
@@ -159,6 +174,7 @@ if (!only || only.has('hero')) {
         game: details.name,
         appid: manifest.hero.appid,
         kind: `kluczowy art (${wariant})`,
+        licencja: LICENCJA,
         source: `https://store.steampowered.com/app/${manifest.hero.appid}/`,
         ...size,
       };
@@ -169,27 +185,87 @@ if (!only || only.has('hero')) {
   }
 }
 
-// --- zrzut ekranu i okładka na każdą epokę ---
+// --- zrzut ekranu i okładka na każdą epokę; kluczowy art i okładka na każdą stronę gry ---
 for (const game of manifest.games) {
-  if (only && !only.has(game.era)) continue;
+  const slot = game.slot ?? game.era;
+  if (only && !only.has(slot)) continue;
 
-  const shotTarget = join(outDir, `${game.era}.jpg`);
-  const coverTarget = join(outDir, `${game.era}-okladka.jpg`);
-  if (!force && existsSync(shotTarget) && credits[game.era]) {
-    console.log(`pominiete ${game.era.padEnd(11)} pliki juz sa`);
+  const shotTarget = join(outDir, `${slot}.jpg`);
+  const coverTarget = join(outDir, `${slot}-okladka.jpg`);
+  if (!force && existsSync(shotTarget) && credits[slot]) {
+    console.log(`pominiete ${slot.padEnd(11)} pliki juz sa`);
     continue;
   }
 
   const details = await appDetails(game.appid);
+
+  if (game.kind === 'keyart') {
+    // Strona gry: kluczowy art biblioteki zamiast zrzutu — bez HUD i znaku
+    // wodnego z definicji, ta sama proporcja 3:1, co na pierwszym ekranie głównej.
+    console.log(`${dryRun ? 'wybrano ' : 'pobieram'} ${slot.padEnd(11)} ${details.name} — kluczowy art`);
+    if (dryRun) continue;
+    // Starsze karty gier nie mają materiałów biblioteki pod stałym adresem CDN
+    // (AC III Remastered, Revelations, Liberation HD, Chronicles, Freedom Cry,
+    // Dawn of Ragnarök: 404 na library_hero, brak background_raw) — schodzimy
+    // po liście: banner biblioteki 2x → 1x → tło karty z API → ZRZUT EKRANU
+    // o indeksie `shot` (1920 px, jak u epok głównej; indeks wybiera się
+    // oglądając, bo zrzut może nieść HUD) → nagłówek 460 px tylko w ostateczności,
+    // z ostrzeżeniem: w panelu pierwszego ekranu byłby rozciągnięty trzykrotnie.
+    const zrzut = (details.screenshots ?? [])[Math.min(game.shot ?? 0, (details.screenshots ?? []).length - 1)];
+    const kandydaci = [
+      { nazwa: 'library_hero_2x.jpg', url: `${CDN}/${game.appid}/library_hero_2x.jpg` },
+      { nazwa: 'library_hero.jpg', url: `${CDN}/${game.appid}/library_hero.jpg` },
+      { nazwa: 'background_raw', url: details.background_raw },
+      { nazwa: `zrzut ekranu [${game.shot ?? 0}]`, url: zrzut?.path_full },
+      { nazwa: 'header_image (460 px — za mały na pierwszy ekran)', url: details.header_image },
+    ].filter((k) => k.url);
+    let wariant = null;
+    let bytes = null;
+    for (const kandydat of kandydaci) {
+      await sleep(400);
+      try {
+        bytes = Buffer.from(await (await politeFetch(kandydat.url, { attempts: 1 })).arrayBuffer());
+        wariant = kandydat.nazwa;
+        break;
+      } catch {
+        // brak tego wariantu, próbujemy następnego
+      }
+    }
+    if (!bytes) {
+      console.warn(`BRAK      ${slot.padEnd(11)} ${details.name} — żaden wariant artu nie jest dostępny`);
+      continue;
+    }
+    if (wariant !== 'library_hero_2x.jpg') console.log(`          ${details.name}: wariant ${wariant}`);
+    const artSize = await save(bytes, shotTarget, MASTER_HERO);
+    const okladka = await pobierzOkladke(game.appid);
+    const coverSize = okladka ? await save(okladka.bytes, coverTarget, okladka.szer) : null;
+    if (!okladka) console.log(`          ${details.name}: brak materialu okladki w witrynie`);
+    credits[slot] = {
+      file: `${slot}.jpg`,
+      cover: okladka ? `${slot}-okladka.jpg` : null,
+      game: details.name,
+      appid: game.appid,
+      kind: `kluczowy art (${wariant})`,
+      shot: null,
+      licencja: LICENCJA,
+      source: `https://store.steampowered.com/app/${game.appid}/`,
+      ...artSize,
+      coverWidth: coverSize?.width ?? null,
+      coverHeight: coverSize?.height ?? null,
+    };
+    pobrane += 1;
+    writeFileSync(creditsPath, `${JSON.stringify(credits, null, 2)}\n`, 'utf8');
+    continue;
+  }
   const shots = details.screenshots ?? [];
   const index = Math.min(game.shot ?? 0, shots.length - 1);
   const shot = shots[index];
   if (!shot) {
-    console.warn(`BRAK      ${game.era.padEnd(11)} ${details.name} nie ma zrzutow`);
+    console.warn(`BRAK      ${slot.padEnd(11)} ${details.name} nie ma zrzutow`);
     continue;
   }
 
-  console.log(`${dryRun ? 'wybrano ' : 'pobieram'} ${game.era.padEnd(11)} ${details.name}`);
+  console.log(`${dryRun ? 'wybrano ' : 'pobieram'} ${slot.padEnd(11)} ${details.name}`);
   if (dryRun) continue;
 
   // Zrzut, nie library_hero: banner biblioteki ma proporcje 3:1 i bohatera
@@ -207,13 +283,14 @@ for (const game of manifest.games) {
     console.log(`          ${details.name}: brak materialu okladki w witrynie`);
   }
 
-  credits[game.era] = {
-    file: `${game.era}.jpg`,
-    cover: okladka ? `${game.era}-okladka.jpg` : null,
+  credits[slot] = {
+    file: `${slot}.jpg`,
+    cover: okladka ? `${slot}-okladka.jpg` : null,
     game: details.name,
     appid: game.appid,
     kind: zrodlo,
     shot: zrodlo.startsWith('zrzut') ? index : null,
+    licencja: LICENCJA,
     source: `https://store.steampowered.com/app/${game.appid}/`,
     ...shotSize,
     coverWidth: coverSize?.width ?? null,

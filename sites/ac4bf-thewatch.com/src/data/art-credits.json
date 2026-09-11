@@ -78,5 +78,25 @@
     "title": "Alhambra Granada panorama.jpg",
     "width": 2000,
     "height": 968
+  },
+  "poradniki": {
+    "file": "poradniki.jpg",
+    "author": "Frederick Whitmore Holland (1837-1880)",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Panorama_of_Jerusalem._Frederick_Whitmore_Holland.1870.jpg",
+    "title": "Panorama of Jerusalem. Frederick Whitmore Holland.1870.jpg",
+    "width": 2000,
+    "height": 880
+  },
+  "mapa-miejsc-historycznych": {
+    "file": "mapa-miejsc-historycznych.jpg",
+    "author": "Ortelius, Abraham (1527-1598). Cartographe du modèle",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Typus_orbis_terrarum_(en_haut)._Description_universelle_de_tout_le_monde_(en_bas)_-_btv1b84914964.jpg",
+    "title": "Typus orbis terrarum (en haut). Description universelle de tout le monde (en bas) - btv1b84914964.jpg",
+    "width": 2000,
+    "height": 1152
   }
 }

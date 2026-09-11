@@ -258,6 +258,67 @@
       "crop": {
         "bottom": 0.14
       }
+    },
+    {
+      "id": "poradniki",
+      "subject": "Panorama starego miasta z góry — hub poradników",
+      "queries": [
+        "Dubrovnik old town rooftops panorama",
+        "Jerusalem Old City panorama view",
+        "Florence skyline panorama city view"
+      ],
+      "must": [
+        "panorama",
+        "skyline",
+        "rooftops",
+        "cityscape",
+        "view of"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "interior",
+        "detail",
+        "relief",
+        "statue",
+        "aerial view of the",
+        "night"
+      ],
+      "minAspect": 1.6,
+      "minWidth": 2400,
+      "crop": {
+        "bottom": 0.14
+      }
+    },
+    {
+      "id": "mapa-miejsc-historycznych",
+      "subject": "Dawna mapa świata — strona mapy miejsc historycznych",
+      "queries": [
+        "Typus Orbis Terrarum Ortelius",
+        "Theatrum Orbis Terrarum 1570 world map",
+        "Universalis Cosmographia Waldseemuller 1507",
+        "Nova totius terrarum orbis tabula Blaeu"
+      ],
+      "must": [
+        "orbis",
+        "terrarum",
+        "cosmographia",
+        "world map",
+        "mappa"
+      ],
+      "avoid": [
+        "modern",
+        "satellite",
+        "detail",
+        "interior",
+        "globe",
+        "photo"
+      ],
+      "minAspect": 1.3,
+      "minWidth": 2000,
+      "crop": {
+        "bottom": 0.14
+      }
     }
   ],
   "_": "Slot nazywa się jak pole `art` w pliku treści i jak klucz kredytu. NIE WOLNO nazywać slotu tak, jak klucz `game-art.json` (hero, jerozolima, wlochy, japonia, karaiby, londyn): rozstrzygacz media.ts oddaje wtedy materiał gry, a zdjęcia nikt nie zobaczy (punkt 22 backlogu, 2026-09-10). 2026-09-11 (P4 paczka 0): pięć widoków epok dostało przedrostek `foto-` — kadry do galerii stron gier z tej epoki; slot `hero` zdjęty (pierwszy ekran głównej to art gry); trzy nowe sloty — pierwszy ekran stron gier, których nie ma w Steam."

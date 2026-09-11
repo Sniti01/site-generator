@@ -16,6 +16,7 @@
     "accept:pixels": "node ../../core/accept/pixels.mjs",
     "accept:html": "node ../../core/accept/html-diff.mjs",
     "accept:frames": "node ../../core/accept/frames.mjs",
+    "brief": "node tools/brief-strony.mjs",
     "art": "node ../../core/media/fetch-art.mjs .",
     "art:check": "node ../../core/media/fetch-art.mjs . --dry-run",
     "art:sheet": "node tools/contact-sheet.mjs",

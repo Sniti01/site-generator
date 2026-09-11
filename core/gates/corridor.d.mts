@@ -13,6 +13,9 @@ export function tekstMain(html: string): string;
 /** Znaki bez spacji — miara `tools/anatomy-s3.mjs`. */
 export function znakiBezSpacji(tekst: string): number;
 
+/** Adres w formie umowy z `pathname` haka: `gra/` i `` → `/gra/` i `/`. */
+export function adresStrony(pathname: string): string;
+
 /** Opis wady kształtu pola `corridor` albo `null`, gdy kształt dobry. */
 export function wadaKorytarza(korytarz: unknown): string | null;
 

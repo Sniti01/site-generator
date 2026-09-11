@@ -45,23 +45,51 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { plikStrony } from './after-build.mjs';
 
+/** Punkt kodowy z encji numerycznej; poza zakresem Unicode — encja zostaje napisem, nie stosem. */
+const znak = (n) => {
+  try {
+    return String.fromCodePoint(n);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * Encje HTML, które Astro drukuje w tekście (`&amp;`, `&lt;`, `&gt;`, `&quot;`,
+ * `&#39;`) plus `&nbsp;` i numeryczne. `&amp;` rozwijane OSTATNIE: `&amp;lt;`
+ * to autorskie cztery znaki `&lt;`, a nie `<` — anatomia rozwijała `&amp;`
+ * pierwsze i liczyła tu jeden znak; różnica dotyczy tekstu, w którym autor
+ * pisze literalnie nazwę encji, czyli nie występuje na tym serwisie.
+ */
 const unesc = (s) =>
   s
+    .replace(/&#(\d+);/g, (m, d) => znak(Number(d)) ?? m)
+    .replace(/&#x([0-9a-f]+);/gi, (m, h) => znak(parseInt(h, 16)) ?? m)
     .replace(/&nbsp;/gi, ' ')
-    .replace(/&amp;/gi, '&')
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
     .replace(/&quot;/gi, '"')
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)));
+    .replace(/&amp;/gi, '&');
 
-const strip = (html) =>
+/**
+ * Wycięcie tego, co nie jest tekstem strony: skrypty, style, `noscript`,
+ * komentarze. Idzie PRZED liczeniem `<main>` — napis `'<main>'` w skrypcie
+ * to nie obszar treści (ta sama lekcja, co u bramki linków).
+ */
+const bezNieTekstu = (html) =>
   html
+    .replace(/<!--[\s\S]*?-->/g, ' ')
     .replace(/<script\b[\s\S]*?<\/script\s*>/gi, ' ')
     .replace(/<style\b[\s\S]*?<\/style\s*>/gi, ' ')
-    .replace(/<noscript\b[\s\S]*?<\/noscript\s*>/gi, ' ')
-    .replace(/<!--[\s\S]*?-->/g, ' ')
-    .replace(/<[^>]+>/g, ' ');
+    .replace(/<noscript\b[\s\S]*?<\/noscript\s*>/gi, ' ');
+
+/**
+ * Znaczniki zdjęte z uwzględnieniem cudzysłowów: `title="a>b"` to jeden
+ * znacznik, a nie znacznik i tekst `b">` — naiwne `<[^>]+>` zawyżałoby liczbę
+ * (znalezione przy osądzaniu sędziego; anatomia miała tę samą naiwność,
+ * u konkurentów `>` w atrybucie jest rzadkością, u nas ma nie być wcale).
+ */
+const strip = (html) => html.replace(/<\/?[a-zA-Z](?:[^>"']|"[^"]*"|'[^']*')*>/g, ' ');
 
 /**
  * Tekst obszaru treści: wnętrze jedynego `<main>` po zdjęciu znaczników,
@@ -71,15 +99,15 @@ const strip = (html) =>
  * @returns {string}
  */
 export function tekstMain(html) {
-  const bezKomentarzy = html.replace(/<!--[\s\S]*?-->/g, ' ');
-  const otwarcia = bezKomentarzy.match(/<main(?=[\s>])/gi) ?? [];
+  const czysty = bezNieTekstu(html);
+  const otwarcia = czysty.match(/<main(?=[\s>])/gi) ?? [];
   if (otwarcia.length !== 1) {
     throw new Error(
       `znaczników <main> jest ${otwarcia.length}, a obszar treści musi być dokładnie jeden — ` +
         'bramka nie zgaduje, który z nich mierzyć.'
     );
   }
-  const m = bezKomentarzy.match(/<main(?=[\s>])[^>]*>([\s\S]*?)<\/main\s*>/i);
+  const m = czysty.match(/<main(?=[\s>])(?:[^>"']|"[^"]*"|'[^']*')*>([\s\S]*?)<\/main\s*>/i);
   if (!m) throw new Error('znacznik <main> otwarty, ale nie zamknięty — obszar treści bez końca.');
   return unesc(strip(m[1])).replace(/\s+/g, ' ').trim();
 }

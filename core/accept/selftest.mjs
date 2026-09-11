@@ -407,6 +407,12 @@ if (existsSync(baseline)) {
   check('коридор: <main> в комментарии не считается', 1, licz('<!-- <main>x</main> --><main>y</main>'), 'комментарии вырезаются до подсчёта знаков main');
   check('коридор: <mainx> не main', 1, licz('<mainx>zz</mainx><main>y</main>'), 'граница имени тега — пробел или `>`');
   check('коридор: MAIN верхним регистром', 2, licz('<MAIN class="a">ab</MAIN>'), 'регистр имени тега не важен');
+  check('коридор: <main> в строке скрипта — не второй main', 2, licz(m('<script>el.innerHTML = \x27<main>x</main>\x27;</script><p>ab</p>')), 'скрипт вырезается до счёта main — судью судили: раньше это был ложный отказ «jest 2»');
+  check('коридор: > в значении атрибута не рвёт тег', 2, licz(m('<a title="a>b" href="/x/">ab</a>')), 'тег читается с учётом кавычек — наивный `<[^>]+>` считал бы `b">` текстом (судью судили)');
+  check('коридор: &amp;lt; — четыре знака, не один', 4, licz(m('<p>&amp;lt;</p>')), '`&amp;` раскрывается последним: автор написал `&lt;` буквально (судью судили)');
+  check('коридор: сущность вне Юникода — не стек', 11, licz(m('<p>&#99999999;</p>')), '`String.fromCodePoint` бросил бы RangeError — сущность остаётся напечатанной как есть (судью судили)');
+  check('коридор: main без закрытия — отказ', 'отказ: nie zamknięty', (() => { try { tekstMain('<main>abc'); return 'прошло'; } catch (e) { return e.message.includes('nie zamknięty') ? 'отказ: nie zamknięty' : 'иной сбой'; } })(), 'открытый без закрытого — область без конца, мерить нечего');
+  check('коридор: скрипт внутри main вырезан', 2, licz(m('<p>ab</p><script>document.title="dużo"</script>')), 'скрипт ленты и шкалы стоит внутри main — его текст не знаки');
   check('коридор: форма пары', 'null,null,brak,parą,całkowitymi,dodatnia,większa', [wadaKorytarza(null), wadaKorytarza([1, 2]), wadaKorytarza(undefined), wadaKorytarza([1]), wadaKorytarza(['1', 2]), wadaKorytarza([0, 2]), wadaKorytarza([3, 2])].map((w) => (w === null ? 'null' : w.match(/brak|parą|całkowitymi|dodatnia|większa/)[0])).join(','), 'null и пара — годятся; нет поля, не пара, не целые, ноль, перевёрнута — нет');
   const html100 = m(`<p>${'a'.repeat(100)}</p>`);
   const wyrok = (k) => ocenKorytarz(html100, k).wyrok;

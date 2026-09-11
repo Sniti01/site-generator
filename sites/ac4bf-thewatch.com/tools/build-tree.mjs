@@ -53,6 +53,8 @@ const doc = JSON.parse(readFileSync(docPath, 'utf8'));
 const rulesS3 = existsSync(rulesS3Path) ? JSON.parse(readFileSync(rulesS3Path, 'utf8')) : null;
 const anatomy = existsSync(anatomyPath) ? JSON.parse(readFileSync(anatomyPath, 'utf8')) : null;
 const anatomyByUrl = new Map((anatomy?.['страницы'] ?? []).map((p) => [p.url, p]));
+// Именованные `corridor: null` существующей структуры (П43) переживают пересборку.
+const existingCorridor = new Map((doc.pages ?? []).map((p) => [p.url, p.corridor]));
 const data = readClustering(join(root, doc.site.semantics));
 
 const pages = decl['страницы'];
@@ -317,7 +319,12 @@ const built = pages.map((p) => {
       })),
     ]),
     wave: p.wave,
-    status: p.status ?? 'planned',
+    // Коридор длины (П43) — число из анатомии S3 (`план.коридор`), в контракт.
+    // Страница без анатомии получает `null`; `null` у страницы с анатомией —
+    // именованное решение в `DECISIONS.md`, и инструмент его НЕ перепишет:
+    // существующий `null` в structure.json сохраняется. Поля `status` тут нет
+    // с 2026-09-11 — его никто не вёл, состояние выводит машина из наличия текста.
+    corridor: existingCorridor.get(p.url) === null ? null : (anatomyByUrl.get(p.url)?.['план']?.['коридор'] ?? null),
     volume: list.reduce((s, k) => s + k.google, 0),
   };
   if (p.owner) page.owner = true;

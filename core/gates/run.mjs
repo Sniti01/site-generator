@@ -7,9 +7,10 @@
 // (DECISIONS.md, wpis o przeprowadzce bramek).
 //
 // Nowa bramka ŹRÓDEŁ dochodzi tutaj, do listy — nie do package.json każdej
-// witryny. Bramki WYNIKU (czytają dist/: after-build, anchors, links) to
-// integracje Astro na haku astro:build:done, podłączane w astro.config.mjs
-// witryny — bo tylko tam jest dist. Pełna lista siedmiu — docs/11_PRIEMKA.md.
+// witryny. Bramki WYNIKU (czytają dist/: after-build, anchors, links,
+// corridor) to integracje Astro na haku astro:build:done, podłączane
+// w astro.config.mjs witryny — bo tylko tam jest dist. Pełna lista ośmiu —
+// docs/11_PRIEMKA.md.
 
 import { resolve } from 'node:path';
 import checkAssets from './check-assets.mjs';

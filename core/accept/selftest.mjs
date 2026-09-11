@@ -30,6 +30,7 @@ import { встроенные } from './build-css.mjs';
 import { policzH1 } from '../gates/after-build.mjs';
 import { ocenKotwice, ocenStrony } from '../gates/anchors.mjs';
 import { klasyfikujHref, ocenLinki, ocenStronyLinki } from '../gates/links.mjs';
+import { tekstMain, znakiBezSpacji, wadaKorytarza, ocenKorytarz, ocenStronyKorytarz, adresStrony } from '../gates/corridor.mjs';
 import { сравнитьГеометрию, счётГеометрии } from './frames.mjs';
 
 const site = process.argv[2];
@@ -383,6 +384,48 @@ if (existsSync(baseline)) {
   check('ссылки: пустая структура — отказ и без ссылок на странице', 'отказ: bez adresów', (() => { try { ocenStronyLinki([{ pathname: '/', html: '<p>x</p>' }], new Set(), site); return 'прошло'; } catch (e) { return e.message.includes('Struktura bez adresów') ? 'отказ: bez adresów' : 'иной сбой'; } })(), 'сторож пустой структуры срабатывает сам, а не через «spoza struktury» — находка проверки (мутационная проба)');
   check('ссылки: счёт ссылок', '2/3', (() => { const r = ocenStronyLinki([{ pathname: '/', html: '<a href="/poradniki/">a</a><a href="/">b</a><a href="https://x.y/">c</a>' }, { pathname: '/poradniki/', html: '<a href="/assassins-creed-1/">d</a>' }], drzewo, site); return r.stron + '/' + r.linkow; })(), 'две страницы, три внутренних ссылки; чужая не считается');
   check('ссылки: отказ называет страницу, адрес и причину', true, (() => { try { ocenStronyLinki([{ pathname: '/gra/', html: '<a href="/widmo/">x</a>' }], drzewo, site); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('/widmo/') && e.message.includes('spoza struktury'); } })(), 'страница, адрес и причина — все в сообщении');
+}
+
+/* — гейт коридора длины: `core/gates/corridor.mjs` (П43) —
+   Число в контракте (`corridor` структуры), мера — та же линейка, что
+   у анатомии конкурентов: текст единственного `<main>`, теги сняты, скрипт,
+   стиль, noscript и комментарии вырезаны, сущности раскрыты, пробелы убраны.
+   Батарея названа до доверия: границы (min, max, на единицу мимо), `null`,
+   нет поля, плохая пара, ноль и два `<main>`, страница вне структуры,
+   ноль страниц, отказ называет страницу, число и коридор. Выключателя нет —
+   и в батарее его тоже нет. */
+{
+  const m = (wnetrze) => `<html><body><header>szapka <a href="/">x</a></header><main id="tresc">${wnetrze}</main><footer>stopka</footer></body></html>`;
+  const licz = (html) => znakiBezSpacji(tekstMain(html));
+  check('коридор: считает только main', 5, licz(m('<h1>ab cd</h1><p>e</p>')), 'шапка и подвал не считаются; пробелы сняты');
+  check('коридор: теги и переносы не знаки', 6, licz(m('<p>ab\n  cd</p>\n<ul><li>e</li><li>f</li></ul>')), 'перенос и отступ — пробел, пробел не знак');
+  check('коридор: сущности раскрыты', 5, licz(m('<p>a&amp;b&nbsp;c&#8217;</p>')), '`a&bc’` — пять: `&amp;` один знак, `&nbsp;` пробел и снят, `&#8217;` апостроф');
+  check('коридор: скрипт, стиль, noscript, комментарий — не текст', 2, licz(m('<script>const a="dużo tekstu";</script><style>.a{}</style><noscript>tekst</noscript><!-- komentarz --><p>ab</p>')), 'как у анатомии: вырезаются до счёта');
+  check('коридор: текст ссылок и подписей считается', 8, licz(m('<a href="/x/">abc</a><figcaption>de fgh</figcaption>')), 'та же линейка, что у конкурентов — их ссылки тоже считались');
+  check('коридор: нет main — отказ', 'отказ: 0', (() => { try { tekstMain('<body><p>x</p></body>'); return 'прошло'; } catch (e) { return e.message.includes('jest 0') ? 'отказ: 0' : 'иной сбой'; } })(), 'страница без области содержания — не измерима');
+  check('коридор: два main — отказ', 'отказ: 2', (() => { try { tekstMain('<main>a</main><main>b</main>'); return 'прошло'; } catch (e) { return e.message.includes('jest 2') ? 'отказ: 2' : 'иной сбой'; } })(), 'две области — не угадываем, какую мерить');
+  check('коридор: <main> в комментарии не считается', 1, licz('<!-- <main>x</main> --><main>y</main>'), 'комментарии вырезаются до подсчёта знаков main');
+  check('коридор: <mainx> не main', 1, licz('<mainx>zz</mainx><main>y</main>'), 'граница имени тега — пробел или `>`');
+  check('коридор: MAIN верхним регистром', 2, licz('<MAIN class="a">ab</MAIN>'), 'регистр имени тега не важен');
+  check('коридор: форма пары', 'null,null,brak,parą,całkowitymi,dodatnia,większa', [wadaKorytarza(null), wadaKorytarza([1, 2]), wadaKorytarza(undefined), wadaKorytarza([1]), wadaKorytarza(['1', 2]), wadaKorytarza([0, 2]), wadaKorytarza([3, 2])].map((w) => (w === null ? 'null' : w.match(/brak|parą|całkowitymi|dodatnia|większa/)[0])).join(','), 'null и пара — годятся; нет поля, не пара, не целые, ноль, перевёрнута — нет');
+  const html100 = m(`<p>${'a'.repeat(100)}</p>`);
+  const wyrok = (k) => ocenKorytarz(html100, k).wyrok;
+  check('коридор: внутри', 'w korytarzu', wyrok([50, 150]), '100 в 50–150');
+  check('коридор: ровно min', 'w korytarzu', wyrok([100, 150]), 'граница включительно');
+  check('коридор: ровно max', 'w korytarzu', wyrok([50, 100]), 'граница включительно');
+  check('коридор: на единицу короче', 'za krótko', wyrok([101, 150]), '100 < 101');
+  check('коридор: на единицу длиннее', 'za długo', wyrok([50, 99]), '100 > 99');
+  check('коридор: null — без вердикта, с числом', 'bez korytarza:100', (() => { const o = ocenKorytarz(html100, null); return `${o.wyrok}:${o.znaki}`; })(), 'число печатается в журнал — строка доклада');
+  check('коридор: нет поля — зла умова', 'zła umowa', wyrok(undefined), 'контракт без числа — отказ, не пропуск');
+  const struktura = new Map([['/', { corridor: null }], ['/gra/', { corridor: [50, 150] }], ['/za-krotka/', { corridor: [200, 300] }], ['/bez-pola/', {}]]);
+  check('коридор: ноль страниц — отказ', 'отказ: zero stron', (() => { try { ocenStronyKorytarz([], struktura); return 'прошло'; } catch (e) { return e.message.includes('zero stron') ? 'отказ: zero stron' : 'иной сбой'; } })(), 'правда о пустом множестве — не правда о сайте');
+  check('коридор: пустая структура — отказ', 'отказ: bez adresów', (() => { try { ocenStronyKorytarz([{ pathname: '/', html: html100 }], new Map()); return 'прошло'; } catch (e) { return e.message.includes('bez adresów') ? 'отказ: bez adresów' : 'иной сбой'; } })(), 'сторож пустой структуры срабатывает сам');
+  check('коридор: адрес из pathname хука', '/,/gra/,/gra/,/gra/,/a/b/', ['', 'gra/', '/gra/', 'gra', '/a/b'].map(adresStrony).join(','), 'хук даёт `gra/` без косой спереди и `` для главной — находка первой сборки 2026-09-11, батарея до неё знала только `/gra/`');
+  check('коридор: счёт — главная с пустым pathname, страница как из хука', '2/1/1', (() => { const r = ocenStronyKorytarz([{ pathname: '', html: html100 }, { pathname: 'gra/', html: html100 }], struktura); return `${r.stron}/${r.wKorytarzu.length}/${r.bezKorytarza.length}`; })(), 'форма хука: `` и `gra/` — сверяются как `/` и `/gra/`');
+  check('коридор: страница вне структуры — отказ', true, (() => { try { ocenStronyKorytarz([{ pathname: 'widmo/', html: html100 }], struktura); return false; } catch (e) { return e.message.includes('/widmo/') && e.message.includes('spoza umowy'); } })(), 'сторож результата не полагается на getPage');
+  check('коридор: отказ называет страницу, число и коридор', true, (() => { try { ocenStronyKorytarz([{ pathname: '/za-krotka/', html: html100 }], struktura); return false; } catch (e) { return e.message.includes('/za-krotka/') && e.message.includes('100 znaków') && e.message.includes('200–300') && e.message.includes('za krótko'); } })(), 'всё, что нужно для решения, — в сообщении');
+  check('коридор: все плохие страницы в одном отказе', true, (() => { try { ocenStronyKorytarz([{ pathname: '/za-krotka/', html: html100 }, { pathname: '/bez-pola/', html: html100 }, { pathname: '/gra/', html: '<p>bez main</p>' }], struktura); return false; } catch (e) { return e.message.includes('3 z 3') && e.message.includes('/za-krotka/') && e.message.includes('/bez-pola/') && e.message.includes('/gra/'); } })(), 'первая находка не заслоняет остальные внутри гейта');
+  check('коридор: отказ говорит, что менять', true, (() => { try { ocenStronyKorytarz([{ pathname: '/za-krotka/', html: html100 }], struktura); return false; } catch (e) { return e.message.includes('structure.json') && e.message.includes('Nie tę bramkę'); } })(), 'предохранитель П43 — в тексте отказа');
 }
 
 /* — сверка геометрии: `core/accept/frames.mjs` (П39, пункт 14) —

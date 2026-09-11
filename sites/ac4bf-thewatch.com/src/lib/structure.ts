@@ -37,7 +37,14 @@ export interface StructurePage {
     evidence?: string;
   }>;
   wave: number;
-  status: string;
+  /**
+   * Korytarz długości — znaki bez spacji w `<main>` zbudowanej strony,
+   * `[min, max]` z anatomii S3/S4 albo `null` z nazwanej decyzji (П43).
+   * Pilnuje bramka wyniku `core/gates/corridor.mjs`. Pola `status` tu nie ma
+   * od 2026-09-11: nikt go nie prowadził, stan strony wynika z istnienia
+   * pliku treści i sborki, nie z ręcznego napisu.
+   */
+  corridor: [number, number] | null;
   volume: number;
   owner: boolean;
 }

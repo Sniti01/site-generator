@@ -49,10 +49,11 @@
 // `core/accept/selftest.mjs`.
 //
 // CZEGO TA BRAMKA NIE ROBI: nie sprawdza, czy strona docelowa jest ZBUDOWANA —
-// o tym mówi lista `pages` haka i `dist/`, nie struktura (pole `status` stoi
-// dziś u wszystkich na `planned` i nikt go nie prowadzi); nie czyta `src`
-// ani `srcset`; nie ocenia, czy link prowadzi TAM, gdzie powinien. Trzy bramki
-// wyniku rzucają po kolei — pierwsza odmowa zasłania dwie następne; przyjęte.
+// o tym mówi lista `pages` haka i `dist/`, nie struktura (pola `status`
+// w umowie nie ma od 2026-09-11, П43: nikt go nie prowadził); nie czyta `src`
+// ani `srcset`; nie ocenia, czy link prowadzi TAM, gdzie powinien. Cztery bramki
+// wyniku (`after-build`, `anchors`, `links`, `corridor`) rzucają po kolei —
+// pierwsza odmowa zasłania następne; przyjęte.
 
 import { existsSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';

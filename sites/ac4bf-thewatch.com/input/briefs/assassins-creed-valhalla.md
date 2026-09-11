@@ -34,7 +34,7 @@ korpusu. Bez jednej frazy konkurenta — reguła korpusu (backlog, punkt 1).*
 ## Plan treści (anatomia S3, korpus klastra)
 
 - dokumentów 13 z 11 hostów, koszyk **high**
-- **korytarz znaków bez spacji: 3425–4633** (mediana 4029)
+- **korytarz znaków bez spacji (umowa, pole `corridor`): 3425–4633** — z anatomii: 3425–4633, mediana 4029
 - nagłówków: h2 mediana 4, h3 mediana 1
 
 | Temat (nasz słownik) | dokumentów | udział | werdykt |
@@ -364,6 +364,9 @@ albo usunąć (П42). Pliki: `input/corpus/<file>` (gzip).*
 3. Samo-oznaczenie «możliwie błędne» w opublikowanym tekście — niedopuszczalne.
 4. Adresy w treści — tylko od korzenia i tylko ze struktury; bramka `links`
    przerywa budowanie na innych.
-5. Długość — w korytarzu wyżej; dziś to wiersz raportu, nie bramka (decyzja
-   właściciela w toku).
+5. Długość — w korytarzu z umowy (pole `corridor` w structure.json); bramka
+   wyniku `corridor` mierzy znaki bez spacji w `<main>` zbudowanej strony
+   i przerywa budowanie poza parą (П43). Bezpiecznik: tekstu nie dopycha się
+   wodą ani nie tnie — zmienia się korytarz, nazwaną decyzją z przyczyną
+   w raporcie paczki. `null` w umowie — liczba do raportu, bez wyroku.
 6. Podpis: «Redakcja · Bractwo», data — dzień budowania strony.

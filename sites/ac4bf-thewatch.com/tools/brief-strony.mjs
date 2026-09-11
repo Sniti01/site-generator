@@ -49,6 +49,9 @@ const byUrl = new Map(structure.pages.map((p) => [p.url, p]));
 
 /** Slot artu strony — ostatni segment adresu (tak nazywa go `art` w treści i kredyty). */
 const slotOf = (url) => url.replace(/\/$/, '').split('/').pop() || 'hero';
+/** Korytarz z UMOWY (П43) — ten, który bramka wyniku naprawdę egzekwuje; anatomia jest tylko pochodzeniem liczby. */
+const korytarz = (page) =>
+  Array.isArray(page.corridor) ? `${page.corridor[0]}–${page.corridor[1]}` : 'null — bez wyroku, liczba do raportu (decyzja nazwana w DECISIONS.md)';
 /**
  * Pięć gier epok głównej mają art pod kluczem EPOKI, nie strony — tak drukuje
  * je `/assassins-creed-4-black-flag/` (`art: karaiby`). Mapa ta sama, co
@@ -112,7 +115,7 @@ ${blocks.join('\n')}
 ## Plan treści (anatomia S3, korpus klastra)
 
 ${an ? `- dokumentów ${an.документов} z ${an.хостов} hostów, koszyk **${an.корзина}**
-- **korytarz znaków bez spacji: ${an.план.коридор[0]}–${an.план.коридор[1]}** (mediana ${an.план.медиана_знаков}${an.план.ориентир ? ', orientacyjny — własnych dokumentów mniej niż cztery' : ''})
+- **korytarz znaków bez spacji (umowa, pole \`corridor\`): ${korytarz(page)}** — z anatomii: ${an.план.коридор[0]}–${an.план.коридор[1]}, mediana ${an.план.медиана_знаков}${an.план.ориентир ? ', orientacyjna — własnych dokumentów mniej niż cztery' : ''}
 - nagłówków: h2 mediana ${an.план.h2_медиана}, h3 mediana ${an.план.h3_медиана}
 
 | Temat (nasz słownik) | dokumentów | udział | werdykt |
@@ -140,8 +143,11 @@ ${dokumenty.map((d) => `- ${d.host} — ${d.url}`).join('\n') || '- —'}
 3. Samo-oznaczenie «możliwie błędne» w opublikowanym tekście — niedopuszczalne.
 4. Adresy w treści — tylko od korzenia i tylko ze struktury; bramka \`links\`
    przerywa budowanie na innych.
-5. Długość — w korytarzu wyżej; dziś to wiersz raportu, nie bramka (decyzja
-   właściciela w toku).
+5. Długość — w korytarzu z umowy (pole \`corridor\` w structure.json); bramka
+   wyniku \`corridor\` mierzy znaki bez spacji w \`<main>\` zbudowanej strony
+   i przerywa budowanie poza parą (П43). Bezpiecznik: tekstu nie dopycha się
+   wodą ani nie tnie — zmienia się korytarz, nazwaną decyzją z przyczyną
+   w raporcie paczki. \`null\` w umowie — liczba do raportu, bez wyroku.
 6. Podpis: «Redakcja · Bractwo», data — dzień budowania strony.
 `;
 }

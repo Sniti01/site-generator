@@ -30,6 +30,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, resolve } from 'node:path';
+import { wadaKorytarza } from './corridor.mjs';
 
 const coreRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
@@ -113,7 +114,10 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
 
     for (const [field, spec] of Object.entries(pageSchema)) {
       const value = page[field];
-      const missing = value === undefined || (spec['тип'] !== 'строка | null' && value === null);
+      // `null` wolno tylko polom, których typ w schemacie kończy się na `| null`
+      // (`cluster`, `parent`, `corridor`) — u pozostałych `null` to brak.
+      const nullOk = /\|\s*null$/.test(spec['тип']);
+      const missing = value === undefined || (!nullOk && value === null);
       if (spec['обязательно'] && missing) {
         err(`${where}: brak obowiązkowego pola \`${field}\``);
         continue;
@@ -122,6 +126,14 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
       if (spec['значения'] && !spec['значения'].includes(value)) {
         err(`${where}: \`${field}\` = ${JSON.stringify(value)}, a lista zamknięta to ${spec['значения'].join(', ')}`);
       }
+    }
+
+    // Korytarz długości (П43): para `[min, max]` albo `null`. Kształt sprawdza
+    // ta sama funkcja, którą bramka wyniku `corridor.mjs` czyta pole przy
+    // budowaniu — zła para ma upaść tu, przed `astro build`, a nie po nim.
+    if (page.corridor !== undefined) {
+      const wada = wadaKorytarza(page.corridor);
+      if (wada) err(`${where}: ${wada}`);
     }
 
     if (typeof page.url === 'string') {

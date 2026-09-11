@@ -36,7 +36,7 @@
         "related": ["/beta/"],
         "blocks": [{ "block": "hero-key-art", "source": "type-default", "confidence": "medium" }],
         "wave": 1,
-        "status": "planned"
+        "corridor": [100, 200]
       },
       {
         "url": "/beta/",
@@ -50,7 +50,7 @@
         "related": ["/"],
         "blocks": [{ "block": "story-row", "source": "manual", "confidence": "high" }],
         "wave": 1,
-        "status": "planned"
+        "corridor": [100, 200]
       }
     ],
     "exclusions": [{ "query": "beta cennik", "reason": "intencja zakupowa" }],
@@ -77,7 +77,7 @@
         "pages.2": {
           "url": "/beta/dziecko/", "type": "topic", "h1": "Dziecko", "title": "Dziecko — strona",
           "description": "Opis strony potomnej.", "cluster": null, "keywords": [], "parent": "/",
-          "blocks": [], "wave": 1, "status": "planned", "owner": true
+          "blocks": [], "wave": 1, "corridor": null, "owner": true
         }
       },
       "ждём": "okruszki"
@@ -88,12 +88,19 @@
         "pages.2": {
           "url": "/a/b/c/", "type": "topic", "h1": "Głęboko", "title": "Głęboko — strona",
           "description": "Opis strony zbyt głębokiej.", "cluster": null, "keywords": [], "parent": "/",
-          "blocks": [], "wave": 1, "status": "planned", "owner": true
+          "blocks": [], "wave": 1, "corridor": null, "owner": true
         }
       },
       "ждём": "MAX_DEPTH"
     },
     { "имя": "волна 1 под волной 2", "правка": { "pages.0.wave": 2 }, "ждём": "fali 1, a jej rodzic" },
+
+    { "имя": "нет коридора", "правка": { "pages.1.corridor": "__usuń__" }, "ждём": "brak obowiązkowego pola `corridor`" },
+    { "имя": "коридор null — можно", "правка": { "pages.1.corridor": null }, "ждём": null },
+    { "имя": "коридор не пара", "правка": { "pages.1.corridor": [100] }, "ждём": "parą `[min, max]`" },
+    { "имя": "коридор перевёрнут", "правка": { "pages.1.corridor": [200, 100] }, "ждём": "większa od górnej" },
+    { "имя": "коридор не целые", "правка": { "pages.1.corridor": ["100", 200] }, "ждём": "liczbami całkowitymi" },
+    { "имя": "коридор с нулём", "правка": { "pages.1.corridor": [0, 200] }, "ждём": "dodatnia" },
 
     { "имя": "запрос учтён дважды", "правка": { "exclusions.1": { "query": "gra beta", "reason": "próba" } }, "ждём": "rozliczone 2 razy" },
     { "имя": "запрос потерян", "правка": { "no_page.1": "__usuń__" }, "ждём": "nierozliczonych" },
@@ -114,7 +121,7 @@
           "description": "Opis strony o grze Gamma.", "cluster": "gamma",
           "keywords": ["gra gamma", "gamma sklep"], "parent": "/",
           "blocks": [{ "block": "card-rail", "source": "manual", "confidence": "high" }],
-          "wave": 1, "status": "planned"
+          "wave": 1, "corridor": null
         },
         "no_page": []
       },
@@ -126,7 +133,7 @@
         "pages.2": {
           "url": "/beta-dwa/", "type": "game", "h1": "Beta jeszcze raz", "title": "Beta — druga strona",
           "description": "Opis drugiej strony o Becie.", "cluster": "beta", "keywords": [],
-          "parent": "/", "blocks": [], "wave": 1, "status": "planned", "owner": true
+          "parent": "/", "blocks": [], "wave": 1, "corridor": null, "owner": true
         }
       },
       "ждём": "tym samym klastrze"
@@ -137,7 +144,7 @@
         "pages.2": {
           "url": "/prywatnosc/", "type": "legal", "h1": "Prywatność", "title": "Polityka prywatności — Alfa",
           "description": "Opis strony służbowej, która popytu nie ma.", "cluster": null, "keywords": [],
-          "parent": "/", "blocks": [], "wave": 1, "status": "planned"
+          "parent": "/", "blocks": [], "wave": 1, "corridor": null
         }
       },
       "ждём": null
@@ -148,7 +155,7 @@
         "pages.2": {
           "url": "/gamma/", "type": "topic", "h1": "Gamma bez klastra", "title": "Gamma — strona bez klastra",
           "description": "Opis strony, której klaster się należy.", "cluster": null, "keywords": ["gra gamma"],
-          "parent": "/", "blocks": [], "wave": 1, "status": "planned"
+          "parent": "/", "blocks": [], "wave": 1, "corridor": null
         },
         "no_page": []
       },

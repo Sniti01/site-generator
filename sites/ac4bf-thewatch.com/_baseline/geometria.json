@@ -7,31 +7,35 @@
    "clientHeight": 844,
    "dpr": 1
   },
-  "высота": 5788,
+  "высота": 13872,
   "слои": {
-   "co-jest-w-grze": {
-    "offsetTop": 1433.55,
-    "высота": 944.52
+   "epoka-jerozolima": {
+    "offsetTop": 1270.31,
+    "высота": 972.02
    },
-   "toc-tytul": {
-    "offsetTop": 1200.78,
+   "epoka-wlochy": {
+    "offsetTop": 2242.33,
+    "высота": 1191.2
+   },
+   "epoka-londyn": {
+    "offsetTop": 6618.28,
+    "высота": 793.95
+   },
+   "swieze-tytul": {
+    "offsetTop": 5995.72,
+    "высота": 32.58
+   },
+   "numeracja-tytul": {
+    "offsetTop": 7448.23,
     "высота": 32.58
    },
    "galeria-tytul": {
-    "offsetTop": 2414.06,
+    "offsetTop": 8783.88,
+    "высота": 65.16
+   },
+   "katalog-tytul": {
+    "offsetTop": 10378.05,
     "высота": 32.58
-   },
-   "werdykt-tytul": {
-    "offsetTop": 3115.88,
-    "высота": 14.39
-   },
-   "powiazane-tytul": {
-    "offsetTop": 3445.52,
-    "высота": 32.58
-   },
-   "cta-tytul": {
-    "offsetTop": 4122.47,
-    "высота": 97.73
    }
   }
  },
@@ -43,36 +47,40 @@
    "clientHeight": 900,
    "dpr": 1
   },
-  "высота": 4627,
+  "высота": 9914,
   "слои": {
-   "co-jest-w-grze": {
-    "offsetTop": 1336.19,
-    "высота": 770.77
+   "epoka-jerozolima": {
+    "offsetTop": 1031.59,
+    "высота": 725.3
    },
-   "toc-tytul": {
-    "offsetTop": 1057.84,
+   "epoka-wlochy": {
+    "offsetTop": 1756.89,
+    "высота": 871.92
+   },
+   "epoka-londyn": {
+    "offsetTop": 5550.67,
+    "высота": 642.58
+   },
+   "swieze-tytul": {
+    "offsetTop": 4852.13,
+    "высота": 50.16
+   },
+   "numeracja-tytul": {
+    "offsetTop": 6257.25,
     "высота": 50.16
    },
    "galeria-tytul": {
-    "offsetTop": 2170.95,
+    "offsetTop": 7346.66,
     "высота": 50.16
    },
-   "werdykt-tytul": {
-    "offsetTop": 2808,
-    "высота": 14.39
-   },
-   "powiazane-tytul": {
-    "offsetTop": 3155.02,
-    "высота": 50.16
-   },
-   "cta-tytul": {
-    "offsetTop": 3678.67,
+   "katalog-tytul": {
+    "offsetTop": 8083.55,
     "высота": 50.16
    }
   }
  },
  "почему_файл": "Геометрия эталона для сверки числом (П39, пункт 14; П41 — кадры блоков): условия съёмки, отступ кадров блоков, высота страницы и положение якорей (слои — центрируются К_ЯКОРЮ, заголовки блоков — К_ВЕРХУ) на каждом вьюпорте. Сверяется npm run accept:frames -- check. Обнуляется вместе с кадрами.",
- "страница": "/assassins-creed-4-black-flag/",
+ "страница": "/",
  "снято": "2026-09-11",
  "сборка": "c09844f",
  "драйвер": "Chrome headless по CDP, --hide-scrollbars, deviceScaleFactor 1; скрипты страницы — core/accept/frames.mjs; прогон 1 из четырёх согласных (главная) / из двух побайтово равных (игра)",

@@ -111,7 +111,7 @@
 
 ## Первой строкой, как велит П33
 
-**`npm run accept` — `80/80`, `exit=0`. `npm run gates` — `4/4`, `exit=0`.**
+**`npm run accept` — `83/83`, `exit=0` (на вершине закрытия; на старте события 63/63, после пункта 14 — 80/80). `npm run gates` — `4/4`, `exit=0`.**
 `npm run build` — `exit=0`, оба сторожа сборки зелёные:
 `h1: 2 strony, na każdej dokładnie jeden nagłówek` и
 `kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza`.
@@ -423,7 +423,7 @@ HTML равен с точностью до имени листа с хешем: 
 
 | Проверка | Результат |
 |---|---|
-| `npm run accept` | 80/80, `exit=0` |
+| `npm run accept` | 83/83, `exit=0` |
 | `npm run gates` | 4/4, `exit=0` |
 | `npm run build` | `exit=0`; `after-build` и `anchors` зелёные |
 | `astro check` | 0 ошибок, 0 предупреждений, 2 старые подсказки |

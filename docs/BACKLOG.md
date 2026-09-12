@@ -1705,6 +1705,14 @@ Odyssey, Valhalla, Mirage — эпохи нет вовсе. Карта игра 
 сайта (`site.ts`), решение о виде; до неё страницы пачки 2 красятся accent,
 как красились до сессии вида все страницы маршрута.
 
+**Закрывается инкрементально (П45, 2026-09-12):** поле `era` файла содержания
+(необязательное, из пяти) — маршрут берёт его третьей ступенью после эпохи
+ряда и эпохи страницы по арту. Пачка 3: `discovery` → `wlochy` (Эцио, 1491);
+AC3, Origins, Mirage, Odyssey, Unity, Liberation, Chronicles, Dawn of Ragnarök —
+вне пяти, accent. Пачка 2 писалась до поля: кандидаты по спискам `guides`
+главной — bloodlines → jerozolima; brotherhood, revelations, ezio-auditore →
+wlochy; freedom-cry, rogue, pirates → karaiby — строкой, не правкой (объём).
+
 ---
 
 ## 38. Первая карточка ленты на маршруте стоит на x = 124 при колонке 132

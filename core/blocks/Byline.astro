@@ -54,12 +54,16 @@ const { author, date, dateLabel, role } = Astro.props;
     padding-top: var(--space-lg);
   }
 
+  /* `margin-block`, а не `margin`: горизонталь строки отдана `.container`
+     (`margin-inline: auto`), которого сокращённое `margin: 0` перекрывало —
+     строка стояла от левого края окна, а не в колонке (пункт 29, П44).
+     Вертикальный сброс `<p>` остаётся у блока, а не у preflight витрины. */
   .byline__line {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     gap: var(--space-2xs) var(--space-sm);
-    margin: 0;
+    margin-block: 0;
     color: var(--ink-muted);
   }
 

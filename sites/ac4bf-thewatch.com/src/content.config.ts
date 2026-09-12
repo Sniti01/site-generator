@@ -70,6 +70,10 @@ export const collections = {
                 title: z.string(),
                 kind: z.string().optional(),
                 place: z.string().optional(),
+                /** Klucz kadru (`game-art.json` albo `art-credits.json`) — trasa
+                 *  rozstrzyga go przez `mediaFor`, jak `GuideRail` na głównej.
+                 *  Bez klucza karta idzie bez miejsca na kadr (punkt 34, П44). */
+                art: z.string().optional(),
               })
             ),
           })

@@ -99,6 +99,22 @@ const tasmy = dane.cards ?? [];
 const tasmaDla = (role?: string) => tasmy.find((t) => (t.role ?? undefined) === role);
 
 /**
+ * Kadr karty — z klucza `art` przez `mediaFor`, tak jak `GuideRail` na głównej
+ * (punkt 34, П44). Do 2026-09-12 karty z pliku treści szły do rdzenia bez
+ * `media`, a rdzeń rysuje taką kartę bez miejsca na kadr (nie pustą ramką —
+ * to jego reguła). Klucz, którego rozstrzygacz nie zna, zostawia kartę bez
+ * kadru po cichu — ta sama ślepota, co u galerii; wiersz raportu, nie bramka.
+ * Palety karty (`modifier`) tu nie ma: reguły `.rail-sec__item--*` żyją
+ * w `GuideRail.astro` i do trasy nie docierają — patrz punkt 33.
+ */
+const kartyDla = (t: NonNullable<typeof dane.cards>[number]) =>
+  t.items.map((k) => {
+    if (!k.art) return k;
+    const m = mediaFor(k.art, k.title);
+    return { ...k, media: m.src ? { src: m.src, alt: m.alt, quality: m.quality, class: m.class } : undefined };
+  });
+
+/**
  * CZY STRONA MA CZYM WYPEŁNIĆ BLOK — po jednym predykacie na nazwę. Te same
  * predykaty stoją w warunkach druku niżej: lista i rozmieszczenie liczą się
  * z jednego źródła, więc nie mogą się rozejść.
@@ -333,7 +349,7 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
         const t = tasmaDla(b.role)!;
         return (
           <CardRail
-            cards={t.items}
+            cards={kartyDla(t)}
             title={t.title}
             titleId={b.role ? `dokad-${b.role}-tytul` : 'dokad-tytul'}
             lead={t.lead}

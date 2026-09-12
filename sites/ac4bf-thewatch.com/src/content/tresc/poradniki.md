@@ -16,6 +16,11 @@ secondary:
 # p.4: Code decyduje po wzorze przyjętych stron). Poradnik w drzewie jest
 # jeden, więc taśma zbiera strony, które prowadzą za rękę: jak zacząć, jak
 # zagrać legalnie za darmo, kim jest Ezio, gdzie naprawdę stały te miasta.
+# Kadry (punkt 34, П44): dwa naturalne — art Ezia (`wlochy`, materiał wydawcy,
+# jak karta Ezia w taśmie głównej) i mapa (`mapa-miejsc-historycznych`,
+# Commons); dwa umowne — poradnik dostaje `japonia` jak jego karta w taśmie
+# głównej (`site.ts` fresh), «za darmo» — Commons `foto-karaiby`, bo własnego
+# obrazu ta strona nie ma. Umowne — do oceny okiem właściciela.
 cards:
   - title: Poradniki i przewodniki
     lead: Cztery strony, które prowadzą za rękę — przez serię, przez sklepy, przez postać i przez mapę.
@@ -24,18 +29,22 @@ cards:
         title: Od której części zacząć — seria po kolei
         kind: Poradnik
         place: Cała seria
+        art: japonia
       - href: /assassins-creed-za-darmo/
         title: Jak zagrać w Assassin’s Creed za darmo i legalnie
         kind: Poradnik
         place: Sklepy i subskrypcje
+        art: foto-karaiby
       - href: /ezio-auditore/
         title: Ezio Auditore — postać, historia i miejsce w serii
         kind: Tekst
         place: Florencja, Rzym, Konstantynopol
+        art: wlochy
       - href: /mapa-miejsc-historycznych/
         title: Mapa miejsc i postaci historycznych w Assassin’s Creed
         kind: Mapa
         place: Od Jerozolimy do Japonii
+        art: mapa-miejsc-historycznych
 # Kolumny — odpowiedź na pytanie z h1. Cztery grupy według tego, czego
 # gracz szuka; w każdej odsłony w kolejności, w jakiej warto po nie sięgać.
 # Werdykt słowami, bez punktacji (П28). Adresy — tylko z drzewa.

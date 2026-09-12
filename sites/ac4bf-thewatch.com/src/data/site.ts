@@ -27,7 +27,11 @@ export const nav = [
   { label: 'Epoki', href: '/#zejscie' },
   { label: 'Poradniki', href: '/#katalog' },
   { label: 'Mapa miejsc', href: '/mapa-miejsc-historycznych/' },
-  { label: 'Rodowód serii', href: '/assassins-creed-rodowod/' },
+  // «Film Rodowód» od 2026-09-12 (П44, punkt 35): strona pod tym adresem jest
+  // o filmie Lineage, nie o rodowodzie serii — etykieta «Rodowód serii» obiecywała
+  // co innego. Stopka (SiteFooter.astro) niesie wciąż starą etykietę: lista П44
+  // zamknięta, wiersz w raporcie.
+  { label: 'Film Rodowód', href: '/assassins-creed-rodowod/' },
 ];
 
 export type EraId = 'jerozolima' | 'wlochy' | 'karaiby' | 'londyn' | 'japonia';

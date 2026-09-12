@@ -262,6 +262,40 @@ body {
   opacity: 0.9;
 }
 
+/* ПАЛИТРА ЭПОХ РЯДА — той же дорогой, что `.layer__year` выше (П44,
+   пункт 33, 2026-09-12). До этого дня пять правил стояли `:global` в
+   `EraLayer.astro`, а `:global` в `<style>` компонента даёт нескоупленное
+   правило только в CSS-чанке той страницы, где компонент напечатан, —
+   у главной. Страницы маршрута этот чанк не грузят, и `layer--karaiby`
+   у страницы игры не делал ничего: надтитул «2013» и дуотон красились
+   `--era` из `:root`, то есть `--accent`. Здесь правила видят все страницы;
+   модификатор ставит маршрут от эпохи ряда, затем страницы, без умолчания. */
+.layer--jerozolima {
+  --era: var(--era-jerozolima);
+  --era-text: var(--era-jerozolima-text);
+  --era-ink: var(--era-jerozolima-ink);
+}
+.layer--wlochy {
+  --era: var(--era-wlochy);
+  --era-text: var(--era-wlochy-text);
+  --era-ink: var(--era-wlochy-ink);
+}
+.layer--karaiby {
+  --era: var(--era-karaiby);
+  --era-text: var(--era-karaiby-text);
+  --era-ink: var(--era-karaiby-ink);
+}
+.layer--londyn {
+  --era: var(--era-londyn);
+  --era-text: var(--era-londyn-text);
+  --era-ink: var(--era-londyn-ink);
+}
+.layer--japonia {
+  --era: var(--era-japonia);
+  --era-text: var(--era-japonia-text);
+  --era-ink: var(--era-japonia-ink);
+}
+
 .t-wordmark {
   font-family: var(--font-display);
   font-size: 1.75rem;

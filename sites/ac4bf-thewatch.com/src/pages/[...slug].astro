@@ -16,7 +16,7 @@ import VerdictBox from '@factory/core/blocks/VerdictBox.astro';
 import { mediaFor } from '../data/media';
 import EraMedia from '../components/EraMedia.astro';
 import Icon from '../components/Icon.astro';
-import type { EraId } from '../data/site';
+import { stronaEpoki, type EraId } from '../data/site';
 
 /**
  * Jedna trasa dla całej treści fali 1. Adres bierze się z pola `url` we front
@@ -113,6 +113,24 @@ const kartyDla = (t: NonNullable<typeof dane.cards>[number]) =>
     const m = mediaFor(k.art, k.title);
     return { ...k, media: m.src ? { src: m.src, alt: m.alt, quality: m.quality, class: m.class } : undefined };
   });
+
+/**
+ * PALETA RZĘDU — od epoki RZĘDU, potem STRONY, BEZ domyślnej (punkt 33, П44,
+ * 2026-09-12). Do tego dnia stało tu `layer--${dane.art ?? 'karaiby'}`: od artu
+ * strony, z ukrytym wyborem Karaibów dla stron bez artu — a reguły `.layer--*`
+ * i tak do trasy nie docierały (żyły w `EraLayer.astro` głównej), więc każdy
+ * rząd trasy nosił `--accent` z `:root`. Teraz reguły są w `global.css`,
+ * a modyfikator dostaje tylko rząd, którego art (albo art strony) jest epoką
+ * ze słownika `stronaEpoki`; klucz spoza epok (slug gry z pachki 2, `foto-*`)
+ * palety nie daje — rząd zostaje w `--accent`, jak dotąd. Mapa gra → epoka
+ * dla pachki 2 — backlog.
+ */
+const epoki = new Set<string>(Object.keys(stronaEpoki));
+const epokaZ = (klucz?: string): EraId | undefined => (klucz && epoki.has(klucz) ? (klucz as EraId) : undefined);
+const paletaRzedu = (artRzedu?: string) => {
+  const epoka = epokaZ(artRzedu) ?? epokaZ(dane.art);
+  return epoka ? `layer--${epoka}` : undefined;
+};
 
 /**
  * CZY STRONA MA CZYM WYPEŁNIĆ BLOK — po jednym predykacie na nazwę. Te same
@@ -305,7 +323,7 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
         title={rzad.title}
         titleId={`${rzad.id}-tytul`}
         id={rzad.id}
-        modifier={`layer--${dane.art ?? 'karaiby'}`}
+        modifier={paletaRzedu(rzad.art)}
         flip={rzad.flip}
         band={rzad.band}
       >

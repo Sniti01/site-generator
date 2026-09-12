@@ -128,7 +128,9 @@ const kartyDla = (t: NonNullable<typeof dane.cards>[number]) =>
 const epoki = new Set<string>(Object.keys(stronaEpoki));
 const epokaZ = (klucz?: string): EraId | undefined => (klucz && epoki.has(klucz) ? (klucz as EraId) : undefined);
 const paletaRzedu = (artRzedu?: string) => {
-  const epoka = epokaZ(artRzedu) ?? epokaZ(dane.art);
+  // Trzeci stopień — pole `era` treści (П45): gra z artem po slugu, której
+  // epoka jest jedną z pięciu (Discovery → wlochy), dostaje paletę jawnie.
+  const epoka = epokaZ(artRzedu) ?? epokaZ(dane.art) ?? dane.era;
   return epoka ? `layer--${epoka}` : undefined;
 };
 

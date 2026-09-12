@@ -29,6 +29,13 @@ export const collections = {
       /** Klucz kadru w `game-art.json` — czym wypełnić miejsce `art`. */
       art: z.string().optional(),
 
+      /** Epoka strony spoza artu — paleta rzędów, gdy art jest slugiem gry
+       *  (П45, 2026-09-12; backlog 37 zamyka się stroną po stronie). Tylko
+       *  jedna z pięciu epok `stronaEpoki`; gra spoza pięciu pola nie ma
+       *  i zostaje w `--accent`. Trasa: epoka rzędu → epoka strony z artu →
+       *  to pole → bez domyślnej. */
+      era: z.enum(['jerozolima', 'wlochy', 'karaiby', 'londyn', 'japonia']).optional(),
+
       /* — hero-key-art — */
       lead: z.string(),
       primary: link,

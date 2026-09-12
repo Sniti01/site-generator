@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-revelations/
 art: assassins-creed-revelations
+era: wlochy
 lead: >-
   Zamknięcie trylogii Ezia: rok 1511, Konstantynopol, bohater
   po pięćdziesiątce i biblioteka, którą Altaïr zamknął w XIII wieku. Formuła

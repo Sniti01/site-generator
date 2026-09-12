@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-bloodlines/
 art: assassins-creed-bloodlines
+era: jerozolima
 lead: >-
   Bezpośrednia kontynuacja pierwszej części, zmieszczona na PlayStation
   Portable. Altaïr, już jako mistrz bractwa, płynie na Cypr za resztkami

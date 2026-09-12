@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-brotherhood/
 art: assassins-creed-brotherhood
+era: wlochy
 lead: >-
   Trzecia gra serii i drugi rozdział historii Ezia: ciąg dalszy zaczyna się
   tam, gdzie skończyła się dwójka, a potem przenosi wszystko do jednego

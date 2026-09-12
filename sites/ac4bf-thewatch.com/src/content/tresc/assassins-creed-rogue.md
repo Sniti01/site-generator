@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-rogue/
 art: assassins-creed-rogue
+era: karaiby
 lead: >-
   Siódma część głównej linii i jedyna, w której gracz stoi po stronie zakonu.
   Shay Cormac zaczyna jako niesforny rekrut asasynów, a kończy jako templariusz,

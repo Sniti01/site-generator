@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-4-black-flag/freedom-cry/
 art: freedom-cry
+era: karaiby
 lead: >-
   Adéwalé schodzi z pokładu Jackdawa i dostaje własną historię: piętnaście
   lat po Black Flag, na brzegu Saint-Domingue, bez okrętu i bez załogi.

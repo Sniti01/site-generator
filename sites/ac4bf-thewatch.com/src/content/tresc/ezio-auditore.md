@@ -1,5 +1,6 @@
 ---
 url: /ezio-auditore/
+era: wlochy
 # Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
 # kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
 lead: >-

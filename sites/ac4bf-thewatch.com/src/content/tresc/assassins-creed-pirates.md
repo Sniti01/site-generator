@@ -1,6 +1,7 @@
 ---
 url: /assassins-creed-pirates/
 art: assassins-creed-pirates
+era: karaiby
 lead: >-
   Pirates to nie kolejna część serii, tylko gra na telefon z grudnia 2013
   roku, która wzięła z Black Flag jedno: walkę okrętów. Alonzo Batilla nie

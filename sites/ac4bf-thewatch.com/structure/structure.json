@@ -1084,7 +1084,10 @@
     }
    ],
    "wave": 1,
-   "corridor": null,
+   "corridor": [
+    5403,
+    7311
+   ],
    "volume": 120300
   },
   {

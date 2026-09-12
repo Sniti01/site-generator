@@ -29,7 +29,11 @@ const groups = catalog.map((dzial) => ({
 }));
 ---
 
-<LinkColumns groups={groups} title="Stóg" label="Otwórz pełny katalog" href="/poradniki/">
+{/* `id="katalog"` jawnie, nie z domyślnej wartości rdzenia: od tej kotwicy
+    wisi skala zejścia (`DescentRail.astro` — mianownik = środek stogu,
+    П44 dop. 2026-09-12) i menu `/#katalog`. Zmiana domyślnego id w rdzeniu
+    nie ma prawa po cichu przestawić skali. */}
+<LinkColumns id="katalog" groups={groups} title="Stóg" label="Otwórz pełny katalog" href="/poradniki/">
   <Fragment slot="lead">
         Wylądowałeś. Cały katalog leży tutaj — ułożony według epok i części serii, a obok
         poradniki, postacie i miejsca.

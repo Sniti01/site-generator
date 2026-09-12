@@ -6,6 +6,19 @@ import { eras } from '../data/site';
  * w lata. Znacznik jedzie ze scrollem, aktywna epoka podświetla się swoim
  * kolorem — to ten sam token, którym maluje się jej sekcja.
  *
+ * MIANOWNIK SKALI — ŚRODEK STOGU, NIE WYSOKOŚĆ STRONY (П44 dopełnienie,
+ * 2026-09-12, wariant D). Do tego dnia znaczniki i romb dzieliły przez
+ * `scrollHeight − innerHeight`, więc każdy wzrost strony PONIŻEJ ostatniej
+ * epoki — atrybucje Commons i klasa licencji w stopce, rosnące z każdą
+ * paczką zdjęć — przesuwał wszystkie znaczniki i psuł osiem kadrów wzorca
+ * głównej (rejestr `_baseline/README.md`, wiersz 1; П43 «Разбор по п. 1»).
+ * Teraz 100 % = stóg (`#katalog`) w środku okna: podpis «stóg» na dole
+ * toru jest prawdziwy, a stopka i wezwanie leżą poza skalą — romb stoi
+ * tam na 100 %. Cena, nazwana i przyjęta: wszystko POWYŻEJ stogu (hero,
+ * podpis, wysokości warstw, taśma, sam stóg) nadal przesuwa znaczniki.
+ * Znacznik i romb dzielą przez ten sam mianownik, więc romb spotyka
+ * znacznik dokładnie wtedy, gdy warstwa stoi w środku okna — jak dotąd.
+ *
  * NA STRONACH GIER SKALI NIE MA WCALE — decyzja П35 w redakcji z 2026-09-10.
  * Wariant z jednym znacznikiem był zrobiony i odrzucony przy odbiorze okiem:
  * pionowa linijka przez całą stronę pod jedną metkę nie czyta się. Skala żyje
@@ -41,10 +54,17 @@ import { eras } from '../data/site';
   if (rail && ticks.length) {
     let queued = false;
 
+    // Mianownik: pozycja przewinięcia, przy której stóg stoi w środku okna
+    // (П44 dop.). Bez `#katalog` skala nie ma końca — mówi o tym głośno
+    // i stoi nieruchomo, zamiast po cichu wrócić do wysokości strony.
+    const stog = document.getElementById('katalog');
+    if (!stog) console.warn('DescentRail: brak #katalog — skala bez mianownika, znaczniki zostają na zapasie SSR.');
+    const zakres = () => (stog ? stog.offsetTop + stog.offsetHeight / 2 - window.innerHeight / 2 : 0);
+
     const draw = () => {
       queued = false;
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollable > 0 ? window.scrollY / scrollable : 0;
+      const s = zakres();
+      const progress = s > 0 ? Math.min(1, window.scrollY / s) : 0;
       rail.style.setProperty('--progress', `${(progress * 100).toFixed(2)}%`);
     };
 
@@ -58,15 +78,16 @@ import { eras } from '../data/site';
       { passive: true },
     );
     // Znaczniki lat muszą stać tam, gdzie naprawdę wypada środek warstwy.
-    // Wartość z danych to tylko fallback zanim skrypt wstanie.
+    // Wartość z danych (`depth` w `site.ts`) to tylko fallback zanim skrypt
+    // wstanie — liczona tym samym wzorem na geometrii 1440×900.
     const place = () => {
-      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-      if (scrollable <= 0) return;
+      const s = zakres();
+      if (s <= 0) return;
       for (const layer of layers) {
         const tick = ticks.find((node) => node.dataset.era === layer.dataset.eraSection);
         if (!tick) continue;
         const centre = layer.offsetTop + layer.offsetHeight / 2 - window.innerHeight / 2;
-        const at = Math.min(1, Math.max(0, centre / scrollable));
+        const at = Math.min(1, Math.max(0, centre / s));
         tick.style.setProperty('--at', `${(at * 100).toFixed(2)}%`);
       }
     };

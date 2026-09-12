@@ -73,7 +73,10 @@ export interface Era {
   hero: string;
   headline: string;
   body: string;
-  /** Wysokość na skali zejścia, w procentach: 0 = iglica, 100 = stóg. */
+  /** Wysokość na skali zejścia, w procentach: 0 = iglica, 100 = stóg (środek
+   *  bloku `#katalog` w środku okna — П44 dop., 2026-09-12). Zapas SSR zanim
+   *  wstanie skrypt `DescentRail`; liczony tym samym wzorem na geometrii
+   *  1440×900 sborki 2026-09-12: (środek warstwy − 450) / (środek stogu − 450). */
   depth: number;
   guides: Guide[];
 }
@@ -89,7 +92,7 @@ export const eras: Era[] = [
     hero: 'Altaïr Ibn-La’Ahad',
     headline: 'Trzecia krucjata',
     body: 'Jerozolima, Akka i Damaszek w czasie trzeciej krucjaty. Altaïr traci rangę mistrza i odzyskuje ją, likwidując dziewięć celów wskazanych przez Al Mualima. Stąd wzięło się wszystko, co seria robi do dziś: punkty widokowe, tłum jako osłona i ukryte ostrze.',
-    depth: 8,
+    depth: 12,
     // Cypr 1191, prosto po Jerozolimie: jedyna strona drzewa z tej epoki poza samą grą.
     guides: [{ href: '/assassins-creed-bloodlines/' }],
   },
@@ -103,7 +106,7 @@ export const eras: Era[] = [
     hero: 'Ezio Auditore da Firenze',
     headline: 'Renesans',
     body: 'Florencja, Wenecja, Forlì i San Gimignano. Syn bankiera zostaje asasynem w ciągu jednej nocy, a gra otwiera się na rzeczy, które seria potem powtarza przez dekadę: własna posiadłość, sześć grobowców, dwadzieścia glifów i prawda ukryta pod nimi.',
-    depth: 26,
+    depth: 22,
     guides: [
       { href: '/assassins-creed-brotherhood/' },
       { href: '/assassins-creed-revelations/' },
@@ -120,7 +123,7 @@ export const eras: Era[] = [
     hero: 'Naoe i Yasuke',
     headline: 'Okres Sengoku',
     body: 'Prowincja Yamashiro i okolice pod koniec okresu walczących prowincji. Dwoje bohaterów o przeciwnych metodach: shinobi, która żyje z cienia, i samuraj, który cienia nie potrzebuje. Pory roku zmieniają nie tylko widok, ale i to, gdzie da się przejść.',
-    depth: 46,
+    depth: 37,
     // W drzewie fali 1 nie ma innej strony z Japonii poza samą grą — lista zdjęta.
     guides: [],
   },
@@ -134,7 +137,7 @@ export const eras: Era[] = [
     hero: 'Edward Kenway',
     headline: 'Złoty wiek piractwa',
     body: 'Hawana, Nassau i Kingston, a między nimi otwarte morze. Walijski korsarz wchodzi w spór asasynów z templariuszami dla pieniędzy i zostaje w nim na dobre. Kawka jest tu drugą postacią, a nie środkiem transportu.',
-    depth: 66,
+    depth: 48,
     guides: [
       { href: '/assassins-creed-4-black-flag/freedom-cry/' },
       { href: '/assassins-creed-rogue/' },
@@ -151,7 +154,7 @@ export const eras: Era[] = [
     hero: 'Jacob i Evie Frye',
     headline: 'Rewolucja przemysłowa',
     body: 'Wiktoriański Londyn podzielony na dzielnice, które przejmuje się gang po gangu. Bliźnięta Frye grają dwa różne style: Jacob wchodzi drzwiami, Evie oknem. Linka z hakiem po raz pierwszy zmienia geometrię wspinaczki.',
-    depth: 88,
+    depth: 68,
     // W drzewie fali 1 nie ma innej strony z Londynu poza samą grą — lista zdjęta.
     guides: [],
   },
@@ -300,6 +303,6 @@ export const numeracja: Czesc[] = [
 export const podpis = {
   role: 'Redakcja',
   author: 'Bractwo',
-  date: '2026-09-11',
-  dateLabel: '11 września 2026',
+  date: '2026-09-12',
+  dateLabel: '12 września 2026',
 };

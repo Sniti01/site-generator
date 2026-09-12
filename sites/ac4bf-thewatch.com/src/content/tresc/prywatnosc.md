@@ -15,8 +15,8 @@ secondary:
 byline:
   role: Aktualizacja
   author: Redakcja Bractwo
-  date: '2026-09-11'
-  dateLabel: 11 września 2026
+  date: '2026-09-12'
+  dateLabel: 12 września 2026
 rows:
   - id: kto-prowadzi
     year: '01'
@@ -28,6 +28,10 @@ rows:
         po serii Assassin’s Creed, niezwiązany z wydawcą gier. W rozumieniu
         RODO redakcja jest administratorem danych przetwarzanych w związku
         z działaniem serwisu — w zakresie opisanym niżej, który jest wąski.
+      - >-
+        Kontakt w sprawach danych osobowych: Jakub, jakub@ac4bf-thewatch.com.
+        Na ten adres można kierować wnioski o dostęp do danych, ich
+        sprostowanie lub usunięcie oraz pytania o tę politykę.
   - id: jakie-dane
     year: '02'
     title: Jakie dane zbieramy
@@ -90,7 +94,8 @@ rows:
         ograniczenia przetwarzania i sprzeciwu, a także prawo do skargi
         do Prezesa Urzędu Ochrony Danych Osobowych. Ponieważ serwis
         nie zbiera danych od czytelnika, w praktyce dotyczy to wyłącznie
-        logów hostingu opisanych wyżej.
+        logów hostingu opisanych wyżej. Wnioski przyjmuje administrator pod
+        adresem podanym w części pierwszej.
   - id: zmiany
     year: '08'
     title: Zmiany tej polityki

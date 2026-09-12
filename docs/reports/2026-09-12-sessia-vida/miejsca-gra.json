@@ -1,0 +1,226 @@
+{
+ "390": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1272,
+   "baseline-desktop-blok-toc-1440x900.png": 958,
+   "baseline-desktop-blok-galeria-1440x900.png": 2071,
+   "baseline-desktop-blok-werdykt-1440x900.png": 2708,
+   "baseline-desktop-blok-powiazane-1440x900.png": 3055,
+   "baseline-desktop-blok-cta-1440x900.png": 3579,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 391,
+    "h": 71,
+    "fixed": true
+   },
+   {
+    "nazwa": "podpis-linia",
+    "x": 0,
+    "y": 1108,
+    "w": 391,
+    "h": 22
+   },
+   {
+    "nazwa": "podpis-blok",
+    "x": 0,
+    "y": 1076,
+    "w": 391,
+    "h": 90
+   },
+   {
+    "nazwa": "nadtytul-2013",
+    "x": 15,
+    "y": 1504,
+    "w": 360,
+    "h": 49
+   },
+   {
+    "nazwa": "galeria-2",
+    "x": 16,
+    "y": 2793,
+    "w": 358,
+    "h": 225
+   },
+   {
+    "nazwa": "stopka-zdjecia",
+    "x": 0,
+    "y": 5848,
+    "w": 391,
+    "h": 638
+   },
+   {
+    "nazwa": "stopka-materialy",
+    "x": 0,
+    "y": 5381,
+    "w": 391,
+    "h": 470
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 4494,
+    "w": 391,
+    "h": 2143
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 1163,
+    "w": 391,
+    "h": 272
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 3078,
+    "w": 391,
+    "h": 333
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 0,
+    "y": 3408,
+    "w": 391,
+    "h": 619
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 4024,
+    "w": 391,
+    "h": 473
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 68,
+    "w": 391,
+    "h": 1011
+   }
+  ]
+ },
+ "1440": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1272,
+   "baseline-desktop-blok-toc-1440x900.png": 958,
+   "baseline-desktop-blok-galeria-1440x900.png": 2071,
+   "baseline-desktop-blok-werdykt-1440x900.png": 2708,
+   "baseline-desktop-blok-powiazane-1440x900.png": 3055,
+   "baseline-desktop-blok-cta-1440x900.png": 3579,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "menu-film-rodowod",
+    "x": 605,
+    "y": 18,
+    "w": 115,
+    "h": 33,
+    "fixed": true
+   },
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 1441,
+    "h": 71,
+    "fixed": true
+   },
+   {
+    "nazwa": "podpis-linia",
+    "x": 99,
+    "y": 910,
+    "w": 1242,
+    "h": 21
+   },
+   {
+    "nazwa": "podpis-blok",
+    "x": 0,
+    "y": 878,
+    "w": 1441,
+    "h": 117
+   },
+   {
+    "nazwa": "nadtytul-2013",
+    "x": 131,
+    "y": 1463,
+    "w": 522,
+    "h": 82
+   },
+   {
+    "nazwa": "galeria-2",
+    "x": 732,
+    "y": 2293,
+    "w": 576,
+    "h": 361
+   },
+   {
+    "nazwa": "stopka-zdjecia",
+    "x": 0,
+    "y": 4619,
+    "w": 1441,
+    "h": 279
+   },
+   {
+    "nazwa": "stopka-materialy",
+    "x": 0,
+    "y": 4379,
+    "w": 1441,
+    "h": 243
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 4007,
+    "w": 1441,
+    "h": 977
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 992,
+    "w": 1441,
+    "h": 346
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 2743,
+    "w": 1441,
+    "h": 350
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 99,
+    "y": 3090,
+    "w": 1242,
+    "h": 493
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 3580,
+    "w": 1441,
+    "h": 430
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 68,
+    "w": 1441,
+    "h": 812
+   }
+  ]
+ }
+}

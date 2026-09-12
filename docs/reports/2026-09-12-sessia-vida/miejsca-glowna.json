@@ -1,0 +1,265 @@
+{
+ "390": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-jerozolima-1440x900.png": 944,
+   "baseline-desktop-layer-wlochy-1440x900.png": 1743,
+   "baseline-desktop-layer-londyn-1440x900.png": 5422,
+   "baseline-desktop-blok-swieze-1440x900.png": 4752,
+   "baseline-desktop-blok-numeracja-1440x900.png": 6157,
+   "baseline-desktop-blok-galeria-1440x900.png": 7247,
+   "baseline-desktop-blok-katalog-1440x900.png": 7984,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 391,
+    "h": 71,
+    "fixed": true
+   },
+   {
+    "nazwa": "podpis-linia",
+    "x": 0,
+    "y": 1214,
+    "w": 391,
+    "h": 22
+   },
+   {
+    "nazwa": "podpis-blok",
+    "x": 0,
+    "y": 1182,
+    "w": 391,
+    "h": 90
+   },
+   {
+    "nazwa": "nadtytul-1191",
+    "x": 15,
+    "y": 1341,
+    "w": 360,
+    "h": 49
+   },
+   {
+    "nazwa": "nadtytul-1476",
+    "x": 15,
+    "y": 2313,
+    "w": 360,
+    "h": 49
+   },
+   {
+    "nazwa": "nadtytul-1579",
+    "x": 15,
+    "y": 4009,
+    "w": 360,
+    "h": 49
+   },
+   {
+    "nazwa": "nadtytul-1715",
+    "x": 15,
+    "y": 4798,
+    "w": 360,
+    "h": 50
+   },
+   {
+    "nazwa": "nadtytul-1868",
+    "x": 15,
+    "y": 6689,
+    "w": 360,
+    "h": 49
+   },
+   {
+    "nazwa": "galeria-2",
+    "x": 16,
+    "y": 9195,
+    "w": 358,
+    "h": 225
+   },
+   {
+    "nazwa": "wlochy-lazy-slój",
+    "x": 15,
+    "y": 3105,
+    "w": 360,
+    "h": 224
+   },
+   {
+    "nazwa": "stopka-zdjecia",
+    "x": 0,
+    "y": 13932,
+    "w": 391,
+    "h": 637
+   },
+   {
+    "nazwa": "stopka-materialy",
+    "x": 0,
+    "y": 13465,
+    "w": 391,
+    "h": 470
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 12577,
+    "w": 391,
+    "h": 2144
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 12108,
+    "w": 391,
+    "h": 472
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 68,
+    "w": 391,
+    "h": 1117
+   }
+  ]
+ },
+ "1440": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-jerozolima-1440x900.png": 944,
+   "baseline-desktop-layer-wlochy-1440x900.png": 1743,
+   "baseline-desktop-layer-londyn-1440x900.png": 5422,
+   "baseline-desktop-blok-swieze-1440x900.png": 4752,
+   "baseline-desktop-blok-numeracja-1440x900.png": 6157,
+   "baseline-desktop-blok-galeria-1440x900.png": 7247,
+   "baseline-desktop-blok-katalog-1440x900.png": 7984,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "menu-film-rodowod",
+    "x": 647,
+    "y": 18,
+    "w": 115,
+    "h": 33,
+    "fixed": true
+   },
+   {
+    "nazwa": "szapka",
+    "x": 83,
+    "y": 0,
+    "w": 1358,
+    "h": 71,
+    "fixed": true
+   },
+   {
+    "nazwa": "skala",
+    "x": 0,
+    "y": 0,
+    "w": 85,
+    "h": 901,
+    "fixed": true,
+    "naWysokosc": true
+   },
+   {
+    "nazwa": "podpis-linia",
+    "x": 141,
+    "y": 947,
+    "w": 1242,
+    "h": 22
+   },
+   {
+    "nazwa": "podpis-blok",
+    "x": 83,
+    "y": 915,
+    "w": 1358,
+    "h": 118
+   },
+   {
+    "nazwa": "nadtytul-1191",
+    "x": 173,
+    "y": 1158,
+    "w": 522,
+    "h": 82
+   },
+   {
+    "nazwa": "nadtytul-1476",
+    "x": 788,
+    "y": 1883,
+    "w": 563,
+    "h": 83
+   },
+   {
+    "nazwa": "nadtytul-1579",
+    "x": 173,
+    "y": 3260,
+    "w": 522,
+    "h": 82
+   },
+   {
+    "nazwa": "nadtytul-1715",
+    "x": 788,
+    "y": 3875,
+    "w": 563,
+    "h": 82
+   },
+   {
+    "nazwa": "nadtytul-1868",
+    "x": 173,
+    "y": 5677,
+    "w": 522,
+    "h": 82
+   },
+   {
+    "nazwa": "galeria-2",
+    "x": 474,
+    "y": 7468,
+    "w": 276,
+    "h": 174
+   },
+   {
+    "nazwa": "wlochy-lazy-slój",
+    "x": 173,
+    "y": 2014,
+    "w": 522,
+    "h": 324
+   },
+   {
+    "nazwa": "stopka-zdjecia",
+    "x": 83,
+    "y": 9906,
+    "w": 1358,
+    "h": 279
+   },
+   {
+    "nazwa": "stopka-materialy",
+    "x": 83,
+    "y": 9666,
+    "w": 1358,
+    "h": 243
+   },
+   {
+    "nazwa": "stopka",
+    "x": 83,
+    "y": 9294,
+    "w": 1358,
+    "h": 977
+   },
+   {
+    "nazwa": "cta",
+    "x": 83,
+    "y": 8867,
+    "w": 1358,
+    "h": 430
+   },
+   {
+    "nazwa": "hero",
+    "x": 83,
+    "y": 68,
+    "w": 1358,
+    "h": 850
+   }
+  ]
+ }
+}

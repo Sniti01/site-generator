@@ -1,0 +1,1695 @@
+{
+ "_": "Инвентарь 169 рядов story-row на 2026-09-15 (вход плана «кадры рядам»): has_art — есть ли кадр сегодня; source_class — класс источника по смыслу ряда (гипотеза для подбора: steam | commons-place | commons-person | commons-art | commons-object | abstract); subject — что искать. Измерено читателями сессии из src/content/tresc/*.md; выбор кадра — сессиями исполнения.",
+ "rows": [
+  {
+   "url": "/404/",
+   "id": "nie-ma-strony",
+   "title": "Strona, której tu nie ma",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "служебная страница ошибки, кадр не напрашивается (404.md:9-24)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "co-to-za-gra",
+   "title": "Co to za gra i kto ją zrobił",
+   "has_art": true,
+   "art": "jerozolima",
+   "source_class": "steam",
+   "subject": "Steam AC1: вид с крыши на Иерусалим (есть, строка 72)",
+   "game": "Assassin's Creed: Director's Cut Edition"
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "fabula",
+   "title": "Dziewięć celów i jeden mistrz",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC1: Альтаир и Аль-Муалим в Масьяфе / сцена убийства цели",
+   "game": "Assassin's Creed: Director's Cut Edition"
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "miasta",
+   "title": "Jerozolima, Damaszek, Akka",
+   "has_art": true,
+   "art": "foto-jerozolima",
+   "source_class": "commons-place",
+   "subject": "Иерусалим, Купол Скалы, фото (есть, строка 126)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "rozgrywka",
+   "title": "Śledztwo, zabójstwo, ucieczka",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC1: бой контратакой со стражей / Альтаир в группе монахов",
+   "game": "Assassin's Creed: Director's Cut Edition"
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "watek-wspolczesny",
+   "title": "Desmond, Abstergo i Animus",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC1: лаборатория Abstergo, Десмонд в Анимусе (если в скриншотах нет — abstract)",
+   "game": "Assassin's Creed: Director's Cut Edition"
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "wersje",
+   "title": "Wersje i platformy",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "платформы, дубляж, издания — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-1/",
+   "id": "odbior",
+   "title": "Jak ją przyjęto i komu ją polecić",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "оценки Metacritic/Steam и совет — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "co-to-za-gra",
+   "title": "Włochy zamiast Ziemi Świętej — druga część i nowy bohater",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "Steam AC2: Эцио на балконе над каналом в Венеции (есть, строка 53)",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "fabula",
+   "title": "Fabuła — zemsta, która rośnie w spisek",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-person",
+   "subject": "Родриго Борджиа / папа Александр VI, портрет (Кристофано дель Альтиссимо) или Лоренцо Великолепный",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "rozgrywka",
+   "title": "Rozgrywka — co zmieniło się po pierwszej części",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC2: Эцио на крышах Флоренции / бой, куртизанки, летающая машина",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "watek-wspolczesny",
+   "title": "Desmond, Animus 2.0 i dwadzieścia glifów",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC2: глиф на здании / укрытие ассасинов (если в скриншотах нет — abstract)",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "dodatki-i-wydania",
+   "title": "Dodatki, edycje i The Ezio Collection",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-art",
+   "subject": "Казнь Савонаролы на Пьяцца делла Синьория, картина 1498 г. (Стос próżności) или портрет Савонаролы Фра Бартоломео",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-2/",
+   "id": "jak-zaczac",
+   "title": "Dla kogo i jak w nią dziś zagrać",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "порядок прохождения, версии — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "co-to-za-gra",
+   "title": "Trójka, która jest piątą częścią serii",
+   "has_art": true,
+   "art": "assassins-creed-3",
+   "source_class": "steam",
+   "subject": "Steam AC3 Remastered: ключевой кадр (есть, строка 77)",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "haytham-i-connor",
+   "title": "Haytham i Connor — templariusz i jego syn asasyn",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC3R: Хэйтем Кенуэй или Коннор крупным планом; альтернатива commons-person — Чарльз Ли, портрет",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "swiat-i-rozgrywka",
+   "title": "Boston, Nowy Jork, pogranicze i osada Davenporta",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC3R: фронтир зимой, охота, лес / улица Бостона",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "aquila",
+   "title": "Aquila — bryg, od którego zaczęło się morze w serii",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC3R: Aquila в морском бою, бортовой залп",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "desmond",
+   "title": "Koniec historii Desmonda — świątynia, Junona i 21 grudnia",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC3R: Великий Храм / Десмонд (если в скриншотах нет — abstract)",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "wydania-i-dodatki",
+   "title": "Wydania, Tyrania króla Waszyngtona i Remastered z Liberation",
+   "has_art": true,
+   "art": "assassins-creed-liberation",
+   "source_class": "steam",
+   "subject": "Steam Liberation HD: ключевой арт (есть, строка 181)",
+   "game": "Assassin's Creed Liberation HD"
+  },
+  {
+   "url": "/assassins-creed-3/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu trójka i w którym miejscu serii ją zagrać",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "порядок серии — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "co-jest-w-grze",
+   "title": "Morze zamiast miasta",
+   "has_art": true,
+   "art": "karaiby",
+   "source_class": "steam",
+   "subject": "Steam BF: абордаж (есть, строка 74)",
+   "game": "Assassin's Creed IV Black Flag"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "edward-kenway",
+   "title": "Edward Kenway — korsarz w cudzym stroju",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam BF: Эдвард Кенуэй крупным планом / Гавана; альтернатива commons-person — Чёрная Борода, гравюра из A General History of the Pyrates, 1724",
+   "game": "Assassin's Creed IV Black Flag"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "kawka",
+   "title": "Kawka — bryg, który trzeba zdobyć i rozbudować",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam BF: Jackdaw в шторме / бортовой залп, охота на кита",
+   "game": "Assassin's Creed IV Black Flag"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "trzy-miasta",
+   "title": "Hawana, Nassau, Kingston i ponad pięćdziesiąt wysp",
+   "has_art": true,
+   "art": "foto-karaiby",
+   "source_class": "commons-place",
+   "subject": "Карибы, фото (есть, строка 141)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "abstergo",
+   "title": "Wątek współczesny bez Desmonda i tryb wieloosobowy",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam BF: офис Abstergo Entertainment от первого лица / мультиплеер (если в скриншотах нет — abstract)",
+   "game": "Assassin's Creed IV Black Flag"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "freedom-cry-i-rogue",
+   "title": "Freedom Cry i Rogue — co stoi obok",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Freedom Cry: Адевале с мачете / Steam Rogue: Шей Кормак",
+   "game": "Assassin's Creed Freedom Cry (в game-art.json есть ключ freedom-cry) или Assassin's Creed Rogue (ключ assassins-creed-rogue)"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "wydania",
+   "title": "Wydania — od PlayStation 3 po Black Flag Resynced",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания и даты — кадр не напрашивается (возможен Steam Resynced, если появится в game-art)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/",
+   "id": "dla-kogo",
+   "title": "Dla kogo i od czego zacząć",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "совет о входе в серию — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-bloodlines/",
+   "id": "co-to-za-gra",
+   "title": "Ciąg dalszy pierwszej części na konsoli przenośnej",
+   "has_art": true,
+   "art": "foto-jerozolima",
+   "source_class": "commons-place",
+   "subject": "Иерусалим, Купол Скалы (есть, строка 43; игра идёт на Кипре — кадр не о месте игры)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-bloodlines/",
+   "id": "fabula",
+   "title": "Z Akki na Cypr tropem templariuszy",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Акко (Акра): стены крестоносцев / порт, фото или гравюра XIX в.",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-bloodlines/",
+   "id": "rozgrywka",
+   "title": "Dwa miasta, sterowanie z jedynki, misje jak w dwójce",
+   "has_art": true,
+   "art": "assassins-creed-bloodlines",
+   "source_class": "commons-place",
+   "subject": "Кирения, двор замка (есть, строка 83; id в art-credits.json)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-bloodlines/",
+   "id": "wersje",
+   "title": "Tylko PSP, po angielsku, z mostem do dwójki na PlayStation 3",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-object",
+   "subject": "PlayStation Portable, фото консоли (Commons)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-bloodlines/",
+   "id": "dla-kogo",
+   "title": "Komu Bloodlines coś dopowie, a kto może je pominąć",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "оценки и совет — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "co-jest-w-grze",
+   "title": "Rzym zamiast Florencji",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "Steam AC2: Эцио в Венеции (есть, строка 52; замена на Steam Brotherhood: Рим — кандидат)",
+   "game": "Assassin's Creed II (кадр из AC2 — Венеция, не Рим)"
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "fabula",
+   "title": "Monteriggioni pada, Ezio jedzie do Rzymu",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-person",
+   "subject": "Чезаре Борджиа, портрет (Альтобелло Мелоне) или Монтериджони, стены, фото",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "miasto",
+   "title": "Jedno miasto, trzy razy większe niż Florencja",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Рим: Колизей / Замок Святого Ангела, гравюра Пиранези XVIII в.",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "bractwo",
+   "title": "Bractwo, które walczy za Ezia",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Brotherhood: Эцио с рекрутами / машины Леонардо (танк, летающая машина)",
+   "game": "Assassin's Creed Brotherhood"
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "tryb-sieciowy",
+   "title": "Pierwszy tryb wieloosobowy w serii",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Brotherhood: кадр мультиплеера (если в скриншотах нет — abstract)",
+   "game": "Assassin's Creed Brotherhood"
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "dodatki-i-znajdzki",
+   "title": "Kopernik, Leonardo i legowiska Romulusa",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-person",
+   "subject": "Николай Коперник, торуньский портрет (ок. 1580)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-brotherhood/",
+   "id": "wydania",
+   "title": "PS3, Xbox 360, PC — a potem Ezio Collection",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания и платформы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "co-to-za-gra",
+   "title": "Trzy osobne gry z widokiem z boku od Climax Studios",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Chronicles China: уровень 2,5D с видом сбоку",
+   "game": "Assassin's Creed Chronicles: China"
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "chiny",
+   "title": "China — Shao Jun i Ośmiu Tygrysów",
+   "has_art": true,
+   "art": "assassins-creed-chronicles",
+   "source_class": "steam",
+   "subject": "Steam China: ключевой арт (есть, строка 76)",
+   "game": "Assassin's Creed Chronicles: China"
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "indie",
+   "title": "India — Arbaaz Mir i diament Koh-i-Noor",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Chronicles India: Арбааз Мир, Амритсар; запасной вариант commons-place — Золотой храм в Амритсаре",
+   "game": "Assassin's Creed Chronicles: India (в game-art.json ключа нет — нужен новый appid)"
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "rosja",
+   "title": "Russia — Nikołaj Orłow, Anastazja i tajne zakończenie",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Chronicles Russia: Николай Орлов, Кремль; запасной вариант commons-person — Анастасия Романова, фото до 1918",
+   "game": "Assassin's Creed Chronicles: Russia (в game-art.json ключа нет — нужен новый appid)"
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "rozgrywka",
+   "title": "Rozgrywka — pole widzenia, rangi i trzy arsenały",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Chronicles: стелс, конус зрения стражника",
+   "game": "Assassin's Creed Chronicles: China"
+  },
+  {
+   "url": "/assassins-creed-chronicles/",
+   "id": "wydania-i-komu",
+   "title": "Wydania, polska wersja, odbiór i komu to polecić",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания, локализация, совет — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-ii-wojna-swiatowa/",
+   "id": "skad-pytanie",
+   "title": "Skąd bierze się to pytanie",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "обзор эпох серии — кадр не напрашивается (возможен Steam Syndicate: Лондон 1868)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-ii-wojna-swiatowa/",
+   "id": "co-jest-w-serii",
+   "title": "Co jest — Londyn 1916 w Syndicate i okupowany Paryż w Unity",
+   "has_art": true,
+   "art": "londyn",
+   "source_class": "steam",
+   "subject": "Steam Syndicate: вечерняя улица Лондона (есть, строка 29)",
+   "game": "Assassin's Creed Syndicate"
+  },
+  {
+   "url": "/assassins-creed-ii-wojna-swiatowa/",
+   "id": "dlaczego-trudno",
+   "title": "Co utrudnia serii wejście w tę epokę",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Париж под оккупацией 1940–1944, фото Bundesarchiv (CC BY-SA 3.0 de) или Эйфелева башня 1940",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-ii-wojna-swiatowa/",
+   "id": "co-dalej",
+   "title": "Co dalej i co krąży pod hasłem „World War II”",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "анонсы и фанатские ролики — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "co-to-za-gra",
+   "title": "Gra z PlayStation Vita, która wracała dwa razy",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Новый Орлеан, план города 1770-х (карта) — скриншотов Liberation у издателя в Steam нет (файл:45-47)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "aveline",
+   "title": "Aveline de Grandpré — córka kupca i niewolnicy",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Чичен-Ица, Эль-Кастильо, фото / собор Св. Людовика в Новом Орлеане",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "trzy-persony",
+   "title": "Dama, niewolnica, asasynka — trzy stroje, trzy różne gry",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-art",
+   "subject": "дама XVIII в. с зонтиком / костюмы Луизианы 1770-х, гравюра или портрет",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "nowy-orlean",
+   "title": "Nowy Orlean, bagna i Chichén Itzá",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "болота Луизианы с кипарисами (байу), фото, или аллигатор",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "trojka-i-abstergo",
+   "title": "Connor, Abstergo Entertainment i hakerzy Erudito",
+   "has_art": true,
+   "art": "assassins-creed-3",
+   "source_class": "steam",
+   "subject": "Steam AC3R: ключевой кадр (есть, строка 188)",
+   "game": "Assassin's Creed III Remastered"
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "wydania",
+   "title": "Vita, HD, Remastered — i co się stało na Steamie",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания и история в Steam — кадр не напрашивается (возможен commons-object: PS Vita)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-liberation/",
+   "id": "komu-i-ktora-wersja",
+   "title": "Komu Liberation i w której wersji",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "совет о версии — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "co-to-za-gra",
+   "title": "Mniejsza część po trzech wielkich — Bagdad i Basim",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Basim на крышах Багдада, общий план города",
+   "game": "Assassin's Creed Mirage (appid 3035570)"
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "basim",
+   "title": "Basim — od złodzieja z Anbaru do Ukrytego z Alamutu",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Басим крупно, кат-сцена с Рошан или Нехаль",
+   "game": "Assassin's Creed Mirage (appid 3035570)"
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "bagdad",
+   "title": "Cztery dzielnice, Anbar i Alamut — miasto zamiast kraju",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "План Круглого города Багдада (реконструкция, карта) или минарет Мальвия в Самарре IX в.",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "skradanie-i-parkour",
+   "title": "Ukryte ostrze, Enkidu, tyczki i skupienie asasyna",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: скрытный удар / паркур с шестом / орёл Энкиду",
+   "game": "Assassin's Creed Mirage (appid 3035570)"
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "valhalla-i-jedynka",
+   "title": "Prequel Valhalli i hołd dla pierwszej części",
+   "has_art": true,
+   "art": "assassins-creed-valhalla",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Valhalla",
+   "game": "Assassin's Creed Valhalla (appid 2208920, ключевой арт library_hero)"
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "od-rift-do-doliny-pamieci",
+   "title": "Od kryptonimu Rift do darmowej Doliny Pamięci",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Аль-Ула / гробницы Хегры (Саудовская Аравия), фото — место обновления Valley of Memory",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "wydania-i-wersje",
+   "title": "Standard, Deluxe, Master Assassin — PC, konsole, iOS",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания и платформы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-mirage/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu Mirage i w którym miejscu serii je zagrać",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "советы кому/в каком порядке — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "co-to-za-gra",
+   "title": "Jedenasta część głównej linii — druga po zwrocie w RPG",
+   "has_art": true,
+   "art": "assassins-creed-odyssey",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Odyssey",
+   "game": "Assassin's Creed Odyssey (appid 812140, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "aleksios-albo-kasandra",
+   "title": "Aleksios albo Kasandra — wyrzutek z krwi Leonidasa",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Кассандра или Алексиос крупно, копьё Леонида",
+   "game": "Assassin's Creed Odyssey (appid 812140)"
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "swiat-i-rozgrywka",
+   "title": "Grecja, włócznia Leonidasa, najemnicy i okręt Adrestia",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: корабль Адрестия в море / Афины с Акрополем в игре",
+   "game": "Assassin's Creed Odyssey (appid 812140)"
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "origins-i-layla",
+   "title": "Czym Odyssey różni się od Origins — i co łączy je Layla",
+   "has_art": true,
+   "art": "assassins-creed-origins",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Origins",
+   "game": "Assassin's Creed Origins (appid 582160, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "dodatki-i-wydania",
+   "title": "Przepustka, darmowe dodatki, edycje i wersje",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Атлантида/Элизиум из DLC Los Atlantydy",
+   "game": "Assassin's Creed Odyssey (appid 812140), DLC Fate of Atlantis"
+  },
+  {
+   "url": "/assassins-creed-odyssey/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu Odyssey i czy zaczynać od niego serię",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "советы кому/порядок — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "id": "co-to-za-gra",
+   "title": "Nowe otwarcie po roku przerwy",
+   "has_art": true,
+   "art": "assassins-creed-origins",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Origins",
+   "game": "Assassin's Creed Origins (appid 582160, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "id": "bayek-i-aya",
+   "title": "Bayek, Aya i narodziny Ukrytych",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Байек и Айя вместе, кат-сцена / Байек с орлицей Сену",
+   "game": "Assassin's Creed Origins (appid 582160)"
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "id": "egipt-i-walka",
+   "title": "Jedna mapa bez sektorów, Senu i walka na hitboksach",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: пирамиды Гизы или Александрия в игре, бой со щитом",
+   "game": "Assassin's Creed Origins (appid 582160)"
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "id": "dodatki-i-wydania",
+   "title": "Ukryci, Klątwa faraonów, Wycieczka krajoznawcza i 60 klatek",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Фивы/загробный мир из DLC Klątwa faraonów; запасной — Commons: Долина Царей, фото",
+   "game": "Assassin's Creed Origins (appid 582160), DLC Curse of the Pharaohs"
+  },
+  {
+   "url": "/assassins-creed-origins/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu Origins i w jakim miejscu serii je zagrać",
+   "has_art": true,
+   "art": "assassins-creed-odyssey",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Odyssey",
+   "game": "Assassin's Creed Odyssey (appid 812140, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "id": "co-to-jest",
+   "title": "Gra na telefon z epoki Black Flag",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-art",
+   "subject": "Морской бой парусников в Карибском море, картина XVIII в. (Willem van de Velde / бой у Картахены)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "id": "rozgrywka",
+   "title": "Okręt, załoga i skarby — cała rozgrywka",
+   "has_art": true,
+   "art": "karaiby",
+   "source_class": "steam",
+   "subject": "есть: скриншот Black Flag",
+   "game": "Assassin's Creed IV Black Flag (appid 242050, скриншот [0])"
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "id": "fabula",
+   "title": "Alonzo Batilla i skarb La Buse",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-person",
+   "subject": "Оливье Левассёр «Ла Бюз» или Чёрная Борода — гравюра из «Всеобщей истории пиратов» 1724",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "id": "wersje",
+   "title": "Wersje, dodatki i zniknięcie ze sklepów",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "платформы и снятие с продажи — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-pirates/",
+   "id": "nie-mylic",
+   "title": "Nie mylić z Illustrious Pirates Pack",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam Black Flag: Галка (Jackdaw) с парусами, остров",
+   "game": "Assassin's Creed IV Black Flag (appid 242050) — у Pirates нет Steam-издания"
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "id": "co-to-za-gra",
+   "title": "Konstantynopol zamiast Rzymu",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Эцио на фоне Айя-Софии / панорама Константинополя; запасной — Commons: гравюра Константинополя XVI в.",
+   "game": "Assassin's Creed Revelations (appid 201870)"
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "id": "fabula",
+   "title": "Pięć kluczy i trzy epoki",
+   "has_art": true,
+   "art": "jerozolima",
+   "source_class": "steam",
+   "subject": "есть: скриншот AC1 (Иерусалим)",
+   "game": "Assassin's Creed Director's Cut (appid 15100, скриншот [9])"
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "id": "co-nowego",
+   "title": "Ostrze z hakiem, bomby i obrona kryjówek",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: спуск по тросу на крюке-клинке / бой с крюком",
+   "game": "Assassin's Creed Revelations (appid 201870)"
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "id": "wersje-i-dodatki",
+   "title": "Wydania, dodatki i wersja na PS4",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания, DLC, серверы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-revelations/",
+   "id": "dla-kogo",
+   "title": "Dla kogo i w jakiej kolejności",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "есть: скриншот AC2 (Италия)",
+   "game": "Assassin's Creed 2 (appid 33230, скриншот [0])"
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "co-to-jest",
+   "title": "Czym jest Rodowód — trzy odcinki o ojcu Ezia",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "есть: скриншот AC2",
+   "game": "Assassin's Creed 2 (appid 33230, скриншот [0]) — Rodowód это фильм, своего Steam нет"
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "giovanni-i-1476",
+   "title": "Fabuła — Giovanni Auditore, książę Mediolanu i „Hiszpan”",
+   "has_art": true,
+   "art": "foto-wlochy",
+   "source_class": "commons-place",
+   "subject": "есть: фото Италии (Commons, art-credits)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "jak-laczy-sie-z-dwojka",
+   "title": "Jak Rodowód łączy się z Assassin’s Creed II",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam AC2: Флоренция, площадь Синьории / Эцио у Палаццо Веккьо",
+   "game": "Assassin's Creed 2 (appid 33230)"
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "jak-obejrzec",
+   "title": "Gdzie obejrzeć — YouTube, Canal+ i The Ezio Collection",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "где смотреть, платформы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "inne-filmy-serii",
+   "title": "Inne filmy serii — Ascendance, Embers i kino z Fassbenderem",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "постеры фильмов несвободны; кадр не напрашивается (возможный Commons: Андалусия/Гранада XV в., гравюра — эпоха Агилара)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rodowod/",
+   "id": "czy-warto",
+   "title": "Czy warto obejrzeć Rodowód — i w którym momencie",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "вердикт — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "co-to-za-gra",
+   "title": "Ostatnia część na starą generację konsol",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Шэй Кормак в Северной Атлантике, лёд и корабль",
+   "game": "Assassin's Creed Rogue (appid 311560)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "shay-cormac",
+   "title": "Shay Cormac — od niesfornego rekruta do łowcy asasynów",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Шэй крупно / с Хэйтемом; запасной — Commons: Лиссабонское землетрясение 1755, гравюра",
+   "game": "Assassin's Creed Rogue (appid 311560)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "swiat",
+   "title": "Trzy obszary — Atlantyk Północny, Dolina Rzeki, Nowy Jork",
+   "has_art": true,
+   "art": "foto-karaiby",
+   "source_class": "commons-place",
+   "subject": "есть: фото El Morro (Commons, CC BY-SA 4.0)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "morrigan",
+   "title": "Morrigan — płytsze zanurzenie, płonący olej i lód",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: «Морриган» таранит лёд / горящее масло на воде",
+   "game": "Assassin's Creed Rogue (appid 311560)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "lowca-asasynow",
+   "title": "Wiatrówka, granatnik i asasyni jako wrogowie",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Шэй с духовым ружьём, бой с ассасинами",
+   "game": "Assassin's Creed Rogue (appid 311560)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "trojka-black-flag-unity",
+   "title": "Domknięcie trójki i Black Flag, próg Unity",
+   "has_art": true,
+   "art": "assassins-creed-3",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт AC3",
+   "game": "Assassin's Creed III Remastered (appid 911400, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "watek-wspolczesny",
+   "title": "Wątek współczesny — pracownik Abstergo i zarażone serwery",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: офис Abstergo Entertainment (современность); если нет — abstract",
+   "game": "Assassin's Creed Rogue (appid 311560)"
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "wydania-i-wersje",
+   "title": "Wydania — PS3 i Xbox 360, PC w 2015, Remastered w 2018, Switch",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания и платформы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-rogue/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu Rogue i w jakim miejscu serii je zagrać",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "советы кому/порядок — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "co-to-za-gra",
+   "title": "Czternasta część — Japonia, rok 1579, dwoje grywalnych",
+   "has_art": true,
+   "art": "japonia",
+   "source_class": "steam",
+   "subject": "есть: скриншот Shadows (тот же id, что и герой страницы)",
+   "game": "Assassin's Creed Shadows (appid 3159330, скриншот [6])"
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "od-red-do-premiery",
+   "title": "Od Codename Red do trzech dat premiery",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "хроника анонса и переносов — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "naoe-i-yasuke",
+   "title": "Naoe i Yasuke: dwa style, nie dwa stroje",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Наоэ и Ясукэ в одном кадре / Наоэ в тени с кусаригамой",
+   "game": "Assassin's Creed Shadows (appid 3159330)"
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "swiat-i-pory-roku",
+   "title": "Środkowa Japonia i cztery pory roku",
+   "has_art": true,
+   "art": "foto-japonia",
+   "source_class": "commons-place",
+   "subject": "есть: фото Японии (Commons, art-credits)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "wydania-i-dodatki",
+   "title": "Wydania, Szpony Awaji i crossover z Atakiem tytanów",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: остров Авадзи из DLC Szpony Awaji, Наоэ с посохом бо",
+   "game": "Assassin's Creed Shadows (appid 3159330), DLC Claws of Awaji"
+  },
+  {
+   "url": "/assassins-creed-shadows/",
+   "id": "werdykt",
+   "title": "Komu Shadows, a komu raczej Mirage",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "вердикт — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "co-jest-w-grze",
+   "title": "Londyn roku 1868 i dwoje asasynów zamiast jednego",
+   "has_art": true,
+   "art": "londyn",
+   "source_class": "steam",
+   "subject": "есть: скриншот Syndicate (тот же id, что и герой страницы)",
+   "game": "Assassin's Creed Syndicate (appid 368500, скриншот [6])"
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "bliznieta-frye",
+   "title": "Jacob wchodzi drzwiami, Evie oknem",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Джейкоб и Иви Фрай вместе / Иви на крыше",
+   "game": "Assassin's Creed Syndicate (appid 368500)"
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "linka-i-powozy",
+   "title": "Linka z hakiem, powozy i pociąg zamiast kryjówki",
+   "has_art": true,
+   "art": "foto-londyn",
+   "source_class": "commons-place",
+   "subject": "есть: фото Лондона (Commons, art-credits)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "fabula",
+   "title": "Starrick, wojna gangów i skok do roku 1916",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: драка банд Rooks против Blighters / Старрик; запасной — Commons-person: Диккенс, Дарвин, Маркс, фото 1860-х",
+   "game": "Assassin's Creed Syndicate (appid 368500)"
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "victory-i-szostka",
+   "title": "Victory, Syndicate i skąd bierze się „Assassin’s Creed 6”",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "утечка названия и нумерация — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-syndicate/",
+   "id": "wydania-i-dodatki",
+   "title": "Wersje, edycje i dodatki — Kuba Rozpruwacz na czele",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Уайтчепел ночью, DLC Kuba Rozpruwacz",
+   "game": "Assassin's Creed Syndicate (appid 368500), DLC Jack the Ripper"
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "co-to-za-gra",
+   "title": "Pierwsza część tylko na nową generację konsol i PC",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Арно над Парижем, толпа на улице; запасной — Commons-art: «Взятие Бастилии», картина 1789",
+   "game": "Assassin's Creed Unity (appid 289650)"
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "arno-i-elise",
+   "title": "Arno, Élise, przewrót w zakonie i nowicjusz w Helixie",
+   "has_art": true,
+   "art": "assassins-creed-rogue",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Rogue",
+   "game": "Assassin's Creed Rogue (appid 311560, ключевой арт)"
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "paryz",
+   "title": "Siedem dzielnic, Wersal, wnętrza i tłum liczony w tysiącach",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Париж конца XVIII в.: план Тюрго 1739 или гравюра Нотр-Дам с Сены",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "parkour-i-kooperacja",
+   "title": "Parkour w dół, szermierka bez kontry, czarna skrzynka, co-op",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: четверо Арно в кооперативе / спуск по фасаду",
+   "game": "Assassin's Creed Unity (appid 289650)"
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "premiera-i-wydania",
+   "title": "Premiera z błędami, darmowi Martwi królowie, 60 klatek w 2026",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Сен-Дени, крипты из DLC Martwi królowie",
+   "game": "Assassin's Creed Unity (appid 289650), DLC Dead Kings"
+  },
+  {
+   "url": "/assassins-creed-unity/",
+   "id": "komu-i-od-czego-zaczac",
+   "title": "Komu Unity i w którym miejscu serii je zagrać",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "советы кому/порядок — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "id": "co-to-za-gra",
+   "title": "Dwunasta część serii — klan Kruka w Anglii IX wieku",
+   "has_art": true,
+   "art": "assassins-creed-valhalla",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Valhalla (строка 46)",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "id": "anglia-i-osada",
+   "title": "Norwegia, Anglia i Krucza Przystań — kolejność regionów i osada",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: осада Ravensthorpe / длинный дом, карта союзов",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "id": "walka-i-aktywnosci",
+   "title": "Walka, skradanie, orlog i zeloci — na co uważać na starcie",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: бой двумя топорами / рейд на монастырь",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "id": "platformy-i-wersje",
+   "title": "Assassin’s Creed Valhalla: PS4, PS5, Xbox One, PC — sklepy, edycje, wymagania",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "платформы, магазины, требования — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-valhalla/",
+   "id": "dodatki-i-aktualizacje",
+   "title": "Dodatki, darmowe aktualizacje i numery łatek",
+   "has_art": true,
+   "art": "dawn-of-ragnarok",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Dawn of Ragnarök (строка 127)",
+   "game": "Assassin's Creed Valhalla: Dawn of Ragnarök"
+  },
+  {
+   "url": "/assassins-creed-za-darmo/",
+   "id": "legalnie",
+   "title": "Weekendy, rozdania, abonamenty",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "бесплатные раздачи и подписки — кадр не напрашивается; если нужен, Steam: Black Flag (раздача 2017)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+   "id": "co-to-za-gra",
+   "title": "Trzecie rozszerzenie Valhalli, największe z trzech",
+   "has_art": true,
+   "art": "dawn-of-ragnarok",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт DLC (строка 47)",
+   "game": "Assassin's Creed Valhalla: Dawn of Ragnarök"
+  },
+  {
+   "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+   "id": "fabula",
+   "title": "Odyn szuka Baldura w królestwie krasnoludów",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Свартальфхейм, лава и горы / Сурт, Муспели",
+   "game": "Assassin's Creed Valhalla: Dawn of Ragnarök"
+  },
+  {
+   "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+   "id": "co-nowego",
+   "title": "Pięć mocy z bransolety i arena Walkirii",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: сила браслета — превращение в ворона или кожа из лавы",
+   "game": "Assassin's Creed Valhalla: Dawn of Ragnarök"
+  },
+  {
+   "url": "/assassins-creed-valhalla/dawn-of-ragnarok/",
+   "id": "wydania-i-komu",
+   "title": "Wydania, ceny i komu ten dodatek",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания, цены, часы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-2/discovery/",
+   "id": "co-to-za-gra",
+   "title": "Kieszonkowa odsłona dwójki, zrobiona przez inne studio",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "есть: game-art `wlochy` = AC II (строка 23)",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/assassins-creed-2/discovery/",
+   "id": "fabula",
+   "title": "Kolumb, Torquemada i oblężona Alhambra",
+   "has_art": true,
+   "art": "discovery",
+   "source_class": "commons-place",
+   "subject": "есть: Commons, панорама Альгамбры (art-credits.json:72)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-2/discovery/",
+   "id": "rozgrywka",
+   "title": "Rzut z boku, trzy rodzaje wspomnień i hacki Animusa",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "кадр 2,5D-платформера недоступен в Steam; альтернатива Commons-object: консоль Nintendo DS, фото",
+   "game": "Discovery в Steam нет (DS/iOS); замена — Assassin's Creed II"
+  },
+  {
+   "url": "/assassins-creed-2/discovery/",
+   "id": "wydania-i-dla-kogo",
+   "title": "Kartridż po angielsku, koniec w App Store i komu to dopowie",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-object",
+   "subject": "Nintendo DS / картридж DS, фото PD или CC",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "id": "kim-jest",
+   "title": "Kim jest Eivor — wiking z klanu Kruka",
+   "has_art": true,
+   "art": "assassins-creed-valhalla",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Valhalla (строка 32)",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "id": "norwegia-i-kjotve",
+   "title": "Norwegia — Kjotve, Styrbjorn i brat Sigurd",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: норвежские фьорды, снег, драккар — пролог",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "id": "anglia-i-osada",
+   "title": "Anglia — Krucza Przystań i sojusze w hrabstwach",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Ravensthorpe / речной рейд на английскую деревню",
+   "game": "Assassin's Creed Valhalla"
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "id": "ukryci-i-basim",
+   "title": "Ukryci, Zakon Starożytnych i Basim",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Эйвор со скрытым клинком поверх предплечья / Басим",
+   "game": "Assassin's Creed Valhalla (или Mirage — Басим)"
+  },
+  {
+   "url": "/assassins-creed-valhalla/eivor/",
+   "id": "eivor-w-innych-grach",
+   "title": "Eivor poza podstawką — Kasandra, Odyn, Ostatni rozdział",
+   "has_art": true,
+   "art": "dawn-of-ragnarok",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт DLC (строка 116)",
+   "game": "Assassin's Creed Valhalla: Dawn of Ragnarök"
+  },
+  {
+   "url": "/ezio-auditore/",
+   "id": "kim-jest",
+   "title": "Kim jest Ezio Auditore da Firenze",
+   "has_art": true,
+   "art": "foto-wlochy",
+   "source_class": "commons-place",
+   "subject": "есть: Commons, панорама Флоренции (art-credits.json:12)",
+   "game": null
+  },
+  {
+   "url": "/ezio-auditore/",
+   "id": "florencja",
+   "title": "Zemsta — Florencja, Monteriggioni, Wenecja",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "есть: game-art AC II, Эцио на балконе (строка 54)",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/ezio-auditore/",
+   "id": "rzym-i-konstantynopol",
+   "title": "Przywództwo — Rzym, potem Konstantynopol",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Рим с Колизеем (Brotherhood) или Константинополь, клинок-крюк (Revelations)",
+   "game": "Assassin's Creed Brotherhood / Revelations"
+  },
+  {
+   "url": "/ezio-auditore/",
+   "id": "animus-i-desmond",
+   "title": "Animus, Desmond i powroty Ezia w późniejszych grach",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Дезмонд в Анимусе — если в наборе Steam нет, то commons-place: Тоскана (Embers) или abstract",
+   "game": "Assassin's Creed II / Brotherhood (современность)"
+  },
+  {
+   "url": "/ezio-auditore/",
+   "id": "wydania",
+   "title": "Wydania — The Ezio Collection i Ezio Trilogy",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "издания, платформы — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/freedom-cry/",
+   "id": "co-to-jest",
+   "title": "Dodatek, który wyszedł też jako osobna gra",
+   "has_art": true,
+   "art": "freedom-cry",
+   "source_class": "steam",
+   "subject": "есть: ключевой арт Freedom Cry (строка 50)",
+   "game": "Assassin's Creed Freedom Cry"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/freedom-cry/",
+   "id": "adewale",
+   "title": "Adéwalé — rozbitek w Port-au-Prince",
+   "has_art": false,
+   "art": null,
+   "source_class": "steam",
+   "subject": "Steam: Адевале с мачете на берегу / Порт-о-Пренс; альтернатива commons-place: план Порт-о-Пренса XVIII в., гравюра",
+   "game": "Assassin's Creed Freedom Cry"
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/freedom-cry/",
+   "id": "rozgrywka",
+   "title": "Ta sama forma, inna waluta",
+   "has_art": true,
+   "art": "foto-karaiby",
+   "source_class": "commons-place",
+   "subject": "есть: Commons, стены крепости Эль-Морро (строка 91)",
+   "game": null
+  },
+  {
+   "url": "/assassins-creed-4-black-flag/freedom-cry/",
+   "id": "wydania",
+   "title": "DLC, wersja samodzielna i Rebel Collection",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "платформы и издания — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/mapa-miejsc-historycznych/",
+   "id": "anglia-wikingow",
+   "title": "Anglia wikingów — Stonehenge, wał Hadriana i królowie z kronik",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Стоунхендж или вал Адриана у Хаусстедса, фото/гравюра; альтернатива commons-person: Альфред Великий, гравюра",
+   "game": null
+  },
+  {
+   "url": "/mapa-miejsc-historycznych/",
+   "id": "grecja-i-egipt",
+   "title": "Grecja i Egipt — Sparta, Fokida, Elis, Atlantyda, Dolina Królów",
+   "has_art": false,
+   "art": null,
+   "source_class": "commons-place",
+   "subject": "Дельфы (Фокида) или Долина Царей, фото PD/CC; альтернатива commons-person: бюст Сократа",
+   "game": null
+  },
+  {
+   "url": "/mapa-miejsc-historycznych/",
+   "id": "paryz-i-londyn",
+   "title": "Paryż i Londyn — Notre-Dame, Nostradamus, de Molay i Big Ben",
+   "has_art": true,
+   "art": "foto-londyn",
+   "source_class": "commons-place",
+   "subject": "есть: Commons, Лондон (строка 68)",
+   "game": null
+  },
+  {
+   "url": "/mapa-miejsc-historycznych/",
+   "id": "wlochy-i-morza",
+   "title": "Włochy i morza — Leonardo, Marco Polo, Ariosto, Piri Reis, Hornigold",
+   "has_art": true,
+   "art": "foto-wlochy",
+   "source_class": "commons-place",
+   "subject": "есть: Commons, Флоренция (строка 84)",
+   "game": null
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "dwie-kolejnosci",
+   "title": "Dwie kolejności, które się nie pokrywają",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "две оси времени серии — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "trzy-wejscia",
+   "title": "Od czego zacząć — trzy odpowiedzi zamiast jednej",
+   "has_art": true,
+   "art": "wlochy",
+   "source_class": "steam",
+   "subject": "есть: game-art AC II (строка 48)",
+   "game": "Assassin's Creed II"
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "altair-i-ezio",
+   "title": "Altaïr i Ezio — Ziemia Święta, Włochy, Konstantynopol",
+   "has_art": true,
+   "art": "jerozolima",
+   "source_class": "steam",
+   "subject": "есть: game-art `jerozolima` (строка 81)",
+   "game": "Assassin's Creed (2007)"
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "nowy-swiat",
+   "title": "Nowy Świat i morza — kolonie, Karaiby, Atlantyk",
+   "has_art": true,
+   "art": "karaiby",
+   "source_class": "steam",
+   "subject": "есть: game-art `karaiby` (строка 116)",
+   "game": "Assassin's Creed IV: Black Flag"
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "rewolucje",
+   "title": "Rewolucje — Paryż, Londyn i trylogia Chronicles",
+   "has_art": true,
+   "art": "londyn",
+   "source_class": "steam",
+   "subject": "есть: game-art `londyn` (строка 159)",
+   "game": "Assassin's Creed Syndicate"
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "era-rpg",
+   "title": "Era RPG i powrót do korzeni — Egipt, Grecja, Anglia, Bagdad, Japonia",
+   "has_art": true,
+   "art": "japonia",
+   "source_class": "steam",
+   "subject": "есть: game-art `japonia` (строка 190)",
+   "game": "Assassin's Creed Shadows"
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "chronologia",
+   "title": "Chronologia wydarzeń — od najstarszej epoki do najnowszej",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "список 21 названия по годам — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "watek-wspolczesny",
+   "title": "Wątek współczesny — Desmond, Layla, Basim",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "современная линия сюжета; если кадр нужен — Steam: Assassin's Creed (2007)/AC II, Дезмонд в Анимусе (редкость в наборах Steam)",
+   "game": null
+  },
+  {
+   "url": "/poradniki/od-czego-zaczac/",
+   "id": "co-pominac",
+   "title": "Co da się pominąć, a czego lepiej nie",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "список побочных игр — кадр не напрашивается",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "kto-prowadzi",
+   "title": "Kto prowadzi serwis",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "jakie-dane",
+   "title": "Jakie dane zbieramy",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "cookies",
+   "title": "Pliki cookie i pamięć przeglądarki",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "logi",
+   "title": "Logi hostingu",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "zasoby",
+   "title": "Czcionki, obrazy i skrypty",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "linki",
+   "title": "Linki zewnętrzne",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "prawa",
+   "title": "Twoje prawa",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  },
+  {
+   "url": "/prywatnosc/",
+   "id": "zmiany",
+   "title": "Zmiany tej polityki",
+   "has_art": false,
+   "art": null,
+   "source_class": "abstract",
+   "subject": "политика приватности — кадр не нужен",
+   "game": null
+  }
+ ]
+}

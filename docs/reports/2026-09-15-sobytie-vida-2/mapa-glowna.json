@@ -1,0 +1,242 @@
+[
+  {
+    "file": "baseline-desktop-blok-galeria-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-katalog-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-numeracja-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-swieze-1440x900.png",
+    "sizes": "равны",
+    "total": 15757,
+    "max": 215,
+    "места": {
+      "lenta": {
+        "n": 15757,
+        "max": 215
+      }
+    },
+    "спорно": {
+      "lenta|lenta-daty-1|reszta-main": 2091,
+      "lenta|lenta-daty-2|reszta-main": 1953,
+      "lenta|reszta-main": 7684,
+      "lenta|lenta-daty-3|reszta-main": 1940,
+      "lenta|lenta-daty-4|reszta-main": 2089
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-full-1440.png",
+    "sizes": "равны",
+    "total": 18162,
+    "max": 215,
+    "места": {
+      "podpis": {
+        "n": 143,
+        "max": 155
+      },
+      "lenta": {
+        "n": 15757,
+        "max": 215
+      },
+      "stopka": {
+        "n": 2262,
+        "max": 149
+      }
+    },
+    "спорно": {
+      "podpis|reszta-main": 143,
+      "lenta|lenta-daty-1|reszta-main": 2091,
+      "lenta|lenta-daty-2|reszta-main": 1953,
+      "lenta|reszta-main": 7684,
+      "lenta|lenta-daty-3|reszta-main": 1940,
+      "lenta|lenta-daty-4|reszta-main": 2089,
+      "stopka|stopka-rodowod": 2262
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-hero-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-jerozolima-1440x900.png",
+    "sizes": "равны",
+    "total": 695,
+    "max": 2,
+    "места": {
+      "szapka": {
+        "n": 695,
+        "max": 2,
+        "под": {
+          "podpis": 695,
+          "reszta-main": 695
+        }
+      }
+    },
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-londyn-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-wlochy-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-mobile-full-390.png",
+    "sizes": "равны",
+    "total": 145649,
+    "max": 202,
+    "места": {
+      "szapka": {
+        "n": 1,
+        "max": 1
+      },
+      "hero": {
+        "n": 26114,
+        "max": 3
+      },
+      "skala": {
+        "n": 221,
+        "max": 2,
+        "под": {
+          "hero": 74,
+          "reszta-main": 221,
+          "cta": 147
+        }
+      },
+      "podpis": {
+        "n": 143,
+        "max": 155
+      },
+      "warstwa-wlochy": {
+        "n": 2638,
+        "max": 1
+      },
+      "warstwa-japonia": {
+        "n": 3680,
+        "max": 1
+      },
+      "warstwa-karaiby": {
+        "n": 8837,
+        "max": 1
+      },
+      "lenta": {
+        "n": 14037,
+        "max": 202
+      },
+      "warstwa-londyn": {
+        "n": 6512,
+        "max": 1
+      },
+      "galeria": {
+        "n": 39934,
+        "max": 2
+      },
+      "cta": {
+        "n": 41270,
+        "max": 2
+      },
+      "stopka": {
+        "n": 2262,
+        "max": 149
+      }
+    },
+    "спорно": {
+      "hero|reszta-main": 26114,
+      "podpis|reszta-main": 143,
+      "warstwa-wlochy|reszta-main": 2638,
+      "warstwa-japonia|reszta-main": 3680,
+      "warstwa-karaiby|reszta-main": 8837,
+      "lenta|reszta-main": 11029,
+      "lenta|lenta-daty-1|reszta-main": 2091,
+      "lenta|lenta-daty-2|reszta-main": 917,
+      "warstwa-londyn|reszta-main": 6512,
+      "galeria|reszta-main": 39934,
+      "cta|reszta-main": 41270,
+      "stopka|stopka-rodowod": 2262
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-mobile-hero-390x844.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  }
+]

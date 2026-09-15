@@ -1,0 +1,303 @@
+{
+ "390": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1545,
+   "baseline-desktop-blok-toc-1440x900.png": 958,
+   "baseline-desktop-blok-galeria-1440x900.png": 8531,
+   "baseline-desktop-blok-werdykt-1440x900.png": 9168,
+   "baseline-desktop-blok-powiazane-1440x900.png": 9515,
+   "baseline-desktop-blok-cta-1440x900.png": 10039,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 391,
+    "h": 70,
+    "fixed": true
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 69,
+    "w": 391,
+    "h": 1010
+   },
+   {
+    "nazwa": "podpis",
+    "x": 0,
+    "y": 1077,
+    "w": 391,
+    "h": 88
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 1164,
+    "w": 391,
+    "h": 544
+   },
+   {
+    "nazwa": "rzedy-1",
+    "x": 0,
+    "y": 1706,
+    "w": 391,
+    "h": 946
+   },
+   {
+    "nazwa": "rzedy-2",
+    "x": 0,
+    "y": 2651,
+    "w": 391,
+    "h": 1130
+   },
+   {
+    "nazwa": "rzedy-3",
+    "x": 0,
+    "y": 3779,
+    "w": 391,
+    "h": 938
+   },
+   {
+    "nazwa": "rzedy-4",
+    "x": 0,
+    "y": 4715,
+    "w": 391,
+    "h": 1175
+   },
+   {
+    "nazwa": "rzedy-5",
+    "x": 0,
+    "y": 5889,
+    "w": 391,
+    "h": 966
+   },
+   {
+    "nazwa": "rzedy-6",
+    "x": 0,
+    "y": 6853,
+    "w": 391,
+    "h": 821
+   },
+   {
+    "nazwa": "rzedy-7",
+    "x": 0,
+    "y": 7673,
+    "w": 391,
+    "h": 994
+   },
+   {
+    "nazwa": "rzedy-8",
+    "x": 0,
+    "y": 8665,
+    "w": 391,
+    "h": 807
+   },
+   {
+    "nazwa": "galeria",
+    "x": 0,
+    "y": 9471,
+    "w": 391,
+    "h": 703
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 10173,
+    "w": 391,
+    "h": 331
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 0,
+    "y": 10503,
+    "w": 391,
+    "h": 617
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 11119,
+    "w": 391,
+    "h": 471
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 11588,
+    "w": 391,
+    "h": 2142
+   },
+   {
+    "nazwa": "stopka-rodowod",
+    "x": 16,
+    "y": 11977,
+    "w": 108,
+    "h": 24
+   },
+   {
+    "nazwa": "reszta-main",
+    "x": 0,
+    "y": 69,
+    "w": 391,
+    "h": 11521
+   }
+  ]
+ },
+ "1440": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1545,
+   "baseline-desktop-blok-toc-1440x900.png": 958,
+   "baseline-desktop-blok-galeria-1440x900.png": 8531,
+   "baseline-desktop-blok-werdykt-1440x900.png": 9168,
+   "baseline-desktop-blok-powiazane-1440x900.png": 9515,
+   "baseline-desktop-blok-cta-1440x900.png": 10039,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 1441,
+    "h": 70,
+    "fixed": true
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 69,
+    "w": 1441,
+    "h": 811
+   },
+   {
+    "nazwa": "podpis",
+    "x": 0,
+    "y": 879,
+    "w": 1441,
+    "h": 116
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 993,
+    "w": 1441,
+    "h": 617
+   },
+   {
+    "nazwa": "rzedy-1",
+    "x": 0,
+    "y": 1609,
+    "w": 1441,
+    "h": 772
+   },
+   {
+    "nazwa": "rzedy-2",
+    "x": 0,
+    "y": 2380,
+    "w": 1441,
+    "h": 1025
+   },
+   {
+    "nazwa": "rzedy-3",
+    "x": 0,
+    "y": 3403,
+    "w": 1441,
+    "h": 884
+   },
+   {
+    "nazwa": "rzedy-4",
+    "x": 0,
+    "y": 4286,
+    "w": 1441,
+    "h": 935
+   },
+   {
+    "nazwa": "rzedy-5",
+    "x": 0,
+    "y": 5219,
+    "w": 1441,
+    "h": 884
+   },
+   {
+    "nazwa": "rzedy-6",
+    "x": 0,
+    "y": 6102,
+    "w": 1441,
+    "h": 778
+   },
+   {
+    "nazwa": "rzedy-7",
+    "x": 0,
+    "y": 6879,
+    "w": 1441,
+    "h": 912
+   },
+   {
+    "nazwa": "rzedy-8",
+    "x": 0,
+    "y": 7790,
+    "w": 1441,
+    "h": 778
+   },
+   {
+    "nazwa": "galeria",
+    "x": 0,
+    "y": 8566,
+    "w": 1441,
+    "h": 639
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 9203,
+    "w": 1441,
+    "h": 349
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 100,
+    "y": 9550,
+    "w": 1241,
+    "h": 492
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 10041,
+    "w": 1441,
+    "h": 429
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 10468,
+    "w": 1441,
+    "h": 976
+   },
+   {
+    "nazwa": "stopka-rodowod",
+    "x": 540,
+    "y": 10678,
+    "w": 108,
+    "h": 24
+   },
+   {
+    "nazwa": "reszta-main",
+    "x": 0,
+    "y": 69,
+    "w": 1441,
+    "h": 10401
+   }
+  ]
+ },
+ "_": "места с DOM при scrollY = 0, прогон p1, сборка dc5fc16"
+}

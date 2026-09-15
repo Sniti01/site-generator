@@ -1,0 +1,27 @@
+эталонных кадров: 11, снятых: 11
+НЕ СУДЬИ: 0 из 11 — сверка против них ничего не значит.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 14: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: _baseline\szum.json — зон 8; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-katalog-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-katalog-1440x900.png
+  размер ок baseline-desktop-blok-numeracja-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-numeracja-1440x900.png
+  размер ок baseline-desktop-blok-swieze-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-blok-swieze-1440x900.png: 15757 субпикселей, макс 215, рамка 1241×41 от (199, 511), первый (249, 511) G 23→32
+  размер ок baseline-desktop-full-1440.png: эталон 1440×10270, снято 1440×10270
+  ВНЕ ДОПУСКА  baseline-desktop-full-1440.png: 18128 субпикселей, макс 215, рамка 1241×8569 от (199, 954), первый (316, 954) R 33→13; в допуске: зона 4 — 34 (макс 2)
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-jerozolima-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-layer-jerozolima-1440x900.png: 695 субпикселей, макс 2, рамка 93×54 от (273, 0), первый (294, 0) G 15→16
+  размер ок baseline-desktop-layer-londyn-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-londyn-1440x900.png
+  размер ок baseline-desktop-layer-wlochy-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-wlochy-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×14719, снято 390×14719
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 7766 субпикселей, макс 202, рамка 380×12725 от (10, 261), первый (33, 261) B 12→15; в допуске: зона 2-wlochy-полный-390-слой — 1108 (макс 1), зона 2-wlochy-полный-390-галерея — 4791 (макс 1), зона 4 — 131984 (макс 2)
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 11 — 0 различий 7, в допуске 0, вне допуска 4 — ОТКАЗ.

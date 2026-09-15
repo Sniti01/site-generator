@@ -1,0 +1,17 @@
+{
+ "_": "пункт 38 — измерение до/после правки распорки CardRail («до» — прод-сборка 5dc350c, после 1а и до 38; «после» — прод-сборка 35f2ff5), Playwright MCP, после document.fonts.ready + 500 мс; karta_x — левый край первой карточки, zagolovok_x — левый край заголовка ленты (колонка контейнера), scrollLeft — дорожка в покое, spacer — ширина ::before",
+ "до": {
+  "glowna-1440": { "karta_x": 174, "zagolovok_x": 174, "scrollLeft": 34, "spacer": "68px", "prev_disabled": true },
+  "glowna-390": { "karta_x": 16, "zagolovok_x": 16, "scrollLeft": 24, "spacer": "0px", "prev_disabled": true },
+  "hub-1440": { "karta_x": 124, "zagolovok_x": 132, "scrollLeft": 0, "spacer": "68px", "prev_disabled": true },
+  "hub-390": { "karta_x": 16, "zagolovok_x": 16, "scrollLeft": 24, "spacer": "0px", "prev_disabled": true }
+ },
+ "после": {
+  "glowna-1440": { "karta_x": 174, "zagolovok_x": 174, "scrollLeft": 42, "spacer": "76px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1960 },
+  "glowna-390": { "karta_x": 16, "zagolovok_x": 16, "scrollLeft": 24, "spacer": "0px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1516 },
+  "hub-1440": { "karta_x": 132, "zagolovok_x": 132, "scrollLeft": 0, "spacer": "76px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1616 },
+  "hub-390": { "karta_x": 16, "zagolovok_x": 16, "scrollLeft": 24, "spacer": "0px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1224 },
+  "ezio-1440": { "karta_x": 132, "zagolovok_x": 132, "scrollLeft": 0, "spacer": "76px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1616 },
+  "ezio-390": { "karta_x": 16, "zagolovok_x": 16, "scrollLeft": 24, "spacer": "0px", "prev_disabled": true, "next_disabled": false, "scrollWidth": 1224 }
+ }
+}

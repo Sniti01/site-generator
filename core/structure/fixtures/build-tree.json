@@ -1,0 +1,126 @@
+{
+  "почему_файл": [
+    "Пробы `node tools/build-tree.mjs --selftest` (бэклог 45, П52 п. 4): по классу расхождения, найденного докладом-планом 2026-09-15, — умолчания типов (A), страница вне выгрузки (B), коридор из контракта (C).",
+    "Семантика игрушечная: четыре кластера и одна некластеризованная фраза — ровно столько, чтобы учёт сходился и каждый исход раскладки встретился по разу.",
+    "Умолчания типов фикстура НЕ несёт: пробы читают живой `core/structure/type-blocks.json`, чтобы проверять те умолчания, с которыми пойдёт второй сайт, а не их копию."
+  ],
+
+  "семантика_комментарий": "phrase → кластер и объём Google; форма та же, что даёт адаптер выгрузки (`clustering.mjs`); `urls` инструменту дерева не нужны.",
+  "семантика": [
+    { "phrase": "gra alfa", "cluster": "alfa", "google": 500 },
+    { "phrase": "alfa poradnik", "cluster": "alfa", "google": 50 },
+    { "phrase": "gra beta", "cluster": "beta", "google": 300 },
+    { "phrase": "beta cennik", "cluster": "beta", "google": 30 },
+    { "phrase": "gra gamma", "cluster": "gamma", "google": 200 },
+    { "phrase": "gamma sklep", "cluster": "gamma", "google": 20 },
+    { "phrase": "delta kup", "cluster": "delta", "google": 10 },
+    { "phrase": "gra epsilon", "cluster": "Некластеризовано", "google": 10 }
+  ],
+
+  "вход": {
+    "decl": {
+      "страницы": [
+        {
+          "url": "/",
+          "type": "home",
+          "cluster": "alfa",
+          "wave": 1,
+          "блоки": [{ "block": "link-list", "role": "numeracja" }],
+          "related": ["/beta/"],
+          "h1": "Alfa — strona główna",
+          "title": "Alfa — wszystko o grze",
+          "description": "Opis strony głównej, jeden na cały serwis."
+        },
+        {
+          "url": "/beta/",
+          "type": "game",
+          "cluster": "beta",
+          "wave": 1,
+          "related": ["/gamma/"],
+          "h1": "Beta",
+          "title": "Beta — gra",
+          "description": "Opis strony o grze Beta."
+        },
+        {
+          "url": "/gamma/",
+          "type": "topic",
+          "cluster": "gamma",
+          "wave": 1,
+          "related": ["/beta/"],
+          "h1": "Gamma",
+          "title": "Gamma — temat",
+          "description": "Opis strony o temacie Gamma."
+        },
+        {
+          "url": "/prywatnosc/",
+          "type": "legal",
+          "вне_выгрузки": "проба B: служебная страница, спроса нет по определению",
+          "wave": 1,
+          "блоки": [{ "block": "byline" }],
+          "related": [],
+          "h1": "Polityka prywatności",
+          "title": "Polityka prywatności — Alfa",
+          "description": "Opis strony służbowej."
+        }
+      ]
+    },
+
+    "recon": {
+      "кластеры": [
+        { "кластер": "alfa", "судьба": "страница", "причина": "проба" },
+        { "кластер": "beta", "судьба": "страница", "причина": "проба" },
+        { "кластер": "gamma", "судьба": "страница", "причина": "проба" },
+        { "кластер": "delta", "судьба": "exclusions", "причина": "магазинное слово" }
+      ],
+      "некластеризовано": [
+        { "фраза": "gra epsilon", "судьба": "no_page", "причина": "хвост без страницы" }
+      ]
+    },
+
+    "doc_комментарий": "Существующая структура: шапка и два именованных коридора (П43) — `null` у главной и число-предохранитель у `/beta/`, оба отличны от анатомии; `/gamma/` в ней нет — получает коридор анатомии.",
+    "doc": {
+      "site": {
+        "domain": "https://przyklad.test",
+        "lang": "pl",
+        "semantics": "input/przyklad.xlsx",
+        "semantics_date": "2026-01-01",
+        "total_queries": 8
+      },
+      "pages": [
+        { "url": "/", "corridor": null },
+        { "url": "/beta/", "corridor": [100, 250] }
+      ]
+    },
+
+    "rulesS3": {
+      "имена_блоков": { "ocena": "verdict-box", "galeria": "gallery" },
+      "уверенность": { "обязателен": "high", "на решение": "medium" },
+      "порядок_на_странице": {
+        "список": ["hero-key-art", "byline", "toc", "story-row", "band-quote", "card-rail", "gallery", "link-columns", "verdict-box", "link-list", "cta-band"],
+        "по_типу": {
+          "home": ["hero-key-art", "byline", "story-row", "band-quote", "card-rail", "link-list", "gallery", "link-columns", "cta-band"]
+        }
+      }
+    },
+
+    "anatomy": {
+      "страницы": [
+        {
+          "url": "/",
+          "элементы": { "galeria": { "вердикт": "на решение", "документов": 5, "из": 10 } },
+          "план": { "коридор": [1000, 2000] }
+        },
+        {
+          "url": "/beta/",
+          "элементы": { "ocena": { "вердикт": "обязателен", "документов": 8, "из": 10 } },
+          "план": { "коридор": [100, 200] }
+        },
+        {
+          "url": "/gamma/",
+          "элементы": { "ocena": { "вердикт": "не норма", "документов": 1, "из": 10 } },
+          "план": { "коридор": [100, 200] }
+        }
+      ]
+    }
+  }
+}

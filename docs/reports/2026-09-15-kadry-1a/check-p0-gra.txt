@@ -1,0 +1,25 @@
+эталонных кадров: 10, снятых: 10
+НЕ СУДЬИ: 0 из 10 — сверка против них ничего не значит.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 12: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: _baseline\assassins-creed-4-black-flag\szum.json — зон 4; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-cta-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-cta-1440x900.png
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-powiazane-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-powiazane-1440x900.png
+  размер ок baseline-desktop-blok-toc-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-toc-1440x900.png
+  размер ок baseline-desktop-blok-werdykt-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-werdykt-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×11443, снято 1440×11443
+  ВНЕ ДОПУСКА  baseline-desktop-full-1440.png: 20 субпикселей, макс 4, рамка 451×166 от (182, 4743), первый (487, 4743) G 155→152; в допуске: зона 4 — 37476 (макс 2)
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-co-jest-w-grze-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-co-jest-w-grze-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×13729, снято 390×13729
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 12 субпикселей, макс 5, рамка 284×99 от (66, 5701), первый (150, 5701) B 12→15; в допуске: зона 4 — 17853 (макс 2)
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 10 — 0 различий 8, в допуске 0, вне допуска 2 — ОТКАЗ.

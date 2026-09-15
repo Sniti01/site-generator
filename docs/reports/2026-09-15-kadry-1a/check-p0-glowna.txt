@@ -1,0 +1,27 @@
+эталонных кадров: 11, снятых: 11
+НЕ СУДЬИ: 0 из 11 — сверка против них ничего не значит.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 14: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: _baseline\szum.json — зон 9; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-katalog-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-katalog-1440x900.png
+  размер ок baseline-desktop-blok-numeracja-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-numeracja-1440x900.png
+  размер ок baseline-desktop-blok-swieze-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-swieze-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×10270, снято 1440×10270
+  0 различий   baseline-desktop-full-1440.png
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-jerozolima-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-jerozolima-1440x900.png
+  размер ок baseline-desktop-layer-londyn-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-londyn-1440x900.png
+  размер ок baseline-desktop-layer-wlochy-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-wlochy-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×14719, снято 390×14719
+  0 различий   baseline-mobile-full-390.png
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 11 — 0 различий 11, в допуске 0, вне допуска 0.

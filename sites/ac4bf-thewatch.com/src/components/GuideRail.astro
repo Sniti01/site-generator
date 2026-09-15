@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import CardRail from '@factory/core/blocks/CardRail.astro';
 import Icon from './Icon.astro';
 import { fresh, eras, rodzaj } from '../data/site';
@@ -23,15 +24,27 @@ import { getPage } from '../lib/structure';
 const eraName = new Map(eras.map((era) => [era.id, era.place]));
 
 // Tytuł i rodzaj karty — ze struktury (`getPage` przerywa budowanie na adresie
-// spoza drzewa); epoka, data i kadr — z `site.ts`. Od 2026-09-11, odpowiedź 3а.
+// spoza drzewa); epoka i kadr — z `site.ts`. Od 2026-09-11, odpowiedź 3а.
+//
+// DATA KARTY — Z `byline` PLIKU TREŚCI STRONY (П50, 2026-09-15, punkt 1а):
+// jedno źródło daty na całą witrynę — to samo pole, które strona drukuje pod
+// własnym tytułem. Do 2026-09-15 daty stały w `site.ts` jako materiał
+// demonstracyjny (28 lipca – 24 sierpnia 2026) i niczego nie opisywały.
+// Wpis odnajduje się po polu `url` treści, jak robi to trasa `[...slug].astro`;
+// strona bez pliku treści albo bez podpisu idzie kartą BEZ daty — nie z datą
+// wymyśloną.
+const wpisy = await getCollection('tresc');
+const podpisOd = new Map(wpisy.map((wpis) => [wpis.data.url, wpis.data.byline]));
+
 const cards = fresh.map((item) => {
   const kadr = mediaFor(item.era);
   const cel = getPage(item.href);
+  const podpis = podpisOd.get(item.href);
   return {
     href: item.href,
     title: cel.h1,
-    date: item.date,
-    dateLabel: item.dateLabel,
+    date: podpis?.date,
+    dateLabel: podpis?.dateLabel,
     kind: rodzaj[cel.type] ?? cel.type,
     place: eraName.get(item.era),
     modifier: `rail-sec__item--${item.era}`,

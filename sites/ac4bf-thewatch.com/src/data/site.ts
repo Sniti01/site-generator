@@ -1,6 +1,8 @@
 /**
- * Treść strony głównej. Fakty o grach są prawdziwe; tytuły poradników,
- * daty i liczniki to materiał demonstracyjny do podmiany przez właściciela.
+ * Treść strony głównej. Fakty o grach są prawdziwe. Tytuły i rodzaje wpisów
+ * idą ze struktury (`getPage`), liczniki stogu — z drzewa, daty kart taśmy —
+ * z podpisów stron (П50, 2026-09-15); materiału demonstracyjnego tu nie ma
+ * od 2026-09-15 (do 2026-09-11 były nim tytuły i liczniki, do 2026-09-15 — daty).
  */
 
 export const site = {
@@ -174,25 +176,26 @@ export const rodzaj: Record<string, string> = {
 };
 
 /**
- * Karta taśmy «Świeżo z Animusa»: adres, epoka (paleta i kadr) i data.
- * Tytuł i rodzaj bierze `GuideRail` ze struktury. Daty pozostają materiałem
- * demonstracyjnym — strony w strukturze są `planned` i daty publikacji nie mają.
+ * Karta taśmy «Świeżo z Animusa»: adres i epoka (paleta i kadr).
+ * Tytuł i rodzaj bierze `GuideRail` ze struktury, DATĘ — z `byline` pliku
+ * treści strony (П50, 2026-09-15, punkt 1а): jedno źródło daty na witrynę.
+ * Do 2026-09-15 daty stały tutaj jako materiał demonstracyjny
+ * (28 lipca – 24 sierpnia 2026), bo strony były `planned`.
  * 2026-09-11: cztery z pięciu adresów były widmami — zamienione na strony
  * TEJ SAMEJ EPOKI z drzewa, żeby paleta i kadr karty zostały (4 zamiany, 0 zdjęć).
+ * Skład taśmy — te same pięć adresów do fali 2 (П50).
  */
 export interface FreshGuide {
   href: string;
   era: EraId;
-  date: string;
-  dateLabel: string;
 }
 
 export const fresh: FreshGuide[] = [
-  { href: '/ezio-auditore/', era: 'wlochy', date: '2026-08-24', dateLabel: '24 sierpnia 2026' },
-  { href: '/poradniki/od-czego-zaczac/', era: 'japonia', date: '2026-08-19', dateLabel: '19 sierpnia 2026' },
-  { href: '/assassins-creed-syndicate/', era: 'londyn', date: '2026-08-11', dateLabel: '11 sierpnia 2026' },
-  { href: '/assassins-creed-1/', era: 'jerozolima', date: '2026-08-03', dateLabel: '3 sierpnia 2026' },
-  { href: '/assassins-creed-4-black-flag/', era: 'karaiby', date: '2026-07-28', dateLabel: '28 lipca 2026' },
+  { href: '/ezio-auditore/', era: 'wlochy' },
+  { href: '/poradniki/od-czego-zaczac/', era: 'japonia' },
+  { href: '/assassins-creed-syndicate/', era: 'londyn' },
+  { href: '/assassins-creed-1/', era: 'jerozolima' },
+  { href: '/assassins-creed-4-black-flag/', era: 'karaiby' },
 ];
 
 /**

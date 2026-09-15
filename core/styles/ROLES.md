@@ -31,7 +31,7 @@
 | `.t-title` | `CardRail`, `LinkColumns`, `LinkList`, `SiteHeader` |
 | `.t-lead` | `BandQuote`, `CtaBand`, `LinkColumns` |
 | `.t-body` | `CardRail`, `LinkColumns`, `SiteFooter` |
-| `.t-caption` | `CardRail`, `ChipNav`, `LinkList`, `SiteHeader` |
+| `.t-caption` | `Breadcrumbs`, `CardRail`, `ChipNav`, `LinkList`, `SiteHeader` |
 | `.t-label` | `SiteFooter`, `SiteHeader` |
 | `.t-micro` | `SiteHeader`, `SmartImage` |
 | `.t-button` | `CardRail`, `CtaBand`, `HeroKeyArt`, `LinkColumns`, `LinkList` |
@@ -102,8 +102,9 @@
 `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`. Формула сохранена
 дословно: `StoryRow`, `LinkList`, `HeroKeyArt` и `ChipNav`, добавленные
 выносами `story-row` и `hero-key-art`, читают не все токены этих таблиц
-и перечислены поимённо. Со своим `<style>` компонентов в ядре одиннадцать,
-но `Grain` не читает ни одного токена и в перечнях читателей не появляется.
+и перечислены поимённо. Со своим `<style>` компонентов в ядре двенадцать
+(`Breadcrumbs` — с 2026-09-15, П57), но `Grain` не читает ни одного токена
+и в перечнях читателей не появляется.
 
 ### Поверхности и текст — 7
 
@@ -113,8 +114,8 @@
 | `--bg-band` | `BandQuote`, `SiteFooter`, `SiteHeader`, `base.css`, `card.css`, `layout.css` |
 | `--surface` | `SiteHeader`, `card.css` |
 | `--surface-2` | `base.css`, `button.css` |
-| `--ink` | все шесть компонентов, `StoryRow`, `LinkList`, `HeroKeyArt`, `button.css`, `credit.css` |
-| `--ink-muted` | все шесть компонентов, `LinkList`, `ChipNav`, `credit.css` |
+| `--ink` | все шесть компонентов, `StoryRow`, `LinkList`, `HeroKeyArt`, `Breadcrumbs`, `button.css`, `credit.css` |
+| `--ink-muted` | все шесть компонентов, `LinkList`, `ChipNav`, `Breadcrumbs`, `credit.css` |
 | `--ink-on-accent` | `a11y.css`, `base.css`, `button.css` |
 
 ### Акцент — 3
@@ -129,7 +130,7 @@
 
 | Токен | Кто читает |
 |---|---|
-| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `StoryRow`, `LinkList`, `HeroKeyArt`, `ChipNav`, `card.css`, `layout.css` |
+| `--hairline` | `BandQuote`, `CtaBand`, `LinkColumns`, `SiteFooter`, `SiteHeader`, `StoryRow`, `LinkList`, `HeroKeyArt`, `ChipNav`, `Breadcrumbs`, `card.css`, `layout.css` |
 | `--hairline-strong` | `CardRail`, `LinkColumns`, `SiteHeader`, `button.css`, `card.css` |
 | `--wash` | `CardRail`, `ChipNav`, `button.css` |
 | `--wash-strong` | `button.css` |

@@ -66,3 +66,32 @@ export function getPage(url: string): StructurePage {
   }
   return strona;
 }
+
+/** Jedno ogniwo okruszków: adres i etykieta. */
+export interface Crumb {
+  href: string;
+  label: string;
+}
+
+/**
+ * Okruszki — droga od głównej do strony, po `parent` struktury (П24 p. 2:
+ * okruszki i `BreadcrumbList` to jeden obchód po tym polu; П57, odp. 4a:
+ * etykieta to `h1` strony, główna nazywa się po ludzku). Główna daje
+ * jedno ogniwo — komponent takiej drogi nie drukuje. Pętla po `parent`
+ * kończy się na `null` korzenia; cykl albo rodzic spoza struktury to
+ * przerwany build, jak u `getPage`.
+ */
+export function getBreadcrumbs(url: string): Crumb[] {
+  const trail: Crumb[] = [];
+  let strona: StructurePage | null = getPage(url);
+  const widziane = new Set<string>();
+  while (strona) {
+    if (widziane.has(strona.url)) {
+      throw new Error(`Okruszki: cykl w polu parent przy ${strona.url} — popraw structure.json.`);
+    }
+    widziane.add(strona.url);
+    trail.unshift({ href: strona.url, label: strona.url === '/' ? 'Strona główna' : strona.h1 });
+    strona = strona.parent ? getPage(strona.parent) : null;
+  }
+  return trail;
+}

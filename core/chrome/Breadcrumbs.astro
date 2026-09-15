@@ -1,0 +1,120 @@
+---
+/**
+ * `breadcrumbs` — хлебные крошки внутренней страницы: путь от главной
+ * до текущей, по `parent` структуры.
+ *
+ * Механизм, не содержание. Ядро печатает `<nav aria-label>` со списком:
+ * предки — ссылками, текущая страница — текстом с `aria-current="page"`,
+ * разделитель — декоративный, скрыт от скринридера. Откуда берётся цепочка
+ * и как называется каждое звено, ядро не знает: сайт подаёт `trail`
+ * пропсом (у ac4bf — `getBreadcrumbs()` из адаптера структуры, ярлык —
+ * `h1` страницы, главная — «Strona główna»; П57, ответ 4а).
+ *
+ * УРОВЕНЬ — ХРОМ, НЕ СЕКЦИЯ ТЕЛА. Имя `breadcrumbs` стоит в словаре
+ * `core/structure/blocks.json` рядом с `site-header` и `footer-columns`;
+ * в `blocks[]` страницы его нет и не будет — П28 (ось имён другая),
+ * П24 п. 2 (крошки и `BreadcrumbList` считаются одним обходом по `parent`).
+ * Бэклог 17: заведён 2026-09-09 решением владельца («у страниц второго
+ * уровня без крошек нет пути наверх»), исполнен 2026-09-15 (П56 п. 5, П57).
+ *
+ * ГДЕ ПЕЧАТАЕТСЯ — МЕЖДУ ШАПКОЙ И `<main>`, вне `<main>`: коридор длины
+ * считает знаки внутри `<main>`, а крошки — навигация, не текст статьи;
+ * `h1` на странице остаётся один. На главной не печатается (цепочка из
+ * одного звена — не путь). `BreadcrumbList` (JSON-LD) печатает `<head>`
+ * сайта из того же `trail` — один обход, две печати.
+ *
+ * Роли и токены — из договора (`core/styles/ROLES.md`): `.t-caption`
+ * (13 px без капители — аналог ярлыка соседа `7dtd.com.pl`; `.t-label`
+ * с трекингом 0.14em растянул бы `h1` в 61 знак на 600 px), `--ink-muted`
+ * для предков и разделителя, `--ink` для текущей и при наведении, ступени
+ * `--space-*`, `--hairline` снизу. Новых имён договор не получает.
+ */
+interface Crumb {
+  /** Адрес звена; у текущей страницы не печатается ссылкой. */
+  href: string;
+  /** Ярлык звена. */
+  label: string;
+}
+
+interface Props {
+  /** Цепочка от главной до текущей страницы, включая текущую. */
+  trail: Crumb[];
+  /** Подпись навигации для скринридера. */
+  navLabel: string;
+}
+
+const { trail, navLabel } = Astro.props;
+const ostatni = trail.length - 1;
+---
+
+{
+  trail.length > 1 && (
+    <nav class="crumbs" aria-label={navLabel}>
+      <ol class="crumbs__list container t-caption">
+        {trail.map((crumb, i) => (
+          <li class="crumbs__item">
+            {i === ostatni ? (
+              <span class="crumbs__current" aria-current="page">
+                {crumb.label}
+              </span>
+            ) : (
+              <>
+                <a class="crumbs__link" href={crumb.href}>
+                  {crumb.label}
+                </a>
+                <span class="crumbs__sep" aria-hidden="true">
+                  /
+                </span>
+              </>
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  )
+}
+
+<style>
+  .crumbs {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .crumbs__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--space-3xs) var(--space-2xs);
+    /* Только блочные поля: `.container` центрирует список через
+       `margin-inline: auto`, а скрут компонента побил бы его по специфичности. */
+    margin-block: 0;
+    padding-block: var(--space-xs);
+    list-style: none;
+    color: var(--ink-muted);
+  }
+
+  .crumbs__item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+  }
+
+  .crumbs__link {
+    color: var(--ink-muted);
+    text-decoration: none;
+    transition: color 150ms ease;
+  }
+
+  .crumbs__link:hover,
+  .crumbs__link:focus-visible {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  .crumbs__sep {
+    color: var(--ink-muted);
+  }
+
+  .crumbs__current {
+    color: var(--ink);
+  }
+</style>

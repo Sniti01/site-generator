@@ -4,6 +4,8 @@ import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import DescentRail from '../components/DescentRail.astro';
 import Grain from '@factory/core/effects/Grain.astro';
+import Breadcrumbs from '@factory/core/chrome/Breadcrumbs.astro';
+import { getBreadcrumbs } from '../lib/structure';
 
 interface Props {
   title: string;
@@ -16,6 +18,27 @@ interface Props {
 const { title, description, skala } = Astro.props;
 const zeSkala = skala !== false;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// Okruszki (П57, backlog 17): droga po `parent` struktury — na każdej stronie
+// wewnętrznej, między szapką a <main> (poza korytarzem długości, h1 zostaje
+// jeden). Główna ma jedno ogniwo i nic nie drukuje. `BreadcrumbList` — ten sam
+// obchód w <head>; nie na głównej (lista z jednego ogniwa) i nie na /404/
+// (serwer oddaje ją pod każdym cudzym adresem ze statusem 404 — znacznik
+// twierdziłby adres, którego nie ma).
+const okruszki = getBreadcrumbs(Astro.url.pathname);
+const zListaOkruszkow = okruszki.length > 1 && Astro.url.pathname !== '/404/';
+const breadcrumbList = zListaOkruszkow
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: okruszki.map((crumb, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: crumb.label,
+        item: new URL(crumb.href, Astro.site).href,
+      })),
+    })
+  : null;
 ---
 
 <!doctype html>
@@ -33,11 +56,13 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="pl_PL" />
     <meta name="generator" content={Astro.generator} />
+    {breadcrumbList && <script type="application/ld+json" set:html={breadcrumbList} />}
   </head>
   <body class={zeSkala ? undefined : 'bez-skali'}>
     <a class="skip-link t-button" href="#tresc">Przejdź do treści</a>
     {zeSkala && <DescentRail />}
     <SiteHeader />
+    <Breadcrumbs trail={okruszki} navLabel="Okruszki" />
     <main id="tresc">
       <slot />
     </main>

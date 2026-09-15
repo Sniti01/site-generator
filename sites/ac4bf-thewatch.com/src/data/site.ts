@@ -31,8 +31,8 @@ export const nav = [
   { label: 'Mapa miejsc', href: '/mapa-miejsc-historycznych/' },
   // «Film Rodowód» od 2026-09-12 (П44, punkt 35): strona pod tym adresem jest
   // o filmie Lineage, nie o rodowodzie serii — etykieta «Rodowód serii» obiecywała
-  // co innego. Stopka (SiteFooter.astro) niesie wciąż starą etykietę: lista П44
-  // zamknięta, wiersz w raporcie.
+  // co innego. Stopka (SiteFooter.astro) dostała tę samą etykietę 2026-09-15
+  // (П50, punkt 39).
   { label: 'Film Rodowód', href: '/assassins-creed-rodowod/' },
 ];
 

@@ -8,8 +8,9 @@
  *
  * Что проверяет — только то, что обещают `public/.htaccess`, `public/robots.txt`
  * и сборка; ничего не чинит и ничего не отправляет:
- *   1. http → https, www → без www, http://www → https без www — по одному
- *      скачку 301 на канонический адрес;
+ *   1. http → https, второй хост → канонический (с `www` ↔ без — по тому,
+ *      что стоит в `site.domain`; П55: у нас с `www`), http://второй → https
+ *      канонический — по одному скачку 301;
  *   2. главная — 200, `canonical` совпадает с адресом;
  *   3. robots.txt — 200, строка `Sitemap:` на канонический sitemap-index;
  *   4. sitemap-index.xml и sitemap-0.xml — 200; адресов в карте столько,
@@ -35,6 +36,9 @@ const argHost = process.argv.indexOf('--host');
 const canonical = new URL(argHost > 0 ? `https://${process.argv[argHost + 1]}` : structure.site.domain);
 const host = canonical.host;
 const base = `https://${host}`;
+// Второй хост — тот, с которого сервер обязан вести на канонический:
+// у канонического с `www` это голый домен, у голого — `www.` (П55: у нас с www).
+const other = host.startsWith('www.') ? host.slice(4) : `www.${host}`;
 
 const cases = [];
 const check = (имя, ждём, факт, откуда = '') => cases.push({ имя, ждём: String(ждём), факт: String(факт), откуда });
@@ -57,8 +61,8 @@ const hop = async (from, to, имя) => {
 
 /* 1 — редиректы */
 await hop(`http://${host}/`, `${base}/`, 'http → https');
-await hop(`https://www.${host}/`, `${base}/`, 'www → без www');
-await hop(`http://www.${host}/`, `${base}/`, 'http://www → https без www');
+await hop(`https://${other}/`, `${base}/`, `${other} → ${host}`);
+await hop(`http://${other}/`, `${base}/`, `http://${other} → https ${host}`);
 
 /* 2 — главная */
 const home = await get(`${base}/`);

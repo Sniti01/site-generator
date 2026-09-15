@@ -8,7 +8,11 @@ import links from '@factory/core/gates/links.mjs';
 import corridor from '@factory/core/gates/corridor.mjs';
 
 export default defineConfig({
-  site: 'https://ac4bf-thewatch.com',
+  // Adres kanoniczny Z `www` — decyzja właściciela 2026-09-15 (П55), po pierwszej
+  // wykładce; do tego dnia stało `https://ac4bf-thewatch.com` (MIGRATION §9).
+  // Wartość idzie w `canonical` każdej strony i w sitemap; `.htaccess`
+  // prowadzi na ten sam adres jednym przekierowaniem.
+  site: 'https://www.ac4bf-thewatch.com',
   trailingSlash: 'always',
   build: { format: 'directory' },
   // `afterBuild` i `anchors` — dwie bramki, które czytają WYNIK (dist/), nie

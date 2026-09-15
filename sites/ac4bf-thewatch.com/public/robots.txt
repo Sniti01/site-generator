@@ -1,4 +1,4 @@
-# robots.txt — ac4bf-thewatch.com (Bractwo)
+# robots.txt — www.ac4bf-thewatch.com (Bractwo)
 #
 # Serwis statyczny (Astro): 31 stron treści fali 1 plus strona 404, wszystkie
 # otwarte do indeksowania. Nie ma panelu, logowania, wyszukiwarki na stronie,
@@ -15,9 +15,9 @@
 #             ogon prowadzi na stronę z `canonical` na wersję czystą.
 #
 # Sekcja `Sitemap:` — pełny adres, bo plik czyta się także spoza domeny.
-# Adres kanoniczny to https bez www (`site` w astro.config.mjs).
+# Adres kanoniczny to https Z www (`site` w astro.config.mjs; decyzja П55, 2026-09-15).
 
 User-agent: *
 Allow: /
 
-Sitemap: https://ac4bf-thewatch.com/sitemap-index.xml
+Sitemap: https://www.ac4bf-thewatch.com/sitemap-index.xml

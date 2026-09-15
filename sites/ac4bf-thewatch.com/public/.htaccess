@@ -1,4 +1,4 @@
-# Konfiguracja serwera dla ac4bf-thewatch.com (Bractwo)
+# Konfiguracja serwera dla www.ac4bf-thewatch.com (Bractwo)
 #
 # Hosting: ten sam, co u sąsiedniego 7dtd.com.pl — ТОВ „Хостінг Україна"
 # (ukraine.com.ua), Apache albo OpenLiteSpeed za nginx; oba czytają .htaccess
@@ -8,8 +8,9 @@
 # Wzorzec i pomiar — `../7dtd.com.pl/public/.htaccess` (2026-08-26, na żywym
 # serwisie): hosting jest dwuwarstwowy, z przodu nginx, do Apache'a dochodzą
 # tylko żądania o HTML. Stąd:
-#   DZIAŁA:      ErrorDocument, przekierowania na https i bez www,
-#                Cache-Control dla .html
+#   DZIAŁA:      ErrorDocument, przekierowania na https i na jeden host,
+#                Cache-Control dla .html (potwierdzone u nas 2026-09-15,
+#                pierwsza wykładka: `x-ray … wal` — HTML obsługuje Apache)
 #   NIE DZIAŁA:  Cache-Control dla /_astro/ (CSS, fonty, obrazy oddaje nginx) —
 #                reguły zostają jako zapis zamiaru; długi cache statyki ustawia
 #                się w panelu hostingu.
@@ -36,15 +37,18 @@
 ErrorDocument 404 /404/index.html
 
 # ─────────────────────────────────────────────────────────────────────────
-# Jeden adres kanoniczny: https, bez www
+# Jeden adres kanoniczny: https, Z www
 #
-# `link rel="canonical"` każdej strony wskazuje https://ac4bf-thewatch.com/…
-# (`site` w astro.config.mjs, MIGRATION §9), więc serwer prowadzi tam samo:
-# jedno przekierowanie 301 dla http:// i dla www., także dla http://www.
+# Decyzja właściciela 2026-09-15 (П55), po pierwszej wykładce: adresem
+# kanonicznym jest https://www.ac4bf-thewatch.com/… — tak wskazuje
+# `link rel="canonical"` każdej strony (`site` w astro.config.mjs) i tak
+# stoją adresy w sitemap. Do tego dnia było odwrotnie (bez www, MIGRATION §9).
+# Serwer prowadzi tam samo: jedno przekierowanie 301 dla http://, dla
+# adresu bez www i dla http:// bez www — nigdy dwa skoki.
 #
 # `%{HTTPS}` bywa `off` mimo kłódki w przeglądarce, gdy SSL kończy się na
-# serwerze pośredniczącym — dlatego pytamy też o nagłówek od proxy, inaczej
-# przekierowanie kręci się w kółko.
+# serwerze pośredniczącym (tu: Cloudflare) — dlatego pytamy też o nagłówek
+# od proxy, inaczej przekierowanie kręci się w kółko.
 # ─────────────────────────────────────────────────────────────────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -54,8 +58,8 @@ ErrorDocument 404 /404/index.html
   RewriteRule ^ - [E=BEZ_HTTPS:1]
 
   RewriteCond %{ENV:BEZ_HTTPS} =1 [OR]
-  RewriteCond %{HTTP_HOST} ^www\. [NC]
-  RewriteRule ^(.*)$ https://ac4bf-thewatch.com/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} !^www\.ac4bf-thewatch\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.ac4bf-thewatch.com/$1 [R=301,L]
 </IfModule>
 
 # ─────────────────────────────────────────────────────────────────────────

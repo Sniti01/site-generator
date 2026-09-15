@@ -53,7 +53,10 @@
     { "slot": "assassins-creed-liberation", "appid": 260210, "kind": "keyart", "uwaga": "Liberation HD — wydanie na PC" },
     { "slot": "assassins-creed-chronicles", "appid": 354380, "kind": "keyart", "uwaga": "trylogia; kluczowy art z China (pierwsza czesc); India 359610, Russia 359600" },
     { "slot": "freedom-cry", "appid": 277590, "kind": "keyart", "uwaga": "samodzielne wydanie dodatku; strona /assassins-creed-4-black-flag/freedom-cry/" },
-    { "slot": "dawn-of-ragnarok", "appid": 2210140, "kind": "keyart", "uwaga": "dodatek do Valhalli; strona /assassins-creed-valhalla/dawn-of-ragnarok/" }
+    { "slot": "dawn-of-ragnarok", "appid": 2210140, "kind": "keyart", "uwaga": "dodatek do Valhalli; strona /assassins-creed-valhalla/dawn-of-ragnarok/" },
+    { "slot": "chronicles-india", "appid": 359610, "kind": "zrzuty", "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/" },
+    { "slot": "chronicles-russia", "appid": 359600, "kind": "zrzuty", "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/" }
   ],
-  "_bez_steam": "Bloodlines (PSP), Pirates (mobilna), II: Discovery (DS) — materialu wydawcy w Steam nie ma; ich strony dostaja kadr z Wikimedia Commons przez art.json i fetch-art.mjs (reszta punktu 22); rozstrzygacz media.ts oddaje zdjecie, gdy materialu gry brak."
+  "_bez_steam": "Bloodlines (PSP), Pirates (mobilna), II: Discovery (DS) — materialu wydawcy w Steam nie ma; bohater ich stron — kadr z Wikimedia Commons przez art.json i fetch-art.mjs; rzedy od 2026-09-15 (П57, klasa licencji «gier serii, o ktorych sa strony serwisu») moga niesc zrzuty innych gier serii (pole zrzuty); rozstrzygacz media.ts oddaje zdjecie, gdy materialu gry brak.",
+  "_zrzuty": "Kadry rzedow (П57): u gry pole zrzuty: [{ i, ss, opis }] — i to indeks zrzutu na witrynie od zera, ss to hash ss_<hex> z adresu zrzutu (kolejnosc listy Steam nie jest obiecana; id z API to sam indeks), opis idzie do alt kadru. Plik src/assets/gry/<slot>-k<nn>.jpg, wpis game-art.json pod tym kluczem. Kandydaci do wyboru: npm run gameart -- --kandydaci <slot|all> → input/kadry/<slot>/ (poza git) + arkusz tools/contact-sheet.mjs."
 }

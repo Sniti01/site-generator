@@ -26,11 +26,25 @@
  * (library_hero, 3:1, bez HUD z definicji) pod nazwą slotu plus okładka.
  * Slot nazywa się jak strona (ostatni segment adresu), bo tak nazywa go
  * pole `art` w pliku treści i rozstrzygacz `media.ts`.
+ *
+ * KADRY RZĘDÓW od 2026-09-15 (П57, zdarzenie «kadry rzędom»). Dwa tryby:
+ *   --kandydaci <slot,…|all>  — WSZYSTKIE zrzuty gry do input/kadry/<slot>/
+ *                               (poza src/assets/ i poza git), master 1920,
+ *                               plus lista.json z indeksami i hashem `ss` zrzutów;
+ *                               wybór ogląda się na arkuszu (contact-sheet.mjs)
+ *   pole `zrzuty` w games.json — [{ i, ss, opis }]: osobne przejście po głównej
+ *                               pętli pobiera src/assets/gry/<slot>-k<nn>.jpg
+ *                               i pisze wpis rejestru pod tym samym kluczem.
+ * Wpis gry z `kind: 'zrzuty'` (Chronicles India/Russia) istnieje TYLKO pod
+ * kadry rzędów: główna pętla go omija — bez keyartu i okładki.
  */
 
-/** Klasa licencji materiału wydawcy — jedno zdanie, to samo w każdej pozycji. */
+/** Klasa licencji materiału wydawcy — jedno zdanie, to samo w każdej pozycji.
+ *  Od 2026-09-15 (П57): «gier serii, o których są strony serwisu» — kadry gier
+ *  serii wolno kłaść na stronach tematów i gier bez wydania w Steam; 19
+ *  wcześniejszych wpisów game-art.json przepisano tą samą frazą ręką. */
 const LICENCJA =
-  'materiał wydawcy (Ubisoft Entertainment), bez wolnej licencji — użyty wyłącznie w celu identyfikacji gry, o której jest strona';
+  'materiał wydawcy (Ubisoft Entertainment), bez wolnej licencji — użyty wyłącznie w celu identyfikacji gier serii, o których są strony serwisu';
 
 import sharp from 'sharp';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
@@ -51,6 +65,8 @@ const pick = (flag) => {
 };
 const only = pick('--only') ? new Set(pick('--only').split(',')) : null;
 const shotsFor = pick('--shots');
+const kandydaciFor = pick('--kandydaci') ? new Set(pick('--kandydaci').split(',')) : null;
+const kadryDir = join(root, 'input/kadry');
 
 const CDN = 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps';
 const UA = 'bractwo-site-generator/0.1 (statyczny serwis o grach)';
@@ -61,6 +77,9 @@ const MASTER = 1920;
 const MASTER_HERO = 3840;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** Trwały identyfikator zrzutu — hash `ss_<hex>` z adresu; `id` z API to indeks. */
+const hashZrzutu = (shot) => (String(shot?.path_full ?? '').match(/ss_([0-9a-f]+)/) ?? [])[1] ?? null;
 
 async function politeFetch(url, { attempts = 3 } = {}) {
   for (let attempt = 1; ; attempt += 1) {
@@ -135,8 +154,52 @@ if (shotsFor) {
   });
 }
 
+// Tryb kandydatów (П57): wszystkie zrzuty gry do input/kadry/<slot>/ — poza
+// src/assets/ (glob media.ts by je zassał) i poza git (.gitignore). Master 1920,
+// jak u `shot`: kadr z listy nadaje się i rzędowi, i bohaterowi. Istniejący
+// plik nie jest ściągany ponownie (bez --force); lista.json niesie indeks,
+// hash `ss` z adresu zrzutu i wymiary — to z niej czyta się wybór do `zrzuty`.
+// `screenshots[].id` z API to sam indeks (0, 1, 2…), nie identyfikator —
+// trwały jest hash `ss_<hex>` w `path_full` (zmierzone 2026-09-15).
+if (kandydaciFor) {
+  const gry = manifest.games.filter((g) => kandydaciFor.has('all') || kandydaciFor.has(g.slot ?? g.era));
+  if (!gry.length) {
+    console.error('Nie znam zadnego z podanych slotow w src/data/games.json');
+    process.exit(1);
+  }
+  for (const game of gry) {
+    const slot = game.slot ?? game.era;
+    const dir = join(kadryDir, slot);
+    const details = await appDetails(game.appid);
+    const shots = details.screenshots ?? [];
+    console.log(`${slot.padEnd(28)} ${details.name} — ${shots.length} zrzutow`);
+    if (dryRun) continue;
+    mkdirSync(dir, { recursive: true });
+    const lista = [];
+    for (const [i, shot] of shots.entries()) {
+      const nn = String(i).padStart(2, '0');
+      const target = join(dir, `${nn}.jpg`);
+      let size;
+      if (!force && existsSync(target)) {
+        size = await sharp(target).metadata();
+      } else {
+        await sleep(400);
+        const bytes = Buffer.from(await (await politeFetch(shot.path_full)).arrayBuffer());
+        size = await save(bytes, target);
+      }
+      lista.push({ i, ss: hashZrzutu(shot), plik: `${nn}.jpg`, width: size.width, height: size.height, path_full: shot.path_full });
+    }
+    writeFileSync(
+      join(dir, 'lista.json'),
+      `${JSON.stringify({ slot, appid: game.appid, game: details.name, zrzuty: lista }, null, 2)}\n`,
+      'utf8',
+    );
+    console.log(`          zapisano ${lista.length} kandydatow w input/kadry/${slot}/`);
+  }
+}
+
 // Tryb pobierania.
-if (!shotsFor) {
+if (!shotsFor && !kandydaciFor) {
 
 const credits = existsSync(creditsPath) ? JSON.parse(readFileSync(creditsPath, 'utf8')) : {};
 if (!dryRun) mkdirSync(outDir, { recursive: true });
@@ -188,6 +251,8 @@ if (!only || only.has('hero')) {
 // --- zrzut ekranu i okładka na każdą epokę; kluczowy art i okładka na każdą stronę gry ---
 for (const game of manifest.games) {
   const slot = game.slot ?? game.era;
+  // Wpis tylko pod kadry rzędów (kind: zrzuty) — obsługuje osobne przejście niżej.
+  if (game.kind === 'zrzuty') continue;
   if (only && !only.has(slot)) continue;
 
   const shotTarget = join(outDir, `${slot}.jpg`);
@@ -298,6 +363,73 @@ for (const game of manifest.games) {
   };
   pobrane += 1;
   writeFileSync(creditsPath, `${JSON.stringify(credits, null, 2)}\n`, 'utf8');
+}
+
+// --- kadry rzędów: pole `zrzuty` z manifestu, osobne przejście (П57) ---
+// Klucz `<slot>-k<nn>` = nazwa pliku = klucz rejestru; `nn` — indeks zrzutu
+// na witrynie od zera, dwie cyfry. Hash `ss` z adresu zrzutu zapisuje się obok,
+// bo kolejność listy Steam nie jest obiecana: przy zmianie kolejności kadr
+// odnajduje się po hashu, a nazwa pliku (i klucz w treści) zostaje. Nazwa gry —
+// z istniejącego wpisu tego samego appid (stopka deduplikuje po nazwie, a Steam
+// nie normalizuje ®/™ między kartami), dla nowego appid — z witryny.
+// Własny pomijacz «plik + wpis», jak u slotów; `--only` działa po slocie gry.
+const szczegoly = new Map();
+const detailsFor = async (appid) => {
+  if (!szczegoly.has(appid)) szczegoly.set(appid, await appDetails(appid));
+  return szczegoly.get(appid);
+};
+const nazwaGry = (appid, details) =>
+  Object.values(credits).find((c) => c.appid === appid && c.game)?.game ?? details.name;
+for (const game of manifest.games) {
+  const slot = game.slot ?? game.era;
+  if (!Array.isArray(game.zrzuty) || !game.zrzuty.length) continue;
+  if (only && !only.has(slot)) continue;
+  for (const wpis of game.zrzuty) {
+    const nn = String(wpis.i).padStart(2, '0');
+    const klucz = `${slot}-k${nn}`;
+    const target = join(outDir, `${klucz}.jpg`);
+    if (!force && existsSync(target) && credits[klucz]) {
+      console.log(`pominiete ${klucz.padEnd(28)} plik juz jest`);
+      continue;
+    }
+    const details = await detailsFor(game.appid);
+    const shots = details.screenshots ?? [];
+    let index = wpis.i;
+    let shot = shots[index];
+    if (wpis.ss && (!shot || hashZrzutu(shot) !== wpis.ss)) {
+      const znaleziony = shots.findIndex((s) => hashZrzutu(s) === wpis.ss);
+      if (znaleziony < 0) {
+        console.warn(`BRAK      ${klucz.padEnd(28)} zrzut ss_${wpis.ss} zniknal z witryny`);
+        continue;
+      }
+      console.warn(`          ${klucz}: kolejnosc listy Steam sie zmienila — ss_${wpis.ss} jest pod [${znaleziony}], nazwa pliku zostaje`);
+      index = znaleziony;
+      shot = shots[index];
+    }
+    if (!shot) {
+      console.warn(`BRAK      ${klucz.padEnd(28)} ${details.name} nie ma zrzutu [${wpis.i}]`);
+      continue;
+    }
+    console.log(`${dryRun ? 'wybrano ' : 'pobieram'} ${klucz.padEnd(28)} ${details.name} — zrzut [${wpis.i}]${wpis.opis ? ': ' + wpis.opis : ''}`);
+    if (dryRun) continue;
+    await sleep(400);
+    const bytes = Buffer.from(await (await politeFetch(shot.path_full)).arrayBuffer());
+    const size = await save(bytes, target);
+    credits[klucz] = {
+      file: `${klucz}.jpg`,
+      game: nazwaGry(game.appid, details),
+      appid: game.appid,
+      kind: `zrzut ekranu [${wpis.i}]`,
+      shot: wpis.i,
+      ss: hashZrzutu(shot),
+      opis: wpis.opis ?? null,
+      licencja: LICENCJA,
+      source: `https://store.steampowered.com/app/${game.appid}/`,
+      ...size,
+    };
+    pobrane += 1;
+    writeFileSync(creditsPath, `${JSON.stringify(credits, null, 2)}\n`, 'utf8');
+  }
 }
 
 if (!dryRun) {

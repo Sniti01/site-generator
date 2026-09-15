@@ -27,6 +27,12 @@ export interface GameCredit {
   game: string;
   /** Karta gry w witrynie Steam. */
   source: string;
+  /**
+   * Opis kadru z manifestu (`zrzuty[].opis`, П57) — wpisywany ręką przy wyborze
+   * z arkusza, żeby sześć kadrów jednej gry na stronie nie miało jednego `alt`.
+   * Brak (starsze wpisy, keyart) — `alt` jak dotąd: «<gra> — materiał wydawcy».
+   */
+  opis?: string | null;
 }
 
 export interface MediaSource {
@@ -68,7 +74,7 @@ export function mediaFor(slot: string, alt?: string): MediaSource {
     alt:
       alt ??
       (gra
-        ? `${gameCredit?.game ?? 'Assassin’s Creed'} — materiał wydawcy`
+        ? `${gameCredit?.game ?? 'Assassin’s Creed'} — ${gameCredit?.opis ?? 'materiał wydawcy'}`
         : (artSlots.find((item) => item.id === slot)?.subject ?? '')),
     // Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
     // niż panele epok i kafle w taśmie. Zdjęcie z Commons schodzi niżej: duoton

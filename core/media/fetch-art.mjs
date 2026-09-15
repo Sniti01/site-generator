@@ -7,8 +7,24 @@
  *   node core/media/fetch-art.mjs <korzeń> --dry-run           — tylko pokazuje, co by wybrał
  *   node core/media/fetch-art.mjs <korzeń> --force             — pobiera wszystko od nowa
  *   node core/media/fetch-art.mjs <korzeń> --only hero,londyn
+ *   node core/media/fetch-art.mjs <korzeń> --kandydaci [--n 12] [--only …]
+ *                                          — miniatury kandydatów do arkusza
  *
  * Bez argumentu bierze katalog bieżący — tak samo jak `core/gates/run.mjs`.
+ *
+ * WYBÓR OKIEM od 2026-09-15 (П57, «kadry rzędom»). Do tego dnia kadr wybierał
+ * wynik (`score`) spośród 40 odpowiedzi wyszukiwarki, a jedyną dźwignią były
+ * `queries`/`must`/`avoid`. Teraz slot może nieść `file` — konkretny plik
+ * Commons: narzędzie nie szuka, bierze ten plik, a licencję i szerokość
+ * sprawdza tak samo. Kandydatów ogląda się na arkuszu: `--kandydaci` kładzie
+ * miniatury pierwszych N (domyślnie 12) dopuszczalnych wyników wszystkich
+ * zapytań slotu do `<korzeń>/input/kadry/commons/<id>/` (poza git) razem
+ * z `lista.json` (tytuł, wymiary, licencja, autor, ocena); arkusz składa
+ * `tools/contact-sheet.mjs` witryny. Slot z `avoidDefault: false` nie podlega
+ * globalnej liście odrzuceń (mapy, plany, portrety, dokumenty…) — inaczej
+ * ludzie, ryciny i plany miast nie mają szans. Atrybucje zapisują się po
+ * KAŻDYM slocie, nie na końcu: przerwany w połowie przebieg nie gubi już
+ * kredytów pobranych plików.
  *
  * Bierze wyłącznie licencje, które wolno użyć komercyjnie i zmodyfikować
  * (kadrowanie, duoton), a autora razem z licencją zapisuje do
@@ -39,6 +55,9 @@ const dryRun = args.includes('--dry-run');
 const force = args.includes('--force');
 const onlyArg = args.indexOf('--only');
 const only = onlyArg >= 0 && args[onlyArg + 1] ? new Set(args[onlyArg + 1].split(',')) : null;
+const kandydaci = args.includes('--kandydaci');
+const nArg = args.indexOf('--n');
+const ileKandydatow = nArg >= 0 && args[nArg + 1] ? Number(args[nArg + 1]) : 12;
 
 // KORZEŃ WITRYNY PRZYCHODZI ARGUMENTEM, nie liczy się od miejsca modułu.
 // Przed wyniesieniem stały tu trzy ścieżki liczone od `import.meta.url` —
@@ -51,6 +70,8 @@ const siteRoot = args[0] && !args[0].startsWith('--') ? resolve(args[0]) : proce
 const outDir = join(siteRoot, 'src/assets/foto');
 const creditsPath = join(siteRoot, 'src/data/art-credits.json');
 const manifestPath = join(siteRoot, 'src/data/art.json');
+// Kandydaci — poza `src/assets/` (glob witryny by je zassał) i poza git.
+const kadryDir = join(siteRoot, 'input/kadry/commons');
 
 // Wikimedia prosi o opisowy User-Agent. Bez niego API potrafi odmówić.
 const UA = 'bractwo-site-generator/0.1 (statyczny serwis o grach; skrypt pobierania ilustracji)';
@@ -133,7 +154,24 @@ async function politeFetch(url, { attempts = 4 } = {}) {
   }
 }
 
-async function search(query, slot) {
+/** Kandydat w jednym kształcie — z wyszukiwarki i z pliku po tytule. */
+function kandydatZ(page, info, licence) {
+  const meta = info.extmetadata ?? {};
+  return {
+    title: page.title.replace(/^File:/, ''),
+    width: info.width,
+    height: info.height,
+    aspect: info.width / info.height,
+    download: info.thumburl || info.url,
+    source: info.descriptionurl,
+    author: stripHtml(meta.Artist?.value) || stripHtml(meta.Credit?.value) || 'nieznany',
+    license: stripHtml(meta.LicenseShortName?.value) || licence.prefix.toUpperCase(),
+    licenseUrl: meta.LicenseUrl?.value ?? '',
+    rank: licence.rank,
+  };
+}
+
+async function search(query, slot, { szerokosc = 2400 } = {}) {
   const url = new URL('https://commons.wikimedia.org/w/api.php');
   url.search = new URLSearchParams({
     action: 'query',
@@ -143,7 +181,7 @@ async function search(query, slot) {
     gsrlimit: '40',
     prop: 'imageinfo',
     iiprop: 'url|size|extmetadata',
-    iiurlwidth: '2400',
+    iiurlwidth: String(szerokosc),
     format: 'json',
   }).toString();
 
@@ -164,24 +202,55 @@ async function search(query, slot) {
 
     const title = page.title.replace(/^File:/, '');
     const lower = title.toLowerCase();
-    if (hasPhrase(lower, REJECT_WORDS)) continue;
-    if (!hasPhrase(lower, slot.must)) continue;
-    if (hasPhrase(lower, slot.avoid)) continue;
+    // `avoidDefault: false` zdejmuje globalną listę odrzuceń dla slotu (П57);
+    // `must`/`avoid` są nieobowiązkowe od tego samego dnia — slot z `file`
+    // ich nie potrzebuje, a `hasPhrase` na `undefined` rzucałby TypeError.
+    if (slot.avoidDefault !== false && hasPhrase(lower, REJECT_WORDS)) continue;
+    if (slot.must?.length && !hasPhrase(lower, slot.must)) continue;
+    if (slot.avoid?.length && hasPhrase(lower, slot.avoid)) continue;
 
-    candidates.push({
-      title,
-      width: info.width,
-      height: info.height,
-      aspect: info.width / info.height,
-      download: info.thumburl || info.url,
-      source: info.descriptionurl,
-      author: stripHtml(meta.Artist?.value) || stripHtml(meta.Credit?.value) || 'nieznany',
-      license: stripHtml(meta.LicenseShortName?.value) || licence.prefix.toUpperCase(),
-      licenseUrl: meta.LicenseUrl?.value ?? '',
-      rank: licence.rank,
-    });
+    candidates.push(kandydatZ(page, info, licence));
   }
   return candidates;
+}
+
+/**
+ * Plik po tytule (`slot.file`) — wybór z arkusza, П57. Bez wyszukiwania
+ * i bez list słów; licencja i szerokość — sprawdzane jak u wyszukiwarki,
+ * odmowa jest głośna, nie cicha: kadr spoza ALLOWED nie wejdzie na stronę
+ * tylko dlatego, że ktoś go wpisał ręką.
+ */
+async function poTytule(slot) {
+  const tytul = /^file:/i.test(slot.file) ? slot.file : `File:${slot.file}`;
+  const url = new URL('https://commons.wikimedia.org/w/api.php');
+  url.search = new URLSearchParams({
+    action: 'query',
+    titles: tytul,
+    prop: 'imageinfo',
+    iiprop: 'url|size|extmetadata',
+    iiurlwidth: '2400',
+    format: 'json',
+  }).toString();
+  await sleep(1200);
+  const data = await (await politeFetch(url)).json();
+  const page = Object.values(data?.query?.pages ?? {})[0];
+  const info = page?.imageinfo?.[0];
+  if (!page || page.missing !== undefined || !info) {
+    console.warn(`BRAK      ${slot.id.padEnd(12)} Commons nie zna pliku "${tytul}"`);
+    return null;
+  }
+  const licence = licenceOf(info.extmetadata ?? {});
+  if (!licence) {
+    console.warn(
+      `BRAK      ${slot.id.padEnd(12)} "${tytul}" — licencja ${stripHtml(info.extmetadata?.License?.value) || 'nieznana'} spoza ALLOWED`,
+    );
+    return null;
+  }
+  if (info.width < slot.minWidth) {
+    console.warn(`BRAK      ${slot.id.padEnd(12)} "${tytul}" — ${info.width}px, wymagane ${slot.minWidth}`);
+    return null;
+  }
+  return { ...kandydatZ(page, info, licence), query: 'file' };
 }
 
 /** Im bliżej szerokiego kadru, im większy oryginał i im swobodniejsza
@@ -195,7 +264,8 @@ function score(candidate, slot) {
 }
 
 async function pick(slot) {
-  for (const query of slot.queries) {
+  if (slot.file) return poTytule(slot);
+  for (const query of slot.queries ?? []) {
     const ranked = (await search(query, slot))
       .map((candidate) => ({ candidate, value: score(candidate, slot) }))
       .filter((entry) => entry.value > 0)
@@ -203,6 +273,28 @@ async function pick(slot) {
     if (ranked.length) return { ...ranked[0].candidate, query };
   }
   return null;
+}
+
+/**
+ * Kandydaci do arkusza (П57): pierwszych N dopuszczalnych wyników wszystkich
+ * zapytań slotu (bez progu `minAspect` — kadr pionowy da się przyciąć polem
+ * `crop`, więc ma prawo być na arkuszu), miniatury 800 px do
+ * `input/kadry/commons/<id>/NN.jpg` i `lista.json` obok. Nic nie trafia
+ * do `src/assets/` ani do atrybucji — wybór zapisuje się ręką polem `file`.
+ */
+async function zbierzKandydatow(slot) {
+  const widziane = new Set();
+  const lista = [];
+  for (const query of slot.queries ?? []) {
+    for (const c of await search(query, slot, { szerokosc: 800 })) {
+      if (widziane.has(c.title)) continue;
+      widziane.add(c.title);
+      lista.push({ ...c, query, ocena: Math.round(score(c, slot) * 1000) / 1000 });
+      if (lista.length >= ileKandydatow) break;
+    }
+    if (lista.length >= ileKandydatow) break;
+  }
+  return lista;
 }
 
 const wszystkie = JSON.parse(readFileSync(manifestPath, 'utf8')).slots;
@@ -221,6 +313,53 @@ console.log(
   `zapis:          ${outDir} (${existsSync(outDir) ? 'jest' : 'będzie utworzony'}), ` +
     `atrybucje ${creditsPath} — wpisów ${Object.keys(credits).length}`,
 );
+
+// Tryb kandydatów — osobna gałąź, kończy skrypt: nic nie pobiera do witryny.
+if (kandydaci) {
+  let bez = 0;
+  for (const slot of slots) {
+    const dir = join(kadryDir, slot.id);
+    const lista = await zbierzKandydatow(slot);
+    console.log(`${slot.id.padEnd(12)} kandydatow ${lista.length}${slot.file ? ' (slot ma juz file — arkusz tylko do porownania)' : ''}`);
+    if (!lista.length) {
+      bez += 1;
+      continue;
+    }
+    if (dryRun) {
+      lista.forEach((c, i) => console.log(`  [${String(i).padStart(2, '0')}] ${c.width}x${c.height} ${c.license}  ${c.title}`));
+      continue;
+    }
+    mkdirSync(dir, { recursive: true });
+    const zapis = [];
+    for (const [i, c] of lista.entries()) {
+      const nn = String(i).padStart(2, '0');
+      const target = join(dir, `${nn}.jpg`);
+      if (force || !existsSync(target)) {
+        await sleep(800);
+        const bytes = Buffer.from(await (await politeFetch(c.download)).arrayBuffer());
+        writeFileSync(target, await sharp(bytes).jpeg({ quality: 82 }).toBuffer());
+      }
+      zapis.push({
+        i,
+        plik: `${nn}.jpg`,
+        title: c.title,
+        width: c.width,
+        height: c.height,
+        aspect: Math.round(c.aspect * 100) / 100,
+        license: c.license,
+        author: c.author,
+        source: c.source,
+        query: c.query,
+        ocena: c.ocena,
+      });
+    }
+    writeFileSync(join(dir, 'lista.json'), `${JSON.stringify({ slot: slot.id, subject: slot.subject, kandydaci: zapis }, null, 2)}\n`, 'utf8');
+    console.log(`          zapisano ${zapis.length} miniatur w input/kadry/commons/${slot.id}/`);
+  }
+  console.log(`\nKandydaci: slotow ${slots.length}${bez ? `, bez kandydatow ${bez}` : ''}.`);
+  if (bez) process.exitCode = 1;
+  process.exit();
+}
 
 if (!dryRun) mkdirSync(outDir, { recursive: true });
 
@@ -305,6 +444,9 @@ for (const slot of slots) {
     height: chosen.height,
   };
   pobrane += 1;
+  // Po każdym slocie, nie na końcu: 429 w połowie listy nie gubi atrybucji
+  // już pobranych plików (П57; do tego dnia zapis stał tylko za pętlą).
+  writeFileSync(creditsPath, `${JSON.stringify(credits, null, 2)}\n`, 'utf8');
 }
 
 if (!dryRun) {

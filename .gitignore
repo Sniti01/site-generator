@@ -6,6 +6,12 @@ dist/
 # по нему корпус пересобирается `tools/fetch-corpus.mjs`, а хеши показывают,
 # что изменилось с момента снимка. Порядок взят у `../1weekinvr.com`.
 sites/*/input/corpus/raw/
+
+# Kandydaci kadrów ze Steam/Commons i arkusze kontaktowe (П57): setki plików
+# wydawcy poza stronami — klasa licencji jest zapisana dla pokazu na stronach,
+# nie dla składu w repozytorium. Wybór jest odtwarzalny z games.json (zrzuty)
+# i art.json (file).
+sites/*/input/kadry/
 .playwright-mcp/
 .claude/settings.local.json
 *.log

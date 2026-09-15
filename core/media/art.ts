@@ -20,17 +20,36 @@ export interface ArtSlot {
   id: string;
   /** Co ma być na kadrze — trafia do `alt`. */
   subject: string;
+  /**
+   * Konkretny plik Commons (`File:…` albo sam tytuł) — wybór z arkusza
+   * kandydatów, П57 (2026-09-15, «kadry rzędom»). Gdy jest, narzędzie nie
+   * szuka: bierze ten plik, sprawdza tylko licencję i szerokość. `queries`,
+   * `must`, `avoid` są wtedy zbędne.
+   */
+  file?: string;
   /** Kolejne podejścia, od najlepszego; pierwsze trafione wygrywa. */
-  queries: string[];
+  queries?: string[];
   /** Tytuł pliku musi zawierać choć jedno z tych słów. Wyszukiwarka Commons
    *  ocenia opis, nie kadr: bez tego pod „tall ship" trafia skan listu. */
-  must: string[];
+  must?: string[];
   /** I nie może zawierać żadnego z tych — tu odpada współczesność w kadrze
    *  epoki oraz detal architektoniczny zamiast widoku. */
-  avoid: string[];
+  avoid?: string[];
+  /**
+   * `false` wyłącza globalną listę odrzuceń narzędzia (mapy, plany, portrety,
+   * dokumenty…) dla tego slotu — sloty ludzi, rycin i planów miast (П57)
+   * inaczej nie dostaną żadnego kandydata. Domyślnie lista działa.
+   */
+  avoidDefault?: boolean;
   /** Kadr pionowy nie wejdzie w panoramę. */
   minAspect: number;
   minWidth: number;
+  /**
+   * Przycięcie w ułamkach boku (0–1), przed zmniejszeniem mastera — narzędzie
+   * czytało je od początku, typ dostał to pole 2026-09-15: portret w ramie
+   * 21:13 bez `crop` traci ponad połowę wysokości.
+   */
+  crop?: { left?: number; right?: number; top?: number; bottom?: number };
 }
 
 export interface ArtCredit {

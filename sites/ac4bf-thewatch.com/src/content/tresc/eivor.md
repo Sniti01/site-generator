@@ -1,17 +1,5 @@
 ---
 url: /assassins-creed-valhalla/eivor/
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Wiking z klanu Kruka, który prowadzi swoich ludzi z Norwegii do Anglii
-  IX wieku. Skąd się wziął, dlaczego płynie za morze, co zmienia wybór
-  płci i gdzie jeszcze pojawia się poza podstawką.
-primary:
-  href: /assassins-creed-valhalla/
-  label: Strona Valhalli
-secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
 byline:
   role: Redakcja
   author: Bractwo

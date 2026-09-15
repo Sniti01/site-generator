@@ -1,18 +1,6 @@
 ---
 url: /ezio-auditore/
 era: wlochy
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Jeden bohater na trzy gry: od beztroskiego syna florenckiego bankiera
-  do Mentora bractwa. Kim jest Ezio, co robi w każdej z części i w jakim
-  wydaniu zagrać w całą trylogię.
-primary:
-  href: /assassins-creed-2/
-  label: Zacznij od dwójki
-secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
 byline:
   role: Redakcja
   author: Bractwo

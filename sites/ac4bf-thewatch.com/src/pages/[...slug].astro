@@ -139,8 +139,22 @@ const paletaRzedu = (artRzedu?: string) => {
  * predykaty stoją w warunkach druku niżej: lista i rozmieszczenie liczą się
  * z jednego źródła, więc nie mogą się rozejść.
  */
+/**
+ * Hero — trzy pola naraz albo wcale (backlog 28, П52 p. 5, 2026-09-15).
+ * Do tego dnia predykat brzmiał `() => true` z dopiskiem «schemat wymaga
+ * `lead`, `primary` i `secondary`» — i schemat wymagał ich od KAŻDEJ strony,
+ * także od siedmiu bez hero. Teraz pola są nieobowiązkowe, a wymóg stoi
+ * tu: strona deklarująca `hero-key-art` bez kompletu trzech pól wpada niżej
+ * w «bez treści albo bez miejsca w PORZADEK» i przerywa budowanie; strona
+ * bez hero nie musi nosić niczego «dla schematu».
+ */
+const hero =
+  dane.lead !== undefined && dane.primary && dane.secondary
+    ? { lead: dane.lead, primary: dane.primary, secondary: dane.secondary }
+    : undefined;
+
 const maTresc: Record<string, (role?: string) => boolean> = {
-  'hero-key-art': () => true, // schemat treści wymaga `lead`, `primary` i `secondary`
+  'hero-key-art': () => Boolean(hero),
   byline: () => Boolean(dane.byline),
   toc: () => Boolean(dane.toc),
   'story-row': () => (dane.rows ?? []).length > 0,
@@ -151,6 +165,68 @@ const maTresc: Record<string, (role?: string) => boolean> = {
   'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
   'cta-band': () => Boolean(dane.cta),
 };
+
+/**
+ * POLE BEZ BLOKU — druga strona umowy (backlog 44, П52 p. 5, 2026-09-15).
+ * Sprawdzenie niżej («Blocks[] i druk rozeszły się») zna jeden kierunek:
+ * blok zadeklarowany, a treści brak. Kierunek odwrotny — pole bloku w pliku
+ * treści, a bloku w `blocks[]` nie ma — do tego dnia przechodził w ciszy:
+ * `verdict` na stronie bez `verdict-box` po prostu się nie drukował, i nikt
+ * nie wiedział, czy to zamiar, czy zapomniana deklaracja. Teraz to odmowa
+ * z nazwą pola i bloku. Mapa jest jawna, bo nazwy pól i bloków różnią się
+ * (`rows` → `story-row`, `cta` → `cta-band`); pola strony — `url`, `art`,
+ * `era` — do żadnego bloku nie należą i tu nie stoją. `rows` ma domyślną
+ * pustą listę, więc «obecne» znaczy «niepuste».
+ */
+const POLE_BLOKU: Record<string, string> = {
+  lead: 'hero-key-art',
+  primary: 'hero-key-art',
+  secondary: 'hero-key-art',
+  rows: 'story-row',
+  cards: 'card-rail',
+  columns: 'link-columns',
+  byline: 'byline',
+  toc: 'toc',
+  gallery: 'gallery',
+  verdict: 'verdict-box',
+  related: 'link-list',
+  cta: 'cta-band',
+};
+const POLA_STRONY = new Set(['url', 'art', 'era']);
+const zadeklarowane = new Set(wystapienia.map((b) => b.block));
+const obecne = (pole: string) => {
+  const v = (dane as Record<string, unknown>)[pole];
+  return v !== undefined && !(Array.isArray(v) && v.length === 0);
+};
+// Pole, którego mapa nie zna, to ta sama cisza w nowym miejscu: nowe pole
+// schematu bez wiersza w `POLE_BLOKU` przechodziłoby sprawdzenie niżej
+// niewidzialne. Dlatego każde pole treści musi być albo polem strony, albo
+// polem bloku — trzeciej szuflady nie ma.
+const bezMapy = Object.keys(dane).filter((pole) => !POLA_STRONY.has(pole) && !(pole in POLE_BLOKU));
+if (bezMapy.length) {
+  throw new Error(
+    `Pole treści bez miejsca w mapie POLE_BLOKU na ${strona.url}: ${bezMapy.map((p) => '`' + p + '`').join(', ')}.\n` +
+      'Nowe pole schematu dopisz do `POLE_BLOKU` (pole bloku) albo do `POLA_STRONY` (pole strony) w tej trasie.'
+  );
+}
+const bezBloku = Object.entries(POLE_BLOKU).filter(([pole, blok]) => obecne(pole) && !zadeklarowane.has(blok));
+if (bezBloku.length) {
+  throw new Error(
+    `Pole bez bloku na ${strona.url}.\n` +
+      bezBloku.map(([pole, blok]) => `  pole \`${pole}\` w treści, a bloku \`${blok}\` nie ma w blocks[] struktury`).join('\n') +
+      '\n' +
+      'Zdejmij pole z pliku treści albo zadeklaruj blok w strukturze — pole, którego nikt nie drukuje, to cicha zaślepka.'
+  );
+}
+// Hero zadeklarowany, a pól brak — odmowa Z NAZWĄ POLA, zanim ogólne
+// sprawdzenie niżej powie tylko «hero-key-art bez treści».
+const heroBraki = ['lead', 'primary', 'secondary'].filter((pole) => !obecne(pole));
+if (zadeklarowane.has('hero-key-art') && heroBraki.length) {
+  throw new Error(
+    'Blok `hero-key-art` zadeklarowany na ' + strona.url + ', a w treści brak: ' + heroBraki.map((p) => '`' + p + '`').join(', ') + '.\n' +
+      'Hero drukuje się tylko z kompletem `lead`, `primary` i `secondary` (backlog 28) — dopisz pola albo zdejmij blok ze struktury.'
+  );
+}
 
 /**
  * Kolejność drukowana niżej jest wpisana ręcznie, więc musi być pilnowana
@@ -265,13 +341,13 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
        Do 2026-09-10 hero drukował się BEZWARUNKOWO, a sześć stron fali 1 go
        nie deklaruje. To ten sam defekt, co podwójne linki: szablon drukował,
        czego umowa nie zamawiała. Teraz warunek jest taki sam jak u reszty. */
-    drukowane.includes('hero-key-art') ? (
+    drukowane.includes('hero-key-art') && hero ? (
       <HeroKeyArt
         titleId="strona-tytul"
-        primaryHref={dane.primary.href}
-        primaryLabel={dane.primary.label}
-        secondaryHref={dane.secondary.href}
-        secondaryLabel={dane.secondary.label}
+        primaryHref={hero.primary.href}
+        primaryLabel={hero.primary.label}
+        secondaryHref={hero.secondary.href}
+        secondaryLabel={hero.secondary.label}
       >
         <h1 class="hero__title t-display" id="strona-tytul" slot="tytul">
           {strona.h1}
@@ -286,7 +362,7 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
             credit={false}
           />
         )}
-        <Fragment slot="lead">{dane.lead}</Fragment>
+        <Fragment slot="lead">{hero.lead}</Fragment>
         <Icon slot="ikona-glowna" name="w-dol" size={18} />
       </HeroKeyArt>
     ) : (

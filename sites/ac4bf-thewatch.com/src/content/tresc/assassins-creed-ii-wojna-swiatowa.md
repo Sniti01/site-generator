@@ -1,17 +1,5 @@
 ---
 url: /assassins-creed-ii-wojna-swiatowa/
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Pełnoprawnej odsłony w realiach II wojny światowej nie ma. Co seria ma
-  zamiast niej — Londyn roku 1916 w Syndicate i szczelinę w Unity — i co
-  utrudnia jej wejście w tę epokę.
-primary:
-  href: /assassins-creed-syndicate/
-  label: Zobacz Syndicate
-secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
 byline:
   role: Redakcja
   author: Bractwo

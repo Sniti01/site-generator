@@ -1,16 +1,5 @@
 ---
 url: /poradniki/od-czego-zaczac/
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Dwie kolejności serii — premier i wydarzeń — obok siebie, trzy dobre
-  wejścia i lista tego, co da się pominąć bez szkody dla fabuły.
-primary:
-  href: /poradniki/
-  label: Wszystkie poradniki
-secondary:
-  href: /
-  label: Cała seria
 byline:
   role: Redakcja
   author: Bractwo

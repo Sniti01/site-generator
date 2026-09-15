@@ -1,18 +1,6 @@
 ---
 url: /assassins-creed-rodowod/
 era: wlochy
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Trzy odcinki, 36 minut, ten sam rok co dwójka: aktorski prequel o Giovannim
-  Auditore, ojcu Ezia. Co pokazuje, gdzie kończy się film, a zaczyna gra,
-  i w którym wydaniu dostaje się go razem z trylogią.
-primary:
-  href: /assassins-creed-2/
-  label: Zobacz dwójkę
-secondary:
-  href: /ezio-auditore/
-  label: Kim jest Ezio
 rows:
   - id: co-to-jest
     year: '2009'

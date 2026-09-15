@@ -1,16 +1,5 @@
 ---
 url: /assassins-creed-za-darmo/
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — punkt 28 backlogu.
-lead: >-
-  Darmowe weekendy, rozdania i abonamenty — kiedy w Assassin’s Creed
-  gra się za darmo bez piractwa.
-primary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
-secondary:
-  href: /
-  label: Cała seria
 byline:
   role: Redakcja
   author: Bractwo

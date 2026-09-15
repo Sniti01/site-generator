@@ -1,17 +1,5 @@
 ---
 url: /prywatnosc/
-# Strona bez `hero-key-art`: trzy pola niżej są wymagane przez schemat
-# kolekcji, choć tej strony nie drukują — patrz punkt 28 backlogu.
-lead: >-
-  Serwis Bractwo nie zbiera danych osobowych czytelników, nie prowadzi
-  analityki i nie zapisuje własnych plików cookie. Ta strona mówi, co
-  w takim razie przetwarza hosting i jakie prawa ma czytelnik.
-primary:
-  href: /
-  label: Strona główna
-secondary:
-  href: /poradniki/
-  label: Poradniki
 byline:
   role: Aktualizacja
   author: Redakcja Bractwo

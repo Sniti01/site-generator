@@ -10,15 +10,24 @@ import { z } from 'zod';
  * miejscem, gdzie ta zasada przestaje być umową i staje się błędem budowania:
  * `title` we front matterze wywali walidację, a nie przejdzie niezauważony.
  *
+ * SCHEMAT JEST ŚCISŁY — `.strict()` na każdym obiekcie (backlog 44, П52
+ * p. 5, 2026-09-15). Do tego dnia zdanie wyżej było nieprawdą: `z.object()`
+ * bez `.strict()` cicho odcina nieznane klucze, więc `title` w pliku treści
+ * przechodził niezauważony, a literówka w nazwie pola bloku znikała razem
+ * z polem. Teraz nieznany klucz przerywa budowanie z nazwą pliku i klucza.
+ *
  * Reszta pól to DANE BLOKÓW, nie SEO. Który blok i w jakiej kolejności —
  * mówi `blocks[]` w strukturze; czym go wypełnić — mówi ten plik. Podział
  * jest celowy: kolejność sekcji należy do kontraktu, a zdania do treści.
+ * Drugą stronę tej umowy — pole bloku, którego strona nie deklaruje —
+ * pilnuje trasa (`POLE_BLOKU` w `[...slug].astro`): tu widać tylko kształt
+ * pola, tam widać, czy blok jest.
  */
 
 const link = z.object({
   href: z.string(),
   label: z.string(),
-});
+}).strict();
 
 export const collections = {
   tresc: defineCollection({
@@ -36,25 +45,33 @@ export const collections = {
        *  to pole → bez domyślnej. */
       era: z.enum(['jerozolima', 'wlochy', 'karaiby', 'londyn', 'japonia']).optional(),
 
-      /* — hero-key-art — */
-      lead: z.string(),
-      primary: link,
-      secondary: link,
+      /* — hero-key-art —
+         NIEOBOWIĄZKOWE (backlog 28, П52 p. 5). Do 2026-09-15 trzy pola były
+         wymagane od każdej strony, choć drukuje je tylko `hero-key-art` —
+         siedem stron fali 1 bez hero nosiło je «dla schematu». Teraz wymaga
+         ich trasa predykatem `maTresc['hero-key-art']`: strona z hero bez
+         lidu przerywa budowanie («Blocks[] i druk rozeszły się»), strona
+         bez hero nie ma czego nosić. */
+      lead: z.string().optional(),
+      primary: link.optional(),
+      secondary: link.optional(),
 
       /* — story-row, po jednym wpisie na rząd — */
       rows: z
         .array(
-          z.object({
-            id: z.string(),
-            /** Nadtytuł w roli `t-year`: rdzeń tej roli nie zna, niesie ją witryna. */
-            year: z.string(),
-            title: z.string(),
-            meta: z.string(),
-            body: z.array(z.string()).nonempty(),
-            flip: z.boolean().default(false),
-            band: z.boolean().default(false),
-            art: z.string().optional(),
-          })
+          z
+            .object({
+              id: z.string(),
+              /** Nadtytuł w roli `t-year`: rdzeń tej roli nie zna, niesie ją witryna. */
+              year: z.string(),
+              title: z.string(),
+              meta: z.string(),
+              body: z.array(z.string()).nonempty(),
+              flip: z.boolean().default(false),
+              band: z.boolean().default(false),
+              art: z.string().optional(),
+            })
+            .strict()
         )
         .default([]),
 
@@ -67,23 +84,27 @@ export const collections = {
          chwili ani jednego użycia w treści. */
       cards: z
         .array(
-          z.object({
-            role: z.string().optional(),
-            title: z.string(),
-            lead: z.string().optional(),
-            items: z.array(
-              z.object({
-                href: z.string(),
-                title: z.string(),
-                kind: z.string().optional(),
-                place: z.string().optional(),
-                /** Klucz kadru (`game-art.json` albo `art-credits.json`) — trasa
-                 *  rozstrzyga go przez `mediaFor`, jak `GuideRail` na głównej.
-                 *  Bez klucza karta idzie bez miejsca na kadr (punkt 34, П44). */
-                art: z.string().optional(),
-              })
-            ),
-          })
+          z
+            .object({
+              role: z.string().optional(),
+              title: z.string(),
+              lead: z.string().optional(),
+              items: z.array(
+                z
+                  .object({
+                    href: z.string(),
+                    title: z.string(),
+                    kind: z.string().optional(),
+                    place: z.string().optional(),
+                    /** Klucz kadru (`game-art.json` albo `art-credits.json`) — trasa
+                     *  rozstrzyga go przez `mediaFor`, jak `GuideRail` na głównej.
+                     *  Bez klucza karta idzie bez miejsca na kadr (punkt 34, П44). */
+                    art: z.string().optional(),
+                  })
+                  .strict()
+              ),
+            })
+            .strict()
         )
         .optional(),
 
@@ -98,14 +119,17 @@ export const collections = {
           label: z.string(),
           href: z.string(),
           groups: z.array(
-            z.object({
-              title: z.string(),
-              href: z.string(),
-              count: z.number(),
-              items: z.array(z.object({ label: z.string(), href: z.string() })),
-            })
+            z
+              .object({
+                title: z.string(),
+                href: z.string(),
+                count: z.number(),
+                items: z.array(z.object({ label: z.string(), href: z.string() }).strict()),
+              })
+              .strict()
           ),
         })
+        .strict()
         .optional(),
 
       /* — byline — */
@@ -117,14 +141,16 @@ export const collections = {
           dateLabel: z.string(),
           role: z.string().optional(),
         })
+        .strict()
         .optional(),
 
       /* — toc: пункты называет страница, из разметки они не выводятся — */
       toc: z
         .object({
           title: z.string(),
-          items: z.array(z.object({ href: z.string(), title: z.string() })).nonempty(),
+          items: z.array(z.object({ href: z.string(), title: z.string() }).strict()).nonempty(),
         })
+        .strict()
         .optional(),
 
       /* — gallery: кадры идут ДАННЫМИ, по прецеденту card-rail — */
@@ -133,9 +159,10 @@ export const collections = {
           title: z.string(),
           lead: z.string().optional(),
           items: z
-            .array(z.object({ art: z.string(), alt: z.string(), caption: z.string().optional() }))
+            .array(z.object({ art: z.string(), alt: z.string(), caption: z.string().optional() }).strict())
             .nonempty(),
         })
+        .strict()
         .optional(),
 
       /* — verdict-box: БАЛЛА НЕТ, и его негде подать — */
@@ -144,10 +171,11 @@ export const collections = {
           label: z.string(),
           body: z.array(z.string()).nonempty(),
         })
+        .strict()
         .optional(),
 
       /* — link-list: заголовок секции; сами ссылки приходят из `related` — */
-      related: z.object({ title: z.string() }).optional(),
+      related: z.object({ title: z.string() }).strict().optional(),
 
       /* — cta-band — */
       cta: z
@@ -157,7 +185,8 @@ export const collections = {
           href: z.string(),
           label: z.string(),
         })
+        .strict()
         .optional(),
-    }),
+    }).strict(),
   }),
 };

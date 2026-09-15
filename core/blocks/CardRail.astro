@@ -260,11 +260,21 @@ const KADR_SIZES = '320px';
   }
 
   /* Pierwsza karta staje w kolumnie kontenera, a nie przy krawędzi ekranu. */
+  /* Распорка считается от ЗАЗОРА дорожки, а не от `--gutter` — пункт 38,
+     П50 (2026-09-15). Первая карточка стоит на
+     padding (`--gutter`) + распорка + `gap`, а колонка контейнера — на
+     (100vw − container) / 2 + `--gutter`; равенство даёт распорку
+     (100vw − container) / 2 − `gap`. С `--gutter` вместо `gap` карточка на
+     дорожке во всю ширину окна вставала на 8 px левее колонки (хаб на 1440:
+     124 при 132), и снап с `scroll-padding` этого не чинил — сдвигать было
+     некуда, `scrollLeft` уже 0. На главной дорожка короче на `--rail`, снап
+     ставит карточку в колонку при любой распорке (174 → 174), меняется
+     только `scrollLeft` в покое (34 → 42). Измерено до/после 2026-09-15. */
   .rail-sec__track::before,
   .rail-sec__track::after {
     content: '';
     flex: none;
-    width: max(0px, calc((100vw - var(--container)) / 2 - var(--gutter)));
+    width: max(0px, calc((100vw - var(--container)) / 2 - var(--space-md)));
   }
 
   .rail-sec__item {

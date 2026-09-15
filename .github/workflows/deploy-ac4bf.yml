@@ -1,4 +1,15 @@
-# Выкладка ac4bf-thewatch.com на хостинг — GitHub Actions → SFTP (П52 п. 1).
+# Выкладка ac4bf-thewatch.com на хостинг — GitHub Actions → FTPS (П52 п. 1).
+#
+# ПРОТОКОЛ — FTPS (FTP с явным шифрованием TLS, порт 21), не SFTP.
+# Измерено 2026-09-15 на хосте ax572417.ftp.tools: порт 21 отвечает
+# «234 AUTH TLS successful», сертификат Let's Encrypt для *.ftp.tools,
+# TLS 1.3; порт 22 (SSH) есть, но SSH/SFTP у этого хостера — доступ
+# ОСНОВНОГО аккаунта хостинга, а он видит все сайты аккаунта. Робот —
+# дополнительный пользователь FTP («Користувачі FTP»), ограниченный
+# каталогом сайта («Каталог доступу»); такой пользователь ходит только
+# по FTP, и панель показывает его как ftp://…:21. Шифрование данных
+# и команд включено принудительно (`ftp:ssl-force`, `ssl-protect-data`),
+# сертификат проверяется — незашифрованного соединения не будет.
 #
 # Когда работает:
 #   • руками: Actions → «Deploy ac4bf-thewatch.com» → Run workflow — всегда;
@@ -6,25 +17,31 @@
 #     равна `on` (Settings → Secrets and variables → Actions → Variables).
 #     Предохранитель П52 п. 3: пока ящик jakub@ не работает и домен не
 #     привязан, переменной нет — push в main ничего не выкладывает.
-#     Ручной запуск безопасен и до привязки: файлы ложатся в каталог
-#     на сервере, а без привязанного домена их никто не видит.
+#     Ручной запуск безопасен и до привязки: файлы ложатся в каталог сайта,
+#     а пока сайт не заведён в панели, их никто не видит.
 #
-# Секреты (Settings → Secrets and variables → Actions → Secrets):
-#   AC4BF_SFTP_HOST      хост SFTP из панели хостинга
-#   AC4BF_SFTP_PORT      порт (обычно 22)
-#   AC4BF_SFTP_USER      логин FTP/SSH
-#   AC4BF_SFTP_PASSWORD  пароль
-#   AC4BF_SFTP_PATH      каталог документов домена на сервере — РОВНО он:
-#                        `mirror --delete` стирает там всё, чего нет в dist/
+# Секреты — четыре (Settings → Secrets and variables → Actions → Secrets);
+# инструкция для владельца — docs/reports/2026-09-15-45-44-publikacija/sekrety-github.md:
+#   AC4BF_FTP_HOST      хост FTP из панели (ax572417.ftp.tools)
+#   AC4BF_FTP_PORT      порт (21)
+#   AC4BF_FTP_USER      логин пользователя FTP робота (ax572417_claude)
+#   AC4BF_FTP_PASSWORD  его пароль
+# Каталога на сервере в секретах НЕТ намеренно: домашняя папка робота
+# («Каталог доступу») обязана быть корневым каталогом сайта
+# (`ac4bf-thewatch.com/www`), и выкладка идёт в корень того, что робот
+# видит. Сторож ниже отказывает, если робот видит больше: папки с именами
+# доменов (аккаунт целиком) или папку `www` (каталог домена, а не его корень)
+# — потому что `mirror --delete` стирает всё, чего нет в dist/.
 #
 # Что делает: npm ci → npm run build сайта (гейты источников + astro build
-# с четырьмя гейтами результата) → lftp mirror -R --delete dist/ → каталог.
-# Красный гейт останавливает выкладку до того, как тронут сервер.
-# После выкладки — `npm run live:check`, только если AC4BF_LIVE = `on`
-# (домен уже привязан): до того проверять нечего.
+# с четырьмя гейтами результата) → сторож папки → lftp mirror -R --delete
+# dist/ → корень → пересчёт файлов на сервере против dist/. Красный гейт
+# останавливает выкладку до того, как тронут сервер. После выкладки —
+# `npm run live:check`, только если AC4BF_LIVE = `on` (домен уже привязан).
 #
-# Сторонних actions для SFTP нет намеренно: lftp из репозитория Ubuntu,
-# checkout и setup-node — от GitHub.
+# Сторонних actions для FTP нет намеренно: lftp из репозитория Ubuntu,
+# checkout и setup-node — от GitHub. Журнал сборки в публичном репозитории
+# виден всем: секреты GitHub маскирует, имена файлов сайта и так публичны.
 
 name: Deploy ac4bf-thewatch.com
 
@@ -50,6 +67,16 @@ jobs:
     timeout-minutes: 20
     env:
       SITE: sites/ac4bf-thewatch.com
+      # Общие настройки lftp: FTPS принудительно, сертификат проверяется,
+      # пассивный режим (робот за NAT GitHub), таймауты и повторы.
+      LFTP_SET: >-
+        set ftp:ssl-force true;
+        set ftp:ssl-protect-data true;
+        set ssl:verify-certificate yes;
+        set ftp:passive-mode true;
+        set net:timeout 30;
+        set net:max-retries 3;
+        set cmd:fail-exit yes;
     steps:
       - uses: actions/checkout@v4
 
@@ -66,32 +93,68 @@ jobs:
 
       - name: Что едет на сервер
         run: |
-          echo "файлов: $(find $SITE/dist -type f | wc -l)"
+          echo "файлов в dist/: $(find $SITE/dist -type f | wc -l)"
           ls -a $SITE/dist | head -40
 
       - name: lftp
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
-      - name: Выкладка по SFTP
+      - name: Секреты на месте
         env:
-          AC4BF_SFTP_HOST: ${{ secrets.AC4BF_SFTP_HOST }}
-          AC4BF_SFTP_PORT: ${{ secrets.AC4BF_SFTP_PORT }}
-          AC4BF_SFTP_USER: ${{ secrets.AC4BF_SFTP_USER }}
-          AC4BF_SFTP_PASSWORD: ${{ secrets.AC4BF_SFTP_PASSWORD }}
-          AC4BF_SFTP_PATH: ${{ secrets.AC4BF_SFTP_PATH }}
+          AC4BF_FTP_HOST: ${{ secrets.AC4BF_FTP_HOST }}
+          AC4BF_FTP_PORT: ${{ secrets.AC4BF_FTP_PORT }}
+          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+          AC4BF_FTP_PASSWORD: ${{ secrets.AC4BF_FTP_PASSWORD }}
         run: |
-          for v in AC4BF_SFTP_HOST AC4BF_SFTP_PORT AC4BF_SFTP_USER AC4BF_SFTP_PASSWORD AC4BF_SFTP_PATH; do
+          for v in AC4BF_FTP_HOST AC4BF_FTP_PORT AC4BF_FTP_USER AC4BF_FTP_PASSWORD; do
             if [ -z "${!v}" ]; then echo "нет секрета $v — выкладка не начата"; exit 1; fi
           done
-          lftp -e "
-            set sftp:auto-confirm yes;
-            set net:timeout 30;
-            set net:max-retries 3;
-            set cmd:fail-exit yes;
-            open -u \"$AC4BF_SFTP_USER\",\"$AC4BF_SFTP_PASSWORD\" -p \"$AC4BF_SFTP_PORT\" sftp://$AC4BF_SFTP_HOST;
-            mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ \"$AC4BF_SFTP_PATH\";
-            bye
-          "
+          echo "четыре секрета есть"
+
+      - name: Сторож папки робота
+        env:
+          AC4BF_FTP_HOST: ${{ secrets.AC4BF_FTP_HOST }}
+          AC4BF_FTP_PORT: ${{ secrets.AC4BF_FTP_PORT }}
+          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+          AC4BF_FTP_PASSWORD: ${{ secrets.AC4BF_FTP_PASSWORD }}
+        run: |
+          lftp -e "$LFTP_SET open -u \"$AC4BF_FTP_USER\",\"$AC4BF_FTP_PASSWORD\" -p \"$AC4BF_FTP_PORT\" ftp://$AC4BF_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
+          echo "корень, который видит робот (каталоги — с косой):"; cat remote-root.txt
+          if grep -Eiq '^[a-z0-9.-]+\.(pl|com|ua|net|org|eu|info)/?$' remote-root.txt; then
+            echo "СТОП: в корне папки с именами доменов — робот видит аккаунт целиком, а не каталог сайта. Поправь «Каталог доступу» пользователя FTP в панели (docs/reports/2026-09-15-45-44-publikacija/sekrety-github.md, шаг 1)."; exit 1
+          fi
+          if grep -Eiq '^www/?$' remote-root.txt && ! grep -q '^_astro' remote-root.txt; then
+            echo "СТОП: в корне папка www — робот стоит в каталоге домена, а не в его корневом каталоге (…/www). Поправь «Каталог доступу» на ac4bf-thewatch.com/www."; exit 1
+          fi
+          echo "сторож: чужих папок нет"
+
+      - name: Выкладка по FTPS
+        env:
+          AC4BF_FTP_HOST: ${{ secrets.AC4BF_FTP_HOST }}
+          AC4BF_FTP_PORT: ${{ secrets.AC4BF_FTP_PORT }}
+          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+          AC4BF_FTP_PASSWORD: ${{ secrets.AC4BF_FTP_PASSWORD }}
+        run: |
+          lftp -e "$LFTP_SET open -u \"$AC4BF_FTP_USER\",\"$AC4BF_FTP_PASSWORD\" -p \"$AC4BF_FTP_PORT\" ftp://$AC4BF_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"
+
+      - name: Пересчёт на сервере
+        env:
+          AC4BF_FTP_HOST: ${{ secrets.AC4BF_FTP_HOST }}
+          AC4BF_FTP_PORT: ${{ secrets.AC4BF_FTP_PORT }}
+          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+          AC4BF_FTP_PASSWORD: ${{ secrets.AC4BF_FTP_PASSWORD }}
+        run: |
+          # `find` lftp печатает дерево рекурсивно, каталоги — с косой на конце.
+          lftp -e "$LFTP_SET open -u \"$AC4BF_FTP_USER\",\"$AC4BF_FTP_PASSWORD\" -p \"$AC4BF_FTP_PORT\" ftp://$AC4BF_FTP_HOST; find .; bye" > remote-files.txt
+          echo "первые строки дерева на сервере:"; head -8 remote-files.txt
+          local_n=$(find $SITE/dist -type f | wc -l)
+          remote_n=$(grep -v '/$' remote-files.txt | grep -c .)
+          echo "файлов: локально $local_n, на сервере $remote_n"
+          if [ "$local_n" != "$remote_n" ]; then echo "СТОП: число файлов на сервере не равно dist/ — выкладка неполная или в корне чужие файлы"; exit 1; fi
+          for f in index.html robots.txt .htaccess 404/index.html sitemap-index.xml; do
+            grep -Eq "^(\./)?$f\$" remote-files.txt || { echo "СТОП: на сервере нет $f"; exit 1; }
+          done
+          echo "на сервере ровно dist/: $remote_n файлов, ключевые на месте"
 
       - name: Проверка живого сайта
         if: vars.AC4BF_LIVE == 'on'

@@ -309,8 +309,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -410,8 +410,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -458,8 +458,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -536,8 +536,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -606,8 +606,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -705,8 +705,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -764,8 +764,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -877,8 +877,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -972,8 +972,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1074,8 +1074,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1143,8 +1143,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1227,8 +1227,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1316,8 +1316,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1413,8 +1413,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1491,8 +1491,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1558,8 +1558,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1693,8 +1693,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1834,8 +1834,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -1952,8 +1952,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2279,8 +2279,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2394,8 +2394,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2469,8 +2469,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2518,8 +2518,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2571,8 +2571,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2665,8 +2665,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2708,8 +2708,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2774,8 +2774,8 @@
     },
     {
      "block": "link-list",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     },
     {
      "block": "cta-band",
@@ -2901,8 +2901,8 @@
     },
     {
      "block": "story-row",
-     "source": "manual",
-     "confidence": "high"
+     "source": "type-default",
+     "confidence": "low"
     }
    ],
    "wave": 1,

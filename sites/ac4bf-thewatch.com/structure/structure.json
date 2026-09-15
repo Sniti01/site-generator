@@ -2908,6 +2908,36 @@
    "wave": 1,
    "corridor": null,
    "volume": 0
+  },
+  {
+   "url": "/404/",
+   "type": "legal",
+   "h1": "Nie ma takiej strony",
+   "title": "Nie ma takiej strony — Bractwo",
+   "description": "Adres, pod który trafiłeś, nie prowadzi do żadnej strony serwisu Bractwo. Wróć na stronę główną, do poradników albo zacznij od przewodnika po serii.",
+   "cluster": null,
+   "keywords": [],
+   "parent": "/",
+   "related": [
+    "/",
+    "/poradniki/",
+    "/poradniki/od-czego-zaczac/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 0
   }
  ],
  "exclusions": [

@@ -1,0 +1,98 @@
+# Выкладка ac4bf-thewatch.com на хостинг — GitHub Actions → SFTP (П52 п. 1).
+#
+# Когда работает:
+#   • руками: Actions → «Deploy ac4bf-thewatch.com» → Run workflow — всегда;
+#   • после push в `main` — ТОЛЬКО если переменная репозитория AC4BF_DEPLOY
+#     равна `on` (Settings → Secrets and variables → Actions → Variables).
+#     Предохранитель П52 п. 3: пока ящик jakub@ не работает и домен не
+#     привязан, переменной нет — push в main ничего не выкладывает.
+#     Ручной запуск безопасен и до привязки: файлы ложатся в каталог
+#     на сервере, а без привязанного домена их никто не видит.
+#
+# Секреты (Settings → Secrets and variables → Actions → Secrets):
+#   AC4BF_SFTP_HOST      хост SFTP из панели хостинга
+#   AC4BF_SFTP_PORT      порт (обычно 22)
+#   AC4BF_SFTP_USER      логин FTP/SSH
+#   AC4BF_SFTP_PASSWORD  пароль
+#   AC4BF_SFTP_PATH      каталог документов домена на сервере — РОВНО он:
+#                        `mirror --delete` стирает там всё, чего нет в dist/
+#
+# Что делает: npm ci → npm run build сайта (гейты источников + astro build
+# с четырьмя гейтами результата) → lftp mirror -R --delete dist/ → каталог.
+# Красный гейт останавливает выкладку до того, как тронут сервер.
+# После выкладки — `npm run live:check`, только если AC4BF_LIVE = `on`
+# (домен уже привязан): до того проверять нечего.
+#
+# Сторонних actions для SFTP нет намеренно: lftp из репозитория Ubuntu,
+# checkout и setup-node — от GitHub.
+
+name: Deploy ac4bf-thewatch.com
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sites/ac4bf-thewatch.com/**'
+      - 'core/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/deploy-ac4bf.yml'
+
+concurrency:
+  group: deploy-ac4bf
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.AC4BF_DEPLOY == 'on'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SITE: sites/ac4bf-thewatch.com
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Зависимости
+        run: npm ci
+
+      - name: Сборка с гейтами
+        run: npm run build -w $SITE
+
+      - name: Что едет на сервер
+        run: |
+          echo "файлов: $(find $SITE/dist -type f | wc -l)"
+          ls -a $SITE/dist | head -40
+
+      - name: lftp
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Выкладка по SFTP
+        env:
+          AC4BF_SFTP_HOST: ${{ secrets.AC4BF_SFTP_HOST }}
+          AC4BF_SFTP_PORT: ${{ secrets.AC4BF_SFTP_PORT }}
+          AC4BF_SFTP_USER: ${{ secrets.AC4BF_SFTP_USER }}
+          AC4BF_SFTP_PASSWORD: ${{ secrets.AC4BF_SFTP_PASSWORD }}
+          AC4BF_SFTP_PATH: ${{ secrets.AC4BF_SFTP_PATH }}
+        run: |
+          for v in AC4BF_SFTP_HOST AC4BF_SFTP_PORT AC4BF_SFTP_USER AC4BF_SFTP_PASSWORD AC4BF_SFTP_PATH; do
+            if [ -z "${!v}" ]; then echo "нет секрета $v — выкладка не начата"; exit 1; fi
+          done
+          lftp -e "
+            set sftp:auto-confirm yes;
+            set net:timeout 30;
+            set net:max-retries 3;
+            set cmd:fail-exit yes;
+            open -u \"$AC4BF_SFTP_USER\",\"$AC4BF_SFTP_PASSWORD\" -p \"$AC4BF_SFTP_PORT\" sftp://$AC4BF_SFTP_HOST;
+            mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ \"$AC4BF_SFTP_PATH\";
+            bye
+          "
+
+      - name: Проверка живого сайта
+        if: vars.AC4BF_LIVE == 'on'
+        run: npm run live:check -w $SITE

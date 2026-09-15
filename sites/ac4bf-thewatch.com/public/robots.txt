@@ -1,0 +1,23 @@
+# robots.txt — ac4bf-thewatch.com (Bractwo)
+#
+# Serwis statyczny (Astro): 31 stron treści fali 1 plus strona 404, wszystkie
+# otwarte do indeksowania. Nie ma panelu, logowania, wyszukiwarki na stronie,
+# stronicowania ani adresów z parametrami — więc nie ma czego zakazywać.
+#
+# Czego świadomie NIE blokujemy (żeby nikt tego później nie «poprawił»):
+#   /_astro/  arkusze stylów, fonty i obrazy ze skrótem treści w nazwie;
+#             Google renderuje stronę jak przeglądarka, zablokowany CSS to
+#             w oczach robota strona bez układu.
+#   /404/     strona błędu; serwer podaje ją ze statusem 404 pod każdym
+#             nieistniejącym adresem, z mapy witryny jest wykluczona
+#             (integracja sitemap), nic do niej nie linkuje.
+#   ?utm_source= i podobne: serwis takich adresów nie tworzy, a doklejony
+#             ogon prowadzi na stronę z `canonical` na wersję czystą.
+#
+# Sekcja `Sitemap:` — pełny adres, bo plik czyta się także spoza domeny.
+# Adres kanoniczny to https bez www (`site` w astro.config.mjs).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ac4bf-thewatch.com/sitemap-index.xml

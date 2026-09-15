@@ -436,6 +436,17 @@
       "h1": "Polityka prywatności",
       "title": "Polityka prywatności — Bractwo",
       "description": "Jakie dane przetwarza serwis Bractwo i na jakiej podstawie: bez analityki, bez własnych plików cookie, bez formularzy. Co zapisuje hosting i jakie prawa ma czytelnik."
+    },
+    {
+      "url": "/404/",
+      "type": "legal",
+      "вне_выгрузки": "Сессия публикации 2026-09-15 (П52 п. 1–3): страница ошибки 404 — служебная, спроса нет по определению. Тип `legal` — единственный служебный в закрытом списке П26 п. 2; отдельный тип для страниц ошибок — вопрос владельцу (доклад публикации). Из sitemap исключена интеграцией (`404/`), в структуре стоит по П24 п. 1 и правилу гейта коридора «исключений нет — только через structure.json».",
+      "wave": 1,
+      "блоки": [{ "block": "link-list" }],
+      "related": ["/", "/poradniki/", "/poradniki/od-czego-zaczac/"],
+      "h1": "Nie ma takiej strony",
+      "title": "Nie ma takiej strony — Bractwo",
+      "description": "Adres, pod który trafiłeś, nie prowadzi do żadnej strony serwisu Bractwo. Wróć na stronę główną, do poradników albo zacznij od przewodnika po serii."
     }
   ],
 

@@ -1,0 +1,104 @@
+# Konfiguracja serwera dla ac4bf-thewatch.com (Bractwo)
+#
+# Hosting: ten sam, co u sąsiedniego 7dtd.com.pl — ТОВ „Хостінг Україна"
+# (ukraine.com.ua), Apache albo OpenLiteSpeed za nginx; oba czytają .htaccess
+# (decyzja właściciela П52 p. 1, 2026-09-15). Plik leży w public/, więc Astro
+# kopiuje go do dist/ przy każdym budowaniu i jedzie razem z serwisem.
+#
+# Wzorzec i pomiar — `../7dtd.com.pl/public/.htaccess` (2026-08-26, na żywym
+# serwisie): hosting jest dwuwarstwowy, z przodu nginx, do Apache'a dochodzą
+# tylko żądania o HTML. Stąd:
+#   DZIAŁA:      ErrorDocument, przekierowania na https i bez www,
+#                Cache-Control dla .html
+#   NIE DZIAŁA:  Cache-Control dla /_astro/ (CSS, fonty, obrazy oddaje nginx) —
+#                reguły zostają jako zapis zamiaru; długi cache statyki ustawia
+#                się w panelu hostingu.
+# Każda dyrektywa w <IfModule>: na hostingu współdzielonym dyrektywa
+# nieznanego modułu nie jest ignorowana, tylko kładzie serwis błędem 500.
+#
+# KOLEJNOŚĆ URUCHOMIENIA (П52 p. 3, twarda): skrzynka jakub@ działa →
+# domena podpięta do budowy → sprawdzenie https (`npm run live:check`) →
+# Search Console. Ten plik może leżeć na serwerze od pierwszego wgrania:
+# dopóki domena nie jest podpięta w panelu, nikt go nie czyta.
+#
+# UWAGA przy podpinaniu domeny: NAJPIERW certyfikat SSL w panelu (Let's
+# Encrypt), DOPIERO POTEM ruch na tę budowę — przekierowanie na https bez
+# działającego certyfikatu daje stronę, której nie da się otworzyć.
+
+# ─────────────────────────────────────────────────────────────────────────
+# Strona 404
+#
+# U nas strona błędu jest stroną struktury (`/404/`, typ `legal`) i buduje
+# się przez wspólną trasę do katalogu — `dist/404/index.html`, nie
+# `dist/404.html`. Apache podaje ją pod każdym nieistniejącym adresem ze
+# statusem 404 (podżądanie wewnętrzne, status zostaje 404).
+# ─────────────────────────────────────────────────────────────────────────
+ErrorDocument 404 /404/index.html
+
+# ─────────────────────────────────────────────────────────────────────────
+# Jeden adres kanoniczny: https, bez www
+#
+# `link rel="canonical"` każdej strony wskazuje https://ac4bf-thewatch.com/…
+# (`site` w astro.config.mjs, MIGRATION §9), więc serwer prowadzi tam samo:
+# jedno przekierowanie 301 dla http:// i dla www., także dla http://www.
+#
+# `%{HTTPS}` bywa `off` mimo kłódki w przeglądarce, gdy SSL kończy się na
+# serwerze pośredniczącym — dlatego pytamy też o nagłówek od proxy, inaczej
+# przekierowanie kręci się w kółko.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ - [E=BEZ_HTTPS:1]
+
+  RewriteCond %{ENV:BEZ_HTTPS} =1 [OR]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^(.*)$ https://ac4bf-thewatch.com/$1 [R=301,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────────────────
+# Pamięć podręczna
+#
+# /_astro/ — skrót treści w nazwie pliku (index.BP8hVye4.css): zmiana treści
+# zmienia nazwę, więc rok i `immutable` są bezpieczne. HTML skrótu nie ma:
+# `must-revalidate`, żeby poprawka doszła do czytelnika przy następnym wejściu.
+# Mapa witryny i robots.txt zmieniają się razem z treścią — godzina.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  # Dziś martwe (statykę oddaje nginx) — zapis zamiaru, patrz nagłówek pliku.
+  <FilesMatch "\.(css|js|woff2?|jpg|jpeg|png|webp|avif|svg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "^(robots\.txt|sitemap.*\.xml)$">
+    Header set Cache-Control "public, max-age=3600"
+  </FilesMatch>
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────────────────
+# Kompresja — u sąsiada zmierzono brotli włączone na hostingu; sekcja na
+# wypadek planu bez brotli. Obrazy i woff2 są już skompresowane.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────────────────
+# Typy plików, których serwer może nie znać. `AddType` nadpisuje, jeśli
+# serwer ma już swoją definicję — dołożenie jest bezpieczne.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_mime.c>
+  AddType font/woff2 .woff2
+  AddType font/woff .woff
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType image/avif .avif
+</IfModule>

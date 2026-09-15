@@ -32,6 +32,7 @@ import { разбор as разборГлифа } from './glyphs.mjs';
 import { встроенные } from './build-css.mjs';
 import { policzH1 } from '../gates/after-build.mjs';
 import { ocenKotwice, ocenStrony } from '../gates/anchors.mjs';
+import { ocenArt, ocenStronyArt, policzMiejsca } from '../gates/art.mjs';
 import { klasyfikujHref, ocenLinki, ocenStronyLinki } from '../gates/links.mjs';
 import { tekstMain, znakiBezSpacji, wadaKorytarza, ocenKorytarz, ocenStronyKorytarz, adresStrony } from '../gates/corridor.mjs';
 import { сравнитьГеометрию, счётГеометрии } from './frames.mjs';
@@ -347,6 +348,47 @@ if (existsSync(baseline)) {
   check('якоря: ноль страниц — отказ', 'отказ', (() => { try { ocenStrony([]); return 'прошло'; } catch { return 'отказ'; } })(), 'правда о пустом множестве — не правда о сайте');
   check('якоря: две чистые страницы — счёт', 2, ocenStrony([{ pathname: '/', html: '<p id="a"></p>' }, { pathname: '/b/', html: '<p>x</p>' }]), 'возвращает число проверенных');
   check('якоря: отказ называет страницу', true, (() => { try { ocenStrony([{ pathname: '/gra/', html: '<a href="#nie">x</a>' }]); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('#nie'); } })(), 'страница и якорь — оба в сообщении');
+}
+
+/* — гейт ключей арта: `core/gates/art.mjs` (П57, бэклог 40) —
+   Батарея, названная планом до того, как гейту доверять, и пополненная
+   в день рождения находками состязательной проверки: верный ключ, запас
+   в ряду / герое / галерее / вне контейнера, пустая рама галереи, комментарии
+   (два подряд, рама в комментарии), границы классов и порядок атрибутов,
+   главная с пустым `pathname` хука, две плохие страницы в одном отказе,
+   ноль страниц — отказ с текстом, счёт живости. Разметка рамы, ряда и героя —
+   из `dist/` 2026-09-15 (класс первым, `data-astro-cid-*` последним);
+   запас — по исходнику `EraSkyline.astro` (`class:list`, в `dist/` сегодня
+   не встречается). */
+{
+  const рода = (html) => ocenArt(html).map((p) => p.rodzaj + ':' + p.miejsce).join(' ');
+  const рядСКадром = '<div class="layer__art" data-astro-cid-ko6adimc><div class="foto foto--gra"><img src="/_astro/karaiby.webp" alt="x"></div></div>';
+  const галереяСКадром = '<div class="gallery__frame" data-astro-cid-t52d27wz><div class="foto foto--gra"><img src="/_astro/a.webp" alt="a"></div></div>';
+  const запас = '<div class="skyline" aria-hidden="true" data-astro-cid-e3kq2m7a><svg viewBox="0 0 1600 460"></svg></div>';
+  check('арт: страница с кадрами — чисто', '', рода('<main>' + рядСКадром + галереяСКадром + '</main>'), 'все ключи разрешились в <img>');
+  check('арт: разметка без рам и запаса — чисто', '', рода('<main><p>tekst</p><article class="card"><div class="card__body">Rodowód</div></article></main>'), 'нет ни запаса, ни рам — нечего судить; карточки гейт не читает');
+  check('арт: запас в ряду', 'zapas:rząd', рода('<div class="layer__art" data-astro-cid-ko6adimc>' + запас + '</div>'), 'опечатка в `art` ряда — skyline вместо кадра; cid настоящий, окно места его покрывает');
+  check('арт: запас в герое', 'zapas:bohater', рода('<div class="hero__art" data-astro-cid-m3tnyskv>' + запас + '</div>'), 'опечатка в `art` страницы');
+  check('арт: запас вне контейнера', 'zapas:inne', рода('<main>' + запас + '</main>'), 'место неизвестно — «inne», страница всё равно названа');
+  check('арт: запас с доп. классом', 'zapas:rząd', рода('<div class="layer__art">' + запас.replace('class="skyline"', 'class="skyline foto--x"') + '</div>'), 'class:list печатает `skyline …` — граница класса: пробел или кавычка');
+  check('арт: skyline не первый класс', 'zapas:rząd', рода('<div class="layer__art">' + запас.replace('class="skyline"', 'class="foo skyline"') + '</div>'), 'порядок классов гейт не сторожит — иначе смена шаблона ослепила бы его молча');
+  check('арт: skyline-в-имени не считается', '', рода('<div class="layer__art"><div class="skyline-nie"></div><div class="foto"><img src="a"></div></div>'), 'класс `skyline-nie` — не запас');
+  check('арт: пустая рама галереи', 'galeria:galeria', рода('<div class="gallery__frame" data-astro-cid-t52d27wz></div>'), 'галерея без запаса — рама пуста; форма из dist знак в знак');
+  check('арт: пустая рама с переносом', 'galeria:galeria', рода('<div class="gallery__frame">' + String.fromCharCode(10) + '  </div>'), 'пробелы и переносы внутри — та же пустота');
+  check('арт: пустая рама, атрибут перед class', 'galeria:galeria', рода('<div data-astro-cid-x class="gallery__frame foto--y"></div>'), 'порядок атрибутов и модификатор рамы гейт не сторожит');
+  check('арт: gallery__frame-в-имени не рама', '', рода('<div class="gallery__frame-nie"></div>'), 'граница класса — кавычка или пробел');
+  check('арт: рама с кадром — не пуста', '', рода(галереяСКадром), 'внутри <div class="foto"> — рама живая');
+  check('арт: запас в комментарии не считается', '', рода('<!-- ' + запас + ' -->' + рядСКадром), 'комментарии вырезаются, как у сторожа h1');
+  check('арт: два комментария, между ними запас — считается', 'zapas:rząd', рода('<!-- a -->' + '<div class="layer__art">' + запас + '</div>' + '<!-- b -->'), 'вырезание ленивое: второй комментарий не съедает ряд между ними');
+  check('арт: пустая рама в комментарии не считается', '', рода('<!-- <div class="gallery__frame"></div> -->' + галереяСКадром), 'рама судится по живой разметке');
+  check('арт: два запаса — два отказа', 'zapas:rząd zapas:galeria', рода('<div class="layer__art">' + запас + '</div><div class="gallery__frame">' + запас + '</div>'), 'каждое место названо отдельно');
+  check('арт: счёт живости', '2/1/1', (() => { const m = policzMiejsca('<div class="hero__art" data-astro-cid-m3tnyskv><div class="foto"></div></div>' + рядСКадром + галереяСКадром + галереяСКадром); return `${m.ram}/${m.rzedow}/${m.bohaterow}`; })(), 'рамы, ряды с кадром, герои — числа в строке лога, не вердикт');
+  check('арт: ноль страниц — отказ', 'отказ: zero stron', (() => { try { ocenStronyArt([]); return 'прошло'; } catch (e) { return e.message.includes('zero stron') ? 'отказ: zero stron' : 'иной сбой'; } })(), 'правда о пустом множестве — не правда о сайте; проверяется текст отказа, не любой throw');
+  check('арт: две чистые страницы — счёт', '2/1/1/0', (() => { const s = ocenStronyArt([{ pathname: '', html: рядСКадром }, { pathname: 'b/', html: галереяСКадром }]); return `${s.stron}/${s.ram}/${s.rzedow}/${s.bohaterow}`; })(), 'возвращает число страниц и суммы живости');
+  check('арт: отказ называет страницу и место', true, (() => { try { ocenStronyArt([{ pathname: 'gra/', html: '<div class="hero__art">' + запас + '</div>' }]); return false; } catch (e) { return e.message.includes('/gra/') && e.message.includes('bohater') && e.message.includes('nie tę bramkę'); } })(), 'страница как адрес (`gra/` → `/gra/`), место и «что менять» — в сообщении');
+  check('арт: главная с пустым pathname — адрес `/`', true, (() => { try { ocenStronyArt([{ pathname: '', html: '<div class="layer__art">' + запас + '</div>' }]); return false; } catch (e) { return e.message.includes('  /: zapas'); } })(), 'хук даёт `` для главной — в отказе печатается `/`, не пустота (находка проверки)');
+  check('арт: пустая рама через ocenStronyArt — отказ', true, (() => { try { ocenStronyArt([{ pathname: 'gra/', html: '<div class="gallery__frame" data-astro-cid-t52d27wz></div>' }]); return false; } catch (e) { return e.message.includes('pusta rama galerii') && e.message.includes('galeria'); } })(), 'единственный род отказа, реальный для сайта (галерея без запаса), — через полный путь');
+  check('арт: две плохие страницы в одном отказе', true, (() => { try { ocenStronyArt([{ pathname: 'a/', html: '<div class="hero__art">' + запас + '</div>' }, { pathname: 'b/', html: '<div class="gallery__frame"></div>' }, { pathname: 'c/', html: рядСКадром }]); return false; } catch (e) { return e.message.includes('2 na 2 z 3') && e.message.includes('/a/') && e.message.includes('/b/') && !e.message.includes('/c/'); } })(), 'первая находка не заслоняет вторую; чистая страница не названа');
 }
 
 /* — гейт внутренних ссылок: `core/gates/links.mjs` (П42) —

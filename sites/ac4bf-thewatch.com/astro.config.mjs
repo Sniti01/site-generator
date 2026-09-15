@@ -6,6 +6,7 @@ import afterBuild from '@factory/core/gates/after-build.mjs';
 import anchors from '@factory/core/gates/anchors.mjs';
 import links from '@factory/core/gates/links.mjs';
 import corridor from '@factory/core/gates/corridor.mjs';
+import art from '@factory/core/gates/art.mjs';
 
 export default defineConfig({
   // Adres kanoniczny Z `www` — decyzja właściciela 2026-09-15 (П55), po pierwszej
@@ -25,12 +26,16 @@ export default defineConfig({
   // `corridor` — czwarta (П43, 2026-09-11, start paczki 1): znaki bez spacji
   // w `<main>` każdej strony mieszczą się w `corridor` z umowy; `null` w umowie —
   // liczba do raportu, bez wyroku. Wyłącznika nie ma: zmienia się liczbę w umowie.
+  // `art` — piąta (П57, 2026-09-15, punkt 40 backlogu): każdy klucz artu w treści
+  // rozwiązał się w plik — w `dist/` nie ma zapasu `.skyline` ani pustej ramy galerii;
+  // przed masową edycją `art:` u rzędów w zdarzeniu «kadry rzędom».
   integrations: [
     sitemap(),
     afterBuild(),
     anchors(),
     links({ structure: 'structure/structure.json' }),
     corridor({ structure: 'structure/structure.json' }),
+    art(),
   ],
   vite: {
     plugins: [tailwindcss()],

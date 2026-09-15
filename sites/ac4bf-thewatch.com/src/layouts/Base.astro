@@ -13,9 +13,12 @@ interface Props {
   /** Czy drukować skalę po lewej. Brak — tak. Strony gier jej nie mają: П35
    *  w redakcji z 2026-09-10, po odbiorze okiem. */
   skala?: boolean;
+  /** Klucze artu użyte na stronie — stopka drukuje atrybucje tylko dla nich
+   *  (П57, odp. 1б). Trasa zbiera je z treści, główna — ze swoich warstw. */
+  klucze: string[];
 }
 
-const { title, description, skala } = Astro.props;
+const { title, description, skala, klucze } = Astro.props;
 const zeSkala = skala !== false;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 
@@ -56,7 +59,7 @@ const breadcrumbList = zListaOkruszkow
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="pl_PL" />
     <meta name="generator" content={Astro.generator} />
-    {breadcrumbList && <script type="application/ld+json" set:html={breadcrumbList} />}
+    {breadcrumbList && <script is:inline type="application/ld+json" set:html={breadcrumbList} />}
   </head>
   <body class={zeSkala ? undefined : 'bez-skali'}>
     <a class="skip-link t-button" href="#tresc">Przejdź do treści</a>
@@ -66,7 +69,7 @@ const breadcrumbList = zListaOkruszkow
     <main id="tresc">
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter klucze={klucze} />
     <Grain />
 
     <style is:global>

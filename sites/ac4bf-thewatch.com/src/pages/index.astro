@@ -118,9 +118,14 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
       'Popraw treść, szablon albo strukturę — ale nie zostawiaj rozejścia.'
   );
 }
+
+// Klucze artu głównej — do stopki (П57, odp. 1б): bohater i pięć epok
+// (warstwy, galeria i taśma czytają te same sloty Steam). Kadrów Commons
+// główna nie pokazuje — blok «Zdjęcia» w jej stopce nie drukuje się.
+const kluczeArtu = ['hero', ...eras.map((era) => era.id)];
 ---
 
-<Base title={strona.title} description={strona.description}>
+<Base title={strona.title} description={strona.description} klucze={kluczeArtu}>
   {drukowane.includes('hero-key-art') && <Hero h1={strona.h1} />}
 
   {

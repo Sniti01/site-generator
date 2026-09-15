@@ -327,9 +327,22 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
       'Popraw treść, szablon albo strukturę — ale nie zostawiaj rozejścia.'
   );
 }
+
+// Klucze artu tej strony — do stopki (П57, odp. 1б: atrybucje i nazwy gier
+// tylko za kadry, które strona pokazuje): bohater, rzędy, galeria, karty.
+const kluczeArtu = [
+  ...new Set(
+    [
+      dane.art,
+      ...(dane.rows ?? []).map((r) => r.art),
+      ...(dane.gallery?.items ?? []).map((k) => k.art),
+      ...tasmy.flatMap((t) => t.items.map((k) => k.art)),
+    ].filter((k): k is string => Boolean(k)),
+  ),
+];
 ---
 
-<Base title={strona.title} description={strona.description} skala={false}>
+<Base title={strona.title} description={strona.description} skala={false} klucze={kluczeArtu}>
   {
     /* `<h1>` DRUKUJE TRASA, W OBU GAŁĘZIACH — decyzja właściciela 2026-09-11,
        punkt 23 backlogu: nagłówek należy do strony, nie do sekcji. Z hero —

@@ -81,6 +81,7 @@ rows:
     year: '2023'
     title: Mniejsza część po trzech wielkich — Bagdad i Basim
     meta: Bagdad · 861–870 · Basim ibn Is’haq · Ubisoft Bordeaux
+    art: assassins-creed-mirage-k08
     flip: false
     band: false
     body:
@@ -108,6 +109,7 @@ rows:
     year: '861'
     title: Basim — od złodzieja z Anbaru do Ukrytego z Alamutu
     meta: Nehal · Roshan · kalif al-Mutawakkil · Qabiha · Alamut
+    art: assassins-creed-mirage-k02
     flip: true
     band: true
     body:
@@ -132,6 +134,7 @@ rows:
     year: Bagdad
     title: Cztery dzielnice, Anbar i Alamut — miasto zamiast kraju
     meta: Koliste Miasto · Karch · Abbasijja · Harbijja · Dom Mądrości
+    art: foto-samarra
     flip: false
     band: false
     body:
@@ -157,6 +160,7 @@ rows:
     year: Skradanie
     title: Ukryte ostrze, Enkidu, tyczki i skupienie asasyna
     meta: Czarna skrzynka z Unity · wzrok orła · do pięciu celów naraz
+    art: assassins-creed-mirage-k06
     flip: true
     band: false
     body:
@@ -201,6 +205,7 @@ rows:
     year: 2022–2025
     title: Od kryptonimu Rift do darmowej Doliny Pamięci
     meta: Zapowiedź wrzesień 2022 · premiera 5 października 2023 · AlUla 2025
+    art: foto-hegra
     flip: true
     band: false
     body:
@@ -223,6 +228,7 @@ rows:
     year: 2023–2024
     title: Standard, Deluxe, Master Assassin — PC, konsole, iOS
     meta: Ubisoft Connect · Steam od 2024 · Ubisoft+ · polskie napisy
+    art: assassins-creed-mirage-k09
     flip: false
     band: true
     body:
@@ -247,6 +253,7 @@ rows:
     year: Start
     title: Komu Mirage i w którym miejscu serii je zagrać
     meta: 15–20 godzin głównego wątku · około 30 z kompletem · po Valhalli albo jako pierwsza
+    art: assassins-creed-mirage-k00
     flip: true
     band: false
     body:

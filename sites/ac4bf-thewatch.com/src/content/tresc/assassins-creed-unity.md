@@ -65,6 +65,7 @@ rows:
     year: '2014'
     title: Pierwsza część tylko na nową generację konsol i PC
     meta: Paryż · 1789–1794 · Arno Dorian · Ubisoft Montréal
+    art: assassins-creed-unity-k01
     flip: false
     band: false
     body:
@@ -107,6 +108,7 @@ rows:
     year: Paryż
     title: Siedem dzielnic, Wersal, wnętrza i tłum liczony w tysiącach
     meta: Notre-Dame · Wersal · anomalie czasowe · Café Théâtre
+    art: foto-paryz-1739
     flip: false
     band: false
     body:
@@ -128,6 +130,7 @@ rows:
     year: Mechanika
     title: Parkour w dół, szermierka bez kontry, czarna skrzynka, co-op
     meta: Widmowe ostrze · kucanie · drzewko umiejętności · czterech Arnów
+    art: assassins-creed-unity-k02
     flip: true
     band: false
     body:

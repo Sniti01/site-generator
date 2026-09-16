@@ -32,6 +32,7 @@ rows:
     year: 872–878
     title: Anglia wikingów — Stonehenge, wał Hadriana i królowie z kronik
     meta: Housesteads, Stonehenge · Valhalla · Ragnar Lothbrok · Alfred · Ivarr
+    art: foto-stonehenge
     flip: false
     band: false
     body:
@@ -49,6 +50,7 @@ rows:
     year: Antyk
     title: Grecja i Egipt — Sparta, Fokida, Elis, Atlantyda, Dolina Królów
     meta: Sokrates, Pitagoras, Brazydas · Odyssey 431–422 p.n.e. · Origins
+    art: foto-delfy
     flip: true
     band: true
     body:

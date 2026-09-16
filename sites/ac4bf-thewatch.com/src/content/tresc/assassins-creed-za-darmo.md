@@ -10,6 +10,7 @@ rows:
     year: Legalnie
     title: Weekendy, rozdania, abonamenty
     meta: Ubisoft Connect · Ubisoft+ · Game Pass
+    art: karaiby-k03
     flip: false
     band: false
     body:

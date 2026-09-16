@@ -9,8 +9,44 @@
  *   node core/media/fetch-art.mjs <korzeń> --only hero,londyn
  *   node core/media/fetch-art.mjs <korzeń> --kandydaci [--n 12] [--only …]
  *                                          — miniatury kandydatów do arkusza
+ *   node core/media/fetch-art.mjs --selftest — próba czyszczenia pola autora
+ *                                          na zapisanych odpowiedziach Commons
  *
  * Bez argumentu bierze katalog bieżący — tak samo jak `core/gates/run.mjs`.
+ *
+ * AUTOR Z COMMONS TO HTML SZABLONÓW, NIE IMIĘ (2026-09-16, backlog 50 p. 3;
+ * stopka witryny drukuje to pole dosłownie). Cztery kształty śmieci zmierzone
+ * na plikach tej witryny: `Unknown author<span style="display: none;">Unknown
+ * author</span>` (szablon {{unknown}} — po zdjęciu tagów «Unknown author
+ * Unknown author»), `Unknown<span …>Unknown </span>` (Bundesarchiv), akapit
+ * z przypisem `<a class="external autonumber">[1]</a>` (ryciny Czarnobrodego)
+ * i lista samych URL w `Credit` (Kopernik). Czyszczenie — `autorZ`: ukryte
+ * spany i przypisy odpadają PRZED zdjęciem tagów, «Unknown author»/«Unknown»/
+ * «Anonymous» (także z «or not provided») liczą się za brak autora, a wtedy
+ * idzie `Credit` (archiwum — Bundesarchiv, NARA), o ile nie jest listą URL
+ * ani akapitem (≤ 80 znaków); inaczej — «nieznany», jak dotąd przy pustym
+ * polu. Czego narzędzie NIE robi: nie tnie zdań ani nie skraca akapitu —
+ * granica zdania w nazwisku («P. Hughes») jest nie do odróżnienia od granicy
+ * przypisu, więc długi autor zostaje długi, a przebieg ostrzega (`UWAGA`,
+ * > 80 znaków). Na to jest pole `author` slotu w `art.json` (typ
+ * `core/media/art.ts`): tekst redakcji z pierwszeństwem nad Commons —
+ * wybór ręką, jak `file`, zapisany przez narzędzie do atrybucji, nie
+ * dopisany do `art-credits.json` po fakcie. `--selftest` przegania
+ * `autorZ` po pięciu zmierzonych odpowiedziach, trzech czystych i polu
+ * `author` — jedyna część narzędzia bez sieci.
+ *
+ * `must` SZUKA W TYTULE PLIKU, A TYTUŁY COMMONS SĄ WIELOJĘZYCZNE (2026-09-16,
+ * backlog 50 p. 5): «Nuremberg Chronicle Florence» nie wychodziło, póki
+ * w `must` nie stanęły `florencia` i `schedel`; plan Turgota — tylko po
+ * «Turgot map Paris KU». Słownik `must` pisze się więc pod tytuły plików
+ * (język pliku, nazwisko autora, nazwa zbioru), nie pod temat — logika
+ * bez zmian, to uwaga do składania manifestu.
+ *
+ * `--kandydaci --force` NAJPIERW USUWA KATALOG SLOTU (2026-09-16, backlog 50
+ * p. 4): do tego dnia nadpisywał miniatury pod starymi numerami, a nadwyżkę
+ * z poprzedniego przebiegu zostawiał — arkusz mieszał stare kadry z nowymi
+ * (`foto-paryz-1940`, katalog usuwany ręką). Bez `--force` — jak było:
+ * istniejąca miniatura nie jest pobierana drugi raz.
  *
  * WYBÓR OKIEM od 2026-09-15 (П57, «kadry rzędom»). Do tego dnia kadr wybierał
  * wynik (`score`) spośród 40 odpowiedzi wyszukiwarki, a jedyną dźwignią były
@@ -47,12 +83,13 @@
  */
 
 import sharp from 'sharp';
-import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { writeFileSync, existsSync, mkdirSync, readFileSync, rmSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const force = args.includes('--force');
+const selftest = args.includes('--selftest');
 const onlyArg = args.indexOf('--only');
 const only = onlyArg >= 0 && args[onlyArg + 1] ? new Set(args[onlyArg + 1].split(',')) : null;
 const kandydaci = args.includes('--kandydaci');
@@ -122,6 +159,37 @@ const stripHtml = (value) =>
     .replace(/\s+/g, ' ')
     .trim();
 
+// Śmieci pola autora — kształty zmierzone na odpowiedziach Commons (nagłówek).
+const HIDDEN_SPAN = /<span[^>]*display:\s*none[^>]*>[\s\S]*?<\/span>/gi;
+const FOOTNOTE_LINK = /<a[^>]*class="[^"]*\bautonumber\b[^"]*"[^>]*>[\s\S]*?<\/a>/gi;
+const FOOTNOTE_MARK = /\s*\[\d+\]/g;
+const NO_AUTHOR = /^(unknown( author| photographer| artist)?|anonymous|anonim(owy)?|autor nieznany|nieznany)( or not provided)?\.?$/i;
+const URL_TOKEN = /^(https?:\/\/|www\.)\S+$/i;
+/** Powyżej tej długości autor to już akapit, nie podpis — `Credit` nie idzie, `Artist` ostrzega. */
+const DLUGI_AUTOR = 80;
+
+/** Jedno pole Commons do czystego tekstu; pusty wynik = brak autora. */
+function czystePole(html) {
+  const text = stripHtml(String(html ?? '').replace(HIDDEN_SPAN, '').replace(FOOTNOTE_LINK, ''));
+  const bezPrzypisow = text.replace(FOOTNOTE_MARK, '').replace(/\s+/g, ' ').trim();
+  return NO_AUTHOR.test(bezPrzypisow) ? '' : bezPrzypisow;
+}
+
+/**
+ * Autor do atrybucji: `Artist` po czyszczeniu; gdy pusty — `Credit`
+ * (archiwum), o ile to nie lista URL i nie akapit; inaczej «nieznany».
+ * Pole `author` slotu ma pierwszeństwo nad wszystkim — wybór ręką.
+ */
+function autorZ(meta, slot = {}) {
+  if (slot.author) return slot.author;
+  const artist = czystePole(meta?.Artist?.value);
+  if (artist) return artist;
+  const credit = czystePole(meta?.Credit?.value);
+  const sameUrl = credit !== '' && credit.split(' ').every((token) => URL_TOKEN.test(token));
+  if (credit && !sameUrl && credit.length <= DLUGI_AUTOR) return credit;
+  return 'nieznany';
+}
+
 /** Dopasowanie po całych słowach: „plan" nie ma trafiać w „esplanade". */
 function hasPhrase(haystack, phrases) {
   return phrases.some((phrase) => {
@@ -155,7 +223,7 @@ async function politeFetch(url, { attempts = 4 } = {}) {
 }
 
 /** Kandydat w jednym kształcie — z wyszukiwarki i z pliku po tytule. */
-function kandydatZ(page, info, licence) {
+function kandydatZ(page, info, licence, slot) {
   const meta = info.extmetadata ?? {};
   return {
     title: page.title.replace(/^File:/, ''),
@@ -164,7 +232,7 @@ function kandydatZ(page, info, licence) {
     aspect: info.width / info.height,
     download: info.thumburl || info.url,
     source: info.descriptionurl,
-    author: stripHtml(meta.Artist?.value) || stripHtml(meta.Credit?.value) || 'nieznany',
+    author: autorZ(meta, slot),
     license: stripHtml(meta.LicenseShortName?.value) || licence.prefix.toUpperCase(),
     licenseUrl: meta.LicenseUrl?.value ?? '',
     rank: licence.rank,
@@ -209,7 +277,7 @@ async function search(query, slot, { szerokosc = 2400 } = {}) {
     if (slot.must?.length && !hasPhrase(lower, slot.must)) continue;
     if (slot.avoid?.length && hasPhrase(lower, slot.avoid)) continue;
 
-    candidates.push(kandydatZ(page, info, licence));
+    candidates.push(kandydatZ(page, info, licence, slot));
   }
   return candidates;
 }
@@ -250,7 +318,7 @@ async function poTytule(slot) {
     console.warn(`BRAK      ${slot.id.padEnd(12)} "${tytul}" — ${info.width}px, wymagane ${slot.minWidth}`);
     return null;
   }
-  return { ...kandydatZ(page, info, licence), query: 'file' };
+  return { ...kandydatZ(page, info, licence, slot), query: 'file' };
 }
 
 /** Im bliżej szerokiego kadru, im większy oryginał i im swobodniejsza
@@ -297,6 +365,33 @@ async function zbierzKandydatow(slot) {
   return lista;
 }
 
+// PRÓBA CZYSZCZENIA AUTORA — bez sieci i bez witryny: odpowiedzi Commons
+// zapisane dosłownie 2026-09-16 (pliki tej witryny) plus cztery czyste,
+// żeby czyszczenie nie zjadło nazwiska. Kończy skrypt; `exit=1` przy różnicy.
+if (selftest) {
+  const proby = [
+    ['{{unknown}} — Kopernik: ukryty span dubluje tekst', { Artist: { value: 'Unknown author<span style="display: none;">Unknown author</span>' }, Credit: { value: '<ul><li><a rel="nofollow" class="external free" href="http://www.frombork.art.pl/Ang10.htm">http://www.frombork.art.pl/Ang10.htm</a></li>\n<li><a rel="nofollow" class="external free" href="https://muzeum.torun.pl/x.jpg">https://muzeum.torun.pl/x.jpg</a></li></ul>' } }, 'nieznany'],
+    ['Bundesarchiv: «Unknown», Credit — archiwum', { Artist: { value: 'Unknown<span style="display: none;">Unknown </span>' }, Credit: { value: 'Deutsches Bundesarchiv (German Federal Archive), <a rel="nofollow" class="external text" href="https://www.bild.bundesarchiv.de/dba/de/search/?query=Bild+146-1994-036-09A">Bild 146-1994-036-09A</a>' } }, 'Deutsches Bundesarchiv (German Federal Archive), Bild 146-1994-036-09A'],
+    ['NARA: «or not provided» w div, Credit — archiwum', { Artist: { value: '<div class="fn value">\nUnknown author<span style="display: none;">Unknown author</span> or not provided</div>' }, Credit: { value: '<a href="https://en.wikipedia.org/wiki/U.S._National_Archives_and_Records_Administration" class="extiw" title="en:U.S. National Archives and Records Administration">U.S. National Archives and Records Administration</a>' } }, 'U.S. National Archives and Records Administration'],
+    ['rycina Czarnobrodego: przypis [1] odpada, akapit zostaje (ostrzeżenie, nie cięcie)', { Artist: { value: 'Joseph Nicholls (fl. 1726–55).<a rel="nofollow" class="external autonumber" href="https://books.google.com.sg/books?id=x">[1]</a>  Although <a href="https://en.wikipedia.org/wiki/James_Basire" class="extiw" title="w:James Basire">James Basire</a> (1730–1802) is attributed as the engraver.' } }, 'Joseph Nicholls (fl. 1726–55). Although James Basire (1730–1802) is attributed as the engraver.'],
+    ['Homann: link z tytułem w bdi', { Artist: { value: '<bdi><a href="https://en.wikipedia.org/wiki/en:Johann_Homann" class="extiw" title="w:en:Johann Homann"><span title="German geographer and cartographer">Johann Homann</span></a></bdi>' } }, 'Johann Homann'],
+    ['inicjał z kropką nie jest granicą zdania', { Artist: { value: 'P. Hughes' } }, 'P. Hughes'],
+    ['autor-URL z Flickra zostaje (tak podpisał się autor)', { Artist: { value: 'www.mgaylard.co.uk' } }, 'www.mgaylard.co.uk'],
+    ['puste pola — «nieznany» jak dotąd', {}, 'nieznany'],
+    ['pole `author` slotu ma pierwszeństwo', { Artist: { value: 'Unknown author<span style="display: none;">Unknown author</span>' } }, 'Muzeum Okręgowe w Toruniu', { author: 'Muzeum Okręgowe w Toruniu' }],
+  ];
+  let zle = 0;
+  for (const [nazwa, meta, oczekiwane, slot] of proby) {
+    const jest = autorZ(meta, slot);
+    const ok = jest === oczekiwane;
+    if (!ok) zle += 1;
+    console.log(`${ok ? 'ok  ' : 'ZLE '} ${nazwa}`);
+    if (!ok) console.log(`      jest:        ${JSON.stringify(jest)}\n      oczekiwane:  ${JSON.stringify(oczekiwane)}`);
+  }
+  console.log(`\nSelftest: ${proby.length - zle}/${proby.length}.`);
+  process.exit(zle ? 1 : 0);
+}
+
 const wszystkie = JSON.parse(readFileSync(manifestPath, 'utf8')).slots;
 const slots = wszystkie.filter((slot) => !only || only.has(slot.id));
 const credits = existsSync(creditsPath) ? JSON.parse(readFileSync(creditsPath, 'utf8')) : {};
@@ -329,6 +424,9 @@ if (kandydaci) {
       lista.forEach((c, i) => console.log(`  [${String(i).padStart(2, '0')}] ${c.width}x${c.height} ${c.license}  ${c.title}`));
       continue;
     }
+    // `--force` zaczyna od pustego katalogu (nagłówek): stare miniatury pod
+    // nowymi numerami i nadwyżka z poprzedniego przebiegu nie mieszają arkusza.
+    if (force) rmSync(dir, { recursive: true, force: true });
     mkdirSync(dir, { recursive: true });
     const zapis = [];
     for (const [i, c] of lista.entries()) {
@@ -392,6 +490,9 @@ for (const slot of slots) {
   );
   console.log(`          "${chosen.query}" -> ${chosen.title}`);
   console.log(`          ${chosen.author}`);
+  if (chosen.author.length > DLUGI_AUTOR) {
+    console.warn(`UWAGA     ${slot.id.padEnd(12)} autor ma ${chosen.author.length} znakow — stopka wydrukuje akapit; rozwaz pole author w slocie`);
+  }
 
   if (dryRun) continue;
 

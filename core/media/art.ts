@@ -41,6 +41,14 @@ export interface ArtSlot {
    * inaczej nie dostaną żadnego kandydata. Domyślnie lista działa.
    */
   avoidDefault?: boolean;
+  /**
+   * Autor do atrybucji wpisany ręką — z pierwszeństwem nad polami `Artist`
+   * i `Credit` z Commons (2026-09-16, backlog 50 p. 3). Na przypadki, których
+   * czyszczenie w narzędziu nie tyka celowo: akapit z przypisem zamiast
+   * nazwiska, URL zamiast imienia. Narzędzie zapisuje go do `art-credits.json`
+   * jak każdy inny autor — plik atrybucji nadal pisze tylko ono.
+   */
+  author?: string;
   /** Kadr pionowy nie wejdzie w panoramę. */
   minAspect: number;
   minWidth: number;

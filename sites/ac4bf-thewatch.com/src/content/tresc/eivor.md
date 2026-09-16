@@ -1,5 +1,16 @@
 ---
 url: /assassins-creed-valhalla/eivor/
+art: assassins-creed-valhalla
+lead: >-
+  Wiking, który wyprowadza klan Kruka z Norwegii za Morze Północne
+  i zakłada w Mercji Kruczą Przystań. Sojusznik Ukrytych, nie asasyn —
+  jak Edward Kenway w Black Flag; płeć bohatera wybiera gracz.
+primary:
+  href: '#kim-jest'
+  label: Kim jest Eivor
+secondary:
+  href: /assassins-creed-valhalla/
+  label: Strona Valhalli
 byline:
   role: Redakcja
   author: Bractwo
@@ -29,7 +40,7 @@ rows:
     year: IX wiek
     title: Kim jest Eivor — wiking z klanu Kruka
     meta: Norwegia · Wilcza Paszcza · Bruun albo Stenspil
-    art: assassins-creed-valhalla
+    art: assassins-creed-valhalla-k01
     flip: false
     band: false
     body:
@@ -54,6 +65,7 @@ rows:
     year: 855–872
     title: Norwegia — Kjotve, Styrbjorn i brat Sigurd
     meta: Kjotve Okrutny · król Styrbjorn · Sigurd · król Harald
+    art: assassins-creed-valhalla-k00
     flip: true
     band: true
     body:
@@ -74,6 +86,7 @@ rows:
     year: 872–878
     title: Anglia — Krucza Przystań i sojusze w hrabstwach
     meta: Mercja · Krucza Przystań · synowie Ragnara · Ælfred z Wesseksu
+    art: assassins-creed-valhalla-k02
     flip: false
     band: false
     body:
@@ -94,6 +107,7 @@ rows:
     year: Ukryci
     title: Ukryci, Zakon Starożytnych i Basim
     meta: Basim · Hytham · ukryte ostrze · Zakon Starożytnych · Mirage
+    art: assassins-creed-valhalla-k03
     flip: true
     band: false
     body:

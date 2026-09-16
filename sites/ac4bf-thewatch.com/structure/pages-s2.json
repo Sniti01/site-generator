@@ -335,6 +335,7 @@
       "слияния": ["eivor vikings"],
       "wave": 1,
       "ключи": ["eivor wolfsmal", "assassins creed odyssey eivor"],
+      "блоки": [{ "block": "hero-key-art" }],
       "related": [
         "/assassins-creed-valhalla/",
         "/assassins-creed-valhalla/dawn-of-ragnarok/",

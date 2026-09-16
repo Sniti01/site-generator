@@ -1,6 +1,18 @@
 ---
 url: /ezio-auditore/
 era: wlochy
+art: assassins-creed-revelations-k03
+lead: >-
+  Florencki szlachcic, który po egzekucji ojca i braci został asasynem,
+  a po latach Mentorem bractwa. Jedyny bohater serii z trzema dużymi grami:
+  Assassin’s Creed II, Brotherhood i Revelations. Urodzony w 1459 roku,
+  zmarł w 1524 w Toskanii.
+primary:
+  href: '#kim-jest'
+  label: Kim jest Ezio
+secondary:
+  href: /assassins-creed-2/
+  label: Pierwsza gra Ezia
 byline:
   role: Redakcja
   author: Bractwo
@@ -71,6 +83,7 @@ rows:
     year: 1499–1512
     title: Przywództwo — Rzym, potem Konstantynopol
     meta: Brotherhood · Revelations · Cezar Borgia · tytuł Mentora
+    art: assassins-creed-brotherhood-k12
     flip: false
     band: false
     body:
@@ -89,6 +102,7 @@ rows:
     year: Animus
     title: Animus, Desmond i powroty Ezia w późniejszych grach
     meta: Wątek współczesny · Embers · stroje · Nexus VR
+    art: assassins-creed-revelations-k02
     flip: true
     band: false
     body:
@@ -107,6 +121,7 @@ rows:
     year: '2016'
     title: Wydania — The Ezio Collection i Ezio Trilogy
     meta: PS4 i Xbox One 2016 · Switch 2022 · PC w Ubisoft Connect
+    art: assassins-creed-brotherhood-k08
     flip: false
     band: true
     body:

@@ -669,6 +669,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
@@ -717,7 +722,7 @@
    "wave": 1,
    "corridor": [
     3037,
-    4109
+    4400
    ],
    "volume": 3760
   },

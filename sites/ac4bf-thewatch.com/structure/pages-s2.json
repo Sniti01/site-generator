@@ -122,7 +122,7 @@
       "слияния": ["assassin ezio", "ezio ps4"],
       "wave": 1,
       "ключи": ["ezio auditore collection switch"],
-      "блоки": [{ "block": "card-rail", "role": "the-ezio-collection" }],
+      "блоки": [{ "block": "hero-key-art" }, { "block": "card-rail", "role": "the-ezio-collection" }],
       "related": [
         "/assassins-creed-2/",
         "/assassins-creed-brotherhood/",

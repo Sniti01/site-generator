@@ -63,6 +63,7 @@ rows:
     year: '873'
     title: Norwegia, Anglia i Krucza Przystań — kolejność regionów i osada
     meta: Ravensthorpe · mapa sojuszy · kowal Gunnar · wieczerza
+    art: assassins-creed-valhalla-k02
     flip: true
     band: true
     body:
@@ -83,6 +84,7 @@ rows:
     year: Orlog
     title: Walka, skradanie, orlog i zeloci — na co uważać na starcie
     meta: Broń w obu rękach · wzrok Odyna · Sýnin · bez multiplayera
+    art: assassins-creed-valhalla-k00
     flip: false
     band: false
     body:

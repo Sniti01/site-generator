@@ -124,6 +124,7 @@ rows:
     year: '1752'
     title: Shay Cormac — od niesfornego rekruta do łowcy asasynów
     meta: Achilles Davenport · Lizbona · pułkownik Monro · Haytham Kenway
+    art: assassins-creed-rogue-k04
     flip: true
     band: true
     body:
@@ -201,6 +202,7 @@ rows:
     year: Morrigan
     title: Morrigan — płytsze zanurzenie, płonący olej i lód
     meta: Kartaczownica Puckle’a · taran lodowy · abordaż wroga · pięć okrętów legendarnych
+    art: assassins-creed-rogue-k03
     flip: true
     band: false
     body:
@@ -233,6 +235,7 @@ rows:
     year: Łowca
     title: Wiatrówka, granatnik i asasyni jako wrogowie
     meta: Wzrok orła · przechwycenia · kontry jak w Arkham · trujący gaz
+    art: assassins-creed-rogue-k02
     flip: false
     band: true
     body:
@@ -353,6 +356,7 @@ rows:
     year: Start
     title: Komu Rogue i w jakim miejscu serii je zagrać
     meta: Po trójce i Black Flag · przed Unity · kilkadziesiąt godzin z pobocznymi
+    art: foto-nowy-jork-1750
     flip: false
     band: false
     body:

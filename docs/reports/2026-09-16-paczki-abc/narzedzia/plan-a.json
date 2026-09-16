@@ -1,0 +1,13 @@
+[
+  { "file": "assassins-creed-1.md", "rows": { "fabula": "jerozolima-k03", "rozgrywka": "jerozolima-k10", "watek-wspolczesny": "jerozolima-k08", "wersje": "jerozolima-k04", "odbior": "jerozolima-k05" } },
+  { "file": "assassins-creed-2.md", "rows": { "fabula": "foto-florencja-1470", "rozgrywka": "wlochy-k03", "watek-wspolczesny": "wlochy-k01", "dodatki-i-wydania": "foto-savonarola", "jak-zaczac": "wlochy-k05" } },
+  { "file": "assassins-creed-3.md", "rows": { "haytham-i-connor": "assassins-creed-3-k04", "swiat-i-rozgrywka": "assassins-creed-3-k02", "aquila": "assassins-creed-3-k09", "komu-i-od-czego-zaczac": "assassins-creed-3-k08" } },
+  { "file": "assassins-creed-brotherhood.md", "rows": { "co-jest-w-grze": "assassins-creed-brotherhood-k09", "fabula": "assassins-creed-brotherhood-k11", "miasto": "foto-rzym-piranesi", "bractwo": "foto-leonardo-czolg", "tryb-sieciowy": "assassins-creed-brotherhood-k04", "dodatki-i-znajdzki": "foto-kopernik", "wydania": "foto-monteriggioni" } },
+  { "file": "assassins-creed-revelations.md", "rows": { "co-to-za-gra": "assassins-creed-revelations-k05", "co-nowego": "assassins-creed-revelations-k01" } },
+  { "file": "assassins-creed-syndicate.md", "rows": { "bliznieta-frye": "londyn-k07", "fabula": "londyn-k05" } },
+  { "file": "assassins-creed-shadows.md", "rows": { "naoe-i-yasuke": "japonia-k05", "werdykt": "japonia-k07" } },
+  { "file": "assassins-creed-origins.md", "rows": { "bayek-i-aya": "assassins-creed-origins-k04", "egipt-i-walka": "assassins-creed-origins-k03", "dodatki-i-wydania": "assassins-creed-origins-k02" } },
+  { "file": "assassins-creed-odyssey.md", "rows": { "aleksios-albo-kasandra": "assassins-creed-odyssey-k05", "swiat-i-rozgrywka": "assassins-creed-odyssey-k04", "dodatki-i-wydania": "assassins-creed-odyssey-k01", "komu-i-od-czego-zaczac": "assassins-creed-odyssey-k00" } },
+  { "file": "assassins-creed-unity.md", "rows": { "co-to-za-gra": "assassins-creed-unity-k01", "paryz": "foto-paryz-1739", "parkour-i-kooperacja": "assassins-creed-unity-k02" } },
+  { "file": "assassins-creed-mirage.md", "rows": { "co-to-za-gra": "assassins-creed-mirage-k08", "basim": "assassins-creed-mirage-k02", "bagdad": "foto-samarra", "skradanie-i-parkour": "assassins-creed-mirage-k06", "od-rift-do-doliny-pamieci": "foto-hegra", "wydania-i-wersje": "assassins-creed-mirage-k09", "komu-i-od-czego-zaczac": "assassins-creed-mirage-k00" } }
+]

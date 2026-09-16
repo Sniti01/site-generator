@@ -1,0 +1,179 @@
+[
+  {
+    "id": "foto-nowy-jork-1750",
+    "subject": "Nowy Jork w połowie XVIII wieku — rycina z widokiem miasta od strony portu",
+    "queries": [
+      "A South Prospect of the Flourishing City of New York Burgis",
+      "New York 1746 Burgis view engraving",
+      "New York 1750s engraving view harbour",
+      "Carwitham view of New York 1730s"
+    ],
+    "must": ["new york", "new-york", "nieuw", "york"],
+    "avoid": ["map", "plan", "1800", "1850", "1860", "1870", "1880", "1890", "19th", "photo", "brooklyn bridge", "statue"],
+    "avoidDefault": false,
+    "minAspect": 1.5,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-akka",
+    "subject": "Akka — mury starego miasta krzyżowców nad Morzem Śródziemnym",
+    "queries": [
+      "Acre old city walls sea",
+      "Akko old city walls Mediterranean panorama",
+      "Acre Israel harbour old city view",
+      "Akko sea walls"
+    ],
+    "must": ["acre", "akko", "akka", "acco"],
+    "avoid": ["interior", "map", "plan", "night", "aerial", "museum", "tunnel", "hall", "mosque interior", "market", "shop", "street", "khan"],
+    "minAspect": 1.4,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-psp",
+    "subject": "Sony PlayStation Portable — konsola PSP-1000",
+    "queries": [
+      "PlayStation Portable PSP-1000 console",
+      "Sony PSP 1000 black console",
+      "PSP-3000 console photo"
+    ],
+    "must": ["psp", "playstation portable"],
+    "avoid": ["go", "vita", "box", "screen", "chart", "logo", "umd", "diagram", "battery", "cable"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 1600
+  },
+  {
+    "id": "foto-bitwa-morska",
+    "subject": "Bitwa morska żaglowców w XVIII wieku — obraz olejny",
+    "queries": [
+      "Battle of Cartagena de Indias 1741 painting",
+      "naval battle 18th century painting ships Caribbean",
+      "Willem van de Velde sea battle painting",
+      "Action between English and Spanish ships painting 18th century",
+      "capture of the Spanish galleon painting"
+    ],
+    "must": ["battle", "action", "naval", "ships", "combat", "bataille", "zeeslag", "capture", "engagement", "sea fight"],
+    "avoid": ["map", "plan", "model", "portrait", "20th", "1900", "steam", "ironclad", "dreadnought", "submarine", "1914", "1940"],
+    "avoidDefault": false,
+    "minAspect": 1.3,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-czarnobrody",
+    "subject": "Czarnobrody, Edward Teach — rycina z „A General History of the Pyrates”, 1724",
+    "queries": [
+      "Blackbeard engraving General History of the Pyrates",
+      "Edward Teach Blackbeard engraving 1736",
+      "Capt Teach commonly called Black Beard engraving",
+      "Olivier Levasseur La Buse"
+    ],
+    "must": ["blackbeard", "teach", "black beard", "pyrates", "levasseur", "buse"],
+    "avoid": ["flag", "ship model", "film", "movie", "actor", "statue", "festival", "reenact"],
+    "avoidDefault": false,
+    "minAspect": 0.6,
+    "minWidth": 1000
+  },
+  {
+    "id": "foto-karaiby-mapa",
+    "subject": "Karaiby na mapie z XVIII wieku — Antyle i Morze Karaibskie",
+    "queries": [
+      "Carte des Antilles Bellin 1750",
+      "West Indies map 1700s Moll",
+      "Caribbean map 18th century Antilles",
+      "Map of the West Indies 1740 Popple"
+    ],
+    "must": ["antilles", "caribbean", "west indies", "west-indies", "indes occidentales", "caribe", "antillas", "westindien"],
+    "avoid": ["1800", "1850", "1900", "19th", "20th", "modern", "satellite", "topographic", "cuba map 1"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-nintendo-ds",
+    "subject": "Nintendo DS — konsola przenośna z dwoma ekranami",
+    "queries": [
+      "Nintendo DS Lite console open",
+      "Nintendo DS original console",
+      "Nintendo DS Lite white"
+    ],
+    "must": ["nintendo ds", "ds lite", "nintendo-ds", "ds-lite"],
+    "avoid": ["3ds", "dsi", "box", "cartridge box", "logo", "stylus only", "diagram", "chart"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 1600
+  },
+  {
+    "id": "foto-stonehenge",
+    "subject": "Stonehenge i wał Hadriana — Anglia z czasów Valhalli",
+    "queries": [
+      "Stonehenge panorama",
+      "Stonehenge wide view sunset",
+      "Hadrian's Wall Housesteads panorama",
+      "Hadrian's Wall Sycamore Gap"
+    ],
+    "must": ["stonehenge", "hadrian", "housesteads", "sycamore gap"],
+    "avoid": ["map", "plan", "model", "diagram", "aerial", "night", "solstice", "crowd", "people", "reconstruction", "drawing", "museum", "visitor", "replica"],
+    "minAspect": 1.5,
+    "minWidth": 2400
+  },
+  {
+    "id": "foto-delfy",
+    "subject": "Delfy — tolos świątyni Ateny Pronaia i Dolina Królów",
+    "queries": [
+      "Delphi Tholos Athena Pronaia",
+      "Delphi sanctuary panorama",
+      "Valley of the Kings panorama Luxor",
+      "Delphi temple of Apollo view"
+    ],
+    "must": ["delphi", "delfoi", "delfy", "valley of the kings", "tholos", "kings valley"],
+    "avoid": ["map", "plan", "museum", "statue", "charioteer", "interior", "model", "reconstruction", "tomb interior", "kv62", "painting"],
+    "minAspect": 1.5,
+    "minWidth": 2400
+  },
+  {
+    "id": "assassins-creed-rodowod",
+    "subject": "Florencja w drzeworycie z Kroniki Norymberskiej, 1493 rok",
+    "queries": [
+      "Nuremberg Chronicle Florence woodcut 1493 Florentia",
+      "Schedelsche Weltchronik Florenz",
+      "Florence 15th century woodcut view Florentia",
+      "Hartmann Schedel Florentia"
+    ],
+    "must": ["floren", "firenze", "florentia"],
+    "avoid": ["photo", "modern", "coat of arms", "reconstruction", "model", "catena"],
+    "avoidDefault": false,
+    "minAspect": 1.4,
+    "minWidth": 2000
+  },
+  {
+    "id": "assassins-creed-ii-wojna-swiatowa",
+    "subject": "Londyn roku 1916 — fotografia z czasów I wojny światowej",
+    "queries": [
+      "London 1916 photograph street",
+      "Whitehall London 1916",
+      "London Zeppelin raid 1916 photograph",
+      "Trafalgar Square 1916",
+      "London 1915 recruiting photograph street"
+    ],
+    "must": ["london", "1916", "1915", "1917", "1914"],
+    "avoid": ["map", "plan", "poster", "cartoon", "drawing", "painting", "medal", "badge", "stamp", "portrait of", "grave", "cemetery"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 1600
+  },
+  {
+    "id": "foto-paryz-1940",
+    "subject": "Paryż pod okupacją, 1940 rok — fotografia z Bundesarchiv",
+    "queries": [
+      "Bundesarchiv Paris 1940 Wehrmacht Champs-Elysees",
+      "Bundesarchiv Bild Paris Juni 1940",
+      "Paris 1940 Eiffel Tower German soldiers Bundesarchiv",
+      "Bundesarchiv Paris Parade 1940"
+    ],
+    "must": ["paris", "bundesarchiv"],
+    "avoid": ["map", "poster", "portrait of", "hitler", "karte"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 800
+  }
+]

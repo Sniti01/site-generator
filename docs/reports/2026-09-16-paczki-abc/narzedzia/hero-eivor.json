@@ -1,0 +1,19 @@
+{
+  "file": "eivor.md",
+  "url": "/assassins-creed-valhalla/eivor/",
+  "art": "assassins-creed-valhalla",
+  "lead": [
+    "Wiking, który wyprowadza klan Kruka z Norwegii za Morze Północne",
+    "i zakłada w Mercji Kruczą Przystań. Sojusznik Ukrytych, nie asasyn —",
+    "jak Edward Kenway w Black Flag; płeć bohatera wybiera gracz."
+  ],
+  "primary": {
+    "href": "#kim-jest",
+    "label": "Kim jest Eivor"
+  },
+  "secondary": {
+    "href": "/assassins-creed-valhalla/",
+    "label": "Strona Valhalli"
+  },
+  "slack": 196
+}

@@ -1,0 +1,125 @@
+[
+  {
+    "id": "foto-florencja-1470",
+    "subject": "Florencja około 1470 roku — widok miasta z Kroniki Norymberskiej i Pianta della Catena",
+    "queries": [
+      "Pianta della Catena Florence view Rosselli",
+      "View of Florence with the Chain woodcut 1470s",
+      "Florence Nuremberg Chronicle 1493 woodcut Florentia",
+      "Pope Alexander VI portrait Cristofano dell'Altissimo",
+      "Rodrigo Borgia Alexander VI portrait painting"
+    ],
+    "must": ["florence", "firenze", "florentia", "catena", "alexander", "borgia", "alessandro"],
+    "avoid": ["coat of arms", "tomb", "medal", "coin", "stamp", "photo", "modern", "reconstruction", "model"],
+    "avoidDefault": false,
+    "minAspect": 0.6,
+    "minWidth": 1400
+  },
+  {
+    "id": "foto-savonarola",
+    "subject": "Stracenie Savonaroli na Piazza della Signoria — obraz nieznanego autora z 1498 roku",
+    "queries": [
+      "Execution of Savonarola Piazza della Signoria painting",
+      "Savonarola burning Florence 1498 painting Museo di San Marco",
+      "Rogo di Savonarola dipinto",
+      "Hanging and burning of Girolamo Savonarola"
+    ],
+    "must": ["savonarola"],
+    "avoid": ["portrait of", "bust", "medal", "plaque", "statue", "monument", "book", "cell", "ritratto"],
+    "avoidDefault": false,
+    "minAspect": 1.0,
+    "minWidth": 1400
+  },
+  {
+    "id": "foto-monteriggioni",
+    "subject": "Monteriggioni — mury i wieże toskańskiego miasteczka z XIII wieku",
+    "queries": [
+      "Monteriggioni walls towers panorama",
+      "Monteriggioni Tuscany medieval walls",
+      "Monteriggioni view from vineyards",
+      "Monteriggioni cinta muraria"
+    ],
+    "must": ["monteriggioni"],
+    "avoid": ["interior", "church", "chiesa", "map", "plan", "coat of arms", "detail", "door", "sign", "piazza", "museum", "night"],
+    "minAspect": 1.3,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-rzym-piranesi",
+    "subject": "Rzym w rycinie Giovanniego Battisty Piranesiego z XVIII wieku",
+    "queries": [
+      "Piranesi Veduta dell'Anfiteatro Flavio Colosseo",
+      "Piranesi Vedute di Roma Colosseum etching",
+      "Piranesi Castel Sant'Angelo veduta etching",
+      "Piranesi Veduta di Piazza Navona",
+      "Piranesi Veduta del Campidoglio"
+    ],
+    "must": ["piranesi"],
+    "avoid": ["carceri", "portrait", "frontispiece", "title", "pianta", "plan", "map", "detail", "interior", "antichità", "vase", "vaso", "candelabr", "cammini", "ornament"],
+    "avoidDefault": false,
+    "minAspect": 1.2,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-kopernik",
+    "subject": "Mikołaj Kopernik — portret toruński z około 1580 roku",
+    "queries": [
+      "Nicolaus Copernicus portrait Toruń 1580",
+      "Kopernik portret toruński",
+      "Copernicus portrait painting Toruń town hall",
+      "Leonardo da Vinci flying machine drawing Codex Atlanticus",
+      "Leonardo da Vinci fighting vehicle tank drawing"
+    ],
+    "must": ["copernicus", "kopernik", "leonardo"],
+    "avoid": ["monument", "statue", "pomnik", "coin", "stamp", "banknote", "medal", "crater", "poster", "tomb", "grave", "matejko", "street", "school", "museum building", "logo"],
+    "avoidDefault": false,
+    "minAspect": 0.6,
+    "minWidth": 1200
+  },
+  {
+    "id": "foto-paryz-1739",
+    "subject": "Paryż XVIII wieku — plan Turgota z 1739 roku i widoki Sekwany",
+    "queries": [
+      "Plan de Turgot 1739 Paris Île de la Cité Notre-Dame",
+      "Turgot map Paris 1739 sheet",
+      "Nicolas Raguenet Paris painting Pont Neuf Seine",
+      "Raguenet Notre-Dame de Paris 1750 painting",
+      "Notre-Dame de Paris engraving 18th century view from Seine"
+    ],
+    "must": ["turgot", "paris", "notre-dame", "notre dame", "raguenet"],
+    "avoid": ["photo", "metro", "modern", "night", "1900", "1889", "exposition", "eiffel", "haussmann", "2019", "fire", "incendie"],
+    "avoidDefault": false,
+    "minAspect": 1.0,
+    "minWidth": 2000
+  },
+  {
+    "id": "foto-bagdad",
+    "subject": "Bagdad i Samarra IX wieku — spiralny minaret Malwija i plan Kolistego Miasta",
+    "queries": [
+      "Malwiya minaret Samarra",
+      "Great Mosque of Samarra spiral minaret",
+      "Round city of Baghdad plan reconstruction",
+      "Baghdad round city 8th century map reconstruction",
+      "Abbasid Baghdad Madinat al-Salam"
+    ],
+    "must": ["baghdad", "bagdad", "samarra", "malwiya", "malwiyya", "madinat"],
+    "avoid": ["2003", "war", "army", "soldier", "bomb", "airport", "night", "modern", "1917", "1941", "aerial photograph", "satellite"],
+    "avoidDefault": false,
+    "minAspect": 1.0,
+    "minWidth": 1600
+  },
+  {
+    "id": "foto-hegra",
+    "subject": "AlUla — grobowce Hegry wykute w skale, Arabia Saudyjska",
+    "queries": [
+      "Hegra Mada'in Salih tombs AlUla",
+      "Qasr al-Farid Madain Saleh",
+      "AlUla Hegra Nabataean tombs sandstone",
+      "Al-Ula old town rock formations"
+    ],
+    "must": ["hegra", "mada'in", "madain", "alula", "al-ula", "al ula", "farid", "madâin"],
+    "avoid": ["map", "plan", "interior", "inscription", "detail", "night", "aerial", "museum", "airport", "railway", "station"],
+    "minAspect": 1.3,
+    "minWidth": 2000
+  }
+]

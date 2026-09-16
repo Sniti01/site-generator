@@ -1,0 +1,3152 @@
+{
+ "_": "Каталог 156 кадров витрины Steam по 19 слотам (Black Flag — 7 кадров сессии 1б — не каталогизировались), составленный агентами по полным кадрам (сессия 3, 2026-09-16): HUD, знак, кровь, текст, положение сюжета, края; usable=false — не брать. Индекс i — позиция на витрине, как в games.json zrzuty.",
+ "slots": {
+  "jerozolima": [
+   {
+    "i": 0,
+    "w": 1680,
+    "h": 945,
+    "opis_pl": "Altaïr skacze po belkach nad krytym bazarem, w dole tłum",
+    "hud": true,
+    "hud_detail": "sync bar with Animus logo top-left; timer 00:55:37 top-centre; button prompts 'drop' / 'jump' top-right; compass/minimap with '252' bottom-right; weapon icon bottom-left",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     55,
+     85
+    ],
+    "shot": "medium",
+    "palette": "warm ochre, sandstone, golden light",
+    "notes": "flag 'HUD (games.json uwaga)' CONFIRMED — full HUD plus prompt text. Not usable."
+   },
+   {
+    "i": 1,
+    "w": 1680,
+    "h": 945,
+    "opis_pl": "Altaïr biegnie po dachu, w tle minarety i kopuły w mgle",
+    "hud": true,
+    "hud_detail": "sync bar top-left; timer 01:24:70 top-centre; prompts 'attack' / 'tackle' / 'sprint/free run' top-right; compass with '162' bottom-right; dagger icon bottom-left",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     20,
+     45
+    ],
+    "shot": "medium",
+    "palette": "hazy beige, sandstone, white-out sky",
+    "notes": "flag 'HUD (games.json uwaga)' CONFIRMED. Not usable."
+   },
+   {
+    "i": 2,
+    "w": 1680,
+    "h": 945,
+    "opis_pl": "Altaïr wtapia się w grupę uczonych w białych szatach",
+    "hud": true,
+    "hud_detail": "sync bar (yellow notoriety icon) top-left; prompts 'throw knife' / 'gentle push' / 'blend' top-right; compass bottom-right; throwing-knife counter '6' bottom-left",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     40,
+     60
+    ],
+    "shot": "close",
+    "palette": "olive green, grey-white, muted",
+    "notes": "flag 'HUD (games.json uwaga)' CONFIRMED. Not usable."
+   },
+   {
+    "i": 3,
+    "w": 1188,
+    "h": 736,
+    "opis_pl": "Altaïr krzyżuje miecze z krzyżowcami w wąskiej uliczce",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     52,
+     68
+    ],
+    "shot": "medium",
+    "palette": "cool grey stone, white, red accents",
+    "notes": "red is guards' heraldry (tabards, helmets), no spatter seen. Left edge: back of a civilian at 0–15% (unimportant); right guard's sword reaches ~95%."
+   },
+   {
+    "i": 4,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Altaïr na białym koniu wjeżdża na plac wśród palm i tłumu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     58,
+     88
+    ],
+    "shot": "wide",
+    "palette": "cool grey-blue stone, green palms, white",
+    "notes": "horse/rider on right third; left third is crowd. Clean, no overlays."
+   },
+   {
+    "i": 5,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Altaïr wspina się po drabinie nad placem z fontanną",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     48,
+     68
+    ],
+    "shot": "medium",
+    "palette": "cool grey, white, blue-grey haze",
+    "notes": "palm frond at far left 0–8% (unimportant); wall fills right edge."
+   },
+   {
+    "i": 6,
+    "w": 1134,
+    "h": 706,
+    "opis_pl": "Altaïr na gzymsie nad placem z fontanną i szubienicą",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     70,
+     92
+    ],
+    "shot": "wide",
+    "palette": "cool grey stone, white, red banner, teal water",
+    "notes": "figure ends ~92%, inside the 95.5% cut. Red banner at 12–20% is a banner, not blood."
+   },
+   {
+    "i": 7,
+    "w": 1030,
+    "h": 640,
+    "opis_pl": "Altaïr walczy z trzema strażnikami na podwórzu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     44,
+     60
+    ],
+    "shot": "medium",
+    "palette": "cool grey, white, red",
+    "notes": "irregular red splotches on the left-foreground guard's white tabard (and faint on the right guard) look like hit-decal blood stains rather than heraldry — small, no gore, ambiguous with the red-cross pattern. Marked blood=true, kept usable; exclude if the blood rule is read strictly. Left guard at 5–25% — the 4.5% cut clips his back only."
+   },
+   {
+    "i": 8,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Altaïr wisi na murze nad ulicą z łukami, w dole przechodnie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     42
+    ],
+    "shot": "wide",
+    "palette": "cool blue-grey stone, bright white sky",
+    "notes": "ladder at 95–100% right edge (unimportant). Figure is small relative to frame."
+   },
+   {
+    "i": 9,
+    "w": 1077,
+    "h": 605,
+    "opis_pl": "Altaïr na krawędzi dachu spogląda na plac z fontanną",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     8,
+     22
+    ],
+    "shot": "vista",
+    "palette": "cool grey-blue, white, desaturated",
+    "notes": "already used: page hero, row co-to-za-gra, gallery. Figure starts at ~8%, just outside the 4.5% cut — tight on the left."
+   },
+   {
+    "i": 10,
+    "w": 1119,
+    "h": 629,
+    "opis_pl": "Altaïr odchodzi w głąb zatłoczonej ulicy, plecami do nas",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     13,
+     33
+    ],
+    "shot": "medium",
+    "palette": "cool grey, white, blue tint",
+    "notes": "partial civilian at 0–5% left and dark figure at 85–100% right — both unimportant; subject sits inside the cut."
+   }
+  ],
+  "wlochy": [
+   {
+    "i": 0,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio na balkonie patrzy na Canal Grande w zachodzącym słońcu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     8,
+     32
+    ],
+    "shot": "wide",
+    "palette": "warm sepia haze, pink-grey sky, silver water glare",
+    "notes": "Confirms 'used' note: clean hero-grade vista, subject left third, right two thirds open sky/city for text. Decorative column occupies 0-6 % left, cape starts ~8 % - safe under 4.5 % crop."
+   },
+   {
+    "i": 1,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio skacze z dachu nad wenecki kanał, widok z góry",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     50,
+     72
+    ],
+    "shot": "wide",
+    "palette": "terracotta roofs, grey-green water, cream stone",
+    "notes": "Rooftops at both edges are decorative; subject centred right."
+   },
+   {
+    "i": 2,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio nurkuje z gondoli do laguny, na molo straż z halabardą",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     25,
+     65
+    ],
+    "shot": "medium",
+    "palette": "teal water, pale stone, white-grey sky",
+    "notes": "Secondary figures at 5-12 % (gondola crowd) and 85-94 % (brute guard) stay inside the 4.5 % crop."
+   },
+   {
+    "i": 3,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio płynie kanałem pod arkadami, na nabrzeżu patrol straży",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     15,
+     63
+    ],
+    "shot": "medium",
+    "palette": "dark teal water, warm lantern amber, brown stone",
+    "notes": "Low-key frame; left mooring post at 8-15 % is background."
+   },
+   {
+    "i": 4,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio walczy ze strażą przed bazyliką św. Marka",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     35,
+     56
+    ],
+    "shot": "medium",
+    "palette": "sandy stone, ochre mosaics, dark grey pavement",
+    "notes": "Left guard's dagger tip reaches ~3 % and would be clipped by the 4.5 % crop; secondary detail, main action centred. Guards span 3-90 % overall."
+   },
+   {
+    "i": 5,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Nocą przy fontannie Ezio zwiera się ze strażnikiem, księżyc",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     38,
+     70
+    ],
+    "shot": "medium",
+    "palette": "steel blue moonlight, black shadows, red roses",
+    "notes": "Red accents are roses, not blood."
+   },
+   {
+    "i": 6,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Nocą Ezio wciąga strażnika w stóg siana przy kanale",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     65,
+     97
+    ],
+    "shot": "medium",
+    "palette": "blue-grey night, amber lanterns, straw yellow",
+    "notes": "Main action hugs the right edge: guard's gloved hand and axe head reach ~97 %, hay runs off the frame - the 4.5 % crop clips them. Faces sit at 78-85 %, so a crop is survivable but not clean. Left patrol guard's boots at ~5 %."
+   },
+   {
+    "i": 7,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio spada z góry na strażnika na pomoście nad kanałem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     49,
+     65
+    ],
+    "shot": "wide",
+    "palette": "warm brick red, white sun glare, green-grey water",
+    "notes": "Guard target at 72-90 %; edges are building walls."
+   }
+  ],
+  "assassins-creed-3": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor u steru Aquili, załoga na pokładzie, skaliste wybrzeże",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     20,
+     40
+    ],
+    "shot": "wide",
+    "palette": "grey-blue sea, warm wood, hazy sky",
+    "notes": "Used-note confirmed: clean marketing screenshot, no HUD/watermark/text; naval scene fits keyart/hero/co-to-za-gra/gallery use. Outer 4.5% on the left holds only rigging and Faulkner's coat edge, on the right rigging and a cannon; Connor sits safely inside."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor na drzewie napina łuk nad obozem czerwonych kurtek we mgle",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     55,
+     90
+    ],
+    "shot": "wide",
+    "palette": "foggy grey-blue, amber lantern glow",
+    "notes": "Tree trunk runs to ~92% of width; Connor's body is within 60-88%, so the 4.5% crop only trims bark. Union flag in background is a texture, not overlay text."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Młody Connor skacze z urwiska nad jesienną doliną Pogranicza",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     18,
+     50
+    ],
+    "shot": "wide",
+    "palette": "golden autumn, amber haze, dark green pines",
+    "notes": "Cliff rock in bottom-left corner and pine branches at the right edge are scenery; figure sits in the left-centre third."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Aveline w trójgraniastym kapeluszu idzie ulicą Nowego Orleanu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     31,
+     55
+    ],
+    "shot": "medium",
+    "palette": "warm daylight, brown timber, purple, pale blue sky",
+    "notes": "Liberation Remastered (bundled) frame, not AC3 proper. Background shop sign reads 'BUREAU' — in-world signage, small and out of focus, not an overlay; text=false but flagging it in case diegetic lettering matters for the row."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor w kapturze walczy z czerwonymi kurtkami na bruku Bostonu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     58,
+     92
+    ],
+    "shot": "medium",
+    "palette": "red brick, scarlet coats, white-blue robes, grey cobbles",
+    "notes": "Knife tip in Connor's right hand reaches ~96% of width, so the 4.5% crop clips only the blade tip; the hand itself sits at 88-94%. Left-edge redcoat is already cut by the original frame. Combat but no blood."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor biegnie przez dym bitwy, obok salwa kontynentalnych",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     52,
+     72
+    ],
+    "shot": "wide",
+    "palette": "golden haze, white smoke, blue coats, sepia",
+    "notes": "Outer edges hold only a tree and a rock; soldier groups at 8-38% and 72-88% stay inside the crop."
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Aveline w czerwonej chuście rozmawia w magazynie, zbliżenie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     47,
+     90
+    ],
+    "shot": "close",
+    "palette": "dark wood, red headwrap, blue-grey, dim amber",
+    "notes": "Liberation Remastered (bundled) frame. The man's shoulder and hair fill the left ~28% and are already cropped by the original frame; Aveline's face sits at 55-72%."
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor w wilczej skórze biegnie ku posągom króla Waszyngtona",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     45
+    ],
+    "shot": "wide",
+    "palette": "sepia orange, dust, sandstone",
+    "notes": "DLC content, not the main campaign. Red stripes on the pelt cloak are dye/paint, not blood. Cloak fringe reaches ~2% of width so the 4.5% crop trims a sliver of it; Connor's hand and body stay inside. Eye-in-pyramid emblem is a symbol, no lettering. Alt-history imagery may need a caption if used."
+   },
+   {
+    "i": 8,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor w kapturze na pierwszym planie, za nim Aveline w śniegu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     35,
+     92
+    ],
+    "shot": "close",
+    "palette": "white snow, pale blue, cream leather",
+    "notes": "Connor-Aveline crossover mission (Liberation tie-in). Arrow fletchings at top right reach ~97% of width, so the 4.5% crop clips their tips; shoulder ends at ~92%. Aveline at 10-33% is safely inside."
+   },
+   {
+    "i": 9,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Connor z tomahawkiem na dachu nad zaśnieżonym portem Bostonu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     7,
+     33
+    ],
+    "shot": "wide",
+    "palette": "white snow, grey-lavender sky, muted blue",
+    "notes": "Cape edge sits at ~6% of width, just inside the 4.5% crop line. Strong vista candidate: figure left, harbour and city right."
+   }
+  ],
+  "assassins-creed-brotherhood": [
+   {
+    "i": 0,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Doktor i Kat idą przez plac wśród graczy trybu multiplayer",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     27,
+     72
+    ],
+    "shot": "medium",
+    "palette": "ochre, olive, stone grey, soft overcast",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Additionally: clearly visible dried blood stains on the Executioner's tunic at frame centre (48-72%) — not in the flag list; usable=false for blood. Courtesan at 0-15% and barrel at right already cut by frame; nothing important in outer 4.5%."
+   },
+   {
+    "i": 1,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Gracze multiplayer: lot na linie żurawia i skok z dzwonnicy",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     7,
+     90
+    ],
+    "shot": "wide",
+    "palette": "grey stone, pale sky, muted brown",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Small reddish stain on the running Executioner's apron (~30-36%) — minor, costume detail, not a splash; left as usable. Swinging figure starts at ~7%, leaping figure ends ~90% — tight but inside 4.5% margins."
+   },
+   {
+    "i": 2,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Kat rzuca się na Włóczęgę pod słońce, Szlachcic skacze z dachu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     33,
+     95
+    ],
+    "shot": "medium",
+    "palette": "golden backlight, warm haze, dark brown",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Additionally: visible blood stains on the Executioner's tunic at ~50-58% (not in flag list) — usable=false for blood. Prowler in right foreground is already cut by frame edge; his face sits at ~86-92%, hood reaches ~97% so 4.5% crop trims the hood slightly."
+   },
+   {
+    "i": 3,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Szlachcic zrzuca Kapłana z dachu, w tle Panteon w czerwieni",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     63,
+     97
+    ],
+    "shot": "wide",
+    "palette": "grey stone, red banners, white sky, green tree",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Pantheon inscription M·AGRIPPA·L·F·COS·TERTIVM·FECIT is in-scene architecture, not an overlay — text=false. Noble's boot tip at ~95% — right at the 4.5% margin; tree branch at left edge is scenery."
+   },
+   {
+    "i": 4,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Włóczęga skacze na Kapłana na targu, Doktor na dachu w tle",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     12,
+     55
+    ],
+    "shot": "medium",
+    "palette": "cream, dark red, grey stone, pale sky",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Clean frame, no HUD, no blood, no text."
+   },
+   {
+    "i": 5,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Przemytniczka wspina się po murze, Włóczęga skacze nad Florencją",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     14,
+     88
+    ],
+    "shot": "wide",
+    "palette": "warm ochre, hazy blue-grey, green vines",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Two subjects: climber 14-24%, leaper 65-88%. Clean frame."
+   },
+   {
+    "i": 6,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Doktor na dachu patrzy, jak dwaj gracze biegną po dachach",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     33,
+     85
+    ],
+    "shot": "wide",
+    "palette": "hazy gold, terracotta roofs, dark silhouette",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Doctor 65-85% dominant, runners 33-45%. Clean frame."
+   },
+   {
+    "i": 7,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Doktor wbija strzykawkę Przemytniczce na dziedzińcu",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     12,
+     48
+    ],
+    "shot": "medium",
+    "palette": "olive green, dark brown, grey stone",
+    "notes": "Flag 'multiplayer bez Ezio' confirmed. Syringe kill — no blood visible. Figures at both edges already cut by frame."
+   },
+   {
+    "i": 8,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio na krawędzi Koloseum patrzy w dół na zarośniętą arenę",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     8,
+     25
+    ],
+    "shot": "vista",
+    "palette": "grey stone, pale gold haze, green grass",
+    "notes": "Already used: k08 — Ezio page (wydania). Ezio's cape starts at ~8%, inside the 4.5% margin. Clean frame."
+   },
+   {
+    "i": 9,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio gna na białym koniu przez bramę, za nim straż na koniach",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     48
+    ],
+    "shot": "wide",
+    "palette": "cool grey, white, red accents, washed-out",
+    "notes": "Horse's hindquarters already cut by the left frame edge; Ezio himself at 13-40%. Pantheon inscription in scene is tiny, not overlay. Clean frame, no HUD."
+   },
+   {
+    "i": 10,
+    "w": 1280,
+    "h": 721,
+    "opis_pl": "Ezio zabija dwóch strażników Borgiów ostrzem i pistoletem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     8,
+     95
+    ],
+    "shot": "medium",
+    "palette": "white, red, steel grey, pale sky",
+    "notes": "Flag 'krew (doklad 1b)' confirmed: heavy blood spray at ~25-30% and ~78-85% plus muzzle flash. Guard's sword hilt at 3-8% and helmet plume at 88-98% sit in the crop margins. Height 721, not 720."
+   },
+   {
+    "i": 11,
+    "w": 1280,
+    "h": 700,
+    "opis_pl": "Ezio strzela z armaty z murów Monteriggioni w wieże oblężnicze",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     48,
+     93
+    ],
+    "shot": "wide",
+    "palette": "dark grey, olive, orange fire, stormy sky",
+    "notes": "Height 700 (aspect 1.83, not 16:9). Ezio at 76-93%, cannon 48-80%; right margin holds only wall and debris. Clean frame."
+   },
+   {
+    "i": 12,
+    "w": 1280,
+    "h": 700,
+    "opis_pl": "Ezio wzywa rekrutów, asasyni lądują wśród straży pod Panteonem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     32,
+     75
+    ],
+    "shot": "wide",
+    "palette": "red, white, dark steel, warm haze",
+    "notes": "Already used: k12 — Ezio page (rzym-i-konstantynopol). Red carpet and petals are not blood. Guards at both edges already cut by frame; Ezio at 52-60%. Height 700."
+   }
+  ],
+  "assassins-creed-revelations": [
+   {
+    "i": 0,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio skacze nocą na strażników w zaułku Konstantynopola",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     48,
+     58
+    ],
+    "shot": "wide",
+    "palette": "cool blue night, amber lantern wood, red armour",
+    "notes": "used[0] confirmed: game-art.json 'assassins-creed-revelations' kind 'kluczowy art (zrzut ekranu [0])' 1280x720 = hero of the game page + cover. Guards group spans ~5-80 %; leftmost guard's outstretched hand touches the left edge (~2 %) and gets trimmed by the 4.5 % cut - not the main subject. Smoke cloud, no blood."
+   },
+   {
+    "i": 1,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio zjeżdża na haku po linie nad dachami Konstantynopola",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     13,
+     47
+    ],
+    "shot": "medium",
+    "palette": "golden haze, terracotta, sand, grey-blue cloak",
+    "notes": "Ezio's boot/cloak stop at ~13 %, right edge only trims the seated bystanders' hats - unimportant. Motion blur on the left is stylistic, not an overlay."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Ezio na skale w śnieżycy patrzy na twierdzę Masjaf",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     70,
+     89
+    ],
+    "shot": "wide",
+    "palette": "steel blue, grey snow, warm window glow, red sash",
+    "notes": "used[2] confirmed: game-art.json 'assassins-creed-revelations-k02' (ss 4f86082d..., 1920x1079) referenced in ezio-auditore.md section 'animus-i-desmond'. Ezio's right hand ends at ~89 %, castle starts at ~5 % - both inside the 4.5 % cut. Promotional-render look, but a Steam store screenshot with no text."
+   },
+   {
+    "i": 3,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio wisi na haku na wieży nad Konstantynopolem o zachodzie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     60,
+     85
+    ],
+    "shot": "wide",
+    "palette": "golden orange, peach sky, grey stone, blue-grey robes",
+    "notes": "used[3] confirmed: game-art.json 'assassins-creed-revelations-k03' (ss caf06afa..., 1280x720) is 'art:' in the front matter of ezio-auditore.md = hero of the Ezio page. Right 4.5 % is tower masonry, left is sky - clean."
+   },
+   {
+    "i": 4,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Ezio przebija janczara hakiem na nabrzeżu o zachodzie słońca",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     25,
+     65
+    ],
+    "shot": "medium",
+    "palette": "golden sunset, brown timber, red armour, grey-blue robes",
+    "notes": "Blood: a small but distinct red spurt at the guard's neck (~x 470, y 290, roughly 30 px), visible even on the contact sheet - noticeable, not heavy. Marked usable=false by the task's 'noticeable blood' rule; owner may admit it as minor. Otherwise clean: no HUD, no text, edges fine (left guard at ~8-18 %, right boat trimmed only)."
+   },
+   {
+    "i": 5,
+    "w": 1289,
+    "h": 930,
+    "opis_pl": "Hagia Sophia o zachodzie słońca, ptaki nad dachami miasta",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     30,
+     92
+    ],
+    "shot": "vista",
+    "palette": "peach-orange sky, warm stone, grey dome, terracotta roofs",
+    "notes": "flagged[5] partly confirmed: 1289x930 (1.386:1) is narrower than 21:13 (1.615:1), so the cover crop cuts HEIGHT, not width: 930 -> 798 px, i.e. 132 px = 14.2 % of height total; the '~7 %' figure holds only per side (~7.1 % top + ~7.1 % bottom when centred), not overall. Content survives: top cut is sky (tallest minaret tip at y~70 keeps ~5 px margin under a centred crop - tight), bottom cut is rooftops. Side 4.5 % is not applied to this frame. No Ezio - confirmed. Usable."
+   }
+  ],
+  "londyn": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Jacob z laską idzie peronem dworca, za nim Gawrony",
+    "hud": false,
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     22,
+     48
+    ],
+    "shot": "medium",
+    "palette": "cool blue, steel grey, glass-roof daylight",
+    "notes": "Watermark CONFIRMED: Assassin's Creed Syndicate wordmark bottom-left (~2–13 % width). text=true only because of the wordmark; in-game signage top-right ('R.SU', '74') is part of the scene. Subject sits centre-left, edges hold only train car / seated bystander."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Dwa powozy pędzą brukiem ku widzowi, Jacob na koźle",
+    "hud": false,
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     30,
+     75
+    ],
+    "shot": "wide",
+    "palette": "warm brick, blue sky, autumn cobbles",
+    "notes": "Watermark CONFIRMED bottom-left. text=true only for the wordmark; 'PIANOS' is an in-game sign. Horses already cropped by frame edges; a bystander face at the far right (~95–100 %) would be lost, secondary."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Jacob w deszczu wali w szczękę łysego zbira",
+    "hud": false,
+    "watermark": true,
+    "blood": true,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     15,
+     80
+    ],
+    "shot": "medium",
+    "palette": "steel blue, grey rain, muted",
+    "notes": "Watermark CONFIRMED bottom-right (~88–98 %). Blood: visible red spray from the brute's mouth at ~70 % width, ~28 % height. Secondary enemy with pistol at ~85–98 % would be clipped by the row crop; main pair is clear."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Jacob na dachu powozu w pościgu, w tle Big Ben",
+    "hud": false,
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     20,
+     45
+    ],
+    "shot": "wide",
+    "palette": "green, blue sky, black lacquer, soft sun",
+    "notes": "Watermark CONFIRMED bottom-right. Driver in bowler at ~3–15 % partly inside the crop zone, secondary. 'PACKER' on the wagon is an in-game plate."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Jacob strzela z wyrzutni liny nad dachami doków",
+    "hud": false,
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     5,
+     50
+    ],
+    "shot": "wide",
+    "palette": "warm golden haze, smoke, grey slate",
+    "notes": "Watermark CONFIRMED bottom-right. Jacob's flying coat tail starts at ~2 % width, so the row crop trims a sliver of coat only. '...TERS' is an in-game sign."
+   },
+   {
+    "i": 5,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Jacob zjeżdża po linie między iglicami Westminsteru",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     42,
+     58
+    ],
+    "shot": "vista",
+    "palette": "golden sunset haze, sepia stone",
+    "notes": "Flag 'watermark' NOT CONFIRMED: no logo in any corner of the full frame or on the contact sheet. Same 1904×1042 size as the clean 06–08 series, unlike the watermarked 1920×1080 00–04. Clean, centred subject, strong vista candidate."
+   },
+   {
+    "i": 6,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Evie o zmroku wspina się na budkę, obok gwardziści",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     45,
+     65
+    ],
+    "shot": "wide",
+    "palette": "teal dusk, warm gas-lamp orange, red coats",
+    "notes": "Already used: hero of the page, row co-jest-w-grze, gallery, home layer. Clean."
+   },
+   {
+    "i": 7,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Evie i asasyn w kapturze rozmawiają z mężczyzną na targu",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     40,
+     62
+    ],
+    "shot": "medium",
+    "palette": "overcast grey-blue, brown leather, red accents",
+    "notes": "Trio spans ~8–97 % of width; the given range is the central hooded figure. Both flanking figures are already cropped by the frame edges, the row crop trims them a little more. Identity of the hooded figure not certain (Jacob-like stubble, unusual outfit)."
+   },
+   {
+    "i": 8,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Jacob biegnie przez mroczną fabrykę ku piecowi",
+    "hud": false,
+    "hud_detail": "no UI; NPC at ~62 % has a yellow Eagle Vision outline (in-world highlight effect)",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     40,
+     55
+    ],
+    "shot": "wide",
+    "palette": "dark brown, furnace orange, cold blue",
+    "notes": "Clean of HUD; the yellow character outline is a gameplay vision effect, small and easy to miss, flagged here in case the owner treats it as interface."
+   },
+   {
+    "i": 9,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Porównanie NONE/SSAO/HBAO+ na fasadzie, z napisami",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     0,
+     100
+    ],
+    "shot": "wide",
+    "palette": "sandstone tan, blue sky, white clouds",
+    "notes": "Not a plain screenshot: NVIDIA-style ambient-occlusion comparison with divider lines and labels; labels sit inside both outer 4.5 % bands."
+   },
+   {
+    "i": 10,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Porównanie cieni PCSS: Jacob w parku, linia i napis",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     43,
+     57
+    ],
+    "shot": "medium",
+    "palette": "sunlit green, tan gravel, black coat",
+    "notes": "Comparison graphic with divider line and text label; label sits in the outer left band."
+   },
+   {
+    "i": 11,
+    "w": 1904,
+    "h": 1042,
+    "opis_pl": "Porównanie TXAA: Jacob przed gmachem i kolumną, napis",
+    "hud": false,
+    "hud_detail": "no UI; NPC on the cart at ~58 % has a yellow Eagle Vision outline",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     42,
+     58
+    ],
+    "shot": "medium",
+    "palette": "green foliage, sandstone, blue sky",
+    "notes": "Comparison graphic with divider line and text label; label sits in the outer right band."
+   },
+   {
+    "i": 12,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Grafika Season Pass: Kuba Rozpruwacz i Ostatni Maharadża",
+    "hud": false,
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     0,
+     100
+    ],
+    "shot": "wide",
+    "palette": "dark grey-blue, sepia, white text",
+    "notes": "Not a screenshot: edition/DLC infographic. Logo is part of the design rather than a corner watermark, so watermark=false; text=true."
+   }
+  ],
+  "japonia": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Naoe czai się pod podłogą domu, obok stoi strażnik",
+    "hud": true,
+    "hud_detail": "quest text top-left (A Voice in Anger / Free Nakamura Tadashige), compass with location name and eye icon top-center, ability diamond bottom-left, tool wheel with RT bottom-right, prompts RB Assassinate / Y Grab",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     35,
+     65
+    ],
+    "shot": "medium",
+    "palette": "dark brown, teal night, warm lantern",
+    "notes": "guard at 69-81%; unusable due to full HUD and prompts"
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Naoe na iglicy pagody nad zamgloną doliną o zachodzie",
+    "hud": true,
+    "hud_detail": "thin compass line with W top-center, LT Observe prompt bottom-center",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     37,
+     43
+    ],
+    "shot": "vista",
+    "palette": "pink sky, gold haze, green hills",
+    "notes": "minimal HUD (compass + one prompt) but still HUD; otherwise a strong vista"
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Yasuke w rogatym hełmie walczy z trzema samurajami w śniegu",
+    "hud": true,
+    "hud_detail": "compass with icons top-center, enemy health bar with skull above left enemy, ability diamond with 4 and stamina bar bottom-left, tool wheel with RT bottom-right",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     41,
+     67
+    ],
+    "shot": "medium",
+    "palette": "white snow, grey-blue, black armor, gold",
+    "notes": "enemies at 9-15%, 20-35% and 68-80%; no blood visible"
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Ekran ekwipunku Naoe: poziom 40, legendarny talizman",
+    "hud": true,
+    "hud_detail": "full menu UI: tabs Animus/System/Objectives/World/Inventory/Mastery/Codex/Store, loadout slots, stats panel, prompts B Close / L Tutorials / R Rotate / X Play as Yasuke / RT Hide Gear / A Change",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     39,
+     62
+    ],
+    "shot": "medium",
+    "palette": "dark blue, black, gold accents",
+    "notes": "not a gameplay screenshot — inventory menu"
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Yasuke na koniu spogląda ze skały na zatokę i zamek",
+    "hud": true,
+    "hud_detail": "compass with N/E top-center, ability diamond with 3 bottom-left, prompts L Gallop / B Dismount bottom-center",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     25,
+     52
+    ],
+    "shot": "wide",
+    "palette": "warm gold, pink haze, autumn orange, grey water",
+    "notes": "castle town at 5-30%; would be a fine ride vista without the HUD"
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Naoe patrzy na ukryte ostrze na cudzej ręce, w tle pożar",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     70
+    ],
+    "shot": "close",
+    "palette": "dark navy night, orange fire, brown leather",
+    "notes": "face at 22-40%, blade tip ~28%, forearm 40-95%; right 4.5% trims only the other figure's sleeve; small red ember at ~46%/40% is a spark, not blood"
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Naoe skacze z zamku w krwistoczerwony zachód słońca",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     7,
+     56
+    ],
+    "shot": "wide",
+    "palette": "crimson, pink, black silhouettes",
+    "notes": "used marker confirmed: clean frame, no HUD/text; leaping figure at 52-56%, sun at 63-70%, empty sky 56-100% suits overlaid text; castle roof edge ~7%, survives the 4.5% crop"
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Naoe na gałęzi sosny nad zieloną doliną i zamkiem we mgle",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     80,
+     85
+    ],
+    "shot": "vista",
+    "palette": "green forest, blue haze, white mist",
+    "notes": "pine spans 47-100%, trunk runs off the right edge (crop harmless); castle at 25-40%; figure small but inside the safe zone"
+   },
+   {
+    "i": 8,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Tryb budowy kryjówki: siatka, koszt dużego pokoju",
+    "hud": true,
+    "hud_detail": "full builder UI: level 9 bar and Next Level top-left, resources 3200/4530/1180/8350 top-right, Large Room cost panel bottom-center, prompts Place/Rotate/Erase Mode, Back/Pan/Pivot/Tilt/Zoom",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     48,
+     73
+    ],
+    "shot": "wide",
+    "palette": "autumn orange, green grass, grey roofs",
+    "notes": "management-mode screen, not a gameplay screenshot"
+   }
+  ],
+  "assassins-creed-origins": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Bayek idzie pustynią ku niskiemu słońcu, z lewej trzy hieny",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     62,
+     82
+    ],
+    "shot": "wide",
+    "palette": "warm gold, orange sand, pale blue sky",
+    "notes": "Clean screenshot. Leftmost hyena at ~2-7% width gets partly clipped by a 4.5% crop, but it is secondary; palm at far right (97-99%) also clipped harmlessly. Strong hero-style composition with subject right of centre."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Bayek z Senu przed Sfinksem nocą, w tle piramidy Gizy",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     10,
+     66
+    ],
+    "shot": "wide",
+    "palette": "deep blue night, sandy ochre, starry sky",
+    "notes": "Bayek 10-35%, eagle 34-44%, Sphinx 42-66%, pyramid 63-85%. Outer edges hold only palms and dune; cape tip near 9-10% stays inside crop."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Bayek na głowie Sfinksa o świcie, Senu krąży nad nim",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     52
+    ],
+    "shot": "vista",
+    "palette": "warm sunlight, sandy ochre, blue-gold stripes",
+    "notes": "Sphinx head 12-50%, Bayek figure only ~26-30% and small. The tip of the Sphinx's beard reaches ~1.5-4% at bottom-left and is clipped by the 4.5% crop; harmless. Lens-flare glow at right, no overlay. Sun glare washes out the right third."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Bayek strzela z łuku z wielbłąda, żołnierze nacierają",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     40
+    ],
+    "shot": "wide",
+    "palette": "green palms, sandy tan, clear blue sky",
+    "notes": "Bayek with bow 22-40%, camel 8-50%, main enemy 52-80%, enemy archer 84-93% (inside the 95.5% cut). No blood despite combat; arrows only. Camel rump at ~8% survives the crop."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kapłan w masce Anubisa nad mumią w grobowcu pełnym malowideł",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     26,
+     70
+    ],
+    "shot": "medium",
+    "palette": "gold, brown, warm firelight, dark shadows",
+    "notes": "Hieroglyphs are in-world wall decoration, not overlay text. Red petals at bottom are flowers, not blood. The mummy runs nearly full width (0-98%) so its ends fall into the crop zones, but the centred priest is untouched."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Cezar, Kleopatra i doradca w sali tronowej, Bayek z boku",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     7,
+     62
+    ],
+    "shot": "medium",
+    "palette": "gold, red drapery, green palms, warm daylight",
+    "notes": "Caesar 7-32%, Cleopatra 32-42%, advisor 45-62%, foreground Bayek 68-100%. Caesar's outstretched left hand starts ~6.8%, just inside the 4.5% cut. Right crop only removes part of the blurred foreground figure. Cutscene framing, no letterbox bars."
+   }
+  ],
+  "assassins-creed-odyssey": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kassandra na koniu dęba nad doliną, w górze orzeł",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     10,
+     35
+    ],
+    "shot": "vista",
+    "palette": "warm haze, green, gold sky",
+    "notes": "used={} flagged={} — potwierdzam, żadna z pometek nie istnieje; kadr czysty. Jeździec 15–25 %, orzeł 45–57 %, wieś na skale 80–95 %. Lewy margines 4,5 % — tylko kwiaty; prawy — odległy jeleń (nieistotny)."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kassandra rozmawia z Sokratesem na targu pod Akropolem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     28,
+     57
+    ],
+    "shot": "medium",
+    "palette": "blue sky, sand, terracotta",
+    "notes": "Kassandra 28–39 %, Sokrates 44–57 %. Lewy margines — kolumna, prawy — dekoracja z kwiatów i owoców. Brak tekstu, brak HUD."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kassandra kopie ateńskiego hoplitę w leśnej bitwie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     27,
+     88
+    ],
+    "shot": "medium",
+    "palette": "green forest, gold, blue sky",
+    "notes": "Hoplita 27–52 %, Kassandra 56–88 %; łuk na plecach sięga ~90 %. Iskry przy hełmie, krwi brak. W marginesach — tylko tło (żołnierze w kurzu)."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Meduza z płonącymi oczami wśród uschłych drzew we mgle",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     30,
+     92
+    ],
+    "shot": "close",
+    "palette": "grey mist, bone white, amber",
+    "notes": "Głowa 50–70 %, ramiona rozpięte 30–92 %. Ciemne smugi na twarzy — czarne łzy/farba, nie krew. Prawy margines — końcówka węża na ramieniu, nieistotne."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Spartańscy łucznicy z pokładu ostrzeliwują ateński okręt",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     85
+    ],
+    "shot": "wide",
+    "palette": "turquoise sea, red, gold",
+    "notes": "Łucznicy 0–55 %, okręt wroga 57–85 %. Grecki napis na steli na pokładzie (x≈230, y≈580) — rekwizyt w grze, nie nakładka; text=false. Skrajny lewy łucznik i tak ucięty krawędzią kadru."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Alexios i dwaj spartańscy wojownicy z bronią w mrocznej świątyni",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     97
+    ],
+    "shot": "medium",
+    "palette": "dark teal, gold, crimson",
+    "notes": "Render inscenizowany (lineup postaci), nie rozgrywka — bez tekstu, więc usable. Głowica włóczni po lewej (0–5 %) i grot po prawej (92–97 %) wchodzą w margines 4,5 %; twarze i sylwetki bezpieczne. Blizny na rękach — nie krew."
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kassandra z toporem między dwoma osiłkami w błękitnych hełmach",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     38,
+     66
+    ],
+    "shot": "medium",
+    "palette": "sand white, blue, gold",
+    "notes": "Kassandra 38–66 %, osiłki 0–25 % i 75–100 % (obaj już ucięci krawędzią). Leżące ciała w tle (60–75 %) bez krwi; iskry przy tarczy. Marginesy — plecy osiłków, nieistotne."
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Kassandra w kapturze dusi żołnierza nad basenem willi",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     8,
+     48
+    ],
+    "shot": "medium",
+    "palette": "purple, blue, marble white",
+    "notes": "Para postaci 8–48 %, tarcza 44–62 %. Czerwone plamy na suszących się płótnach w tle (57–68 %, y≈600–680) — barwiona tkanina, nie krew. Lewy margines — kwiaty i sztandar, prawy — kaktus."
+   }
+  ],
+  "assassins-creed-unity": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Arno skacze z góry na szafot z gilotyną, oficer i żołnierze",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     31,
+     56
+    ],
+    "shot": "wide",
+    "palette": "grey-blue sky, sandstone, navy uniforms",
+    "notes": "Blood is faint: a dark red-brown stain on the scaffold boards under the guillotine (~x 1150-1300, y 880-940) plus a corpse lying on the bench; not noticeable at row-thumbnail scale, so kept usable. In-world painted banner behind the officer reads a blurred '...berté' (Liberté), not an overlay. Left-edge soldier is already cropped by the frame; 4.5% cut loses nothing."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Arno na dachu patrzy na paryską ulicę z barykadami i dymem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     11,
+     29
+    ],
+    "shot": "wide",
+    "palette": "grey stone, smoky haze, gold foliage",
+    "notes": "Clean frame. Subject sits well left of centre; right two thirds are architecture and street, so a 21:13 crop keeps everything. Left edge is roof tiles, right edge is a timber-framed house corner."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Czterech asasynów na barykadzie nad tłumem z trójkolorową flagą",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     47,
+     93
+    ],
+    "shot": "wide",
+    "palette": "golden haze, cream sky, dark coats, smoke",
+    "notes": "Rightmost assassin (with axe) reaches ~x 1780 (93%), just inside the 4.5% cut (1834 px); tight but not clipped. Left edge is crowd hats and a small fire, nothing important. Small tricolour flag at ~x 370-460."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Arno tnie szablą żołnierza, bryzg krwi na tle katedry",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     5,
+     86
+    ],
+    "shot": "medium",
+    "palette": "cool daylight, white and navy, red blood",
+    "notes": "Unusable: heavy, prominent blood (neck spray in mid-air, large red stains on the soldier's white breeches and coat, splatter on Arno's legs). Musket butt reaches ~x 100 (5%), just inside the cut. Deserves a flagged mark; flagged={} does not carry it."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Dachy Paryża o zachodzie, iglica Sainte-Chapelle i Notre-Dame",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     57,
+     95
+    ],
+    "shot": "vista",
+    "palette": "rose-gold sunset, lavender clouds, slate stone",
+    "notes": "Subject range given for Sainte-Chapelle; Notre-Dame silhouette is secondary at ~23-35%, tiny Arno at ~31% (x 590, y 870). Right pinnacle tip sits at ~95%, right at the cut boundary; the main spire (68%) and rose window (85-93%) survive. Left edge is a foreground rose window of another roof, unimportant."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Arno strzela z ukrytego ostrza w pałacowej sali, ranny żołnierz",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     17,
+     69
+    ],
+    "shot": "medium",
+    "palette": "crimson drapes, gold, white marble, warm sidelight",
+    "notes": "Borderline: moderate red blood on the hit soldier's white crossbelts, chest and hand (~x 1100-1280, y 600-720), clearly visible at full size, small at thumbnail scale. Marked unusable to be safe; overridable if the owner accepts light blood. Left 17% is red curtain, right edge is window and wall; the cut loses nothing. Also deserves a flag; flagged={} does not carry it."
+   }
+  ],
+  "assassins-creed-mirage": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim skacze z belki nad skalnym grobowcem w pustynnym wąwozie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     66,
+     93
+    ],
+    "shot": "wide",
+    "palette": "sand beige, pale blue sky, black",
+    "notes": "Clean promo screenshot. Trailing boot reaches ~93% width — inside the 95.5% cut. Beam runs off right edge but is scenery."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim z klifu patrzy na oazę palm i miasteczko wśród gór",
+    "hud": true,
+    "hud_detail": "top compass strip with icons; top-right notoriety '1' diamond; bottom-left health bar + potion icon '2'; bottom-right weapon/tool selector with red icon",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     5,
+     29
+    ],
+    "shot": "vista",
+    "palette": "green palms, sand ochre, hazy sky",
+    "notes": "HUD on three sides. Subject also sits partly in the left 4.5% (scarf tip at ~5%)."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim w płaszczu ze sztyletem otoczony przez zamaskowanych bandytów",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     40,
+     67
+    ],
+    "shot": "medium",
+    "palette": "earthy brown, ochre, dim grey",
+    "notes": "Clean cinematic screenshot. Foreground bandits at both edges are blurred framing elements; cropping 4.5% loses nothing important."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim tnie strażników na dziedzińcu pod zielonymi kopułami",
+    "hud": true,
+    "hud_detail": "top compass with orange alert bar; top-right '1'; bottom-left health + potion '2' with orange bar; bottom-right weapon selector",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     46,
+     75
+    ],
+    "shot": "wide",
+    "palette": "sand, red, white, green domes",
+    "notes": "HUD on all corners. Petals not blood; fallen body without visible blood."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim chwyta linę dźwigu i szybuje nad dachami Bagdadu",
+    "hud": true,
+    "hud_detail": "top compass strip ('W', icons); bottom-left health bar + potion '4'",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     40,
+     55
+    ],
+    "shot": "wide",
+    "palette": "sand beige, blue sky, white",
+    "notes": "HUD top and bottom-left."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim na dachu patrzy na port Bagdadu w złotym świetle",
+    "hud": true,
+    "hud_detail": "top compass strip; top-right notoriety '2'; bottom-left health bar + potion '3'",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     23,
+     40
+    ],
+    "shot": "vista",
+    "palette": "golden haze, sand, white",
+    "notes": "HUD top, top-right and bottom-left."
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nocą Basim czai się nad tarasem, niżej dwaj nieświadomi wrogowie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     50,
+     95
+    ],
+    "shot": "medium",
+    "palette": "dark blue night, candle orange, red carpet, white",
+    "notes": "Clean cinematic screenshot. Basim's scabbard tip reaches ~95% — right on the cut line; hood, torso and dagger hand well inside."
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim za wozem mierzy nożem w dwóch strażników w czerwieni",
+    "hud": true,
+    "hud_detail": "top compass; enemy health bars and shield icons above guards; aiming reticle; bottom-left tool wheel with Y/X/A prompts, '4/4', RT; bottom 'RT Throw' prompt",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     8,
+     66
+    ],
+    "shot": "medium",
+    "palette": "warm sand, dusty pink, red",
+    "notes": "Heaviest HUD in the set plus button-prompt text 'Throw'. Basim's shoulder also touches the left edge."
+   },
+   {
+    "i": 8,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim skacze z bramy z ukrytym ostrzem na rosłego strażnika",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     85
+    ],
+    "shot": "wide",
+    "palette": "sand, red, white, blue sky",
+    "notes": "Clean cinematic screenshot. Blurred palm fronds at far right and tree at top-left are scenery only."
+   },
+   {
+    "i": 9,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Basim w czerni i złocie z szablą staje przeciw dwóm strażnikom",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     26,
+     62
+    ],
+    "shot": "medium",
+    "palette": "sand, black, gold, red",
+    "notes": "Clean screenshot (deluxe-style outfit, no edition text). Scimitar tip reaches ~5% at left, on the cut line; foreground guard already cropped by the original frame at right."
+   }
+  ],
+  "assassins-creed-valhalla": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Eivor z toporem naciera na wojownika z kiścieniem w śnieżnej wiosce",
+    "hud": false,
+    "hud_detail": "none — no health bar, compass, minimap, prompts or quest text in any corner (corners checked at 1:1)",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     86
+    ],
+    "shot": "medium",
+    "palette": "white-blue snow and sky, dark cloak, ochre-yellow gambeson, warm red accents",
+    "notes": "Outer 4.5% both sides clean: left — fir tree, broken stump, snow; right — A-frame hut and frosted fir branches. Eivor body ~22–47%, axe to ~56%, enemy ~61–83%, flail ball top-right to ~86%. Cleanest action frame of the set. used/flagged: none known — confirmed nothing to contradict."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Eivor dmie w róg na dziobie drakkaru, za nim nocny najazd i pożar",
+    "hud": false,
+    "hud_detail": "none — three small red glows (top-left x≈140, centre-left x≈575/y≈415, x≈495/y≈740) are in-scene lanterns/embers, not enemy markers; no bars, compass or prompts",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     5,
+     31
+    ],
+    "shot": "wide",
+    "palette": "dark navy-black night, orange fire and torch glow, red banners and shields, brown timber",
+    "notes": "Left edge NOT clean: Eivor's left hand and axe handle run off the frame at x=0 (y≈430–520), shield rim at x≈90; right edge: archer's back/bow reach ≈1880–1900 with only a thin dark margin. Main subject Eivor ≈5–31%; battle group spans ≈27–98%. Red on knight's armour and shields is paint/cloth, no blood; fire is not blood. Usable as a full-width image, poor for side crops. used/flagged: none known — confirmed."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Eivor na dziobie drakkaru wskazuje toporem kościół w niskim słońcu",
+    "hud": false,
+    "hud_detail": "none — corners are sky, water and hull; no overlay elements",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     59,
+     85
+    ],
+    "shot": "vista",
+    "palette": "pastel pink-gold sky, teal-green water and trees, dark blue-grey hull, warm stone church",
+    "notes": "Left strip: sky, distant riverbank masts, water — clean; right strip: carved prow neck and hull edge (the ship's own silhouette, nothing cut), sky and treeline behind. Eivor ≈59–85% (axe head x≈1130, figure 1330–1620); whole ship ≈42–96%; church ≈20–45%. Small figures on the bank (≈13–40%). Good vista/landscape candidate (Anglia, drakkar, osada). used/flagged: none known — confirmed."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Eivor nad pergaminem naradza się z dwoma sojusznikami w kościele",
+    "hud": false,
+    "hud_detail": "none — no dialogue subtitles, choice wheel or prompts; corners are dark stone and cloth",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     3,
+     97
+    ],
+    "shot": "medium",
+    "palette": "warm brown-gold candlelight, dark leather and fur, jewel-toned stained glass (blue, red, amber)",
+    "notes": "Nothing is cut off, but the three figures fill the outer margins: Eivor's fur shoulder starts at x≈45 (inside the left 4.5%), right man's arm/elbow reaches ≈1860 with a sliver of dark wall behind. Parchment carries illegible in-world scrawl, not overlay text. Only calm/dialogue frame in the set (fabuła, sojusznicy). Side crops would clip a figure; centre crop keeps the middle man. used/flagged: none known — confirmed."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Trzy warianty stroju Eivora na tle pergaminu z runami — render",
+    "hud": false,
+    "hud_detail": "n/a — not a screenshot (studio render on parchment backdrop)",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     3,
+     97
+    ],
+    "shot": "medium",
+    "palette": "grey-beige parchment, brown leather, steel, fur, teal and gold trim",
+    "notes": "Rejected: promotional art/render (outfit line-up), not an in-game frame; runic glyph lines along the top edge (≈x 200–1400, y 5–40) read as text ornament. Left figure's axe at x≈55–130 and right figure's shield at ≈1780–1880 sit inside the outer 4.5%. used/flagged: none known — confirmed nothing to contradict."
+   }
+  ],
+  "dawn-of-ragnarok": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Havi na pancernym dziku ogląda z mostu Svartalfheim",
+    "hud": false,
+    "hud_detail": "brak — czyste rogi i krawędzie, żadnych pasków, kompasu ani podpowiedzi",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     7,
+     48
+    ],
+    "shot": "vista",
+    "palette": "chłodny szaro-błękitny nieboskłon, zieleń lasu, złoto skał, akcenty lawowej czerwieni i turkusu",
+    "notes": "Potwierdzone: plik bajt w bajt = src/assets/gry/dawn-of-ragnarok.jpg (md5 2afe74d3…), więc used [0] zgadza się: hero + ryad co-to-za-gra + galeria /dawn-of-ragnarok/, ryad i galerie na /assassins-creed-valhalla/ i /eivor/. Jeździec 7–48 % szerokości, świecące kwiaty na pierwszym planie 50–95 % (drugi plan). Unoszący się odłamek skały ścięty górną krawędzią w lewym górnym rogu — tło, nie sujet."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Havi roztrzaskuje włócznią zamrożonego wroga nad lawą",
+    "hud": false,
+    "hud_detail": "brak — bez pasków zdrowia, miniмапy i ikon; pomarańczowe runy na słupie w lewym górnym rogu to element świata, nie nakładka",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     22,
+     90
+    ],
+    "shot": "medium",
+    "palette": "kontrast: ognista pomarańcz lawy vs lodowy błękit i biel odłamków, błękitne niebo, piaskowy kamień",
+    "notes": "Havi 22–48 %, roztrzaskiwany przeciwnik 50–90 % (drugi zamrożony wróg 81–90 % w tle). Zewnętrzne 4,5 % z obu stron: lawa/skała i brzeg rzeki — czyste. Brak krwi: rozpad na lód, nie rozbryzg. Nadaje się na ryad o walce/mocach."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Wojowniczka w brązowej zbroi i Havi w sali zalanej lawą",
+    "hud": false,
+    "hud_detail": "brak — żadnych nakładek; świecące runy na bramach to element scenografii",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     80
+    ],
+    "shot": "medium",
+    "palette": "ciemna czerwień i pomarańcz lawy, brąz i miedź zbroi, czerń kamienia, iskry",
+    "notes": "Wojowniczka 5–45 %, Havi 57–80 %. Lewa krawędź ciasna: karwasz i dłoń wojowniczki zaczynają się przy ~5 % szerokości (zmierzone: na prawo od linii 86 px = 4,5 %), dłoń ścięta dolną krawędzią — kadr nie znosi dodatkowego przycięcia z lewej. Tożsamości wojowniczki nie nazywam (nie Eivor: inne włosy, diadem, wilcze godło)."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Wojownik Muspel z toporem z lawy, drugi skacze w śnieżną noc",
+    "hud": false,
+    "hud_detail": "brak — czyste rogi, brak pasków i ikon",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     28,
+     76
+    ],
+    "shot": "medium",
+    "palette": "nocny granat, biel śniegu i lodu, żarząca się czerwień i pomarańcz lawy",
+    "notes": "Ciała: Muspel 28–52 %, skaczący 53–76 %; ostrze topora sięga do 0 % i jest ścięte lewą krawędzią (0–17 % szerokości, dolna lewa ćwiartka) — lewe 4,5 % nie jest czyste. Prawa krawędź: świerk i lodowy głaz, czyste. Czerwone pęknięcia na skórze to lawa, nie krew. Bez HUD/znaku — nadaje się, ale bez przycinania z lewej."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Eivor jako Havi przy kuźni: krasnolud podaje jej kuty przedmiot",
+    "hud": false,
+    "hud_detail": "brak — bez nakładek, napisów dialogowych i ikon",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     10,
+     85
+    ],
+    "shot": "medium",
+    "palette": "ciepły bursztyn i pomarańcz ognia, złoto zbroi, brąz drewna, szarość kamienia",
+    "notes": "Eivor/Havi 10–52 %, krasnolud 57–85 %. Lewe 4,5 %: okrągła tarcza i belki w tle; prawe 4,5 %: sztabki złota i latarnia — czyste. Model to żeńska Eivor (w dodatku gracz gra Havim w wyglądzie swojej Eivor). Dobry kadr na ryad o krasnoludach/Svartalfheimie lub o Eivor–Odynie."
+   }
+  ],
+  "assassins-creed-rogue": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Infografika Digital Deluxe Edition — lista dodatków, nie zrzut",
+    "hud": false,
+    "hud_detail": "нет (не игровой кадр)",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     0,
+     100
+    ],
+    "shot": "wide",
+    "palette": "пергаментно-ледяной белый фон, тёмно-красные заголовки и плашка, серо-синяя панель Explorer Pack",
+    "notes": "flagged подтверждён: инфографика Digital Deluxe Edition (бэклог 48). Логотип игры, заголовки, подписи ко всем 22 предметам — сплошной текст. Не скриншот."
+   },
+   {
+    "i": 1,
+    "w": 1576,
+    "h": 886,
+    "opis_pl": "Shay na dachu celuje z pistoletu w zaśnieżonym porcie, w tle okręt",
+    "hud": false,
+    "hud_detail": "нет: углы и края без полосок здоровья, миникарты, компаса, подсказок",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     6,
+     53
+    ],
+    "shot": "medium",
+    "palette": "снежно-белый и серо-голубой, тёмно-синее сукно с красной отделкой у Шэя, охристый корпус корабля, стальная вода",
+    "notes": "flagged подтверждён: файл 1576×886 (по PIL). НЕ подтверждается «допустим» без оговорки: измерено — крайний правый столбец x=1575 почти чёрный по всей высоте (885/886 пикселей яркость <20, среднее 7.1 против 134 у x=1574; сверху это небо) — дефект витрины того же класса, что две белые строки Unity [4]. Содержание при этом чистое: нет HUD, знака, крови; текст только диегетический — вывеска «GENERAL STORE / TOOLS · GOODS · CLOTHES» на здании (в кадре, не наложение). Правая полоса 4,5 % (x>1505): фоновый солдат на крыше x≈1525–1565. Левая полоса — дерево и скала, чисто. usable=false из-за столбца-дефекта; решение о допуске — ведущему."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Shay krzyżuje szable z zakapturzonym asasynem na brukowanej ulicy",
+    "hud": false,
+    "hud_detail": "нет: углы и края пустые, ни полосок, ни иконок, ни подсказок",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     15,
+     91
+    ],
+    "shot": "medium",
+    "palette": "серый булыжник и камень стен, тёмная кожа плащей с красными манжетами, оранжево-жёлтые куртки нападающих, синее небо с облаками",
+    "notes": "Крови нет — красные элементы только пояс и манжеты. Главная пара (дуэль) в 15–91 %; второстепенные фигуры заходят руками с кинжалами в обе внешние полосы 4,5 % (слева x≈60–130 плюс колесо телеги у среза, справа кисть женщины до x≈1900) — срезаны кисти второстепенных, не главного сюжета. Сюжет насыщенный, центр — искры на скрещённых клинках x≈45 %."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Okręt z czerwonymi żaglami łamie lód w zatoce o zachodzie słońca",
+    "hud": false,
+    "hud_detail": "нет: чистое небо в верхних углах, лёд в нижних, без полосок и иконок",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     46,
+     95
+    ],
+    "shot": "vista",
+    "palette": "золотисто-тёплое низкое солнце, ледяной бело-голубой снег и небо, багровые паруса, тёмный резной корпус",
+    "notes": "Корабль (по маркетингу — «Морриган», в описании не назван) от бушприта x≈880 до кормы; такелаж доходит до ~95 %, в правой полосе 4,5 % — только канаты, брызги и снег, ничего сюжетного не срезано. Левая половина — горы и солнце, свободна под текст. Нижние строки файла проверены — ровные (снег), дефекта нет."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Shay na kłodzie nad zatoką patrzy na okręt o czerwonych żaglach",
+    "hud": false,
+    "hud_detail": "нет: края и углы — лес и небо, без полосок, миникарты, подсказок",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     21,
+     80
+    ],
+    "shot": "wide",
+    "palette": "сочная зелень хвои и травы, бирюзово-серая вода, голубое небо, тёмный плащ с красной отделкой, алые паруса",
+    "notes": "Шэй x≈400–760 (21–40 %), корабль x≈1130–1530 (59–80 %). Обе внешние полосы 4,5 % — только ветви сосен (обрамление), ничего сюжетного. Крови нет, флаг корабля — британский, читаемого текста нет. Самый спокойный и «обложечный» кадр витрины: герой спиной, вид на бухту."
+   }
+  ],
+  "freedom-cry": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Adéwalé ściska dłoń mężczyźnie w chuście, za nimi obóz w jaskini",
+    "hud": false,
+    "hud_detail": "brak — żadnych pasków, minimapy, ikon ani podpowiedzi",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     29,
+     60
+    ],
+    "shot": "medium",
+    "palette": "ciemny brąz i czerń jaskini, ciepły bursztyn pochodni, zimne białe snopy światła, zieleń palm",
+    "notes": "Potwierdzam used: keyart /freedom-cry/ (hero, co-to-jest, galeria). Lewy pas 4,5 % = plecy brodacza (kadr zza ramienia, figura celowo ucięta, bez twarzy/dłoni w pasie); prawy pas = beczka i pochodnia. Blizny na twarzy Adéwalé to nie krew. Bullshot bez HUD."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Adéwalé z maczetą na pokładzie, przy sterze załoga, słońce nisko",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     59,
+     86
+    ],
+    "shot": "medium",
+    "palette": "sepia i złoty brąz zachodu, szare płótno żagli, ciemna skóra, czerwona szarfa",
+    "notes": "Potwierdzam used: freedom-cry-k01 (ряд freedom-cry-i-rogue на странице Black Flag). Ostrze maczety czyste (grawerowana czaszka, bez krwi). Prawy pas = beczka, liny, brzeg; lewy pas = żagiel i szprychy koła — nic nie ucięte."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Adéwalé unosi maczetę w szalupie, wróg wpada do wody, w tle okręt",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     52,
+     74
+    ],
+    "shot": "medium",
+    "palette": "szaro-biała mgła nieba, turkusowa woda, zieleń skał, brąz drewna, czerwona szarfa",
+    "notes": "Lewy pas 4,5 % = ucięty bark/ramię pierwszoplanowego mężczyzny z muszkietem (0–47 %); prawy pas = ucięte plecy wpadającego do wody wroga (85–100 %) i bryzgi. Adéwalé sam 52–74 % — środek czysty, oba brzegi niosą ucięte figury. Leżąca w szalupie postać bez widocznej krwi. Wolny — nieużyty."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Adéwalé strzela z pistoletu w zbira w czerwonej chuście, krew",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     22,
+     99
+    ],
+    "shot": "medium",
+    "palette": "nasycona zieleń dżungli, brąz skóry, czerwona chusta i szarfa, pomarańczowy błysk wystrzału, błękit nieba",
+    "notes": "Potwierdzam flagged: krew — wyraźna czerwona bryzga na piersi i ramieniu trafionego (x≈450–750). Adéwalé 52–99 %, wróg 22–47 %. Prawy pas 4,5 % = palce prawej dłoni Adéwalé (x≈1780–1900) — ucięte przy krawędzi; czubek kaptura przy górnej krawędzi (y≈20)."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Adéwalé ukrytymi ostrzami przebija dwóch żołnierzy na plaży, krew",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     5,
+     100
+    ],
+    "shot": "close",
+    "palette": "złoto-pomarańczowe niebo zachodu, biało-niebieskie mundury, ciemna skóra, czerwień krwi i szarfy",
+    "notes": "Potwierdzam flagged: krew — duże plamy na brzuchu lewego żołnierza (x≈250–560) i na szyi prawego (x≈1500–1650). Adéwalé sam 43–69 %. Lewy pas 4,5 % = ucięta wyciągnięta dłoń lewego żołnierza; prawy pas = ucięty bark i kapelusz z czerwoną kokardą prawego żołnierza."
+   },
+   {
+    "i": 5,
+    "w": 1280,
+    "h": 720,
+    "opis_pl": "Nocą Adéwalé z pistoletem skrada się do dwóch żołnierzy przy ognisku",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     12,
+     95
+    ],
+    "shot": "medium",
+    "palette": "nocny niebieski i morski, ciemne zielenie, ciepły blask ogniska, srebrno-szare mundury",
+    "notes": "Potwierdzam flagged: plik ma 1280×720 (zmierzone PIL), choć path_full w lista.json nosi sufiks 1920x1080 — Steam wydał mniejszy master; do rzędu dopuszczalny, na hero za mały. Adéwalé 12–56 %, żołnierze 58–95 %. Pasy 4,5 % (58 px): lewy = ławka i krzewy, prawy = płot i dżungla — nic nie ucięte. Wolny — nieużyty."
+   }
+  ],
+  "assassins-creed-chronicles": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Shao Jun na belce dachu nad tarasami ryżowymi we mgle",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     75,
+     86
+    ],
+    "shot": "wide",
+    "palette": "sepia-złoty, szara mgła, czerń stroju z czerwoną lamówką, róż kwitnących drzew",
+    "notes": "used[0] подтверждён: чистый кадр движка (кинематографический ракурс, не 2.5D-сцена). Рукоять меча ~x=1660 — внутри допуска, правые 4,5 % (x≥1834) — только балка и мгла; углы чистые, измерено."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Shao Jun biegnie po belce ku płonącym dżonkom w porcie",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     31,
+     65
+    ],
+    "shot": "medium",
+    "palette": "pomarańcz łuny i dymu, czerń sylwetek, czerwień szarfy, żółć ognia",
+    "notes": "Кинематографический ракурс движка (со спины). На пристани два лежащих тела (x≈600–750, y≈740–790) — крови нет, проверено зумом. Края: слева стропила пристани, справа стена с сетями; углы чистые."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Fasada fortecy z pagodami, Shao Jun wisi na murze, stożki straży",
+    "hud": true,
+    "hud_detail": "stożki widzenia strażników (białe obrysy trapezów ×5) i okrąg zasięgu nad bramą — nakładka rozgrywki; jeden obrys wchodzi w prawe 4,5 % (x≈1900–1920, y≈880–1010)",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     32,
+     68
+    ],
+    "shot": "wide",
+    "palette": "ceglasta czerwień dachów, ochra ścian, szarobeżowe niebo, biel obrysów",
+    "notes": "flagged пуст — не подтверждается: кадр несёт игровые оверлеи (конусы обзора стражи, круг радиуса) — класс HUD, usable=false. Настоящая 2.5D-сцена. Обрыв конуса у правого среза — нарушение чистоты краёв."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Shao Jun krzyżuje miecze z dwoma strażnikami pod bramą i posągiem",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     32,
+     73
+    ],
+    "shot": "wide",
+    "palette": "beżowo-szara mgła, zieleń posągu i dzbanów, czerwień sztandarów, róż kwiatów",
+    "notes": "2.5D-сцена боя; искра клинков белая, крови нет (зум). Сама Shao Jun 46–56 %. Слева у среза красный стяг и шест — декорация; красная крышка кувшина x≈1745–1785 — вне правых 4,5 %; углы чистые."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Shao Jun walczy w płonącej sali pałacu, za nią leży strażnik",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     43,
+     63
+    ],
+    "shot": "wide",
+    "palette": "złoto-żółty ogień, czerwono-brązowe drewno, czerń, żółć latarni",
+    "notes": "2.5D-сцена. Верхние 64 строки однородные (38,27,25) — тёмная полоса потолка сцены, не белый дефект (измерено, stddev 0). Лежащий страж x≈420–620 — без крови (зум). Правые 4,5 % — колонна и жаровня; углы чистые."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1079,
+    "opis_pl": "Grafika tuszem: Shao Jun z rozłożonymi rękami, czerwona plama",
+    "hud": false,
+    "hud_detail": "",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     35,
+     64
+    ],
+    "shot": "medium",
+    "palette": "sepia-brąz tuszu i papieru, czerń, jaskrawa czerwień plamy",
+    "notes": "flagged пуст — не подтверждается: это арт (ключевая графика в стиле туши), не скриншот → usable=false. Текста нет; эмблема ассасинов на поясе — деталь костюма, не водяной знак. Красная плама тушью читается как шарф, но может восприниматься как кровь. Красные брызги у левого среза (x≈60–80) — часть пятна, не текст (зум)."
+   }
+  ],
+  "chronicles-india": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz wspina się nocą po murze pałacu, w tle złote kopuły",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     14,
+     30
+    ],
+    "shot": "medium",
+    "palette": "stalowy błękit muru, fiolet nieba, miedziane kopuły, czerwień szala i mozaiki",
+    "notes": "Czysty kadr, postać w lewej trzeciej; prawe 60% to architektura — dobre miejsce na tekst; skrajne 4,5% z obu stron: mur/palmy, nic nie ucięte."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz przebiega przez targ pełen kupców, mury w czerwonych plamach",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     57,
+     63
+    ],
+    "shot": "wide",
+    "palette": "ochra i piaskowy beż murów, zieleń i fiolet markiz, czerwone plamy",
+    "notes": "Czerwone rozbryzgi na ścianach i spływające po schodach (środek kadru) to stylizowana farba z art-stylu Chronicles, ale czytają się jak krew — odrzucone na tej podstawie (precedens Odyssey [7]); postać główna malutka, ginie w tłumie. Decyzja do cofnięcia przez prowadzącego, jeśli plamy uzna za ornament."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz w skoku wiary nad pałacem z mandalą o zachodzie słońca",
+    "hud": false,
+    "hud_detail": "brak; kilka małych białych sylwetek ptaków na niebie (sprite'y gry, nie kursor)",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     18,
+     26
+    ],
+    "shot": "vista",
+    "palette": "pomarańcz zachodu, fiolet i lawenda mgły, złoto pałacu",
+    "notes": "Pałac z mandalą zajmuje 62–100% szerokości, nurkująca postać 18–26% u góry; mandala to element artystyczny poziomu, nie HUD. Lewy skraj: czarna belka/gzyms (środowisko)."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz biegnie przez ogród obok malowanych słoni",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     17,
+     35
+    ],
+    "shot": "medium",
+    "palette": "turkus nieba, soczysta zieleń, róż i fiolet zdobień słonia, czerwone maki",
+    "notes": "Najbarwniejszy kadr witryny; duży słoń zajmuje 62–96%, jego zad kończy się tuż przed prawym pasem 4,5% (~95,5%); lewy skraj: czerwona kolumna (środowisko)."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz wbija ostrze w sikhijskiego oficera, czerwony rozbryzg",
+    "hud": false,
+    "hud_detail": "brak; szary ornament-spirala na deskach w prawym dole to znak stylu gry, nie znak wodny",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     40,
+     68
+    ],
+    "shot": "medium",
+    "palette": "pomarańcz i złoto zachodu, biel i czerwień szat, zieleń munduru, czerwony rozbryzg",
+    "notes": "Zabójstwo z wielkim czerwonym rozbryzgiem (10–45% szerokości) — krew, choć stylizowana na tusz; odrzucony."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz balansuje na belce między domami nad uliczką",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     40,
+     50
+    ],
+    "shot": "wide",
+    "palette": "ceglasta czerwień i brąz murów, turkus nieba, oliwkowe kopuły",
+    "notes": "Postać drobna, dokładnie w środku; skrajne pasy: kolumny po lewej, ceglany mur po prawej — bezpieczne."
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz stoi nad skutym łańcuchami więźniem w pawilonie o zmierzchu",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     25,
+     90
+    ],
+    "shot": "medium",
+    "palette": "złoto i ochra kolumn, ogień, fiolet zmierzchu, zieleń draperii",
+    "notes": "Dwie postacie: więzień 25–40%, Arbaaz 76–90%; czubek ukrytego ostrza sięga ~97% (w prawym pasie 4,5%, ale nic nie ucięte); lewy skraj: dzwonki/dekoracje. Scena przesłuchania/tortur bez krwi."
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz zwisa z muru pod tarasem, na górze dwaj strażnicy z szablami",
+    "hud": false,
+    "hud_detail": "brak; cienkie białe ukośne smugi to stylizowane promienie światła poziomu, nie linie HUD",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     82,
+     89
+    ],
+    "shot": "wide",
+    "palette": "piaskowiec, czerwone mozaiki, turkus mgły miasta, pomarańcz mundurów",
+    "notes": "Strażnicy 20–24% i 58–62%, Arbaaz w prawej części; prawy pas 4,5%: ornament muru — bezpieczny. Dobry kadr do rzędu o skradaniu."
+   },
+   {
+    "i": 8,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz biegnie po belce nad kanałem, na pawilonie wartownik",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     57,
+     62
+    ],
+    "shot": "wide",
+    "palette": "kremowe niebo, piaskowiec, szmaragdowa woda, różowy ornament",
+    "notes": "Wartownik 7–10% u góry, czubek jego szabli sięga ~3,6% (w lewym pasie 4,5% — drugoplanowy); ornament paisley to grafika poziomu, nie znak wodny; prawy skraj: kopuła i palma."
+   },
+   {
+    "i": 9,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz z talwarem skacze na sepoja z tarczą, obok leży pokonany",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     28,
+     60
+    ],
+    "shot": "medium",
+    "palette": "jasny beż kamienia, czerwień mundurów, zieleń kopuł, mleczne niebo",
+    "notes": "Leżący sepoj 65–94% — bez krwi, ale to ciało pokonanego; dłoń sięga ~94,3%, tuż przed prawym pasem. Najczytelniejszy kadr walki bez rozbryzgu."
+   },
+   {
+    "i": 10,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Arbaaz na belce spogląda na miasto pałaców i góry w porannej mgle",
+    "hud": false,
+    "hud_detail": "brak",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     5,
+     15
+    ],
+    "shot": "vista",
+    "palette": "mleczna zieleń mgły, złoto słońca, pomarańcz kopuł, ciemna zieleń palm",
+    "notes": "Postać przy samym lewym pasie — plecak/karabin zaczyna się ~4,9%, przy kadrowaniu z lewej ciasno; 20–100% to czysta panorama pod tekst. Panorama pałaców Amritsaru/Pendżabu."
+   }
+  ],
+  "chronicles-russia": [
+   {
+    "i": 0,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj dobija leżącego strażnika, za nim czerwony rozbryzg",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     32,
+     70
+    ],
+    "shot": "close",
+    "palette": "тёмно-серый камень, чёрный плащ с красной оторочкой, алые графические брызги, тёплый фонарь",
+    "notes": "Стилизованная кровь — большие красные «лучи»-брызги по стене и у лица стражника, доминируют в кадре. Сапог стражника у левого края на ~13 % — вне зоны 4,5 %. used/flagged не заявлены — подтверждено."
+   },
+   {
+    "i": 1,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj z karabinem na gzymsie nad czerwonym dachem tramwaju",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     12,
+     29
+    ],
+    "shot": "medium",
+    "palette": "ч/б графика, серый плащ, красная крыша трамвая, белое пятно прожектора",
+    "notes": "Пограничный: кровь — только маленький стилизованный красный всплеск на стражнике на балконе справа вверху (x≈82–86 %, y≈14–28 %), заметен на ч/б фоне. Без него кадр чист: ни HUD, ни текста. Полупрозрачные круги — свет прожектора, не UI. Если владелец допускает малый всплеск — кандидат в ряд про снайпера/Москву."
+   },
+   {
+    "i": 2,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Sylwetki dwóch walczących na dachu pociągu w łunie ognia",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     48,
+     68
+    ],
+    "shot": "wide",
+    "palette": "чёрные силуэты, красно-оранжевые лучи, жёлтое пламя, серый дым",
+    "notes": "Кадр игровой заставки в стиле силуэтной анимации (пролог на поезде) — это часть игры, не арт с текстом. Чист: без HUD, текста, крови. Виньетка по углам — художественная."
+   },
+   {
+    "i": 3,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj biegnie po gzymsie nad tramwajami na nocnej ulicy",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     20,
+     28
+    ],
+    "shot": "wide",
+    "palette": "ч/б ночь, серые лучи неба, тёмно-красные трамваи, тёплые фонари",
+    "notes": "Текст только диегетический: вывеска «ПОЛИЦИЯ» на фасаде (x≈48–60 %, y≈57–60 %) и обрезанная «…ЦИЯ» у левого края — часть декорации, не наложение. Оставлен usable=true; если правило «текст» читать буквально — снять. Фигура мелкая, тёмная; ряд про Москву/паркур."
+   },
+   {
+    "i": 4,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Widok przez lunetę karabinu: strażnik w ogrodzie, pełny HUD",
+    "hud": true,
+    "hud_detail": "слева вверху лого ассасина + сегментная шкала здоровья; справа вверху подсказки кнопок X/Y/A/B; слева внизу колесо оружия с цифрами 0/2/2; справа внизу счёт «x2» и «300» с полосой; перекрестие прицела",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     29,
+     71
+    ],
+    "shot": "medium",
+    "palette": "чёрная виньетка, сепия/коричневый в прицеле, белый и красный HUD",
+    "notes": "Полностью HUD-кадр: края чисто чёрные (0/0/0 по всем четырём сторонам). Не годится."
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj bagnetem powala żołnierza w masce gazowej, czerwony rozbryzg",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     22,
+     70
+    ],
+    "shot": "medium",
+    "palette": "зелёные стены, хаки, серо-синий плащ с красным, алые графические брызги",
+    "notes": "Стилизованная кровь — большой красный веер-всплеск за солдатом (x≈22–50 %). Ноги лежащего тела у правого края (x≈81–100 %) — фон, режется срезом; отмечено. Единственный кадр с противогазом (характерный враг игры)."
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj na nabrzeżu pod stalowym mostem, czerwone niebo Moskwy",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     18,
+     28
+    ],
+    "shot": "wide",
+    "palette": "ч/б набережная и мост, красно-оранжевое лучистое небо",
+    "notes": "Чистый кадр: без HUD, текста, крови. Красные полоски-опоры под мостом — декорация. Кандидат в ряд про Москву/стиль игры."
+   },
+   {
+    "i": 7,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Postać skacze nad transparentem, płonąca barykada, wieże Kremla",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": true,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     40,
+     79
+    ],
+    "shot": "wide",
+    "palette": "жёлто-оранжевое лучистое небо, ч/б дома, красный транспарант, огонь баррикады",
+    "notes": "Текст доминирует: транспарант «СВОБОДА! РАВЕНСТВО! И БРАТСТВО!» по центру (x≈40–79 %) и щит «ПРИБАВКУ ПАЙКА СЕМЬЯМЪ…» внизу — диегетический, но крупный и читаемый. Прыгающая фигура в кепке — скорее не Никола (без капюшона)."
+   },
+   {
+    "i": 8,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj celuje z dachu tramwaju do dwóch strażników na ulicy",
+    "hud": false,
+    "hud_detail": "линия прицеливания от ствола к стражнику и белый круг-маркер цели (x≈78–84 %, y≈64–78 %); панелей HUD нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": false,
+    "subject_x": [
+     8,
+     29
+    ],
+    "shot": "medium",
+    "palette": "ч/б камень и фасады, красная крыша трамвая, жёлтый и красный кафтаны стражников",
+    "notes": "Пограничный: hud=false по панелям, но в кадре игровой индикатор прицеливания (белая линия + круг у цели) — это UI, потому usable=false. Без него кадр чист; лучший «снайперский» сюжет витрины. Приклад у левого края на ~8 % — вне зоны 4,5 %; фонарь у правого края — фон."
+   },
+   {
+    "i": 9,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Bolszewicki oficer w aucie, ciężarówka w dymie przed gmachem",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     47,
+     86
+    ],
+    "shot": "wide",
+    "palette": "ч/б улица и фасад, красное небо, хаки и красный мундиры, серый дым",
+    "notes": "Чистый кадр без Николая: враги/большевики, машина, грузовик. Грузовик срезан левым краем (x≈3 %), капот авто уходит за правый — фон, не сюжет. Кандидат в ряд про сюжет/врагов (1918)."
+   },
+   {
+    "i": 10,
+    "w": 1920,
+    "h": 1080,
+    "opis_pl": "Nikołaj na dachu patrzy na Moskwę, wieże Kremla w czerwieni",
+    "hud": false,
+    "hud_detail": "нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     13,
+     28
+    ],
+    "shot": "vista",
+    "palette": "ч/б крыши и фасады, красно-оранжевое лучистое небо, чёрные тучи, красные перила",
+    "notes": "Чистый кадр, лучший «портрет города»: Никола слева, панорама Москвы справа — удобен под герой/ряд co-to-za-gra. Без HUD, текста, крови."
+   }
+  ],
+  "assassins-creed-liberation": [
+   {
+    "i": 0,
+    "w": 1631,
+    "h": 955,
+    "opis_pl": "Aveline jako dama w zieleni przy świecy naprzeciw mężczyzny",
+    "hud": false,
+    "hud_detail": "нет — катсцена, все четыре угла чистые (стена, кресло, рама картины)",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": true,
+    "usable": true,
+    "subject_x": [
+     10,
+     86
+    ],
+    "shot": "medium",
+    "palette": "бордово-красная стена, тёплый свет свечи, зелёный жакет, синий жилет с узором, охра кресла",
+    "notes": "used подтверждён: побайтово совпадает с src/assets/gry/assassins-creed-liberation.jpg (герой+галерея /assassins-creed-liberation/, ряд wydania-i-dodatki AC3). Мужчина — спиной/в профиль, Авелин в 'дамском' образе; края: слева спинка кресла, справа рама картины — чисто"
+   },
+   {
+    "i": 1,
+    "w": 1631,
+    "h": 955,
+    "opis_pl": "Nocny plac Nowego Orleanu w świetle latarni, z boku Aveline",
+    "hud": false,
+    "hud_detail": "нет — по углам звёздное небо, стена дома, брусчатка; белые точки в воздухе — светлячки/частицы, не интерфейс",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     73,
+     100
+    ],
+    "shot": "wide",
+    "palette": "тёмно-синяя ночь, янтарный свет фонарей и окон, чёрные силуэты прохожих, коричневое дерево",
+    "notes": "Авелин в кадре «через плечо» — её спина срезана правым краем (внешние 4,5 % справа заняты фигурой; срез штатный, дообрезка безвредна). Толпа и фонарь 28–72 %; слева стена и бочки — чисто"
+   },
+   {
+    "i": 2,
+    "w": 1631,
+    "h": 955,
+    "opis_pl": "Nocą na bagnach Aveline podchodzi do chaty na palach ze świecami",
+    "hud": false,
+    "hud_detail": "нет — углы: балки крыши, деревья, доски настила; крошечная светлая точка у x≈60,y≈820 — частица, не иконка",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     67,
+     100
+    ],
+    "shot": "wide",
+    "palette": "глубокий синий ночной туман, тёплые огоньки свечей, серо-коричневое дерево, тёмный камзол",
+    "notes": "Правый рукав Авелин упирается в правый срез (внешние 4,5 % справа заняты); слева столб и стена хижины — чисто. Хижина со свечами 12–40 %"
+   },
+   {
+    "i": 3,
+    "w": 1512,
+    "h": 920,
+    "opis_pl": "Aveline szpadą razi żołnierza na placu, z prawej oficer w bieli",
+    "hud": false,
+    "hud_detail": "нет — углы: небо, колокольня, повозка, брусчатка; полосок здоровья, миникарты, подсказок нет",
+    "watermark": false,
+    "blood": true,
+    "text": false,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     13,
+     85
+    ],
+    "shot": "medium",
+    "palette": "ярко-голубое небо, белёные дома, зелень пальмы, тёмно-синий и белый мундиры, серая брусчатка",
+    "notes": "Три дефекта: (1) шов витрины — левые 20 px (столбцы 0–19) сдвинутая полоса, разрыв колонки на x=19 измерен (диффа 29 против ~4 рядом), виден на досках повозки и мушкете; (2) офицер в белом срезан правым краем; (3) тонкая кровяная полоска на брусчатке под передней ногой Авелин (~80×3 px, x≈960–1040, y≈805) — при ширине ряда почти незаметна, но есть. Левый солдат 13–31 %, Авелин 60–85 %"
+   },
+   {
+    "i": 4,
+    "w": 1512,
+    "h": 920,
+    "opis_pl": "O zachodzie Aveline z maczetą i sztyletem naprzeciw dwóch strażników",
+    "hud": false,
+    "hud_detail": "нет — углы: ветви и пальмовые листья, бочки, трава; интерфейса нет",
+    "watermark": false,
+    "blood": false,
+    "text": false,
+    "edges_ok": false,
+    "usable": true,
+    "subject_x": [
+     3,
+     55
+    ],
+    "shot": "medium",
+    "palette": "тёплый розово-золотой закат, тёмная зелень деревьев, коричневые бочки, тёмная кожа камзола, красный кушак",
+    "notes": "Слева кулак Авелин с мачете начинается на x≈40 (2,6 %) — внутри внешних 4,5 %; справа офицер в шляпе срезан краем (1260–1512). Красное у нижнего края (x≈700–760) — кушак Авелин, не кровь. Стражники 62–100 %. При обрезке ~1 % с боков под ряд 1,6:1 кулак не пострадает"
+   },
+   {
+    "i": 5,
+    "w": 1920,
+    "h": 905,
+    "opis_pl": "Plansza porównawcza HD i Vita: chata na drzewie na bagnach, dwa loga",
+    "hud": false,
+    "hud_detail": "нет игрового HUD; вместо него два логотипа-плашки (низ-лево и центр-право)",
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     3,
+     100
+    ],
+    "shot": "wide",
+    "palette": "чёрный/тёмно-серый фон, зелёно-голубая вставка болота, белый текст, красное «Liberation»",
+    "notes": "Инфографика «HD vs Vita» с логотипами и текстом — не скриншот. Вставка HD (x 60–1130, y 95–700) сама по себе чистый вид деревни на дереве, но это вырез из плашки, не кадр витрины"
+   },
+   {
+    "i": 6,
+    "w": 1920,
+    "h": 905,
+    "opis_pl": "Plansza porównawcza HD i Vita: targ uliczny Nowego Orleanu, dwa loga",
+    "hud": false,
+    "hud_detail": "нет игрового HUD; два логотипа-плашки (низ-лево и центр-право)",
+    "watermark": true,
+    "blood": false,
+    "text": true,
+    "edges_ok": false,
+    "usable": false,
+    "subject_x": [
+     3,
+     100
+    ],
+    "shot": "wide",
+    "palette": "чёрный фон, солнечная вставка с красной брусчаткой, белёными домами и лиловыми платьями, белый текст",
+    "notes": "Инфографика «HD vs Vita» с логотипами и текстом — не скриншот. Вставка HD (x 60–1130, y 95–700) — дневной рынок с Авелин среди горожан, но это вырез из плашки"
+   }
+  ]
+ }
+}

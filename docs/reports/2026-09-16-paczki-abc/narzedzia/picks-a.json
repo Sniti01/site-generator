@@ -1,0 +1,47 @@
+[
+  { "slot": "jerozolima", "i": 3, "opis": "Altaïr krzyżuje miecze z krzyżowcami w wąskiej uliczce" },
+  { "slot": "jerozolima", "i": 10, "opis": "Altaïr odchodzi w głąb zatłoczonej ulicy, plecami do nas" },
+  { "slot": "jerozolima", "i": 8, "opis": "Altaïr wisi na murze nad ulicą z łukami, w dole przechodnie" },
+  { "slot": "jerozolima", "i": 4, "opis": "Altaïr na białym koniu wjeżdża na plac wśród palm i tłumu" },
+  { "slot": "jerozolima", "i": 5, "opis": "Altaïr wspina się po drabinie nad placem z fontanną i straganami" },
+
+  { "slot": "wlochy", "i": 3, "opis": "Ezio płynie kanałem o zmierzchu, pod arkadami patrol straży" },
+  { "slot": "wlochy", "i": 1, "opis": "Ezio skacze z dachu nad wenecki kanał, widok z góry" },
+  { "slot": "wlochy", "i": 5, "opis": "Ezio nocą chwyta halabardę strażnika przy fontannie, w tle pełnia" },
+
+  { "slot": "assassins-creed-3", "i": 4, "opis": "Connor w kapturze walczy z czerwonymi kurtkami na bruku Bostonu" },
+  { "slot": "assassins-creed-3", "i": 2, "opis": "Młody Connor skacze z urwiska nad jesienną doliną pogranicza" },
+  { "slot": "assassins-creed-3", "i": 9, "opis": "Connor na dachu nad zimowym portem Bostonu pełnym żaglowców" },
+  { "slot": "assassins-creed-3", "i": 8, "opis": "Connor w kapturze, za nim Aveline w zaśnieżonym brzozowym lesie" },
+
+  { "slot": "assassins-creed-brotherhood", "i": 9, "opis": "Ezio gna na białym koniu przez bramę, za nim straż, w tle Panteon" },
+  { "slot": "assassins-creed-brotherhood", "i": 11, "opis": "Ezio strzela z armaty z murów Monteriggioni w wieże oblężnicze" },
+  { "slot": "assassins-creed-brotherhood", "i": 4, "opis": "Skok z ukrytym ostrzem na kapłana w tłumie targu, doktor na dachu" },
+
+  { "slot": "assassins-creed-revelations", "i": 5, "opis": "Hagia Sophia o zachodzie słońca, ptaki nad dachami Konstantynopola" },
+  { "slot": "assassins-creed-revelations", "i": 1, "opis": "Ezio zjeżdża na haku po linie nad dachami Konstantynopola" },
+
+  { "slot": "londyn", "i": 7, "opis": "Evie i asasyn w kapturze rozmawiają z mężczyzną na targu" },
+  { "slot": "londyn", "i": 5, "opis": "Jacob na linie między iglicami Westminsteru o świcie" },
+
+  { "slot": "japonia", "i": 5, "opis": "Naoe ogląda ukryte ostrze na cudzym przedramieniu, w tle pożar" },
+  { "slot": "japonia", "i": 7, "opis": "Naoe na gałęzi sosny nad zieloną doliną, zamkiem i zatoką we mgle" },
+
+  { "slot": "assassins-creed-origins", "i": 4, "opis": "Postać w masce Anubisa nad mumią w malowanej krypcie" },
+  { "slot": "assassins-creed-origins", "i": 3, "opis": "Bayek z łukiem na wielbłądzie, żołnierze z tarczami nacierają" },
+  { "slot": "assassins-creed-origins", "i": 2, "opis": "Bayek na głowie Sfinksa w niskim słońcu, Senu krąży nad nim" },
+
+  { "slot": "assassins-creed-odyssey", "i": 5, "opis": "Aleksios i dwaj wojownicy w spartańskich hełmach w mroku świątyni" },
+  { "slot": "assassins-creed-odyssey", "i": 4, "opis": "Spartańscy łucznicy podpalają z pokładu ateński okręt" },
+  { "slot": "assassins-creed-odyssey", "i": 1, "opis": "Kasandra rozmawia z Sokratesem na targu pod Akropolem" },
+  { "slot": "assassins-creed-odyssey", "i": 0, "opis": "Jeździec w hełmie na koniu dęba nad grecką doliną, w górze orzeł" },
+
+  { "slot": "assassins-creed-unity", "i": 1, "opis": "Arno na dachu nad paryską ulicą pełną barykad i dymu" },
+  { "slot": "assassins-creed-unity", "i": 2, "opis": "Czterech asasynów na barykadzie nad tłumem z trójkolorową flagą" },
+
+  { "slot": "assassins-creed-mirage", "i": 8, "opis": "Basim skacze z bramy z ukrytym ostrzem na strażnika w tłumie" },
+  { "slot": "assassins-creed-mirage", "i": 2, "opis": "Basim w płaszczu ze sztyletem otoczony przez zamaskowanych bandytów" },
+  { "slot": "assassins-creed-mirage", "i": 6, "opis": "Nocą Basim z ukrytym ostrzem czai się nad tarasem, niżej dwaj nieświadomi" },
+  { "slot": "assassins-creed-mirage", "i": 9, "opis": "Basim w czerni i złocie z szablą i sztyletem między dwoma strażnikami" },
+  { "slot": "assassins-creed-mirage", "i": 0, "opis": "Basim skacze z belki nad skalnym grobowcem w pustynnym wąwozie" }
+]

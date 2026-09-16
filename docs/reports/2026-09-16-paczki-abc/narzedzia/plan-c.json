@@ -1,0 +1,10 @@
+[
+  { "file": "assassins-creed-bloodlines.md", "rows": { "fabula": "foto-akka", "wersje": "foto-psp", "dla-kogo": "jerozolima-k06" } },
+  { "file": "assassins-creed-pirates.md", "rows": { "co-to-jest": "foto-bitwa-morska", "fabula": "foto-la-buse", "wersje": "foto-karaiby-mapa", "nie-mylic": "karaiby-k06" } },
+  { "file": "discovery.md", "rows": { "rozgrywka": "wlochy-k04", "wydania-i-dla-kogo": "foto-nintendo-ds" } },
+  { "file": "mapa-miejsc-historycznych.md", "rows": { "anglia-wikingow": "foto-stonehenge", "grecja-i-egipt": "foto-delfy" } },
+  { "file": "assassins-creed-rodowod.md", "rows": { "jak-laczy-sie-z-dwojka": "foto-signoria", "jak-obejrzec": "wlochy-k02", "inne-filmy-serii": "discovery", "czy-warto": "wlochy-k07" } },
+  { "file": "assassins-creed-ii-wojna-swiatowa.md", "rows": { "skad-pytanie": "assassins-creed-odyssey-k02", "dlaczego-trudno": "foto-paryz-1940", "co-dalej": "karaiby-k04" } },
+  { "file": "od-czego-zaczac.md", "rows": { "dwie-kolejnosci": "assassins-creed-odyssey-k06", "chronologia": "assassins-creed-origins-k01", "watek-wspolczesny": "assassins-creed-origins-k00", "co-pominac": "chronicles-india-k02" } },
+  { "file": "assassins-creed-za-darmo.md", "rows": { "legalnie": "karaiby-k03" } }
+]

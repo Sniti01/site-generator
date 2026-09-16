@@ -1,0 +1,134 @@
+{
+  "_": "Пачка A — Steam-страницы с запасом. site = D:/SEO/cloud/site-generator/sites/ac4bf-thewatch.com. Кадры кандидатов: <site>/input/kadry/<slot>/NN.jpg (полный размер), лист <site>/input/kadry/arkusze/<slot>.jpg, индекс <site>/input/kadry/<slot>/lista.json. Ряды страниц: rows.json в этой папке (по url). Рамка ряда 21:13 (1,615:1) object-fit cover — кадр 16:9 теряет ≈4,5 % ширины с каждого края, высоту не теряет.",
+  "site": "D:/SEO/cloud/site-generator/sites/ac4bf-thewatch.com",
+  "pages": [
+    {
+      "url": "/assassins-creed-1/",
+      "file": "assassins-creed-1.md",
+      "slot": "jerozolima",
+      "game": "Assassin's Creed: Director's Cut Edition (AC1, 2007)",
+      "used": { "9": "jerozolima — герой страницы, ряд co-to-za-gra, галерея" },
+      "flagged": { "0": "HUD (games.json uwaga)", "1": "HUD (games.json uwaga)", "2": "HUD (games.json uwaga)" },
+      "steamRows": ["fabula", "rozgrywka", "watek-wspolczesny", "wersje", "odbior"],
+      "commonsRows": [],
+      "donor": "оставить, если возможно, 1–2 чистых кадра пачке C (Bloodlines dla-kogo, Pirates) — но страница важнее донорства"
+    },
+    {
+      "url": "/assassins-creed-2/",
+      "file": "assassins-creed-2.md",
+      "slot": "wlochy",
+      "game": "Assassin's Creed 2 (2009)",
+      "used": { "0": "wlochy — герой страницы, ряд co-to-za-gra, галерея (и на других страницах)" },
+      "flagged": {},
+      "steamRows": ["rozgrywka", "watek-wspolczesny", "jak-zaczac"],
+      "commonsRows": ["fabula", "dodatki-i-wydania"],
+      "donor": "оставить 1 чистый кадр Флоренции/площади Синьории пачке C (Rodowód jak-laczy-sie-z-dwojka)"
+    },
+    {
+      "url": "/assassins-creed-3/",
+      "file": "assassins-creed-3.md",
+      "slot": "assassins-creed-3",
+      "game": "Assassin's Creed III Remastered (2019)",
+      "used": { "0": "assassins-creed-3 — keyart страницы (zrzut [0]), герой, ряд co-to-za-gra, галерея" },
+      "flagged": {},
+      "steamRows": ["haytham-i-connor", "swiat-i-rozgrywka", "aquila", "desmond", "komu-i-od-czego-zaczac"],
+      "commonsRows": [],
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-brotherhood/",
+      "file": "assassins-creed-brotherhood.md",
+      "slot": "assassins-creed-brotherhood",
+      "game": "Assassin's Creed Brotherhood (2010) — витрина 1280×720",
+      "used": { "8": "assassins-creed-brotherhood-k08 — страница Ezio (wydania)", "12": "assassins-creed-brotherhood-k12 — страница Ezio (rzym-i-konstantynopol)" },
+      "flagged": { "0": "мультиплеер без Эцио (доклад 1б)", "1": "мультиплеер без Эцио", "2": "мультиплеер без Эцио", "3": "мультиплеер без Эцио", "4": "мультиплеер без Эцио", "5": "мультиплеер без Эцио", "6": "мультиплеер без Эцио", "7": "мультиплеер без Эцио", "10": "кровь (доклад 1б)" },
+      "steamRows": ["co-jest-w-grze", "bractwo", "tryb-sieciowy", "wydania"],
+      "commonsRows": ["fabula", "miasto", "dodatki-i-znajdzki"],
+      "notes": "co-jest-w-grze сегодня несёт wlochy (Венеция из AC2) — ЗАМЕНА на кадр Brotherhood (Рим); ряд tryb-sieciowy — о мультиплеере, кадр мультиплеера [0–7] здесь уместен; wydania — абстрактный: кадр Brotherhood без крови, либо (если чистых нет) — Commons, назвать это",
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-revelations/",
+      "file": "assassins-creed-revelations.md",
+      "slot": "assassins-creed-revelations",
+      "game": "Assassin's Creed Revelations (2011) — витрина 1280 кроме [2] 1920",
+      "used": { "0": "keyart страницы (zrzut [0]) — герой, галерея", "2": "assassins-creed-revelations-k02 — страница Ezio", "3": "assassins-creed-revelations-k03 — герой страницы Ezio" },
+      "flagged": { "5": "1289×930 — теряет ≈7 % высоты в рамке (Hagia Sophia, без Эцио)" },
+      "steamRows": ["co-to-za-gra", "co-nowego", "wersje-i-dodatki"],
+      "commonsRows": [],
+      "notes": "свободны ровно три кадра [1], [4], [5] на три ряда — задача: расставить, не выбрать",
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-syndicate/",
+      "file": "assassins-creed-syndicate.md",
+      "slot": "londyn",
+      "game": "Assassin's Creed Syndicate (2015)",
+      "used": { "6": "londyn — герой страницы, ряд co-jest-w-grze, галерея, слой главной" },
+      "flagged": { "0": "водяной знак (games.json uwaga)", "1": "водяной знак", "2": "водяной знак", "3": "водяной знак", "4": "водяной знак", "5": "водяной знак" },
+      "steamRows": ["bliznieta-frye", "fabula", "victory-i-szostka", "wydania-i-dodatki"],
+      "commonsRows": [],
+      "donor": "оставить 1 кадр Лондона пачке C (II wojna skad-pytanie), если останется"
+    },
+    {
+      "url": "/assassins-creed-shadows/",
+      "file": "assassins-creed-shadows.md",
+      "slot": "japonia",
+      "game": "Assassin's Creed Shadows (2025)",
+      "used": { "6": "japonia — ряд co-to-za-gra, слой главной; герой страницы — library_hero" },
+      "flagged": {},
+      "steamRows": ["od-red-do-premiery", "naoe-i-yasuke", "wydania-i-dodatki", "werdykt"],
+      "commonsRows": [],
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-origins/",
+      "file": "assassins-creed-origins.md",
+      "slot": "assassins-creed-origins",
+      "game": "Assassin's Creed Origins (2017)",
+      "used": {},
+      "flagged": {},
+      "steamRows": ["bayek-i-aya", "egipt-i-walka", "dodatki-i-wydania"],
+      "commonsRows": [],
+      "notes": "герой страницы — library_hero (keyart), скриншоты все свободны",
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-odyssey/",
+      "file": "assassins-creed-odyssey.md",
+      "slot": "assassins-creed-odyssey",
+      "game": "Assassin's Creed Odyssey (2018)",
+      "used": {},
+      "flagged": {},
+      "steamRows": ["aleksios-albo-kasandra", "swiat-i-rozgrywka", "dodatki-i-wydania", "komu-i-od-czego-zaczac"],
+      "commonsRows": [],
+      "notes": "герой страницы — library_hero (keyart), скриншоты все свободны",
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-unity/",
+      "file": "assassins-creed-unity.md",
+      "slot": "assassins-creed-unity",
+      "game": "Assassin's Creed Unity (2014)",
+      "used": {},
+      "flagged": {},
+      "steamRows": ["co-to-za-gra", "parkour-i-kooperacja", "premiera-i-wydania", "komu-i-od-czego-zaczac"],
+      "commonsRows": ["paryz"],
+      "notes": "герой страницы — library_hero (keyart), скриншоты все свободны",
+      "donor": null
+    },
+    {
+      "url": "/assassins-creed-mirage/",
+      "file": "assassins-creed-mirage.md",
+      "slot": "assassins-creed-mirage",
+      "game": "Assassin's Creed Mirage (2023)",
+      "used": {},
+      "flagged": {},
+      "steamRows": ["co-to-za-gra", "basim", "skradanie-i-parkour", "wydania-i-wersje", "komu-i-od-czego-zaczac"],
+      "commonsRows": ["bagdad", "od-rift-do-doliny-pamieci"],
+      "extra": { "hero-od-czego": "герой страницы /poradniki/od-czego-zaczac/ (пачка C) — кадр Mirage 1920 с сюжетом в 58–84 % ширины кадра (геометрия героя: на 1440×900 видна полоса 16–84 % ширины, скрим тёмный слева до 62 %); повтор кадра с рядом страницы Mirage допустим (повтор между страницами разрешён), но лучше без повтора, если чистых кадров хватает" },
+      "notes": "герой страницы — library_hero (keyart), скриншоты все свободны",
+      "donor": null
+    }
+  ]
+}

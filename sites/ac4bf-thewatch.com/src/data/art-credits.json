@@ -98,5 +98,95 @@
     "title": "Typus orbis terrarum (en haut). Description universelle de tout le monde (en bas) - btv1b84914964.jpg",
     "width": 2000,
     "height": 1152
+  },
+  "foto-florencja-1470": {
+    "file": "foto-florencja-1470.jpg",
+    "author": "Gemäldegalerie, Berlin",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Francesco_Rosselli_(attribution)._Pianta_della_Catena,_1470.jpg",
+    "title": "Francesco Rosselli (attribution). Pianta della Catena, 1470.jpg",
+    "width": 2000,
+    "height": 865
+  },
+  "foto-savonarola": {
+    "file": "foto-savonarola.jpg",
+    "author": "Francesco Bini",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Francesco_rosselli_(attr.),_supplizio_del_savonarola_in_piazza_della_signoria,_1500_ca._02_veduta_di_firenze.jpg",
+    "title": "Francesco rosselli (attr.), supplizio del savonarola in piazza della signoria, 1500 ca. 02 veduta di firenze.jpg",
+    "width": 2000,
+    "height": 1309
+  },
+  "foto-monteriggioni": {
+    "file": "foto-monteriggioni.jpg",
+    "author": "Vignaccia76",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Monteriggioni-panorama1.jpg",
+    "title": "Monteriggioni-panorama1.jpg",
+    "width": 2000,
+    "height": 1151
+  },
+  "foto-rzym-piranesi": {
+    "file": "foto-rzym-piranesi.jpg",
+    "author": "Giovanni Battista Piranesi",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Piranesi-17029.jpg",
+    "title": "Piranesi-17029.jpg",
+    "width": 2000,
+    "height": 1133
+  },
+  "foto-kopernik": {
+    "file": "foto-kopernik.jpg",
+    "author": "Unknown author Unknown author",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Nikolaus_Kopernikus_MOT.jpg",
+    "title": "Nikolaus Kopernikus MOT.jpg",
+    "width": 1832,
+    "height": 1145
+  },
+  "foto-paryz-1739": {
+    "file": "foto-paryz-1739.jpg",
+    "author": "Louis Bretez / Claude Lucas",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Turgot_map_Paris_KU_11.jpg",
+    "title": "Turgot map Paris KU 11.jpg",
+    "width": 2000,
+    "height": 1208
+  },
+  "foto-hegra": {
+    "file": "foto-hegra.jpg",
+    "author": "Ahmad AlHasanat",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Mada%27in_Saleh_2017.jpg",
+    "title": "Mada'in Saleh 2017.jpg",
+    "width": 2000,
+    "height": 1228
+  },
+  "foto-samarra": {
+    "file": "foto-samarra.jpg",
+    "author": "Chris Hoare",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Samarra,_Iraq_(25270211056).jpg",
+    "title": "Samarra, Iraq (25270211056).jpg",
+    "width": 2000,
+    "height": 1206
+  },
+  "foto-leonardo-czolg": {
+    "file": "foto-leonardo-czolg.jpg",
+    "author": "Leonardo da Vinci",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Leonardo_da_Vinci_-_1860,0616.99,_Studies_of_military_tank-like_machines_(cropped).jpg",
+    "title": "Leonardo da Vinci - 1860,0616.99, Studies of military tank-like machines (cropped).jpg",
+    "width": 2000,
+    "height": 1410
   }
 }

@@ -319,6 +319,319 @@
       "crop": {
         "bottom": 0.14
       }
+    },
+    {
+      "id": "foto-florencja-1470",
+      "subject": "Florencja około 1470 roku — Pianta della Catena, widok miasta przypisywany Francescowi Rossellemu",
+      "queries": [
+        "Pianta della Catena Florence view Rosselli",
+        "View of Florence with the Chain woodcut 1470s",
+        "Florence Nuremberg Chronicle 1493 woodcut Florentia",
+        "Pope Alexander VI portrait Cristofano dell'Altissimo",
+        "Rodrigo Borgia Alexander VI portrait painting"
+      ],
+      "must": [
+        "florence",
+        "firenze",
+        "florentia",
+        "catena",
+        "alexander",
+        "borgia",
+        "alessandro"
+      ],
+      "avoid": [
+        "coat of arms",
+        "tomb",
+        "medal",
+        "coin",
+        "stamp",
+        "photo",
+        "modern",
+        "reconstruction",
+        "model"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.5,
+      "minWidth": 1800,
+      "file": "Francesco Rosselli (attribution). Pianta della Catena, 1470.jpg"
+    },
+    {
+      "id": "foto-savonarola",
+      "subject": "Stracenie Savonaroli na Piazza della Signoria — obraz przypisywany Francescowi Rossellemu, około 1500 roku",
+      "queries": [
+        "Execution of Savonarola Piazza della Signoria painting",
+        "Savonarola burning Florence 1498 painting Museo di San Marco",
+        "Rogo di Savonarola dipinto",
+        "Hanging and burning of Girolamo Savonarola"
+      ],
+      "must": [
+        "savonarola"
+      ],
+      "avoid": [
+        "portrait of",
+        "bust",
+        "medal",
+        "plaque",
+        "statue",
+        "monument",
+        "book",
+        "cell",
+        "ritratto"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.4,
+      "minWidth": 2000,
+      "file": "Francesco rosselli (attr.), supplizio del savonarola in piazza della signoria, 1500 ca. 02 veduta di firenze.jpg"
+    },
+    {
+      "id": "foto-monteriggioni",
+      "subject": "Monteriggioni — mury i wieże toskańskiego miasteczka z XIII wieku",
+      "queries": [
+        "Monteriggioni",
+        "Monteriggioni castello mura",
+        "Monteriggioni torri panorama",
+        "Monteriggioni Siena borgo"
+      ],
+      "must": [
+        "monteriggioni"
+      ],
+      "avoid": [
+        "interior",
+        "chiesa",
+        "map",
+        "plan",
+        "coat of arms",
+        "door",
+        "sign",
+        "museum",
+        "night",
+        "stemma",
+        "targa",
+        "cartello"
+      ],
+      "minAspect": 1.5,
+      "minWidth": 2000,
+      "file": "Monteriggioni-panorama1.jpg"
+    },
+    {
+      "id": "foto-rzym-piranesi",
+      "subject": "Koloseum w rycinie Giovanniego Battisty Piranesiego z XVIII wieku",
+      "queries": [
+        "Piranesi Veduta dell'Anfiteatro Flavio Colosseo",
+        "Piranesi Vedute di Roma Colosseum etching",
+        "Piranesi Castel Sant'Angelo veduta etching",
+        "Piranesi Veduta di Piazza Navona",
+        "Piranesi Veduta del Campidoglio"
+      ],
+      "must": [
+        "piranesi"
+      ],
+      "avoid": [
+        "carceri",
+        "portrait",
+        "frontispiece",
+        "title",
+        "pianta",
+        "plan",
+        "map",
+        "detail",
+        "interior",
+        "antichità",
+        "vase",
+        "vaso",
+        "candelabr",
+        "cammini",
+        "ornament"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.4,
+      "minWidth": 2000,
+      "file": "Piranesi-17029.jpg",
+      "crop": {
+        "left": 0.02,
+        "right": 0.02,
+        "top": 0.03,
+        "bottom": 0.12
+      }
+    },
+    {
+      "id": "foto-kopernik",
+      "subject": "Mikołaj Kopernik — portret toruński z około 1580 roku",
+      "queries": [
+        "Nikolaus Kopernikus portrait",
+        "Mikołaj Kopernik portret ratusz Toruń",
+        "Copernicus Toruń portrait 1580 anonymous",
+        "Leonardo da Vinci Codex Atlanticus flying machine",
+        "Leonardo da Vinci aerial screw drawing",
+        "Leonardo da Vinci armoured car drawing"
+      ],
+      "must": [
+        "copernicus",
+        "kopernik",
+        "kopernikus",
+        "leonardo",
+        "codex atlanticus"
+      ],
+      "avoid": [
+        "monument",
+        "statue",
+        "pomnik",
+        "coin",
+        "stamp",
+        "banknote",
+        "medal",
+        "crater",
+        "poster",
+        "tomb",
+        "grave",
+        "matejko",
+        "street",
+        "school",
+        "museum building",
+        "logo"
+      ],
+      "avoidDefault": false,
+      "minAspect": 0.6,
+      "minWidth": 1600,
+      "file": "Nikolaus Kopernikus MOT.jpg",
+      "crop": {
+        "top": 0.1,
+        "bottom": 0.4
+      }
+    },
+    {
+      "id": "foto-paryz-1739",
+      "subject": "Paryż na planie Turgota z 1739 roku — Pont Neuf i cypel Île de la Cité",
+      "queries": [
+        "Turgot map Paris KU",
+        "Plan de Turgot Notre-Dame Cité"
+      ],
+      "must": [
+        "turgot"
+      ],
+      "avoid": [
+        "photo",
+        "metro",
+        "modern",
+        "night",
+        "1900",
+        "1889",
+        "exposition",
+        "eiffel",
+        "haussmann",
+        "2019",
+        "fire",
+        "incendie"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.5,
+      "minWidth": 2000,
+      "file": "Turgot map Paris KU 11.jpg"
+    },
+    {
+      "id": "foto-hegra",
+      "subject": "AlUla — Qasr al-Farid, nabatejski grobowiec w Hegrze (Mada’in Salih), Arabia Saudyjska",
+      "queries": [
+        "Hegra Mada'in Salih tombs AlUla",
+        "Qasr al-Farid Madain Saleh",
+        "AlUla Hegra Nabataean tombs sandstone",
+        "Al-Ula old town rock formations"
+      ],
+      "must": [
+        "hegra",
+        "mada'in",
+        "madain",
+        "alula",
+        "al-ula",
+        "al ula",
+        "farid",
+        "madâin"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "interior",
+        "inscription",
+        "detail",
+        "night",
+        "aerial",
+        "museum",
+        "airport",
+        "railway",
+        "station"
+      ],
+      "minAspect": 1.4,
+      "minWidth": 2000,
+      "file": "Mada'in Saleh 2017.jpg",
+      "crop": {
+        "bottom": 0.08
+      }
+    },
+    {
+      "id": "foto-samarra",
+      "subject": "Samarra, IX wiek — spiralny minaret Malwija Wielkiego Meczetu kalifa al-Mutawakkila",
+      "queries": [
+        "Malwiya minaret Samarra",
+        "Great Mosque of Samarra spiral minaret",
+        "Round city of Baghdad plan reconstruction"
+      ],
+      "must": [
+        "baghdad",
+        "bagdad",
+        "samarra",
+        "malwiya",
+        "malwiyya",
+        "madinat"
+      ],
+      "avoid": [
+        "2003",
+        "war",
+        "army",
+        "soldier",
+        "bomb",
+        "airport",
+        "night",
+        "modern",
+        "1917",
+        "1941",
+        "aerial photograph",
+        "satellite"
+      ],
+      "avoidDefault": false,
+      "file": "Samarra, Iraq (25270211056).jpg",
+      "crop": {
+        "bottom": 0.08
+      },
+      "minAspect": 1.4,
+      "minWidth": 2000
+    },
+    {
+      "id": "foto-leonardo-czolg",
+      "subject": "Wóz bojowy Leonarda da Vinci — rysunek z około 1485 roku",
+      "queries": [
+        "Leonardo da Vinci fighting vehicle drawing British Museum",
+        "Leonardo da Vinci tank drawing",
+        "Leonardo da Vinci war machine scythed chariot drawing",
+        "Leonardo da Vinci Codex Atlanticus flying machine drawing",
+        "Leonardo da Vinci ornithopter drawing"
+      ],
+      "must": [
+        "leonardo"
+      ],
+      "avoid": [
+        "model",
+        "museum exhibit",
+        "replica",
+        "exhibition",
+        "mostra",
+        "statue",
+        "poster",
+        "photo of model"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.3,
+      "minWidth": 2000,
+      "file": "Leonardo da Vinci - 1860,0616.99, Studies of military tank-like machines (cropped).jpg"
     }
   ],
   "_": "Slot nazywa się jak pole `art` w pliku treści i jak klucz kredytu. NIE WOLNO nazywać slotu tak, jak klucz `game-art.json` (hero, jerozolima, wlochy, japonia, karaiby, londyn): rozstrzygacz media.ts oddaje wtedy materiał gry, a zdjęcia nikt nie zobaczy (punkt 22 backlogu, 2026-09-10). 2026-09-11 (P4 paczka 0): pięć widoków epok dostało przedrostek `foto-` — kadry do galerii stron gier z tej epoki; slot `hero` zdjęty (pierwszy ekran głównej to art gry); trzy nowe sloty — pierwszy ekran stron gier, których nie ma w Steam."

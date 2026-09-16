@@ -78,8 +78,14 @@ const MASTER_HERO = 3840;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-/** Trwały identyfikator zrzutu — hash `ss_<hex>` z adresu; `id` z API to indeks. */
-const hashZrzutu = (shot) => (String(shot?.path_full ?? '').match(/ss_([0-9a-f]+)/) ?? [])[1] ?? null;
+/** Trwały identyfikator zrzutu — hash `ss_<hex>` z adresu; `id` z API to indeks.
+ *  Starsze karty (AC1, appid 15100) nie mają hasha: adres to `<10 cyfr>.1920x1080.jpg` —
+ *  wtedy identyfikatorem jest ten numer (zmierzone 2026-09-16, sesja 3; do tego dnia
+ *  AC1 dostawało `ss: null` i kadr odnajdywał się tylko po indeksie). */
+const hashZrzutu = (shot) => {
+  const adres = String(shot?.path_full ?? '');
+  return (adres.match(/ss_([0-9a-f]+)/) ?? [])[1] ?? (adres.match(/\/(\d{6,})\.\d+x\d+\.jpg/) ?? [])[1] ?? null;
+};
 
 async function politeFetch(url, { attempts = 3 } = {}) {
   for (let attempt = 1; ; attempt += 1) {

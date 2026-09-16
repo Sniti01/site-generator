@@ -11,21 +11,37 @@
       "appid": 15100,
       "name": "Assassin's Creed: Director's Cut Edition",
       "shot": 9,
-      "uwaga": "AC1: zrzuty 0-2 maja HUD; 9 to widok z dachu bez interfejsu"
+      "uwaga": "AC1: zrzuty 0-2 maja HUD; 9 to widok z dachu bez interfejsu",
+      "zrzuty": [
+        { "i": 3, "ss": "0000003840", "opis": "Altaïr krzyżuje miecze z krzyżowcami w wąskiej uliczce" },
+        { "i": 4, "ss": "0000003841", "opis": "Altaïr na białym koniu wjeżdża na plac wśród palm i tłumu" },
+        { "i": 5, "ss": "0000003842", "opis": "Altaïr wspina się po drabinie nad placem z fontanną i straganami" },
+        { "i": 8, "ss": "0000003845", "opis": "Altaïr wisi na murze nad ulicą z łukami, w dole przechodnie" },
+        { "i": 10, "ss": "0000003847", "opis": "Altaïr odchodzi w głąb zatłoczonej ulicy, plecami do nas" }
+      ]
     },
     {
       "era": "wlochy",
       "appid": 33230,
       "name": "Assassin's Creed 2",
       "shot": 0,
-      "uwaga": "dachy Wenecji, bez HUD"
+      "uwaga": "dachy Wenecji, bez HUD",
+      "zrzuty": [
+        { "i": 1, "ss": "ef44b9f703f71acfdeb728a497390d397084ee35", "opis": "Ezio skacze z dachu nad wenecki kanał, widok z góry" },
+        { "i": 3, "ss": "627e52a3466b4932ca3d331db6922d165002edaa", "opis": "Ezio płynie kanałem o zmierzchu, pod arkadami patrol straży" },
+        { "i": 5, "ss": "2683f7aa974a6f569ec0f8a2fa0447259aed6b80", "opis": "Ezio nocą chwyta halabardę strażnika przy fontannie, w tle pełnia" }
+      ]
     },
     {
       "era": "japonia",
       "appid": 3159330,
       "name": "Assassin's Creed Shadows",
       "shot": 6,
-      "uwaga": "czerwona pagoda o zachodzie — trafia w cynober epoki, bez HUD"
+      "uwaga": "czerwona pagoda o zachodzie — trafia w cynober epoki, bez HUD",
+      "zrzuty": [
+        { "i": 5, "ss": "81bbd04dae05b0a52dc62818dc5219abeb849f8d", "opis": "Naoe ogląda ukryte ostrze na cudzym przedramieniu, w tle pożar" },
+        { "i": 7, "ss": "2e74c5442faa027ea699dcfa15be173b43a8d37a", "opis": "Naoe na gałęzi sosny nad zieloną doliną, zamkiem i zatoką we mgle" }
+      ]
     },
     {
       "era": "karaiby",
@@ -46,20 +62,76 @@
       "appid": 368500,
       "name": "Assassin's Creed Syndicate",
       "shot": 6,
-      "uwaga": "zrzuty 0-5 maja znak wodny AC; 6 to nocna ulica przy latarniach"
+      "uwaga": "zrzuty 0-4 maja znak wodny AC (5 — bez znaku, sprawdzone na pelnym kadrze 2026-09-16); 6 to nocna ulica przy latarniach",
+      "zrzuty": [
+        { "i": 5, "ss": "951ea1a2a4bf9a20e2245e82d4b20d47dc6dcdbd", "opis": "Jacob na linie między iglicami Westminsteru o świcie" },
+        { "i": 7, "ss": "5ba1b1f01a4789d9754f62406093deab867cc662", "opis": "Evie i asasyn w kapturze rozmawiają z mężczyzną na targu" }
+      ]
     },
-    { "slot": "assassins-creed-3", "appid": 911400, "kind": "keyart", "uwaga": "Remastered — jedyne wydanie w Steam; strona jest o grze, nie o wydaniu" },
-    { "slot": "assassins-creed-origins", "appid": 582160, "kind": "keyart" },
+    {
+      "slot": "assassins-creed-3",
+      "appid": 911400,
+      "kind": "keyart",
+      "uwaga": "Remastered — jedyne wydanie w Steam; strona jest o grze, nie o wydaniu",
+      "zrzuty": [
+        { "i": 2, "ss": "63cd3caea8cbe8881aadd73a98a334a77d320f3a", "opis": "Młody Connor skacze z urwiska nad jesienną doliną pogranicza" },
+        { "i": 4, "ss": "3f01c813974db7c45fc58d755ed97b4ee62d267f", "opis": "Connor w kapturze walczy z czerwonymi kurtkami na bruku Bostonu" },
+        { "i": 8, "ss": "8b96ffb5a291c1c717c80a7c7e278ec8687c8ea1", "opis": "Connor w kapturze, za nim Aveline w zaśnieżonym brzozowym lesie" },
+        { "i": 9, "ss": "0f904a2e64f78e2fc0505c610ffa5e1fa36fd24e", "opis": "Connor na dachu nad zimowym portem Bostonu pełnym żaglowców" }
+      ]
+    },
+    {
+      "slot": "assassins-creed-origins",
+      "appid": 582160,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 2, "ss": "7edc3de6db0e6391158863f766c334c6eab1dbaa", "opis": "Bayek na głowie Sfinksa w niskim słońcu, Senu krąży nad nim" },
+        { "i": 3, "ss": "fbed28aec9059db9477e9bf8fb2ffa92c3ea9e56", "opis": "Bayek z łukiem na wielbłądzie, żołnierze z tarczami nacierają" },
+        { "i": 4, "ss": "06861f6dd939c78a919db95bb8e75506216d3eb4", "opis": "Postać w masce Anubisa nad mumią w malowanej krypcie" }
+      ]
+    },
     { "slot": "assassins-creed-valhalla", "appid": 2208920, "kind": "keyart" },
-    { "slot": "assassins-creed-mirage", "appid": 3035570, "kind": "keyart" },
-    { "slot": "assassins-creed-odyssey", "appid": 812140, "kind": "keyart" },
-    { "slot": "assassins-creed-unity", "appid": 289650, "kind": "keyart" },
+    {
+      "slot": "assassins-creed-mirage",
+      "appid": 3035570,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 0, "ss": "7333a21ec2f874f5b5a09064b1770852bb269b86", "opis": "Basim skacze z belki nad skalnym grobowcem w pustynnym wąwozie" },
+        { "i": 2, "ss": "94c88c2c51d78930b4f1a9307eb92c3687e2eda8", "opis": "Basim w płaszczu ze sztyletem otoczony przez zamaskowanych bandytów" },
+        { "i": 6, "ss": "90df410e5b13c07af4127eaca50d8da6bfa294ce", "opis": "Nocą Basim z ukrytym ostrzem czai się nad tarasem, niżej dwaj nieświadomi" },
+        { "i": 8, "ss": "e38065007ff279e10e74d0509dc85c3c517211fe", "opis": "Basim skacze z bramy z ukrytym ostrzem na strażnika w tłumie" },
+        { "i": 9, "ss": "0c95c59a09d9cedcc4c4c36076d9078900ef7591", "opis": "Basim w czerni i złocie z szablą i sztyletem między dwoma strażnikami" }
+      ]
+    },
+    {
+      "slot": "assassins-creed-odyssey",
+      "appid": 812140,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 0, "ss": "0ef33c0f230da6ebac94f5959f0e0a8bbc48cf8a", "opis": "Jeździec w hełmie na koniu dęba nad grecką doliną, w górze orzeł" },
+        { "i": 1, "ss": "3f8f4a09fb1d69648a8c20aae19ca2924ba275bd", "opis": "Kasandra rozmawia z Sokratesem na targu pod Akropolem" },
+        { "i": 4, "ss": "71f5c2052a6bfb94486e929db3d6b92c06696843", "opis": "Spartańscy łucznicy podpalają z pokładu ateński okręt" },
+        { "i": 5, "ss": "c334fed07712111399ab1951eee432ec9ed46d28", "opis": "Aleksios i dwaj wojownicy w spartańskich hełmach w mroku świątyni" }
+      ]
+    },
+    {
+      "slot": "assassins-creed-unity",
+      "appid": 289650,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 1, "ss": "d825c8fd7c5472d17732bf3480760dd88924e551", "opis": "Arno na dachu nad paryską ulicą pełną barykad i dymu" },
+        { "i": 2, "ss": "42c6e1765549541d5576ec5bdb01cbc45f376444", "opis": "Czterech asasynów na barykadzie nad tłumem z trójkolorową flagą" }
+      ]
+    },
     {
       "slot": "assassins-creed-brotherhood",
       "appid": 48190,
       "kind": "keyart",
       "zrzuty": [
+        { "i": 4, "ss": "c79ca0fa59bedea20c24e2ac0c2735e7ce2f3ae6", "opis": "Skok z ukrytym ostrzem na kapłana w tłumie targu, doktor na dachu" },
         { "i": 8, "ss": "5e706eb078ccdf6a3171eb16b5f2cd35abaa184b", "opis": "Ezio nad areną Koloseum" },
+        { "i": 9, "ss": "b2b401a6db5409b1ed94ed3d5517b449c5712099", "opis": "Ezio gna na białym koniu przez bramę, za nim straż, w tle Panteon" },
+        { "i": 11, "ss": "0e58b1568e7ee4eed2e9de9c0f5bb35ecfbce07a", "opis": "Ezio strzela z armaty z murów Monteriggioni w wieże oblężnicze" },
         { "i": 12, "ss": "352e37d8333e285c1028bd13682d0dfb18ff023f", "opis": "Ezio z rekrutami bractwa przeciw gwardii Borgiów" }
       ]
     },
@@ -69,8 +141,10 @@
       "appid": 201870,
       "kind": "keyart",
       "zrzuty": [
+        { "i": 1, "ss": "08575a6a8651d8e9b159153cc0a8175b7b181345", "opis": "Ezio zjeżdża na haku po linie nad dachami Konstantynopola" },
         { "i": 2, "ss": "4f86082d2db3066c72a9b80704c7a35d4ad2773b", "opis": "Ezio w śniegu przed twierdzą Masjaf" },
-        { "i": 3, "ss": "caf06afa8adcfeb836a588e8998ae0bfa0ffd3e1", "opis": "Ezio na wieży nad Konstantynopolem o zachodzie słońca" }
+        { "i": 3, "ss": "caf06afa8adcfeb836a588e8998ae0bfa0ffd3e1", "opis": "Ezio na wieży nad Konstantynopolem o zachodzie słońca" },
+        { "i": 5, "ss": "6b2c6d8df87edbacd491d15869df946062612c8e", "opis": "Hagia Sophia o zachodzie słońca, ptaki nad dachami Konstantynopola" }
       ]
     },
     { "slot": "assassins-creed-liberation", "appid": 260210, "kind": "keyart", "uwaga": "Liberation HD — wydanie na PC" },

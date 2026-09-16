@@ -88,6 +88,7 @@ rows:
     year: Misthios
     title: Aleksios albo Kasandra — wyrzutek z krwi Leonidasa
     meta: Kefalonia · Nikolaos · Kult Kosmosa · Dejmos · Myrrine
+    art: assassins-creed-odyssey-k05
     flip: true
     band: true
     body:
@@ -109,6 +110,7 @@ rows:
     year: Hellada
     title: Grecja, włócznia Leonidasa, najemnicy i okręt Adrestia
     meta: Ateny · Sparta · Kult Kosmosa · bitwy 150 na 150 · Ikaros
+    art: assassins-creed-odyssey-k04
     flip: false
     band: false
     body:
@@ -154,6 +156,7 @@ rows:
     year: 2018–2022
     title: Przepustka, darmowe dodatki, edycje i wersje
     meta: Dziedzictwo Pierwszego Ostrza · Los Atlantydy · Gold · Game Pass · PEGI 18
+    art: assassins-creed-odyssey-k01
     flip: false
     band: true
     body:
@@ -176,6 +179,7 @@ rows:
     year: Start
     title: Komu Odyssey i czy zaczynać od niego serię
     meta: Około 40 godzin · komplet znacznie dłużej · przed Origins lub po nim
+    art: assassins-creed-odyssey-k00
     flip: true
     band: false
     body:

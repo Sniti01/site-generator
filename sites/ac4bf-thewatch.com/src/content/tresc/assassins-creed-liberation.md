@@ -43,8 +43,8 @@ toc:
 gallery:
   title: Kadry i arty
   lead: >-
-    Materiał wydawcy ze stron gier w Steamie. Zrzutów ekranu Liberation
-    w materiale wydawcy nie ma.
+    Materiał wydawcy ze stron gier w Steamie. Zrzuty ekranu Liberation
+    stoją przy rzędach wyżej.
   items:
     - art: assassins-creed-liberation
       alt: 'Assassin’s Creed Liberation HD — kluczowy art'

@@ -97,6 +97,7 @@ rows:
     year: '1191'
     title: Dziewięć celów i jeden mistrz
     meta: Masjaf · Al Mualim · Robert de Sablé
+    art: jerozolima-k03
     flip: true
     band: true
     body:
@@ -150,6 +151,7 @@ rows:
     year: 'Schemat'
     title: Śledztwo, zabójstwo, ucieczka
     meta: Podsłuch · kradzież · przesłuchanie · kontra
+    art: jerozolima-k10
     flip: true
     band: false
     body:
@@ -180,6 +182,7 @@ rows:
     year: '2012'
     title: Desmond, Abstergo i Animus
     meta: Warren Vidic · Lucy Stillman · pamięć genetyczna
+    art: jerozolima-k08
     flip: false
     band: true
     body:
@@ -200,6 +203,7 @@ rows:
     year: 'Wydania'
     title: Wersje i platformy
     meta: Wersja reżyserska · Steam · Xbox · PS3 · polski dubbing
+    art: jerozolima-k04
     flip: true
     band: false
     body:
@@ -233,6 +237,7 @@ rows:
     year: 'Odbiór'
     title: Jak ją przyjęto i komu ją polecić
     meta: Metacritic 79–81 · Steam 79 % pozytywnych · około 21 godzin
+    art: jerozolima-k05
     flip: false
     band: false
     body:

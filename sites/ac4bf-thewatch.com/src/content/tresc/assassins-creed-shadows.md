@@ -59,6 +59,7 @@ rows:
     year: Naoe
     title: 'Naoe i Yasuke: dwa style, nie dwa stroje'
     meta: Shinobi · samuraj · przełączanie po pierwszym akcie
+    art: japonia-k05
     flip: false
     band: false
     body:
@@ -125,6 +126,7 @@ rows:
     year: Werdykt
     title: Komu Shadows, a komu raczej Mirage
     meta: Około 30 godzin głównego wątku · 75–80 z całą resztą
+    art: japonia-k07
     flip: true
     band: false
     body:

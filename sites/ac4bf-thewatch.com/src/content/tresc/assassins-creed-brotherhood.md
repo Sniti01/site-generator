@@ -49,7 +49,7 @@ rows:
     year: '2010'
     title: Rzym zamiast Florencji
     meta: Ubisoft Montreal · PS3 i Xbox 360 w listopadzie 2010 · PC w marcu 2011
-    art: wlochy
+    art: assassins-creed-brotherhood-k09
     flip: false
     band: false
     body:
@@ -69,6 +69,7 @@ rows:
     year: 1499–1507
     title: Monteriggioni pada, Ezio jedzie do Rzymu
     meta: Cezar Borgia · Machiavelli, Leonardo, Caterina Sforza · dziewięć sekwencji
+    art: assassins-creed-brotherhood-k11
     flip: true
     band: true
     body:
@@ -93,6 +94,7 @@ rows:
     year: Rzym
     title: Jedno miasto, trzy razy większe niż Florencja
     meta: Antico, Centro, Campagna · wieże Borgiów · odbudowa dzielnic
+    art: foto-rzym-piranesi
     flip: false
     band: false
     body:
@@ -112,6 +114,7 @@ rows:
     year: Rekruci
     title: Bractwo, które walczy za Ezia
     meta: do dwunastu rekrutów · kontrakty · kusza, spadochron, maszyny Leonarda
+    art: foto-leonardo-czolg
     flip: true
     band: false
     body:
@@ -131,6 +134,7 @@ rows:
     year: Sieć
     title: Pierwszy tryb wieloosobowy w serii
     meta: agenci Abstergo · Wanted i Alliance · 6–8 graczy · dziś wyłączony
+    art: assassins-creed-brotherhood-k04
     flip: false
     band: true
     body:
@@ -148,6 +152,7 @@ rows:
     year: Dodatki
     title: Kopernik, Leonardo i legowiska Romulusa
     meta: Spisek Kopernika · Zaginięcie Leonarda · sześć legowisk · 101 flag
+    art: foto-kopernik
     flip: true
     band: false
     body:
@@ -168,6 +173,7 @@ rows:
     year: Wydania
     title: PS3, Xbox 360, PC — a potem Ezio Collection
     meta: polskie napisy · The Ezio Collection 2016 · Xbox One i Series X|S
+    art: foto-monteriggioni
     flip: false
     band: false
     body:

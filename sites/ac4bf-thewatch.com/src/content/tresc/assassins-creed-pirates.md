@@ -49,6 +49,7 @@ rows:
     year: '2013'
     title: Gra na telefon z epoki Black Flag
     meta: iOS i Android · Ubisoft Paris · Alonzo Batilla
+    art: foto-bitwa-morska
     flip: false
     band: false
     body:
@@ -82,6 +83,7 @@ rows:
     year: La Buse
     title: Alonzo Batilla i skarb La Buse
     meta: Bez Desmonda · bez związku z Black Flag
+    art: foto-la-buse
     flip: false
     band: true
     body:
@@ -98,6 +100,7 @@ rows:
     year: 2013–2017
     title: Wersje, dodatki i zniknięcie ze sklepów
     meta: iOS · Android · Windows · Windows Phone
+    art: foto-karaiby-mapa
     flip: true
     band: false
     body:
@@ -116,6 +119,7 @@ rows:
     year: Dodatek
     title: Nie mylić z Illustrious Pirates Pack
     meta: Black Flag · PS4 i Xbox · ok. 30 zł
+    art: karaiby-k06
     flip: false
     band: false
     body:

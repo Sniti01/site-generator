@@ -58,6 +58,7 @@ rows:
     year: '1191'
     title: Z Akki na Cypr tropem templariuszy
     meta: Altaïr · Maria Thorpe · Armand Bouchart
+    art: foto-akka
     flip: true
     band: true
     body:
@@ -100,6 +101,7 @@ rows:
     year: Wydania
     title: Tylko PSP, po angielsku, z mostem do dwójki na PlayStation 3
     meta: Bez polskiej wersji · karta pamięci 32 MB · dziś z drugiej ręki
+    art: foto-psp
     flip: true
     band: false
     body:
@@ -119,6 +121,7 @@ rows:
     year: Dla kogo
     title: Komu Bloodlines coś dopowie, a kto może je pominąć
     meta: Po jedynce · przed dwójką · recenzje mieszane
+    art: jerozolima-k06
     flip: false
     band: false
     body:

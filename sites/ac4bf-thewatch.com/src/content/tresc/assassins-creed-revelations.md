@@ -46,6 +46,7 @@ rows:
     year: '2011'
     title: Konstantynopol zamiast Rzymu
     meta: Konstantynopol · 1511–1512 · Ezio Auditore
+    art: assassins-creed-revelations-k05
     flip: false
     band: false
     body:
@@ -90,6 +91,7 @@ rows:
     year: Hak
     title: Ostrze z hakiem, bomby i obrona kryjówek
     meta: Tyrolki · warsztat bomb · tower defense
+    art: assassins-creed-revelations-k01
     flip: false
     band: false
     body:

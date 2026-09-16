@@ -18,9 +18,12 @@ secondary:
 # zagrać legalnie za darmo, kim jest Ezio, gdzie naprawdę stały te miasta.
 # Kadry (punkt 34, П44): dwa naturalne — art Ezia (`wlochy`, materiał wydawcy,
 # jak karta Ezia w taśmie głównej) i mapa (`mapa-miejsc-historycznych`,
-# Commons); dwa umowne — poradnik dostaje `japonia` jak jego karta w taśmie
-# głównej (`site.ts` fresh), «za darmo» — Commons `foto-karaiby`, bo własnego
-# obrazu ta strona nie ma. Umowne — do oceny okiem właściciela.
+# Commons). Dwa pozostałe do 2026-09-16 były umowne (`japonia` jak karta
+# poradnika w taśmie głównej, Commons `foto-karaiby` za «za darmo»); od
+# sesji «kadry rzędom» obie strony mają własne kadry (backlog 47 p. 1):
+# poradnik — swój bohater `assassins-creed-mirage-k00` (Basim w skoku),
+# «za darmo» — kadr jedynego rzędu `karaiby-k03`. Karta poradnika w taśmie
+# głównej (`site.ts` fresh) zostaje przy `japonia` — główna jest sędzią.
 cards:
   - title: Poradniki i przewodniki
     lead: Cztery strony, które prowadzą za rękę — przez serię, przez sklepy, przez postać i przez mapę.
@@ -29,12 +32,12 @@ cards:
         title: Od której części zacząć — seria po kolei
         kind: Poradnik
         place: Cała seria
-        art: japonia
+        art: assassins-creed-mirage-k00
       - href: /assassins-creed-za-darmo/
         title: Jak zagrać w Assassin’s Creed za darmo i legalnie
         kind: Poradnik
         place: Sklepy i subskrypcje
-        art: foto-karaiby
+        art: karaiby-k03
       - href: /ezio-auditore/
         title: Ezio Auditore — postać, historia i miejsce w serii
         kind: Tekst

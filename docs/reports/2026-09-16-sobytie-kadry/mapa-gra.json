@@ -1,0 +1,471 @@
+[
+  {
+    "file": "baseline-desktop-blok-cta-1440x900.png",
+    "sizes": "равны",
+    "total": 753165,
+    "max": 218,
+    "места": {
+      "szapka": {
+        "n": 49736,
+        "max": 2,
+        "под": {
+          "cta": 49736,
+          "reszta-main": 49736
+        }
+      },
+      "cta": {
+        "n": 677626,
+        "max": 200
+      },
+      "stopka": {
+        "n": 25803,
+        "max": 218
+      }
+    },
+    "спорно": {
+      "cta|reszta-main": 677626,
+      "stopka|stopka-rodowod": 1310
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-galeria-1440x900.png",
+    "sizes": "равны",
+    "total": 697440,
+    "max": 224,
+    "места": {
+      "galeria": {
+        "n": 688783,
+        "max": 219
+      },
+      "werdykt": {
+        "n": 8657,
+        "max": 224
+      }
+    },
+    "спорно": {
+      "galeria|reszta-main": 688783,
+      "werdykt|reszta-main": 8657
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-powiazane-1440x900.png",
+    "sizes": "равны",
+    "total": 749119,
+    "max": 224,
+    "места": {
+      "powiazane": {
+        "n": 15334,
+        "max": 224
+      },
+      "cta": {
+        "n": 733785,
+        "max": 200
+      }
+    },
+    "спорно": {
+      "powiazane|reszta-main": 15334,
+      "cta|reszta-main": 733785
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-toc-1440x900.png",
+    "sizes": "равны",
+    "total": 5282,
+    "max": 142,
+    "места": {
+      "toc": {
+        "n": 780,
+        "max": 60
+      },
+      "rzedy-1": {
+        "n": 4502,
+        "max": 142
+      }
+    },
+    "спорно": {
+      "toc|reszta-main": 780,
+      "rzedy-1|reszta-main": 4502
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-werdykt-1440x900.png",
+    "sizes": "равны",
+    "total": 92391,
+    "max": 224,
+    "места": {
+      "werdykt": {
+        "n": 8657,
+        "max": 224
+      },
+      "powiazane": {
+        "n": 15334,
+        "max": 224
+      },
+      "cta": {
+        "n": 68400,
+        "max": 2
+      }
+    },
+    "спорно": {
+      "werdykt|reszta-main": 8657,
+      "powiazane|reszta-main": 15334,
+      "cta|reszta-main": 68400
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-full-1440.png",
+    "sizes": "РАЗОШЛИСЬ 1440×11443 → 1440×11821: сравнена общая часть 1440×11443, ВНЕ СРАВНЕНИЯ 544320 px (1632960 субпикселей) — строка таблицы обязательна",
+    "total": 20085738,
+    "max": 245,
+    "места": {
+      "szapka": {
+        "n": 3660,
+        "max": 99,
+        "под": {
+          "okruszki": 3414
+        }
+      },
+      "okruszki": {
+        "n": 159050,
+        "max": 224
+      },
+      "hero": {
+        "n": 2560442,
+        "max": 232
+      },
+      "podpis": {
+        "n": 4271,
+        "max": 224
+      },
+      "toc": {
+        "n": 93615,
+        "max": 224
+      },
+      "rzedy-1": {
+        "n": 1009602,
+        "max": 245
+      },
+      "rzedy-2": {
+        "n": 1199326,
+        "max": 239
+      },
+      "rzedy-3": {
+        "n": 904733,
+        "max": 224
+      },
+      "rzedy-4": {
+        "n": 1731943,
+        "max": 224
+      },
+      "rzedy-5": {
+        "n": 2129175,
+        "max": 239
+      },
+      "rzedy-6": {
+        "n": 769749,
+        "max": 238
+      },
+      "rzedy-7": {
+        "n": 2611630,
+        "max": 245
+      },
+      "rzedy-8": {
+        "n": 2463591,
+        "max": 245
+      },
+      "galeria": {
+        "n": 1291866,
+        "max": 245
+      },
+      "werdykt": {
+        "n": 145375,
+        "max": 227
+      },
+      "reszta-main": {
+        "n": 121002,
+        "max": 33
+      },
+      "powiazane": {
+        "n": 876352,
+        "max": 225
+      },
+      "cta": {
+        "n": 1845179,
+        "max": 225
+      },
+      "stopka": {
+        "n": 165177,
+        "max": 218
+      }
+    },
+    "спорно": {
+      "okruszki|hero|reszta-main": 6814,
+      "hero|reszta-main": 2556122,
+      "hero|podpis|reszta-main": 4320,
+      "podpis|reszta-main": 4271,
+      "toc|reszta-main": 93615,
+      "rzedy-1|reszta-main": 1009602,
+      "rzedy-2|reszta-main": 1199326,
+      "rzedy-3|reszta-main": 903899,
+      "rzedy-3|rzedy-4|reszta-main": 834,
+      "rzedy-4|reszta-main": 1727161,
+      "rzedy-4|rzedy-5|reszta-main": 4782,
+      "rzedy-5|reszta-main": 2128830,
+      "rzedy-5|rzedy-6|reszta-main": 345,
+      "rzedy-6|reszta-main": 769712,
+      "rzedy-6|rzedy-7|reszta-main": 37,
+      "rzedy-7|reszta-main": 2611630,
+      "rzedy-8|reszta-main": 2460135,
+      "rzedy-8|galeria|reszta-main": 3456,
+      "galeria|reszta-main": 1289984,
+      "galeria|werdykt|reszta-main": 1882,
+      "werdykt|reszta-main": 143514,
+      "werdykt|powiazane|reszta-main": 1861,
+      "powiazane|reszta-main": 872629,
+      "cta|reszta-main": 1840859,
+      "powiazane|cta|reszta-main": 3723,
+      "cta|stopka|reszta-main": 4320,
+      "stopka|stopka-rodowod": 1594
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 544320
+  },
+  {
+    "file": "baseline-desktop-hero-1440x900.png",
+    "sizes": "равны",
+    "total": 2639418,
+    "max": 232,
+    "места": {
+      "szapka": {
+        "n": 3414,
+        "max": 99,
+        "под": {
+          "okruszki": 3414
+        }
+      },
+      "okruszki": {
+        "n": 158933,
+        "max": 224
+      },
+      "hero": {
+        "n": 2477071,
+        "max": 232
+      }
+    },
+    "спорно": {
+      "okruszki|hero|reszta-main": 6814,
+      "hero|reszta-main": 2477071
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-co-jest-w-grze-1440x900.png",
+    "sizes": "равны",
+    "total": 16185,
+    "max": 142,
+    "места": {
+      "rzedy-1": {
+        "n": 16185,
+        "max": 142
+      }
+    },
+    "спорно": {
+      "rzedy-1|reszta-main": 16185
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-mobile-full-390.png",
+    "sizes": "РАЗОШЛИСЬ 390×13729 → 390×14831: сравнена общая часть 390×13729, ВНЕ СРАВНЕНИЯ 429780 px (1289340 субпикселей) — строка таблицы обязательна",
+    "total": 10016196,
+    "max": 253,
+    "места": {
+      "szapka": {
+        "n": 1170,
+        "max": 194,
+        "под": {
+          "okruszki": 1170
+        }
+      },
+      "okruszki": {
+        "n": 78350,
+        "max": 245
+      },
+      "hero": {
+        "n": 616897,
+        "max": 235
+      },
+      "podpis": {
+        "n": 11298,
+        "max": 224
+      },
+      "toc": {
+        "n": 73741,
+        "max": 224
+      },
+      "rzedy-1": {
+        "n": 518515,
+        "max": 245
+      },
+      "rzedy-2": {
+        "n": 683962,
+        "max": 245
+      },
+      "rzedy-3": {
+        "n": 479573,
+        "max": 224
+      },
+      "rzedy-4": {
+        "n": 968624,
+        "max": 224
+      },
+      "rzedy-5": {
+        "n": 1105854,
+        "max": 245
+      },
+      "rzedy-6": {
+        "n": 527478,
+        "max": 226
+      },
+      "rzedy-7": {
+        "n": 1297061,
+        "max": 253
+      },
+      "rzedy-8": {
+        "n": 1256318,
+        "max": 245
+      },
+      "galeria": {
+        "n": 654491,
+        "max": 246
+      },
+      "werdykt": {
+        "n": 386089,
+        "max": 224
+      },
+      "powiazane": {
+        "n": 719511,
+        "max": 224
+      },
+      "cta": {
+        "n": 549727,
+        "max": 225
+      },
+      "stopka": {
+        "n": 87537,
+        "max": 218
+      }
+    },
+    "спорно": {
+      "okruszki|hero|reszta-main": 2320,
+      "hero|reszta-main": 615727,
+      "hero|podpis|reszta-main": 1170,
+      "podpis|reszta-main": 11298,
+      "toc|reszta-main": 73741,
+      "rzedy-1|reszta-main": 518515,
+      "rzedy-2|reszta-main": 682773,
+      "rzedy-2|rzedy-3|reszta-main": 1189,
+      "rzedy-3|reszta-main": 479573,
+      "rzedy-4|reszta-main": 968624,
+      "rzedy-5|reszta-main": 1105854,
+      "rzedy-6|reszta-main": 525138,
+      "rzedy-6|rzedy-7|reszta-main": 2340,
+      "rzedy-7|reszta-main": 1294837,
+      "rzedy-7|rzedy-8|reszta-main": 2224,
+      "rzedy-8|reszta-main": 1256074,
+      "rzedy-8|galeria|reszta-main": 244,
+      "galeria|reszta-main": 653321,
+      "galeria|werdykt|reszta-main": 1170,
+      "werdykt|reszta-main": 383749,
+      "werdykt|powiazane|reszta-main": 2340,
+      "powiazane|reszta-main": 718341,
+      "powiazane|cta|reszta-main": 1170,
+      "cta|reszta-main": 548557,
+      "cta|stopka|reszta-main": 1170,
+      "stopka|stopka-rodowod": 2841
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 429780
+  },
+  {
+    "file": "baseline-mobile-hero-390x844.png",
+    "sizes": "равны",
+    "total": 563526,
+    "max": 245,
+    "места": {
+      "szapka": {
+        "n": 1170,
+        "max": 194,
+        "под": {
+          "okruszki": 1170
+        }
+      },
+      "okruszki": {
+        "n": 78350,
+        "max": 245
+      },
+      "hero": {
+        "n": 484006,
+        "max": 235
+      }
+    },
+    "спорно": {
+      "okruszki|hero|reszta-main": 2320,
+      "hero|reszta-main": 484006
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-abstergo-1440x900.png",
+    "error": "есть в снятом, нет в эталоне — кадр без судьи"
+  },
+  {
+    "file": "baseline-desktop-layer-edward-kenway-1440x900.png",
+    "error": "есть в снятом, нет в эталоне — кадр без судьи"
+  },
+  {
+    "file": "baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png",
+    "error": "есть в снятом, нет в эталоне — кадр без судьи"
+  },
+  {
+    "file": "baseline-desktop-layer-kawka-1440x900.png",
+    "error": "есть в снятом, нет в эталоне — кадр без судьи"
+  },
+  {
+    "file": "baseline-desktop-layer-trzy-miasta-1440x900.png",
+    "error": "есть в снятом, нет в эталоне — кадр без судьи"
+  }
+]

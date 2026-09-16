@@ -1,0 +1,260 @@
+[
+  {
+    "file": "baseline-desktop-blok-galeria-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-katalog-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-numeracja-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-blok-swieze-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-full-1440.png",
+    "sizes": "РАЗОШЛИСЬ 1440×10270 → 1440×9957: сравнена общая часть 1440×9957, ВНЕ СРАВНЕНИЯ 450720 px (1352160 субпикселей) — строка таблицы обязательна",
+    "total": 171444,
+    "max": 218,
+    "места": {
+      "podpis": {
+        "n": 431,
+        "max": 149
+      },
+      "lenta": {
+        "n": 36371,
+        "max": 2
+      },
+      "galeria": {
+        "n": 32066,
+        "max": 1
+      },
+      "stopka": {
+        "n": 102570,
+        "max": 218
+      },
+      "skala": {
+        "n": 6,
+        "max": 27,
+        "под": {
+          "stopka": 6
+        }
+      }
+    },
+    "спорно": {
+      "podpis|reszta-main": 431,
+      "lenta|reszta-main": 36371,
+      "galeria|reszta-main": 32066
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 450720
+  },
+  {
+    "file": "baseline-desktop-hero-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-jerozolima-1440x900.png",
+    "sizes": "равны",
+    "total": 1250,
+    "max": 2,
+    "места": {
+      "szapka": {
+        "n": 1250,
+        "max": 2,
+        "под": {
+          "podpis": 1250,
+          "reszta-main": 1250
+        }
+      }
+    },
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-londyn-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-desktop-layer-wlochy-1440x900.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  },
+  {
+    "file": "baseline-mobile-full-390.png",
+    "sizes": "РАЗОШЛИСЬ 390×14719 → 390×13953: сравнена общая часть 390×13953, ВНЕ СРАВНЕНИЯ 298740 px (896220 субпикселей) — строка таблицы обязательна",
+    "total": 249124,
+    "max": 218,
+    "места": {
+      "szapka": {
+        "n": 224,
+        "max": 1,
+        "под": {
+          "hero": 55,
+          "reszta-main": 55
+        }
+      },
+      "hero": {
+        "n": 8467,
+        "max": 1
+      },
+      "podpis": {
+        "n": 669,
+        "max": 149
+      },
+      "warstwa-jerozolima": {
+        "n": 5725,
+        "max": 2
+      },
+      "warstwa-wlochy": {
+        "n": 11302,
+        "max": 2
+      },
+      "creed": {
+        "n": 4558,
+        "max": 1
+      },
+      "warstwa-japonia": {
+        "n": 5670,
+        "max": 1
+      },
+      "warstwa-karaiby": {
+        "n": 15056,
+        "max": 1
+      },
+      "lenta": {
+        "n": 5453,
+        "max": 2
+      },
+      "warstwa-londyn": {
+        "n": 15029,
+        "max": 2
+      },
+      "numeracja": {
+        "n": 18819,
+        "max": 1
+      },
+      "galeria": {
+        "n": 8933,
+        "max": 2
+      },
+      "stog": {
+        "n": 35077,
+        "max": 2
+      },
+      "cta": {
+        "n": 7896,
+        "max": 1
+      },
+      "stopka": {
+        "n": 106240,
+        "max": 218
+      },
+      "skala": {
+        "n": 6,
+        "max": 27,
+        "под": {
+          "stopka": 6
+        }
+      }
+    },
+    "спорно": {
+      "hero|reszta-main": 8467,
+      "podpis|reszta-main": 669,
+      "warstwa-jerozolima|reszta-main": 5725,
+      "warstwa-wlochy|reszta-main": 11302,
+      "creed|reszta-main": 4558,
+      "warstwa-japonia|reszta-main": 5670,
+      "warstwa-karaiby|reszta-main": 15056,
+      "lenta|reszta-main": 5225,
+      "lenta|lenta-daty-1|reszta-main": 148,
+      "lenta|lenta-daty-2|reszta-main": 80,
+      "warstwa-londyn|reszta-main": 15029,
+      "numeracja|reszta-main": 18819,
+      "galeria|reszta-main": 8933,
+      "stog|reszta-main": 35077,
+      "cta|reszta-main": 7896,
+      "stopka|stopka-rodowod": 306
+    },
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 298740
+  },
+  {
+    "file": "baseline-mobile-hero-390x844.png",
+    "sizes": "равны",
+    "total": 0,
+    "max": 0,
+    "места": {},
+    "спорно": {},
+    "остаток": 0,
+    "остаток_макс": 0,
+    "остаток_полосы": [],
+    "вне_сравнения": 0
+  }
+]

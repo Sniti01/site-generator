@@ -1,0 +1,327 @@
+{
+ "390": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1589,
+   "baseline-desktop-layer-edward-kenway-1440x900.png": 2511,
+   "baseline-desktop-layer-kawka-1440x900.png": 3539,
+   "baseline-desktop-layer-trzy-miasta-1440x900.png": 4497,
+   "baseline-desktop-layer-abstergo-1440x900.png": 5455,
+   "baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png": 6386,
+   "baseline-desktop-blok-toc-1440x900.png": 1002,
+   "baseline-desktop-blok-galeria-1440x900.png": 9076,
+   "baseline-desktop-blok-werdykt-1440x900.png": 9713,
+   "baseline-desktop-blok-powiazane-1440x900.png": 10060,
+   "baseline-desktop-blok-cta-1440x900.png": 10584,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 391,
+    "h": 70,
+    "fixed": true
+   },
+   {
+    "nazwa": "okruszki",
+    "x": 0,
+    "y": 69,
+    "w": 391,
+    "h": 68
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 135,
+    "w": 391,
+    "h": 1010
+   },
+   {
+    "nazwa": "podpis",
+    "x": 0,
+    "y": 1144,
+    "w": 391,
+    "h": 88
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 1231,
+    "w": 391,
+    "h": 544
+   },
+   {
+    "nazwa": "rzedy-1",
+    "x": 0,
+    "y": 1773,
+    "w": 391,
+    "h": 946
+   },
+   {
+    "nazwa": "rzedy-2",
+    "x": 0,
+    "y": 2718,
+    "w": 391,
+    "h": 1399
+   },
+   {
+    "nazwa": "rzedy-3",
+    "x": 0,
+    "y": 4115,
+    "w": 391,
+    "h": 1207
+   },
+   {
+    "nazwa": "rzedy-4",
+    "x": 0,
+    "y": 5321,
+    "w": 391,
+    "h": 1175
+   },
+   {
+    "nazwa": "rzedy-5",
+    "x": 0,
+    "y": 6495,
+    "w": 391,
+    "h": 1236
+   },
+   {
+    "nazwa": "rzedy-6",
+    "x": 0,
+    "y": 7729,
+    "w": 391,
+    "h": 1091
+   },
+   {
+    "nazwa": "rzedy-7",
+    "x": 0,
+    "y": 8818,
+    "w": 391,
+    "h": 1264
+   },
+   {
+    "nazwa": "rzedy-8",
+    "x": 0,
+    "y": 10080,
+    "w": 391,
+    "h": 1077
+   },
+   {
+    "nazwa": "galeria",
+    "x": 0,
+    "y": 11156,
+    "w": 391,
+    "h": 703
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 11858,
+    "w": 391,
+    "h": 331
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 0,
+    "y": 12187,
+    "w": 391,
+    "h": 617
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 12803,
+    "w": 391,
+    "h": 471
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 13273,
+    "w": 391,
+    "h": 1559
+   },
+   {
+    "nazwa": "stopka-rodowod",
+    "x": 16,
+    "y": 13662,
+    "w": 108,
+    "h": 24
+   },
+   {
+    "nazwa": "reszta-main",
+    "x": 0,
+    "y": 135,
+    "w": 391,
+    "h": 13139
+   }
+  ]
+ },
+ "1440": {
+  "scrollY": {
+   "baseline-desktop-hero-1440x900.png": 0,
+   "baseline-desktop-full-1440.png": 0,
+   "baseline-desktop-layer-co-jest-w-grze-1440x900.png": 1589,
+   "baseline-desktop-layer-edward-kenway-1440x900.png": 2511,
+   "baseline-desktop-layer-kawka-1440x900.png": 3539,
+   "baseline-desktop-layer-trzy-miasta-1440x900.png": 4497,
+   "baseline-desktop-layer-abstergo-1440x900.png": 5455,
+   "baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png": 6386,
+   "baseline-desktop-blok-toc-1440x900.png": 1002,
+   "baseline-desktop-blok-galeria-1440x900.png": 9076,
+   "baseline-desktop-blok-werdykt-1440x900.png": 9713,
+   "baseline-desktop-blok-powiazane-1440x900.png": 10060,
+   "baseline-desktop-blok-cta-1440x900.png": 10584,
+   "baseline-mobile-hero-390x844.png": 0,
+   "baseline-mobile-full-390.png": 0
+  },
+  "miejsca": [
+   {
+    "nazwa": "szapka",
+    "x": 0,
+    "y": 0,
+    "w": 1441,
+    "h": 70,
+    "fixed": true
+   },
+   {
+    "nazwa": "okruszki",
+    "x": 0,
+    "y": 69,
+    "w": 1441,
+    "h": 45
+   },
+   {
+    "nazwa": "hero",
+    "x": 0,
+    "y": 112,
+    "w": 1441,
+    "h": 811
+   },
+   {
+    "nazwa": "podpis",
+    "x": 0,
+    "y": 922,
+    "w": 1441,
+    "h": 116
+   },
+   {
+    "nazwa": "toc",
+    "x": 0,
+    "y": 1037,
+    "w": 1441,
+    "h": 617
+   },
+   {
+    "nazwa": "rzedy-1",
+    "x": 0,
+    "y": 1653,
+    "w": 1441,
+    "h": 772
+   },
+   {
+    "nazwa": "rzedy-2",
+    "x": 0,
+    "y": 2424,
+    "w": 1441,
+    "h": 1075
+   },
+   {
+    "nazwa": "rzedy-3",
+    "x": 0,
+    "y": 3497,
+    "w": 1441,
+    "h": 985
+   },
+   {
+    "nazwa": "rzedy-4",
+    "x": 0,
+    "y": 4480,
+    "w": 1441,
+    "h": 935
+   },
+   {
+    "nazwa": "rzedy-5",
+    "x": 0,
+    "y": 5413,
+    "w": 1441,
+    "h": 985
+   },
+   {
+    "nazwa": "rzedy-6",
+    "x": 0,
+    "y": 6397,
+    "w": 1441,
+    "h": 879
+   },
+   {
+    "nazwa": "rzedy-7",
+    "x": 0,
+    "y": 7274,
+    "w": 1441,
+    "h": 1013
+   },
+   {
+    "nazwa": "rzedy-8",
+    "x": 0,
+    "y": 8285,
+    "w": 1441,
+    "h": 828
+   },
+   {
+    "nazwa": "galeria",
+    "x": 0,
+    "y": 9112,
+    "w": 1441,
+    "h": 639
+   },
+   {
+    "nazwa": "werdykt",
+    "x": 0,
+    "y": 9749,
+    "w": 1441,
+    "h": 349
+   },
+   {
+    "nazwa": "powiazane",
+    "x": 100,
+    "y": 10096,
+    "w": 1241,
+    "h": 492
+   },
+   {
+    "nazwa": "cta",
+    "x": 0,
+    "y": 10587,
+    "w": 1441,
+    "h": 429
+   },
+   {
+    "nazwa": "stopka",
+    "x": 0,
+    "y": 11014,
+    "w": 1441,
+    "h": 809
+   },
+   {
+    "nazwa": "stopka-rodowod",
+    "x": 540,
+    "y": 11223,
+    "w": 108,
+    "h": 24
+   },
+   {
+    "nazwa": "reszta-main",
+    "x": 0,
+    "y": 112,
+    "w": 1441,
+    "h": 10903
+   }
+  ]
+ },
+ "_": "места с DOM при scrollY = 0, прогон p1, сборка 1d9b2ac"
+}

@@ -1,0 +1,31 @@
+эталонных кадров: 11, снятых: 11
+НЕ СУДЬИ: 0 из 11 — сверка против них ничего не значит.
+ГЕОМЕТРИЯ: сдвигов 2 (в эталоне вьюпортов 2, слоёв 14):
+  СДВИГ  высота 390: эталон 13953, снято 14719 (+766) — страница
+  СДВИГ  высота 1440: эталон 9957, снято 10270 (+313) — страница
+ЗОНЫ ШУМА: sites\ac4bf-thewatch.com\_baseline\szum.json — зон 9; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-katalog-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-katalog-1440x900.png
+  размер ок baseline-desktop-blok-numeracja-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-numeracja-1440x900.png
+  размер ок baseline-desktop-blok-swieze-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-swieze-1440x900.png
+  РАЗМЕР   baseline-desktop-full-1440.png: эталон 1440×9957, снято 1440×10270
+           высота разошлась — чаще всего не прокручен низ перед съёмкой (см. protocol)
+  ВНЕ ДОПУСКА  baseline-desktop-full-1440.png: размеры разошлись: эталон 1440×9957, снято 1440×10270 — сравнивать нечего
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-jerozolima-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-layer-jerozolima-1440x900.png: 1250 субпикселей, макс 2, рамка 161×54 от (278, 0), первый (282, 0) R 17→16
+  размер ок baseline-desktop-layer-londyn-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-londyn-1440x900.png
+  размер ок baseline-desktop-layer-wlochy-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-wlochy-1440x900.png
+  РАЗМЕР   baseline-mobile-full-390.png: эталон 390×13953, снято 390×14719
+           высота разошлась — чаще всего не прокручен низ перед съёмкой (см. protocol)
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: размеры разошлись: эталон 390×13953, снято 390×14719 — сравнивать нечего
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 11 — 0 различий 8, в допуске 0, вне допуска 3 — ОТКАЗ.

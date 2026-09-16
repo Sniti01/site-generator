@@ -63,6 +63,7 @@ rows:
     year: Odyn
     title: Odyn szuka Baldura w królestwie krasnoludów
     meta: Havi · Baldur · Surtr · Muspelowie i Jotunowie
+    art: dawn-of-ragnarok-k02
     flip: true
     band: true
     body:
@@ -81,6 +82,7 @@ rows:
     year: Pięć mocy
     title: Pięć mocy z bransolety i arena Walkirii
     meta: Kruk · skóra z lawy · lód · teleport do strzały · wskrzeszanie
+    art: dawn-of-ragnarok-k01
     flip: false
     band: false
     body:
@@ -101,6 +103,7 @@ rows:
     year: Start
     title: Wydania, ceny i komu ten dodatek
     meta: Edycja Ragnarök · Kompletna · 20–30 godzin · po podstawce
+    art: dawn-of-ragnarok-k04
     flip: true
     band: false
     body:

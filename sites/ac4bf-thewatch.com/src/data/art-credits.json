@@ -188,5 +188,125 @@
     "title": "Leonardo da Vinci - 1860,0616.99, Studies of military tank-like machines (cropped).jpg",
     "width": 2000,
     "height": 1410
+  },
+  "foto-nowy-jork-1750": {
+    "file": "foto-nowy-jork-1750.jpg",
+    "author": "Pierre-Charles Canot",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Pierre-Charles_Canot_-_View_of_the_City_of_New_York,_A_South_East_View_of_the_City_of_New_York_in_North_America_-_B2001.2.1496_-_Yale_Center_for_British_Art.jpg",
+    "title": "Pierre-Charles Canot - View of the City of New York, A South East View of the City of New York in North America - B2001.2.1496 - Yale Center for British Art.jpg",
+    "width": 1920,
+    "height": 1219
+  },
+  "foto-akka": {
+    "file": "foto-akka.jpg",
+    "author": "American Colony (Jerusalem), Photo Dept., photographer",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Akka_(Acre,_Accho)._Acre._Crusader_sea_wall._1920_to_1933._matpc.15397.jpg",
+    "title": "Akka (Acre, Accho). Acre. Crusader sea wall. 1920 to 1933. matpc.15397.jpg",
+    "width": 2000,
+    "height": 1307
+  },
+  "foto-psp": {
+    "file": "foto-psp.jpg",
+    "author": "Evan-Amos",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Psp-1000.jpg",
+    "title": "Psp-1000.jpg",
+    "width": 2000,
+    "height": 1135
+  },
+  "foto-bitwa-morska": {
+    "file": "foto-bitwa-morska.jpg",
+    "author": "Samuel Scott",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Wager%27s_Action_off_Cartagena,_28_May_1708.jpg",
+    "title": "Wager's Action off Cartagena, 28 May 1708.jpg",
+    "width": 2000,
+    "height": 1398
+  },
+  "foto-nintendo-ds": {
+    "file": "foto-nintendo-ds.jpg",
+    "author": "Evan-Amos",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Nintendo-DS-Lite-Black-Open.png",
+    "title": "Nintendo-DS-Lite-Black-Open.png",
+    "width": 2000,
+    "height": 1350
+  },
+  "foto-stonehenge": {
+    "file": "foto-stonehenge.jpg",
+    "author": "Perituss",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Stonehenge_2011_2.jpg",
+    "title": "Stonehenge 2011 2.jpg",
+    "width": 2000,
+    "height": 1032
+  },
+  "foto-delfy": {
+    "file": "foto-delfy.jpg",
+    "author": "HerrAdams",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Delphi,_Tholos_2015-09_(2).jpg",
+    "title": "Delphi, Tholos 2015-09 (2).jpg",
+    "width": 2000,
+    "height": 1319
+  },
+  "assassins-creed-rodowod": {
+    "file": "assassins-creed-rodowod.jpg",
+    "author": "Hartmann Schedel",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Florence1493.png",
+    "title": "Florence1493.png",
+    "width": 2000,
+    "height": 1003
+  },
+  "foto-la-buse": {
+    "file": "foto-la-buse.jpg",
+    "author": "Olivier Levasseur",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:Cryptogramme_de_La_Buse.jpg",
+    "title": "Cryptogramme de La Buse.jpg",
+    "width": 1160,
+    "height": 702
+  },
+  "foto-karaiby-mapa": {
+    "file": "foto-karaiby-mapa.jpg",
+    "author": "Johann Homann",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:1737_Homann_Heirs_-_D%27Anville_Map_of_Florida_and_the_West_Indies_-_Geographicus_-_IndiaeOccidentalis-homann-1734.jpg",
+    "title": "1737 Homann Heirs - D'Anville Map of Florida and the West Indies - Geographicus - IndiaeOccidentalis-homann-1734.jpg",
+    "width": 2000,
+    "height": 1194
+  },
+  "foto-paryz-1940": {
+    "file": "foto-paryz-1940.jpg",
+    "author": "Unknown Unknown",
+    "license": "CC BY-SA 3.0 de",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+    "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-1994-036-09A,_Paris,_Parade_auf_der_Champs_Elys%C3%A9e.jpg",
+    "title": "Bundesarchiv Bild 146-1994-036-09A, Paris, Parade auf der Champs Elysée.jpg",
+    "width": 800,
+    "height": 504
+  },
+  "assassins-creed-ii-wojna-swiatowa": {
+    "file": "assassins-creed-ii-wojna-swiatowa.jpg",
+    "author": "Unknown author Unknown author or not provided",
+    "license": "Public domain",
+    "licenseUrl": "",
+    "source": "https://commons.wikimedia.org/wiki/File:American_troops_on_way_to_the_front_march_thru_London_amid_the_plaudits_of_the_multitudes,_crossing_Westminster..._-_NARA_-_530734.tif",
+    "title": "American troops on way to the front march thru London amid the plaudits of the multitudes, crossing Westminster... - NARA - 530734.tif",
+    "width": 1882,
+    "height": 1424
   }
 }

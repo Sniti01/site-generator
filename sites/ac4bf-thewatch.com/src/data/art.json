@@ -632,6 +632,432 @@
       "minAspect": 1.3,
       "minWidth": 2000,
       "file": "Leonardo da Vinci - 1860,0616.99, Studies of military tank-like machines (cropped).jpg"
+    },
+    {
+      "id": "foto-nowy-jork-1750",
+      "subject": "Nowy Jork około 1760 roku — widok miasta od południowego wschodu, rycina Pierre’a-Charles’a Canota",
+      "queries": [
+        "New York 1717 Burgis view",
+        "View of New York 1740 engraving",
+        "Nieuw Amsterdam 1660 view",
+        "New York harbour 1760 engraving",
+        "Vue de la Nouvelle York gravure"
+      ],
+      "must": [
+        "new york",
+        "new-york",
+        "nieuw amsterdam",
+        "york",
+        "nouvelle york"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "1800",
+        "1850",
+        "1860",
+        "1870",
+        "1880",
+        "1890",
+        "19th",
+        "photo",
+        "brooklyn bridge",
+        "statue"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.4,
+      "minWidth": 1900,
+      "file": "Pierre-Charles Canot - View of the City of New York, A South East View of the City of New York in North America - B2001.2.1496 - Yale Center for British Art.jpg"
+    },
+    {
+      "id": "foto-akka",
+      "subject": "Akka — mur morski krzyżowców, fotografia z lat 1920–1933",
+      "queries": [
+        "Acre old city walls sea",
+        "Akko old city walls Mediterranean panorama",
+        "Acre Israel harbour old city view",
+        "Akko sea walls"
+      ],
+      "must": [
+        "acre",
+        "akko",
+        "akka",
+        "acco"
+      ],
+      "avoid": [
+        "interior",
+        "map",
+        "plan",
+        "night",
+        "aerial",
+        "museum",
+        "tunnel",
+        "hall",
+        "mosque interior",
+        "market",
+        "shop",
+        "street",
+        "khan"
+      ],
+      "minAspect": 1.3,
+      "minWidth": 2000,
+      "file": "Akka (Acre, Accho). Acre. Crusader sea wall. 1920 to 1933. matpc.15397.jpg",
+      "crop": {
+        "top": 0.12
+      }
+    },
+    {
+      "id": "foto-psp",
+      "subject": "Sony PlayStation Portable — konsola PSP-1000",
+      "queries": [
+        "PlayStation Portable PSP-1000 console",
+        "Sony PSP 1000 black console",
+        "PSP-3000 console photo"
+      ],
+      "must": [
+        "psp",
+        "playstation portable"
+      ],
+      "avoid": [
+        "go",
+        "vita",
+        "box",
+        "screen",
+        "chart",
+        "logo",
+        "umd",
+        "diagram",
+        "battery",
+        "cable"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.4,
+      "minWidth": 2000,
+      "file": "Psp-1000.jpg"
+    },
+    {
+      "id": "foto-bitwa-morska",
+      "subject": "Bitwa morska u wybrzeży Cartageny w 1708 roku — obraz Samuela Scotta",
+      "queries": [
+        "Battle of Cartagena de Indias 1741 painting",
+        "naval battle 18th century painting ships Caribbean",
+        "Willem van de Velde sea battle painting",
+        "Action between English and Spanish ships painting 18th century",
+        "capture of the Spanish galleon painting"
+      ],
+      "must": [
+        "battle",
+        "action",
+        "naval",
+        "ships",
+        "combat",
+        "bataille",
+        "zeeslag",
+        "capture",
+        "engagement",
+        "sea fight"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "model",
+        "portrait",
+        "20th",
+        "1900",
+        "steam",
+        "ironclad",
+        "dreadnought",
+        "submarine",
+        "1914",
+        "1940"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.3,
+      "minWidth": 1900,
+      "file": "Wager's Action off Cartagena, 28 May 1708.jpg"
+    },
+    {
+      "id": "foto-karaiby-mapa",
+      "subject": "Karaiby na mapie Homanna z 1737 roku — Zatoka Meksykańska i Antyle",
+      "queries": [
+        "Carte des Antilles Bellin 1750",
+        "West Indies map 1700s Moll",
+        "Caribbean map 18th century Antilles",
+        "Map of the West Indies 1740 Popple"
+      ],
+      "must": [
+        "antilles",
+        "caribbean",
+        "west indies",
+        "west-indies",
+        "indes occidentales",
+        "caribe",
+        "antillas",
+        "westindien"
+      ],
+      "avoid": [
+        "1800",
+        "1850",
+        "1900",
+        "19th",
+        "20th",
+        "modern",
+        "satellite",
+        "topographic",
+        "cuba map 1"
+      ],
+      "avoidDefault": false,
+      "minAspect": 0.8,
+      "minWidth": 2000,
+      "file": "1737 Homann Heirs - D'Anville Map of Florida and the West Indies - Geographicus - IndiaeOccidentalis-homann-1734.jpg",
+      "crop": {
+        "left": 0.02,
+        "right": 0.02,
+        "top": 0.27,
+        "bottom": 0.25
+      }
+    },
+    {
+      "id": "foto-nintendo-ds",
+      "subject": "Nintendo DS Lite — konsola przenośna z dwoma ekranami",
+      "queries": [
+        "Nintendo DS Lite console open",
+        "Nintendo DS original console",
+        "Nintendo DS Lite white"
+      ],
+      "must": [
+        "nintendo ds",
+        "ds lite",
+        "nintendo-ds",
+        "ds-lite"
+      ],
+      "avoid": [
+        "3ds",
+        "dsi",
+        "box",
+        "cartridge box",
+        "logo",
+        "stylus only",
+        "diagram",
+        "chart"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.1,
+      "minWidth": 2000,
+      "file": "Nintendo-DS-Lite-Black-Open.png",
+      "crop": {
+        "top": 0.1,
+        "bottom": 0.1
+      }
+    },
+    {
+      "id": "foto-stonehenge",
+      "subject": "Stonehenge — krąg kamienny w hrabstwie Wiltshire",
+      "queries": [
+        "Stonehenge panorama",
+        "Stonehenge wide view sunset",
+        "Hadrian's Wall Housesteads panorama",
+        "Hadrian's Wall Sycamore Gap"
+      ],
+      "must": [
+        "stonehenge",
+        "hadrian",
+        "housesteads",
+        "sycamore gap"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "model",
+        "diagram",
+        "aerial",
+        "night",
+        "solstice",
+        "crowd",
+        "people",
+        "reconstruction",
+        "drawing",
+        "museum",
+        "visitor",
+        "replica"
+      ],
+      "minAspect": 1.5,
+      "minWidth": 2400,
+      "file": "Stonehenge 2011 2.jpg",
+      "crop": {
+        "left": 0.12,
+        "right": 0.12
+      }
+    },
+    {
+      "id": "foto-delfy",
+      "subject": "Delfy — tolos świątyni Ateny Pronaia u stóp Parnasu",
+      "queries": [
+        "Delphi Tholos Athena Pronaia",
+        "Delphi sanctuary panorama",
+        "Valley of the Kings panorama Luxor",
+        "Delphi temple of Apollo view"
+      ],
+      "must": [
+        "delphi",
+        "delfoi",
+        "delfy",
+        "valley of the kings",
+        "tholos",
+        "kings valley"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "museum",
+        "statue",
+        "charioteer",
+        "interior",
+        "model",
+        "reconstruction",
+        "tomb interior",
+        "kv62",
+        "painting"
+      ],
+      "minAspect": 1.4,
+      "minWidth": 2400,
+      "file": "Delphi, Tholos 2015-09 (2).jpg"
+    },
+    {
+      "id": "assassins-creed-rodowod",
+      "subject": "Florencja w drzeworycie z Kroniki Norymberskiej, 1493 rok",
+      "queries": [
+        "Nuremberg chronicles Florence",
+        "Schedel Weltchronik Florentia",
+        "Nuremberg Chronicle 1493 Florencia woodcut",
+        "Florence woodcut 1493",
+        "Liber chronicarum Florentia"
+      ],
+      "must": [
+        "floren",
+        "florence",
+        "florencia",
+        "florentia",
+        "florenz",
+        "firenze",
+        "nuremberg chronicles",
+        "schedel"
+      ],
+      "avoid": [
+        "photo",
+        "modern",
+        "coat of arms",
+        "reconstruction",
+        "model",
+        "catena"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.5,
+      "minWidth": 2000,
+      "file": "Florence1493.png"
+    },
+    {
+      "id": "assassins-creed-ii-wojna-swiatowa",
+      "subject": "Londyn w czasie I wojny światowej — żołnierze maszerują przez most Westminsterski, około 1917 roku",
+      "queries": [
+        "Bain News Service London 1916 street",
+        "Trafalgar Square tank 1918 war bonds",
+        "Piccadilly Circus 1915 photograph",
+        "London omnibus 1916 photograph",
+        "Lord Mayor Show 1916 London",
+        "Whitehall 1917 photograph troops London",
+        "Zeppelin raid London 1915 damage photograph",
+        "London Bridge 1917 photograph"
+      ],
+      "must": [
+        "london",
+        "piccadilly",
+        "trafalgar",
+        "whitehall",
+        "strand",
+        "westminster"
+      ],
+      "avoid": [
+        "map",
+        "plan",
+        "poster",
+        "cartoon",
+        "drawing",
+        "painting",
+        "medal",
+        "badge",
+        "stamp",
+        "portrait of",
+        "grave",
+        "cemetery"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.1,
+      "minWidth": 2000,
+      "file": "American troops on way to the front march thru London amid the plaudits of the multitudes, crossing Westminster... - NARA - 530734.tif",
+      "crop": {
+        "left": 0.01,
+        "right": 0.01,
+        "top": 0.01,
+        "bottom": 0.05
+      }
+    },
+    {
+      "id": "foto-paryz-1940",
+      "subject": "Paryż pod okupacją — defilada niemiecka na Polach Elizejskich, 1940 rok (Bundesarchiv)",
+      "queries": [
+        "Champs Elysees 1940 German parade NARA",
+        "German troops parade Paris 14 June 1940",
+        "Paris occupation 1940 Arc de Triomphe soldiers photograph",
+        "Deutsche Truppen Paris 1940 Champs-Elysees",
+        "Bundesarchiv Paris Parade Champs Elysee 1940",
+        "Bundesarchiv Bild 146-1994-036-09A"
+      ],
+      "must": [
+        "paris",
+        "1940",
+        "bundesarchiv",
+        "champs"
+      ],
+      "avoid": [
+        "map",
+        "poster",
+        "portrait of",
+        "hitler",
+        "karte",
+        "1944",
+        "liberation",
+        "libération",
+        "weeps",
+        "frenchman",
+        "album",
+        "luftwachtregiment"
+      ],
+      "avoidDefault": false,
+      "minAspect": 1.3,
+      "minWidth": 800,
+      "file": "Bundesarchiv Bild 146-1994-036-09A, Paris, Parade auf der Champs Elysée.jpg"
+    },
+    {
+      "id": "foto-la-buse",
+      "subject": "Kryptogram La Buse — zaszyfrowana wiadomość o skarbie Oliviera Levasseura",
+      "queries": [
+        "La Buse cryptogram Levasseur",
+        "Cryptogramme de La Buse"
+      ],
+      "must": [
+        "buse",
+        "levasseur",
+        "cryptogram"
+      ],
+      "avoidDefault": false,
+      "file": "Cryptogramme de La Buse.jpg",
+      "crop": {
+        "top": 0.15,
+        "bottom": 0.3
+      },
+      "minAspect": 0.8,
+      "minWidth": 1100
     }
   ],
   "_": "Slot nazywa się jak pole `art` w pliku treści i jak klucz kredytu. NIE WOLNO nazywać slotu tak, jak klucz `game-art.json` (hero, jerozolima, wlochy, japonia, karaiby, londyn): rozstrzygacz media.ts oddaje wtedy materiał gry, a zdjęcia nikt nie zobaczy (punkt 22 backlogu, 2026-09-10). 2026-09-11 (P4 paczka 0): pięć widoków epok dostało przedrostek `foto-` — kadry do galerii stron gier z tej epoki; slot `hero` zdjęty (pierwszy ekran głównej to art gry); trzy nowe sloty — pierwszy ekran stron gier, których nie ma w Steam."

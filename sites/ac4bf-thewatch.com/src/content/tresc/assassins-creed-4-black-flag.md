@@ -89,6 +89,7 @@ rows:
     year: '1715'
     title: Edward Kenway — korsarz w cudzym stroju
     meta: Swansea · Hawana · Obserwatorium · Mędrzec
+    art: karaiby-k06
     flip: true
     band: true
     body:
@@ -116,6 +117,7 @@ rows:
     year: Kawka
     title: Kawka — bryg, który trzeba zdobyć i rozbudować
     meta: Ostrzał · abordaż · własna flota · szanty
+    art: karaiby-k01
     flip: false
     band: false
     body:
@@ -161,6 +163,7 @@ rows:
     year: Abstergo
     title: Wątek współczesny bez Desmonda i tryb wieloosobowy
     meta: Abstergo Entertainment · pierwsza osoba · Game Lab
+    art: karaiby-k03
     flip: false
     band: true
     body:
@@ -183,6 +186,7 @@ rows:
     year: 2013–2014
     title: Freedom Cry i Rogue — co stoi obok
     meta: Adéwalé · Aveline · Shay Cormac
+    art: freedom-cry-k01
     flip: true
     band: false
     body:
@@ -203,6 +207,7 @@ rows:
     year: 2013–2026
     title: Wydania — od PlayStation 3 po Black Flag Resynced
     meta: 2013 · Rebel Collection 2019 · Gold Edition · remake 2026
+    art: karaiby-k04
     flip: false
     band: false
     body:
@@ -225,6 +230,7 @@ rows:
     year: Start
     title: Dla kogo i od czego zacząć
     meta: Samodzielne wejście · 20 godzin fabuły · przed trójką lub po niej
+    art: karaiby-k05
     flip: true
     band: true
     body:

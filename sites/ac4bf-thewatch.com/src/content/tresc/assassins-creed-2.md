@@ -78,6 +78,7 @@ rows:
     year: '1476'
     title: Fabuła — zemsta, która rośnie w spisek
     meta: Ród Auditore · Pazzi · Rodrigo Borgia
+    art: foto-florencja-1470
     flip: true
     band: true
     body:
@@ -103,6 +104,7 @@ rows:
     year: Mechanika
     title: Rozgrywka — co zmieniło się po pierwszej części
     meta: Pływanie · rozgłos · willa · dwa ukryte ostrza
+    art: wlochy-k03
     flip: false
     band: false
     body:
@@ -131,6 +133,7 @@ rows:
     year: XXI wiek
     title: Desmond, Animus 2.0 i dwadzieścia glifów
     meta: Lucy · Shaun · Rebecca · Minerwa
+    art: wlochy-k01
     flip: true
     band: false
     body:
@@ -151,6 +154,7 @@ rows:
     year: 2010–2022
     title: Dodatki, edycje i The Ezio Collection
     meta: Bitwa o Forlì · Stos próżności · Black Edition · Switch
+    art: foto-savonarola
     flip: false
     band: true
     body:
@@ -182,6 +186,7 @@ rows:
     year: Start
     title: Dla kogo i jak w nią dziś zagrać
     meta: Bez jedynki · trylogia ciągiem · która wersja
+    art: wlochy-k05
     flip: true
     band: false
     body:

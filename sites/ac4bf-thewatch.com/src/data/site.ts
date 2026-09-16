@@ -306,6 +306,6 @@ export const numeracja: Czesc[] = [
 export const podpis = {
   role: 'Redakcja',
   author: 'Bractwo',
-  date: '2026-09-15',
-  dateLabel: '15 września 2026',
+  date: '2026-09-16',
+  dateLabel: '16 września 2026',
 };

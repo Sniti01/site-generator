@@ -1058,6 +1058,42 @@
       },
       "minAspect": 0.8,
       "minWidth": 1100
+    },
+    {
+      "id": "foto-signoria",
+      "subject": "Florencja — wieża Palazzo Vecchio nad dachami miasta",
+      "queries": [
+        "Piazza della Signoria Palazzo Vecchio panorama",
+        "Palazzo Vecchio Florence facade square",
+        "Piazza della Signoria Florence wide view",
+        "Palazzo Vecchio from Piazzale Michelangelo"
+      ],
+      "must": [
+        "signoria",
+        "palazzo vecchio",
+        "vecchio"
+      ],
+      "avoid": [
+        "interior",
+        "statue detail",
+        "map",
+        "plan",
+        "night",
+        "fountain detail",
+        "neptune",
+        "perseus",
+        "david",
+        "museum",
+        "hall",
+        "salone",
+        "cortile",
+        "model",
+        "aerial",
+        "drone"
+      ],
+      "minAspect": 1.4,
+      "minWidth": 2400,
+      "file": "Palazzo Vecchio - Piazzale Michelangelo, Florence, Italy - October 24, 2009.jpg"
     }
   ],
   "_": "Slot nazywa się jak pole `art` w pliku treści i jak klucz kredytu. NIE WOLNO nazywać slotu tak, jak klucz `game-art.json` (hero, jerozolima, wlochy, japonia, karaiby, londyn): rozstrzygacz media.ts oddaje wtedy materiał gry, a zdjęcia nikt nie zobaczy (punkt 22 backlogu, 2026-09-10). 2026-09-11 (P4 paczka 0): pięć widoków epok dostało przedrostek `foto-` — kadry do galerii stron gier z tej epoki; slot `hero` zdjęty (pierwszy ekran głównej to art gry); trzy nowe sloty — pierwszy ekran stron gier, których nie ma w Steam."

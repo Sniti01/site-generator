@@ -16,6 +16,7 @@
         { "i": 3, "ss": "0000003840", "opis": "Altaïr krzyżuje miecze z krzyżowcami w wąskiej uliczce" },
         { "i": 4, "ss": "0000003841", "opis": "Altaïr na białym koniu wjeżdża na plac wśród palm i tłumu" },
         { "i": 5, "ss": "0000003842", "opis": "Altaïr wspina się po drabinie nad placem z fontanną i straganami" },
+        { "i": 6, "ss": "0000003843", "opis": "Altaïr na gzymsie nad placem z fontanną i szubienicą" },
         { "i": 8, "ss": "0000003845", "opis": "Altaïr wisi na murze nad ulicą z łukami, w dole przechodnie" },
         { "i": 10, "ss": "0000003847", "opis": "Altaïr odchodzi w głąb zatłoczonej ulicy, plecami do nas" }
       ]
@@ -28,8 +29,11 @@
       "uwaga": "dachy Wenecji, bez HUD",
       "zrzuty": [
         { "i": 1, "ss": "ef44b9f703f71acfdeb728a497390d397084ee35", "opis": "Ezio skacze z dachu nad wenecki kanał, widok z góry" },
+        { "i": 2, "ss": "d3967a58038cc5e59332bb0043ab1ca343112bc6", "opis": "Ezio nurkuje z gondoli do laguny, na molo straż z halabardą" },
         { "i": 3, "ss": "627e52a3466b4932ca3d331db6922d165002edaa", "opis": "Ezio płynie kanałem o zmierzchu, pod arkadami patrol straży" },
-        { "i": 5, "ss": "2683f7aa974a6f569ec0f8a2fa0447259aed6b80", "opis": "Ezio nocą chwyta halabardę strażnika przy fontannie, w tle pełnia" }
+        { "i": 4, "ss": "cd8d91454014900f3360f2818d94e3aa0c22ffd3", "opis": "Ezio walczy ze strażą przed bazyliką św. Marka" },
+        { "i": 5, "ss": "2683f7aa974a6f569ec0f8a2fa0447259aed6b80", "opis": "Ezio nocą chwyta halabardę strażnika przy fontannie, w tle pełnia" },
+        { "i": 7, "ss": "5f558da23f7a18f176c15bd0a6c87b5086b2cda4", "opis": "Ezio spada z góry na strażnika na pomoście nad kanałem" }
       ]
     },
     {
@@ -85,12 +89,24 @@
       "appid": 582160,
       "kind": "keyart",
       "zrzuty": [
+        { "i": 0, "ss": "1a0ab42e93e51c48ad9a6bda7f408958e09a43b0", "opis": "Bayek idzie pustynią ku niskiemu słońcu, z lewej trzy hieny" },
+        { "i": 1, "ss": "c4a4545f51c6836ac11c31427944fc7df813edfb", "opis": "Bayek z Senu przed Sfinksem nocą, w tle piramidy Gizy" },
         { "i": 2, "ss": "7edc3de6db0e6391158863f766c334c6eab1dbaa", "opis": "Bayek na głowie Sfinksa w niskim słońcu, Senu krąży nad nim" },
         { "i": 3, "ss": "fbed28aec9059db9477e9bf8fb2ffa92c3ea9e56", "opis": "Bayek z łukiem na wielbłądzie, żołnierze z tarczami nacierają" },
         { "i": 4, "ss": "06861f6dd939c78a919db95bb8e75506216d3eb4", "opis": "Postać w masce Anubisa nad mumią w malowanej krypcie" }
       ]
     },
-    { "slot": "assassins-creed-valhalla", "appid": 2208920, "kind": "keyart" },
+    {
+      "slot": "assassins-creed-valhalla",
+      "appid": 2208920,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 0, "ss": "103481084a59b34837113daf27c04679caf743f3", "opis": "Eivor z dwoma toporami naciera na wojownika z kiścieniem w śniegu" },
+        { "i": 1, "ss": "e7310b36689ec722d2ea4643efc15bd8fa720c67", "opis": "Eivor dmie w róg na dziobie drakkaru, za nim nocny najazd i pożar" },
+        { "i": 2, "ss": "c3bff917ead50268eb7708ef3bf30e07b58929e9", "opis": "Eivor na dziobie drakkaru wskazuje toporem kościół w niskim słońcu" },
+        { "i": 3, "ss": "5e527e1e063ef041ca6680f503081274dcc5513a", "opis": "Eivor nad pergaminem naradza się z dwoma sojusznikami w kościele" }
+      ]
+    },
     {
       "slot": "assassins-creed-mirage",
       "appid": 3035570,
@@ -110,8 +126,10 @@
       "zrzuty": [
         { "i": 0, "ss": "0ef33c0f230da6ebac94f5959f0e0a8bbc48cf8a", "opis": "Jeździec w hełmie na koniu dęba nad grecką doliną, w górze orzeł" },
         { "i": 1, "ss": "3f8f4a09fb1d69648a8c20aae19ca2924ba275bd", "opis": "Kasandra rozmawia z Sokratesem na targu pod Akropolem" },
+        { "i": 2, "ss": "6dc9f95cfb6d264c3535b53ce08f36ee07066550", "opis": "Kassandra kopie ateńskiego hoplitę w leśnej bitwie" },
         { "i": 4, "ss": "71f5c2052a6bfb94486e929db3d6b92c06696843", "opis": "Spartańscy łucznicy podpalają z pokładu ateński okręt" },
-        { "i": 5, "ss": "c334fed07712111399ab1951eee432ec9ed46d28", "opis": "Aleksios i dwaj wojownicy w spartańskich hełmach w mroku świątyni" }
+        { "i": 5, "ss": "c334fed07712111399ab1951eee432ec9ed46d28", "opis": "Aleksios i dwaj wojownicy w spartańskich hełmach w mroku świątyni" },
+        { "i": 6, "ss": "16fc551879ac299dca68839da90f89d9e624db48", "opis": "Kassandra z toporem między dwoma osiłkami w błękitnych hełmach" }
       ]
     },
     {
@@ -135,7 +153,16 @@
         { "i": 12, "ss": "352e37d8333e285c1028bd13682d0dfb18ff023f", "opis": "Ezio z rekrutami bractwa przeciw gwardii Borgiów" }
       ]
     },
-    { "slot": "assassins-creed-rogue", "appid": 311560, "kind": "keyart" },
+    {
+      "slot": "assassins-creed-rogue",
+      "appid": 311560,
+      "kind": "keyart",
+      "zrzuty": [
+        { "i": 2, "ss": "142c19862c8bb307252dedf7f17cda4eb5f3f2b8", "opis": "Shay krzyżuje szable z zakapturzonym asasynem na brukowanej ulicy" },
+        { "i": 3, "ss": "221f6e993cdfc946eb1d61129b535d9d18b1c603", "opis": "Morrigan pod czerwonymi żaglami łamie lód o zachodzie słońca" },
+        { "i": 4, "ss": "a4f6c24857db50d675f79e5a63773f9443b1c95d", "opis": "Shay na kłodzie nad leśną zatoką patrzy na okręt o czerwonych żaglach" }
+      ]
+    },
     {
       "slot": "assassins-creed-revelations",
       "appid": 201870,
@@ -147,20 +174,69 @@
         { "i": 5, "ss": "6b2c6d8df87edbacd491d15869df946062612c8e", "opis": "Hagia Sophia o zachodzie słońca, ptaki nad dachami Konstantynopola" }
       ]
     },
-    { "slot": "assassins-creed-liberation", "appid": 260210, "kind": "keyart", "uwaga": "Liberation HD — wydanie na PC" },
-    { "slot": "assassins-creed-chronicles", "appid": 354380, "kind": "keyart", "uwaga": "trylogia; kluczowy art z China (pierwsza czesc); India 359610, Russia 359600" },
+    {
+      "slot": "assassins-creed-liberation",
+      "appid": 260210,
+      "kind": "keyart",
+      "uwaga": "Liberation HD — wydanie na PC",
+      "zrzuty": [
+        { "i": 1, "ss": "0c199018cd0e3c80136ef35358be15c278c03bcc", "opis": "Aveline z profilu patrzy na nocny plac Nowego Orleanu" },
+        { "i": 2, "ss": "154b5ab3df1b83932a128d14df5378c71e4c3c21", "opis": "Nocą na bagnach Aveline podchodzi do chaty na palach ze świecami" },
+        { "i": 4, "ss": "151c1b35d26b5962326043fa532958f186e73ce4", "opis": "O zachodzie Aveline z maczetą i ukrytym ostrzem naprzeciw zbira i oficera" }
+      ]
+    },
+    {
+      "slot": "assassins-creed-chronicles",
+      "appid": 354380,
+      "kind": "keyart",
+      "uwaga": "trylogia; kluczowy art z China (pierwsza czesc); India 359610, Russia 359600",
+      "zrzuty": [
+        { "i": 4, "ss": "eaf976ffbb4db92a061cfb6d7e18253766ee43b5", "opis": "Shao Jun walczy w płonącej sali pałacu, obok leży strażnik" }
+      ]
+    },
     {
       "slot": "freedom-cry",
       "appid": 277590,
       "kind": "keyart",
       "uwaga": "samodzielne wydanie dodatku; strona /assassins-creed-4-black-flag/freedom-cry/",
       "zrzuty": [
-        { "i": 1, "ss": "53c4c79145939f5635dd083213cb58b8d729b932", "opis": "Adéwalé z maczetą na pokładzie o zmierzchu" }
+        { "i": 1, "ss": "53c4c79145939f5635dd083213cb58b8d729b932", "opis": "Adéwalé z maczetą na pokładzie o zmierzchu" },
+        { "i": 2, "ss": "e46c06be6e686b42a0072aabba81eaf3d9aa1aa9", "opis": "Adéwalé unosi maczetę w szalupie nad powalonym wrogiem, w tle okręt" },
+        { "i": 5, "ss": "4785c7a9fbdb82dda84da09225c2fcde3b396389", "opis": "Nocą Adéwalé z garłaczem skrada się do dwóch żołnierzy przy ognisku" }
       ]
     },
-    { "slot": "dawn-of-ragnarok", "appid": 2210140, "kind": "keyart", "uwaga": "dodatek do Valhalli; strona /assassins-creed-valhalla/dawn-of-ragnarok/" },
-    { "slot": "chronicles-india", "appid": 359610, "kind": "zrzuty", "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/" },
-    { "slot": "chronicles-russia", "appid": 359600, "kind": "zrzuty", "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/" }
+    {
+      "slot": "dawn-of-ragnarok",
+      "appid": 2210140,
+      "kind": "keyart",
+      "uwaga": "dodatek do Valhalli; strona /assassins-creed-valhalla/dawn-of-ragnarok/",
+      "zrzuty": [
+        { "i": 1, "ss": "6f61c409ea681cebe58637d75a097f97d582572d", "opis": "Havi włócznią roztrzaskuje zamrożonego wroga na lodowe odłamki" },
+        { "i": 2, "ss": "ff665e2ebb714888caedbfe72c640c16081a1e6f", "opis": "Wojowniczka w brązowej zbroi i Havi w sali zalanej lawą" },
+        { "i": 4, "ss": "bead2e2f2ae7d9521bada135c20345e124f6e00f", "opis": "Krasnolud w kuźni podaje Havi świeżo wykuty karwasz" }
+      ]
+    },
+    {
+      "slot": "chronicles-india",
+      "appid": 359610,
+      "kind": "zrzuty",
+      "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/",
+      "zrzuty": [
+        { "i": 2, "ss": "e2362c25dd5e4095591d3e365e79c8fcccaa80bc", "opis": "Arbaaz w skoku wiary nad pałacem z mandalą o zachodzie słońca" },
+        { "i": 3, "ss": "9ffa19482915305f303e9b8c11aeee0ea85b5533", "opis": "Arbaaz biegnie przez ogród obok malowanych słoni" },
+        { "i": 7, "ss": "621907194c6438c1722b81aae3b0ff4b7cfcdf0f", "opis": "Arbaaz zwisa z muru pod tarasem, wyżej stoją dwaj strażnicy" }
+      ]
+    },
+    {
+      "slot": "chronicles-russia",
+      "appid": 359600,
+      "kind": "zrzuty",
+      "uwaga": "П57: tylko kadry rzedow (pole zrzuty) — bez keyartu i okladki; strona /assassins-creed-chronicles/",
+      "zrzuty": [
+        { "i": 6, "ss": "35b0181eb3ac1f7dc85ea4a83b3b888edc6478e9", "opis": "Nikołaj na nabrzeżu pod stalowym mostem, czerwone niebo Moskwy" },
+        { "i": 10, "ss": "9b19b07d60316e0055b7b1955e4bf3e7a0d076d2", "opis": "Nikołaj na dachu patrzy na Moskwę, wieże Kremla w czerwieni" }
+      ]
+    }
   ],
   "_bez_steam": "Bloodlines (PSP), Pirates (mobilna), II: Discovery (DS) — materialu wydawcy w Steam nie ma; bohater ich stron — kadr z Wikimedia Commons przez art.json i fetch-art.mjs; rzedy od 2026-09-15 (П57, klasa licencji «gier serii, o ktorych sa strony serwisu») moga niesc zrzuty innych gier serii (pole zrzuty); rozstrzygacz media.ts oddaje zdjecie, gdy materialu gry brak.",
   "_zrzuty": "Kadry rzedow (П57): u gry pole zrzuty: [{ i, ss, opis }] — i to indeks zrzutu na witrynie od zera, ss to hash ss_<hex> z adresu zrzutu (kolejnosc listy Steam nie jest obiecana; id z API to sam indeks), opis idzie do alt kadru. Plik src/assets/gry/<slot>-k<nn>.jpg, wpis game-art.json pod tym kluczem. Kandydaci do wyboru: npm run gameart -- --kandydaci <slot|all> → input/kadry/<slot>/ (poza git) + arkusz tools/contact-sheet.mjs."

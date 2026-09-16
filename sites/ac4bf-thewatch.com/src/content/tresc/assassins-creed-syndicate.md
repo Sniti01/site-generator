@@ -85,6 +85,7 @@ rows:
     year: Frye
     title: Jacob wchodzi drzwiami, Evie oknem
     meta: Dwie postacie · przełączanie w mieście · broń z epoki
+    art: londyn-k07
     flip: true
     band: true
     body:
@@ -119,6 +120,7 @@ rows:
     year: Skokierzy
     title: Starrick, wojna gangów i skok do roku 1916
     meta: Gang Skokierów · Dickens, Darwin, Marks · Lydia Frye i Churchill
+    art: londyn-k05
     flip: true
     band: false
     body:

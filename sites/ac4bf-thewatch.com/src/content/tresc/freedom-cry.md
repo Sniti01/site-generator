@@ -65,6 +65,7 @@ rows:
     year: '1735'
     title: Adéwalé — rozbitek w Port-au-Prince
     meta: Trynidad · Jackdaw · Bastienne Josèphe · Maroni
+    art: freedom-cry-k02
     flip: true
     band: true
     body:
@@ -106,6 +107,7 @@ rows:
     year: 2013–2019
     title: DLC, wersja samodzielna i Rebel Collection
     meta: PS3 · PS4 · Xbox 360 · Xbox One · PC · Switch
+    art: freedom-cry-k05
     flip: true
     band: false
     body:

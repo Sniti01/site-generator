@@ -25,6 +25,7 @@
     "tree:selftest": "node tools/build-tree.mjs --selftest",
     "art": "node ../../core/media/fetch-art.mjs .",
     "art:check": "node ../../core/media/fetch-art.mjs . --dry-run",
+    "art:selftest": "node ../../core/media/fetch-art.mjs --selftest",
     "art:sheet": "node tools/contact-sheet.mjs",
     "gameart": "node tools/fetch-game-art.mjs",
     "gameart:check": "node tools/fetch-game-art.mjs --dry-run",

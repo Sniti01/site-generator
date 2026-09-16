@@ -392,6 +392,7 @@
       "cluster": "assassins lineage",
       "wave": 1,
       "темы": ["film"],
+      "блоки": [{ "block": "hero-key-art" }],
       "related": ["/ezio-auditore/", "/", "/assassins-creed-2/"],
       "h1": "Rodowód, czyli film o ojcu Ezia z Assassin’s Creed II",
       "title": "Assassin’s Creed: Rodowód — prequel w wersji aktorskiej",

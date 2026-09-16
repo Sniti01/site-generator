@@ -1,6 +1,18 @@
 ---
 url: /assassins-creed-rodowod/
 era: wlochy
+art: assassins-creed-rodowod
+lead: >-
+  Film aktorski Ubisoftu z 2009 roku: 36 minut w trzech odcinkach o Giovannim
+  Auditore, bankierze i asasynie z Florencji, którego śledztwo prowadzi
+  do templariuszy. Kończy się przed egzekucją, od której zaczyna się
+  Assassin’s Creed II.
+primary:
+  href: '#co-to-jest'
+  label: Czym jest Rodowód
+secondary:
+  href: /assassins-creed-2/
+  label: Assassin’s Creed II
 rows:
   - id: co-to-jest
     year: '2009'
@@ -48,6 +60,7 @@ rows:
     year: Prequel
     title: Jak Rodowód łączy się z Assassin’s Creed II
     meta: Egzekucja we Florencji · obsada z gry · Devon Bostick jako Ezio
+    art: foto-signoria
     flip: false
     band: false
     body:
@@ -67,6 +80,7 @@ rows:
     year: 2016–2022
     title: Gdzie obejrzeć — YouTube, Canal+ i The Ezio Collection
     meta: PS4 i Xbox One 2016 · Switch 2022 · Lineage i Embers w zestawie
+    art: wlochy-k02
     flip: true
     band: false
     body:
@@ -86,6 +100,7 @@ rows:
     year: 2010–2017
     title: Inne filmy serii — Ascendance, Embers i kino z Fassbenderem
     meta: Animacje 2010 i 2011 · film kinowy 2016 · zapowiedź serialu Netfliksa
+    art: discovery
     flip: false
     band: true
     body:
@@ -109,6 +124,7 @@ rows:
     year: Werdykt
     title: Czy warto obejrzeć Rodowód — i w którym momencie
     meta: 36 minut · przed dwójką albo zaraz po jej prologu
+    art: wlochy-k07
     flip: true
     band: false
     body:

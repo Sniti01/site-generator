@@ -2712,6 +2712,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"

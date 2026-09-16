@@ -371,6 +371,7 @@
       "type": "guide",
       "cluster": "assassin creed po kolei",
       "wave": 1,
+      "блоки": [{ "block": "hero-key-art" }],
       "related": ["/poradniki/", "/assassins-creed-1/", "/assassins-creed-4-black-flag/", "/"],
       "h1": "Od której części zacząć: Assassin’s Creed po kolei",
       "title": "Assassin’s Creed po kolei — chronologia i premiery serii",

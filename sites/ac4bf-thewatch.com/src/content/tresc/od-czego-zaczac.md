@@ -1,5 +1,17 @@
 ---
 url: /poradniki/od-czego-zaczac/
+art: assassins-creed-mirage-k00
+lead: >-
+  Serię da się ułożyć na dwa sposoby: według premier, od jedynki z 2007 roku
+  po Shadows z 2025, albo według epok, od Grecji V wieku p.n.e. po Rosję
+  roku 1918. Trzy wejścia do serii zamiast jednego: klasyka Ezia, świat
+  Black Flag albo RPG od Origins.
+primary:
+  href: '#trzy-wejscia'
+  label: Trzy wejścia
+secondary:
+  href: /poradniki/
+  label: Wszystkie poradniki
 byline:
   role: Redakcja
   author: Bractwo
@@ -12,6 +24,7 @@ rows:
     year: 2007–2025
     title: Dwie kolejności, które się nie pokrywają
     meta: Czternaście części głównej linii · osiemnaście lat premier
+    art: assassins-creed-odyssey-k06
     flip: false
     band: false
     body:
@@ -223,6 +236,7 @@ rows:
     year: Oś czasu
     title: Chronologia wydarzeń — od najstarszej epoki do najnowszej
     meta: Dwadzieścia jeden tytułów ułożonych według czasu akcji
+    art: assassins-creed-origins-k01
     flip: false
     band: false
     body:
@@ -251,6 +265,7 @@ rows:
     year: XXI wiek
     title: Wątek współczesny — Desmond, Layla, Basim
     meta: Jedna opowieść, opowiadana w kolejności premier
+    art: assassins-creed-origins-k00
     flip: true
     band: true
     body:
@@ -275,6 +290,7 @@ rows:
     year: Poboczne
     title: Co da się pominąć, a czego lepiej nie
     meta: Spin-offy, dodatki, remastery, zapowiedzi
+    art: chronicles-india-k02
     flip: false
     band: false
     body:

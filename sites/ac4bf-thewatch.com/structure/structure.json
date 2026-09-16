@@ -2765,6 +2765,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "high",

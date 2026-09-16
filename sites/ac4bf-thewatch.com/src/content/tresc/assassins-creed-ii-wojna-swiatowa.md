@@ -1,5 +1,16 @@
 ---
 url: /assassins-creed-ii-wojna-swiatowa/
+art: assassins-creed-ii-wojna-swiatowa
+lead: >-
+  Najpóźniejsza epoka czternastu części głównej linii to Londyn roku 1868.
+  Pierwsza wojna dostała misje poboczne w Syndicate, druga — tylko epizod
+  w Unity; osobnej gry nie ma.
+primary:
+  href: '#skad-pytanie'
+  label: Skąd to pytanie
+secondary:
+  href: /assassins-creed-syndicate/
+  label: Strona Syndicate
 byline:
   role: Redakcja
   author: Bractwo
@@ -10,6 +21,7 @@ rows:
     year: 2007–2025
     title: Skąd bierze się to pytanie
     meta: Czternaście części · 431 p.n.e. – 1868 · XX wiek na marginesie
+    art: assassins-creed-odyssey-k02
     flip: false
     band: false
     body:
@@ -47,6 +59,7 @@ rows:
     year: Broń
     title: Co utrudnia serii wejście w tę epokę
     meta: Broń automatyczna · samochody · zapis historii · pamięć
+    art: foto-paryz-1940
     flip: false
     band: false
     body:
@@ -70,6 +83,7 @@ rows:
     year: '2027'
     title: Co dalej i co krąży pod hasłem „World War II”
     meta: Resynced · Hexe · Invictus · koncept TeaserPlay · rok 1492
+    art: karaiby-k04
     flip: true
     band: false
     body:

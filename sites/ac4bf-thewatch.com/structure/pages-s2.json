@@ -404,6 +404,7 @@
       "cluster": "assassins creed world war",
       "wave": 1,
       "темы": ["epoki"],
+      "блоки": [{ "block": "hero-key-art" }],
       "related": ["/", "/assassins-creed-shadows/", "/poradniki/"],
       "h1": "Dlaczego nie ma Assassin’s Creed o II wojnie światowej?",
       "title": "II wojna światowa a Assassin’s Creed — brakująca epoka",

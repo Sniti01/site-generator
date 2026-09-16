@@ -96,6 +96,7 @@ rows:
     year: '1754'
     title: Haytham i Connor — templariusz i jego syn asasyn
     meta: Royal Opera House · Kaniehtí:io · Achilles Davenport · Charles Lee
+    art: assassins-creed-3-k04
     flip: true
     band: true
     body:
@@ -119,6 +120,7 @@ rows:
     year: Kolonie
     title: Boston, Nowy Jork, pogranicze i osada Davenporta
     meta: Pory roku · polowanie · tomahawk · strzałka z liną · rzemiosło
+    art: assassins-creed-3-k02
     flip: false
     band: false
     body:
@@ -140,6 +142,7 @@ rows:
     year: Aquila
     title: Aquila — bryg, od którego zaczęło się morze w serii
     meta: Salwy burtowe · folgierze · kule łańcuchowe · zlecenia kaperskie
+    art: assassins-creed-3-k09
     flip: true
     band: false
     body:
@@ -203,6 +206,7 @@ rows:
     year: Start
     title: Komu trójka i w którym miejscu serii ją zagrać
     meta: Po Revelations · przed Black Flag · Rogue jako druga strona
+    art: assassins-creed-3-k08
     flip: false
     band: true
     body:

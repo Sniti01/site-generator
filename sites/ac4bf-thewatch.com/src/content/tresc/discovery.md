@@ -61,6 +61,7 @@ rows:
     year: '2,5D'
     title: Rzut z boku, trzy rodzaje wspomnień i hacki Animusa
     meta: Ostrza, miecz, noże · pościg i skradanie · hacki Animusa
+    art: wlochy-k04
     flip: false
     band: false
     body:
@@ -80,6 +81,7 @@ rows:
     year: 2009–2013
     title: Kartridż po angielsku, koniec w App Store i komu to dopowie
     meta: Zapowiedź u Apple · dziś z drugiej ręki · po dwójce albo wcale
+    art: foto-nintendo-ds
     flip: true
     band: false
     body:

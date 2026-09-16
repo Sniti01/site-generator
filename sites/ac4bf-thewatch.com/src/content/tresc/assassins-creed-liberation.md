@@ -104,6 +104,7 @@ rows:
     year: '1765'
     title: Aveline de Grandpré — córka kupca i niewolnicy
     meta: Agaté · Madeleine de L’Isle · Chichén Itzá · Dysk Proroctwa
+    art: assassins-creed-liberation-k01
     flip: true
     band: true
     body:
@@ -135,6 +136,7 @@ rows:
     year: Persony
     title: Dama, niewolnica, asasynka — trzy stroje, trzy różne gry
     meta: Rozgłos liczony osobno · przebieralnie · parasolka ze strzałkami
+    art: assassins-creed-liberation-k04
     flip: false
     band: false
     body:
@@ -163,6 +165,7 @@ rows:
     year: Luizjana
     title: Nowy Orlean, bagna i Chichén Itzá
     meta: Aligatory · konary zamiast dachów · nurkowanie · dziewięć sekwencji
+    art: assassins-creed-liberation-k02
     flip: true
     band: false
     body:

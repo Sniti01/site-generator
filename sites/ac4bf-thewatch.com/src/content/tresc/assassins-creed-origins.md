@@ -82,6 +82,7 @@ rows:
     year: '49 p.n.e.'
     title: Bayek, Aya i narodziny Ukrytych
     meta: Siwa · Zakon Starożytnych · Kleopatra · Layla Hassan
+    art: assassins-creed-origins-k04
     flip: true
     band: true
     body:
@@ -101,6 +102,7 @@ rows:
     year: Egipt
     title: Jedna mapa bez sektorów, Senu i walka na hitboksach
     meta: Aleksandria · Memfis · Giza · łowca, wojownik, wróż
+    art: assassins-creed-origins-k03
     flip: false
     band: false
     body:
@@ -120,6 +122,7 @@ rows:
     year: 2018–2022
     title: Ukryci, Klątwa faraonów, Wycieczka krajoznawcza i 60 klatek
     meta: Synaj · Teby · 75 wycieczek bez walki · Gold · łatka 1.60
+    art: assassins-creed-origins-k02
     flip: true
     band: false
     body:

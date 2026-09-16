@@ -53,6 +53,7 @@ rows:
     year: 2015–2016
     title: Trzy osobne gry z widokiem z boku od Climax Studios
     meta: Climax Studios · Ubisoft Montréal · PC, PS4, Xbox One, PS Vita
+    art: assassins-creed-chronicles-k04
     flip: false
     band: false
     body:
@@ -95,6 +96,7 @@ rows:
     year: '1841'
     title: India — Arbaaz Mir i diament Koh-i-Noor
     meta: Państwo Sikhów · Amritsar · Herat · Ethan Frye
+    art: chronicles-india-k03
     flip: false
     band: false
     body:
@@ -115,6 +117,7 @@ rows:
     year: '1918'
     title: Russia — Nikołaj Orłow, Anastazja i tajne zakończenie
     meta: Jekaterynburg · Moskwa · Kreml · Otso Berg
+    art: chronicles-russia-k10
     flip: true
     band: false
     body:
@@ -140,6 +143,7 @@ rows:
     year: Skradanie
     title: Rozgrywka — pole widzenia, rangi i trzy arsenały
     meta: Cień · Asasyn · Zabijaka · Dusiciel · ucieczki na czas
+    art: chronicles-india-k07
     flip: false
     band: true
     body:
@@ -165,6 +169,7 @@ rows:
     year: Start
     title: Wydania, polska wersja, odbiór i komu to polecić
     meta: Napisy PL · konto Ubisoft · China, India, Russia po kolei
+    art: chronicles-russia-k06
     flip: true
     band: false
     body:

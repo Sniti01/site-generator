@@ -30,6 +30,8 @@
     "gameart": "node tools/fetch-game-art.mjs",
     "gameart:check": "node tools/fetch-game-art.mjs --dry-run",
     "corpus": "node tools/fetch-corpus.mjs",
+    "korpus": "node tools/korpus.mjs",
+    "korpus:selftest": "node tools/korpus.mjs --selftest",
     "recon": "node tools/recon-s0.mjs",
     "anatomy": "node tools/anatomy-s3.mjs",
     "anatomy:check": "node tools/anatomy-s3.mjs --dry-run",

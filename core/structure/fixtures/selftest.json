@@ -109,6 +109,9 @@
     { "имя": "пустые keywords", "правка": { "pages.1.keywords": [] }, "ждём": "pusta lista" },
     { "имя": "total_queries врёт", "правка": { "site.total_queries": 7 }, "ждём": "total_queries" },
     { "имя": "нет semantics_source", "правка": { "site.semantics_source": "__usuń__" }, "ждём": "site.semantics_source" },
+    { "имя": "semantics_source из пробелов", "правка": { "site.semantics_source": "   " }, "ждём": "site.semantics_source: pole obowiązkowe" },
+    { "имя": "semantics_source числом", "правка": { "site.semantics_source": 2026 }, "ждём": "ma być tekstem" },
+    { "имя": "total_queries строкой", "правка": { "site.total_queries": "6" }, "ждём": "ma być liczbą" },
 
     { "имя": "блок вне словаря", "правка": { "pages.0.blocks.0.block": "hero" }, "ждём": "spoza słownika" },
     { "имя": "блок не секция", "правка": { "pages.0.blocks.0.block": "grain" }, "ждём": "tylko sekcje" },

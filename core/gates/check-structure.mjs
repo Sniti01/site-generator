@@ -93,10 +93,19 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
     err('brak sekcji `site` — nagłówek witryny jest obowiązkowy');
     return { errors, stats: null };
   }
+  // Pole nagłówka sprawdzane jest nie tylko co do obecności, ale i co do typu
+  // ze schematu: `semantics_source` z samych spacji albo liczba zamiast tekstu
+  // przechodziłyby jako „jest” — a to jedyne pole, którego treść nikt inny nie
+  // liczy (przegląd 2026-09-18, sesja 5 drugiej witryny).
   for (const [field, spec] of Object.entries(schema.site)) {
-    if (spec['обязательно'] && (site[field] === undefined || site[field] === null || site[field] === '')) {
-      err(`site.${field}: pole obowiązkowe, a go nie ma`);
+    const value = site[field];
+    const blank = value === undefined || value === null || (typeof value === 'string' && value.trim() === '');
+    if (blank) {
+      if (spec['обязательно']) err(`site.${field}: pole obowiązkowe, a go nie ma`);
+      continue;
     }
+    if (spec['тип'] === 'строка' && typeof value !== 'string') err(`site.${field}: ma być tekstem, a jest ${typeof value}`);
+    if (spec['тип'] === 'число' && !Number.isFinite(value)) err(`site.${field}: ma być liczbą, a jest ${JSON.stringify(value)}`);
   }
   if (site.total_queries !== undefined && semantics && site.total_queries !== semantics.phrases.size) {
     err(`site.total_queries = ${site.total_queries}, a w wyliczeniu jest ${semantics.phrases.size} zapytań`);

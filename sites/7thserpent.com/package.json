@@ -15,6 +15,9 @@
     "corpus:report": "node tools/fetch-corpus.mjs --report",
     "recon": "node tools/recon-s0.mjs",
     "recon:check": "node tools/recon-s0.mjs --dry-run",
+    "anatomy": "node tools/anatomy-s3.mjs",
+    "anatomy:check": "node tools/anatomy-s3.mjs --dry-run",
+    "anatomy:selftest": "node tools/anatomy-s3.mjs --selftest",
     "tree": "node tools/build-tree.mjs",
     "tree:check": "node tools/build-tree.mjs --dry-run",
     "tree:selftest": "node tools/build-tree.mjs --selftest"

@@ -33,7 +33,7 @@
 **Источник каждого факта — документ корпуса `input/corpus/` (снимок
 2026-09-18): Википедия (статьи Max Payne, Max Payne (video game),
 Max Payne 2, Max Payne 3, Max Payne (film), Max Payne (character), James
-McCaffrey, Sam Lake, Remedy Entertainment — правки августа–сентября 2026),
+McCaffrey, Sam Lake, Remedy Entertainment — правки июня–сентября 2026),
 официальные страницы Remedy, App Store, Google Play, ESRB, HowLongToBeat,
 новости о ремейке 2024–2026.** Дата проверки — 2026-09-18. Чего в источниках
 нет — здесь нет; в текст это не попадает, а идёт строкой в `docs/UNRESOLVED.md`.
@@ -42,10 +42,10 @@ McCaffrey, Sam Lake, Remedy Entertainment — правки августа–се
 
 | Игра | Разработчик / издатель | Выход | Платформы и переиздания |
 |---|---|---|---|
-| **Max Payne** (2001) | Remedy Entertainment; PC — Gathering of Developers, консоли — Rockstar Games | Windows — 25.07.2001 (NA/EU) | PS2 — 11.12.2001 (NA), Xbox — 18.12.2001 (NA), Mac OS X — 16.07.2002; Game Boy Advance — 16.12.2003 (отдельная изометрическая версия, Möbius Entertainment); Xbox 360 — 2009 (Xbox Originals), PS3 — 2012 (PS2 Classic), PS4 — 2016 (PS2-классика, апрель), Xbox One / Series X\|S — обратная совместимость с 15.11.2021 |
-| **Max Payne Mobile** (2012) | порт War Drum Studios; Rockstar Games | анонс 06.04.2012; iOS — 12/13.04.2012 (внутри Википедии два числа), Android — 14.06.2012 | порт PC-версии с HD-графикой. App Store: последняя версия 2.0 от 17.10.2018, рейтинг 18+. Google Play: обновлено 02.06.2026, по отзывам июня 2026 игра вернулась в магазин после лет отсутствия из-за несовместимости с новыми Android. **Снимок магазинов сделан из Польши** (цена в PLN, PEGI 18) — для США цены и рейтинги проверять заново |
-| **Max Payne 2: The Fall of Max Payne** (2003) | Remedy Entertainment; Rockstar Games; консольные порты — Rockstar Vienna | Windows — 15.10.2003 (NA), Xbox — 25.11.2003 (NA), PS2 — 02.12.2003 (NA) | обратная совместимость Xbox One / Series X\|S с 15.11.2021 (вся трилогия). Продажи слабые: 950 000 в США к июню 2005 |
-| **Max Payne 3** (2012) | Rockstar Studios (объединение студий Rockstar, прежде всего Vancouver); Rockstar Games; Remedy не участвовала, консультировалась на финале | PS3 и Xbox 360 — 15.05.2012 (NA) / 18.05.2012 (PAL); Windows — 29.05.2012 (NA) / 01.06.2012 (PAL); OS X — 20.06.2013 | обратная совместимость Xbox One / Series X\|S с 15.11.2021. Движок RAGE. Сценарий — Dan Houser, Michael Unsworth, Rupert Humphries. Семь DLC 2012–2013, с апреля 2021 все бесплатны и включены в игру на PC; онлайн-мультиплеер консольных версий отключён в сентябре 2021. ESRB **M (Mature 17+)**: Blood and Gore, Intense Violence, Partial Nudity, Strong Language, Strong Sexual Content, Use of Drugs and Alcohol |
+| **Max Payne** (2001) | Remedy Entertainment; PC — Gathering of Developers, консоли — Rockstar Games | Windows — 25.07.2001 (NA/EU; статья серии в Википедии даёт 24.07) | PS2 — 11.12.2001 (NA), Xbox — 18.12.2001 (NA), Mac OS X — 16.07.2002; Game Boy Advance — 16.12.2003 (отдельная изометрическая версия, Möbius Entertainment); Xbox 360 — 2009 (Xbox Originals), PS3 — 2012 (PS2 Classic), PS4 — 2016 (источник Википедии — запись PlayStation Blog от 19.04.2016), Xbox One / Series X\|S — обратная совместимость с 15.11.2021 |
+| **Max Payne Mobile** (2012) | порт War Drum Studios; Rockstar Games | анонс 06.04.2012; iOS — 12/13.04.2012 (внутри Википедии два числа; App Store датирует версию 1.0 07.04.2012), Android — 14.06.2012 | порт PC-версии с HD-графикой. App Store (US): последняя версия 2.0 от 17.10.2018, 2,99 USD, рейтинг 18+. Google Play: обновлено 02.06.2026, по отзывам июня 2026 игра вернулась в магазин после лет отсутствия из-за несовместимости с новыми Android. **Снимок Google Play сделан из Польши** (13,99 PLN, PEGI 18) — для США цену и рейтинг Google Play проверять заново |
+| **Max Payne 2: The Fall of Max Payne** (2003) | Remedy Entertainment; Rockstar Games; консольные порты — Rockstar Vienna | Windows — 15.10.2003 (NA; HLTB даёт 14.10), Xbox — 25.11.2003 (NA), PS2 — 02.12.2003 (NA) | обратная совместимость Xbox One / Series X\|S с 15.11.2021 (вся трилогия). Продажи слабые: 950 000 в США к июню 2005 |
+| **Max Payne 3** (2012) | Rockstar Studios (объединение студий Rockstar, главным образом Vancouver, London, Toronto и New England); Rockstar Games; Remedy не участвовала, консультировалась на финале | PS3 и Xbox 360 — 15.05.2012 (NA) / 18.05.2012 (PAL); Windows — 29.05.2012 (NA) / 01.06.2012 (PAL); OS X — 20.06.2013 | обратная совместимость Xbox One / Series X\|S с 15.11.2021. Движок RAGE. Сценарий — Dan Houser, Michael Unsworth, Rupert Humphries. Семь DLC 2012–2013, с апреля 2021 все бесплатны и включены в игру на PC; онлайн-мультиплеер консольных версий отключён в сентябре 2021. ESRB **M (Mature 17+)**: Blood and Gore, Intense Violence, Partial Nudity, Strong Language, Strong Sexual Content, Use of Drugs and Alcohol |
 
 - **Права на серию** — у Rockstar Games: Take-Two купила франшизу у Remedy
   и 3D Realms 05.12.2001 (10 млн $ и акции). Remedy делала первые две части,
@@ -88,15 +88,19 @@ McCaffrey, Sam Lake, Remedy Entertainment — правки августа–се
 - **Max Payne**, 20th Century Fox, режиссёр John Moore; премьера в США
   17.10.2008, **PG-13**; бюджет 35 млн $; первый уикенд — 18 млн $, 1-е место.
 - Mark Wahlberg — Max, Mila Kunis — Mona Sax, **Olga Kurylenko — Natasha
-  Sax** (сестра Моны; персонаж фильма, в играх её нет), Beau Bridges —
+  Sax** (сестра Моны в фильме; в первой игре сестра-близнец Моны — Lisa
+  Punchinello), Beau Bridges —
   B.B. Hensley, Chris O'Donnell — Jason Colvin, Ludacris — Jim Bravura,
   Nelly Furtado — Christa Balder, Amaury Nolasco — Jack Lupino.
 - Rotten Tomatoes ≈ 15–16 %, Metacritic 31. DVD/Blu-ray — 20.01.2009,
   театральная и uncut-версии (uncut длиннее на ~3 минуты).
-- **Сиквела не было.** 16.06.2022 20th Century Studios объявила о перезапуске
-  фильма «на ранней стадии разработки»; ничего свежее в источниках нет.
-- **Max Payne: Retribution** (2017) — фан-фильм, короткий метр; к Fox
-  и Rockstar отношения не имеет.
+- **О сиквеле фильма источники не говорят ничего.** 16.06.2022 20th Century
+  Studios объявила о перезапуске фильма «на ранней стадии разработки»;
+  ничего свежее в источниках нет.
+- **Max Payne: Retribution** — фан-короткометражка 2017 года: так её
+  называет разведка S0 (принята П65) по адресам выдачи кластера (IMDb
+  tt4581198, cinemorgue «2017 short», Starburst «short review»); документа
+  о ней в корпусе нет — в тексте только как «fan film (2017)», без деталей.
 
 ### Ремейк — статус на 2026-09-18
 
@@ -111,9 +115,11 @@ McCaffrey, Sam Lake, Remedy Entertainment — правки августа–се
   по полугодовому отчёту 2026 (AltChar, 11.08.2026) — «в разработке».
 - **Даты выхода нет.** Оценка «весна 2027» у RockstarINTEL — догадка
   автора статьи, не слово Remedy или Rockstar; в тексты не идёт.
-- **«Max Payne 4» не существует** и не анонсирован; «max payne 5» — тоже.
-  Спрос на них живёт на странице ремейка (`/remake/`, П65 п. 3) как вопрос
-  «будет ли», ответ — только из источников с датой.
+- **«Max Payne 4» и «Max Payne 5» в источниках нет:** по инфобоксу
+  Википедии (правка 16.09.2026) последний выпуск серии — Max Payne 3 (2012),
+  анонсирован только ремейк 1 & 2. Спрос на них живёт на странице ремейка
+  (`/remake/`, П65 п. 3) как вопрос «будет ли», ответ — только из источников
+  с датой.
 - Remedy Connected Universe: Alex Casey в Alan Wake 2 — отсылка к Максу
   (голос McCaffrey, лицо Lake); связь между вселенными — тема `/story/`,
   без утверждений о каноне сверх источников.

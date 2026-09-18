@@ -1,0 +1,12 @@
+{
+ "site": {
+  "domain": "https://www.7thserpent.com",
+  "lang": "en",
+  "semantics": "input/Clustering_max-payne_with_volume.xlsx",
+  "semantics_date": "2026-09-18",
+  "total_queries": 508
+ },
+ "pages": [],
+ "exclusions": [],
+ "no_page": []
+}

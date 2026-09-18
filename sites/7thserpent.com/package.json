@@ -1,0 +1,26 @@
+{
+  "name": "7thserpent.com",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "npm run gates && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "contrast": "node ../../core/gates/check-contrast.mjs",
+    "gates": "node ../../core/gates/run.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.3",
+    "@factory/core": "*",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.2.6",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "^6.0.3",
+    "sharp": "^0.35.4"
+  }
+}

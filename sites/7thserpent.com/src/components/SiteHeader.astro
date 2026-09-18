@@ -1,0 +1,28 @@
+---
+/**
+ * Шапка этого сайта. Файл существует, чтобы `Base.astro` оставался при самом
+ * `<SiteHeader />`, а данные меню, знак, подписи и иконки жили по эту
+ * сторону границы. Механизм — в ядре: `@factory/core/chrome/SiteHeader.astro`.
+ * Здесь нет <style> и не должно быть: каждое правило `.hdr*` относится
+ * к элементу, который рисует ядро.
+ *
+ * Формы поиска нет намеренно: `searchAction` в ядре необязателен, без адреса
+ * нет обеих форм; поиск приходит со своей страницей.
+ *
+ * Знак — текст в роли `.t-title` до сессии темы (7): собственная символика
+ * сайта не может стоять на символике издателя (PRODUCT.md), а своя ещё
+ * не нарисована.
+ */
+import CoreSiteHeader from '@factory/core/chrome/SiteHeader.astro';
+import { site, nav } from '../data/site';
+---
+
+<CoreSiteHeader items={nav} brandLabel={`${site.name} — home`} navLabel="Main" burgerLabel="Menu">
+  <span slot="znak" class="t-title">{site.name}</span>
+  <svg slot="ikona-menu" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+  <svg slot="ikona-zamknij" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M5 5l14 14M19 5L5 19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+  </svg>
+</CoreSiteHeader>

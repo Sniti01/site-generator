@@ -1,0 +1,61 @@
+---
+/**
+ * Подвал этого сайта. Файл существует, чтобы `Base.astro` оставался при самом
+ * `<SiteFooter />`, а данные колонок, знак, фраза и весь низ подвала жили
+ * по эту сторону границы. Шасси — в ядре: `@factory/core/chrome/SiteFooter.astro`.
+ *
+ * Низ подвала — правовая полоса — здесь целиком, вместе со своими правилами
+ * (потомковый селектор требует скрута на обоих элементах, см. шапку ядра).
+ *
+ * Дисклеймер — по PRODUCT.md «Юридическое ограничение фан-сайтов»: сайт
+ * неофициальный, без идентики издателя. Имён компаний и класса лицензии на
+ * кадры здесь нет намеренно: они появляются вместе с артом и «да» владельца
+ * на класс лицензии (сессия арта), а не из головы.
+ */
+import CoreSiteFooter from '@factory/core/chrome/SiteFooter.astro';
+import { site, nav } from '../data/site';
+
+const columns = [{ title: 'Site', links: nav }];
+---
+
+<CoreSiteFooter columns={columns}>
+  <span slot="znak" class="t-title">{site.name}</span>
+  <Fragment slot="pitch">{site.tagline}. Written from a player's point of view.</Fragment>
+
+  <div slot="dol" class="ft__legal">
+    <div class="container ft__legal-inner">
+      <p class="t-caption">
+        Unofficial fan site, not affiliated with or endorsed by the publisher or developer of the
+        games. Game titles belong to their owners and are used only to describe what these pages
+        are about. No publisher logos, typefaces or colours.
+      </p>
+      <p class="t-caption ft__copy tabular">© 2026 {site.name}</p>
+    </div>
+  </div>
+</CoreSiteFooter>
+
+<style>
+  .ft__legal {
+    border-top: 1px solid var(--hairline);
+  }
+
+  .ft__legal-inner {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-block: var(--space-md);
+    color: var(--ink-muted);
+  }
+
+  .ft__copy {
+    flex: none;
+  }
+
+  @media (max-width: 560px) {
+    .ft__legal-inner {
+      flex-direction: column;
+      gap: var(--space-2xs);
+    }
+  }
+</style>

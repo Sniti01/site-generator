@@ -1,0 +1,222 @@
+@import 'tailwindcss' source('../../src');
+/* Только компоненты: `core/` несёт и скрипты гейтов, а Tailwind читает каждый
+   файл в зоне как источник кандидатов. Без сужения слово `block` из регулярного
+   выражения в core/gates/check-tokens.mjs попадало бы в боевой CSS утилитой
+   `.block`. Живость этого пути проверяется маркером (инвариант 8 CLAUDE.md). */
+@source '../../../../core/**/*.astro';
+
+/* ------------------------------------------------------------------ *
+ * ЗАГЛУШКА ДО СЕССИИ ТЕМЫ (7) — сессия 3, П62.
+ *
+ * Значения шасси (bg…danger) — по принципу одного визуального шасси
+ * (PRODUCT.md «Темы»): тёмное игровое, общее для сайтов фабрики. Четыре
+ * токена марки (accent, accent-text, ink-on-accent, accent-2) скопированы
+ * с первого сайта как заглушка, чтобы гейт контраста и ядро (32 токена
+ * договора core/styles/ROLES.md) имели значения. Гарнитуры — системные
+ * стеки, без @fontsource. Тему это НЕ решает: палитра, гарнитуры и DESIGN.md
+ * этого сайта — вопрос владельца на сессии 7.
+ *
+ * Цветовые токены записаны дважды: блок темы Tailwind и корневой блок
+ * с короткими именами для компонентов; гейт контраста сверяет пары hex.
+ * ГЕЙТ ИЩЕТ ОБА БЛОКА ПЕРВЫМ ВХОЖДЕНИЕМ ИХ ИМЕНИ В ФАЙЛЕ — имена блоков
+ * в комментариях выше блоков не писать (измерено 2026-09-18: слово в этой
+ * шапке увело сверку пар в блок темы, 11 пар «без пары»).
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-bg: #0d0c0a;
+  --color-bg-band: #131110;
+  --color-surface: #191614;
+  --color-surface-2: #211d1a;
+  --color-ink: #ede8de;
+  --color-ink-muted: #a8a199;
+  --color-danger: #e1584f;
+
+  --color-accent: #dc4e40;
+  --color-accent-text: #f0736a;
+  --color-ink-on-accent: #14100e;
+  --color-accent-2: #b08d57;
+
+  --font-display: ui-serif, Georgia, 'Times New Roman', serif;
+  --font-text: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+
+  --bg: #0d0c0a;
+  --bg-band: #131110;
+  --surface: #191614;
+  --surface-2: #211d1a;
+  --ink: #ede8de;
+  --ink-muted: #a8a199;
+  --danger: #e1584f;
+
+  --accent: #dc4e40;
+  --accent-text: #f0736a;
+  --ink-on-accent: #14100e;
+  --accent-2: #b08d57;
+
+  --hairline: rgb(237 232 222 / 0.12);
+  --hairline-strong: rgb(237 232 222 / 0.26);
+  --wash: rgb(237 232 222 / 0.06);
+  --wash-strong: rgb(237 232 222 / 0.1);
+  --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.45);
+
+  /* Бегущие токены эпохи: ядро читает их (foto.css, CardRail, LinkList,
+     ChipNav, button.css); у сайта без механики эпох они равны акценту —
+     ROLES.md §2 «Текущая эпоха». */
+  --era: var(--accent);
+  --era-text: var(--accent-text);
+  --era-ink: var(--ink-on-accent);
+
+  /* Шкала отступов: кратна 4, девять ступеней договора ядра плюс две верхние. */
+  --space-3xs: 4px;
+  --space-2xs: 8px;
+  --space-xs: 12px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 128px;
+  --space-5xl: 160px;
+
+  --radius-none: 0;
+  --radius-sharp: 2px;
+
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(72px, 9vw, 128px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------------ *
+ * База
+ * ------------------------------------------------------------------ */
+
+@import '@factory/core/styles/reset.css';
+
+html {
+  scroll-behavior: smooth;
+  /* Липкая шапка ядра — 68px: без этого якорь уезжает под неё. */
+  --header-h: 68px;
+}
+
+:target {
+  scroll-margin-top: calc(var(--header-h) + var(--space-lg));
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ядро ставит класс на <html>, когда открыт выдвижной ящик меню; правило,
+   дающее классу смысл, остаётся у сайта (ROLES.md §5). */
+html.menu-otwarte {
+  overflow: hidden;
+}
+
+@import '@factory/core/styles/base.css';
+
+/* ------------------------------------------------------------------ *
+ * Роли типографики. Каждый литеральный кегль на странице принадлежит одной
+ * из ролей — иначе гейт токенов роняет сборку. Восемь ролей — те, что
+ * надевает ядро (ROLES.md §1); кегли — первого сайта, до сессии темы.
+ * ------------------------------------------------------------------ */
+
+.t-headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.14;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+  margin: 0;
+}
+
+.t-title {
+  font-family: var(--font-text);
+  font-size: 1.3125rem;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+.t-lead {
+  font-family: var(--font-text);
+  font-size: clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem);
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.t-body {
+  font-family: var(--font-text);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.t-caption {
+  font-family: var(--font-text);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.t-micro {
+  font-family: var(--font-text);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.t-label {
+  font-family: var(--font-text);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.t-button {
+  font-family: var(--font-text);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------------ *
+ * Шасси ядра. Порядок @import решает исход (ROLES.md §4): `.tabular` из
+ * base.css раньше ролей, `.btn` раньше модификаторов, foto.css раньше
+ * посайтовых модификаторов кадра.
+ * ------------------------------------------------------------------ */
+
+@import '@factory/core/styles/layout.css';
+@import '@factory/core/styles/button.css';
+@import '@factory/core/styles/card.css';
+@import '@factory/core/styles/foto.css';
+@import '@factory/core/styles/credit.css';
+@import '@factory/core/styles/motion.css';
+@import '@factory/core/styles/a11y.css';

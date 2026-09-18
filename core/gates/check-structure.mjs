@@ -97,17 +97,22 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
   // ze schematu: `semantics_source` z samych spacji albo liczba zamiast tekstu
   // przechodziłyby jako „jest” — a to jedyne pole, którego treść nikt inny nie
   // liczy (przegląd 2026-09-18, sesja 5 drugiej witryny).
+  // Pusty tekst to także tekst z samych spacji i znaków formatu (U+200B
+  // i podobne, kategoria Cf) — trim() tych drugich nie zdejmuje.
+  const blankText = /^[\s\p{Cf}]*$/u;
   for (const [field, spec] of Object.entries(schema.site)) {
     const value = site[field];
-    const blank = value === undefined || value === null || (typeof value === 'string' && value.trim() === '');
+    const blank = value === undefined || value === null || (typeof value === 'string' && blankText.test(value));
     if (blank) {
       if (spec['обязательно']) err(`site.${field}: pole obowiązkowe, a go nie ma`);
       continue;
     }
-    if (spec['тип'] === 'строка' && typeof value !== 'string') err(`site.${field}: ma być tekstem, a jest ${typeof value}`);
+    if (spec['тип'] === 'строка' && typeof value !== 'string') err(`site.${field}: ma być tekstem, a jest ${JSON.stringify(value)}`);
     if (spec['тип'] === 'число' && !Number.isFinite(value)) err(`site.${field}: ma być liczbą, a jest ${JSON.stringify(value)}`);
   }
-  if (site.total_queries !== undefined && semantics && site.total_queries !== semantics.phrases.size) {
+  // Sverka z wyliczeniem — tylko dla liczby: błąd typu jest już nazwany wyżej,
+  // a «"6" ≠ 6» czytałoby się jako «6 ≠ 6».
+  if (typeof site.total_queries === 'number' && semantics && site.total_queries !== semantics.phrases.size) {
     err(`site.total_queries = ${site.total_queries}, a w wyliczeniu jest ${semantics.phrases.size} zapytań`);
   }
 

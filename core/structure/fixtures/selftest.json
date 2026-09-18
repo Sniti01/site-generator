@@ -111,6 +111,7 @@
     { "имя": "нет semantics_source", "правка": { "site.semantics_source": "__usuń__" }, "ждём": "site.semantics_source" },
     { "имя": "semantics_source из пробелов", "правка": { "site.semantics_source": "   " }, "ждём": "site.semantics_source: pole obowiązkowe" },
     { "имя": "semantics_source числом", "правка": { "site.semantics_source": 2026 }, "ждём": "ma być tekstem" },
+    { "имя": "semantics_source из zero-width", "правка": { "site.semantics_source": "​⁠" }, "ждём": "site.semantics_source: pole obowiązkowe" },
     { "имя": "total_queries строкой", "правка": { "site.total_queries": "6" }, "ждём": "ma być liczbą" },
 
     { "имя": "блок вне словаря", "правка": { "pages.0.blocks.0.block": "hero" }, "ждём": "spoza słownika" },

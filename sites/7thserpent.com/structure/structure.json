@@ -615,7 +615,6 @@
     "max payne remedy",
     "max payne voice",
     "remedy entertainment max payne",
-    "sam lake max payne 3",
     "timothy gibbs max payne",
     "who owns max payne",
     "who played max payne"
@@ -648,7 +647,7 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 2170
+   "volume": 2160
   },
   {
    "url": "/story/",
@@ -865,7 +864,8 @@
     "max payne 3 mod",
     "max payne 3 fusionfix",
     "max payne 3 sam lake mod",
-    "max payne rtx remix"
+    "max payne rtx remix",
+    "sam lake max payne 3"
    ],
    "parent": "/",
    "related": [
@@ -893,7 +893,7 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 1090
+   "volume": 1100
   },
   {
    "url": "/media/",
@@ -1115,7 +1115,7 @@
    "type": "legal",
    "h1": "Privacy policy",
    "title": "Privacy policy — 7thserpent.com",
-   "description": "What data 7thserpent.com processes and why: no analytics, no cookies of its own, no forms. What the hosting provider logs and what rights a reader has.",
+   "description": "What 7thserpent.com does with visitor data, what the hosting provider logs, and what rights a reader has under US law.",
    "cluster": null,
    "keywords": [],
    "parent": "/",

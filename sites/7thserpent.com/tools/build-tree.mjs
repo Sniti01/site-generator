@@ -147,7 +147,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   const PAGE_FIELDS = new Set(['url', 'type', 'cluster', 'слияния', 'возвращено_из_no_page', 'темы', 'ключи', 'блоки', 'related', 'wave', 'h1', 'title', 'description', 'owner', 'template', 'вне_выгрузки']);
   const TOP_FIELDS = new Set(['версия', 'статус', 'источник', 'как_читать', 'почему_именно_эти_страницы', 'почему_слияния', 'страницы', 'no_page_ключи', 'чего_здесь_нет']);
   for (const k of Object.keys(decl)) if (!TOP_FIELDS.has(k)) fail(`объявление: неизвестное поле «${k}» верхнего уровня`);
-  for (const p of pages) for (const k of Object.keys(p)) if (!PAGE_FIELDS.has(k)) fail(`${p.url ?? '(без url)'}: неизвестное поле «${k}» — сверь имя`);
+  for (const p of pages) for (const k of Object.keys(p)) if (!PAGE_FIELDS.has(k)) fail(`${p.url}: неизвестное поле «${k}» — сверь имя`);
 
   // Страница вне выгрузки (служебная, П26 п. 2) спроса не имеет по определению:
   // ей нельзя назначать ни кластер, ни фразы — пометка, под которой стоит
@@ -178,14 +178,32 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   const urlsDeclared = new Set(pages.map((p) => p.url));
   const clusterFate = new Map(recon['кластеры'].map((c) => [c['кластер'], c]));
   const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
+  const clusterOfPhrase = new Map(data.phrases.map((x) => [x.phrase, x.cluster]));
   // Судьба фразы по разведке — своя строка у «Некластеризовано», строка
   // кластера у остальных; null, если фразы в выгрузке нет.
   const fateOfPhrase = (phrase) => {
     const row = phraseFate.get(phrase);
     if (row) return row['судьба'];
-    const p = data.phrases.find((x) => x.phrase === phrase);
-    return p ? clusterFate.get(p.cluster)?.['судьба'] ?? null : null;
+    const cluster = clusterOfPhrase.get(phrase);
+    return cluster ? clusterFate.get(cluster)?.['судьба'] ?? null : null;
   };
+
+  // Возвраты из `no_page` собираются до сторожей ключей: и ключ страницы,
+  // и `no_page`-ключ на фразу возвращённого кластера должны называть возврат,
+  // а не судьбу разведки.
+  const returned = [];
+  const returnedTo = new Map();
+  for (const p of pages) {
+    for (const c of p['возвращено_из_no_page'] ?? []) {
+      const row = clusterFate.get(c);
+      if (!row) fail(`возврат из no_page: кластера «${c}» нет в разведке`);
+      else if (row['судьба'] !== 'no_page') fail(`возврат из no_page: у «${c}» судьба «${row['судьба']}», а не «no_page» — это обычное слияние`);
+      else {
+        returned.push({ cluster: c, url: p.url, reason: row['причина'] });
+        returnedTo.set(c, p.url);
+      }
+    }
+  }
   for (const row of decl['no_page_ключи'] ?? []) {
     const key = row['ключ'];
     if (!key || !row['причина']) {
@@ -197,7 +215,12 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     // причины у неё быть не должно.
     const fate = fateOfPhrase(key);
     if (fate === 'exclusions') fail(`no_page_ключ «${key}»: фраза с судьбой exclusions — не по теме, в no_page не переводится`);
-    if (fate === 'no_page') fail(`no_page_ключ «${key}»: фраза уже в no_page по разведке — ключ лишний, причину разведки не перекрывает`);
+    if (fate === 'no_page') {
+      const back = returnedTo.get(clusterOfPhrase.get(key));
+      fail(back
+        ? `no_page_ключ «${key}»: кластер «${clusterOfPhrase.get(key)}» возвращён из no_page целиком на ${back}; no_page_ключом не дробится`
+        : `no_page_ключ «${key}»: фраза уже в no_page по разведке — ключ лишний, причину разведки не перекрывает`);
+    }
     if (noPageByKey.has(key)) fail(`no_page_ключ «${key}» объявлен дважды`);
     if (pageByKey.has(key)) fail(`«${key}» объявлен и ключом страницы ${pageByKey.get(key)}, и no_page_ключом — одно из двух`);
     if (row['упомянуто_на'] && !urlsDeclared.has(row['упомянуто_на'])) {
@@ -214,19 +237,6 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   // или якорем — отмена решения без следа; кластер с судьбой «exclusions» —
   // не по теме, страницей не перекрывается; ключ на фразу с такой судьбой —
   // та же отмена в обход поля (рецензия 2026-09-18, находки 1–3).
-  const returned = [];
-  const returnedTo = new Map();
-  for (const p of pages) {
-    for (const c of p['возвращено_из_no_page'] ?? []) {
-      const row = clusterFate.get(c);
-      if (!row) fail(`возврат из no_page: кластера «${c}» нет в разведке`);
-      else if (row['судьба'] !== 'no_page') fail(`возврат из no_page: у «${c}» судьба «${row['судьба']}», а не «no_page» — это обычное слияние`);
-      else {
-        returned.push({ cluster: c, url: p.url, reason: row['причина'] });
-        returnedTo.set(c, p.url);
-      }
-    }
-  }
   for (const p of pages) {
     const guard = (c, where) => {
       const fate = clusterFate.get(c)?.['судьба'];
@@ -243,13 +253,16 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       const fate = fateOfPhrase(k);
       if (fate === 'exclusions') fail(`${p.url}: ключ «${k}» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся`);
       if (fate === 'no_page') {
-        const cluster = data.phrases.find((x) => x.phrase === k)?.cluster;
+        const cluster = clusterOfPhrase.get(k);
         const back = cluster && returnedTo.get(cluster);
         // Возвращённый кластер возвращён целиком: ключом он не дробится —
-        // возврат разрешён владельцем на кластер, а не на фразу.
-        fail(back
-          ? `${p.url}: ключ «${k}» — кластер «${cluster}» возвращён из no_page целиком на ${back}; ключом не дробится`
-          : `${p.url}: ключ «${k}» — фраза с судьбой no_page; возврат ключом не объявляется (пачка П65)`);
+        // возврат разрешён владельцем на кластер, а не на фразу. Ключ той же
+        // страницы, что и возврат, просто лишний.
+        fail(!back
+          ? `${p.url}: ключ «${k}» — фраза с судьбой no_page; возврат ключом не объявляется (пачка П65)`
+          : back === p.url
+            ? `${p.url}: ключ «${k}» лишний — кластер «${cluster}» уже возвращён на эту страницу целиком`
+            : `${p.url}: ключ «${k}» — кластер «${cluster}» возвращён из no_page целиком на ${back}; ключом не дробится`);
       }
     }
   }
@@ -850,10 +863,22 @@ function selftest(root) {
   const r7 = tree(npKeyEx);
   check('N: no_page-ключ на exclusions и на no_page — несходимость', { ex: 1, np: 1 }, { ex: problemsAbout(r7, 'в no_page не переводится'), np: problemsAbout(r7, 'ключ лишний') }, 'раунд 2: пачки не перекрываются и отсюда');
   const noUrl = base();
-  noUrl.decl['страницы'].push({ type: 'topic', cluster: 'brand review', wave: 1, h1: 'x', title: 'y', description: 'z' });
+  noUrl.decl['страницы'].push(
+    { type: 'topic', cluster: 'brand review', wave: 1, h1: 'x', title: 'y', description: 'z' },
+    { url: '', type: 'topic', wave: 1, h1: 'x2', title: 'y2', description: 'z2' },
+    { url: 123, type: 'topic', wave: 1, h1: 'x3', title: 'y3', description: 'z3' }
+  );
   page(noUrl, '/three/')['темы'] = ['reviews @ brand three'];
   const r8 = tree(noUrl);
-  check('W: страница без url — чистый отказ', { problem: 1, lost: 1 }, { problem: problemsAbout(r8, 'страница без url'), lost: lostAbout(r8, 'brand review') }, 'раунд 2: строкой, не TypeError');
+  check('W: страница без url — чистый отказ', { problem: 3, lost: 1 }, { problem: problemsAbout(r8, 'страница без url'), lost: lostAbout(r8, 'brand review') }, 'раунд 2–3: нет поля, пустая строка, число — строкой, не TypeError');
+  const npKeyReturned = base();
+  page(npKeyReturned, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
+  npKeyReturned.decl['no_page_ключи'].push({ ключ: 'brand shirt', причина: 'назад' });
+  check('N: no_page-ключ на возвращённый кластер — не дробится', 1, problemsAbout(tree(npKeyReturned), 'no_page_ключом не дробится'), 'раунд 3: диагноз называет возврат, не судьбу разведки');
+  const ownKey = base();
+  page(ownKey, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
+  page(ownKey, '/one/')['ключи'] = ['brand shirt'];
+  check('R: ключ на свой же возвращённый кластер — лишний', 1, problemsAbout(tree(ownKey), 'ключ «brand shirt» лишний'), 'раунд 3');
   const typo = base();
   page(typo, '/one/')['ключ'] = ['brand one'];
   typo.decl['no_page_ключ'] = [];

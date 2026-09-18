@@ -25,8 +25,11 @@
  * коридор-предохранитель — структура правилась руками, а шапка обещала
  * обратное.
  *
- * Шапка `site` не пересобирается: она объявление сайта, а не счёт. Инструмент
- * читает её из существующего `structure.json` и кладёт обратно как есть.
+ * Шапка `site` — объявление сайта, не счёт: инструмент читает её из
+ * существующего `structure.json` и кладёт обратно как есть — кроме одного
+ * поля. `total_queries` схема помечает «пишет: скрипт» (`schema.json`), а до
+ * 2026-09-18 его не писал никто (бэклог 52 п. 3, П63 п. 4): число берётся
+ * из `meta.phrases` читалки — то самое, с которым гейт структуры сверяет поле.
  *
  * Чужой текст отсюда не извлекается: `title`, `h1` и `description` написаны
  * в `pages-s2.json` от руки, корпус конкурентов этот инструмент не открывает.
@@ -387,6 +390,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   }
 
   return {
+    site: { ...doc.site, total_queries: data.meta.phrases },
     built,
     exclusions: exclusions.sort((a, b) => a.query.localeCompare(b.query)),
     noPage: noPage.sort((a, b) => a.query.localeCompare(b.query)),
@@ -422,7 +426,7 @@ function run(root, { dryRun }) {
   const data = readClustering(join(root, doc.site.semantics));
 
   const r = buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data });
-  const { built, exclusions, noPage, problems, lost, returned, outside, corridorsFromContract, onPages, tally } = r;
+  const { site, built, exclusions, noPage, problems, lost, returned, outside, corridorsFromContract, onPages, tally } = r;
 
   const wave1 = built.filter((p) => p.wave === 1);
   const byType = {};
@@ -441,6 +445,9 @@ function run(root, { dryRun }) {
   console.log(
     `учёт: ${onPages} на страницах + ${exclusions.length} exclusions + ${noPage.length} no_page = ${tally} из ${data.meta.phrases}`
   );
+  if (doc.site.total_queries !== site.total_queries) {
+    console.log(`site.total_queries: в структуре ${doc.site.total_queries}, по выгрузке ${site.total_queries} — пишется по выгрузке`);
+  }
 
   if (returned.length) {
     console.log('');
@@ -476,7 +483,7 @@ function run(root, { dryRun }) {
   }
 
   if (!dryRun) {
-    const out = { site: doc.site, pages: built, exclusions, no_page: noPage };
+    const out = { site, pages: built, exclusions, no_page: noPage };
     writeFileSync(docPath, JSON.stringify(out, null, 1) + '\n');
     console.log('записано: structure/structure.json');
   }
@@ -505,6 +512,11 @@ function selftest() {
   const ok = buildTree({ ...base(), typeBlocks, data });
   check('фикстура: несходимостей', 0, ok.problems.length, ok.problems.join(' | ') || 'учёт сходится');
   check('фикстура: запросов без места', 0, ok.lost.length, ok.lost.join(' | ') || 'все разложены');
+
+  // Шапка: `total_queries` — счёт из читалки, остальное — как объявлено.
+  const staleHeader = base();
+  staleHeader.doc.site.total_queries = 999;
+  check('шапка: total_queries пишет инструмент', { ...fx['вход'].doc.site, total_queries: 8 }, buildTree({ ...staleHeader, typeBlocks, data }).site, 'бэклог 52 п. 3 — schema.json «пишет: скрипт»');
 
   // A — умолчания типов (A1, П52 п. 4): у game/topic `link-list` есть, `card-rail` нет;
   // место `link-list` — после `verdict-box` анатомии, перед `cta-band`; главная —

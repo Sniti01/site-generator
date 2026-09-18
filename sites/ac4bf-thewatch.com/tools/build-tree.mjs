@@ -634,7 +634,7 @@ function selftest() {
   // контроли: законное слияние и законный ключ проходят, кластеры no_page
   // без страницы лежат в no_page.
   const problem = (r, text) => r.problems.filter((p) => p === text).length;
-  check('R: законное слияние — на страницу, сторож молчит', { merged: true, inNoPage: ['gra epsilon', 'gra zeta', 'iota crack', 'iota zero', 'zeta crack'] }, { merged: kw(ok, '/beta/').includes('eta dlc'), inNoPage: ok.noPage.map((x) => x.query) }, 'кластер «eta» (волна_2) в «слияния» /beta/; zeta и iota — в no_page');
+  check('R: законное слияние — на страницу, сторож молчит', { merged: true, inNoPage: ['epsilon zero', 'gra epsilon', 'gra zeta', 'iota', 'iota crack', 'iota zero', 'zeta crack', 'zeta darmowa'] }, { merged: kw(ok, '/beta/').includes('eta dlc'), inNoPage: ok.noPage.map((x) => x.query) }, 'кластер «eta» (волна_2) в «слияния» /beta/; zeta, iota и некластеризованные no_page — в no_page');
   check('R: законный ключ — на страницу, сторож молчит', { onGamma: true, onBeta: false, excl: ['delta kup', 'theta sklep'] }, { onGamma: kw(ok, '/gamma/').includes('beta cennik'), onBeta: kw(ok, '/beta/').includes('beta cennik'), excl: ok.exclusions.map((x) => x.query) }, 'ключ /gamma/ на фразу кластера с судьбой «страница»; exclusions обеих форм на месте');
   const wrongReturn = base();
   page(wrongReturn, '/beta/')['возвращено_из_no_page'] = ['delta'];
@@ -655,7 +655,7 @@ function selftest() {
   const bareAnchor = base();
   bareAnchor.decl['страницы'].push(
     { url: '/zeta/', type: 'topic', cluster: 'zeta', wave: 1, related: [], h1: 'z', title: 'z', description: 'z' },
-    { url: '/delta/', type: 'topic', cluster: 'delta', wave: 1, related: [], h1: 'd', title: 'd', description: 'd' }
+    { url: '/delta/', type: 'game', cluster: 'delta', wave: 1, related: [], h1: 'd', title: 'd', description: 'd' }
   );
   const r4 = tree(bareAnchor);
   check('R: якорь-нарушитель без «слияния» — несходимость', { np: 1, ex: 1, empty: 1, total: 3 }, { np: problem(r4, '/zeta/: якорь «zeta» — кластер с судьбой no_page; якорем такой кластер не стоит, возврат — только полем «возвращено_из_no_page»'), ex: problem(r4, '/delta/: якорь «delta» — кластер с судьбой exclusions, не по теме; страница его не перекрывает'), empty: problem(r4, '/delta/: ни одного запроса, а страница не владельца и не объявлена вне выгрузки'), total: r4.problems.length }, 'F2: страница из одного якоря, без слияний и ключей; /delta/ пуста (exclusions ушли в exclusions), /zeta/ — нет: без сторожа фразы zeta легли бы на неё тихо');
@@ -677,15 +677,20 @@ function selftest() {
   page(keyNoAnchorReturn, '/gamma/')['возвращено_из_no_page'] = ['zeta'];
   page(keyNoAnchorReturn, '/gamma/')['ключи'].push('iota crack');
   const r9 = tree(keyNoAnchorReturn);
-  check('R: ключ без якоря на странице с возвратом', { key: 1, total: 1 }, { key: problem(r9, '/gamma/: ключ «iota crack» — фраза кластера «iota» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), total: r9.problems.length }, 'раунд 2, O2: ни якорь, ни возврат не выключают сторож ключей');
+  check('R: ключ без якоря на странице с возвратом', { key: 1, returned: ['zeta'], onPage: true, total: 1 }, { key: problem(r9, '/gamma/: ключ «iota crack» — фраза кластера «iota» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), returned: r9.returned.map((x) => x.cluster), onPage: kw(r9, '/gamma/').includes('zeta darmowa'), total: r9.problems.length }, 'раунд 2, O2: ни якорь, ни возврат не выключают сторож ключей; раунд 3: возврат на странице без якоря — состоялся');
   const ownerPage = base();
-  ownerPage.decl['страницы'].push({ url: '/omega/', type: 'home', cluster: 'iota', owner: true, wave: 2, 'блоки': [{ block: 'byline' }], related: [], h1: 'o', title: 'o', description: 'o' });
+  ownerPage.decl['страницы'].push({ url: '/omega/', type: 'home', cluster: 'iota', 'слияния': ['zeta'], 'ключи': ['delta kup', 'gra epsilon'], owner: true, wave: 2, 'блоки': [{ block: 'byline' }], related: [], h1: 'o', title: 'o', description: 'o' });
   const r10 = tree(ownerPage);
-  check('R: страница home, owner, волны 2, с блоками — сторож на месте', { anchor: 1, total: 1 }, { anchor: problem(r10, '/omega/: якорь «iota» — кластер с судьбой no_page; якорем такой кластер не стоит, возврат — только полем «возвращено_из_no_page»'), total: r10.problems.length }, 'раунд 2, O3/O4/O5/O9: ни тип, ни поля страницы сторожей не выключают; фикстура иначе однородна (все — волна 1, без owner)');
+  check('R: страница home, owner, волны 2, с блоками — все три сторожа', { anchor: 1, merge: 1, keyEx: 1, keyNp: 1, total: 4 }, { anchor: problem(r10, '/omega/: якорь «iota» — кластер с судьбой no_page; якорем такой кластер не стоит, возврат — только полем «возвращено_из_no_page»'), merge: problem(r10, '/omega/: кластер «zeta» с судьбой no_page — возврат объявляется полем «возвращено_из_no_page», не «слияния»'), keyEx: problem(r10, '/omega/: ключ «delta kup» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся'), keyNp: problem(r10, '/omega/: ключ «gra epsilon» — фраза «Некластеризовано» с судьбой no_page (пачка П25); ключом не берётся, поля возврата для отдельной фразы нет'), total: r10.problems.length }, 'раунды 2–3: ни тип (home), ни owner, ни волна 2, ни блоки не выключают ни один из трёх сторожей; фикстура иначе однородна (все — волна 1, без owner)');
   const npKey = base();
-  page(npKey, '/beta/')['ключи'] = ['gra epsilon', 'zeta crack', 'delta kup', 'theta sklep'];
+  page(npKey, '/beta/')['ключи'] = ['gra epsilon', 'epsilon zero', 'zeta crack', 'zeta darmowa', 'delta kup', 'theta sklep'];
   const r2 = tree(npKey);
-  check('R: ключ на фразу no_page/exclusions — несходимость', { npUncl: 1, npCluster: 1, exCluster: 1, exUncl: 1, total: 4 }, { npUncl: problem(r2, '/beta/: ключ «gra epsilon» — фраза «Некластеризовано» с судьбой no_page (пачка П25); ключом не берётся, поля возврата для отдельной фразы нет'), npCluster: problem(r2, '/beta/: ключ «zeta crack» — фраза кластера «zeta» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), exCluster: problem(r2, '/beta/: ключ «delta kup» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся'), exUncl: problem(r2, '/beta/: ключ «theta sklep» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся'), total: r2.problems.length }, 'тихий проход 3: обе судьбы у обеих форм фразы — кластерной и «Некластеризовано»');
+  check('R: ключ на фразу no_page/exclusions — несходимость', { npUncl: 1, npUnclZero: 1, npCluster: 1, npClusterBig: 1, exCluster: 1, exUncl: 1, total: 6 }, { npUncl: problem(r2, '/beta/: ключ «gra epsilon» — фраза «Некластеризовано» с судьбой no_page (пачка П25); ключом не берётся, поля возврата для отдельной фразы нет'), npUnclZero: problem(r2, '/beta/: ключ «epsilon zero» — фраза «Некластеризовано» с судьбой no_page (пачка П25); ключом не берётся, поля возврата для отдельной фразы нет'), npCluster: problem(r2, '/beta/: ключ «zeta crack» — фраза кластера «zeta» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), npClusterBig: problem(r2, '/beta/: ключ «zeta darmowa» — фраза кластера «zeta» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), exCluster: problem(r2, '/beta/: ключ «delta kup» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся'), exUncl: problem(r2, '/beta/: ключ «theta sklep» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся'), total: r2.problems.length }, 'тихий проход 3: обе судьбы у обеих форм фразы — кластерной и «Некластеризовано», объёмы 0 и 900');
+  const homePage = base();
+  page(homePage, '/')['слияния'] = ['zeta'];
+  page(homePage, '/')['ключи'] = ['iota'];
+  const r11 = tree(homePage);
+  check('R: главная — слияние из одного элемента и ключ', { merge: 1, key: 1, nameClash: 1, total: 3 }, { merge: problem(r11, '/: кластер «zeta» с судьбой no_page — возврат объявляется полем «возвращено_из_no_page», не «слияния»'), key: problem(r11, '/: ключ «iota» — фраза кластера «iota» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), nameClash: problem(r11, 'ключ «iota» (страница /) совпадает с именем кластера — если нужен кластер целиком, объяви его в «слияния»'), total: r11.problems.length }, 'раунд 3: первая страница, home с блоками, нарушитель на индексе 0 в списке из одного, ключ = имя кластера (как у всех боевых кластеров); третья строка — старая сверка имени, её совет «объяви в «слияния»» для no_page-кластера спорит со сторожем (бэклог 54 п. 11)');
   const keyOnReturned = base();
   page(keyOnReturned, '/beta/')['возвращено_из_no_page'] = ['zeta'];
   page(keyOnReturned, '/gamma/')['ключи'].push('zeta crack');
@@ -714,8 +719,9 @@ function selftest() {
   check('R: судьбу кластерной фразы судит кластер, не устаревшая строка', { stale: 1, legit: 0, total: 1 }, { stale: problem(r7, '/gamma/: ключ «zeta crack» — фраза кластера «zeta» с судьбой no_page (пачка П25); возврат — только полем «возвращено_из_no_page», кластером целиком'), legit: r7.problems.filter((p) => p.includes('beta cennik')).length, total: r7.problems.length }, 'F1: сторож ключа читает разведку тем же порядком, что раскладка');
   const goodReturn = base();
   page(goodReturn, '/beta/')['возвращено_из_no_page'] = ['zeta'];
+  page(goodReturn, '/')['возвращено_из_no_page'] = ['iota'];
   const r3 = tree(goodReturn);
-  check('R: возврат из no_page — на страницу и в печать', { problems: 0, onPage: true, printed: ['zeta'], inNoPage: ['gra epsilon', 'iota crack', 'iota zero'] }, { problems: r3.problems.length, onPage: kw(r3, '/beta/').includes('gra zeta') && kw(r3, '/beta/').includes('zeta crack'), printed: r3.returned.map((x) => x.cluster), inNoPage: r3.noPage.map((x) => x.query) }, 'решение владельца видно: строка «возвращено», обе фразы на странице, iota остаётся в no_page');
+  check('R: возврат из no_page — на страницу и в печать', { problems: 0, onBeta: true, onHome: true, printed: ['iota', 'zeta'], inNoPage: ['epsilon zero', 'gra epsilon'] }, { problems: r3.problems.length, onBeta: ['gra zeta', 'zeta crack', 'zeta darmowa'].every((q) => kw(r3, '/beta/').includes(q)), onHome: ['iota', 'iota crack', 'iota zero'].every((q) => kw(r3, '/').includes(q)), printed: r3.returned.map((x) => x.cluster), inNoPage: r3.noPage.map((x) => x.query) }, 'решение владельца видно: строки «возвращено» в порядке страниц, все фразы обоих кластеров на своих страницах (и на главной — раунд 3), в no_page остаются только некластеризованные');
 
   let failed = 0;
   for (const c of cases) {

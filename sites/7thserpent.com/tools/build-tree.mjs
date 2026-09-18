@@ -875,6 +875,13 @@ function selftest(root) {
   page(npKeyReturned, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
   npKeyReturned.decl['no_page_ключи'].push({ ключ: 'brand shirt', причина: 'назад' });
   check('N: no_page-ключ на возвращённый кластер — не дробится', 1, problemsAbout(tree(npKeyReturned), 'no_page_ключом не дробится'), 'раунд 3: диагноз называет возврат, не судьбу разведки');
+  const nonHead = base();
+  page(nonHead, '/one/')['ключи'] = ['brand xxx video'];
+  page(nonHead, '/three/')['возвращено_из_no_page'] = ['brand shirt'];
+  page(nonHead, '/movie/')['ключи'] = ['brand shirt buy'];
+  nonHead.decl['no_page_ключи'].push({ ключ: 'brand shirt buy', причина: 'назад' });
+  const r10 = tree(nonHead);
+  check('R: сторожа по кластеру фразы, не по имени', { ex: 1, key: 1, np: 1 }, { ex: problemsAbout(r10, 'ключ «brand xxx video» — фраза с судьбой exclusions'), key: problemsAbout(r10, 'ключ «brand shirt buy» — кластер «brand shirt» возвращён из no_page целиком на /three/'), np: problemsAbout(r10, 'no_page_ключ «brand shirt buy»: кластер «brand shirt» возвращён') }, 'раунд 4: фразы не совпадают с именем кластера');
   const ownKey = base();
   page(ownKey, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
   page(ownKey, '/one/')['ключи'] = ['brand shirt'];

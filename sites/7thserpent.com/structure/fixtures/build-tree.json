@@ -26,7 +26,9 @@
     { "phrase": "brand cheat codes", "cluster": "brand cheats", "google": 20 },
     { "phrase": "brand games in order", "cluster": "brand games in order", "google": 30 },
     { "phrase": "brand shirt", "cluster": "brand shirt", "google": 50 },
+    { "phrase": "brand shirt buy", "cluster": "brand shirt", "google": 5 },
     { "phrase": "brand xxx", "cluster": "brand xxx", "google": 10 },
+    { "phrase": "brand xxx video", "cluster": "brand xxx", "google": 5 },
     { "phrase": "brand three chapter 4", "cluster": "Некластеризовано", "google": 10 },
     { "phrase": "brand gba cheats", "cluster": "Некластеризовано", "google": 10 },
     { "phrase": "brand three steam", "cluster": "Некластеризовано", "google": 10 },
@@ -171,7 +173,7 @@
         "semantics": "input/brand.xlsx",
         "semantics_source": "Próbka, XX",
         "semantics_date": "2026-01-01",
-        "total_queries": 25
+        "total_queries": 27
       },
       "pages": [
         { "url": "/", "corridor": null },

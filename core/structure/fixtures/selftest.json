@@ -115,6 +115,7 @@
     { "имя": "total_queries строкой", "правка": { "site.total_queries": "6" }, "ждём": "ma być liczbą", "не_ждём": "a w wyliczeniu" },
     { "имя": "semantics_source пустой строкой", "правка": { "site.semantics_source": "" }, "ждём": "site.semantics_source: pole obowiązkowe" },
     { "имя": "semantics_source из Hangul-филлера", "правка": { "site.semantics_source": "\u3164\u0000" }, "ждём": "site.semantics_source: pole obowiązkowe" },
+    { "имя": "semantics_source из combining и Braille", "правка": { "site.semantics_source": "\u0301\u2800\u115F\u1160\uFFA0" }, "ждём": "site.semantics_source: pole obowiązkowe" },
 
     { "имя": "блок вне словаря", "правка": { "pages.0.blocks.0.block": "hero" }, "ждём": "spoza słownika" },
     { "имя": "блок не секция", "правка": { "pages.0.blocks.0.block": "grain" }, "ждём": "tylko sekcje" },

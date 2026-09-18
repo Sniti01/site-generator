@@ -179,13 +179,16 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   const clusterFate = new Map(recon['кластеры'].map((c) => [c['кластер'], c]));
   const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
   const clusterOfPhrase = new Map(data.phrases.map((x) => [x.phrase, x.cluster]));
-  // Судьба фразы по разведке — своя строка у «Некластеризовано», строка
-  // кластера у остальных; null, если фразы в выгрузке нет.
+  // Судьба фразы по разведке — тем же порядком, что раскладка: у кластерной
+  // фразы — строка кластера, у «Некластеризовано» — своя строка; null, если
+  // фразы в выгрузке нет. Кластер первым (F1, бэклог 54 п. 12, как `2304aba`
+  // первого сайта): устаревшая строка `некластеризовано` на фразу, которую
+  // новая выгрузка кластеризовала, иначе судила бы сторожа не тем порядком.
   const fateOfPhrase = (phrase) => {
-    const row = phraseFate.get(phrase);
-    if (row) return row['судьба'];
     const cluster = clusterOfPhrase.get(phrase);
-    return cluster ? clusterFate.get(cluster)?.['судьба'] ?? null : null;
+    if (!cluster) return null;
+    const row = cluster === UNCLUSTERED ? phraseFate.get(phrase) : clusterFate.get(cluster);
+    return row?.['судьба'] ?? null;
   };
 
   // Возвраты из `no_page` собираются до сторожей ключей: и ключ страницы,
@@ -894,6 +897,37 @@ function selftest(root) {
   page(goodReturn, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
   const r3 = tree(goodReturn);
   check('R: возврат из no_page — на страницу и в печать', { onPage: true, printed: ['brand shirt'] }, { onPage: kw(r3, '/one/').includes('brand shirt'), printed: r3.returned.map((x) => x.cluster) }, 'решение владельца видно');
+  // Устаревшая строка разведки на кластерную фразу: сторож ключа судит
+  // кластером, как раскладка, — ни ложного пропуска no_page-фразы, ни ложного
+  // падения на законном ключе (F1, бэклог 54 п. 12; образец — `staleRow`
+  // первого сайта).
+  const staleRow = base();
+  staleRow.recon['некластеризовано'].push({ фраза: 'brand shirt buy', судьба: 'страница', причина: 'строка прежней выгрузки' }, { фраза: 'brand cheat codes', судьба: 'no_page', причина: 'строка прежней выгрузки' });
+  page(staleRow, '/movie/')['ключи'] = ['brand shirt buy'];
+  page(staleRow, '/one/')['ключи'] = ['brand cheat codes'];
+  const r11 = tree(staleRow);
+  check('R: судьбу кластерной фразы судит кластер, не устаревшая строка', { stale: 1, legit: 0, total: 1 }, { stale: problemsAbout(r11, '/movie/: ключ «brand shirt buy» — фраза с судьбой no_page; возврат ключом не объявляется (пачка П65)'), legit: problemsAbout(r11, 'brand cheat codes'), total: r11.problems.length }, 'F1: сторож ключа читает разведку тем же порядком, что раскладка');
+
+  // S — анатомия S3: блоки с именем из `имена_блоков` получают `source: anatomy`,
+  // `confidence` по вердикту и `evidence` «документов/из»; безымянный элемент,
+  // «не норма» и «не считается» блоками не становятся; порядок — по правилам,
+  // имя вне списка — в конец; коридор — из анатомии, при расхождении с
+  // контрактом — из контракта и названо строкой.
+  const withS3 = { ...base(), rulesS3: structuredClone(fx['проба_S3'].rulesS3), anatomy: structuredClone(fx['проба_S3'].anatomy) };
+  const rS3 = tree(withS3);
+  const blockOf = (r, url, name) => r.built.find((p) => p.url === url)?.blocks.find((b) => b.block === name);
+  check('S: фикстура с анатомией сходится', 0, rS3.problems.length + rS3.lost.length, rS3.problems.join(' | ') || 'учёт прежний');
+  check('S: game — умолчания + анатомия + рука в порядке правил', ['hero-key-art(t)', 'story-row(t)', 'story-row(m)#mobile', 'gallery(a)', 'verdict-box(a)', 'link-list(t)', 'cta-band(t)'], blocksOf(rS3, '/one/'), 'порядок_на_странице.список; безымянный wideo, «не норма» autor-data, «не считается» spis-tresci — не блоки');
+  check('S: доказательство и уверенность', { verdict: { confidence: 'high', evidence: '6/7' }, gallery: { confidence: 'medium', evidence: '3/7' } }, { verdict: { confidence: blockOf(rS3, '/one/', 'verdict-box').confidence, evidence: blockOf(rS3, '/one/', 'verdict-box').evidence }, gallery: { confidence: blockOf(rS3, '/one/', 'gallery').confidence, evidence: blockOf(rS3, '/one/', 'gallery').evidence } }, 'обязателен → high, на решение → medium; evidence «документов/из»');
+  check('S: источник анатомии отличим', 'anatomy', blockOf(rS3, '/one/', 'verdict-box').source, 'три источника не смешиваются');
+  check('S: home — свой порядок, имя вне списка — в конец', ['hero-key-art(t)', 'byline(a)', 'story-row(t)', 'band-quote(t)', 'card-rail(t)', 'link-list(m)#games-in-order', 'link-columns(t)', 'cta-band(t)', 'data-table(a)'], blocksOf(rS3, '/'), 'по_типу.home: byline(a) вторым; data-table нет в списке — в конец');
+  check('S: коридор из анатомии — страница без строки в структуре', [300, 400], rS3.built.find((p) => p.url === '/movie/').corridor, 'план.коридор S3');
+  check('S: коридор из контракта при расхождении с анатомией', { corridor: [100, 250], named: [{ url: '/one/', corridor: [100, 250], anatomy: [100, 200] }] }, { corridor: rS3.built.find((p) => p.url === '/one/').corridor, named: rS3.corridorsFromContract.filter((c) => c.url === '/one/') }, 'П43 п. 2 — предохранитель переживает анатомию и назван строкой');
+  check('S: null контракта против числа анатомии — null', { corridor: null, named: 1 }, { corridor: rS3.built.find((p) => p.url === '/').corridor, named: rS3.corridorsFromContract.filter((c) => c.url === '/').length }, 'именованный null главной — решение, не пропуск');
+  const noDocS3 = { ...withS3, doc: { site: withS3.doc.site, pages: [] } };
+  check('S: без строк структуры — коридор анатомии у всех', [[500, 600], [100, 200], [300, 400]], ['/', '/one/', '/movie/'].map((u) => tree(noDocS3).built.find((p) => p.url === u).corridor), 'переход S2 → S3: строки-заглушки сняты, числа — из анатомии');
+  const noRulesS3 = { ...withS3, rulesS3: null };
+  check('S: анатомия без правил — блоков анатомии нет', 0, tree(noRulesS3).built.reduce((s, p) => s + p.blocks.filter((b) => b.source === 'anatomy').length, 0), 'имя даёт словарь правил, не измерение');
 
   let failed = 0;
   for (const c of cases) {

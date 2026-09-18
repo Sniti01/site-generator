@@ -1,0 +1,1185 @@
+{
+ "tool": "tools/fetch-corpus.mjs",
+ "source": "input/Clustering_max-payne_with_volume.xlsx",
+ "source_sha256": "f24f898814c2340207e16104fd5eb7333d433992a197e44305ab52634b790a6e",
+ "source_format": "volume",
+ "volume_column": "Частотность",
+ "serp_snapshot_date": "2026-09-18",
+ "engine": "google",
+ "geo": "US",
+ "language": "en",
+ "first_fetch_at": "2026-09-18T13:49:03.225Z",
+ "last_fetch_at": "2026-09-18T13:54:09.239Z",
+ "summary_written_at": "2026-09-18T13:54:21.463Z",
+ "urls_total": 1136,
+ "urls_in_manifest": 1136,
+ "manifest_lines": 1138,
+ "manifest_note": "строк больше, чем адресов: повтор дописывается новой записью. Считается последняя запись по адресу.",
+ "hosts": 342,
+ "outcomes": {
+  "http-error": 279,
+  "network-error": 2,
+  "ok": 612,
+  "robots-disallowed": 243
+ },
+ "bytes_raw": 299193154,
+ "bytes_stored": 62259903,
+ "user_agent": "7thserpent-corpus/1.0 (+page-structure research; contact: site owner)",
+ "host_delay_ms": 1500,
+ "storage": "raw/<host>/<sha1(url)>.html.gz — gzip; в git не идёт (.gitignore)",
+ "queries": "queries.json — соответствие «фраза → группа и адреса»; в записи документа фразы не дублируются",
+ "note": "Сырой HTML в git не идёт; корпус пересобирается этим инструментом по манифесту.",
+ "coverage": {
+  "правило": [
+   "high: скачано ≥7 из выдачи кластера — анатомия с порогом частоты",
+   "mid: скачано 4–6 из выдачи кластера — анатомия с оговоркой",
+   "low: скачано ≤3 из выдачи кластера — только план содержания"
+  ],
+  "кластеры": {
+   "всего": 102,
+   "корзины": {
+    "high": 16,
+    "mid": 43,
+    "low": 43
+   },
+   "медиана_скачано": 4,
+   "нижняя_корзина": {
+    "выдача_была_короткой": 11,
+    "недобрано": 32,
+    "скачано_ноль": 2
+   },
+   "список": [
+    {
+     "name": "max payne 3 pc",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne apk",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "games like max payne",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 free",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 statue",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne gog",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne xxx",
+     "urls": 8,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "hltb max payne",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 1",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 clues",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne gba",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne iso",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "new max payne",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "remedy max payne",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "watch max payne",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne (film)",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 art",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 key",
+     "urls": 9,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne download",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne gameplay",
+     "urls": 6,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne pc controller",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne ps3",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne ps4",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne ps5",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne steam",
+     "urls": 7,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 cheats",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 esrb",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 guide",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 on ps5",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 review",
+     "urls": 5,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 trailer",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 trainer",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 xbox",
+     "urls": 9,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 4",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne backwards compatible",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne cover",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne face",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne font",
+     "urls": 7,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne ios",
+     "urls": 5,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne ps2",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne shirt",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne walkthrough",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne xbox",
+     "urls": 8,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "health max payne 3",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 cheats",
+     "urls": 9,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 ps2 cheats",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 system requirements",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 mod",
+     "urls": 8,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne cheats",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne coat",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne control",
+     "urls": 6,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne meme",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne mona sax",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne screenshots",
+     "urls": 7,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne trainer",
+     "urls": 5,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne va",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "alan wake max payne",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 airport",
+     "urls": 5,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 brazil",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 cover",
+     "urls": 8,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 face",
+     "urls": 9,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne cheats xbox",
+     "urls": 8,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne poster",
+     "urls": 6,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne review",
+     "urls": 4,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne valkyr",
+     "urls": 9,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne wallpaper",
+     "urls": 7,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 iso",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 ps5",
+     "urls": 2,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 remake",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 sales",
+     "urls": 2,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 bullet time",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 cast",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 character",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 plot",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 3 trophies",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne art",
+     "urls": 6,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne bald",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne figure",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne natasha",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne nudity",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne plot",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne quotes",
+     "urls": 3,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne retribution",
+     "urls": 7,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne tattoo",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne tie",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "sam lake max payne",
+     "urls": 8,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "sam lake max payne 3",
+     "urls": 4,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "who is max payne",
+     "urls": 5,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 gameplay",
+     "urls": 2,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne 2 movie",
+     "urls": 5,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne bullet time",
+     "urls": 3,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne comic",
+     "urls": 3,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne games in order",
+     "urls": 4,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne gif",
+     "urls": 2,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne mods",
+     "urls": 2,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne shootdodge",
+     "urls": 5,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne trophies",
+     "urls": 9,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne tv tropes",
+     "urls": 10,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne widescreen fix",
+     "urls": 2,
+     "ok": 0,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    }
+   ]
+  },
+  "некластеризованные_фразы": {
+   "всего": 58,
+   "корзины": {
+    "high": 20,
+    "mid": 35,
+    "low": 3
+   },
+   "список": [
+    {
+     "name": "max payne mobile gameplay",
+     "urls": 10,
+     "ok": 10,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 xbox 360 gameplay",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne play online",
+     "urls": 10,
+     "ok": 9,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 2 trainer",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 chapter 4",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 chapter 7",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 gameplay",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne crack",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne gba rom",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne nude",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "young nudy max payne",
+     "urls": 10,
+     "ok": 8,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 2 steam",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 chapter 12",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 sales",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne 3 steam",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne codex",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne controls",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne logo",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne repack",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "max payne trailer",
+     "urls": 10,
+     "ok": 7,
+     "bucket": "high",
+     "verdict": "анатомия с порогом частоты"
+    },
+    {
+     "name": "best max payne game",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 cover",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 xbox",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 budget",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne blu ray",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne bundle",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne demo free download",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne kung fu mod",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne painkillers",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne sound fix",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne windows 10",
+     "urls": 10,
+     "ok": 6,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "bryan silva max payne",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 quotes",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 screenshots",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 arcade mode",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 ending",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 favela",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 fusionfix",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 girl",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 poster",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 wallpaper",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 weapons",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne avatar",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne cosplay",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne griffin",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne rtx remix",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne steam key",
+     "urls": 10,
+     "ok": 5,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 2 wallpaper",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 new york minute",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne beretta",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne brewer",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne character designer",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne dog",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne gba cheats",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "timothy gibbs max payne",
+     "urls": 10,
+     "ok": 4,
+     "bucket": "mid",
+     "verdict": "анатомия с оговоркой"
+    },
+    {
+     "name": "max payne 3 gunplay",
+     "urls": 10,
+     "ok": 3,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "max payne: home",
+     "urls": 10,
+     "ok": 2,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    },
+    {
+     "name": "movies like max payne",
+     "urls": 10,
+     "ok": 1,
+     "bucket": "low",
+     "verdict": "только план содержания"
+    }
+   ]
+  }
+ }
+}

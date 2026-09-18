@@ -1,0 +1,166 @@
+{
+  "версия": "s0-2026-09-18",
+  "статус": "предложение S0, подтверждает владелец",
+  "источник": "docs/04_STRUCTURE_DECISIONS.md, Часть C; docs/05_STRUCTURE_TASK.md, стадия S0; образец — sites/ac4bf-thewatch.com/structure/rules-s0.json (П63 п. 6)",
+  "как_читать": [
+    "Файл — вход инструментов tools/recon-s0.mjs и tools/fetch-corpus.mjs, а не запись в коде.",
+    "Пороги и словари меняются здесь; правки кода для этого не нужно.",
+    "Каждая судьба, выведенная по этим правилам, несёт причину и уверенность.",
+    "Что у первого сайта было зашито в код (хабы-судьбы «карта мест» и «люди истории», константы снимка, путь к выгрузке), здесь — данные: разделы «серийные_темы», «снимок», «бренд»; путь к выгрузке — structure.json (бэклог 52 п. 7)."
+  ],
+
+  "снимок": {
+    "движок": "google",
+    "гео": "US",
+    "язык": "en",
+    "объём": "колонка «Частотность» выгрузки — Ahrefs, гео US (П63 п. 2); дата снимка выдачи — site.semantics_date в structure/structure.json",
+    "почему_здесь": "Движок, гео и язык печатаются в s0-recon.json и run.json корпуса; у первого сайта они стояли константами в двух инструментах (бэклог 52 п. 7)."
+  },
+
+  "бренд": {
+    "почему": "Часть C.1: бренд-голова — главная. У этого сайта бренд — название серии, кластер «max payne» (16 980/мес, 27 % объёма). Все фразы выгрузки содержат слова бренда, поэтому последнее правило судьбы некластеризованной фразы — «ключом на главную, проверить глазами», а не «не по теме».",
+    "кластер": "max payne",
+    "серия": "max payne",
+    "слова": ["max payne"]
+  },
+
+  "хвост": {
+    "метод": "доли суммарного объёма по кластерам, а не круглые числа",
+    "голова_доля": 0.95,
+    "середина_доля": 0.99,
+    "почему": [
+      "Метод первого сайта (rules-s0.json там же): доля объёма — величина со смыслом, круглый порог на ровном склоне произволен.",
+      "Числа, которые доли дают на выгрузке 2026-09-18, записаны в structure/s0-recon.json (раздел «хвост») и в докладе S0.",
+      "Распределение у этого сайта короче и плотнее первого: 102 кластера против 257, сетка объёмов Ahrefs (10 / 20 / 30 … 16 000) даёт ступени, а не склон — пороги в докладе названы и числами."
+    ]
+  },
+
+  "магазинный_интент": {
+    "почему_не_по_колонке": "Колонка «% Агрегаторов» заполнена (77 фраз — 10, одна — 20, остальные 430 — 0), но признак слабый: 10 % стоит и у «max payne 1» (1 800/мес, ни одного магазина в топе), и у «max payne comic». Признак Части C.2 считается по составу топа снимка и по отказам корпуса, как у первого сайта; колонка не читается.",
+    "маркетплейсов_в_топе": 5,
+    "маркетплейсов_в_топе_из": 10,
+    "отказ_корпуса_доля": 0.5,
+    "отказ_корпуса_минимум_урлов": 5,
+    "почему_минимум_урлов": "У короткой выдачи (3–4 адреса) два отказа дают половину и объявляют магазинным любой узкий запрос. Признак включается только там, где выдача полная.",
+    "порядок_признаков": [
+      "бренд-кластер — главная;",
+      "чужая вселенная — exclusions;",
+      "взрослое — exclusions;",
+      "нелегальное распространение — no_page;",
+      "побочная тема (мерч) — no_page;",
+      "магазинное слово в имени кластера — no_page;",
+      "навигационный запрос к чужому сайту — no_page;",
+      "серийная тема по имени кластера — тема (цель названа; тема раньше платформы: «max payne 2 ps2 cheats» — читы, а не «на чём играть»);",
+      "платформенный кластер — слияние в хаб игры (Часть C.3 сильнее признака выдачи: спрос информационный, магазинной выдачу делает рынок);",
+      "маркетплейсы в топе — no_page;",
+      "недобор корпуса отказами магазинов — no_page;",
+      "полоса объёма."
+    ],
+    "почему_сторы_платформ_не_в_счёт": "Steam, PlayStation Store, Xbox, Rockstar Store, GOG и магазины приложений стоят в выдаче любого игрового запроса, включая информационные. Считать их признаком покупки — значит объявить магазинными все хабы игр.",
+    "маркетплейсы": [
+      "amazon.com", "ebay.com", "gamestop.com", "pricecharting.com", "etsy.com", "redbubble.com",
+      "teepublic.com", "displate.com", "walmart.com", "target.com", "bestbuy.com", "newegg.com",
+      "mercari.com", "aliexpress.com", "dkoldies.com", "lukiegames.com", "play-asia.com",
+      "iam8bit.com", "originalfilmart.com", "maxpainstore.com", "ezcosplay.com",
+      "g2a.com", "eneba.com", "kinguin.net", "cdkeys.com", "instant-gaming.com", "allkeyshop.com",
+      "gg.deals", "isthereanydeal.com", "cdkeyprices.com", "planetkey.de", "xxlgamer.com",
+      "gamingdragons.com", "humblebundle.com", "fanatical.com", "greenmangaming.com",
+      "gamersgate.com", "psprices.com", "psdeals.net", "platprices.com"
+    ],
+    "площадки_платформ": [
+      "store.steampowered.com", "steamcommunity.com", "steamdb.info", "store.playstation.com",
+      "playstation.com", "xbox.com", "store.rockstargames.com", "rockstargames.com", "gog.com",
+      "apps.microsoft.com", "apps.apple.com", "play.google.com", "nintendo.com", "store.epicgames.com"
+    ],
+    "слова": [
+      "buy", "price", "prices", "cheap", "deal", "deals", "sale", "for sale", "cost", "how much",
+      "amazon", "ebay", "gamestop", "etsy", "walmart", "pricecharting", "g2a", "eneba", "kinguin",
+      "cdkeys", "instant gaming", "humble", "key", "keys", "cd key", "steam key", "bundle",
+      "collectors edition", "collector's edition", "collector edition", "special edition",
+      "complete edition", "gold edition", "deluxe", "preorder", "pre order", "pre-order",
+      "digital code", "gift card"
+    ]
+  },
+
+  "побочные_темы": {
+    "почему": "Мерч и коллекционка — тема серии, но не тема сайта: страницу не делаем, причину записываем (прецедент первого сайта). От exclusions отличается тем, что запрос всё-таки о Max Payne. Пограничное для владельца: «hawaiian shirt», «jacket», «tie» — предметы образа героя, но выдача у них магазинная (Etsy, Amazon, Redbubble); образ как тема живёт в «серийные_темы.appearance».",
+    "имена": [
+      "shirt", "t shirt", "t-shirt", "hawaiian shirt", "jacket", "leather jacket", "coat",
+      "leather coat", "figure", "action figure", "figures", "statue", "poster", "posters",
+      "tattoo", "tattoos", "tie", "merch", "merchandise", "funko", "hoodie", "mug", "keychain"
+    ]
+  },
+
+  "нелегальное_распространение": {
+    "почему": "Пиратские сборки, образы и взломы — не тема фан-сайта и не тема, на которую сайт может ссылаться (PRODUCT.md: фан-сайт без идентики издателя, но и без пиратства). Официальные пути — Steam, GOG, Rockstar Store, магазины приложений — стоят в «площадки_платформ». Слово «download» без уточнения тоже здесь: выдача по нему — gamecopyworld, dodi-repacks, softonic; уверенность у таких — medium.",
+    "имена": [
+      "iso", "rom", "roms", "crack", "cracked", "repack", "repacks", "torrent", "free download",
+      "download free", "highly compressed", "codex", "skidrow", "fitgirl", "dodi", "ocean of games",
+      "play online", "download", "free", "emulator"
+    ]
+  },
+
+  "взрослое": {
+    "почему": "Взрослый контент — не тема сайта; отличается от «рейтинга и nudity в игре» (тема rating): там вопрос родителей об ESRB, здесь — выдача с порносайтами.",
+    "имена": ["porn", "xxx", "gay porn", "nude", "hentai", "sex", "rule 34", "r34", "onlyfans"]
+  },
+
+  "навигационные": {
+    "почему": "Запрос называет чужой сайт по имени — пользователь идёт туда, а не к нам; страница под него не делается, причина записывается.",
+    "имена": ["tv tropes", "tvtropes", "reddit", "wiki", "wikipedia", "fandom", "imdb", "gamefaqs", "youtube", "twitch"]
+  },
+
+  "антиканнибализация": {
+    "почему": "Часть C.6 и прецедент 1weekinvr: два кластера с общей выдачей — одна страница, иначе они съедят друг друга.",
+    "пересечение_топов": 0.5
+  },
+
+  "платформы": {
+    "почему": "Часть C.3: платформенный кластер по умолчанию сливается ключами в хаб игры (раздел «где играть»), отдельная страница — только при информационной выдаче и заметном объёме. «pc» здесь нарочно нет: у этой ниши кластеры с «pc» — системные требования и починка (тема pc_tech), не «на чём играть». «apk», «android», «ios», «mobile» — платформа, а не пиратство: «max payne mobile» (400/мес) — официальный порт Rockstar 2012 года; «apk download» отдельной фразой уходит в no_page на S2.",
+    "слова": [
+      "ps1", "ps2", "ps3", "ps4", "ps5", "psp", "playstation", "playstation 2", "playstation 3",
+      "playstation 4", "playstation 5", "ps store", "playstation store", "xbox", "xbox 360",
+      "xbox one", "xbox series x", "xbox series s", "series x", "switch", "nintendo", "gba",
+      "gameboy", "game boy", "gameboy advance", "steam", "gog", "epic", "mac", "macos", "linux",
+      "backwards compatible", "backward compatible", "on ps5", "on ps4", "on xbox",
+      "apk", "android", "ios", "ipa", "iphone", "ipad", "mobile", "app store", "play store", "google play"
+    ]
+  },
+
+  "чужие_вселенные": {
+    "почему": "Часть C.5: чужие темы с теми же словами — exclusions. У этого бренда чужие — тёзки: рэп-трек Young Nudy «Max Payne», сорт «Max Payne strain», боец UFC (сниппет с ufcstats/sherdog/tapology), вайнер Bryan Silva.",
+    "не_наша_вселенная": ["young nudy", "nudy", "strain", "griffin", "bryan silva", "ufc", "mma", "lyrics", "rapper"],
+    "кроссовер": []
+  },
+
+  "серийные_темы": {
+    "почему": "Запросы не про одну игру, а про серию или про сквозной предмет: кто озвучивал, чьё лицо, читы, моды, гайды, медиа, рейтинг, связь с Alan Wake. Кластер, чьё имя попадает в тему, получает судьбу «тема» с названием темы и хабом игры, если игра названа; страницы под темы решает S2 (одна на серию или по игре — по объёму). Порядок тем — порядок проверки: первое попадание побеждает (creators раньше lore: «character designer» — создатели, «character» — лор). Заменяет зашитые в код первого сайта судьбы «карта_мест»/«люди_истории» (бэклог 52 п. 7).",
+    "similar": ["games like", "game like", "similar games", "similar to", "like max payne", "movies like", "alternatives"],
+    "order": ["games in order", "in order", "how many max payne games", "how many games", "chronological", "timeline", "series order", "best max payne game", "which max payne", "all max payne games", "every max payne"],
+    "cheats": ["cheats", "cheat", "cheat codes", "cheat code", "trainer", "trainers", "mod menu", "console commands", "god mode", "unlimited"],
+    "mods": ["mods", "mod", "modding", "kung fu", "rtx remix", "remix", "fusionfix", "texture pack", "reshade", "hd pack"],
+    "pc_tech": ["system requirements", "requirements", "controller", "controller support", "widescreen", "widescreen fix", "sound fix", "fix", "windows 10", "windows 7", "windows 11", "crash", "crashes", "fps", "resolution", "not working", "controls", "keyboard", "settings"],
+    "guides": ["walkthrough", "guide", "mission list", "missions", "mission", "chapters", "chapter", "how many chapters", "collectibles", "golden guns", "golden gun", "clues", "trophies", "trophy", "achievements", "achievement", "how long", "hltb", "how long to beat", "levels", "level", "difficulty", "tips", "secrets", "easter eggs", "airport", "favela", "hardcore"],
+    "gameplay": ["gameplay", "bullet time", "shootdodge", "shoot dodge", "gunplay", "weapons", "weapon", "painkillers", "painkiller", "beretta", "combat", "arcade mode", "new york minute", "score attack"],
+    "creators": ["sam lake", "lake", "james mccaffrey", "mccaffrey", "voice actor", "voice actors", "voice of", "who voices", "va", "actor", "actors", "cast", "creator", "developer", "developers", "who made", "who owns", "remedy", "rockstar", "timothy gibbs", "gibbs", "character designer", "designer", "composer", "writer", "director"],
+    "lore": ["plot", "story", "ending", "endings", "characters", "character", "who is", "mona sax", "mona", "natasha", "valkyr", "valkyrie", "brewer", "dog", "wife", "death", "lore", "girl", "villain", "villains", "vladimir", "vlad", "passos", "fabiana", "jack lupino", "lupino", "nicole horne", "horne", "winterson", "vinnie", "gognitti"],
+    "appearance": ["face", "face model", "face texture", "bald", "shaved head", "beard", "look", "model", "outfit", "suit", "cosplay", "costume", "style"],
+    "rating": ["esrb", "nudity", "parents guide", "parent guide", "age rating", "rated", "rating", "for kids", "content warning", "mature"],
+    "media": ["cover", "cover art", "box art", "art", "artwork", "concept art", "wallpaper", "wallpapers", "screenshots", "screenshot", "gif", "gifs", "meme", "memes", "font", "logo", "trailer", "trailers", "quotes", "quote", "comic", "comics", "graphic novel", "soundtrack", "ost", "music", "theme song", "health", "poets of the fall", "late goodbye", "icon", "avatar"],
+    "remedy_universe": ["alan wake", "alex casey", "control", "remedy connected universe", "rcu", "quantum break", "connected universe", "casey"],
+    "reviews": ["review", "reviews", "metacritic", "is max payne 3 good", "worth", "is it good", "worth playing", "opinion"],
+    "business": ["sales", "budget", "revenue", "sold", "copies", "development cost"],
+    "news": ["news", "release date", "announcement", "announced", "leak", "leaks", "rumor", "rumors", "update"],
+    "history": ["history", "development", "making of", "cancelled", "canceled", "beta", "demo", "prototype", "cut content", "tcrf", "unused"]
+  },
+
+  "игры": {
+    "почему": "Соответствие «псевдоним → хаб». По нему некластеризованная фраза уходит ключом в существующий кластер (Часть C.5), а платформенный или хвостовой кластер — в хаб. Порядок записей — порядок проверки: фильм первым, чтобы «max payne 2 movie» ушёл к фильму, а не к MP2; ремейк раньше MP1/MP2, потому что ремейк — обеих частей сразу («max payne 1 and 2 remake»), но после MP3 («max payne 3 remastered» — про третью). Фильм 2008 года — хаб, а не побочная тема: 7 590/мес, 12 % объёма (вопрос владельцу в докладе S0).",
+    "max payne (film)": ["film", "movie", "movies", "mark wahlberg", "wahlberg", "2008", "streaming", "stream", "watch", "blu ray", "blu-ray", "dvd", "retribution", "netflix", "hulu", "olga kurylenko", "mila kunis", "full movie", "female lead"],
+    "max payne 3": ["max payne 3", "max payne three", "mp3", "sao paulo", "são paulo", "brazil", "favela", "golden gun", "golden guns", "new york minute", "arcade mode", "passos", "fabiana", "rodrigo branco", "branco"],
+    "new max payne": ["remake", "remakes", "remaster", "remastered", "new max payne", "max payne 4", "max payne 5", "next max payne", "max payne 2025", "max payne 2026", "ps5", "series x", "switch"],
+    "max payne 2": ["max payne 2", "max payne two", "the fall of max payne", "fall of max payne", "mp2", "mona sax", "mona", "vlad", "vladimir lem", "winterson", "cleaners", "timothy gibbs"],
+    "max payne 1": ["max payne 1", "max payne one", "max payne 2001", "max payne (2001)", "original max payne", "max payne original", "first max payne", "mp1", "ps1", "gba", "gameboy", "game boy", "max payne advance", "advance", "valkyr", "valkyrie", "jack lupino", "lupino", "nicole horne", "horne", "vinnie gognitti", "gognitti", "psp"],
+    "max payne mobile": ["mobile", "apk", "android", "ios", "ipa", "iphone", "ipad", "app store", "play store", "google play"]
+  }
+}

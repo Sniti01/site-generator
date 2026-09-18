@@ -9,7 +9,12 @@
     "preview": "astro preview",
     "check": "astro check",
     "contrast": "node ../../core/gates/check-contrast.mjs",
-    "gates": "node ../../core/gates/run.mjs"
+    "gates": "node ../../core/gates/run.mjs",
+    "corpus": "node tools/fetch-corpus.mjs",
+    "corpus:check": "node tools/fetch-corpus.mjs --dry-run",
+    "corpus:report": "node tools/fetch-corpus.mjs --report",
+    "recon": "node tools/recon-s0.mjs",
+    "recon:check": "node tools/recon-s0.mjs --dry-run"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

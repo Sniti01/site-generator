@@ -14,7 +14,10 @@
     "corpus:check": "node tools/fetch-corpus.mjs --dry-run",
     "corpus:report": "node tools/fetch-corpus.mjs --report",
     "recon": "node tools/recon-s0.mjs",
-    "recon:check": "node tools/recon-s0.mjs --dry-run"
+    "recon:check": "node tools/recon-s0.mjs --dry-run",
+    "tree": "node tools/build-tree.mjs",
+    "tree:check": "node tools/build-tree.mjs --dry-run",
+    "tree:selftest": "node tools/build-tree.mjs --selftest"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

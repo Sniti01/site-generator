@@ -7,7 +7,1435 @@
   "semantics_date": "2026-09-18",
   "total_queries": 508
  },
- "pages": [],
- "exclusions": [],
- "no_page": []
+ "pages": [
+  {
+   "url": "/",
+   "type": "home",
+   "h1": "The Max Payne series, game by game",
+   "title": "Max Payne — all games in order, the 2008 movie and the remake",
+   "description": "An unofficial fan site about the Max Payne series: the three games in order, the 2008 movie, the upcoming remake, where to play each game today, cheats, mods, quotes and more.",
+   "cluster": "max payne",
+   "keywords": [
+    "max payne",
+    "max payne game",
+    "max payne xbox",
+    "max payne games",
+    "max payne video game",
+    "max payne xbox one",
+    "max payne gog",
+    "max payne steam",
+    "how many max payne games are there",
+    "max payne parents guide",
+    "gog max payne",
+    "max payne 3 parents guide",
+    "max payne series",
+    "max payne xbox 360",
+    "all max payne games",
+    "best max payne game",
+    "game max payne",
+    "max and payne",
+    "max payne 1 gog",
+    "max payne games in order",
+    "max payne nudity",
+    "max payne rockstar",
+    "max payne xbox series x",
+    "max payne: home",
+    "steam max payne"
+   ],
+   "parent": null,
+   "related": [
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/max-payne-3/",
+    "/remake/",
+    "/movie/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "band-quote",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "card-rail",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-columns",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "role": "games-in-order",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 17570
+  },
+  {
+   "url": "/max-payne-1/",
+   "type": "game",
+   "h1": "Max Payne (2001): the original game, its ports and the mobile version",
+   "title": "Max Payne 1 — the 2001 original: platforms, length, mobile port",
+   "description": "The first Max Payne game from 2001: what it is about, how long it takes to beat, the PS2, Xbox, Game Boy Advance and PS4 releases, and the official mobile version for Android and iOS.",
+   "cluster": "max payne 1",
+   "keywords": [
+    "max payne 1",
+    "max payne mobile",
+    "max payne ps4",
+    "max payne ps2",
+    "max payne gba",
+    "max payne 2001",
+    "how long is max payne 1",
+    "max payne trophy guide",
+    "max payne review",
+    "max payne apk",
+    "max payne pc",
+    "max payne psp",
+    "max payne release date",
+    "max payne walkthrough",
+    "how long to beat max payne",
+    "max payne 1 release date",
+    "max payne mobile apk",
+    "max payne mobile gameplay",
+    "max payne how long to beat",
+    "max payne trophies",
+    "hltb max payne",
+    "how long is max payne",
+    "is max payne on ps4",
+    "max payne 1 game",
+    "max payne 1 ps2",
+    "max payne 1 ps4",
+    "max payne 1 walkthrough",
+    "max payne 1998",
+    "max payne 2016",
+    "max payne advance",
+    "max payne android",
+    "max payne computer game",
+    "max payne for ps4",
+    "max payne gameboy",
+    "max payne ios",
+    "max payne ipa",
+    "max payne mobile download",
+    "max payne mobile ios app store",
+    "max payne on ps4",
+    "max payne original",
+    "max payne pc game",
+    "max payne playstation",
+    "max payne playstation 2",
+    "max payne ps1",
+    "max payne ps2 review",
+    "max payne ps4 trophies",
+    "max payne reviews",
+    "original max payne",
+    "ps2 max payne",
+    "ps4 max payne"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-2/",
+    "/story/",
+    "/cheats/",
+    "/pc/",
+    "/remake/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "role": "mobile",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 3860
+  },
+  {
+   "url": "/max-payne-2/",
+   "type": "game",
+   "h1": "Max Payne 2: The Fall of Max Payne",
+   "title": "Max Payne 2 — The Fall of Max Payne (2003): story, platforms, sales",
+   "description": "Max Payne 2: The Fall of Max Payne from 2003 — what changed since the first game, Mona Sax, the PS2 and Xbox versions, how it sold, and where to play it today.",
+   "cluster": "max payne 2",
+   "keywords": [
+    "max payne 2",
+    "max payne 2: the fall of max payne",
+    "max payne 2 release date",
+    "max payne 2 the fall of max payne",
+    "max payne 2 ps2",
+    "max payne 2 ps3",
+    "max payne 2 ps4",
+    "max payne 2 xbox",
+    "max payne 2 review",
+    "max payne 2 fall of max payne",
+    "max payne 2 game",
+    "max payne 2 pc",
+    "max payne 2 sales",
+    "max payne 2 steam",
+    "the fall of max payne"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-1/",
+    "/max-payne-3/",
+    "/story/",
+    "/mods/",
+    "/remake/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 3020
+  },
+  {
+   "url": "/max-payne-3/",
+   "type": "game",
+   "h1": "Max Payne 3 (2012): São Paulo, platforms and what to know before playing",
+   "title": "Max Payne 3 — the 2012 game: PS3, Xbox, PC, backwards compatibility",
+   "description": "Max Payne 3 from 2012: the story set in São Paulo, reviews and the ESRB rating, the PS3, Xbox 360 and PC releases, whether it runs on PS5 and Xbox Series, and where to play it now.",
+   "cluster": "max payne 3",
+   "keywords": [
+    "max payne 3",
+    "max payne 3 ps5",
+    "max payne 3 ps4",
+    "max payne 3 ps3",
+    "max payne 3 release date",
+    "max payne 3 remastered",
+    "max payne 3 review",
+    "max payne 3 steam",
+    "max payne 3 playstation 3 store",
+    "max payne 3 xbox",
+    "is max payne 3 on ps5",
+    "max payne 3 xbox one",
+    "is max payne 3 open world",
+    "max payne 3 nudity",
+    "max payne 3 xbox 360",
+    "max payne ps3",
+    "is max payne 3 backwards compatible",
+    "max payne 3 max",
+    "max payne 3 multiplayer",
+    "max payne 3 playstation",
+    "max payne 3 sao paulo",
+    "max payne 3 xbox series x",
+    "max payne 3 backwards compatible",
+    "max payne 3 dlc",
+    "max payne 3 remaster",
+    "max payne 3 sales",
+    "game max payne 3",
+    "is max payne 3 good",
+    "max payne 3 backwards compatible xbox one",
+    "max payne 3 brazil",
+    "max payne 3 budget",
+    "max payne 3 classic max",
+    "max payne 3 complete edition",
+    "max payne 3 demo",
+    "max payne 3 esrb",
+    "max payne 3 game",
+    "max payne 3 gamestop",
+    "max payne 3 map",
+    "max payne 3 max payne",
+    "max payne 3 metacritic",
+    "max payne 3 model",
+    "max payne 3 news",
+    "max payne 3 nude",
+    "max payne 3 on ps5",
+    "max payne 3 open world",
+    "max payne 3 playstation store",
+    "max payne 3 price",
+    "max payne 3 ps store",
+    "max payne 3 ps3 price",
+    "max payne 3 ps4 remastered",
+    "max payne 3 sao paulo setting",
+    "max payne 3 steam price",
+    "max payne 3 video game",
+    "max payne 3: the complete series",
+    "max payne backwards compatible",
+    "max payne three",
+    "ps3 max payne 3",
+    "what is max payne 3 about",
+    "xbox 360 max payne 3"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-3/guide/",
+    "/max-payne-2/",
+    "/gameplay/",
+    "/cheats/",
+    "/mods/",
+    "/pc/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 11600
+  },
+  {
+   "url": "/max-payne-3/guide/",
+   "type": "guide",
+   "h1": "Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies",
+   "title": "Max Payne 3 guide — chapter list, golden guns, clues, achievements",
+   "description": "A chapter-by-chapter guide to Max Payne 3: how many chapters there are, how long the game takes, where every golden gun part and clue is, the airport shootout, and the full trophy and achievement list.",
+   "cluster": "max payne 3 guide",
+   "keywords": [
+    "how long is max payne 3",
+    "max payne 3 mission list",
+    "how many chapters in max payne 3",
+    "max payne 3 chapters",
+    "max payne 3 golden guns",
+    "max payne 3 walkthrough",
+    "how many chapters are in max payne 3",
+    "max payne 3 achievements",
+    "max payne 3 collectibles",
+    "max payne 3 how long to beat",
+    "how long to beat max payne 3",
+    "max payne 3 guide",
+    "max payne 3 trophies",
+    "hltb max payne 3",
+    "max payne 3 achievement guide",
+    "max payne 3 airport",
+    "max payne 3 airport shootout",
+    "max payne 3 chapter 12",
+    "max payne 3 chapter 4",
+    "max payne 3 chapter 7",
+    "max payne 3 clues",
+    "max payne 3 clues and golden gun locations",
+    "max payne 3 favela",
+    "max payne 3 golden gun locations",
+    "max payne 3 golden gun parts",
+    "max payne 3 length",
+    "max payne 3 levels",
+    "max payne 3 trophy guide"
+   ],
+   "parent": "/max-payne-3/",
+   "related": [
+    "/max-payne-3/",
+    "/cheats/",
+    "/gameplay/",
+    "/pc/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 990
+  },
+  {
+   "url": "/movie/",
+   "type": "topic",
+   "h1": "Max Payne, the 2008 movie: cast, plot and where to watch it",
+   "title": "Max Payne movie (2008) — Mark Wahlberg, cast, streaming, sequel",
+   "description": "The 2008 Max Payne movie with Mark Wahlberg, Mila Kunis and Olga Kurylenko: the cast, how the plot differs from the game, where to stream it, the fan film Retribution, and whether a sequel ever happened.",
+   "cluster": "max payne (film)",
+   "keywords": [
+    "max payne (film)",
+    "max payne movie",
+    "max payne cast",
+    "max payne film",
+    "watch max payne (film)",
+    "female lead in max payne movie 2008 debut",
+    "max payne mark wahlberg",
+    "max payne movie cast",
+    "max payne 2 movie",
+    "max payne movie 2",
+    "olga kurylenko max payne",
+    "mark wahlberg max payne",
+    "max payne producer",
+    "max payne retribution",
+    "movies like max payne",
+    "cast of max payne",
+    "max payne 2008",
+    "max payne streaming",
+    "movie max payne",
+    "max payne movie review",
+    "max payne movies",
+    "max payne natasha",
+    "max payne actors",
+    "max payne blu ray",
+    "max payne full movie",
+    "max payne mila kunis",
+    "max payne movie streaming",
+    "max payne the movie",
+    "max payne: retribution",
+    "mila kunis max payne",
+    "natasha max payne",
+    "stream max payne",
+    "watch max payne",
+    "what is the movie max payne about"
+   ],
+   "parent": "/",
+   "related": [
+    "/",
+    "/story/",
+    "/voice-and-face/",
+    "/max-payne-1/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 8190
+  },
+  {
+   "url": "/remake/",
+   "type": "game",
+   "h1": "Max Payne 1 & 2 Remake: release date, platforms and the latest news",
+   "title": "Max Payne remake — release date, PS5, Xbox Series and PC, and Max Payne 4",
+   "description": "Everything known about the Max Payne 1 and 2 remake: release date, PS5, Xbox Series and PC, what has been announced so far, and why there is no Max Payne 4 yet.",
+   "cluster": "new max payne",
+   "keywords": [
+    "max payne remake",
+    "max payne 4",
+    "max payne remake release date",
+    "max payne ps5",
+    "max payne remastered",
+    "max payne remaster",
+    "max payne 1 and 2 remake",
+    "max payne remake news",
+    "max payne remakes",
+    "new max payne game",
+    "max payne 2 ps5",
+    "max payne 1 and 2 remake release date",
+    "max payne 1 remake",
+    "max payne 2 remake",
+    "max payne ps5 release date",
+    "max payne 4 release date",
+    "will there be a max payne 4",
+    "max payne new game",
+    "new max payne",
+    "max payne 4 ps4",
+    "max payne 5",
+    "max payne remake ps5",
+    "max payne 4 game",
+    "max payne ps store",
+    "max payne reboot",
+    "max payne remake ps5 release date",
+    "max payne remake release",
+    "max payne remastered release date",
+    "max payne switch",
+    "max payne update"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/",
+    "/voice-and-face/"
+   ],
+   "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "story-row",
+     "role": "max-payne-4",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 9480
+  },
+  {
+   "url": "/voice-and-face/",
+   "type": "topic",
+   "h1": "Who is behind Max Payne: the voice, the face and the creators",
+   "title": "Max Payne voice actor and face — James McCaffrey, Sam Lake, Timothy Gibbs",
+   "description": "James McCaffrey voiced Max in all three games; Sam Lake's face was the original Max, Timothy Gibbs the second. Who wrote and made the games, the Max Payne 3 cast, and why Max went bald.",
+   "cluster": "max payne va",
+   "keywords": [
+    "max payne face",
+    "james mccaffrey max payne",
+    "max payne voice actor",
+    "sam lake max payne",
+    "max payne actor",
+    "max payne bald",
+    "max payne character designer",
+    "max payne 1 face",
+    "max payne 3 voice actor",
+    "max payne 3 face",
+    "max payne sam lake",
+    "sam lake max payne face",
+    "max payne 3 cast",
+    "james mccaffrey max payne 3",
+    "max payne 3 bald",
+    "max payne 3 face model",
+    "max payne developer",
+    "max payne face model",
+    "max payne james mccaffrey",
+    "max payne va",
+    "remedy max payne",
+    "voice of max payne",
+    "who made max payne",
+    "who voices max payne",
+    "max payne 1 voice actor",
+    "max payne 3 james mccaffrey",
+    "max payne 3 sam lake mod",
+    "max payne 3 shaved head",
+    "max payne 3 voice actors",
+    "max payne cosplay",
+    "max payne creator",
+    "max payne face texture",
+    "max payne model",
+    "max payne original face",
+    "max payne remedy",
+    "max payne voice",
+    "remedy entertainment max payne",
+    "sam lake max payne 3",
+    "timothy gibbs max payne",
+    "who owns max payne",
+    "who played max payne"
+   ],
+   "parent": "/",
+   "related": [
+    "/story/",
+    "/max-payne-1/",
+    "/max-payne-3/",
+    "/remake/",
+    "/media/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 2180
+  },
+  {
+   "url": "/story/",
+   "type": "topic",
+   "h1": "Max Payne story and characters: from New York to São Paulo",
+   "title": "Max Payne story explained — characters, Mona Sax, Valkyr, endings",
+   "description": "The story of all three Max Payne games and the people in it: Michelle, Mona Sax, Vinnie Gognitti, Vladimir Lem, Passos, the Valkyr drug, each ending, and how Alex Casey in Alan Wake 2 ties into it.",
+   "cluster": "who is max payne",
+   "keywords": [
+    "max payne 3 characters",
+    "is alex casey max payne",
+    "alan wake 2 max payne",
+    "max payne character",
+    "is max payne in alan wake 2",
+    "max payne 2 mona sax",
+    "alan wake max payne",
+    "max payne 3 story",
+    "max payne in alan wake 2",
+    "max payne valkyrie",
+    "mona sax max payne 2",
+    "alex casey max payne",
+    "control max payne",
+    "max payne 3 character",
+    "max payne 3 ending",
+    "max payne 3 girl",
+    "max payne 3 plot",
+    "max payne alan wake",
+    "max payne alex casey",
+    "max payne and mona sax",
+    "max payne beard",
+    "max payne brewer",
+    "max payne characters",
+    "max payne control",
+    "max payne death",
+    "max payne dog",
+    "max payne mona sax",
+    "max payne plot",
+    "max payne story",
+    "max payne valkyr",
+    "max payne wife",
+    "mona sax max payne",
+    "valkyrie max payne",
+    "who is max payne"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/max-payne-3/",
+    "/voice-and-face/",
+    "/movie/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 580
+  },
+  {
+   "url": "/gameplay/",
+   "type": "topic",
+   "h1": "How Max Payne plays: bullet time, shootdodge, painkillers and weapons",
+   "title": "Max Payne gameplay — bullet time, shootdodge, weapons, arcade modes",
+   "description": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, the weapons, and how Max Payne 2 and 3 changed it — with gameplay videos.",
+   "cluster": "max payne bullet time",
+   "keywords": [
+    "max payne 2 gameplay",
+    "max payne 3 bullet time",
+    "max payne 3 gameplay",
+    "max payne bullet time",
+    "max payne gameplay",
+    "max payne gameplay bullet time",
+    "max payne 3 bullet time gameplay",
+    "max payne 3 gunplay",
+    "max payne 1 gameplay",
+    "max payne 2 bullet time",
+    "max payne 2 walkthrough",
+    "max payne 3 arcade mode",
+    "max payne 3 new york minute",
+    "max payne 3 shootdodge",
+    "max payne 3 weapons",
+    "max payne 3 xbox 360 gameplay",
+    "max payne beretta",
+    "max payne painkillers",
+    "max payne shootdodge"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-3/guide/",
+    "/cheats/",
+    "/mods/",
+    "/max-payne-1/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 440
+  },
+  {
+   "url": "/cheats/",
+   "type": "guide",
+   "h1": "Max Payne cheats for every game: PC codes, console cheats and trainers",
+   "title": "Max Payne cheats — PC, PS2, PS4, Xbox codes for Max Payne 1, 2 and 3",
+   "description": "Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, how cheats work in Max Payne 3, the developer console, trainers, and which cheats disable achievements.",
+   "cluster": "max payne cheats",
+   "keywords": [
+    "max payne 3 cheats",
+    "max payne cheats",
+    "max payne 3 trainer",
+    "max payne ps2 cheats",
+    "max payne cheats ps2",
+    "max payne cheats ps4",
+    "max payne 3 cheat codes",
+    "max payne 3 cheats pc",
+    "max payne cheat codes",
+    "cheats for max payne 3",
+    "max payne 1 cheats",
+    "max payne 1 trainer",
+    "max payne 2 cheats",
+    "max payne 2 cheats ps2",
+    "max payne 2 cheats xbox",
+    "max payne 2 pc cheats",
+    "max payne 2 ps2 cheats",
+    "max payne 2 trainer",
+    "max payne 3 cheat codes pc",
+    "max payne 3 cheats ps3",
+    "max payne 3 mod menu",
+    "max payne 3 pc cheats",
+    "max payne 3 unlockables",
+    "max payne cheats pc",
+    "max payne cheats ps5",
+    "max payne cheats xbox",
+    "max payne gba cheats",
+    "max payne mobile cheats",
+    "max payne ps4 cheats",
+    "max payne trainer",
+    "max payne xbox cheats",
+    "trainer max payne 3"
+   ],
+   "parent": "/",
+   "related": [
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/max-payne-3/",
+    "/mods/",
+    "/pc/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 670
+  },
+  {
+   "url": "/mods/",
+   "type": "guide",
+   "h1": "The best Max Payne mods: from the Kung Fu mod to RTX Remix",
+   "title": "Max Payne mods — best mods for Max Payne 1, 2 and 3, RTX Remix, FusionFix",
+   "description": "The mods worth installing for Max Payne 1, 2 and 3: classic total conversions like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install each of them.",
+   "cluster": "max payne mods",
+   "keywords": [
+    "max payne 3 mods",
+    "max payne 2 mods",
+    "max payne mods",
+    "max payne kung fu mod",
+    "max payne 3 mod",
+    "max payne 3 fusionfix",
+    "max payne rtx remix"
+   ],
+   "parent": "/",
+   "related": [
+    "/pc/",
+    "/cheats/",
+    "/max-payne-3/",
+    "/max-payne-2/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 1080
+  },
+  {
+   "url": "/media/",
+   "type": "topic",
+   "h1": "Max Payne art and media: covers, wallpapers, comics, trailers and soundtracks",
+   "title": "Max Payne cover art, wallpapers, concept art, memes, comic, soundtrack",
+   "description": "Cover art and box art of all three games, wallpapers and screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack of Max Payne 3, and the memes and gifs.",
+   "cluster": "max payne cover",
+   "keywords": [
+    "max payne 3 cover art",
+    "max payne meme",
+    "max payne logo",
+    "max payne 3 art",
+    "max payne comic",
+    "max payne cover",
+    "max payne 3 artwork",
+    "max payne 3 cover",
+    "max payne wallpaper",
+    "max payne 3 trailer",
+    "max payne font",
+    "max payne ps2 cover",
+    "max payne 2 cover",
+    "max payne 2 wallpaper",
+    "max payne 3 gif",
+    "max payne 3 logo",
+    "max payne 3 soundtrack",
+    "max payne 3 wallpaper",
+    "max payne art",
+    "max payne cover art",
+    "max payne gif",
+    "max payne memes",
+    "health max payne 3",
+    "max payne 1 cover",
+    "max payne 1 screenshots",
+    "max payne 1 wallpaper",
+    "max payne 2 screenshots",
+    "max payne 3 comic",
+    "max payne 3 concept art",
+    "max payne 3 cover girl",
+    "max payne 3 font",
+    "max payne 3 ps3 cover",
+    "max payne 3 screenshots",
+    "max payne 3 trailers",
+    "max payne artwork",
+    "max payne avatar",
+    "max payne box art",
+    "max payne game cover",
+    "max payne screenshots",
+    "max payne trailer"
+   ],
+   "parent": "/",
+   "related": [
+    "/quotes/",
+    "/voice-and-face/",
+    "/max-payne-3/",
+    "/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 950
+  },
+  {
+   "url": "/quotes/",
+   "type": "topic",
+   "h1": "Max Payne quotes: the best lines from all three games",
+   "title": "Max Payne quotes — famous monologues and one-liners from the games",
+   "description": "The most memorable Max Payne quotes: the noir monologues of the first game, the lines from Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game and chapter.",
+   "cluster": "max payne quotes",
+   "keywords": [
+    "max payne quotes",
+    "max payne 3 quotes",
+    "max payne 2 quotes"
+   ],
+   "parent": "/",
+   "related": [
+    "/story/",
+    "/media/",
+    "/voice-and-face/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 270
+  },
+  {
+   "url": "/pc/",
+   "type": "guide",
+   "h1": "Max Payne on a modern PC: system requirements, fixes and controller support",
+   "title": "Max Payne PC — system requirements, Windows 10/11 fixes, controller",
+   "description": "How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, the widescreen and sound fixes, Windows 10 and 11 issues, and how to get controller support in the first two games.",
+   "cluster": "max payne 3 pc",
+   "keywords": [
+    "max payne 3 pc",
+    "max payne 3 system requirements",
+    "max payne pc controller support",
+    "gamesystemrequirements max payne 2 minimum ram",
+    "max payne controller support",
+    "max payne widescreen fix",
+    "max payne 2 pc controller support",
+    "max payne 2 system requirements",
+    "max payne windows 10",
+    "max payne 1 controller support",
+    "max payne 2 controller support",
+    "max payne 2 widescreen fix",
+    "max payne 3 pc requirements",
+    "max payne 3 system requirements pc",
+    "max payne controls",
+    "max payne pc controller",
+    "max payne sound fix"
+   ],
+   "parent": "/",
+   "related": [
+    "/mods/",
+    "/cheats/",
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/max-payne-3/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 410
+  },
+  {
+   "url": "/games-like-max-payne/",
+   "type": "topic",
+   "h1": "Games like Max Payne: what to play next",
+   "title": "Games like Max Payne — shooters with bullet time and noir stories",
+   "description": "If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy's own titles to modern shooters with bullet time, and what each one gets right.",
+   "cluster": "games like max payne",
+   "keywords": [
+    "games like max payne",
+    "games like max payne 3",
+    "games similar to max payne",
+    "games similar to max payne 3",
+    "max payne like games",
+    "max payne similar games",
+    "max payne type games"
+   ],
+   "parent": "/",
+   "related": [
+    "/",
+    "/gameplay/",
+    "/story/",
+    "/remake/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "cta-band",
+     "source": "type-default",
+     "confidence": "low"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 340
+  },
+  {
+   "url": "/privacy/",
+   "type": "legal",
+   "h1": "Privacy policy",
+   "title": "Privacy policy — 7thserpent.com",
+   "description": "What data 7thserpent.com processes and why: no analytics, no cookies of its own, no forms. What the hosting provider logs and what rights a reader has.",
+   "cluster": null,
+   "keywords": [],
+   "parent": "/",
+   "related": [],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "byline",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 0
+  },
+  {
+   "url": "/404/",
+   "type": "legal",
+   "h1": "There is no such page",
+   "title": "Page not found — 7thserpent.com",
+   "description": "The address you followed does not lead to any page on 7thserpent.com. Go back to the home page or start with one of the three games.",
+   "cluster": null,
+   "keywords": [],
+   "parent": "/",
+   "related": [
+    "/",
+    "/max-payne-1/",
+    "/max-payne-2/",
+    "/max-payne-3/"
+   ],
+   "blocks": [
+    {
+     "block": "story-row",
+     "source": "type-default",
+     "confidence": "low"
+    },
+    {
+     "block": "link-list",
+     "source": "manual",
+     "confidence": "high"
+    }
+   ],
+   "wave": 1,
+   "corridor": null,
+   "volume": 0
+  }
+ ],
+ "exclusions": [
+  {
+   "query": "bryan silva max payne",
+   "reason": "чужая тема с теми же словами: «bryan silva»"
+  },
+  {
+   "query": "max payne gay porn",
+   "reason": "взрослое: «xxx»"
+  },
+  {
+   "query": "max payne griffin",
+   "reason": "чужая тема с теми же словами: «griffin»"
+  },
+  {
+   "query": "max payne nude",
+   "reason": "взрослое: «nude»"
+  },
+  {
+   "query": "max payne porn",
+   "reason": "взрослое: «xxx»"
+  },
+  {
+   "query": "max payne strain",
+   "reason": "чужая тема с теми же словами: «strain»"
+  },
+  {
+   "query": "max payne xxx",
+   "reason": "взрослое: «xxx»"
+  },
+  {
+   "query": "young nudy max payne",
+   "reason": "чужая тема с теми же словами: «young nudy»"
+  }
+ ],
+ "no_page": [
+  {
+   "query": "max payne 1 download",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne 2 download",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne 2 iso",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne 2 poster",
+   "reason": "побочная тема (мерч): «poster»"
+  },
+  {
+   "query": "max payne 2 ps2 iso",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne 3 cd key",
+   "reason": "магазинное слово в имени кластера: «key»"
+  },
+  {
+   "query": "max payne 3 collectors edition",
+   "reason": "побочная тема (мерч): «statue»"
+  },
+  {
+   "query": "max payne 3 download",
+   "reason": "нелегальное распространение: «free»"
+  },
+  {
+   "query": "max payne 3 figure",
+   "reason": "побочная тема (мерч): «statue»"
+  },
+  {
+   "query": "max payne 3 free",
+   "reason": "нелегальное распространение: «free»"
+  },
+  {
+   "query": "max payne 3 free download",
+   "reason": "нелегальное распространение: «free»"
+  },
+  {
+   "query": "max payne 3 hawaiian shirt",
+   "reason": "побочная тема (мерч): «shirt»"
+  },
+  {
+   "query": "max payne 3 key",
+   "reason": "магазинное слово в имени кластера: «key»"
+  },
+  {
+   "query": "max payne 3 pc download",
+   "reason": "нелегальное распространение: «free»"
+  },
+  {
+   "query": "max payne 3 poster",
+   "reason": "побочная тема (мерч): «poster»"
+  },
+  {
+   "query": "max payne 3 shirt",
+   "reason": "побочная тема (мерч): «shirt»"
+  },
+  {
+   "query": "max payne 3 special edition",
+   "reason": "побочная тема (мерч): «statue»"
+  },
+  {
+   "query": "max payne 3 statue",
+   "reason": "побочная тема (мерч): «statue»"
+  },
+  {
+   "query": "max payne 3 steam key",
+   "reason": "магазинное слово в имени кластера: «key»"
+  },
+  {
+   "query": "max payne 3 suit",
+   "reason": "побочная тема (мерч): «tie»"
+  },
+  {
+   "query": "max payne 3 torrent",
+   "reason": "нелегальное распространение: «free»"
+  },
+  {
+   "query": "max payne 3 tv tropes",
+   "reason": "навигационный запрос к чужому сайту: «tv tropes»"
+  },
+  {
+   "query": "max payne action figure",
+   "reason": "побочная тема (мерч): «figure»"
+  },
+  {
+   "query": "max payne apk download",
+   "reason": "нелегальное распространение: «apk download» — сборка вне магазина приложений; официальная мобильная версия (Google Play, App Store) — раздел хаба MP1 (S0 §4.4, П65 п. 1 и 3)",
+   "mentioned_on": "/max-payne-1/"
+  },
+  {
+   "query": "max payne bundle",
+   "reason": "магазинный интент: «bundle»"
+  },
+  {
+   "query": "max payne coat",
+   "reason": "побочная тема (мерч): «coat»"
+  },
+  {
+   "query": "max payne codex",
+   "reason": "нелегальное распространение: «codex»"
+  },
+  {
+   "query": "max payne crack",
+   "reason": "нелегальное распространение: «crack»"
+  },
+  {
+   "query": "max payne demo free download",
+   "reason": "нелегальное распространение: «free download»"
+  },
+  {
+   "query": "max payne download",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne download for pc highly compressed",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne download for windows 7",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne figure",
+   "reason": "побочная тема (мерч): «figure»"
+  },
+  {
+   "query": "max payne free download",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne gba rom",
+   "reason": "нелегальное распространение: «rom»"
+  },
+  {
+   "query": "max payne hawaiian shirt",
+   "reason": "побочная тема (мерч): «shirt»"
+  },
+  {
+   "query": "max payne iso",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne jacket",
+   "reason": "побочная тема (мерч): «coat»"
+  },
+  {
+   "query": "max payne leather coat",
+   "reason": "побочная тема (мерч): «coat»"
+  },
+  {
+   "query": "max payne leather jacket",
+   "reason": "побочная тема (мерч): «coat»"
+  },
+  {
+   "query": "max payne movie poster",
+   "reason": "побочная тема (мерч): «poster»"
+  },
+  {
+   "query": "max payne outfit",
+   "reason": "побочная тема (мерч): «tie»"
+  },
+  {
+   "query": "max payne pc download",
+   "reason": "нелегальное распространение: «download»"
+  },
+  {
+   "query": "max payne play online",
+   "reason": "нелегальное распространение: «play online»"
+  },
+  {
+   "query": "max payne poster",
+   "reason": "побочная тема (мерч): «poster»"
+  },
+  {
+   "query": "max payne ps2 iso",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne ps2 rom",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne repack",
+   "reason": "нелегальное распространение: «repack»"
+  },
+  {
+   "query": "max payne rom",
+   "reason": "нелегальное распространение: «iso»"
+  },
+  {
+   "query": "max payne shirt",
+   "reason": "побочная тема (мерч): «shirt»"
+  },
+  {
+   "query": "max payne steam key",
+   "reason": "магазинный интент: «steam key»"
+  },
+  {
+   "query": "max payne t shirt",
+   "reason": "побочная тема (мерч): «shirt»"
+  },
+  {
+   "query": "max payne tattoo",
+   "reason": "побочная тема (мерч): «tattoo»"
+  },
+  {
+   "query": "max payne tie",
+   "reason": "побочная тема (мерч): «tie»"
+  },
+  {
+   "query": "max payne tv tropes",
+   "reason": "навигационный запрос к чужому сайту: «tv tropes»"
+  },
+  {
+   "query": "max payne valkyrie tattoo",
+   "reason": "побочная тема (мерч): «tattoo»"
+  },
+  {
+   "query": "tv tropes max payne",
+   "reason": "навигационный запрос к чужому сайту: «tv tropes»"
+  },
+  {
+   "query": "tv tropes max payne 3",
+   "reason": "навигационный запрос к чужому сайту: «tv tropes»"
+  },
+  {
+   "query": "tvtropes max payne",
+   "reason": "навигационный запрос к чужому сайту: «tv tropes»"
+  }
+ ]
 }

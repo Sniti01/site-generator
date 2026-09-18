@@ -1,0 +1,182 @@
+{
+  "почему_файл": [
+    "Фикстура самопроверки `tools/build-tree.mjs` этого сайта: игрушечная выгрузка, разведка и объявление, на которых по пробе на каждый класс расхождения.",
+    "Образец — `core/structure/fixtures/build-tree.json` первого сайта; здесь добавлены судьбы этого сайта: «тема» с парой «тема @ игра», «главная», псевдо-хаб «brand mobile», `no_page_ключи`.",
+    "Умолчания типов и словарь блоков фикстура не дублирует — их пробы берут из живого ядра (`type-blocks.json`), чтобы проверять те умолчания, с которыми идёт сайт."
+  ],
+
+  "семантика_комментарий": "phrase → кластер и объём; форма та же, что даёт читалка ядра (`google` — имя поля контракта, у этого сайта объём Ahrefs).",
+  "семантика": [
+    { "phrase": "brand", "cluster": "brand", "google": 1000 },
+    { "phrase": "brand game", "cluster": "brand", "google": 100 },
+    { "phrase": "brand 5", "cluster": "brand", "google": 20 },
+    { "phrase": "brand one", "cluster": "brand one", "google": 300 },
+    { "phrase": "brand three", "cluster": "brand three", "google": 500 },
+    { "phrase": "brand three guide", "cluster": "brand three guide", "google": 80 },
+    { "phrase": "brand three review", "cluster": "brand three review", "google": 40 },
+    { "phrase": "brand review", "cluster": "brand review", "google": 30 },
+    { "phrase": "brand film", "cluster": "brand film", "google": 200 },
+    { "phrase": "brand remake", "cluster": "brand remake", "google": 400 },
+    { "phrase": "brand ps4", "cluster": "brand ps4", "google": 60 },
+    { "phrase": "brand three ps3", "cluster": "brand three ps3", "google": 50 },
+    { "phrase": "brand mobile", "cluster": "brand apk", "google": 90 },
+    { "phrase": "brand apk download", "cluster": "brand apk", "google": 10 },
+    { "phrase": "brand cheats", "cluster": "brand cheats", "google": 70 },
+    { "phrase": "brand cheat codes", "cluster": "brand cheats", "google": 20 },
+    { "phrase": "brand games in order", "cluster": "brand games in order", "google": 30 },
+    { "phrase": "brand shirt", "cluster": "brand shirt", "google": 50 },
+    { "phrase": "brand xxx", "cluster": "brand xxx", "google": 10 },
+    { "phrase": "brand three chapter 4", "cluster": "Некластеризовано", "google": 10 },
+    { "phrase": "brand gba cheats", "cluster": "Некластеризовано", "google": 10 },
+    { "phrase": "brand three steam", "cluster": "Некластеризовано", "google": 10 },
+    { "phrase": "brand crack", "cluster": "Некластеризовано", "google": 10 },
+    { "phrase": "brand strain", "cluster": "Некластеризовано", "google": 10 }
+  ],
+
+  "вход": {
+    "decl": {
+      "страницы": [
+        {
+          "url": "/",
+          "type": "home",
+          "cluster": "brand",
+          "wave": 1,
+          "темы": ["order"],
+          "ключи": [],
+          "блоки": [{ "block": "link-list", "role": "games-in-order" }],
+          "related": ["/one/", "/three/"],
+          "h1": "Brand — home",
+          "title": "Brand — every game",
+          "description": "Home page description, one per site."
+        },
+        {
+          "url": "/one/",
+          "type": "game",
+          "cluster": "brand one",
+          "слияния": ["brand apk", "brand ps4"],
+          "wave": 1,
+          "блоки": [{ "block": "story-row", "role": "mobile" }],
+          "related": ["/three/"],
+          "h1": "Brand One",
+          "title": "Brand One — the first game",
+          "description": "Description of the first game."
+        },
+        {
+          "url": "/three/",
+          "type": "game",
+          "cluster": "brand three",
+          "wave": 1,
+          "темы": ["reviews @ brand three", "reviews"],
+          "related": ["/one/", "/three/guide/"],
+          "h1": "Brand Three",
+          "title": "Brand Three — the third game",
+          "description": "Description of the third game."
+        },
+        {
+          "url": "/three/guide/",
+          "type": "guide",
+          "cluster": "brand three guide",
+          "wave": 1,
+          "темы": ["guides @ brand three"],
+          "related": ["/three/"],
+          "h1": "Brand Three guide",
+          "title": "Brand Three — walkthrough",
+          "description": "Description of the guide."
+        },
+        {
+          "url": "/movie/",
+          "type": "topic",
+          "cluster": "brand film",
+          "wave": 1,
+          "блоки": [{ "block": "hero-key-art" }],
+          "related": ["/"],
+          "h1": "Brand, the movie",
+          "title": "Brand movie — cast and plot",
+          "description": "Description of the movie page."
+        },
+        {
+          "url": "/remake/",
+          "type": "game",
+          "cluster": "brand remake",
+          "wave": 1,
+          "ключи": ["brand 5"],
+          "related": ["/one/"],
+          "h1": "Brand remake",
+          "title": "Brand remake — release date",
+          "description": "Description of the remake page."
+        },
+        {
+          "url": "/cheats/",
+          "type": "guide",
+          "cluster": "brand cheats",
+          "wave": 1,
+          "темы": ["cheats", "cheats @ brand one"],
+          "related": ["/one/", "/three/"],
+          "h1": "Brand cheats",
+          "title": "Brand cheats — every game",
+          "description": "Description of the cheats page."
+        },
+        {
+          "url": "/privacy/",
+          "type": "legal",
+          "вне_выгрузки": "проба B: служебная страница, спроса нет по определению",
+          "wave": 1,
+          "блоки": [{ "block": "byline" }],
+          "related": [],
+          "h1": "Privacy policy",
+          "title": "Privacy policy — Brand",
+          "description": "Description of the legal page."
+        }
+      ],
+      "no_page_ключи": [
+        { "ключ": "brand apk download", "причина": "пиратство", "упомянуто_на": "/one/" }
+      ]
+    },
+
+    "recon": {
+      "кластеры": [
+        { "кластер": "brand", "судьба": "главная", "причина": "бренд-голова серии" },
+        { "кластер": "brand one", "судьба": "страница", "цель": "brand one", "причина": "хаб игры" },
+        { "кластер": "brand three", "судьба": "страница", "цель": "brand three", "причина": "хаб игры" },
+        { "кластер": "brand three guide", "судьба": "тема", "цель": "guides", "хаб": "brand three", "причина": "серийная тема «guides», игра — «brand three»" },
+        { "кластер": "brand three review", "судьба": "тема", "цель": "reviews", "хаб": "brand three", "причина": "серийная тема «reviews», игра — «brand three»" },
+        { "кластер": "brand review", "судьба": "тема", "цель": "reviews", "хаб": null, "причина": "серийная тема «reviews», игра не названа" },
+        { "кластер": "brand film", "судьба": "страница", "цель": "brand film", "причина": "хаб фильма" },
+        { "кластер": "brand remake", "судьба": "страница", "цель": "brand remake", "причина": "страница ремейка" },
+        { "кластер": "brand ps4", "судьба": "слить_в_хаб", "цель": "brand", "причина": "платформенный кластер, игра не названа" },
+        { "кластер": "brand three ps3", "судьба": "слить_в_хаб", "цель": "brand three", "причина": "платформенный кластер" },
+        { "кластер": "brand apk", "судьба": "слить_в_хаб", "цель": "brand mobile", "причина": "платформенный кластер, мобильная версия" },
+        { "кластер": "brand cheats", "судьба": "тема", "цель": "cheats", "хаб": null, "причина": "серийная тема «cheats»" },
+        { "кластер": "brand games in order", "судьба": "тема", "цель": "order", "хаб": null, "причина": "серийная тема «order»" },
+        { "кластер": "brand shirt", "судьба": "no_page", "причина": "побочная тема (мерч)" },
+        { "кластер": "brand xxx", "судьба": "exclusions", "причина": "взрослое" }
+      ],
+      "некластеризовано": [
+        { "фраза": "brand three chapter 4", "судьба": "новая_тема", "цель": "guides", "хаб": "brand three", "причина": "серийная тема «guides», игра — «brand three»" },
+        { "фраза": "brand gba cheats", "судьба": "новая_тема", "цель": "cheats", "хаб": "brand one", "причина": "серийная тема «cheats», игра — «brand one»" },
+        { "фраза": "brand three steam", "судьба": "к_кластеру", "цель": "brand three", "причина": "тема игры: хаб «brand three»" },
+        { "фраза": "brand crack", "судьба": "no_page", "причина": "нелегальное распространение" },
+        { "фраза": "brand strain", "судьба": "exclusions", "причина": "чужая тема с теми же словами" }
+      ]
+    },
+
+    "doc_комментарий": "Существующая структура: шапка и именованный коридор (П43) у `/one/` — число-предохранитель при отсутствующей анатомии; у `/` коридор `null`, что совпадает с «анатомии нет» и строкой не называется.",
+    "doc": {
+      "site": {
+        "domain": "https://brand.test",
+        "lang": "en",
+        "semantics": "input/brand.xlsx",
+        "semantics_source": "Próbka, XX",
+        "semantics_date": "2026-01-01",
+        "total_queries": 24
+      },
+      "pages": [
+        { "url": "/", "corridor": null },
+        { "url": "/one/", "corridor": [100, 250] }
+      ]
+    },
+
+    "rulesS3": null,
+    "anatomy": null
+  }
+}

@@ -37,7 +37,10 @@
  * Расчёт вынесен в `buildTree()` — чистую функцию от входов, — чтобы пробы
  * `--selftest` гоняли тот же код, что и прогон, на фикстуре
  * `core/structure/fixtures/build-tree.json`: по пробе на каждый класс
- * расхождения, найденный докладом-планом 2026-09-15.
+ * расхождения, найденный докладом-планом 2026-09-15 (A умолчания, B страница
+ * вне выгрузки, C коридор), и на сторожей пачек R (бэклог 54 п. 1, П67 п. 3):
+ * кластер с судьбой `no_page`/`exclusions` якорем или в «слияния», ключ
+ * на фразу с такой судьбой, ключ на фразу возвращённого кластера.
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -123,21 +126,73 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   }
 
   const clusterFate = new Map(recon['кластеры'].map((c) => [c['кластер'], c]));
+  const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
+  const clusterOfPhrase = new Map(data.phrases.map((x) => [x.phrase, x.cluster]));
+  // Судьба фразы по разведке — своя строка у «Некластеризовано», строка
+  // кластера у остальных; null, если фразы в выгрузке нет.
+  const fateOfPhrase = (phrase) => {
+    const row = phraseFate.get(phrase);
+    if (row) return row['судьба'];
+    const cluster = clusterOfPhrase.get(phrase);
+    return cluster ? clusterFate.get(cluster)?.['судьба'] ?? null : null;
+  };
 
   // Возврат из `no_page` — не рядовое слияние: он отменяет строку пачки,
   // подтверждённой владельцем, поэтому объявляется отдельным полем, печатается
   // отдельной строкой и требует, чтобы у кластера действительно стояла судьба
   // «no_page». Разрешение на конкретные кластеры даёт владелец, не инструмент.
+  // Возвраты собираются до сторожей ключей: ключ на фразу возвращённого
+  // кластера должен называть возврат, а не судьбу разведки.
   const returned = [];
+  const returnedTo = new Map();
   for (const p of pages) {
     for (const c of p['возвращено_из_no_page'] ?? []) {
       const row = clusterFate.get(c);
       if (!row) fail(`возврат из no_page: кластера «${c}» нет в разведке`);
       else if (row['судьба'] !== 'no_page') fail(`возврат из no_page: у «${c}» судьба «${row['судьба']}», а не «no_page» — это обычное слияние`);
-      else returned.push({ cluster: c, url: p.url, reason: row['причина'] });
+      else {
+        returned.push({ cluster: c, url: p.url, reason: row['причина'] });
+        returnedTo.set(c, p.url);
+      }
     }
   }
-  const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
+
+  // Обратное тоже сторожится (бэклог 54 п. 1 — те же три тихих прохода, что
+  // рецензия 2026-09-18 нашла и закрыла у второго сайта): кластер с судьбой
+  // «no_page» якорем или в обычных «слияния» — отмена решения без строки
+  // «возвращено»; кластер с судьбой «exclusions» — не по теме, страницей не
+  // перекрывается, а в «слияния» он мёртвое объявление; ключ на фразу с такой
+  // судьбой — та же отмена в обход поля возврата; ключ на фразу кластера,
+  // возвращённого полем, дробит возврат, разрешённый на кластер целиком.
+  for (const p of pages) {
+    const guard = (c, where) => {
+      const fate = clusterFate.get(c)?.['судьба'];
+      if (fate === 'no_page') {
+        fail(where === 'якорь'
+          ? `${p.url}: якорь «${c}» — кластер с судьбой no_page; якорем такой кластер не стоит, возврат — только полем «возвращено_из_no_page»`
+          : `${p.url}: кластер «${c}» с судьбой no_page — возврат объявляется полем «возвращено_из_no_page», не «слияния»`);
+      }
+      if (fate === 'exclusions') fail(`${p.url}: ${where} «${c}» — кластер с судьбой exclusions, не по теме; страница его не перекрывает`);
+    };
+    if (p.cluster) guard(p.cluster, 'якорь');
+    for (const c of p['слияния'] ?? []) guard(c, 'слияние');
+    for (const k of p['ключи'] ?? []) {
+      const fate = fateOfPhrase(k);
+      if (fate === 'exclusions') fail(`${p.url}: ключ «${k}» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся`);
+      if (fate === 'no_page') {
+        const cluster = clusterOfPhrase.get(k);
+        const back = cluster && returnedTo.get(cluster);
+        // Возвращённый кластер возвращён целиком: ключом он не дробится —
+        // возврат разрешён владельцем на кластер, а не на фразу. Ключ той же
+        // страницы, что и возврат, просто лишний.
+        fail(!back
+          ? `${p.url}: ключ «${k}» — фраза с судьбой no_page; возврат ключом не объявляется (пачка П25)`
+          : back === p.url
+            ? `${p.url}: ключ «${k}» лишний — кластер «${cluster}» уже возвращён на эту страницу целиком`
+            : `${p.url}: ключ «${k}» — кластер «${cluster}» возвращён из no_page целиком на ${back}; ключом не дробится`);
+      }
+    }
+  }
 
   /* ---------------------------------------------------------------- *
    * Раскладка: каждой фразе выгрузки — ровно одно место.
@@ -220,7 +275,8 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       seen.set(phrase.phrase, 'no_page');
     } else if (fate === 'no_page') {
       // Сюда попадают только кластеры из `возвращено_из_no_page`: обычное
-      // слияние такой судьбы не перекрывает — проверка выше это гарантирует.
+      // слияние такой судьбы не перекрывает — сторож в цикле объявлений выше
+      // (no_page якорем или в «слияния» — несходимость) это гарантирует.
       toPage(pageByCluster.get(phrase.cluster), phrase);
       seen.set(phrase.phrase, pageByCluster.get(phrase.cluster));
     } else if (fate === 'страница' || fate === 'волна_2') {
@@ -505,18 +561,22 @@ function selftest() {
   const cases = [];
   const check = (имя, ждём, факт, откуда) =>
     cases.push({ имя, ждём: JSON.stringify(ждём), факт: JSON.stringify(факт), откуда });
+  const tree = (input) => buildTree({ ...input, typeBlocks, data });
   const blocksOf = (r, url) => r.built.find((p) => p.url === url)?.blocks.map((b) => `${b.block}(${b.source[0]})${b.role ? '#' + b.role : ''}`);
+  const kw = (r, url) => r.built.find((p) => p.url === url)?.keywords;
   const problemsAbout = (r, text) => r.problems.filter((p) => p.includes(text)).length;
+  const page = (input, url) => input.decl['страницы'].find((p) => p.url === url);
 
   // Ноль: фикстура сама сходится — иначе пробы ниже меряют не то.
-  const ok = buildTree({ ...base(), typeBlocks, data });
+  const ok = tree(base());
   check('фикстура: несходимостей', 0, ok.problems.length, ok.problems.join(' | ') || 'учёт сходится');
   check('фикстура: запросов без места', 0, ok.lost.length, ok.lost.join(' | ') || 'все разложены');
+  check('фикстура: учёт', data.meta.phrases, ok.tally, 'страницы + exclusions + no_page');
 
   // Шапка: `total_queries` — счёт из читалки, остальное — как объявлено.
   const staleHeader = base();
   staleHeader.doc.site.total_queries = 999;
-  check('шапка: total_queries пишет инструмент', { ...fx['вход'].doc.site, total_queries: 8 }, buildTree({ ...staleHeader, typeBlocks, data }).site, 'бэклог 52 п. 3 — schema.json «пишет: скрипт»');
+  check('шапка: total_queries пишет инструмент', { ...fx['вход'].doc.site, total_queries: data.meta.phrases }, tree(staleHeader).site, 'бэклог 52 п. 3 — schema.json «пишет: скрипт»');
 
   // A — умолчания типов (A1, П52 п. 4): у game/topic `link-list` есть, `card-rail` нет;
   // место `link-list` — после `verdict-box` анатомии, перед `cta-band`; главная —
@@ -547,6 +607,49 @@ function selftest() {
   const noDoc = base();
   noDoc.doc.pages = [];
   check('C: без структуры — анатомия', [100, 200], buildTree({ ...noDoc, typeBlocks, data }).built.find((p) => p.url === '/beta/').corridor, 'отрицательная проба: нечего сохранять');
+
+  // R — сторожа пачек (бэклог 54 п. 1, П67 п. 3): судьбы `no_page` и
+  // `exclusions` не перекрываются ни якорем, ни «слияния», ни ключом; возврат —
+  // только полем `возвращено_из_no_page`, и он на кластер целиком. Фразы
+  // кластера `zeta` не совпадают с его именем — сторожа смотрят на кластер
+  // фразы, не на имя. Сперва положительные контроли: законное слияние и
+  // законный ключ проходят, кластер no_page без страницы лежит в no_page.
+  check('R: законное слияние — на страницу, сторож молчит', { merged: true, zetaInNoPage: ['gra zeta', 'zeta crack'] }, { merged: kw(ok, '/beta/').includes('eta dlc'), zetaInNoPage: ok.noPage.filter((x) => x.query.includes('zeta')).map((x) => x.query) }, 'кластер «eta» (волна_2) в «слияния» /beta/');
+  check('R: законный ключ — на страницу, сторож молчит', { onGamma: true, onBeta: false }, { onGamma: kw(ok, '/gamma/').includes('beta cennik'), onBeta: kw(ok, '/beta/').includes('beta cennik') }, 'ключ /gamma/ на фразу кластера с судьбой «страница»');
+  const wrongReturn = base();
+  page(wrongReturn, '/beta/')['возвращено_из_no_page'] = ['delta'];
+  check('R: возврат не из no_page — несходимость', 1, problemsAbout(tree(wrongReturn), 'а не «no_page»'), 'сторож до бэклога 54 — проба на него');
+  const npMerge = base();
+  page(npMerge, '/beta/')['слияния'].push('zeta');
+  const r1 = tree(npMerge);
+  check('R: no_page-кластер в «слияния» — несходимость', { problem: 1, returned: [] }, { problem: problemsAbout(r1, 'возврат объявляется полем «возвращено_из_no_page», не «слияния»'), returned: r1.returned }, 'тихий проход 1: раньше ложился на страницу без строки «возвращено»');
+  const exMerge = base();
+  page(exMerge, '/beta/')['слияния'].push('delta');
+  check('R: exclusions-кластер в «слияния» — несходимость', 1, problemsAbout(tree(exMerge), 'слияние «delta» — кластер с судьбой exclusions, не по теме; страница его не перекрывает'), 'тихий проход 2: раньше мёртвое объявление');
+  const npAnchor = base();
+  page(npAnchor, '/gamma/').cluster = 'zeta';
+  page(npAnchor, '/gamma/')['слияния'] = ['gamma'];
+  check('R: no_page-кластер якорем — несходимость', 1, problemsAbout(tree(npAnchor), 'якорь «zeta» — кластер с судьбой no_page; якорем такой кластер не стоит'), 'сторож и на якорь');
+  const exAnchor = base();
+  page(exAnchor, '/gamma/').cluster = 'delta';
+  page(exAnchor, '/gamma/')['слияния'] = ['gamma'];
+  check('R: exclusions-кластер якорем — несходимость', 1, problemsAbout(tree(exAnchor), 'якорь «delta» — кластер с судьбой exclusions'), 'сторож и на якорь');
+  const npKey = base();
+  page(npKey, '/beta/')['ключи'] = ['gra epsilon', 'zeta crack', 'delta kup'];
+  const r2 = tree(npKey);
+  check('R: ключ на фразу no_page/exclusions — несходимость', { np: 2, ex: 1 }, { np: problemsAbout(r2, 'фраза с судьбой no_page; возврат ключом не объявляется'), ex: problemsAbout(r2, 'ключ «delta kup» — фраза с судьбой exclusions, не по теме; ключом на страницу не берётся') }, 'тихий проход 3: «Некластеризовано» и кластерная no_page, кластерная exclusions');
+  const keyOnReturned = base();
+  page(keyOnReturned, '/beta/')['возвращено_из_no_page'] = ['zeta'];
+  page(keyOnReturned, '/gamma/')['ключи'] = ['zeta crack'];
+  check('R: ключ на фразу возвращённого кластера — не дробится', 1, problemsAbout(tree(keyOnReturned), 'ключ «zeta crack» — кластер «zeta» возвращён из no_page целиком на /beta/; ключом не дробится'), 'возврат — на кластер, не на фразу');
+  const ownKey = base();
+  page(ownKey, '/beta/')['возвращено_из_no_page'] = ['zeta'];
+  page(ownKey, '/beta/')['ключи'] = ['zeta crack'];
+  check('R: ключ на свой же возвращённый кластер — лишний', 1, problemsAbout(tree(ownKey), 'ключ «zeta crack» лишний — кластер «zeta» уже возвращён на эту страницу целиком'), 'диагноз называет возврат, не судьбу разведки');
+  const goodReturn = base();
+  page(goodReturn, '/beta/')['возвращено_из_no_page'] = ['zeta'];
+  const r3 = tree(goodReturn);
+  check('R: возврат из no_page — на страницу и в печать', { problems: 0, onPage: true, printed: ['zeta'], inNoPage: [] }, { problems: r3.problems.length, onPage: kw(r3, '/beta/').includes('gra zeta') && kw(r3, '/beta/').includes('zeta crack'), printed: r3.returned.map((x) => x.cluster), inNoPage: r3.noPage.filter((x) => x.query.includes('zeta')).map((x) => x.query) }, 'решение владельца видно: строка «возвращено», обе фразы на странице');
 
   let failed = 0;
   for (const c of cases) {

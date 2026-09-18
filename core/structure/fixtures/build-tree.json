@@ -83,6 +83,7 @@
         "domain": "https://przyklad.test",
         "lang": "pl",
         "semantics": "input/przyklad.xlsx",
+        "semantics_source": "Próbka, XX",
         "semantics_date": "2026-01-01",
         "total_queries": 8
       },

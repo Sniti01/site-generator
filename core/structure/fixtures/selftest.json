@@ -20,6 +20,7 @@
       "domain": "https://przyklad.test",
       "lang": "pl",
       "semantics": "input/przyklad.xlsx",
+      "semantics_source": "Próbka, XX",
       "semantics_date": "2026-01-01",
       "total_queries": 6
     },
@@ -107,6 +108,7 @@
     { "имя": "запрос вне выгрузки", "правка": { "pages.1.keywords": ["gra delta"] }, "ждём": "nie występuje w wyliczeniu" },
     { "имя": "пустые keywords", "правка": { "pages.1.keywords": [] }, "ждём": "pusta lista" },
     { "имя": "total_queries врёт", "правка": { "site.total_queries": 7 }, "ждём": "total_queries" },
+    { "имя": "нет semantics_source", "правка": { "site.semantics_source": "__usuń__" }, "ждём": "site.semantics_source" },
 
     { "имя": "блок вне словаря", "правка": { "pages.0.blocks.0.block": "hero" }, "ждём": "spoza słownika" },
     { "имя": "блок не секция", "правка": { "pages.0.blocks.0.block": "grain" }, "ждём": "tylko sekcje" },

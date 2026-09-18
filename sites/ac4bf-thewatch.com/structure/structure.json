@@ -3,6 +3,7 @@
   "domain": "https://www.ac4bf-thewatch.com",
   "lang": "pl",
   "semantics": "input/clustering-google-2026-09-07.xlsx",
+  "semantics_source": "Google Keyword Planner, PL",
   "semantics_date": "2026-09-07",
   "total_queries": 1426
  },

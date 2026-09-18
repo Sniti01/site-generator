@@ -97,9 +97,11 @@ export function validateStructure({ doc, semantics, blocks, schema }) {
   // ze schematu: `semantics_source` z samych spacji albo liczba zamiast tekstu
   // przechodziłyby jako „jest” — a to jedyne pole, którego treść nikt inny nie
   // liczy (przegląd 2026-09-18, sesja 5 drugiej witryny).
-  // Pusty tekst to także tekst z samych spacji i znaków formatu (U+200B
-  // i podobne, kategoria Cf) — trim() tych drugich nie zdejmuje.
-  const blankText = /^[\s\p{Cf}]*$/u;
+  // Pusty tekst to także tekst z samych spacji, znaków formatu (U+200B
+  // i podobne, Cf), sterujących (Cc), samotnych znaków łączących (M),
+  // wypełniaczy Hangul (U+115F, U+1160, U+3164, U+FFA0) i pustego Braille
+  // (U+2800) — trim() żadnego z nich nie zdejmuje (przegląd, rundy 2–3).
+  const blankText = /^[\s\p{Cf}\p{Cc}\p{M}\u115F\u1160\u3164\uFFA0\u2800]*$/u;
   for (const [field, spec] of Object.entries(schema.site)) {
     const value = site[field];
     const blank = value === undefined || value === null || (typeof value === 'string' && blankText.test(value));
@@ -411,10 +413,13 @@ async function selftest() {
   for (const test of cases['случаи']) {
     const doc = applyPatch(cases.base, test['правка'] ?? {});
     const { errors } = validateStructure({ doc, semantics, blocks, schema });
-    const hit = test['ждём'] === null ? errors.length === 0 : errors.some((e) => e.includes(test['ждём']));
+    const positive = test['ждём'] === null ? errors.length === 0 : errors.some((e) => e.includes(test['ждём']));
+    // «не_ждём» — czego w błędach być NIE może: druga, myląca linia obok właściwej.
+    const negative = test['не_ждём'] === undefined || errors.every((e) => !e.includes(test['не_ждём']));
+    const hit = positive && negative;
     if (!hit) failed += 1;
     const mark = hit ? 'ok  ' : 'ŹLE ';
-    const what = test['ждём'] === null ? 'bez błędów' : `błąd zawiera «${test['ждём']}»`;
+    const what = (test['ждём'] === null ? 'bez błędów' : `błąd zawiera «${test['ждём']}»`) + (test['не_ждём'] !== undefined ? ` i nie zawiera «${test['не_ждём']}»` : '');
     console.log(`${mark} ${test['имя'].padEnd(26)} ${what}${hit ? '' : ` — dostaliśmy: ${errors.join(' | ') || 'nic'}`}`);
   }
 

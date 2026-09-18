@@ -40,6 +40,10 @@ export interface ClusteringUnmatched {
 export interface ClusteringMeta {
   source: string;
   sha256: string;
+  /** `google` — четыре листа, объём Google; `volume` — один лист, объём «Частотность». */
+  format: 'google' | 'volume';
+  /** Заголовок колонки, из которой взят `google` у фраз. */
+  volumeColumn: string;
   phrases: number;
   clusters: number;
   unmatched: number;
@@ -54,6 +58,8 @@ export interface Clustering {
 }
 
 export declare const UNCLUSTERED: string;
+/** Ключ-символ с номером строки листа у строк таблицы (для отказов с адресом). */
+export declare const ROW: unique symbol;
 export declare function readClustering(path: string): Clustering;
 export declare function groupPhrases(phrases: ClusteringPhrase[]): Map<string, ClusteringPhrase[]>;
 export declare function clusterUrls(list: ClusteringPhrase[]): string[];

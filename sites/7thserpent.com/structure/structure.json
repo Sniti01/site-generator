@@ -13,7 +13,7 @@
    "type": "home",
    "h1": "The Max Payne series, game by game",
    "title": "Max Payne — all games in order, the 2008 movie and the remake",
-   "description": "An unofficial fan site about the Max Payne series: the three games in order, the 2008 movie, the upcoming remake, where to play each game today, cheats, mods, quotes and more.",
+   "description": "An unofficial fan site about the Max Payne series: the three games in order, the 2008 movie, the upcoming remake, where to play each game, cheats, mods and quotes.",
    "cluster": "max payne",
    "keywords": [
     "max payne",
@@ -27,7 +27,6 @@
     "how many max payne games are there",
     "max payne parents guide",
     "gog max payne",
-    "max payne 3 parents guide",
     "max payne series",
     "max payne xbox 360",
     "all max payne games",
@@ -39,7 +38,6 @@
     "max payne nudity",
     "max payne rockstar",
     "max payne xbox series x",
-    "max payne: home",
     "steam max payne"
    ],
    "parent": null,
@@ -90,14 +88,14 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 17570
+   "volume": 17540
   },
   {
    "url": "/max-payne-1/",
    "type": "game",
    "h1": "Max Payne (2001): the original game, its ports and the mobile version",
    "title": "Max Payne 1 — the 2001 original: platforms, length, mobile port",
-   "description": "The first Max Payne game from 2001: what it is about, how long it takes to beat, the PS2, Xbox, Game Boy Advance and PS4 releases, and the official mobile version for Android and iOS.",
+   "description": "Max Payne from 2001: what it is about, how long it takes to beat, its PS2, Xbox, Game Boy Advance and PS4 releases, and the official Android and iOS version.",
    "cluster": "max payne 1",
    "keywords": [
     "max payne 1",
@@ -157,7 +155,8 @@
     "/story/",
     "/cheats/",
     "/pc/",
-    "/remake/"
+    "/remake/",
+    "/movie/"
    ],
    "blocks": [
     {
@@ -195,8 +194,8 @@
    "url": "/max-payne-2/",
    "type": "game",
    "h1": "Max Payne 2: The Fall of Max Payne",
-   "title": "Max Payne 2 — The Fall of Max Payne (2003): story, platforms, sales",
-   "description": "Max Payne 2: The Fall of Max Payne from 2003 — what changed since the first game, Mona Sax, the PS2 and Xbox versions, how it sold, and where to play it today.",
+   "title": "Max Payne 2: The Fall of Max Payne (2003) — story, platforms, PS2",
+   "description": "Max Payne 2: The Fall of Max Payne from 2003 — what changed from the first game, Mona Sax, the PS2 and Xbox versions, how it sold, and where to play it today.",
    "cluster": "max payne 2",
    "keywords": [
     "max payne 2",
@@ -253,8 +252,8 @@
    "url": "/max-payne-3/",
    "type": "game",
    "h1": "Max Payne 3 (2012): São Paulo, platforms and what to know before playing",
-   "title": "Max Payne 3 — the 2012 game: PS3, Xbox, PC, backwards compatibility",
-   "description": "Max Payne 3 from 2012: the story set in São Paulo, reviews and the ESRB rating, the PS3, Xbox 360 and PC releases, whether it runs on PS5 and Xbox Series, and where to play it now.",
+   "title": "Max Payne 3 (2012) — PS3, Xbox 360, PC and backward compatibility",
+   "description": "Max Payne 3 from 2012: the São Paulo story, reviews and the ESRB rating, the PS3, Xbox 360 and PC releases, whether it runs on PS5 and Xbox Series, and where to play it.",
    "cluster": "max payne 3",
    "keywords": [
     "max payne 3",
@@ -281,6 +280,7 @@
     "max payne 3 xbox series x",
     "max payne 3 backwards compatible",
     "max payne 3 dlc",
+    "max payne 3 parents guide",
     "max payne 3 remaster",
     "max payne 3 sales",
     "game max payne 3",
@@ -350,14 +350,14 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 11600
+   "volume": 11620
   },
   {
    "url": "/max-payne-3/guide/",
    "type": "guide",
    "h1": "Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies",
-   "title": "Max Payne 3 guide — chapter list, golden guns, clues, achievements",
-   "description": "A chapter-by-chapter guide to Max Payne 3: how many chapters there are, how long the game takes, where every golden gun part and clue is, the airport shootout, and the full trophy and achievement list.",
+   "title": "Max Payne 3 guide — chapters, golden guns, clues, achievements",
+   "description": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun and clue locations, the airport shootout, and every trophy.",
    "cluster": "max payne 3 guide",
    "keywords": [
     "how long is max payne 3",
@@ -421,8 +421,8 @@
    "url": "/movie/",
    "type": "topic",
    "h1": "Max Payne, the 2008 movie: cast, plot and where to watch it",
-   "title": "Max Payne movie (2008) — Mark Wahlberg, cast, streaming, sequel",
-   "description": "The 2008 Max Payne movie with Mark Wahlberg, Mila Kunis and Olga Kurylenko: the cast, how the plot differs from the game, where to stream it, the fan film Retribution, and whether a sequel ever happened.",
+   "title": "Max Payne (2008) movie — Mark Wahlberg, cast, streaming, sequel",
+   "description": "The 2008 Max Payne movie with Mark Wahlberg, Mila Kunis and Olga Kurylenko: the cast, how it differs from the game, where to stream it, and whether a sequel ever happened.",
    "cluster": "max payne (film)",
    "keywords": [
     "max payne (film)",
@@ -496,8 +496,8 @@
   {
    "url": "/remake/",
    "type": "game",
-   "h1": "Max Payne 1 & 2 Remake: release date, platforms and the latest news",
-   "title": "Max Payne remake — release date, PS5, Xbox Series and PC, and Max Payne 4",
+   "h1": "Max Payne 1 & 2 Remake: release date, platforms and news",
+   "title": "Max Payne 1 & 2 Remake — release date, PS5, Xbox Series, PC, news",
    "description": "Everything known about the Max Payne 1 and 2 remake: release date, PS5, Xbox Series and PC, what has been announced so far, and why there is no Max Payne 4 yet.",
    "cluster": "new max payne",
    "keywords": [
@@ -575,8 +575,8 @@
    "url": "/voice-and-face/",
    "type": "topic",
    "h1": "Who is behind Max Payne: the voice, the face and the creators",
-   "title": "Max Payne voice actor and face — James McCaffrey, Sam Lake, Timothy Gibbs",
-   "description": "James McCaffrey voiced Max in all three games; Sam Lake's face was the original Max, Timothy Gibbs the second. Who wrote and made the games, the Max Payne 3 cast, and why Max went bald.",
+   "title": "Max Payne’s voice and face — McCaffrey, Sam Lake, Timothy Gibbs",
+   "description": "James McCaffrey voiced Max in all three games; Sam Lake gave him his first face, Timothy Gibbs the second. Who made the games, the Max Payne 3 cast, and why Max went bald.",
    "cluster": "max payne va",
    "keywords": [
     "max payne face",
@@ -605,7 +605,6 @@
     "who voices max payne",
     "max payne 1 voice actor",
     "max payne 3 james mccaffrey",
-    "max payne 3 sam lake mod",
     "max payne 3 shaved head",
     "max payne 3 voice actors",
     "max payne cosplay",
@@ -627,7 +626,8 @@
     "/max-payne-1/",
     "/max-payne-3/",
     "/remake/",
-    "/media/"
+    "/media/",
+    "/movie/"
    ],
    "blocks": [
     {
@@ -648,14 +648,14 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 2180
+   "volume": 2170
   },
   {
    "url": "/story/",
    "type": "topic",
    "h1": "Max Payne story and characters: from New York to São Paulo",
    "title": "Max Payne story explained — characters, Mona Sax, Valkyr, endings",
-   "description": "The story of all three Max Payne games and the people in it: Michelle, Mona Sax, Vinnie Gognitti, Vladimir Lem, Passos, the Valkyr drug, each ending, and how Alex Casey in Alan Wake 2 ties into it.",
+   "description": "The story of all three Max Payne games and their characters: Mona Sax, Vinnie Gognitti, Vladimir Lem, Passos, the Valkyr drug, every ending, and the Alan Wake 2 connection.",
    "cluster": "who is max payne",
    "keywords": [
     "max payne 3 characters",
@@ -689,6 +689,7 @@
     "max payne story",
     "max payne valkyr",
     "max payne wife",
+    "max payne: home",
     "mona sax max payne",
     "valkyrie max payne",
     "who is max payne"
@@ -720,14 +721,14 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 580
+   "volume": 590
   },
   {
    "url": "/gameplay/",
    "type": "topic",
    "h1": "How Max Payne plays: bullet time, shootdodge, painkillers and weapons",
-   "title": "Max Payne gameplay — bullet time, shootdodge, weapons, arcade modes",
-   "description": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, the weapons, and how Max Payne 2 and 3 changed it — with gameplay videos.",
+   "title": "Max Payne gameplay — bullet time, shootdodge, weapons and modes",
+   "description": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, weapons, and what Max Payne 2 and 3 changed — with videos.",
    "cluster": "max payne bullet time",
    "keywords": [
     "max payne 2 gameplay",
@@ -755,7 +756,8 @@
     "/max-payne-3/guide/",
     "/cheats/",
     "/mods/",
-    "/max-payne-1/"
+    "/max-payne-1/",
+    "/games-like-max-payne/"
    ],
    "blocks": [
     {
@@ -782,7 +784,7 @@
    "url": "/cheats/",
    "type": "guide",
    "h1": "Max Payne cheats for every game: PC codes, console cheats and trainers",
-   "title": "Max Payne cheats — PC, PS2, PS4, Xbox codes for Max Payne 1, 2 and 3",
+   "title": "Max Payne cheats — PC, PS2, PS4 and Xbox codes for every game",
    "description": "Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, how cheats work in Max Payne 3, the developer console, trainers, and which cheats disable achievements.",
    "cluster": "max payne cheats",
    "keywords": [
@@ -852,8 +854,8 @@
    "url": "/mods/",
    "type": "guide",
    "h1": "The best Max Payne mods: from the Kung Fu mod to RTX Remix",
-   "title": "Max Payne mods — best mods for Max Payne 1, 2 and 3, RTX Remix, FusionFix",
-   "description": "The mods worth installing for Max Payne 1, 2 and 3: classic total conversions like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install each of them.",
+   "title": "Best Max Payne mods — for Max Payne 1, 2 and 3, plus RTX Remix",
+   "description": "The mods worth installing for Max Payne 1, 2 and 3: classics like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install them.",
    "cluster": "max payne mods",
    "keywords": [
     "max payne 3 mods",
@@ -862,6 +864,7 @@
     "max payne kung fu mod",
     "max payne 3 mod",
     "max payne 3 fusionfix",
+    "max payne 3 sam lake mod",
     "max payne rtx remix"
    ],
    "parent": "/",
@@ -890,14 +893,14 @@
    ],
    "wave": 1,
    "corridor": null,
-   "volume": 1080
+   "volume": 1090
   },
   {
    "url": "/media/",
    "type": "topic",
-   "h1": "Max Payne art and media: covers, wallpapers, comics, trailers and soundtracks",
-   "title": "Max Payne cover art, wallpapers, concept art, memes, comic, soundtrack",
-   "description": "Cover art and box art of all three games, wallpapers and screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack of Max Payne 3, and the memes and gifs.",
+   "h1": "Max Payne art and media: covers, wallpapers, comics and soundtracks",
+   "title": "Max Payne cover art, wallpapers, concept art, memes, soundtrack",
+   "description": "Cover art and box art of all three games, wallpapers, screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack, memes and GIFs.",
    "cluster": "max payne cover",
    "keywords": [
     "max payne 3 cover art",
@@ -973,8 +976,8 @@
    "url": "/quotes/",
    "type": "topic",
    "h1": "Max Payne quotes: the best lines from all three games",
-   "title": "Max Payne quotes — famous monologues and one-liners from the games",
-   "description": "The most memorable Max Payne quotes: the noir monologues of the first game, the lines from Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game and chapter.",
+   "title": "Max Payne quotes — the famous monologues and one-liners",
+   "description": "The most memorable Max Payne quotes: the noir monologues of the first game, the lines of Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game.",
    "cluster": "max payne quotes",
    "keywords": [
     "max payne quotes",
@@ -1012,8 +1015,8 @@
    "url": "/pc/",
    "type": "guide",
    "h1": "Max Payne on a modern PC: system requirements, fixes and controller support",
-   "title": "Max Payne PC — system requirements, Windows 10/11 fixes, controller",
-   "description": "How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, the widescreen and sound fixes, Windows 10 and 11 issues, and how to get controller support in the first two games.",
+   "title": "Max Payne on PC — system requirements, Windows fixes, controller",
+   "description": "How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, widescreen and sound fixes, Windows 10 and 11 issues, and controller support in the first two.",
    "cluster": "max payne 3 pc",
    "keywords": [
     "max payne 3 pc",
@@ -1068,7 +1071,7 @@
    "type": "topic",
    "h1": "Games like Max Payne: what to play next",
    "title": "Games like Max Payne — shooters with bullet time and noir stories",
-   "description": "If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy's own titles to modern shooters with bullet time, and what each one gets right.",
+   "description": "If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy’s own titles to modern shooters with bullet time.",
    "cluster": "games like max payne",
    "keywords": [
     "games like max payne",
@@ -1136,7 +1139,7 @@
   {
    "url": "/404/",
    "type": "legal",
-   "h1": "There is no such page",
+   "h1": "This page does not exist",
    "title": "Page not found — 7thserpent.com",
    "description": "The address you followed does not lead to any page on 7thserpent.com. Go back to the home page or start with one of the three games.",
    "cluster": null,

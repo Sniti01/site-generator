@@ -19,6 +19,7 @@
     { "phrase": "brand remake", "cluster": "brand remake", "google": 400 },
     { "phrase": "brand ps4", "cluster": "brand ps4", "google": 60 },
     { "phrase": "brand three ps3", "cluster": "brand three ps3", "google": 50 },
+    { "phrase": "brand three brazil", "cluster": "brand three brazil", "google": 15 },
     { "phrase": "brand mobile", "cluster": "brand apk", "google": 90 },
     { "phrase": "brand apk download", "cluster": "brand apk", "google": 10 },
     { "phrase": "brand cheats", "cluster": "brand cheats", "google": 70 },
@@ -65,6 +66,7 @@
           "url": "/three/",
           "type": "game",
           "cluster": "brand three",
+          "слияния": ["brand three brazil"],
           "wave": 1,
           "темы": ["reviews @ brand three", "reviews"],
           "related": ["/one/", "/three/guide/"],
@@ -145,6 +147,7 @@
         { "кластер": "brand remake", "судьба": "страница", "цель": "brand remake", "причина": "страница ремейка" },
         { "кластер": "brand ps4", "судьба": "слить_в_хаб", "цель": "brand", "причина": "платформенный кластер, игра не названа" },
         { "кластер": "brand three ps3", "судьба": "слить_в_хаб", "цель": "brand three", "причина": "платформенный кластер" },
+        { "кластер": "brand three brazil", "судьба": "волна_2", "цель": "brand three", "причина": "середина: место действия — ключ хаба" },
         { "кластер": "brand apk", "судьба": "слить_в_хаб", "цель": "brand mobile", "причина": "платформенный кластер, мобильная версия" },
         { "кластер": "brand cheats", "судьба": "тема", "цель": "cheats", "хаб": null, "причина": "серийная тема «cheats»" },
         { "кластер": "brand games in order", "судьба": "тема", "цель": "order", "хаб": null, "причина": "серийная тема «order»" },
@@ -168,7 +171,7 @@
         "semantics": "input/brand.xlsx",
         "semantics_source": "Próbka, XX",
         "semantics_date": "2026-01-01",
-        "total_queries": 24
+        "total_queries": 25
       },
       "pages": [
         { "url": "/", "corridor": null },

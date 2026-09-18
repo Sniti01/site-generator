@@ -54,7 +54,10 @@
  * `--selftest` гоняет тот же код, что и прогон, на фикстуре сайта
  * `structure/fixtures/build-tree.json`: по пробе на каждый класс расхождения
  * первого сайта (A умолчания, B страница вне выгрузки, C коридор) и на каждое
- * правило этого сайта (T темы, H псевдо-хаб, K ключи и судьбы, N `no_page`).
+ * правило этого сайта (T темы, H псевдо-хаб, K ключи и судьбы, N `no_page`,
+ * R сторожа пачек — no_page/exclusions не перекрываются слиянием и ключом,
+ * W поля объявления — закрытый список). Рецензия 2026-09-18 (доклад сессии 5)
+ * добавила R и W и пробы T на откат к теме серии и на жизнь пары через ключ.
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
@@ -132,6 +135,14 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     map.set(key, url);
   };
 
+  // Поля объявления — закрытый список: описка («ключ» вместо «ключи», «тема»
+  // вместо «темы», поле первого сайта «судьбы») не должна молча оставлять
+  // фразы в кластере, где их не ждали, при сходящемся учёте.
+  const PAGE_FIELDS = new Set(['url', 'type', 'cluster', 'слияния', 'возвращено_из_no_page', 'темы', 'ключи', 'блоки', 'related', 'wave', 'h1', 'title', 'description', 'owner', 'template', 'вне_выгрузки']);
+  const TOP_FIELDS = new Set(['версия', 'статус', 'источник', 'как_читать', 'почему_именно_эти_страницы', 'почему_слияния', 'страницы', 'no_page_ключи', 'чего_здесь_нет']);
+  for (const k of Object.keys(decl)) if (!TOP_FIELDS.has(k)) fail(`объявление: неизвестное поле «${k}» верхнего уровня`);
+  for (const p of pages) for (const k of Object.keys(p)) if (!PAGE_FIELDS.has(k)) fail(`${p.url ?? '(без url)'}: неизвестное поле «${k}» — сверь имя`);
+
   // Страница вне выгрузки (служебная, П26 п. 2) спроса не имеет по определению:
   // ей нельзя назначать ни кластер, ни фразы — пометка, под которой стоит
   // маршрут запросов, лжёт, и падать надо здесь, а не в гейте структуры.
@@ -174,11 +185,16 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   }
 
   const clusterFate = new Map(recon['кластеры'].map((c) => [c['кластер'], c]));
+  const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
 
   // Возврат из `no_page` — не рядовое слияние: он отменяет строку пачки,
   // подтверждённой владельцем, поэтому объявляется отдельным полем, печатается
   // отдельной строкой и требует, чтобы у кластера действительно стояла судьба
   // «no_page». Разрешение на конкретные кластеры даёт владелец, не инструмент.
+  // Обратное тоже сторожится: кластер с судьбой «no_page» в обычных «слияния»
+  // или якорем — отмена решения без следа; кластер с судьбой «exclusions» —
+  // не по теме, страницей не перекрывается; ключ на фразу с такой судьбой —
+  // та же отмена в обход поля (рецензия 2026-09-18, находки 1–3).
   const returned = [];
   for (const p of pages) {
     for (const c of p['возвращено_из_no_page'] ?? []) {
@@ -187,8 +203,17 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       else if (row['судьба'] !== 'no_page') fail(`возврат из no_page: у «${c}» судьба «${row['судьба']}», а не «no_page» — это обычное слияние`);
       else returned.push({ cluster: c, url: p.url, reason: row['причина'] });
     }
+    for (const c of [p.cluster, ...(p['слияния'] ?? [])].filter(Boolean)) {
+      const fate = clusterFate.get(c)?.['судьба'];
+      if (fate === 'no_page') fail(`${p.url}: кластер «${c}» с судьбой no_page — возврат объявляется полем «возвращено_из_no_page», не «слияния»`);
+      if (fate === 'exclusions') fail(`${p.url}: кластер «${c}» с судьбой exclusions — не по теме, страница его не перекрывает`);
+    }
+    for (const k of p['ключи'] ?? []) {
+      const row = phraseFate.get(k) ?? clusterFate.get(data.phrases.find((x) => x.phrase === k)?.cluster);
+      const fate = row?.['судьба'];
+      if (fate === 'no_page' || fate === 'exclusions') fail(`${p.url}: ключ «${k}» — фраза с судьбой ${fate}; возврат ключом не объявляется (пачка П65)`);
+    }
   }
-  const phraseFate = new Map(recon['некластеризовано'].map((r) => [r['фраза'], r]));
 
   /* ---------------------------------------------------------------- *
    * Раскладка: каждой фразе выгрузки — ровно одно место.
@@ -307,7 +332,8 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       seen.set(phrase.phrase, 'no_page');
     } else if (fate === 'no_page') {
       // Сюда попадают только кластеры из `возвращено_из_no_page`: обычное
-      // слияние такой судьбы не перекрывает — проверка выше это гарантирует.
+      // слияние такой судьбы не перекрывает — сторож в цикле объявлений выше
+      // (no_page в «слияния» — несходимость) это гарантирует.
       toPage(claimed, phrase);
       seen.set(phrase.phrase, claimed);
     } else if (claimed) {
@@ -683,6 +709,13 @@ function selftest(root) {
   const twoPages = base();
   page(twoPages, '/')['темы'].push('cheats');
   check('T: пара двум страницам — несходимость', 1, problemsAbout(tree(twoPages), 'тема «cheats» назначен двум'), 'отрицательная проба');
+  const noFallback = base();
+  page(noFallback, '/three/')['темы'] = ['reviews'];
+  const r4 = tree(noFallback);
+  check('T: пара с игрой не проваливается в тему серии', { lost: 1, onHub: false }, { lost: lostAbout(r4, 'тема «reviews @ brand three»'), onHub: kw(r4, '/three/').includes('brand three review') }, 'рецензия 2026-09-18: мутация с откатом к теме серии');
+  const viaKey = base();
+  page(viaKey, '/')['ключи'] = ['brand games in order'];
+  check('T: пара жива через ключ', 0, problemsAbout(tree(viaKey), 'тема «order»'), 'единственная фраза пары ушла на ту же страницу ключом');
 
   // H — псевдо-хаб: «слить_в_хаб» в хаб, которого нет в выгрузке, — только
   // явным «слияния»; настоящий хаб — по цели разведки без объявления.
@@ -705,6 +738,12 @@ function selftest(root) {
   check('K: ключ = имя кластера — несходимость', 1, problemsAbout(tree(clusterKey), 'совпадает с именем кластера'), 'описка: хотели «слияния»');
   check('K: «к_кластеру» → страница кластера', true, kw(ok, '/three/').includes('brand three steam'), 'фраза «Некластеризовано»');
   check('K: «главная» → страница с этим кластером', true, kw(ok, '/').includes('brand'), 'бренд-голова');
+  const noWave2 = base();
+  page(noWave2, '/three/')['слияния'] = [];
+  check('K: кластер «волна_2» без страницы — потеря', 1, lostAbout(tree(noWave2), 'кластер «brand three brazil» (волна_2)'), 'отрицательная проба');
+  const noRow = { ...base(), typeBlocks, data: { phrases: [...data.phrases, { phrase: 'brand zzz', cluster: 'brand zzz', google: 5 }, { phrase: 'brand yyy', cluster: 'Некластеризовано', google: 5 }], meta: { phrases: data.meta.phrases + 2 } } };
+  const r5 = buildTree(noRow);
+  check('K: фраза без строки разведки — потеря', 2, lostAbout(r5, 'без строки в разведке') + lostAbout(r5, 'нет строки в разведке'), 'кластерная и «Некластеризовано»');
   const noRemake = base();
   noRemake.decl['страницы'] = noRemake.decl['страницы'].filter((p) => p.url !== '/remake/');
   page(noRemake, '/')['ключи'] = [];
@@ -729,6 +768,9 @@ function selftest(root) {
   const noReason = base();
   noReason.decl['no_page_ключи'].push({ ключ: 'brand ps4' });
   check('N: без причины — несходимость', 1, problemsAbout(tree(noReason), 'без «ключ» или «причина»'), 'контракт no_page_item');
+  const twiceNp = base();
+  twiceNp.decl['no_page_ключи'].push({ ключ: 'brand apk download', причина: 'ещё раз' });
+  check('N: no_page-ключ дважды — несходимость', 1, problemsAbout(tree(twiceNp), 'объявлен дважды'), 'второй дубль не перезапишет причину молча');
   const bothKeys = base();
   page(bothKeys, '/one/')['ключи'] = ['brand apk download'];
   check('N: и ключ, и no_page-ключ — несходимость', 1, problemsAbout(tree(bothKeys), 'одно из двух'), 'отрицательная проба');
@@ -741,6 +783,19 @@ function selftest(root) {
   page(wrongReturn, '/one/')['возвращено_из_no_page'] = ['brand ps4'];
   page(wrongReturn, '/one/')['слияния'] = page(wrongReturn, '/one/')['слияния'].filter((c) => c !== 'brand ps4');
   check('R: возврат не из no_page — несходимость', 1, problemsAbout(tree(wrongReturn), 'а не «no_page»'), 'отрицательная проба');
+  const npMerge = base();
+  page(npMerge, '/one/')['слияния'].push('brand shirt');
+  check('R: no_page-кластер в «слияния» — несходимость', 1, problemsAbout(tree(npMerge), 'возврат объявляется полем'), 'рецензия 2026-09-18, находка 1');
+  const exMerge = base();
+  page(exMerge, '/one/')['слияния'].push('brand xxx');
+  check('R: exclusions-кластер в «слияния» — несходимость', 1, problemsAbout(tree(exMerge), 'не по теме, страница его не перекрывает'), 'находка 2');
+  const npKey = base();
+  page(npKey, '/one/')['ключи'] = ['brand crack', 'brand xxx'];
+  check('R: ключ на фразу no_page/exclusions — несходимость', 2, problemsAbout(tree(npKey), 'возврат ключом не объявляется'), 'находка 3: «Некластеризовано» и кластерная');
+  const typo = base();
+  page(typo, '/one/')['ключ'] = ['brand one'];
+  typo.decl['no_page_ключ'] = [];
+  check('W: неизвестные поля — несходимость', 2, problemsAbout(tree(typo), 'неизвестное поле'), 'описка в имени поля не молчит');
   const goodReturn = base();
   page(goodReturn, '/one/')['возвращено_из_no_page'] = ['brand shirt'];
   const r3 = tree(goodReturn);

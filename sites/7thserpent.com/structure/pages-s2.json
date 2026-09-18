@@ -18,7 +18,7 @@
   "почему_именно_эти_страницы": [
     "Арифметика S0 §11 (принята П65): главная, три хаба игр, фильм, ремейк, темы серии от 1 000/мес, тема под хабом MP3, остальные темы по решению S2, служебная — 15–19 страниц. Здесь 16 страниц спроса + 2 служебные = 18.",
     "Хабы игр — три (MP1, MP2, MP3), фильм 2008 — хаб (П65 п. 2), ремейк — страница «будущее серии» с `max payne 4` внутри (П65 п. 3), мобильная версия — раздел хаба MP1 (П65 п. 3).",
-    "Темы серии стали страницами, когда у темы есть свой интент и объём выше середины (≥ 100/мес): creators + appearance (одна страница — лицо и голос Макса это одни и те же люди), mods, cheats, media (без цитат), quotes (свой интент: 270/мес на монологи), gameplay (630/мес и цель брифа «смотреть видео»), story (lore + Remedy Connected Universe: «is Alex Casey Max Payne» — вопрос о сюжете), pc_tech (починка и требования — своя страница, как на pcgamingwiki), similar.",
+    "Темы серии стали страницами, когда у темы есть свой интент и объём выше середины (≥ 100/мес): creators + appearance (одна страница — лицо и голос Макса это одни и те же люди), mods, cheats, media (без цитат), quotes (свой интент: 270/мес на монологи), gameplay (440/мес — таблица S0 §4.5 давала «470 (+160)», но объём темы в s0-recon.json уже включает фразы «Некластеризовано»; плюс цель брифа «смотреть видео»), story (lore + Remedy Connected Universe: «is Alex Casey Max Payne» — вопрос о сюжете), pc_tech (починка и требования — своя страница, как на pcgamingwiki), similar.",
     "Гайды: у MP3 своя страница под хабом (`/max-payne-3/guide/`, 990/мес с «how long is max payne 3»); «гайды серии» (hltb, trophies, walkthrough — 280/мес) по выдаче все о первой части и стали разделами хаба MP1, а не страницей.",
     "Темы, оставшиеся разделами хабов (без страницы): reviews, rating, business, order — так S0 §4.5 и предлагал; куда именно — по игре из разведки, серия — на главную (rating, order) или на MP1 по выдаче (`max payne review` — обзоры 2001 года).",
     "Тип фильма — `topic` с ручным `hero-key-art`: прецедент `/assassins-creed-rodowod/` первого сайта; заводить тип `film` — правка закрытого списка, вопрос владельцу (доклад)."
@@ -28,7 +28,7 @@
     "РОД 2 — по решению владельца: «max payne 4» → ремейк (П65 п. 3, «будущее серии»); «max payne apk» и «max payne ios» → хаб MP1 (П65 п. 3, мобильная версия разделом; псевдо-хаб «max payne mobile» разведки страницы не имеет, поэтому объявлен здесь явно).",
     "РОД 3 — поправка хаба по выдаче. «max payne ps4» (440) и «max payne ps2» (340) разведка отдала серии (игра не названа), а в топе — витрина PS Store и обзоры первой части (PS2-классика на PS4): оба на хаб MP1. «max payne review» (60) — обзоры 2001 года (IGN 2001, Metacritic Max Payne, GBA) — раздел MP1, не тема серии. «max payne natasha» (30) — Наташа Сакс из фильма 2008 года (Ольга Куриленко), не из игр: на страницу фильма, не в сюжет игр.",
     "РОД 4 — по смыслу: «watch max payne», «max payne 2 movie», «max payne retribution» (фан-фильм 2017) → фильм; «max payne ps5», «max payne 2 ps5» → ремейк (PS5 — псевдоним ремейка, S0 §4.4); «max payne ps3», «max payne 3 xbox», «max payne 3 on ps5», «max payne backwards compatible», «max payne 3 brazil» → хаб MP3 (раздел «где играть» и Сан-Паулу); «max payne gba» → MP1 (Max Payne Advance — порт первой части); «max payne xbox», «max payne gog», «max payne steam» → главная (серия целиком); «max payne 3 pc» (160, разведка: «в тему pc_tech под MP3») — якорь страницы `/pc/`: у неё самый полный корпус (9/10) среди кластеров темы, а требования MP3 — её раздел.",
-    "Ключи: «max payne 5» (20) из бренд-кластера и «max payne 4 ps4» (20) из платформенного — на ремейк («будущее серии»); пять фраз «how long is max payne 3» (220) из хаба MP3 — на гайд MP3 (длина игры — гайд, не хаб); «max payne story» (10) из хаба MP1 — в сюжет; «max payne 3 logo» (20) и «max payne 3 screenshots» (10) из хаба MP3 — в медиа, как их собратья по теме media; «max payne 2 quotes» (10, media @ MP2) — на цитаты. Тема «media» без цитат — «max payne quotes» стоит якорем своей страницы."
+    "Ключи: «max payne 5» (20) из бренд-кластера и «max payne 4 ps4» (20) из платформенного — на ремейк («будущее серии»: выдача второй фразы — та же, что у «max payne ps4», первая часть на PS4, но вопрос человека — о четвёртой части, и ответ на него даёт страница ремейка); пять фраз «how long is max payne 3» (220) из хаба MP3 — на гайд MP3 (длина игры — гайд, не хаб); «max payne story» (10) из хаба MP1 и «max payne: home» (10, low; выдача — дом Пейна, Payne Residence) — в сюжет; «max payne 3 parents guide» (20) из кластера «max payne nudity» (rating серии → главная) — на хаб MP3, где лежат «max payne 3 nudity» и «max payne 3 esrb» (один интент не режется надвое); «max payne 3 sam lake mod» (10) из «sam lake max payne 3» — в моды (выдача — мод nexusmods); «max payne 3 logo» (20) и «max payne 3 screenshots» (10) из хаба MP3 — в медиа, как их собратья по теме media; «max payne 2 quotes» (10, media @ MP2) — на цитаты. Тема «media» без цитат — «max payne quotes» стоит якорем своей страницы."
   ],
 
   "страницы": [
@@ -43,7 +43,7 @@
       "related": ["/max-payne-1/", "/max-payne-2/", "/max-payne-3/", "/remake/", "/movie/"],
       "h1": "The Max Payne series, game by game",
       "title": "Max Payne — all games in order, the 2008 movie and the remake",
-      "description": "An unofficial fan site about the Max Payne series: the three games in order, the 2008 movie, the upcoming remake, where to play each game today, cheats, mods, quotes and more."
+      "description": "An unofficial fan site about the Max Payne series: the three games in order, the 2008 movie, the upcoming remake, where to play each game, cheats, mods and quotes."
     },
     {
       "url": "/max-payne-1/",
@@ -53,10 +53,10 @@
       "темы": ["guides", "gameplay @ max payne mobile"],
       "wave": 1,
       "блоки": [{ "block": "story-row", "role": "mobile" }],
-      "related": ["/max-payne-2/", "/story/", "/cheats/", "/pc/", "/remake/"],
+      "related": ["/max-payne-2/", "/story/", "/cheats/", "/pc/", "/remake/", "/movie/"],
       "h1": "Max Payne (2001): the original game, its ports and the mobile version",
       "title": "Max Payne 1 — the 2001 original: platforms, length, mobile port",
-      "description": "The first Max Payne game from 2001: what it is about, how long it takes to beat, the PS2, Xbox, Game Boy Advance and PS4 releases, and the official mobile version for Android and iOS."
+      "description": "Max Payne from 2001: what it is about, how long it takes to beat, its PS2, Xbox, Game Boy Advance and PS4 releases, and the official Android and iOS version."
     },
     {
       "url": "/max-payne-2/",
@@ -66,8 +66,8 @@
       "wave": 1,
       "related": ["/max-payne-1/", "/max-payne-3/", "/story/", "/mods/", "/remake/"],
       "h1": "Max Payne 2: The Fall of Max Payne",
-      "title": "Max Payne 2 — The Fall of Max Payne (2003): story, platforms, sales",
-      "description": "Max Payne 2: The Fall of Max Payne from 2003 — what changed since the first game, Mona Sax, the PS2 and Xbox versions, how it sold, and where to play it today."
+      "title": "Max Payne 2: The Fall of Max Payne (2003) — story, platforms, PS2",
+      "description": "Max Payne 2: The Fall of Max Payne from 2003 — what changed from the first game, Mona Sax, the PS2 and Xbox versions, how it sold, and where to play it today."
     },
     {
       "url": "/max-payne-3/",
@@ -75,11 +75,12 @@
       "cluster": "max payne 3",
       "слияния": ["max payne ps3", "max payne 3 xbox", "max payne 3 on ps5", "max payne backwards compatible", "max payne 3 brazil"],
       "темы": ["reviews @ max payne 3", "rating @ max payne 3", "business @ max payne 3"],
+      "ключи": ["max payne 3 parents guide"],
       "wave": 1,
       "related": ["/max-payne-3/guide/", "/max-payne-2/", "/gameplay/", "/cheats/", "/mods/", "/pc/"],
       "h1": "Max Payne 3 (2012): São Paulo, platforms and what to know before playing",
-      "title": "Max Payne 3 — the 2012 game: PS3, Xbox, PC, backwards compatibility",
-      "description": "Max Payne 3 from 2012: the story set in São Paulo, reviews and the ESRB rating, the PS3, Xbox 360 and PC releases, whether it runs on PS5 and Xbox Series, and where to play it now."
+      "title": "Max Payne 3 (2012) — PS3, Xbox 360, PC and backward compatibility",
+      "description": "Max Payne 3 from 2012: the São Paulo story, reviews and the ESRB rating, the PS3, Xbox 360 and PC releases, whether it runs on PS5 and Xbox Series, and where to play it."
     },
     {
       "url": "/max-payne-3/guide/",
@@ -91,8 +92,8 @@
       "wave": 1,
       "related": ["/max-payne-3/", "/cheats/", "/gameplay/", "/pc/"],
       "h1": "Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies",
-      "title": "Max Payne 3 guide — chapter list, golden guns, clues, achievements",
-      "description": "A chapter-by-chapter guide to Max Payne 3: how many chapters there are, how long the game takes, where every golden gun part and clue is, the airport shootout, and the full trophy and achievement list."
+      "title": "Max Payne 3 guide — chapters, golden guns, clues, achievements",
+      "description": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun and clue locations, the airport shootout, and every trophy."
     },
     {
       "url": "/movie/",
@@ -104,8 +105,8 @@
       "блоки": [{ "block": "hero-key-art" }],
       "related": ["/", "/story/", "/voice-and-face/", "/max-payne-1/"],
       "h1": "Max Payne, the 2008 movie: cast, plot and where to watch it",
-      "title": "Max Payne movie (2008) — Mark Wahlberg, cast, streaming, sequel",
-      "description": "The 2008 Max Payne movie with Mark Wahlberg, Mila Kunis and Olga Kurylenko: the cast, how the plot differs from the game, where to stream it, the fan film Retribution, and whether a sequel ever happened."
+      "title": "Max Payne (2008) movie — Mark Wahlberg, cast, streaming, sequel",
+      "description": "The 2008 Max Payne movie with Mark Wahlberg, Mila Kunis and Olga Kurylenko: the cast, how it differs from the game, where to stream it, and whether a sequel ever happened."
     },
     {
       "url": "/remake/",
@@ -116,8 +117,8 @@
       "wave": 1,
       "блоки": [{ "block": "story-row", "role": "max-payne-4" }],
       "related": ["/max-payne-1/", "/max-payne-2/", "/", "/voice-and-face/"],
-      "h1": "Max Payne 1 & 2 Remake: release date, platforms and the latest news",
-      "title": "Max Payne remake — release date, PS5, Xbox Series and PC, and Max Payne 4",
+      "h1": "Max Payne 1 & 2 Remake: release date, platforms and news",
+      "title": "Max Payne 1 & 2 Remake — release date, PS5, Xbox Series, PC, news",
       "description": "Everything known about the Max Payne 1 and 2 remake: release date, PS5, Xbox Series and PC, what has been announced so far, and why there is no Max Payne 4 yet."
     },
     {
@@ -126,22 +127,22 @@
       "cluster": "max payne va",
       "темы": ["creators", "creators @ max payne 2", "creators @ max payne 3", "appearance", "appearance @ max payne 3"],
       "wave": 1,
-      "related": ["/story/", "/max-payne-1/", "/max-payne-3/", "/remake/", "/media/"],
+      "related": ["/story/", "/max-payne-1/", "/max-payne-3/", "/remake/", "/media/", "/movie/"],
       "h1": "Who is behind Max Payne: the voice, the face and the creators",
-      "title": "Max Payne voice actor and face — James McCaffrey, Sam Lake, Timothy Gibbs",
-      "description": "James McCaffrey voiced Max in all three games; Sam Lake's face was the original Max, Timothy Gibbs the second. Who wrote and made the games, the Max Payne 3 cast, and why Max went bald."
+      "title": "Max Payne’s voice and face — McCaffrey, Sam Lake, Timothy Gibbs",
+      "description": "James McCaffrey voiced Max in all three games; Sam Lake gave him his first face, Timothy Gibbs the second. Who made the games, the Max Payne 3 cast, and why Max went bald."
     },
     {
       "url": "/story/",
       "type": "topic",
       "cluster": "who is max payne",
       "темы": ["lore", "lore @ max payne 1", "lore @ max payne 2", "lore @ max payne 3", "remedy_universe"],
-      "ключи": ["max payne story"],
+      "ключи": ["max payne story", "max payne: home"],
       "wave": 1,
       "related": ["/max-payne-1/", "/max-payne-2/", "/max-payne-3/", "/voice-and-face/", "/movie/"],
       "h1": "Max Payne story and characters: from New York to São Paulo",
       "title": "Max Payne story explained — characters, Mona Sax, Valkyr, endings",
-      "description": "The story of all three Max Payne games and the people in it: Michelle, Mona Sax, Vinnie Gognitti, Vladimir Lem, Passos, the Valkyr drug, each ending, and how Alex Casey in Alan Wake 2 ties into it."
+      "description": "The story of all three Max Payne games and their characters: Mona Sax, Vinnie Gognitti, Vladimir Lem, Passos, the Valkyr drug, every ending, and the Alan Wake 2 connection."
     },
     {
       "url": "/gameplay/",
@@ -149,10 +150,10 @@
       "cluster": "max payne bullet time",
       "темы": ["gameplay", "gameplay @ max payne 2", "gameplay @ max payne 3"],
       "wave": 1,
-      "related": ["/max-payne-3/guide/", "/cheats/", "/mods/", "/max-payne-1/"],
+      "related": ["/max-payne-3/guide/", "/cheats/", "/mods/", "/max-payne-1/", "/games-like-max-payne/"],
       "h1": "How Max Payne plays: bullet time, shootdodge, painkillers and weapons",
-      "title": "Max Payne gameplay — bullet time, shootdodge, weapons, arcade modes",
-      "description": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, the weapons, and how Max Payne 2 and 3 changed it — with gameplay videos."
+      "title": "Max Payne gameplay — bullet time, shootdodge, weapons and modes",
+      "description": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, weapons, and what Max Payne 2 and 3 changed — with videos."
     },
     {
       "url": "/cheats/",
@@ -162,7 +163,7 @@
       "wave": 1,
       "related": ["/max-payne-1/", "/max-payne-2/", "/max-payne-3/", "/mods/", "/pc/"],
       "h1": "Max Payne cheats for every game: PC codes, console cheats and trainers",
-      "title": "Max Payne cheats — PC, PS2, PS4, Xbox codes for Max Payne 1, 2 and 3",
+      "title": "Max Payne cheats — PC, PS2, PS4 and Xbox codes for every game",
       "description": "Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, how cheats work in Max Payne 3, the developer console, trainers, and which cheats disable achievements."
     },
     {
@@ -170,11 +171,12 @@
       "type": "guide",
       "cluster": "max payne mods",
       "темы": ["mods", "mods @ max payne 3"],
+      "ключи": ["max payne 3 sam lake mod"],
       "wave": 1,
       "related": ["/pc/", "/cheats/", "/max-payne-3/", "/max-payne-2/"],
       "h1": "The best Max Payne mods: from the Kung Fu mod to RTX Remix",
-      "title": "Max Payne mods — best mods for Max Payne 1, 2 and 3, RTX Remix, FusionFix",
-      "description": "The mods worth installing for Max Payne 1, 2 and 3: classic total conversions like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install each of them."
+      "title": "Best Max Payne mods — for Max Payne 1, 2 and 3, plus RTX Remix",
+      "description": "The mods worth installing for Max Payne 1, 2 and 3: classics like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install them."
     },
     {
       "url": "/media/",
@@ -184,9 +186,9 @@
       "ключи": ["max payne 3 logo", "max payne 3 screenshots"],
       "wave": 1,
       "related": ["/quotes/", "/voice-and-face/", "/max-payne-3/", "/"],
-      "h1": "Max Payne art and media: covers, wallpapers, comics, trailers and soundtracks",
-      "title": "Max Payne cover art, wallpapers, concept art, memes, comic, soundtrack",
-      "description": "Cover art and box art of all three games, wallpapers and screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack of Max Payne 3, and the memes and gifs."
+      "h1": "Max Payne art and media: covers, wallpapers, comics and soundtracks",
+      "title": "Max Payne cover art, wallpapers, concept art, memes, soundtrack",
+      "description": "Cover art and box art of all three games, wallpapers, screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack, memes and GIFs."
     },
     {
       "url": "/quotes/",
@@ -196,8 +198,8 @@
       "wave": 1,
       "related": ["/story/", "/media/", "/voice-and-face/"],
       "h1": "Max Payne quotes: the best lines from all three games",
-      "title": "Max Payne quotes — famous monologues and one-liners from the games",
-      "description": "The most memorable Max Payne quotes: the noir monologues of the first game, the lines from Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game and chapter."
+      "title": "Max Payne quotes — the famous monologues and one-liners",
+      "description": "The most memorable Max Payne quotes: the noir monologues of the first game, the lines of Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game."
     },
     {
       "url": "/pc/",
@@ -207,8 +209,8 @@
       "wave": 1,
       "related": ["/mods/", "/cheats/", "/max-payne-1/", "/max-payne-2/", "/max-payne-3/"],
       "h1": "Max Payne on a modern PC: system requirements, fixes and controller support",
-      "title": "Max Payne PC — system requirements, Windows 10/11 fixes, controller",
-      "description": "How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, the widescreen and sound fixes, Windows 10 and 11 issues, and how to get controller support in the first two games."
+      "title": "Max Payne on PC — system requirements, Windows fixes, controller",
+      "description": "How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, widescreen and sound fixes, Windows 10 and 11 issues, and controller support in the first two."
     },
     {
       "url": "/games-like-max-payne/",
@@ -219,7 +221,7 @@
       "related": ["/", "/gameplay/", "/story/", "/remake/"],
       "h1": "Games like Max Payne: what to play next",
       "title": "Games like Max Payne — shooters with bullet time and noir stories",
-      "description": "If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy's own titles to modern shooters with bullet time, and what each one gets right."
+      "description": "If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy’s own titles to modern shooters with bullet time."
     },
     {
       "url": "/privacy/",
@@ -239,7 +241,7 @@
       "wave": 1,
       "блоки": [{ "block": "link-list" }],
       "related": ["/", "/max-payne-1/", "/max-payne-2/", "/max-payne-3/"],
-      "h1": "There is no such page",
+      "h1": "This page does not exist",
       "title": "Page not found — 7thserpent.com",
       "description": "The address you followed does not lead to any page on 7thserpent.com. Go back to the home page or start with one of the three games."
     }
@@ -254,7 +256,7 @@
   ],
 
   "чего_здесь_нет": [
-    "Страниц под темы reviews, rating, business, order: 120–180/мес каждая, все — разделы хабов (S0 §4.5); order и rating серии — разделы главной (прецедент первого сайта: `rating`, `kolejnosc` на `/`).",
+    "Страниц под темы reviews (180/мес), rating (150), business (90), order (60): все — разделы хабов (S0 §4.5); order и rating серии — разделы главной (прецедент первого сайта: `rating`, `kolejnosc` на `/`), «max payne review» — раздел MP1 по выдаче.",
     "Отдельной страницы мобильной версии (560/мес) — раздел хаба MP1 по П65 п. 3; страница — если анатомия S3 покажет свою норму.",
     "Страницы `max payne 4` — в ремейке по П65 п. 3 («будущее серии»).",
     "Страницы гайдов серии (`/guides/`): hltb, trophies, walkthrough серии — 280/мес, по выдаче всё о первой части; разделы хаба MP1.",

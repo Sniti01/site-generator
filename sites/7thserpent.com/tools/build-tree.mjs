@@ -460,6 +460,13 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       if (!block) continue;
       const level = confidence[measured['вердикт']];
       if (!level) continue; // «не норма» и «не считается» блоками не становятся
+      // Доказательство — число контракта: не целое или «документов больше, чем из»
+      // не переносится в structure.json молча, а останавливает прогон.
+      const [n, of] = [measured['документов'], measured['из']];
+      if (!Number.isInteger(n) || !Number.isInteger(of) || n < 0 || of < 1 || n > of) {
+        fail(`${url}: блок ${block} — доказательство анатомии не число «документов/из» (${JSON.stringify(n)}/${JSON.stringify(of)}); s3-anatomy.json правлен руками или испорчен`);
+        continue;
+      }
       out.push({
         block,
         source: 'anatomy',
@@ -490,6 +497,9 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   }
 
   const corridorsFromContract = [];
+  // Страницы, чей коридор анатомии — ориентир по нише (своих документов меньше
+  // минимума): в контракт он идёт тем же числом, поэтому печатается отдельно.
+  const orienteers = [];
 
   const built = pages.map((p) => {
     const list = keywords
@@ -505,7 +515,12 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     // п. 2), — именованное решение: инструмент его сохраняет и называет
     // строкой при прогоне, чтобы решение не исчезло молча и не перестало быть
     // видимым.
-    const fromAnatomy = anatomyByUrl.get(p.url)?.['план']?.['коридор'] ?? null;
+    let fromAnatomy = anatomyByUrl.get(p.url)?.['план']?.['коридор'] ?? null;
+    if (fromAnatomy !== null && !(Array.isArray(fromAnatomy) && fromAnatomy.length === 2 && fromAnatomy.every(Number.isInteger) && fromAnatomy[0] > 0 && fromAnatomy[0] <= fromAnatomy[1])) {
+      fail(`${p.url}: коридор анатомии не пара целых min ≤ max (${JSON.stringify(fromAnatomy)}); s3-anatomy.json правлен руками или испорчен`);
+      fromAnatomy = null;
+    }
+    if (anatomyByUrl.get(p.url)?.['план']?.['ориентир']) orienteers.push({ url: p.url, corridor: fromAnatomy });
     let corridor = fromAnatomy;
     if (existingCorridor.has(p.url) && !sameCorridor(existingCorridor.get(p.url), fromAnatomy)) {
       corridor = existingCorridor.get(p.url);
@@ -542,8 +557,30 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     };
     if (p.owner) page.owner = true;
     if (p.template) page.template = p.template;
+    // Один блок — один источник: имя (с ролью), пришедшее и умолчанием, и
+    // анатомией, и рукой, встало бы на страницу дважды, и ни гейт, ни шаблон
+    // этого не увидят.
+    const seenBlocks = new Map();
+    for (const b of page.blocks) {
+      const key = `${b.block}#${b.role ?? ''}`;
+      if (seenBlocks.has(key)) fail(`${p.url}: блок ${b.block}${b.role ? '#' + b.role : ''} дважды — ${seenBlocks.get(key)} и ${b.source}; два источника одного блока не складываются`);
+      else seenBlocks.set(key, b.source);
+    }
     return page;
   });
+
+  // Анатомия и дерево — с одной раскладки: корпус страницы собран из её фраз
+  // (бэклог 54 п. 3), поэтому правка объявления без нового измерения делает
+  // анатомию устаревшей, и блоки с коридорами встали бы по чужому корпусу.
+  if (anatomy) {
+    const builtUrls = new Set(built.map((p) => p.url));
+    for (const p of built) {
+      const a = anatomyByUrl.get(p.url);
+      if (p.keywords.length && !a) fail(`${p.url}: страница спроса без строки в s3-anatomy.json — анатомия отстала от дерева; npm run anatomy, затем npm run tree`);
+      else if (a && a['фраз'] !== p.keywords.length) fail(`${p.url}: в s3-anatomy.json фраз ${a['фраз']}, на странице ${p.keywords.length} — анатомия отстала от дерева; npm run anatomy, затем npm run tree`);
+    }
+    for (const url of anatomyByUrl.keys()) if (!builtUrls.has(url)) fail(`s3-anatomy.json: страница ${url} — её нет в дереве; анатомия отстала от объявления`);
+  }
 
   /* ---------------------------------------------------------------- *
    * Сходится ли учёт.
@@ -578,6 +615,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     carved,
     themesByPage,
     corridorsFromContract,
+    orienteers,
     onPages,
     tally,
   };
@@ -605,7 +643,7 @@ function run(root, { dryRun }) {
   const data = readClustering(join(root, doc.site.semantics));
 
   const r = buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data });
-  const { site, built, exclusions, noPage, problems, lost, returned, outside, carved, themesByPage, corridorsFromContract, onPages, tally } = r;
+  const { site, built, exclusions, noPage, problems, lost, returned, outside, carved, themesByPage, corridorsFromContract, orienteers, onPages, tally } = r;
 
   const wave1 = built.filter((p) => p.wave === 1);
   const byType = {};
@@ -655,6 +693,23 @@ function run(root, { dryRun }) {
       console.log(`  ${c.url}  ${JSON.stringify(c.corridor)}  (анатомия: ${JSON.stringify(c.anatomy)})`);
     }
   }
+  if (anatomy) {
+    // Сводка S3 — главный выход анатомии в контракте: блоки и коридоры видны
+    // в печати, а не только в файле.
+    const fromAnatomy = built.flatMap((p) => p.blocks.filter((b) => b.source === 'anatomy').map((b) => ({ url: p.url, ...b })));
+    const byName = {};
+    for (const b of fromAnatomy) byName[b.block] = { ...(byName[b.block] ?? {}), [b.confidence]: (byName[b.block]?.[b.confidence] ?? 0) + 1 };
+    const sources = {};
+    for (const p of built) for (const b of p.blocks) sources[b.source] = (sources[b.source] ?? 0) + 1;
+    console.log('');
+    console.log(`блоки: ${Object.values(sources).reduce((s, n) => s + n, 0)} — ${Object.entries(sources).map(([s, n]) => `${s} ${n}`).join(', ')}`);
+    console.log(`блоки анатомии: ${Object.entries(byName).map(([n, v]) => `${n} ${Object.entries(v).map(([c, k]) => `${c} ${k}`).join(' + ')}`).join('; ') || 'нет'}`);
+    for (const b of fromAnatomy) console.log(`  ${b.url}  ${b.block} ${b.confidence} ${b.evidence}`);
+    const withCorridor = built.filter((p) => p.corridor !== null);
+    console.log(`коридоры: ${withCorridor.length} числом, ${built.length - withCorridor.length} null`);
+    for (const p of built) console.log(`  ${p.url}  ${JSON.stringify(p.corridor)}`);
+    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} ${JSON.stringify(o.corridor)} — в контракт идёт тем же числом, гейт судит его как норму`);
+  }
 
   if (lost.length) {
     console.error('');
@@ -671,11 +726,22 @@ function run(root, { dryRun }) {
     return false;
   }
 
+  const text = JSON.stringify({ site, pages: built, exclusions, no_page: noPage }, null, 1) + '\n';
   if (!dryRun) {
-    const out = { site, pages: built, exclusions, no_page: noPage };
-    writeFileSync(docPath, JSON.stringify(out, null, 1) + '\n');
+    writeFileSync(docPath, text);
     console.log('записано: structure/structure.json');
+    return true;
   }
+  // Сухой прогон сверяет построенное с записанным: structure.json, отставший
+  // от объявления, анатомии или правил, — отказ, а не зелёная печать.
+  if (readFileSync(docPath, 'utf8') !== text) {
+    const was = new Map((doc.pages ?? []).map((p) => [p.url, JSON.stringify(p)]));
+    const differ = built.filter((p) => was.get(p.url) !== JSON.stringify(p)).map((p) => p.url);
+    console.error('');
+    console.error(`structure/structure.json расходится с построенным (страниц: ${differ.length}${differ.length ? ' — ' + differ.slice(0, 6).join(', ') : ''}); npm run tree`);
+    return false;
+  }
+  console.log('structure/structure.json совпадает с построенным');
   return true;
 }
 
@@ -918,8 +984,8 @@ function selftest(root) {
   const blockOf = (r, url, name) => r.built.find((p) => p.url === url)?.blocks.find((b) => b.block === name);
   check('S: фикстура с анатомией сходится', 0, rS3.problems.length + rS3.lost.length, rS3.problems.join(' | ') || 'учёт прежний');
   check('S: game — умолчания + анатомия + рука в порядке правил', ['hero-key-art(t)', 'story-row(t)', 'story-row(m)#mobile', 'gallery(a)', 'verdict-box(a)', 'link-list(t)', 'cta-band(t)'], blocksOf(rS3, '/one/'), 'порядок_на_странице.список; безымянный wideo, «не норма» autor-data, «не считается» spis-tresci — не блоки');
-  check('S: доказательство и уверенность', { verdict: { confidence: 'high', evidence: '6/7' }, gallery: { confidence: 'medium', evidence: '3/7' } }, { verdict: { confidence: blockOf(rS3, '/one/', 'verdict-box').confidence, evidence: blockOf(rS3, '/one/', 'verdict-box').evidence }, gallery: { confidence: blockOf(rS3, '/one/', 'gallery').confidence, evidence: blockOf(rS3, '/one/', 'gallery').evidence } }, 'обязателен → high, на решение → medium; evidence «документов/из»');
-  check('S: источник анатомии отличим', 'anatomy', blockOf(rS3, '/one/', 'verdict-box').source, 'три источника не смешиваются');
+  check('S: доказательство и уверенность', { verdict: { confidence: 'high', evidence: '6/7' }, gallery: { confidence: 'medium', evidence: '3/7' } }, { verdict: { confidence: blockOf(rS3, '/one/', 'verdict-box')?.confidence, evidence: blockOf(rS3, '/one/', 'verdict-box')?.evidence }, gallery: { confidence: blockOf(rS3, '/one/', 'gallery')?.confidence, evidence: blockOf(rS3, '/one/', 'gallery')?.evidence } }, 'обязателен → high, на решение → medium; evidence «документов/из»');
+  check('S: источник анатомии отличим', 'anatomy', blockOf(rS3, '/one/', 'verdict-box')?.source, 'три источника не смешиваются');
   check('S: home — свой порядок, имя вне списка — в конец', ['hero-key-art(t)', 'byline(a)', 'story-row(t)', 'band-quote(t)', 'card-rail(t)', 'link-list(m)#games-in-order', 'link-columns(t)', 'cta-band(t)', 'data-table(a)'], blocksOf(rS3, '/'), 'по_типу.home: byline(a) вторым; data-table нет в списке — в конец');
   check('S: коридор из анатомии — страница без строки в структуре', [300, 400], rS3.built.find((p) => p.url === '/movie/').corridor, 'план.коридор S3');
   check('S: коридор из контракта при расхождении с анатомией', { corridor: [100, 250], named: [{ url: '/one/', corridor: [100, 250], anatomy: [100, 200] }] }, { corridor: rS3.built.find((p) => p.url === '/one/').corridor, named: rS3.corridorsFromContract.filter((c) => c.url === '/one/') }, 'П43 п. 2 — предохранитель переживает анатомию и назван строкой');
@@ -928,6 +994,35 @@ function selftest(root) {
   check('S: без строк структуры — коридор анатомии у всех', [[500, 600], [100, 200], [300, 400]], ['/', '/one/', '/movie/'].map((u) => tree(noDocS3).built.find((p) => p.url === u).corridor), 'переход S2 → S3: строки-заглушки сняты, числа — из анатомии');
   const noRulesS3 = { ...withS3, rulesS3: null };
   check('S: анатомия без правил — блоков анатомии нет', 0, tree(noRulesS3).built.reduce((s, p) => s + p.blocks.filter((b) => b.source === 'anatomy').length, 0), 'имя даёт словарь правил, не измерение');
+  check('S: коридор-ориентир назван', [{ url: '/cheats/', corridor: [900, 1000] }], rS3.orienteers, 'медиана ниши идёт в контракт тем же числом — печатается отдельно');
+
+  // Фикстура судит те же уверенность и порядок, что живые правила, а имена —
+  // четыре имени П28: правка живых правил не проходит мимо проб молча.
+  const live = readJson(join(root, 'structure/rules-s3.json'));
+  const bare = (o) => JSON.parse(JSON.stringify(o, (k, v) => (k.startsWith('почему') ? undefined : v)));
+  check('S: уверенность и порядок фикстуры — как у живых правил', { уверенность: bare(live['уверенность']), порядок: bare(live['порядок_на_странице']) }, { уверенность: bare(fx['проба_S3'].rulesS3['уверенность']), порядок: bare(fx['проба_S3'].rulesS3['порядок_на_странице']) }, 'живой rules-s3.json');
+  check('S: имена блоков живых правил — четыре имени П28', { ocena: 'verdict-box', galeria: 'gallery', 'autor-data': 'byline', 'spis-tresci': 'toc' }, Object.fromEntries(Object.entries(bare(live['имена_блоков'])).filter(([, v]) => v !== null)), 'остальные — null до слова владельца (П70 п. 1е)');
+
+  // Анатомия, отставшая от дерева, — несходимость, а не тихий null и пропавшие блоки.
+  const noAnatomyRow = { ...withS3, anatomy: { страницы: withS3.anatomy.страницы.filter((p) => p.url !== '/remake/') } };
+  check('S: страница спроса без строки анатомии — несходимость', 1, problemsAbout(tree(noAnatomyRow), '/remake/: страница спроса без строки в s3-anatomy.json'), 'правка объявления без нового измерения');
+  const staleCount = structuredClone(withS3);
+  staleCount.anatomy.страницы.find((p) => p.url === '/one/')['фраз'] = 2;
+  check('S: число фраз анатомии ≠ раскладке — несходимость', 1, problemsAbout(tree(staleCount), '/one/: в s3-anatomy.json фраз 2, на странице 3'), 'корпус страницы собран из других фраз');
+  const orphan = structuredClone(withS3);
+  orphan.anatomy.страницы.push({ url: '/gone/', фраз: 1, план: { коридор: [1, 2] }, элементы: {} });
+  check('S: строка анатомии без страницы — несходимость', 1, problemsAbout(tree(orphan), 's3-anatomy.json: страница /gone/'), 'страницу сняли из объявления, измерение осталось');
+  const twice = structuredClone(withS3);
+  page(twice, '/')['блоки'] = [{ block: 'byline' }];
+  check('S: один блок из двух источников — несходимость', 1, problemsAbout(tree(twice), '/: блок byline дважды — anatomy и manual'), 'рука и анатомия не складываются');
+  const badEvidence = structuredClone(withS3);
+  badEvidence.anatomy.страницы.find((p) => p.url === '/one/')['элементы'].ocena['документов'] = '6';
+  badEvidence.anatomy.страницы.find((p) => p.url === '/one/')['элементы'].galeria['документов'] = 9;
+  const rBad = tree(badEvidence);
+  check('S: доказательство не число или больше «из» — несходимость, блок не переносится', { problems: 2, verdict: undefined, gallery: undefined }, { problems: problemsAbout(rBad, 'доказательство анатомии не число'), verdict: blockOf(rBad, '/one/', 'verdict-box'), gallery: blockOf(rBad, '/one/', 'gallery') }, '«6» строкой; 9 из 7');
+  const badCorridor = structuredClone(withS3);
+  badCorridor.anatomy.страницы.find((p) => p.url === '/movie/')['план']['коридор'] = [400, 300];
+  check('S: коридор анатомии не пара min ≤ max — несходимость', 1, problemsAbout(tree(badCorridor), '/movie/: коридор анатомии не пара'), '[400, 300]');
 
   let failed = 0;
   for (const c of cases) {

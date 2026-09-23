@@ -55,12 +55,6 @@
      "confidence": "low"
     },
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "high",
-     "evidence": "19/24"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -90,12 +84,6 @@
      "block": "cta-band",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "verdict-box",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "13/24"
     }
    ],
    "wave": 1,
@@ -180,12 +168,6 @@
      "confidence": "low"
     },
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "21/32"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -195,18 +177,6 @@
      "role": "mobile",
      "source": "manual",
      "confidence": "high"
-    },
-    {
-     "block": "gallery",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "14/32"
-    },
-    {
-     "block": "verdict-box",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "16/32"
     },
     {
      "block": "link-list",
@@ -221,8 +191,8 @@
    ],
    "wave": 1,
    "corridor": [
-    1997,
-    2701
+    2067,
+    2797
    ],
    "volume": 3860
   },
@@ -268,7 +238,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "6/10"
+     "evidence": "4/8"
     },
     {
      "block": "story-row",
@@ -288,8 +258,8 @@
    ],
    "wave": 1,
    "corridor": [
-    2513,
-    3401
+    6068,
+    8210
    ],
    "volume": 3020
   },
@@ -381,18 +351,12 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "18/27"
+     "evidence": "12/26"
     },
     {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "gallery",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "12/27"
     },
     {
      "block": "link-list",
@@ -407,8 +371,8 @@
    ],
    "wave": 1,
    "corridor": [
-    4743,
-    6417
+    4677,
+    6327
    ],
    "volume": 11620
   },
@@ -461,7 +425,13 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "high",
-     "evidence": "23/25"
+     "evidence": "18/25"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "11/25"
     },
     {
      "block": "story-row",
@@ -543,21 +513,9 @@
      "confidence": "high"
     },
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "8/13"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "verdict-box",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "7/13"
     },
     {
      "block": "link-list",
@@ -572,8 +530,8 @@
    ],
    "wave": 1,
    "corridor": [
-    4976,
-    6732
+    5170,
+    6994
    ],
    "volume": 8190
   },
@@ -632,8 +590,8 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "13/16"
+     "confidence": "medium",
+     "evidence": "7/15"
     },
     {
      "block": "story-row",
@@ -659,8 +617,8 @@
    ],
    "wave": 1,
    "corridor": [
-    3369,
-    4559
+    3753,
+    5077
    ],
    "volume": 9480
   },
@@ -725,19 +683,13 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "21/25"
+     "confidence": "medium",
+     "evidence": "14/23"
     },
     {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "gallery",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "12/25"
     },
     {
      "block": "link-list",
@@ -752,8 +704,8 @@
    ],
    "wave": 1,
    "corridor": [
-    3563,
-    4821
+    3753,
+    5077
    ],
    "volume": 2160
   },
@@ -813,19 +765,13 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "27/29"
+     "confidence": "medium",
+     "evidence": "14/28"
     },
     {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "gallery",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "12/29"
     },
     {
      "block": "link-list",
@@ -840,8 +786,8 @@
    ],
    "wave": 1,
    "corridor": [
-    4726,
-    6394
+    5057,
+    6841
    ],
    "volume": 590
   },
@@ -885,8 +831,8 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "18/23"
+     "confidence": "medium",
+     "evidence": "14/23"
     },
     {
      "block": "story-row",
@@ -964,8 +910,14 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "22/30"
+     "confidence": "medium",
+     "evidence": "15/30"
+    },
+    {
+     "block": "toc",
+     "source": "anatomy",
+     "confidence": "medium",
+     "evidence": "16/30"
     },
     {
      "block": "story-row",
@@ -1019,19 +971,13 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "16/17"
+     "confidence": "medium",
+     "evidence": "11/17"
     },
     {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "gallery",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "7/17"
     },
     {
      "block": "link-list",
@@ -1109,12 +1055,6 @@
    ],
    "blocks": [
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "33/60"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1132,8 +1072,8 @@
    ],
    "wave": 1,
    "corridor": [
-    1931,
-    2613
+    1986,
+    2686
    ],
    "volume": 950
   },
@@ -1159,8 +1099,8 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "3/4"
+     "confidence": "medium",
+     "evidence": "2/4"
     },
     {
      "block": "story-row",
@@ -1230,7 +1170,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "13/26"
+     "evidence": "11/25"
     },
     {
      "block": "story-row",
@@ -1250,8 +1190,8 @@
    ],
    "wave": 1,
    "corridor": [
-    2777,
-    3757
+    2870,
+    3884
    ],
    "volume": 410
   },
@@ -1297,8 +1237,8 @@
    ],
    "wave": 1,
    "corridor": [
-    2984,
-    4038
+    2986,
+    4040
    ],
    "volume": 340
   },

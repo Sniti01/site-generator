@@ -3,195 +3,203 @@ url: /assassins-creed-brotherhood/
 art: assassins-creed-brotherhood
 era: wlochy
 lead: >-
-  Trzecia gra serii i drugi rozdział historii Ezia: ciąg dalszy zaczyna się
-  tam, gdzie skończyła się dwójka, a potem przenosi wszystko do jednego
-  miasta. Rzym lat 1499–1507, ród Borgiów po drugiej stronie i bractwo, które
-  trzeba zbudować od zera, zanim przyjdzie czas na ostatnie uderzenie.
+  The third game in the series and the second chapter of Ezio’s story: it
+  picks up where Assassin’s Creed II ended, then moves everything to a
+  single city. Rome in 1499–1507, the Borgia on the other side, and a
+  Brotherhood that has to be built from scratch before the time comes for
+  the final strike.
 primary:
   href: '#co-jest-w-grze'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry i miejsca
-  lead: Materiał wydawcy ze strony gry w Steamie oraz zdjęcie z Wikimedia Commons.
+  title: Screenshots and places
+  lead: Publisher material from the game’s Steam page and a photo from Wikimedia Commons.
   items:
     - art: assassins-creed-brotherhood
-      alt: 'Assassin’s Creed Brotherhood — kluczowy art'
-      caption: 'Ezio na kluczowym arcie wydania na Steamie.'
+      alt: 'Assassin’s Creed Brotherhood — key art'
+      caption: 'Ezio on the key art of the Steam release.'
     - art: foto-wlochy
-      alt: 'Florencja — panorama centrum historycznego'
-      caption: 'Florencja — miasto, w którym w dwójce zaczęła się historia Ezia. Zdjęcie z Wikimedia Commons.'
+      alt: 'Florence — panorama of the historic center'
+      caption: 'Florence — the city where Ezio’s story began in Assassin’s Creed II. Photo from Wikimedia Commons.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Część dla kogoś, kto polubił dwójkę i chce więcej tego samego w większej
-      skali: jedno miasto zamiast czterech, ale trzykrotnie większe od tamtej
-      Florencji, z dzielnicami do odbicia i bractwem, które rośnie razem
-      z graczem. Kampania mieści się w kilkunastu godzinach, a średni czas
-      ukończenia według statystyk graczy sięga blisko trzydziestu godzin.
+      A game for someone who liked Assassin’s Creed II and wants more of the
+      same on a bigger scale: one city instead of four, but three times the
+      size of that game’s Florence, with districts to liberate and a
+      Brotherhood that grows along with the player. The campaign fits into a
+      dozen or so hours, while the average completion time according to
+      player statistics comes close to thirty hours.
     - >-
-      Nie zaczynaj od niej. Fabuła rusza sekundę po finale dwójki i zakłada,
-      że wiesz, kim jest Ezio, kim był jego wuj i dlaczego Borgiowie chcą jego
-      głowy. Kolejność jest jedna: dwójka, Brotherhood, Revelations. Tryb
-      sieciowy dziś już nie działa, więc licz się tylko z kampanią.
+      Don’t start with it. The story picks up a second after the finale of
+      II and assumes you know who Ezio is, who his uncle was and why the
+      Borgia want his head. There is only one order: II, Brotherhood,
+      Revelations. The online mode no longer works, so count on the
+      campaign alone.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-jest-w-grze
     year: '2010'
-    title: Rzym zamiast Florencji
-    meta: Ubisoft Montreal · PS3 i Xbox 360 w listopadzie 2010 · PC w marcu 2011
+    title: Rome instead of Florence
+    meta: Ubisoft Montreal · PS3 and Xbox 360 in November 2010 · PC in March 2011
     art: assassins-creed-brotherhood-k09
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed Brotherhood to trzecia gra głównej linii i druga
-        z trzech o Eziu Auditore. To nie jest Assassin’s Creed III: numerowana
-        trójka opowiada o innej epoce i innym bohaterze, a Brotherhood jest
-        bezpośrednim ciągiem dalszym dwójki, z tym samym Eziem i tymi samymi
-        postaciami wokół niego. Muzykę napisał Jesper Kyd.
+        Assassin’s Creed Brotherhood is the third game in the main line and
+        the second of three about Ezio Auditore. It is not Assassin’s Creed
+        III: the numbered third game tells of a different era and a
+        different hero, while Brotherhood is a direct sequel to II, with the
+        same Ezio and the same characters around him. The music was written
+        by Jesper Kyd.
       - >-
-        Premiera na PlayStation 3 i Xboksie 360 przypadła na listopad 2010
-        roku, w Polsce 19 listopada; wersja na PC wyszła cztery miesiące
-        później, 17 marca 2011 roku. Akcja toczy się w Rzymie lat 1499–1507.
-        Nowe są dwie rzeczy: własne bractwo, które Ezio rekrutuje i wysyła
-        do walki, oraz pierwszy w serii tryb wieloosobowy.
+        The game launched on PlayStation 3 and Xbox 360 in November 2010;
+        the PC version came out four months later, on March 17, 2011. The
+        action takes place in Rome in 1499–1507. Two things are new: your
+        own Brotherhood, which Ezio recruits and sends into battle, and the
+        first multiplayer mode in the series.
   - id: fabula
     year: 1499–1507
-    title: Monteriggioni pada, Ezio jedzie do Rzymu
-    meta: Cezar Borgia · Machiavelli, Leonardo, Caterina Sforza · dziewięć sekwencji
+    title: Monteriggioni falls, Ezio heads to Rome
+    meta: Cesare Borgia · Machiavelli, Leonardo, Caterina Sforza · nine sequences
     art: assassins-creed-brotherhood-k11
     flip: true
     band: true
     body:
       - >-
-        Historia zaczyna się w Monteriggioni, dokąd Ezio wraca po finale
-        dwójki. Spokój trwa krótko: miasteczko atakuje i równa z ziemią Cezar
-        Borgia, syn przeciwnika z poprzedniej części, a w ataku ginie wuj
-        Ezia. Bohater ucieka z matką i siostrą do Rzymu, który jest wtedy
-        siedzibą templariuszy i centrum władzy Borgiów.
+        The story begins in Monteriggioni, where Ezio returns after the
+        finale of II. The peace does not last: the town is attacked and
+        razed by Cesare Borgia, the son of the antagonist from the previous
+        game, and Ezio’s uncle dies in the attack. The hero flees with his
+        mother and sister to Rome, which at the time is the seat of the
+        Templars and the center of Borgia power.
       - >-
-        Cel jest jeden: rozbić tę siedzibę i uwolnić miasto, a że w pojedynkę
-        się nie da, trzeba najpierw odbudować rzymskie bractwo i przyjąć do
-        niego mieszkańców, którzy mają dość Borgiów. Po drodze wracają
-        Niccolò Machiavelli, Leonardo da Vinci i Caterina Sforza. Kampania
-        dzieli się na dziewięć sekwencji; ostatnie dwie noszą tytuły „Borgia”
-        i „Upadek” i mówią same za siebie.
+        There is one goal: to break that seat of power and free the city,
+        and since it cannot be done alone, you first have to rebuild the
+        Roman Brotherhood and take in citizens who have had enough of the
+        Borgia. Along the way Niccolò Machiavelli, Leonardo da Vinci and
+        Caterina Sforza return. The campaign is divided into nine sequences;
+        the last two are titled “Borgia” and “Downfall”, and they speak for
+        themselves.
       - >-
-        Wątek współczesny idzie dalej za dwójką: Desmond i jego zespół
-        siedzą przy Animusie. Kto pominął dwójkę, nie zrozumie ani jednej
-        ze stron tej opowieści.
+        The modern-day story continues from II: Desmond and his team are at
+        the Animus. If you skipped II, you won’t understand either side of
+        this story.
   - id: miasto
-    year: Rzym
-    title: Jedno miasto, trzy razy większe niż Florencja
-    meta: Antico, Centro, Campagna · wieże Borgiów · odbudowa dzielnic
+    year: Rome
+    title: One city, three times the size of Florence
+    meta: Antico, Centro, Campagna · Borgia towers · rebuilding districts
     art: foto-rzym-piranesi
     flip: false
     band: false
     body:
       - >-
-        Zamiast kilku miast z dwójki jest jedno, za to około trzy razy większe
-        od tamtej Florencji. Po Rzymie jeździ się konno, choć koń nie wejdzie
-        wszędzie, a punktów widokowych jest dwadzieścia cztery. Poza miasto
-        prowadzą tylko zamknięte, liniowe misje.
+        Instead of several cities as in II, there is one, but about three
+        times the size of that game’s Florence. You can ride around Rome on
+        horseback, though the horse can’t go everywhere, and there are
+        twenty-four viewpoints. Only closed, linear missions lead outside
+        the city.
       - >-
-        Rzym na starcie należy do Borgiów. Każdą okolicę uwalnia się tak samo:
-        zabić kapitana, podpalić jego wieżę, a potem odbudować dzielnicę
-        z własnej sakiewki — sklepy, stajnie, akwedukty, zabytki i puste
-        budynki, które oddaje się złodziejom, kurtyzanom albo najemnikom.
-        Porządkowanie miasta jest osobną pętlą, do której wraca się między
-        misjami.
+        At the start Rome belongs to the Borgia. Every area is freed the
+        same way: kill the captain, set his tower on fire, and then rebuild
+        the district out of your own purse — shops, stables, aqueducts,
+        landmarks and empty buildings that you hand over to thieves,
+        courtesans or mercenaries. Putting the city in order is a separate
+        loop you return to between missions.
   - id: bractwo
-    year: Rekruci
-    title: Bractwo, które walczy za Ezia
-    meta: do dwunastu rekrutów · kontrakty · kusza, spadochron, maszyny Leonarda
+    year: Recruits
+    title: A Brotherhood that fights for Ezio
+    meta: up to twelve recruits · contracts · crossbow, parachute, Leonardo’s machines
     art: foto-leonardo-czolg
     flip: true
     band: false
     body:
       - >-
-        Rekrutów zdobywa się, pomagając mieszkańcom w drobnych zadaniach.
-        Bractwo mieści maksymalnie dwunastu ludzi; nowicjusz rośnie do rangi
-        asasyna na dziesiątym poziomie, a doświadczenie zbiera na kontraktach,
-        na które wysyła ich Ezio. W mieście Ezio wzywa ich niemal w każdej
-        chwili: do zabicia wskazanego celu albo do pomocy w bójce.
+        Recruits are won by helping citizens with small tasks. The
+        Brotherhood holds at most twelve people; a novice rises to the rank
+        of Assassin at level ten and gains experience on the contracts Ezio
+        sends the recruits on. In the city Ezio can call them in at almost
+        any moment: to kill a chosen target or to help in a fight.
       - >-
-        Reszta mechaniki to znana z dwójki gra akcji z otwartym miastem:
-        wspinaczka, kontrataki, tłum jako kryjówka. Do arsenału doszły kusza,
-        zatruta strzałka i spadochron, a w osobnych misjach niszczy się cztery
-        maszyny wojenne z projektów Leonarda, w tym czołg i ulepszoną machinę
-        latającą — po drodze można nimi sterować.
+        The rest of the mechanics is the open-city action game known from
+        II: climbing, counterattacks, the crowd as a hiding place. The
+        arsenal gains a crossbow, a poison dart and a parachute, and in
+        separate missions you destroy four war machines built from
+        Leonardo’s designs, including a tank and an improved flying
+        machine — you get to control them along the way.
   - id: tryb-sieciowy
-    year: Sieć
-    title: Pierwszy tryb wieloosobowy w serii
-    meta: agenci Abstergo · Wanted i Alliance · 6–8 graczy · dziś wyłączony
+    year: Online
+    title: The first multiplayer mode in the series
+    meta: Abstergo agents · Wanted and Alliance · 6–8 players · now shut down
     art: assassins-creed-brotherhood-k04
     flip: false
     band: true
     body:
       - >-
-        Brotherhood jako pierwsza część dostała grę sieciową. Fabularnie to
-        agenci Abstergo w Animusie, w praktyce polowanie: każdy z sześciu
-        do ośmiu graczy ma cel do zabicia i jednocześnie sam jest czyimś celem,
-        a w tłumie identycznych postaci trzeba zgadnąć, kto jest człowiekiem.
-        Mapy to między innymi Siena, Florencja, Wenecja i Castel Gandolfo.
+        Brotherhood was the first game in the series to get online play. In
+        story terms you are Abstergo agents in the Animus; in practice it is
+        a hunt: each of the six to eight players has a target to kill and is
+        at the same time someone else’s target, and in a crowd of identical
+        characters you have to guess who is human. The maps include Siena,
+        Florence, Venice and Castel Gandolfo.
       - >-
-        Dla kupujących dziś ma to znaczenie tylko historyczne: sklep Xboksa
-        wprost informuje, że funkcje sieciowe tej gry nie są już dostępne.
-        Zostaje kampania.
+        For buyers today this matters only historically: the Xbox store
+        states outright that the game’s online features are no longer
+        available. The campaign remains.
   - id: dodatki-i-znajdzki
-    year: Dodatki
-    title: Kopernik, Leonardo i legowiska Romulusa
-    meta: Spisek Kopernika · Zaginięcie Leonarda · sześć legowisk · 101 flag
+    year: DLC
+    title: Copernicus, Leonardo and the Lairs of Romulus
+    meta: The Copernicus Conspiracy · The Da Vinci Disappearance · six lairs · 101 flags
     art: foto-kopernik
     flip: true
     band: false
     body:
       - >-
-        Spisek Kopernika to darmowy pakiet misji z Mikołajem Kopernikiem,
-        na którego Borgiowie wydali wyrok; wyszedł w listopadzie 2010 roku
-        tylko na PlayStation 3. Płatne Zaginięcie Leonarda z marca 2011 roku
-        dopisuje kampanii ciąg misji o porwaniu Leonarda przez sektę
-        hermetystów. Dwie darmowe aktualizacje Animus Project dotyczyły
-        tylko gry sieciowej.
+        The Copernicus Conspiracy is a free mission pack featuring Nicolaus
+        Copernicus, on whom the Borgia had passed a death sentence; it came
+        out in November 2010 on PlayStation 3 only. The Da Vinci
+        Disappearance, paid DLC from March 2011, adds a chain of missions to
+        the campaign about Leonardo’s kidnapping by a sect of Hermeticists.
+        Two free Animus Project updates concerned only online play.
       - >-
-        Znajdźki dla kompletujących: sześć legowisk Romulusa — jedno przechodzi
-        się w fabule, pięć z wyboru — daje sześć kluczy, a za nie zbroję
-        i sztylet Brutusa. Do tego sto jeden flag Borgiów, dziesięć piór
-        i pięć wspomnień o Cristinie, odblokowywanych w miarę rosnącej
-        synchronizacji.
+        Collectibles for completionists: six Lairs of Romulus — one is played
+        in the story, five are optional — give six keys, and those unlock
+        the armor and dagger of Brutus. On top of that, one hundred and one
+        Borgia flags, ten feathers and five memories of Cristina, unlocked
+        as synchronization rises.
   - id: wydania
-    year: Wydania
-    title: PS3, Xbox 360, PC — a potem Ezio Collection
-    meta: polskie napisy · The Ezio Collection 2016 · Xbox One i Series X|S
+    year: Releases
+    title: PS3, Xbox 360, PC — and then the Ezio Collection
+    meta: The Ezio Collection 2016 · Xbox One and Series X|S
     art: foto-monteriggioni
     flip: false
     band: false
     body:
       - >-
-        Oryginalne wydania na PlayStation 3, Xboksa 360 i PC mają polskie
-        napisy przy angielskich dialogach; na Xboksie 360 gra wróciła też
-        w linii Classics, również z napisami. Na PC gra jest na Steamie,
-        a wymagania z tamtych lat — Core 2 Duo i półtora gigabajta pamięci —
-        nie są dziś barierą.
+        The original releases came out on PlayStation 3, Xbox 360 and PC;
+        on Xbox 360 the game also returned in the Classics line. On PC the
+        game is on Steam, and the requirements of the time — a Core 2 Duo
+        and one and a half gigabytes of memory — are no barrier today.
       - >-
-        Na PlayStation 4 i Xboksa One Brotherhood trafiło w listopadzie 2016
-        roku jako część The Ezio Collection razem z dwójką i Revelations —
-        to dziś najprostszy sposób, żeby zagrać. Sklep Xboksa sprzedaje grę
-        jako działającą na Xbox One i Series X|S, więc na Series S nie trzeba
-        starej konsoli.
+        Brotherhood came to PlayStation 4 and Xbox One in November 2016 as
+        part of The Ezio Collection, together with II and Revelations —
+        today the simplest way to play it. The Xbox store sells the game as
+        running on Xbox One and Series X|S, so on a Series S you don’t need
+        the old console.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

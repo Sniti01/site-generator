@@ -2,199 +2,204 @@
 url: /assassins-creed-unity/
 art: assassins-creed-unity
 lead: >-
-  Ósma część głównej linii i pierwsza zrobiona wyłącznie na PlayStation 4,
-  Xboksa One i PC. Paryż lat 1789–1794 w skali bliskiej jeden do jednego,
-  Arno Dorian między asasynami a templariuszami, zejście z dachu jednym
-  przyciskiem i misje na czterech graczy.
+  The eighth game in the main line and the first made exclusively for
+  PlayStation 4, Xbox One and PC. Paris in 1789–1794 at close to
+  one-to-one scale, Arno Dorian between the Assassins and the Templars,
+  getting down from a roof with a single button, and four-player missions.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
   href: /assassins-creed-syndicate/
-  label: 'Następna część: Syndicate'
+  label: 'Next game: Syndicate'
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-to-za-gra-tytul'
-      title: Pierwsza część tylko na nową generację
+      title: The first game for the new generation only
     - href: '#arno-i-elise-tytul'
-      title: Arno, Élise i wątek współczesny
+      title: Arno, Élise and the modern-day story
     - href: '#paryz-tytul'
-      title: Paryż — siedem dzielnic i Wersal
+      title: Paris — seven districts and Versailles
     - href: '#parkour-i-kooperacja-tytul'
-      title: Parkour w dół, szermierka, kooperacja
+      title: Downward parkour, swordplay, co-op
     - href: '#premiera-i-wydania-tytul'
-      title: Premiera, łatki, platformy
+      title: Launch, patches, platforms
     - href: '#komu-i-od-czego-zaczac-tytul'
-      title: Komu i w jakiej kolejności
+      title: Who it’s for and in what order
     - href: '#galeria-tytul'
-      title: Kadry
+      title: Gallery
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry
-  lead: Materiał wydawcy ze stron gier w Steamie; zrzutów ekranu Unity w nim nie ma.
+  title: Gallery
+  lead: Publisher material from the games’ Steam pages; it contains no Unity screenshots.
   items:
     - art: assassins-creed-unity
-      alt: 'Assassin’s Creed Unity — kluczowy art'
-      caption: 'Kluczowy art wydania na Steamie.'
+      alt: 'Assassin’s Creed Unity — key art'
+      caption: 'Key art from the Steam release.'
     - art: assassins-creed-rogue
-      alt: 'Assassin’s Creed Rogue — kluczowy art'
-      caption: 'Rogue wyszło tego samego dnia; jego epilog jest prologiem Unity.'
+      alt: 'Assassin’s Creed Rogue — key art'
+      caption: 'Rogue came out on the same day; its epilogue is Unity’s prologue.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Unity jest dziś dobrym wyborem dla kogoś, kto chce klasycznego
-      Assassin’s Creed — miasto, dachy, tłum, ciche zabójstwa — w oprawie,
-      która nie odstaje od nowszych gier. Parkour z zejściem w dół i gęsty
-      Paryż z wnętrzami to rzeczy, które późniejsze części uprościły. Kto
-      odbił się od tej gry w 2014 roku, ma powód wrócić: błędy załatano.
+      Today Unity is a good choice for someone who wants classic Assassin’s
+      Creed — a city, rooftops, crowds, silent kills — with visuals that
+      don’t lag behind newer games. Parkour with a way down and a dense
+      Paris full of interiors are things later games simplified. If you
+      bounced off this game in 2014, you have a reason to come back: the
+      bugs have been patched.
     - >-
-      Kto szuka mocnej opowieści, dostanie mniej niż u Ezia czy Edwarda:
-      zemsta Arna jest przewidywalna, a niesie ją bardziej Élise niż intryga
-      zakonu. Kooperacja wymaga znajomych, walka bez kontry na początku
-      karze. Na pierwszą część serii Unity się nadaje, ale lepiej brzmi
-      po Rogue.
+      If you are after a strong story, you get less than with Ezio or
+      Edward: Arno’s revenge is predictable, and it is carried more by
+      Élise than by the intrigue within the Order. Co-op needs friends, and
+      combat without a counter punishes you early on. Unity works as a first
+      game in the series, but it lands better after Rogue.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2014'
-    title: Pierwsza część tylko na nową generację konsol i PC
-    meta: Paryż · 1789–1794 · Arno Dorian · Ubisoft Montréal
+    title: The first game made only for new-generation consoles and PC
+    meta: Paris · 1789–1794 · Arno Dorian · Ubisoft Montréal
     art: assassins-creed-unity-k01
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed Unity wyszło na PlayStation 4, Xboksa One i PC
-        w listopadzie 2014 roku: za oceanem 11 listopada, w Europie dwa dni
-        później. To ósma część głównej linii i pierwsza, której nie
-        zrobiono na poprzednią generację. Tego samego dnia Ubisoft wydał
-        Rogue na starych konsolach, a obie gry łączy jedna scena.
+        Assassin’s Creed Unity came out on PlayStation 4, Xbox One and PC
+        in November 2014: in North America on November 11, in Europe two
+        days later. It is the eighth game in the main line and the first not
+        made for the previous generation. On the same day Ubisoft released
+        Rogue on the older consoles, and the two games are linked by a
+        single scene.
       - >-
-        Akcja toczy się w Paryżu od wigilii rewolucji w 1789 roku do
-        przewrotu termidoriańskiego w 1794, z prologiem w Wersalu. Bohaterem
-        jest Arno Dorian, sierota po asasynie wychowana przez wielkiego
-        mistrza templariuszy.
+        The action takes place in Paris from the eve of the Revolution in
+        1789 to the Thermidorian Reaction in 1794, with a prologue at
+        Versailles. The hero is Arno Dorian, the orphaned son of an Assassin,
+        raised by the Grand Master of the Templars.
   - id: arno-i-elise
     year: '1789'
-    title: Arno, Élise, przewrót w zakonie i nowicjusz w Helixie
-    meta: Wersal 1776 · Bastylia · Bellec · Germain · Bishop
+    title: Arno, Élise, a coup in the Order and an initiate in Helix
+    meta: Versailles 1776 · the Bastille · Bellec · Germain · Bishop
     art: assassins-creed-rogue
     flip: true
     band: true
     body:
       - >-
-        Ojciec Arna ginie w Wersalu w 1776 roku z ręki Shaya Cormaca — to
-        epilog Rogue. Chłopca przygarnia François de la Serre, wielki mistrz
-        francuskich templariuszy, a Arno dorasta z jego córką Élise. W 1789
-        roku de la Serre zostaje zamordowany, winę zrzuca się na Arna,
-        a z Bastylii wychodzi on w dniu szturmu z Pierre’em Bellekiem, który
-        wprowadza go do bractwa. Za zamachem stoi François-Thomas Germain,
-        złotnik wyrzucony z zakonu; finał pod twierdzą Temple kosztuje
-        Élise życie.
+        Arno’s father dies at Versailles in 1776 at the hands of Shay
+        Cormac — this is the epilogue of Rogue. The boy is taken in by
+        François de la Serre, Grand Master of the French Templars, and Arno
+        grows up with his daughter Élise. In 1789 de la Serre is murdered,
+        the blame is pinned on Arno, and he walks out of the Bastille on the
+        day it is stormed, together with Pierre Bellec, who brings him into
+        the Brotherhood. Behind the plot is François-Thomas Germain, a
+        silversmith expelled from the Order; the finale at the Temple
+        fortress costs Élise her life.
       - >-
-        Współcześnie Abstergo wypuszcza Helix — dostęp do wspomnień
-        genetycznych sprzedawany jak gra. Gracz jest bezimiennym
-        nowicjuszem, którego agentka asasynów Bishop prosi o odnalezienie
-        szczątków Mędrca, zanim dotrze do nich korporacja, chcąca z DNA
-        Mędrców złożyć genom Prekursorów. Tym Mędrcem jest Germain; ten sam
-        nowicjusz wraca w Syndicate.
+        In the present day Abstergo launches Helix — access to genetic
+        memories sold like a game. The player is a nameless initiate whom
+        the Assassin agent Bishop asks to find the remains of a Sage before
+        the corporation gets to them; it wants to assemble a Precursor
+        genome from the Sages’ DNA. That Sage is Germain; the same initiate
+        returns in Syndicate.
   - id: paryz
-    year: Paryż
-    title: Siedem dzielnic, Wersal, wnętrza i tłum liczony w tysiącach
-    meta: Notre-Dame · Wersal · anomalie czasowe · Café Théâtre
+    year: Paris
+    title: Seven districts, Versailles, interiors and a crowd counted in thousands
+    meta: Notre-Dame · Versailles · time anomalies · Café Théâtre
     art: foto-paryz-1739
     flip: false
     band: false
     body:
       - >-
-        Miasto dzieli się na siedem dzielnic — od Luwru i Île de la Cité po
-        Dzielnicę Łacińską — a za jego granicą leży Wersal; dodatek Martwi
-        królowie dokłada Saint-Denis. Skala jest bliska jeden do jednego,
-        a po raz pierwszy w serii do wielu budynków wchodzi się przez okno.
-        Tłum liczy według twórców do pięciu tysięcy postaci i to on był
-        powodem, dla którego wersji na PlayStation 3 nie było. Model
-        Notre-Dame Caroline Miousse budowała dwa lata, a anomalie czasowe
-        przenoszą Arna do innych epok — stąd wieża Eiffla w grze o roku 1789.
+        The city is divided into seven districts — from the Louvre and Île
+        de la Cité to the Latin Quarter — and beyond its limits lies
+        Versailles; the Dead Kings DLC adds Saint-Denis. The scale is close
+        to one-to-one, and for the first time in the series many buildings
+        can be entered through a window. According to the developers, the
+        crowd numbers up to five thousand characters, and it was the reason
+        there was no PlayStation 3 version. Caroline Miousse spent two years
+        building the model of Notre-Dame, and time anomalies take Arno to
+        other eras — hence the Eiffel Tower in a game about 1789.
       - >-
-        Poza fabułą są Paryskie historie z postaciami z epoki, śledztwa
-        z Vidokiem, zagadki Nostradamusa i znajdźki: skrzynie, kokardy,
-        artefakty. Bazą jest Café Théâtre — kawiarnia, którą Arno odbudowuje
-        i która przynosi dochód.
+        Outside the story there are Paris Stories featuring figures of the
+        era, murder mysteries with Vidocq, Nostradamus Enigmas and
+        collectibles: chests, cockades, artifacts. The base is the Café
+        Théâtre — a café that Arno rebuilds and that brings in income.
   - id: parkour-i-kooperacja
-    year: Mechanika
-    title: Parkour w dół, szermierka bez kontry, czarna skrzynka, co-op
-    meta: Widmowe ostrze · kucanie · drzewko umiejętności · czterech Arnów
+    year: Mechanics
+    title: Downward parkour, fencing without a counter, black boxes, co-op
+    meta: Phantom Blade · crouching · skill tree · four Arnos
     art: assassins-creed-unity-k02
     flip: true
     band: false
     body:
       - >-
-        Najważniejsza zmiana to dwa polecenia swobodnego biegu: w górę
-        i w dół. Arno schodzi z dachu tak płynnie, jak wchodzi, a Eurogamer
-        w tekście z 2024 roku uznał to za najlepszy parkour w historii serii.
-        Walkę oparto na szermierce z parowaniem w porę i wycięto przycisk
-        kontry — według projektanta Benjamina Plicha gra jest przez to
-        trudniejsza od poprzedniczek. Skradanie dostało ręczne
-        kucanie i widmowe ostrze, czyli ukryte ostrze z cichą minikuszą.
-        Zabójstwa celów to „czarne skrzynki”: gracz sam znajduje wejścia
-        i sposoby na odwrócenie uwagi. Po raz pierwszy jest drzewko
-        umiejętności, a sprzęt ma pięć poziomów.
+        The biggest change is two free-running commands: up and down. Arno
+        gets down from a roof as smoothly as he climbs up, and Eurogamer, in
+        a 2024 piece, called it the best parkour in the history of the
+        series. Combat is built on fencing with well-timed parries, and the
+        counter button was cut — according to designer Benjamin Plich, this
+        makes the game harder than its predecessors. Stealth got manual
+        crouching and the Phantom Blade, a hidden blade with a silent
+        mini-crossbow. Target assassinations are “black boxes”: the player
+        finds the entrances and ways to create a distraction. For the first
+        time there is a skill tree, and gear has five tiers.
       - >-
-        Kooperacja zastępuje dawną rywalizację: sesję zakłada się z Café
-        Théâtre albo z misji na mapie, gra do czterech osób i każdy jest
-        Arnem z własnym wyglądem. Misje bractwa i napady da się przejść
-        samemu, ale trudniej; główny wątek jest tylko dla jednego gracza.
+        Co-op replaces the old competitive multiplayer: a session is started
+        from the Café Théâtre or from a mission on the map, up to four people
+        play, and each of them is Arno with his own look. Brotherhood
+        missions and heists can be played solo, but they are harder; the
+        main story is single-player only.
   - id: premiera-i-wydania
     year: 2014–2026
-    title: Premiera z błędami, darmowi Martwi królowie, 60 klatek w 2026
-    meta: „Bugity” · bez PS3 i Switcha · polskie napisy · Notre-Dame za darmo
+    title: A buggy launch, free Dead Kings, 60 fps in 2026
+    meta: “Bugity” · no PS3 or Switch · Notre-Dame giveaway
     flip: false
     band: true
     body:
       - >-
-        Łatka w dniu premiery nie pomogła: błędy, spadki płynności
-        i problemy z serwerami dały grze przydomek „Bugity”, a szef Ubisoft
-        Montréal Yannis Mallat przeprosił publicznie. Wydawca wstrzymał
-        sprzedaż przepustki sezonowej, a dodatek Martwi królowie — Saint-Denis,
-        krypty, działo gilotynowe — wydał w styczniu 2015 roku za darmo.
-        Do marca 2020 roku Unity sprzedało ponad dziesięć milionów
-        egzemplarzy.
+        The day-one patch did not help: bugs, frame-rate drops and server
+        problems earned the game the nickname “Bugity”, and Ubisoft Montréal
+        head Yannis Mallat apologized publicly. The publisher suspended sales
+        of the season pass and released the Dead Kings expansion —
+        Saint-Denis, crypts, the Guillotine Gun — for free in January 2015.
+        By March 2020 Unity had sold more than ten million copies.
       - >-
-        Wersji na PlayStation 3 i Xboksa 360 nie było, a na Switcha Unity
-        nie trafiło — inaczej niż Rogue, które wyszło tam w pakiecie z Black
-        Flag. Na PlayStation 5 i Xbox Series gra
-        działa przez zgodność wstecz, a w marcu 2026 roku dostała aktualizację
-        z sześćdziesięcioma klatkami. Po pożarze Notre-Dame w kwietniu 2019
-        roku Ubisoft rozdał wersję PC za darmo na tydzień i przekazał pół
-        miliona euro na odbudowę. Po polsku są napisy i menu, głosy
-        zostały angielskie.
+        There were no PlayStation 3 or Xbox 360 versions, and Unity never
+        came to Switch — unlike Rogue, which was released there in a bundle
+        with Black Flag. On PlayStation 5 and Xbox Series the game runs via
+        backward compatibility, and in March 2026 it received an update with
+        sixty frames per second. After the Notre-Dame fire in April 2019
+        Ubisoft gave the PC version away for free for a week and donated
+        half a million euros to the rebuilding.
   - id: komu-i-od-czego-zaczac
     year: Start
-    title: Komu Unity i w którym miejscu serii je zagrać
-    meta: Po Rogue · przed Syndicate · samodzielna historia
+    title: Who Unity is for and where in the series to play it
+    meta: After Rogue · before Syndicate · a self-contained story
     flip: true
     band: false
     body:
       - >-
-        Najwięcej wyniesie z Unity gracz, który lubi miasto i dachy bardziej
-        niż morze: Paryż jest zwarty, gęsty i pełen wnętrz, a misje poboczne
-        to małe historie, nie odbijanie posterunków. Drugi adresat to ktoś,
-        kto zna tylko Origins, Odyssey i Valhallę i chce zobaczyć serię
-        sprzed zwrotu w stronę RPG, ale dwójka wydaje mu się za stara.
+        The player who gets the most out of Unity is one who likes the city
+        and rooftops more than the sea: Paris is compact, dense and full of
+        interiors, and the side missions are small stories rather than
+        taking outposts. The second audience is someone who knows only
+        Origins, Odyssey and Valhalla and wants to see the series before its
+        turn toward RPG, but finds Assassin’s Creed II too old.
       - >-
-        Historia Arna zamyka się w jednej grze, ale najlepiej brzmi po Rogue,
-        którego epilog ją otwiera, i przed Syndicate, które ciągnie wątek
-        współczesny. Na sam początek serii lepsze są dwójka, Black Flag
-        albo Origins — te trzy wejścia zestawia poradnik od czego zacząć.
+        Arno’s story is complete in one game, but it works best after Rogue,
+        whose epilogue opens it, and before Syndicate, which continues the
+        modern-day story. For the very start of the series, Assassin’s Creed
+        II, Black Flag or Origins are better — the guide on where to start
+        lays out those three entry points.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

@@ -3,130 +3,137 @@ url: /assassins-creed-4-black-flag/freedom-cry/
 art: freedom-cry
 era: karaiby
 lead: >-
-  Adéwalé schodzi z pokładu Jackdawa i dostaje własną historię: piętnaście
-  lat po Black Flag, na brzegu Saint-Domingue, bez okrętu i bez załogi.
-  Dziewięć misji w formie czwórki, tyle że o niewolnictwie, nie o piractwie.
+  Adéwalé leaves the deck of the Jackdaw and gets a story of his own:
+  fifteen years after Black Flag, on the shore of Saint-Domingue, with no
+  ship and no crew. Nine missions in the mold of the fourth game, only about
+  slavery, not piracy.
 primary:
   href: '#co-to-jest'
-  label: Co jest w dodatku
+  label: What’s in the expansion
 secondary:
   href: /assassins-creed-4-black-flag/
-  label: Strona Black Flag
+  label: Black Flag page
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry z gry
-  lead: Materiał wydawcy ze strony gry w Steamie i zdjęcie z Wikimedia Commons.
+  title: In-game screenshots
+  lead: Publisher material from the game’s Steam page and a photo from Wikimedia Commons.
   items:
     - art: freedom-cry
-      alt: Assassin’s Creed Freedom Cry — kluczowy art
-      caption: Adéwalé na kluczowym arcie samodzielnego wydania w Steamie.
+      alt: Assassin’s Creed Freedom Cry — key art
+      caption: Adéwalé on the key art of the standalone release on Steam.
     - art: foto-karaiby
-      alt: Mury twierdzy El Morro
-      caption: Mury twierdzy El Morro na Karaibach. Zdjęcie z Wikimedia Commons.
+      alt: The walls of El Morro fortress
+      caption: The walls of El Morro fortress in the Caribbean. Photo from Wikimedia Commons.
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Warto, jeśli Black Flag się spodobał i chce się jeszcze kilku godzin
-      w tej samej formie, ale z cięższym tematem. Recenzenci chwalili
-      historię i wybór bohatera, a wytykali krótki czas gry i brak nowości
-      w mechanice; po latach dodatek uchodzi za jeden z lepiej pamiętanych.
+      Worth it if you enjoyed Black Flag and want a few more hours in the
+      same form, but with a heavier theme. Critics praised the story and the
+      choice of hero, and pointed to the short playtime and the lack of new
+      mechanics; years later, the expansion is regarded as one of the better
+      remembered.
     - >-
-      Nie warto zaczynać serii od Freedom Cry ani grać w nie przed czwórką:
-      bohater i cały język gry zakładają, że Black Flag ma się za sobą.
-      Na Xboksie dodatek wymaga podstawowej gry; na PlayStation i PC
-      można go wziąć osobno, a na Switchu jest w The Rebel Collection.
+      Don’t start the series with Freedom Cry or play it before the fourth
+      game: the hero and the game’s whole language assume you have Black
+      Flag behind you. On Xbox the expansion requires the base game; on
+      PlayStation and PC you can get it separately, and on Switch it is part
+      of The Rebel Collection.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-jest
     year: '2013'
-    title: Dodatek, który wyszedł też jako osobna gra
+    title: An expansion that also came out as a standalone game
     meta: Saint-Domingue · 1735 · Adéwalé · Ubisoft Quebec
     art: freedom-cry
     flip: false
     band: false
     body:
       - >-
-        Freedom Cry, po polsku Krzyk wolności, to jedyny duży dodatek fabularny
-        do Assassin’s Creed IV: Black Flag. Zrobiło go Ubisoft Quebec, a wyszedł
-        w grudniu 2013 roku, kilka tygodni po podstawowej grze. Akcja toczy
-        się piętnaście lat po czwórce, od 1735 roku, we francuskiej kolonii
-        Saint-Domingue, dzisiejszym Haiti.
+        Freedom Cry is the only major story expansion for Assassin’s Creed
+        IV: Black Flag. It was made by Ubisoft Quebec and came out in
+        December 2013, a few weeks after the base game. It is set fifteen
+        years after the fourth game, from 1735, in the French colony of
+        Saint-Domingue, present-day Haiti.
       - >-
-        Kampania liczy dziewięć misji: wydawca obiecuje ponad trzy godziny,
-        w praktyce wychodzą około cztery. Od lutego 2014 roku dodatek
-        sprzedawany jest także osobno i nie wymaga Black Flag.
+        The campaign has nine missions: the publisher promises over three
+        hours, in practice it takes about four. Since February 2014 the
+        expansion has also been sold separately and does not require Black
+        Flag.
   - id: adewale
     year: '1735'
-    title: Adéwalé — rozbitek w Port-au-Prince
-    meta: Trynidad · Jackdaw · Bastienne Josèphe · Maroni
+    title: Adéwalé — castaway at Port-au-Prince
+    meta: Trinidad · Jackdaw · Bastienne Josèphe · the Maroons
     art: freedom-cry-k02
     flip: true
     band: true
     body:
       - >-
-        W Black Flag Adéwalé był zastępcą Edwarda Kenwaya na Jackdawie.
-        Urodzony w niewoli na Trynidadzie, jako dziecko sprzedany
-        na plantację, uciekł, gdy napadli na nią piraci; po latach wstąpił
-        do Bractwa i w dodatku jest już wyszkolonym asasynem. Rzadki
-        przypadek w serii: postać drugoplanowa dostaje własną kampanię,
-        a scenariusz prowadziła Jill Murray, autorka Liberation.
+        In Black Flag, Adéwalé was Edward Kenway’s second-in-command on the
+        Jackdaw. Born into slavery on Trinidad and sold to a plantation as a
+        child, he escaped when pirates raided it; years later he joined the
+        Brotherhood, and in the expansion he is already a trained Assassin.
+        A rare case in the series: a supporting character gets his own
+        campaign, and the script was led by Jill Murray, the writer of
+        Liberation.
       - >-
-        Zaczyna się od ataku na konwój templariuszy: Adéwalé przechwytuje
-        przesyłkę z artefaktem, ale jego okręt ginie w sztormie, a on sam
-        budzi się na brzegu pod Port-au-Prince, bez broni i bez ludzi.
-        Odbiorczyni przesyłki, Bastienne Josèphe, po cichu wspiera Maronów —
-        wyzwolonych niewolników, którzy walczą o wolność pozostałych. Adéwalé
-        przystaje do nich, zdobywa nowy okręt i uderza w handel niewolnikami,
-        a na końcu w samego gubernatora de Fayeta. Historia jest zamknięta,
-        a z resztą serii łączy ją artefakt, który wraca w Rogue.
+        It begins with an attack on a Templar convoy: Adéwalé intercepts a
+        package containing an artifact, but his ship is lost in a storm, and
+        he wakes up on the shore near Port-au-Prince, without weapons and
+        without men. The package’s intended recipient, Bastienne Josèphe,
+        quietly supports the Maroons — freed slaves who fight for the
+        freedom of the others. Adéwalé joins them, captures a new ship and
+        strikes at the slave trade, and in the end at Governor de Fayet
+        himself. The story is self-contained, and its link to the rest of
+        the series is the artifact, which returns in Rogue.
   - id: rozgrywka
-    year: Mechanika
-    title: Ta sama forma, inna waluta
-    meta: Uwolnieni niewolnicy · Maroni · plantacje · maczeta i garłacz
+    year: Mechanics
+    title: Same form, different currency
+    meta: Freed slaves · the Maroons · plantations · machete and blunderbuss
     art: foto-karaiby
     flip: false
     band: false
     body:
       - >-
-        Mechanicznie to Black Flag bez zmian: skradanie, walka i morze
-        z abordażami działają tak samo, a okręt rozbudowuje się za pieniądze
-        i surowce. Mapa to mniejszy wycinek Karaibów z podstawowej gry.
-        Nowość leży gdzie indziej: uwolnieni niewolnicy są tu zasobem i każdy
-        uratowany człowiek przybliża kolejne ulepszenie broni Adéwalégo.
+        Mechanically it is Black Flag unchanged: stealth, combat and the sea
+        with its boarding actions work the same way, and the ship is
+        upgraded with money and materials. The map is a smaller slice of the
+        base game’s Caribbean. What is new lies elsewhere: freed slaves are
+        a resource here, and every person you rescue brings Adéwalé’s next
+        weapon upgrade closer.
       - >-
-        Okazje dają zdarzenia w świecie, najazdy na plantacje i misje
-        fabularne, a do walki u swojego boku Adéwalé werbuje Maronów.
-        W arsenale są maczeta, garłacz i petardy do odciągania strażników.
+        Opportunities come from world events, plantation raids and story
+        missions, and Adéwalé recruits Maroons to fight at his side. His
+        arsenal includes a machete, a blunderbuss and firecrackers for
+        luring guards away.
   - id: wydania
     year: 2013–2019
-    title: DLC, wersja samodzielna i Rebel Collection
+    title: DLC, the standalone version and The Rebel Collection
     meta: PS3 · PS4 · Xbox 360 · Xbox One · PC · Switch
     art: freedom-cry-k05
     flip: true
     band: false
     body:
       - >-
-        Jako DLC Freedom Cry wyszło 17 grudnia 2013 roku na Xbox 360 i Xbox
-        One, w tym samym tygodniu na PS3, PS4 i PC — zawsze jako
-        rozszerzenie wymagające Black Flag. W lutym 2014 roku
-        pojawiła się wersja samodzielna: 18 lutego na PS3 i PS4, 25 lutego
-        na PC. Na Xboksie dodatek do dziś sprzedaje się tylko jako
-        rozszerzenie wymagające gry.
+        As DLC, Freedom Cry came out on December 17, 2013, on Xbox 360 and
+        Xbox One, and in the same week on PS3, PS4 and PC — always as an
+        expansion requiring Black Flag. The standalone version appeared in
+        February 2014: on February 18 on PS3 and PS4, on February 25 on PC.
+        On Xbox the expansion is still sold only as an add-on that requires
+        the game.
       - >-
-        Od grudnia 2019 roku dodatek jest też w The Rebel Collection
-        na Nintendo Switch, razem z Black Flag i Rogue. Polska wersja
-        to napisy, dialogi zostały angielskie. Remake Black Flag Resynced,
-        potwierdzony przez Ubisoft w marcu 2026 roku, Freedom Cry nie
-        obejmuje.
+        Since December 2019 the expansion has also been part of The Rebel
+        Collection on Nintendo Switch, together with Black Flag and Rogue.
+        The Black Flag Resynced remake, confirmed by Ubisoft in March 2026,
+        does not include Freedom Cry.
 cta:
-  title: Najpierw Black Flag
-  lead: Karaiby lat 1715–1722, Edward Kenway i Jackdaw — gra, z której wyrósł ten dodatek.
+  title: Black Flag first
+  lead: The Caribbean of 1715–1722, Edward Kenway and the Jackdaw — the game this expansion grew out of.
   href: /assassins-creed-4-black-flag/
-  label: Zobacz Black Flag
+  label: See Black Flag
 ---

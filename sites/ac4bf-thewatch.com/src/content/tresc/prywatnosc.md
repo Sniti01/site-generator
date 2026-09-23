@@ -1,96 +1,99 @@
 ---
-url: /prywatnosc/
+url: /privacy/
 byline:
-  role: Aktualizacja
-  author: Redakcja Bractwo
+  role: Updated
+  author: The Brotherhood editorial team
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 rows:
   - id: kto-prowadzi
     year: '01'
-    title: Kto prowadzi serwis
-    meta: Administrator danych
+    title: Who runs the site
+    meta: Data controller
     body:
       - >-
-        Serwis Bractwo prowadzi jego redakcja. To nieoficjalny przewodnik
-        po serii Assassin’s Creed, niezwiązany z wydawcą gier. W rozumieniu
-        RODO redakcja jest administratorem danych przetwarzanych w związku
-        z działaniem serwisu — w zakresie opisanym niżej, który jest wąski.
+        The Brotherhood is run by its editorial team. It is an unofficial
+        guide to the Assassin’s Creed series, not affiliated with the games’
+        publisher. Within the meaning of the GDPR, the editorial team is the
+        controller of the data processed in connection with the operation of
+        the site — to the extent described below, which is narrow.
       - >-
-        Kontakt w sprawach danych osobowych: Jakub, jakub@ac4bf-thewatch.com.
-        Na ten adres można kierować wnioski o dostęp do danych, ich
-        sprostowanie lub usunięcie oraz pytania o tę politykę.
+        Contact on personal data matters: Jakub, jakub@ac4bf-thewatch.com.
+        Requests for access to data, its rectification or erasure, and
+        questions about this policy can be sent to this address.
   - id: jakie-dane
     year: '02'
-    title: Jakie dane zbieramy
-    meta: Żadnych od czytelnika
+    title: What data we collect
+    meta: None from readers
     body:
       - >-
-        Serwis nie ma kont użytkowników, formularzy, komentarzy ani
-        newslettera. Nie prosi o imię, adres e-mail ani inne dane i nie
-        zbiera ich w inny sposób. Nie używa narzędzi analitycznych ani
-        reklamowych, nie mierzy odwiedzin i nie profiluje czytelników.
+        The site has no user accounts, forms, comments or newsletter. It
+        does not ask for your name, e-mail address or any other data and
+        does not collect them in any other way. It uses no analytics or
+        advertising tools, does not measure visits and does not profile
+        readers.
   - id: cookies
     year: '03'
-    title: Pliki cookie i pamięć przeglądarki
-    meta: Serwis nie zapisuje własnych
+    title: Cookies and browser storage
+    meta: The site stores none of its own
     body:
       - >-
-        Strony serwisu nie zapisują plików cookie ani danych w pamięci
-        przeglądarki. Wszystko, co strona potrzebuje do działania — menu,
-        przewijana taśma kart, skala po lewej stronie ekranu — działa
-        w przeglądarce bez zapisywania czegokolwiek między odwiedzinami.
+        The site’s pages do not store cookies or any data in browser
+        storage. Everything a page needs to work — the menu, the scrolling
+        strip of cards, the scale on the left side of the screen — works in
+        the browser without saving anything between visits.
   - id: logi
     year: '04'
-    title: Logi hostingu
-    meta: Podstawa — art. 6 ust. 1 lit. f RODO
+    title: Hosting logs
+    meta: Legal basis — Art. 6(1)(f) GDPR
     body:
       - >-
-        Serwer, na którym działa serwis, może zapisywać standardowe logi
-        techniczne: adres IP, czas żądania, adres pobranej strony
-        i identyfikator przeglądarki. Służą one bezpieczeństwu i utrzymaniu
-        serwisu — to uzasadniony interes administratora w rozumieniu art. 6
-        ust. 1 lit. f RODO. Logi nie są łączone z innymi danymi i nie służą
-        profilowaniu.
+        The server the site runs on may keep standard technical logs: the
+        IP address, the time of the request, the address of the page
+        requested and the browser identifier. They serve the security and
+        maintenance of the site — a legitimate interest of the controller
+        within the meaning of Art. 6(1)(f) GDPR. The logs are not combined
+        with other data and are not used for profiling.
   - id: zasoby
     year: '05'
-    title: Czcionki, obrazy i skrypty
-    meta: Wszystko z własnej domeny
+    title: Fonts, images and scripts
+    meta: Everything from our own domain
     body:
       - >-
-        Kroje pisma, obrazy i skrypty są serwowane z domeny serwisu.
-        Wyświetlenie strony nie wymaga połączenia z serwerami stron trzecich
-        i nie przekazuje im adresu czytelnika.
+        Typefaces, images and scripts are served from the site’s domain.
+        Displaying a page does not require a connection to third-party
+        servers and does not pass the reader’s address to them.
   - id: linki
     year: '06'
-    title: Linki zewnętrzne
-    meta: Steam i Wikimedia Commons
+    title: External links
+    meta: Steam and Wikimedia Commons
     body:
       - >-
-        Serwis linkuje do kart gier w witrynie Steam oraz do Wikimedia
-        Commons — to źródła materiałów graficznych wskazane w stopce każdej
-        strony. Po kliknięciu obowiązują polityki tych serwisów, na które
-        redakcja nie ma wpływu.
+        The site links to game pages on Steam and to Wikimedia Commons —
+        the sources of the images, credited in the footer of every page.
+        Once you click through, the policies of those sites apply, and the
+        editorial team has no influence over them.
   - id: prawa
     year: '07'
-    title: Twoje prawa
-    meta: Dostęp, sprostowanie, usunięcie, sprzeciw
+    title: Your rights
+    meta: Access, rectification, erasure, objection
     body:
       - >-
-        Wobec danych, które przetwarza administrator, czytelnikowi przysługują
-        prawa z RODO: dostępu do danych, ich sprostowania, usunięcia,
-        ograniczenia przetwarzania i sprzeciwu, a także prawo do skargi
-        do Prezesa Urzędu Ochrony Danych Osobowych. Ponieważ serwis
-        nie zbiera danych od czytelnika, w praktyce dotyczy to wyłącznie
-        logów hostingu opisanych wyżej. Wnioski przyjmuje administrator pod
-        adresem podanym w części pierwszej.
+        With respect to the data the controller processes, readers have
+        the rights granted by the GDPR: access to the data, rectification,
+        erasure, restriction of processing and objection, as well as the
+        right to lodge a complaint with the President of the Personal Data
+        Protection Office (UODO). Since the site does not collect data from
+        readers, in practice this applies only to the hosting logs
+        described above. Requests are handled by the controller at the
+        address given in the first section.
   - id: zmiany
     year: '08'
-    title: Zmiany tej polityki
-    meta: Data aktualizacji — nad tekstem
+    title: Changes to this policy
+    meta: Date of update — above the text
     body:
       - >-
-        Jeśli serwis zacznie zbierać dane — na przykład uruchomi analitykę
-        odwiedzin — ta strona zostanie zaktualizowana przed uruchomieniem,
-        a data aktualizacji nad tekstem się zmieni.
+        If the site starts collecting data — for example, by launching
+        visitor analytics — this page will be updated before that happens,
+        and the update date above the text will change.
 ---

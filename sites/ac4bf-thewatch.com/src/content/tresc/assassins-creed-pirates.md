@@ -3,136 +3,136 @@ url: /assassins-creed-pirates/
 art: assassins-creed-pirates
 era: karaiby
 lead: >-
-  Pirates to nie kolejna część serii, tylko gra na telefon z grudnia 2013
-  roku, która wzięła z Black Flag jedno: walkę okrętów. Alonzo Batilla nie
-  jest asasynem — pływa po Karaibach za skarbem La Buse.
+  Pirates is not another game in the series but a phone game from December
+  2013 that took one thing from Black Flag: ship combat. Alonzo Batilla is
+  not an Assassin — he sails the Caribbean in search of La Buse’s treasure.
 primary:
   href: '#co-to-jest'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry i zdjęcia
-  lead: Bez materiału wydawcy — zdjęcia z Wikimedia Commons i kadr z Black Flag.
+  title: Screenshots and photos
+  lead: No publisher material — photos from Wikimedia Commons and a still from Black Flag.
   items:
     - art: assassins-creed-pirates
-      alt: Żaglowiec Sztandart pod pełnymi żaglami
-      caption: 'Żaglowiec pod żaglami — zdjęcie z Commons, nie kadr z gry.'
+      alt: The sailing ship Shtandart under full sail
+      caption: 'A sailing ship under sail — a photo from Commons, not a screenshot from the game.'
     - art: foto-karaiby
-      alt: Mury fortu El Morro
-      caption: 'Mury fortu El Morro — kolonialna twierdza na Karaibach, zdjęcie z Commons.'
+      alt: The walls of El Morro fort
+      caption: 'The walls of El Morro fort — a colonial fortress in the Caribbean, photo from Commons.'
     - art: karaiby
-      alt: 'Assassin’s Creed IV: Black Flag — abordaż'
-      caption: 'Abordaż w Black Flag — pierwowzór walki morskiej z Pirates.'
+      alt: 'Assassin’s Creed IV: Black Flag — boarding'
+      caption: 'Boarding in Black Flag — the model for the naval combat in Pirates.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Do serii Pirates nie dokłada nic: bez Desmonda, bez asasyna w roli
-      głównej, bez miasta i skradania. Została sama walka okrętów z Black
-      Flag, przełożona na ekran dotykowy.
+      Pirates adds nothing to the series: no Desmond, no Assassin in the
+      lead role, no city and no stealth. What is left is Black Flag’s ship
+      combat on its own, carried over to a touch screen.
     - >-
-      Dziś to pytanie w dużej mierze historyczne, bo gry nie ma w sklepach
-      od 2017 roku. Kto chce pirackich Karaibów, gra w Black Flag, potem
-      we Freedom Cry i Rogue; Pirates można pominąć jak resztę odsłon
-      pobocznych.
+      Today this is largely a historical question, because the game has
+      not been in stores since 2017. If you want the pirate Caribbean, play
+      Black Flag, then Freedom Cry and Rogue; Pirates can be skipped like
+      the rest of the spin-offs.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-jest
     year: '2013'
-    title: Gra na telefon z epoki Black Flag
-    meta: iOS i Android · Ubisoft Paris · Alonzo Batilla
+    title: A phone game from the Black Flag era
+    meta: iOS and Android · Ubisoft Paris · Alonzo Batilla
     art: foto-bitwa-morska
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed Pirates wyszło 5 grudnia 2013 roku na iOS
-        i Androida; zrobiło je paryskie studio Ubisoftu. Akcja toczy się
-        w złotym wieku piractwa, na Karaibach Edwarda Kenwaya.
+        Assassin’s Creed Pirates came out on December 5, 2013, on iOS and
+        Android; it was made by Ubisoft’s Paris studio. The action takes
+        place in the golden age of piracy, in Edward Kenway’s Caribbean.
       - >-
-        Bohaterem jest Alonzo Batilla, francuski kapitan spoza obu zakonów.
-        Bitwy toczą się w czasie rzeczywistym i w trzech wymiarach, a poza
-        pokładem nie ma nic: ani miasta, ani wspinaczki, ani skradania.
-        Każda wersja wyszła tylko po angielsku.
+        The hero is Alonzo Batilla, a French captain who belongs to neither
+        order. Battles are fought in real time and in three dimensions, and
+        there is nothing beyond the deck: no city, no climbing, no stealth.
   - id: rozgrywka
-    year: Na morzu
-    title: Okręt, załoga i skarby — cała rozgrywka
-    meta: Ponad 50 misji · blisko 100 skarbów
+    year: At sea
+    title: Ship, crew and treasure — that is the whole game
+    meta: Over 50 missions · nearly 100 treasures
     art: karaiby
     flip: true
     band: false
     body:
       - >-
-        Misje główne i poboczne dają doświadczenie i surowce na rozwój
-        okrętu i kapitana; nawet rejs po mapie kosztuje zasoby.
-        Po pokonaniu odpowiedniej liczby wrogów gra wydaje mapę skarbu.
+        Main and side missions give experience and materials for upgrading
+        the ship and the captain; even a voyage across the map costs
+        resources. After you defeat enough enemies, the game hands out a
+        treasure map.
       - >-
-        Załogę najmuje się w tawernach, okręty kupuje za złoto, a każde
-        zwycięstwo podnosi cenę za głowę Alonza i ściąga łowców nagród.
-        Do tego sztormy i mapa Karaibów wzorowana na prawdziwym
-        archipelagu.
+        Crew is hired in taverns, ships are bought for gold, and every
+        victory raises the bounty on Alonzo’s head and draws bounty hunters.
+        On top of that come storms and a map of the Caribbean modeled on the
+        real archipelago.
   - id: fabula
     year: La Buse
-    title: Alonzo Batilla i skarb La Buse
-    meta: Bez Desmonda · bez związku z Black Flag
+    title: Alonzo Batilla and La Buse’s treasure
+    meta: No Desmond · no link to Black Flag
     art: foto-la-buse
     flip: false
     band: true
     body:
       - >-
-        Alonzo szuka skarbu Oliviera Levasseura, pirata znanego jako
-        La Buse, i wpada między asasynów a templariuszy. Staje naprzeciw
-        Czarnobrodego, Sama Bellamy’ego i Bena Hornigolda; historię domyka
-        dodatek Quest for Eden z czerwca 2015 roku.
+        Alonzo is searching for the treasure of Olivier Levasseur, the pirate
+        known as La Buse, and ends up caught between the Assassins and the
+        Templars. He faces Blackbeard, Sam Bellamy and Ben Hornigold; the
+        story is wrapped up by the Quest for Eden DLC from June 2015.
       - >-
-        Wątku współczesnego nie ma — poza wzmianką w pierwszej scenie,
-        że Abstergo Entertainment natrafiło na ślad Alonza. Z Black Flag
-        fabuła się nie łączy.
+        There is no modern-day story — apart from a mention in the first
+        scene that Abstergo Entertainment has come across Alonzo’s trail.
+        The story has no connection to Black Flag.
   - id: wersje
     year: 2013–2017
-    title: Wersje, dodatki i zniknięcie ze sklepów
+    title: Versions, expansions and the disappearance from stores
     meta: iOS · Android · Windows · Windows Phone
     art: foto-karaiby-mapa
     flip: true
     band: false
     body:
       - >-
-        Wersja na Windows 8.1 wyszła 14 sierpnia 2014 roku, na Windows Phone
-        pięć dni później; zalecane wymagania na PC to Core i5 1,7 GHz
-        i 1 GB pamięci. Aktualizacje 2014 roku dołożyły Nassau, La Boca
-        del Diablo i Isla de la Juventud.
+        The Windows 8.1 version came out on August 14, 2014, and the Windows
+        Phone version five days later; the recommended PC requirements are a
+        1.7 GHz Core i5 and 1 GB of memory. The 2014 updates added Nassau,
+        La Boca del Diablo and Isla de la Juventud.
       - >-
-        4 września 2014 roku gra stała się darmowa; dodatek Cold Blood dodał
-        arktyczne wody w duchu Rogue, a The Lost Temples z grudnia po raz
-        pierwszy pozwoliło zejść na ląd, do 64 majańskich świątyń. W lutym
-        2017 roku Pirates zniknęło ze sklepów bez zapowiedzi; w Internet
-        Archive została kopia wersji 2.9.1 na iOS.
+        On September 4, 2014, the game became free; the Cold Blood expansion
+        added Arctic waters in the spirit of Rogue, and The Lost Temples,
+        from December, for the first time let you go ashore, to 64 Mayan
+        temples. In February 2017 Pirates vanished from stores without
+        warning; a copy of version 2.9.1 for iOS survives in the Internet
+        Archive.
   - id: nie-mylic
-    year: Dodatek
-    title: Nie mylić z Illustrious Pirates Pack
-    meta: Black Flag · PS4 i Xbox · ok. 30 zł
+    year: DLC
+    title: Not to be confused with the Illustrious Pirates Pack
+    meta: Black Flag · PS4 and Xbox
     art: karaiby-k06
     flip: false
     band: false
     body:
       - >-
-        Hasło „Assassin’s Creed pirates” w sklepie PlayStation albo Xbox
-        prowadzi do Illustrious Pirates Pack — płatnego dodatku do Black
-        Flag ze stycznia 2014 roku: Czarna Wyspa, Wyspa Tajemnic i Ofiarna,
-        ze skrzyniami odblokowującymi stroje dla Edwarda oraz galiony
-        i żagle dla Kawki. Dodatek wymaga pełnej gry i kosztuje około
-        trzydziestu złotych.
+        Searching for “Assassin’s Creed pirates” in the PlayStation or Xbox
+        store leads to the Illustrious Pirates Pack — paid DLC for Black
+        Flag from January 2014: Black Island, Mystery Island and Sacrifice
+        Island, with chests that unlock outfits for Edward and figureheads
+        and sails for the Jackdaw. The DLC requires the full game.
 cta:
-  title: Wolisz pełną wersję tego morza?
-  lead: Te same Karaiby, ale z miastami, fabułą i Edwardem Kenwayem na pokładzie Kawki.
+  title: Prefer the full version of this sea?
+  lead: The same Caribbean, but with cities, a story and Edward Kenway aboard the Jackdaw.
   href: /assassins-creed-4-black-flag/
-  label: Zobacz Black Flag
+  label: See Black Flag
 ---

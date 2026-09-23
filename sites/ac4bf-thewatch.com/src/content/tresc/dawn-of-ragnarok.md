@@ -2,126 +2,129 @@
 url: /assassins-creed-valhalla/dawn-of-ragnarok/
 art: dawn-of-ragnarok
 lead: >-
-  Trzeci i największy dodatek do Valhalli: Eivor wchodzi w rolę Odyna i rusza
-  do Svartalfheimu, królestwa krasnoludów najechanego przez olbrzymy ognia
-  i lodu, po porwanego syna. Nowością jest pięć mocy; reszta gry została
-  po staremu.
+  The third and largest expansion for Valhalla: Eivor takes on the role of
+  Odin and sets out for Svartalfheim, a dwarven realm invaded by fire and
+  frost giants, to rescue his abducted son. The five powers are new; the
+  rest of the game stayed as it was.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w dodatku
+  label: What’s in the expansion
 secondary:
   href: /assassins-creed-valhalla/
-  label: Strona Valhalli
+  label: The Valhalla page
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry z gry
-  lead: Materiał wydawcy ze Steama.
+  title: In-game screenshots
+  lead: Publisher material from Steam.
   items:
     - art: dawn-of-ragnarok
-      alt: 'Assassin’s Creed Valhalla: Dawn of Ragnarök — kluczowy art'
-      caption: Kluczowy art dodatku ze strony w Steamie.
+      alt: 'Assassin’s Creed Valhalla: Dawn of Ragnarök — key art'
+      caption: Key art for the expansion from its Steam page.
     - art: assassins-creed-valhalla
-      alt: Assassin’s Creed Valhalla — kluczowy art
-      caption: Podstawowa gra, bez której dodatek nie działa.
+      alt: Assassin’s Creed Valhalla — key art
+      caption: The base game, without which the expansion does not run.
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Warto, jeśli Valhalla zostawiła apetyt: Odyn jest tu pokazany pełniej
-      niż w podstawce, mapa jest duża, a kruk zmienia rytm poruszania się.
-      To dodatek starego typu — rozmiar osobnej gry, nie kilka misji.
+      Worth it if Valhalla left you wanting more: Odin is shown more fully
+      here than in the base game, the map is big, and the raven changes the
+      rhythm of getting around. It is an old-school expansion — the size of
+      a separate game, not a handful of missions.
     - >-
-      Nie warto, jeśli Anglia zmęczyła: poza mocami i areną gra się tak samo,
-      a lista rzeczy do wyczyszczenia jest równie długa.
+      Not worth it if England wore you out: apart from the powers and the
+      arena it plays the same, and the list of things to clear is just as
+      long.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2022'
-    title: Trzecie rozszerzenie Valhalli, największe z trzech
-    meta: Svartalfheim · Odyn · Ubisoft Sofia
+    title: Valhalla’s third expansion, the largest of the three
+    meta: Svartalfheim · Odin · Ubisoft Sofia
     art: dawn-of-ragnarok
     flip: false
     band: false
     body:
       - >-
-        Świt Ragnaröku, po angielsku Dawn of Ragnarök, wyszedł 10 marca
-        2022 roku na PC, PlayStation 4 i 5 oraz Xboksa One i Series
-        X/S. Dla Assassin’s Creed Valhalla z 2020 roku to trzecie z dużych
-        rozszerzeń, po Gniewie Druidów i Oblężeniu Paryża, i jedyne spoza
-        przepustki sezonowej. Zrobiło je Ubisoft Sofia, studio od Rogue.
+        Dawn of Ragnarök came out on March 10, 2022 on PC, PlayStation 4
+        and 5, and Xbox One and Series X/S. For Assassin’s Creed Valhalla
+        from 2020 it is the third of the large expansions, after Wrath of
+        the Druids and The Siege of Paris, and the only one outside the
+        season pass. It was made by Ubisoft Sofia, the studio behind Rogue.
       - >-
-        Dodatek wymaga podstawki. To osobny mityczny świat, nie kawałek
-        historycznej mapy; wchodzi się do niego przez miksturę wieszczki
-        Valki, jak do Asgardu w podstawce. Polska wersja to napisy, dialogi
-        po angielsku.
+        The expansion requires the base game. It is a separate mythical
+        world, not a piece of the historical map; you enter it through the
+        seer Valka’s potion, just as you reach Asgard in the base game.
   - id: fabula
-    year: Odyn
-    title: Odyn szuka Baldura w królestwie krasnoludów
-    meta: Havi · Baldur · Surtr · Muspelowie i Jotunowie
+    year: Odin
+    title: Odin searches for Baldr in the realm of the dwarves
+    meta: Havi · Baldr · Surtr · Muspels and Jotnar
     art: dawn-of-ragnarok-k02
     flip: true
     band: true
     body:
       - >-
-        Gracz jest tu Odynem, w grze zwanym Havim, bez przeskoków na Eivora.
-        Svartalfheim najechali ogniści Muspelowie i lodowi Jotunowie,
-        krasnoludy kryją się w podziemnych schroniskach, a Surtr,
-        nieśmiertelny ognisty olbrzym, porywa Baldura, syna Odyna. Cała
-        kampania jest wyprawą po niego.
+        Here you are Odin, called Havi in the game, with no jumps back to
+        Eivor. Svartalfheim has been invaded by the fiery Muspels and the
+        icy Jotnar, the dwarves hide in underground shelters, and Surtr, an
+        immortal fire giant, abducts Baldr, Odin’s son. The whole campaign
+        is a journey to get him back.
       - >-
-        Podziemny w mitach świat Ubisoft wyprowadził pod otwarte niebo —
-        góry i lawa zamiast jaskiń. CD-Action chwaliło, jak pokazano Odyna:
-        kłamie, grozi i manipuluje, a głos znów daje mu Magnus Bruun; słabo
-        wypadł Surtr, na ekranie ledwie kilka minut.
+        Ubisoft took a world that lies underground in the myths and put it
+        under the open sky — mountains and lava instead of caves. Odin is
+        well drawn: he lies, threatens and manipulates, and Magnus Bruun
+        voices him again; Surtr comes off poorly, on screen for barely a few
+        minutes.
   - id: co-nowego
-    year: Pięć mocy
-    title: Pięć mocy z bransolety i arena Walkirii
-    meta: Kruk · skóra z lawy · lód · teleport do strzały · wskrzeszanie
+    year: Five powers
+    title: Five bracelet powers and the Valkyrie arena
+    meta: Raven · lava skin · ice · teleport to an arrow · resurrection
     art: dawn-of-ragnarok-k01
     flip: false
     band: false
     body:
       - >-
-        Moce zdobywa się z pokonanych wrogów i nosi na krasnoludzkiej
-        bransolecie, na start po dwie naraz. Jest ich pięć: przemiana
-        w kruka; skóra z lawy, która osłania przed ciosami; lód na broni,
-        zamrażający wrogów; teleport do wystrzelonej strzały; odrodzenie,
-        które podnosi poległych do walki po stronie gracza.
+        Powers are taken from defeated enemies and worn on a dwarven
+        bracelet, two at a time at the start. There are five of them:
+        turning into a raven; lava skin that shields you from blows; ice on
+        your weapon that freezes enemies; teleporting to an arrow you have
+        fired; and rebirth, which raises the fallen to fight on your side.
       - >-
-        Zdaniem CD-Action większość mocy przegrywa z nawykiem wycięcia
-        wszystkich mieczem; wyjątkiem jest kruk, który skraca wspinaczkę
-        na punkty widokowe. Do tego arena Walkirii z próbami, w których
-        wyższa trudność daje cenniejsze nagrody, oraz nowa broń i pancerze.
-        Poza tym gra się jak w Anglii: zamiast klasztorów najeżdża się
-        wytwórnie surowców, zamiast zelotów chodzą giganci.
+        Most of the powers lose out to the habit of cutting everyone down
+        with a sword; the exception is the raven, which shortens the climb
+        to viewpoints. On top of that there is the Valkyrie arena, with
+        trials in which a higher difficulty brings better rewards, plus new
+        weapons and armor. Otherwise it plays as in England: instead of
+        monasteries you raid resource production sites, and instead of
+        Zealots, giants roam the land.
   - id: wydania-i-komu
     year: Start
-    title: Wydania, ceny i komu ten dodatek
-    meta: Edycja Ragnarök · Kompletna · 20–30 godzin · po podstawce
+    title: Editions, price and who the expansion is for
+    meta: Ragnarök Edition · Complete Edition · 20–30 hours · after the base game
     art: dawn-of-ragnarok-k04
     flip: true
     band: false
     body:
       - >-
-        Osobno albo w pakiecie: Edycja Ragnarök to podstawka plus Świt,
-        Edycja Kompletna dokłada Gniew Druidów i Oblężenie Paryża. W cenniku
-        Ubisoft Store dodatek kosztuje 159,90 zł, na PlayStation 179 zł,
-        na Xboksie 179,99 zł — więcej niż każdy z dwóch wcześniejszych.
-        Na PC trzeba konta Ubisoft i Ubisoft Connect.
+        Separately or in a bundle: the Ragnarök Edition is the base game
+        plus Dawn, and the Complete Edition adds Wrath of the Druids and The
+        Siege of Paris. The expansion costs more than either of the two
+        earlier ones. On PC you need a Ubisoft account and Ubisoft Connect.
       - >-
-        Eurogamer.pl liczy dodatek na około 30 godzin, z czego 20 na główny
-        wątek; CD-Action — 10 do 15 godzin fabuły i drugie tyle na mapę.
-        Nie jest to dobre wejście ani w serię, ani w Valhallę: opowieść
-        zakłada jej wątki mitologiczne. I rada eksperta z Gry-Online:
-        nie wchodzić tam prosto po napisach końcowych, tylko odpocząć.
+        Estimates vary: about 30 hours for the whole expansion, 20 of them
+        for the main story, or 10 to 15 hours of story and as much again for
+        the map. It is not a good way into either the series or Valhalla:
+        the story assumes you know Valhalla’s mythological threads. And one
+        more piece of advice: don’t go in straight after the end credits;
+        take a break first.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

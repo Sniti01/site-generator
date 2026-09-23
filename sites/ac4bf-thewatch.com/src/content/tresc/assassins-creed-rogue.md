@@ -3,398 +3,400 @@ url: /assassins-creed-rogue/
 art: assassins-creed-rogue
 era: karaiby
 lead: >-
-  Siódma część głównej linii i jedyna, w której gracz stoi po stronie zakonu.
-  Shay Cormac zaczyna jako niesforny rekrut asasynów, a kończy jako templariusz,
-  który zna każdy ich chwyt i używa go przeciw nim. Do tego mroźne morze,
-  okręt o płytszym zanurzeniu i miasto znane z trójki.
+  The seventh main-series game and the only one in which the player sides
+  with the Order. Shay Cormac starts as an unruly Assassin recruit and ends
+  as a Templar who knows every one of their tricks and turns it against
+  them. Add a freezing sea, a ship with a shallower draft and a city
+  familiar from III.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-to-za-gra-tytul'
-      title: Ostatnia część na starą generację
+      title: The last game for the old generation
     - href: '#shay-cormac-tytul'
-      title: Shay Cormac — od rekruta do łowcy
+      title: Shay Cormac — from recruit to hunter
     - href: '#swiat-tytul'
-      title: Atlantyk, Dolina Rzeki, Nowy Jork
+      title: The Atlantic, the River Valley, New York
     - href: '#morrigan-tytul'
-      title: Morrigan i morze w lodzie
+      title: The Morrigan and the icebound sea
     - href: '#lowca-asasynow-tytul'
-      title: Asasyni jako przeciwnicy
+      title: Assassins as enemies
     - href: '#trojka-black-flag-unity-tytul'
-      title: Trójka, Black Flag i próg Unity
+      title: III, Black Flag and the threshold of Unity
     - href: '#watek-wspolczesny-tytul'
-      title: Wątek współczesny
+      title: The modern-day story
     - href: '#wydania-i-wersje-tytul'
-      title: Wydania i wersje
+      title: Releases and versions
     - href: '#komu-i-od-czego-zaczac-tytul'
-      title: Komu i w jakiej kolejności
+      title: Who it’s for and in what order
     - href: '#galeria-tytul'
-      title: Kadry i zdjęcia
+      title: Screenshots and photos
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry i zdjęcia
+  title: Screenshots and photos
   lead: >-
-    Materiał wydawcy ze strony gry w Steamie i zdjęcie z Wikimedia
-    Commons. Zrzutów ekranu Rogue w materiale wydawcy nie ma.
+    Publisher material from the game’s Steam page and a photo from
+    Wikimedia Commons. The publisher material includes no screenshots of
+    Rogue.
   items:
     - art: assassins-creed-rogue
-      alt: 'Assassin’s Creed Rogue — kluczowy art'
-      caption: 'Kluczowy art wydania na Steamie.'
+      alt: 'Assassin’s Creed Rogue — key art'
+      caption: 'Key art from the Steam release.'
     - art: foto-karaiby
-      alt: 'Kamienne mury fortu El Morro'
-      caption: 'Mury fortu El Morro — zdjęcie z Wikimedia Commons, nie kadr z gry.'
+      alt: 'Stone walls of El Morro fort'
+      caption: 'The walls of El Morro fort — a photo from Wikimedia Commons, not an in-game screenshot.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Rogue jest dla tych, którym Black Flag się spodobał i którzy chcą jeszcze
-      jednego rejsu w tej samej formie — tym razem w lodzie, na okręcie, który
-      wchodzi na rzeki, i z drugiej strony konfliktu. Bohater jest najlepszym,
-      co ta część ma: Shay nie staje się potworem, tylko człowiekiem, który
-      zmienił zdanie i za to płaci. Jeśli grało się w trójkę i w Black Flag,
-      Rogue domyka obie opowieści i wyjaśnia, dlaczego Achilles z trójki jest
-      tym, kim jest.
+      Rogue is for those who liked Black Flag and want one more voyage in
+      the same form — this time in ice, on a ship that can enter rivers, and
+      from the other side of the conflict. The protagonist is the best thing
+      this game has: Shay does not become a monster, just a man who changed
+      his mind and pays for it. If you have played III and Black Flag, Rogue
+      closes both stories and explains why Achilles in III is who he is.
     - >-
-      Kto szuka nowości, dostanie ich niewiele: menu, żeglowanie, miasto i
-      rytm zadań są wzięte z poprzedniczki, a główny wątek jest krótszy niż w
-      poprzednich częściach. Kto nie zna trójki ani Black Flag, zrozumie
-      fabułę, ale nie poczuje, dlaczego powroty Haythama, Achillesa i Adéwalé
-      mają znaczenie. Wersja do wyboru na konsoli to Remastered z 2018 roku;
-      na PC jest tylko oryginał z 2015 roku, ale z wszystkimi dodatkami w
-      edycji Deluxe.
+      Anyone looking for novelty will get little of it: the menus, sailing,
+      the city and the rhythm of missions are taken from its predecessor, and
+      the main story is shorter than in earlier games. Anyone who does not
+      know III or Black Flag will follow the plot but will not feel why the
+      returns of Haytham, Achilles and Adéwalé matter. The version to pick on
+      console is the 2018 Remastered; on PC there is only the 2015 original,
+      but with all the DLC in the Deluxe Edition.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2014'
-    title: Ostatnia część na starą generację konsol
-    meta: Ameryka Północna · 1752–1760 · Shay Patrick Cormac
+    title: The last game for the old console generation
+    meta: North America · 1752–1760 · Shay Patrick Cormac
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed Rogue wyszło w listopadzie 2014 roku na PlayStation 3
-        i Xboksa 360, w marcu 2015 roku na PC, a w marcu 2018 roku jako
-        Remastered na PlayStation 4 i Xboksa One. To siódma część głównej
-        linii, ostatnia zrobiona z myślą o konsolach siódmej generacji, i
-        pierwsza, w której główny bohater jest templariuszem. Grę zbudowało
-        Ubisoft Sofia z pomocą kilku innych studiów Ubisoftu; przed oficjalną
-        zapowiedzią, do sierpnia 2014 roku, projekt znany był pod kryptonimem
-        Comet.
+        Assassin’s Creed Rogue came out in November 2014 on PlayStation 3
+        and Xbox 360, in March 2015 on PC, and in March 2018 as Remastered
+        on PlayStation 4 and Xbox One. It is the seventh main-series game,
+        the last one made with seventh-generation consoles in mind, and the
+        first in which the protagonist is a Templar. The game was built by
+        Ubisoft Sofia with help from several other Ubisoft studios; before
+        the official announcement, until August 2014, the project was known
+        by the codename Comet.
       - >-
-        Akcja toczy się w Ameryce Północnej w latach 1752–1760, w czasie wojny
-        siedmioletniej, którą w koloniach nazywa się wojną z Francuzami i
-        Indianami. Bohaterem jest Shay Patrick Cormac, młody asasyn z
-        irlandzkimi korzeniami, który po katastrofie zawinionej przez własne
-        bractwo przechodzi na stronę zakonu i poluje na dawnych towarzyszy.
-        Trzy główne obszary to zimne wody Atlantyku Północnego, Dolina Rzeki
-        na pograniczu i osiemnastowieczny Nowy Jork.
+        The story takes place in North America in 1752–1760, during the
+        Seven Years’ War, which the colonies call the French and Indian War.
+        The protagonist is Shay Patrick Cormac, a young Assassin with Irish
+        roots who, after a disaster caused by his own Brotherhood, goes over
+        to the Order and hunts his former comrades. The three main areas are
+        the cold waters of the North Atlantic, the River Valley on the
+        frontier and 18th-century New York.
       - >-
-        Rogue wyszło tego samego dnia co Unity, ale na inne platformy: Unity
-        poszło na nową generację i PC, Rogue zostało na starej. Fabularnie jest
-        kontynuacją Black Flag i równoległą opowieścią do trójki, a jego
-        ostatnia misja jest prologiem Unity. Trybu wieloosobowego nie ma —
-        pierwszy raz od Brotherhood. Rozgrywka to Black Flag z poprawkami:
-        okręt, żeglowanie, miasto, wspinaczka i skradanie, do tego nowe bronie
-        i nowy typ przeciwnika.
+        Rogue came out on the same day as Unity, but on different platforms:
+        Unity went to the new generation and PC, Rogue stayed on the old one.
+        In story terms it continues Black Flag and runs parallel to III, and
+        its final mission is the prologue to Unity. There is no multiplayer
+        mode — for the first time since Brotherhood. The gameplay is Black
+        Flag with refinements: the ship, sailing, the city, climbing and
+        stealth, plus new weapons and a new type of enemy.
       - >-
-        Przyjęcie było mieszane. Chwalono bohatera, historię i bitwy morskie,
-        zarzucano brak nowości, krótszą kampanię i zbyt bliskie podobieństwo
-        do Black Flag — część recenzentów pisała wprost o rozszerzeniu
-        poprzedniczki sprzedawanym w cenie pełnej gry. Polska recenzja wersji
-        na Xboksa 360 mówiła o zmarnowanej szansie, a port na PC uznano za
-        dobrze zoptymalizowany, z zawieszaniem się do załatania. Do końca
-        2014 roku Ubisoft wysłał do sklepów łącznie dziesięć milionów
-        egzemplarzy Unity i Rogue.
+        The reception was mixed. Critics praised the protagonist, the story
+        and the naval battles, and faulted the lack of new ideas, the shorter
+        campaign and a resemblance to Black Flag that was too close — some
+        reviewers wrote outright of an expansion of its predecessor sold at
+        the price of a full game. The PC port was judged well optimized,
+        with freezes that needed patching. By the end of 2014 Ubisoft had
+        shipped a combined ten million copies of Unity and Rogue to stores.
   - id: shay-cormac
     year: '1752'
-    title: Shay Cormac — od niesfornego rekruta do łowcy asasynów
-    meta: Achilles Davenport · Lizbona · pułkownik Monro · Haytham Kenway
+    title: Shay Cormac — from unruly recruit to Assassin hunter
+    meta: Achilles Davenport · Lisbon · Colonel Monro · Haytham Kenway
     art: assassins-creed-rogue-k04
     flip: true
     band: true
     body:
       - >-
-        W 1752 roku Shay jest świeżym rekrutem kolonialnego bractwa pod
-        mentorem Achillesem Davenportem, zdolnym, ale niesubordynowanym.
-        Adéwalé przywozi wieść o trzęsieniu ziemi, które zniszczyło
-        Port-au-Prince podczas poszukiwań świątyni Prekursorów.
-        Shay, jako doświadczony kapitan, dostaje zadanie odbicia templariuszom
-        skrzynki i manuskryptu Prekursorów. Po drodze zaczyna wątpić w metody
-        bractwa: asasyni nie chcą rozmawiać z przeciwnikiem, tylko każą go
-        zabijać.
+        In 1752 Shay is a fresh recruit of the colonial Brotherhood under
+        the Mentor Achilles Davenport, talented but insubordinate.
+        Adéwalé brings news of an earthquake that destroyed Port-au-Prince
+        during the search for a Precursor temple.
+        Shay, as an experienced captain, is tasked with taking a Precursor
+        box and manuscript back from the Templars. Along the way he begins
+        to doubt the Brotherhood’s methods: the Assassins do not want to
+        talk to the enemy, they just order him killed.
       - >-
-        Zdobyte przedmioty trafiają w 1754 roku do Benjamina Franklina, którego
-        eksperymenty ujawniają mapę kolejnych świątyń. Achilles wysyła Shaya
-        do Lizbony; wyjęcie artefaktu ze świątyni wywołuje trzęsienie ziemi,
-        które zabija niewinnych ludzi. Shay rozumie, że tak samo zginęło
-        Port-au-Prince, a mentor mimo to chce szukać dalej. Kradnie manuskrypt,
-        żeby go zniszczyć, zostaje osaczony przez bractwo, postrzelony i
-        zostawiony na śmierć.
+        In 1754 the recovered items go to Benjamin Franklin, whose
+        experiments reveal a map of further temples. Achilles sends Shay
+        to Lisbon; taking the artifact from the temple sets off an
+        earthquake that kills innocent people. Shay realizes that this is
+        how Port-au-Prince died too, yet the Mentor still wants to keep
+        searching. He steals the manuscript to destroy it, is cornered by
+        the Brotherhood, shot and left for dead.
       - >-
-        Wyłowiony przez pułkownika George’a Monro, dochodzi do siebie w Nowym
-        Jorku i w 1756 roku zaczyna oczyszczać miasto z gangów sprzymierzonych
-        z asasynami. Odzyskuje swój okręt, bierze Christophera Gista na
-        kwatermistrza i wchodzi do zakonu na dobre, gdy asasyni zabijają
-        Monro. Przez trzy lata eliminuje kolejno Kesegowaase, Adéwalé, Hope
-        Jensen i La Vérendrye’a; w 1760 roku, z Haythamem Kenwayem, dociera
-        do arktycznej świątyni, gdzie ginie Liam O’Brien, dawny najbliższy
-        przyjaciel, a okaleczony Achilles zostaje oszczędzony. Epilog w 1776
-        roku prowadzi do Wersalu.
+        Pulled from the water by Colonel George Monro, he recovers in New
+        York and in 1756 begins clearing the city of gangs allied with the
+        Assassins. He gets his ship back, takes Christopher Gist on as
+        quartermaster and joins the Order for good when the Assassins kill
+        Monro. Over three years he eliminates Kesegowaase, Adéwalé, Hope
+        Jensen and La Vérendrye in turn; in 1760, with Haytham Kenway, he
+        reaches the Arctic temple, where Liam O’Brien, once his closest
+        friend, dies and the crippled Achilles is spared. The epilogue in
+        1776 leads to Versailles.
       - >-
-        Scenarzyści budowali Shaya na jednym założeniu: zmiana strony nie
-        odbiera mu człowieczeństwa. Na początku jest lekkomyślny i nie
-        traktuje swojej roli poważnie, potem staje się ponury i skupiony,
-        ale zabijając dawnych towarzyszy, żałuje każdego z nich. Producent
-        Ivan Balabanov nazwał Rogue najbardziej tragiczną częścią serii do
-        tamtej pory. Stephen Totilo z New York Timesa zwracał uwagę na rzadki
-        zabieg: gra pozwala stanąć po stronie, która w całej serii jest tą
-        złą, i jednocześnie czuć się w porządku. Głosu Shayowi użyczył Steven
-        Piovesan; jego irlandzki akcent zbierał krytykę, zwłaszcza w Irlandii.
+        The writers built Shay on one premise: changing sides does not take
+        away his humanity. At first he is reckless and does not take his
+        role seriously, then he becomes grim and focused, but as he kills
+        his former comrades he regrets each one. Producer Ivan Balabanov
+        called Rogue the most tragic game in the series up to that point.
+        Stephen Totilo of the New York Times pointed out a rare move: the
+        game lets the player stand on the side that is the villain of the
+        whole series and feel fine about it at the same time. Shay was voiced
+        by Steven Piovesan; his Irish accent drew criticism, especially in
+        Ireland.
   - id: swiat
-    year: Atlantyk
-    title: Trzy obszary — Atlantyk Północny, Dolina Rzeki, Nowy Jork
-    meta: Zatoka św. Wawrzyńca · pogranicze · miasto znane z trójki
+    year: Atlantic
+    title: Three areas — the North Atlantic, the River Valley, New York
+    meta: Gulf of St. Lawrence · the frontier · a city familiar from III
     art: foto-karaiby
     flip: false
     band: false
     body:
       - >-
-        Mapa dzieli się na trzy części. Atlantyk Północny to morska
-        piaskownica wokół Zatoki św. Wawrzyńca: wysepki, forty, wraki, osady
-        i dryfujący lód. Woda jest tu zabójczo zimna — kilka chwil pływania
-        odbiera zdrowie i kończy się śmiercią, dlatego nurkowanie znane z
-        Black Flag zniknęło. Dolina Rzeki jest wymyślona, choć wzorowana na
-        dolinie Hudsonu — Ubisoft w polskim opisie Remastered nazywa ją
-        doliną rzeki św. Wawrzyńca; łączy żeglugę po rzekach z chodzeniem
-        po lesie i pograniczu, a woda jest tu na tyle ciepła, że Shay pływa
-        bez ograniczeń.
+        The map is split into three parts. The North Atlantic is a naval
+        sandbox around the Gulf of St. Lawrence: islets, forts, wrecks,
+        settlements and drifting ice. The water here is deadly cold — a few
+        moments of swimming drain health and end in death, which is why the
+        diving familiar from Black Flag is gone. The River Valley is
+        fictional, though modeled on the Hudson Valley; it combines sailing
+        on rivers with walking through forest and frontier, and the water
+        there is warm enough for Shay to swim without limits.
       - >-
-        Trzecim obszarem jest Nowy Jork połowy XVIII wieku — to samo miasto,
-        które pokazała trójka, tylko oglądane z drugiej strony. Tu wraca
-        znany z Brotherhood i Revelations pomysł na odbijanie dzielnic:
-        asasyni prowadzą gang z dziesięcioma siedzibami w trzech regionach,
-        a każdą trzeba oczyścić, zabijając przywódcę i paląc flagę. Dopiero
-        potem da się odnawiać budynki, które przynoszą dochód odbierany w
-        banku.
+        The third area is mid-18th-century New York — the same city that III
+        showed, only seen from the other side. Here the idea of liberating
+        districts, familiar from Brotherhood and Revelations, returns: the
+        Assassins run a gang with ten headquarters in three regions, and
+        each one has to be cleared by killing the leader and burning the
+        flag. Only then can buildings be renovated, bringing in income that
+        is collected at the bank.
       - >-
-        Znajdźki dają coś więcej niż odhaczenie: mapy templariuszy, słupy
-        tubylców i fragmenty wikińskiego miecza odblokowują stroje i
-        wyposażenie. Ekwipunek Shaya ulepsza się z futer z polowania i
-        połowów. Z postaci historycznych pojawiają się Benjamin Franklin,
-        George Washington, pułkownik George Monro, Christopher Gist, Lawrence
-        Washington i La Vérendrye — jedni jako sojusznicy, inni jako cele.
+        Collectibles give more than a checkmark: Templar maps, Native
+        pillars and fragments of a Viking sword unlock outfits and gear.
+        Shay’s equipment is upgraded with pelts from hunting and fishing.
+        The historical figures who appear include Benjamin Franklin, George
+        Washington, Colonel George Monro, Christopher Gist, Lawrence
+        Washington and La Vérendrye — some as allies, others as targets.
   - id: morrigan
     year: Morrigan
-    title: Morrigan — płytsze zanurzenie, płonący olej i lód
-    meta: Kartaczownica Puckle’a · taran lodowy · abordaż wroga · pięć okrętów legendarnych
+    title: The Morrigan — a shallower draft, burning oil and ice
+    meta: Puckle gun · ice ram · enemy boarding · five legendary ships
     art: assassins-creed-rogue-k03
     flip: true
     band: false
     body:
       - >-
-        Morrigan ma mniejsze zanurzenie niż Jackdaw Edwarda Kenwaya i dlatego
-        wchodzi na rzeki, gdzie duży okręt nie miałby czego szukać. Arsenał
-        rozszerza się o kartaczownicę Puckle’a, prowadzącą ogień ciągły jak
-        karabin maszynowy, i o płonący olej zostawiany na wodzie, po którym
-        pościg kończy się pożarem. Dochodzi taran: Morrigan kruszy krę,
-        przebija się przez zamarznięte przesmyki i rozbija niektóre góry
-        lodowe, a powstała fala uszkadza pobliskie małe jednostki.
+        The Morrigan has a shallower draft than Edward Kenway’s Jackdaw and
+        so can enter rivers where a large ship would have no business. The
+        arsenal expands with the Puckle gun, which fires continuously like a
+        machine gun, and with burning oil left on the water, which ends a
+        pursuit in fire. There is also a ram: the Morrigan breaks up ice
+        floes, smashes through frozen straits and shatters some icebergs,
+        and the resulting wave damages nearby small vessels.
       - >-
-        Nowość działa też przeciw graczowi: wrogie okręty mogą dokonać
-        abordażu Morrigan i wtedy trzeba bronić własnego pokładu, zanim
-        załoga stopnieje. Ulepszenia okrętu kupuje się z surowców zdobytych
-        na statkach, w magazynach i obozach; najsilniejszym sprawdzianem
-        jest pięć legendarnych okrętów ukrytych na Atlantyku Północnym, tak
-        jak w Black Flag. Obok tego są starcia z wojny siedmioletniej,
-        uwalnianie jeńców z wrogich okrętów i przejmowanie fortów.
+        The novelty also works against the player: enemy ships can board
+        the Morrigan, and then you have to defend your own deck before the
+        crew melts away. Ship upgrades are bought with resources taken from
+        ships, warehouses and camps; the toughest test is the five legendary
+        ships hidden in the North Atlantic, as in Black Flag. Alongside that
+        come Seven Years’ War engagements, freeing prisoners from enemy
+        ships and capturing forts.
       - >-
-        Twórcy zbudowali okręt i bohatera na jednej metaforze: Cormac to po
-        gaelicku kruk, a Morrigan to irlandzka bogini wojny i losu,
-        przedstawiana pod postacią kruka. Poza bitwą okręt ma jeszcze jedną
-        rolę: mapa w kajucie kapitańskiej otwiera kampanię morską, a ten sam
-        stół stoi w przejętych fortach. Warto po drodze łupić konwoje z
-        zaopatrzeniem na morzu i obozy na lądzie — poradniki do trofeów
-        liczą po dwadzieścia z każdego rodzaju, a z nich idą pieniądze i
-        materiały na ulepszenia Morrigan.
+        The developers built the ship and the hero on one metaphor: Cormac
+        is Gaelic for raven, and the Morrigan is the Irish goddess of war
+        and fate, depicted in the form of a raven. Beyond battle the ship
+        has one more role: the map in the captain’s cabin opens the naval
+        campaign, and the same table stands in captured forts. Along the way
+        it is worth plundering supply convoys at sea and camps on land —
+        trophy guides count twenty of each kind, and they bring money and
+        materials for upgrading the Morrigan.
   - id: lowca-asasynow
-    year: Łowca
-    title: Wiatrówka, granatnik i asasyni jako wrogowie
-    meta: Wzrok orła · przechwycenia · kontry jak w Arkham · trujący gaz
+    year: Hunter
+    title: Air rifle, grenade launcher and Assassins as enemies
+    meta: Eagle Vision · interceptions · Arkham-style counters · poison gas
     art: assassins-creed-rogue-k02
     flip: false
     band: true
     body:
       - >-
-        Zakon ma pieniądze, których bractwu brakuje, i to widać w arsenale.
-        Wiatrówka strzela cicho i z dystansu: strzałki usypiające,
-        rozwścieczające i petardy odwracające uwagę. W wyznaczonym momencie
-        fabuły Franklin dokłada do niej granatnik na odłamkowe i inne
-        ładunki. Walka wręcz dostała kontry na czas, w duchu serii Batman:
-        Arkham, a trujący gaz stał się bronią środowiskową, przed którą chroni
-        maska Shaya.
+        The Order has money that the Brotherhood lacks, and it shows in the
+        arsenal. The air rifle fires quietly and from a distance: sleep
+        darts, berserk darts and firecrackers that distract. At a set point
+        in the story Franklin adds a grenade launcher to it for shrapnel and
+        other rounds. Melee gained timed counters in the spirit of the
+        Batman: Arkham series, and poison gas became an environmental
+        weapon, which Shay’s mask protects him from.
       - >-
-        Najważniejsza zmiana dotyczy przeciwników. Asasyni robią to, co gracz
-        robił przez sześć poprzednich części: chowają się w stogach i
-        krzakach, wtapiają w tłum, atakują z dachu. Gdy ktoś Shaya śledzi,
-        wzrok orła zmienia się w coś na kształt radaru znanego z dawnego
-        trybu sieciowego, a krawędzie ekranu czerwienieją. Eurogamer
-        podkreślał, że to potrzebna świeżość w systemie walki: własne
-        sztuczki obrócone przeciw sobie.
+        The biggest change concerns enemies. The Assassins do what the
+        player did for the six previous games: they hide in haystacks and
+        bushes, blend into crowds, attack from rooftops. When someone is
+        stalking Shay, Eagle Vision turns into something like the radar
+        familiar from the old online mode, and the edges of the screen turn
+        red. Eurogamer stressed that this brought needed freshness to the
+        combat system: your own tricks turned against you.
       - >-
-        Nowy typ zadań pobocznych to przechwycenia. Zamiast dostawać zlecenie
-        na cel, Shay przejmuje gołębia z kontraktem i musi znaleźć oraz
-        wyeliminować asasynów, zanim ci dokonają zabójstwa. Reszta aktywności
-        jest znajoma: polowanie, wraki, forty, znajdźki. Krytyka też była
-        znajoma — spora część recenzji uznała Rogue za Black Flag w nowej
-        scenerii, z krótszą kampanią i bez większych innowacji.
+        Interceptions are a new type of side mission. Instead of getting a
+        contract on a target, Shay intercepts a pigeon carrying a contract
+        and has to find and eliminate the Assassins before they carry out
+        the kill. The rest of the activities are familiar: hunting, wrecks,
+        forts, collectibles. So was the criticism — a large share of reviews
+        called Rogue Black Flag in new scenery, with a shorter campaign and
+        no major innovations.
   - id: trojka-black-flag-unity
     year: 2012–2014
-    title: Domknięcie trójki i Black Flag, próg Unity
+    title: Closing out III and Black Flag, the threshold of Unity
     meta: Haytham Kenway · Achilles · Adéwalé · Charles Dorian
     art: assassins-creed-3
     flip: true
     band: false
     body:
       - >-
-        Reżyser Martin Capel opisał Rogue jako zakończenie sagi
-        północnoamerykańskiej, a celem gry było wypełnienie luk między trójką
-        a Black Flag. Stąd obsada: Haytham Kenway, wielki mistrz zakonu i
-        przeciwnik z trójki, tu jest przełożonym i towarzyszem Shaya;
-        Achilles Davenport, przyszły mentor Connora, jest tu mentorem Shaya;
-        Adéwalé, kwatermistrz Edwarda i bohater Freedom Cry, wraca jako
-        asasyn i cel.
+        Director Martin Capel described Rogue as the conclusion of the North
+        American saga, and the game’s goal was to fill the gaps between III
+        and Black Flag. Hence the cast: Haytham Kenway, Grand Master of the
+        Order and the antagonist of III, is Shay’s superior and companion
+        here; Achilles Davenport, Connor’s future Mentor, is Shay’s Mentor
+        here; Adéwalé, Edward’s quartermaster and the hero of Freedom Cry,
+        returns as an Assassin and a target.
       - >-
-        Rogue pokazuje, jak Shay rozbija kolonialne bractwo, i skąd wzięło
-        się kalectwo Achillesa: w arktycznej świątyni Haytham okalecza go,
-        a Shay wyprasza mu życie, żeby wiedza o świątyniach nie przepadła.
-        Kto grał w trójkę, zobaczy tu drugą stronę znanych scen; kto nie
-        grał, dostanie zamkniętą historię bez tego drugiego dna. Eurogamer
-        porównał Rogue do Revelations: tamta część domykała sagę Ezia przed
-        trójką, ta domyka wątki trójki i Black Flag, zanim seria ruszy do
-        Paryża.
+        Rogue shows how Shay breaks the colonial Brotherhood, and where
+        Achilles’s disability came from: in the Arctic temple Haytham
+        cripples him, and Shay begs for his life so that the knowledge of
+        the temples is not lost. Anyone who played III will see the other
+        side of familiar scenes here; anyone who did not gets a
+        self-contained story without that second layer. Eurogamer compared
+        Rogue to Revelations: that game closed Ezio’s saga before III, this
+        one closes the threads of III and Black Flag before the series moves
+        on to Paris.
       - >-
-        Epilog z 1776 roku przenosi Shaya do Wersalu: z pomocą Franklina
-        odzyskuje skrzynkę Prekursorów i zabija asasyna Charles’a Doriana —
-        ojca Arna, bohatera Unity. Ta scena jest prologiem Unity, które
-        wyszło tego samego dnia. Dlatego naturalna kolejność to trójka,
-        Black Flag, Rogue, a dopiero potem Unity, zgodnie z premierami.
+        The 1776 epilogue takes Shay to Versailles: with Franklin’s help he
+        recovers the Precursor box and kills the Assassin Charles Dorian —
+        the father of Arno, the hero of Unity. This scene is the prologue to
+        Unity, which came out on the same day. That is why the natural order
+        is III, Black Flag, Rogue and only then Unity, following the release
+        dates.
   - id: watek-wspolczesny
-    year: XXI wiek
-    title: Wątek współczesny — pracownik Abstergo i zarażone serwery
+    year: 21st century
+    title: The modern-day story — an Abstergo employee and infected servers
     meta: Abstergo Entertainment · Juhani Otso Berg
     flip: false
     band: false
     body:
       - >-
-        Współczesność ciągnie formę z Black Flag: gracz jest bezimiennym
-        pracownikiem Abstergo Entertainment, który bada wspomnienia Shaya.
-        Przypadkiem uruchamia ukryty plik, ten zaraża serwery Animusa, biuro
-        zostaje zamknięte, a jedynym sposobem oczyszczenia systemu jest
-        przeżycie wspomnień do końca. Nie ma tu Desmonda — po tej stronie
-        ekranu jest korporacja, która wie, czego szuka.
+        The present day continues the form from Black Flag: the player is a
+        nameless Abstergo Entertainment employee who studies Shay’s memories.
+        He accidentally launches a hidden file, it infects the Animus
+        servers, the office is locked down, and the only way to clean the
+        system is to relive the memories to the end. There is no Desmond
+        here — on this side of the screen is a corporation that knows what it
+        is looking for.
       - >-
-        Na końcu templariusz Juhani Otso Berg każe wysłać wspomnienia Shaya na
-        serwery asasynów, żeby osłabić ich morale; bractwo odpowiada zerwaniem
-        łączności. W scenie w trakcie napisów Berg składa pracownikowi
-        propozycję: zakon albo śmierć. Odpowiedzi gra nie pokazuje. To krótki
-        wątek, ale spójny z resztą: w obu epokach gracz patrzy na konflikt
-        oczami zakonu.
+        At the end the Templar Juhani Otso Berg has Shay’s memories sent to
+        the Assassins’ servers to weaken their morale; the Brotherhood
+        responds by cutting contact. In a mid-credits scene Berg makes the
+        employee an offer: the Order or death. The game does not show the
+        answer. It is a short thread, but consistent with the rest: in both
+        eras the player sees the conflict through the Order’s eyes.
   - id: wydania-i-wersje
     year: 2014–2021
-    title: Wydania — PS3 i Xbox 360, PC w 2015, Remastered w 2018, Switch
-    meta: Edycja kolekcjonerska · Deluxe · Templar Legacy Pack · The Rebel Collection
+    title: Releases — PS3 and Xbox 360, PC in 2015, Remastered in 2018, Switch
+    meta: Collector’s Edition · Deluxe · Templar Legacy Pack · The Rebel Collection
     flip: true
     band: true
     body:
       - >-
-        Premiera na PlayStation 3 i Xboksie 360 przypadła na 11 listopada 2014
-        roku w Ameryce Północnej i 13 listopada w Polsce. Wersja na PC wyszła
-        w marcu 2015 roku; w Steamie jako współtwórca figuruje Ubisoft Kiev,
-        a gra wymaga konta Ubisoft, w Steamie oznaczonego jako Uplay.
-        Polska wersja to napisy i interfejs, dialogi po angielsku — tak na
-        PC, PlayStation 3 i Xboksie 360, jak w Remastered na PlayStation 4.
-        Wymagania z 2015 roku są niskie: czterordzeniowy Core 2 Quad, 2 GB
-        pamięci, karta klasy GeForce GTS 450 i 12 GB miejsca.
+        The PlayStation 3 and Xbox 360 release came on November 11, 2014 in
+        North America. The PC version came out in March 2015; on Steam,
+        Ubisoft Kiev is listed as co-developer, and the game requires a
+        Ubisoft account, labeled Uplay on Steam.
+        The 2015 requirements are low: a quad-core Core 2 Quad, 2 GB of
+        memory, a GeForce GTS 450-class card and 12 GB of space.
       - >-
-        Edycja kolekcjonerska miała pudełko z efektem lodu, artbook,
-        ścieżkę dźwiękową, trzy litografie i dwie misje: Oblężenie fortu de
-        Sable i Poszukiwanie zbroi sir Gunna. Cztery pakiety dodatków —
-        oficerski, dowódcy, templariusza i odkrywcy — zebrano 13 stycznia
-        2015 roku w Templar Legacy Pack; obok są cztery pakiety oszczędzające
-        czas. Na Steamie edycja Deluxe zawiera obie misje, pakiety Mistrza
-        Templariuszy i Odkrywcy oraz wszystkie cztery pakiety czasu; na PC
-        innej wersji niż ta z 2015 roku nie ma. Przez Uplay odbierało się
-        jeszcze strój Assassin Killer, zestaw katany i wakizashi oraz
-        elementy wyglądu Morrigan wzorowane na Jackdaw.
+        The Collector’s Edition had an ice-effect box, an artbook, the
+        soundtrack, three lithographs and two missions: The Siege of Fort de
+        Sable and Armor of Sir Gunn’s Quest. Four DLC packs — Officer,
+        Commander, Templar and Explorer — were bundled on January 13, 2015
+        into the Templar Legacy Pack; alongside them are four time-saver
+        packs. On Steam the Deluxe Edition includes both missions, the Master
+        Templar and Explorer packs and all four time-saver packs; on PC there
+        is no version other than the 2015 one. Through Uplay you could also
+        claim the Assassin Killer outfit, a katana and wakizashi set and
+        Morrigan cosmetics modeled on the Jackdaw.
       - >-
-        Remastered zapowiedziano 11 stycznia 2018 roku, a wydano 20 marca na
-        PlayStation 4 i Xboksa One: na mocniejszych modelach obu konsol
-        obraz idzie w 4K, na podstawowych w 1080p, do tego lepsze tekstury,
-        cienie i oświetlenie, komplet dodatków i stroje dziedzictwa Jacoba
-        Frye’a, Aguilara i Bayeka.
-        Wydanie płytowe działa też na PlayStation 5. W grudniu 2019 roku
-        Rogue trafiło na Switcha razem z Black Flag jako The Rebel Collection,
-        a w październiku 2021 roku na Stadię; w lutym 2019 roku Rogue
-        trafiło do Games with Gold na Xboksie. Remastered ma 47 trofeów,
-        wersja Steam — 46 osiągnięć.
+        Remastered was announced on January 11, 2018 and released on March
+        20 for PlayStation 4 and Xbox One: on the more powerful models of
+        both consoles the image runs in 4K, on the base models in 1080p,
+        plus better textures, shadows and lighting, all the DLC and the
+        legacy outfits of Jacob Frye, Aguilar and Bayek.
+        The disc release also works on PlayStation 5. In December 2019
+        Rogue came to Switch together with Black Flag as The Rebel
+        Collection, and in October 2021 to Stadia; in February 2019 Rogue
+        joined Games with Gold on Xbox. Remastered has 47 trophies, the
+        Steam version 46 achievements.
   - id: komu-i-od-czego-zaczac
     year: Start
-    title: Komu Rogue i w jakim miejscu serii je zagrać
-    meta: Po trójce i Black Flag · przed Unity · kilkadziesiąt godzin z pobocznymi
+    title: Who Rogue is for and where to play it in the series
+    meta: After III and Black Flag · before Unity · dozens of hours with side content
     art: foto-nowy-jork-1750
     flip: false
     band: false
     body:
       - >-
-        Najwięcej wyniesie z Rogue ktoś, kto ma za sobą trójkę i Black Flag:
-        rozpozna Haythama, Achillesa i Adéwalé, zobaczy Nowy Jork sprzed
-        rewolucji i zrozumie, jak kolonialne bractwo zostało rozbite.
-        Drugim adresatem jest gracz, który polubił żeglowanie i chce więcej
-        w innym klimacie — lód, mgła i wąskie rzeki zamiast słońca nad
-        Karaibami. Trzecim — ktoś ciekawy, jak wygląda zakon od środka, bo
-        Shay nie jest złoczyńcą, tylko człowiekiem po drugiej stronie.
+        Rogue gives the most to someone who has finished III and Black Flag:
+        they will recognize Haytham, Achilles and Adéwalé, see New York
+        before the revolution and understand how the colonial Brotherhood
+        was broken. The second audience is the player who liked sailing and
+        wants more in a different climate — ice, fog and narrow rivers
+        instead of sun over the Caribbean. The third is anyone curious about
+        what the Order looks like from the inside, because Shay is not a
+        villain, just a man on the other side.
       - >-
-        Rogue nie jest dobrym pierwszym Assassin’s Creed. Historia jest
-        zamknięta, ale jej waga leży w powrotach i domknięciach, a wątek
-        współczesny zakłada znajomość Abstergo z poprzednich części. Kto
-        zaczyna od zera, niech wejdzie przez dwójkę, Black Flag albo Origins
-        — poradnik od czego zacząć porównuje te trzy drogi — i wróci do Rogue
-        po trójce i Black Flag, przed Unity.
+        Rogue is not a good first Assassin’s Creed. The story is
+        self-contained, but its weight lies in the returns and closures, and
+        the modern-day story assumes you know Abstergo from earlier games.
+        Anyone starting from zero should come in through II, Black Flag or
+        Origins — the where-to-start guide compares these three routes — and
+        come back to Rogue after III and Black Flag, before Unity.
       - >-
-        Główny wątek jest krótszy niż w poprzednich częściach; z zadaniami
-        pobocznymi, fortami i legendarnymi okrętami gra rośnie do
-        kilkudziesięciu godzin — statystyki graczy na Gry-Online dają średnio
-        około czterdziestu godzin do ukończenia, a poradniki do trofeów liczą
-        komplet na jedno przejście. Na konsoli warto sięgać po Remastered:
-        ta sama gra z lepszą oprawą i wszystkimi dodatkami w pudełku.
+        The main story is shorter than in previous games; with side
+        missions, forts and legendary ships the game grows to several dozen
+        hours, and trophy guides put the full set at a single playthrough.
+        On console it is worth going for Remastered: the same game with
+        better visuals and all the DLC in the box.
       - >-
-        Komplet na sto procent to osobna praca. Każda misja ma warunki pełnej
-        synchronizacji, a poza trofeami są wyzwania Abstergo w menu opcji:
-        ich wykonywanie odblokowuje oszustwa Abstergo, a niektóre trofea
-        wymagają aż sześćdziesięciu pięciu wyzwań. Do tego dziesięć siedzib
-        gangów, forty, legendarne okręty i znajdźki we wszystkich trzech
-        regionach. Poradniki radzą czyścić każdą lokację od razu, w trakcie
-        fabuły, bo wracanie po drobiazgi po napisach końcowych jest
-        najżmudniejszą częścią; trofeów sieciowych nie ma, przegapić nie da
-        się żadnego.
+        One hundred percent is a separate job. Every mission has full
+        synchronization conditions, and beyond the trophies there are
+        Abstergo challenges in the options menu: completing them unlocks
+        Abstergo cheats, and some trophies require as many as sixty-five
+        challenges. Add ten gang headquarters, forts, legendary ships and
+        collectibles in all three regions. Guides advise clearing each
+        location right away, during the story, because going back for odds
+        and ends after the credits is the most tedious part; there are no
+        online trophies, and none of them can be missed.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

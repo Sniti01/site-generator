@@ -75,12 +75,12 @@ const pozycje = era.guides.map((guide) => {
          link do gry — `.btn-link` to klasa szasi, ta sama, którą drukuje
          `LinkList`; pusty `<ul>` nie jest drukowany. */
       pozycje.length > 0 ? (
-        <LinkList items={pozycje} allHref={stronaEpoki[era.id]} allLabel="Strona gry z tej epoki">
+        <LinkList items={pozycje} allHref={stronaEpoki[era.id]} allLabel="This era’s game page">
           <Icon slot="ikona-wszystkie" name="strzalka-w-prawo" size={18} />
         </LinkList>
       ) : (
         <a class="btn-link t-button" href={stronaEpoki[era.id]}>
-          Strona gry z tej epoki<Icon name="strzalka-w-prawo" size={18} />
+          This era’s game page<Icon name="strzalka-w-prawo" size={18} />
         </a>
       )
     }
@@ -97,7 +97,7 @@ const pozycje = era.guides.map((guide) => {
 
   <div class="layer__plate" slot="tabliczka">
     <p class="layer__plate-game t-title">{era.game}</p>
-    <p class="layer__plate-meta t-caption tabular">Premiera {era.released}</p>
+    <p class="layer__plate-meta t-caption tabular">Released {era.released}</p>
   </div>
 </StoryRow>
 

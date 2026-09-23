@@ -3,198 +3,202 @@ url: /ezio-auditore/
 era: wlochy
 art: assassins-creed-revelations-k03
 lead: >-
-  Florencki szlachcic, który po egzekucji ojca i braci został asasynem,
-  a po latach Mentorem bractwa. Jedyny bohater serii z trzema dużymi grami:
-  Assassin’s Creed II, Brotherhood i Revelations. Urodzony w 1459 roku,
-  zmarł w 1524 w Toskanii.
+  A Florentine nobleman who became an Assassin after the execution of his
+  father and brothers, and years later Mentor of the Brotherhood. The only
+  hero in the series with three major games: Assassin’s Creed II,
+  Brotherhood and Revelations. Born in 1459, he died in 1524 in Tuscany.
 primary:
   href: '#kim-jest'
-  label: Kim jest Ezio
+  label: Who is Ezio
 secondary:
   href: /assassins-creed-2/
-  label: Pierwsza gra Ezia
+  label: Ezio’s first game
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#kim-jest-tytul'
-      title: Kim jest Ezio
+      title: Who is Ezio
     - href: '#florencja-tytul'
-      title: Florencja i zemsta
+      title: Florence and revenge
     - href: '#rzym-i-konstantynopol-tytul'
-      title: Rzym i Konstantynopol
+      title: Rome and Constantinople
     - href: '#animus-i-desmond-tytul'
-      title: Animus i Desmond
+      title: The Animus and Desmond
     - href: '#wydania-tytul'
-      title: Wydania
+      title: Releases
     - href: '#dokad-the-ezio-collection-tytul'
       title: The Ezio Collection
     - href: '#galeria-tytul'
-      title: Kadry z trylogii
+      title: Screenshots from the trilogy
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 rows:
   - id: kim-jest
     year: 1459–1524
-    title: Kim jest Ezio Auditore da Firenze
-    meta: Florencja · trzy gry główne · Roger Craig Smith
+    title: Who is Ezio Auditore da Firenze
+    meta: Florence · three main games · Roger Craig Smith
     art: foto-wlochy
     flip: false
     band: false
     body:
       - >-
-        Ezio Auditore da Firenze jest bohaterem trzech głównych części:
-        Assassin’s Creed II (2009), Brotherhood (2010) i Revelations (2011);
-        żaden inny protagonista serii nie dostał więcej niż jednej dużej gry.
-        Urodził się w 1459 roku we Florencji, umiera w 1524 roku w Toskanii,
-        mając sześćdziesiąt pięć lat.
+        Ezio Auditore da Firenze is the hero of three main games:
+        Assassin’s Creed II (2009), Brotherhood (2010) and Revelations (2011);
+        no other protagonist in the series got more than one major game.
+        He was born in Florence in 1459 and dies in Tuscany in 1524, at the
+        age of sixty-five.
       - >-
-        Twórcy celowo odróżnili go od Altaïra charakterem: nie rodzi się
-        mistrzem, rzemiosła uczy się od przyjaciół, nie z drzewka
-        umiejętności. Imię znaczy „orzeł”. Po angielsku mówi głosem Rogera
-        Craiga Smitha, w filmie Rodowód zagrał go Devon Bostick.
+        The developers deliberately gave him a different character from
+        Altaïr: he is not born a master and learns the craft from friends,
+        not from a skill tree. His name means “eagle.” He is voiced in
+        English by Roger Craig Smith; in the short film Assassin’s Creed:
+        Lineage he was played by Devon Bostick.
   - id: florencja
     year: 1476–1499
-    title: Zemsta — Florencja, Monteriggioni, Wenecja
-    meta: Assassin’s Creed II · Pazzi i Borgia · Leonardo da Vinci
+    title: Revenge — Florence, Monteriggioni, Venice
+    meta: Assassin’s Creed II · the Pazzi and the Borgia · Leonardo da Vinci
     art: wlochy
     flip: true
     band: true
     body:
       - >-
-        Dwójka zaczyna się w 1476 roku: ojciec Ezia, Giovanni, odkrywa
-        spisek przeciw władzom Florencji, a urzędnik, któremu oddaje dowody,
-        sam jest spiskowcem. Giovanni i bracia Federico i Petruccio zostają
-        powieszeni na oczach Ezia, który ucieka z matką i siostrą
-        do Monteriggioni, gdzie wuj Mario szkoli go na asasyna.
+        The second game opens in 1476: Ezio’s father, Giovanni, uncovers
+        a conspiracy against the rulers of Florence, but the official he
+        hands the evidence to is a conspirator himself. Giovanni and Ezio’s
+        brothers Federico and Petruccio are hanged before Ezio’s eyes; he
+        flees with his mother and sister to Monteriggioni, where his uncle
+        Mario trains him as an Assassin.
       - >-
-        Tropy prowadzą przez San Gimignano, Forlì i Wenecję, obok niego
-        stają Leonardo da Vinci i Machiavelli, a na końcu czeka Rodrigo
-        Borgia, przyszły papież Aleksander VI. W 1499 roku Ezio pokonuje go
-        w Watykanie, daruje mu życie i otwiera Kryptę z wiadomością Minerwy
-        dla Desmonda.
+        The trail leads through San Gimignano, Forlì and Venice, Leonardo
+        da Vinci and Machiavelli stand at his side, and at the end waits
+        Rodrigo Borgia, the future Pope Alexander VI. In 1499 Ezio defeats
+        him in the Vatican, spares his life and opens the Vault with
+        Minerva’s message for Desmond.
   - id: rzym-i-konstantynopol
     year: 1499–1512
-    title: Przywództwo — Rzym, potem Konstantynopol
-    meta: Brotherhood · Revelations · Cezar Borgia · tytuł Mentora
+    title: Leadership — Rome, then Constantinople
+    meta: Brotherhood · Revelations · Cesare Borgia · the title of Mentor
     art: assassins-creed-brotherhood-k12
     flip: false
     band: false
     body:
       - >-
-        Brotherhood otwiera oblężenie Monteriggioni przez Cezara Borgię:
-        wuj Mario ginie, Jabłko Edenu przepada. W Rzymie Ezio odbiera miasto
-        Borgiom, po raz pierwszy sam rekrutuje asasynów i zostaje Mentorem
-        bractwa; w 1507 roku dopada Cezara pod zamkiem Viana w Hiszpanii.
+        Brotherhood opens with Cesare Borgia’s siege of Monteriggioni:
+        uncle Mario is killed and the Apple of Eden is lost. In Rome Ezio
+        wins the city back from the Borgia, recruits Assassins himself for
+        the first time and becomes Mentor of the Brotherhood; in 1507 he
+        catches up with Cesare at the castle of Viana in Spain.
       - >-
-        W Revelations, od 1511 roku, Ezio po pięćdziesiątce szuka
-        w Masjafie biblioteki Altaïra, a w Konstantynopolu pięciu pieczęci,
-        które ją otwierają; poznaje Sofię Sartor, dostaje ostrze z hakiem
-        i bomby. W bibliotece znajduje wiadomość dla Desmonda i odchodzi
-        z bractwa.
+        In Revelations, from 1511 on, Ezio, now past fifty, searches Masyaf
+        for Altaïr’s library and Constantinople for the five keys that open
+        it; he meets Sofia Sartor and gets the hookblade and bombs. In the
+        library he finds a message for Desmond and leaves the Brotherhood.
   - id: animus-i-desmond
     year: Animus
-    title: Animus, Desmond i powroty Ezia w późniejszych grach
-    meta: Wątek współczesny · Embers · stroje · Nexus VR
+    title: The Animus, Desmond and Ezio’s returns in later games
+    meta: Modern-day story · Embers · outfits · Nexus VR
     art: assassins-creed-revelations-k02
     flip: true
     band: false
     body:
       - >-
-        Współczesnym bohaterem trylogii jest Desmond Miles, potomek Ezia
-        po linii ojca: po ucieczce z Abstergo przeżywa życie Ezia w ulepszonym
-        Animusie u asasynów — Lucy, Shauna i Rebeki. Wiadomości Minerwy
-        i Altaïra są kierowane do niego; kto pominie trylogię, straci wątek,
-        który domyka trójka.
+        The trilogy’s modern-day hero is Desmond Miles, Ezio’s descendant
+        on his father’s side: after escaping Abstergo, he relives Ezio’s
+        life in an upgraded Animus with the Assassins — Lucy, Shaun and
+        Rebecca. Minerva’s and Altaïr’s messages are addressed to him; skip
+        the trilogy and you lose the thread that III wraps up.
       - >-
-        Ostatnie lata pokazuje animacja Embers: Toskania, Sofia, dwoje
-        dzieci, wizyta Shao Jun i śmierć na zawał w 1524 roku. Potem Ezio
-        wraca w mniejszych rolach: jako stroje w późniejszych częściach
-        i bohater własnej historii w Nexus VR z 2023 roku.
+        His last years are shown in the animated film Assassin’s Creed:
+        Embers: Tuscany, Sofia, two children, a visit from Shao Jun and
+        death from a heart attack in 1524. After that Ezio returns in
+        smaller roles: as outfits in later games and as the hero of his own
+        story in Nexus VR from 2023.
   - id: wydania
     year: '2016'
-    title: Wydania — The Ezio Collection i Ezio Trilogy
-    meta: PS4 i Xbox One 2016 · Switch 2022 · PC w Ubisoft Connect
+    title: Releases — The Ezio Collection and Ezio Trilogy
+    meta: PS4 and Xbox One 2016 · Switch 2022 · PC on Ubisoft Connect
     art: assassins-creed-brotherhood-k08
     flip: false
     band: true
     body:
       - >-
-        Trzy gry wyszły na PC, PlayStation 3 i Xboksa 360. W listopadzie
-        2016 roku Ubisoft wydał na PS4 i Xboksa One The Ezio Collection:
-        wszystkie trzy części z dodatkami dla jednego gracza, w 1080p,
-        z filmami Rodowód i Embers, bez trybów sieciowych; polska wersja
-        to napisy. Na Switchu zestaw wyszedł w lutym 2022 roku.
+        The three games came out on PC, PlayStation 3 and Xbox 360. In
+        November 2016 Ubisoft released The Ezio Collection on PS4 and Xbox
+        One: all three games with their single-player DLC, in 1080p, with
+        the short films Assassin’s Creed: Lineage and Assassin’s Creed:
+        Embers, and without the online modes. On Switch the collection came
+        out in February 2022.
       - >-
-        Polska prasa uznała remaster za skromny: gry trzymają się dobrze,
-        grafika poprawiła się nieznacznie, sterowanie zostało po staremu.
-        Na PC te same trzy gry działają w Ubisoft Connect i są do kupienia
-        osobno albo w zestawie, który sklepy sprzedają jako Ezio Trilogy
-        lub The Ezio Collection.
+        The remaster is a modest one: the games hold up well, the graphics
+        improved only slightly, and the controls stayed as they were. On PC
+        the same three games run in Ubisoft Connect and can be bought
+        separately or as a bundle that stores sell as Ezio Trilogy or The
+        Ezio Collection.
 # Taśma z rolą `the-ezio-collection` — treść własna, nie kopia `related`
 # (П42 p.4): zestaw z 2016 roku plus film Rodowód, który do niego dołączono.
 cards:
   - role: the-ezio-collection
     title: The Ezio Collection
-    lead: Trzy gry Ezia z dodatkami i dwa filmy w jednym zestawie.
+    lead: Ezio’s three games with their DLC and two films in one bundle.
     items:
       - href: /assassins-creed-2/
         title: Assassin’s Creed II
-        kind: Gra
-        place: Włochy · 1476–1499
+        kind: Game
+        place: Italy · 1476–1499
         art: wlochy
       - href: /assassins-creed-brotherhood/
         title: Assassin’s Creed Brotherhood
-        kind: Gra
-        place: Rzym · 1499–1507
+        kind: Game
+        place: Rome · 1499–1507
         art: assassins-creed-brotherhood
       - href: /assassins-creed-revelations/
         title: Assassin’s Creed Revelations
-        kind: Gra
-        place: Konstantynopol · 1511–1512
+        kind: Game
+        place: Constantinople · 1511–1512
         art: assassins-creed-revelations
-      - href: /assassins-creed-rodowod/
-        title: Rodowód — film o ojcu Ezia
-        kind: Tekst
-        place: Prequel dwójki · Giovanni Auditore
+      - href: /assassins-creed-lineage/
+        title: Lineage — the film about Ezio’s father
+        kind: Article
+        place: Prequel to II · Giovanni Auditore
 gallery:
-  title: Kadry z trylogii
+  title: Screenshots from the trilogy
   items:
     - art: wlochy
-      alt: Assassin’s Creed II — Ezio na balkonie nad kanałem
-      caption: Ezio na balkonie nad kanałem.
+      alt: Assassin’s Creed II — Ezio on a balcony above a canal
+      caption: Ezio on a balcony above a canal.
     - art: assassins-creed-brotherhood
-      alt: Assassin’s Creed Brotherhood — Ezio z dwoma ukrytymi ostrzami
-      caption: Ezio z dwoma ukrytymi ostrzami.
+      alt: Assassin’s Creed Brotherhood — Ezio with two hidden blades
+      caption: Ezio with two hidden blades.
     - art: assassins-creed-revelations
-      alt: Assassin’s Creed Revelations — nocny skok z góry na strażników
-      caption: Nocny skok z góry na strażników.
+      alt: Assassin’s Creed Revelations — a night leap from above onto the guards
+      caption: A night leap from above onto the guards.
     - art: foto-wlochy
-      alt: Florencja — panorama centrum historycznego
-      caption: 'Florencja dziś. Fot. PROPOLI87, Wikimedia Commons, CC BY-SA 4.0.'
+      alt: Florence — panorama of the historic center
+      caption: 'Florence today. Photo: PROPOLI87, Wikimedia Commons, CC BY-SA 4.0.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Trylogia Ezia to najlepsze wejście w klasyczną formę serii: jeden
-      bohater, jedna epoka i przemiana od zemsty do przywództwa. Dwójka
-      jest najważniejsza, Brotherhood najpełniejsze, Revelations domyka
-      całość.
+      The Ezio trilogy is the best way into the series in its classic form:
+      one hero, one era and a transformation from revenge to leadership.
+      II matters most, Brotherhood is the fullest, and Revelations rounds
+      out the whole.
     - >-
-      Grać po kolei: II, Brotherhood, Revelations — na konsoli przez
-      The Ezio Collection, na PC przez zestaw w Ubisoft Connect. Sterowanie
-      zostało z 2009 roku.
+      Play them in order: II, Brotherhood, Revelations — on console through
+      The Ezio Collection, on PC through the bundle on Ubisoft Connect. The
+      controls are still those of 2009.
 related:
-  title: Powiązane strony
+  title: Related pages
 cta:
-  title: Zacznij od dwójki
-  lead: Florencja roku 1476 i cała droga Ezia przed tobą.
+  title: Start with II
+  lead: Florence in 1476, with Ezio’s whole journey ahead of you.
   href: /assassins-creed-2/
-  label: Zobacz Assassin’s Creed II
+  label: See Assassin’s Creed II
 ---

@@ -6,9 +6,9 @@
  */
 
 export const site = {
-  name: 'Bractwo',
-  tagline: 'Nieoficjalny przewodnik po serii Assassin’s Creed',
-  lang: 'pl',
+  name: 'The Brotherhood',
+  tagline: 'An unofficial guide to the Assassin’s Creed series',
+  lang: 'en',
 };
 
 /**
@@ -26,14 +26,14 @@ export const site = {
  * `/#zejscie` jak kotwicę tej samej strony. Pilnuje tego `core/gates/anchors.mjs`.
  */
 export const nav = [
-  { label: 'Epoki', href: '/#zejscie' },
-  { label: 'Poradniki', href: '/#katalog' },
-  { label: 'Mapa miejsc', href: '/mapa-miejsc-historycznych/' },
+  { label: 'Eras', href: '/#zejscie' },
+  { label: 'Guides', href: '/#katalog' },
+  { label: 'Locations map', href: '/historical-locations-map/' },
   // «Film Rodowód» od 2026-09-12 (П44, punkt 35): strona pod tym adresem jest
   // o filmie Lineage, nie o rodowodzie serii — etykieta «Rodowód serii» obiecywała
   // co innego. Stopka (SiteFooter.astro) dostała tę samą etykietę 2026-09-15
   // (П50, punkt 39).
-  { label: 'Film Rodowód', href: '/assassins-creed-rodowod/' },
+  { label: 'Lineage film', href: '/assassins-creed-lineage/' },
 ];
 
 export type EraId = 'jerozolima' | 'wlochy' | 'karaiby' | 'londyn' | 'japonia';
@@ -88,12 +88,12 @@ export const eras: Era[] = [
     id: 'jerozolima',
     year: '1191',
     span: '1191',
-    place: 'Ziemia Święta',
+    place: 'Holy Land',
     game: 'Assassin’s Creed',
     released: '2007',
     hero: 'Altaïr Ibn-La’Ahad',
-    headline: 'Trzecia krucjata',
-    body: 'Jerozolima, Akka i Damaszek w czasie trzeciej krucjaty. Altaïr traci rangę mistrza i odzyskuje ją, likwidując dziewięć celów wskazanych przez Al Mualima. Stąd wzięło się wszystko, co seria robi do dziś: punkty widokowe, tłum jako osłona i ukryte ostrze.',
+    headline: 'The Third Crusade',
+    body: 'Jerusalem, Acre and Damascus during the Third Crusade. Altaïr loses his rank of master and wins it back by eliminating nine targets named by Al Mualim. Everything the series still does today started here: viewpoints, the crowd as cover and the hidden blade.',
     depth: 12,
     // Cypr 1191, prosto po Jerozolimie: jedyna strona drzewa z tej epoki poza samą grą.
     guides: [{ href: '/assassins-creed-bloodlines/' }],
@@ -102,12 +102,12 @@ export const eras: Era[] = [
     id: 'wlochy',
     year: '1476',
     span: '1476–1499',
-    place: 'Włochy',
+    place: 'Italy',
     game: 'Assassin’s Creed II',
     released: '2009',
     hero: 'Ezio Auditore da Firenze',
-    headline: 'Renesans',
-    body: 'Florencja, Wenecja, Forlì i San Gimignano. Syn bankiera zostaje asasynem w ciągu jednej nocy, a gra otwiera się na rzeczy, które seria potem powtarza przez dekadę: własna posiadłość, sześć grobowców, dwadzieścia glifów i prawda ukryta pod nimi.',
+    headline: 'The Renaissance',
+    body: 'Florence, Venice, Forlì and San Gimignano. A banker’s son becomes an Assassin in a single night, and the game opens up to things the series would repeat for a decade: an estate of your own, six tombs, twenty glyphs and the truth hidden beneath them.',
     depth: 22,
     guides: [
       { href: '/assassins-creed-brotherhood/' },
@@ -119,12 +119,12 @@ export const eras: Era[] = [
     id: 'japonia',
     year: '1579',
     span: '1579',
-    place: 'Japonia',
+    place: 'Japan',
     game: 'Assassin’s Creed Shadows',
     released: '2025',
-    hero: 'Naoe i Yasuke',
-    headline: 'Okres Sengoku',
-    body: 'Prowincja Yamashiro i okolice pod koniec okresu walczących prowincji. Dwoje bohaterów o przeciwnych metodach: shinobi, która żyje z cienia, i samuraj, który cienia nie potrzebuje. Pory roku zmieniają nie tylko widok, ale i to, gdzie da się przejść.',
+    hero: 'Naoe and Yasuke',
+    headline: 'The Sengoku period',
+    body: 'Yamashiro Province and its surroundings at the end of the Warring States period. Two heroes with opposite methods: a shinobi who lives in the shadows and a samurai who has no need for them. The seasons change not only the view but also where you can get through.',
     depth: 37,
     // W drzewie fali 1 nie ma innej strony z Japonii poza samą grą — lista zdjęta.
     guides: [],
@@ -133,12 +133,12 @@ export const eras: Era[] = [
     id: 'karaiby',
     year: '1715',
     span: '1715–1722',
-    place: 'Indie Zachodnie',
+    place: 'West Indies',
     game: 'Assassin’s Creed IV: Black Flag',
     released: '2013',
     hero: 'Edward Kenway',
-    headline: 'Złoty wiek piractwa',
-    body: 'Hawana, Nassau i Kingston, a między nimi otwarte morze. Walijski korsarz wchodzi w spór asasynów z templariuszami dla pieniędzy i zostaje w nim na dobre. Kawka jest tu drugą postacią, a nie środkiem transportu.',
+    headline: 'The Golden Age of Piracy',
+    body: 'Havana, Nassau and Kingston, with the open sea between them. A Welsh privateer joins the feud between the Assassins and the Templars for money and stays in it for good. The Jackdaw is a second character here, not a means of transport.',
     depth: 48,
     guides: [
       { href: '/assassins-creed-4-black-flag/freedom-cry/' },
@@ -150,12 +150,12 @@ export const eras: Era[] = [
     id: 'londyn',
     year: '1868',
     span: '1868',
-    place: 'Londyn',
+    place: 'London',
     game: 'Assassin’s Creed Syndicate',
     released: '2015',
-    hero: 'Jacob i Evie Frye',
-    headline: 'Rewolucja przemysłowa',
-    body: 'Wiktoriański Londyn podzielony na dzielnice, które przejmuje się gang po gangu. Bliźnięta Frye grają dwa różne style: Jacob wchodzi drzwiami, Evie oknem. Linka z hakiem po raz pierwszy zmienia geometrię wspinaczki.',
+    hero: 'Jacob and Evie Frye',
+    headline: 'The Industrial Revolution',
+    body: 'Victorian London divided into boroughs that you take over gang by gang. The Frye twins play two different styles: Jacob comes in through the door, Evie through the window. The rope launcher changes the geometry of climbing for the first time.',
     depth: 68,
     // W drzewie fali 1 nie ma innej strony z Londynu poza samą grą — lista zdjęta.
     guides: [],
@@ -167,12 +167,12 @@ export const eras: Era[] = [
  * które zna te słowa; trasa ma własne dwa («Gra»/«Tekst»).
  */
 export const rodzaj: Record<string, string> = {
-  game: 'Gra',
-  topic: 'Tekst',
-  guide: 'Poradnik',
-  hub: 'Katalog',
-  map: 'Mapa',
-  home: 'Główna',
+  game: 'Game',
+  topic: 'Article',
+  guide: 'Guide',
+  hub: 'Catalog',
+  map: 'Map',
+  home: 'Home',
 };
 
 /**
@@ -192,7 +192,7 @@ export interface FreshGuide {
 
 export const fresh: FreshGuide[] = [
   { href: '/ezio-auditore/', era: 'wlochy' },
-  { href: '/poradniki/od-czego-zaczac/', era: 'japonia' },
+  { href: '/guides/where-to-start/', era: 'japonia' },
   { href: '/assassins-creed-syndicate/', era: 'londyn' },
   { href: '/assassins-creed-1/', era: 'jerozolima' },
   { href: '/assassins-creed-4-black-flag/', era: 'karaiby' },
@@ -215,7 +215,7 @@ export interface CatalogGroup {
 
 export const catalog: CatalogGroup[] = [
   {
-    title: 'Altaïr i Ezio',
+    title: 'Altaïr and Ezio',
     href: '/assassins-creed-1/',
     pages: [
       '/assassins-creed-1/',
@@ -227,7 +227,7 @@ export const catalog: CatalogGroup[] = [
     ],
   },
   {
-    title: 'Nowy Świat i morza',
+    title: 'The New World and the seas',
     href: '/assassins-creed-4-black-flag/',
     pages: [
       '/assassins-creed-3/',
@@ -239,7 +239,7 @@ export const catalog: CatalogGroup[] = [
     ],
   },
   {
-    title: 'Rewolucje i era RPG',
+    title: 'Revolutions and the RPG era',
     href: '/assassins-creed-shadows/',
     pages: [
       '/assassins-creed-unity/',
@@ -254,15 +254,15 @@ export const catalog: CatalogGroup[] = [
     ],
   },
   {
-    title: 'Poradniki, postacie, miejsca',
-    href: '/poradniki/',
+    title: 'Guides, characters, places',
+    href: '/guides/',
     pages: [
-      '/poradniki/od-czego-zaczac/',
-      '/assassins-creed-za-darmo/',
+      '/guides/where-to-start/',
+      '/assassins-creed-free/',
       '/ezio-auditore/',
-      '/mapa-miejsc-historycznych/',
-      '/assassins-creed-ii-wojna-swiatowa/',
-      '/assassins-creed-rodowod/',
+      '/historical-locations-map/',
+      '/assassins-creed-world-war-2/',
+      '/assassins-creed-lineage/',
       '/assassins-creed-valhalla/eivor/',
     ],
   },
@@ -304,8 +304,8 @@ export const numeracja: Czesc[] = [
  * Jeśli przesiadka przesunie się na inny dzień, zmienia się ta jedna para.
  */
 export const podpis = {
-  role: 'Redakcja',
-  author: 'Bractwo',
+  role: 'Editorial team',
+  author: 'The Brotherhood',
   date: '2026-09-16',
-  dateLabel: '16 września 2026',
+  dateLabel: 'September 16, 2026',
 };

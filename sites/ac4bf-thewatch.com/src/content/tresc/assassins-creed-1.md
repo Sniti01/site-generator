@@ -2,267 +2,264 @@
 url: /assassins-creed-1/
 art: jerozolima
 lead: >-
-  Pierwsza część z 2007 roku: Altaïr, trzy miasta Ziemi Świętej i dziewięć
-  celów wskazanych przez mistrza. Tu powstał wzór, który seria powtarza
-  do dziś, ale w surowszej i bardziej powtarzalnej formie niż w dwójce.
+  The first game, from 2007: Altaïr, three cities of the Holy Land and nine
+  targets named by his master. This is where the formula the series still
+  repeats today was born, in a rawer and more repetitive form than in II.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-to-za-gra-tytul'
-      title: Co to za gra i kto ją zrobił
+      title: What the game is and who made it
     - href: '#fabula-tytul'
-      title: Dziewięć celów i jeden mistrz
+      title: Nine targets and one master
     - href: '#miasta-tytul'
-      title: Jerozolima, Damaszek, Akka
+      title: Jerusalem, Damascus, Acre
     - href: '#rozgrywka-tytul'
-      title: Śledztwo, zabójstwo, ucieczka
+      title: Investigation, assassination, escape
     - href: '#watek-wspolczesny-tytul'
-      title: Desmond, Abstergo i Animus
+      title: Desmond, Abstergo and the Animus
     - href: '#wersje-tytul'
-      title: Wersje i platformy
+      title: Versions and platforms
     - href: '#odbior-tytul'
-      title: Jak ją przyjęto i komu ją polecić
+      title: How it was received and who it’s for
     - href: '#galeria-tytul'
-      title: Kadry z gry
+      title: In-game screenshots
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry z gry
-  lead: Materiał wydawcy ze strony gry w Steamie i zdjęcie miejsca, w którym toczy się akcja.
+  title: In-game screenshots
+  lead: Publisher material from the game’s Steam page and a photo of a place where the game is set.
   items:
     - art: jerozolima
-      alt: 'Assassin’s Creed — widok z dachu na miasto'
-      caption: 'Widok z dachu, bez interfejsu: tak poznaje się każdą dzielnicę.'
+      alt: 'Assassin’s Creed — rooftop view over the city'
+      caption: 'A rooftop view, without the HUD: this is how you get to know every district.'
     - art: foto-jerozolima
-      alt: 'Jerozolima — Kopuła na Skale'
-      caption: 'Jerozolima współcześnie: Kopuła na Skale. Jedno z trzech miast gry.'
+      alt: 'Jerusalem — the Dome of the Rock'
+      caption: 'Jerusalem today: the Dome of the Rock. One of the game’s three cities.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Gra do przejścia dla tych, którzy chcą wiedzieć, skąd wzięła się seria,
-      i dla tych, którym Altaïr wystarczy jako powód. Miasta, wspinaczka
-      i pomysł na dwie epoki naraz wciąż robią wrażenie; dziewięć zabójstw
-      według jednego schematu — już nie.
+      A game worth finishing for those who want to know where the series came
+      from, and for those for whom Altaïr is reason enough. The cities, the
+      climbing and the idea of two eras at once still impress; nine
+      assassinations following a single pattern — not anymore.
     - >-
-      Na pierwszy kontakt z Assassin’s Creed lepsza jest dwójka: ma tę samą
-      formułę, ale z odmianą misji, której jedynce brakuje. Do pierwszej części
-      warto wrócić po Eziu, najlepiej przed Revelations, gdzie wątek Altaïra
-      dostaje ciąg dalszy.
+      For a first encounter with Assassin’s Creed, II is the better choice:
+      it has the same formula, but with the mission variety the first game
+      lacks. The first game is worth going back to after Ezio, ideally before
+      Revelations, where Altaïr’s story continues.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2007'
-    title: Co to za gra i kto ją zrobił
-    meta: Ziemia Święta · 1191 · Altaïr Ibn-La’Ahad
+    title: What the game is and who made it
+    meta: Holy Land · 1191 · Altaïr Ibn-La’Ahad
     art: jerozolima
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed wyszło w listopadzie 2007 roku na PlayStation 3
-        i Xboksa 360, a w kwietniu 2008 roku na PC jako Wersja reżyserska.
-        Zrobiło je Ubisoft Montreal, zespół, który wcześniej odpowiadał
-        za Prince of Persia: The Sands of Time. Producentką była Jade Raymond,
-        projektantem Patrice Désilets, muzykę napisał Jesper Kyd;
-        w Polsce grę wydała Cenega.
+        Assassin’s Creed came out in November 2007 on PlayStation 3 and Xbox
+        360, and in April 2008 on PC as the Director’s Cut. It was made by
+        Ubisoft Montreal, the team previously responsible for Prince of
+        Persia: The Sands of Time. The producer was Jade Raymond, the
+        designer Patrice Désilets, and the music was written by Jesper Kyd.
       - >-
-        Akcja toczy się na dwóch planach. Historyczny to rok 1191 i trzecia
-        krucjata: Jerozolima, Damaszek, Akka, twierdza asasynów w Masjafie
-        i Arsuf. Współczesny to wrzesień 2012 roku i Desmond
-        Miles, barman, który cudze życie ogląda przez maszynę o nazwie Animus.
-        Z tego podwójnego układu seria żyje do dziś, a sam Desmond zostaje
-        w niej przez pięć gier, do trójki.
+        The story plays out on two levels. The historical one is 1191 and the
+        Third Crusade: Jerusalem, Damascus, Acre, the Assassin fortress at
+        Masyaf, and Arsuf. The present-day one is September 2012 and Desmond
+        Miles, a bartender who watches someone else’s life through a machine
+        called the Animus. The series still lives off this dual structure,
+        and Desmond himself stays in it for five games, up to III.
       - >-
-        Kto zna serię z późniejszych części, znajdzie tu prototyp: punkty
-        widokowe, wtapianie się w tłum, ukryte ostrze, skok w stóg siana.
-        Nie ma jeszcze posiadłości, rekrutów ani sklepu z ekwipunkiem.
-        Cała gra to dziewięć zabójstw i droga do każdego z nich, a Altaïr
-        odzyskuje swoje bronie i umiejętności głowa po głowie.
+        If you know the series from later games, you’ll find the prototype
+        here: viewpoints, blending into crowds, the hidden blade, the leap
+        into a haystack. There is no estate yet, no recruits and no equipment
+        shop. The whole game is nine assassinations and the road to each of
+        them, and Altaïr regains his weapons and abilities one head at a
+        time.
   - id: fabula
     year: '1191'
-    title: Dziewięć celów i jeden mistrz
-    meta: Masjaf · Al Mualim · Robert de Sablé
+    title: Nine targets and one master
+    meta: Masyaf · Al Mualim · Robert de Sablé
     art: jerozolima-k03
     flip: true
     band: true
     body:
       - >-
-        Altaïr wchodzi do gry jako mistrz asasynów i traci rangę na samym
-        początku. Wyprawa pod Świątynię Salomona po artefakt kończy się
-        klęską: jeden z towarzyszy ginie, Malik traci rękę, a sam Altaïr
-        łamie zasady bractwa. Al Mualim, przywódca zakonu i jego mentor,
-        daje mu szansę odkupienia: listę dziewięciu ludzi, którzy podsycają
-        wojnę po obu stronach, chrześcijańskiej i muzułmańskiej.
+        Altaïr enters the game as a Master Assassin and loses his rank at the
+        very start. An expedition beneath Solomon’s Temple for an artifact
+        ends in disaster: one of his companions dies, Malik loses an arm, and
+        Altaïr himself breaks the Brotherhood’s rules. Al Mualim, leader of
+        the order and his mentor, gives him a chance at redemption: a list of
+        nine men who are fueling the war on both sides, Christian and Muslim.
       - >-
-        Cele siedzą w trzech miastach, a ostatni z listy to Robert de Sablé,
-        przywódca templariuszy i człowiek z otoczenia Ryszarda Lwie Serce.
-        Wszystkich łączy przedmiot wyniesiony spod świątyni: Jabłko Edenu,
-        artefakt, który podporządkowuje sobie umysły. Kto naprawdę chciał,
-        żeby ta dziewiątka zginęła, gra mówi dopiero w finale, i ten zwrot
-        do dziś jest najmocniejszą sceną tej części.
+        The targets are spread across three cities, and the last on the list
+        is Robert de Sablé, leader of the Templars and a man from Richard the
+        Lionheart’s circle. All of them are linked by the object taken from
+        beneath the temple: the Apple of Eden, an artifact that bends minds
+        to its will. Who really wanted these nine dead, the game reveals only
+        in the finale, and that twist is still the strongest scene in the
+        game.
       - >-
-        Fabuła jest prostsza niż w dwójce: nie ma rodziny, zemsty ani
-        dwudziestu lat z życia bohatera. Trzyma ją relacja Altaïra z mistrzem
-        i z celami. Bohater zaczyna jako arogant przekonany o własnej
-        nieomylności i po drodze zmienia się w kogoś, kto pyta, po co zabija.
+        The story is simpler than in II: there is no family, no revenge and
+        no twenty years of the hero’s life. It is held together by Altaïr’s
+        relationship with his master and with his targets. The hero starts
+        out as an arrogant man convinced of his own infallibility and along
+        the way turns into someone who asks why he kills.
   - id: miasta
-    year: '3 miasta'
-    title: Jerozolima, Damaszek, Akka
-    meta: Trzy miasta po trzy dzielnice · Królestwo między nimi · Masjaf
+    year: '3 cities'
+    title: Jerusalem, Damascus, Acre
+    meta: Three cities of three districts each · the Kingdom between them · Masyaf
     art: foto-jerozolima
     flip: false
     band: false
     body:
       - >-
-        Trzy miasta, każde podzielone na trzy dzielnice, dają dziewięć
-        etapów; między nimi rozciąga się Królestwo, które przejeżdża się
-        konno. Wydawca podawał, że każde miasto ma około dwóch kilometrów
-        kwadratowych, a wzorem dla ich wyglądu były sztuka klasyczna i kino
-        w rodzaju Królestwa niebieskiego. Ulice są pełne kupców, żebraków
-        i mnichów, a tłum reaguje na to, co robi gracz.
+        Three cities, each divided into three districts, make nine stages;
+        between them stretches the Kingdom, which you cross on horseback. The
+        publisher stated that each city covers about two square kilometers
+        and that their look was modeled on classical art and on films such
+        as Kingdom of Heaven. The streets are full of merchants, beggars and
+        monks, and the crowd reacts to what the player does.
       - >-
-        Miasto poznaje się z góry. Wejście na wieżę to sposób na rozeznanie
-        dzielnicy, a zejście z niej to skok w stóg siana; ten rytuał seria
-        powtarza do dziś. Poza wieżami są flagi
-        do zebrania, mieszkańcy do uratowania przed strażą i biura asasynów,
-        w których zbiera się informacje przed każdym zabójstwem.
+        You get to know a city from above. Climbing a tower is how you survey
+        a district, and the way down is a leap into a haystack; the series
+        repeats this ritual to this day. Beyond the towers there are flags
+        to collect, citizens to save from the guards, and Assassin bureaus
+        where you gather information before each assassination.
       - >-
-        Największa słabość tej mapy to podobieństwo: dzielnice różnią się
-        kolorem i architekturą mniej, niż by się chciało, a biura wyglądają
-        tak samo. Największa siła to skala jak na 2007 rok i swoboda ruchu:
-        wspiąć się da na niemal wszystko, a droga do celu po dachach jest
-        zawsze inna niż po ulicy.
+        The map’s biggest weakness is sameness: the districts differ in color
+        and architecture less than you would like, and the bureaus all look
+        alike. Its biggest strength is the scale for 2007 and the freedom of
+        movement: you can climb almost anything, and the route to a target
+        across the rooftops is always different from the one through the
+        streets.
   - id: rozgrywka
-    year: 'Schemat'
-    title: Śledztwo, zabójstwo, ucieczka
-    meta: Podsłuch · kradzież · przesłuchanie · kontra
+    year: 'Formula'
+    title: Investigation, assassination, escape
+    meta: Eavesdropping · pickpocketing · interrogation · counters
     art: jerozolima-k10
     flip: true
     band: false
     body:
       - >-
-        Każde z dziewięciu zabójstw przebiega tak samo. Najpierw śledztwo
-        w dzielnicy celu: podsłuchanie rozmowy, kradzież z kieszeni,
-        przesłuchanie pięścią, a w Wersji reżyserskiej także eskorta
-        informatora i polowanie na łuczników. Po kilku takich zadaniach
-        przychodzi samo zabójstwo i ucieczka. Ten układ powtarza się
-        w każdej dzielnicy, i to on jest głównym powodem, dla którego
-        jedynkę uważa się za monotonną.
+        Each of the nine assassinations goes the same way. First comes an
+        investigation in the target’s district: eavesdropping on a
+        conversation, picking a pocket, interrogation by fist, and in the
+        Director’s Cut also escorting an informer and hunting archers. After
+        a few such tasks comes the assassination itself and the escape. This
+        structure repeats in every district, and it is the main reason the
+        first game is considered monotonous.
       - >-
-        Altaïr ma dwa tryby zachowania. W spokojnym idzie w tłumie, siada
-        na ławce, dołącza do grupy mnichów i nikt nie zwraca na niego uwagi;
-        w szybkim biegnie, wspina się i przewraca przechodniów, a straż
-        zaczyna patrzeć. Sterowanie przypisuje przyciski do części ciała,
-        więc ten sam ruch w innym trybie znaczy co innego. Wspinaczka
-        i swobodny bieg działają na jeden przycisk: bohater sam wybiera
-        chwyty i przeszkody.
+        Altaïr has two modes of behavior. In low profile he walks with the
+        crowd, sits on a bench, joins a group of monks and nobody pays him
+        any attention; in high profile he runs, climbs and knocks passers-by
+        over, and the guards start watching. The controls map buttons to
+        body parts, so the same move means something different in the other
+        mode. Climbing and free running work on a single button: the hero
+        picks the handholds and obstacles himself.
       - >-
-        Walka opiera się na kontrach: czekasz na cios przeciwnika i odbijasz
-        go w odpowiednim momencie. Do dyspozycji są miecz, noże do rzucania
-        i ukryte ostrze; kuszę, widoczną jeszcze w intrze, wycięto ze względów
-        historycznych. Przy odzyskanym pełnym arsenale nawet
-        duża grupa strażników nie jest problemem, więc pod koniec gra częściej
-        zamienia się w bijatykę niż w skradankę.
+        Combat is built on counters: you wait for the enemy’s blow and turn
+        it aside at the right moment. You have a sword, throwing knives and
+        the hidden blade; the crossbow, still visible in the intro, was cut
+        for historical reasons. With the full arsenal recovered, even a large
+        group of guards is no problem, so toward the end the game turns into
+        a brawler more often than a stealth game.
   - id: watek-wspolczesny
     year: '2012'
-    title: Desmond, Abstergo i Animus
-    meta: Warren Vidic · Lucy Stillman · pamięć genetyczna
+    title: Desmond, Abstergo and the Animus
+    meta: Warren Vidic · Lucy Stillman · genetic memory
     art: jerozolima-k08
     flip: false
     band: true
     body:
       - >-
-        Współczesna część gry to laboratorium Abstergo Industries,
-        do którego Desmond Miles trafia jako porwany. Firma okazuje się
-        dzisiejszą twarzą templariuszy, a Animus czyta pamięć przodków
-        zapisaną w genach. Obok Desmonda w tym wątku występują Warren Vidic
-        i Lucy Stillman; każdy powrót z Animusa to krótka przerwa między
-        wspomnieniami, w której dowiadujesz się, po co to wszystko.
+        The present-day part of the game is the Abstergo Industries lab,
+        where Desmond Miles ends up after being kidnapped. The company turns
+        out to be the modern face of the Templars, and the Animus reads
+        ancestral memory stored in the genes. Alongside Desmond, this
+        storyline features Warren Vidic and Lucy Stillman; each return from
+        the Animus is a short break between memories in which you learn what
+        it is all for.
       - >-
-        Ten pomysł tłumaczy też mechanikę gry: wspomnienie da się wznowić
-        od wybranego momentu, bo to zapis, a nie życie. W jedynce wątek
-        jest jeszcze skromny, ale zakończenie zostawia pytania, które
-        podejmują dwójka, Brotherhood, Revelations i trójka. Kto chce
-        zrozumieć całą linię Desmonda, powinien zacząć właśnie tutaj.
+        The idea also explains the game’s mechanics: a memory can be resumed
+        from a chosen point because it is a recording, not a life. In the
+        first game this storyline is still modest, but the ending leaves
+        questions that II, Brotherhood, Revelations and III take up. If you
+        want to understand Desmond’s whole arc, this is the place to start.
   - id: wersje
-    year: 'Wydania'
-    title: Wersje i platformy
-    meta: Wersja reżyserska · Steam · Xbox · PS3 · polski dubbing
+    year: 'Releases'
+    title: Versions and platforms
+    meta: Director’s Cut · Steam · Xbox · PS3
     art: jerozolima-k04
     flip: true
     band: false
     body:
       - >-
-        Na PC gra nosi nazwę Assassin’s Creed: Director’s Cut Edition, czyli
-        Wersja reżyserska, i ma cztery dodatkowe rodzaje zadań śledczych,
-        których nie było na konsolach, między innymi bieg po dachach na czas
-        i likwidację łuczników w wyznaczonej strefie. To ta wersja jest dziś
-        w sprzedaży na Steamie. Powstała przed Uplayem, więc kopia ze Steama
-        nie ma klucza do Ubisoft Connect i nie da się jej podpiąć pod
-        to konto.
+        On PC the game is called Assassin’s Creed: Director’s Cut Edition
+        and has four extra types of investigation missions that were not on
+        consoles, including a timed rooftop race and eliminating archers in
+        a designated zone. This is the version on sale on Steam today. It
+        predates Uplay, so the Steam copy has no Ubisoft Connect key and
+        cannot be linked to that account.
       - >-
-        Na Xboksie wydanie z 2007 roku działa przez wsteczną zgodność
-        na Xbox One i Xbox Series X|S, z ulepszeniem dla Xbox One X i FPS
-        Boost; sklep podaje dla wersji cyfrowej angielski, francuski,
-        niemiecki, włoski i hiszpański. PlayStation 3 to jedyna konsola Sony,
-        na której gra wyszła: na PlayStation 4 i 5 nigdy jej nie wydano,
-        a The Ezio Collection z 2016 roku zawiera tylko dwójkę, Brotherhood
-        i Revelations.
+        On Xbox, the 2007 release runs through backward compatibility on Xbox
+        One and Xbox Series X|S, with an Xbox One X enhancement and FPS
+        Boost; the store lists English, French, German, Italian and Spanish
+        for the digital version. PlayStation 3 is the only Sony console the
+        game came out on: it was never released on PlayStation 4 or 5, and
+        The Ezio Collection from 2016 contains only II, Brotherhood and
+        Revelations.
       - >-
-        Pełna polska wersja na PC wyszła w kwietniu 2008 roku; pierwsze
-        wydanie konsolowe Cenegi z listopada 2007 roku było po angielsku,
-        ale płyty na PlayStation 3 i Xboksa 360 z polskim dubbingiem też
-        trafiły do sprzedaży. Altaïra mówi Jacek Kopczyński, Al Mualima Daniel
-        Olbrychski, Desmonda Marcin Perchuć, Malika Borys Szyc. Obok gry
-        na duże platformy w 2007 roku wyszła też wersja na telefony w Javie
-        od Gameloftu, a w 2008 roku Altaïr’s Chronicles na Nintendo DS,
-        prequel z poszukiwaniem Kielicha. Bloodlines na PSP z 2009 roku
-        prowadzi Altaïra dalej, na Cypr.
+        Alongside the game for the major platforms, 2007 also saw a version
+        for Java phones by Gameloft, and 2008 brought Altaïr’s Chronicles on
+        the Nintendo DS, a prequel about the search for the Chalice.
+        Bloodlines on the PSP, from 2009, takes Altaïr further, to Cyprus.
   - id: odbior
-    year: 'Odbiór'
-    title: Jak ją przyjęto i komu ją polecić
-    meta: Metacritic 79–81 · Steam 79 % pozytywnych · około 21 godzin
+    year: 'Reception'
+    title: How it was received and who it’s for
+    meta: Metacritic 79–81 · Steam 79% positive
     art: jerozolima-k05
     flip: false
     band: false
     body:
       - >-
-        W 2007 roku gra zebrała oceny dobre, ale nie zachwycone: Metacritic
-        podaje 79 punktów dla PC i 81 dla konsol. Recenzenci chwalili
-        otwarte miasta, animację i pomysł, a zarzucali powtarzalność misji,
-        uproszczoną walkę i urwane zakończenie. Na Steamie 79 procent
-        z około 25 tysięcy recenzji jest pozytywnych; na GRYOnline
-        średni czas ukończenia to 21 godzin.
+        In 2007 the game received good but not glowing scores: Metacritic
+        lists 79 points for PC and 81 for consoles. Reviewers praised the
+        open cities, the animation and the concept, and faulted the
+        repetitive missions, the simplified combat and the abrupt ending. On
+        Steam, 79 percent of about 25,000 reviews are positive.
       - >-
-        Opinie graczy po latach układają się w dwa obozy. Jedni wracają
-        dla klimatu i historii i uważają, że jedynka wciąż wygląda dobrze;
-        drudzy odbijają się od schematu misji po kilku godzinach. Różnica
-        leży w oczekiwaniach: kto przychodzi po świat i wspinaczkę, dostaje
-        je; kto po rozmaitość, nie.
+        Years later, player opinions fall into two camps. Some come back for
+        the atmosphere and the history and feel that the first game still
+        looks good; others bounce off the mission pattern after a few hours.
+        The difference lies in expectations: if you come for the world and
+        the climbing, you get them; if you come for variety, you don’t.
       - >-
-        Stąd nasza rada. Serię zaczyna się od dwójki, a do jedynki wraca
-        po trylogii Ezia albo tuż przed Revelations, gdzie wspomnienia
-        Altaïra dostają dopowiedzenie. Kto chce grać ściśle w kolejności
-        premier, niech nastawi się na dwadzieścia godzin jednego schematu
-        i na finał, który tę cierpliwość wynagradza.
+        Hence our advice. Start the series with II, and come back to the
+        first game after the Ezio trilogy or just before Revelations, where
+        Altaïr’s memories get their epilogue. If you want to play strictly
+        in release order, prepare for twenty hours of a single pattern and
+        for a finale that rewards that patience.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

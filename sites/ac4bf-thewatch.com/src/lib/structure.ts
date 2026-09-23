@@ -90,7 +90,7 @@ export function getBreadcrumbs(url: string): Crumb[] {
       throw new Error(`Okruszki: cykl w polu parent przy ${strona.url} — popraw structure.json.`);
     }
     widziane.add(strona.url);
-    trail.unshift({ href: strona.url, label: strona.url === '/' ? 'Strona główna' : strona.h1 });
+    trail.unshift({ href: strona.url, label: strona.url === '/' ? 'Home' : strona.h1 });
     strona = strona.parent ? getPage(strona.parent) : null;
   }
   return trail;

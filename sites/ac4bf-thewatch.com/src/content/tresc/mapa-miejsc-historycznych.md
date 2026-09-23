@@ -1,24 +1,24 @@
 ---
-url: /mapa-miejsc-historycznych/
+url: /historical-locations-map/
 art: mapa-miejsc-historycznych
 lead: >-
-  Stonehenge, Notre-Dame, Big Ben, Sparta i Dolina Królów istnieją
-  naprawdę; Alfred Wielki, Sokrates, Jacques de Molay i Hornigold to ludzie
-  z kronik, nie z fikcji. Cztery epoki serii, miejsce po miejscu: co z nich
-  jest w grze, a co było w historii.
+  Stonehenge, Notre-Dame, Big Ben, Sparta and the Valley of the Kings really
+  exist; Alfred the Great, Socrates, Jacques de Molay and Hornigold are
+  people from the chronicles, not from fiction. Four eras of the series,
+  place by place: what of them is in the game and what was in history.
 primary:
   href: '#anglia-wikingow'
-  label: Od Anglii wikingów
+  label: From Viking England
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 related:
-  title: Powiązane strony
+  title: Related pages
 # Strona typu `map` — jedyna w drzewie. Interaktywnej mapy w umowie nie ma:
 # «mapa» to cztery rzędy tekstu po epokach, każdy z miejscami i ludźmi jednej
 # gry lub dwóch; korytarz 2120–2868 przy 45 kluczach wymusza jeden gęsty
@@ -30,71 +30,75 @@ related:
 rows:
   - id: anglia-wikingow
     year: 872–878
-    title: Anglia wikingów — Stonehenge, wał Hadriana i królowie z kronik
+    title: Viking England — Stonehenge, Hadrian’s Wall and kings from the chronicles
     meta: Housesteads, Stonehenge · Valhalla · Ragnar Lothbrok · Alfred · Ivarr
     art: foto-stonehenge
     flip: false
     band: false
     body:
       - >-
-        Valhalla ma prawdziwe miejsca: Stonehenge w Hamtunscire, wał
-        Hadriana i Housesteads z toporem Lagerthy; Lunden, Wincestre
-        i Jórvík to Londyn, Winchester i York; Derby jeszcze nie istnieje,
-        a Derbyshire jest w grze bez nazwy. W Assassin’s Creed Valhalla Alfred
-        Wielki występuje jako Ælfred: przyjmuje Eivora w Wincestre i okazuje
-        się wielkim mistrzem Zakonu
-        Starożytnych; Ragnar Lothbrok już nie żyje, zostali synowie Ivarr
-        bez Kości i Ubba; Burgred, król Mercji, kryje się w krypcie; Harald
-        to norweski król z początku gry; Kitt i Cynewulf to muzycy z Lunden.
+        Valhalla has real places: Stonehenge in Hamtunscire, Hadrian’s Wall
+        and Housesteads with Lagertha’s axe; Lunden, Wincestre and Jorvik
+        are London, Winchester and York; Derby does not exist yet, and
+        Derbyshire is in the game without a name. In Assassin’s Creed
+        Valhalla, Alfred the Great appears as Ælfred: he receives Eivor in
+        Wincestre and turns out to be the Grand Master of the Order of the
+        Ancients; Ragnar Lothbrok is already dead, leaving his sons Ivarr
+        the Boneless and Ubba; Burgred, King of Mercia, hides in a crypt;
+        Harald is the Norwegian king from the start of the game; Kitt and
+        Cynewulf are musicians from Lunden.
   - id: grecja-i-egipt
-    year: Antyk
-    title: Grecja i Egipt — Sparta, Fokida, Elis, Atlantyda, Dolina Królów
-    meta: Sokrates, Pitagoras, Brazydas · Odyssey 431–422 p.n.e. · Origins
+    year: Antiquity
+    title: Greece and Egypt — Sparta, Phokis, Elis, Atlantis, the Valley of the Kings
+    meta: Sokrates, Pythagoras, Brasidas · Odyssey 431–422 BCE · Origins
     art: foto-delfy
     flip: true
     band: true
     body:
       - >-
-        Prawdziwe miejsca Assassin’s Creed Odyssey: Sparta, gdzie bohater staje przed
-        królami Archidamosem i Pauzaniaszem; Fokida z Delfami; Argolida
-        z Epidauros; Elis z Olimpią i igrzyskami. Atlantyda to cel Layli
-        i dodatku Los Atlantydy. Sokrates czeka w Atenach; Pitagoras okazuje
-        się biologicznym ojcem bohatera i przekazuje mu Berło Hermesa;
-        Brazydas, spartański dowódca, ginie pod Amfipolis. W Assassin’s Creed
-        Origins Dolina Królów i Luksor są dopiero od Klątwy faraonów z 2018
-        roku: Bayek zdejmuje tam klątwę z Teb.
+        The real places of Assassin’s Creed Odyssey: Sparta, where the hero
+        stands before the kings Archidamos and Pausanias; Phokis with
+        Delphi; Argolis with Epidauros; Elis with Olympia and the Olympic
+        Games. Atlantis is the goal of Layla and of The Fate of Atlantis
+        DLC. Sokrates waits in Athens; Pythagoras turns out to be the hero’s
+        biological father and hands over the Staff of Hermes; Brasidas, the
+        Spartan commander, dies at Amphipolis. In Assassin’s Creed Origins,
+        the Valley of the Kings and Luxor arrive only with The Curse of the
+        Pharaohs from 2018: there Bayek lifts a curse from Thebes.
   - id: paryz-i-londyn
     year: 1789–1868
-    title: Paryż i Londyn — Notre-Dame, Nostradamus, de Molay i Big Ben
+    title: Paris and London — Notre-Dame, Nostradamus, de Molay and Big Ben
     meta: Unity 1789–1794 · Syndicate 1868
     art: foto-londyn
     flip: false
     band: false
     body:
       - >-
-        Unity otwiera scena z 1307 roku: obrona paryskiej twierdzy Temple
-        u boku Jacques’a de Molay, ostatniego wielkiego mistrza zakonu.
-        Po pożarze Notre-Dame Ubisoft rozdał w 2019 roku wersję PC na tydzień
-        za darmo i dał pół miliona euro na odbudowę. W Assassin’s Creed Unity
-        Nostradamus to osiemnaście rymowanych zagadek ze zbroją w nagrodę. Syndicate
-        to Londyn roku 1868, „od Pałacu Buckingham po Big Bena”, jak pisze
-        wydawca.
+        Unity opens with a scene from 1307: the defense of the Temple
+        fortress in Paris at the side of Jacques de Molay, the last Grand
+        Master of the order. After the Notre-Dame fire, in 2019 Ubisoft gave
+        away the PC version for free for a week and gave half a million
+        euros toward the rebuilding. In Assassin’s Creed Unity, Nostradamus
+        means eighteen rhymed riddles with a suit of armor as the reward.
+        Syndicate is the London of 1868, “from Buckingham Palace to Big
+        Ben,” as the publisher puts it.
   - id: wlochy-i-morza
     year: 1476–1722
-    title: Włochy i morza — Leonardo, Marco Polo, Ariosto, Piri Reis, Hornigold
-    meta: Trylogia Ezia · Revelations · Black Flag 1715–1722
+    title: Italy and the seas — Leonardo, Marco Polo, Ariosto, Piri Reis, Hornigold
+    meta: The Ezio trilogy · Revelations · Black Flag 1715–1722
     art: foto-wlochy
     flip: true
     band: false
     body:
       - >-
-        W Assassin’s Creed da Vinci jest zbrojmistrzem Ezia: w dwójce buduje
-        broń z Kodeksu Altaïra, a jego porwanie to dodatek do Brotherhood.
-        Marco Polo, kupiec z Wenecji,
-        zostaje w tle: jego Opisanie świata utrwaliło w Europie złą sławę
-        asasynów. Ludovico Ariosto, poeta z Ferrary, przejmuje po Eziu
-        bractwo — w powieści, nie w grze. Piri Reis, osmański kartograf,
-        w Revelations jest asasynem od bomb. Hornigold z Republiki Piratów
-        w Nassau w Black Flag przechodzi do templariuszy i ginie z ręki
-        Kenwaya; naprawdę w 1718 roku został łowcą piratów.
+        In Assassin’s Creed, da Vinci is Ezio’s armorer: in II he builds
+        weapons from Altaïr’s Codex, and his kidnapping is a DLC for
+        Brotherhood. Marco Polo, the merchant from Venice, stays in the
+        background: his Description of the World fixed the Assassins’ bad
+        reputation in Europe. Ludovico Ariosto, the poet from Ferrara, takes
+        over the Brotherhood from Ezio — in a novel, not in a game. Piri
+        Reis, the Ottoman cartographer, is the Assassins’ bomb expert in
+        Revelations. Hornigold of the Pirate Republic in Nassau goes over to
+        the Templars in Black Flag and dies at Kenway’s hand; in reality, in
+        1718 he became a pirate hunter.
 ---

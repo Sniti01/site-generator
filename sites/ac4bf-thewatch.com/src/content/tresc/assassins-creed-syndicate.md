@@ -2,185 +2,188 @@
 url: /assassins-creed-syndicate/
 art: londyn
 lead: >-
-  Dziewiąta duża część serii i ostatnia w starym stylu, zanim Origins
-  przerobiło ją na RPG. Londyn roku 1868, bliźnięta Frye, gang zamiast
-  bractwa i linka, która skraca każdą wspinaczkę.
+  The ninth major game in the series and the last in the old style before
+  Origins turned it into an RPG. London in 1868, the Frye twins, a gang
+  instead of a brotherhood and a rope that cuts every climb short.
 primary:
   href: '#co-jest-w-grze'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
   href: /assassins-creed-unity/
-  label: 'Poprzednia część: Unity'
+  label: 'Previous game: Unity'
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-jest-w-grze-tytul'
-      title: Londyn roku 1868
+      title: London in 1868
     - href: '#bliznieta-frye-tytul'
-      title: Jacob i Evie
+      title: Jacob and Evie
     - href: '#linka-i-powozy-tytul'
-      title: Linka, powozy, pociąg
+      title: Rope, carriages, train
     - href: '#fabula-tytul'
-      title: Fabuła i rok 1916
+      title: The story and the year 1916
     - href: '#victory-i-szostka-tytul'
-      title: Victory i „szóstka”
+      title: Victory and “number six”
     - href: '#wydania-i-dodatki-tytul'
-      title: Wersje i dodatki
+      title: Versions and DLC
     - href: '#galeria-tytul'
-      title: Kadry
+      title: Gallery
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry z gry i z Londynu
-  lead: Zrzut ekranu ze Steama i zdjęcie z Wikimedia Commons.
+  title: Screenshots from the game and from London
+  lead: A screenshot from Steam and a photo from Wikimedia Commons.
   items:
     - art: londyn
-      alt: Assassin’s Creed Syndicate — wieczorna ulica Londynu
-      caption: 'O zmierzchu: asasyn wisi na ścianie budki, aż trzej gwardziści przejdą.'
+      alt: Assassin’s Creed Syndicate — an evening street in London
+      caption: 'At dusk: an Assassin hangs on the wall of a booth until three guardsmen pass.'
     - art: foto-londyn
-      alt: Dworzec St Pancras w Londynie
-      caption: Dworzec St Pancras w Londynie, zdjęcie współczesne.
+      alt: St Pancras station in London
+      caption: St Pancras station in London, a present-day photo.
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Część dla kogoś, komu zależy na mieście. Wiktoriański Londyn jest
-      największym atutem gry, a linka i powozy sprawiają, że chce się po nim
-      jeździć i wspinać. Dwoje bohaterów daje dwa tempa tej samej opowieści.
+      A game for someone who cares about the city. Victorian London is the
+      game’s biggest asset, and the rope and the carriages make you want to
+      ride and climb all over it. Two heroes give the same story two paces.
     - >-
-      Słabsze strony, które recenzenci wskazywali w 2015 roku, to walka,
-      projekt otwartego świata i jazda powozem. Kto chce ostatniego
-      klasycznego Assassin’s Creed przed zwrotem w RPG, ma go tu.
+      The weaker points that reviewers named in 2015 are the combat, the
+      open-world design and carriage driving. If you want the last classic
+      Assassin’s Creed before the turn to RPG, this is it.
     - >-
-      Zacząć od Syndicate można bez obaw: fabuła jest samodzielna.
+      You can safely start with Syndicate: the story stands on its own.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-jest-w-grze
     year: '2015'
-    title: Londyn roku 1868 i dwoje asasynów zamiast jednego
-    meta: Londyn · 1868 · Jacob i Evie Frye · Ubisoft Québec
+    title: London in 1868 and two Assassins instead of one
+    meta: London · 1868 · Jacob and Evie Frye · Ubisoft Québec
     art: londyn
     flip: false
     band: false
     body:
       - >-
-        Syndicate wyszło 23 października 2015 roku na PlayStation 4 i Xboksa
-        One, a 19 listopada na PC. Akcja toczy się w Londynie roku 1868,
-        w środku rewolucji przemysłowej. Bliźnięta Jacob i Evie Frye
-        przyjeżdżają z Crawley do stolicy, w której templariusze rządzą
-        pewniej niż jej oficjalne władze, i zaczynają ją odbierać.
+        Syndicate came out on October 23, 2015 on PlayStation 4 and Xbox
+        One, and on November 19 on PC. It is set in London in 1868, in the
+        middle of the Industrial Revolution. The twins Jacob and Evie Frye
+        come from Crawley to the capital, where the Templars rule more
+        firmly than its official authorities, and set about taking it back.
       - >-
-        To dziewiąta gra głównej linii, zrobiona przez Ubisoft Québec, a nie
-        Montréal. Miasto ma siedem dzielnic, od Westminsteru po Whitechapel,
-        i jest o około 30 procent większe niż Paryż z Unity.
+        It is the ninth game in the main series, made by Ubisoft Québec
+        rather than Montréal. The city has seven boroughs, from Westminster
+        to Whitechapel, and is about 30 percent larger than Unity’s Paris.
   - id: bliznieta-frye
     year: Frye
-    title: Jacob wchodzi drzwiami, Evie oknem
-    meta: Dwie postacie · przełączanie w mieście · broń z epoki
+    title: Jacob comes in through the door, Evie through the window
+    meta: Two characters · switching in the city · period weapons
     art: londyn-k07
     flip: true
     band: true
     body:
       - >-
-        Po raz pierwszy w głównej linii gra się dwiema postaciami. Jacob
-        załatwia sprawy pięścią, kastetem i rewolwerem; Evie woli skradanie
-        i ciche zejście z dachu. Część misji należy tylko do jednego
-        z bliźniąt, w mieście przełącza się między nimi dowolnie. Evie jest
-        pierwszą grywalną kobietą w dużej odsłonie serii.
+        For the first time in the main series you play as two characters.
+        Jacob settles things with his fists, brass knuckles and a revolver;
+        Evie prefers stealth and a quiet drop from the rooftops. Some
+        missions belong to only one of the twins; in the city you switch
+        between them freely. Evie is the first playable woman in a major
+        game of the series.
       - >-
-        Oboje mają drzewka umiejętności, a przeciwnicy poziomy — choć
-        skrytobójstwo działa niezależnie od nich. Broń jest z epoki: laska
-        z ukrytym ostrzem, nóż kukri, kastet, rewolwer.
+        Both have skill trees, and enemies have levels — although
+        assassinations work regardless of them. The weapons are of the
+        period: a cane sword, a kukri knife, brass knuckles, a revolver.
   - id: linka-i-powozy
-    year: Na dachy
-    title: Linka z hakiem, powozy i pociąg zamiast kryjówki
-    meta: Wyrzutnia liny · tyrolki · powozy · kwatera na szynach
+    year: To the rooftops
+    title: A grappling rope, carriages and a train instead of a hideout
+    meta: Rope launcher · ziplines · carriages · headquarters on rails
     art: foto-londyn
     flip: false
     band: false
     body:
       - >-
-        Największa zmiana w poruszaniu się to wyrzutnia liny: wciąga bohatera
-        na dach albo rozpina tyrolkę między budynkami. Po jezdniach jeżdżą
-        powozy — można nimi powozić, bić się na jadącym pojeździe
-        i przeskakiwać między nimi. Kwaterą bliźniąt jest pociąg, który przez
-        całą grę krąży po mieście.
+        The biggest change in movement is the rope launcher: it pulls the
+        hero up onto a roof or strings a zipline between buildings.
+        Carriages drive along the streets — you can drive them, fight on
+        a moving vehicle and jump from one to another. The twins’
+        headquarters is a train that circles the city throughout the game.
       - >-
-        Walkę przebudowano względem Unity: liczą się szybkie serie ciosów
-        i bloki. W skradaniu doszło branie przeciwnika na zakładnika.
+        Combat was rebuilt compared with Unity: fast combos and blocks are
+        what count. Stealth gained the option of taking an enemy hostage.
   - id: fabula
-    year: Skokierzy
-    title: Starrick, wojna gangów i skok do roku 1916
-    meta: Gang Skokierów · Dickens, Darwin, Marks · Lydia Frye i Churchill
+    year: Rooks
+    title: Starrick, a gang war and a jump to 1916
+    meta: The Rooks gang · Dickens, Darwin, Marx · Lydia Frye and Churchill
     art: londyn-k05
     flip: true
     band: false
     body:
       - >-
-        Londynem rządzi wielki mistrz templariuszy Crawford Starrick, którego
-        uliczną siłą jest gang Nędzników. Jacob zakłada Skokierów i przejmuje
-        dzielnicę po dzielnicy: uwalnia dzieci zmuszane do pracy, eliminuje
-        ludzi Starricka, każdą dzielnicę zamyka bójką gangów. Evie w tym
-        czasie szuka Całunu Edenu. Skutki zabójstw Jacoba — braki lekarstw,
-        drożyzna — kłócą rodzeństwo, zanim w finale wejdzie razem na bal
-        w pałacu Buckingham. Pomagają Dickens, Darwin, Graham Bell, Marks
-        i królowa Wiktoria.
+        London is ruled by the Templar Grand Master Crawford Starrick, whose
+        muscle on the streets is the Blighters gang. Jacob founds the Rooks
+        and takes over borough after borough: he frees children forced into
+        labor, eliminates Starrick’s men and closes out each borough with
+        a gang fight. Meanwhile Evie searches for the Shroud of Eden. The
+        consequences of Jacob’s killings — medicine shortages, rising
+        prices — set the siblings against each other before they go to the
+        ball at Buckingham Palace together in the finale. Dickens, Darwin,
+        Graham Bell, Marx and Queen Victoria lend a hand.
       - >-
-        Współczesność jest skromna: bezimienny nowicjusz z Unity szuka przez
-        Animus artefaktu ukrytego w Londynie. Anomalia przenosi go do roku
-        1916, gdzie Lydia Frye, wnuczka Jacoba, rozbija dla Churchilla
-        niemiecką siatkę szpiegowską.
+        The modern-day story is modest: the unnamed Initiate from Unity uses
+        the Animus to search for an artifact hidden in London. An anomaly
+        sends the Initiate to 1916, where Lydia Frye, Jacob’s
+        granddaughter, breaks up a German spy ring for Churchill.
   - id: victory-i-szostka
     year: Victory
-    title: Victory, Syndicate i skąd bierze się „Assassin’s Creed 6”
-    meta: Wyciek 2 grudnia 2014 · zapowiedź 12 maja 2015 · dziewiąta odsłona
+    title: Victory, Syndicate and where “Assassin’s Creed 6” comes from
+    meta: Leak December 2, 2014 · announcement May 12, 2015 · the ninth game
     flip: false
     band: true
     body:
       - >-
-        Gra powstawała pod roboczym tytułem Assassin’s Creed Victory i pod tą
-        nazwą wyciekła 2 grudnia 2014 roku przez serwis Kotaku; oficjalna
-        zapowiedź jako Syndicate przyszła 12 maja 2015 roku.
+        The game was developed under the working title Assassin’s Creed
+        Victory and leaked under that name on December 2, 2014 via Kotaku;
+        the official announcement as Syndicate came on May 12, 2015.
       - >-
-        „Assassin’s Creed 6” to nazwa z wyszukiwarek, nie od Ubisoftu.
-        Ostatni numer nosiła czwórka, Black Flag; potem szły nazwy własne.
-        Kto do czterech numerowanych dolicza tylko Unity i Syndicate, ma
-        piątkę i szóstkę; z Brotherhood, Revelations i Rogue Syndicate jest
-        dziewiąte.
+        “Assassin’s Creed 6” is a name from search engines, not from
+        Ubisoft. The last number went to IV, Black Flag; after that came
+        proper names. If you add only Unity and Syndicate to the four
+        numbered games, you get a fifth and a sixth; counting Brotherhood,
+        Revelations and Rogue, Syndicate is the ninth.
   - id: wydania-i-dodatki
     year: 2015–2024
-    title: Wersje, edycje i dodatki — Kuba Rozpruwacz na czele
-    meta: PS4 · Xbox One · PC · 60 klatek na PS5 i Xbox Series
+    title: Versions, editions and DLC — led by Jack the Ripper
+    meta: PS4 · Xbox One · PC · 60 fps on PS5 and Xbox Series
     flip: true
     band: false
     body:
       - >-
-        Gra wyszła na PlayStation 4, Xboksa One i PC; wersji na PlayStation 3
-        ani Xboksa 360 nie było. Wydanie na PS4 działa na PS5, a w listopadzie
-        2024 roku Ubisoft ogłosił łatkę na 60 klatek dla PS5 i Xbox Series
-        X|S.
+        The game came out on PlayStation 4, Xbox One and PC; there was no
+        version for PlayStation 3 or Xbox 360. The PS4 release runs on PS5,
+        and in November 2024 Ubisoft announced a 60 fps patch for PS5 and
+        Xbox Series X|S.
       - >-
-        W Europie gra wyszła w pięciu edycjach. Gold dokłada do gry przepustkę
-        sezonową, a Big Ben Collector’s Case — trzydziestocentymetrową figurkę
-        Jacoba i artbook. Misje z Darwinem i Dickensem były bonusem
-        przedsprzedaży, a od stycznia 2016 roku weszły do pakietu Londyńskie
-        ulice.
+        In Europe the game was released in five editions. Gold adds the
+        season pass, and the Big Ben Collector’s Case adds
+        a thirty-centimeter Jacob figure and an artbook. The Darwin and
+        Dickens missions were a pre-order bonus and in January 2016 became
+        part of the Streets of London pack.
       - >-
-        Najważniejszy dodatek to Kuba Rozpruwacz z 15 grudnia 2015 roku:
-        Whitechapel roku 1888, dziesięć misji i głównie Evie, bo Jacob został
-        porwany. Ostatni maharadża z marca 2016 to dziesięć misji o Duleepie
-        Singhu. Przepustka obejmuje oba dodatki i pakiety strojów.
+        The most important DLC is Jack the Ripper from December 15, 2015:
+        Whitechapel in 1888, ten missions and mostly Evie, because Jacob
+        has been kidnapped. The Last Maharaja from March 2016 is ten
+        missions about Duleep Singh. The season pass covers both DLCs and
+        the outfit packs.
 cta:
-  title: Syndicate to dobre wejście, ale nie jedyne
-  lead: Trzy sprawdzone punkty startu w serii i lista tego, co da się pominąć.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Syndicate is a good way in, but not the only one
+  lead: Three proven starting points in the series and a list of what you can skip.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

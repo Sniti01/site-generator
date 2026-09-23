@@ -2,230 +2,236 @@
 url: /assassins-creed-3/
 art: assassins-creed-3
 lead: >-
-  Piąta duża część serii, na nowym silniku i w nowej epoce. Connor, pół
-  Mohawk, pół Anglik, przechodzi przez wojnę o niepodległość od Bostonu po
-  Nowy Jork. Tu wchodzi do serii morze i tu kończy się historia Desmonda.
+  The fifth major game in the series, on a new engine and in a new era.
+  Connor, half Mohawk, half English, goes through the War of Independence
+  from Boston to New York. This is where the sea enters the series and where
+  Desmond’s story ends.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-to-za-gra-tytul'
-      title: Trójka, która jest piątą częścią
+      title: III, which is the fifth game
     - href: '#haytham-i-connor-tytul'
-      title: Haytham i Connor
+      title: Haytham and Connor
     - href: '#swiat-i-rozgrywka-tytul'
-      title: Kolonie, pogranicze i osada
+      title: The colonies, the frontier and the homestead
     - href: '#aquila-tytul'
-      title: Aquila i bitwy morskie
+      title: The Aquila and naval battles
     - href: '#desmond-tytul'
-      title: Koniec historii Desmonda
+      title: The end of Desmond’s story
     - href: '#wydania-i-dodatki-tytul'
-      title: Wydania, dodatki i Remastered
+      title: Releases, DLC and Remastered
     - href: '#komu-i-od-czego-zaczac-tytul'
-      title: Komu i w jakiej kolejności
+      title: Who it’s for and in what order
     - href: '#galeria-tytul'
-      title: Kadry z gry
+      title: In-game screenshots
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry z gry
+  title: In-game screenshots
   lead: >-
-    Materiał wydawcy ze stron gier w Steamie, gdzie trójka jest sprzedawana
-    tylko jako Remastered.
+    Publisher material from the games’ Steam pages, where III is sold only
+    as Remastered.
   items:
     - art: assassins-creed-3
-      alt: 'Assassin’s Creed III Remastered — kadr z gry'
-      caption: 'Kadr z wydania Remastered na Steamie.'
+      alt: 'Assassin’s Creed III Remastered — in-game screenshot'
+      caption: 'A screenshot from the Remastered release on Steam.'
     - art: assassins-creed-liberation
-      alt: 'Assassin’s Creed Liberation HD — kluczowy art'
-      caption: 'Liberation HD; jej remaster jest drugą grą w zestawie z trójką.'
+      alt: 'Assassin’s Creed Liberation HD — key art'
+      caption: 'Liberation HD; its remaster is the second game in the bundle with III.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Trójka jest dla tych, którzy chcą największej zmiany w serii przed
-      Origins: nowej epoki, lasu zamiast dachów i okrętu, który rok później
-      stał się fundamentem Black Flag. Prolog z Haythamem i finał Desmonda
-      są tu mocniejsze niż sam Connor, ale to ta gra domyka pięć gier
-      wątku współczesnego i kto doszedł do Revelations, nie powinien jej
-      pomijać.
+      III is for those who want the biggest change in the series before
+      Origins: a new era, forest instead of rooftops and a ship that a year
+      later became the foundation of Black Flag. The prologue with Haytham
+      and Desmond’s finale are stronger here than Connor himself, but this
+      is the game that closes five games of the modern-day story, and
+      anyone who has made it to Revelations should not skip it.
     - >-
-      Kto zaczyna od zera, niech wejdzie przez dwójkę albo Black Flag i wróci
-      tu później: bez wcześniejszych części finał Desmonda nic nie znaczy.
-      Wersja do wyboru to Remastered na PC, PlayStation 4 albo Xboksie One —
-      z kompletem dodatków i z Liberation w zestawie; wydanie na Switcha
-      działa, ale wygląda i chodzi wyraźnie gorzej.
+      If you are starting from scratch, come in through II or Black Flag and
+      return here later: without the earlier games Desmond’s finale means
+      nothing. The version to pick is Remastered on PC, PlayStation 4 or
+      Xbox One — with all the DLC and with Liberation included; the Switch
+      release works, but looks and runs noticeably worse.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2012'
-    title: Trójka, która jest piątą częścią serii
-    meta: Ameryka Północna · 1754–1783 · Ratonhnhaké:ton, zwany Connorem
+    title: III, which is the fifth game in the series
+    meta: North America · 1754–1783 · Ratonhnhaké:ton, known as Connor
     art: assassins-creed-3
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed III wyszło 30 października 2012 roku na
-        PlayStation 3 i Xboksa 360, a w listopadzie na Wii U i PC. Po
-        Brotherhood i Revelations jest to piąta duża odsłona, ale trzecia z
-        nowym bohaterem i nową epoką — numer dostają w serii tylko takie
-        części. Grę zbudowało Ubisoft Montreal na nowym silniku AnvilNext.
+        Assassin’s Creed III came out on October 30, 2012 on
+        PlayStation 3 and Xbox 360, and in November on Wii U and PC. After
+        Brotherhood and Revelations it is the fifth major installment, but
+        the third with a new hero and a new era — only such games get a
+        number in the series. The game was built by Ubisoft Montreal on the
+        new AnvilNext engine.
       - >-
-        Akcja toczy się w brytyjskich koloniach w latach 1754–1783, od wojny
-        z Francuzami i Indianami po koniec wojny o niepodległość. Bohaterem
-        jest Ratonhnhaké:ton, syn angielskiego templariusza Haythama Kenwaya
-        i Mohawki Kaniehtí:io, wśród kolonistów znany jako Connor. Do lutego
-        2013 roku sprzedano dwanaście milionów egzemplarzy, najwięcej w
-        serii do tamtej pory; recenzenci chwalili świat, fabułę i morze,
-        krytykowali sztywne misje i błędy.
+        The action takes place in the British colonies in 1754–1783, from
+        the French and Indian War to the end of the War of Independence. The
+        hero is Ratonhnhaké:ton, the son of the English Templar Haytham
+        Kenway and the Mohawk woman Kaniehtí:io, known among the colonists
+        as Connor. By February 2013 twelve million copies had been sold, the
+        most in the series up to that point; reviewers praised the world,
+        the story and the sea, and criticized the rigid missions and bugs.
   - id: haytham-i-connor
     year: '1754'
-    title: Haytham i Connor — templariusz i jego syn asasyn
+    title: Haytham and Connor — a Templar and his Assassin son
     meta: Royal Opera House · Kaniehtí:io · Achilles Davenport · Charles Lee
     art: assassins-creed-3-k04
     flip: true
     band: true
     body:
       - >-
-        Przez pierwsze trzy sekwencje gra się Haythamem Kenwayem — i dopiero
-        pod koniec tego prologu wychodzi na jaw, że ten elegancki Anglik jest
-        wielkim mistrzem kolonialnych templariuszy. Haytham kradnie w
-        londyńskiej operze klucz do świątyni Prekursorów, płynie do Bostonu
-        i z Kaniehtí:io dociera do świątyni, której klucz nie otwiera.
+        For the first three sequences you play as Haytham Kenway — and only
+        at the end of this prologue does it come out that the elegant
+        Englishman is the Grand Master of the colonial Templars. At the
+        London opera Haytham steals the key to a First Civilization temple,
+        sails to Boston and, with Kaniehtí:io, reaches a temple that the key
+        does not open.
       - >-
-        Ich syn traci matkę w 1760 roku, gdy wioska płonie w ataku, o który
-        obwinia Charlesa Lee. Kilka lat później trafia do Achillesa
-        Davenporta, emerytowanego asasyna, i od niego dostaje imię Connor.
-        Dalej idą kolejne cele — postacie historyczne z dopisaną
-        przynależnością do zakonu — a po drodze masakra bostońska i marsz do
-        Valley Forge. Ojciec i syn na chwilę współpracują, potem Haytham
-        ujawnia, że rozkaz spalenia wioski wydał Washington, i Connor zrywa z
-        obiema stronami; finał to pojedynek w forcie George. Krytycy ocenili
-        Connora chłodniej niż Haythama, zarzucając mu brak humoru i rozwoju.
+        Their son loses his mother in 1760, when the village burns in an
+        attack he blames on Charles Lee. A few years later he ends up with
+        Achilles Davenport, a retired Assassin, and it is from him that he
+        gets the name Connor. Then come his targets one by one — historical
+        figures with a membership in the order written in for them — and
+        along the way the Boston Massacre and the march to Valley Forge.
+        Father and son work together for a while, then Haytham reveals that
+        the order to burn the village was given by Washington, and Connor
+        breaks with both sides; the finale is a duel at Fort George. Critics
+        rated Connor more coolly than Haytham, faulting him for a lack of
+        humor and of development.
   - id: swiat-i-rozgrywka
-    year: Kolonie
-    title: Boston, Nowy Jork, pogranicze i osada Davenporta
-    meta: Pory roku · polowanie · tomahawk · strzałka z liną · rzemiosło
+    year: Colonies
+    title: Boston, New York, the frontier and the Davenport Homestead
+    meta: Seasons · hunting · tomahawk · rope dart · crafting
     art: assassins-creed-3-k02
     flip: false
     band: false
     body:
       - >-
-        Mapa to Boston, Nowy Jork i pogranicze — las, klify, rzeki, wioska
-        Connora, Lexington i Concord — samo półtora raza większe od Rzymu z
-        Brotherhood. Pory roku zmieniają grę: zimą śnieg spowalnia marsz, a
-        zamieć ogranicza widoczność wrogom; na zwierzynę poluje się na skóry,
-        a cena zależy od tego, jak czysto padła.
+        The map is Boston, New York and the frontier — forest, cliffs,
+        rivers, Connor’s village, Lexington and Concord — the frontier alone
+        being one and a half times the size of Rome in Brotherhood. The
+        seasons change the game: in winter snow slows you down, and a
+        blizzard cuts the enemies’ visibility; animals are hunted for their
+        pelts, and the price depends on how cleanly they were killed.
       - >-
-        Walkę przebudowano: nie trzeba namierzać przeciwnika, Connor bije
-        dwiema broniami naraz, a obok ukrytych ostrzy ma tomahawk, łuk i
-        strzałkę z liną, którą podwiesza wroga na gałęzi. Osada Davenporta
-        przyjmuje rzemieślników, którym wojna zabrała miejsce, a ich towary
-        wysyła się karawaną do miast. Obok są strony almanachu Franklina,
-        kluby, plotki o UFO i Wielkiej Stopie oraz po raz pierwszy w serii gry
-        planszowe.
+        Combat has been rebuilt: you don’t need to lock on to an enemy,
+        Connor fights with two weapons at once, and besides the hidden
+        blades he has a tomahawk, a bow and a rope dart, with which he hangs
+        an enemy from a branch. The Davenport Homestead takes in craftsmen
+        the war has driven from their homes, and their goods are sent to the
+        cities by convoy. On the side there are pages of Franklin’s almanac,
+        clubs, rumors of UFOs and Bigfoot, and, for the first time in the
+        series, board games.
   - id: aquila
     year: Aquila
-    title: Aquila — bryg, od którego zaczęło się morze w serii
-    meta: Salwy burtowe · folgierze · kule łańcuchowe · zlecenia kaperskie
+    title: The Aquila — the brig where the sea in the series began
+    meta: Broadsides · swivel guns · chain shot · privateer contracts
     art: assassins-creed-3-k09
     flip: true
     band: false
     body:
       - >-
-        Bitwy morskie weszły do serii właśnie tutaj. Connor jest kapitanem
-        Aquili, brygu asasynów. Sterowanie zależy od wiatru, sztormu i fal;
-        walczy się salwami burtowymi, folgierzami na mniejsze jednostki, które
-        potem można abordażować, i kulami łańcuchowymi zrywającymi maszty
-        większym okrętom.
+        Naval battles entered the series right here. Connor is captain of
+        the Aquila, the Assassins’ brig. Handling depends on the wind, storms
+        and waves; you fight with broadsides, with swivel guns against
+        smaller vessels, which can then be boarded, and with chain shot that
+        tears the masts off larger warships.
       - >-
-        Aquila pojawia się w kilku misjach głównego wątku i w osobnej serii
-        zleceń kaperskich — to mniejsza część gry niż w Black Flag, gdzie ten
-        sam pomysł stał się osią całości, ale recenzenci wymieniali ją wśród
-        najlepszych elementów trójki.
+        The Aquila appears in several main story missions and in a separate
+        series of privateer contracts — a smaller part of the game than in
+        Black Flag, where the same idea became the axis of the whole thing,
+        but reviewers named it among the best elements of III.
   - id: desmond
     year: '2012'
-    title: Koniec historii Desmonda — świątynia, Junona i 21 grudnia
-    meta: Wielka Świątynia · William Miles · Daniel Cross · Abstergo w Rzymie
+    title: The end of Desmond’s story — the temple, Juno and December 21
+    meta: The Grand Temple · William Miles · Daniel Cross · Abstergo in Rome
     flip: false
     band: true
     body:
       - >-
-        Współczesność jest rozbudowana jak nigdy wcześniej: Desmond z ojcem
-        Williamem, Shaunem i Rebeccą dociera do Wielkiej Świątyni w stanie
-        Nowy Jork i między sekwencjami z Animusa wychodzi na własne misje —
-        na Manhattan, do São Paulo i do Abstergo w Rzymie, gdzie zabija
-        Daniela Crossa i Warrena Vidica.
+        The present day is more developed than ever before: Desmond, with
+        his father William, Shaun and Rebecca, reaches the Grand Temple in
+        New York State and between the Animus sequences goes out on missions
+        of his own — to Manhattan, to São Paulo and to Abstergo in Rome,
+        where he kills Daniel Cross and Warren Vidic.
       - >-
-        Klucz, który Connor zakopał w grobie syna Achillesa, otwiera
-        wewnętrzne komnaty. Junona mówi, że ocalenie świata przed rozbłyskiem
-        słonecznym 21 grudnia 2012 roku będzie kosztować Desmonda życie, a
-        Desmond wybiera ludzkość. Reżyser Alex Hutchinson tłumaczył po
-        latach, że gra planowana jako trzecia okazała się piątą i proszenie
-        graczy o pamiętanie historii sprzed siedmiu lat przestało mieć sens.
+        The key that Connor buried in the grave of Achilles’ son opens the
+        inner chambers. Juno says that saving the world from the solar flare
+        of December 21, 2012 will cost Desmond his life, and Desmond chooses
+        humanity. Years later, director Alex Hutchinson explained that the
+        game planned as the third turned out to be the fifth, and asking
+        players to remember a story from seven years earlier had stopped
+        making sense.
   - id: wydania-i-dodatki
     year: 2012–2019
-    title: Wydania, Tyrania króla Waszyngtona i Remastered z Liberation
+    title: Releases, The Tyranny of King Washington and Remastered with Liberation
     meta: PS3 · Xbox 360 · Wii U · PC · Remastered 2019 · Switch
     art: assassins-creed-liberation
     flip: true
     band: false
     body:
       - >-
-        Polska wersja to napisy przy angielskich dialogach — tak samo w
-        Remastered, gdzie po polsku jest też interfejs. Największy dodatek to
-        Tyrania króla Waszyngtona w trzech odcinkach z 2013 roku, historia
-        alternatywna, w której Washington z Rajskim Jabłkiem koronuje się na
-        króla, a Connor dostaje moce niedźwiedzia, orła i wilka. Oryginału na
-        PC nie ma już w sklepie Steam, a jego tryb sieciowy wyłączono w 2022
-        roku.
+        The biggest DLC is The Tyranny of King Washington, three episodes
+        from 2013: an alternate history in which Washington, with the Apple
+        of Eden, crowns himself king, and Connor gains the powers of the
+        bear, the eagle and the wolf. The original PC version is no longer
+        in the Steam store, and its online mode was shut down in 2022.
       - >-
-        Remastered wydano 29 marca 2019 roku na PC, PlayStation 4 i Xboksa
-        One, 21 maja na Switcha. W środku jest komplet dodatków dla jednego
-        gracza, cała Liberation Remastered i stroje bohaterów późniejszych
-        części, ale bez trybu sieciowego. Obraz idzie w 4K na PlayStation 4
-        Pro i Xboksie One X, doszło swobodne celowanie z łuku i pistoletów.
-        Najsłabsze oceny zebrała wersja na Switcha: polska recenzja na
-        Spider’s Web pisała, że gra chodzi tam w okolicach dwudziestu klatek
-        i wygląda jak wydanie na PlayStation 3.
+        Remastered was released on March 29, 2019 on PC, PlayStation 4 and
+        Xbox One, and on May 21 on Switch. It includes all the single-player
+        DLC, the whole of Liberation Remastered and outfits of heroes from
+        later games, but no online mode. The picture runs in 4K on
+        PlayStation 4 Pro and Xbox One X, and free aiming with the bow and
+        pistols has been added. The Switch version got the weakest reviews.
   - id: komu-i-od-czego-zaczac
     year: Start
-    title: Komu trójka i w którym miejscu serii ją zagrać
-    meta: Po Revelations · przed Black Flag · Rogue jako druga strona
+    title: Who III is for and where in the series to play it
+    meta: After Revelations · before Black Flag · Rogue as the other side
     art: assassins-creed-3-k08
     flip: false
     band: true
     body:
       - >-
-        Najwięcej z trójki wyniesie ktoś, kto przeszedł jedynkę i trylogię
-        Ezia: finał Desmonda jest zapłatą za pięć gier. Drugim adresatem jest
-        gracz, którego ciągnie sama epoka, trzecim ktoś, kto woli las od
-        dachów — pory roku, osada i polowanie na pograniczu są znakiem tej
-        części.
+        The one who gets the most out of III is someone who has played the
+        first game and the Ezio trilogy: Desmond’s finale is the payoff for
+        five games. The second audience is a player drawn by the era itself,
+        the third someone who prefers forest to rooftops — the seasons, the
+        homestead and hunting on the frontier are the hallmarks of this
+        game.
       - >-
-        Jako pierwsza gra w serii trójka nie jest dobrym wyborem. Kto zaczyna
-        od zera, niech wybierze dwójkę, Black Flag albo Origins i wróci tu po
-        Revelations. Black Flag to prequel o dziadku Connora, Rogue pokazuje
-        te same kolonie oczami templariusza, a Liberation, wydana razem z
-        trójką na Vitę, ma w Nowym Jorku wspólną misję z Connorem. Za pierwszym
-        razem lepiej trzymać się premier: trójka, Black Flag, Rogue.
+        As a first game in the series, III is not a good choice. If you are
+        starting from scratch, pick II, Black Flag or Origins and come back
+        here after Revelations. Black Flag is a prequel about Connor’s
+        grandfather, Rogue shows the same colonies through a Templar’s eyes,
+        and Liberation, released together with III on the Vita, has a
+        mission in New York shared with Connor. The first time through, it
+        is better to stick to the release order: III, Black Flag, Rogue.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

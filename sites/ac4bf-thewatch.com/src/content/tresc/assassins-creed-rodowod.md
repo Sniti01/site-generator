@@ -1,150 +1,151 @@
 ---
-url: /assassins-creed-rodowod/
+url: /assassins-creed-lineage/
 era: wlochy
 art: assassins-creed-rodowod
 lead: >-
-  Film aktorski Ubisoftu z 2009 roku: 36 minut w trzech odcinkach o Giovannim
-  Auditore, bankierze i asasynie z Florencji, którego śledztwo prowadzi
-  do templariuszy. Kończy się przed egzekucją, od której zaczyna się
-  Assassin’s Creed II.
+  A 2009 live-action film from Ubisoft: 36 minutes in three episodes about
+  Giovanni Auditore, a banker and Assassin from Florence whose investigation
+  leads to the Templars. It ends before the execution that opens Assassin’s
+  Creed II.
 primary:
   href: '#co-to-jest'
-  label: Czym jest Rodowód
+  label: What Lineage is
 secondary:
   href: /assassins-creed-2/
   label: Assassin’s Creed II
 rows:
   - id: co-to-jest
     year: '2009'
-    title: Czym jest Rodowód — trzy odcinki o ojcu Ezia
-    meta: Ubisoft i Hybride · reż. Yves Simoneau · 36 minut
+    title: What Lineage is — three episodes about Ezio’s father
+    meta: Ubisoft and Hybride · dir. Yves Simoneau · 36 minutes
     art: wlochy
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed: Rodowód (w oryginale Lineage) to aktorski prequel
-        Assassin’s Creed II: trzy odcinki, łącznie 36 minut, które Ubisoft
-        wypuścił w 2009 roku. Pierwszy odcinek trafił na YouTube
-        26 października 2009 roku, ostatni 14 listopada — trzy dni przed
-        premierą dwójki. Produkcja jest francusko-kanadyjska; w Polsce film
-        emitował Canal+, a z lektorem i napisami wyszedł jako dodatek
-        do gry.
+        Assassin’s Creed: Lineage is a live-action prequel to Assassin’s
+        Creed II: three episodes, 36 minutes in total, released by Ubisoft
+        in 2009. The first episode went up on YouTube on October 26, 2009,
+        the last on November 14 — three days before the second game came
+        out. It is a French-Canadian production.
       - >-
-        Reżyserował Yves Simoneau, scenariusz napisał William Reymond.
-        Nakręcono go niemal w całości na zielonym ekranie, z tłami Florencji
-        i Wenecji. Na Filmwebie ma 7,2 od ponad trzech tysięcy użytkowników.
+        Yves Simoneau directed it from a script by William Reymond. It was
+        shot almost entirely against a green screen, with Florence and
+        Venice as backdrops.
   - id: giovanni-i-1476
     year: '1476'
-    title: Fabuła — Giovanni Auditore, książę Mediolanu i „Hiszpan”
-    meta: Florencja · Medyceusze · zakon templariuszy · Romano Orzari
+    title: Story — Giovanni Auditore, the Duke of Milan and “the Spaniard”
+    meta: Florence · the Medici · the Templar Order · Romano Orzari
     art: foto-wlochy
     flip: true
     band: true
     body:
       - >-
-        Gra go Romano Orzari. Ojciec Ezia, Giovanni Auditore da Firenze, ma
-        we Florencji dwa życia: na widoku — bank i szacunek miasta, poza nim —
-        bractwo asasynów. Zlecenie przychodzi po zabójstwie księcia Mediolanu,
-        sojusznika Medyceuszy: ustalić, kto stał za zamachem i po co. Trop idzie
-        wyżej, niż Giovanni zakłada — do templariuszy i do rodzin z wpływami
-        sięgającymi Watykanu.
+        Romano Orzari plays him. Ezio’s father, Giovanni Auditore da
+        Firenze, leads two lives in Florence: in plain sight — the bank and
+        the city’s respect; out of sight — the Assassin Brotherhood. The
+        assignment comes after the murder of the Duke of Milan, an ally of
+        the Medici: find out who was behind the killing and why. The trail
+        leads higher than Giovanni expects — to the Templars and to families
+        whose influence reaches all the way to the Vatican.
       - >-
-        Najgorsze odkrycie dotyczy własnego otoczenia: część spiskowców to jego
-        przyjaciele. Nad wszystkim stoi „Hiszpan”, przywódca templariuszy —
-        w obsadzie Manuel Tadros jako Rodrigo Borgia — i to on składa Giovanniemu
-        ofertę przejścia na drugą stronę. Odmowa kończy się walką, raną i ucieczką
-        do Florencji; dla „Hiszpana” Giovanni jest odtąd główną przeszkodą. Na tym
-        film się kończy; wyrok wykonuje dopiero gra.
+        The worst discovery concerns his own circle: some of the
+        conspirators are his friends. Above them all stands “the Spaniard”,
+        leader of the Templars — in the cast, Manuel Tadros as Rodrigo
+        Borgia — and it is he who offers Giovanni the chance to switch
+        sides. The refusal ends in a fight, a wound and an escape to
+        Florence; from then on, Giovanni is the main obstacle for “the
+        Spaniard”. That is where the film ends; the sentence is carried out
+        only in the game.
   - id: jak-laczy-sie-z-dwojka
     year: Prequel
-    title: Jak Rodowód łączy się z Assassin’s Creed II
-    meta: Egzekucja we Florencji · obsada z gry · Devon Bostick jako Ezio
+    title: How Lineage connects to Assassin’s Creed II
+    meta: Execution in Florence · the game’s cast · Devon Bostick as Ezio
     art: foto-signoria
     flip: false
     band: false
     body:
       - >-
-        Film kończy się tam, gdzie dwójka zaczyna. Początek gry, rok 1476,
-        to egzekucja na florenckim placu: Giovanni z synami Federikiem
-        i Petrucciem. Prowadzi do niej ta sama intryga — dowody spisku trafiają
-        do urzędnika, który sam jest spiskowcem, a Lorenza de’ Medici, sojusznika
-        rodziny i władcy miasta, akurat nie ma we Florencji. Strój asasyna Ezio
-        dostaje od ojca jeszcze nocą, ze skrytki w domu.
+        The film ends where the second game begins. The game opens in 1476
+        with an execution on a Florentine square: Giovanni with his sons
+        Federico and Petruccio. The same plot leads to it — evidence of the
+        conspiracy reaches an official who is a conspirator himself, and
+        Lorenzo de’ Medici, the family’s ally and ruler of the city, happens
+        to be away from Florence. Ezio gets the Assassin’s outfit from his
+        father that same night, from a hiding place in the house.
       - >-
-        Twarze też są te same: aktorów z filmu — wszystkich poza Devonem
-        Bostickiem, młodym Eziem — zeskanowano w sesjach motion capture
-        do dwójki. Giovanni w grze wygląda i mówi jak Orzari; wracają też
-        Maria, Lorenzo, Uberto Alberti, ojciec Maffei i bracia Barbarigo.
+        The faces are the same, too: the film’s actors — all except Devon
+        Bostick, the young Ezio — were scanned in motion capture sessions
+        for Assassin’s Creed II. In the game, Giovanni looks and sounds like
+        Orzari; Maria, Lorenzo, Uberto Alberti, Father Maffei and the
+        Barbarigo brothers also return.
   - id: jak-obejrzec
     year: 2016–2022
-    title: Gdzie obejrzeć — YouTube, Canal+ i The Ezio Collection
-    meta: PS4 i Xbox One 2016 · Switch 2022 · Lineage i Embers w zestawie
+    title: Where to watch — YouTube and The Ezio Collection
+    meta: PS4 and Xbox One 2016 · Switch 2022 · Lineage and Embers included
     art: wlochy-k02
     flip: true
     band: false
     body:
       - >-
-        Film wyszedł na YouTube; w serwisach VOD Filmweb go nie wskazywał.
-        Najpewniejsze źródło to The Ezio Collection: zestaw wydany
-        w listopadzie 2016 roku na PlayStation 4 i Xboksa One, a w lutym
-        2022 roku na Nintendo Switch — trzy gry Ezia z dodatkami, w 1080p,
-        bez trybów sieciowych, oraz dwa filmy w pełnych wersjach: aktorski
-        Rodowód, w opisie zestawu jako Lineage, i animowany Embers. Stąd
-        zapytania o „Lineage na PS4” — to ten sam film z 2009 roku.
+        The film was released on YouTube. The most reliable source is The
+        Ezio Collection: a bundle released in November 2016 on PlayStation 4
+        and Xbox One, and in February 2022 on Nintendo Switch — Ezio’s three
+        games with their DLC, in 1080p, without online modes, plus two films
+        in their full versions: the live-action Lineage and the animated
+        Assassin’s Creed: Embers. That is why people search for “Lineage on
+        PS4” — it is the same film from 2009.
       - >-
-        Wersja na PS4 działa też na PlayStation 5. Na Switchu na kartridżu
-        jest sama dwójka — Brotherhood, Revelations i oba filmy pobiera się
-        z sieci, do 35 GB.
+        The PS4 version also runs on PlayStation 5. On Switch, only the
+        second game is on the cartridge — Brotherhood, Revelations and both
+        films are downloaded, up to 35 GB.
   - id: inne-filmy-serii
     year: 2010–2017
-    title: Inne filmy serii — Ascendance, Embers i kino z Fassbenderem
-    meta: Animacje 2010 i 2011 · film kinowy 2016 · zapowiedź serialu Netfliksa
+    title: Other films in the series — Ascendance, Embers and the Fassbender feature film
+    meta: Animated shorts 2010 and 2011 · feature film 2016 · Netflix series announced
     art: discovery
     flip: false
     band: true
     body:
       - >-
-        Rodowód otwiera listę filmów serii. Ascendance z 2010 roku to krótka
-        animacja, wstęp do Brotherhood; Embers z 2011 roku, dołączony
-        do edycji Animus gry Revelations, pokazuje ostatnie lata Ezia i jego
-        śmierć w 1524 roku.
+        Lineage opens the list of the series’ films. Ascendance, from 2010,
+        is a short animation that serves as an introduction to Brotherhood;
+        Embers, from 2011, bundled with the Animus Edition of Revelations,
+        shows Ezio’s last years and his death in 1524.
       - >-
-        Kinowy Assassin’s Creed z 2016 roku, w polskich kinach od 6 stycznia
-        2017, wyreżyserował Justin Kurzel; Michael Fassbender zagrał Calluma
-        Lyncha i jego przodka Aguilara, asasyna z Hiszpanii czasów
-        inkwizycji. To nie adaptacja gry, lecz nowa historia, rozgrywana
-        głównie współcześnie: Abstergo porywa Lyncha i przez Animus szuka
-        artefaktu odbierającego ludziom wolną wolę. Przy budżecie 125
-        milionów dolarów zarobił około 240 milionów; Metacritic dał mu 36
-        na 100. Dama Gier wyliczała dziury w scenariuszu, płaskie postacie
-        i orła co kwadrans, a głos znający serię kończył: to powinien być
-        serial. Netflix zapowiedział serial aktorski.
+        The 2016 Assassin’s Creed feature film was directed by Justin
+        Kurzel; Michael Fassbender played Callum Lynch and his ancestor
+        Aguilar, an Assassin in Spain at the time of the Inquisition. It is
+        not an adaptation of a game but a new story, set mostly in the
+        present day: Abstergo abducts Lynch and uses the Animus to search
+        for an artifact that takes away people’s free will. On a budget of
+        $125 million it grossed about $240 million; Metacritic gave it 36
+        out of 100. Netflix has announced a live-action series.
   - id: czy-warto
-    year: Werdykt
-    title: Czy warto obejrzeć Rodowód — i w którym momencie
-    meta: 36 minut · przed dwójką albo zaraz po jej prologu
+    year: Verdict
+    title: Is Lineage worth watching — and at what point
+    meta: 36 minutes · before Assassin’s Creed II or right after its prologue
     art: wlochy-k07
     flip: true
     band: false
     body:
       - >-
-        Warto, z jednego powodu: to 36 minut, po których egzekucja
-        z początku dwójki przestaje być scenką z samouczka. Film nie wybiega
-        poza początek gry — kończy się przed aresztowaniem Giovanniego —
-        więc można go obejrzeć przed uruchomieniem dwójki albo zaraz
-        po prologu. Kto zna grę od lat, dostanie spisek widziany od strony
-        ofiary, nie mściciela.
+        Yes, for one reason: it is 36 minutes after which the execution at
+        the start of the second game stops being a tutorial cutscene. The
+        film does not go beyond the start of the game — it ends before
+        Giovanni’s arrest — so you can watch it before launching Assassin’s
+        Creed II or right after the prologue. If you have known the game for
+        years, you get the conspiracy seen from the victim’s side, not the
+        avenger’s.
       - >-
-        Bez gry nie ma po co: trzy odcinki po kilkanaście minut ledwie
-        rozkręcają intrygę, co użytkownicy Filmwebu wypominają, chwaląc go
-        zarazem jako prolog do dwójki. Filmu z 2016 roku to nie dotyczy:
-        osobna historia, którą można pominąć bez straty.
+        Without the game there is no point: three episodes of a dozen or so
+        minutes each barely get the plot going. None of this applies to the
+        2016 film: a separate story you can skip without losing anything.
 related:
-  title: Powiązane strony
+  title: Related pages
 cta:
-  title: Co dalej po filmie?
-  lead: Dwójka zaczyna się tam, gdzie Rodowód się kończy — Florencja, rok 1476, egzekucja i ucieczka do Monteriggioni.
+  title: What next after the film?
+  lead: Assassin’s Creed II begins where Lineage ends — Florence, 1476, an execution and an escape to Monteriggioni.
   href: /assassins-creed-2/
-  label: Zobacz Assassin’s Creed II
+  label: See Assassin’s Creed II
 ---

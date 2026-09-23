@@ -156,7 +156,7 @@ const kluczeArtu = ['hero', ...eras.map((era) => era.id)];
     drukowane.includes('link-list#numeracja-serii') && (
       <LinkList
         items={numeracja.map((czesc) => ({ href: czesc.href, title: czesc.title, meta: czesc.year }))}
-        title="Seria po kolei"
+        title="The series in order"
         titleId="numeracja-tytul"
       />
     )
@@ -164,7 +164,7 @@ const kluczeArtu = ['hero', ...eras.map((era) => era.id)];
 
   {
     drukowane.includes('gallery') && (
-      <Gallery items={galeria} title="Pięć epok w kadrze" titleId="galeria-tytul" lead="Materiał wydawcy ze stron gier w Steamie." />
+      <Gallery items={galeria} title="Five eras on screen" titleId="galeria-tytul" lead="Publisher material from the games’ Steam pages." />
     )
   }
 

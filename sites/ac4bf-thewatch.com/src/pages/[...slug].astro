@@ -91,7 +91,7 @@ if (pominiete.length) {
  */
 const pokrewne = (strona.related ?? []).map((url) => {
   const cel = getPage(url);
-  return { href: url, title: cel.h1, meta: cel.type === 'game' ? 'Gra' : 'Tekst' };
+  return { href: url, title: cel.h1, meta: cel.type === 'game' ? 'Game' : 'Article' };
 });
 
 /** Taśmy z pliku treści, dopasowywane do wystąpień po `role`. */
@@ -462,9 +462,9 @@ const kluczeArtu = [
             title={t.title}
             titleId={b.role ? `dokad-${b.role}-tytul` : 'dokad-tytul'}
             lead={t.lead}
-            trackLabel="Sąsiednie części, przewijane poziomo"
-            prevLabel="Poprzednie karty"
-            nextLabel="Następne karty"
+            trackLabel="Neighboring games, scrolling horizontally"
+            prevLabel="Previous cards"
+            nextLabel="Next cards"
           >
             <Icon slot="ikona-wstecz" name="strzalka-w-lewo" size={20} />
             <Icon slot="ikona-dalej" name="strzalka-w-prawo" size={20} />

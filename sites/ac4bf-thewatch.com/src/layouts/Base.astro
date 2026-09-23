@@ -45,7 +45,7 @@ const breadcrumbList = zListaOkruszkow
 ---
 
 <!doctype html>
-<html lang="pl">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -57,15 +57,15 @@ const breadcrumbList = zListaOkruszkow
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:locale" content="pl_PL" />
+    <meta property="og:locale" content="en_US" />
     <meta name="generator" content={Astro.generator} />
     {breadcrumbList && <script is:inline type="application/ld+json" set:html={breadcrumbList} />}
   </head>
   <body class={zeSkala ? undefined : 'bez-skali'}>
-    <a class="skip-link t-button" href="#tresc">Przejdź do treści</a>
+    <a class="skip-link t-button" href="#tresc">Skip to content</a>
     {zeSkala && <DescentRail />}
     <SiteHeader />
-    <Breadcrumbs trail={okruszki} navLabel="Okruszki" />
+    <Breadcrumbs trail={okruszki} navLabel="Breadcrumbs" />
     <main id="tresc">
       <slot />
     </main>

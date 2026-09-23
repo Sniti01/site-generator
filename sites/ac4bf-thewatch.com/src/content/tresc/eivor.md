@@ -2,173 +2,182 @@
 url: /assassins-creed-valhalla/eivor/
 art: assassins-creed-valhalla
 lead: >-
-  Wiking, który wyprowadza klan Kruka z Norwegii za Morze Północne
-  i zakłada w Mercji Kruczą Przystań. Sojusznik Ukrytych, nie asasyn —
-  jak Edward Kenway w Black Flag; płeć bohatera wybiera gracz.
+  A Viking who leads the Raven Clan out of Norway across the North Sea
+  and founds Ravensthorpe in Mercia. An ally of the Hidden Ones, not an
+  Assassin — like Edward Kenway in Black Flag; the player chooses the
+  hero’s gender.
 primary:
   href: '#kim-jest'
-  label: Kim jest Eivor
+  label: Who is Eivor
 secondary:
   href: /assassins-creed-valhalla/
-  label: Strona Valhalli
+  label: The Valhalla page
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#kim-jest-tytul'
-      title: Kim jest Eivor
+      title: Who is Eivor
     - href: '#norwegia-i-kjotve-tytul'
-      title: Norwegia i Kjotve
+      title: Norway and Kjotve
     - href: '#anglia-i-osada-tytul'
-      title: Anglia i osada
+      title: England and the settlement
     - href: '#ukryci-i-basim-tytul'
-      title: Ukryci i Basim
+      title: The Hidden Ones and Basim
     - href: '#eivor-w-innych-grach-tytul'
-      title: Eivor poza podstawką
+      title: Eivor beyond the base game
     - href: '#galeria-tytul'
-      title: Kadry
+      title: Gallery
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 rows:
   - id: kim-jest
-    year: IX wiek
-    title: Kim jest Eivor — wiking z klanu Kruka
-    meta: Norwegia · Wilcza Paszcza · Bruun albo Stenspil
+    year: 9th century
+    title: Who is Eivor — a Viking of the Raven Clan
+    meta: Norway · Wolf-Kissed · Bruun or Stenspil
     art: assassins-creed-valhalla-k01
     flip: false
     band: false
     body:
       - >-
-        Eivor to bohater Assassin’s Creed Valhalla z 2020 roku: wiking
-        z Norwegii, który prowadzi klan Kruka za Morze Północne po nowy dom
-        w Anglii IX wieku. Pełne imię brzmi Eivor Varinsdottir, przydomek —
-        Wilcza Paszcza, po angielsku Wolf-Kissed, po niemiecku Wolfsmal.
-        Asasynem nie jest; Gry-Online porównuje go do Edwarda Kenwaya
-        z Black Flag — sojusznik bractwa, nie jego członek. Towarzyszy mu
-        kruk Sýnin.
+        Eivor is the hero of Assassin’s Creed Valhalla from 2020: a Viking
+        from Norway who leads the Raven Clan across the North Sea to a new
+        home in 9th-century England. The full name is Eivor Varinsdottir;
+        the epithet is Wolf-Kissed, in German Wolfsmal. Eivor is not an
+        Assassin but, like Edward Kenway in Black Flag, an ally of the
+        Brotherhood rather than a member. The raven Sýnin keeps Eivor
+        company.
       - >-
-        Płeć wybiera się na starcie i zmienia w każdej chwili
-        w ustawieniach — w Odyssey wybór był jeden na całą grę. Trzecia opcja
-        zostawia decyzję Animusowi, który w części scen sam przełącza wersje
-        — Gry-Online nazywa ją kanoniczną. Historia i romanse są te same;
-        różni się głos — Magnus Bruun albo Cecilie Stenspil, po polsku napisy. Imię
-        jest w językach nordyckich żeńskie; doniesienia z 2020 roku, że Eivor
-        miała być tylko kobietą, scenarzysta Darby McDevitt nazwał
-        nieścisłymi — obie wersje planowano od początku.
+        You choose the gender at the start and can change it at any time in
+        the settings — in Odyssey the choice was made once for the whole
+        game. A third option leaves the decision to the Animus, which
+        switches versions itself in some scenes — this one is regarded as
+        canonical. The story and romances are the same; the voice differs —
+        Magnus Bruun or Cecilie Stenspil. In the Norse languages the name is
+        feminine; writer Darby McDevitt called 2020 reports that Eivor was
+        meant to be a woman only inaccurate — both versions were planned
+        from the start.
   - id: norwegia-i-kjotve
     year: 855–872
-    title: Norwegia — Kjotve, Styrbjorn i brat Sigurd
-    meta: Kjotve Okrutny · król Styrbjorn · Sigurd · król Harald
+    title: Norway — Kjotve, Styrbjorn and brother Sigurd
+    meta: Kjotve the Cruel · King Styrbjorn · Sigurd · King Harald
     art: assassins-creed-valhalla-k00
     flip: true
     band: true
     body:
       - >-
-        Trzech mężczyzn ustawia norweski prolog. Kjotve Okrutny to morderca
-        rodziców Eivora z 855 roku — dług, którego klan Kruka nie ściąga przez
-        siedemnaście lat, bo jego król Styrbjorn, przybrany ojciec sieroty, nie ma
-        na taką wojnę ludzi. Sigurd, rodzony syn Styrbjorna i przybrany brat,
-        pływa tymczasem na wyprawy; Eivor pilnuje domu.
+        Three men set up the Norwegian prologue. Kjotve the Cruel murdered
+        Eivor’s parents in 855 — a debt the Raven Clan leaves uncollected
+        for seventeen years, because its king Styrbjorn, the orphan’s
+        adoptive father, lacks the men for such a war. Sigurd, Styrbjorn’s
+        own son and Eivor’s adoptive brother, meanwhile sails off on
+        expeditions; Eivor minds the home.
       - >-
-        Rok 872 odwraca układ. Nieudany napad na Kjotvego daje Eivorowi topór ojca
-        i pierwszą wizję z Odynem; Sigurd przywozi z wyprawy dwóch Ukrytych, Basima
-        i Hythama, a z nimi ukryte ostrze. Twierdza Kjotvego pada dopiero
-        z posiłkami króla Haralda — który zaraz po zwycięstwie ogłasza, że Norwegia
-        ma być jedna i jego. Styrbjorn przyjmuje to hołdem; Sigurd, pozbawiony
-        w ten sposób następstwa, wybiera Anglię.
+        The year 872 turns things around. A failed raid on Kjotve wins
+        Eivor the father’s axe and a first vision of Odin; Sigurd brings back
+        two Hidden Ones from his expedition, Basim and Hytham, and with them
+        the hidden blade. Kjotve’s fortress falls only with the help of King
+        Harald’s reinforcements — and right after the victory Harald declares
+        that Norway is to be one kingdom, and his. Styrbjorn accepts this
+        and pays homage; Sigurd, thereby stripped of the succession, chooses
+        England.
   - id: anglia-i-osada
     year: 872–878
-    title: Anglia — Krucza Przystań i sojusze w hrabstwach
-    meta: Mercja · Krucza Przystań · synowie Ragnara · Ælfred z Wesseksu
+    title: England — Ravensthorpe and alliances across the shires
+    meta: Mercia · Ravensthorpe · the sons of Ragnar · Ælfred of Wessex
     art: assassins-creed-valhalla-k02
     flip: false
     band: false
     body:
       - >-
-        Krucza Przystań zaczyna się od porzuconego obozu wikingów w Mercji
-        i kilkunastu ludzi, których Sigurd i Eivor przywieźli z Norwegii. Na tej
-        osadzie stoi cała angielska część gry, lata 872–878: Eivor ją rozbudowuje,
-        a surowce zwozi z najazdów na nadrzeczne wioski i klasztory. Sojusze idą
-        hrabstwo po hrabstwie — z Sasami tak samo jak z wikingami, także z synami
-        Ragnara Lothbroka.
+        Ravensthorpe begins as an abandoned Viking camp in Mercia and a dozen
+        or so people whom Sigurd and Eivor brought over from Norway. The
+        whole English part of the game, the years 872–878, rests on this
+        settlement: Eivor expands it and hauls in resources from raids on
+        riverside villages and monasteries. Alliances are made shire by
+        shire — with Saxons as well as Vikings, including the sons of Ragnar
+        Lothbrok.
       - >-
-        Po drugiej stronie stoi Ælfred z Wesseksu, który ma się
-        za prawowitego władcę Anglii i potępia pogan. Część sporów załatwia
-        dyplomacja, a wybory w rozmowach decydują, kto rządzi w regionie.
-        Mikstura wieszczki Valki otwiera wizje w Asgardzie i Jotunheimie —
-        wątek, który rozwija Świt Ragnaröku.
+        On the other side stands Ælfred of Wessex, who sees himself as the
+        rightful ruler of England and condemns the pagans. Some disputes are
+        settled by diplomacy, and choices in conversations decide who rules
+        a region. The seer Valka’s potion opens visions of Asgard and
+        Jotunheim — a thread that Dawn of Ragnarök develops.
   - id: ukryci-i-basim
-    year: Ukryci
-    title: Ukryci, Zakon Starożytnych i Basim
-    meta: Basim · Hytham · ukryte ostrze · Zakon Starożytnych · Mirage
+    year: Hidden Ones
+    title: The Hidden Ones, the Order of the Ancients and Basim
+    meta: Basim · Hytham · hidden blade · Order of the Ancients · Mirage
     art: assassins-creed-valhalla-k03
     flip: true
     band: false
     body:
       - >-
-        Zakon Starożytnych — poprzednik templariuszy — ma w Anglii mocne wpływy;
-        kogo szukać, Eivor dowiaduje się od Basima i Hythama. Tropem są listy
-        z podpisem „Ubogi Towarzysz w Chrystusie”: z nich wychodzą poszlaki,
-        a z poszlak nazwiska do usunięcia. Eivor bierze się do tego, asasynem
-        nie zostając: Ukryci są sojusznikiem, nie własnym bractwem.
+        The Order of the Ancients — forerunner of the Templars — has strong
+        influence in England; Eivor learns whom to look for from Basim and
+        Hytham. The trail runs through letters signed “A Poor Fellow-Soldier
+        of Christ”: they yield clues, and the clues yield names to be
+        removed. Eivor takes this on without becoming an Assassin: the
+        Hidden Ones are an ally, not Eivor’s own brotherhood.
       - >-
-        Ukryte ostrze wraca do formy z pierwszych części: zabija większość
-        wrogów jednym ciosem. Eivor nosi je na widoku, na wierzchu
-        przedramienia. Basim to ten sam człowiek, o którego
-        początkach w Bagdadzie lat 861–870 opowiada Mirage z 2023 roku.
-        Jak ta znajomość się kończy, mówi dopiero finał Valhalli.
+        The hidden blade returns to its form from the early games: it kills
+        most enemies in one strike. Eivor wears it in plain sight, on top of
+        the forearm. Basim is the same man whose beginnings in Baghdad in
+        861–870 are told in Mirage from 2023. How this acquaintance ends is
+        revealed only in Valhalla’s finale.
   - id: eivor-w-innych-grach
     year: 2021–2022
-    title: Eivor poza podstawką — Kasandra, Odyn, Ostatni rozdział
-    meta: Opowieści ponad czasem · Świt Ragnaröku · Ostatni rozdział · Fortnite · Magic
+    title: Eivor beyond the base game — Kassandra, Odin, The Last Chapter
+    meta: Crossover Stories · Dawn of Ragnarök · The Last Chapter · Fortnite · Magic
     art: dawn-of-ragnarok
     flip: false
     band: true
     body:
       - >-
-        14 grudnia 2021 roku Odyssey i Valhalla dostały za darmo Opowieści
-        ponad czasem: w Valhalli to misja Pamiętne spotkanie na Isle of Skye,
-        gdzie Eivor spotyka Kasandrę. W Świcie Ragnaröku z 10 marca 2022
-        roku Eivor wchodzi w rolę Odyna. Ostatni rozdział, darmowy dodatek
-        z 30 listopada 2022 roku, domyka wątki i żegna Eivora; jest w nim
-        Roshan, mentorka Basima z Mirage.
+        On December 14, 2021, Odyssey and Valhalla received Crossover
+        Stories for free: in Valhalla it is the mission A Fated Encounter on
+        the Isle of Skye, where Eivor meets Kassandra. In Dawn of Ragnarök,
+        released on March 10, 2022, Eivor takes on the role of Odin. The
+        Last Chapter, a free DLC from November 30, 2022, ties up the threads
+        and bids Eivor farewell; it features Roshan, Basim’s mentor from
+        Mirage.
       - >-
-        Poza serią: w kwietniu 2022 roku stroje Ezia i Eivora weszły
-        do Fortnite. W zestawie Assassin’s Creed do Magic: The Gathering
-        Eivor jest kartą Wolf-Kissed, w niemieckim druku Eivor Wolfsmal.
+        Outside the series: in April 2022, Ezio and Eivor outfits arrived
+        in Fortnite. In the Assassin’s Creed set for Magic: The Gathering,
+        Eivor is the Wolf-Kissed card, Eivor Wolfsmal in the German
+        printing.
 gallery:
-  title: Kadry
-  lead: Materiał wydawcy ze stron gier w Steamie.
+  title: Gallery
+  lead: Publisher material from the games’ Steam pages.
   items:
     - art: assassins-creed-valhalla
-      alt: Assassin’s Creed Valhalla — kluczowy art, Eivor z krukiem i dwoma toporami
-      caption: Eivor z Sýninem na ramieniu i klanem na brzegu.
+      alt: Assassin’s Creed Valhalla — key art, Eivor with a raven and two axes
+      caption: Eivor with Sýnin on the shoulder and the clan on the shore.
     - art: dawn-of-ragnarok
-      alt: 'Assassin’s Creed Valhalla: Dawn of Ragnarök — kluczowy art, Svartalfheim'
-      caption: Świt Ragnaröku, w którym Eivor gra Odyna.
+      alt: 'Assassin’s Creed Valhalla: Dawn of Ragnarök — key art, Svartalfheim'
+      caption: Dawn of Ragnarök, in which Eivor plays Odin.
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Eivor to dobry powód, żeby zagrać w Valhallę, i słaby, żeby od niej
-      zaczynać serię: postać chwalono nawet w mieszanej recenzji Rock Paper
-      Shotgun, która uznała grę za zły punkt wejścia dla kogoś, kto nie zna
-      żadnej części.
+      Eivor is a good reason to play Valhalla and a poor one to start the
+      series with it: the character was praised even in Rock Paper
+      Shotgun’s mixed review, which called the game a bad entry point for
+      someone who does not know any of the other games.
     - >-
-      Kto chce wikinga z osadą i mitologią w tle, bierze Valhallę. Kto chce
-      asasyna z kapturem i ostrzem, dostanie go raczej w dwójce albo
-      w Mirage.
+      If you want a Viking with a settlement and mythology in the
+      background, take Valhalla. If you want a hooded Assassin with a blade,
+      you are more likely to find one in II or in Mirage.
 related:
-  title: Powiązane strony
+  title: Related pages
 cta:
-  title: Cała Valhalla w jednym miejscu
-  lead: Anglia lat 872–878, osada, dodatki i wydania — strona gry, z której pochodzi Eivor.
+  title: All of Valhalla in one place
+  lead: England in 872–878, the settlement, expansions and editions — the page of the game Eivor comes from.
   href: /assassins-creed-valhalla/
-  label: Zobacz Assassin’s Creed Valhalla
+  label: See Assassin’s Creed Valhalla
 ---

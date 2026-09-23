@@ -1,327 +1,335 @@
 ---
-url: /poradniki/od-czego-zaczac/
+url: /guides/where-to-start/
 art: assassins-creed-mirage-k00
 lead: >-
-  Serię da się ułożyć na dwa sposoby: według premier, od jedynki z 2007 roku
-  po Shadows z 2025, albo według epok, od Grecji V wieku p.n.e. po Rosję
-  roku 1918. Trzy wejścia do serii zamiast jednego: klasyka Ezia, świat
-  Black Flag albo RPG od Origins.
+  The series can be arranged in two ways: by release, from the first game
+  in 2007 to Shadows in 2025, or by era, from Greece in the 5th century BCE
+  to Russia in 1918. Three ways into the series instead of one: the Ezio
+  classics, the world of Black Flag or the RPGs from Origins on.
 primary:
   href: '#trzy-wejscia'
-  label: Trzy wejścia
+  label: Three ways in
 secondary:
-  href: /poradniki/
-  label: Wszystkie poradniki
+  href: /guides/
+  label: All guides
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: dwie-kolejnosci
     year: 2007–2025
-    title: Dwie kolejności, które się nie pokrywają
-    meta: Czternaście części głównej linii · osiemnaście lat premier
+    title: Two orders that do not line up
+    meta: Fourteen main-series games · eighteen years of releases
     art: assassins-creed-odyssey-k06
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed ma dwie osie czasu. Pierwsza to kolejność premier:
-        od pierwszej części z 2007 roku do Shadows z 2025 roku, czternaście
-        gier głównej linii, a obok nich dodatki, remastery i odsłony poboczne.
-        Druga to chronologia epok, w których toczy się akcja: od starożytnej
-        Grecji w Odyssey, przez Egipt, Bagdad i Anglię wikingów, po Londyn
-        rewolucji przemysłowej i Rosję roku 1918 w ostatniej części Chronicles.
-        Te dwie osie prawie nigdy się nie pokrywają. Origins z 2017 roku
-        opowiada o początkach zakonu, a Odyssey rok później cofa się jeszcze
-        dalej, o blisko cztery wieki przed Origins.
+        Assassin’s Creed has two timelines. The first is the release order:
+        from the first game in 2007 to Shadows in 2025, fourteen main-series
+        games, and alongside them DLC, remasters and spin-offs.
+        The second is the chronology of the eras in which the action is set:
+        from ancient Greece in Odyssey, through Egypt, Baghdad and Viking
+        England, to London of the Industrial Revolution and Russia in 1918 in
+        the last Chronicles game. The two timelines almost never line up.
+        Origins from 2017 tells of the beginnings of the order, and Odyssey a
+        year later goes back even further, nearly four centuries before
+        Origins.
       - >-
-        Która oś jest ważniejsza? Historyczne wątki każdej gry są zamknięte
-        w swojej epoce i nie wymagają znajomości poprzednich części — Ezia
-        i Altaïra dzieli prawie trzysta lat, a Eivor nie spotka Bayeka. Wątek
-        współczesny, spajający serię, jest opowiadany w kolejności premier:
-        najpierw Desmond Miles, potem pracownik Abstergo, Layla Hassan i Basim.
-        Kto chce zrozumieć całość, gra więc w kolejności wydania. Kto chce
-        po prostu dobrej gry w epoce, która go ciągnie, wybiera epokę
-        i nie traci niczego istotnego.
+        Which timeline matters more? The historical story of each game is
+        closed within its era and does not require knowledge of earlier
+        games — Ezio and Altaïr are almost three hundred years apart, and
+        Eivor will never meet Bayek. The modern-day story that ties the
+        series together is told in release order: first Desmond Miles, then
+        an Abstergo employee, Layla Hassan and Basim. So anyone who wants to
+        understand the whole plays in release order. Anyone who just wants a
+        good game in an era that draws them picks the era and loses nothing
+        essential.
       - >-
-        Ta strona daje obie mapy naraz. Najpierw trzy sprawdzone wejścia
-        do serii, potem cztery grupy gier według epok i lat premier, dalej
-        pełna chronologia wydarzeń od najstarszej, wątek współczesny osobno
-        i na końcu lista tego, co można pominąć. Daty premier podane są dla
-        pierwszego wydania; wersje na PC i remastery wychodziły często rok
-        lub kilka lat później.
+        This page gives both maps at once. First three proven ways into the
+        series, then four groups of games by era and release year, then the
+        full chronology of events from the oldest, the modern-day story
+        separately and, at the end, a list of what can be skipped. Release
+        dates are given for the first release; PC versions and remasters
+        often came out a year or several years later.
   - id: trzy-wejscia
-    year: 3 wejścia
-    title: Od czego zacząć — trzy odpowiedzi zamiast jednej
-    meta: Klasyka Ezia · świat Black Flag · RPG od Origins
+    year: 3 ways in
+    title: Where to start — three answers instead of one
+    meta: The Ezio classics · the world of Black Flag · the RPGs from Origins on
     art: wlochy
     flip: true
     band: true
     body:
       - >-
-        Klasyczne wejście to Assassin’s Creed II z 2009 roku. Florencja,
-        Wenecja, Forlì i San Gimignano końca XV wieku, Ezio Auditore
-        i wszystko, z czego seria zrobiła swój znak: dachy, tłum, ukryte
-        ostrze, własna posiadłość. Historia Ezia ciągnie się przez
-        Brotherhood i Revelations, a wszystkie trzy części wyszły razem jako
-        The Ezio Collection w 2016 roku. Pierwsza część z 2007 roku jest
-        źródłem tego wszystkiego, ale powtarzalna w strukturze misji — lepiej
-        wrócić do niej po dwójce niż zaczynać od niej i zniechęcić się.
+        The classic way in is Assassin’s Creed II from 2009. Florence,
+        Venice, Forlì and San Gimignano at the end of the 15th century, Ezio
+        Auditore and everything the series made its trademark: rooftops,
+        crowds, the hidden blade, an estate of your own. Ezio’s story
+        continues through Brotherhood and Revelations, and all three games
+        came out together as The Ezio Collection in 2016. The first game
+        from 2007 is the source of all this, but its mission structure is
+        repetitive — better to go back to it after II than to start with it
+        and get discouraged.
       - >-
-        Wejście przez świat to Assassin’s Creed IV: Black Flag z 2013 roku.
-        Karaiby lat 1715–1722, własny okręt, otwarte morze i Edward Kenway,
-        który przez pół gry nie jest asasynem. Wątek współczesny zrywa tu
-        z historią Desmonda i zaczyna nową formę, więc zaczynając od Black
-        Flag, nie wchodzi się w środek cudzej opowieści. W 2026 roku Ubisoft
-        zapowiedział remake tej części pod nazwą Black Flag Resynced, zrobiony
-        na silniku Shadows.
+        The way in through the world is Assassin’s Creed IV: Black Flag from
+        2013. The Caribbean of 1715–1722, your own ship, the open sea and
+        Edward Kenway, who is not an Assassin for half the game. The
+        modern-day story breaks with Desmond’s story here and starts a new
+        form, so if you start with Black Flag, you do not walk into the middle
+        of someone else’s story. In 2026 Ubisoft announced a remake of this
+        game under the name Black Flag Resynced, built on the Shadows engine.
       - >-
-        Wejście przez RPG to Assassin’s Creed Origins z 2017 roku: Egipt lat
-        49–44 p.n.e., Bayek i początek zakonu, który w grze nazywa się
-        jeszcze Ukrytymi. Origins przebudowało serię — walka, orzeł do zwiadu,
-        wspinaczka po wszystkim, rozbudowany rozwój postaci — i tę formę ciągną
-        Odyssey z 2018 roku i Valhalla z 2020 roku. Kto woli krótszą grę
-        w starym stylu, ale z nową oprawą, ma Mirage z 2023 roku: Bagdad lat
-        861–870 i Basim, znany z Valhalli, w opowieści o swoich początkach.
+        The way in through the RPGs is Assassin’s Creed Origins from 2017:
+        Egypt in 49–44 BCE, Bayek and the beginning of the order, which in the
+        game is still called the Hidden Ones. Origins rebuilt the series —
+        combat, an eagle for scouting, climbing on everything, extensive
+        character progression — and Odyssey from 2018 and Valhalla from 2020
+        carry that form on. If you prefer a shorter game in the old style but
+        with new visuals, there is Mirage from 2023: Baghdad in 861–870 and
+        Basim, known from Valhalla, in a story about his beginnings.
   - id: altair-i-ezio
     year: 1191–1512
-    title: Altaïr i Ezio — Ziemia Święta, Włochy, Konstantynopol
+    title: Altaïr and Ezio — the Holy Land, Italy, Constantinople
     meta: Assassin’s Creed 2007 · II 2009 · Brotherhood 2010 · Revelations 2011
     art: jerozolima
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed z 2007 roku (na PC rok później) osadza gracza w roku
-        1191, w czasie trzeciej krucjaty. Altaïr Ibn-La’Ahad traci rangę
-        mistrza i odzyskuje ją, polując na cele w Damaszku, Akce i Jerozolimie.
-        Tu zaczyna się też wątek współczesny: barman Desmond Miles zostaje
-        porwany przez Abstergo i wsadzony do Animusa, maszyny czytającej pamięć
-        przodków. Bloodlines na PlayStation Portable z listopada 2009 roku
-        prowadzi Altaïra dalej, na Cypr, gdzie rozprawia się z resztą
-        templariuszy — to bezpośrednia kontynuacja, ale poboczna.
+        Assassin’s Creed from 2007 (a year later on PC) places the player in
+        1191, during the Third Crusade. Altaïr Ibn-La’Ahad loses his rank of
+        master and wins it back by hunting targets in Damascus, Acre and
+        Jerusalem. This is also where the modern-day story begins: bartender
+        Desmond Miles is kidnapped by Abstergo and put into the Animus, a
+        machine that reads the memory of ancestors. Bloodlines on the
+        PlayStation Portable from November 2009 takes Altaïr further, to
+        Cyprus, where he deals with the remaining Templars — a direct
+        continuation, but a side one.
       - >-
-        Assassin’s Creed II z 2009 roku (PC 2010) przenosi się do Włoch lat
-        1476–1499. Syn florenckiego bankiera zostaje asasynem po tym, jak
-        rodzina ginie w spisku, i przez dwadzieścia lat renesansu rozplątuje,
-        kto za tym stał. Discovery na Nintendo DS z tego samego listopada 2009
-        roku toczy się w trakcie wydarzeń dwójki: Ezio jedzie do Hiszpanii
-        ratować Krzysztofa Kolumba. Brotherhood z 2010 roku (PC 2011) to
-        bezpośredni ciąg dalszy: po zniszczeniu Monteriggioni akcja przenosi
-        się do Rzymu lat 1499–1507, przeciwnikiem jest Cezar Borgia, a Ezio
-        po raz pierwszy rekrutuje i wysyła do walki własnych asasynów.
+        Assassin’s Creed II from 2009 (PC 2010) moves to Italy in 1476–1499.
+        The son of a Florentine banker becomes an Assassin after his family
+        is killed in a conspiracy, and over twenty years of the Renaissance
+        he untangles who was behind it. Discovery on the Nintendo DS, from
+        the same November 2009, takes place during the events of II: Ezio
+        travels to Spain to rescue Christopher Columbus. Brotherhood from
+        2010 (PC 2011) is a direct sequel: after the destruction of
+        Monteriggioni the action moves to Rome in 1499–1507, the antagonist
+        is Cesare Borgia, and for the first time Ezio recruits his own
+        Assassins and sends them into battle.
       - >-
-        Revelations z 2011 roku zamyka trylogię w Konstantynopolu lat
-        1511–1512. Starszy Ezio szuka tam artefaktów Altaïra i przeżywa jego
-        ukryte wspomnienia; do arsenału dochodzą ostrze z hakiem i bomby.
-        Grać najlepiej ciągiem: II, Brotherhood, Revelations — to jedna
-        opowieść w trzech częściach, a pierwszą część można dołożyć przed nią
-        albo po niej. Bloodlines i Discovery są dla tych, którzy chcą
-        wszystkiego; fabuła głównej linii obejdzie się bez nich.
+        Revelations from 2011 closes the trilogy in Constantinople in
+        1511–1512. An older Ezio searches there for Altaïr’s artifacts and
+        relives his hidden memories; the hookblade and bombs join the
+        arsenal. It is best played back to back: II, Brotherhood,
+        Revelations — one story in three parts, and the first game can be
+        added before it or after it. Bloodlines and Discovery are for those
+        who want everything; the main-series plot does fine without them.
   - id: nowy-swiat
     year: 1715–1783
-    title: Nowy Świat i morza — kolonie, Karaiby, Atlantyk
+    title: The New World and the seas — the colonies, the Caribbean, the Atlantic
     meta: III 2012 · Black Flag 2013 · Rogue 2014 · Liberation, Freedom Cry, Pirates
     art: karaiby
     flip: true
     band: false
     body:
       - >-
-        Assassin’s Creed III z 2012 roku toczy się w latach 1754–1783,
-        w koloniach brytyjskich podczas wojny o niepodległość Stanów
-        Zjednoczonych. Bohaterem jest Ratonhnhaké:ton, przez kolonistów zwany
-        Connorem, pół Mohawk, pół Anglik; miasta to Boston i Nowy Jork, między
-        nimi pogranicze, a największą nowością są bitwy morskie, które staną
-        się fundamentem następnej części. Tu kończy się historia Desmonda.
-        W 2019 roku wyszła wersja Remastered. Liberation, pierwotnie na
-        PlayStation Vita z 2012 roku, a w wersji HD od stycznia 2014, dzieje
-        się w Nowym Orleanie lat 1765–1780; bohaterką jest Aveline de Grandpré.
+        Assassin’s Creed III from 2012 is set in 1754–1783, in the British
+        colonies during the American Revolutionary War. The protagonist is
+        Ratonhnhaké:ton, called Connor by the colonists, half Mohawk, half
+        English; the cities are Boston and New York with the frontier
+        between them, and the biggest novelty is naval battles, which will
+        become the foundation of the next game. This is where Desmond’s
+        story ends. A Remastered version came out in 2019. Liberation,
+        originally on the PlayStation Vita in 2012 and in an HD version since
+        January 2014, is set in New Orleans in 1765–1780; its protagonist is
+        Aveline de Grandpré.
       - >-
-        Assassin’s Creed IV: Black Flag z 2013 roku cofa się do lat
-        1715–1722. Edward Kenway, dziadek Connora, jest walijskim korsarzem,
-        który wchodzi w spór asasynów z templariuszami dla pieniędzy;
-        Hawana, Nassau i Kingston są przystankami między rejsami. Freedom Cry
-        to dodatek do Black Flag: dziewięć misji,
-        w których gra się Adéwalé, byłym kwatermistrzem Edwarda, walczącym
-        z handlarzami niewolników w okolicach Saint-Domingue, dzisiejszego
-        Haiti.
+        Assassin’s Creed IV: Black Flag from 2013 goes back to 1715–1722.
+        Edward Kenway, Connor’s grandfather, is a Welsh privateer who enters
+        the conflict between the Assassins and the Templars for money;
+        Havana, Nassau and Kingston are stops between voyages. Freedom Cry
+        is an expansion for Black Flag: nine missions in which you play as
+        Adéwalé, Edward’s former quartermaster, fighting slave traders
+        around Saint-Domingue, present-day Haiti.
       - >-
-        Assassin’s Creed Rogue z 2014 roku (PC 2015, Remastered 2018) to
-        jedyna gra serii, w której głównym bohaterem jest templariusz. Shay
-        Cormac, były asasyn, zmienia stronę i poluje na dawnych sojuszników
-        w latach 1752–1760, w czasie wojny siedmioletniej: Nowy Jork, dolina
-        rzeki i mroźny północny Atlantyk. Rogue domyka wątki zaczęte w trójce
-        i w Black Flag. Pirates z grudnia 2013 roku, gra na urządzenia
-        przenośne, bierze z Black Flag tylko bitwy morskie: kapitan Alonzo
-        Batilla nie łączy się fabularnie z żadną inną częścią.
+        Assassin’s Creed Rogue from 2014 (PC 2015, Remastered 2018) is the
+        only game in the series whose protagonist is a Templar. Shay
+        Cormac, a former Assassin, switches sides and hunts his former allies
+        in 1752–1760, during the Seven Years’ War: New York, the River Valley
+        and the freezing North Atlantic. Rogue closes threads begun in III
+        and in Black Flag. Pirates from December 2013, a game for mobile
+        devices, takes only the naval battles from Black Flag: Captain Alonzo
+        Batilla has no story connection to any other game.
       - >-
-        Kolejność epok w tej grupie jest odwrotna do premier: Black Flag
-        (1715), Rogue (1752), trójka (1754), Liberation (1765). Za pierwszym
-        razem lepiej trzymać się premier. Black Flag stoi samodzielnie
-        i wchodzi się w niego z marszu; trójka i Rogue czytają się parą,
-        bo Rogue domyka historię zaczętą w trójce i w Black Flag; Liberation
-        i Freedom Cry to uzupełnienia dla tych, którym epoka się spodobała.
+        The order of eras in this group is the reverse of the releases: Black
+        Flag (1715), Rogue (1752), III (1754), Liberation (1765). The first
+        time around it is better to stick to release order. Black Flag stands
+        on its own and you can jump straight into it; III and Rogue read as a
+        pair, because Rogue closes the story begun in III and in Black Flag;
+        Liberation and Freedom Cry are extras for those who liked the era.
   - id: rewolucje
     year: 1789–1868
-    title: Rewolucje — Paryż, Londyn i trylogia Chronicles
+    title: Revolutions — Paris, London and the Chronicles trilogy
     meta: Unity 2014 · Syndicate 2015 · Chronicles 2015–2016
     art: londyn
     flip: false
     band: true
     body:
       - >-
-        Assassin’s Creed Unity z 2014 roku wyszło w tym samym roku co Rogue,
-        ale już tylko na nową generację konsol i PC. Paryż rewolucji
-        francuskiej, od 1789 do 1794 roku, odwzorowany w skali jeden
-        do jednego; bohaterem jest Arno Dorian. Parkour po raz pierwszy
-        prowadzi płynnie także w dół budynków, a walka przebudowana jest
-        pod parady w odpowiednim momencie. Dodatek Martwi królowie wyprowadza
-        Arna z Paryża do Saint-Denis.
+        Assassin’s Creed Unity from 2014 came out in the same year as Rogue,
+        but only on the new console generation and PC. Paris of the French
+        Revolution, from 1789 to 1794, recreated at one-to-one scale; the
+        protagonist is Arno Dorian. For the first time parkour also flows
+        smoothly down buildings, and combat is rebuilt around well-timed
+        parries. The Dead Kings expansion takes Arno out of Paris to
+        Saint-Denis.
       - >-
-        Assassin’s Creed Syndicate z 2015 roku to wiktoriański Londyn roku
-        1868 w środku rewolucji przemysłowej. Bliźnięta Jacob i Evie Frye
-        przejmują miasto dzielnica po dzielnicy, gang po gangu; do serii
-        wchodzą pociągi, powozy, rewolwery i wyrzutnia liny, która pierwszy
-        raz zmienia geometrię wspinaczki. Unity i Syndicate są fabularnie
-        samodzielne — można zagrać w jedno bez drugiego i bez wcześniejszych
-        części.
+        Assassin’s Creed Syndicate from 2015 is Victorian London in 1868, in
+        the middle of the Industrial Revolution. The twins Jacob and Evie
+        Frye take over the city district by district, gang by gang;
+        trains, carriages, revolvers and the rope launcher enter the series,
+        the last of which changes the geometry of climbing for the first
+        time. Unity and Syndicate are standalone in story terms — you can
+        play one without the other and without the earlier games.
       - >-
-        Chronicles to trylogia skradanek 2,5D, z boku, wydana w latach
-        2015–2016: Chiny lat 1526–1532 z Shao Jun, uczennicą Ezia; Indie roku
-        1841 z Arbaazem Mirem; Rosja roku 1918 z Nikołajem Orłowem. Trzy
-        części wyszły też razem jako Trilogy w 2016 roku. To inna forma gry
-        niż reszta serii i można ją pominąć w całości; Chiny są najciekawsze
-        dla tych, którzy chcą wiedzieć, co stało się po Revelations.
+        Chronicles is a trilogy of side-scrolling 2.5D stealth games,
+        released in 2015–2016: China in 1526–1532 with Shao Jun, Ezio’s
+        pupil; India in 1841 with Arbaaz Mir; Russia in 1918 with Nikolai
+        Orelov. The three games also came out together as Trilogy in 2016.
+        It is a different kind of game from the rest of the series and can be
+        skipped entirely; China is the most interesting for those who want
+        to know what happened after Revelations.
   - id: era-rpg
     year: 2017–2025
-    title: Era RPG i powrót do korzeni — Egipt, Grecja, Anglia, Bagdad, Japonia
+    title: The RPG era and a return to roots — Egypt, Greece, England, Baghdad, Japan
     meta: Origins 2017 · Odyssey 2018 · Valhalla 2020 · Mirage 2023 · Shadows 2025
     art: japonia
     flip: true
     band: false
     body:
       - >-
-        Assassin’s Creed Origins z października 2017 roku to Egipt lat
-        49–44 p.n.e. Bayek, medżaj, którego prywatna zemsta prowadzi
-        do założenia zakonu, nazywanego wtedy Ukrytymi. Gra zmieniła niemal
-        wszystko: orzeł do zwiadu, wspinaczka po każdej powierzchni, otwarta
-        walka z łukami i tarczami, rozbudowany rozwój postaci. Do wątku współczesnego
-        wchodzi Layla Hassan, była badaczka Abstergo, i zostaje w nim przez
-        dwie kolejne gry. Odyssey z października 2018 roku cofa się do Grecji
-        lat 431–422 p.n.e.: gracz wybiera Aleksiosa albo Kasandrę, spartańskich
-        najemników, dostaje własny okręt, wybory w dialogach i różne
-        zakończenia. Fabularnie to najwcześniejsza epoka całej serii.
+        Assassin’s Creed Origins from October 2017 is Egypt in 49–44 BCE.
+        Bayek, a Medjay whose personal revenge leads to the founding of the
+        order, then called the Hidden Ones. The game changed almost
+        everything: an eagle for scouting, climbing on any surface, open
+        combat with bows and shields, extensive character progression. Layla
+        Hassan, a former Abstergo researcher, enters the modern-day story
+        and stays in it for the next two games. Odyssey from October 2018
+        goes back to Greece in 431–422 BCE: the player chooses Alexios or
+        Kassandra, Spartan mercenaries, and gets their own ship, dialogue
+        choices and different endings. In story terms it is the earliest era
+        in the whole series.
       - >-
-        Assassin’s Creed Valhalla z listopada 2020 roku to Anglia lat 872–878
-        w czasie ekspansji wikingów. Eivor buduje osadę, zawiera sojusze
-        w kolejnych hrabstwach i najeżdża nadrzeczne wioski; w marcu 2022 roku
-        doszedł dodatek Świt Ragnaroku. Mirage z października 2023 roku zrywa
-        z elementami RPG i wraca do klasycznej formuły: gra o Basimie, mistrzu
-        asasynów z Valhalli, w Bagdadzie lat 861–870, z naciskiem na skradanie
-        i modelem śledztwa wziętym z pierwszej części.
+        Assassin’s Creed Valhalla from November 2020 is England in 872–878,
+        during the Viking expansion. Eivor builds a settlement, forges
+        alliances in shire after shire and raids riverside villages; in
+        March 2022 the Dawn of Ragnarök expansion arrived. Mirage from
+        October 2023 breaks with the RPG elements and returns to the classic
+        formula: a game about Basim, the master Assassin from Valhalla, in
+        Baghdad in 861–870, with an emphasis on stealth and an investigation
+        model taken from the first game.
       - >-
-        Assassin’s Creed Shadows z marca 2025 roku to Japonia roku 1579,
-        schyłek okresu Sengoku. Dwoje bohaterów o przeciwnych metodach:
-        shinobi Naoe, która żyje z cienia, i samuraj Yasuke, który cienia
-        nie potrzebuje; pory roku zmieniają nie tylko widok, ale i drogi
-        przejścia. Kto wchodzi w tę grupę, ma dwie dobre ścieżki: Origins,
-        Odyssey, Valhalla, Mirage w kolejności premier, żeby wątek Layli
-        i Basima układał się po kolei, albo Odyssey, Origins, Mirage, Valhalla
-        według epok. Shadows stoi osobno i nie wymaga żadnej z nich.
+        Assassin’s Creed Shadows from March 2025 is Japan in 1579, the
+        twilight of the Sengoku period. Two protagonists with opposite
+        methods: the shinobi Naoe, who lives by the shadows, and the samurai
+        Yasuke, who has no need for them; the seasons change not only the
+        view but also the routes through. Anyone entering this group has two
+        good paths: Origins, Odyssey, Valhalla, Mirage in release order, so
+        that the story of Layla and Basim unfolds in sequence, or Odyssey,
+        Origins, Mirage, Valhalla by era. Shadows stands apart and requires
+        none of them.
   - id: chronologia
-    year: Oś czasu
-    title: Chronologia wydarzeń — od najstarszej epoki do najnowszej
-    meta: Dwadzieścia jeden tytułów ułożonych według czasu akcji
+    year: Timeline
+    title: Chronology of events — from the oldest era to the newest
+    meta: Twenty-one titles arranged by when they are set
     art: assassins-creed-origins-k01
     flip: false
     band: false
     body:
       - >-
-        Odyssey, Grecja lat 431–422 p.n.e. Origins, Egipt lat 49–44 p.n.e.
-        Mirage, Bagdad lat 861–870. Valhalla, Anglia lat 872–878. Assassin’s
-        Creed, Ziemia Święta roku 1191, i Bloodlines, Cypr tego samego roku.
-        Assassin’s Creed II, Włochy lat 1476–1499, a w trakcie tych wydarzeń
-        Discovery w Hiszpanii. Brotherhood, Rzym lat 1499–1507. Revelations,
-        Konstantynopol lat 1511–1512. Chronicles: China, lata 1526–1532.
-        Shadows, Japonia roku 1579. Black Flag, Karaiby lat 1715–1722,
-        i po nim Freedom Cry. Rogue, Ameryka Północna lat 1752–1760.
-        Assassin’s Creed III, kolonie lat 1754–1783. Liberation, Nowy Orlean
-        lat 1765–1780. Unity, Paryż lat 1789–1794. Chronicles: India, rok
-        1841. Syndicate, Londyn roku 1868. Chronicles: Russia, rok 1918.
+        Odyssey, Greece in 431–422 BCE. Origins, Egypt in 49–44 BCE.
+        Mirage, Baghdad in 861–870. Valhalla, England in 872–878. Assassin’s
+        Creed, the Holy Land in 1191, and Bloodlines, Cyprus in the same year.
+        Assassin’s Creed II, Italy in 1476–1499, and during those events
+        Discovery in Spain. Brotherhood, Rome in 1499–1507. Revelations,
+        Constantinople in 1511–1512. Chronicles: China, 1526–1532.
+        Shadows, Japan in 1579. Black Flag, the Caribbean in 1715–1722,
+        and after it Freedom Cry. Rogue, North America in 1752–1760.
+        Assassin’s Creed III, the colonies in 1754–1783. Liberation, New
+        Orleans in 1765–1780. Unity, Paris in 1789–1794. Chronicles: India,
+        1841. Syndicate, London in 1868. Chronicles: Russia, 1918.
       - >-
-        Granie w tej kolejności za pierwszym razem to zły pomysł. Wątek
-        współczesny rozsypuje się od razu: Odyssey wprowadza Laylę w środku
-        jej historii, Assassin’s Creed cofa się do Desmonda, którego historia
-        skończyła się w trójce, a Mirage opowiada początki Basima, zanim
-        gracz w ogóle pozna go w Valhalli. Chronologia epok ma sens
-        za drugim podejściem, kiedy współczesność już się zna, albo dla kogoś,
-        kogo interesuje wyłącznie historia i miejsca — wtedy jest to
-        po prostu podróż od starożytności do XX wieku.
+        Playing in this order the first time is a bad idea. The modern-day
+        story falls apart right away: Odyssey introduces Layla in the middle
+        of her story, Assassin’s Creed goes back to Desmond, whose story
+        ended in III, and Mirage tells of Basim’s beginnings before the
+        player has even met him in Valhalla. The chronology of eras makes
+        sense on a second pass, when you already know the present-day story,
+        or for someone interested only in history and places — then it is
+        simply a journey from antiquity to the 20th century.
   - id: watek-wspolczesny
-    year: XXI wiek
-    title: Wątek współczesny — Desmond, Layla, Basim
-    meta: Jedna opowieść, opowiadana w kolejności premier
+    year: 21st century
+    title: The modern-day story — Desmond, Layla, Basim
+    meta: One story, told in release order
     art: assassins-creed-origins-k00
     flip: true
     band: true
     body:
       - >-
-        Od pierwszej części do trójki współczesnym bohaterem jest Desmond
-        Miles. W Assassin’s Creed zostaje porwany przez Abstergo Industries,
-        które okazuje się współczesnym zakonem templariuszy, i przeżywa
-        w Animusie wspomnienia Altaïra. W dwójce ucieka z Abstergo z Lucy
-        i dołącza do współczesnych asasynów, Shauna i Rebeki, a w Animusie
-        poznaje Ezia; Brotherhood i Revelations ciągną oba wątki dalej.
-        Assassin’s Creed III domyka historię Desmonda i zostawia zaczepki
-        pod następne części.
+        From the first game to III, the modern-day protagonist is Desmond
+        Miles. In Assassin’s Creed he is kidnapped by Abstergo Industries,
+        which turns out to be the modern-day Templar Order, and relives
+        Altaïr’s memories in the Animus. In II he escapes from Abstergo with
+        Lucy and joins the modern-day Assassins, Shaun and Rebecca, and in
+        the Animus he meets Ezio; Brotherhood and Revelations carry both
+        threads further. Assassin’s Creed III wraps up Desmond’s story and
+        leaves hooks for the games that follow.
       - >-
-        Black Flag odchodzi od Desmonda: współczesność przybiera nową formę,
-        przenosi się do biur Abstergo, a ciężar leży na epoce historycznej.
-        Origins wprowadza Laylę Hassan i prowadzi ją przez
-        Odyssey do Valhalli, gdzie pojawia się Basim; Mirage cofa się do jego
-        początków. Wniosek jest prosty: komu zależy na tej opowieści,
-        ten gra w kolejności premier, a przynajmniej trzyma razem dwie
-        grupy — pięć gier Desmonda i cztery gry od Origins do Mirage.
+        Black Flag moves away from Desmond: the present day takes a new form,
+        moves to Abstergo’s offices, and the weight shifts to the historical
+        era. Origins introduces Layla Hassan and carries her through
+        Odyssey to Valhalla, where Basim appears; Mirage goes back to his
+        beginnings. The conclusion is simple: if you care about this story,
+        play in release order, or at least keep two groups together —
+        Desmond’s five games and the four games from Origins to Mirage.
   - id: co-pominac
-    year: Poboczne
-    title: Co da się pominąć, a czego lepiej nie
-    meta: Spin-offy, dodatki, remastery, zapowiedzi
+    year: Side games
+    title: What you can skip, and what you had better not
+    meta: Spin-offs, DLC, remasters, announcements
     art: chronicles-india-k02
     flip: false
     band: false
     body:
       - >-
-        Bez straty dla głównej linii da się pominąć odsłony poboczne:
-        Altaïr’s Chronicles z 2008 roku na Nintendo DS, Bloodlines na PSP,
-        Discovery na DS, Pirates na urządzenia przenośne, całą trylogię
-        Chronicles i Liberation. Każda z nich dopowiada coś swojej epoce,
-        żadna nie jest potrzebna, żeby zrozumieć następną część numerowaną.
-        To samo dotyczy mniejszych dodatków do dwójki, Brotherhood
-        i Revelations oraz alternatywnej historii Tyrania króla Waszyngtona
-        do trójki.
+        You can skip the spin-offs without any loss to the main series:
+        Altaïr’s Chronicles from 2008 on the Nintendo DS, Bloodlines on PSP,
+        Discovery on DS, Pirates on mobile devices, the whole Chronicles
+        trilogy and Liberation. Each of them adds something to its era, and
+        none is needed to understand the next numbered game. The same goes
+        for the smaller DLC for II, Brotherhood and Revelations, and for the
+        alternate history The Tyranny of King Washington for III.
       - >-
-        Czego lepiej nie pomijać: Freedom Cry, jeśli Black Flag się
-        spodobał — to cztery godziny w tej samej formie z innym bohaterem;
-        Rogue, jeśli zależy na domknięciu trójki i Black Flag; Świt Ragnaroku,
-        jeśli Valhalla nie zdążyła się znudzić. Przy wyborze wersji warto
-        sięgać po nowsze wydania: The Ezio Collection z 2016 roku zbiera
-        trylogię Ezia, Assassin’s Creed III Remastered z 2019 roku wyszło
-        razem z Liberation Remastered, a Rogue Remastered — w 2018 roku.
+        What you had better not skip: Freedom Cry, if you liked Black Flag —
+        four hours in the same form with a different protagonist; Rogue, if
+        you care about closing out III and Black Flag; Dawn of Ragnarök, if
+        Valhalla has not worn thin yet. When choosing versions, it is worth
+        going for the newer releases: The Ezio Collection from 2016 gathers
+        Ezio’s trilogy, Assassin’s Creed III Remastered from 2019 came out
+        together with Liberation Remastered, and Rogue Remastered in 2018.
       - >-
-        Zapowiedziane, ale jeszcze nie w tej liście: Black Flag Resynced,
-        remake czwórki na silniku Shadows, ogłoszony w 2026 roku; Hexe,
-        zapowiedziane w 2022 roku, osadzone w Niemczech XVI lub XVII wieku
-        i planowane na 2027 rok; oraz Invictus z zapowiedzi 2026 roku,
-        nastawione na rozgrywkę sieciową. Żadna z nich nie zmienia dzisiejszej
-        odpowiedzi na pytanie, od czego zacząć: od dwójki, od Black Flag albo
-        od Origins.
+        Announced, but not yet on this list: Black Flag Resynced, a remake of
+        IV on the Shadows engine, announced in 2026; Hexe, announced in 2022,
+        set in 16th- or 17th-century Germany and planned for 2027; and
+        Invictus, from the 2026 announcements, focused on online play. None
+        of them changes today’s answer to the question of where to start:
+        with II, with Black Flag or with Origins.
 cta:
-  title: Zacznij od dwójki
-  lead: Florencja 1476 roku, Ezio Auditore i wszystko, z czego seria zrobiła swój znak.
+  title: Start with II
+  lead: Florence in 1476, Ezio Auditore and everything the series made its trademark.
   href: /assassins-creed-2/
-  label: Zobacz Assassin’s Creed II
+  label: See Assassin’s Creed II
 ---

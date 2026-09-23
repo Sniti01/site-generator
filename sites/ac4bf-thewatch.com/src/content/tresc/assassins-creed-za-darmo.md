@@ -1,31 +1,31 @@
 ---
-url: /assassins-creed-za-darmo/
+url: /assassins-creed-free/
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 rows:
   - id: legalnie
-    year: Legalnie
-    title: Weekendy, rozdania, abonamenty
+    year: Legally
+    title: Weekends, giveaways, subscriptions
     meta: Ubisoft Connect · Ubisoft+ · Game Pass
     art: karaiby-k03
     flip: false
     band: false
     body:
       - >-
-        Darmowy weekend Ubisoftu: kilka dni gry, postępy zostają
-        po zakupie. Rozdania na stałe: Black Flag (2017), Mirage
-        od Intela (2025).
+        A Ubisoft free weekend: a few days of play, and your progress stays
+        after you buy. Permanent giveaways: Black Flag (2017), Mirage
+        from Intel (2025).
       - >-
-        Ubisoft+ ma nowości od premiery, Game Pass dostał Origins,
-        Odyssey (2022) i Mirage (2025). Pirackie kopie lepiej omijać.
+        Ubisoft+ has new releases from launch day; Game Pass got Origins,
+        Odyssey (2022) and Mirage (2025). Pirated copies are best avoided.
 related:
-  title: Powiązane strony
+  title: Related pages
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

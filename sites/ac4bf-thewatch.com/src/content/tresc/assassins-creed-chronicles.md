@@ -2,197 +2,203 @@
 url: /assassins-creed-chronicles/
 art: assassins-creed-chronicles
 lead: >-
-  Trzy krótkie skradanki oglądane z boku zamiast miasta z dachami. Shao Jun
-  w Chinach dynastii Ming, Arbaaz Mir w Indiach roku 1841 i Nikołaj Orłow
-  w Rosji roku 1918 — każda gra ma własny rysunek, a wszystkie trzy spina
-  jedna skrzynka Prekursorów.
+  Three short side-view stealth games instead of a city with rooftops.
+  Shao Jun in Ming dynasty China, Arbaaz Mir in India in 1841 and Nikolai
+  Orlov in Russia in 1918 — each game has its own art style, and all three
+  are tied together by a single Precursor box.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry i zdjęcia
+  title: Screenshots and photos
   lead: >-
-    Materiał wydawcy ze Steamu: art China oraz arty Rogue i Revelations,
-    gier połączonych z Chronicles fabułą.
+    Publisher material from Steam: the China art, plus the Rogue and
+    Revelations art — games linked to Chronicles by the story.
   items:
     - art: assassins-creed-chronicles
-      alt: 'Assassin’s Creed Chronicles: China — kluczowy art'
-      caption: 'Kluczowy art China ze strony gry w Steamie.'
+      alt: 'Assassin’s Creed Chronicles: China — key art'
+      caption: 'China key art from the game’s Steam page.'
     - art: assassins-creed-rogue
-      alt: 'Assassin’s Creed Rogue — kluczowy art'
-      caption: 'Rogue: skrzynka Prekursorów przeszła tu przez ręce Shaya Cormaca.'
+      alt: 'Assassin’s Creed Rogue — key art'
+      caption: 'Rogue: this is where the Precursor box passed through Shay Cormac’s hands.'
     - art: assassins-creed-revelations
-      alt: 'Assassin’s Creed Revelations — kluczowy art'
-      caption: 'Revelations: zamknięcie trylogii Ezia, nauczyciela Shao Jun.'
+      alt: 'Assassin’s Creed Revelations — key art'
+      caption: 'Revelations: the close of the trilogy of Ezio, Shao Jun’s teacher.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Chronicles to trzy sprawne, ale ostrożne skradanki, które zyskują, gdy
-      nie oczekuje się od nich Assassin’s Creed. Rysunek każdej epoki jest ich
-      najmocniejszą stroną, skradanie z rangami — drugą; walka, cienka fabuła
-      w China i India oraz sekcje na czas to słabości wymieniane
-      w recenzjach i opiniach graczy.
+      Chronicles is three competent but cautious stealth games that come off
+      better when you don’t expect Assassin’s Creed from them. The art style
+      of each era is their strongest point, and ranked stealth is the second;
+      combat, the thin story in China and India, and the timed sections are
+      the weaknesses cited in reviews and player opinions.
     - >-
-      Warto sięgnąć, jeśli epoki ciągną bardziej niż formuła albo jeśli ktoś
-      chce prześledzić wątek skrzynki Prekursorów znanej z Rogue. Zestaw
-      Trilogy kupuje się raz i gra po kolei; pojedynczo najbezpieczniejszy
-      wybór to China. Kto pominie całość, nie traci niczego z głównej linii.
+      Worth picking up if the eras draw you more than the formula, or if you
+      want to follow the thread of the Precursor box known from Rogue. The
+      Trilogy bundle is bought once and played in order; bought singly, the
+      safest choice is China. If you skip the whole thing, you lose nothing
+      from the main line.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: 2015–2016
-    title: Trzy osobne gry z widokiem z boku od Climax Studios
+    title: Three separate side-view games from Climax Studios
     meta: Climax Studios · Ubisoft Montréal · PC, PS4, Xbox One, PS Vita
     art: assassins-creed-chronicles-k04
     flip: false
     band: false
     body:
       - >-
-        Chronicles to podseria trzech osobnych gier, które Ubisoft wydał
-        między kwietniem 2015 a lutym 2016 roku. Zrobiło je Climax Studios
-        z Wielkiej Brytanii, a pomagał Ubisoft Montréal. Zamiast otwartego
-        miasta jest widok z boku i liniowe poziomy w 2,5D: postać biegnie po
-        jednej płaszczyźnie, a w wyznaczonych miejscach przeskakuje między
-        planem bliższym i dalszym.
+        Chronicles is a sub-series of three separate games that Ubisoft
+        released between April 2015 and February 2016. They were made by
+        the UK’s Climax Studios, with help from Ubisoft Montréal. Instead of
+        an open city there is a side view and linear 2.5D levels: the
+        character runs along one plane and, at set points, jumps between the
+        foreground and the background.
       - >-
-        China wyszło 21 kwietnia 2015 roku — PC, PlayStation 4 i Xbox One.
-        India i Russia ustąpiły miejsca Syndicate i wyszły 12 stycznia
-        i 9 lutego 2016 roku, razem z zestawem Trilogy; jego wersja na
-        PlayStation Vita z 5 kwietnia 2016 roku jest jedynym wydaniem
-        przenośnym.
+        China came out on April 21, 2015 — PC, PlayStation 4 and Xbox One.
+        India and Russia made way for Syndicate and came out on January 12
+        and February 9, 2016, together with the Trilogy bundle; its
+        PlayStation Vita version from April 5, 2016, is the only handheld
+        release.
   - id: chiny
     year: 1526–1532
-    title: China — Shao Jun i Ośmiu Tygrysów
-    meta: Uczennica Ezia · Makau · Zakazane Miasto · Wielki Mur
+    title: China — Shao Jun and the Eight Tigers
+    meta: Ezio’s pupil · Macau · the Forbidden City · the Great Wall
     art: assassins-creed-chronicles
     flip: true
     band: true
     body:
       - >-
-        Rok 1526. Shao Jun wraca z Włoch, gdzie uczył ją emerytowany mentor
-        Ezio Auditore, i zastaje bractwo wybite. Winna jest grupa
-        templariuszy zwana Ośmioma Tygrysami, która rządzi Chinami dynastii
-        Ming zza pleców cesarza Jiajinga. Shao Jun ma od Ezia skrzynkę
-        Prekursorów i jeden cel: usunąć Tygrysów po kolei.
+        The year is 1526. Shao Jun returns from Italy, where she was trained
+        by the retired Mentor Ezio Auditore, and finds the Brotherhood wiped
+        out. The culprits are a group of Templars called the Eight Tigers,
+        who rule Ming dynasty China from behind the back of the Jiajing
+        Emperor. Shao Jun has a Precursor box from Ezio and one goal: to
+        remove the Tigers one by one.
       - >-
-        Droga prowadzi przez groty Maijishan, Makau, w 1530 roku Zakazane
-        Miasto i pułapkę, w którą wciąga ją zmuszona przez templariuszy
-        cesarzowa Zhang, dawna znajoma, a w 1532 roku na Wielki Mur, gdzie
-        bohaterka zatrzymuje najazd Mongołów i zabija przywódcę Tygrysów
-        Zhang Yonga. Skrzynki już wtedy w Chinach nie ma; Shao Jun zostaje
-        odbudować bractwo. Kto zna Revelations, dostaje tu ciąg dalszy: co
-        zostało po Eziu.
+        The road leads through the Maijishan grottoes, Macau, the Forbidden
+        City in 1530 and a trap set for her by Empress Zhang, an old
+        acquaintance forced into it by the Templars, and in 1532 to the Great
+        Wall, where the heroine stops a Mongol invasion and kills the leader
+        of the Tigers, Zhang Yong. By then the box is no longer in China;
+        Shao Jun stays to rebuild the Brotherhood. If you know Revelations,
+        this is the continuation: what was left after Ezio.
   - id: indie
     year: '1841'
-    title: India — Arbaaz Mir i diament Koh-i-Noor
-    meta: Państwo Sikhów · Amritsar · Herat · Ethan Frye
+    title: India — Arbaaz Mir and the Koh-i-Noor diamond
+    meta: Sikh Empire · Amritsar · Herat · Ethan Frye
     art: chronicles-india-k03
     flip: false
     band: false
     body:
       - >-
-        Indie roku 1841, ostatnie lata Państwa Sikhów. Agenci templariuszy
-        w Kompanii Wschodnioindyjskiej chcą wykorzystać zamęt po śmierci
-        maharadży, a asasyn Arbaaz Mir opóźnia ich plany, zabierając im
-        Koh-i-Noor — diament, w tym świecie artefakt Prekursorów. Gdy Arbaaz
-        odwiedza ukochaną, templariusze uderzają na siedzibę bractwa
-        w Amritsarze i porywają mentora Hamida.
+        India in 1841, the last years of the Sikh Empire. Templar agents in
+        the East India Company want to exploit the turmoil after the
+        Maharaja’s death, and the Assassin Arbaaz Mir delays their plans by
+        taking the Koh-i-Noor from them — a diamond that in this world is a
+        Precursor artifact. While Arbaaz visits his beloved, the Templars
+        strike the Brotherhood’s headquarters in Amritsar and kidnap his
+        Mentor, Hamid.
       - >-
-        Reszta gry to pogoń za Williamem Sleemanem: podziemna świątynia
-        Prekursorów, oblegana cytadela w Heracie i pojedynek z Alexandrem
-        Burnesem, którego Arbaaz oszczędza. W finale odzyskuje diament, ale
-        skrzynka zostaje u zakonu. Epilog łączy Indie z Syndicate: Koh-i-Noor
-        trafia do Ethana Frye’a, ojca Jacoba i Evie.
+        The rest of the game is a chase after William Sleeman: an underground
+        Precursor temple, the besieged citadel of Herat and a duel with
+        Alexander Burnes, whom Arbaaz spares. In the finale he recovers the
+        diamond, but the box stays with the Order. The epilogue links India
+        to Syndicate: the Koh-i-Noor ends up with Ethan Frye, the father of
+        Jacob and Evie.
   - id: rosja
     year: '1918'
-    title: Russia — Nikołaj Orłow, Anastazja i tajne zakończenie
-    meta: Jekaterynburg · Moskwa · Kreml · Otso Berg
+    title: Russia — Nikolai Orlov, Anastasia and the secret ending
+    meta: Yekaterinburg · Moscow · the Kremlin · Otso Berg
     art: chronicles-russia-k10
     flip: true
     band: false
     body:
       - >-
-        Rosja roku 1918, po rewolucji październikowej. Nikołaj Orłow chce
-        odejść z bractwa i wyjechać z rodziną, ale bierze ostatnie zlecenie:
-        odzyskać skrzynkę, która ma być u Romanowów przetrzymywanych
-        w Jekaterynburgu. W nocy z 16 na 17 lipca jest świadkiem egzekucji
-        rodziny cara. Przeżywa tylko Anastazja — a skrzynka, którą zabiera,
-        łączy ją ze wspomnieniami i umiejętnościami Shao Jun. W Moskwie
-        bractwo chce wydobyć z dziewczyny wspomnienia, co może ją zabić,
-        więc Nikołaj zwraca się przeciw własnym braciom, wyciąga Anastazję
-        z Kremla i daje jej fałszywe dokumenty przygotowane dla własnej
-        żony — Anastazja wyjeżdża do Niemiec jako Anna Anderson.
+        Russia in 1918, after the October Revolution. Nikolai Orlov wants to
+        leave the Brotherhood and go away with his family, but he takes one
+        last job: to recover the box, which is supposed to be with the
+        Romanovs held in Yekaterinburg. On the night of July 16 to 17 he
+        witnesses the execution of the Tsar’s family. Only Anastasia
+        survives — and the box she takes links her to Shao Jun’s memories
+        and skills. In Moscow the Brotherhood wants to extract the memories
+        from the girl, which could kill her, so Nikolai turns against his
+        own brothers, gets Anastasia out of the Kremlin and gives her the
+        forged papers he had prepared for his own wife — Anastasia leaves
+        for Germany as Anna Anderson.
       - >-
-        Anastazja jest tu również grywalna, z ukrytym ostrzem zamiast
-        karabinu. Jest też sekretne zakończenie: w trzech grach ukryto
-        dziewięć kodów, a kto wpisze je w Russia, zobaczy scenę współczesną,
-        w której templariusz Otso Berg — znany z wątku współczesnego
-        Rogue — zanosi skrzynkę doktorowi Gramátice, a ten tłumaczy, że to
-        element Projektu Phoenix, próby stworzenia Prekursora.
+        Anastasia is playable here as well, with a hidden blade instead of a
+        rifle. There is also a secret ending: nine codes are hidden across
+        the three games, and if you enter them in Russia, you see a
+        modern-day scene in which the Templar Otso Berg — known from the
+        modern-day story of Rogue — brings the box to Dr. Gramática, who
+        explains that it is part of the Phoenix Project, an attempt to
+        create a Precursor.
   - id: rozgrywka
-    year: Skradanie
-    title: Rozgrywka — pole widzenia, rangi i trzy arsenały
-    meta: Cień · Asasyn · Zabijaka · Dusiciel · ucieczki na czas
+    year: Stealth
+    title: Gameplay — fields of view, ranks and three arsenals
+    meta: Shadow · Assassin · Brawler · Strangler · timed escapes
     art: chronicles-india-k07
     flip: false
     band: true
     body:
       - >-
-        Poziomy są liniowe: trzeba przejść je do końca, mijając strażników
-        o zaznaczonym polu widzenia; kto w nie wejdzie, wywołuje alarm i musi
-        się schować. Walka jest w drugiej kolejności — lekkie i ciężkie
-        ciosy, blok, unik — i Chronicles karze za nią surowiej niż duże
-        części: kilka trafień kończy życie. Są też poziomy ucieczki na czas.
-        Odcinki poziomu dostają rangę: Cień za przejście bez wykrycia i bez
-        ofiar poza celem, Asasyn za ciche zabójstwo bez alarmu, Zabijaka
-        w China za alarm i walkę, w India i Russia zastąpiona Dusicielem za
-        ogłuszanie bez wykrycia. Punkty z rang kupują ulepszenia, choćby
-        dłuższy pasek zdrowia.
+        Levels are linear: you have to get through to the end, slipping past
+        guards whose field of view is marked; step into it and you trigger
+        an alarm and have to hide. Combat comes second — light and heavy
+        attacks, block, dodge — and Chronicles punishes it more harshly than
+        the big games: a few hits and you are dead. There are also timed
+        escape levels. Each section of a level earns a rank: Shadow for
+        getting through undetected and with no victims other than the
+        target, Assassin for a silent kill without an alarm, Brawler in
+        China for an alarm and a fight, replaced in India and Russia by
+        Strangler for knocking enemies out without being detected. Points
+        from ranks buy upgrades, such as a longer health bar.
       - >-
-        Arsenały zmieniają się z epoką: Shao Jun ma miecz jian, noże do
-        rzucania, petardy i ostrze ukryte w bucie; Arbaaz — talwar, czakram,
-        bomby dymne i procę; Nikołaj — karabin Berdana z bagnetem, z którego
-        strzela się jak snajper, i linkę z hakiem rażącą prądem. Rysunek też:
-        China jak stonowane chińskie malarstwo, India w nasyconych kolorach,
-        Russia jak radziecki plakat.
+        The arsenals change with the era: Shao Jun has a jian sword,
+        throwing knives, firecrackers and a blade hidden in her shoe;
+        Arbaaz — a talwar, a chakram, smoke bombs and a slingshot; Nikolai —
+        a Berdan rifle with a bayonet, which he fires like a sniper, and an
+        electrified grappling line. So does the art style: China looks like
+        muted Chinese painting, India comes in saturated colors, Russia
+        looks like a Soviet poster.
   - id: wydania-i-komu
     year: Start
-    title: Wydania, polska wersja, odbiór i komu to polecić
-    meta: Napisy PL · konto Ubisoft · China, India, Russia po kolei
+    title: Releases, reception and who it’s for
+    meta: Ubisoft account · China, India, Russia in order
     art: chronicles-russia-k06
     flip: true
     band: false
     body:
       - >-
-        Na PC każda gra jest osobno w Steamie i wymaga konta Ubisoft. Polska
-        wersja to napisy i interfejs, dialogi po angielsku — tak samo
-        w wydaniu pudełkowym na PlayStation 4, które działa też na
-        PlayStation 5 z napędem. Odbiór był mieszany i z każdą częścią
-        chłodniejszy: na Metacritic China wypadło najlepiej, Russia
-        najsłabiej. Polscy recenzenci chwalili oprawę, klimat epok
-        i skradanie, a zarzucali krótki czas gry, mało zmian między
-        częściami, w China toporną walkę, a w China i India cienką fabułę.
+        On PC each game is sold separately on Steam and requires a Ubisoft
+        account. There is also a boxed PlayStation 4 edition, which works on
+        a PlayStation 5 with a disc drive too. Reception was mixed and grew
+        cooler with each game: on Metacritic, China scored best and Russia
+        worst.
       - >-
-        Chronicles nie jest dla kogoś, kto szuka Assassin’s Creed
-        w miniaturze — nie ma tu otwartego miasta, jest skradanka o rytmie
-        Mark of the Ninja i dawnego Prince of Persia. Kolejność jest jedna:
-        China, India, Russia — tak układa się wątek skrzynki, a kody do
-        sekretnego zakończenia trzeba zebrać we wszystkich trzech. Do
-        zrozumienia numerowanych części Chronicles nie jest potrzebne, a na
-        start serii lepiej wejść przez dwójkę, Black Flag albo Origins.
+        Chronicles is not for someone looking for Assassin’s Creed in
+        miniature — there is no open city here, but a stealth game with the
+        rhythm of Mark of the Ninja and the old Prince of Persia. There is
+        only one order: China, India, Russia — that is how the box storyline
+        unfolds, and the codes for the secret ending have to be collected in
+        all three. Chronicles is not needed to understand the numbered games,
+        and to start the series it is better to go in through Assassin’s
+        Creed II, Black Flag or Origins.
 cta:
-  title: Chronicles można pominąć. A od czego zacząć?
-  lead: Trzy sprawdzone wejścia do serii i lista tego, co da się opuścić bez straty.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: You can skip Chronicles. So where do you start?
+  lead: Three proven ways into the series and a list of what you can skip without missing anything.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

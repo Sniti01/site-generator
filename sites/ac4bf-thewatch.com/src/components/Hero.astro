@@ -63,9 +63,9 @@ const { h1 } = Astro.props;
 <HeroKeyArt
   titleId="hero-tytul"
   primaryHref="#zejscie"
-  primaryLabel="Zacznij zejście"
+  primaryLabel="Start the descent"
   secondaryHref="#katalog"
-  secondaryLabel="Katalog poradników"
+  secondaryLabel="Guide catalog"
 >
   {/* `<h1>` drukuje witryna, nie rdzeń — od 2026-09-11 nagłówek należy
       do strony (punkt 23 backlogu). `id` musi być tym samym, co `titleId`
@@ -84,15 +84,15 @@ const { h1 } = Astro.props;
   </Fragment>
 
   <Fragment slot="lead">
-    Zaczynasz na iglicy, schodzisz przez pięć stuleci i lądujesz w tym poradniku, po który
-    przyszedłeś. Nieoficjalny przewodnik po <i>Assassin’s Creed</i> — bez tagów, po latach.
+    You start at the spire, descend through five centuries and land in the very guide you
+    came for. An unofficial guide to <i>Assassin’s Creed</i> — no tags, with hindsight.
   </Fragment>
 
   <Icon slot="ikona-glowna" name="w-dol" size={18} />
 
   <ChipNav
     slot="nawigacja"
-    label="Skok do epoki"
+    label="Jump to an era"
     chips={eras.map((era) => ({
       href: `#epoka-${era.id}`,
       title: era.year,
@@ -104,7 +104,7 @@ const { h1 } = Astro.props;
   {
     !kluczowyArt && (
       <span class="hero__height t-micro tabular" slot="dopisek" aria-hidden="true">
-        wysokość 42 m
+        height 42 m
       </span>
     )
   }

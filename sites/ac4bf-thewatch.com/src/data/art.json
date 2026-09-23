@@ -2,7 +2,7 @@
   "slots": [
     {
       "id": "foto-jerozolima",
-      "subject": "Jerozolima, Wzgórze Świątynne i mury starego miasta",
+      "subject": "Jerusalem, the Temple Mount and the walls of the Old City",
       "queries": [
         "Dome of the Rock Jerusalem",
         "Jerusalem Old City walls Damascus Gate",
@@ -33,7 +33,7 @@
     },
     {
       "id": "foto-wlochy",
-      "subject": "Florencja, kopuła katedry nad dachami miasta",
+      "subject": "Florence, the cathedral dome above the city’s rooftops",
       "queries": [
         "Florence panorama Piazzale Michelangelo cityscape",
         "Florence skyline Duomo panorama",
@@ -64,7 +64,7 @@
     },
     {
       "id": "foto-japonia",
-      "subject": "Japoński zamek z okresu Sengoku",
+      "subject": "A Japanese castle from the Sengoku period",
       "queries": [
         "Himeji Castle panorama",
         "Matsumoto Castle keep exterior",
@@ -91,7 +91,7 @@
     },
     {
       "id": "foto-karaiby",
-      "subject": "Karaibska twierdza kolonialna nad morzem",
+      "subject": "A Caribbean colonial fortress by the sea",
       "queries": [
         "El Morro San Juan Puerto Rico fortress ocean",
         "Castillo San Felipe del Morro lighthouse walls",
@@ -134,7 +134,7 @@
     },
     {
       "id": "foto-londyn",
-      "subject": "Wiktoriańska architektura Londynu",
+      "subject": "Victorian architecture of London",
       "queries": [
         "St Pancras Renaissance Hotel London facade",
         "Royal Courts of Justice London facade",
@@ -171,7 +171,7 @@
     },
     {
       "id": "assassins-creed-bloodlines",
-      "subject": "Cypr, zamek krzyżowców nad morzem — Bloodlines, 1191",
+      "subject": "Cyprus, a crusader castle by the sea — Bloodlines, 1191",
       "queries": [
         "Kyrenia Castle Cyprus",
         "Saint Hilarion Castle Kyrenia mountains",
@@ -201,7 +201,7 @@
     },
     {
       "id": "assassins-creed-pirates",
-      "subject": "Karaiby, żaglowiec na otwartym morzu — Pirates, 1716",
+      "subject": "The Caribbean, a sailing ship on the open sea — Pirates, 1716",
       "queries": [
         "Frigate Shtandart under sail",
         "sailing ship Kruzenshtern under full sail",
@@ -233,7 +233,7 @@
     },
     {
       "id": "discovery",
-      "subject": "Hiszpania końca XV wieku, Alhambra nad Grenadą — II: Discovery, 1491",
+      "subject": "Late 15th-century Spain, the Alhambra above Granada — II: Discovery, 1491",
       "queries": [
         "Alhambra Granada panorama from Albaicin",
         "Alhambra Granada view Sierra Nevada",
@@ -261,7 +261,7 @@
     },
     {
       "id": "poradniki",
-      "subject": "Panorama starego miasta z góry — hub poradników",
+      "subject": "A panorama of an old town from above — the guides hub",
       "queries": [
         "Dubrovnik old town rooftops panorama",
         "Jerusalem Old City panorama view",
@@ -292,7 +292,7 @@
     },
     {
       "id": "mapa-miejsc-historycznych",
-      "subject": "Dawna mapa świata — strona mapy miejsc historycznych",
+      "subject": "An old world map — the historical locations map page",
       "queries": [
         "Typus Orbis Terrarum Ortelius",
         "Theatrum Orbis Terrarum 1570 world map",
@@ -322,7 +322,7 @@
     },
     {
       "id": "foto-florencja-1470",
-      "subject": "Florencja około 1470 roku — Pianta della Catena, widok miasta przypisywany Francescowi Rossellemu",
+      "subject": "Florence around 1470 — Pianta della Catena, a city view attributed to Francesco Rosselli",
       "queries": [
         "Pianta della Catena Florence view Rosselli",
         "View of Florence with the Chain woodcut 1470s",
@@ -357,7 +357,7 @@
     },
     {
       "id": "foto-savonarola",
-      "subject": "Stracenie Savonaroli na Piazza della Signoria — obraz przypisywany Francescowi Rossellemu, około 1500 roku",
+      "subject": "The execution of Savonarola in the Piazza della Signoria — a painting attributed to Francesco Rosselli, around 1500",
       "queries": [
         "Execution of Savonarola Piazza della Signoria painting",
         "Savonarola burning Florence 1498 painting Museo di San Marco",
@@ -385,7 +385,7 @@
     },
     {
       "id": "foto-monteriggioni",
-      "subject": "Monteriggioni — mury i wieże toskańskiego miasteczka z XIII wieku",
+      "subject": "Monteriggioni — the walls and towers of a 13th-century Tuscan town",
       "queries": [
         "Monteriggioni",
         "Monteriggioni castello mura",
@@ -415,7 +415,7 @@
     },
     {
       "id": "foto-rzym-piranesi",
-      "subject": "Koloseum w rycinie Giovanniego Battisty Piranesiego z XVIII wieku",
+      "subject": "The Colosseum in an 18th-century engraving by Giovanni Battista Piranesi",
       "queries": [
         "Piranesi Veduta dell'Anfiteatro Flavio Colosseo",
         "Piranesi Vedute di Roma Colosseum etching",
@@ -456,7 +456,7 @@
     },
     {
       "id": "foto-kopernik",
-      "subject": "Mikołaj Kopernik — portret toruński z około 1580 roku",
+      "subject": "Nicolaus Copernicus — the Toruń portrait from around 1580",
       "queries": [
         "Nikolaus Kopernikus portrait",
         "Mikołaj Kopernik portret ratusz Toruń",
@@ -501,7 +501,7 @@
     },
     {
       "id": "foto-paryz-1739",
-      "subject": "Paryż na planie Turgota z 1739 roku — Pont Neuf i cypel Île de la Cité",
+      "subject": "Paris on the 1739 Turgot map — the Pont Neuf and the tip of the Île de la Cité",
       "queries": [
         "Turgot map Paris KU",
         "Plan de Turgot Notre-Dame Cité"
@@ -530,7 +530,7 @@
     },
     {
       "id": "foto-hegra",
-      "subject": "AlUla — Qasr al-Farid, nabatejski grobowiec w Hegrze (Mada’in Salih), Arabia Saudyjska",
+      "subject": "AlUla — Qasr al-Farid, a Nabataean tomb at Hegra (Mada’in Salih), Saudi Arabia",
       "queries": [
         "Hegra Mada'in Salih tombs AlUla",
         "Qasr al-Farid Madain Saleh",
@@ -569,7 +569,7 @@
     },
     {
       "id": "foto-samarra",
-      "subject": "Samarra, IX wiek — spiralny minaret Malwija Wielkiego Meczetu kalifa al-Mutawakkila",
+      "subject": "Samarra, 9th century — the spiral Malwiya minaret of the Great Mosque of Caliph al-Mutawakkil",
       "queries": [
         "Malwiya minaret Samarra",
         "Great Mosque of Samarra spiral minaret",
@@ -607,7 +607,7 @@
     },
     {
       "id": "foto-leonardo-czolg",
-      "subject": "Wóz bojowy Leonarda da Vinci — rysunek z około 1485 roku",
+      "subject": "Leonardo da Vinci’s fighting vehicle — a drawing from around 1485",
       "queries": [
         "Leonardo da Vinci fighting vehicle drawing British Museum",
         "Leonardo da Vinci tank drawing",
@@ -635,7 +635,7 @@
     },
     {
       "id": "foto-nowy-jork-1750",
-      "subject": "Nowy Jork około 1760 roku — widok miasta od południowego wschodu, rycina Pierre’a-Charles’a Canota",
+      "subject": "New York around 1760 — a view of the city from the southeast, an engraving by Pierre-Charles Canot",
       "queries": [
         "New York 1717 Burgis view",
         "View of New York 1740 engraving",
@@ -671,7 +671,7 @@
     },
     {
       "id": "foto-akka",
-      "subject": "Akka — mur morski krzyżowców, fotografia z lat 1920–1933",
+      "subject": "Acre — the crusader sea wall, a photograph from 1920–1933",
       "queries": [
         "Acre old city walls sea",
         "Akko old city walls Mediterranean panorama",
@@ -708,7 +708,7 @@
     },
     {
       "id": "foto-psp",
-      "subject": "Sony PlayStation Portable — konsola PSP-1000",
+      "subject": "Sony PlayStation Portable — the PSP-1000 console",
       "queries": [
         "PlayStation Portable PSP-1000 console",
         "Sony PSP 1000 black console",
@@ -737,7 +737,7 @@
     },
     {
       "id": "foto-bitwa-morska",
-      "subject": "Bitwa morska u wybrzeży Cartageny w 1708 roku — obraz Samuela Scotta",
+      "subject": "A naval battle off Cartagena in 1708 — a painting by Samuel Scott",
       "queries": [
         "Battle of Cartagena de Indias 1741 painting",
         "naval battle 18th century painting ships Caribbean",
@@ -778,7 +778,7 @@
     },
     {
       "id": "foto-karaiby-mapa",
-      "subject": "Karaiby na mapie Homanna z 1737 roku — Zatoka Meksykańska i Antyle",
+      "subject": "The Caribbean on a 1737 Homann map — the Gulf of Mexico and the Antilles",
       "queries": [
         "Carte des Antilles Bellin 1750",
         "West Indies map 1700s Moll",
@@ -819,7 +819,7 @@
     },
     {
       "id": "foto-nintendo-ds",
-      "subject": "Nintendo DS Lite — konsola przenośna z dwoma ekranami",
+      "subject": "Nintendo DS Lite — a handheld console with two screens",
       "queries": [
         "Nintendo DS Lite console open",
         "Nintendo DS original console",
@@ -852,7 +852,7 @@
     },
     {
       "id": "foto-stonehenge",
-      "subject": "Stonehenge — krąg kamienny w hrabstwie Wiltshire",
+      "subject": "Stonehenge — a stone circle in the county of Wiltshire",
       "queries": [
         "Stonehenge panorama",
         "Stonehenge wide view sunset",
@@ -891,7 +891,7 @@
     },
     {
       "id": "foto-delfy",
-      "subject": "Delfy — tolos świątyni Ateny Pronaia u stóp Parnasu",
+      "subject": "Delphi — the tholos of the temple of Athena Pronaia at the foot of Parnassus",
       "queries": [
         "Delphi Tholos Athena Pronaia",
         "Delphi sanctuary panorama",
@@ -925,7 +925,7 @@
     },
     {
       "id": "assassins-creed-rodowod",
-      "subject": "Florencja w drzeworycie z Kroniki Norymberskiej, 1493 rok",
+      "subject": "Florence in a woodcut from the Nuremberg Chronicle, 1493",
       "queries": [
         "Nuremberg chronicles Florence",
         "Schedel Weltchronik Florentia",
@@ -958,7 +958,7 @@
     },
     {
       "id": "assassins-creed-ii-wojna-swiatowa",
-      "subject": "Londyn w czasie I wojny światowej — żołnierze maszerują przez most Westminsterski, około 1917 roku",
+      "subject": "London during World War I — soldiers march across Westminster Bridge, around 1917",
       "queries": [
         "Bain News Service London 1916 street",
         "Trafalgar Square tank 1918 war bonds",
@@ -1004,7 +1004,7 @@
     },
     {
       "id": "foto-paryz-1940",
-      "subject": "Paryż pod okupacją — defilada niemiecka na Polach Elizejskich, 1940 rok (Bundesarchiv)",
+      "subject": "Paris under occupation — a German parade on the Champs-Élysées, 1940 (Bundesarchiv)",
       "queries": [
         "Champs Elysees 1940 German parade NARA",
         "German troops parade Paris 14 June 1940",
@@ -1040,7 +1040,7 @@
     },
     {
       "id": "foto-la-buse",
-      "subject": "Kryptogram La Buse — zaszyfrowana wiadomość o skarbie Oliviera Levasseura",
+      "subject": "The La Buse cryptogram — an encrypted message about Olivier Levasseur’s treasure",
       "queries": [
         "La Buse cryptogram Levasseur",
         "Cryptogramme de La Buse"
@@ -1061,7 +1061,7 @@
     },
     {
       "id": "foto-signoria",
-      "subject": "Florencja — wieża Palazzo Vecchio nad dachami miasta",
+      "subject": "Florence — the tower of the Palazzo Vecchio above the city’s rooftops",
       "queries": [
         "Piazza della Signoria Palazzo Vecchio panorama",
         "Palazzo Vecchio Florence facade square",

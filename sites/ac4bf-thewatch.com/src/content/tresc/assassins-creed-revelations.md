@@ -3,155 +3,158 @@ url: /assassins-creed-revelations/
 art: assassins-creed-revelations
 era: wlochy
 lead: >-
-  Zamknięcie trylogii Ezia: rok 1511, Konstantynopol, bohater
-  po pięćdziesiątce i biblioteka, którą Altaïr zamknął w XIII wieku. Formuła
-  z Brotherhood zostaje; dochodzą hak, bomby i dwie inne epoki.
+  The end of Ezio’s trilogy: 1511, Constantinople, a hero past fifty and a
+  library that Altaïr sealed in the 13th century. The Brotherhood formula
+  stays; the hookblade, bombs and two other eras are added.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
   href: /assassins-creed-brotherhood/
-  label: 'Poprzednia część: Brotherhood'
+  label: 'Previous game: Brotherhood'
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 gallery:
-  title: Kadry z gry
-  lead: Materiał wydawcy ze Steama; drugi kadr to początek trylogii.
+  title: In-game screenshots
+  lead: Publisher material from Steam; the second image shows the start of the trilogy.
   items:
     - art: assassins-creed-revelations
-      alt: Assassin’s Creed Revelations — Ezio w Konstantynopolu
-      caption: 'Konstantynopol: kluczowy kadr Revelations ze sklepu Steam.'
+      alt: Assassin’s Creed Revelations — Ezio in Constantinople
+      caption: 'Constantinople: the key art of Revelations from the Steam store.'
     - art: wlochy
-      alt: Assassin’s Creed II — Ezio w Wenecji
-      caption: 'Tak zaczynała się trylogia: Ezio w Assassin’s Creed II.'
+      alt: Assassin’s Creed II — Ezio in Venice
+      caption: 'This is how the trilogy began: Ezio in Assassin’s Creed II.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Dobre zamknięcie, nie nowy początek. Revelations robi to, co
-      Brotherhood, w innym mieście, z hakiem i bombami: kto lubił Rzym,
-      dostanie Konstantynopol; kto miał dość formuły, nie znajdzie tu powodu,
-      żeby wrócić.
+      A good ending, not a new beginning. Revelations does what Brotherhood
+      did, in a different city, with a hookblade and bombs: if you liked
+      Rome, you get Constantinople; if you had enough of the formula, you
+      will find no reason here to come back.
     - >-
-      Wartość leży w opowieści: trzy epoki i dwóch mistrzów, którym gra
-      pozwala odejść. Grać po dwójce i Brotherhood, nie zamiast nich,
-      najlepiej w kolekcji z 2016 roku.
+      Its value lies in the story: three eras and two masters whom the game
+      lets go. Play it after II and Brotherhood, not instead of them,
+      ideally in the 2016 collection.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2011'
-    title: Konstantynopol zamiast Rzymu
-    meta: Konstantynopol · 1511–1512 · Ezio Auditore
+    title: Constantinople instead of Rome
+    meta: Constantinople · 1511–1512 · Ezio Auditore
     art: assassins-creed-revelations-k05
     flip: false
     band: false
     body:
       - >-
-        Czwarta duża część serii i zamknięcie trylogii Ezia zaczętej
-        w dwójce. Na PlayStation 3 i Xboksie 360 wyszła 15 listopada 2011
-        roku, na PC 29 listopada, a w Polsce wersja na PC 1 grudnia 2011
-        roku; wydania z 2011 roku mają polskie napisy i angielskie dialogi.
-        Zrobił ją Ubisoft Montreal na tym samym silniku Anvil
-        co poprzedniczki.
+        The fourth major game in the series and the end of the Ezio trilogy
+        that began in II. It came out on PlayStation 3 and Xbox 360 on
+        November 15, 2011, and on PC on November 29, 2011. Ubisoft Montreal
+        made it on the same Anvil engine as its predecessors.
       - >-
-        Akcja historyczna toczy się w latach 1511–1512 w Konstantynopolu,
-        stolicy Imperium Osmańskiego, z wypadami do Masjafu z pierwszej części
-        i do podziemnego miasta w Kapadocji. Ezio ma po pięćdziesiątce i jest
-        mistrzem zakonu. Miasto wielkością odpowiada Rzymowi z Brotherhood
-        i tak samo daje się odnawiać, łącznie z wieżą Galata, Hagią Sophią
-        i pałacem Topkapı.
+        The historical story is set in 1511–1512 in Constantinople, capital
+        of the Ottoman Empire, with trips to Masyaf from the first game and
+        to an underground city in Cappadocia. Ezio is past fifty and master
+        of the order. The city matches Brotherhood’s Rome in size and can be
+        renovated in the same way, including the Galata Tower, Hagia Sophia
+        and Topkapı Palace.
   - id: fabula
     year: 1189–1512
-    title: Pięć kluczy i trzy epoki
+    title: Five keys and three eras
     meta: Ezio · Altaïr · Desmond
     art: jerozolima
     flip: true
     band: true
     body:
       - >-
-        Ezio jedzie do Masjafu po bibliotekę Altaïra; twierdzę zajęli
-        templariusze, a wejście zamyka pięć kluczy ukrytych w Konstantynopolu.
-        Tam spotyka Yusufa Tazima, przywódcę miejscowych asasynów, młodego
-        księcia Sulejmana i Sofię Sartor, właścicielkę księgarni. Tłem jest
-        spór o tron między Ahmetem i Selimem, na którym grają bizantyjscy
-        templariusze. Na koniec Ezio odkłada ostrze; resztę dopowiada krótki
-        film Embers.
+        Ezio travels to Masyaf for Altaïr’s library; the Templars have taken
+        the fortress, and the entrance is sealed by five keys hidden in
+        Constantinople. There he meets Yusuf Tazim, leader of the local
+        Assassins, the young prince Suleiman and Sofia Sartor, who owns a
+        bookshop. The backdrop is the struggle for the throne between Ahmet
+        and Selim, which the Byzantine Templars play to their advantage. In
+        the end Ezio lays down his blade; the short film Assassin’s Creed:
+        Embers tells the rest.
       - >-
-        Każdy klucz otwiera wspomnienie Altaïra: sześć sekwencji z lat
-        1189–1257 o zakonie po śmierci Al Mualima, przewrocie Abbasa
-        i powrocie z wygnania. Desmond, w śpiączce od końca Brotherhood,
-        spotyka w Animusie Claya Kaczmarka, Obiektu 16, i przechodzi pięć
-        etapów zagadek z perspektywy pierwszej osoby; przebudzenie prowadzi
-        prosto do Assassin’s Creed III z 2012 roku.
+        Each key unlocks a memory of Altaïr: six sequences from 1189–1257
+        about the order after Al Mualim’s death, Abbas’s coup and the return
+        from exile. Desmond, in a coma since the end of Brotherhood, meets
+        Clay Kaczmarek, Subject 16, in the Animus and goes through five
+        stages of first-person puzzles; his awakening leads straight into
+        Assassin’s Creed III from 2012.
   - id: co-nowego
-    year: Hak
-    title: Ostrze z hakiem, bomby i obrona kryjówek
-    meta: Tyrolki · warsztat bomb · tower defense
+    year: Hookblade
+    title: Hookblade, bombs and hideout defense
+    meta: Ziplines · bomb crafting · tower defense
     art: assassins-creed-revelations-k01
     flip: false
     band: false
     body:
       - >-
-        Największa zmiana to ostrze z hakiem w miejsce drugiego ukrytego
-        ostrza, złamanego na początku gry: łapie wyższe krawędzie, zjeżdża
-        po linach nad ulicami i przyciąga lub powala przeciwników w walce.
-        Druga to warsztat bomb dymnych, ogłuszających i zabójczych; wydawca
-        reklamował setki kombinacji, w praktyce to kilkanaście typów,
-        z których nosi się trzy naraz.
+        The biggest change is the hookblade in place of the second hidden
+        blade, which breaks at the start of the game: it catches higher
+        ledges, rides ziplines over the streets and pulls or knocks down
+        enemies in combat. The second is a workshop for smoke, stun and
+        lethal bombs; the publisher advertised hundreds of combinations, but
+        in practice there are a dozen or so types, of which you carry three
+        at a time.
       - >-
-        Reszta pochodzi z Brotherhood. Zamiast wież Borgiów są kryjówki
-        templariuszy: po zabiciu kapitana dzielnica jest twoja, ale przy
-        wysokim rozgłosie wróg wraca i trzeba jej bronić w minigrze w stylu
-        tower defense. Rekruci jeżdżą na kontrakty do miast Morza
-        Śródziemnego, a karty pamiętnika Ishaka Paszy otwierają zejście
-        do Hagii Sophii po zbroję, następcę grobowców z dwójki.
+        The rest comes from Brotherhood. Instead of Borgia towers there are
+        Templar hideouts: kill the captain and the district is yours, but
+        when your notoriety is high the enemy comes back and you have to
+        defend it in a tower-defense minigame. Recruits travel on contracts
+        to Mediterranean cities, and the pages of Ishak Pasha’s journal open
+        the way down into Hagia Sophia to a suit of armor, the successor to
+        the tombs of II.
   - id: wersje-i-dodatki
     year: '2016'
-    title: Wydania, dodatki i wersja na PS4
+    title: Editions, DLC and the PS4 version
     meta: PS3 · Xbox 360 · PC · Ezio Collection
     flip: true
     band: false
     body:
       - >-
-        Premierowych wydań było kilka, od Animus po cyfrowe Gold na PC,
-        z bonusami jak misja w więzieniu Vlada Palownika czy płyta z Embers.
-        Dodatki: pakiet postaci Ancestors z 13 grudnia 2011, mapy
-        Mediterranean Traveler z 24 stycznia 2012 i Zaginione archiwum
-        z 28 lutego 2012, jedyny fabularny, o przeszłości Claya i Lucy
+        There were several launch editions, from the Animus Edition to the
+        digital Gold Edition on PC, with bonuses such as a mission in Vlad
+        the Impaler’s prison or a disc with Embers. DLC: the Ancestors
+        Character Pack from December 13, 2011, the Mediterranean Traveler
+        Map Pack from January 24, 2012, and The Lost Archive from February
+        28, 2012, the only story DLC, about the past of Clay and Lucy
         Stillman.
       - >-
-        Serwery trybu wieloosobowego Ubisoft wyłączył 1 października 2022
-        roku, więc dziś to gra dla jednego gracza. Na PC wystarczy
-        jednorazowa aktywacja, bez stałego połączenia. Na PlayStation 4
-        i Xbox One jest The Ezio Collection z 15 listopada 2016 roku,
-        odświeżone trzy gry o Eziu razem; 17 lutego 2022 roku kolekcja
-        trafiła też na Nintendo Switch.
+        Ubisoft shut down the multiplayer servers on October 1, 2022, so
+        today it is a single-player game. On PC a one-time activation is
+        enough, with no always-on connection. On PlayStation 4 and Xbox One
+        there is The Ezio Collection from November 15, 2016, the three Ezio
+        games remastered together; on February 17, 2022, the collection also
+        came to Nintendo Switch.
   - id: dla-kogo
     year: Ezio
-    title: Dla kogo i w jakiej kolejności
-    meta: Po dwójce i Brotherhood · przed trójką
+    title: Who it’s for and in what order
+    meta: After II and Brotherhood · before III
     art: wlochy
     flip: false
     band: true
     body:
       - >-
-        Revelations nie stoi samodzielnie: to trzeci akt jednej opowieści
-        i zakłada, że gracz zna Ezia z Florencji i Rzymu, a Altaïra
-        z pierwszej części. Kolejność jest prosta: II, Brotherhood,
-        Revelations, potem III. Co było dalej z zakonem Ezia, pokazuje
-        Chronicles: China z jego uczennicą Shao Jun.
+        Revelations does not stand on its own: it is the third act of a
+        single story and assumes the player knows Ezio from Florence and
+        Rome, and Altaïr from the first game. The order is simple: II,
+        Brotherhood, Revelations, then III. What became of Ezio’s order
+        afterwards is shown in Chronicles: China, with his apprentice Shao
+        Jun.
       - >-
-        Recenzje z 2011 roku były w większości przychylne: chwalono miasto
-        i domknięcie dwóch wątków, zarzucano, że formuła się opatrzyła.
-        Dla czytających jest powieść Olivera Bowdena Assassin’s Creed:
-        Objawienia, wydana po polsku przez Insignis, ostatnia książka o Eziu.
+        Reviews in 2011 were mostly favorable: critics praised the city and
+        the closing of two storylines, and complained that the formula had
+        grown stale. For readers there is Oliver Bowden’s novel Assassin’s
+        Creed: Revelations, the last book about Ezio.
 cta:
-  title: Zacznij trylogię od początku
-  lead: Florencja 1476 roku i Ezio, zanim został mistrzem. Revelations czyta się dopiero po dwójce i Brotherhood.
+  title: Start the trilogy from the beginning
+  lead: Florence in 1476 and Ezio before he became a master. Revelations only makes sense after II and Brotherhood.
   href: /assassins-creed-2/
-  label: Zobacz Assassin’s Creed II
+  label: See Assassin’s Creed II
 ---

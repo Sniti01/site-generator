@@ -74,7 +74,7 @@ export function mediaFor(slot: string, alt?: string): MediaSource {
     alt:
       alt ??
       (gra
-        ? `${gameCredit?.game ?? 'Assassin’s Creed'} — ${gameCredit?.opis ?? 'materiał wydawcy'}`
+        ? `${gameCredit?.game ?? 'Assassin’s Creed'} — ${gameCredit?.opis ?? 'publisher material'}`
         : (artSlots.find((item) => item.id === slot)?.subject ?? '')),
     // Pierwszy ekran ogląda się na całej szerokości, więc dostaje wyższą jakość
     // niż panele epok i kafle w taśmie. Zdjęcie z Commons schodzi niżej: duoton

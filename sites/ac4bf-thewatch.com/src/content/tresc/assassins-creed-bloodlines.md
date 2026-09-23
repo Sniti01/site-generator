@@ -3,141 +3,145 @@ url: /assassins-creed-bloodlines/
 art: assassins-creed-bloodlines
 era: jerozolima
 lead: >-
-  Bezpośrednia kontynuacja pierwszej części, zmieszczona na PlayStation
-  Portable. Altaïr, już jako mistrz bractwa, płynie na Cypr za resztkami
-  templariuszy i wiezie ze sobą Marię Thorpe, którą oszczędził w jedynce.
+  A direct sequel to the first game, squeezed onto the PlayStation Portable.
+  Altaïr, now master of the Brotherhood, sails to Cyprus after the remnants
+  of the Templars, taking with him Maria Thorpe, whom he spared in the first
+  game.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
   href: /assassins-creed-1/
-  label: Pierwsza część
+  label: The first game
 gallery:
-  title: Cypr i Ziemia Święta
-  lead: Gra nie wyszła na PC, więc zamiast kadrów są zdjęcia miejsc.
+  title: Cyprus and the Holy Land
+  lead: The game never came out on PC, so instead of screenshots there are photos of the places.
   items:
     - art: assassins-creed-bloodlines
-      alt: Dziedziniec zamku w Kyrenii na Cyprze
-      caption: 'Kyrenia, jedno z dwóch miast gry: dziedziniec zamku.'
+      alt: The courtyard of Kyrenia Castle in Cyprus
+      caption: 'Kyrenia, one of the game’s two cities: the castle courtyard.'
     - art: foto-jerozolima
-      alt: Jerozolima, Kopuła na Skale
-      caption: Jerozolima z pierwszej części. Bloodlines zaczyna się w Akce.
+      alt: Jerusalem, the Dome of the Rock
+      caption: Jerusalem from the first game. Bloodlines begins in Acre.
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Gra dla tych, którzy skończyli pierwszą część i chcą wiedzieć, co dalej
-      z Altaïrem. Fabularnie dopowiada początek jego historii z Marią, ale
-      mechanicznie jest jedynką zmniejszoną do rozmiaru PSP: dwa miasta,
-      słabsze skradanie i walka, która szybko się powtarza.
+      A game for those who finished the first one and want to know what
+      happened next to Altaïr. Story-wise it fills in the beginning of his
+      story with Maria, but mechanically it is the first game shrunk to PSP
+      size: two cities, weaker stealth and combat that quickly gets
+      repetitive.
     - >-
-      Masz PSP i lubisz Altaïra: kilka wieczorów bez rozczarowania. Szukasz
-      wejścia do serii: zacznij od dwójki albo od Black Flag.
+      You have a PSP and like Altaïr: a few evenings without disappointment.
+      You are looking for a way into the series: start with II or with Black
+      Flag.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2009'
-    title: Ciąg dalszy pierwszej części na konsoli przenośnej
-    meta: PSP · Griptonite Games · listopad 2009
+    title: The first game continued on a handheld
+    meta: PSP · Griptonite Games · November 2009
     art: foto-jerozolima
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed: Bloodlines wyszło w listopadzie 2009 roku wyłącznie
-        na PlayStation Portable: w Ameryce Północnej 17 listopada, w Europie
-        20 listopada, w Polsce 4 grudnia. Grę zrobiło studio Griptonite
-        Games, a wydał Ubisoft.
+        Assassin’s Creed: Bloodlines came out in November 2009, exclusively
+        on the PlayStation Portable: in North America on November 17, in
+        Europe on November 20. It was developed by Griptonite Games and
+        published by Ubisoft.
       - >-
-        W serii to druga odsłona poboczna i bezpośrednia kontynuacja
-        pierwszej części z 2007 roku: akcja zaczyna się kilka tygodni po jej
-        finale. Do sklepów trafiła w tym samym miesiącu co Assassin’s Creed II
-        i Discovery na Nintendo DS.
+        It is the series’ second spin-off and a direct sequel to the first
+        game from 2007: the story begins a few weeks after that game’s
+        finale. It reached stores in the same month as Assassin’s Creed II
+        and Discovery on the Nintendo DS.
   - id: fabula
     year: '1191'
-    title: Z Akki na Cypr tropem templariuszy
+    title: From Acre to Cyprus on the Templars’ trail
     meta: Altaïr · Maria Thorpe · Armand Bouchart
     art: foto-akka
     flip: true
     band: true
     body:
       - >-
-        Altaïr dowiaduje się, że ocalali templariusze zbierają siły w Akce.
-        Atak przychodzi za późno, bo zakon odpływa na Cypr, ale w Akce Altaïr
-        pokonuje Marię Thorpe, która chce pomścić Roberta de Sablé. Zabiera ją
-        na statek i rusza w pościg. Na wyspie rządzi już Armand Bouchart,
-        nowy wielki mistrz zakonu.
+        Altaïr learns that the surviving Templars are gathering their forces
+        in Acre. His attack comes too late, as the order sails off to
+        Cyprus, but in Acre Altaïr defeats Maria Thorpe, who wants to avenge
+        Robert de Sablé. He takes her aboard a ship and gives chase. The
+        island is already ruled by Armand Bouchart, the order’s new Grand
+        Master.
       - >-
-        Templariusze wykupili Cypr od króla Ryszarda i trzymają go twardą
-        ręką, więc Altaïr wspiera miejscowy ruch oporu, po kolei usuwa
-        podwładnych Boucharta i szuka ukrytego na wyspie archiwum zakonu,
-        gdzie w finale dopada samego mistrza.
+        The Templars bought Cyprus from King Richard and rule it with an
+        iron fist, so Altaïr supports the local resistance, removes
+        Bouchart’s subordinates one by one and searches for the order’s
+        archive hidden on the island, where in the finale he catches up with
+        the Grand Master himself.
       - >-
-        Drugi wątek to Maria: zaczyna jako kpiący jeniec, ale patrząc na rządy
-        templariuszy, traci wiarę w zakon i staje po stronie Altaïra.
-        W dalszej historii serii będzie jego żoną.
+        The second thread is Maria: she starts as a mocking captive, but
+        watching the Templars’ rule, she loses faith in the order and takes
+        Altaïr’s side. Later in the series’ story she becomes his wife.
   - id: rozgrywka
     year: PSP
-    title: Dwa miasta, sterowanie z jedynki, misje jak w dwójce
-    meta: Limassol i Kyrenia · monety templariuszy · bez koni i wzroku orła
+    title: Two cities, controls from the first game, missions like in II
+    meta: Limassol and Kyrenia · Templar coins · no horses or Eagle Vision
     art: assassins-creed-bloodlines
     flip: false
     band: false
     body:
       - >-
-        Poza otwarciem w Akce gra toczy się na Cyprze, w dwóch otwartych
-        miastach: Limassol i Kyrenii. Mapa jest mniejsza niż w jedynce,
-        na ulicach jest wyraźnie mniej ludzi, zniknęły konie i wzrok orła;
-        punkty widokowe zostały, ale odsłaniają tylko zadania poboczne.
-        Wspinaczka jest prostsza i szybsza.
+        Apart from the opening in Acre, the game takes place on Cyprus, in
+        two open cities: Limassol and Kyrenia. The map is smaller than in
+        the first game, the streets are noticeably emptier, and horses and
+        Eagle Vision are gone; viewpoints remain, but they reveal only side
+        quests. Climbing is simpler and faster.
       - >-
-        Sterowanie przeniesiono z pierwszej części, za to misje fabularne
-        ułożono jak w dwójce: jedno zadanie po drugim, aż zbierze się
-        informacje o celu. Miejsce flag zajęły monety templariuszy, za które
-        podnosi się zdrowie i obrażenia broni; nowością jest zabójstwo
-        z krawędzi.
+        The controls were carried over from the first game, but the story
+        missions are structured as in II: one task after another until you
+        have gathered information on the target. Flags were replaced by
+        Templar coins, which you spend to raise health and weapon damage;
+        the new addition is the assassination from a ledge.
   - id: wersje
-    year: Wydania
-    title: Tylko PSP, po angielsku, z mostem do dwójki na PlayStation 3
-    meta: Bez polskiej wersji · karta pamięci 32 MB · dziś z drugiej ręki
+    year: Releases
+    title: PSP only, with a link to II on PlayStation 3
+    meta: 32 MB memory card · secondhand today
     art: foto-psp
     flip: true
     band: false
     body:
       - >-
-        Do dziś gra się w nią wyłącznie na PSP. Polskiej wersji językowej nie
-        ma, dialogi i napisy są angielskie także w wydaniu, które Ubisoft
-        Polska wprowadził do sklepów w grudniu 2009 roku. Dziś kupuje się ją
-        z drugiej ręki, z ogłoszeń i w sklepach z używanymi grami, zwykle
-        za kilkadziesiąt złotych.
+        To this day it can be played only on the PSP. Today you buy it
+        secondhand, from classifieds and used-game shops.
       - >-
-        Jedna funkcja jest nie do odtworzenia gdzie indziej: po podłączeniu
-        PSP do PlayStation 3 gra wymienia dane z Assassin’s Creed II na tę
-        konsolę. Pokonani szefowie odblokowują broń dla Ezia, monety
-        przechodzą do dwójki jako floreny, a strony Kodeksu z dwójki
-        wzmacniają Altaïra.
+        One feature cannot be reproduced anywhere else: when you connect the
+        PSP to a PlayStation 3, the game exchanges data with Assassin’s
+        Creed II on that console. Defeated bosses unlock weapons for Ezio,
+        coins carry over to II as florins, and Codex pages from II make
+        Altaïr stronger.
   - id: dla-kogo
-    year: Dla kogo
-    title: Komu Bloodlines coś dopowie, a kto może je pominąć
-    meta: Po jedynce · przed dwójką · recenzje mieszane
+    year: Who it’s for
+    title: Who will get something out of Bloodlines, and who can skip it
+    meta: After the first game · before II · mixed reviews
     art: jerozolima-k06
     flip: false
     band: false
     body:
       - >-
-        Recenzje w 2009 roku były mieszane: chwalono oprawę jak na PSP
-        i wierność serii, krytykowano jednowymiarową walkę, małe lokacje
-        i powtarzalność; na Metacriticu gra zatrzymała się na 63 punktach
-        na 100. Przejście fabuły zajmuje około ośmiu godzin.
+        Reviews in 2009 were mixed: critics praised the visuals for a PSP
+        game and the faithfulness to the series, and criticized the
+        one-dimensional combat, small locations and repetitiveness; on
+        Metacritic the game settled at 63 out of 100. The story takes about
+        eight hours to finish.
       - >-
-        Gra ma sens dla kogoś, kto skończył pierwszą część i chce zobaczyć,
-        co stało się z Altaïrem i Marią po finale jedynki. Główna linia
-        obejdzie się bez tego. Kto zaczyna serię od zera, wybiera jedno
-        z trzech wejść z poradnika, a nie Cypr.
+        The game makes sense for someone who finished the first game and
+        wants to see what became of Altaïr and Maria after its finale. The
+        main line does fine without it. If you are starting the series from
+        scratch, pick one of the three entry points from the guide, not
+        Cyprus.
 cta:
-  title: Zacznij od pierwszej części
-  lead: Ziemia Święta 1191 roku, Altaïr i dziewięć celów — historia, którą Bloodlines ciągnie dalej.
+  title: Start with the first game
+  lead: The Holy Land in 1191, Altaïr and nine targets — the story that Bloodlines carries on.
   href: /assassins-creed-1/
-  label: Zobacz Assassin’s Creed 1
+  label: See Assassin’s Creed 1
 ---

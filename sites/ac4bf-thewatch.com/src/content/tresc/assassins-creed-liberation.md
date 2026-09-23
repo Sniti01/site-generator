@@ -2,264 +2,273 @@
 url: /assassins-creed-liberation/
 art: assassins-creed-liberation
 lead: >-
-  Gra zrobiona pod PlayStation Vita, potem dwa razy przeniesiona na duże
-  ekrany. Aveline de Grandpré, córka kupca i niewolnicy, działa
-  w Nowym Orleanie pod hiszpańską władzą w trzech strojach: damy, niewolnicy
-  i asasynki. Mniejsza od trójki, ale z własną twarzą.
+  A game made for the PlayStation Vita, then brought to the big screen
+  twice. Aveline de Grandpré, the daughter of a merchant and an enslaved
+  woman, operates in New Orleans under Spanish rule in three guises: lady,
+  slave and Assassin. Smaller than III, but with an identity of its own.
 primary:
   href: '#co-to-za-gra'
-  label: Co jest w grze
+  label: What’s in the game
 secondary:
-  href: /poradniki/od-czego-zaczac/
-  label: Od czego zacząć serię
+  href: /guides/where-to-start/
+  label: Where to start the series
 byline:
-  role: Redakcja
-  author: Bractwo
+  role: Editorial team
+  author: The Brotherhood
   date: '2026-09-12'
-  dateLabel: 12 września 2026
+  dateLabel: September 12, 2026
 toc:
-  title: Na tej stronie
+  title: On this page
   items:
     - href: '#co-to-za-gra-tytul'
-      title: Gra z Vity i jej dwa powroty
+      title: A Vita game and its two comebacks
     - href: '#aveline-tytul'
-      title: Aveline de Grandpré i jej historia
+      title: Aveline de Grandpré and her story
     - href: '#trzy-persony-tytul'
-      title: Dama, niewolnica, asasynka
+      title: Lady, slave, Assassin
     - href: '#nowy-orlean-tytul'
-      title: Nowy Orlean, bagna, Chichén Itzá
+      title: New Orleans, the bayou, Chichén Itzá
     - href: '#trojka-i-abstergo-tytul'
-      title: Connor, Abstergo i Erudito
+      title: Connor, Abstergo and Erudito
     - href: '#wydania-tytul'
-      title: Vita, HD, Remastered i Steam
+      title: Vita, HD, Remastered and Steam
     - href: '#komu-i-ktora-wersja-tytul'
-      title: Komu i w której wersji
+      title: Who it’s for and which version
     - href: '#galeria-tytul'
-      title: Kadry i arty
+      title: Screenshots and art
     - href: '#werdykt-tytul'
-      title: Werdykt
+      title: Verdict
     - href: '#powiazane-tytul'
-      title: Powiązane strony
+      title: Related pages
 gallery:
-  title: Kadry i arty
+  title: Screenshots and art
   lead: >-
-    Materiał wydawcy ze stron gier w Steamie. Zrzuty ekranu Liberation
-    stoją przy rzędach wyżej.
+    Publisher material from the games’ Steam pages. Liberation screenshots
+    sit beside the rows above.
   items:
     - art: assassins-creed-liberation
-      alt: 'Assassin’s Creed Liberation HD — kluczowy art'
-      caption: 'Kluczowy art wydania HD na Steamie.'
+      alt: 'Assassin’s Creed Liberation HD — key art'
+      caption: 'Key art from the HD release on Steam.'
     - art: assassins-creed-3
-      alt: 'Assassin’s Creed III Remastered — kluczowy art'
-      caption: 'Assassin’s Creed III Remastered — pakiet, w którym od 2019 roku siedzi Liberation Remastered.'
+      alt: 'Assassin’s Creed III Remastered — key art'
+      caption: 'Assassin’s Creed III Remastered — the bundle that has included Liberation Remastered since 2019.'
 verdict:
-  label: Werdykt
+  label: Verdict
   body:
     - >-
-      Dobra bohaterka i dobre miejsce w przeciętnej grze. Nowy Orlean, bagna
-      i trzy stroje Aveline dają Liberation własną twarz, jakiej nie ma żadna
-      inna gra poboczna serii; fabuła, misje i oprawa zdradzają tytuł na
-      konsolę przenośną, przeniesiony na duże ekrany bez powiększania. Kto
-      polubił trójkę, dostanie tu kilkanaście godzin w tej samej epoce.
+      A good heroine and a good setting in an average game. New Orleans, the
+      bayou and Aveline’s three outfits give Liberation an identity that no
+      other spin-off in the series has; the story, missions and presentation
+      betray a handheld title brought to the big screen without being scaled
+      up. If you liked III, you get a dozen or so hours here in the same era.
     - >-
-      Grać najlepiej w Remastered w pakiecie z trójką, na konsoli albo na PC,
-      i traktować Liberation jako dodatek, nie osobny zakup. Samo Liberation
-      HD ma sens, gdy trójki się nie chce, a angielski nie przeszkadza. Na
-      start serii to nie jest — do tego są dwójka, Black Flag i Origins.
+      It is best played as Remastered, in the bundle with III, on console or
+      PC, treating Liberation as an add-on rather than a separate purchase.
+      Liberation HD on its own makes sense when you don’t want III. It is
+      not a starting point for the series — for that there are II, Black
+      Flag and Origins.
 related:
-  title: Powiązane strony
+  title: Related pages
 rows:
   - id: co-to-za-gra
     year: '2012'
-    title: Gra z PlayStation Vita, która wracała dwa razy
-    meta: Nowy Orlean · 1765–1780 · Aveline de Grandpré · Ubisoft Sofia
+    title: The PlayStation Vita game that came back twice
+    meta: New Orleans · 1765–1780 · Aveline de Grandpré · Ubisoft Sofia
     flip: false
     band: false
     body:
       - >-
-        Assassin’s Creed III: Liberation wyszło 30 października 2012 roku
-        w Ameryce Północnej i dzień później w Europie, wyłącznie na
-        PlayStation Vita — tego samego dnia co trójka, do której przypina się
-        tytułem. Zrobiło je bułgarskie Ubisoft Sofia, dwa lata później autor
-        Rogue; producentem był Martin Capel, późniejszy reżyser Rogue,
-        scenariusz pisali Richard Farrese i Jill Murray, muzykę Winifred
-        Phillips.
+        Assassin’s Creed III: Liberation came out on October 30, 2012 in
+        North America and a day later in Europe, exclusively on the
+        PlayStation Vita — the same day as III, to which its title ties it.
+        It was made by Bulgaria’s Ubisoft Sofia, which two years later made
+        Rogue; the producer was Martin Capel, later the director of Rogue,
+        the script was written by Richard Farrese and Jill Murray, and the
+        music by Winifred Phillips.
       - >-
-        Bohaterką jest Aveline de Grandpré — pierwsza kobieta w roli głównej
-        w serii i pierwsza postać, której wspomnienia nie mają nic wspólnego
-        z Desmondem Milesem. Akcja zaczyna się w 1765 roku w Nowym Orleanie,
-        w Luizjanie, która po wojnie z Francuzami i Indianami przechodzi
-        z rąk francuskich w hiszpańskie, i ciągnie się przez kilkanaście lat,
-        równolegle do wydarzeń trójki.
+        The heroine is Aveline de Grandpré — the first female lead in the
+        series and the first character whose memories have nothing to do
+        with Desmond Miles. The story begins in 1765 in New Orleans, in
+        Louisiana, which after the French and Indian War passes from French
+        into Spanish hands, and it spans a dozen or so years, running
+        parallel to the events of III.
       - >-
-        Gra przeszła trzy wcielenia. Oryginał na Vitę korzystał z ekranu
-        dotykowego, tylnego panelu i żyroskopu i miał własny tryb
-        wieloosobowy. Liberation HD ze stycznia 2014 roku przeniosło ją na
-        PlayStation 3, Xboksa 360 i PC z nową oprawą i dodatkowymi misjami.
-        Liberation Remastered z marca 2019 roku siedzi w pakiecie Assassin’s
-        Creed III Remastered. Przyjęcie było mieszane: chwalono bohaterkę
-        i miasto, Gry-Online i GameSpot krytykowały słabą fabułę, Eurogamer
-        do tego zbyt łatwe misje.
+        The game has gone through three incarnations. The Vita original used
+        the touchscreen, the rear touch panel and the gyroscope, and had its
+        own multiplayer mode. Liberation HD, from January 2014, brought it to
+        PlayStation 3, Xbox 360 and PC with new visuals and extra missions.
+        Liberation Remastered, from March 2019, is part of the Assassin’s
+        Creed III Remastered bundle. The reception was mixed: the heroine
+        and the city were praised, GameSpot criticized the weak story, and
+        Eurogamer also the overly easy missions.
   - id: aveline
     year: '1765'
-    title: Aveline de Grandpré — córka kupca i niewolnicy
-    meta: Agaté · Madeleine de L’Isle · Chichén Itzá · Dysk Proroctwa
+    title: Aveline de Grandpré — daughter of a merchant and an enslaved woman
+    meta: Agaté · Madeleine de L’Isle · Chichén Itzá · the Prophecy Disk
     art: assassins-creed-liberation-k01
     flip: true
     band: true
     body:
       - >-
-        Aveline jest córką francuskiego kupca Philippe’a de Grandpré
-        i afrykańskiej niewolnicy Jeanne, która zniknęła, gdy dziewczynka
-        była mała. Wychowana w domu ojca i macochy Madeleine de L’Isle,
-        należy do elity miasta, a po kryjomu uwalnia niewolników i wykonuje
-        zlecenia Agaté — zbiegłego niewolnika na czele asasynów Nowego
-        Orleanu. Pierwsze lata to walka ze spiskiem templariusza Rafaela
-        de Ferrera, który chce przejąć Luizjanę, gdy miasto przechodzi
-        w ręce Hiszpanów. Wysłana w 1768 roku na gubernatora Antonio de
-        Ulloę, Aveline daruje mu życie, gdy dowiaduje się, dokąd trafiają
-        wywożeni niewolnicy, i wbrew mentorowi rusza do Chichén Itzá:
-        odnajduje tam matkę, zabija de Ferrera i wynosi ze świątyni Pierwszej
-        Cywilizacji połowę Dysku Proroctwa.
+        Aveline is the daughter of the French merchant Philippe de Grandpré
+        and Jeanne, an African slave who disappeared when the girl was small.
+        Raised in the house of her father and her stepmother Madeleine de
+        L’Isle, she belongs to the city’s elite, while in secret she frees
+        slaves and carries out assignments for Agaté — a runaway slave who
+        leads the Assassins of New Orleans. The first years are a fight
+        against a plot by the Templar Rafael de Ferrer, who wants to seize
+        Louisiana as the city passes into Spanish hands. Sent in 1768 to kill
+        Governor Antonio de Ulloa, Aveline spares his life when she learns
+        where the deported slaves are taken, and against her mentor’s wishes
+        sets out for Chichén Itzá: there she finds her mother, kills de
+        Ferrer and carries half of the Prophecy Disk out of a First
+        Civilization temple.
       - >-
-        Kolejne sekwencje przeskakują o lata: obrona bagien przed Diego
-        Vázquezem, drugi wyjazd do Chichén Itzá, śmierć ojca, a w 1777 roku
-        misja pod Nowym Jorkiem, w której Aveline razem z Connorem ściga
-        oficera lojalistów. Trop prowadzi do własnego domu — mocodawcą
-        templariuszy jest Madeleine, która od lat szykowała pasierbicę na
-        templariuszkę. Finał w katedrze św. Ludwika jest jedną z ciemniejszych
-        scen serii: mentor ginie z własnej ręki, przekonany o zdradzie
-        uczennicy, a dysk połączony z medalionem matki odtwarza zapis
-        wyboru Ewy na przywódczynię buntu ludzi przeciw Pierwszej
-        Cywilizacji. Aveline jest lepsza niż scenariusz, który dostała.
+        Later sequences jump ahead by years: defending the bayou against
+        Diego Vázquez, a second trip to Chichén Itzá, her father’s death, and
+        in 1777 a mission near New York in which Aveline and Connor hunt down
+        a Loyalist officer. The trail leads back to her own home — the
+        Templars’ mastermind is Madeleine, who had spent years grooming her
+        stepdaughter to become a Templar. The finale in St. Louis Cathedral
+        is one of the darker scenes in the series: the mentor dies by his own
+        hand, convinced that his student has betrayed him, and the disk,
+        joined with her mother’s medallion, plays back a record of Eve being
+        chosen to lead humanity’s revolt against the First Civilization.
+        Aveline is better than the script she was given.
   - id: trzy-persony
-    year: Persony
-    title: Dama, niewolnica, asasynka — trzy stroje, trzy różne gry
-    meta: Rozgłos liczony osobno · przebieralnie · parasolka ze strzałkami
+    year: Personas
+    title: Lady, slave, Assassin — three outfits, three different games
+    meta: Notoriety tracked separately · dressing chambers · a dart-firing parasol
     art: assassins-creed-liberation-k04
     flip: false
     band: false
     body:
       - >-
-        Największa nowość Liberation to zmiana tożsamości. Jako asasynka
-        Aveline ma najwięcej zdrowia, pełny arsenał, sprint i wspinaczkę, ale
-        straż rozpoznaje ją najszybciej. Jako niewolnica wtapia się w grupy
-        robotników, nosi skrzynie i przechodzi obok wartowników, ale ma mniej
-        zdrowia. Jako dama nie biega i nie wchodzi na dachy, nie nosi
-        ukrytych ostrzy, za to przekupuje strażników, oczarowuje ich tak, że
-        zostawiają posterunek, a z parasolki strzela zatrutymi strzałkami.
+        Liberation’s biggest innovation is switching identities. As the
+        Assassin, Aveline has the most health, the full arsenal, sprinting
+        and climbing, but the guards recognize her fastest. As the slave she
+        blends in with groups of laborers, carries crates and walks past
+        sentries, but has less health. As the lady she doesn’t run, doesn’t
+        climb onto rooftops and carries no hidden blades, but she bribes
+        guards, charms them into leaving their posts and fires poisoned darts
+        from her parasol.
       - >-
-        Rozgłos liczy się dla każdego stroju osobno i każdy zbija się
-        inaczej: asasynka przekupuje urzędników, niewolnica zrywa listy
-        gończe, dama zabija świadków. Część misji wymusza konkretną personę,
-        więc trzeba planować, w czym wejść na teren strzeżony; stroje zmienia
-        się w wykupionych przebieralniach i w kryjówce w magazynie.
+        Notoriety is tracked separately for each outfit, and each lowers it
+        differently: the Assassin bribes officials, the slave tears down
+        wanted posters, the lady kills witnesses. Some missions require a
+        specific persona, so you have to plan what to wear into a restricted
+        area; outfits are changed in purchased dressing chambers and at the
+        hideout in the warehouse.
       - >-
-        Reszta idzie z trójki, na tym samym silniku AnvilNext. Aveline
-        walczy dwiema broniami naraz — maczeta, pistolety, bicz, dmuchawka —
-        a po serii kontr uruchamia egzekucję łańcuchową: czas zwalnia, gracz
-        zaznacza do czterech przeciwników, bohaterka kończy ich jednym
-        ciągiem. Do tego handel: sieć kupiecka ojca i statki z towarem, a
-        z zysków stroje i broń.
+        The rest comes from III, on the same AnvilNext engine. Aveline fights
+        with two weapons at once — machete, pistols, whip, blowpipe — and
+        after a series of counters she triggers a chain kill: time slows, the
+        player marks up to four enemies, and the heroine finishes them in a
+        single sequence. On top of that there is trading: her father’s
+        merchant network and ships carrying goods, with the profits going
+        into outfits and weapons.
   - id: nowy-orlean
-    year: Luizjana
-    title: Nowy Orlean, bagna i Chichén Itzá
-    meta: Aligatory · konary zamiast dachów · nurkowanie · dziewięć sekwencji
+    year: Louisiana
+    title: New Orleans, the bayou and Chichén Itzá
+    meta: Alligators · branches instead of rooftops · diving · nine sequences
     art: assassins-creed-liberation-k02
     flip: true
     band: false
     body:
       - >-
-        Nowy Orlean jest tu francuskim portem handlowym, który właśnie
-        przechodzi pod hiszpańską władzę — jedno z nielicznych w grach
-        przedstawień francuskiej Luizjany. Bagna wokół miasta zmieniają
-        zasady: zamiast dachów są konary, w wodzie czekają aligatory, a pod
-        nią zatopione skarby Majów, do których trzeba nurkować. Trzeci obszar
-        to Chichén Itzá w Meksyku. Wszystkie trzy są mniejsze niż mapy części
-        numerowanych: na Vicie to wystarczało, w HD widać różnicę.
+        New Orleans here is a French trading port just passing under Spanish
+        rule — one of the few depictions of French Louisiana in games. The
+        bayou around the city changes the rules: instead of rooftops there
+        are tree branches, alligators wait in the water, and beneath it lie
+        sunken Maya treasures that you have to dive for. The third area is
+        Chichén Itzá in Mexico. All three are smaller than the maps of the
+        numbered games: on the Vita that was enough, in HD the difference
+        shows.
       - >-
-        Kampania ma dziewięć sekwencji, a Eurogamer liczył ją na najwyżej
-        dziesięć godzin. Obok są zlecenia rozpisane na persony — kontrakty
-        dla asasynki, intrygi dla damy, śledztwa dla niewolnicy — oraz
-        uwalnianie niewolników i znajdźki: strony pamiętnika, figurki Majów,
-        jaja aligatorów, grzyby. Trudność jest nierówna: zwykłe zadania są
-        łatwe, a walki zamykające rozdziały karzą za każdy błąd.
+        The campaign has nine sequences, and Eurogamer put it at ten hours at
+        most. Alongside it are side missions split by persona — contracts for
+        the Assassin, intrigues for the lady, investigations for the slave —
+        plus freeing slaves and collectibles: diary pages, Maya figurines,
+        alligator eggs, mushrooms. The difficulty is uneven: ordinary tasks
+        are easy, while the fights that close out chapters punish every
+        mistake.
   - id: trojka-i-abstergo
     year: Abstergo
-    title: Connor, Abstergo Entertainment i hakerzy Erudito
-    meta: Wątek współczesny · misja z Connorem · Aveline w Black Flag
+    title: Connor, Abstergo Entertainment and the Erudito hackers
+    meta: Modern-day story · a mission with Connor · Aveline in Black Flag
     art: assassins-creed-3
     flip: false
     band: true
     body:
       - >-
-        Liberation jako pierwsze w serii odsunęło gracza od Desmonda. Ramą
-        jest produkt: Abstergo Entertainment wypuściło grę o życiu Aveline,
-        a w trakcie rozgrywki odzywa się grupa hakerska Erudito i odsłania,
-        co korporacja ocenzurowała i przekręciła. Ten pomysł Black Flag
-        rozwinęło rok później w całe biuro Abstergo.
+        Liberation was the first in the series to move the player away from
+        Desmond. The frame is a product: Abstergo Entertainment has released
+        a game about Aveline’s life, and during play the hacker group Erudito
+        breaks in and reveals what the corporation censored and twisted. A
+        year later Black Flag expanded this idea into an entire Abstergo
+        office.
       - >-
-        Z trójką łączy Liberation epoka, silnik i wspólna misja pod Nowym
-        Jorkiem. Na Vicie połączenie z trójką na PlayStation 3 odblokowywało
-        misję z perspektywy Connora i jego tomahawk; w HD i Remastered te
-        dodatki są w zestawie. Aveline wróciła jeszcze w trzech misjach
-        dołączonych do Black Flag. Kolejność epok w tej grupie: Rogue 1752,
-        trójka 1754, Liberation 1765.
+        Liberation shares with III its era, its engine and a joint mission
+        near New York. On the Vita, linking up with III on PlayStation 3
+        unlocked a mission from Connor’s perspective and his tomahawk; in HD
+        and Remastered these extras are included. Aveline also returned in
+        three missions bundled with Black Flag. The order of eras in this
+        group: Rogue 1752, III 1754, Liberation 1765.
   - id: wydania
     year: 2012–2022
-    title: Vita, HD, Remastered — i co się stało na Steamie
-    meta: HD bez polskiej wersji · Remastered z polskimi napisami · konto Ubisoft
+    title: Vita, HD, Remastered — and what happened on Steam
+    meta: HD · Remastered · Ubisoft account
     flip: true
     band: false
     body:
       - >-
-        Liberation HD zapowiedziano 10 września 2013 roku, a wydano w połowie
-        stycznia 2014 — na konsolach tylko cyfrowo, na PC także w pudełku,
-        w niskiej cenie. Wersja HD ma wyższą rozdzielczość, cykl dnia i nocy,
-        nowe modele twarzy, przebudowane misje i kilka nowych; nie ma trybu
-        sieciowego i części misji dotykowych. Polskiej wersji HD nie ma:
-        Steam wymienia osiem języków bez polskiego.
+        Liberation HD was announced on September 10, 2013 and released in
+        mid-January 2014 — digital-only on consoles, on PC also boxed, at a
+        low price. The HD version has a higher resolution, a day-night cycle,
+        new face models, reworked missions and a few new ones; it lacks the
+        online mode and some of the touch-based missions. Steam lists eight
+        languages for it.
       - >-
-        Na PC gra wymaga konta Ubisoft, w Steamie oznaczonego jako Uplay.
-        W lipcu 2022 roku Liberation HD zniknęło ze sprzedaży na Steamie,
-        a 1 września 2022 Ubisoft wyłączył jego funkcje sieciowe i dostęp do
-        DLC; karta w sklepie przez chwilę zapowiadała blokadę samej gry, co
-        wydawca sprostował — właściciele zachowali dostęp. Dziś Liberation
-        HD znów jest w sprzedaży na Steamie i w sklepie Ubisoftu, bez funkcji
-        sieciowych.
+        On PC the game requires a Ubisoft account, labeled Uplay on Steam. In
+        July 2022 Liberation HD disappeared from sale on Steam, and on
+        September 1, 2022 Ubisoft shut down its online features and access to
+        DLC; for a while the store page announced that the game itself would
+        be blocked, which the publisher corrected — owners kept access. Today
+        Liberation HD is on sale again on Steam and in the Ubisoft store,
+        without online features.
       - >-
-        Remastered zapowiedziano 13 września 2018 roku jako część przepustki
-        sezonowej Odyssey; pod koniec marca 2019 roku wyszło na PlayStation
-        4, Xboksa One i PC, w maju 2019 na Switcha. Liberation Remastered
-        jest częścią Assassin’s Creed III Remastered, razem ze wszystkimi
-        dodatkami trójki dla jednego gracza. Ten pakiet ma polskie napisy,
-        a wydanie na PlayStation 4 działa też na PlayStation 5.
+        Remastered was announced on September 13, 2018 as part of the Odyssey
+        season pass; at the end of March 2019 it came out on PlayStation 4,
+        Xbox One and PC, and in May 2019 on Switch. Liberation Remastered is
+        part of Assassin’s Creed III Remastered, together with all of III’s
+        single-player DLC. The PlayStation 4 release of this bundle also runs
+        on PlayStation 5.
   - id: komu-i-ktora-wersja
     year: Start
-    title: Komu Liberation i w której wersji
-    meta: Po trójce · Remastered na konsoli i PC · HD tylko po angielsku
+    title: Who Liberation is for and which version to play
+    meta: After III · Remastered on console and PC
     flip: false
     band: false
     body:
       - >-
-        Liberation jest dla kogoś, kto skończył trójkę i chce tej epoki
-        jeszcze, od innej strony; dla kogoś, kto szuka innej bohaterki niż
-        rząd mężczyzn w kapturach; i dla kolekcjonera, który i tak ma
-        Assassin’s Creed III Remastered. Na start serii się nie nadaje:
-        fabuła jest opowiedziana skrótami, a wątek współczesny zakłada
-        znajomość Abstergo. Kto zaczyna od zera, niech wejdzie przez dwójkę,
-        Black Flag albo Origins i wróci tu po trójce.
+        Liberation is for someone who has finished III and wants more of that
+        era, from a different angle; for someone looking for a protagonist
+        other than a row of hooded men; and for the collector who owns
+        Assassin’s Creed III Remastered anyway. It is not suited to starting
+        the series: the story is told in shorthand, and the modern-day story
+        assumes you know Abstergo. If you are starting from zero, come in
+        through II, Black Flag or Origins and return here after III.
       - >-
-        Wersję wybiera platforma. Na konsoli — Remastered w pakiecie
-        z trójką: lepsza oprawa, komplet dodatków i polskie napisy. Na PC —
-        też Remastered, jeśli chcesz obie gry; samo Liberation HD jest drogą
-        bez trójki, ale po angielsku. Oryginału na Vitę szukać nie trzeba: HD
-        ma jego zawartość poza trybem sieciowym i dotykowymi wstawkami. Główny
-        wątek to około dziesięciu godzin, komplet strojów i broni —
-        drugie tyle.
+        The platform decides the version. On console — Remastered in the
+        bundle with III: better visuals and all the DLC. On PC — Remastered
+        too, if you want both games; Liberation HD on its own is the route
+        without III. There is no need to hunt down the Vita original: HD has
+        its content apart from the online mode and the touch-based segments.
+        The main story takes about ten hours, the full set of outfits and
+        weapons as much again.
 cta:
-  title: Nie wiesz, od czego zacząć serię?
-  lead: Czternaście części i kilka spin-offów. Jest krótsza droga niż po kolei.
-  href: /poradniki/od-czego-zaczac/
-  label: Zobacz poradnik
+  title: Not sure where to start the series?
+  lead: Fourteen main games and a handful of spin-offs. There is a shorter route than playing them all in order.
+  href: /guides/where-to-start/
+  label: Read the guide
 ---

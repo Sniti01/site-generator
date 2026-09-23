@@ -63,29 +63,29 @@ const kolumny = [
   // adresami z drzewa. Że większość z nich jeszcze nie jest zbudowana, to inna
   // sprawa: adres planowany różni się od adresu widmo.
   {
-    title: 'Poradniki',
+    title: 'Guides',
     links: [
-      { label: 'Od czego zacząć', href: '/poradniki/od-czego-zaczac/' },
-      { label: 'Wszystkie poradniki', href: '/poradniki/' },
+      { label: 'Where to start', href: '/guides/where-to-start/' },
+      { label: 'All guides', href: '/guides/' },
       // «Film Rodowód» — jak w menu (П44, punkt 35): strona jest o filmie Lineage;
       // stopka wyrównana do menu 2026-09-15 (П50, punkt 39) — jeden adres, jedna nazwa.
-      { label: 'Film Rodowód', href: '/assassins-creed-rodowod/' },
-      { label: 'Mapa miejsc historycznych', href: '/mapa-miejsc-historycznych/' },
+      { label: 'Lineage film', href: '/assassins-creed-lineage/' },
+      { label: 'Historical locations map', href: '/historical-locations-map/' },
     ],
   },
   {
-    title: 'Epoki',
+    title: 'Eras',
     links: eras.map((era) => ({ label: `${era.year} · ${era.place}`, href: stronaEpoki[era.id] })),
   },
   {
-    title: 'Serwis',
+    title: 'Site',
     // Trzy adresy zdjęte 2026-09-11 (odpowiedź właściciela «podwał: a», П41):
     // `/o-nas/`, `/redakcja/`, `/kontakt/` nie istnieją w drzewie fali 1
     // i nie są zbudowane — link-widmo w stopce każdej strony. Wrócą razem
     // ze swoimi stronami. `Polityka prywatności` zostaje: to obietnica,
     // nie link — jej strona idzie wczesnym punktem kolejki tekstów fali 1,
     // do tego dnia jedyny adres-widmo w serwisie jest nazwany tutaj.
-    links: [{ label: 'Polityka prywatności', href: '/prywatnosc/' }],
+    links: [{ label: 'Privacy policy', href: '/privacy/' }],
   },
 ];
 ---
@@ -93,23 +93,23 @@ const kolumny = [
 <CoreSiteFooter columns={kolumny}>
   <Wordmark slot="znak" size="lg" />
   <Fragment slot="pitch">
-        Piszemy o serii od strony gracza: gdzie iść, co wziąć i czego nie da się przegapić.
+        We write about the series from the player’s side: where to go, what to take and what you can’t afford to miss.
       </Fragment>
 
   <Fragment slot="dol">{
     tytulyGier.length > 0 && (
       <div class="ft__foto">
         <div class="container">
-          <h2 class="ft__foto-title t-label">Materiały graficzne</h2>
+          <h2 class="ft__foto-title t-label">Artwork</h2>
           <p class="ft__foto-note t-caption">
-            Kluczowy art i zrzuty ekranu pochodzą z kart gier w witrynie Steam i pozostają
-            własnością <strong>Ubisoft Entertainment</strong>. Użyto ich wyłącznie po to, by
-            wskazać gry serii, o których są strony serwisu. Serwis nie korzysta z logotypów
-            wydawcy we własnej identyfikacji. Gry: {tytulyGier.join(', ')}.
+            Key art and screenshots come from the games’ Steam store pages and remain the
+            property of <strong>Ubisoft Entertainment</strong>. They are used solely to
+            identify the games in the series that the site’s pages are about. The site does not
+            use the publisher’s logos in its own identity. Games: {tytulyGier.join(', ')}.
           </p>
           {klasyLicencji.length > 0 && (
             <p class="ft__foto-note t-caption">
-              Klasa licencji: {klasyLicencji.join('; ')}.
+              License class: {klasyLicencji.join('; ')}.
             </p>
           )}
         </div>
@@ -121,7 +121,7 @@ const kolumny = [
     zdjecia.length > 0 && (
       <div class="ft__foto">
         <div class="container">
-          <h2 class="ft__foto-title t-label">Zdjęcia</h2>
+          <h2 class="ft__foto-title t-label">Photos</h2>
           <ul class="ft__foto-list t-caption">
             {zdjecia.map((foto) => (
               <li>
@@ -142,8 +142,8 @@ const kolumny = [
             ))}
           </ul>
           <p class="ft__foto-note t-caption">
-            Kadry pochodzą z Wikimedia Commons i są użyte na warunkach swoich licencji;
-            zmieniono w nich kadrowanie i kolor.
+            The photos come from Wikimedia Commons and are used under their respective
+            licenses; their cropping and color have been changed.
           </p>
         </div>
       </div>
@@ -153,11 +153,11 @@ const kolumny = [
   <div class="ft__legal">
     <div class="container ft__legal-inner">
       <p class="t-caption">
-        Serwis nieoficjalny i niezwiązany z wydawcą. <i>Assassin’s Creed</i> oraz nazwy gier
-        należą do ich właścicieli i użyto ich wyłącznie w celu opisania, o czym są te poradniki.
-        Bez logotypów, krojów i barw wydawcy.
+        An unofficial site, not affiliated with the publisher. <i>Assassin’s Creed</i> and the
+        game titles belong to their owners and are used solely to describe what these guides
+        are about. No publisher logos, typefaces or colors.
       </p>
-      <p class="t-caption ft__copy tabular">© 2026 Bractwo</p>
+      <p class="t-caption ft__copy tabular">© 2026 The Brotherhood</p>
     </div>
   </div></Fragment>
 </CoreSiteFooter>

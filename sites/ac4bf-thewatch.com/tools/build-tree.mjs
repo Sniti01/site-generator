@@ -117,7 +117,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     outside.push({ url: p.url, reason: p['вне_выгрузки'] });
   }
 
-  // Переименованная страница (П73, перевод сайта на английский): `прежний_url` —
+  // Переименованная страница (П76, перевод сайта на английский): `прежний_url` —
   // адрес, под которым её мерила анатомия S3. Слепок анатомии — только чтение,
   // ключ в нём старый, поэтому замер ищется по прежнему адресу; тот же адрес
   // `check-live` ждёт с 301 на новый. Прежний адрес не может быть живым адресом
@@ -424,7 +424,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     const fromAnatomy = anatomyOf(p)?.['план']?.['коридор'] ?? null;
     let corridor = fromAnatomy;
     // Именованный коридор ищется по новому адресу, а если структура ещё
-    // под старым — по прежнему (П73; иначе решение молча уступило бы анатомии).
+    // под старым — по прежнему (П76; иначе решение молча уступило бы анатомии).
     const contractKey = existingCorridor.has(p.url) ? p.url : p['прежний_url'];
     if (existingCorridor.has(contractKey) && !sameCorridor(existingCorridor.get(contractKey), fromAnatomy)) {
       corridor = existingCorridor.get(contractKey);
@@ -745,7 +745,7 @@ function selftest() {
   const r3 = tree(goodReturn);
   check('R: возврат из no_page — на страницу и в печать', { problems: 0, onBeta: true, onHome: true, printed: ['iota', 'zeta'], inNoPage: ['epsilon zero', 'gra epsilon'] }, { problems: r3.problems.length, onBeta: ['gra zeta', 'zeta crack', 'zeta darmowa'].every((q) => kw(r3, '/beta/').includes(q)), onHome: ['iota', 'iota crack', 'iota zero'].every((q) => kw(r3, '/').includes(q)), printed: r3.returned.map((x) => x.cluster), inNoPage: r3.noPage.map((x) => x.query) }, 'решение владельца видно: строки «возвращено» в порядке страниц, все фразы обоих кластеров на своих страницах (и на главной — раунд 3), в no_page остаются только некластеризованные');
 
-  // P — переименование страницы (П73): замер анатомии — по прежнему адресу.
+  // P — переименование страницы (П76): замер анатомии — по прежнему адресу.
   // Переименовываются адрес и все `related` на него; эталон — та же страница
   // без переименования.
   const renamed = (from, to, withFormer) => {
@@ -758,7 +758,7 @@ function selftest() {
   };
   const view = (r, url) => { const p = r.built.find((x) => x.url === url); return { blocks: blocksOf(r, url), corridor: p?.corridor ?? '—' }; };
   const rP = tree(renamed('/gamma/', '/gamma-nowa/', true));
-  check('P: прежний_url — анатомия по старому адресу', { problems: 0, ...view(ok, '/gamma/') }, { problems: rP.problems.length, ...view(rP, '/gamma-nowa/') }, 'П73: слепок анатомии — только чтение, ключ старый; блоки и коридор те же, что до переименования');
+  check('P: прежний_url — анатомия по старому адресу', { problems: 0, ...view(ok, '/gamma/') }, { problems: rP.problems.length, ...view(rP, '/gamma-nowa/') }, 'П76: слепок анатомии — только чтение, ключ старый; блоки и коридор те же, что до переименования');
   const rNoFormer = tree(renamed('/gamma/', '/gamma-nowa/', false));
   check('P: без прежнего_url анатомия теряется', true, JSON.stringify(view(rNoFormer, '/gamma-nowa/')) !== JSON.stringify(view(ok, '/gamma/')), 'отрицательная: поле нужно, без него замер молча пропадает');
   // Блок из анатомии в фикстуре один — `verdict-box` у /beta/ (8/10, high);

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Сверка «разметка равна до текста» — приёмка перевода сайта (П73 п. 3).
+ * Сверка «разметка равна до текста» — приёмка перевода сайта (П76 п. 3).
  *
  *   node tools/markup-diff.mjs <dist-до> <dist-после>   — сверка двух сборок
  *   node tools/markup-diff.mjs --selftest               — пробы судьи
@@ -31,7 +31,7 @@
  *      строки `name` меняются, адреса равны по карте.
  *   5. Остаток польского во «после»: текст, все атрибуты, кроме адресных
  *      и идентификаторов (`IDENT_ATTRS`: `id`, `class`, ссылки на `id` —
- *      по П73 п. 2 они не меняются, и п. 2 требует их равенства), и `name`
+ *      по П76 п. 2 они не меняются, и п. 2 требует их равенства), и `name`
  *      в JSON-LD — без польских букв (с «ó»), без польских слов
  *      (служебных и словаря сайта — без учёта регистра; короткие «i», «w»,
  *      «z»… — строчные). Исключения — `ALLOW`, каждое с доводом.
@@ -566,7 +566,7 @@ function selftest() {
     const ok = (errs.length > 0) === (wantErr > 0) && (res.length > 0) === (wantRes > 0);
     say(ok, name, `błędów ${errs.length}, polskiego ${res.length}${ok ? '' : ` — ${[...errs, ...res].join(' | ') || 'nic'}`}`);
   }
-  // id i class po polsku, niezmienione (П73 p. 2) — nie są resztką
+  // id i class po polsku, niezmienione (П76 p. 2) — nie są resztką
   const ids = comparePage(base({ id: 'werdykt', cls: 'wydania' }), en({ id: 'werdykt', cls: 'wydania' }), map);
   say(ids.errs.length === 0 && ids.res.length === 0, 'polskie id i class bez zmian nie są resztką', `błędów ${ids.errs.length}, polskiego ${ids.res.length}`);
   // mapUrl

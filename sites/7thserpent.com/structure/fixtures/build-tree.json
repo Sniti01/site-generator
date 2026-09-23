@@ -193,7 +193,7 @@
       "анатомия": { "обязателен_от": 0.7, "решение_от": 0.4 },
       "порядок_на_странице": {
         "список": ["hero-key-art", "byline", "toc", "story-row", "band-quote", "card-rail", "gallery", "video", "link-columns", "verdict-box", "link-list", "cta-band"],
-        "по_типу": { "home": ["hero-key-art", "byline", "story-row", "band-quote", "card-rail", "link-list", "gallery", "link-columns", "cta-band"] }
+        "по_типу": { "home": ["hero-key-art", "byline", "story-row", "band-quote", "card-rail", "link-list", "gallery", "video", "link-columns", "cta-band"] }
       }
     },
     "anatomy": {

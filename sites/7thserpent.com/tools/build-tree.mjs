@@ -764,7 +764,7 @@ function run(root, { dryRun }) {
     console.log(`коридоры: ${withCorridor.length} числом, ${built.length - withCorridor.length} null`);
     for (const p of built) console.log(`  ${p.url}  ${JSON.stringify(p.corridor)}`);
     // `null` в контракте — именованное решение П43 (у `/games-like-max-payne/` — П71 п. 7): гейт такой страницы не судит.
-    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} — в контракте ${JSON.stringify(o.corridor)}, анатомия ${JSON.stringify(o.anatomy)}; ${o.corridor === null ? 'в контракте null — гейт не судит, число печатается строкой' : 'гейт судит его как норму'}`);
+    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} — в контракте ${JSON.stringify(o.corridor)}, анатомия ${JSON.stringify(o.anatomy)}; ${o.corridor === null ? 'гейт не судит (null — именованное решение), число печатается строкой' : 'гейт судит его как норму'}`);
   }
 
   if (lost.length) {

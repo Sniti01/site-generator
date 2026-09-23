@@ -10,25 +10,38 @@
  *
  *   1. Набор страниц: каждая страница «до» есть «после» по карте адресов,
  *      лишних нет. Карта — поле `прежний_url` в `structure/pages-s2.json`
- *      (единственный источник; тот же читает `check-live` для 301).
+ *      (единственный источник; тот же читает `check-live` для 301). Карта
+ *      без повторов: два старых адреса на один новый — отказ.
  *   2. Поток тегов: имена, порядок, вложенность, атрибуты (имена и порядок).
  *      Значения атрибутов равны, кроме:
- *        • текстовых (`alt`, `title`, `aria-label`, `placeholder`, `content`
- *          у `<meta>` описания и og:title/og:description) — меняются, но пустое
- *          остаётся пустым, непустое непустым;
- *        • адресных (`href`, `src`, `srcset`, `content` у og:url) — равны
- *          после карты адресов;
+ *        • текстовых (`TEXT_ATTRS`, `content` у `<meta>` из `TEXT_META`) —
+ *          меняются, но пустое остаётся пустым, непустое непустым;
+ *        • адресных (`href`, `src`, `srcset`…, `content` у og:url) — равны
+ *          после карты адресов (любой из хостов сайта, `//`-адреса); имя
+ *          файла `/_astro/` сравнивается без хеша — содержимое сверяет п. 6;
  *        • `lang` у `<html>` — обязан стать `en`; `og:locale` — `en_US`.
- *   3. Текст: сам текст не сравнивается, но непустой узел остаётся непустым
- *      и пустой пустым — выпавший абзац или подпись видны.
+ *   3. Текст: сам текст не сравнивается, но непустой узел остаётся непустым,
+ *      пустой пустым, а узел из одних пробелов — узлом из пробелов (склеенные
+ *      слова видны). Невидимые символы (U+200B и родня) непустым не считаются.
  *   4. `<style>` и обычные `<script>` — байт в байт; JSON-LD — та же форма,
  *      строки `name` меняются, адреса равны по карте.
- *   5. Остаток польского во «после»: видимый текст и текстовые атрибуты
- *      без польских букв (ąćęłńśźż) и без польских служебных слов;
- *      исключения — `ALLOW` ниже, каждое с доводом.
- *   6. Прочие файлы: CSS, шрифты, картинки — те же байты (имя без хеша);
- *      `robots.txt` — те же байты; адреса sitemap — равны по карте;
- *      отличающиеся JS и `.htaccess` печатаются списком для глаз.
+ *   5. Остаток польского во «после»: текст, все атрибуты, кроме адресных
+ *      и идентификаторов (`IDENT_ATTRS`: `id`, `class`, ссылки на `id` —
+ *      по П73 п. 2 они не меняются, и п. 2 требует их равенства), и `name`
+ *      в JSON-LD — без польских букв (с «ó»), без польских слов
+ *      (служебных и словаря сайта — без учёта регистра; короткие «i», «w»,
+ *      «z»… — строчные). Исключения — `ALLOW`, каждое с доводом.
+ *   6. Прочие файлы — по имени без хеша, число файлов на имя равно:
+ *        • CSS: «до» целиком входит во «после» подпоследовательностью правил
+ *          и объявлений; вставки — только правила НОВЫХ классов, которых нет
+ *          ни на одном элементе «после», и служебные `--tw-*` (Tailwind v4
+ *          сканирует тексты страниц и делает утилиты из английских слов —
+ *          «fixed», «table»; мёртвые правила, вид не меняют);
+ *        • `.htaccess`: «до» — подмножество строк «после», и на каждый
+ *          `прежний_url` есть своё правило 301 на новый адрес;
+ *        • `robots.txt`, шрифты, картинки — те же байты;
+ *        • sitemap — адреса равны по карте;
+ *        • JS с другими байтами печатается списком «для глаз».
  *
  * Код возврата ≠ 0 при любом расхождении пунктов 1–6 (кроме списка «для глаз»).
  */
@@ -39,19 +52,28 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://www.ac4bf-thewatch.com';
+const HOSTS = /^(?:https?:)?\/\/(?:www\.)?ac4bf-thewatch\.com(?=\/|$)/i;
 
 /** Исключения остатка польского: подстрока → довод. */
 const ALLOW = new Map([
   ['Toruń', 'имя собственное: «Toruń portrait» — английское название портрета Коперника'],
 ]);
 
-const TEXT_ATTRS = new Set(['alt', 'title', 'aria-label', 'placeholder']);
-const TEXT_META = new Set(['description', 'og:title', 'og:description']);
-const URL_ATTRS = new Set(['href', 'src', 'srcset', 'action', 'poster']);
-const POLISH_LETTERS = /[ąćęłńśźżĄĆĘŁŃŚŹŻ]/;
+const TEXT_ATTRS = new Set(['alt', 'title', 'aria-label', 'aria-description', 'aria-roledescription', 'aria-valuetext', 'placeholder', 'label']);
+const TEXT_META = new Set(['description', 'og:title', 'og:description', 'og:image:alt', 'twitter:title', 'twitter:description', 'twitter:image:alt']);
+const URL_ATTRS = new Set(['href', 'src', 'srcset', 'action', 'poster', 'xlink:href']);
+const IDENT_ATTRS = new Set(['id', 'class', 'for', 'aria-labelledby', 'aria-describedby', 'aria-controls', 'aria-owns', 'headers', 'list', 'form']);
+const POLISH_LETTERS = /[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/;
 // Слово — между пробелами или пунктуацией, не внутри «Koh-i-Noor» и «Core i5».
-const POLISH_WORDS =
-  /(?:^|[\s(„“"])(się|jest|oraz|który|która|które|że|dla|albo|także|też|tylko|już|lub|gdzie|kiedy|jako|przez|jego|jej|ich|nie|na|od|po|za|w|z|i)(?=$|[\s,.;:!?)”"])/u;
+const L = '(?:^|[\\s(„“"«])';
+const R = '(?=$|[\\s,.;:!?)”"»])';
+// Без учёта регистра: польские слова, которых нет в английском, и словарь сайта.
+const POLISH_WORDS_CI = new RegExp(
+  `${L}(się|jest|oraz|który|która|które|którego|że|dla|albo|także|też|tylko|już|lub|gdzie|kiedy|jako|przez|jego|jej|ich|nie|tej|jak|ale|czy|bez|pod|nad|przed|jeszcze|bardzo|może|można|sobie|być|był|była|było|są|tym|tego|gra|gry|grze|grę|część|części|strona|strony|stronie|stron|seria|serii|poradnik|poradniki|poradnika|mapa|mapy|epoki|epoka|werdykt|wszystkie|kadry|bractwo|redakcja|serwis|okruszki|dodatek|dodatki|wydania|wersja|roku|lat|gdy|więc|zobacz|przejdź|treści|główna|miejsc|miejsca|dokąd|stąd|zacząć|zacznij|kolei|pierwsza|druga|trzecia|premiera|materiał|wydawcy)${R}`,
+  'iu'
+);
+// Строчные короткие: заглавные «I», «A», «O», «W» бывают в английском.
+const POLISH_WORDS_LC = new RegExp(`${L}(i|w|z|o|u|na|po|od|za|co|ma)${R}`, 'u');
 
 // ─── разбор HTML ──────────────────────────────────────────────────────────
 
@@ -138,32 +160,39 @@ export function tokenize(html) {
 
 // ─── карта адресов ────────────────────────────────────────────────────────
 
+const unhash = (rel) => rel.replace(/\\/g, '/').replace(/\.[A-Za-z0-9_-]{8}\.([a-z0-9]+)$/, '.*.$1');
+
+/** Адрес «до» → каким он обязан стать «после». Хост сайта в любом виде; путь — по карте; `/_astro/` — без хеша. */
 export function mapUrl(value, urlMap) {
   if (typeof value !== 'string') return value;
   const one = (u) => {
-    let prefix = '';
-    let rest = u;
-    if (rest.startsWith(SITE)) { prefix = SITE; rest = rest.slice(SITE.length); }
+    const host = HOSTS.exec(u);
+    const prefix = host ? host[0] : '';
+    const rest = u.slice(prefix.length);
     if (!rest.startsWith('/')) return u;
     const cut = rest.search(/[?#]/);
-    const path = cut < 0 ? rest : rest.slice(0, cut);
+    let path = cut < 0 ? rest : rest.slice(0, cut);
     const tail = cut < 0 ? '' : rest.slice(cut);
-    return prefix + (urlMap.get(path) ?? path) + tail;
+    const slashless = !path.endsWith('/') && urlMap.has(`${path}/`);
+    path = slashless ? urlMap.get(`${path}/`).slice(0, -1) : (urlMap.get(path) ?? path);
+    return prefix + path + tail;
   };
   return value.split(/(,\s*)/).map((part) => (/^,\s*$/.test(part) ? part : part.replace(/^(\S+)/, (m) => one(m)))).join('');
 }
+const assetless = (v) => (typeof v === 'string' ? v.replace(/\/_astro\/[^\s,"']+/g, (m) => unhash(m)) : v);
 
 // ─── сверка одной страницы ────────────────────────────────────────────────
 
 const attr = (tok, k) => tok.attrs?.find(([a]) => a === k)?.[1];
-const isBlank = (s) => !s || !s.replace(/[\s ]/g, '');
+const INVISIBLE = /[\s ​-‍⁠﻿]/g;
+const isBlank = (s) => !s || !s.replace(INVISIBLE, '');
 
-function residue(s) {
+export function residue(s) {
   if (!s) return null;
   let t = s;
   for (const k of ALLOW.keys()) t = t.split(k).join('');
   if (POLISH_LETTERS.test(t)) return `polska litera: «${s.trim().slice(0, 90)}»`;
-  const w = POLISH_WORDS.exec(t);
+  const w = POLISH_WORDS_CI.exec(t) ?? POLISH_WORDS_LC.exec(t);
   if (w) return `polskie słowo «${w[1]}»: «${s.trim().slice(0, 90)}»`;
   return null;
 }
@@ -177,7 +206,7 @@ function jsonShape(a, b, urlMap, path, errs) {
     if (!b || typeof b !== 'object' || Object.keys(a).join('|') !== Object.keys(b).join('|')) return errs.push(`JSON-LD ${path}: inne klucze`);
     for (const k of Object.keys(a)) {
       if (k === 'name' && typeof a[k] === 'string') {
-        if (isBlank(b[k])) errs.push(`JSON-LD ${path}.name: pusty`);
+        if (typeof b[k] !== 'string' || isBlank(b[k])) errs.push(`JSON-LD ${path}.name: pusty albo nie tekst`);
         continue;
       }
       jsonShape(a[k], b[k], urlMap, `${path}.${k}`, errs);
@@ -188,35 +217,36 @@ function jsonShape(a, b, urlMap, path, errs) {
   else if (typeof a !== 'string' && a !== b) errs.push(`JSON-LD ${path}: ${b} ≠ ${a}`);
 }
 
+/** Klasy użyte na elementach strony — dla reguły CSS z p. 6. */
+export function classesOf(html) {
+  const set = new Set();
+  for (const t of tokenize(html)) if (t.t === 'tag' && !t.close) for (const c of (attr(t, 'class') ?? '').split(/\s+/)) if (c) set.add(c);
+  return set;
+}
+
 export function comparePage(htmlA, htmlB, urlMap) {
   const errs = [];
   const res = [];
   const A = tokenize(htmlA).filter((t) => t.t !== 'comment');
   const B = tokenize(htmlB).filter((t) => t.t !== 'comment');
-  // Tekst: tylko obecność. Sąsiednie tokeny tekstowe już są jednym tokenem.
-  const shape = (toks) => toks.filter((t) => t.t !== 'text' || !isBlank(decode(t.v)));
-  const a = shape(A);
-  const b = shape(B);
-  // Остаток польского — по всем текстовым узлам «после», включая пробельные соседей.
-  for (const t of B) {
-    if (t.t === 'text') { const r = residue(decode(t.v)); if (r) res.push(r); }
-  }
-  const len = Math.max(a.length, b.length);
+  // Tekst: rodzaj węzła — tekst albo same odstępy; treści się nie porównuje.
+  const kind = (t) => (t.t === 'text' ? (isBlank(decode(t.v)) ? 'ws' : 'text') : t.t);
+  for (const t of B) if (t.t === 'text') { const r = residue(decode(t.v)); if (r) res.push(r); }
+  const len = Math.max(A.length, B.length);
   for (let i = 0; i < len; i++) {
-    const x = a[i];
-    const y = b[i];
-    const where = `#${i} ${x ? (x.t === 'tag' ? `<${x.close ? '/' : ''}${x.name}>` : x.t) : '—'}`;
-    if (!x || !y) { errs.push(`${where}: strumień się skończył z jednej strony (przed ${a.length}, po ${b.length})`); break; }
-    if (x.t !== y.t) { errs.push(`${where}: rodzaj ${x.t} → ${y.t}${y.t === 'text' ? ` «${decode(y.v).trim().slice(0, 50)}»` : y.t === 'tag' ? ` <${y.name}>` : ''}`); break; }
+    const x = A[i];
+    const y = B[i];
+    const where = `#${i} ${x ? (x.t === 'tag' ? `<${x.close ? '/' : ''}${x.name}>` : kind(x)) : '—'}`;
+    if (!x || !y) { errs.push(`${where}: strumień się skończył z jednej strony (przed ${A.length}, po ${B.length})`); break; }
+    if (kind(x) !== kind(y)) { errs.push(`${where}: rodzaj ${kind(x)} → ${kind(y)}${y.t === 'text' ? ` «${decode(y.v).trim().slice(0, 50)}»` : y.t === 'tag' ? ` <${y.name}>` : ''}`); break; }
     if (x.t === 'doctype' && x.v !== y.v) errs.push(`${where}: doctype`);
     if (x.t === 'raw') {
       const type = attr(x, 'type');
       if (x.of === 'script' && type === 'application/ld+json') {
-        try { jsonShape(JSON.parse(x.v), JSON.parse(y.v), urlMap, '', errs); } catch (e) { errs.push(`${where}: JSON-LD nie parsuje się (${e.message})`); }
-        try {
-          const walk = (o) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) { if (k === 'name' && typeof v === 'string') { const r = residue(v); if (r) res.push(`JSON-LD ${r}`); } else walk(v); } };
-          walk(JSON.parse(y.v));
-        } catch { /* już zgłoszone */ }
+        let ly;
+        try { ly = JSON.parse(y.v); jsonShape(JSON.parse(x.v), ly, urlMap, '', errs); } catch (e) { errs.push(`${where}: JSON-LD nie parsuje się (${e.message})`); }
+        const walk = (o) => { if (o && typeof o === 'object') for (const [k, v] of Object.entries(o)) { if (typeof v === 'string') { if (k === 'name') { const r = residue(v); if (r) res.push(`JSON-LD ${r}`); } } else walk(v); } };
+        walk(ly);
       } else if (x.v !== y.v) errs.push(`${where}: treść <${x.of}> różni się`);
       continue;
     }
@@ -230,25 +260,80 @@ export function comparePage(htmlA, htmlB, urlMap) {
       const [key, va] = x.attrs[k];
       const vb = y.attrs[k][1];
       const at = `${where} @${key}`;
+      const urlish = URL_ATTRS.has(key) || (key === 'content' && (metaName === 'og:url' || metaName === 'og:image'));
+      if (!urlish && !IDENT_ATTRS.has(key)) { const r = residue(vb); if (r) res.push(`@${key} ${r}`); }
       if (x.name === 'html' && key === 'lang') { if (vb !== 'en') errs.push(`${at}: «${vb}», oczekiwano «en»`); continue; }
       if (metaName === 'og:locale' && key === 'content') { if (vb !== 'en_US') errs.push(`${at}: «${vb}», oczekiwano «en_US»`); continue; }
       const textual = TEXT_ATTRS.has(key) || (key === 'content' && TEXT_META.has(metaName));
       if (textual) {
         if (isBlank(va) !== isBlank(vb)) errs.push(`${at}: ${isBlank(vb) ? 'opróżniony' : 'wypełniony'}`);
-        const r = residue(vb);
-        if (r) res.push(`@${key} ${r}`);
         continue;
       }
-      const urlish = URL_ATTRS.has(key) || (key === 'content' && metaName === 'og:url');
       if (urlish) {
-        const want = mapUrl(va, urlMap);
-        if (vb !== want) errs.push(`${at}: «${vb}», oczekiwano «${want}»`);
+        const want = assetless(mapUrl(va, urlMap));
+        if (assetless(vb) !== want) errs.push(`${at}: «${vb}», oczekiwano «${want}»`);
         continue;
       }
       if (va !== vb) errs.push(`${at}: «${String(vb).slice(0, 60)}», oczekiwano «${String(va).slice(0, 60)}»`);
     }
   }
   return { errs, res };
+}
+
+// ─── CSS i .htaccess ─────────────────────────────────────────────────────
+
+/**
+ * Żetony CSS: nagłówek reguły (`sel{`, `@layer x{`), deklaracja (`prop:val`,
+ * bez średnika) i `}`. Średniki odpadają — dopisana po ostatniej deklaracji
+ * zmienna nie zmienia żetonu tej ostatniej.
+ */
+const cssTokens = (css) => (css.match(/[^{};]+\{|[^{};]+(?=[;}])|\}/g) ?? []).map((s) => s.trim()).filter(Boolean);
+const TW_PART = (t) => /^--tw-[\w-]+:/.test(t) || /^(syntax|inherits|initial-value):/.test(t);
+
+/**
+ * «Przed» jest podciągiem «po»; wstawki — tylko reguły nowych klas (nieużytych
+ * w HTML «po» i nieznanych CSS «przed»), `@property --tw-*` i zmienne `--tw-*`.
+ * Wstawiona deklaracja poza wstawioną regułą — odmowa (nowa własność starej
+ * reguły). Zwraca listę zarzutów (pusta — w porządku).
+ */
+export function cssOnlyAddsDeadRules(cssA, cssB, usedClasses) {
+  const a = cssTokens(cssA);
+  const b = cssTokens(cssB);
+  const selA = new Set([...cssA.matchAll(/\.(-?[A-Za-z_][\w-]*)/g)].map((m) => m[1]));
+  const errs = [];
+  let ia = 0;
+  let depth = 0; // głębokość wewnątrz wstawionych reguł
+  for (const t of b) {
+    // Wewnątrz wstawionej reguły nic nie jest «swoje» — inaczej przypadkowa
+    // równość (np. `}` zamykające wstawkę tuż przed `}` warstwy) zjadłaby żeton «przed».
+    if (depth === 0 && ia < a.length && t === a[ia]) { ia++; continue; }
+    if (t.endsWith('{')) {
+      depth++;
+      if (/^@property\s+--tw-[\w-]+\s*\{$/.test(t)) continue;
+      const classes = [...t.matchAll(/\.(-?[A-Za-z_][\w-]*)/g)].map((m) => m[1]);
+      const rest = t.replace(/\.(-?[A-Za-z_][\w-]*)/g, '').replace(/[\s{,]/g, '');
+      if (!classes.length || rest || classes.some((c) => selA.has(c) || usedClasses.has(c))) {
+        errs.push(`CSS: wstawiona reguła nie jest martwą regułą nowej klasy: «${t.slice(0, 80)}»`);
+      }
+      continue;
+    }
+    if (t === '}') { if (depth > 0) depth--; else errs.push('CSS: wstawione «}» poza wstawioną regułą'); continue; }
+    if (depth > 0 || TW_PART(t)) continue;
+    errs.push(`CSS: wstawiona deklaracja w regule «przed»: «${t.slice(0, 80)}»`);
+  }
+  if (ia < a.length) errs.unshift(`CSS: żeton «przed» bez odpowiednika «po»: «${a[ia].slice(0, 80)}»`);
+  return errs;
+}
+
+export function htaccessErrs(textA, textB, urlMap) {
+  const errs = [];
+  const linesB = new Set(textB.split(/\r?\n/));
+  for (const line of textA.split(/\r?\n/)) if (!linesB.has(line)) errs.push(`.htaccess: zniknęła linia «${line.trim().slice(0, 80)}»`);
+  for (const [from, to] of urlMap) {
+    const rule = `RewriteRule ^${from.slice(1, -1)}/?$ ${SITE}${to} [R=301,L]`;
+    if (![...linesB].some((l) => l.trim() === rule)) errs.push(`.htaccess: brak reguły «${rule}»`);
+  }
+  return errs;
 }
 
 // ─── сверка двух сборок ───────────────────────────────────────────────────
@@ -269,60 +354,70 @@ const pageUrl = (rel) => {
   if (r.endsWith('/index.html')) return `/${r.slice(0, -'index.html'.length)}`;
   return null;
 };
-const unhash = (rel) => rel.replace(/\\/g, '/').replace(/\.[A-Za-z0-9_-]{8}\.([a-z0-9]+)$/, '.*.$1');
 
 export function compareDists(distA, distB, urlMap) {
   const report = { pages: 0, errs: [], res: [], eyes: [] };
-  const filesA = walkDir(distA).map((p) => relative(distA, p));
-  const filesB = walkDir(distB).map((p) => relative(distB, p));
-  const setB = new Set(filesB.map((f) => f.replace(/\\/g, '/')));
+  const filesA = walkDir(distA).map((p) => relative(distA, p).replace(/\\/g, '/'));
+  const filesB = walkDir(distB).map((p) => relative(distB, p).replace(/\\/g, '/'));
+  const targets = [...urlMap.values()];
+  if (new Set(targets).size !== targets.length) report.errs.push('karta adresów: dwa stare adresy na jeden nowy');
 
   // 1 — strony
   const pagesA = filesA.filter((f) => pageUrl(f));
   const pagesB = new Set(filesB.filter((f) => pageUrl(f)).map((f) => pageUrl(f)));
   const seen = new Set();
+  const used = new Set();
   for (const f of pagesA) {
     const ua = pageUrl(f);
     const ub = urlMap.get(ua) ?? ua;
     seen.add(ub);
     if (!pagesB.has(ub)) { report.errs.push(`${ua}: brak strony ${ub} po tłumaczeniu`); continue; }
     const relB = ub === '/' ? 'index.html' : `${ub.slice(1)}index.html`;
-    const { errs, res } = comparePage(readFileSync(join(distA, f), 'utf8'), readFileSync(join(distB, relB), 'utf8'), urlMap);
+    const htmlB = readFileSync(join(distB, relB), 'utf8');
+    for (const c of classesOf(htmlB)) used.add(c);
+    const { errs, res } = comparePage(readFileSync(join(distA, f), 'utf8'), htmlB, urlMap);
     report.pages++;
     for (const e of errs) report.errs.push(`${ub} ${e}`);
     for (const r of res) report.res.push(`${ub} ${r}`);
   }
   for (const u of pagesB) if (!seen.has(u)) report.errs.push(`${u}: strona, której przed tłumaczeniem nie było`);
 
-  // 6 — reszta plików
-  const byUnhashB = new Map(filesB.map((f) => [unhash(f), f]));
-  for (const f of filesA) {
-    if (pageUrl(f)) continue;
-    const rel = f.replace(/\\/g, '/');
-    if (/^sitemap.*\.xml$/.test(rel)) {
-      if (!setB.has(rel)) { report.errs.push(`${rel}: brak`); continue; }
-      const locs = (p) => [...readFileSync(p, 'utf8').matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
-      const want = locs(join(distA, f)).map((u) => mapUrl(u, urlMap)).sort().join('\n');
-      const got = locs(join(distB, f)).sort().join('\n');
-      if (want !== got) report.errs.push(`${rel}: adresy mapy różnią się od adresów «przed» po karcie`);
-      continue;
-    }
-    const g = byUnhashB.get(unhash(f));
-    if (!g) { report.errs.push(`${rel}: brak po tłumaczeniu`); continue; }
-    const same = readFileSync(join(distA, f)).equals(readFileSync(join(distB, g)));
-    if (same) continue;
-    if (/\.js$/.test(rel) || rel === '.htaccess') report.eyes.push(`${rel} → ${g.replace(/\\/g, '/')}`);
-    else report.errs.push(`${rel}: inne bajty (${g.replace(/\\/g, '/')}) — tłumaczenie nie zmienia CSS, fontów ani obrazów`);
+  // 6 — reszta plików, po nazwie bez skrótu; liczba plików na nazwę równa
+  const group = (files) => { const m = new Map(); for (const f of files) if (!pageUrl(f)) { const k = unhash(f); m.set(k, [...(m.get(k) ?? []), f]); } return m; };
+  const gA = group(filesA);
+  const gB = group(filesB);
+  for (const [k, list] of gA) {
+    const other = gB.get(k) ?? [];
+    if (other.length !== list.length) { report.errs.push(`${k}: plików przed ${list.length}, po ${other.length}`); continue; }
+    list.forEach((fa, n) => {
+      const fb = other[n];
+      const a = readFileSync(join(distA, fa));
+      const b = readFileSync(join(distB, fb));
+      if (/^sitemap.*\.xml$/.test(fa)) {
+        const locs = (buf) => [...buf.toString('utf8').matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]);
+        if (locs(a).map((u) => mapUrl(u, urlMap)).sort().join('\n') !== locs(b).sort().join('\n')) report.errs.push(`${fa}: adresy mapy różnią się od adresów «przed» po karcie`);
+        return;
+      }
+      if (fa === '.htaccess') { report.errs.push(...htaccessErrs(a.toString('utf8'), b.toString('utf8'), urlMap)); return; }
+      if (a.equals(b)) return;
+      if (/\.css$/.test(fa)) { report.errs.push(...cssOnlyAddsDeadRules(a.toString('utf8'), b.toString('utf8'), used).map((e) => `${fa} → ${fb}: ${e}`)); if (!report.eyes.includes(fa)) report.eyes.push(`${fa} → ${fb} (tylko martwe reguły nowych klas)`); return; }
+      if (/\.js$/.test(fa)) { report.eyes.push(`${fa} → ${fb}`); return; }
+      report.errs.push(`${fa}: inne bajty (${fb}) — tłumaczenie nie zmienia fontów, obrazów ani robots.txt`);
+    });
   }
-  const unA = new Set(filesA.map(unhash));
-  for (const f of filesB) if (!pageUrl(f) && !unA.has(unhash(f))) report.errs.push(`${f.replace(/\\/g, '/')}: nowy plik po tłumaczeniu`);
+  for (const [k, list] of gB) if (!gA.has(k)) report.errs.push(`${list.join(', ')}: nowy plik po tłumaczeniu`);
   return report;
 }
 
 export function readUrlMap() {
   const decl = JSON.parse(readFileSync(join(root, 'structure/pages-s2.json'), 'utf8'));
   const map = new Map();
-  for (const p of decl['страницы']) if (p['прежний_url']) map.set(p['прежний_url'], p.url);
+  for (const p of decl['страницы']) {
+    const was = p['прежний_url'];
+    if (!was) continue;
+    if (map.has(was)) throw new Error(`прежний_url «${was}» dwa razy`);
+    map.set(was, p.url);
+  }
   return map;
 }
 
@@ -332,52 +427,80 @@ function selftest() {
   const map = new Map([['/stary/', '/new/']]);
   const base = (o = {}) => `<!doctype html><html lang="${o.lang ?? 'pl'}"><head><title>${o.title ?? 'Tytuł'}</title>` +
     `<meta name="description" content="${o.desc ?? 'Opis strony'}"><meta property="og:locale" content="${o.loc ?? 'pl_PL'}">` +
-    `<link rel="canonical" href="${o.canon ?? `${SITE}/stary/`}">` +
+    `<link rel="canonical" href="${o.canon ?? `${SITE}/stary/`}"><link rel="stylesheet" href="/_astro/a.${o.hash ?? 'AAAAAAAA'}.css">` +
     `<script type="application/ld+json">${o.ld ?? `{"@type":"BreadcrumbList","itemListElement":[{"name":"Główna","item":"${SITE}/stary/"}]}`}</script>` +
     `<style>${o.css ?? '.a{color:red}'}</style></head>` +
     `<body><main id="${o.id ?? 'tresc'}"><h2 class="${o.cls ?? 'x'}">${o.h2 ?? 'Nagłówek'}</h2>` +
     `${o.drop ? '' : `<p>${o.p ?? 'Akapit po polsku'}</p>`}<img src="/_astro/a.png" alt="${o.alt ?? 'Opis kadru'}">` +
-    `<a href="${o.href ?? '/stary/#s'}">${o.a ?? 'Link'}</a>${o.extra ?? ''}</main></body></html>`;
+    `<a href="${o.href ?? '/stary/#s'}">${o.a ?? 'Link'}</a>${o.gap ?? ' '}<a href="/x/">${o.a2 ?? 'Drugi'}</a>` +
+    `<span data-note="${o.data ?? 'x'}"></span>${o.extra ?? ''}</main></body></html>`;
   const en = (o = {}) => base({ lang: 'en', title: 'Title', desc: 'Page description', loc: 'en_US', canon: `${SITE}/new/`,
     ld: `{"@type":"BreadcrumbList","itemListElement":[{"name":"Home","item":"${SITE}/new/"}]}`, h2: 'Heading', p: 'An English paragraph',
-    alt: 'Frame description', href: '/new/#s', a: 'Link', ...o });
+    alt: 'Frame description', href: '/new/#s', a: 'Link', a2: 'Second', ...o });
   const pl = base();
   const cases = [
     ['tłumaczenie czyste przechodzi', en(), 0, 0],
+    ['inny skrót CSS w linku przechodzi', en({ hash: 'BBBBBBBB' }), 0, 0],
     ['klasa zmieniona', en({ cls: 'y' }), 1, 0],
     ['id zmienione', en({ id: 'content' }), 1, 0],
     ['akapit wypadł', en({ drop: true }), 1, 0],
     ['tekst opróżniony', en({ p: ' ' }), 1, 0],
+    ['tekst z samego U+200B', en({ p: '​' }), 1, 0],
+    ['słowa sklejone (odstęp wypadł)', en({ gap: '' }), 1, 0],
     ['element dodany', en({ extra: '<span>x</span>' }), 1, 0],
     ['link na stary adres', en({ href: '/stary/#s' }), 1, 0],
+    ['link na stary adres innym hostem', en({ href: 'https://ac4bf-thewatch.com/stary/' }), 1, 0],
     ['kotwica zmieniona', en({ href: '/new/#t' }), 1, 0],
     ['canonical nie po karcie', en({ canon: `${SITE}/stary/` }), 1, 0],
     ['lang zostaje pl', en({ lang: 'pl' }), 1, 0],
     ['og:locale zostaje pl_PL', en({ loc: 'pl_PL' }), 1, 0],
     ['CSS zmieniony', en({ css: '.a{color:blue}' }), 1, 0],
     ['JSON-LD adres nie po karcie', en({ ld: `{"@type":"BreadcrumbList","itemListElement":[{"name":"Home","item":"${SITE}/stary/"}]}` }), 1, 0],
+    ['JSON-LD name nie tekst', en({ ld: `{"@type":"BreadcrumbList","itemListElement":[{"name":7,"item":"${SITE}/new/"}]}` }), 1, 0],
     ['alt opróżniony', en({ alt: '' }), 1, 0],
     ['polski tekst został', en({ p: 'Akapit się nie przetłumaczył' }), 0, 1],
     ['polskie słowo bez liter', en({ p: 'Ezio i Altair' }), 0, 1],
+    ['«ó» bez innych liter', en({ p: 'Film Rodowód' }), 0, 1],
+    ['polskie słowo wielką literą', en({ h2: 'Werdykt' }), 0, 1],
+    ['«Nie ma takiej strony»', en({ title: 'Nie ma takiej strony' }), 0, 1],
     ['polski alt został', en({ alt: 'Opis kadru z łodzią' }), 0, 1],
+    ['polski data-* został', en({ data: 'Strona gry' }), 1, 1],
     ['polska nazwa w JSON-LD', en({ ld: `{"@type":"BreadcrumbList","itemListElement":[{"name":"Strona główna","item":"${SITE}/new/"}]}` }), 0, 1],
     ['wyjątek Toruń przechodzi', en({ alt: 'The Toruń portrait' }), 0, 0],
-    ['Koh-i-Noor i Core i5 to nie polski', en({ p: 'The Koh-i-Noor on a Core i5 laptop' }), 0, 0],
+    ['Koh-i-Noor, Core i5, «I», «A» to nie polski', en({ p: 'I saw A Koh-i-Noor on a Core i5 laptop' }), 0, 0],
     ['polskie «w» przed kropką', en({ p: 'Gra wyszła w.' }), 0, 1],
   ];
   let bad = 0;
+  const say = (ok, name, info) => { if (!ok) bad++; console.log(`${ok ? 'ok  ' : 'ŹLE '} ${name.padEnd(42)} ${info}`); };
   for (const [name, html, wantErr, wantRes] of cases) {
     const { errs, res } = comparePage(pl, html, map);
     const ok = (errs.length > 0) === (wantErr > 0) && (res.length > 0) === (wantRes > 0);
-    if (!ok) bad++;
-    console.log(`${ok ? 'ok  ' : 'ŹLE '} ${name.padEnd(34)} błędów ${errs.length}, polskiego ${res.length}${ok ? '' : ` — ${[...errs, ...res].join(' | ') || 'nic'}`}`);
+    say(ok, name, `błędów ${errs.length}, polskiego ${res.length}${ok ? '' : ` — ${[...errs, ...res].join(' | ') || 'nic'}`}`);
   }
-  // mapUrl: srcset i adres bezwzględny
+  // id i class po polsku, niezmienione (П73 p. 2) — nie są resztką
+  const ids = comparePage(base({ id: 'werdykt', cls: 'wydania' }), en({ id: 'werdykt', cls: 'wydania' }), map);
+  say(ids.errs.length === 0 && ids.res.length === 0, 'polskie id i class bez zmian nie są resztką', `błędów ${ids.errs.length}, polskiego ${ids.res.length}`);
+  // mapUrl
   const m = mapUrl(`/_astro/a.webp 640w, ${SITE}/stary/ 2x`, map);
-  const mOk = m === `/_astro/a.webp 640w, ${SITE}/new/ 2x`;
-  if (!mOk) bad++;
-  console.log(`${mOk ? 'ok  ' : 'ŹLE '} ${'srcset i adres bezwzględny'.padEnd(34)} ${m}`);
-  console.log(`\n${cases.length + 1 - bad}/${cases.length + 1} prób`);
+  say(m === `/_astro/a.webp 640w, ${SITE}/new/ 2x`, 'srcset i adres bezwzględny', m);
+  say(mapUrl('/stary', map) === '/new', 'adres bez końcowego ukośnika', mapUrl('/stary', map));
+  say(mapUrl('//www.ac4bf-thewatch.com/stary/', map) === '//www.ac4bf-thewatch.com/new/', 'adres //host', mapUrl('//www.ac4bf-thewatch.com/stary/', map));
+  // CSS
+  const cssA = '@layer properties{*{--tw-a:initial}}.a{color:red}.b{margin:0}';
+  const dead = '@layer properties{*{--tw-a:initial;--tw-shadow:0 0 #0000}}.a{color:red}.fixed{position:fixed}.b{margin:0}';
+  say(cssOnlyAddsDeadRules(cssA, dead, new Set(['a', 'b'])).length === 0, 'CSS: martwa reguła nowej klasy i --tw-*', 'przechodzi');
+  say(cssOnlyAddsDeadRules(cssA, dead, new Set(['a', 'b', 'fixed'])).length > 0, 'CSS: nowa klasa użyta w HTML', 'odmowa');
+  say(cssOnlyAddsDeadRules(cssA, '@layer properties{*{--tw-a:initial}}.a{color:red;margin:1px}.b{margin:0}', new Set()).length > 0, 'CSS: deklaracja wstawiona do starej reguły', 'odmowa');
+  say(cssOnlyAddsDeadRules(cssA, '@layer properties{*{--tw-a:initial}}.a{color:blue}.b{margin:0}', new Set()).length > 0, 'CSS: zmieniona wartość', 'odmowa');
+  say(cssOnlyAddsDeadRules(cssA, '@layer properties{*{--tw-a:initial}}.a{color:red}.b{margin:0}main .x{color:red}', new Set()).length > 0, 'CSS: nowa reguła nie-klasowa', 'odmowa');
+  say(cssOnlyAddsDeadRules(cssA, '@layer properties{*{--tw-a:initial}}.a{color:red}.a.fixed{position:fixed}.b{margin:0}', new Set()).length > 0, 'CSS: nowa reguła ze starą klasą', 'odmowa');
+  // .htaccess
+  const hA = 'RewriteEngine On\nErrorDocument 404 /404/index.html';
+  const hB = `RewriteEngine On\nRewriteRule ^stary/?$ ${SITE}/new/ [R=301,L]\nErrorDocument 404 /404/index.html`;
+  say(htaccessErrs(hA, hB, map).length === 0, '.htaccess: reguła jest, nic nie znikło', 'przechodzi');
+  say(htaccessErrs(hA, 'RewriteEngine On\nErrorDocument 404 /404/index.html', map).length > 0, '.htaccess: brak reguły 301', 'odmowa');
+  say(htaccessErrs(hA, `RewriteEngine On\nRewriteRule ^stary/?$ ${SITE}/new/ [R=301,L]`, map).length > 0, '.htaccess: zniknął ErrorDocument', 'odmowa');
+  console.log(`\n${cases.length + 13 - bad}/${cases.length + 13} prób`);
   return bad === 0;
 }
 
@@ -399,6 +522,6 @@ if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   for (const e of r.res.slice(0, 60)) console.log(`PL   ${e}`);
   if (r.res.length > 60) console.log(`… i ${r.res.length - 60} więcej`);
   for (const e of r.eyes) console.log(`oko  ${e} — inne bajty, do obejrzenia`);
-  console.log(`\nstron ${r.pages}, rozbieżności znaczników ${r.errs.length}, resztek polskiego ${r.res.length}, plików do obejrzenia ${r.eyes.length}`);
+  console.log(`\nstron ${r.pages}, rozbieżności ${r.errs.length}, resztek polskiego ${r.res.length}, plików do obejrzenia ${r.eyes.length}`);
   process.exit(r.errs.length || r.res.length ? 1 : 0);
 }

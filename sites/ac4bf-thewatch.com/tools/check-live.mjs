@@ -15,14 +15,15 @@
  *   3. robots.txt — 200, строка `Sitemap:` на канонический sitemap-index;
  *   4. sitemap-index.xml и sitemap-0.xml — 200; адресов в карте столько,
  *      сколько страниц в структуре без `/404/`;
- *   5. несуществующий адрес — статус 404 и наша страница (её `h1` из
- *      структуры; до П73 здесь стояла польская строка «Nie ma takiej strony»),
- *      не заглушка хостера; `/404/` напрямую — 200;
+ *   5. несуществующий адрес — статус 404 и наша страница (её `<title>` из
+ *      структуры, с именем сайта; до П73 здесь стояла польская строка
+ *      «Nie ma takiej strony»), не заглушка хостера; `/404/` напрямую — 200;
  *   6. `Cache-Control` у HTML несёт `must-revalidate` (Apache видит HTML —
  *      измерение соседа 2026-08-26); `x-ray` печатается справочно;
  *   7. переименованные страницы (П73, перевод на английский): с каждого
  *      `прежний_url` из `structure/pages-s2.json` — 301 одним скачком на новый
- *      канонический адрес, и с канонического хоста, и с `http://` второго.
+ *      канонический адрес со всех четырёх сочетаний схемы и хоста, а сам
+ *      новый адрес отвечает 200. Sitemap (п. 4) сверяется набором адресов.
  *
  * Каждая проверка — строка `ok`/`ŹLE` с тем, что ждали и что пришло;
  * `exit 1` при любой `ŹLE`. Сеть — `fetch` без редиректов (`redirect:
@@ -86,17 +87,27 @@ const index = await get(`${base}/sitemap-index.xml`);
 check('sitemap-index.xml: статус', 200, index.status);
 const map = await get(`${base}/sitemap-0.xml`);
 check('sitemap-0.xml: статус', 200, map.status);
-const expected = structure.pages.filter((p) => p.url !== '/404/').length;
-check('sitemap-0.xml: адресов', expected, (map.body.match(/<loc>/g) ?? []).length, 'страницы структуры без /404/');
+const expected = structure.pages.filter((p) => p.url !== '/404/').map((p) => `${base}${p.url}`).sort();
+const locs = [...map.body.matchAll(/<loc>([^<]*)<\/loc>/g)].map((m) => m[1]).sort();
+check('sitemap-0.xml: адресов', expected.length, locs.length, 'страницы структуры без /404/');
+// Набор, а не счёт: старая карта с прежними адресами (П73) дала бы тот же счёт.
+check('sitemap-0.xml: адреса = структура', true, expected.join('\n') === locs.join('\n'), `лишние: ${locs.filter((u) => !expected.includes(u)).slice(0, 3).join(', ') || '—'}; нет: ${expected.filter((u) => !locs.includes(u)).slice(0, 3).join(', ') || '—'}`);
 check('sitemap-0.xml: без /404/', false, map.body.includes(`${base}/404/`), 'исключает интеграция sitemap');
 
 /* 5 — 404 */
 const missing = await get(`${base}/nie-ma-takiej-strony-proba-${Date.now()}/`);
 check('несуществующий адрес: статус', 404, missing.status, 'ErrorDocument 404 /404/index.html');
-// Маркер — h1 страницы 404 из структуры; тело сравнивается с раскрытыми сущностями.
-const h404 = structure.pages.find((p) => p.url === '/404/')?.h1 ?? '—';
-const plain = (s) => s.replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
-check('несуществующий адрес: наша страница', true, plain(missing.body).includes(h404), `h1 /404/ «${h404}», не заглушка хостера`);
+// Маркер — `<title>` страницы 404 из структуры (с именем сайта: «Page not found»
+// в h1 бывает и у заглушки хостера); сущности тела раскрываются.
+const t404 = structure.pages.find((p) => p.url === '/404/')?.title ?? '—';
+const plain = (s) =>
+  s
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&rsquo;/g, '’').replace(/&lsquo;/g, '‘').replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ')
+    .replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
+const title404 = /<title>([^<]*)<\/title>/i.exec(missing.body)?.[1];
+check('несуществующий адрес: наша страница', t404, title404 === undefined ? '—' : plain(title404), 'title /404/ из структуры, не заглушка хостера');
 const direct = await get(`${base}/404/`);
 check('/404/ напрямую: статус', 200, direct.status, 'страница структуры, вне sitemap');
 
@@ -107,10 +118,15 @@ if (sample) {
   check(`страница ${sample.url}: статус`, 200, r.status);
 }
 
-/* 7 — прежние адреса переименованных страниц (П73) */
+/* 7 — прежние адреса переименованных страниц (П73): все четыре сочетания
+   схемы и хоста — одним скачком на новый канонический; сам новый адрес — 200. */
 for (const p of declared['страницы'].filter((x) => x['прежний_url'])) {
-  await hop(`${base}${p['прежний_url']}`, `${base}${p.url}`, `${p['прежний_url']} → ${p.url}`);
-  await hop(`http://${other}${p['прежний_url']}`, `${base}${p.url}`, `http://${other}${p['прежний_url']}`);
+  const was = p['прежний_url'];
+  for (const from of [`${base}${was}`, `https://${other}${was}`, `http://${host}${was}`, `http://${other}${was}`]) {
+    await hop(from, `${base}${p.url}`, from);
+  }
+  const target = await get(`${base}${p.url}`);
+  check(`${p.url}: статус`, 200, target.status, `цель 301 с ${was}`);
 }
 
 let failed = 0;

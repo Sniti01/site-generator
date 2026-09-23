@@ -423,8 +423,11 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     // состояние выводит машина из наличия текста.
     const fromAnatomy = anatomyOf(p)?.['план']?.['коридор'] ?? null;
     let corridor = fromAnatomy;
-    if (existingCorridor.has(p.url) && !sameCorridor(existingCorridor.get(p.url), fromAnatomy)) {
-      corridor = existingCorridor.get(p.url);
+    // Именованный коридор ищется по новому адресу, а если структура ещё
+    // под старым — по прежнему (П73; иначе решение молча уступило бы анатомии).
+    const contractKey = existingCorridor.has(p.url) ? p.url : p['прежний_url'];
+    if (existingCorridor.has(contractKey) && !sameCorridor(existingCorridor.get(contractKey), fromAnatomy)) {
+      corridor = existingCorridor.get(contractKey);
       corridorsFromContract.push({ url: p.url, corridor, anatomy: fromAnatomy });
     }
 
@@ -759,9 +762,10 @@ function selftest() {
   const rNoFormer = tree(renamed('/gamma/', '/gamma-nowa/', false));
   check('P: без прежнего_url анатомия теряется', true, JSON.stringify(view(rNoFormer, '/gamma-nowa/')) !== JSON.stringify(view(ok, '/gamma/')), 'отрицательная: поле нужно, без него замер молча пропадает');
   // Блок из анатомии в фикстуре один — `verdict-box` у /beta/ (8/10, high);
-  // коридор /beta/ в doc — именованный по старому адресу, поэтому здесь только блоки.
+  // коридор /beta/ в doc — именованный [100,250] под старым адресом.
   const rBeta = tree(renamed('/beta/', '/beta-nowa/', true));
   check('P: прежний_url — блоки анатомии по старому адресу', blocksOf(ok, '/beta/'), blocksOf(rBeta, '/beta-nowa/'), 'verdict-box(a) переживает переименование');
+  check('P: именованный коридор под старым адресом — не теряется', { corridor: view(ok, '/beta/').corridor, named: ok.corridorsFromContract.map((c) => (c.url === '/beta/' ? '/beta-nowa/' : c.url)) }, { corridor: view(rBeta, '/beta-nowa/').corridor, named: rBeta.corridorsFromContract.map((c) => c.url) }, 'рецензия «судью судят», D3: структура ещё под старым адресом — решение не уступает анатомии');
   check('P: без прежнего_url блок анатомии пропадает', false, blocksOf(tree(renamed('/beta/', '/beta-nowa/', false)), '/beta-nowa/').includes('verdict-box(a)'), 'отрицательная для пути блоков');
   const selfFormer = renamed('/gamma/', '/gamma-nowa/', true);
   page(selfFormer, '/gamma-nowa/')['прежний_url'] = '/gamma-nowa/';

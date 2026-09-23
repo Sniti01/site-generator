@@ -61,6 +61,7 @@
  */
 
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { readClustering, UNCLUSTERED } from '@factory/core/structure/clustering.mjs';
@@ -69,6 +70,18 @@ import { readClustering, UNCLUSTERED } from '@factory/core/structure/clustering.
 // атрибут `with { type: 'json' }`, и механическая проверка сайта на него
 // сегодня отвечает подсказкой. Путь спрашиваем у резолвера пакета.
 const corePath = (rel) => fileURLToPath(import.meta.resolve(`@factory/core/${rel}`));
+
+/** Порядок строк — по кодам символов, не по локали машины: сверка --dry-run побайтовая. */
+const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+
+/** Отпечаток набора фраз страницы — тот же, что пишет `anatomy-s3.mjs` (`фразы_sha256`). */
+const phrasesSha = (keywords) => createHash('sha256').update([...keywords].sort(cmp).join('\n')).digest('hex');
+
+/** Умолчание типа уступает блоку того же имени и роли из анатомии или руки. */
+const withoutShadowedDefaults = (blocks) => {
+  const strong = new Set(blocks.filter((b) => b.source !== 'type-default').map((b) => `${b.block}#${b.role ?? ''}`));
+  return blocks.filter((b) => b.source !== 'type-default' || !strong.has(`${b.block}#${b.role ?? ''}`));
+};
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
 
 const parentOf = (url) => {
@@ -107,7 +120,7 @@ export function parseThemeKey(s) {
  * @param {object} in_.typeBlocks — `core/structure/type-blocks.json`
  * @param {{phrases: object[], meta: {phrases: number}}} in_.data — выгрузка семантики
  */
-export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data }) {
+export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data, rulesSha = null }) {
   const anatomyByUrl = new Map((anatomy?.['страницы'] ?? []).map((p) => [p.url, p]));
   // Коридоры существующей структуры (П43) переживают пересборку: и `null`,
   // и число, отличное от анатомии, — именованные решения, а не счёт.
@@ -467,6 +480,16 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
         fail(`${url}: блок ${block} — доказательство анатомии не число «документов/из» (${JSON.stringify(n)}/${JSON.stringify(of)}); s3-anatomy.json правлен руками или испорчен`);
         continue;
       }
+      // Вердикт — следствие доли и порогов правил, а не отдельное слово: «обязателен»
+      // при 1/7 ушёл бы в контракт как high.
+      const t = rulesS3['анатомия'];
+      if (t) {
+        const expected = n / of >= t['обязателен_от'] ? 'обязателен' : n / of >= t['решение_от'] ? 'на решение' : 'не норма';
+        if (expected !== measured['вердикт']) {
+          fail(`${url}: блок ${block} — вердикт «${measured['вердикт']}» при ${n}/${of}, по порогам правил — «${expected}»; s3-anatomy.json правлен руками или посчитан по другим порогам`);
+          continue;
+        }
+      }
       out.push({
         block,
         source: 'anatomy',
@@ -505,7 +528,7 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     const list = keywords
       .get(p.url)
       .slice()
-      .sort((a, b) => b.google - a.google || a.phrase.localeCompare(b.phrase));
+      .sort((a, b) => b.google - a.google || cmp(a.phrase, b.phrase));
     const defaults = typeBlocks['умолчания'][p.type];
     if (!defaults) fail(`${p.url}: у типа «${p.type}» нет умолчаний в core/structure/type-blocks.json`);
 
@@ -515,17 +538,19 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
     // п. 2), — именованное решение: инструмент его сохраняет и называет
     // строкой при прогоне, чтобы решение не исчезло молча и не перестало быть
     // видимым.
-    let fromAnatomy = anatomyByUrl.get(p.url)?.['план']?.['коридор'] ?? null;
+    const row = anatomyByUrl.get(p.url);
+    if (row && !Array.isArray(row['план']?.['коридор'])) fail(`${p.url}: у строки s3-anatomy.json нет план.коридор; s3-anatomy.json правлен руками или испорчен`);
+    let fromAnatomy = row?.['план']?.['коридор'] ?? null;
     if (fromAnatomy !== null && !(Array.isArray(fromAnatomy) && fromAnatomy.length === 2 && fromAnatomy.every(Number.isInteger) && fromAnatomy[0] > 0 && fromAnatomy[0] <= fromAnatomy[1])) {
-      fail(`${p.url}: коридор анатомии не пара целых min ≤ max (${JSON.stringify(fromAnatomy)}); s3-anatomy.json правлен руками или испорчен`);
+      fail(`${p.url}: коридор анатомии не пара целых 0 < min ≤ max (${JSON.stringify(fromAnatomy)}); s3-anatomy.json правлен руками или испорчен`);
       fromAnatomy = null;
     }
-    if (anatomyByUrl.get(p.url)?.['план']?.['ориентир']) orienteers.push({ url: p.url, corridor: fromAnatomy });
     let corridor = fromAnatomy;
     if (existingCorridor.has(p.url) && !sameCorridor(existingCorridor.get(p.url), fromAnatomy)) {
       corridor = existingCorridor.get(p.url);
       corridorsFromContract.push({ url: p.url, corridor, anatomy: fromAnatomy });
     }
+    if (row?.['план']?.['ориентир']) orienteers.push({ url: p.url, corridor, anatomy: fromAnatomy });
 
     const page = {
       url: p.url,
@@ -540,8 +565,10 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
       // Умолчания типа задают скелет; анатомия корпуса прибавляет к нему то,
       // что оказалось нормой жанра, с доказательством; рука — то, что решено
       // человеком. Три источника не смешиваются: у каждого блока стоит свой
-      // `source`, и умолчание всегда отличимо от измерения.
-      blocks: orderBlocks(p.type, [
+      // `source`, и умолчание всегда отличимо от измерения. Умолчание того же
+      // имени (и роли), что пришло анатомией или рукой, уступает им место:
+      // измерение и решение сильнее скелета.
+      blocks: orderBlocks(p.type, withoutShadowedDefaults([
         ...(defaults ?? []).map((block) => ({ block, source: 'type-default', confidence: 'low' })),
         ...anatomyBlocks(p.url),
         ...(p['блоки'] ?? []).map((b) => ({
@@ -550,16 +577,15 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
           source: 'manual',
           confidence: b.confidence ?? 'high',
         })),
-      ]),
+      ])),
       wave: p.wave,
       corridor,
       volume: list.reduce((s, k) => s + k.google, 0),
     };
     if (p.owner) page.owner = true;
     if (p.template) page.template = p.template;
-    // Один блок — один источник: имя (с ролью), пришедшее и умолчанием, и
-    // анатомией, и рукой, встало бы на страницу дважды, и ни гейт, ни шаблон
-    // этого не увидят.
+    // Один блок — один источник: имя (с ролью), пришедшее и анатомией, и рукой,
+    // встало бы на страницу дважды, и ни гейт, ни шаблон этого не увидят.
     const seenBlocks = new Map();
     for (const b of page.blocks) {
       const key = `${b.block}#${b.role ?? ''}`;
@@ -572,12 +598,21 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   // Анатомия и дерево — с одной раскладки: корпус страницы собран из её фраз
   // (бэклог 54 п. 3), поэтому правка объявления без нового измерения делает
   // анатомию устаревшей, и блоки с коридорами встали бы по чужому корпусу.
+  // После S3 оба входа нужны вместе: анатомия без правил не даёт имён блоков,
+  // правила без анатомии — блоков вовсе; и то и другое молча сняло бы блоки
+  // анатомии со всех страниц.
+  if (anatomy && (!rulesS3?.['имена_блоков'] || !rulesS3?.['уверенность'])) fail('s3-anatomy.json есть, а rules-s3.json (имена_блоков, уверенность) — нет; блоки анатомии пропали бы молча');
+  if (rulesS3 && !anatomy) fail('rules-s3.json есть, а s3-anatomy.json нет; блоки анатомии пропали бы молча — npm run anatomy');
+  // Анатомия посчитана по живым правилам: отпечаток rules-s3.json в шапке
+  // измерения сверяется с файлом, который читается сейчас.
+  if (anatomy && rulesSha && anatomy['правила_sha256'] !== rulesSha) fail('s3-anatomy.json посчитан по другой редакции rules-s3.json — npm run anatomy, затем npm run tree');
   if (anatomy) {
     const builtUrls = new Set(built.map((p) => p.url));
     for (const p of built) {
       const a = anatomyByUrl.get(p.url);
       if (p.keywords.length && !a) fail(`${p.url}: страница спроса без строки в s3-anatomy.json — анатомия отстала от дерева; npm run anatomy, затем npm run tree`);
-      else if (a && a['фраз'] !== p.keywords.length) fail(`${p.url}: в s3-anatomy.json фраз ${a['фраз']}, на странице ${p.keywords.length} — анатомия отстала от дерева; npm run anatomy, затем npm run tree`);
+      else if (!p.keywords.length && a) fail(`${p.url}: у страницы без фраз есть строка в s3-anatomy.json — корпуса у неё нет, анатомия отстала от объявления`);
+      else if (a && (a['фраз'] !== p.keywords.length || a['фразы_sha256'] !== phrasesSha(p.keywords))) fail(`${p.url}: набор фраз в s3-anatomy.json (${a['фраз']}) не тот, что на странице (${p.keywords.length}) — анатомия отстала от дерева; npm run anatomy, затем npm run tree`);
     }
     for (const url of anatomyByUrl.keys()) if (!builtUrls.has(url)) fail(`s3-anatomy.json: страница ${url} — её нет в дереве; анатомия отстала от объявления`);
   }
@@ -606,8 +641,8 @@ export function buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data
   return {
     site: { ...doc.site, total_queries: data.meta.phrases },
     built,
-    exclusions: exclusions.sort((a, b) => a.query.localeCompare(b.query)),
-    noPage: noPage.sort((a, b) => a.query.localeCompare(b.query)),
+    exclusions: exclusions.sort((a, b) => cmp(a.query, b.query)),
+    noPage: noPage.sort((a, b) => cmp(a.query, b.query)),
     problems,
     lost,
     returned,
@@ -642,7 +677,8 @@ function run(root, { dryRun }) {
   const typeBlocks = readJson(corePath('structure/type-blocks.json'));
   const data = readClustering(join(root, doc.site.semantics));
 
-  const r = buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data });
+  const rulesSha = rulesS3 ? createHash('sha256').update(readFileSync(rulesS3Path)).digest('hex') : null;
+  const r = buildTree({ decl, recon, doc, rulesS3, anatomy, typeBlocks, data, rulesSha });
   const { site, built, exclusions, noPage, problems, lost, returned, outside, carved, themesByPage, corridorsFromContract, orienteers, onPages, tally } = r;
 
   const wave1 = built.filter((p) => p.wave === 1);
@@ -708,7 +744,7 @@ function run(root, { dryRun }) {
     const withCorridor = built.filter((p) => p.corridor !== null);
     console.log(`коридоры: ${withCorridor.length} числом, ${built.length - withCorridor.length} null`);
     for (const p of built) console.log(`  ${p.url}  ${JSON.stringify(p.corridor)}`);
-    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} ${JSON.stringify(o.corridor)} — в контракт идёт тем же числом, гейт судит его как норму`);
+    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} — в контракте ${JSON.stringify(o.corridor)}, анатомия ${JSON.stringify(o.anatomy)}; гейт судит его как норму`);
   }
 
   if (lost.length) {
@@ -733,12 +769,23 @@ function run(root, { dryRun }) {
     return true;
   }
   // Сухой прогон сверяет построенное с записанным: structure.json, отставший
-  // от объявления, анатомии или правил, — отказ, а не зелёная печать.
+  // от объявления или от блоков анатомии, — отказ, а не зелёная печать.
+  // Коридор существующей строки сверка не ловит: он — именованное решение П43
+  // и переживает перемер; расхождение с анатомией печатается строкой выше
+  // («коридор из контракта»). Устаревшую анатомию ловят anatomy:check и сторож
+  // отпечатков в buildTree.
   if (readFileSync(docPath, 'utf8') !== text) {
+    // Место расхождения: разделы верхнего уровня и адреса страниц — в том числе
+    // страниц, которых больше нет, — а не «страниц: 0» при расхождении в шапке.
+    const now = { site, pages: built, exclusions, no_page: noPage };
+    const parts = ['site', 'exclusions', 'no_page'].filter((k) => JSON.stringify(doc[k]) !== JSON.stringify(now[k]));
     const was = new Map((doc.pages ?? []).map((p) => [p.url, JSON.stringify(p)]));
-    const differ = built.filter((p) => was.get(p.url) !== JSON.stringify(p)).map((p) => p.url);
+    const is = new Map(built.map((p) => [p.url, JSON.stringify(p)]));
+    const differ = [...new Set([...was.keys(), ...is.keys()])].filter((u) => was.get(u) !== is.get(u));
+    if (differ.length) parts.push(`страниц: ${differ.length} — ${differ.slice(0, 6).join(', ')}`);
+    if (!parts.length) parts.push('только запись (порядок ключей, пробелы)');
     console.error('');
-    console.error(`structure/structure.json расходится с построенным (страниц: ${differ.length}${differ.length ? ' — ' + differ.slice(0, 6).join(', ') : ''}); npm run tree`);
+    console.error(`structure/structure.json расходится с построенным (${parts.join('; ')}); npm run tree`);
     return false;
   }
   console.log('structure/structure.json совпадает с построенным');
@@ -993,8 +1040,10 @@ function selftest(root) {
   const noDocS3 = { ...withS3, doc: { site: withS3.doc.site, pages: [] } };
   check('S: без строк структуры — коридор анатомии у всех', [[500, 600], [100, 200], [300, 400]], ['/', '/one/', '/movie/'].map((u) => tree(noDocS3).built.find((p) => p.url === u).corridor), 'переход S2 → S3: строки-заглушки сняты, числа — из анатомии');
   const noRulesS3 = { ...withS3, rulesS3: null };
-  check('S: анатомия без правил — блоков анатомии нет', 0, tree(noRulesS3).built.reduce((s, p) => s + p.blocks.filter((b) => b.source === 'anatomy').length, 0), 'имя даёт словарь правил, не измерение');
-  check('S: коридор-ориентир назван', [{ url: '/cheats/', corridor: [900, 1000] }], rS3.orienteers, 'медиана ниши идёт в контракт тем же числом — печатается отдельно');
+  const rNoRules = tree(noRulesS3);
+  check('S: анатомия без правил — несходимость, а не тихая потеря блоков', { problems: 1, blocks: 0 }, { problems: problemsAbout(rNoRules, 's3-anatomy.json есть, а rules-s3.json'), blocks: rNoRules.built.reduce((s, p) => s + p.blocks.filter((b) => b.source === 'anatomy').length, 0) }, 'имя даёт словарь правил, не измерение; без правил прогон останавливается');
+  check('S: правила без анатомии — несходимость', 1, problemsAbout(tree({ ...base(), rulesS3: structuredClone(fx['проба_S3'].rulesS3) }), 'rules-s3.json есть, а s3-anatomy.json нет'), 'блоки анатомии не пропадают молча');
+  check('S: коридор-ориентир назван', [{ url: '/cheats/', corridor: [900, 1000], anatomy: [900, 1000] }], rS3.orienteers, 'медиана ниши идёт в контракт тем же числом — печатается отдельно');
 
   // Фикстура судит те же уверенность и порядок, что живые правила, а имена —
   // четыре имени П28: правка живых правил не проходит мимо проб молча.
@@ -1008,7 +1057,7 @@ function selftest(root) {
   check('S: страница спроса без строки анатомии — несходимость', 1, problemsAbout(tree(noAnatomyRow), '/remake/: страница спроса без строки в s3-anatomy.json'), 'правка объявления без нового измерения');
   const staleCount = structuredClone(withS3);
   staleCount.anatomy.страницы.find((p) => p.url === '/one/')['фраз'] = 2;
-  check('S: число фраз анатомии ≠ раскладке — несходимость', 1, problemsAbout(tree(staleCount), '/one/: в s3-anatomy.json фраз 2, на странице 3'), 'корпус страницы собран из других фраз');
+  check('S: число фраз анатомии ≠ раскладке — несходимость', 1, problemsAbout(tree(staleCount), '/one/: набор фраз в s3-anatomy.json (2) не тот, что на странице (3)'), 'корпус страницы собран из других фраз');
   const orphan = structuredClone(withS3);
   orphan.anatomy.страницы.push({ url: '/gone/', фраз: 1, план: { коридор: [1, 2] }, элементы: {} });
   check('S: строка анатомии без страницы — несходимость', 1, problemsAbout(tree(orphan), 's3-anatomy.json: страница /gone/'), 'страницу сняли из объявления, измерение осталось');
@@ -1020,6 +1069,26 @@ function selftest(root) {
   badEvidence.anatomy.страницы.find((p) => p.url === '/one/')['элементы'].galeria['документов'] = 9;
   const rBad = tree(badEvidence);
   check('S: доказательство не число или больше «из» — несходимость, блок не переносится', { problems: 2, verdict: undefined, gallery: undefined }, { problems: problemsAbout(rBad, 'доказательство анатомии не число'), verdict: blockOf(rBad, '/one/', 'verdict-box'), gallery: blockOf(rBad, '/one/', 'gallery') }, '«6» строкой; 9 из 7');
+  const swapped = structuredClone(withS3);
+  swapped.anatomy.страницы.find((p) => p.url === '/one/')['фразы_sha256'] = 'f'.repeat(64);
+  check('S: то же число фраз, другой набор — несходимость', 1, problemsAbout(tree(swapped), '/one/: набор фраз в s3-anatomy.json (3) не тот, что на странице (3)'), 'обмен ключами между страницами при равном счёте');
+  const stamped = structuredClone(withS3);
+  stamped.anatomy['правила_sha256'] = 'a'.repeat(64);
+  check('S: анатомия по другой редакции правил — несходимость; по той же — нет', { другая: 1, та_же: 0 }, { другая: problemsAbout(tree({ ...stamped, rulesSha: 'b'.repeat(64) }), 'по другой редакции rules-s3.json'), та_же: problemsAbout(tree({ ...stamped, rulesSha: 'a'.repeat(64) }), 'по другой редакции rules-s3.json') }, 'отпечаток rules-s3.json в шапке измерения против живого файла');
+  const legalRow = structuredClone(withS3);
+  legalRow.anatomy.страницы.push({ url: '/privacy/', фраз: 0, план: { коридор: [1, 2] }, элементы: {} });
+  check('S: строка анатомии у страницы без фраз — несходимость', 1, problemsAbout(tree(legalRow), '/privacy/: у страницы без фраз есть строка'), 'блоки анатомии не встают на служебную страницу');
+  const noPlan = structuredClone(withS3);
+  delete noPlan.anatomy.страницы.find((p) => p.url === '/movie/')['план'];
+  check('S: строка анатомии без плана — несходимость', 1, problemsAbout(tree(noPlan), '/movie/: у строки s3-anatomy.json нет план.коридор'), 'коридор не превращается молча в null или «из контракта»');
+  const badVerdict = structuredClone(withS3);
+  badVerdict.anatomy.страницы.find((p) => p.url === '/one/')['элементы'].ocena['документов'] = 1;
+  const rVerdict = tree(badVerdict);
+  check('S: вердикт против доли — несходимость, блок не переносится', { problems: 1, verdict: undefined }, { problems: problemsAbout(rVerdict, 'вердикт «обязателен» при 1/7'), verdict: blockOf(rVerdict, '/one/', 'verdict-box') }, '«обязателен» при 1/7 ушёл бы в контракт как high');
+  const namedDefault = structuredClone(withS3);
+  namedDefault.rulesS3['имена_блоков'].tabela = 'story-row';
+  const rNamed = tree(namedDefault);
+  check('S: имя анатомии совпало с умолчанием типа — умолчание уступает', { problems: 0, home: ['hero-key-art(t)', 'byline(a)', 'story-row(a)', 'band-quote(t)', 'card-rail(t)', 'link-list(m)#games-in-order', 'link-columns(t)', 'cta-band(t)'] }, { problems: rNamed.problems.length, home: blocksOf(rNamed, '/') }, 'story-row главной — из анатомии (9/10), умолчание снято; рука и анатомия одного имени — несходимость (проба выше)');
   const badCorridor = structuredClone(withS3);
   badCorridor.anatomy.страницы.find((p) => p.url === '/movie/')['план']['коридор'] = [400, 300];
   check('S: коридор анатомии не пара min ≤ max — несходимость', 1, problemsAbout(tree(badCorridor), '/movie/: коридор анатомии не пара'), '[400, 300]');

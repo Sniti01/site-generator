@@ -238,7 +238,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "4/8"
+     "evidence": "3/7"
     },
     {
      "block": "story-row",
@@ -258,8 +258,8 @@
    ],
    "wave": 1,
    "corridor": [
-    6068,
-    8210
+    9123,
+    12343
    ],
    "volume": 3020
   },
@@ -348,12 +348,6 @@
      "confidence": "low"
     },
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "12/26"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -424,8 +418,8 @@
     {
      "block": "byline",
      "source": "anatomy",
-     "confidence": "high",
-     "evidence": "18/25"
+     "confidence": "medium",
+     "evidence": "15/25"
     },
     {
      "block": "toc",
@@ -586,12 +580,6 @@
      "block": "hero-key-art",
      "source": "type-default",
      "confidence": "low"
-    },
-    {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "7/15"
     },
     {
      "block": "story-row",
@@ -766,7 +754,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "14/28"
+     "evidence": "12/28"
     },
     {
      "block": "story-row",
@@ -832,7 +820,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "14/23"
+     "evidence": "13/23"
     },
     {
      "block": "story-row",
@@ -911,13 +899,13 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "15/30"
+     "evidence": "13/30"
     },
     {
      "block": "toc",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "16/30"
+     "evidence": "15/30"
     },
     {
      "block": "story-row",
@@ -972,7 +960,7 @@
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
-     "evidence": "11/17"
+     "evidence": "10/17"
     },
     {
      "block": "story-row",
@@ -1167,12 +1155,6 @@
    ],
    "blocks": [
     {
-     "block": "byline",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "11/25"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1237,8 +1219,8 @@
    ],
    "wave": 1,
    "corridor": [
-    2986,
-    4040
+    2996,
+    4054
    ],
    "volume": 340
   },

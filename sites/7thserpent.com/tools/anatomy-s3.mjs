@@ -44,26 +44,33 @@
  *   4. **Маркетплейсы — по суффиксу хоста**, как `recon-s0` (`amazon.com`
  *      в списке, `www.amazon.com` в манифесте); список и площадки платформ
  *      берутся из `rules-s0.json` по пути, названному в правилах.
- *   5. **Переходы и дубли:** адрес, чей переход увёл на стенку (проверка
- *      возраста, согласие, вызов) или на корень раздела, — не документ
- *      выдачи; два адреса одного документа (общий канонический адрес или
- *      адрес перехода без языковых и меточных параметров) считаются один раз.
+ *   5. **Переходы и дубли:** адрес, который сам или переходом ведёт на стенку
+ *      (проверка возраста, согласие, вызов, вход), или переход на корень
+ *      раздела — не документ выдачи; два адреса одного документа (общий
+ *      канонический адрес или адрес без языковых и меточных параметров,
+ *      протокол один) считаются один раз, и остаётся тот, чей собственный
+ *      адрес и есть ключ, — одним правилом для страницы и ниши.
  *   6. **Сторож чужого текста:** каждая строка выхода сверяется с закрытым
  *      множеством наших строк (адреса, хосты, имена кластеров, тем, элементов,
  *      вердикты, константы); значения шапки из `run.json` — по форме; чужая
  *      строка — отказ, файл не пишется, текст чужого ключа не печатается.
  *   7. **Элементы узнаются по видимым узлам разметки** (`элементы.узлы`):
- *      классы и id ищутся у узлов тела после выреза кода, стилей, шаблонов,
+ *      классы и id ищутся у узлов после выреза кода, стилей, шаблонов,
  *      векторных иконок и головы документа, не у иконок, полей формы
- *      и скрытых узлов; слово класса — по границам слова, camelCase
- *      разбирается; разметка schema.org — разобранный JSON-LD и микроданные,
- *      а не строка в кавычках где угодно. У первого сайта обе сверки шли
- *      подстрокой по всему документу.
- *   8. **Темы заголовков — по самому длинному совпавшему слову,** не по
- *      первой теме файла; `^` в начале слова — «только в начале заголовка».
- *   9. **`--dry-run` сверяет** посчитанное с записанным `s3-anatomy.json`:
- *      устаревший файл, из которого `build-tree` берёт блоки и коридоры, —
- *      отказ, а не молчание.
+ *      и не у узлов, скрытых самих или скрытым предком; слово класса — по
+ *      границам слова, camelCase разбирается, контекст в имени класса отсекает
+ *      чужое, класс, повторённый у многих узлов, — лента, а не подпись
+ *      (`повтор_до`); разметка schema.org — разобранный JSON-LD и микроданные,
+ *      а не строка в кавычках где угодно; автор-человек — только `Person`.
+ *      У первого сайта обе сверки шли подстрокой по всему документу.
+ *   8. **Темы заголовков:** каждое совпавшее слово даёт свою тему; при
+ *      перекрытии совпадений побеждает длинное слово; `^` в начале слова —
+ *      «только в начале заголовка».
+ *   9. **`--dry-run` сверяет** посчитанное с записанным `s3-anatomy.json`
+ *      и называет место расхождения; нет файла или устаревший файл — отказ.
+ *      В выходе — отпечаток правил (`правила_sha256`) и набора фраз каждой
+ *      страницы (`фразы_sha256`): `build-tree` сверяет их с живыми правилами
+ *      и своей раскладкой.
  *  10. **`--selftest`** гоняет тот же код на фикстуре сайта.
  *
  * **Извлекается структура, не текст.** Ни одной формулировки конкурента
@@ -77,6 +84,7 @@
 
 import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, basename } from 'node:path';
 import { readClustering } from '@factory/core/structure/clustering.mjs';
@@ -161,10 +169,24 @@ function attrsOf(s) {
   return a;
 }
 
+/** Пустые элементы HTML: закрывающего тега у них нет, внутренности тоже. */
+const VOID = new Set(['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+
+/**
+ * Узлы разметки по порядку. У каждого — пометка `inHidden`: узел лежит внутри
+ * скрытого предка (hidden, aria-hidden, display:none, visibility:hidden
+ * у самого узла или у любого предка) — его классы для сверки не существуют.
+ */
 function nodesOf(html) {
   const out = [];
   for (const m of html.matchAll(TAG_RE)) {
-    out.push({ tag: m[1].toLowerCase(), a: attrsOf(m[2]), end: m.index + m[0].length, selfClosing: m[2].trimEnd().endsWith('/') });
+    const tag = m[1].toLowerCase();
+    out.push({ tag, a: attrsOf(m[2]), start: m.index, end: m.index + m[0].length, selfClosing: VOID.has(tag) || m[2].trimEnd().endsWith('/') });
+  }
+  const ranges = [];
+  for (const n of out) {
+    n.inHidden = ranges.some(([s, e]) => n.start >= s && n.start < e);
+    if (!n.selfClosing && hidden(n.a)) ranges.push([n.end, n.end + innerOf(html, n).length]);
   }
   return out;
 }
@@ -178,7 +200,15 @@ function cutCode(html, tags) {
 
 const countTag = (html, tag) => (html.match(new RegExp(`<${tag}(?=[\\s>/])`, 'gi')) ?? []).length;
 
-/** Внутренность узла до его закрывающего тега (вложенность того же тега учтена). */
+/** Теги, которые HTML закрывает неявно: новое открытие того же тега на том же уровне — конец узла. */
+const IMPLICIT_CLOSE = new Set(['a', 'p', 'li', 'dt', 'dd', 'option']);
+
+/**
+ * Внутренность узла до его закрывающего тега (вложенность того же тега учтена).
+ * Незакрытый узел внутренности не имеет: хвост документа — не его содержимое
+ * (у незакрытой ссылки-стрелки карусели иначе «внутри» оказывались картинки
+ * всей оставшейся страницы).
+ */
 function innerOf(html, node, limit = 200000) {
   if (node.selfClosing) return '';
   const re = new RegExp(`<(/?)${node.tag}(?=[\\s>/])[^>]*>`, 'gi');
@@ -188,21 +218,26 @@ function innerOf(html, node, limit = 200000) {
     if (m[1]) {
       depth -= 1;
       if (!depth) return html.slice(node.end, m.index);
-    } else if (!m[0].endsWith('/>')) depth += 1;
+    } else if (!m[0].endsWith('/>')) {
+      if (depth === 1 && IMPLICIT_CLOSE.has(node.tag)) return html.slice(node.end, m.index);
+      depth += 1;
+    }
   }
-  return html.slice(node.end, node.end + limit);
+  return '';
 }
 
-const hidden = (a) => 'hidden' in a || a['aria-hidden'] === 'true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(a.style ?? '');
+function hidden(a) {
+  return 'hidden' in a || a['aria-hidden'] === 'true' || /display\s*:\s*none|visibility\s*:\s*hidden/i.test(a.style ?? '');
+}
 
 /**
  * Слова классов и id видимого узла: camelCase разобран (`GuideTableOfContents` →
  * `guide-table-of-contents`), иконки (`fa-comments`, `octicon-…`, `iconochive-…`)
- * отброшены, у узлов без классов по природе (поле формы, картинка, иконка `<i>`)
- * и у скрытых узлов слов нет.
+ * отброшены, у узлов без классов по природе (поле формы, картинка, иконка `<i>`),
+ * у скрытых узлов и у узлов внутри скрытого предка слов нет.
  */
 function tokensOf(node, u) {
-  if (u['теги_без_классов'].includes(node.tag) || hidden(node.a)) return [];
+  if (u['теги_без_классов'].includes(node.tag) || hidden(node.a) || node.inHidden) return [];
   const out = [];
   for (const k of ['class', 'id']) {
     const v = node.a[k];
@@ -218,8 +253,19 @@ function tokensOf(node, u) {
   return out;
 }
 
-const classHit = (tokens, spec) =>
-  tokens.some((t) => spec['классы'].some((w) => wordHit(t, w)) && !(spec['не_в_контексте'] ?? []).some((c) => wordHit(t, c)));
+/**
+ * Слово класса засчитывается, если оно из словаря элемента, в имени класса нет
+ * слова чужого контекста и — при `повтор_до` — класс встречается не чаще,
+ * чем у стольких узлов документа: подпись страницы одна, а имя автора,
+ * повторённое у многих узлов, — лента карточек, посты форума или комментарии.
+ */
+const classHit = (tokens, spec, counts) =>
+  tokens.some(
+    (t) =>
+      spec['классы'].some((w) => wordHit(t, w)) &&
+      !(spec['не_в_контексте'] ?? []).some((c) => wordHit(t, c)) &&
+      (!spec['повтор_до'] || (counts?.get(t) ?? 1) <= spec['повтор_до'])
+  );
 
 /* ---------------------------------------------------------------- *
  * Разметка schema.org: разобранный JSON-LD и микроданные.
@@ -232,12 +278,20 @@ function ldObjects(html) {
   const objects = [];
   const byId = new Map();
   let broken = 0;
+  let blocks = 0;
   for (const m of html.matchAll(/<script\b[^>]*application\/ld\+json[^>]*>([\s\S]*?)<\/script\s*>/gi)) {
-    const txt = m[1]
-      .trim()
-      .replace(/^<!--|-->$/g, '')
-      .replace(/^\/\/\s*<!\[CDATA\[|\/\/\s*\]\]>$/g, '')
-      .trim();
+    blocks += 1;
+    // Обёртки, которыми движки прячут JSON от старых разборщиков: <!-- -->,
+    // //<![CDATA[ … //]]> и /* <![CDATA[ */ … /* ]]> */ — снимаются до разбора.
+    let txt = m[1].trim();
+    for (let prev = ''; prev !== txt; ) {
+      prev = txt;
+      txt = txt
+        .replace(/^<!--|-->$/g, '')
+        .replace(/^\/\/\s*<!\[CDATA\[|\/\/\s*\]\]>$/g, '')
+        .replace(/^\/\*\s*<!\[CDATA\[\s*\*\/|\/\*\s*\]\]>\s*\*\/$/g, '')
+        .trim();
+    }
     let data;
     try {
       data = JSON.parse(txt);
@@ -258,13 +312,16 @@ function ldObjects(html) {
     };
     walk(data, true);
   }
-  return { objects, byId, broken };
+  return { objects, byId, broken, blocks };
 }
 
-/** Автор — человек: строка с именем или объект `Person` (в том числе по ссылке `@id`). */
+/**
+ * Автор — человек: объект `Person` (в том числе по ссылке `@id`). Строка
+ * человеком не считается: в корпусе ею пишут и заглушку вместо автора,
+ * и имя издания.
+ */
 function personAuthor(obj, byId) {
   return [].concat(obj.author ?? []).some((a) => {
-    if (typeof a === 'string') return a.trim() !== '';
     if (!a || typeof a !== 'object') return false;
     const ref = !a['@type'] && typeof a['@id'] === 'string' ? (byId.get(a['@id']) ?? a) : a;
     return [].concat(ref['@type'] ?? []).some((t) => typeof t === 'string' && typeName(t) === 'Person');
@@ -306,16 +363,28 @@ function markupHit(m, ld, md) {
   return Boolean(m['микроданные']?.some((p) => md.props.has(p)) && (!m['у_типов'] || m['у_типов'].some((t) => md.types.has(t))));
 }
 
-/** Оглавление без класса: ссылки на якоря этой же страницы в первой трети тела. */
+/**
+ * Оглавление без класса: ссылки на якоря этой же страницы в первой трети тела.
+ * Цель — id любого узла или name у ссылки (не у поля формы); ссылка на самоё
+ * себя (свой id или name равен цели — метка заголовка) и ссылка без текста
+ * оглавлением не считаются.
+ */
 function anchorToc(cut, body, spec) {
   const ids = new Set();
-  for (const m of cut.matchAll(/\s(?:id|name)\s*=\s*(?:"([^"]+)"|'([^']+)'|([^\s"'>]+))/gi)) ids.add(m[1] ?? m[2] ?? m[3]);
+  for (const n of nodesOf(cut)) {
+    if (n.a.id) ids.add(n.a.id);
+    if (n.tag === 'a' && n.a.name) ids.add(n.a.name);
+  }
   const skip = new Set((spec['якоря_кроме'] ?? []).map((x) => x.toLowerCase()));
   const head = body.slice(0, Math.ceil(body.length / 3));
   const targets = new Set();
-  for (const m of head.matchAll(/<a\b(?:[^>"']|"[^"]*"|'[^']*')*?\shref\s*=\s*(?:"#([^"]+)"|'#([^']+)')/gi)) {
-    const t = m[1] ?? m[2];
-    if (!skip.has(t.toLowerCase()) && ids.has(t)) targets.add(t);
+  for (const m of head.matchAll(/<a\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]{0,300}?)<\/a\s*>/gi)) {
+    const a = attrsOf(m[1]);
+    const t = (a.href ?? '').startsWith('#') ? a.href.slice(1) : '';
+    if (!t || skip.has(t.toLowerCase()) || !ids.has(t)) continue;
+    if (a.id === t || a.name === t) continue;
+    if (!norm(strip(m[2]))) continue;
+    targets.add(t);
   }
   return targets.size >= spec['якоря_от'];
 }
@@ -337,20 +406,27 @@ function elements(html, rules) {
   const bodyNodes = nodesOf(body);
   const ld = ldObjects(html);
   const md = microdata(nodes);
+  const countsOf = (list) => {
+    const c = new Map();
+    for (const n of list) for (const t of new Set(tokensOf(n, u))) c.set(t, (c.get(t) ?? 0) + 1);
+    return c;
+  };
+  const counts = { cut: countsOf(nodes), body: countsOf(bodyNodes) };
   const found = {};
   for (const name of elementNamesOf(rules)) {
     const spec = rules['элементы'][name];
     let hit = false;
     if (spec['разметка']) hit = markupHit(spec['разметка'], ld, md);
+    if (!hit && spec['json_ld']) hit = ld.blocks > 0;
     if (!hit && spec['признаки']) hit = spec['признаки'].some((s) => lowerCut.includes(s.toLowerCase()));
     if (!hit && spec['признаки_в_коде']) hit = spec['признаки_в_коде'].some((s) => lowerRaw.includes(s.toLowerCase()));
     if (!hit && spec['ссылки_rel']) {
-      hit = nodes.some((n) => n.tag === 'a' && (n.a.rel ?? '').toLowerCase().split(/\s+/).some((r) => spec['ссылки_rel'].includes(r)));
+      hit = nodes.some((n) => n.tag === 'a' && !n.inHidden && (n.a.rel ?? '').toLowerCase().split(/\s+/).some((r) => spec['ссылки_rel'].includes(r)));
     }
     if (!hit && spec['классы']) {
-      const [src, list] = spec['в_теле'] ? [body, bodyNodes] : [cut, nodes];
+      const [src, list, c] = spec['в_теле'] ? [body, bodyNodes, counts.body] : [cut, nodes, counts.cut];
       for (const n of list) {
-        if (!classHit(tokensOf(n, u), spec)) continue;
+        if (!classHit(tokensOf(n, u), spec, c)) continue;
         if (spec['картинок_внутри_от'] && countTag(innerOf(src, n), 'img') + countTag(innerOf(src, n), 'picture') < spec['картинок_внутри_от']) continue;
         hit = true;
         break;
@@ -364,30 +440,46 @@ function elements(html, rules) {
   return found;
 }
 
+/** Места слова в строке: начало и конец самого слова, без граничного знака. */
+const spansOf = (text, w) => {
+  const key = w.toLowerCase();
+  const anchored = key.startsWith('^');
+  const body = (anchored ? key.slice(1) : key).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = new RegExp(`${anchored ? '^()' : '(^|[^a-z0-9])'}(${body})(?![a-z0-9])`, 'g');
+  const out = [];
+  for (const m of text.matchAll(re)) out.push([m.index + m[1].length, m.index + m[1].length + m[2].length]);
+  return out;
+};
+
 /**
- * Тема заголовка по словарю; null — словарь не узнал. Служебный заголовок
- * (слово обвязки или шаблон `{{…}}`) — мимо тем. Среди тем побеждает самое
- * длинное совпавшее слово («console commands» — cheats, а не versions через
- * «console»), при равенстве — тема раньше в файле. Типографский апостроф
- * приравнивается к прямому.
+ * Темы заголовка по словарю; null — словарь не узнал. Служебный заголовок
+ * (слово обвязки или шаблон `{{…}}`) — мимо тем. Каждое совпавшее слово
+ * даёт свою тему; если совпадения перекрываются, побеждает длинное слово
+ * («console commands» — cheats, а не ещё и versions через «console»), при
+ * равной длине — тема раньше в файле. Непересекающиеся слова дают все свои
+ * темы («mod video» — mods и media). Типографский апостроф равен прямому.
  */
-function themeOf(text, rules) {
+function themesOf(text, rules) {
   const t = text.replace(/[‘’]/g, "'");
   const service = rules['служебные_заголовки'];
   if (service['шаблон'] && new RegExp(service['шаблон']).test(t)) return '__служебный__';
   if (service['слова'].some((w) => wordHit(t, w))) return '__служебный__';
-  let best = null;
-  let bestLength = 0;
-  for (const [theme, words] of Object.entries(rules['темы_заголовков'])) {
-    if (!Array.isArray(words)) continue;
-    for (const w of words) {
-      if (wordLength(w) > bestLength && wordHit(t, w)) {
-        best = theme;
-        bestLength = wordLength(w);
-      }
-    }
+  const hits = [];
+  Object.entries(rules['темы_заголовков'])
+    .filter(([, words]) => Array.isArray(words))
+    .forEach(([theme, words], order) => {
+      for (const w of words) for (const [s, e] of spansOf(t, w)) hits.push({ theme, order, s, e, len: wordLength(w) });
+    });
+  hits.sort((a, b) => b.len - a.len || a.order - b.order || a.s - b.s);
+  const taken = [];
+  const chosen = new Map();
+  for (const h of hits) {
+    if (taken.some(([s, e]) => h.s < e && s < h.e)) continue;
+    taken.push([h.s, h.e]);
+    if (!chosen.has(h.theme)) chosen.set(h.theme, h.order);
   }
-  return best;
+  // Темы заголовка — в порядке файла, чтобы выход не зависел от длины слов.
+  return chosen.size ? [...chosen.entries()].sort((a, b) => a[1] - b[1]).map(([t]) => t) : null;
 }
 
 /**
@@ -423,7 +515,7 @@ export function measureDoc(html, rules) {
     znaki: text.replace(/ /g, '').length,
     h2: hs.filter((h) => h.level === 2).length,
     h3: hs.filter((h) => h.level === 3).length,
-    темы: hs.filter((h) => h.level >= 2).map((h) => themeOf(h.text, rules)),
+    темы: hs.filter((h) => h.level >= 2).map((h) => themesOf(h.text, rules)),
     элементы: elements(html, rules),
   };
 }
@@ -460,12 +552,20 @@ export function docKey(u, dropParams) {
   } catch {
     return u;
   }
-  x.hash = '';
-  for (const k of [...x.searchParams.keys()]) {
-    if (dropParams.some((p) => (p.endsWith('*') ? k.startsWith(p.slice(0, -1)) : k === p))) x.searchParams.delete(k);
-  }
-  x.hostname = x.hostname.toLowerCase();
-  return x.toString().replace(/\/(?=\?|$)/, '');
+  // Запрос режется по сырой строке, без пересборки: пересборка меняет запись
+  // (`?threads/slug/` → `?threads%2Fslug%2F=`), и два адреса одного документа
+  // дали бы разные ключи. Протокол в ключе один: http и https — один документ.
+  const name = (kv) => {
+    try {
+      return decodeURIComponent(kv.split('=')[0]);
+    } catch {
+      return kv.split('=')[0];
+    }
+  };
+  const drop = (k) => dropParams.some((p) => (p.endsWith('*') ? k.startsWith(p.slice(0, -1)) : k === p));
+  const query = x.search.slice(1).split('&').filter((kv) => kv && !drop(name(kv))).join('&');
+  const path = x.pathname.replace(/\/+$/, '');
+  return `https://${x.hostname.toLowerCase()}${x.port ? ':' + x.port : ''}${path}${query ? '?' + query : ''}`;
 }
 
 /**
@@ -474,7 +574,8 @@ export function docKey(u, dropParams) {
  */
 function identityOf(rec, html, dropParams) {
   const bare = (h) => h.replace(/^www\./, '');
-  const link = html.match(/<link\b(?=[^>]*\brel\s*=\s*["']?canonical\b)[^>]*\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
+  const raw = html.match(/<link\b(?=[^>]*\brel\s*=\s*["']?canonical\b)[^>]*\bhref\s*=\s*["']([^"']+)["']/i)?.[1];
+  const link = raw ? unesc(raw) : null;
   if (link) {
     try {
       const c = new URL(link, rec.final_url ?? rec.url);
@@ -487,27 +588,46 @@ function identityOf(rec, html, dropParams) {
 }
 
 /**
- * Переход, который увёл не туда: на стенку (`переходы.стенки` — сегмент пути
- * адреса перехода) или на корень сайта или раздела (путь без сегментов,
- * кроме языкового, при непустом пути адреса выдачи). Такой документ — не тот,
- * что стоит в выдаче.
+ * Не тот документ, что стоит в выдаче: стенка (`переходы.стенки` — сегмент
+ * пути итогового адреса, будь то адрес перехода или сам адрес выдачи: стенка
+ * возраста Steam стоит в выдаче и своим адресом) или переход на корень сайта
+ * или раздела (путь без сегментов, кроме языкового, при непустом пути адреса
+ * выдачи).
  */
 export function wallOf(rec, rules) {
-  if (!rec.final_url || rec.final_url === rec.url) return null;
   let a;
   let b;
   try {
     a = new URL(rec.url);
-    b = new URL(rec.final_url);
+    b = new URL(rec.final_url ?? rec.url);
   } catch {
     return null;
   }
   const segs = (x) => x.split('/').filter(Boolean);
   if (segs(b.pathname.toLowerCase()).some((s) => rules['переходы']['стенки'].includes(s))) return 'стенка';
+  if (!rec.final_url || rec.final_url === rec.url) return null;
   const meaningful = (x) => segs(x).filter((s) => !/^[a-z]{2}(?:-[a-z]{2})?$/i.test(s));
   if (!meaningful(b.pathname).length && meaningful(a.pathname).length) return 'корень';
   return null;
 }
+
+/**
+ * Один документ на ключ: из адресов одного документа остаётся тот, чей
+ * собственный адрес и есть ключ (на него указывает канонический адрес, или
+ * это вариант без языковых и меточных параметров); иначе — первый по адресу.
+ * Правило одно для корпуса страницы и для ниши; порядок выхода — по адресу.
+ */
+export function representatives(docs) {
+  const byKey = new Map();
+  for (const d of [...docs].sort((a, b) => cmp(a.url, b.url))) {
+    const cur = byKey.get(d.key);
+    if (!cur || (cur.self !== cur.key && d.self === d.key)) byKey.set(d.key, d);
+  }
+  return [...byKey.values()].sort((a, b) => cmp(a.url, b.url));
+}
+
+/** Отпечаток набора фраз страницы: `build-tree` сверяет его со своей раскладкой. */
+export const phrasesSha = (keywords) => createHash('sha256').update([...keywords].sort(cmp).join('\n')).digest('hex');
 
 /**
  * Измерение — от входов к выходу. Ничего не читает с диска и не печатает:
@@ -542,7 +662,7 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
     let doc = null;
     if (html !== null && html !== undefined) {
       const m = measureDoc(html, rules);
-      doc = { url: rec.url, host: rec.host, key: identityOf(rec, html, dropParams), shell: m.znaki < minShell, ...m };
+      doc = { url: rec.url, host: rec.host, key: identityOf(rec, html, dropParams), self: docKey(rec.final_url ?? rec.url, dropParams), shell: m.znaki < minShell, ...m };
     }
     cache.set(rec.url, doc);
     return doc;
@@ -572,8 +692,7 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
 
     const skipped = { не_в_манифесте: 0, не_скачано: 0, маркетплейсов: 0, переходов: 0, нет_файла: 0, дублей: 0, оболочек: 0 };
     const shellsHere = new Map();
-    const docs = [];
-    const seen = new Set();
+    const read = [];
     for (const u of [...urls].sort(cmp)) {
       const rec = last.get(u);
       if (!rec) {
@@ -597,11 +716,13 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
         skipped.нет_файла += 1;
         continue;
       }
-      if (seen.has(d.key)) {
-        skipped.дублей += 1;
-        continue;
-      }
-      seen.add(d.key);
+      read.push(d);
+    }
+    // Дубли — до оболочек: два адреса одной оболочки — одна оболочка.
+    const kept = representatives(read);
+    skipped.дублей = read.length - kept.length;
+    const docs = [];
+    for (const d of kept) {
       if (d.shell) {
         skipped.оболочек += 1;
         shellsHere.set(d.host, (shellsHere.get(d.host) ?? 0) + 1);
@@ -646,7 +767,7 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
           unknownUrls.add(d.url);
           continue;
         }
-        own.add(t);
+        for (const x of t) own.add(x);
       }
       for (const t of own) themes[t] = (themes[t] ?? 0) + 1;
     }
@@ -684,6 +805,7 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
       корзина: korzyna,
       корзина_якоря: p.cluster ? (anchorBasket.get(p.cluster) ?? '—') : '—',
       фраз: p.keywords.length,
+      фразы_sha256: phrasesSha(p.keywords),
       адресов: urls.size,
       пропущено: skipped,
       оболочки_по_хостам: Object.fromEntries([...shellsHere.entries()].sort((a, b) => b[1] - a[1] || cmp(a[0], b[0]))),
@@ -713,7 +835,7 @@ export function anatomy({ pages, queries, manifest, rules, shops, platforms = ne
    * -------------------------------------------------------------- */
 
   const unique = new Map();
-  for (const d of cache.values()) if (d && !unique.has(d.key)) unique.set(d.key, d);
+  for (const d of representatives([...cache.values()].filter(Boolean))) unique.set(d.key, d);
   const allDocs = [...unique.values()].filter((d) => !d.shell);
   const shellDocs = [...unique.values()].filter((d) => d.shell);
   const shellHosts = new Map();
@@ -793,7 +915,7 @@ export function foreignStrings(value, allowed, path = '$') {
 
 /** Ключи выхода и константы — одно место для анатомии, шапки и проб. */
 const OUTPUT_KEYS = [
-  'url', 'cluster', 'корзина', 'корзина_якоря', 'фраз', 'адресов', 'пропущено', 'оболочки_по_хостам', 'документов', 'хостов', 'план', 'темы', 'элементы',
+  'url', 'cluster', 'корзина', 'корзина_якоря', 'фраз', 'фразы_sha256', 'адресов', 'пропущено', 'оболочки_по_хостам', 'документов', 'хостов', 'план', 'темы', 'элементы',
   'крупнейший_хост', 'хост', 'площадки_платформ', 'медиана_без_них', 'видео_в_выдаче',
   'неопознанных_заголовков', 'неопознанное_документов', 'неопознанное_у', 'медиана_знаков', 'коридор', 'ориентир', 'h2_медиана', 'h3_медиана', 'тема', 'из', 'доля', 'вердикт',
   'не_в_манифесте', 'не_скачано', 'маркетплейсов', 'переходов', 'нет_файла', 'дублей', 'оболочек', 'страницы', 'ниша', 'корпус', 'разобрано',
@@ -801,12 +923,17 @@ const OUTPUT_KEYS = [
   'high', 'mid', 'low', '—', 'не считается', 'обязателен', 'на решение', 'не норма', 'обязательна', 'гэп', 'редкая',
 ];
 
-/** Множество наших строк: ключи выхода, вердикты, имена из правил, адреса и хосты корпуса. */
+/**
+ * Множество наших строк: ключи выхода, вердикты, имена элементов и тем из
+ * правил (только сами имена, не служебные ключи вроде «почему»), адреса
+ * и хосты корпуса, отпечатки наборов фраз страниц.
+ */
 export function allowedStrings({ rules, pages, manifest, extra = [] }) {
   return new Set([
     ...OUTPUT_KEYS,
-    ...Object.keys(rules['элементы']),
-    ...Object.keys(rules['темы_заголовков']),
+    ...elementNamesOf(rules),
+    ...Object.entries(rules['темы_заголовков']).filter(([, v]) => Array.isArray(v)).map(([k]) => k),
+    ...pages.filter((p) => p.keywords?.length).map((p) => phrasesSha(p.keywords)),
     ...pages.map((p) => p.url),
     ...pages.map((p) => p.cluster).filter(Boolean),
     ...manifest.map((r) => r.url),
@@ -823,7 +950,7 @@ const HEADER = {
   манифест: 'input/corpus/manifest.jsonl',
   запросы: 'input/corpus/queries.json',
 };
-const HEADER_KEYS = ['инструмент', 'правила', 'статус', 'манифест', 'запросы', 'снимок_выдачи', 'забор', 'выгрузка', 'выгрузка_sha256', 'адресов_в_манифесте', 'скачано_ok', 'пропущено_маркетплейсов'];
+const HEADER_KEYS = ['инструмент', 'правила', 'правила_sha256', 'статус', 'манифест', 'запросы', 'снимок_выдачи', 'забор', 'выгрузка', 'выгрузка_sha256', 'адресов_в_манифесте', 'скачано_ok', 'пропущено_маркетплейсов'];
 
 /**
  * Значения шапки из `run.json` сторож пропускает не потому, что они там стоят,
@@ -837,6 +964,31 @@ export function headerValues(k, semantics) {
   if (typeof k.выгрузка === 'string' && basename(k.выгрузка) === basename(semantics) && /^[\w./-]+\.xlsx$/.test(k.выгрузка)) ok.push(k.выгрузка);
   if (typeof k.выгрузка_sha256 === 'string' && /^[0-9a-f]{64}$/.test(k.выгрузка_sha256)) ok.push(k.выгрузка_sha256);
   return ok;
+}
+
+/**
+ * Где записанный файл расходится с посчитанным: разделы верхнего уровня
+ * и адреса строк списка (`url`), включая строки, которых больше нет, —
+ * а не «страниц: 0» при расхождении в нише, шапке или пробелах.
+ */
+export function driftOf(writtenText, built, listKey) {
+  let was;
+  try {
+    was = JSON.parse(writtenText);
+  } catch {
+    return 'файл — не JSON';
+  }
+  const parts = [];
+  for (const k of new Set([...Object.keys(was), ...Object.keys(built)])) {
+    if (k === listKey) continue;
+    if (JSON.stringify(was[k]) !== JSON.stringify(built[k])) parts.push(k);
+  }
+  const before = new Map((was[listKey] ?? []).map((p) => [p.url, JSON.stringify(p)]));
+  const after = new Map((built[listKey] ?? []).map((p) => [p.url, JSON.stringify(p)]));
+  const rows = [...new Set([...before.keys(), ...after.keys()])].filter((u) => before.get(u) !== after.get(u));
+  if (rows.length) parts.push(`${listKey}: ${rows.length} (${rows.slice(0, 5).join(', ')}${rows.length > 5 ? ', …' : ''})`);
+  if (!parts.length) parts.push('только запись (порядок ключей, пробелы)');
+  return parts.join('; ');
 }
 
 /** Список из файла правил по пути `ключ.подключ` — источник назван в `rules-s3.json`, а не в коде. */
@@ -894,8 +1046,14 @@ function run(root, { dryRun }) {
 
   const last = new Map();
   for (const rec of manifest) last.set(rec.url, rec);
+  // Отпечаток правил, по которым считано: build-tree сверяет его с живым
+  // rules-s3.json — правка правил без перемера не проходит в дерево молча.
+  const rulesSha = createHash('sha256').update(readFileSync(join(root, 'structure/rules-s3.json'))).digest('hex');
   const out = {
-    ...HEADER,
+    инструмент: HEADER.инструмент,
+    правила: HEADER.правила,
+    правила_sha256: rulesSha,
+    статус: HEADER.статус,
     корпус: {
       манифест: HEADER.манифест,
       запросы: HEADER.запросы,
@@ -914,11 +1072,9 @@ function run(root, { dryRun }) {
     ниша: r.ниша,
     страницы: r.страницы,
   };
-  delete out.манифест;
-  delete out.запросы;
 
   // Сторож чужого текста — по всему выходу, включая шапку.
-  const allowed = allowedStrings({ rules, pages, manifest, extra: [...HEADER_KEYS, ...Object.values(HEADER), ...headerValues(out.корпус, doc.site.semantics)] });
+  const allowed = allowedStrings({ rules, pages, manifest, extra: [...HEADER_KEYS, ...Object.values(HEADER), rulesSha, ...headerValues(out.корпус, doc.site.semantics)] });
   const foreign = foreignStrings(out, allowed);
   if (foreign.length) problems.push(`чужих строк в выходе: ${foreign.length} — ${foreign.slice(0, 5).join(', ')}; файл не записан`);
 
@@ -958,11 +1114,8 @@ function run(root, { dryRun }) {
 
   const text = JSON.stringify(out, null, 1) + '\n';
   const outPath = join(root, 'structure/s3-anatomy.json');
-  if (dryRun && existsSync(outPath) && readFileSync(outPath, 'utf8') !== text) {
-    const was = readJson(outPath);
-    const pagesDiff = out.страницы.filter((p) => JSON.stringify(p) !== JSON.stringify(was.страницы?.find((x) => x.url === p.url))).map((p) => p.url);
-    problems.push(`structure/s3-anatomy.json расходится с посчитанным (страниц: ${pagesDiff.length}${pagesDiff.length ? ' — ' + pagesDiff.slice(0, 5).join(', ') : ''}${JSON.stringify(was.корпус) !== JSON.stringify(out.корпус) ? '; шапка корпуса' : ''}); блоки и коридоры дерева стоят на устаревшем измерении — npm run anatomy, затем npm run tree`);
-  }
+  if (dryRun && !existsSync(outPath)) problems.push('structure/s3-anatomy.json нет — сверять не с чем; npm run anatomy');
+  if (dryRun && existsSync(outPath) && readFileSync(outPath, 'utf8') !== text) problems.push(`structure/s3-anatomy.json расходится с посчитанным — ${driftOf(readFileSync(outPath, 'utf8'), out, 'страницы')}; блоки и коридоры дерева стоят на устаревшем измерении — npm run anatomy, затем npm run tree`);
 
   if (problems.length) {
     console.error('');
@@ -1020,6 +1173,7 @@ function selftest(root) {
   const page = (r, url) => r.страницы.find((p) => p.url === url);
   const problemsAbout = (r, text) => r.problems.filter((p) => p.includes(text)).length;
   const doc = (file) => measureDoc(fx['документы'][file], rules);
+  const themesFlat = (file) => doc(file).темы.map((t) => (Array.isArray(t) ? t.join('+') : t));
   const el = (file) => doc(file).элементы;
   const allElements = elementNamesOf(rules);
   const only = (names) => Object.fromEntries(allElements.map((k) => [k, names.includes(k)]));
@@ -1030,6 +1184,12 @@ function selftest(root) {
   check('фикстура: страниц в выходе', ['/', '/one/', '/theme/', '/thin/', '/mid/'], ok.страницы.map((p) => p.url), 'служебная /privacy/ без фраз — не в выходе');
 
   // Пороги правил — литералом: правка числа в rules-s3.json роняет пробу, а не проходит молча.
+  // Слепок правил без прозы: любая правка словаря, признака, контекста, узлов,
+  // переходов или порядка роняет эту пробу — её обновляют вместе с перемером
+  // (npm run anatomy) и строкой в докладе, а не молча.
+  const prose = (k) => /^(почему|как_|что_это|статус|источник|версия)/.test(k);
+  const slepok = createHash('sha256').update(JSON.stringify(rules, (k, v) => (prose(k) ? undefined : v))).digest('hex').slice(0, 16);
+  check('правила: слепок структуры', '6b8c8b3b37dd79be', slepok, 'пересчитать слепок — сознательно, вместе с перемером');
   check('правила: пороги', { обязателен: 0.7, решение: 0.4, минимум: 4, high: 7, mid: 4, оболочка: 300, коридор: 0.15, план_минимум: 4 }, { обязателен: rules['анатомия']['обязателен_от'], решение: rules['анатомия']['решение_от'], минимум: rules['анатомия']['минимум_документов'], high: rules['корзины']['high_от'], mid: rules['корзины']['mid_от'], оболочка: rules['оболочки']['минимум_знаков'], коридор: rules['план_содержания']['коридор'], план_минимум: rules['план_содержания']['минимум_документов'] }, 'П70: пороги первого сайта; менять — решением, не правкой файла');
 
   // P — корпус страницы: объединение адресов всех фраз, адрес считается один раз.
@@ -1096,24 +1256,34 @@ function selftest(root) {
   check('E: разметка — Review в JSON-LD и itemtype=…/Review', { ld: true, itemtype: true }, { ld: el('raw/markup-quoted.html').ocena, itemtype: el('raw/markup-itemtype.html').ocena }, 'Review верхнего уровня');
   check('E: оглавление — camelCase и якоря в первой трети тела', { camel: true, якоря: true, два: false, поздно: false }, { camel: el('raw/det-toc-camel.html')['spis-tresci'], якоря: el('raw/det-toc-anchors.html')['spis-tresci'], два: el('raw/det-toc-two.html')['spis-tresci'], поздно: el('raw/det-toc-late.html')['spis-tresci'] }, 'GuideTableOfContents; три якоря на разделы (#top не в счёте); два и ссылка в никуда — мало; список в конце тела — не оглавление');
   check('E: подпись — одинарные кавычки, itemprop у статьи, не у приложения; rel у a, не у link', { кавычки: true, статья: true, приложение: false, link: false, a: true }, { кавычки: el('raw/det-quotes.html')['autor-data'], статья: el('raw/det-itemprop-multi.html')['autor-data'], приложение: el('raw/det-itemprop-app.html')['autor-data'], link: el('raw/det-rel-link.html')['autor-data'], a: el('raw/det-rel-a.html')['autor-data'] }, "class='post-author'; itemprop=\"datePublished dateModified\" у BlogPosting; SoftwareApplication — не статья");
-  check('E: правая граница, длинный атрибут, свой тег <video-…>', { podobne: false, wideo: false }, { podobne: el('raw/det-bounds.html').podobne, wideo: el('raw/det-bounds.html').wideo }, 'relatedposts; related в атрибуте длиннее 300; <video-progress>');
+  check('E: правая граница, длинный атрибут, свой тег <video-…>', { podobne: false, wideo: false }, { podobne: el('raw/det-bounds.html').podobne, wideo: el('raw/det-bounds.html').wideo }, 'relatedness; related в атрибуте длиннее 300; <video-progress>');
+  // Изоляция: в каждом документе исход решает ровно одно правило (рецензия раунда 2).
+  check('E: узлы — svg, <i>, префикс fa, слово icon, голова; видимый узел — да', { svg: false, i: false, fa: false, icon: false, head: false, видимый: true }, { svg: el('raw/iso-svg.html').komentarze, i: el('raw/iso-i.html').komentarze, fa: el('raw/iso-fa.html').komentarze, icon: el('raw/iso-icon.html').komentarze, head: el('raw/iso-head.html').komentarze, видимый: el('raw/iso-visible.html').komentarze }, 'в каждом документе класс comments-area скрыт только одним правилом');
+  check('E: скрытие — у самого узла, у предка display:none, у предка aria-hidden', { сам: false, предок: false, aria: false }, { сам: el('raw/iso-display-none.html').galeria, предок: el('raw/iso-hidden-ancestor.html').komentarze, aria: el('raw/iso-aria-ancestor.html')['autor-data'] }, 'галерея с тремя картинками в теле под display:none; комментарии и подпись внутри скрытого предка');
+  check('E: контекст — возраст у оценки, commit у подписи, счётчик у комментариев', { ocena: false, 'autor-data': false, komentarze: false }, { ocena: el('raw/iso-score-age.html').ocena, 'autor-data': el('raw/iso-commit-author.html')['autor-data'], komentarze: el('raw/iso-comment-count.html').komentarze }, 'score-age, commit-author, comment-count');
+  check('E: класс автора у четырёх узлов — лента, у трёх — подпись; camelCase ленты — лента', { четыре: false, три: true, camel: false }, { четыре: el('raw/iso-repeat-4.html')['autor-data'], три: el('raw/iso-repeat-3.html')['autor-data'], camel: el('raw/iso-camel-feed.html')['autor-data'] }, 'повтор_до 3; apphub_CardContentAuthorBlock ×5');
+  check('E: автор строкой — не человек, Person — человек', { строка: false, person: true }, { строка: el('raw/iso-string-author.html')['autor-data'], person: el('raw/iso-person-author.html')['autor-data'] }, 'заглушка вместо автора у TechArticle');
+  check('E: JSON-LD в /* CDATA */ разбирается; строка в скрипте — не разметка; VideoObject — видео', { cdata: true, schema: true, строка: false, видео: true }, { cdata: el('raw/iso-cdata.html')['oceny-graczy'], schema: el('raw/iso-cdata.html')['schema-org'], строка: el('raw/iso-ld-string.html')['schema-org'], видео: el('raw/iso-videoobject.html').wideo }, 'AggregateRating внутри обёртки; s.type = "application/ld+json" в JS');
+  check('E: незакрытая ссылка — картинки после неё не внутри', false, el('raw/iso-unclosed-a.html').galeria, 'a.carousel-control без </a>, следом <a> и три img');
+  check('E: оглавление — #top не в счёте, name у ссылки — цель, у поля формы — нет, самоссылки заголовков — нет', { top: false, name: true, input: false, self: false }, { top: el('raw/iso-toc-top.html')['spis-tresci'], name: el('raw/iso-toc-name.html')['spis-tresci'], input: el('raw/iso-toc-input.html')['spis-tresci'], self: el('raw/iso-toc-self.html')['spis-tresci'] }, 'три ссылки при существующем id=top — две цели; <a name>; <input name>; <a name=X href=#X> без текста');
   check('E: <video> — видео', true, el('raw/det-video.html').wideo, 'тег с границей');
   check('E: галерея — в теле, три картинки, не ползунок', { тело: true, две: false, снаружи: false, ползунок: false }, { тело: el('raw/det-gallery-body.html').galeria, две: el('raw/det-gallery-two.html').galeria, снаружи: el('raw/det-gallery-outside.html').galeria, ползунок: el('raw/det-gallery-context.html').galeria }, 'картинок_внутри_от 3; в_теле; user/score — контекст');
 
   // T — темы заголовков: словарь → наше имя, служебные — мимо, неопознанное — счёт и адрес.
-  check('T: темы узнаны нашими именами', ['plot', 'gameplay', 'gameplay'], doc('raw/one-anchor.html').темы, 'h2 Plot, h2 Gameplay, h3 Controls');
-  check('T: служебный заголовок — мимо, неопознанный — null', ['plot', '__служебный__', null], doc('raw/theme-unknown.html').темы, 'h2 Plot, h2 Menu, h2 «zzqx wvut»');
-  check('T: слово по границам — history не plot, games in order — series', ['series', 'series'], [...doc('raw/home-a.html').темы, ...doc('raw/home-b.html').темы], '«story» внутри «history» не считается');
-  check('T: самое длинное слово, начало заголовка, апостроф, шаблон, h1 и пустой', ['cheats', 'series', 'about', null, 'about', '__служебный__', 'plot', 'plot'], doc('raw/det-themes.html').темы, 'console commands — cheats; release order — series; ^about только в начале; What’s new; {{title}}; h1 и пустой h2 — не темы');
+  check('T: темы узнаны нашими именами', ['plot', 'gameplay', 'gameplay'], themesFlat('raw/one-anchor.html'), 'h2 Plot, h2 Gameplay, h3 Controls');
+  check('T: служебный заголовок — мимо, неопознанный — null', ['plot', '__служебный__', null], themesFlat('raw/theme-unknown.html'), 'h2 Plot, h2 Menu, h2 «zzqx wvut»');
+  check('T: слово по границам — history не plot, games in order — series', ['series', 'series'], [...themesFlat('raw/home-a.html'), ...themesFlat('raw/home-b.html')], '«story» внутри «history» не считается');
+  check('T: длинное слово при перекрытии, начало заголовка, апостроф, шаблон, h1 и пустой', ['cheats', 'series', 'about', null, 'about', '__служебный__', 'plot', 'plot'], themesFlat('raw/det-themes.html'), 'console commands — cheats, не ещё и versions; release order — series, не ещё и development; ^about только в начале; What’s new; {{title}}; h1 и пустой h2 — не темы');
   const reach = [];
   for (const [t, words] of Object.entries(rules['темы_заголовков'])) {
     if (!Array.isArray(words)) continue;
     for (const w of words) {
-      const got = themeOf(w.replace(/^\^/, ''), rules);
-      if (got !== t) reach.push(`${w} → ${got}`);
+      const got = themesOf(w.replace(/^\^/, ''), rules);
+      if (!Array.isArray(got) || got.length !== 1 || got[0] !== t) reach.push(`${w} → ${JSON.stringify(got)}`);
     }
   }
   check('T: каждое слово словаря узнаётся своей темой', [], reach, 'затенённых слов нет (рецензия 2026-09-23)');
+  check('T: левая граница; два слова без перекрытия — две темы', [null, 'mods+media', 'versions+where-to-play'], themesFlat('raw/iso-themes.html'), 'xstory — не plot; mod video; mobile download');
   check('T: неопознанное — счёт и адрес, без текста', { n: 1, док: 1, urls: ['https://theme.example/unknown'] }, { n: theme.неопознанных_заголовков, док: theme.неопознанное_документов, urls: theme.неопознанное_у }, 'примером служит документ');
   check('T: тема считается по документам, не по вхождениям', { plot: 7, lore: 1 }, Object.fromEntries(theme.темы.map((t) => [t.тема, t.документов])), 'h2 plot у семи документов, trivia у одного');
   check('T: 7 из 7 — обязательна, 1 из 7 — гэп', { plot: 'обязательна', lore: 'гэп' }, Object.fromEntries(theme.темы.map((t) => [t.тема, t.вердикт])), 'пороги 0.7 и n = 1');
@@ -1163,15 +1333,18 @@ function selftest(root) {
   check('W: живые документы /w/', { документов: 6, корзина: 'mid', медиана: 1450, хост: { хост: 'root.example', документов: 2 } }, { документов: w.документов, корзина: w.корзина, медиана: w.план.медиана_знаков, хост: w.крупнейший_хост }, 'notshop.example — не маркетплейс (суффикс без точки); два адреса с каноном-корнем — два документа');
   check('W: площадки платформ и медиана без них', { документов: 1, медиана_без_них: 1400 }, w.площадки_платформ, 'store.platform.example по суффиксу');
   check('W: видео-площадка в выдаче — при любом исходе забора', { адресов: 1, из: 13 }, w.видео_в_выдаче, 'www.youtube.com — robots, но в выдаче стоит');
-  check('W: общая оболочка двух страниц — одна в нише', { по_страницам: 2, оболочек: 1, по_хостам: { 'shell.example': 1 } }, { по_страницам: w.пропущено.оболочек + page(w2, '/v/').пропущено.оболочек, оболочек: w2.корпус.оболочек, по_хостам: w2.корпус.оболочки_по_хостам }, 'сумма по хостам равна числу оболочек');
-  check('W: выдача страниц', { фраз: 5, фраз_с_видео: 1, адресов: 32, видео_адресов: 1, маркетплейсов: 1, маркетплейсов_скачанных: 0 }, w2.корпус.выдача, 'уникальные адреса всех страниц');
-  check('W: короткие по сотням и заголовки по уникальным документам', { короткие: [0, 1, 0, 0, 0, 1], заголовков: { узнано: 4, служебных: 0, неопознанных: 16 } }, { короткие: w2.корпус.короткие_по_сотням, заголовков: w2.корпус.заголовков }, 'оболочка 100 и документ 500; lore×2, plot×2 — узнано, zzqx×7 и три заголовка /odd/ ×3 — нет');
+  check('W: общая оболочка двух страниц — одна в нише', { по_страницам: 3, оболочек: 2, по_хостам: { 'sh.example': 1, 'shell.example': 1 } }, { по_страницам: w.пропущено.оболочек + page(w2, '/v/').пропущено.оболочек + page(w2, '/d/').пропущено.оболочек, оболочек: w2.корпус.оболочек, по_хостам: w2.корпус.оболочки_по_хостам }, 'shell.example у /w/ и /v/ — одна; два адреса sh.example с общим каноном — одна; сумма по хостам равна числу оболочек');
+  check('W: выдача страниц', { фраз: 6, фраз_с_видео: 1, адресов: 45, видео_адресов: 1, маркетплейсов: 1, маркетплейсов_скачанных: 0 }, w2.корпус.выдача, 'уникальные адреса всех страниц');
+  check('W: короткие по сотням и заголовки по уникальным документам', { короткие: [0, 2, 0, 0, 0, 1], заголовков: { узнано: 4, служебных: 0, неопознанных: 16 } }, { короткие: w2.корпус.короткие_по_сотням, заголовков: w2.корпус.заголовков }, 'оболочки 100 и 120 (второй адрес оболочки sh.example — дубль) и документ 500; стенка своим адресом не читается; lore×2, plot×2 — узнано, zzqx×7 и три заголовка /odd/ ×3 — нет');
   check('W: ровно 0.7 — обязателен, ровно 0.4 — на решение', { tabela: 'обязателен', faq: 'на решение' }, { tabela: ten.элементы.tabela.вердикт, faq: ten.элементы.faq.вердикт }, 'table у 7 из 10, details×3 у 4 из 10');
   check('W: тема у двух — редкая, повтор в документе — один раз', { lore: 'редкая', plot: 'гэп', plotDocs: 1 }, { lore: ten.темы.find((t) => t.тема === 'lore')?.вердикт, plot: ten.темы.find((t) => t.тема === 'plot')?.вердикт, plotDocs: ten.темы.find((t) => t.тема === 'plot')?.документов }, 'n = 2 при доле 0.2; два h2 plot в одном документе');
   check('W: неопознанное — все документы счётом, первые шесть адресов по порядку', { n: 7, док: 7, urls: ['https://ten.example/00', 'https://ten.example/01', 'https://ten.example/02', 'https://ten.example/03', 'https://ten.example/04', 'https://ten.example/05'] }, { n: ten.неопознанных_заголовков, док: ten.неопознанное_документов, urls: ten.неопознанное_у }, 'неопознанное_у — первые шесть');
   check('W: медиана чётного ряда с нечётной суммой — округление, коридор', { медиана: 1501, коридор: [1276, 1726] }, { медиана: ten.план.медиана_знаков, коридор: ten.план.коридор }, '1001 + 2000 → 1500.5 → 1501; 1275.85 → 1276');
   check('W: медиана нечётного ряда разной разрядности, коридор', { медиана: 1505, коридор: [1279, 1731], h2: 2, h3: 1 }, { медиана: odd.план.медиана_знаков, коридор: odd.план.коридор, h2: odd.план.h2_медиана, h3: odd.план.h3_медиана }, '950 < 1001 < 1505 < 3000 < 4000 — числом, не строкой; 1730.75 → 1731');
-  check('W: медиана ниши сценария', 1600, w2.ниша.медиана_знаков, '25 живых документов, 13-й');
+  check('W: медиана ниши сценария', 2000, w2.ниша.медиана_знаков, '29 живых документов, 15-й');
+  const d2 = page(w2, '/d/');
+  check('W: /d/ — стенка своим адресом, дубли по канону и параметрам, оболочка-дубль', { переходов: 1, дублей: 7, оболочек: 1, документов: 4 }, { переходов: d2.пропущено.переходов, дублей: d2.пропущено.дублей, оболочек: d2.пропущено.оболочек, документов: d2.документов }, '/AgeCheck/ без перехода; pick ×2, sh ×2, params ×6 (lang, hl, curator_clanid, snr, ref, http); канон на чужой хост — не дубль');
+  check('W: /d/ — из дублей остаётся адрес канона, не первый по алфавиту', 3750, d2.план.медиана_знаков, 'pick.example/z-canon (3500) при a-copy (3000): 2005, 3500, 4000, 4100');
 
   // G — сторож чужого текста.
   const allowed = allowedStrings({ rules, pages: fx['страницы'], manifest: fx['манифест'] });
@@ -1187,13 +1360,25 @@ function selftest(root) {
   check('G: шапка — чужая выгрузка и не-sha не проходят', [], headerValues({ снимок_выдачи: 'вчера', забор: null, выгрузка: 'input/y.xlsx', выгрузка_sha256: 'zz' }, 'input/x.xlsx'), 'путь не тот, что называет структура');
 
   // D — дубль по адресу: хвосты, которые страницу не меняют.
-  check('D: адрес документа без языка, меток, фрагмента и конечного слэша', 'https://a.example/p?id=7', docKey('https://A.example/p/?id=7&l=english&utm_source=x#top', rules['переходы']['параметры_без_смысла']), 'id — смысловой параметр, остаётся');
-  check('D: стенка и корень — переходы; язык в пути — нет', ['стенка', 'корень', null, null], [
+  const drop = rules['переходы']['параметры_без_смысла'];
+  check('D: адрес документа без языка, меток, фрагмента и конечного слэша', 'https://a.example/p?id=7', docKey('https://A.example/p/?id=7&l=english&utm_source=x#top', drop), 'id — смысловой параметр, остаётся');
+  check('D: запрос не пересобирается, протокол один', ['https://f.example/index.php?threads/slug.4/', 'https://f.example/index.php?threads/slug.4/', 'https://h.example/a?q=a%20b', 'https://h.example/a?q=a+b'], [docKey('https://f.example/index.php?threads/slug.4/', drop), docKey('http://f.example/index.php?threads/slug.4/&l=en', drop), docKey('https://h.example/a?q=a%20b', drop), docKey('https://h.example/a?q=a+b', drop)], 'сырая строка запроса; http и https — один ключ');
+  check('D: канон с &amp; раскрыт', 'https://p.example/details?id=x', identityOf({ url: 'https://p.example/details?id=x&hl=en' }, '<link rel="canonical" href="https://p.example/details?id=x&amp;hl=en_US">', drop), 'hl снят и в каноне');
+  const rep = (docs) => representatives(docs).map((x) => x.url);
+  const twin = [{ url: 'https://k.example/b', key: 'https://k.example/b', self: 'https://k.example/b' }, { url: 'https://k.example/a', key: 'https://k.example/b', self: 'https://k.example/a' }];
+  check('D: из дублей остаётся адрес ключа при любом порядке подачи', [['https://k.example/b'], ['https://k.example/b']], [rep(twin), rep([...twin].reverse())], 'правило, а не алфавит и не порядок кэша');
+  check('D: расхождение файла названо местом', ['ниша; страницы: 1 (/x/)', 'страницы: 1 (/gone/)', 'только запись (порядок ключей, пробелы)'], [
+    driftOf(JSON.stringify({ ниша: 1, страницы: [{ url: '/x/', a: 1 }] }), { ниша: 2, страницы: [{ url: '/x/', a: 2 }] }, 'страницы'),
+    driftOf(JSON.stringify({ страницы: [{ url: '/x/' }, { url: '/gone/' }] }), { страницы: [{ url: '/x/' }] }, 'страницы'),
+    driftOf(JSON.stringify({ a: 1 }, null, 2), { a: 1 }, 'страницы'),
+  ], 'раздел верхнего уровня, строка, которой больше нет, и расхождение одной записи');
+  check('D: стенка и корень — переходы; язык в пути — нет; стенка своим адресом — стенка', ['стенка', 'корень', null, null, 'стенка'], [
     wallOf({ url: 'https://s.example/app/1', final_url: 'https://s.example/agecheck/app/1/' }, rules),
     wallOf({ url: 'https://s.example/news/x', final_url: 'https://s.example/en-us/' }, rules),
     wallOf({ url: 'https://s.example/p/x', final_url: 'https://s.example/pl/p/x' }, rules),
     wallOf({ url: 'https://s.example/p/x', final_url: 'https://s.example/p/x' }, rules),
-  ], 'путь /pl/p/x — языковой вариант того же документа');
+    wallOf({ url: 'https://s.example/agecheck/app/1/', final_url: 'https://s.example/agecheck/app/1/' }, rules),
+  ], 'путь /pl/p/x — языковой вариант того же документа; /agecheck/ без перехода');
 
   let failed = 0;
   for (const c of cases) {

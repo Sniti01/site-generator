@@ -20,23 +20,15 @@
   color: var(--ink-on-accent);
 }
 
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-band);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--surface-2);
-  border: 3px solid var(--bg-band);
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-2);
-}
-
+/* Полоса прокрутки — один механизм, стандартный: `scrollbar-color`
+ * и `scrollbar-width` (Chrome 121, Firefox 64, Safari 26.2). Правила
+ * `::-webkit-scrollbar*` сняты: Chromium при заданном `scrollbar-color`
+ * их не применяет, два механизма рисовали разное (П73, П75).
+ * Ползунок — `--ink-muted` на дорожке `--bg-band`: элемент интерфейса,
+ * порог 3:1; пара — в `gates/contrast.mjs` каждого сайта. Под курсором
+ * браузер меняет ползунок сам. */
 * {
-  scrollbar-color: var(--surface-2) var(--bg-band);
+  scrollbar-color: var(--ink-muted) var(--bg-band);
   scrollbar-width: thin;
 }
 

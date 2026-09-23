@@ -763,7 +763,8 @@ function run(root, { dryRun }) {
     const withCorridor = built.filter((p) => p.corridor !== null);
     console.log(`коридоры: ${withCorridor.length} числом, ${built.length - withCorridor.length} null`);
     for (const p of built) console.log(`  ${p.url}  ${JSON.stringify(p.corridor)}`);
-    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} — в контракте ${JSON.stringify(o.corridor)}, анатомия ${JSON.stringify(o.anatomy)}; гейт судит его как норму`);
+    // `null` в контракте — именованное решение П43 (у `/games-like-max-payne/` — П71 п. 7): гейт такой страницы не судит.
+    for (const o of orienteers) console.log(`  коридор-ориентир (медиана ниши, своих документов меньше минимума): ${o.url} — в контракте ${JSON.stringify(o.corridor)}, анатомия ${JSON.stringify(o.anatomy)}; ${o.corridor === null ? 'гейт не судит (null — именованное решение), число печатается строкой' : 'гейт судит его как норму'}`);
   }
 
   if (lost.length) {
@@ -1072,7 +1073,7 @@ function selftest(root) {
   const live = readJson(join(root, 'structure/rules-s3.json'));
   const bare = (o) => JSON.parse(JSON.stringify(o, (k, v) => (k.startsWith('почему') ? undefined : v)));
   check('S: уверенность и порядок фикстуры — как у живых правил', { уверенность: bare(live['уверенность']), порядок: bare(live['порядок_на_странице']) }, { уверенность: bare(fx['проба_S3'].rulesS3['уверенность']), порядок: bare(fx['проба_S3'].rulesS3['порядок_на_странице']) }, 'живой rules-s3.json');
-  check('S: имена блоков живых правил — четыре имени П28', { ocena: 'verdict-box', galeria: 'gallery', 'autor-data': 'byline', 'spis-tresci': 'toc' }, Object.fromEntries(Object.entries(bare(live['имена_блоков'])).filter(([, v]) => v !== null)), 'остальные — null до слова владельца (П70 п. 1е)');
+  check('S: имена блоков живых правил — четыре имени П28', { ocena: 'verdict-box', galeria: 'gallery', 'autor-data': 'byline', 'spis-tresci': 'toc' }, Object.fromEntries(Object.entries(bare(live['имена_блоков'])).filter(([, v]) => v !== null)), 'остальные — null: без имени по П28 и П71 п. 3, 5 (wideo — блок video рукой; комментарии и «похожие» — без имён)');
 
   // Анатомия, отставшая от дерева, — несходимость, а не тихий null и пропавшие блоки.
   const noAnatomyRow = { ...withS3, anatomy: { страницы: withS3.anatomy.страницы.filter((p) => p.url !== '/remake/') } };

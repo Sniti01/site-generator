@@ -63,6 +63,10 @@
  *      (`повтор_до`); разметка schema.org — разобранный JSON-LD и микроданные,
  *      а не строка в кавычках где угодно; автор-человек — только `Person`.
  *      У первого сайта обе сверки шли подстрокой по всему документу.
+ *      Узел с классом оглавления — оглавление, только если ссылки внутри ведут
+ *      не меньше чем на `ссылок_на_разделы_от` разных разделов этой же
+ *      страницы (П71 п. 4, П72): навигация по главам многостраничного
+ *      руководства — не оглавление.
  *   8. **Темы заголовков:** каждое совпавшее слово даёт свою тему; при
  *      перекрытии совпадений побеждает длинное слово; `^` в начале слова —
  *      «только в начале заголовка».
@@ -363,30 +367,59 @@ function markupHit(m, ld, md) {
   return Boolean(m['микроданные']?.some((p) => md.props.has(p)) && (!m['у_типов'] || m['у_типов'].some((t) => md.types.has(t))));
 }
 
-/**
- * Оглавление без класса: ссылки на якоря этой же страницы в первой трети тела.
- * Цель — id любого узла или name у ссылки (не у поля формы); ссылка на самоё
- * себя (свой id или name равен цели — метка заголовка) и ссылка без текста
- * оглавлением не считаются.
- */
-function anchorToc(cut, body, spec) {
+/** Цели внутри страницы: id любого узла и name у ссылки (не у поля формы). */
+function idsOf(nodes) {
   const ids = new Set();
-  for (const n of nodesOf(cut)) {
+  for (const n of nodes) {
     if (n.a.id) ids.add(n.a.id);
     if (n.tag === 'a' && n.a.name) ids.add(n.a.name);
   }
+  return ids;
+}
+
+/**
+ * Разделы этой же страницы, на которые ведут ссылки куска разметки. Цель —
+ * `href="#…"` на существующий id (или name у ссылки); ссылка на самоё себя
+ * (свой id или name равен цели — метка заголовка), ссылка без текста и цели
+ * из `якоря_кроме` не считаются.
+ *
+ * `обработчики` — ещё и ссылка, которая никуда не уходит (адреса нет, `#`
+ * или `javascript:`), а первая строка в кавычках её `onclick` — id узла этой
+ * же страницы (строка дальше — аргумент, а не цель: `track('menu', 's1')`
+ * не ссылка на раздел): так устроено оглавление Steam-руководства —
+ * `<a onclick="SelectGuideSection('2324094', …)">` при `<div id="2324094">`
+ * (П71 п. 4: «оглавление Steam-руководства — оглавление»). Обработчик
+ * засчитывается только внутри узла с классом оглавления: там класс уже
+ * говорит «оглавление», а ссылки решают лишь, чьё — этой страницы или
+ * соседних; без класса обработчик, называющий id, — вкладка или карусель
+ * не хуже оглавления.
+ */
+function sectionTargets(html, ids, spec, обработчики) {
   const skip = new Set((spec['якоря_кроме'] ?? []).map((x) => x.toLowerCase()));
-  const head = body.slice(0, Math.ceil(body.length / 3));
   const targets = new Set();
-  for (const m of head.matchAll(/<a\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]{0,300}?)<\/a\s*>/gi)) {
+  for (const m of html.matchAll(/<a\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]{0,300}?)<\/a\s*>/gi)) {
     const a = attrsOf(m[1]);
-    const t = (a.href ?? '').startsWith('#') ? a.href.slice(1) : '';
+    const href = a.href ?? '';
+    let t = href.startsWith('#') ? href.slice(1) : '';
+    if (!t && обработчики && a.onclick && (href === '' || href === '#' || /^javascript:/i.test(href))) {
+      const first = unesc(a.onclick).match(/'([^']*)'|"([^"]*)"/);
+      t = first ? (first[1] ?? first[2]) : '';
+    }
     if (!t || skip.has(t.toLowerCase()) || !ids.has(t)) continue;
     if (a.id === t || a.name === t) continue;
     if (!norm(strip(m[2]))) continue;
     targets.add(t);
   }
-  return targets.size >= spec['якоря_от'];
+  return targets;
+}
+
+/**
+ * Оглавление без класса: ссылки на якоря этой же страницы в первой трети тела
+ * (`href="#…"`, обработчики не в счёте — см. `sectionTargets`).
+ */
+function anchorToc(ids, body, spec) {
+  const head = body.slice(0, Math.ceil(body.length / 3));
+  return sectionTargets(head, ids, spec, false).size >= spec['якоря_от'];
 }
 
 /** Имена элементов правил: всё, что описано объектом, кроме настроек узлов. */
@@ -412,6 +445,7 @@ function elements(html, rules) {
     return c;
   };
   const counts = { cut: countsOf(nodes), body: countsOf(bodyNodes) };
+  const ids = idsOf(nodes);
   const found = {};
   for (const name of elementNamesOf(rules)) {
     const spec = rules['элементы'][name];
@@ -428,13 +462,18 @@ function elements(html, rules) {
       for (const n of list) {
         if (!classHit(tokensOf(n, u), spec, c)) continue;
         if (spec['картинок_внутри_от'] && countTag(innerOf(src, n), 'img') + countTag(innerOf(src, n), 'picture') < spec['картинок_внутри_от']) continue;
+        // Узел с классом оглавления — оглавление, только если внутри есть
+        // ссылки на разделы этой же страницы (П71 п. 4): навигация по главам
+        // многостраничного руководства (IGN wiki, gamepressure) ведёт на соседние
+        // страницы и оглавлением этой не является.
+        if (spec['ссылок_на_разделы_от'] && sectionTargets(innerOf(src, n), ids, spec, true).size < spec['ссылок_на_разделы_от']) continue;
         hit = true;
         break;
       }
     }
     if (!hit && spec['тег']) hit = countTag(spec['в_теле'] ? body : cut, spec['тег']) >= (spec['минимум'] ?? 1);
     if (!hit && spec['тег_details_от']) hit = countTag(cut, 'details') >= spec['тег_details_от'];
-    if (!hit && spec['якоря_от']) hit = anchorToc(cut, body, spec);
+    if (!hit && spec['якоря_от']) hit = anchorToc(ids, body, spec);
     found[name] = hit;
   }
   return found;
@@ -946,7 +985,7 @@ export function allowedStrings({ rules, pages, manifest, extra = [] }) {
 const HEADER = {
   инструмент: 'tools/anatomy-s3.mjs',
   правила: 'structure/rules-s3.json',
-  статус: 'измерение S3 — пороги применены; имена блоков — по словарю имена_блоков правил, видео без имени до слова владельца',
+  статус: 'измерение S3 — пороги применены; имена блоков — по словарю имена_блоков правил; элемент wideo без имени, блок video ставится рукой (П71 п. 3)',
   манифест: 'input/corpus/manifest.jsonl',
   запросы: 'input/corpus/queries.json',
 };
@@ -1190,7 +1229,7 @@ function selftest(root) {
   // (npm run anatomy) и строкой в докладе, а не молча.
   const prose = (k) => /^(почему|как_|что_это|статус|источник|версия)/.test(k);
   const slepok = createHash('sha256').update(JSON.stringify(rules, (k, v) => (prose(k) ? undefined : v))).digest('hex').slice(0, 16);
-  check('правила: слепок структуры', '6b8c8b3b37dd79be', slepok, 'пересчитать слепок — сознательно, вместе с перемером');
+  check('правила: слепок структуры', 'e5a1673d32fc1619', slepok, 'пересчитать слепок — сознательно, вместе с перемером');
   check('правила: пороги', { обязателен: 0.7, решение: 0.4, минимум: 4, high: 7, mid: 4, оболочка: 300, коридор: 0.15, план_минимум: 4 }, { обязателен: rules['анатомия']['обязателен_от'], решение: rules['анатомия']['решение_от'], минимум: rules['анатомия']['минимум_документов'], high: rules['корзины']['high_от'], mid: rules['корзины']['mid_от'], оболочка: rules['оболочки']['минимум_знаков'], коридор: rules['план_содержания']['коридор'], план_минимум: rules['план_содержания']['минимум_документов'] }, 'П70: пороги первого сайта; менять — решением, не правкой файла');
 
   // P — корпус страницы: объединение адресов всех фраз, адрес считается один раз.
@@ -1245,7 +1284,7 @@ function selftest(root) {
   // E — элементы: каждый признак; узлы видимые; разметка разобранная.
   check('E: все двенадцать элементов узнаны', only(allElements), el('raw/one-anchor.html'), 'документ со всеми признаками: JSON-LD Article с автором-человеком, Review и AggregateRating верхнего уровня, figure×4 в теле');
   check('E: документ без признаков — ни одного', 0, Object.values(el('raw/one-long.html')).filter(Boolean).length, 'слово «related» в тексте — не элемент');
-  check('E: класс в атрибуте, details×3 — FAQ, id — тоже атрибут', only(['breadcrumbs', 'spis-tresci', 'faq', 'podobne', 'galeria', 'komentarze']), el('raw/theme-classes.html'), 'breadcrumbs, article-toc, related-posts, gallery с тремя картинками в теле, id=comments');
+  check('E: класс в атрибуте, details×3 — FAQ, id — тоже атрибут', only(['breadcrumbs', 'spis-tresci', 'faq', 'podobne', 'galeria', 'komentarze']), el('raw/theme-classes.html'), 'breadcrumbs, article-toc со ссылками на два раздела страницы, related-posts, gallery с тремя картинками в теле, id=comments');
   check('E: figure×3 — не галерея; octocat, stock — не toc', { galeria: false, 'spis-tresci': false }, { galeria: el('raw/theme-three-figures.html').galeria, 'spis-tresci': el('raw/theme-three-figures.html')['spis-tresci'] }, 'минимум 4; сверка класса по границам слова');
   check('E: код, стиль, иконки, поля формы, скрытые узлы — не элементы', only([]), el('raw/det-code-nodes.html'), 'style/script id, svg octicon, <i> fa-, iconochive, input, display:none, hidden, aria-hidden');
   check('E: BEM — автор комментария: комментарии, не подпись', { komentarze: true, 'autor-data': false }, { komentarze: el('raw/det-bem.html').komentarze, 'autor-data': el('raw/det-bem.html')['autor-data'] }, 'commentthread_comment_author, wpdiscuz-…-author: контекст комментариев');
@@ -1255,7 +1294,11 @@ function selftest(root) {
   check('E: классы оценки — редакции, не игроков и не возраста', { ocena: true, 'oceny-graczy': true }, { ocena: el('raw/det-review-classes.html').ocena, 'oceny-graczy': el('raw/det-review-classes.html')['oceny-graczy'] }, 'review-score — редакция; user-score-slider — игроки; badge--rating — ничего');
   check('E: разметка — не голое слово в меню', false, el('raw/markup-bare.html').ocena, '«Review» и «Reviews» текстом ссылок');
   check('E: разметка — Review в JSON-LD и itemtype=…/Review', { ld: true, itemtype: true }, { ld: el('raw/markup-quoted.html').ocena, itemtype: el('raw/markup-itemtype.html').ocena }, 'Review верхнего уровня');
-  check('E: оглавление — camelCase и якоря в первой трети тела', { camel: true, якоря: true, два: false, поздно: false }, { camel: el('raw/det-toc-camel.html')['spis-tresci'], якоря: el('raw/det-toc-anchors.html')['spis-tresci'], два: el('raw/det-toc-two.html')['spis-tresci'], поздно: el('raw/det-toc-late.html')['spis-tresci'] }, 'GuideTableOfContents; три якоря на разделы (#top не в счёте); два и ссылка в никуда — мало; список в конце тела — не оглавление');
+  check('E: оглавление — camelCase и якоря в первой трети тела', { camel: true, якоря: true, два: false, поздно: false }, { camel: el('raw/det-toc-camel.html')['spis-tresci'], якоря: el('raw/det-toc-anchors.html')['spis-tresci'], два: el('raw/det-toc-two.html')['spis-tresci'], поздно: el('raw/det-toc-late.html')['spis-tresci'] }, 'GuideTableOfContents с onclick на раздел и комментарии этой страницы (оглавление Steam-руководства, ровно порог двух); три якоря на разделы (#top не в счёте); два и ссылка в никуда — мало; список в конце тела — не оглавление');
+  check('E: оглавление классом — только со ссылками на разделы этой страницы', { главы: false, одна: false, обработчик_мимо: false, обработчик_уходит: false, обработчик_без_класса: false, обработчик_не_первой: false, служебные: false }, { главы: el('raw/det-toc-chapters.html')['spis-tresci'], одна: el('raw/det-toc-one.html')['spis-tresci'], обработчик_мимо: el('raw/det-toc-handler-missing.html')['spis-tresci'], обработчик_уходит: el('raw/det-toc-handler-away.html')['spis-tresci'], обработчик_без_класса: el('raw/det-toc-handler-noclass.html')['spis-tresci'], обработчик_не_первой: el('raw/det-toc-handler-later.html')['spis-tresci'], служебные: el('raw/det-toc-class-skip.html')['spis-tresci'] }, 'П71 п. 4: навигация по главам руководства (как IGN wiki) — не оглавление; одна ссылка на раздел — ниже порога; onclick на несуществующий id; onclick у ссылки на другую страницу; onclick без класса — не довод; id не первой строкой обработчика — аргумент, не цель; #top и #comments не в счёте и внутри класса');
+  check('E: оглавление классом — ссылки считаются внутри узла, ветви ссылки на раздел', { снаружи: false, снаружи_после: false, решётка: true, javascript: true, кавычки: true, само_и_пусто: false, обработчик_служебный: false, регистр: false }, { снаружи: el('raw/det-toc-outside.html')['spis-tresci'], снаружи_после: el('raw/det-toc-outside-after.html')['spis-tresci'], решётка: el('raw/det-toc-handler-hash.html')['spis-tresci'], javascript: el('raw/det-toc-handler-js.html')['spis-tresci'], кавычки: el('raw/det-toc-handler-quot.html')['spis-tresci'], само_и_пусто: el('raw/det-toc-class-self-empty.html')['spis-tresci'], обработчик_служебный: el('raw/det-toc-handler-skip.html')['spis-tresci'], регистр: el('raw/det-toc-case.html')['spis-tresci'] }, 'раунд 1 «судью судят» (toc-1, toc-5): главы в узле и две сноски вне его, до и после узла — не оглавление; href="#" и javascript: с обработчиком — ссылка на раздел; &quot; и двойные кавычки в onclick; самоссылка и пустая ссылка внутри класса не в счёте; comments и top из обработчика — не цели; #S1 не ведёт к id="s1"');
+  check('E: оглавление — разные разделы, предел ссылки, тело статьи, второй узел', { один_раздел: false, разметка_200: true, разметка_400: false, якоря_в_навигации: false, якоря_в_глубокой_статье: true, второй_узел: true, пустой_href: true, самоссылка_обработчика: false }, { один_раздел: el('raw/det-toc-same-section.html')['spis-tresci'], разметка_200: el('raw/det-toc-rich-link.html')['spis-tresci'], разметка_400: el('raw/det-toc-long-link.html')['spis-tresci'], якоря_в_навигации: el('raw/det-toc-anchors-nav.html')['spis-tresci'], якоря_в_глубокой_статье: el('raw/det-toc-anchors-deep.html')['spis-tresci'], второй_узел: el('raw/det-toc-two-nodes.html')['spis-tresci'], пустой_href: el('raw/det-toc-handler-emptyhref.html')['spis-tresci'], самоссылка_обработчика: el('raw/det-toc-handler-self.html')['spis-tresci'] }, 'раунд 2 «судью судят» (toc-r2-1…4): две ссылки на один раздел — один раздел; разметка пункта 199 знаков читается, 432 — нет (предел разбора 300, назван в что_это); якоря в навигации до статьи — не тело статьи, якоря в первой трети статьи ниже трети документа — тело; провал первого узла класса не обрывает поиск; href="" с обработчиком — ссылка на раздел; обработчик, называющий свой id, — самоссылка');
+  check('правила: оглавление классом — ссылок на разделы от', 2, rules['элементы']['spis-tresci']['ссылок_на_разделы_от'], 'П72: «ссылки» — множественное число слова владельца; менять — решением, не правкой файла');
   check('E: подпись — одинарные кавычки, itemprop у статьи, не у приложения; rel у a, не у link', { кавычки: true, статья: true, приложение: false, link: false, a: true }, { кавычки: el('raw/det-quotes.html')['autor-data'], статья: el('raw/det-itemprop-multi.html')['autor-data'], приложение: el('raw/det-itemprop-app.html')['autor-data'], link: el('raw/det-rel-link.html')['autor-data'], a: el('raw/det-rel-a.html')['autor-data'] }, "class='post-author'; itemprop=\"datePublished dateModified\" у BlogPosting; SoftwareApplication — не статья");
   check('E: правая граница, длинный атрибут, свой тег <video-…>', { podobne: false, wideo: false }, { podobne: el('raw/det-bounds.html').podobne, wideo: el('raw/det-bounds.html').wideo }, 'relatedness; related в атрибуте длиннее 300; <video-progress>');
   // Изоляция: в каждом документе исход решает ровно одно правило (рецензии

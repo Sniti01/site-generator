@@ -1,0 +1,35 @@
+эталонных кадров: 15, снятых: 15
+НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 22: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: szum.json нет — зон нет: любой дифф — отказ.
+  размер ок baseline-desktop-blok-cta-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-cta-1440x900.png
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-powiazane-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-powiazane-1440x900.png
+  размер ок baseline-desktop-blok-toc-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-toc-1440x900.png
+  размер ок baseline-desktop-blok-werdykt-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-werdykt-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×12054, снято 1440×12054
+  0 различий   baseline-desktop-full-1440.png
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-abstergo-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-abstergo-1440x900.png
+  размер ок baseline-desktop-layer-co-jest-w-grze-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-co-jest-w-grze-1440x900.png
+  размер ок baseline-desktop-layer-edward-kenway-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-edward-kenway-1440x900.png
+  размер ок baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png
+  размер ок baseline-desktop-layer-kawka-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-kawka-1440x900.png
+  размер ок baseline-desktop-layer-trzy-miasta-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-trzy-miasta-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×15164, снято 390×15164
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 118515 субпикселей, макс 3, рамка 390×13541 от (0, 32), первый (132, 32) G 12→13
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 15 — 0 различий 14, в допуске 0, вне допуска 1 — ОТКАЗ.

@@ -1,0 +1,46 @@
+
+> ac4bf-thewatch.com@0.1.0 accept:frames
+> node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-23-8/pl-po2/gra ../../sites/ac4bf-thewatch.com/_baseline/assassins-creed-4-black-flag
+
+эталонных кадров: 15, снятых: 15
+НЕ СУДЬИ: 0 из 15 — сверка против них ничего не значит.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 22: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: ..\..\sites\ac4bf-thewatch.com\_baseline\assassins-creed-4-black-flag\szum.json — зон 4; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-cta-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-cta-1440x900.png
+  размер ок baseline-desktop-blok-galeria-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-galeria-1440x900.png
+  размер ок baseline-desktop-blok-powiazane-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-powiazane-1440x900.png
+  размер ок baseline-desktop-blok-toc-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-toc-1440x900.png
+  размер ок baseline-desktop-blok-werdykt-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-werdykt-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×11821, снято 1440×11821
+  0 различий   baseline-desktop-full-1440.png
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-abstergo-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-abstergo-1440x900.png
+  размер ок baseline-desktop-layer-co-jest-w-grze-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-co-jest-w-grze-1440x900.png
+  размер ок baseline-desktop-layer-edward-kenway-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-edward-kenway-1440x900.png
+  размер ок baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-freedom-cry-i-rogue-1440x900.png
+  размер ок baseline-desktop-layer-kawka-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-kawka-1440x900.png
+  размер ок baseline-desktop-layer-trzy-miasta-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-trzy-miasta-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×14831, снято 390×14831
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 23 субпикселей, макс 3, рамка 368×108 от (17, 323), первый (17, 323) R 62→59; в допуске: зона 2-галерея-полный-390 — 13408 (макс 2), зона 4 — 121262 (макс 2)
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 15 — 0 различий 14, в допуске 0, вне допуска 1 — ОТКАЗ.
+npm error Lifecycle script `accept:frames` failed with error:
+npm error code 1
+npm error path D:\SEO\cloud\site-generator\sites\ac4bf-thewatch.com
+npm error workspace ac4bf-thewatch.com@0.1.0
+npm error location D:\SEO\cloud\site-generator\sites\ac4bf-thewatch.com
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-23-8/pl-po2/gra ../../sites/ac4bf-thewatch.com/_baseline/assassins-creed-4-black-flag

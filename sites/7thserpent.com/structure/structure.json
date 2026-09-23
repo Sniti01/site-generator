@@ -87,10 +87,7 @@
     }
    ],
    "wave": 1,
-   "corridor": [
-    4532,
-    6132
-   ],
+   "corridor": null,
    "volume": 17540
   },
   {
@@ -422,15 +419,14 @@
      "evidence": "15/25"
     },
     {
-     "block": "toc",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "11/25"
-    },
-    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "video",
+     "source": "manual",
+     "confidence": "high"
     },
     {
      "block": "link-list",
@@ -510,6 +506,11 @@
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
+    },
+    {
+     "block": "video",
+     "source": "manual",
+     "confidence": "high"
     },
     {
      "block": "link-list",
@@ -828,6 +829,11 @@
      "confidence": "low"
     },
     {
+     "block": "video",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "link-list",
      "source": "type-default",
      "confidence": "low"
@@ -900,12 +906,6 @@
      "source": "anatomy",
      "confidence": "medium",
      "evidence": "13/30"
-    },
-    {
-     "block": "toc",
-     "source": "anatomy",
-     "confidence": "medium",
-     "evidence": "15/30"
     },
     {
      "block": "story-row",
@@ -1218,10 +1218,7 @@
     }
    ],
    "wave": 1,
-   "corridor": [
-    2996,
-    4054
-   ],
+   "corridor": null,
    "volume": 340
   },
   {

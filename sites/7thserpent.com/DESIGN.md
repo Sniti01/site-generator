@@ -3,7 +3,10 @@ name: Зимняя ночь
 description: "Нуар фан-сайта Max Payne: холодная сине-чёрная ночь, снег вместо белого и один тёплый свет — натриевый фонарь."
 
 # Фронтматтер нормативен. Значения совпадают со `src/styles/global.css` —
-# это его контракт: токен, отсутствующий здесь, в CSS не появляется.
+# это его контракт: цвет, роль или ступень, отсутствующие здесь, в CSS
+# не появляются. Геометрия (--container, --gutter, --section-y), движение
+# (--ease-out), тень (--shadow-lift) и бегущие --era* — токены шасси без
+# схемы фронтматтера, их значения названы в прозе.
 # Проза ниже объясняет, где и почему токен применяется, но не переобъявляет
 # его значение. Шасси (имена токенов, роли, шкала, радиусы, конструкция) —
 # первого сайта (П63 п. 3 (а)); переопределены значения палитры и гарнитуры.
@@ -25,55 +28,55 @@ colors:
   accent: "#eca84a"                          # заливки: главная кнопка, выделение, «к содержанию»
   accent-text: "#f2bd6e"                     # ссылка, обводка фокуса, текстовый акцент
   ink-on-accent: "#170d04"                   # текст на заливке фонаря
-  accent-2: "#809db2"                        # сталь: орнамент, счётчик, полоса прокрутки под курсором
+  accent-2: "#809db2"                        # сталь: счётчик группы, орнамент
 
 typography:
   # Две гарнитуры, роли не пересекаются. Файлы — свои (`@fontsource`),
   # подмножество latin, насыщенности: заголовок 600, текст 400/500/600.
   headline:
-    fontFamily: "'Libre Bodoni', ui-serif, Georgia, 'Times New Roman', serif"
+    fontFamily: "'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif"
     fontSize: "clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem)"
     fontWeight: 600
     lineHeight: 1.14
     letterSpacing: "0.02em"
   title:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "1.3125rem"
     fontWeight: 600
     lineHeight: 1.28
     letterSpacing: "0.03em"
   lead:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "clamp(1.0625rem, 1rem + 0.35vw, 1.1875rem)"
     fontWeight: 400
     lineHeight: 1.55
     letterSpacing: "normal"
   body:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.65
     letterSpacing: "normal"
   caption:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "0.8125rem"
     fontWeight: 500
     lineHeight: 1.45
     letterSpacing: "0.02em"
   label:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "0.75rem"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "0.14em"
   micro:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "0.6875rem"
     fontWeight: 600
     lineHeight: 1.2
     letterSpacing: "0.16em"
   button:
-    fontFamily: "'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
+    fontFamily: "'Public Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif"
     fontSize: "0.9375rem"
     fontWeight: 600
     lineHeight: 1
@@ -154,13 +157,15 @@ components:
 договора `core/styles/ROLES.md`, те же роли и кегли, шкала отступов,
 радиусы 0/2px, волосяная линия вместо тени, та же конструкция шапки, подвала
 и блоков. Тема этого сайта — значения палитры и две гарнитуры; всё остальное
-не переоткрывается. Эпох у сайта нет: бегущие `--era`, `--era-text`,
-`--era-ink` равны акценту (ROLES.md §2).
+не переоткрывается. Эпох у сайта нет: бегущие `--era` и `--era-text` равны
+акценту, `--era-ink` — чернилам на акценте (ROLES.md §2).
 
-Две гарнитуры — пара американской газеты середины века: **Libre Bodoni**
-в заголовках (Бодони газетных шапок и титров) и **Libre Franklin**
-в тексте и интерфейсе (Franklin Gothic, гротеск таблоидов). Ни одна
-не похожа на логотип и шрифты издателя.
+Две гарнитуры — пара американской газеты середины века: **Bodoni Moda**
+в заголовках (Бодони газетных шапок и титров) и **Public Sans** в тексте
+и интерфейсе (гротеск рода Franklin Gothic, производная Libre Franklin).
+Ни одна не похожа на логотип и шрифты издателя. У обеих в файлах есть
+табличные цифры (`tnum`) — на них стоит `.tabular` шасси; Libre Bodoni
+и Libre Franklin первой редакции темы их не имели (раунд 1 «судью судят»).
 
 Растровых ассетов и авторской графики у сайта пока нет: арт, кадры и их
 лицензия — пачка 0 (П63 п. 5, П71). Зерна (`Grain`) страница не несёт.
@@ -170,8 +175,10 @@ components:
 - Холодная база, снег вместо белого, один тёплый свет — фонарь.
 - Одна заливка на экране, и она цвета фонаря.
 - Волос вместо тени; тень — только отклик на наведение.
-- Две гарнитуры: Бодони в заголовках, Franklin в тексте и интерфейсе.
-- Все пары цветов считает гейт и роняет сборку ниже порога.
+- Две гарнитуры: Бодони в заголовках, гротеск рода Franklin в тексте
+  и интерфейсе.
+- Пары цветов из токенов считает гейт и роняет сборку ниже порога; чего он
+  не считает (полоса прокрутки, текст поверх арта), названо ниже.
 
 ## Colors
 
@@ -191,9 +198,10 @@ components:
 
 ### Secondary
 
-- **Сталь** (`{colors.accent-2}`): орнамент, счётчик группы, ползунок полосы
-  прокрутки под курсором. Холодная — чтобы фонарь оставался единственным
-  тёплым пятном. Сталь не бывает кнопкой.
+- **Сталь** (`{colors.accent-2}`): счётчик группы в `link-columns`
+  (крупный текст 21px/600) и орнамент — на вырост, на главной их нет.
+  Холодная — чтобы фонарь оставался единственным тёплым пятном. Сталь
+  не бывает кнопкой.
 
 ### Neutral
 
@@ -221,33 +229,49 @@ components:
 
 **Правило посчитанного контраста.** Ни одна пара не принимается на глаз.
 `npm run gates` зовёт `core/gates/check-contrast.mjs`: список пар —
-`gates/contrast.mjs` сайта, цвета — `src/styles/global.css`; сейчас 18 пар,
-самая тесная — второстепенный текст на приподнятой поверхности, 7,02:1.
+`gates/contrast.mjs` сайта, цвета — `src/styles/global.css`; сейчас 17 пар,
+самая тесная — опасность на фоне страницы, 5,69:1 при пороге 4,5 (из текста
+на поверхностях — приглушённый снег на приподнятой поверхности, 7,02:1).
 Новый цвет приходит вместе со своей парой.
+
+Гейт считает пары токенов — и только их. Чего он не считает, названо
+в `gates/contrast.mjs`, а не принято на глаз: **полоса прокрутки** — ядро
+задаёт всем `scrollbar-color: surface-2 bg-band`, ползунок в покое 1,15:1,
+под курсором браузер осветляет его сам (Chromium, замер рецензии 3,01:1);
+палитрой это не чинится, это токен ползунка в ядре — вопрос владельцу;
+**составные сочетания** — текст поверх скрима и арта (герой, полоса
+призыва), `color-mix`, полупрозрачная шапка: страницы с артом принимаются
+замером пикселей по реальному кадру (пачка 0).
 
 **Правило снега.** Основной текст — `{colors.ink}`, не чистый белый:
 на сине-чёрном фоне #FFF режет глаз и ломает ночь.
 
 ## Typography
 
-**Display Font:** Libre Bodoni 600 (ui-serif, Georgia, 'Times New Roman',
-serif) — газетный Бодони: высокий контраст штриха, шарообразные окончания.
-**Body Font:** Libre Franklin 400/500/600 (ui-sans-serif, system-ui) —
-американский газетный гротеск для текста и интерфейса.
-**Label/Mono Font:** отдельного нет; цифры выравнивает `.tabular`.
+**Display Font:** Bodoni Moda 600 (ui-serif, Georgia, 'Times New Roman',
+serif) — Бодони: высокий контраст штриха, шарообразные окончания.
+**Body Font:** Public Sans 400/500/600 (ui-sans-serif, system-ui) —
+американский гротеск рода Franklin Gothic для текста и интерфейса.
+**Label/Mono Font:** отдельного нет; цифры выравнивает `.tabular` —
+в файлах обеих гарнитур есть `tnum` (замер на собранной главной: «1111»
+и «0000» с `.tabular` одной ширины в обеих).
 
 Обе гарнитуры — своими файлами через `@fontsource`, лицензия OFL-1.1,
 подмножество latin: сайт англоязычный, латиница-1 покрывает и имена
 из источников (São Paulo, Möbius, Järvi). Внешних запросов шрифтов нет.
+Курсив не загружается: `<i>`/`<em>` браузер наклонит сам; понадобится
+настоящий — `latin-400-italic` Public Sans вместе с первым текстом (пачка 0).
 
 **Character:** шапка газеты и сводка таблоида. Бодони даёт заголовку вес
-титра, Franklin не спорит с ним — корпус спокойный, серый снег, никогда
+титра, гротеск не спорит с ним — корпус спокойный, серый снег, никогда
 не белый.
 
 ### Hierarchy
 
-Роли, кегли, интерлиньяж, насыщенность и трекинг — шасси первого сайта
-в редакции каркаса (П62); тема меняет только гарнитуры.
+Роли — как в каркасе (П62): кегли, интерлиньяж и насыщенность — первого
+сайта; у Headline трекинг 0.02em и обычный регистр вместо 0.05em и капслока
+первого сайта (там капслок нёс польскую орфографию Cinzel). Тема меняет
+только гарнитуры.
 
 - **Headline** (`{typography.headline}`, Бодони, обычный регистр,
   `text-wrap: balance`): `h1` страницы, заголовки секций блоков.
@@ -282,8 +306,8 @@ label, micro, button. Заголовок Бодони, корпус, лид и c
 (`--gutter`); вертикальный ритм секции — `--section-y`
 (`clamp(72px, 9vw, 128px)`). Шапка липкая, 68px; та же величина — в
 `--header-h`, якоря несут `scroll-margin-top: calc(var(--header-h) +
-var(--space-lg))`. Главная сегодня — одна секция: `h1` и лид в колонке
-`.measure`, под ней подвал ядра. Раскладку блоков задаёт маршрут, который
+var(--space-lg))`. Главная сегодня — одна секция: `h1` и лид, лид —
+в колонке `.measure`; под ней подвал ядра. Раскладку блоков задаёт маршрут, который
 придёт с пачкой 0 (бэклог 54 п. 9).
 
 ### Named Rules
@@ -354,8 +378,10 @@ var(--space-lg))`. Главная сегодня — одна секция: `h1`
 
 - **Do** держать фонарь единственным тёплым цветом и единственной заливкой
   на экране.
-- **Do** прогонять `npm run gates -w 7thserpent.com` перед сдачей: 18/18 пар
+- **Do** прогонять `npm run gates -w 7thserpent.com` перед сдачей: 17/17 пар
   контраста — состояние нормативное.
+- **Do** брать гарнитуру с табличными цифрами (`tnum`): на них стоит
+  `.tabular` шасси.
 - **Do** добавлять новую пару в `gates/contrast.mjs` вместе с новым цветом.
 - **Do** ставить новый кегль сначала ролью `.t-*` в `global.css`.
 - **Do** грузить шрифты только своими файлами и только используемые

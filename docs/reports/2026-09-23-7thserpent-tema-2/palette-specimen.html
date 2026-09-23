@@ -1,0 +1,80 @@
+<!doctype html>
+<!--
+  Макет палитры для приёмки глазами — сессия 8 трека «второй сайт» (П75 п. 2).
+  НЕ страница сайта. Кладётся в sites/7thserpent.com/dist/specimen.html поверх
+  собранной сборки (лист стилей и шрифты — те, что уезжают в dist), снимается
+  Chrome headless 1440×900 без скрытия полосы прокрутки, затем удаляется
+  следующей сборкой. Классы — шасси ядра и роли сайта; инлайн-стили — только
+  раскладка макета и образцы токенов.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Specimen — Winter night (session 8)</title>
+  <link rel="stylesheet" href="/_astro/index.WvLt_RPH.css" />
+  <style>
+    .spec-banner { background: var(--danger); color: #1a0605; padding: 8px 32px; font: 600 13px/1.4 var(--font-text); }
+    .spec { display: grid; grid-template-columns: 1fr 600px; gap: 48px; padding: 48px 64px; }
+    .spec-row { display: flex; gap: 12px; align-items: center; margin-top: 32px; }
+    .spec-sel { background: var(--accent); color: var(--ink-on-accent); }
+    .spec-focus { display: inline-block; margin-top: 24px; color: var(--accent-text); outline: 2px solid var(--accent-text); outline-offset: 3px; border-radius: var(--radius-sharp); text-decoration: none; }
+    .spec-link { color: var(--accent-text); text-decoration: underline; text-underline-offset: 0.22em; }
+    .spec-card { padding: 24px; }
+    .spec-li { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--hairline); }
+    .spec-count { font-family: var(--font-display); color: var(--accent-2); }
+    .spec-band { background: var(--bg-band); border-top: 1px solid var(--hairline); padding: 24px; margin-top: 24px; }
+    .spec-sw { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; margin-top: 24px; }
+    .spec-sw div { height: 64px; padding: 6px 8px; font: 600 11px/1.3 var(--font-text); border: 1px solid var(--hairline); border-radius: var(--radius-sharp); }
+    .spec-scroll { height: 132px; overflow-y: scroll; background: var(--bg-band); border: 1px solid var(--hairline); padding: 12px 16px; margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <div class="spec-banner">МАКЕТ ПАЛИТРЫ, НЕ САЙТ: токены global.css и гарнитуры темы «Зимняя ночь» после прохода по референсам — заголовок капслоком, зерно ядра, ползунок ink-muted (сессия 8, для приёмки глазами).</div>
+  <div class="spec">
+    <div>
+      <h1 class="t-headline">Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies</h1>
+      <p class="t-lead" style="color: var(--ink-muted); margin-top: 16px;">A chapter-by-chapter guide to São Paulo — as of September 2026.</p>
+      <p class="t-body measure" style="margin-top: 24px;">New York, 2001. The snow has not stopped for three days, and <a class="spec-link" href="#">bullet time</a> is the only thing that slows the city down. <span class="spec-sel">Selected text</span> uses the lamp fill.</p>
+      <div class="spec-row">
+        <a class="btn btn-primary t-button" href="#">Read the story</a>
+        <a class="btn btn-secondary t-button" href="#">All games</a>
+        <a class="btn btn-quiet t-button" href="#">All news</a>
+      </div>
+      <a class="spec-focus t-body" href="#">Focus ring on a link →</a>
+      <p class="t-body" style="margin-top: 24px;"><strong style="color: var(--danger);">Warning:</strong> the Android port is not on Google Play in every region.</p>
+      <div class="spec-scroll t-body">
+        <p class="t-label" style="color: var(--ink-muted);">Scrollbar — ink-muted on bg-band</p>
+        <p style="margin-top: 8px;">Max Payne (2001), Max Payne 2: The Fall of Max Payne (2003), Max Payne Mobile (2012), Max Payne 3 (2012), Max Payne (2008 film), Max Payne 1 &amp; 2 Remake — announced 2022, no release date as of September 2026. The thumb of this box is drawn by the chassis rule in core/styles/base.css: scrollbar-color ink-muted on bg-band, thin.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card spec-card">
+        <p class="t-label" style="color: var(--ink-muted);">Games in order</p>
+        <div class="spec-li"><span class="t-title" style="font-weight: 500; font-size: 1.0625rem;">Max Payne</span><span class="t-caption tabular" style="color: var(--ink-muted);">2001 · 8 h</span></div>
+        <div class="spec-li"><span class="t-title" style="font-weight: 500; font-size: 1.0625rem;">Max Payne 2: The Fall of Max Payne</span><span class="t-caption tabular" style="color: var(--ink-muted);">2003 · 6 h</span></div>
+        <div class="spec-li"><span class="t-title" style="font-weight: 500; font-size: 1.0625rem;">Max Payne 3</span><span class="t-caption tabular" style="color: var(--ink-muted);">2012 · 10 h</span></div>
+        <div class="spec-li" style="border-bottom: 0;"><span class="t-title" style="font-family: var(--font-display);">Guides</span><span class="t-title spec-count tabular">11</span></div>
+      </div>
+      <div class="spec-band">
+        <p class="t-label" style="color: var(--ink);">Footer band</p>
+        <p class="t-caption" style="color: var(--ink-muted); margin-top: 12px;">Unofficial fan site, not affiliated with or endorsed by the publisher. <a class="spec-link" href="#">Privacy</a></p>
+      </div>
+      <div class="spec-sw">
+        <div style="background: var(--bg); color: var(--ink);">bg<br>#090c11</div>
+        <div style="background: var(--bg-band); color: var(--ink);">bg-band<br>#0e1217</div>
+        <div style="background: var(--surface); color: var(--ink);">surface<br>#13181e</div>
+        <div style="background: var(--surface-2); color: var(--ink);">surface-2<br>#1b2026</div>
+        <div style="background: var(--ink); color: var(--bg);">ink<br>#e5eaee</div>
+        <div style="background: var(--ink-muted); color: var(--bg);">ink-muted<br>#a1abb3</div>
+        <div style="background: var(--accent); color: var(--ink-on-accent);">accent<br>#eca84a</div>
+        <div style="background: var(--accent-text); color: var(--ink-on-accent);">accent-text<br>#f2bd6e</div>
+        <div style="background: var(--ink-on-accent); color: var(--accent-text);">ink-on-accent<br>#170d04</div>
+        <div style="background: var(--accent-2); color: var(--bg);">accent-2<br>#809db2</div>
+        <div style="background: var(--danger); color: var(--bg);">danger<br>#e85c57</div>
+        <div style="background: var(--bg); color: var(--ink); border-color: var(--hairline-strong);">hairline<br>/ strong</div>
+      </div>
+    </div>
+  </div>
+  <div class="grain" aria-hidden="true" data-astro-cid-ztqmn5of><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" data-astro-cid-ztqmn5of><filter id="grain-noise" data-astro-cid-ztqmn5of><feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="3" stitchTiles="stitch" data-astro-cid-ztqmn5of></feTurbulence><feColorMatrix type="saturate" values="0" data-astro-cid-ztqmn5of></feColorMatrix></filter><rect width="100%" height="100%" filter="url(#grain-noise)" data-astro-cid-ztqmn5of></rect></svg></div>
+</body>
+</html>

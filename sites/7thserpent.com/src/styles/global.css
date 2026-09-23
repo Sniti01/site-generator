@@ -5,61 +5,72 @@
    `.block`. Живость этого пути проверяется маркером (инвариант 8 CLAUDE.md). */
 @source '../../../../core/**/*.astro';
 
+/* Шрифты — своими файлами (`@fontsource`, в сборку уезжают woff2 сайта),
+   ни одного внешнего запроса. Libre Bodoni — газетный Бодони для заголовков,
+   Libre Franklin — американский газетный гротеск (Franklin Gothic) для текста
+   и интерфейса. Подмножество latin: сайт англоязычный, латиница-1 несёт
+   и имена из источников (São Paulo, Möbius, Järvi). Насыщенности — ровно те,
+   что зовут роли и шасси: 600 у заголовка, 400/500/600 у текста. */
+@import '@fontsource/libre-bodoni/latin-600.css';
+@import '@fontsource/libre-franklin/latin-400.css';
+@import '@fontsource/libre-franklin/latin-500.css';
+@import '@fontsource/libre-franklin/latin-600.css';
+
 /* ------------------------------------------------------------------ *
- * ЗАГЛУШКА ДО СЕССИИ ТЕМЫ (7) — сессия 3, П62.
+ * ТЕМА «ЗИМНЯЯ НОЧЬ» — сессия 7, П63 п. 3 (а), П72. Источник правды —
+ * DESIGN.md сайта; этот блок — его выпуск, значения равны фронтматтеру.
  *
- * Значения шасси (bg…danger) — по принципу одного визуального шасси
- * (PRODUCT.md «Темы»): тёмное игровое, общее для сайтов фабрики. Четыре
- * токена марки (accent, accent-text, ink-on-accent, accent-2) скопированы
- * с первого сайта как заглушка, чтобы гейт контраста и ядро (32 токена
- * договора core/styles/ROLES.md) имели значения. Гарнитуры — системные
- * стеки, без @fontsource. Тему это НЕ решает: палитра, гарнитуры и DESIGN.md
- * этого сайта — вопрос владельца на сессии 7.
+ * Шасси первого сайта (32 токена договора core/styles/ROLES.md, роли,
+ * шкала, радиусы, конструкция) — как есть; переопределены только значения
+ * палитры и две гарнитуры. Нуар: сине-чёрная холодная ночь, снег вместо
+ * белого, натриевый фонарь — единственный тёплый цвет марки; красный
+ * остаётся только опасности. Эпох у сайта нет: `--era*` равны акценту
+ * (ROLES.md §2 «Текущая эпоха»).
  *
  * Цветовые токены записаны дважды: блок темы Tailwind и корневой блок
  * с короткими именами для компонентов; гейт контраста сверяет пары hex.
  * Гейт снимает комментарии до поиска блоков и ищет их по началу строки
- * (сессия 4, бэклог 52 п. 2): до этого слово `:root` в этой шапке уводило
- * сверку пар в блок темы — 11 пар «без пары» при равных значениях.
+ * (сессия 4, бэклог 52 п. 2).
  * ------------------------------------------------------------------ */
 @theme {
-  --color-bg: #0d0c0a;
-  --color-bg-band: #131110;
-  --color-surface: #191614;
-  --color-surface-2: #211d1a;
-  --color-ink: #ede8de;
-  --color-ink-muted: #a8a199;
-  --color-danger: #e1584f;
+  --color-bg: #090c11;
+  --color-bg-band: #0e1217;
+  --color-surface: #13181e;
+  --color-surface-2: #1b2026;
+  --color-ink: #e5eaee;
+  --color-ink-muted: #a1abb3;
+  --color-danger: #e85c57;
 
-  --color-accent: #dc4e40;
-  --color-accent-text: #f0736a;
-  --color-ink-on-accent: #14100e;
-  --color-accent-2: #b08d57;
+  --color-accent: #eca84a;
+  --color-accent-text: #f2bd6e;
+  --color-ink-on-accent: #170d04;
+  --color-accent-2: #809db2;
 
-  --font-display: ui-serif, Georgia, 'Times New Roman', serif;
-  --font-text: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Libre Bodoni', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-text: 'Libre Franklin', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 :root {
   color-scheme: dark;
 
-  --bg: #0d0c0a;
-  --bg-band: #131110;
-  --surface: #191614;
-  --surface-2: #211d1a;
-  --ink: #ede8de;
-  --ink-muted: #a8a199;
-  --danger: #e1584f;
+  --bg: #090c11;
+  --bg-band: #0e1217;
+  --surface: #13181e;
+  --surface-2: #1b2026;
+  --ink: #e5eaee;
+  --ink-muted: #a1abb3;
+  --danger: #e85c57;
 
-  --accent: #dc4e40;
-  --accent-text: #f0736a;
-  --ink-on-accent: #14100e;
-  --accent-2: #b08d57;
+  --accent: #eca84a;
+  --accent-text: #f2bd6e;
+  --ink-on-accent: #170d04;
+  --accent-2: #809db2;
 
-  --hairline: rgb(237 232 222 / 0.12);
-  --hairline-strong: rgb(237 232 222 / 0.26);
-  --wash: rgb(237 232 222 / 0.06);
-  --wash-strong: rgb(237 232 222 / 0.1);
+  /* Линии, подсветки и тень — от чернил темы, те же доли, что у шасси. */
+  --hairline: rgb(229 234 238 / 0.12);
+  --hairline-strong: rgb(229 234 238 / 0.26);
+  --wash: rgb(229 234 238 / 0.06);
+  --wash-strong: rgb(229 234 238 / 0.1);
   --shadow-lift: 0 12px 32px rgb(0 0 0 / 0.45);
 
   /* Бегущие токены эпохи: ядро читает их (foto.css, CardRail, LinkList,
@@ -131,7 +142,9 @@ html.menu-otwarte {
 /* ------------------------------------------------------------------ *
  * Роли типографики. Каждый литеральный кегль на странице принадлежит одной
  * из ролей — иначе гейт токенов роняет сборку. Восемь ролей — те, что
- * надевает ядро (ROLES.md §1); кегли — первого сайта, до сессии темы.
+ * надевает ядро (ROLES.md §1); кегли, интерлиньяж, насыщенность и трекинг —
+ * шасси первого сайта (как в каркасе, П62), тема меняет только гарнитуры
+ * через `--font-display` и `--font-text`.
  * ------------------------------------------------------------------ */
 
 .t-headline {

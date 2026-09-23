@@ -34,6 +34,7 @@ const pairs = [
   ['accent-text', 'surface-2', 4.5, 'link/akcent tekstowy na karcie podniesionej'],
   ['ink-on-accent', 'accent', 4.5, 'napis w wypełnionym przycisku'],
   ['accent', 'bg', 3, 'wypełnienie akcentu jako element UI'],
+  ['ink-muted', 'bg-band', 3, 'suwak paska przewijania na torze — element UI (core/styles/base.css)'],
   // Mosiądz maluje licznik grupy `.stack__count` — 21px/600, tekst duży,
   // więc próg 3 jest dla niego właściwy; opis mówi teraz o obu rolach.
   ['accent-2', 'bg', 3, 'mosiądz: element UI i licznik grupy 21px/600'],

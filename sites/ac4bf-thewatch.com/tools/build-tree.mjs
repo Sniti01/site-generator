@@ -766,6 +766,9 @@ function selftest() {
   const rBeta = tree(renamed('/beta/', '/beta-nowa/', true));
   check('P: прежний_url — блоки анатомии по старому адресу', blocksOf(ok, '/beta/'), blocksOf(rBeta, '/beta-nowa/'), 'verdict-box(a) переживает переименование');
   check('P: именованный коридор под старым адресом — не теряется', { corridor: view(ok, '/beta/').corridor, named: ok.corridorsFromContract.map((c) => (c.url === '/beta/' ? '/beta-nowa/' : c.url)) }, { corridor: view(rBeta, '/beta-nowa/').corridor, named: rBeta.corridorsFromContract.map((c) => c.url) }, 'рецензия «судью судят», D3: структура ещё под старым адресом — решение не уступает анатомии');
+  const newFirst = renamed('/beta/', '/beta-nowa/', true);
+  newFirst.doc.pages.push({ url: '/beta-nowa/', corridor: [111, 222] });
+  check('P: коридор под новым адресом главнее прежнего', [111, 222], view(tree(newFirst), '/beta-nowa/').corridor, 'рецензия «судью судят», раунд 2: структура уже под новым адресом — её решение, а не старое (порядок поиска)');
   check('P: без прежнего_url блок анатомии пропадает', false, blocksOf(tree(renamed('/beta/', '/beta-nowa/', false)), '/beta-nowa/').includes('verdict-box(a)'), 'отрицательная для пути блоков');
   const selfFormer = renamed('/gamma/', '/gamma-nowa/', true);
   page(selfFormer, '/gamma-nowa/')['прежний_url'] = '/gamma-nowa/';

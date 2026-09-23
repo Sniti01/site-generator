@@ -88,7 +88,7 @@ import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join, basename } from 'node:path';
 import { readClustering } from '@factory/core/structure/clustering.mjs';
-import { buildTree } from './build-tree.mjs';
+import { buildTree, rulesStamp } from './build-tree.mjs';
 
 const corePath = (rel) => fileURLToPath(import.meta.resolve(`@factory/core/${rel}`));
 const readJson = (path) => JSON.parse(readFileSync(path, 'utf8'));
@@ -421,7 +421,7 @@ function elements(html, rules) {
     if (!hit && spec['признаки']) hit = spec['признаки'].some((s) => lowerCut.includes(s.toLowerCase()));
     if (!hit && spec['признаки_в_коде']) hit = spec['признаки_в_коде'].some((s) => lowerRaw.includes(s.toLowerCase()));
     if (!hit && spec['ссылки_rel']) {
-      hit = nodes.some((n) => n.tag === 'a' && !n.inHidden && (n.a.rel ?? '').toLowerCase().split(/\s+/).some((r) => spec['ссылки_rel'].includes(r)));
+      hit = nodes.some((n) => n.tag === 'a' && !n.inHidden && !hidden(n.a) && (n.a.rel ?? '').toLowerCase().split(/\s+/).some((r) => spec['ссылки_rel'].includes(r)));
     }
     if (!hit && spec['классы']) {
       const [src, list, c] = spec['в_теле'] ? [body, bodyNodes, counts.body] : [cut, nodes, counts.cut];
@@ -1046,9 +1046,10 @@ function run(root, { dryRun }) {
 
   const last = new Map();
   for (const rec of manifest) last.set(rec.url, rec);
-  // Отпечаток правил, по которым считано: build-tree сверяет его с живым
-  // rules-s3.json — правка правил без перемера не проходит в дерево молча.
-  const rulesSha = createHash('sha256').update(readFileSync(join(root, 'structure/rules-s3.json'))).digest('hex');
+  // Отпечаток правил, по которым считано (rules-s3.json и файлы списков
+  // хостов, на которые он ссылается): build-tree сверяет его с живыми
+  // файлами — правка правил без перемера не проходит в дерево молча.
+  const rulesSha = rulesStamp(root);
   const out = {
     инструмент: HEADER.инструмент,
     правила: HEADER.правила,
@@ -1257,15 +1258,20 @@ function selftest(root) {
   check('E: оглавление — camelCase и якоря в первой трети тела', { camel: true, якоря: true, два: false, поздно: false }, { camel: el('raw/det-toc-camel.html')['spis-tresci'], якоря: el('raw/det-toc-anchors.html')['spis-tresci'], два: el('raw/det-toc-two.html')['spis-tresci'], поздно: el('raw/det-toc-late.html')['spis-tresci'] }, 'GuideTableOfContents; три якоря на разделы (#top не в счёте); два и ссылка в никуда — мало; список в конце тела — не оглавление');
   check('E: подпись — одинарные кавычки, itemprop у статьи, не у приложения; rel у a, не у link', { кавычки: true, статья: true, приложение: false, link: false, a: true }, { кавычки: el('raw/det-quotes.html')['autor-data'], статья: el('raw/det-itemprop-multi.html')['autor-data'], приложение: el('raw/det-itemprop-app.html')['autor-data'], link: el('raw/det-rel-link.html')['autor-data'], a: el('raw/det-rel-a.html')['autor-data'] }, "class='post-author'; itemprop=\"datePublished dateModified\" у BlogPosting; SoftwareApplication — не статья");
   check('E: правая граница, длинный атрибут, свой тег <video-…>', { podobne: false, wideo: false }, { podobne: el('raw/det-bounds.html').podobne, wideo: el('raw/det-bounds.html').wideo }, 'relatedness; related в атрибуте длиннее 300; <video-progress>');
-  // Изоляция: в каждом документе исход решает ровно одно правило (рецензия раунда 2).
+  // Изоляция: в каждом документе исход решает ровно одно правило (рецензии
+  // раундов 2 и 3: неявное закрытие и незакрытый узел, самоссылка и ссылка
+  // без текста — разными документами).
   check('E: узлы — svg, <i>, префикс fa, слово icon, голова; видимый узел — да', { svg: false, i: false, fa: false, icon: false, head: false, видимый: true }, { svg: el('raw/iso-svg.html').komentarze, i: el('raw/iso-i.html').komentarze, fa: el('raw/iso-fa.html').komentarze, icon: el('raw/iso-icon.html').komentarze, head: el('raw/iso-head.html').komentarze, видимый: el('raw/iso-visible.html').komentarze }, 'в каждом документе класс comments-area скрыт только одним правилом');
   check('E: скрытие — у самого узла, у предка display:none, у предка aria-hidden', { сам: false, предок: false, aria: false }, { сам: el('raw/iso-display-none.html').galeria, предок: el('raw/iso-hidden-ancestor.html').komentarze, aria: el('raw/iso-aria-ancestor.html')['autor-data'] }, 'галерея с тремя картинками в теле под display:none; комментарии и подпись внутри скрытого предка');
   check('E: контекст — возраст у оценки, commit у подписи, счётчик у комментариев', { ocena: false, 'autor-data': false, komentarze: false }, { ocena: el('raw/iso-score-age.html').ocena, 'autor-data': el('raw/iso-commit-author.html')['autor-data'], komentarze: el('raw/iso-comment-count.html').komentarze }, 'score-age, commit-author, comment-count');
   check('E: класс автора у четырёх узлов — лента, у трёх — подпись; camelCase ленты — лента', { четыре: false, три: true, camel: false }, { четыре: el('raw/iso-repeat-4.html')['autor-data'], три: el('raw/iso-repeat-3.html')['autor-data'], camel: el('raw/iso-camel-feed.html')['autor-data'] }, 'повтор_до 3; apphub_CardContentAuthorBlock ×5');
   check('E: автор строкой — не человек, Person — человек', { строка: false, person: true }, { строка: el('raw/iso-string-author.html')['autor-data'], person: el('raw/iso-person-author.html')['autor-data'] }, 'заглушка вместо автора у TechArticle');
   check('E: JSON-LD в /* CDATA */ разбирается; строка в скрипте — не разметка; VideoObject — видео', { cdata: true, schema: true, строка: false, видео: true }, { cdata: el('raw/iso-cdata.html')['oceny-graczy'], schema: el('raw/iso-cdata.html')['schema-org'], строка: el('raw/iso-ld-string.html')['schema-org'], видео: el('raw/iso-videoobject.html').wideo }, 'AggregateRating внутри обёртки; s.type = "application/ld+json" в JS');
-  check('E: незакрытая ссылка — картинки после неё не внутри', false, el('raw/iso-unclosed-a.html').galeria, 'a.carousel-control без </a>, следом <a> и три img');
-  check('E: оглавление — #top не в счёте, name у ссылки — цель, у поля формы — нет, самоссылки заголовков — нет', { top: false, name: true, input: false, self: false }, { top: el('raw/iso-toc-top.html')['spis-tresci'], name: el('raw/iso-toc-name.html')['spis-tresci'], input: el('raw/iso-toc-input.html')['spis-tresci'], self: el('raw/iso-toc-self.html')['spis-tresci'] }, 'три ссылки при существующем id=top — две цели; <a name>; <input name>; <a name=X href=#X> без текста');
+  check('E: неявное закрытие ссылки и незакрытый узел — картинки после них не внутри', { неявное: false, незакрытый: false }, { неявное: el('raw/iso-unclosed-a.html').galeria, незакрытый: el('raw/iso-unclosed-div.html').galeria }, 'a.carousel-control закрыт следующим <a> (иначе лишний </a> включил бы три img); div.gallery без </div> — внутренности нет');
+  check('E: оглавление — #top не в счёте, name у ссылки — цель, у поля формы — нет, самоссылки и ссылки без текста — нет', { top: false, name: true, input: false, self: false, empty: false }, { top: el('raw/iso-toc-top.html')['spis-tresci'], name: el('raw/iso-toc-name.html')['spis-tresci'], input: el('raw/iso-toc-input.html')['spis-tresci'], self: el('raw/iso-toc-self.html')['spis-tresci'], empty: el('raw/iso-toc-empty.html')['spis-tresci'] }, 'три ссылки при существующем id=top — две цели; <a name>; <input name>; <a name=X href=#X> с текстом; пустые ссылки на чужие id');
+  check('E: граница скрытого предка — видимый узел после него виден', { комментарии: true, подпись: true }, { комментарии: el('raw/iso-hidden-then-visible.html').komentarze, подпись: el('raw/iso-hidden-then-author.html')['autor-data'] }, 'скрыт только диапазон предка, а не хвост документа');
+  check('E: visibility:hidden у предка; повтор — только по видимым; скрытая сама ссылка rel=author', { visibility: false, повтор: true, rel: false }, { visibility: el('raw/iso-visibility-ancestor.html').komentarze, повтор: el('raw/iso-repeat-hidden.html')['autor-data'], rel: el('raw/iso-rel-hidden.html')['autor-data'] }, 'три card-author под скрытым предком и один видимый — один; <a rel=author aria-hidden>');
+  check('E: битый JSON-LD — разметка есть, объектов нет', { schema: true, ocena: false }, { schema: el('raw/det-ld-broken.html')['schema-org'], ocena: el('raw/det-ld-broken.html').ocena }, 'тег ld+json засчитан, битый JSON не разобран');
   check('E: <video> — видео', true, el('raw/det-video.html').wideo, 'тег с границей');
   check('E: галерея — в теле, три картинки, не ползунок', { тело: true, две: false, снаружи: false, ползунок: false }, { тело: el('raw/det-gallery-body.html').galeria, две: el('raw/det-gallery-two.html').galeria, снаружи: el('raw/det-gallery-outside.html').galeria, ползунок: el('raw/det-gallery-context.html').galeria }, 'картинок_внутри_от 3; в_теле; user/score — контекст');
 
@@ -1283,7 +1289,7 @@ function selftest(root) {
     }
   }
   check('T: каждое слово словаря узнаётся своей темой', [], reach, 'затенённых слов нет (рецензия 2026-09-23)');
-  check('T: левая граница; два слова без перекрытия — две темы', [null, 'mods+media', 'versions+where-to-play'], themesFlat('raw/iso-themes.html'), 'xstory — не plot; mod video; mobile download');
+  check('T: левая граница; два слова без перекрытия — две темы', [null, 'mods+media', 'versions+where-to-play', 'series+gameplay'], themesFlat('raw/iso-themes.html'), 'xstory — не plot; mod video; mobile download; every game modes — every game и game modes равной длины перекрываются, побеждает тема раньше в файле (series), отдельное modes — gameplay');
   check('T: неопознанное — счёт и адрес, без текста', { n: 1, док: 1, urls: ['https://theme.example/unknown'] }, { n: theme.неопознанных_заголовков, док: theme.неопознанное_документов, urls: theme.неопознанное_у }, 'примером служит документ');
   check('T: тема считается по документам, не по вхождениям', { plot: 7, lore: 1 }, Object.fromEntries(theme.темы.map((t) => [t.тема, t.документов])), 'h2 plot у семи документов, trivia у одного');
   check('T: 7 из 7 — обязательна, 1 из 7 — гэп', { plot: 'обязательна', lore: 'гэп' }, Object.fromEntries(theme.темы.map((t) => [t.тема, t.вердикт])), 'пороги 0.7 и n = 1');
@@ -1334,17 +1340,17 @@ function selftest(root) {
   check('W: площадки платформ и медиана без них', { документов: 1, медиана_без_них: 1400 }, w.площадки_платформ, 'store.platform.example по суффиксу');
   check('W: видео-площадка в выдаче — при любом исходе забора', { адресов: 1, из: 13 }, w.видео_в_выдаче, 'www.youtube.com — robots, но в выдаче стоит');
   check('W: общая оболочка двух страниц — одна в нише', { по_страницам: 3, оболочек: 2, по_хостам: { 'sh.example': 1, 'shell.example': 1 } }, { по_страницам: w.пропущено.оболочек + page(w2, '/v/').пропущено.оболочек + page(w2, '/d/').пропущено.оболочек, оболочек: w2.корпус.оболочек, по_хостам: w2.корпус.оболочки_по_хостам }, 'shell.example у /w/ и /v/ — одна; два адреса sh.example с общим каноном — одна; сумма по хостам равна числу оболочек');
-  check('W: выдача страниц', { фраз: 6, фраз_с_видео: 1, адресов: 45, видео_адресов: 1, маркетплейсов: 1, маркетплейсов_скачанных: 0 }, w2.корпус.выдача, 'уникальные адреса всех страниц');
+  check('W: выдача страниц', { фраз: 6, фраз_с_видео: 1, адресов: 47, видео_адресов: 1, маркетплейсов: 1, маркетплейсов_скачанных: 0 }, w2.корпус.выдача, 'уникальные адреса всех страниц');
   check('W: короткие по сотням и заголовки по уникальным документам', { короткие: [0, 2, 0, 0, 0, 1], заголовков: { узнано: 4, служебных: 0, неопознанных: 16 } }, { короткие: w2.корпус.короткие_по_сотням, заголовков: w2.корпус.заголовков }, 'оболочки 100 и 120 (второй адрес оболочки sh.example — дубль) и документ 500; стенка своим адресом не читается; lore×2, plot×2 — узнано, zzqx×7 и три заголовка /odd/ ×3 — нет');
   check('W: ровно 0.7 — обязателен, ровно 0.4 — на решение', { tabela: 'обязателен', faq: 'на решение' }, { tabela: ten.элементы.tabela.вердикт, faq: ten.элементы.faq.вердикт }, 'table у 7 из 10, details×3 у 4 из 10');
   check('W: тема у двух — редкая, повтор в документе — один раз', { lore: 'редкая', plot: 'гэп', plotDocs: 1 }, { lore: ten.темы.find((t) => t.тема === 'lore')?.вердикт, plot: ten.темы.find((t) => t.тема === 'plot')?.вердикт, plotDocs: ten.темы.find((t) => t.тема === 'plot')?.документов }, 'n = 2 при доле 0.2; два h2 plot в одном документе');
   check('W: неопознанное — все документы счётом, первые шесть адресов по порядку', { n: 7, док: 7, urls: ['https://ten.example/00', 'https://ten.example/01', 'https://ten.example/02', 'https://ten.example/03', 'https://ten.example/04', 'https://ten.example/05'] }, { n: ten.неопознанных_заголовков, док: ten.неопознанное_документов, urls: ten.неопознанное_у }, 'неопознанное_у — первые шесть');
   check('W: медиана чётного ряда с нечётной суммой — округление, коридор', { медиана: 1501, коридор: [1276, 1726] }, { медиана: ten.план.медиана_знаков, коридор: ten.план.коридор }, '1001 + 2000 → 1500.5 → 1501; 1275.85 → 1276');
   check('W: медиана нечётного ряда разной разрядности, коридор', { медиана: 1505, коридор: [1279, 1731], h2: 2, h3: 1 }, { медиана: odd.план.медиана_знаков, коридор: odd.план.коридор, h2: odd.план.h2_медиана, h3: odd.план.h3_медиана }, '950 < 1001 < 1505 < 3000 < 4000 — числом, не строкой; 1730.75 → 1731');
-  check('W: медиана ниши сценария', 2000, w2.ниша.медиана_знаков, '29 живых документов, 15-й');
+  check('W: медиана ниши сценария', 2003, w2.ниша.медиана_знаков, '30 живых документов: 15-й и 16-й — 2000 и 2005');
   const d2 = page(w2, '/d/');
-  check('W: /d/ — стенка своим адресом, дубли по канону и параметрам, оболочка-дубль', { переходов: 1, дублей: 7, оболочек: 1, документов: 4 }, { переходов: d2.пропущено.переходов, дублей: d2.пропущено.дублей, оболочек: d2.пропущено.оболочек, документов: d2.документов }, '/AgeCheck/ без перехода; pick ×2, sh ×2, params ×6 (lang, hl, curator_clanid, snr, ref, http); канон на чужой хост — не дубль');
-  check('W: /d/ — из дублей остаётся адрес канона, не первый по алфавиту', 3750, d2.план.медиана_знаков, 'pick.example/z-canon (3500) при a-copy (3000): 2005, 3500, 4000, 4100');
+  check('W: /d/ — стенка своим адресом, дубли по канону и параметрам, оболочка-дубль', { переходов: 1, дублей: 8, оболочек: 1, документов: 5 }, { переходов: d2.пропущено.переходов, дублей: d2.пропущено.дублей, оболочек: d2.пропущено.оболочек, документов: d2.документов }, '/AgeCheck/ без перехода; pick ×2, sh ×2, redir ×2, params ×6 (lang, hl, curator_clanid, snr, ref, http); канон на чужой хост — не дубль');
+  check('W: /d/ — из дублей остаётся адрес ключа (канона или перехода), и в нише тоже', { страница: 0, ниша: 7, медиана: 4000 }, { страница: d2.элементы.tabela.документов, ниша: w2.ниша.элементы.tabela.документов, медиана: d2.план.медиана_знаков }, 'таблица — только у дублей, которые не должны остаться: pick a-copy (первый по алфавиту) и redir copy (ключ задаёт адрес перехода redir old); у ниши 7 таблиц — /ten/');
 
   // G — сторож чужого текста.
   const allowed = allowedStrings({ rules, pages: fx['страницы'], manifest: fx['манифест'] });
@@ -1365,8 +1371,10 @@ function selftest(root) {
   check('D: запрос не пересобирается, протокол один', ['https://f.example/index.php?threads/slug.4/', 'https://f.example/index.php?threads/slug.4/', 'https://h.example/a?q=a%20b', 'https://h.example/a?q=a+b'], [docKey('https://f.example/index.php?threads/slug.4/', drop), docKey('http://f.example/index.php?threads/slug.4/&l=en', drop), docKey('https://h.example/a?q=a%20b', drop), docKey('https://h.example/a?q=a+b', drop)], 'сырая строка запроса; http и https — один ключ');
   check('D: канон с &amp; раскрыт', 'https://p.example/details?id=x', identityOf({ url: 'https://p.example/details?id=x&hl=en' }, '<link rel="canonical" href="https://p.example/details?id=x&amp;hl=en_US">', drop), 'hl снят и в каноне');
   const rep = (docs) => representatives(docs).map((x) => x.url);
-  const twin = [{ url: 'https://k.example/b', key: 'https://k.example/b', self: 'https://k.example/b' }, { url: 'https://k.example/a', key: 'https://k.example/b', self: 'https://k.example/a' }];
-  check('D: из дублей остаётся адрес ключа при любом порядке подачи', [['https://k.example/b'], ['https://k.example/b']], [rep(twin), rep([...twin].reverse())], 'правило, а не алфавит и не порядок кэша');
+  const last = [{ url: 'https://k.example/b', key: 'https://k.example/b', self: 'https://k.example/b' }, { url: 'https://k.example/a', key: 'https://k.example/b', self: 'https://k.example/a' }];
+  const first = [{ url: 'https://k.example/a', key: 'https://k.example/a', self: 'https://k.example/a' }, { url: 'https://k.example/b', key: 'https://k.example/a', self: 'https://k.example/b' }, { url: 'https://k.example/c', key: 'https://k.example/a', self: 'https://k.example/c' }];
+  const none = [{ url: 'https://k.example/b', key: 'https://k.example/z', self: 'https://k.example/b' }, { url: 'https://k.example/a', key: 'https://k.example/z', self: 'https://k.example/a' }];
+  check('D: из дублей остаётся адрес ключа — последний, первый или средний по алфавиту; нет такого — первый по адресу', [['https://k.example/b'], ['https://k.example/a'], ['https://k.example/a']], [rep(last), rep(first), rep(none)], 'правило, а не алфавит и не порядок кэша');
   check('D: расхождение файла названо местом', ['ниша; страницы: 1 (/x/)', 'страницы: 1 (/gone/)', 'только запись (порядок ключей, пробелы)'], [
     driftOf(JSON.stringify({ ниша: 1, страницы: [{ url: '/x/', a: 1 }] }), { ниша: 2, страницы: [{ url: '/x/', a: 2 }] }, 'страницы'),
     driftOf(JSON.stringify({ страницы: [{ url: '/x/' }, { url: '/gone/' }] }), { страницы: [{ url: '/x/' }] }, 'страницы'),

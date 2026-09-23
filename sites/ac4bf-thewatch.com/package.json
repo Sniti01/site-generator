@@ -20,6 +20,7 @@
     "brief": "node tools/brief-strony.mjs",
     "tresc:proby": "node tools/proby-tresci.mjs",
     "live:check": "node tools/check-live.mjs",
+    "markup:diff": "node tools/markup-diff.mjs",
     "tree": "node tools/build-tree.mjs",
     "tree:check": "node tools/build-tree.mjs --dry-run",
     "tree:selftest": "node tools/build-tree.mjs --selftest",

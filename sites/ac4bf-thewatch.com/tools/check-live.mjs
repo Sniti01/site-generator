@@ -15,10 +15,14 @@
  *   3. robots.txt — 200, строка `Sitemap:` на канонический sitemap-index;
  *   4. sitemap-index.xml и sitemap-0.xml — 200; адресов в карте столько,
  *      сколько страниц в структуре без `/404/`;
- *   5. несуществующий адрес — статус 404 и наша страница («Nie ma takiej
- *      strony»), не заглушка хостера; `/404/` напрямую — 200;
+ *   5. несуществующий адрес — статус 404 и наша страница (её `h1` из
+ *      структуры; до П73 здесь стояла польская строка «Nie ma takiej strony»),
+ *      не заглушка хостера; `/404/` напрямую — 200;
  *   6. `Cache-Control` у HTML несёт `must-revalidate` (Apache видит HTML —
- *      измерение соседа 2026-08-26); `x-ray` печатается справочно.
+ *      измерение соседа 2026-08-26); `x-ray` печатается справочно;
+ *   7. переименованные страницы (П73, перевод на английский): с каждого
+ *      `прежний_url` из `structure/pages-s2.json` — 301 одним скачком на новый
+ *      канонический адрес, и с канонического хоста, и с `http://` второго.
  *
  * Каждая проверка — строка `ok`/`ŹLE` с тем, что ждали и что пришло;
  * `exit 1` при любой `ŹLE`. Сеть — `fetch` без редиректов (`redirect:
@@ -31,6 +35,7 @@ import { dirname, join } from 'node:path';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const structure = JSON.parse(readFileSync(join(root, 'structure/structure.json'), 'utf8'));
+const declared = JSON.parse(readFileSync(join(root, 'structure/pages-s2.json'), 'utf8'));
 
 const argHost = process.argv.indexOf('--host');
 const canonical = new URL(argHost > 0 ? `https://${process.argv[argHost + 1]}` : structure.site.domain);
@@ -88,7 +93,10 @@ check('sitemap-0.xml: без /404/', false, map.body.includes(`${base}/404/`), '
 /* 5 — 404 */
 const missing = await get(`${base}/nie-ma-takiej-strony-proba-${Date.now()}/`);
 check('несуществующий адрес: статус', 404, missing.status, 'ErrorDocument 404 /404/index.html');
-check('несуществующий адрес: наша страница', true, missing.body.includes('Nie ma takiej strony'), 'не заглушка хостера');
+// Маркер — h1 страницы 404 из структуры; тело сравнивается с раскрытыми сущностями.
+const h404 = structure.pages.find((p) => p.url === '/404/')?.h1 ?? '—';
+const plain = (s) => s.replace(/&#39;|&#x27;|&apos;/g, "'").replace(/&quot;/g, '"').replace(/&amp;/g, '&');
+check('несуществующий адрес: наша страница', true, plain(missing.body).includes(h404), `h1 /404/ «${h404}», не заглушка хостера`);
 const direct = await get(`${base}/404/`);
 check('/404/ напрямую: статус', 200, direct.status, 'страница структуры, вне sitemap');
 
@@ -97,6 +105,12 @@ const sample = structure.pages.find((p) => p.type === 'game');
 if (sample) {
   const r = await get(`${base}${sample.url}`);
   check(`страница ${sample.url}: статус`, 200, r.status);
+}
+
+/* 7 — прежние адреса переименованных страниц (П73) */
+for (const p of declared['страницы'].filter((x) => x['прежний_url'])) {
+  await hop(`${base}${p['прежний_url']}`, `${base}${p.url}`, `${p['прежний_url']} → ${p.url}`);
+  await hop(`http://${other}${p['прежний_url']}`, `${base}${p.url}`, `http://${other}${p['прежний_url']}`);
 }
 
 let failed = 0;

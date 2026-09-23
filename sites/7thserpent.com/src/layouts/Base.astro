@@ -1,13 +1,15 @@
 ---
 /**
  * Каркас страницы (сессия 3, П62): голова документа, пропуск к содержанию,
- * шапка и подвал ядра, единственный <main>.
+ * шапка и подвал ядра, единственный <main>; зерно ядра `Grain` поверх всей
+ * страницы — после подвала, как у первого сайта (сессия 8, П74 п. 1).
  *
  * Чего здесь ещё нет — и это решение, не пропуск: крошек и `BreadcrumbList`
  * (`getBreadcrumbs` бросает при `pages: []` — приходят вместе с деревом S2),
  * иконки сайта (`public/` — сессия публикации), JSON-LD страницы.
  */
 import '../styles/global.css';
+import Grain from '@factory/core/effects/Grain.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 
@@ -42,5 +44,6 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <SiteFooter />
+    <Grain />
   </body>
 </html>

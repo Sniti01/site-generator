@@ -30,7 +30,8 @@
     "tree:selftest": "node tools/build-tree.mjs --selftest",
     "gameart": "node tools/fetch-game-art.mjs",
     "znak": "node tools/znak.mjs",
-    "znak:check": "node tools/znak.mjs --check"
+    "znak:check": "node tools/znak.mjs --check",
+    "znak:selftest": "node tools/znak.mjs --selftest"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

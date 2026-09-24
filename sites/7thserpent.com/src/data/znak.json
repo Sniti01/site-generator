@@ -1,5 +1,5 @@
 {
-  "_": "Знак сайта «Семёрка из трассы» (сессия 11, П83 и дополнение: выбор владельца — вариант A, docs/reports/2026-09-24-7thserpent-znak/voprosy/A-semerka-trassa/, редакция 2). Единственный источник рисунка: шапку и подвал рисует src/components/Znak.astro (краски — var(--токен)), иконки в public/ пишет tools/znak.mjs (краски — значения токенов из src/styles/global.css). Поле farba — имя токена темы. Буквы — контуры Bodoni Moda 600 темы (@fontsource), не текст роли: d каждой надписи npm run znak:check пересчитывает из файла гарнитуры по полям font, size, track, x, y и сверяет побайтно.",
+  "_": "Знак сайта «Семёрка из трассы» (сессия 11, П83 и дополнение: выбор владельца — вариант A, docs/reports/2026-09-24-7thserpent-znak/voprosy/A-semerka-trassa/, редакция 2). Единственный источник рисунка: шапку и подвал рисует src/components/Znak.astro (краски — var(--токен)), иконки в public/ пишет tools/znak.mjs (краски — значения токенов из src/styles/global.css). Поле farba — имя токена темы. Буквы — контуры Bodoni Moda 600 темы (@fontsource), не текст роли: d каждой надписи npm run znak:check пересчитывает из гарнитуры темы (woff из @font-face @fontsource/bodoni-moda/latin-600.css, который грузит global.css) по полям size, track, x, y и сверяет побайтно; поля font у надписи нет — гарнитура берётся из темы, не из данных.",
   "shapka": {
     "width": 138,
     "height": 38,
@@ -23,7 +23,6 @@
     "napisy": [
       {
         "tekst": "TH",
-        "font": "bodoni-moda-latin-600-normal.woff",
         "size": 16,
         "track": 0.08,
         "x": 24.2,
@@ -34,7 +33,6 @@
       },
       {
         "tekst": "SERPENT",
-        "font": "bodoni-moda-latin-600-normal.woff",
         "size": 21.33,
         "track": 0.1,
         "x": 23.6,

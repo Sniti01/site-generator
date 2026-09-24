@@ -1,0 +1,53 @@
+{
+  "warianty": {
+    "a-1x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 1,
+      "czerwonych": 0,
+      "rysuje": "favicon.svg"
+    },
+    "a-2x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 0.906,
+      "czerwonych": 0,
+      "rysuje": "favicon.svg"
+    },
+    "b-1x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 0,
+      "czerwonych": 0,
+      "rysuje": "не контрольный цвет — прежний рисунок"
+    },
+    "b-2x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 0,
+      "czerwonych": 0,
+      "rysuje": "не контрольный цвет — прежний рисунок"
+    },
+    "c-1x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 1,
+      "czerwonych": 0,
+      "rysuje": "favicon.svg"
+    },
+    "c-2x": {
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "zielonych": 0.906,
+      "czerwonych": 0,
+      "rysuje": "favicon.svg"
+    }
+  },
+  "browser": "151.0.7922.34"
+}

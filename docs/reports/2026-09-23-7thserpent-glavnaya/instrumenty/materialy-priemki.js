@@ -6,10 +6,19 @@
 // прокрутка к началу, осадка, кадр окна, осадка, полный кадр. Первые редакции скрипта
 // грузили страницу заново на каждом окне, и съёмка полной страницы в Chromium раз за разом
 // рисовала героя без ключевого арта (кадр окна при этом с артом; опыты art-fullpage-test*.js):
-// на 1280, 1024, 768 и 390, но не на 1440. Следствие порядка без перезагрузки — браузер
-// держит кандидат srcset, взятый на 1920 (у посетителя с узким окном он меньше); на вид это
-// не влияет. После съёмки — стоп, если в области арта нет света фонаря (ни в кадре окна,
-// ни в полном кадре).
+// на 1280, 1024, 768 и 390, но не на 1440. Механизм (раунд 3 «судью судят», R3-KR-3): при
+// съёмке полной страницы Chromium заново выбирает кандидат srcset и берёт тот, что уже лежит
+// в кэше вкладки после прошлой загрузки, а кадр снимается раньше, чем новый кандидат
+// отрисован; в свежем контексте пропажи нет. Защита — первая загрузка на крупнейшем окне:
+// браузер сразу берёт крупнейший кандидат, подменять его нечем. Следствие — у посетителя
+// с узким окном кандидат меньше; на вид это не влияет. Проверки: до и после полного кадра
+// сверяется currentSrc всех картинок (подмена — стоп); в области арта героя должен быть
+// свет фонаря (ни в кадре окна, ни в полном кадре его отсутствие не пропускается).
+// ПРЕДЕЛ: отрисовка в полном кадре проверяется светом только у арта героя; остальные 16
+// картинок — по DOM и currentSrc.
+// Кадры окна на низких окнах (glavnaya-okno-*.png) — там, где видна правка R2-S2 (полоса
+// арта 641–1024 без нижнего предела) и кадровка с привязкой к верху (R3-S2): на окнах
+// выше 682px правка ничего не меняет, и полные кадры её не показывают (R3-KR-2).
 async (page) => {
   const OUT = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-23-7thserpent-glavnaya/';
   const OKNA = [[1440, 900], [1280, 800], [1024, 768], [768, 1024], [390, 844]];
@@ -48,9 +57,26 @@ async (page) => {
     await osadka();
     const okno = await svetOf(await page.screenshot({ scale: 'css' }), g.art);
     await osadka();
+    const src = () => page.evaluate(() => [...document.images].map((i) => i.currentSrc));
+    const srcDo = await src();
     const full = await svetOf(await page.screenshot({ path: OUT + `glavnaya-${w}.png`, fullPage: true, scale: 'css' }), g.art);
-    log.push(`${w}x${h}: ${g.img}/${g.img} картинок, страница ${g.h}px, свет фонаря в арте: окно ${(okno * 100).toFixed(1)} %, полный кадр ${(full * 100).toFixed(1)} %`);
-    if (okno < 0.05 || full < 0.05) throw new Error('СТОП: на ' + w + ' арт не нарисован\n' + log.join('\n'));
+    const srcPosle = await src();
+    const podmena = srcDo.filter((s, i) => s !== srcPosle[i]).length;
+    log.push(`${w}x${h}: ${g.img}/${g.img} картинок, страница ${g.h}px, свет фонаря в арте: окно ${(okno * 100).toFixed(1)} %, полный кадр ${(full * 100).toFixed(1)} %, подмен кандидата ${podmena}`);
+    if (okno < 0.05 || full < 0.05 || podmena) throw new Error('СТОП: на ' + w + ' арт не нарисован или кандидат подменён\n' + log.join('\n'));
+  }
+  // Кадры окна на низких окнах (R3-KR-2) — первый экран, как у посетителя при scrollY = 0.
+  for (const [w, h] of [[667, 375], [844, 390], [1024, 600]]) {
+    await page.setViewportSize({ width: w, height: h });
+    const art = await page.evaluate(async () => {
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      const a = document.querySelector('.hero__art').getBoundingClientRect();
+      return { x: a.x, y: a.y, w: a.width, h: a.height };
+    });
+    await osadka();
+    const okno = await svetOf(await page.screenshot({ path: OUT + `glavnaya-okno-${w}x${h}.png`, scale: 'css' }), art);
+    log.push(`окно ${w}x${h}: полоса арта ${Math.round(art.h)}px, свет фонаря ${(okno * 100).toFixed(1)} %`);
+    if (okno < 0.05) throw new Error('СТОП: на окне ' + w + 'x' + h + ' арт не нарисован\n' + log.join('\n'));
   }
   return log.join('\n');
 }

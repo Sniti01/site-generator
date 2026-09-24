@@ -1,0 +1,34 @@
+---
+/**
+ * Пауза главной — реплика Макса (сессия 9, П79). Механизм полосы — ядра:
+ * `@factory/core/blocks/BandQuote.astro` (смена среды, свечение фонаря,
+ * волосы сверху и снизу, узкая мера). Здесь — слова и приём графической
+ * новеллы: реплика набрана в снежной плашке рассказчика, каждая строка —
+ * своя полоса снега (`box-decoration-break: clone`), тёмный текст — пара
+ * `bg` на `ink` в гейте контраста. Орнамента нет: полосу пересекает трассер.
+ *
+ * Цитата короткая, с игрой и главой (П67 п. 2); источник — в `src/data/home.ts`.
+ * Капслок роли `t-headline` на короткой реплике — как у полосы первого
+ * сайта; длинные цитаты — к пачке 0 (бэклог 57 п. 6).
+ */
+import BandQuote from '@factory/core/blocks/BandQuote.astro';
+import { quote } from '../data/home';
+---
+
+<BandQuote id="quote-title">
+  <Fragment slot="cytat"><span class="cytat">“{quote.text}”</span></Fragment>
+  <Fragment slot="tresc">{quote.source}</Fragment>
+</BandQuote>
+
+<style>
+  /* Высота строки больше, чем у роли (1.14): у каждой строки своя полоса
+     снега, и полоса следующей строки не должна ложиться на буквы предыдущей. */
+  .cytat {
+    line-height: 1.6;
+    padding: var(--space-3xs) var(--space-xs);
+    background: var(--ink);
+    color: var(--bg);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+</style>

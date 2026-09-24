@@ -1,34 +1,102 @@
 ---
 /**
- * Главная — временная страница каркаса (сессия 3, П62).
+ * Главная (сессия 9, П79): «Трасса пули» — серия по порядку как траектория
+ * одной пули. Ритм: первый экран → трасса (Max Payne → Max Payne 2 →
+ * пауза-реплика → Max Payne 3 → ремейк) → лента страниц вокруг игр →
+ * игры по порядку → каталог → призыв → подвал. Стороны кадра у соседних
+ * рядов зеркальны, среда меняется каждые одну-две секции (`band`).
  *
- * Заголовок и описание здесь литералы, а не `getPage('/')` из структуры:
- * при пустом дереве (`pages: []`) страницы `/` в `structure.json` нет, и
- * `getPage` бросил бы. Это временное отступление от П24 п. 3; с деревом S2
- * страница читает h1/title/description из структуры, как первый сайт.
- *
- * Ровно один <h1> на странице печатает страница (ROLES.md §1) — это
- * проверяет сторож `after-build` ядра на каждой сборке.
+ * Страница — свой шаблон, как главная первого сайта (П32 п. 4): маршрута
+ * `[...slug]` у второго сайта ещё нет (пачка 0, бэклог 54 п. 9). У маршрута
+ * берутся две вещи: поля SEO и `h1` — из структуры (П24 п. 3), и сверка
+ * «`blocks[]` равен напечатанному» — той же конструкцией, что у первого
+ * сайта. Разошлись — сборка падает.
  */
 import Base from '../layouts/Base.astro';
-import { site } from '../data/site';
+import HomeHero from '../components/HomeHero.astro';
+import HomeTrack from '../components/HomeTrack.astro';
+import GameRow from '../components/GameRow.astro';
+import NightQuote from '../components/NightQuote.astro';
+import ReadNext from '../components/ReadNext.astro';
+import GamesInOrder from '../components/GamesInOrder.astro';
+import SiteIndex from '../components/SiteIndex.astro';
+import StartBand from '../components/StartBand.astro';
+import slownik from '@factory/core/structure/blocks.json';
+import { getPage } from '../lib/structure';
+import { rows, readNext, inOrder, catalog, kluczeGlownej } from '../data/home';
+
+const strona = getPage('/');
+const [mp1, mp2, mp3, remake] = rows;
+
+const gotowy = (imie: string) =>
+  Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
+const klucz = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
+const wystapienia = strona.blocks as { block: string; role?: string }[];
+const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(klucz);
+
+/**
+ * ЕСТЬ ЛИ ЧЕМ НАПОЛНИТЬ БЛОК — по предикату на имя, из данных главной
+ * (`src/data/home.ts`). Те же предикаты стоят в условиях печати ниже:
+ * список и печать считаются из одного источника и разойтись не могут.
+ */
+const maTresc: Record<string, (role?: string) => boolean> = {
+  'hero-key-art': () => true,
+  'story-row': () => rows.length > 0,
+  'band-quote': () => true,
+  'card-rail': () => readNext.cards.length > 0,
+  'link-list': (role) => role === 'games-in-order' && inOrder.items.length > 0,
+  'link-columns': () => catalog.groups.length > 0,
+  'cta-band': () => true,
+};
+
+/** Порядок печати ЭТОГО шаблона — первые вхождения блоков в разметке ниже.
+ *  `story-row` печатается четыре раза, разрезанный паузой; как блок
+ *  считается один раз, на месте первого ряда. */
+const PORYADOK = ['hero-key-art', 'story-row', 'band-quote', 'card-rail', 'link-list', 'link-columns', 'cta-band'];
+
+const pechat = PORYADOK.flatMap((imie) =>
+  wystapienia
+    .filter((b) => b.block === imie && gotowy(imie) && (maTresc[imie]?.(b.role) ?? false))
+    .map(klucz)
+);
+
+if (doZrobienia.join(',') !== pechat.join(',')) {
+  throw new Error(
+    `blocks[] и печать разошлись на ${strona.url}.\n` +
+      `  структура объявляет и ядро умеет: ${doZrobienia.join(', ') || '—'}\n` +
+      `  шаблон напечатает:                 ${pechat.join(', ') || '—'}\n` +
+      'Поправьте данные, шаблон или структуру — но не оставляйте расхождения.'
+  );
+}
+
+const est = (imie: string) => pechat.some((k) => k === imie || k.startsWith(`${imie}#`));
 ---
 
-<Base title={`${site.name} — ${site.tagline}`} description="An unofficial fan site about the Max Payne games. Under construction.">
-  <section class="section">
-    <div class="container">
-      <h1 class="t-headline">An unofficial Max Payne fan site</h1>
-      <p class="t-lead measure">
-        An unofficial fan site about the Max Payne games, written from a player's point of view.
-        Under construction.
-      </p>
-    </div>
-  </section>
-</Base>
+<Base title={strona.title} description={strona.description} klucze={kluczeGlownej}>
+  {est('hero-key-art') && <HomeHero h1={strona.h1} />}
 
-<style>
-  .t-lead {
-    margin-top: var(--space-md);
-    color: var(--ink-muted);
+  {
+    est('story-row') && (
+      <HomeTrack>
+        <GameRow row={mp1} flip={false} band={false} />
+        <GameRow row={mp2} flip={true} band={true} />
+        {est('band-quote') && <NightQuote />}
+        <GameRow row={mp3} flip={false} band={false} />
+        <GameRow row={remake} flip={false} band={true} />
+      </HomeTrack>
+    )
   }
-</style>
+
+  {est('card-rail') && <ReadNext />}
+
+  {
+    est('link-list#games-in-order') && (
+      <div class="band">
+        <GamesInOrder />
+      </div>
+    )
+  }
+
+  {est('link-columns') && <SiteIndex />}
+  {est('cta-band') && <StartBand />}
+</Base>

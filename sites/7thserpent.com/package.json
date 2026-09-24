@@ -27,7 +27,8 @@
     "anatomy:selftest": "node tools/anatomy-s3.mjs --selftest",
     "tree": "node tools/build-tree.mjs",
     "tree:check": "node tools/build-tree.mjs --dry-run",
-    "tree:selftest": "node tools/build-tree.mjs --selftest"
+    "tree:selftest": "node tools/build-tree.mjs --selftest",
+    "gameart": "node tools/fetch-game-art.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

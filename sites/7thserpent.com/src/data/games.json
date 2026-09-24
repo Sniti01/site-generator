@@ -1,0 +1,108 @@
+{
+  "_": "Материалы издателя со Steam для главной (П79 п. 3): игра → appid, выбранные скриншоты по индексу и хешу ss, ключевой арт первого экрана. Выбор кадров — глазами по контактным листам (docs/reports/2026-09-23-7thserpent-glavnaya/voprosy/), отсев — интерфейс игры в кадре (MP1 [7] — прицел на полу, MP1 [8] — прицел). Поле opis идёт в alt: что на кадре, без утверждений сверх видимого. Список скриншотов игры: npm run gameart -- --shots <slot>.",
+  "hero": {
+    "slot": "hero",
+    "appid": 12140,
+    "name": "Max Payne",
+    "asset": "library_hero",
+    "opis": "key art: Max’s stencil silhouette with a pistol on a brick wall, in a single pool of light"
+  },
+  "games": [
+    {
+      "slot": "mp1",
+      "appid": 12140,
+      "name": "Max Payne",
+      "zrzuty": [
+        {
+          "i": 13,
+          "ss": "0000003269",
+          "opis": "Max runs down a snow-covered New York street at night, past police barricades and an NYPD mobile arrest bus"
+        },
+        {
+          "i": 14,
+          "ss": "0000003270",
+          "opis": "Max aims a pistol at the camera on the same snowy street, the police bus behind him"
+        },
+        {
+          "i": 9,
+          "ss": "0000003265",
+          "opis": "Max dives sideways through a subway station, firing a pistol in mid-air"
+        },
+        {
+          "i": 12,
+          "ss": "0000003268",
+          "opis": "close-up of Max firing two pistols on a subway platform"
+        },
+        {
+          "i": 5,
+          "ss": "0000003261",
+          "opis": "Max runs along a subway platform toward a man aiming a gun at him"
+        },
+        {
+          "i": 11,
+          "ss": "0000003267",
+          "opis": "Max fires two pistols in a subway station, a muzzle flash in the foreground"
+        }
+      ]
+    },
+    {
+      "slot": "mp2",
+      "appid": 12150,
+      "name": "Max Payne 2: The Fall of Max Payne",
+      "zrzuty": [
+        {
+          "i": 0,
+          "ss": "0000003271",
+          "opis": "Max fires a pistol on a rainy night street beside a street lamp, debris flying from an explosion"
+        },
+        {
+          "i": 3,
+          "ss": "0000003274",
+          "opis": "Max raises a sawed-off shotgun in a night alley under a Dead End sign, fires burning behind him"
+        },
+        {
+          "i": 1,
+          "ss": "0000003272",
+          "opis": "Max and Mona Sax side by side, both armed"
+        },
+        {
+          "i": 2,
+          "ss": "0000003273",
+          "opis": "Max dives past a warehouse wall firing a pistol, spent casings in the air"
+        }
+      ]
+    },
+    {
+      "slot": "mp3",
+      "appid": 204100,
+      "name": "Max Payne 3",
+      "zrzuty": [
+        {
+          "i": 15,
+          "ss": "482c837ea8912f750f17abccee94d033d619bb4b",
+          "opis": "Max, bald and bearded, in a tropical shirt above a São Paulo favela"
+        },
+        {
+          "i": 4,
+          "ss": "649a56eff153bd1ffe46795f5f20775b3625f96f",
+          "opis": "Max in a suit holding two pistols, sparks falling around him"
+        },
+        {
+          "i": 13,
+          "ss": "e35354a1d273eb08e000a59f05c6b31d80988006",
+          "opis": "close-up of Max aiming a pistol against a grey sky"
+        },
+        {
+          "i": 6,
+          "ss": "6a62487932b5cba0f0190a4dc552b3cb38e19028",
+          "opis": "Max in green light, a submachine gun raised beside his face"
+        },
+        {
+          "i": 10,
+          "ss": "f528ddad282ad3dee6d7819842dd9b0c0d948be8",
+          "opis": "Max in a white tank top firing two submachine guns in a warehouse"
+        }
+      ]
+    }
+  ]
+}

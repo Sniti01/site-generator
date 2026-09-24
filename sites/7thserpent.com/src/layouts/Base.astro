@@ -16,9 +16,12 @@ import SiteFooter from '../components/SiteFooter.astro';
 interface Props {
   title: string;
   description: string;
+  /** Ключи кадров издателя, показанных на странице, — подвал печатает ноту
+   *  об арте и класс лицензии только для них (сессия 9, П79 п. 3). */
+  klucze?: string[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, klucze = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -43,7 +46,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <main id="content">
       <slot />
     </main>
-    <SiteFooter />
+    <SiteFooter klucze={klucze} />
     <Grain />
   </body>
 </html>

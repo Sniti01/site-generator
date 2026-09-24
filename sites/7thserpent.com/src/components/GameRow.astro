@@ -1,0 +1,179 @@
+---
+/**
+ * Ряд игры на трассе главной (сессия 9, П79; «Трасса пули»). Механизм ряда —
+ * ядра: `@factory/core/blocks/StoryRow.astro` (секция, двухколонник,
+ * зеркальность, заголовок со связкой доступности, рамка кадра 21:13, ряд
+ * без кадра — одним столбцом). Здесь — то, что принадлежит витрине:
+ *
+ * - КАДР — СТРАНИЦА ГРАФИЧЕСКОЙ НОВЕЛЛЫ (ответ владельца «Панели и подписи»):
+ *   три панели из скриншотов одной игры, большая и две малые, между ними —
+ *   чёрные поля (фон рамки ядра). Рисованных панелей издателя нет — только
+ *   нарезка его скриншотов. Панели — `SmartImage` ядра, дуотон `.foto` сталью:
+ *   `--era: var(--accent-2)` на обёртке («Ночь и один фонарь»).
+ * - ПЛАШКА РАССКАЗЧИКА под кадром (место `tabliczka`): снег, тёмный текст —
+ *   пара `bg` на `ink` в гейте контраста.
+ * - ОТМЕТКА ТРАССЕРА (место `nadtytul`): год на линии трассера в поле
+ *   страницы. Это не надзаголовок: отметка выносится в поле абсолютным
+ *   положением и видна только там, где есть поле (от 1360px); под этой
+ *   шириной её нет, год несёт строка метаданных. Для чтеца — скрыта:
+ *   год уже есть в метаданных.
+ *
+ * `:global` — там, где правило выбирает элемент ядра (`.layer`, `.layer--flip`):
+ * форма `:global` на предке, как у таблички первого сайта (REUSE §1.1, сноска ⁸).
+ */
+import StoryRow from '@factory/core/blocks/StoryRow.astro';
+import SmartImage from '@factory/core/media/SmartImage.astro';
+import Icon from './Icon.astro';
+import { kadr } from '../data/media';
+import type { GameRow as Row } from '../data/home';
+
+interface Props {
+  row: Row;
+  flip: boolean;
+  band: boolean;
+}
+
+const { row, flip, band } = Astro.props;
+const panele = row.panels.map((klucz) => kadr(klucz));
+---
+
+<StoryRow title={row.title} titleId={`${row.id}-title`} id={row.id} flip={flip} band={band}>
+  <p class="trasa__metka t-label tabular" slot="nadtytul" aria-hidden="true">{row.year}</p>
+
+  <Fragment slot="meta">{row.meta}</Fragment>
+
+  <Fragment slot="body">{row.body}</Fragment>
+
+  <a class="btn-link t-button gra__link" href={row.href} slot="tresc">
+    {row.linkLabel}<Icon name="arrow-right" size={18} />
+  </a>
+
+  {
+    panele.length === 3 && (
+      <div class="panele" slot="kadr">
+        <SmartImage
+          class="panele__glowny"
+          src={panele[0].src}
+          alt={panele[0].alt}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 1024px) 60vw, 360px"
+          quality={72}
+        />
+        <SmartImage
+          src={panele[1].src}
+          alt={panele[1].alt}
+          widths={[320, 480]}
+          sizes="(max-width: 1024px) 38vw, 220px"
+          quality={72}
+        />
+        <SmartImage
+          src={panele[2].src}
+          alt={panele[2].alt}
+          widths={[320, 480]}
+          sizes="(max-width: 1024px) 38vw, 220px"
+          quality={72}
+        />
+      </div>
+    )
+  }
+
+  {
+    row.caption && (
+      <p class="plashka t-title" slot="tabliczka">
+        {row.caption}
+      </p>
+    )
+  }
+</StoryRow>
+
+<style>
+  /* Страница новеллы: большая панель во всю высоту, две малые стопкой.
+     Поля — зазор сетки поверх фона рамки ядра (`--bg`); у зеркального ряда
+     страница зеркальна целиком — большая панель и там у колонки текста. */
+  .panele {
+    --era: var(--accent-2);
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+    gap: var(--space-2xs);
+    height: 100%;
+    padding: var(--space-2xs);
+  }
+
+  .panele :global(.panele__glowny) {
+    grid-row: 1 / -1;
+  }
+
+  :global(.layer--flip) .panele {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
+  }
+
+  :global(.layer--flip) .panele :global(.panele__glowny) {
+    grid-column: 2;
+  }
+
+  /* Плашка рассказчика: снег под тёмным текстом, край — ночь страницы.
+     Заходит на кадр снизу, как подпись на странице новеллы. */
+  .plashka {
+    position: relative;
+    z-index: 1;
+    width: fit-content;
+    max-width: 22rem;
+    margin-top: calc(var(--space-xl) * -1);
+    margin-inline-start: var(--space-lg);
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--ink);
+    color: var(--bg);
+    border-radius: var(--radius-none);
+    outline: var(--space-3xs) solid var(--bg);
+  }
+
+  :global(.layer--flip) .plashka {
+    margin-inline: auto var(--space-lg);
+  }
+
+  .gra__link {
+    margin-top: var(--space-lg);
+  }
+
+  /* Отметка трассера — в поле страницы, на линии `.trasa` (HomeTrack.astro):
+     та же координата `--trasa-x`, статическое положение по вертикали —
+     у заголовка ряда. Узел — квадрат фонаря на линии. */
+  .trasa__metka {
+    display: none;
+  }
+
+  @media (min-width: 1360px) {
+    .trasa__metka {
+      position: absolute;
+      left: calc(var(--trasa-x) + var(--space-sm));
+      display: block;
+      margin-top: calc(var(--space-3xs) * -1);
+      color: var(--accent-text);
+    }
+
+    .trasa__metka::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: calc(var(--space-sm) * -1 - var(--space-3xs));
+      width: var(--space-2xs);
+      height: var(--space-2xs);
+      background: var(--accent);
+      transform: translateY(-50%) rotate(45deg);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    :global(.layer--flip) .plashka {
+      margin-inline: var(--space-md) auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .plashka,
+    :global(.layer--flip) .plashka {
+      margin-inline: var(--space-sm) auto;
+    }
+  }
+</style>

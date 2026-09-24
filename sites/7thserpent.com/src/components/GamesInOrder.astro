@@ -1,0 +1,13 @@
+---
+/**
+ * «The games in order» — `link-list#games-in-order` главной (роль из
+ * `structure.json`, `source: manual`). Механизм — ядра:
+ * `@factory/core/blocks/LinkList.astro` с заголовком печатает свою секцию.
+ * Сюда ведёт залитая кнопка первого экрана (`#games-in-order` — id
+ * заголовка); порядок — выхода игр, приписка — месяц и год (§2 сайта).
+ */
+import LinkList from '@factory/core/blocks/LinkList.astro';
+import { inOrder } from '../data/home';
+---
+
+<LinkList items={inOrder.items} title={inOrder.title} titleId="games-in-order" />

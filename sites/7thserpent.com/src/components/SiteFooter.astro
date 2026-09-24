@@ -4,37 +4,91 @@
  * `<SiteFooter />`, а данные колонок, знак, фраза и весь низ подвала жили
  * по эту сторону границы. Шасси — в ядре: `@factory/core/chrome/SiteFooter.astro`.
  *
- * Низ подвала — правовая полоса — здесь целиком, вместе со своими правилами
- * (потомковый селектор требует скрута на обоих элементах, см. шапку ядра).
+ * Низ подвала — нота об арте и правовая полоса — здесь целиком, вместе со
+ * своими правилами (потомковый селектор требует скрута на обоих элементах,
+ * см. шапку ядра).
+ *
+ * АРТ ИЗДАТЕЛЯ (сессия 9, П79 п. 3): нота и строка класса лицензии — как
+ * у первого сайта (П42, П57 п. 1–2): печатаются только для кадров, которые
+ * показывает эта страница (`klucze` из `Base.astro`); нет кадров — нет
+ * и ноты. Класс лицензии — из записей `game-art.json`, не из головы.
  *
  * Дисклеймер — по PRODUCT.md «Юридическое ограничение фан-сайтов»: сайт
- * неофициальный, без идентики издателя. Имён компаний и класса лицензии на
- * кадры здесь нет намеренно: они появляются вместе с артом и «да» владельца
- * на класс лицензии (сессия арта), а не из головы.
+ * неофициальный, без идентики издателя.
  */
 import CoreSiteFooter from '@factory/core/chrome/SiteFooter.astro';
-import { site, nav } from '../data/site';
+import { site, footerColumns } from '../data/site';
+import { credits } from '../data/media';
 
-const columns = [{ title: 'Site', links: nav }];
+interface Props {
+  /** Ключи кадров, показанных на этой странице; пусто — нота об арте не печатается. */
+  klucze: string[];
+}
+
+const { klucze } = Astro.props;
+const uzyte = new Set(klucze);
+const wpisy = Object.entries(credits)
+  .filter(([klucz]) => uzyte.has(klucz))
+  .map(([, wpis]) => wpis);
+const gry = [...new Set(wpisy.map((wpis) => wpis.game))];
+const klasy = [...new Set(wpisy.map((wpis) => wpis.license).filter(Boolean))];
 ---
 
-<CoreSiteFooter columns={columns}>
+<CoreSiteFooter columns={footerColumns}>
   <span slot="znak" class="t-title">{site.name}</span>
-  <Fragment slot="pitch">{site.tagline}. Written from a player's point of view.</Fragment>
+  <Fragment slot="pitch">{site.tagline}. Written from a player’s point of view.</Fragment>
 
-  <div slot="dol" class="ft__legal">
-    <div class="container ft__legal-inner">
-      <p class="t-caption">
-        Unofficial fan site, not affiliated with or endorsed by the publisher or developer of the
-        games. Game titles belong to their owners and are used only to describe what these pages
-        are about. No publisher logos, typefaces or colours.
-      </p>
-      <p class="t-caption ft__copy tabular">© 2026 {site.name}</p>
+  <Fragment slot="dol">
+    {
+      gry.length > 0 && (
+        <div class="ft__art">
+          <div class="container">
+            <h2 class="ft__art-title t-label">Artwork</h2>
+            <p class="ft__art-note t-caption">
+              Key art and screenshots come from the games’ Steam store pages and remain the property of
+              Rockstar Games. They are used solely to identify the games in the series that the site’s
+              pages are about, cropped and toned to the site’s colors; the site does not use the
+              publisher’s logos in its own identity. Games: {gry.join(', ')}.
+            </p>
+            {klasy.length > 0 && <p class="ft__art-note t-caption">License class: {klasy.join('; ')}.</p>}
+          </div>
+        </div>
+      )
+    }
+
+    <div class="ft__legal">
+      <div class="container ft__legal-inner">
+        <p class="t-caption">
+          Unofficial fan site, not affiliated with or endorsed by the publisher or developer of the
+          games. Game titles belong to their owners and are used only to describe what these pages
+          are about. No publisher logos, typefaces or colors.
+        </p>
+        <p class="t-caption ft__copy tabular">© 2026 {site.name}</p>
+      </div>
     </div>
-  </div>
+  </Fragment>
 </CoreSiteFooter>
 
 <style>
+  .ft__art {
+    border-top: 1px solid var(--hairline);
+    padding-block: var(--space-lg);
+    color: var(--ink-muted);
+  }
+
+  .ft__art-title {
+    color: var(--ink);
+  }
+
+  .ft__art-note {
+    max-width: 96ch;
+    margin-top: var(--space-md);
+  }
+
+  .ft__art-note + .ft__art-note {
+    margin-top: var(--space-2xs);
+  }
+
   .ft__legal {
     border-top: 1px solid var(--hairline);
   }

@@ -1,0 +1,59 @@
+---
+/**
+ * Лента главной — страницы вокруг игр (сессия 9, П79). Механизм — ядра:
+ * `@factory/core/blocks/CardRail.astro` (заголовок, стрелки, дорожка со
+ * снапом, скрипт). Здесь — данные карточек: заголовок и вид — из структуры
+ * (`getPage` роняет сборку на адресе мимо дерева), кадр — материал издателя
+ * (`src/data/media.ts`), дуотоном сталью, как у рядов.
+ *
+ * Правило палитры — `:global`: `<li>` печатает ядро, и обычная запись
+ * получила бы скрут этого файла (REUSE §1.1, сноска ⁶).
+ */
+import CardRail from '@factory/core/blocks/CardRail.astro';
+import Icon from './Icon.astro';
+import { readNext } from '../data/home';
+import { getPage } from '../lib/structure';
+import { kadr } from '../data/media';
+
+/** Вид страницы словом — по типу контракта (П26). */
+const vid: Record<string, string> = { topic: 'Topic', guide: 'Guide', game: 'Game' };
+
+const cards = readNext.cards.map((card) => {
+  const strona = getPage(card.href);
+  const k = kadr(card.kadr);
+  return {
+    href: card.href,
+    title: strona.h1,
+    kind: vid[strona.type] ?? strona.type,
+    place: card.place,
+    modifier: 'rail-sec__item--stal',
+    media: { src: k.src, alt: k.alt, quality: 70 },
+  };
+});
+---
+
+<CardRail
+  cards={cards}
+  title={readNext.title}
+  titleId="around-title"
+  lead={readNext.lead}
+  trackLabel="Pages around the series, scrolling horizontally"
+  prevLabel="Previous cards"
+  nextLabel="Next cards"
+>
+  <Icon slot="ikona-wstecz" name="arrow-left" size={20} />
+  <Icon slot="ikona-dalej" name="arrow-right" size={20} />
+</CardRail>
+
+<style>
+  :global(.rail-sec__item--stal) {
+    --era: var(--accent-2);
+  }
+
+  /* Разделитель «·» ядро ставит перед видом страницы, потому что у ленты
+     первого сайта перед ним стоит дата. У карточек главной даты нет — вид
+     идёт первым, и точка перед ним повисла бы. */
+  :global(.rail-sec__meta > .rail-sec__kind:first-child)::before {
+    content: none;
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+/**
+ * Полоса призыва главной (сессия 9, П79). Механизм — ядра:
+ * `@factory/core/blocks/CtaBand.astro` (полная ширина, обязательный скрим,
+ * колонка по центру, одна залитая кнопка). Здесь — слова, адрес и арт:
+ * скриншот Max Payne [11] — Макс стреляет в метро, вспышка выстрела слева,
+ * центр кадра под текстом тёмный; дуотон сталью, как у рядов. Кадр декора:
+ * `alt=""`, слова полосы его не описывают. (Фон витрины Steam, стоявший
+ * здесь в первой сборке сессии, под скримом не читался вовсе — снят.)
+ *
+ * Правило арта — у витрины вместе с артом (прецедент `cta-band`, REUSE §1.1),
+ * через обёртку `.start` и `:global`: `.foto` печатает `SmartImage` ядра.
+ * Скрим — тот же оверрайд, что у первого экрана (`HomeHero.astro`): доли ядра,
+ * цвет — от токена `--bg`, а не литерал первого сайта (бэклог 56 п. 2).
+ */
+import CtaBand from '@factory/core/blocks/CtaBand.astro';
+import SmartImage from '@factory/core/media/SmartImage.astro';
+import Icon from './Icon.astro';
+import { start } from '../data/home';
+import { kadr } from '../data/media';
+
+const art = kadr('mp1-k11');
+---
+
+<div class="start">
+  <CtaBand title={start.title} lead={start.lead} href={start.href} label={start.label} id="start-title">
+    <SmartImage
+      slot="art"
+      class="cta__art"
+      src={art.src}
+      alt=""
+      widths={[960, 1440]}
+      sizes="100vw"
+      quality={62}
+    />
+    <Icon slot="akcja" name="arrow-right" size={18} />
+  </CtaBand>
+</div>
+
+<style>
+  .start {
+    --era: var(--accent-2);
+  }
+
+  .start :global(.cta__art) {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .start :global(.cta__scrim) {
+    background: linear-gradient(
+      0deg,
+      color-mix(in srgb, var(--bg) 90%, transparent) 0 32%,
+      color-mix(in srgb, var(--bg) 55%, transparent) 100%
+    );
+  }
+</style>

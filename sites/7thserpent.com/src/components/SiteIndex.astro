@@ -1,0 +1,17 @@
+---
+/**
+ * Каталог главной — все страницы дерева волны 1 по предмету (сессия 9, П79).
+ * Механизм сетки — ядра: `@factory/core/blocks/LinkColumns.astro`; группы
+ * и их подписи — `src/data/home.ts` (надписи ссылок — `h1` структуры).
+ * `<style>` здесь нет и не должно быть: правила `.stack*` выбирают элементы
+ * ядра.
+ */
+import LinkColumns from '@factory/core/blocks/LinkColumns.astro';
+import Icon from './Icon.astro';
+import { catalog } from '../data/home';
+---
+
+<LinkColumns id="catalog" titleId="catalog-title" groups={catalog.groups} title={catalog.title} label={catalog.label} href={catalog.href}>
+  <Fragment slot="lead">{catalog.lead}</Fragment>
+  <Icon slot="akcja" name="arrow-right" size={18} />
+</LinkColumns>

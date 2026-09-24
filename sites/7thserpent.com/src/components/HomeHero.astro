@@ -1,0 +1,183 @@
+---
+/**
+ * Первый экран главной (сессия 9, П79; направление «Трасса пули»). Механизм
+ * экрана — ядра: `@factory/core/blocks/HeroKeyArt.astro` (секция, скрим,
+ * колонка текста, две кнопки), полоса чипов — `ChipNav.astro`, кадр —
+ * `SmartImage.astro`. Здесь — то, что принадлежит витрине: арт, слова,
+ * адреса, снег и три посайтовых оверрайда вида ядра.
+ *
+ * АРТ — КЛЮЧЕВОЙ АРТ MAX PAYNE (2001) СО STEAM (ответ владельца, дополнение
+ * к П79): трафаретный силуэт Макса на кирпичной стене. Дуотон ядра `.foto`
+ * красит света `--era`, а у сайта без эпох `--era` = `--accent` (ROLES.md
+ * §2): белый прямоугольник на стене становится натриевым фонарём — единственным
+ * тёплым светом страницы («Ночь и один фонарь»). Рядам — сталь.
+ *
+ * СНЕГ — ЗАМЕРШИЙ: слой точек в режиме `overlay` поверх арта. Overlay тёмное
+ * оставляет тёмным, светлое светлит — хлопья видны только в свете фонаря,
+ * в темноте их нет. Неподвижен намеренно: время остановилось, как в bullet
+ * time; движение страницы одно — трассер рядов. Декор: `aria-hidden`, под
+ * колонкой текста (та несёт `z-index: 1` ядра).
+ *
+ * ТРИ ОВЕРРАЙДА ЯДРА, все — через обёртку `.noc` и `:global` на потомке
+ * (специфичность 0,3,0 против 0,2,0 правила ядра со скрутом):
+ * 1. Скрим — от токена фона. Ядро кладёт литерал `rgb(13 12 10 / α)` —
+ *    тёплую почти-черноту первого сайта (бэклог 56 п. 2); здесь те же доли
+ *    через `color-mix` от `--bg`, иначе левая треть героя теплее страницы.
+ *    Правка ядра — вне объёма (П79), это оверрайд витрины.
+ * 2. Кадровка арта: `object-position` — силуэт в правой трети окна
+ *    и не под текстом (замер — в докладе сессии).
+ * 3. Больше ничего: геометрия, кнопки и обрушение на телефоне — ядра.
+ */
+import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
+import ChipNav from '@factory/core/blocks/ChipNav.astro';
+import SmartImage from '@factory/core/media/SmartImage.astro';
+import Icon from './Icon.astro';
+import { kadr } from '../data/media';
+import { hero, rows } from '../data/home';
+
+interface Props {
+  /** `h1` страницы — из структуры (П24 п. 3), печатает витрина (бэклог 23). */
+  h1: string;
+}
+
+const { h1 } = Astro.props;
+const art = kadr('hero');
+
+/*
+  Ширины сверх 100vw намеренны (правило `sizes` первого сайта, DESIGN.md
+  «Photography»): панель героя почти квадратная, баннер — 3:1, и при
+  `object-fit: cover` браузеру нужна ширина около высоты × 3,1.
+*/
+const heroSizes = '(max-width: 1024px) 200vw, 170vw';
+---
+
+<div class="noc">
+  <HeroKeyArt
+    titleId="hero-title"
+    primaryHref="#games-in-order"
+    primaryLabel={hero.primaryLabel}
+    secondaryHref={hero.secondaryHref}
+    secondaryLabel={hero.secondaryLabel}
+  >
+    <h1 class="hero__title t-headline" id="hero-title" slot="tytul">{h1}</h1>
+
+    <SmartImage
+      slot="art"
+      src={art.src}
+      alt={art.alt}
+      widths={[1200, 1600, 2400, 3200]}
+      sizes={heroSizes}
+      loading="eager"
+      quality={80}
+    />
+
+    <Fragment slot="lead">{hero.lead}</Fragment>
+
+    <Icon slot="ikona-glowna" name="arrow-down" size={18} />
+
+    <ChipNav
+      slot="nawigacja"
+      label={hero.chipsLabel}
+      chips={rows.map((row) => ({
+        href: `#${row.id}`,
+        title: row.year,
+        meta: row.title.replace(': The Fall of Max Payne', ''),
+      }))}
+    />
+
+    <div class="snieg" slot="dopisek" aria-hidden="true"></div>
+  </HeroKeyArt>
+</div>
+
+<style>
+  /* 1. Скрим от токена фона — доли ядра, цвет сайта. */
+  .noc :global(.hero__scrim) {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--bg) 96%, transparent) 0 30%,
+        color-mix(in srgb, var(--bg) 74%, transparent) 52%,
+        color-mix(in srgb, var(--bg) 12%, transparent) 78%,
+        transparent 100%
+      ),
+      linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
+  }
+
+  /* 2. Кадровка: силуэт правее колонки текста. */
+  .noc :global(.hero__art .foto img) {
+    object-position: 55% 50%;
+  }
+
+  .snieg {
+    position: absolute;
+    inset: 0 0 0 32%;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    /* Три слоя хлопьев с разным шагом (простые числа), чтобы узор
+       не читался плиткой; мягкий край — вместо размытия. */
+    background-image:
+      radial-gradient(circle at 23px 41px, rgb(229 234 238 / 0.95) 0 1.6px, transparent 2.4px),
+      radial-gradient(circle at 131px 17px, rgb(229 234 238 / 0.8) 0 1px, transparent 1.6px),
+      radial-gradient(circle at 89px 173px, rgb(229 234 238 / 0.9) 0 1.3px, transparent 2px),
+      radial-gradient(circle at 197px 109px, rgb(229 234 238 / 0.7) 0 0.9px, transparent 1.5px),
+      radial-gradient(circle at 61px 257px, rgb(229 234 238 / 0.85) 0 2.2px, transparent 3.4px),
+      radial-gradient(circle at 311px 83px, rgb(229 234 238 / 0.75) 0 1.1px, transparent 1.8px),
+      radial-gradient(circle at 263px 331px, rgb(229 234 238 / 0.9) 0 1.8px, transparent 2.8px),
+      radial-gradient(circle at 157px 389px, rgb(229 234 238 / 0.65) 0 0.8px, transparent 1.4px),
+      radial-gradient(circle at 419px 227px, rgb(229 234 238 / 0.8) 0 2.8px, transparent 4.4px),
+      radial-gradient(circle at 373px 461px, rgb(229 234 238 / 0.7) 0 1.2px, transparent 1.9px);
+    background-size:
+      241px 283px,
+      241px 283px,
+      241px 283px,
+      241px 283px,
+      373px 409px,
+      373px 409px,
+      373px 409px,
+      373px 409px,
+      557px 523px,
+      557px 523px;
+  }
+
+  @media (max-width: 1024px) {
+    /* Ядро на этой ширине сдвигает арт влево (`inset: 0 -20% 0 20%`), и свет
+       на стене подходит под конец лида: плотная часть скрима шире, чем у ядра
+       (замер контраста — в докладе сессии). */
+    .noc :global(.hero__scrim) {
+      background:
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--bg) 96%, transparent) 0 40%,
+          color-mix(in srgb, var(--bg) 88%, transparent) 64%,
+          color-mix(in srgb, var(--bg) 30%, transparent) 84%,
+          transparent 100%
+        ),
+        linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
+    }
+
+    .snieg {
+      inset: 0 -20% 0 20%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .noc :global(.hero__scrim) {
+      background: linear-gradient(
+        0deg,
+        var(--bg) 0 6%,
+        color-mix(in srgb, var(--bg) 55%, transparent) 34%,
+        transparent 72%
+      );
+    }
+
+    .noc :global(.hero__art .foto img) {
+      object-position: 72% 50%;
+    }
+
+    .snieg {
+      inset: 0 0 auto;
+      height: 40vh;
+      min-height: 260px;
+    }
+  }
+</style>

@@ -12,6 +12,9 @@ import { getPage } from '../lib/structure';
 
 export const site = {
   name: '7thserpent.com',
+  /** Видимое имя знака «Семёрка из трассы» (сессия 11, П83): «7 TH / SERPENT».
+   *  Стоит первым в подписи ссылки знака (WCAG 2.5.3) и в имени знака подвала. */
+  znak: '7th Serpent',
   tagline: 'An unofficial Max Payne fan site',
   lang: 'en',
 };

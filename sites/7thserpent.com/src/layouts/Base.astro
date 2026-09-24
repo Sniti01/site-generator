@@ -4,9 +4,17 @@
  * шапка и подвал ядра, единственный <main>; зерно ядра `Grain` поверх всей
  * страницы — после подвала, как у первого сайта (сессия 8, П74 п. 1).
  *
+ * Иконки сайта (сессия 11, П83 и дополнение) — из знака «Семёрка из трассы»:
+ * файлы в `public/` пишет `tools/znak.mjs` из `src/data/znak.json` и токенов
+ * (`npm run znak`; `npm run znak:check` сверяет файлы и эти ссылки). Chromium
+ * берёт `favicon.svg` при любом порядке ссылок (проверено на Chromium 151,
+ * с окном и без); `favicon.ico` помечен `sizes="32x32"`, чтобы браузер,
+ * читающий размеры, не предпочёл его SVG. PNG — запасные для браузеров без
+ * SVG-иконок, 192 — ярлык Android, `apple-touch-icon` — домашний экран iOS.
+ *
  * Чего здесь ещё нет — и это решение, не пропуск: крошек и `BreadcrumbList`
  * (`getBreadcrumbs` бросает при `pages: []` — приходят вместе с деревом S2),
- * иконки сайта (`public/` — сессия публикации), JSON-LD страницы.
+ * JSON-LD страницы.
  */
 import '../styles/global.css';
 import Grain from '@factory/core/effects/Grain.astro';
@@ -34,6 +42,12 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical.href} />
     <meta name="theme-color" content="#090c11" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
+    <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

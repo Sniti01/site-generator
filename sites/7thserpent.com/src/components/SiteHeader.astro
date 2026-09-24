@@ -9,16 +9,19 @@
  * Формы поиска нет намеренно: `searchAction` в ядре необязателен, без адреса
  * нет обеих форм; поиск приходит со своей страницей.
  *
- * Знак — текст в роли `.t-title` до сессии темы (7): собственная символика
- * сайта не может стоять на символике издателя (PRODUCT.md), а своя ещё
- * не нарисована.
+ * Знак — собственный рисунок сайта «Семёрка из трассы» (сессия 11, П83
+ * и дополнение), `Znak.astro`; символика издателя под запретом (PRODUCT.md).
+ * В ссылке ядра рисунок немой, имя несёт подпись ссылки: видимое имя знака
+ * «7th Serpent» стоит в ней первым (WCAG 2.5.3 — видимая подпись входит
+ * в доступное имя), затем домен.
  */
 import CoreSiteHeader from '@factory/core/chrome/SiteHeader.astro';
+import Znak from './Znak.astro';
 import { site, nav } from '../data/site';
 ---
 
-<CoreSiteHeader items={nav} brandLabel={`${site.name} — home`} navLabel="Main" burgerLabel="Menu">
-  <span slot="znak" class="t-title">{site.name}</span>
+<CoreSiteHeader items={nav} brandLabel={`${site.znak} — ${site.name}, home`} navLabel="Main" burgerLabel="Menu">
+  <Znak slot="znak" />
   <svg slot="ikona-menu" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
     <path d="M3 6h18M3 12h18M3 18h18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
   </svg>

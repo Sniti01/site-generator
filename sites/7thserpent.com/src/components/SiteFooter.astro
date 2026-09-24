@@ -17,6 +17,7 @@
  * неофициальный, без идентики издателя.
  */
 import CoreSiteFooter from '@factory/core/chrome/SiteFooter.astro';
+import Znak from './Znak.astro';
 import { site, footerColumns } from '../data/site';
 import { credits } from '../data/media';
 
@@ -35,7 +36,7 @@ const klasy = [...new Set(wpisy.map((wpis) => wpis.license).filter(Boolean))];
 ---
 
 <CoreSiteFooter columns={footerColumns}>
-  <span slot="znak" class="t-title">{site.name}</span>
+  <Znak slot="znak" podpis={`${site.znak} — ${site.name}`} />
   <Fragment slot="pitch">{site.tagline}. Written from a player’s point of view.</Fragment>
 
   <Fragment slot="dol">

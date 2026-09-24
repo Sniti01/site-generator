@@ -28,7 +28,9 @@
     "tree": "node tools/build-tree.mjs",
     "tree:check": "node tools/build-tree.mjs --dry-run",
     "tree:selftest": "node tools/build-tree.mjs --selftest",
-    "gameart": "node tools/fetch-game-art.mjs"
+    "gameart": "node tools/fetch-game-art.mjs",
+    "znak": "node tools/znak.mjs",
+    "znak:check": "node tools/znak.mjs --check"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

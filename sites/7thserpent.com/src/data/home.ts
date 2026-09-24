@@ -16,6 +16,10 @@ import { getPage } from '../lib/structure';
 /** Адрес, проверенный структурой; возвращает его же. */
 const adres = (url: string) => getPage(url).url;
 
+/** Неразрывные пробелы внутри: дата и «1 & 2 Remake» не рвутся на переносе
+ *  (проверочный проход финального ревью, регрессия 2). */
+const nb = (s: string) => s.replace(/ /g, ' ');
+
 export interface GameRow {
   /** Якорь ряда и чипа первого экрана. */
   id: string;
@@ -47,7 +51,7 @@ export const rows: GameRow[] = [
     id: 'max-payne',
     year: '2001',
     title: 'Max Payne',
-    meta: 'Remedy Entertainment · Windows, July 25, 2001 · Metacritic 89 on PC',
+    meta: `Remedy Entertainment · Windows, ${nb('July 25, 2001')} · Metacritic 89 on PC`,
     body:
       'New York, 2001: three years after Max’s wife and daughter were killed, a drug called Valkyr leads ' +
       'back to a military project that Nicole Horne revived. Sam Lake wrote the story — and, with no budget ' +
@@ -61,7 +65,7 @@ export const rows: GameRow[] = [
     id: 'max-payne-2',
     year: '2003',
     title: 'Max Payne 2: The Fall of Max Payne',
-    meta: 'Remedy Entertainment · Windows, October 15, 2003 · Metacritic 86 on PC',
+    meta: `Remedy Entertainment · Windows, ${nb('October 15, 2003')} · Metacritic 86 on PC`,
     body:
       'Two years later, the story pulls in Mona Sax, Vladimir Lem and Senator Alfred Woden’s Inner Circle. ' +
       'There are two endings, and the second one is reached only on the hardest difficulty.',
@@ -74,7 +78,7 @@ export const rows: GameRow[] = [
     id: 'max-payne-3',
     year: '2012',
     title: 'Max Payne 3',
-    meta: 'Rockstar Studios · PS3 and Xbox 360, May 15, 2012 · Metacritic 87 on PC and PS3',
+    meta: `Rockstar Studios · PS3 and Xbox 360, ${nb('May 15, 2012')} · Metacritic 87 on PC and PS3`,
     body:
       'Nine years after the second game, Max is in São Paulo with the Branco family and his partner Raul ' +
       'Passos; along the way he shaves his head and quits drinking. Rockstar made this one — Remedy only ' +
@@ -87,8 +91,8 @@ export const rows: GameRow[] = [
   {
     id: 'remake',
     year: 'TBA',
-    title: 'Max Payne 1 & 2 Remake',
-    meta: 'Remedy Entertainment · PC, PlayStation 5, Xbox Series X|S · announced April 6, 2022',
+    title: `Max Payne ${nb('1 & 2 Remake')}`,
+    meta: `Remedy Entertainment · PC, PlayStation 5, Xbox Series X|S · announced ${nb('April 6, 2022')}`,
     body:
       'One game that remakes the first two, built by Remedy on its Northlight engine and funded and ' +
       'published by Rockstar Games. As of September 2026 it is still in development, and there is no ' +
@@ -138,7 +142,7 @@ export const inOrder = {
     { href: adres('/max-payne-2/'), title: 'Max Payne 2: The Fall of Max Payne', meta: 'October 2003' },
     { href: adres('/max-payne-1/'), title: 'Max Payne Mobile, the first game on iOS and Android', meta: 'April 2012' },
     { href: adres('/max-payne-3/'), title: 'Max Payne 3', meta: 'May 2012' },
-    { href: adres('/remake/'), title: 'Max Payne 1 & 2 Remake', meta: 'No date yet' },
+    { href: adres('/remake/'), title: `Max Payne ${nb('1 & 2 Remake')}`, meta: 'No date yet' },
   ],
 };
 

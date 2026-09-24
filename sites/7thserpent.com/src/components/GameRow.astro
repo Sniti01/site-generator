@@ -201,6 +201,15 @@ const panele = row.panels.map((klucz) => kadr(klucz));
     }
   }
 
+  /* На телефоне поле колонки узкое (16px), и ромб у первой строки заголовка
+     читался бы маркером списка, приклеенным к нему (проверочный проход ревью,
+     регрессия 1): узел уходит вверх, в воздух между рядами, на ту же линию. */
+  @media (max-width: 640px) {
+    .trasa__wezel {
+      translate: 0 calc(var(--section-y) / -2);
+    }
+  }
+
   @media (max-width: 1024px) {
     :global(.layer--flip) .plashka {
       margin-inline: var(--space-md) auto;

@@ -9,6 +9,8 @@
  *   node tools/fetch-game-art.mjs --dry-run     — показывает, что взял бы
  *   node tools/fetch-game-art.mjs --force       — перекачивает всё
  *   node tools/fetch-game-art.mjs --only mp1,hero
+ *                                  (по слоту: ключевой арт `<слот>-art` идёт
+ *                                  со своим слотом, отдельно не выбирается)
  *   node tools/fetch-game-art.mjs --shots mp2   — печатает все скриншоты
  *                                  игры с индексами и хешами, для выбора
  *   node tools/fetch-game-art.mjs --embed-only  — вшивает строку

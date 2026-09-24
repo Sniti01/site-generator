@@ -61,7 +61,10 @@ McCaffrey, Sam Lake, Remedy Entertainment — правки июня–сентя
 - **Мир:** первая игра — Нью-Йорк, действие в 2001 году, семья Макса
   (жена Michelle, дочь Rose) убита в 1998; наркотик **Valkyr** («V») —
   продукт военного проекта Valhalla, возобновлённого Nicole Horne (Aesir).
-  Вторая — через два года, Inner Circle сенатора Alfred Woden, Mona Sax,
+  Вторая — через два года, снова Нью-Йорк (Макс опять детектив NYPD —
+  статья Max Payne 2 корпуса: «Set two years after the events of the first
+  game… detective for the New York City Police Department»; дописано
+  2026-09-24, сессия 10), Inner Circle сенатора Alfred Woden, Mona Sax,
   Vladimir Lem; две концовки (вторая — на высшей сложности). Третья —
   через девять лет после второй, Сан-Паулу, семья Branco, напарник Raul
   Passos; Макс бреет голову и бросает пить по ходу игры.

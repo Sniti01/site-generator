@@ -22,13 +22,15 @@
  * (специфичность 0,3,0 против 0,2,0 правила ядра со скрутом):
  * 1. Скрим — от токена фона. Ядро кладёт литерал `rgb(13 12 10 / α)` —
  *    тёплую почти-черноту первого сайта (бэклог 56 п. 2); здесь те же доли
- *    через `color-mix` от `--bg`, иначе левая треть героя теплее страницы;
- *    до 1024px плотная часть шире. Правка ядра — вне объёма (П79), это
- *    оверрайд витрины.
+ *    через `color-mix` от `--bg`, иначе левая треть героя теплее страницы.
+ *    Правка ядра — вне объёма (П79), это оверрайд витрины.
  * 2. Кадровка арта: `object-position` — силуэт в правой трети окна
  *    и не под текстом (замер — в докладе сессии).
  * 3. Выход трассы у полосы отметок — псевдоэлементы `ChipNav` (ниже).
- * Геометрия, кнопки и обрушение на телефоне — ядра.
+ * 4. Раскладка средних ширин: от 1025px колонка текста не шире половины
+ *    окна, от 641 до 1024px первый экран складывается, как на телефоне
+ *    (ядро складывает только до 640px) — лид не ложится на свет стены.
+ * Геометрия кнопок и обрушение до 640px — ядра.
  */
 import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
 import ChipNav from '@factory/core/blocks/ChipNav.astro';
@@ -174,24 +176,58 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
       557px 523px;
   }
 
-  @media (max-width: 1024px) {
-    /* Ядро на этой ширине сдвигает арт влево (`inset: 0 -20% 0 20%`), и свет
-       на стене подходит под конец лида: плотная часть скрима шире, чем у ядра
-       (замер контраста — в докладе сессии). */
+  /* 4. Лид не на освещённой стене — на любой ширине («судью судят», сессия 9,
+     находка K1: замер по четырём ширинам пропустил провал до 1,3:1 на
+     641–1000 и 1025–1179px). От 1025px колонка текста не шире половины окна:
+     на 1440 это те же 720px ядра, уже — лид кончается левее света на стене
+     (прямоугольник света начинается около 62 % ширины). */
+  @media (min-width: 1025px) {
+    .noc :global(.hero__text) {
+      max-width: min(720px, 50vw);
+    }
+  }
+
+  /* От 641 до 1024px ядро сдвигает арт влево под колонку текста
+     (`inset: 0 -20% 0 20%`), а колонка занимает почти всю ширину — скрим
+     такой лид не спасает. Здесь первый экран складывается, как на телефоне
+     (ядро делает это только до 640px): арт полосой сверху, текст ниже на
+     ночи. Высота полосы — 44vh, на планшете арт виден целиком. */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .noc :global(.hero) {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .noc :global(.hero__art) {
+      position: relative;
+      inset: auto;
+      flex: none;
+      height: 44vh;
+      min-height: 300px;
+      opacity: 1;
+    }
+
     .noc :global(.hero__scrim) {
-      background:
-        linear-gradient(
-          90deg,
-          color-mix(in srgb, var(--bg) 96%, transparent) 0 40%,
-          color-mix(in srgb, var(--bg) 88%, transparent) 64%,
-          color-mix(in srgb, var(--bg) 30%, transparent) 84%,
-          transparent 100%
-        ),
-        linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
+      bottom: auto;
+      height: 44vh;
+      min-height: 300px;
+      background: linear-gradient(
+        0deg,
+        var(--bg) 0 6%,
+        color-mix(in srgb, var(--bg) 55%, transparent) 34%,
+        transparent 72%
+      );
+    }
+
+    .noc :global(.hero__inner) {
+      padding-block: var(--space-lg) var(--space-2xl);
     }
 
     .snieg {
-      inset: 0 -20% 0 20%;
+      inset: 0 0 auto;
+      height: 44vh;
+      min-height: 300px;
     }
   }
 

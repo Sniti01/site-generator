@@ -32,7 +32,11 @@ const gotowy = (imie: string) =>
   Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
 const klucz = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
 const wystapienia = strona.blocks as { block: string; role?: string }[];
+const pominiete = wystapienia.filter((b) => !gotowy(b.block)).map(klucz);
 const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(klucz);
+if (pominiete.length) {
+  console.log(`  ${strona.url} — блоки объявлены, но в ядре не реализованы: ${pominiete.join(', ')}`);
+}
 
 /**
  * ЕСТЬ ЛИ ЧЕМ НАПОЛНИТЬ БЛОК — по предикату на имя, из данных главной
@@ -42,7 +46,10 @@ const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(klucz);
 const maTresc: Record<string, (role?: string) => boolean> = {
   'hero-key-art': () => true,
   'story-row': () => rows.length > 0,
-  'band-quote': () => true,
+  // Пауза стоит на трассе между рядами (печатается внутри `HomeTrack`), поэтому
+  // без рядов её негде напечатать — и сверка обязана это увидеть («судью
+  // судят», сессия 9, находка C2): без рядов «band-quote» из печати выпадает.
+  'band-quote': () => rows.length > 0 && wystapienia.some((b) => b.block === 'story-row'),
   'card-rail': () => readNext.cards.length > 0,
   'link-list': (role) => role === 'games-in-order' && inOrder.items.length > 0,
   'link-columns': () => catalog.groups.length > 0,
@@ -61,10 +68,14 @@ const pechat = PORYADOK.flatMap((imie) =>
 );
 
 if (doZrobienia.join(',') !== pechat.join(',')) {
+  const brakujace = doZrobienia.filter((k) => !pechat.includes(k));
   throw new Error(
     `blocks[] и печать разошлись на ${strona.url}.\n` +
       `  структура объявляет и ядро умеет: ${doZrobienia.join(', ') || '—'}\n` +
       `  шаблон напечатает:                 ${pechat.join(', ') || '—'}\n` +
+      (brakujace.length
+        ? `  без содержания или без места в PORYADOK: ${brakujace.join(', ')}\n`
+        : '  разошёлся только порядок\n') +
       'Поправьте данные, шаблон или структуру — но не оставляйте расхождения.'
   );
 }

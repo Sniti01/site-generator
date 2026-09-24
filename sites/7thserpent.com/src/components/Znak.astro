@@ -18,6 +18,15 @@
  * ПОДПИСЬ. В шапке знак лежит в ссылке ядра, у которой своя подпись
  * (`brandLabel`), — рисунок тогда немой (`aria-hidden`), иначе имя прозвучит
  * дважды. В подвале ссылки нет: `podpis` делает рисунок картинкой с именем.
+ *
+ * КРАСКА — переменной `--farba` на каждой части, а не заливкой в `style`:
+ * тогда заливку, обводку «TH» и режим принудительных цветов задаёт одно
+ * место — правила ниже. Первая редакция клала `stroke` в `style` всем
+ * надписям и гасила его правилом `.znak path { stroke-width: 0 }`;
+ * у того правила специфичность выше, чем у правила поправки в медиа-запросе,
+ * и поправка не работала ни при какой плотности («судью судят», раунд 1,
+ * сессия 11: R1-KONTRAST-1, R1-VNEDRENIE-1). Теперь обводка есть только
+ * у класса поправки и только в медиа-запросе — как в одобренном эскизе A.
  */
 import znak from '../data/znak.json';
 
@@ -40,12 +49,8 @@ const { width, height, czesci, napisy } = znak.shapka;
   aria-label={podpis}
   aria-hidden={podpis ? undefined : 'true'}
 >
-  {czesci.map((c) => <polygon points={c.points} style={`fill: var(--${c.farba})`} />)}
-  {
-    napisy.map((n) => (
-      <path class:list={[n.obwodka && 'znak__obwodka']} d={n.d} style={`fill: var(--${n.farba}); stroke: var(--${n.farba})`} />
-    ))
-  }
+  {czesci.map((c) => <polygon points={c.points} style={`--farba: var(--${c.farba})`} />)}
+  {napisy.map((n) => <path class:list={[n.obwodka && 'znak__obwodka']} d={n.d} style={`--farba: var(--${n.farba})`} />)}
 </svg>
 
 <style>
@@ -53,18 +58,39 @@ const { width, height, czesci, napisy } = znak.shapka;
     flex: none;
   }
 
-  /* Контур надписи — без обводки: краска обводки задана, толщина — ноль. */
+  .znak polygon,
   .znak path {
-    stroke-width: 0;
+    fill: var(--farba);
   }
 
   /* Оптическая поправка малого кегля. Волос Бодони в «TH» (кегль 16) —
      0,31 px: на экране плотностью до 1,5 он гаснет до четверти пикселя.
      Обводка той же краской в 0,3 px утолщает его до 0,61 px; от плотности 2
-     волос держится сам, и контур остаётся чистым контуром гарнитуры. */
+     волос держится сам, и контур остаётся чистым контуром гарнитуры.
+     Браузер без запросов-диапазонов (Safari до 16.4: минификатор пишет
+     `resolution<=1.5x`) пропускает правило и рисует чистый контур. */
   @media (max-resolution: 1.5dppx) {
-    .znak__obwodka {
+    .znak .znak__obwodka {
+      stroke: var(--farba);
       stroke-width: 0.3px;
+    }
+  }
+
+  /* Режим принудительных цветов (контрастные темы Windows): браузер
+     перекрашивает текст страницы в системные цвета, а явную заливку SVG
+     оставляет — снег знака на светлой системной теме исчез бы (1,21:1,
+     «судью судят», раунд 1, R1-VNEDRENIE-3). Знак тогда — одним системным
+     цветом текста, как прежний текстовый знак. */
+  @media (forced-colors: active) {
+    .znak polygon,
+    .znak path {
+      fill: CanvasText;
+    }
+  }
+
+  @media (forced-colors: active) and (max-resolution: 1.5dppx) {
+    .znak .znak__obwodka {
+      stroke: CanvasText;
     }
   }
 </style>

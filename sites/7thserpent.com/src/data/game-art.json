@@ -217,5 +217,42 @@
     "source": "https://store.steampowered.com/app/204100/",
     "width": 1753,
     "height": 1080
+  },
+  "mp2-art": {
+    "file": "mp2-art.jpg",
+    "game": "Max Payne 2: The Fall of Max Payne",
+    "appid": 12150,
+    "kind": "key art (library_hero_2x.jpg)",
+    "opis": "key art: black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white",
+    "license": "publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about",
+    "source": "https://store.steampowered.com/app/12150/",
+    "width": 1920,
+    "height": 620
+  },
+  "mp1-k10": {
+    "file": "mp1-k10.jpg",
+    "game": "Max Payne",
+    "appid": 12140,
+    "kind": "screenshot [10]",
+    "shot": 10,
+    "ss": "0000003266",
+    "opis": "Max stands in a marble corridor with a pistol in each hand",
+    "license": "publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about",
+    "source": "https://store.steampowered.com/app/12140/",
+    "width": 1280,
+    "height": 960
+  },
+  "mp1-k06": {
+    "file": "mp1-k06.jpg",
+    "game": "Max Payne",
+    "appid": 12140,
+    "kind": "screenshot [6]",
+    "shot": 6,
+    "ss": "0000003262",
+    "opis": "Max runs past a subway ticket booth as a man in a blue jacket reloads, spent casings on the floor",
+    "license": "publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about",
+    "source": "https://store.steampowered.com/app/12140/",
+    "width": 1440,
+    "height": 1080
   }
 }

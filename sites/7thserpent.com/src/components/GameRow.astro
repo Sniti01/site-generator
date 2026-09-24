@@ -13,10 +13,16 @@
  *   (`color-mix` двух токенов), и тон поднят — иначе ночные кадры читаются
  *   тёмными прямоугольниками (финальное ревью impeccable, правка 3; замер
  *   яркости панелей — в докладе).
- * - У РЕМЕЙКА КАДРОВ НЕТ — игра не вышла. Отсутствие нарисовано, а не
- *   оставлено пустым полем (правка 2): та же страница из трёх панелей,
- *   панели пустые, плашка «To be continued.». Ничего сверх источников она
- *   не утверждает: ремейк объявлен и в разработке (§2 сайта).
+ * - У РЕМЕЙКА СВОИХ КАДРОВ НЕТ — игра не вышла. Его страница панелей —
+ *   из оригиналов, которые он переделывает (сессия 10, П81: Max Payne [10],
+ *   [6] и ключевой арт Max Payne 2), плашка называет их оригиналами. Ряд
+ *   без кадров (`panels: []`) по-прежнему рисует пустую страницу из трёх
+ *   рамок — отсутствие нарисовано, а не оставлено пустым полем (финальное
+ *   ревью, правка 2); на главной таких рядов сейчас нет.
+ * - КАДРОВКА ПАНЕЛИ, у которой сюжет не в центре, — модификатор
+ *   `panele__kadr--lewo` / `--prawo` по полю `kadrowka` данных ряда: панель
+ *   режет кадр под свою сторону (`object-fit: cover` ядра), и силуэты ключевого
+ *   арта Max Payne 2 (около 57–75 % его ширины) при центре ушли бы за край.
  * - ПЛАШКА РАССКАЗЧИКА под кадром (место `tabliczka`): снег, тёмный текст —
  *   пара `bg` на `ink` в гейте контраста.
  * - УЗЕЛ ТРАССЫ (место `nadtytul`): ромб фонаря на линии `.trasa` в поле
@@ -44,6 +50,10 @@ interface Props {
 
 const { row, flip, band } = Astro.props;
 const panele = row.panels.map((klucz) => kadr(klucz));
+const kadrowka = (i: number) => {
+  const strona = row.kadrowka?.[row.panels[i] ?? ''];
+  return strona ? `panele__kadr--${strona}` : '';
+};
 ---
 
 <StoryRow title={row.title} titleId={`${row.id}-title`} id={row.id} flip={flip} band={band}>
@@ -63,7 +73,7 @@ const panele = row.panels.map((klucz) => kadr(klucz));
     panele.length === 3 ? (
       <div class="panele" slot="kadr">
         <SmartImage
-          class="panele__glowny"
+          class={`panele__glowny ${kadrowka(0)}`.trim()}
           src={panele[0].src}
           alt={panele[0].alt}
           widths={[480, 720, 960]}
@@ -71,6 +81,7 @@ const panele = row.panels.map((klucz) => kadr(klucz));
           quality={72}
         />
         <SmartImage
+          class={kadrowka(1) || undefined}
           src={panele[1].src}
           alt={panele[1].alt}
           widths={[320, 480]}
@@ -78,6 +89,7 @@ const panele = row.panels.map((klucz) => kadr(klucz));
           quality={72}
         />
         <SmartImage
+          class={kadrowka(2) || undefined}
           src={panele[2].src}
           alt={panele[2].alt}
           widths={[320, 480]}
@@ -125,6 +137,17 @@ const panele = row.panels.map((klucz) => kadr(klucz));
 
   .panele :global(.panele__glowny) {
     grid-row: 1 / -1;
+  }
+
+  /* Кадровка по стороне (поле `kadrowka` данных ряда). Числа — под панель
+     около 1,3:1 и кадр 4:3 или 3,1:1: 78 % держит силуэты ключевого арта
+     Max Payne 2 в кадре, 30 % — фигуру Макса в левой трети скриншота. */
+  .panele :global(.panele__kadr--prawo img) {
+    object-position: 78% 50%;
+  }
+
+  .panele :global(.panele__kadr--lewo img) {
+    object-position: 30% 50%;
   }
 
   :global(.layer--flip) .panele {

@@ -1,5 +1,5 @@
 {
-  "_": "Материалы издателя со Steam для главной (П79 п. 3): игра → appid, выбранные скриншоты по индексу и хешу ss, ключевой арт первого экрана. Выбор кадров — глазами по контактным листам (docs/reports/2026-09-23-7thserpent-glavnaya/voprosy/), отсев — интерфейс игры в кадре (MP1 [7] — прицел на полу, MP1 [8] — прицел). Поле opis идёт в alt: что на кадре, без утверждений сверх видимого. Список скриншотов игры: npm run gameart -- --shots <slot>.",
+  "_": "Материалы издателя со Steam для главной (П79 п. 3): игра → appid, выбранные скриншоты по индексу и хешу ss, ключевой арт первого экрана. Выбор кадров — глазами по контактным листам (docs/reports/2026-09-23-7thserpent-glavnaya/voprosy/), отсев — интерфейс игры в кадре (MP1 [7] — прицел на полу, MP1 [8] — прицел). Поле opis идёт в alt: что на кадре, без утверждений сверх видимого. Список скриншотов игры: npm run gameart -- --shots <slot>. Поле art игры — её ключевой арт (library_hero) для страницы панелей, ключ <slot>-art (сессия 10, П81: страница панелей ряда ремейка — кадры оригиналов MP1 [10], MP1 [6] и ключевой арт MP2; все четыре скриншота MP2 уже стоят в ряду MP2).",
   "hero": {
     "slot": "hero",
     "appid": 12140,
@@ -42,6 +42,16 @@
           "i": 11,
           "ss": "0000003267",
           "opis": "Max fires two pistols in a subway station, a muzzle flash in the foreground"
+        },
+        {
+          "i": 10,
+          "ss": "0000003266",
+          "opis": "Max stands in a marble corridor with a pistol in each hand"
+        },
+        {
+          "i": 6,
+          "ss": "0000003262",
+          "opis": "Max runs past a subway ticket booth as a man in a blue jacket reloads, spent casings on the floor"
         }
       ]
     },
@@ -49,6 +59,10 @@
       "slot": "mp2",
       "appid": 12150,
       "name": "Max Payne 2: The Fall of Max Payne",
+      "art": {
+        "asset": "library_hero",
+        "opis": "key art: black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white"
+      },
       "zrzuty": [
         {
           "i": 0,

@@ -32,6 +32,9 @@ export interface GameRow {
   linkLabel: string;
   /** Три панели страницы-кадра: первая — большая. Пусто — ряд без кадра. */
   panels: [string, string, string] | [];
+  /** Кадровка панелей, у которых сюжет не в центре кадра: ключ → сторона
+   *  (`GameRow.astro`, модификаторы `panele__kadr--lewo` / `--prawo`). */
+  kadrowka?: Record<string, 'lewo' | 'prawo'>;
   /** Плашка рассказчика под кадром (приём графической новеллы, П79). */
   caption?: string;
 }
@@ -99,8 +102,14 @@ export const rows: GameRow[] = [
       'release date.',
     href: adres('/remake/'),
     linkLabel: 'What’s known about the remake',
-    panels: [],
-    caption: 'To be continued.',
+    // Кадров самого ремейка в источниках нет (§2 сайта: анонсы — у Rockstar,
+    // картинка анонса — логотип). Страница панелей — из оригиналов, которые
+    // ремейк переделывает (П81): Max Payne [10] и [6], ключевой арт Max Payne 2.
+    // Плашка и `alt` (имя игры впереди) называют оригиналы — кадры не выдаются
+    // за ремейк.
+    panels: ['mp1-k10', 'mp2-art', 'mp1-k06'],
+    kadrowka: { 'mp1-k10': 'lewo', 'mp2-art': 'prawo' },
+    caption: `What the remake retells: ${nb('New York')}, 2001 and 2003.`,
   },
 ];
 

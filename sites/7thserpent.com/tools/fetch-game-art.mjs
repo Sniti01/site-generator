@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Материалы издателя со Steam для главной (П79 п. 3): ключевой арт первого
- * экрана (library_hero) и выбранные скриншоты — по `src/data/games.json`,
- * в `src/assets/gry/`, с записью в `src/data/game-art.json`.
+ * экрана (library_hero), ключевой арт игры для страницы панелей (поле `art`
+ * игры, ключ `<слот>-art`; сессия 10, П81) и выбранные скриншоты — по
+ * `src/data/games.json`, в `src/assets/gry/`, с записью в `src/data/game-art.json`.
  *
  *   node tools/fetch-game-art.mjs               — качает недостающее
  *   node tools/fetch-game-art.mjs --dry-run     — показывает, что взял бы
@@ -159,39 +160,51 @@ if (embedOnly) {
   process.exit(0);
 }
 
-// --- ключевой арт первого экрана ---
-if ((!only || only.has('hero')) && nuzhno('hero')) {
-  const hero = manifest.hero;
-  const details = await appDetails(hero.appid);
-  let wariant = 'library_hero_2x.jpg';
-  console.log(`${dryRun ? 'взял бы' : 'качаю  '} hero        ${details.name} — ${wariant}`);
-  if (!dryRun) {
-    let bytes;
-    try {
-      await sleep(500);
-      bytes = Buffer.from(await (await politeFetch(`${CDN}/${hero.appid}/${wariant}`, { attempts: 1 })).arrayBuffer());
-    } catch {
-      wariant = 'library_hero.jpg';
-      await sleep(400);
-      bytes = Buffer.from(await (await politeFetch(`${CDN}/${hero.appid}/${wariant}`)).arrayBuffer());
-    }
-    const size = await save(bytes, join(outDir, 'hero.jpg'), MASTER_HERO);
-    credits.hero = {
-      file: 'hero.jpg',
-      game: details.name,
-      appid: hero.appid,
-      kind: `key art (${wariant})`,
-      opis: hero.opis ?? null,
-      license: LICENSE,
-      source: `https://store.steampowered.com/app/${hero.appid}/`,
-      ...size,
-    };
-    pobrano += 1;
-    zapisz();
-    vshit('hero');
+/** Ключевой арт игры (`library_hero_2x`, при отказе — `library_hero`) под
+ *  ключом `key`: первый экран (`hero`, мастер 3840) и ключевой арт игры
+ *  в страницу панелей (`<слот>-art`, поле `art` игры в манифесте, мастер
+ *  1920 — панель узкая; сессия 10, П81: ряд ремейка). */
+async function kluczowyArt(key, appid, opis, maxWidth) {
+  if (!nuzhno(key)) {
+    console.log(`есть    ${key.padEnd(11)} файл и запись на месте`);
+    return;
   }
-} else if (!only || only.has('hero')) {
-  console.log('есть    hero        файл и запись на месте');
+  const details = await appDetails(appid);
+  let wariant = 'library_hero_2x.jpg';
+  console.log(`${dryRun ? 'взял бы' : 'качаю  '} ${key.padEnd(11)} ${details.name} — ${wariant}`);
+  if (dryRun) return;
+  let bytes;
+  try {
+    await sleep(500);
+    bytes = Buffer.from(await (await politeFetch(`${CDN}/${appid}/${wariant}`, { attempts: 1 })).arrayBuffer());
+  } catch {
+    wariant = 'library_hero.jpg';
+    await sleep(400);
+    bytes = Buffer.from(await (await politeFetch(`${CDN}/${appid}/${wariant}`)).arrayBuffer());
+  }
+  const size = await save(bytes, join(outDir, `${key}.jpg`), maxWidth);
+  credits[key] = {
+    file: `${key}.jpg`,
+    game: details.name,
+    appid,
+    kind: `key art (${wariant})`,
+    opis: opis ?? null,
+    license: LICENSE,
+    source: `https://store.steampowered.com/app/${appid}/`,
+    ...size,
+  };
+  pobrano += 1;
+  zapisz();
+  vshit(key);
+}
+
+// --- ключевой арт первого экрана ---
+if (!only || only.has('hero')) await kluczowyArt('hero', manifest.hero.appid, manifest.hero.opis, MASTER_HERO);
+
+// --- ключевой арт игр (страницы панелей) ---
+for (const game of manifest.games) {
+  if (!game.art || (only && !only.has(game.slot))) continue;
+  await kluczowyArt(`${game.slot}-art`, game.appid, game.art.opis, MASTER);
 }
 
 // --- скриншоты по играм ---

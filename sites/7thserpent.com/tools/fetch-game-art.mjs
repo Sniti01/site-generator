@@ -10,6 +10,8 @@
  *   node tools/fetch-game-art.mjs --only mp1,hero
  *   node tools/fetch-game-art.mjs --shots mp2   — печатает все скриншоты
  *                                  игры с индексами и хешами, для выбора
+ *   node tools/fetch-game-art.mjs --embed-only  — вшивает строку
+ *                                  происхождения в уже скачанные файлы
  *
  * Копия инструмента первого сайта (`sites/ac4bf-thewatch.com/tools/
  * fetch-game-art.mjs`), сокращённая до того, что нужно главной второго
@@ -36,6 +38,7 @@ const LICENSE =
 
 import sharp from 'sharp';
 import { writeFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -44,9 +47,21 @@ const outDir = join(root, 'src/assets/gry');
 const manifestPath = join(root, 'src/data/games.json');
 const creditsPath = join(root, 'src/data/game-art.json');
 
+// ПРОИСХОЖДЕНИЕ ВНУТРИ ФАЙЛА: у каждого растра главной происхождение записано
+// в самом JPEG (COM-сегмент, форма `embed-prompt.mjs` скилла impeccable —
+// контракт FINISH направления главной, сессия 9). Источник правды остаётся
+// `game-art.json`; строка в файле — копия, чтобы происхождение путешествовало
+// с файлом. В собранные webp метаданные не попадают (их снимает оптимизатор).
+//   node tools/fetch-game-art.mjs --embed-only  — вшить строку в уже скачанные
+const EMBED = join(root, '../../.claude/skills/impeccable/scripts/embed-prompt.mjs');
+const pochodzenie = (key, c) =>
+  `sourced: publisher material — ${c.game}, ${c.kind}, ${c.source}; license class: ${c.license}; ` +
+  `record: src/data/game-art.json key "${key}"; fetched by tools/fetch-game-art.mjs`;
+
 const args = process.argv.slice(2);
 const dryRun = args.includes('--dry-run');
 const force = args.includes('--force');
+const embedOnly = args.includes('--embed-only');
 const pick = (flag) => {
   const index = args.indexOf(flag);
   return index >= 0 && args[index + 1] ? args[index + 1] : null;
@@ -129,6 +144,20 @@ if (!dryRun) mkdirSync(outDir, { recursive: true });
 let pobrano = 0;
 const zapisz = () => writeFileSync(creditsPath, `${JSON.stringify(credits, null, 2)}\n`, 'utf8');
 const nuzhno = (key) => force || !existsSync(join(outDir, `${key}.jpg`)) || !credits[key];
+const vshit = (key) => {
+  const c = credits[key];
+  if (!c) throw new Error(`Нет записи "${key}" в game-art.json — нечего вшивать`);
+  if (!existsSync(EMBED)) throw new Error(`Нет ${EMBED} — происхождение не вшито`);
+  execFileSync(process.execPath, [EMBED, join(outDir, c.file), '--prompt', pochodzenie(key, c)], { stdio: 'ignore' });
+};
+
+if (embedOnly) {
+  for (const key of Object.keys(credits)) {
+    vshit(key);
+    console.log(`вшито  ${key}`);
+  }
+  process.exit(0);
+}
 
 // --- ключевой арт первого экрана ---
 if ((!only || only.has('hero')) && nuzhno('hero')) {
@@ -159,6 +188,7 @@ if ((!only || only.has('hero')) && nuzhno('hero')) {
     };
     pobrano += 1;
     zapisz();
+    vshit('hero');
   }
 } else if (!only || only.has('hero')) {
   console.log('есть    hero        файл и запись на месте');
@@ -212,6 +242,7 @@ for (const game of manifest.games) {
     };
     pobrano += 1;
     zapisz();
+    vshit(key);
   }
 }
 

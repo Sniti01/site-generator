@@ -18,15 +18,17 @@
  * time; движение страницы одно — трассер рядов. Декор: `aria-hidden`, под
  * колонкой текста (та несёт `z-index: 1` ядра).
  *
- * ТРИ ОВЕРРАЙДА ЯДРА, все — через обёртку `.noc` и `:global` на потомке
+ * ОВЕРРАЙДЫ ЯДРА — через обёртку `.noc` и `:global` на потомке
  * (специфичность 0,3,0 против 0,2,0 правила ядра со скрутом):
  * 1. Скрим — от токена фона. Ядро кладёт литерал `rgb(13 12 10 / α)` —
  *    тёплую почти-черноту первого сайта (бэклог 56 п. 2); здесь те же доли
- *    через `color-mix` от `--bg`, иначе левая треть героя теплее страницы.
- *    Правка ядра — вне объёма (П79), это оверрайд витрины.
+ *    через `color-mix` от `--bg`, иначе левая треть героя теплее страницы;
+ *    до 1024px плотная часть шире. Правка ядра — вне объёма (П79), это
+ *    оверрайд витрины.
  * 2. Кадровка арта: `object-position` — силуэт в правой трети окна
  *    и не под текстом (замер — в докладе сессии).
- * 3. Больше ничего: геометрия, кнопки и обрушение на телефоне — ядра.
+ * 3. Выход трассы у полосы отметок — псевдоэлементы `ChipNav` (ниже).
+ * Геометрия, кнопки и обрушение на телефоне — ядра.
  */
 import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
 import ChipNav from '@factory/core/blocks/ChipNav.astro';
@@ -106,6 +108,39 @@ const heroSizes = '(max-width: 1024px) 200vw, 170vw';
   /* 2. Кадровка: силуэт правее колонки текста. */
   .noc :global(.hero__art .foto img) {
     object-position: 55% 50%;
+  }
+
+  /* Выход трассы (финальное ревью impeccable, правка 6): отметки 2001 · 2003
+     · 2012 · TBA — начало трассера, и линия видимо уходит от них вниз. Полоса
+     отметок — `ChipNav` ядра; её абсолютные псевдоэлементы отсчитываются от
+     колонки `.hero__inner` (у неё `position: relative`), поэтому координата
+     трассы (`--trasa-x`, от края окна) пересчитана в координаты колонки.
+     По вертикали — статическое положение (начало полосы отметок) и подъём
+     на её верхний волос. Вертикаль — длиной в окно: её обрезает нижний край
+     героя (`overflow: hidden` ядра), дальше линию ведёт `.trasa` рядов. */
+  .noc {
+    --trasa-hero: calc(var(--trasa-x) - max(0px, (100vw - var(--container)) / 2));
+  }
+
+  .noc :global(.hero__jump)::before,
+  .noc :global(.hero__jump)::after {
+    content: '';
+    position: absolute;
+    left: var(--trasa-hero);
+    height: 1px;
+    margin-top: calc((var(--space-md) + 1px) * -1);
+    pointer-events: none;
+  }
+
+  .noc :global(.hero__jump)::before {
+    width: 1px;
+    height: 100vh;
+    background: var(--accent);
+  }
+
+  .noc :global(.hero__jump)::after {
+    width: calc(var(--gutter) - var(--trasa-hero));
+    background: linear-gradient(to right, var(--accent), var(--hairline-strong));
   }
 
   .snieg {

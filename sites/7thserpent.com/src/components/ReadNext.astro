@@ -2,12 +2,20 @@
 /**
  * Лента главной — страницы вокруг игр (сессия 9, П79). Механизм — ядра:
  * `@factory/core/blocks/CardRail.astro` (заголовок, стрелки, дорожка со
- * снапом, скрипт). Здесь — данные карточек: заголовок и вид — из структуры
- * (`getPage` роняет сборку на адресе мимо дерева), кадр — материал издателя
- * (`src/data/media.ts`), дуотоном сталью, как у рядов.
+ * снапом, скрипт). Здесь — данные карточек и вид ленты в мире новеллы:
+ * заголовок карточки — из структуры (`getPage` роняет сборку на адресе мимо
+ * дерева), приписка — предмет страницы, кадр — материал издателя
+ * (`src/data/media.ts`).
  *
- * Правило палитры — `:global`: `<li>` печатает ядро, и обычная запись
- * получила бы скрут этого файла (REUSE §1.1, сноска ⁶).
+ * ЛЕНТА — В МИРЕ НОВЕЛЛЫ (финальное ревью impeccable, правка 5): кадр
+ * карточки — панель с чёрным полем, заголовок — снежная плашка рассказчика,
+ * заходящая на подножие панели, как у рядов (`GameRow.astro`); тон кадра —
+ * тот же, что у панелей рядов. Только оверрайды классов ядра, разметка
+ * `CardRail` не меняется.
+ *
+ * Правила — `:global` и через класс-модификатор `<li>`: карточку печатает
+ * ядро, и обычная запись получила бы скрут этого файла (REUSE §1.1,
+ * сноска ⁶); модификатор держит специфичность выше правил ядра со скрутом.
  */
 import CardRail from '@factory/core/blocks/CardRail.astro';
 import Icon from './Icon.astro';
@@ -15,16 +23,13 @@ import { readNext } from '../data/home';
 import { getPage } from '../lib/structure';
 import { kadr } from '../data/media';
 
-/** Вид страницы словом — по типу контракта (П26). */
-const vid: Record<string, string> = { topic: 'Topic', guide: 'Guide', game: 'Game' };
-
 const cards = readNext.cards.map((card) => {
   const strona = getPage(card.href);
   const k = kadr(card.kadr);
   return {
     href: card.href,
     title: strona.h1,
-    kind: vid[strona.type] ?? strona.type,
+    kind: card.kind,
     place: card.place,
     modifier: 'rail-sec__item--stal',
     media: { src: k.src, alt: k.alt, quality: 70 },
@@ -47,7 +52,31 @@ const cards = readNext.cards.map((card) => {
 
 <style>
   :global(.rail-sec__item--stal) {
-    --era: var(--accent-2);
+    --era: color-mix(in oklab, var(--accent-2), var(--ink));
+  }
+
+  :global(.rail-sec__item--stal .foto img) {
+    filter: grayscale(1) contrast(1.12) brightness(1.3);
+  }
+
+  /* Панель с чёрным полем. */
+  :global(.rail-sec__item--stal .card .rail-sec__media) {
+    padding: var(--space-2xs);
+    background: var(--bg);
+  }
+
+  /* Плашка рассказчика на подножии панели. */
+  :global(.rail-sec__item--stal .card .card__body) {
+    position: relative;
+    margin-top: calc(var(--space-lg) * -1);
+  }
+
+  :global(.rail-sec__item--stal .rail-sec__card .rail-sec__title) {
+    width: fit-content;
+    padding: var(--space-2xs) var(--space-xs);
+    background: var(--ink);
+    color: var(--bg);
+    outline: var(--space-3xs) solid var(--bg);
   }
 
   /* Разделитель «·» ядро ставит перед видом страницы, потому что у ленты

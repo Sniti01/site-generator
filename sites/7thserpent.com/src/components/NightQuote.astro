@@ -15,12 +15,24 @@ import BandQuote from '@factory/core/blocks/BandQuote.astro';
 import { quote } from '../data/home';
 ---
 
-<BandQuote id="quote-title">
-  <Fragment slot="cytat"><span class="cytat">“{quote.text}”</span></Fragment>
-  <Fragment slot="tresc">{quote.source}</Fragment>
-</BandQuote>
+<div class="pauza">
+  <BandQuote id="quote-title">
+    <Fragment slot="cytat"><span class="cytat">“{quote.text}”</span></Fragment>
+    <Fragment slot="tresc">{quote.source}</Fragment>
+  </BandQuote>
+</div>
 
 <style>
+  /* Дымка полосы — сталью, не фонарём. Ядро кладёт радиальное свечение
+     `--accent`: на этой полосе фонаря нет, и тёплая дымка была бы вторым
+     тёплым светом страницы (финальное ревью impeccable, правка 8). Форма
+     свечения — ядра, сменён только цвет; оверрайд через обёртку `.pauza`. */
+  .pauza :global(.creed) {
+    background:
+      radial-gradient(120% 140% at 50% 0%, color-mix(in oklab, var(--accent-2) 14%, transparent), transparent 62%),
+      var(--bg-band);
+  }
+
   /* Высота строки больше, чем у роли (1.14): у каждой строки своя полоса
      снега, и полоса следующей строки не должна ложиться на буквы предыдущей. */
   .cytat {

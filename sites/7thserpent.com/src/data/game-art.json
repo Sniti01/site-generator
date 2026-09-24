@@ -204,5 +204,18 @@
     "source": "https://store.steampowered.com/app/12140/",
     "width": 1280,
     "height": 960
+  },
+  "mp3-k01": {
+    "file": "mp3-k01.jpg",
+    "game": "Max Payne 3",
+    "appid": 204100,
+    "kind": "screenshot [1]",
+    "shot": 1,
+    "ss": "b442d79fbc45be2cb773d3de6f7b40fa5f126588",
+    "opis": "Max in a suit climbs a stairwell with a pistol, a man following below",
+    "license": "publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about",
+    "source": "https://store.steampowered.com/app/204100/",
+    "width": 1753,
+    "height": 1080
   }
 }

@@ -8,17 +8,26 @@
  * - КАДР — СТРАНИЦА ГРАФИЧЕСКОЙ НОВЕЛЛЫ (ответ владельца «Панели и подписи»):
  *   три панели из скриншотов одной игры, большая и две малые, между ними —
  *   чёрные поля (фон рамки ядра). Рисованных панелей издателя нет — только
- *   нарезка его скриншотов. Панели — `SmartImage` ядра, дуотон `.foto` сталью:
- *   `--era: var(--accent-2)` на обёртке («Ночь и один фонарь»).
+ *   нарезка его скриншотов. Панели — `SmartImage` ядра, дуотон `.foto`
+ *   («Ночь и один фонарь»): светлый конец — сталь, сдвинутая к снегу
+ *   (`color-mix` двух токенов), и тон поднят — иначе ночные кадры читаются
+ *   тёмными прямоугольниками (финальное ревью impeccable, правка 3; замер
+ *   яркости панелей — в докладе).
+ * - У РЕМЕЙКА КАДРОВ НЕТ — игра не вышла. Отсутствие нарисовано, а не
+ *   оставлено пустым полем (правка 2): та же страница из трёх панелей,
+ *   панели пустые, плашка «To be continued.». Ничего сверх источников она
+ *   не утверждает: ремейк объявлен и в разработке (§2 сайта).
  * - ПЛАШКА РАССКАЗЧИКА под кадром (место `tabliczka`): снег, тёмный текст —
  *   пара `bg` на `ink` в гейте контраста.
- * - ОТМЕТКА ТРАССЕРА (место `nadtytul`): год на линии трассера в поле
- *   страницы. Это не надзаголовок: отметка выносится в поле абсолютным
- *   положением и видна только там, где есть поле (от 1360px); под этой
- *   шириной её нет, год несёт строка метаданных. Для чтеца — скрыта:
- *   год уже есть в метаданных.
+ * - УЗЕЛ ТРАССЫ (место `nadtytul`): ромб фонаря на линии `.trasa` в поле
+ *   страницы, на высоте первой строки заголовка; от 1360px рядом — год.
+ *   Это не надзаголовок (правка 7): узел выносится в поле и стоит на уровне
+ *   заголовка, а не над ним. Уровень держится ролью: узел несёт `t-headline`,
+ *   его высота — одна строка роли заголовка (`1lh`), отступ сверху — тот же,
+ *   что у заголовка ряда в ядре (`--space-xs`). Для чтеца скрыт: год уже есть
+ *   в метаданных.
  *
- * `:global` — там, где правило выбирает элемент ядра (`.layer`, `.layer--flip`):
+ * `:global` — там, где правило выбирает элемент ядра (`.layer--flip`, `.foto`):
  * форма `:global` на предке, как у таблички первого сайта (REUSE §1.1, сноска ⁸).
  */
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
@@ -38,7 +47,9 @@ const panele = row.panels.map((klucz) => kadr(klucz));
 ---
 
 <StoryRow title={row.title} titleId={`${row.id}-title`} id={row.id} flip={flip} band={band}>
-  <p class="trasa__metka t-label tabular" slot="nadtytul" aria-hidden="true">{row.year}</p>
+  <p class="trasa__wezel t-headline" slot="nadtytul" aria-hidden="true">
+    <span class="trasa__rok t-label tabular">{row.year}</span>
+  </p>
 
   <Fragment slot="meta">{row.meta}</Fragment>
 
@@ -49,7 +60,7 @@ const panele = row.panels.map((klucz) => kadr(klucz));
   </a>
 
   {
-    panele.length === 3 && (
+    panele.length === 3 ? (
       <div class="panele" slot="kadr">
         <SmartImage
           class="panele__glowny"
@@ -74,6 +85,12 @@ const panele = row.panels.map((klucz) => kadr(klucz));
           quality={72}
         />
       </div>
+    ) : (
+      <div class="panele panele--puste" slot="kadr" aria-hidden="true">
+        <span class="panele__pusty panele__glowny" />
+        <span class="panele__pusty" />
+        <span class="panele__pusty" />
+      </div>
     )
   }
 
@@ -91,13 +108,19 @@ const panele = row.panels.map((klucz) => kadr(klucz));
      Поля — зазор сетки поверх фона рамки ядра (`--bg`); у зеркального ряда
      страница зеркальна целиком — большая панель и там у колонки текста. */
   .panele {
-    --era: var(--accent-2);
+    --era: color-mix(in oklab, var(--accent-2), var(--ink));
     display: grid;
     grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
     grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: var(--space-2xs);
     height: 100%;
     padding: var(--space-2xs);
+  }
+
+  /* Тон панелей: ядро кладёт `grayscale(1) contrast(1.08)`; здесь светлее,
+     чтобы света ночных кадров доходили почти до снега. */
+  .panele :global(.foto img) {
+    filter: grayscale(1) contrast(1.12) brightness(1.3);
   }
 
   .panele :global(.panele__glowny) {
@@ -110,6 +133,13 @@ const panele = row.panels.map((klucz) => kadr(klucz));
 
   :global(.layer--flip) .panele :global(.panele__glowny) {
     grid-column: 2;
+  }
+
+  /* Пустая страница ремейка: рамки панелей без кадров. */
+  .panele__pusty {
+    display: block;
+    border: 1px solid var(--hairline-strong);
+    background: var(--bg-band);
   }
 
   /* Плашка рассказчика: снег под тёмным текстом, край — ночь страницы.
@@ -136,31 +166,38 @@ const panele = row.panels.map((klucz) => kadr(klucz));
     margin-top: var(--space-lg);
   }
 
-  /* Отметка трассера — в поле страницы, на линии `.trasa` (HomeTrack.astro):
-     та же координата `--trasa-x`, статическое положение по вертикали —
-     у заголовка ряда. Узел — квадрат фонаря на линии. */
-  .trasa__metka {
+  /* Узел трассы. Статическое положение по вертикали — начало колонки текста;
+     отступ сверху и высота строки — как у заголовка ряда (роль `t-headline`,
+     `margin-top: var(--space-xs)` у `.layer__headline` в ядре), поэтому ромб
+     и год стоят посередине первой строки заголовка. По горизонтали — на линии
+     `.trasa` (`--trasa-x`), центр ромба на линии. */
+  .trasa__wezel {
+    position: absolute;
+    left: calc(var(--trasa-x) - var(--space-3xs));
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    height: 1lh;
+    margin-top: var(--space-xs);
+  }
+
+  .trasa__wezel::before {
+    content: '';
+    flex: none;
+    width: var(--space-2xs);
+    height: var(--space-2xs);
+    background: var(--accent);
+    transform: rotate(45deg);
+  }
+
+  .trasa__rok {
     display: none;
+    color: var(--accent-text);
   }
 
   @media (min-width: 1360px) {
-    .trasa__metka {
-      position: absolute;
-      left: calc(var(--trasa-x) + var(--space-sm));
+    .trasa__rok {
       display: block;
-      margin-top: calc(var(--space-3xs) * -1);
-      color: var(--accent-text);
-    }
-
-    .trasa__metka::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: calc(var(--space-sm) * -1 - var(--space-3xs));
-      width: var(--space-2xs);
-      height: var(--space-2xs);
-      background: var(--accent);
-      transform: translateY(-50%) rotate(45deg);
     }
   }
 

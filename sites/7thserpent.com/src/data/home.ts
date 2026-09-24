@@ -96,6 +96,7 @@ export const rows: GameRow[] = [
     href: adres('/remake/'),
     linkLabel: 'What’s known about the remake',
     panels: [],
+    caption: 'To be continued.',
   },
 ];
 
@@ -111,18 +112,21 @@ export const quote = {
   source: 'Max Payne 3, Chapter 7 — Max wanders through one of São Paulo’s favelas.',
 };
 
-/** Лента: страницы вокруг игр, по кадру издателя на карточку. */
+/** Лента: страницы вокруг игр, по кадру издателя на карточку; ни один кадр
+ *  ленты не повторяет панель рядов. Приписка — предмет страницы словом, а не
+ *  тип контракта: «Topic» на каждой карточке ничего не сообщал (финальное
+ *  ревью impeccable, правка 4). */
 export const readNext = {
   title: 'Around the series',
   lead: 'The story, the people behind Max, the way the games play, the lines people quote and the mods.',
   cards: [
-    { href: adres('/story/'), kadr: 'mp2-k01' },
-    { href: adres('/voice-and-face/'), kadr: 'mp1-k12' },
-    { href: adres('/gameplay/'), kadr: 'mp2-k02' },
-    { href: adres('/quotes/'), kadr: 'mp3-k06' },
-    { href: adres('/max-payne-3/guide/'), kadr: 'mp3-k10', place: 'Max Payne 3' },
-    { href: adres('/mods/'), kadr: 'mp1-k05' },
-  ] as { href: string; kadr: string; place?: string }[],
+    { href: adres('/story/'), kadr: 'mp3-k01', kind: 'Story' },
+    { href: adres('/voice-and-face/'), kadr: 'mp1-k12', kind: 'People' },
+    { href: adres('/gameplay/'), kadr: 'mp2-k02', kind: 'Gameplay' },
+    { href: adres('/quotes/'), kadr: 'mp3-k06', kind: 'Quotes' },
+    { href: adres('/max-payne-3/guide/'), kadr: 'mp3-k10', kind: 'Walkthrough', place: 'Max Payne 3' },
+    { href: adres('/mods/'), kadr: 'mp1-k05', kind: 'Mods' },
+  ] as { href: string; kadr: string; kind: string; place?: string }[],
 };
 
 /** Порядок выхода — ответ на «max payne games in order». Мобильная версия —

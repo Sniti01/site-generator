@@ -2,19 +2,19 @@
 /**
  * Трасса главной (сессия 9, П79; «Трасса пули», жребий impeccable c02802a3):
  * обёртка рядов игр и полосы-цитаты. Серия по порядку — траектория одной
- * пули: тонкая линия фонаря идёт по левому полю страницы через отметки
- * рядов (2001 → 2003 → 2012 → TBA, `GameRow.astro`) и гаснет у ремейка —
- * дальше даты нет.
+ * пули: тонкая линия фонаря выходит у полосы отметок первого экрана
+ * (`HomeHero.astro`), идёт по левому полю через узлы рядов (2001 → 2003 →
+ * 2012 → TBA, `GameRow.astro`) и гаснет у ремейка — дальше даты нет.
  *
  * ЕДИНСТВЕННОЕ ДВИЖЕНИЕ СТРАНИЦЫ — «пуля»: короткий штрих фонаря, который
  * прокрутка ведёт вниз по линии (временная шкала `view()` этой обёртки,
  * `animation-timeline`). Браузер без таких шкал рисует одну линию;
  * `prefers-reduced-motion: reduce` — тоже одну линию, штриха нет.
  *
- * ЛИНИЯ ЖИВЁТ В ПОЛЕ СТРАНИЦЫ и только там, где поле есть: от 1360px,
- * посередине между краем окна и колонкой контейнера (`--trasa-x`, её читает
- * и отметка ряда). Уже 1360px поля нет — линии и отметок нет, год несёт
- * строка метаданных ряда.
+ * ЛИНИЯ ЕСТЬ НА ЛЮБОЙ ШИРИНЕ (финальное ревью impeccable, правка 1): там,
+ * где есть поле страницы (от 1360px), — посередине поля, с подписями годов;
+ * уже — посередине поля колонки, только узлы. Координата `--trasa-x` —
+ * на `<main>` главной (`src/pages/index.astro`).
  */
 ---
 
@@ -24,32 +24,29 @@
 
 <style>
   .trasa {
-    --trasa-x: calc((50% - var(--container) / 2) / 2);
     position: relative;
     view-timeline-name: --trasa;
   }
 
-  @media (min-width: 1360px) {
-    .trasa::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: var(--trasa-x);
-      z-index: 2;
-      width: 1px;
-      background: linear-gradient(
-        to bottom,
-        var(--accent) 0,
-        color-mix(in srgb, var(--accent) 55%, transparent) 72%,
-        transparent 100%
-      );
-      pointer-events: none;
-    }
+  .trasa::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--trasa-x);
+    z-index: 2;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      var(--accent) 0,
+      color-mix(in srgb, var(--accent) 55%, transparent) 72%,
+      transparent 100%
+    );
+    pointer-events: none;
   }
 
   @supports (animation-timeline: view()) {
-    @media (min-width: 1360px) and (prefers-reduced-motion: no-preference) {
+    @media (prefers-reduced-motion: no-preference) {
       .trasa::after {
         content: '';
         position: absolute;

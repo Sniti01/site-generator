@@ -100,3 +100,22 @@ const est = (imie: string) => pechat.some((k) => k === imie || k.startsWith(`${i
   {est('link-columns') && <SiteIndex />}
   {est('cta-band') && <StartBand />}
 </Base>
+
+<style>
+  /* Координата трассы — одна на первый экран (выход линии у полосы отметок,
+     `HomeHero.astro`) и на ряды (`HomeTrack.astro`, `GameRow.astro`), поэтому
+     живёт на общем предке — `<main>` главной. Считается от окна (`100vw`):
+     начало линии в герое позиционируется от колонки контейнера, ряды — от
+     края страницы, и общая мера нужна обоим. Там, где есть поле страницы
+     (от 1360px), — середина между краем окна и краем контейнера; уже — середина
+     поля колонки (`--gutter`). Переменная раскладки главной, не токен темы. */
+  :global(#content) {
+    --trasa-x: calc(var(--gutter) / 2);
+  }
+
+  @media (min-width: 1360px) {
+    :global(#content) {
+      --trasa-x: calc((100vw - var(--container)) / 4);
+    }
+  }
+</style>

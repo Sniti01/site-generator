@@ -11,9 +11,19 @@
 //      текст давал разброс выше порога и у пустой панели — большая панель и mp1-k06 на 1440
 //      и 390 проходили бы пустыми (K1 «судью судят» сессии 10). У панели, на которую плашка
 //      заходит, рамка обрезается по верх плашки минус обводка; остаток ниже 24 px — стоп.
-//   4. Самопроверка в каждом окне: картинки панелей скрываются (visibility: hidden), кадр
-//      окна снимается без записи, и та же мерка обязана дать у всех трёх разброс ниже 8 —
-//      иначе проверка слепа, стоп. Потом картинки возвращаются.
+//   4. Самопроверка в каждом окне, три состояния: картинки панелей скрыты (visibility:
+//      hidden), залиты ровным белым и ровным серым (filter: brightness(0) invert(1) и
+//      invert(0.5)); кадр окна без записи, и та же мерка обязана дать у всех трёх панелей
+//      разброс ниже 8 — иначе проверка слепа, стоп. Потом стиль снимается. Скрытые
+//      картинки дают цвет фона — как строка зазора и обводки плашки, поэтому одна эта
+//      самопроверка не видела рамку, захватившую чужую строку (R2-KOD-2 «судью судят»).
+//   5. Кадр окна — по центру панелей вместе с плашкой и её обводкой, а не секции: на 1024
+//      секция выше окна, и по её центру плашка, которая называет оригиналы, уходила из кадра,
+//      а рамка нижней панели — за низ холста, где getImageData даёт прозрачные нули
+//      (R2-KOD-1). Не помещаются в окно — стоп.
+//   6. Рамка панели округляется внутрь (x, y — вверх; правый и нижний край — вниз) и обязана
+//      лежать в окне целиком — иначе стоп: в мерку не попадают ни строка зазора, ни обводка
+//      плашки, ни пиксели вне холста.
 // Порядок, как у драйвера эталона (П16): одна загрузка на 1920, окна по убыванию без
 // перезагрузки; сверка currentSrc всех картинок до и после полного кадра — подмена стоп;
 // свет фонаря в арте героя в кадре окна и в полном кадре — отсутствие стоп.
@@ -63,36 +73,52 @@ async (page) => {
     const podmen = srcDo.filter((s, i) => s !== srcPosle[i]).length;
     log.push(`${w}x${h}: ${g.img}/${g.img} картинок, страница ${g.h}px, свет фонаря в арте: окно ${(okno.svet * 100).toFixed(1)} %, полный кадр ${(full.svet * 100).toFixed(1)} %, подмен кандидата ${podmen}`);
     if (okno.svet < 0.05 || full.svet < 0.05 || podmen) throw new Error('СТОП: на ' + w + ' арт не нарисован или кандидат подменён\n' + log.join('\n'));
-    // кадр окна по ряду ремейка
-    const { panele, plashka } = await page.evaluate(async () => {
+    // кадр окна по ряду ремейка — по центру панелей с плашкой (п. 5 шапки)
+    const { panele, plashka, blok, okno: ok } = await page.evaluate(async () => {
       const el = document.getElementById('remake');
-      el.scrollIntoView({ block: 'center', behavior: 'instant' });
+      const pan = el.querySelector('.panele');
+      const p = el.querySelector('.plashka');
+      const o = p ? parseFloat(getComputedStyle(p).outlineWidth) || 0 : 0;
+      const r0 = pan.getBoundingClientRect(), r1 = p ? p.getBoundingClientRect() : r0;
+      const gora = Math.min(r0.top, r1.top - o) + scrollY, niz = Math.max(r0.bottom, r1.bottom + o) + scrollY;
+      window.scrollTo({ top: Math.round((gora + niz) / 2 - innerHeight / 2), behavior: 'instant' });
       await new Promise((r) => setTimeout(r, 300));
       const rect = (e) => { const b = e.getBoundingClientRect(); return { x: b.x, y: b.y, w: b.width, h: b.height }; };
-      const p = el.querySelector('.plashka');
       return {
         panele: [...el.querySelectorAll('.panele img')].map(rect),
-        plashka: p ? { ...rect(p), obvodka: parseFloat(getComputedStyle(p).outlineWidth) || 0 } : null,
+        plashka: p ? { ...rect(p), obvodka: o } : null,
+        blok: { gora: gora - scrollY, niz: niz - scrollY },
+        okno: { w: innerWidth, h: innerHeight },
       };
     });
-    // рамка панели без плашки (п. 3 шапки)
+    if (blok.gora < 0 || blok.niz > ok.h) throw new Error('СТОП: панели с плашкой не помещаются в окно ' + w + 'x' + h + ': ' + JSON.stringify(blok));
+    // рамка панели без плашки (п. 3), округлённая внутрь и целиком в окне (п. 6)
     const ramki = panele.map((r) => {
-      if (!plashka) return r;
-      const o = plashka.obvodka, verh = plashka.y - o;
-      const zahodit = plashka.x - o < r.x + r.w && plashka.x + plashka.w + o > r.x && verh < r.y + r.h && plashka.y + plashka.h + o > r.y;
-      return zahodit ? { ...r, h: verh - r.y } : r;
+      let { x, y, w: rw, h: rh } = r;
+      if (plashka) {
+        const o = plashka.obvodka, verh = plashka.y - o;
+        const zahodit = plashka.x - o < x + rw && plashka.x + plashka.w + o > x && verh < y + rh && plashka.y + plashka.h + o > y;
+        if (zahodit) rh = verh - y;
+      }
+      const x0 = Math.ceil(x), y0 = Math.ceil(y), x1 = Math.floor(x + rw), y1 = Math.floor(y + rh);
+      return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
     });
-    if (ramki.some((r) => r.h < 24)) throw new Error('СТОП: рамка панели без плашки ниже 24 px на ' + w + ': ' + JSON.stringify(ramki));
+    if (ramki.some((r) => r.h < 24 || r.w < 24)) throw new Error('СТОП: рамка панели без плашки меньше 24 px на ' + w + ': ' + JSON.stringify(ramki));
+    if (ramki.some((r) => r.x < 0 || r.y < 0 || r.x + r.w > ok.w || r.y + r.h > ok.h)) throw new Error('СТОП: рамка панели вне окна на ' + w + ': ' + JSON.stringify(ramki));
     await osadka();
     const st = await statOf(await page.screenshot({ path: OUT + `remake-${w}.png`, scale: 'css' }), ramki);
-    // самопроверка (п. 4 шапки): скрытые панели обязаны дать разброс ниже порога
-    await page.addStyleTag({ content: '#remake .panele img { visibility: hidden !important; }' });
+    // самопроверка (п. 4): скрытые и ровно залитые панели обязаны дать разброс ниже порога
+    const samo = [];
+    for (const [imya, css] of [['скрытые', 'visibility: hidden'], ['белые', 'filter: brightness(0) invert(1)'], ['серые', 'filter: brightness(0) invert(0.5)']]) {
+      const tag = await page.addStyleTag({ content: `#remake .panele img { ${css} !important; }` });
+      await osadka();
+      const s = await statOf(await page.screenshot({ scale: 'css' }), ramki);
+      await tag.evaluate((t) => t.remove());
+      samo.push(`${imya} ${s.map((x) => x.sd.toFixed(1)).join(' / ')}`);
+      if (s.some((x) => x.sd >= 8)) throw new Error(`СТОП: проверка слепа — ${imya} панели дали разброс не ниже 8 на ${w}: ${s.map((x) => x.sd.toFixed(1)).join(' / ')}\n` + log.join('\n'));
+    }
     await osadka();
-    const pusto = await statOf(await page.screenshot({ scale: 'css' }), ramki);
-    await page.evaluate(() => document.querySelectorAll('style').forEach((s) => { if (s.textContent.includes('#remake .panele img')) s.remove(); }));
-    await osadka();
-    log.push(`  ряд ремейка ${w}: панелей ${panele.length}, высота рамок без плашки ${ramki.map((r) => r.h.toFixed(0)).join(' / ')}, разброс яркости ${st.map((s) => s.sd.toFixed(1)).join(' / ')}, со скрытыми панелями ${pusto.map((s) => s.sd.toFixed(1)).join(' / ')}`);
-    if (pusto.some((s) => s.sd >= 8)) throw new Error('СТОП: проверка слепа — скрытая панель дала разброс не ниже 8 на ' + w + '\n' + log.join('\n'));
+    log.push(`  ряд ремейка ${w}: панелей ${panele.length}, рамки ${ramki.map((r) => r.w + 'x' + r.h).join(' / ')}, разброс яркости ${st.map((s) => s.sd.toFixed(1)).join(' / ')}; самопроверка: ${samo.join('; ')}`);
     if (panele.length !== 3 || st.some((s) => s.sd < 8)) throw new Error('СТОП: панели ремейка не нарисованы на ' + w + '\n' + log.join('\n'));
   }
   return log.join('\n');

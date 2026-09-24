@@ -7,6 +7,13 @@
 //      1024, 390 (ряд по центру окна), вместо низких окон сессии 9.
 //   3. Проверка, что нарисованы панели ремейка: у каждой из трёх картинок .panele ряда
 //      разброс яркости в её рамке на кадре окна (sd) не ниже 8 — пустая панель даёт около 0.
+//      Рамка — без плашки: плашка заходит на кадр снизу (margin-top: −xl) с обводкой, и её
+//      текст давал разброс выше порога и у пустой панели — большая панель и mp1-k06 на 1440
+//      и 390 проходили бы пустыми (K1 «судью судят» сессии 10). У панели, на которую плашка
+//      заходит, рамка обрезается по верх плашки минус обводка; остаток ниже 24 px — стоп.
+//   4. Самопроверка в каждом окне: картинки панелей скрываются (visibility: hidden), кадр
+//      окна снимается без записи, и та же мерка обязана дать у всех трёх разброс ниже 8 —
+//      иначе проверка слепа, стоп. Потом картинки возвращаются.
 // Порядок, как у драйвера эталона (П16): одна загрузка на 1920, окна по убыванию без
 // перезагрузки; сверка currentSrc всех картинок до и после полного кадра — подмена стоп;
 // свет фонаря в арте героя в кадре окна и в полном кадре — отсутствие стоп.
@@ -57,15 +64,35 @@ async (page) => {
     log.push(`${w}x${h}: ${g.img}/${g.img} картинок, страница ${g.h}px, свет фонаря в арте: окно ${(okno.svet * 100).toFixed(1)} %, полный кадр ${(full.svet * 100).toFixed(1)} %, подмен кандидата ${podmen}`);
     if (okno.svet < 0.05 || full.svet < 0.05 || podmen) throw new Error('СТОП: на ' + w + ' арт не нарисован или кандидат подменён\n' + log.join('\n'));
     // кадр окна по ряду ремейка
-    const panele = await page.evaluate(async () => {
+    const { panele, plashka } = await page.evaluate(async () => {
       const el = document.getElementById('remake');
       el.scrollIntoView({ block: 'center', behavior: 'instant' });
       await new Promise((r) => setTimeout(r, 300));
-      return [...el.querySelectorAll('.panele img')].map((i) => { const b = i.getBoundingClientRect(); return { x: b.x, y: b.y, w: b.width, h: b.height }; });
+      const rect = (e) => { const b = e.getBoundingClientRect(); return { x: b.x, y: b.y, w: b.width, h: b.height }; };
+      const p = el.querySelector('.plashka');
+      return {
+        panele: [...el.querySelectorAll('.panele img')].map(rect),
+        plashka: p ? { ...rect(p), obvodka: parseFloat(getComputedStyle(p).outlineWidth) || 0 } : null,
+      };
     });
+    // рамка панели без плашки (п. 3 шапки)
+    const ramki = panele.map((r) => {
+      if (!plashka) return r;
+      const o = plashka.obvodka, verh = plashka.y - o;
+      const zahodit = plashka.x - o < r.x + r.w && plashka.x + plashka.w + o > r.x && verh < r.y + r.h && plashka.y + plashka.h + o > r.y;
+      return zahodit ? { ...r, h: verh - r.y } : r;
+    });
+    if (ramki.some((r) => r.h < 24)) throw new Error('СТОП: рамка панели без плашки ниже 24 px на ' + w + ': ' + JSON.stringify(ramki));
     await osadka();
-    const st = await statOf(await page.screenshot({ path: OUT + `remake-${w}.png`, scale: 'css' }), panele);
-    log.push(`  ряд ремейка ${w}: панелей ${panele.length}, разброс яркости ${st.map((s) => s.sd.toFixed(1)).join(' / ')}`);
+    const st = await statOf(await page.screenshot({ path: OUT + `remake-${w}.png`, scale: 'css' }), ramki);
+    // самопроверка (п. 4 шапки): скрытые панели обязаны дать разброс ниже порога
+    await page.addStyleTag({ content: '#remake .panele img { visibility: hidden !important; }' });
+    await osadka();
+    const pusto = await statOf(await page.screenshot({ scale: 'css' }), ramki);
+    await page.evaluate(() => document.querySelectorAll('style').forEach((s) => { if (s.textContent.includes('#remake .panele img')) s.remove(); }));
+    await osadka();
+    log.push(`  ряд ремейка ${w}: панелей ${panele.length}, высота рамок без плашки ${ramki.map((r) => r.h.toFixed(0)).join(' / ')}, разброс яркости ${st.map((s) => s.sd.toFixed(1)).join(' / ')}, со скрытыми панелями ${pusto.map((s) => s.sd.toFixed(1)).join(' / ')}`);
+    if (pusto.some((s) => s.sd >= 8)) throw new Error('СТОП: проверка слепа — скрытая панель дала разброс не ниже 8 на ' + w + '\n' + log.join('\n'));
     if (panele.length !== 3 || st.some((s) => s.sd < 8)) throw new Error('СТОП: панели ремейка не нарисованы на ' + w + '\n' + log.join('\n'));
   }
   return log.join('\n');

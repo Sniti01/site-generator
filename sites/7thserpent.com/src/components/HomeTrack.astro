@@ -57,13 +57,13 @@
         height: var(--space-4xl);
         background: linear-gradient(to bottom, transparent, var(--accent-text));
         pointer-events: none;
-        /* Только раздельные свойства и НЕ полный их набор («судью судят»,
-           сессия 9, находка C1): минификатор сборки (lightningcss) складывал
-           `animation` + `animation-timeline` в одно сокращение
+        /* Только раздельные свойства, не сокращение `animation` («судью
+           судят», сессия 9, находка C1): минификатор сборки (lightningcss)
+           складывал `animation` + `animation-timeline` в одно сокращение
            `animation: linear both trasa-pula --trasa`, а шкала в сокращение
            не входит — Chrome отбрасывал объявление целиком, и «пуля» стояла
-           неподвижно в начале трассы. Без длительности, задержки, повтора,
-           направления и состояния свернуть в сокращение нечего; проверка —
+           неподвижно в начале трассы. Раздельные свойства минификатор
+           не сворачивает (раунд 2 проверил и полный их набор); проверка —
            по собранному CSS и `document.getAnimations()` на превью. */
         animation-name: trasa-pula;
         animation-timing-function: linear;

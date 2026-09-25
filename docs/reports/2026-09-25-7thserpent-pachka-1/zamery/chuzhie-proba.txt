@@ -1,6 +1,7 @@
 корпус: документов 612
-/pc/: строк 41, слов 903, чужих последовательностей: 1
-  строка 41: «pdf printable version in other projects wikiquote wikidata item appearance» — https://en.wikipedia.org/wiki/Max_Payne_3
-/games-like-max-payne/: строк 32, слов 642, чужих последовательностей: 0
-/media/: строк 34, слов 583, чужих последовательностей: 0
-итого чужих: 1
+проба: в первый абзац /pc/ вставлено 12 слов документа https://en.wikipedia.org/wiki/Max_Payne_3, седьмое — в <a>
+/pc/: строк 40 (+4: title, описания, alt), слов 901, строк с чужой последовательностью: 1
+  строка 2: «former NYPD detective. Nine years after the events of the second game, Max Payne 3» — https://en.wikipedia.org/wiki/Max_Payne_3
+/games-like-max-payne/: строк 32 (+4: title, описания, alt), слов 649, строк с чужой последовательностью: 0
+/media/: строк 33 (+7: title, описания, alt), слов 561, строк с чужой последовательностью: 0
+итого строк с чужой последовательностью: 1

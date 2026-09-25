@@ -15,6 +15,14 @@
 //      контраста (`gates/contrast.mjs`), а не текст поверх скрима: здесь не мерится.
 //   3. Адрес сервера — BASE (статический сервер копии dist/ сессии, не astro preview).
 //   4. СТОП, если на странице призыва нет (`section.cta`) или он не один.
+//   5. СТОП, если ответ сервера не 200 или canonical страницы не равен
+//      https://www.7thserpent.com<адрес> («судью судят», раунд 1, R1-INSTR-13: сервер отдаёт
+//      отсутствующий адрес кодом 404 с телом /404/, а сверка только хоста это пропускала).
+// Предел порядка (R1-INSTR-15): рамки живут в window.__ka последней страницы и пишутся
+// один раз, после всех страниц; переход страницы стирает окно, поэтому промежуточной
+// записи нет. Стоп посреди прогона оставляет свежие кадры первых страниц рядом со старым
+// boxes.json на диске — выгружать рамки только после ответа «ok: …», а папку
+// .playwright-mcp/ka-p1/ перед прогоном очищать.
 // Остальное — дословно копии: ОКНА (31), загрузка заново на каждом окне, ожидание картинок
 // под сроком 8 с и стоп при недогрузке, сверка canonical, прокрутка «верх места минус 120»,
 // рамки строк getClientRects по текстовым узлам с вычисленным цветом, скрытие колонки
@@ -44,9 +52,10 @@ async (page) => {
     const all = {};
     for (const [w, h] of OKNA) {
       await page.setViewportSize({ width: w, height: h });
-      await page.goto(BASE + adres, { waitUntil: 'networkidle' });
+      const otvet = await page.goto(BASE + adres, { waitUntil: 'networkidle' });
+      if (!otvet || otvet.status() !== 200) throw new Error('СТОП: на ' + adres + ' ответ ' + (otvet ? otvet.status() : 'нет'));
       const canonical = await page.evaluate(() => document.querySelector('link[rel="canonical"]')?.href ?? null);
-      if (!canonical || !canonical.includes('7thserpent.com')) throw new Error('СТОП: на ' + adres + ' не 7thserpent.com (canonical ' + canonical + ')');
+      if (canonical !== 'https://www.7thserpent.com' + adres) throw new Error('СТОП: на ' + adres + ' canonical ' + canonical + ', ждали https://www.7thserpent.com' + adres);
       const prizyvov = await page.evaluate(() => document.querySelectorAll('section.cta').length);
       if (prizyvov !== 1) throw new Error('СТОП: на ' + adres + ' призывов ' + prizyvov + ', ждали один');
       const uslovia = await page.evaluate(async () => {

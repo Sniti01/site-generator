@@ -5,10 +5,11 @@
 //
 // node stili-gen.mjs <прогон> <glowna|404> <1440|390|390-yashik> <лист-до> <лист-после> [порт-до] [порт-после]
 //   → пишет .playwright-mcp/sesja-13/<прогон>/stili-<страница>-<состояние>.js
-//   <лист-до>, <лист-после> — имена общего листа стилей сборок (`LinkList.*.css`), обязаны
-//   различаться, порты — тоже: скрипт сверяет, что на порту отвечает та сборка, что каждый
-//   лист страницы загружен и несёт правила (`sheet.cssRules.length > 0`; лист, не отданный
-//   сервером, бросает при чтении правил), и останавливается, если нет.
+//   <лист-до>, <лист-после> — имена общего листа стилей сборок (`LinkList.*.css`; путь
+//   отбрасывается, сравнивается имя файла), обязаны различаться, порты (как числа) — тоже:
+//   скрипт сверяет, что страница ссылается на лист этой сборки, что каждый лист страницы
+//   загружен и несёт правила (`sheet.cssRules.length > 0`: сбой сети даёт исключение при чтении
+//   правил, ответ 404/500 или не CSS — 0 правил), и останавливается, если нет.
 //
 // Что делает скрипт в браузере:
 //   1. Одна вкладка, вьюпорт состояния, DPR 1. «До» и «после» грузятся по очереди в ту же
@@ -29,7 +30,8 @@
 //           (наследники h1 меняются вместе с ним законно);
 //      К3 — `a::after{outline-offset:1px}`: ждём ≥1 различие, и все — в строках ::after.
 //      Зрячесть доказывают К2 и К3; условия проверяются по полному списку различий (первые 8 —
-//      только для печати). Не видят — «СЛЕПА», итог «отказ»; К1 ≠ 0 — итог «отказ».
+//      только для печати; в выгрузке — счётчики доводов: у К2 строк h1, у К3 строк не в ::after
+//      и первые такие метки). Не видят — «СЛЕПА», итог «отказ»; К1 ≠ 0 — итог «отказ».
 //   5. Итог — в window.__stili (выгрузка browser_evaluate в файл) и строкой возврата.
 // ПРЕДЕЛЫ (названы): не снимаются ::first-letter, ::first-line, ::marker, ::selection,
 // ::placeholder, ::backdrop и псевдоэлементы полосы прокрутки; не сверяются печать,
@@ -39,12 +41,20 @@
 // и фокус: в состояниях без ящика их нет; в «390-yashik» щелчок оставляет :hover на цепочке
 // .hdr__burger (с html, body и шапкой) и :focus на кнопке — одинаково в «до» и «после»,
 // то есть это состояние сверяется, а прочие наведения и фокусы — нет.
+// «Та сборка» — по имени листа в ссылке страницы и по загрузке: содержимое листа не сверяется
+// (под верным именем может лежать чужое содержимое), лист из одного @import или одной
+// инструкции проходит «несёт правила». Лист с чужого адреса (другой порт, внешний шрифт) даёт
+// −1 правил и ложный отказ. Разные сборки на портах «до» и «после» подтверждает ведущий
+// отдельно (сверка отдаваемых файлов с dist).
 import { mkdirSync, writeFileSync } from 'node:fs';
 
-const [, , run, strona, sost, listDo, listPosle, portDo = '4341', portPosle = '4342'] = process.argv;
+const [, , run, strona, sost, listDoArg, listPosleArg, portDoArg = '4341', portPosleArg = '4342'] = process.argv;
+const imyaFajla = (s) => String(s ?? '').split(/[\\/]/).pop();
+const listDo = imyaFajla(listDoArg), listPosle = imyaFajla(listPosleArg);
+const portDo = /^\d{1,5}$/.test(portDoArg) ? String(Number(portDoArg)) : '', portPosle = /^\d{1,5}$/.test(portPosleArg) ? String(Number(portPosleArg)) : '';
 const PUTI = { glowna: '/', '404': '/404/' };
 const SOST = { '1440': { w: 1440, h: 900, yashik: false }, '390': { w: 390, h: 844, yashik: false }, '390-yashik': { w: 390, h: 844, yashik: true } };
-if (!run || !PUTI[strona] || !SOST[sost] || !listDo || !listPosle) {
+if (!run || !PUTI[strona] || !SOST[sost] || !listDo || !listPosle || !portDo || !portPosle) {
   console.error('node stili-gen.mjs <прогон> <glowna|404> <1440|390|390-yashik> <лист-до> <лист-после> [порт-до] [порт-после]');
   process.exit(2);
 }
@@ -133,16 +143,19 @@ const code = `async (page) => {
   const k2 = await kontrol('К2 letter-spacing h1 +0.001em', () => { const h = document.querySelector('h1'); const ls = parseFloat(getComputedStyle(h).letterSpacing) || 0; h.style.letterSpacing = 'calc(' + ls + 'px + 0.001em)'; });
   const k3 = await kontrol('К3 a::after{outline-offset:1px}', () => { const s = document.createElement('style'); s.textContent = 'a::after{outline-offset:1px}'; document.head.appendChild(s); });
   const k1Ok = k1.razlichiy === 0;
-  const zryachest = k2.razlichiy >= 1 && k2.metki.some(m => /\\bH1\\b/.test(m))
-    && k3.razlichiy >= 1 && k3.metki.every(m => m.endsWith('::after'));
+  k2.strokH1 = k2.metki.filter(m => /\\bH1\\b/.test(m)).length;
+  const neAfter = k3.metki.filter(m => !m.endsWith('::after'));
+  k3.strokNeAfter = neAfter.length;
+  k3.pervyeNeAfter = neAfter.slice(0, 5);
+  const zryachest = k2.razlichiy >= 1 && k2.strokH1 >= 1 && k3.razlichiy >= 1 && k3.strokNeAfter === 0;
   const itog = osnovnoe.razlichiy === 0 && k1Ok && zryachest ? 'сверено' : 'отказ';
   for (const k of [k1, k2, k3]) delete k.metki;
   delete osnovnoe.metki;
   const d = { run: CONFIG.run, strona: CONFIG.strona, sost: CONFIG.sost, do: CONFIG.do, posle: CONFIG.posle, listyDo, listyPosle, osnovnoe, kontrol: [k1, k2, k3], k1Ok, zryachest, itog };
   await page.evaluate((x) => { window.__stili = x; }, d);
   return CONFIG.strona + ' ' + CONFIG.sost + ': элементов ' + osnovnoe.elementov + ', строк ' + osnovnoe.strok + ', свойств в строке ' + osnovnoe.svoystv_v_stroke_0 + ', различий ' + osnovnoe.razlichiy
-    + '; К1 (повтор внутри сборки) ' + k1.razlichiy + (k1Ok ? '' : ' — ПРАВИЛО НЕ ИНЕРТНО')
-    + '; зрячесть: К2 ' + k2.razlichiy + ', К3 ' + k3.razlichiy + ' — ' + (zryachest ? 'видит' : 'СЛЕПА') + '; итог ' + itog;
+    + '; К1 (повтор внутри сборки) ' + k1.razlichiy + (k1Ok ? '' : ' — ПРАВИЛО НЕ ИНЕРТНО ИЛИ ПЕРЕЗАГРУЗКА НЕ ВОСПРОИЗВОДИМА')
+    + '; зрячесть: К2 ' + k2.razlichiy + ' (h1: ' + k2.strokH1 + '), К3 ' + k3.razlichiy + ' (не в ::after: ' + k3.strokNeAfter + ') — ' + (zryachest ? 'видит' : 'СЛЕПА') + '; итог ' + itog;
 }`;
 
 mkdirSync(`${ROOT}/${run}`, { recursive: true });

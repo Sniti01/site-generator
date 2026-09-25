@@ -37,10 +37,10 @@ rows:
     body:
       - >-
         The thread opened in October 2025 with a player for whom Max’s struggle
-        to get past his trauma hit home. The answers ran long: Metal
-        Gear Solid 3, 4 and Phantom Pain, NieR: Automata, Alan Wake 1 and 2,
-        Silent Hill 1 and 2, Fallout: New Vegas, GTA IV, Persona 5 Royal,
-        Final Fantasy VII and the BioShock games, plus Yakuza 0 and the other
+        to get past his trauma hit home. The answers ran long: Final Fantasy
+        VII, Persona 5 Royal, GTA IV, Fallout: New Vegas, Silent Hill 1 and 2,
+        Alan Wake 1 and 2, NieR: Automata, three Metal Gear Solid games (3, 4
+        and Phantom Pain) and the BioShock games, plus Yakuza 0 and the other
         Yakuza games with Kiryu.
       - >-
         Some picks came with reasons that sound like Max: Days Gone, whose hero
@@ -71,7 +71,7 @@ rows:
       - >-
         Remedy is remaking the first two games as a single game, Max Payne 1 &
         2 Remake, on its Northlight engine; Rockstar Games funds and publishes
-        it for PC, PlayStation 5 and Xbox Series X|S. As of September 2026 it
+        it for PlayStation 5, Xbox Series X|S and PC. As of September 2026 it
         is still in development and has no release date.
       - >-
         Until then, the author of that Steam thread, who had played the series

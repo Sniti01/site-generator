@@ -29,8 +29,8 @@ rows:
     body:
       - >-
         Minimum: Windows 98, ME, 2000 or XP; a 1 GHz Pentium III or Athlon, or
-        a 1.2 GHz Celeron or Duron; 256 MB of RAM; a 32 MB AGP graphics card
-        with hardware transform and lighting; DirectX 9.0. Recommended: a
+        a 1.2 GHz Celeron or Duron; 256 MB of RAM; a 32 MB AGP card that does
+        hardware transform and lighting; DirectX 9.0. Recommended: a
         1.4 GHz Athlon or a 1.7 GHz Pentium 4, 512 MB of RAM and a 64 MB card.
         Listings put the install at 1.5 to 1.7 GB.
   - id: max-payne-on-windows-10-and-11

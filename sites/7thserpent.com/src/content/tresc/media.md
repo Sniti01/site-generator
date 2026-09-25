@@ -44,8 +44,8 @@ rows:
       - >-
         The frames on this site are screenshots and key art from the games’
         Steam pages, toned to the site’s colors. Max Payne 2, with Saku
-        Lehtinen credited as its artist, won Outstanding Art Direction at the
-        Golden Satellite Awards 2004.
+        Lehtinen credited as its artist, took the 2004 Golden Satellite Award
+        for Outstanding Art Direction.
       - >-
         For Max Payne 3 the credits list artists Paul MacPherson, Joshua Bass
         and Rob Nelson, and Anthrox Studio names itself for the concept art

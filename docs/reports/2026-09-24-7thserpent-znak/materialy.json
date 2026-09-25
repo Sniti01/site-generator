@@ -1,4 +1,251 @@
 {
-  "браузер": "Chromium 151.0.7922.34",
-  "адрес": "http://localhost:4331/"
+  "instrument": "materialy-priemki.mjs",
+  "brauzer": "Chromium 151.0.7922.34",
+  "chrome": "C:/Users/MSI/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe",
+  "sborka": {
+    "adres": "http://localhost:4331/",
+    "kommit": "6762a920ca21188a0378e598b2d95b6a885eeadb",
+    "gryaz_sajta": [],
+    "pliki": [
+      {
+        "put": "/",
+        "sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/index.CmgQJVSa.css",
+        "sha256": "a0674b3bb3ca4f347c288f0d1e6779ff5f7d6b4d02518fbd238fed2bb5f355f6",
+        "rowny_dist": true
+      }
+    ],
+    "bledy": []
+  },
+  "stany": {
+    "фокус 1440 DPR 1": {
+      "brand": true,
+      "fv": true
+    },
+    "фокус 1440 DPR 2": {
+      "brand": true,
+      "fv": true
+    },
+    "ящик 390": {
+      "exp": "true",
+      "hidden": false,
+      "h": 279.375
+    },
+    "favicon.ico в <img>: naturalWidth": 32
+  },
+  "pliki": {
+    "znak-dpr1-x4.png": "84ac69a65a8e1ec3c981a4f5ac2bb75474febdbe61b1864f935881553f9f10f5",
+    "pervy-ekran-1440.png": "607c105157763ec1becee98ef0f6fbade4f035cc667ecc69ce744c7c2f908793",
+    "podval-1440.png": "28e993c72e06575c44a62d5021e493a1c35546eeb7843cb47939faf0ac314645",
+    "shapka-1440.png": "8db43323a4f2e4840a29ced60d88bee7384248d155abe46c8e5872784e78f8bd",
+    "fokus-1440.png": "ac79b6df72c3cb76042a45d90c171ea10ee5b631116b9909129d0cf073c0fdf3",
+    "shapka-390.png": "b1c9b7f5daf81b2603e8ad7617f165a38c6cc1f15ec9c91397e8670cfe9b5a8b",
+    "pervy-ekran-390.png": "1eaef5fcade20640884cae1119864951189c6bd8b346fedccee087d8b3d1d582",
+    "yashchik-390.png": "947e01a6b97ae3c0ec06772f8904abd7f683207ae07f1be6b904f7b4208acf4b",
+    "podval-390.png": "7b8973b4379b8c8c9d938925b1ee648fd80694d84b82e6fe2e37a75f13fd0f77",
+    "znak-plotnosti.png": "b9676186a68776a5b495d4e98dd803294b20a1d1924401f73dcaaf56cedbf1e9",
+    "podval-plotnosti.png": "3c4d558caa14a8fa6b1f7c2930c6bd75c826eb896441ab0fe6713710f3c6bf2d",
+    "shapka-nad-soderzhimym.png": "f5b38188661f62e82cb6c4b63f3935f12f17fd8caf86d96090a2076ed52f9e33",
+    "prinuditelnye-cveta.png": "9e494de6eebc90de032fb4929adbd8d77060875eff439b37f9d026c560c44fe5",
+    "okno-plotnosti.png": "b523dc17a551bb69a698e0bf20ecb6e7caa553c4a67a2a7382d7ff3c58700d62",
+    "ikony.png": "e92e9ffb44bfd5342502d457091685c862220b14ea76adcbc25d3aea6b26ea23"
+  },
+  "okno": {
+    "1.25 шапка": {
+      "skala": 1.25,
+      "gde": "шапка",
+      "prokrutka_okno": 0,
+      "prokrutka_bez_okna": 0,
+      "nachalo_stranicy_v_okne": [
+        9,
+        109
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 15,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 15,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 10614,
+      "kak_est": {
+        "rashozhdeniy": 647,
+        "max": 109
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 638,
+        "max": 110
+      },
+      "sdvig_px": 0
+    },
+    "1.25 подвал": {
+      "skala": 1.25,
+      "gde": "подвал",
+      "prokrutka_okno": 5899.2001953125,
+      "prokrutka_bez_okna": 5904,
+      "nachalo_stranicy_v_okne": [
+        9,
+        109
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 214.52500915527344,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 214.34375,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 10614,
+      "kak_est": {
+        "rashozhdeniy": 833,
+        "max": 136
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 833,
+        "max": 137
+      },
+      "sdvig_px": 0.181
+    },
+    "1.5 шапка": {
+      "skala": 1.5,
+      "gde": "шапка",
+      "prokrutka_okno": 0,
+      "prokrutka_bez_okna": 0,
+      "nachalo_stranicy_v_okne": [
+        11,
+        131
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 15,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 15,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 15111,
+      "kak_est": {
+        "rashozhdeniy": 1008,
+        "max": 138
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 1006,
+        "max": 137
+      },
+      "sdvig_px": 0
+    },
+    "1.5 подвал": {
+      "skala": 1.5,
+      "gde": "подвал",
+      "prokrutka_okno": 5896,
+      "prokrutka_bez_okna": 5905,
+      "nachalo_stranicy_v_okne": [
+        11,
+        131
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 213.70834350585938,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 213.34375,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 15111,
+      "kak_est": {
+        "rashozhdeniy": 1700,
+        "max": 222
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 1701,
+        "max": 221
+      },
+      "sdvig_px": 0.365
+    },
+    "1.75 шапка": {
+      "skala": 1.75,
+      "gde": "шапка",
+      "prokrutka_okno": 0,
+      "prokrutka_bez_okna": 0,
+      "nachalo_stranicy_v_okne": [
+        12,
+        153
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 15.000000953674316,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 15,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 20736,
+      "kak_est": {
+        "rashozhdeniy": 1652,
+        "max": 227
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 1651,
+        "max": 220
+      },
+      "sdvig_px": 0
+    },
+    "1.75 подвал": {
+      "skala": 1.75,
+      "gde": "подвал",
+      "prokrutka_okno": 5895.4287109375,
+      "prokrutka_bez_okna": 5905,
+      "nachalo_stranicy_v_okne": [
+        12,
+        153
+      ],
+      "ramka_okno": {
+        "x": 32,
+        "y": 214.9732208251953,
+        "w": 138,
+        "h": 38
+      },
+      "ramka_bez_okna": {
+        "x": 32,
+        "y": 214.84375,
+        "w": 138,
+        "h": 38
+      },
+      "pikseley": 20736,
+      "kak_est": {
+        "rashozhdeniy": 1412,
+        "max": 222
+      },
+      "tolko_znak": {
+        "rashozhdeniy": 1412,
+        "max": 220
+      },
+      "sdvig_px": 0.129
+    }
+  },
+  "bledy": []
 }

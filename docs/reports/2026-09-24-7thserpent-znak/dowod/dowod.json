@@ -1,53 +1,224 @@
 {
-  "warianty": {
-    "a-1x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 1,
-      "czerwonych": 0,
-      "rysuje": "favicon.svg"
+  "instrument": "vkladka-dowod.mjs",
+  "brauzer": "Chromium 151.0.7922.34",
+  "chrome": "C:/Users/MSI/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe",
+  "kommit": "6762a920ca21188a0378e598b2d95b6a885eeadb",
+  "gryaz_sajta": [],
+  "dist_index_sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
+  "kopia_0_ravna_dist": true,
+  "ramki": {
+    "1-svetlaya": {
+      "x": 56,
+      "y": 12,
+      "w": 16,
+      "h": 16
     },
-    "a-2x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 0.906,
-      "czerwonych": 0,
-      "rysuje": "favicon.svg"
+    "2-svetlaya": {
+      "x": 109,
+      "y": 24,
+      "w": 32,
+      "h": 32
     },
-    "b-1x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 0,
-      "czerwonych": 0,
-      "rysuje": "не контрольный цвет — прежний рисунок"
+    "1-temnaya": {
+      "x": 56,
+      "y": 12,
+      "w": 16,
+      "h": 16
     },
-    "b-2x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 0,
-      "czerwonych": 0,
-      "rysuje": "не контрольный цвет — прежний рисунок"
-    },
-    "c-1x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 1,
-      "czerwonych": 0,
-      "rysuje": "favicon.svg"
-    },
-    "c-2x": {
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "zielonych": 0.906,
-      "czerwonych": 0,
-      "rysuje": "favicon.svg"
+    "2-temnaya": {
+      "x": 109,
+      "y": 24,
+      "w": 32,
+      "h": 32
     }
   },
-  "browser": "151.0.7922.34"
+  "przebiegi": {
+    "a-1-svetlaya": {
+      "okno": "pid 14332 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    },
+    "a-2-svetlaya": {
+      "okno": "pid 24828 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    },
+    "a-1-temnaya": {
+      "okno": "pid 32632 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    },
+    "a-2-temnaya": {
+      "okno": "pid 40016 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    },
+    "0-1-svetlaya": {
+      "okno": "pid 45564 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-2-svetlaya": {
+      "okno": "pid 23412 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-1-temnaya": {
+      "okno": "pid 46960 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-2-temnaya": {
+      "okno": "pid 36316 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "b-1-svetlaya": {
+      "okno": "pid 33616 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0,
+      "protiv_0": {
+        "dolya": 0,
+        "max": 0
+      }
+    },
+    "b-2-svetlaya": {
+      "okno": "pid 12376 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 0,
+      "czerwonych": 0,
+      "protiv_0": {
+        "dolya": 0,
+        "max": 0
+      }
+    },
+    "c-1-svetlaya": {
+      "okno": "pid 6420 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    },
+    "c-2-svetlaya": {
+      "okno": "pid 10116 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 1,
+      "czerwonych": 0
+    }
+  },
+  "wniosek": {
+    "a-1-svetlaya": "рисует favicon.svg",
+    "a-2-svetlaya": "рисует favicon.svg",
+    "a-1-temnaya": "рисует favicon.svg",
+    "a-2-temnaya": "рисует favicon.svg",
+    "c-1-svetlaya": "рисует favicon.svg",
+    "c-2-svetlaya": "рисует favicon.svg",
+    "b-1-svetlaya": "правка PNG и ICO до вкладки не дошла: рамка та же, что без правки",
+    "b-2-svetlaya": "правка PNG и ICO до вкладки не дошла: рамка та же, что без правки"
+  },
+  "bledy": []
 }

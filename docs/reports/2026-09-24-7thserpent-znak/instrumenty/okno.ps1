@@ -1,7 +1,11 @@
 # Snimok okna Chromium vmeste s interfejsom brauzera (PrintWindow, PW_RENDERFULLCONTENT):
-# polosa vkladok s favikonom. Okno ishchetsya po zagolovku (title stranicy).
+# polosa vkladok s favikonom. Okno ishchetsya po processu, a ne po zagolovku lyubogo
+# chrome.exe (sud sudej, raund 2, R2-MATERIALY-2): glavnyj process chrome.exe (bez
+# --type=), v komandnoj stroke kotorogo est' -Marker (imya svoej papki --user-data-dir
+# zapuska), rovno odin; zagolovok ego okna soderzhit -Title. Chuzhoj Chrome s drugim
+# profilem ne podhodit. Vyvod: pid, razmer okna, zagolovok.
 # ASCII only: Windows PowerShell 5.1 chitaet fajl bez BOM v kodirovke ANSI.
-param([string]$Title, [string]$Out)
+param([string]$Marker, [string]$Title, [string]$Out)
 Add-Type -AssemblyName System.Drawing
 Add-Type @"
 using System;
@@ -14,11 +18,13 @@ public class W {
 }
 "@
 [W]::SetProcessDPIAware() | Out-Null
-$h = [IntPtr]::Zero
-foreach ($p in Get-Process -Name chrome -ErrorAction SilentlyContinue) {
-  if ($p.MainWindowHandle -ne [IntPtr]::Zero -and $p.MainWindowTitle -like "*$Title*") { $h = $p.MainWindowHandle; break }
-}
-if ($h -eq [IntPtr]::Zero) { Write-Output 'no window'; exit 2 }
+if (-not $Marker) { Write-Output 'no marker'; exit 2 }
+$procs = @(Get-CimInstance Win32_Process -Filter "Name='chrome.exe'" | Where-Object { $_.CommandLine -and $_.CommandLine.Contains($Marker) -and -not $_.CommandLine.Contains('--type=') })
+if ($procs.Count -ne 1) { Write-Output "processes with marker: $($procs.Count)"; exit 3 }
+$p = Get-Process -Id $procs[0].ProcessId
+if ($p.MainWindowHandle -eq [IntPtr]::Zero) { Write-Output "pid $($p.Id): no main window"; exit 4 }
+if (-not $p.MainWindowTitle.Contains($Title)) { Write-Output "pid $($p.Id): title does not contain the page title"; exit 5 }
+$h = $p.MainWindowHandle
 $r = New-Object W+RECT
 [W]::GetWindowRect($h, [ref]$r) | Out-Null
 $w = $r.R - $r.L; $hh = $r.B - $r.T
@@ -28,4 +34,4 @@ $hdc = $g.GetHdc()
 [W]::PrintWindow($h, $hdc, 2) | Out-Null
 $g.ReleaseHdc($hdc)
 $bmp.Save($Out, [System.Drawing.Imaging.ImageFormat]::Png)
-Write-Output "window ${w}x${hh}"
+Write-Output "pid $($p.Id) window ${w}x${hh} title ok"

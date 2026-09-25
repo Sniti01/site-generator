@@ -1,0 +1,84 @@
+{
+  "instrument": "vkladka-dowod.mjs",
+  "brauzer": "Chromium 151.0.7922.34",
+  "kommit": "6762a920ca21188a0378e598b2d95b6a885eeadb",
+  "gryaz_sajta": [],
+  "dist_index_sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
+  "snimki": {
+    "0-1-svetlaya": {
+      "okno": "pid 45564 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-2-svetlaya": {
+      "okno": "pid 23412 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-1-temnaya": {
+      "okno": "pid 46960 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-2-temnaya": {
+      "okno": "pid 36316 window 1800x840 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 109,
+        "y": 24,
+        "w": 32,
+        "h": 32
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    }
+  },
+  "para": {
+    "0-1-svetlaya": {
+      "dolya": 0.188,
+      "max": 68
+    },
+    "0-1-temnaya": {
+      "dolya": 0.188,
+      "max": 68
+    },
+    "0-2-svetlaya": {
+      "dolya": 0.004,
+      "max": 50
+    },
+    "0-2-temnaya": {
+      "dolya": 0.004,
+      "max": 50
+    }
+  },
+  "dowod": "dowod/dowod.json"
+}

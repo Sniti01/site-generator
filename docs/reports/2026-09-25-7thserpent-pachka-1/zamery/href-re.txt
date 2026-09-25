@@ -1,0 +1,30 @@
+регулярка из файла: /^(?:\/(?![/\\])\S*|https:\/\/[^/\\\s?#@:%]+(?::\d+)?(?:[/?#]\S*)?)$/
+ok    "/mods/"                                   схема пропускает  links: strona /mods/
+ok    "/"                                        схема пропускает  links: strona /
+ok    "/max-payne-1/"                            схема пропускает  links: strona /max-payne-1/
+ok    "https://www.youtube.com/rockstargames"    схема пропускает  links: poza
+ok    "//evil.example/x"                         схема отвергает   links: poza
+ok    "/\\evil.example/"                         схема отвергает   links: strona /
+ok    "https://"                                 схема отвергает   links: bez-korzenia https://
+ok    "https:///mods/"                           схема отвергает   links: poza
+ok    "https://\\evil"                           схема отвергает   links: poza
+ok    "http://x.com/"                            схема отвергает   links: poza
+ok    "javascript:alert(1)"                      схема отвергает   links: poza
+ok    "mods/"                                    схема отвергает   links: bez-korzenia mods/
+ok    "/ mods/"                                  схема отвергает   links: strona / mods/
+ok    " /mods/"                                  схема отвергает   links: strona /mods/
+ok    "/mods/ "                                  схема отвергает   links: strona /mods/
+ok    "https://?x"                               схема отвергает   links: bez-korzenia https://?x
+ok    "https://#x"                               схема отвергает   links: bez-korzenia https://#x
+ok    "https://:443/"                            схема отвергает   links: bez-korzenia https://:443/
+ok    "https://@/"                               схема отвергает   links: bez-korzenia https://@/
+ok    "https://%2F/"                             схема отвергает   links: bez-korzenia https://%2F/
+ok    "https://user@evil.example/"               схема отвергает   links: poza
+ok    "/?q=1"                                    схема пропускает  links: strona /
+ok    "/#top"                                    схема пропускает  links: strona /
+ok    "/mods/?a=1&b=2"                           схема пропускает  links: strona /mods/
+ok    "https://www.youtube.com/@RockstarGames"   схема пропускает  links: poza
+ok    "https://store.steampowered.com/app/204100/" схема пропускает  links: poza
+ok    "https://example.com:8443/x"               схема пропускает  links: poza
+ok    "https://пример.рф/"                       схема пропускает  links: poza
+все адреса — как ждали

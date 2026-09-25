@@ -1,0 +1,12 @@
+ok    контроль: неиспорченная копия — код 0
+ok    nota-snyata: код 1 — кадры есть, а ноты об арте нет
+ok    nota-na-pc: код 1 — кадров нет, а нота об арте есть
+ok    cta-snyat: код 1 — в HTML нет заголовка «Running smoothly? Next come the mods» из файла содержания — сборка старая или печать разошлась
+ok    cta-href: код 1 — кнопка призыва ведёт на /remake/, в содержании /max-payne-1/
+ok    cta-ne-posledniy: код 1 — призыв не последний блок <main>
+ok    kadr-snyat: код 1 — кадры страницы [mp1-k13, mp3-k15] ≠ ключи рядов [mp2-k01, mp1-k13, mp3-k15]
+ok    kadr-podmenyon: код 1 — кадры страницы [mp2-k01, mp1-k13, mp2-k01] ≠ ключи рядов [mp2-k01, mp1-k13, mp3-k15]
+ok    nota-v-main: код 1 — кадры есть, а ноты об арте нет
+ok    staryy-tekst: код 1 — в HTML нет заголовка «Controller support on PC» из файла содержания — сборка старая или печать разошлась
+сверка dist видит все порчи своей причиной
+proba-sverki exit=0

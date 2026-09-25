@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import afterBuild from '@factory/core/gates/after-build.mjs';
 import anchors from '@factory/core/gates/anchors.mjs';
+import links from '@factory/core/gates/links.mjs';
+import corridor from '@factory/core/gates/corridor.mjs';
 
 export default defineConfig({
   // Канонический адрес с `www` — слово владельца 2026-09-18 (П62 п. 4), как
@@ -13,14 +15,30 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { format: 'directory' },
   // Сторожа результата (читают dist/) — интеграции, не позиции `npm run gates`.
-  // Подключены с первой сборки: `afterBuild` (ровно один h1) и `anchors`
-  // (якоря). НЕ подключены — и это решение, не пропуск (П62):
-  //   `links({ structure })` и `corridor({ structure })` отказывают на пустой
-  //   структуре (core/gates/links.mjs, corridor.mjs) — подключаются вместе
-  //   с деревом S2, как П42/П43 у первого сайта;
-  //   `art()` — после ответа по бэклогу 47 п. 9 (ассеты в git или гейт после
-  //   первого `gameart`/`art`).
-  integrations: [sitemap(), afterBuild(), anchors()],
+  // С первой сборки: `afterBuild` (ровно один h1) и `anchors` (якоря).
+  // С пачки 0 (П85 п. 2, бэклог 54 п. 9 — та же точка, что П42/П43 у первого
+  // сайта): `links` — каждый `href`/`action` собранных страниц ведёт на адрес
+  // структуры (плановый адрес без собранной страницы — законен) или на файл
+  // в `dist/`; `corridor` — знаки без пробелов в `<main>` каждой страницы
+  // в коридоре из структуры, `null` — число в журнал без приговора.
+  // Выключателей у обоих нет: путь мимо отказа — только договор (П43).
+  //
+  // `art()` НЕ подключён — решение исполнителя пачки 0 (П85 п. 2), и это
+  // решение, не пропуск. Гейт ловит два тихих исхода первого сайта: запасную
+  // графику (`.skyline` в месте `zapas` у `SmartImage` при ключе без файла)
+  // и пустую рамку галереи. У этого сайта нет ни того, ни другого: запасной
+  // графики нет вовсе, а ключ без файла или записи прерывает сборку раньше,
+  // в разрешателе `src/data/media.ts` (`kadr()` бросает). Сторож, обе ветви
+  // которого здесь недостижимы, давал бы зелёную строку о пустом множестве.
+  // Условие П62 (бэклог 47 п. 9: ассеты в git) выполнено — вопрос вернётся,
+  // если ветвь маршрута начнёт печатать кадр мимо `kadr()` или с запасом.
+  integrations: [
+    sitemap(),
+    afterBuild(),
+    anchors(),
+    links({ structure: 'structure/structure.json' }),
+    corridor({ structure: 'structure/structure.json' }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

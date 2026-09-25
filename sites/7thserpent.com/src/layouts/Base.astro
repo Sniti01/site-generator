@@ -1,8 +1,9 @@
 ---
 /**
  * Каркас страницы (сессия 3, П62): голова документа, пропуск к содержанию,
- * шапка и подвал ядра, единственный <main>; зерно ядра `Grain` поверх всей
- * страницы — после подвала, как у первого сайта (сессия 8, П74 п. 1).
+ * шапка и подвал ядра, крошки между ними и `<main>` (пачка 0), единственный
+ * <main>; зерно ядра `Grain` поверх всей страницы — после подвала, как у первого
+ * сайта (сессия 8, П74 п. 1).
  *
  * Иконки сайта из знака «Семёрка из трассы» (сессия 11, П83 и дополнение):
  * файлы в `public/` пишет `tools/znak.mjs` из `src/data/znak.json` и токенов
@@ -15,14 +16,28 @@
  * PNG, 192 и `apple-touch-icon` назначены браузерам без SVG-иконок, ярлыку
  * Android и домашнему экрану iOS; эти движки не проверялись (бэклог 60).
  *
- * Чего здесь ещё нет — и это решение, не пропуск: крошек и `BreadcrumbList`
- * (`getBreadcrumbs` бросает при `pages: []` — приходят вместе с деревом S2),
- * JSON-LD страницы.
+ * ИМЯ САЙТА ДЛЯ ПОИСКА (пачка 0, П85 п. 3; П84 п. 7, бэклог 60 п. 10):
+ * `og:site_name` — на каждой странице, JSON-LD `WebSite` — только на главной:
+ * `name` «7th Serpent» (видимое имя знака, `site.znak`), `alternateName`
+ * «7thserpent.com» (`site.name`), `url` — `canonical` главной, то же выражение,
+ * что пишет `<link rel="canonical">`, — расходиться им не с чего. Судья —
+ * `tools/glowa.mjs` по `dist/` (значения — из слов владельца, не из этого файла;
+ * `--selftest` — мутации).
+ *
+ * КРОШКИ И `BreadcrumbList` (пачка 0, П85 п. 4; форма первого сайта, П56 п. 5,
+ * П57): путь по `parent` структуры — между шапкой и `<main>`, вне коридора
+ * длины, `h1` остаётся один. На главной одно звено — ядро ничего не печатает.
+ * `BreadcrumbList` — тот же обход в `<head>`; не на главной (список из одного
+ * звена) и не на `/404/`: сервер отдаёт её под каждым чужим адресом со статусом
+ * 404, и разметка утверждала бы адрес, которого нет.
  */
 import '../styles/global.css';
 import Grain from '@factory/core/effects/Grain.astro';
+import Breadcrumbs from '@factory/core/chrome/Breadcrumbs.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import { site } from '../data/site';
+import { getBreadcrumbs } from '../lib/structure';
 
 interface Props {
   title: string;
@@ -34,6 +49,36 @@ interface Props {
 
 const { title, description, klucze = [] } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const glavnaya = Astro.url.pathname === '/';
+
+/** JSON-LD внутри `<script>`: `<` — экранированным, чтобы ярлык с `</script>`
+ *  не закрыл блок раньше времени; `JSON.parse` читает `<` как `<`. */
+const jsonLd = (obj: unknown) => JSON.stringify(obj).replace(/</g, '\\u003c');
+
+const webSite = glavnaya
+  ? jsonLd({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: site.znak,
+      alternateName: site.name,
+      url: canonical.href,
+    })
+  : null;
+
+const kroshki = getBreadcrumbs(Astro.url.pathname);
+const breadcrumbList =
+  kroshki.length > 1 && Astro.url.pathname !== '/404/'
+    ? jsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: kroshki.map((zveno, i) => ({
+          '@type': 'ListItem',
+          position: i + 1,
+          name: zveno.label,
+          item: new URL(zveno.href, Astro.site).href,
+        })),
+      })
+    : null;
 ---
 
 <!doctype html>
@@ -52,14 +97,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.znak} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_US" />
     <meta name="generator" content={Astro.generator} />
+    {webSite && <script is:inline type="application/ld+json" set:html={webSite} />}
+    {breadcrumbList && <script is:inline type="application/ld+json" set:html={breadcrumbList} />}
   </head>
   <body>
     <a class="skip-link t-button" href="#content">Skip to content</a>
     <SiteHeader />
+    <Breadcrumbs trail={kroshki} navLabel="Breadcrumbs" />
     <main id="content">
       <slot />
     </main>

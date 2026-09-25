@@ -1,0 +1,282 @@
+---
+/**
+ * Маршрут страниц дерева `7thserpent.com` (пачка 0, П85 п. 1). Форма —
+ * маршрута первого сайта (`sites/ac4bf-thewatch.com/src/pages/[...slug].astro`),
+ * написанная заново в LF для этого сайта; вынос в ядро — позже.
+ *
+ * АДРЕС — ИЗ ФАЙЛА СОДЕРЖАНИЯ, ПРАВДА — ИЗ СТРУКТУРЫ. Поле `url` файла
+ * `src/content/tresc/*.md` проходит `getPage` при сборке: адрес мимо
+ * `structure.json` прерывает сборку (П24 п. 1). `title`, `description` и `h1`
+ * — из структуры (П24 п. 3), набор и порядок секций — из `blocks[]`; из файла
+ * содержания приходят только слова.
+ *
+ * ГЛАВНАЯ ЗДЕСЬ НЕ ЖИВЁТ: у неё свой шаблон (`index.astro`, как у первого
+ * сайта, П32 п. 4) и свой эталон. Файл содержания с адресом `/` — отказ.
+ *
+ * ЧТО МАРШРУТ ПЕЧАТАЕТ (пачка 0). Две ветви — `story-row` (с вхождениями
+ * по роли) и `link-list`: стенд маршрута — `/404/` (П85 п. 6), и ветвь без
+ * стенда не пишется. Остальные блоки дерева, которые ядро умеет
+ * (`hero-key-art`, `byline`, `gallery`, `cta-band`), приходят ветвью вместе
+ * с первой страницей своей формы — со стопом на глаза владельца (план P4
+ * в докладе сессии 12). Страница, объявившая такой блок, не собирается,
+ * и отказ говорит именно это — «ветви нет», а не «нет содержания».
+ *
+ * БЛОК, КОТОРОГО НЕТ В ЯДРЕ, ПРОПУСКАЕТСЯ ГРОМКО. Готовность — поле
+ * `реализован` в `core/structure/blocks.json`, а не список в этом файле.
+ * Каждый пропущенный блок печатается по имени при сборке: `video` (П71 п. 3)
+ * реализуется с первой страницей с видео (П85, «вне объёма»). Тихая заглушка
+ * запрещена: страница с пропуском выглядит так же, как страница без него.
+ *
+ * ПОРЯДОК ПРОВЕРОК ниже — от частного отказа к общему: каждая проба
+ * `tools/proby-tresci.mjs` упирается в своего судью и получает отказ с его
+ * именем, а общая сверка «`blocks[]` и печать разошлись» остаётся последним
+ * рубежом.
+ */
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { getPage } from '../lib/structure';
+import slownik from '@factory/core/structure/blocks.json';
+import StoryRow from '@factory/core/blocks/StoryRow.astro';
+import LinkList from '@factory/core/blocks/LinkList.astro';
+
+export async function getStaticPaths() {
+  const wpisy = await getCollection('tresc');
+  // Два файла на один адрес дали бы Astro два пути с одним `slug`: отказ
+  // пришёл бы от сборщика (или не пришёл бы вовсе), а не от договора.
+  const poAdresu = new Map<string, string[]>();
+  for (const wpis of wpisy) poAdresu.set(wpis.data.url, [...(poAdresu.get(wpis.data.url) ?? []), wpis.id]);
+  const dvazhdy = [...poAdresu].filter(([, ids]) => ids.length > 1);
+  if (dvazhdy.length) {
+    throw new Error(
+      'Два файла содержания на один адрес:\n' +
+        dvazhdy.map(([url, ids]) => `  ${url}: ${ids.join(', ')}`).join('\n') +
+        '\nАдрес страницы — один файл; второй уберите.'
+    );
+  }
+  return wpisy.map((wpis) => {
+    const strona = getPage(wpis.data.url); // сторож: адрес мимо структуры прерывает сборку
+    if (strona.url === '/') {
+      throw new Error(
+        `Файл содержания ${wpis.id} с адресом «/»: главная — свой шаблон (src/pages/index.astro) и свой эталон, маршрут её не печатает.`
+      );
+    }
+    return {
+      params: { slug: wpis.data.url.replace(/^\/|\/$/g, '') },
+      props: { wpis },
+    };
+  });
+}
+
+const { wpis } = Astro.props;
+const strona = getPage(wpis.data.url);
+const dane = wpis.data;
+
+const gotowy = (imie: string) =>
+  Boolean((slownik as { блоки: Record<string, { реализован?: boolean }> }).блоки[imie]?.реализован);
+
+/**
+ * ВХОЖДЕНИЕ, А НЕ ИМЯ. `blocks[]` может назвать блок дважды, если вхождения
+ * различает `role` (`story-row` и `story-row#mobile` на `/max-payne-1/`).
+ * Ключ `имя#роль` — единственная личность блока на странице.
+ */
+const klucz = (b: { block: string; role?: string }) => (b.role ? `${b.block}#${b.role}` : b.block);
+const wystapienia = strona.blocks as { block: string; role?: string }[];
+
+// Одно вхождение дважды напечатало бы одно содержание дважды — гейт
+// структуры этого не ловит (бэклог 55 п. 4), значит, ловит маршрут.
+const powtory = [...new Set(wystapienia.map(klucz).filter((k, i, vse) => vse.indexOf(k) !== i))];
+if (powtory.length) {
+  throw new Error(`Вхождение блока объявлено дважды на ${strona.url}: ${powtory.join(', ')} — различите вхождения полем role в структуре.`);
+}
+
+/**
+ * ПОЛЕ БЕЗ БЛОКА — вторая сторона договора (бэклог 44, П52 п. 5 у первого
+ * сайта). Поле блока в файле содержания, а блока в `blocks[]` нет, — отказ
+ * с именем поля и блока: поле, которое никто не печатает, — тихая заглушка.
+ * Карта явная, потому что имена полей и блоков разные (`rows` → `story-row`).
+ * Поле, которого карта не знает, — та же тишина в новом месте: каждое поле
+ * схемы — или поле страницы, или поле блока, третьего ящика нет.
+ */
+const POLE_BLOKA: Record<string, string> = {
+  rows: 'story-row',
+  related: 'link-list',
+};
+const POLYA_STRANITSY = new Set(['url']);
+const obyavleny = new Set(wystapienia.map((b) => b.block));
+const est_pole = (pole: string) => {
+  const v = (dane as Record<string, unknown>)[pole];
+  return v !== undefined && !(Array.isArray(v) && v.length === 0);
+};
+const bezKarty = Object.keys(dane).filter((pole) => !POLYA_STRANITSY.has(pole) && !(pole in POLE_BLOKA));
+if (bezKarty.length) {
+  throw new Error(
+    `Поле содержания без места в карте POLE_BLOKA на ${strona.url}: ${bezKarty.map((p) => '`' + p + '`').join(', ')}.\n` +
+      'Новое поле схемы допишите в POLE_BLOKA (поле блока) или в POLYA_STRANITSY (поле страницы) этого маршрута.'
+  );
+}
+const bezBloka = Object.entries(POLE_BLOKA).filter(([pole, blok]) => est_pole(pole) && !obyavleny.has(blok));
+if (bezBloka.length) {
+  throw new Error(
+    `Поле без блока на ${strona.url}.\n` +
+      bezBloka.map(([pole, blok]) => `  поле \`${pole}\` в содержании, а блока \`${blok}\` в blocks[] структуры нет`).join('\n') +
+      '\nУберите поле из файла содержания или объявите блок в структуре — поле, которого никто не печатает, — тихая заглушка.'
+  );
+}
+
+/**
+ * РОЛЬ УМЕЕТ ОДИН БЛОК — `story-row`, и остальные разбиваются об это ГРОМКО
+ * (форма `ROLE_UMIE` первого сайта; там роль умел `card-rail`, этот маршрут
+ * его не печатает). Условия печати ниже спрашивают у остальных блоков голое
+ * имя; вхождение с ролью прошло бы сверку и не напечаталось бы. Поэтому
+ * граница названа: вхождение с ролью у блока вне списка прерывает сборку.
+ */
+const ROLE_UMIE = new Set(['story-row']);
+const sRolyu = wystapienia.filter((b) => b.role && !ROLE_UMIE.has(b.block));
+if (sRolyu.length) {
+  throw new Error(
+    `Вхождение блока с ролью, которого маршрут ещё не умеет, — ${strona.url}.\n` +
+      `  ${sRolyu.map(klucz).join(', ')}\n` +
+      `  роль умеют: ${[...ROLE_UMIE].join(', ')}\n` +
+      'Научите маршрут этого блока (цикл по вхождениям и содержание по role) или снимите роль в структуре. Тихого пропуска нет.'
+  );
+}
+
+// Ряд с ролью, которой страница не объявляет, никто бы не напечатал: у каждой
+// роли ряда должно быть своё вхождение `story-row` (без роли — вхождение без роли).
+const roliVkhozhdeniy = new Set(wystapienia.filter((b) => b.block === 'story-row').map((b) => b.role ?? ''));
+const ryadyBezVkhozhdeniya = obyavleny.has('story-row') ? dane.rows.filter((r) => !roliVkhozhdeniy.has(r.role ?? '')) : [];
+// Сообщение собрано сложением строк, без шаблона внутри шаблона: вложенный
+// шаблон в `${…}` сбивает сканер фронтматтера компилятора Astro — сборка
+// проходит, а `astro check` видит фронтматтер незакрытым (ts(1109) на `---`).
+const imyaRoli = (role: string) => (role ? 'story-row#' + role : 'story-row');
+if (ryadyBezVkhozhdeniya.length) {
+  throw new Error(
+    `Ряды без своего вхождения story-row на ${strona.url}:\n` +
+      ryadyBezVkhozhdeniya.map((r) => '  ряд «' + r.id + '» с ролью ' + (r.role ? '«' + r.role + '»' : '— (без роли)')).join('\n') +
+      '\n  вхождения story-row в blocks[]: ' + [...roliVkhozhdeniy].map(imyaRoli).join(', ') + '\n' +
+      'Поправьте role ряда или объявите вхождение в структуре.'
+  );
+}
+
+/**
+ * ПОРЯДОК ПЕЧАТИ ЭТОГО ШАБЛОНА — и одновременно список его ветвей. Блок,
+ * который ядро умеет, а шаблон не печатает, — отказ «ветви нет» (не тихий
+ * пропуск и не «нет содержания»): ветвь приходит с первой страницей формы.
+ */
+const PORYADOK = ['story-row', 'link-list'];
+const bezVetvi = wystapienia.filter((b) => gotowy(b.block) && !PORYADOK.includes(b.block)).map(klucz);
+if (bezVetvi.length) {
+  throw new Error(
+    `Блок есть в ядре, а ветви маршрута для него нет — ${strona.url}: ${bezVetvi.join(', ')}.\n` +
+      `  маршрут печатает: ${PORYADOK.join(', ')}\n` +
+      'Ветвь пишется вместе с первой страницей своей формы и её приёмкой глазами (план P4) — не заглушкой.'
+  );
+}
+
+const pominiete = wystapienia.filter((b) => !gotowy(b.block)).map(klucz);
+if (pominiete.length) {
+  console.log(`  ${strona.url} — блоки объявлены, но в ядре не реализованы, пропуск: ${pominiete.join(', ')}`);
+}
+const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(klucz);
+
+/**
+ * `link-list` печатает `related` структуры, заголовок — из файла содержания.
+ * Приписка — вид страницы по типу контракта; тип без приписки — отказ:
+ * новый тип в словаре контракта — решение о подписи, а не пустая строка.
+ */
+const VID: Record<string, string> = {
+  home: 'Home',
+  game: 'Game',
+  guide: 'Guide',
+  topic: 'Article',
+  legal: 'Page',
+};
+const pokrewne = (strona.related ?? []).map((url) => {
+  const cel = getPage(url);
+  const vid = VID[cel.type];
+  if (!vid) throw new Error(`Тип «${cel.type}» страницы ${url} без приписки в VID маршрута — допишите подпись вида.`);
+  return { href: cel.url, title: cel.h1, meta: vid };
+});
+
+const ryadyDlya = (role?: string) => dane.rows.filter((r) => (r.role ?? undefined) === role);
+
+/**
+ * ЕСТЬ ЛИ ЧЕМ НАПОЛНИТЬ БЛОК — по предикату на имя. Те же предикаты стоят
+ * в условиях печати ниже: список и печать считаются из одного источника.
+ */
+const maTresc: Record<string, (role?: string) => boolean> = {
+  'story-row': (role) => ryadyDlya(role).length > 0,
+  'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
+};
+
+/**
+ * ЧТО ШАБЛОН НАПЕЧАТАЕТ — список, который сверяется с объявленным. Каждое
+ * условие печати ниже — `drukowane.includes(ключ)`: список и раскладка
+ * из одного источника, и расхождение прерывает сборку (форма первого сайта,
+ * 2026-09-10: сравнение `blocks[]` с отфильтрованным `blocks[]` не сторожило
+ * печать никогда).
+ */
+const drukowane = PORYADOK.flatMap((imie) =>
+  wystapienia.filter((b) => b.block === imie && (maTresc[imie]?.(b.role) ?? false)).map(klucz)
+);
+
+if (doZrobienia.join(',') !== drukowane.join(',')) {
+  const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
+  throw new Error(
+    `blocks[] и печать разошлись на ${strona.url}.\n` +
+      `  структура объявляет и ядро умеет: ${doZrobienia.join(', ') || '—'}\n` +
+      `  шаблон напечатает:                 ${drukowane.join(', ') || '—'}\n` +
+      (brakujace.length ? `  без содержания: ${brakujace.join(', ')}\n` : '  разошёлся только порядок\n') +
+      'Поправьте содержание, шаблон или структуру — но не оставляйте расхождения.'
+  );
+}
+
+/**
+ * Ключи кадров издателя на странице — подвалу: нота об арте и класс лицензии
+ * печатаются только по ним (П79 п. 3, «на все страницы» — П85 п. 7). У ветвей
+ * пачки 0 полей с кадром нет: ключи приходят вместе с ветвями, которые кадр
+ * печатают (герой, кадр ряда, галерея), и собираются здесь.
+ */
+const kluczeArtu: string[] = [];
+
+/*
+ * `h1` ПЕЧАТАЕТ МАРШРУТ — заголовок принадлежит странице, а не секции
+ * (решение владельца 2026-09-11, бэклог 23 у первого сайта). Роль —
+ * `.t-headline`, как у `h1` главной: восемь ролей ядра, новых нет (П85 п. 1).
+ * `.page-head` — имя-крючок без правил, форма первого сайта: вид ветки без
+ * героя решает владелец глазами на стенде `/404/`. Что `<h1>` ровно один,
+ * проверяет сторож сборки `core/gates/after-build.mjs`.
+ */
+---
+
+<Base title={strona.title} description={strona.description} klucze={kluczeArtu}>
+  <header class="page-head container section">
+    <h1 class="t-headline" id="page-title">{strona.h1}</h1>
+  </header>
+
+  {
+    /* Единственный блок, который печатается циклом по вхождениям (ROLE_UMIE):
+       ряды каждого вхождения — по его роли. */
+    wystapienia
+      .filter((b) => b.block === 'story-row' && drukowane.includes(klucz(b)))
+      .map((b) =>
+        ryadyDlya(b.role).map((ryad) => (
+          <StoryRow title={ryad.title} titleId={`${ryad.id}-title`} id={ryad.id} flip={ryad.flip} band={ryad.band}>
+            <p class="t-label" slot="nadtytul">{ryad.year}</p>
+            <Fragment slot="meta">{ryad.meta}</Fragment>
+            <Fragment slot="body">
+              {ryad.body.map((abzac) => (
+                <p>{abzac}</p>
+              ))}
+            </Fragment>
+          </StoryRow>
+        ))
+      )
+  }
+
+  {
+    drukowane.includes('link-list') && dane.related && (
+      <LinkList items={pokrewne} title={dane.related.title} titleId="related-title" />
+    )
+  }
+</Base>

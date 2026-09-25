@@ -43,10 +43,10 @@ rows:
         On Windows Vista and later, the 2001 original, a DirectX 8 game, loses
         its sound on some PCs. A long-standing option is DarkjeThe2nd’s Max
         Payne Sound Fix: unpack it into the game folder and run MaxBatch.bat.
-        Special Agent Squeaky’s guide for the Steam version swaps in three
-        sound files instead; a player confirmed it on Windows 11 in October
-        2025. The patch’s author has since called it obsolete and, that
-        October, pointed players to a newer all-in-one fix.
+        Its author later called that patch obsolete and, in October 2025,
+        pointed players to a newer all-in-one fix. Special Agent Squeaky’s
+        guide for the Steam version swaps in three sound files instead; a
+        player confirmed it on Windows 11 that same month.
       - >-
         The game ignores a frame-rate limit set in the Nvidia control panel,
         so one player’s recipe adds the dgVoodoo 2 wrapper and a startup-hang
@@ -55,10 +55,8 @@ rows:
         a 1080p patch and a 60 fps limit.
       - >-
         In the game’s setup screen, leave antialiasing off: it causes white
-        shapes on textures, and a Steam guide suggests it when the game will
-        not get past the opening cutscene. On Windows 10 and 11, turn on Enable
-        Task Switching there, and keep the game folder name to letters and
-        numbers.
+        shapes on textures. On Windows 10 and 11, turn on Enable Task Switching
+        there, and keep the game folder name to letters and numbers.
   - id: widescreen
     year: Widescreen
     title: Widescreen and resolution
@@ -67,9 +65,7 @@ rows:
     body:
       - >-
         The first game was made for 4:3 screens and stretches on a modern one.
-        ThirteenAG’s fix from the Widescreen Fixes Pack makes it 16:9. The
-        graphic-novel panels then hide their video buttons, but the arrow keys,
-        Space and Esc still work, and F2 rescales the panels.
+        ThirteenAG’s fix from the Widescreen Fixes Pack makes it 16:9.
       - >-
         Max Payne 3 needs nothing extra: its Aspect Ratio setting, added in the
         second patch, picks the ratio itself or forces one such as 16:9 or
@@ -82,9 +78,10 @@ rows:
     body:
       - >-
         On PC, Max Payne and Max Payne 2 read only the keyboard and mouse. A
-        gamepad works through Steam’s Big Picture mode with a community
-        profile; for Max Payne 2, a player in 2023 also suggested the
-        Controller Companion app. It is a mapping, not real support: in Max
+        gamepad can work through Steam’s Big Picture mode with a community
+        profile, though some players report the game never sees the pad; for
+        Max Payne 2, a player in 2023 also suggested the Controller Companion
+        app. It is a mapping, not real support: in Max
         Payne 2 the game keeps running while you pick a weapon.
       - >-
         Max Payne 3 supports gamepads itself. Its Gamepad Targeting setting

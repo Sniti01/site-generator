@@ -23,8 +23,8 @@ rows:
     band: true
     body:
       - >-
-        Both Remedy games tell most of their story in graphic-novel panels with
-        voice-over. For Max Payne 2 the developers explained why: panels cost
+        Both Remedy games let comic-book panels with voice-over carry most of
+        the story. For Max Payne 2 the developers explained why: panels cost
         less than animated cutscenes, worked better, could be reshuffled when
         the plot changed and let each player read a frame their own way. Sam
         Lake modeled for Max in the first game, actor Timothy Gibbs in the
@@ -62,7 +62,7 @@ rows:
       - >-
         Kärtsy Hatakka and Kimmo Kajasto scored the first two games. Max Payne
         2 adds cello by Perttu Kivilaakso of Apocalyptica and ends on Late
-        Goodbye by Poets of the Fall, its lyrics based on a poem by Sam Lake.
+        Goodbye by Poets of the Fall, its words adapted from a Sam Lake poem.
       - >-
         The music of Max Payne 3 is mostly the work of the Los Angeles
         noise-rock band HEALTH. The album came out on May 23, 2012, the launch

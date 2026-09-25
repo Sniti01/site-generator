@@ -43,12 +43,12 @@ rows:
         Gear Solid games (3, 4 and Phantom Pain). Others added Yakuza 0 with
         the rest of the Kiryu games, and BioShock came up in passing.
       - >-
-        Days Gone came with a reason that sounds like Max: its hero keeps
-        looking for his wife even as he mourns her. Another reply put the first
-        The Last of Us, The Suffering and The Darkness in the same dark,
-        character-driven vein, then added that zombies and the supernatural
-        make all three a different kind of game. One answer simply said that
-        Max Payne 3 has no equal.
+        One player offered Days Gone as a maybe: its lead grieves his wife
+        while still hunting for her, though, the same player admitted, Deacon
+        is no Max with words. Another reply said the first Last of Us, The
+        Suffering and The Darkness come close in gritty personal drama, but
+        zombies and the supernatural keep them from being much like Max Payne.
+        One answer simply said that Max Payne 3 has no equal.
   - id: rawg-shooters
     year: Gameplay
     title: The shooters on RAWG’s list

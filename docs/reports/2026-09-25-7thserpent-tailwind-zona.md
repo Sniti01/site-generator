@@ -152,9 +152,11 @@
 
 Сверка листов стилей чистой сборки `main` (`46f4a4a`, сделана этой сессией до правок;
 листы — `zamery/css-main/`) со сборкой ветки (`zamery/css-posle/`), инструментом
-`instrumenty/sverka-css.mjs` — трижды: первой редакцией (`zamery/sverka-css.txt`),
-после раунда 1 (`zamery/v2/sverka-css.txt`) и после раунда 2 с `--schet 20:19`
-(`zamery/v3/sverka-css.txt`). Итог везде один — **сверено**:
+`instrumenty/sverka-css.mjs` — четырежды: первой редакцией (`zamery/sverka-css.txt`),
+после раунда 1 (`zamery/v2/sverka-css.txt`), после раунда 2 (`zamery/v3/sverka-css.txt`)
+и после раунда 3 (`zamery/v4/sverka-css.txt`, редакция `445fbf3`, на которой инструменты
+заморожены); с раунда 2 — с `--schet 20:19`. Итог везде один — **сверено**. (Исправлено
+при закрытии по обзору, П88 п. 5: было «трижды» — без прогона `v4`.)
 
 - общий лист `LinkList.DHeL5m7t.css` (25 535 Б) → `LinkList.B4mIKaMJ.css` (25 499 Б): ушёл
   ровно один лист разбора — `@layer utilities › .lowercase {text-transform:lowercase}`, не

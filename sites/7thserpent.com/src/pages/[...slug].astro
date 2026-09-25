@@ -14,8 +14,9 @@
  * сайта, П32 п. 4) и свой эталон. Файл содержания с адресом `/` — отказ.
  *
  * ЧТО МАРШРУТ ПЕЧАТАЕТ (пачка 0). Две ветви — `story-row` (с вхождениями
- * по роли) и `link-list`: стенд маршрута — `/404/` (П85 п. 6), и ветвь без
- * стенда не пишется. Остальные блоки дерева, которые ядро умеет
+ * по роли) и `link-list`: стенд маршрута — `/404/` (П85 п. 6), вхождения
+ * по роли на нём не стоят и держатся положительной пробой P2
+ * `tools/proby-tresci.mjs`; ветвь без стенда и без пробы не пишется. Остальные блоки дерева, которые ядро умеет
  * (`hero-key-art`, `byline`, `gallery`, `cta-band`), приходят ветвью вместе
  * с первой страницей своей формы — со стопом на глаза владельца (план P4
  * в докладе сессии 12). Страница, объявившая такой блок, не собирается,
@@ -28,9 +29,13 @@
  * запрещена: страница с пропуском выглядит так же, как страница без него.
  *
  * ПОРЯДОК ПРОВЕРОК ниже — от частного отказа к общему: каждая проба
- * `tools/proby-tresci.mjs` упирается в своего судью и получает отказ с его
- * именем, а общая сверка «`blocks[]` и печать разошлись» остаётся последним
- * рубежом.
+ * `tools/proby-tresci.mjs` упирается в свою проверку и получает её отказ
+ * (имя проверки — в поле `sudya` пробы, в тексте отказа — его причина),
+ * а общая сверка «`blocks[]` и печать разошлись» остаётся последним рубежом.
+ * Предел порядка («судью судят», раунд 1, R1-MARSHRUT-10): поле блока без
+ * ветви (`byline:`) отвергает раньше схема, вхождение `video` с ролью — проверка
+ * ролей, повтор `id` ряда — сторож якорей ядра после сборки; отказ громкий,
+ * но называет не «ветви нет».
  */
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
@@ -60,6 +65,13 @@ export async function getStaticPaths() {
         `Файл содержания ${wpis.id} с адресом «/»: главная — свой шаблон (src/pages/index.astro) и свой эталон, маршрут её не печатает.`
       );
     }
+    // Тело файла под фронтматтером маршрут не печатает — слова живут только
+    // в полях; абзац под `---` пропал бы молча (раунд 1, R1-MARSHRUT-2).
+    if (wpis.body?.trim()) {
+      throw new Error(
+        `Текст под фронтматтером в ${wpis.id}: тело файла содержания маршрут не печатает — слова только в полях (rows, related). Перенесите текст в поле или уберите.`
+      );
+    }
     return {
       params: { slug: wpis.data.url.replace(/^\/|\/$/g, '') },
       props: { wpis },
@@ -86,7 +98,10 @@ const wystapienia = strona.blocks as { block: string; role?: string }[];
 // структуры этого не ловит (бэклог 55 п. 4), значит, ловит маршрут.
 const powtory = [...new Set(wystapienia.map(klucz).filter((k, i, vse) => vse.indexOf(k) !== i))];
 if (powtory.length) {
-  throw new Error(`Вхождение блока объявлено дважды на ${strona.url}: ${powtory.join(', ')} — различите вхождения полем role в структуре.`);
+  throw new Error(
+    `Вхождение блока объявлено дважды на ${strona.url}: ${powtory.join(', ')} — уберите повтор; ` +
+      `второе вхождение с полем role маршрут печатает только у блоков из ROLE_UMIE (ниже).`
+  );
 }
 
 /**
@@ -181,8 +196,10 @@ const doZrobienia = wystapienia.filter((b) => gotowy(b.block)).map(klucz);
 
 /**
  * `link-list` печатает `related` структуры, заголовок — из файла содержания.
- * Приписка — вид страницы по типу контракта; тип без приписки — отказ:
- * новый тип в словаре контракта — решение о подписи, а не пустая строка.
+ * Приписка — вид страницы по типу договора; тип без приписки — отказ:
+ * тип, которого у страниц дерева пока нет (`hub`, `map` закрытого словаря),
+ * — решение о подписи, а не пустая строка. Считается только у страницы,
+ * которая `link-list` объявила («судью судят», раунд 1, R1-MARSHRUT-9).
  */
 const VID: Record<string, string> = {
   home: 'Home',
@@ -191,14 +208,19 @@ const VID: Record<string, string> = {
   topic: 'Article',
   legal: 'Page',
 };
-const pokrewne = (strona.related ?? []).map((url) => {
-  const cel = getPage(url);
-  const vid = VID[cel.type];
-  if (!vid) throw new Error(`Тип «${cel.type}» страницы ${url} без приписки в VID маршрута — допишите подпись вида.`);
-  return { href: cel.url, title: cel.h1, meta: vid };
-});
+const pokrewne = !obyavleny.has('link-list')
+  ? []
+  : (strona.related ?? []).map((url) => {
+      const cel = getPage(url);
+      const vid = VID[cel.type];
+      if (!vid) throw new Error(`Тип «${cel.type}» страницы ${url} без приписки в VID маршрута — допишите подпись вида.`);
+      return { href: cel.url, title: cel.h1, meta: vid };
+    });
 
-const ryadyDlya = (role?: string) => dane.rows.filter((r) => (r.role ?? undefined) === role);
+// Роль ряда и вхождения — к одному виду: отсутствие и пустая строка — «без роли»
+// (раунд 1, R1-MARSHRUT-7: '' в структуре считалось бы здесь ролью, а выше — нет).
+const rolOf = (role?: string) => role || '';
+const ryadyDlya = (role?: string) => dane.rows.filter((r) => rolOf(r.role) === rolOf(role));
 
 /**
  * ЕСТЬ ЛИ ЧЕМ НАПОЛНИТЬ БЛОК — по предикату на имя. Те же предикаты стоят
@@ -217,16 +239,17 @@ const maTresc: Record<string, (role?: string) => boolean> = {
  * печать никогда).
  */
 const drukowane = PORYADOK.flatMap((imie) =>
-  wystapienia.filter((b) => b.block === imie && (maTresc[imie]?.(b.role) ?? false)).map(klucz)
+  wystapienia.filter((b) => b.block === imie && gotowy(imie) && (maTresc[imie]?.(b.role) ?? false)).map(klucz)
 );
 
 if (doZrobienia.join(',') !== drukowane.join(',')) {
   const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
+  const pustoVStrukture = brakujace.includes('link-list') && pokrewne.length === 0 ? ' (related структуры пуст)' : '';
   throw new Error(
     `blocks[] и печать разошлись на ${strona.url}.\n` +
       `  структура объявляет и ядро умеет: ${doZrobienia.join(', ') || '—'}\n` +
       `  шаблон напечатает:                 ${drukowane.join(', ') || '—'}\n` +
-      (brakujace.length ? `  без содержания: ${brakujace.join(', ')}\n` : '  разошёлся только порядок\n') +
+      (brakujace.length ? `  без содержания: ${brakujace.join(', ')}${pustoVStrukture}\n` : '  разошёлся только порядок\n') +
       'Поправьте содержание, шаблон или структуру — но не оставляйте расхождения.'
   );
 }

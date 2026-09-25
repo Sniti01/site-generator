@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne 3 · queries 60 · demand 11620 (Ahrefs, US) |
 | corridor (contract) | 4677–6327 |
-| hero art | `mp3-art` — key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze (1920×620) |
+| hero art | `mp3-art` — key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze (1920×620; a 1920 master is small for a first screen — backlog 59 п. 2, decided with the first hero page) |
 
 **Keywords** (60): max payne 3 · max payne 3 ps5 · max payne 3 ps4 · max payne 3 ps3 · max payne 3 release date · max payne 3 remastered · max payne 3 review · max payne 3 steam · max payne 3 playstation 3 store · max payne 3 xbox · is max payne 3 on ps5 · max payne 3 xbox one · is max payne 3 open world · max payne 3 nudity · max payne 3 xbox 360 · max payne ps3 · is max payne 3 backwards compatible · max payne 3 max · max payne 3 multiplayer · max payne 3 playstation · max payne 3 sao paulo · max payne 3 xbox series x · max payne 3 backwards compatible · max payne 3 dlc · max payne 3 parents guide · max payne 3 remaster · max payne 3 sales · game max payne 3 · is max payne 3 good · max payne 3 backwards compatible xbox one · max payne 3 brazil · max payne 3 budget · max payne 3 classic max · max payne 3 complete edition · max payne 3 demo · max payne 3 esrb · max payne 3 game · max payne 3 gamestop · max payne 3 map · max payne 3 max payne · max payne 3 metacritic · max payne 3 model · max payne 3 news · max payne 3 nude · max payne 3 on ps5 · max payne 3 open world · max payne 3 playstation store · max payne 3 price · max payne 3 ps store · max payne 3 ps3 price · max payne 3 ps4 remastered · max payne 3 sao paulo setting · max payne 3 steam price · max payne 3 video game · max payne 3: the complete series · max payne backwards compatible · max payne three · ps3 max payne 3 · what is max payne 3 about · xbox 360 max payne 3
 
@@ -71,6 +71,10 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | komentarze | 11/26 | 42 % | на решение |
 | schema-org | 17/26 | 65 % | на решение |
 
+*Verdicts are the anatomy’s own words (`structure/rules-s3.json`): обязательна / обязателен — the norm of
+the genre; на решение — to decide; редкая, не норма — rare, not the norm; гэп — one document; не считается —
+too few documents to count.*
+
 ## Page corpus documents for fact-checking (26, hosts 19)
 
 *Addresses, not text. A fact goes into print only if it is confirmed in one of these documents or in
@@ -116,7 +120,7 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
   - `mp3-k06` — screenshot [6]: Max in green light, a submachine gun raised beside his face
   - `mp3-k10` — screenshot [10]: Max in a white tank top firing two submachine guns in a warehouse
   - `mp3-k01` — screenshot [1]: Max in a suit climbs a stairwell with a pistol, a man following below
-  - `mp3-art` — key art (library_hero_2x.jpg): key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze
+  - `mp3-art` — key art (library_hero_2x.jpg): Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze
 
 ## Writing rules (П42 п. 1–4 for this site, П85 п. 1; `CLAUDE.md` of the site, §2 and §5)
 
@@ -127,9 +131,10 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
    better not at all (§2).
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
-4. Addresses in the content — from the root and only from the structure; the `links` gate stops the build.
-5. Length — the contract corridor; the `corridor` gate stops the build outside it. No filler and no
-   cuts: if honest text does not fit, the corridor changes by a named decision with the reason in the
-   report (П43).
+4. Internal addresses — from the root and only from the structure (the `links` gate stops the build on
+   others); external links — only official stores and publisher pages (§5).
+5. Length — the contract corridor; the `corridor` gate stops the build outside it (a `null` corridor —
+   the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
+   corridor changes by a named decision with the reason in the report (П43).
 6. Byline and date are matters of taste: Code decides and names them in the batch report (П85 п. 1).
 7. Not one competitor phrase: facts are checked in the documents above, the wording is ours.

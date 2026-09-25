@@ -35,7 +35,20 @@
  * (без адресов) не совпадает с текстом скачанного документа корпуса сайта;
  * совпадение — отказ, и печатается строка брифа и адрес документа, а не
  * совпавшие слова. Официальные названия игр (`CLAUDE.md` сайта, §2) —
- * имена собственные, не формулировка: из счёта вынимаются.
+ * имена собственные, не формулировка: идут в n-грамму одним словом.
+ * `--check` сверяет ещё и состав (по брифу на страницу дерева, кроме главной)
+ * и побайтное равенство файла выводу генератора.
+ *
+ * ПРЕДЕЛЫ СТОРОЖА («судью судят», раунд 1): адреса документов печатаются
+ * целиком (так велит П85 п. 5 — «адреса документов»), и слаг адреса несёт
+ * заголовок чужой статьи — адрес из счёта вынимается, это не формулировка
+ * брифа (R1-BRIFY-2); единица счёта — отрезок строки между `·` и `|`, фраза
+ * через перенос строки или разделитель не ловится — генератор пишет каждое
+ * поле одной строкой, ручная правка брифа ловится побайтной сверкой (R1-BRIFY-3);
+ * указатель корпуса — видимый текст документа, без `meta`, JSON-LD, `alt`
+ * и `title=` (R1-BRIFY-4); сверка отбора с анатомией — по счёту и пропускам,
+ * набора документов `s3-anatomy.json` не хранит (R1-BRIFY-6); длинное
+ * название игры в чужой фразе делает её короче n-граммы (R1-BRIFY-11).
  *
  * Корпус, анатомия и структура — только чтение.
  */
@@ -62,7 +75,9 @@ export const IMENA = ['Max Payne 2: The Fall of Max Payne', 'Max Payne 1 & 2 Rem
 
 /** Копия `identityOf` из `anatomy-s3.mjs` (там не экспортирована): канонический
  *  адрес того же сайта, если он не корень, иначе адрес перехода — без хвостов.
- *  Сверка счёта с `s3-anatomy.json` ниже держит копию равной оригиналу. */
+ *  Равенство копии оригиналу держит только её текст: сверка счёта ниже ловит
+ *  расхождение лишь там, где живой корпус его проявляет (раунд 1, R1-BRIFY-7).
+ *  На 2026-09-25 текст копии равен оригиналу (`unesc` → `unescA`). */
 const unescA = (s) =>
   s
     .replace(/&nbsp;/gi, ' ')
@@ -166,8 +181,17 @@ export function sverkaSAnatomiej(page, an, k) {
 /** Имя файла брифа: путь адреса через дефис (`/max-payne-3/guide/` → `max-payne-3-guide.md`). */
 export const imyaFajla = (url) => `${url.replace(/^\/|\/$/g, '').replace(/\//g, '-') || 'home'}.md`;
 
-/** Ветви маршрута пачки 0 (`src/pages/[...slug].astro`, `PORYADOK`) — бриф называет, что печатается уже сейчас. */
-const VETVI = new Set(['story-row', 'link-list']);
+/**
+ * Ветви маршрута — `PORYADOK` из самого `src/pages/[...slug].astro`, а не копия
+ * списка: бриф называет, что печатается уже сейчас, и разойтись с маршрутом
+ * ему не с чего («судью судят», раунд 1, R1-BRIFY-14). Не нашёл — отказ.
+ */
+const VETVI = (() => {
+  const t = readFileSync(join(root, 'src/pages/[...slug].astro'), 'utf8');
+  const m = t.match(/const PORYADOK = \[([^\]]*)\]/);
+  if (!m) throw new Error('в src/pages/[...slug].astro нет const PORYADOK = [...] — ветви маршрута не прочитать');
+  return new Set([...m[1].matchAll(/'([^']+)'/g)].map((x) => x[1]));
+})();
 const slownik = JSON.parse(readFileSync(fileURLToPath(import.meta.resolve('@factory/core/structure/blocks.json')), 'utf8'));
 const statusBloka = (b) => {
   if (!slownik.блоки[b]?.реализован) return 'not in the core — the route skips it loudly; its implementation comes with the first page that has it (a core change is a question to the owner)';
@@ -189,6 +213,14 @@ const VOPROSY_ARTA = {
   '/voice-and-face/': 'Photos of people (actors, writers) — a question to the owner in this page’s batch (П85 п. 7).',
   '/media/': 'Covers carry the game logos — a question to the owner in this page’s batch (П85 п. 7; PRODUCT.md, fan-site legal limits).',
 };
+/** Открытое по странице, что знает пачка 0 («судью судят», раунд 1, R1-BRIFY-8, -9). */
+const OTKRYTOE = {
+  '/quotes/': 'The contract corridor 5093–6891 conflicts with short quotes (П67 п. 2; `CLAUDE.md` of the site, §6 — «decided in pachka 0»): an open question to the owner in the pachka 0 report; until the answer, the fuse of П43 decides when the honest text exists.',
+  '/privacy/': 'Text — at publication (П63 п. 5, П85 п. 6): US privacy facts and the site mailbox are the owner’s; this brief is kept for that session.',
+  '/404/': 'Written in pachka 0 — the route stand (П85 п. 6).',
+};
+/** Ключевой арт с мастером 1920 — мал для первого экрана (бэклог 59 п. 2). */
+const MALY_MASTER = new Set(['mp2-art', 'mp3-art']);
 
 function brief(page, v, k) {
   const { struktura, anatomia, art } = v;
@@ -207,7 +239,7 @@ function brief(page, v, k) {
   const heroArt = !hero
     ? 'not applicable — the page declares no `hero-key-art`'
     : igra?.klucz && art[igra.klucz]
-      ? `\`${igra.klucz}\` — ${art[igra.klucz].opis} (${art[igra.klucz].width}×${art[igra.klucz].height})`
+      ? `\`${igra.klucz}\` — ${art[igra.klucz].opis} (${art[igra.klucz].width}×${art[igra.klucz].height}${MALY_MASTER.has(igra.klucz) ? '; a 1920 master is small for a first screen — backlog 59 п. 2, decided with the first hero page' : ''})`
       : 'no key yet — a question in this page’s batch';
 
   return `# Brief: \`${page.url}\`
@@ -236,7 +268,7 @@ ${related.join('\n') || '- —'}
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
 ${bloki.join('\n')}
-
+${OTKRYTOE[page.url] ? `\n**Open for this page:** ${OTKRYTOE[page.url]}\n` : ''}
 ## Content plan (S3 anatomy, page corpus)
 
 ${an ? `- documents ${an.документов} from ${an.хостов} hosts, basket **${an.корзина}**
@@ -249,7 +281,11 @@ ${tematy.join('\n') || '| — | | | |'}
 
 | Page element | documents | share | verdict |
 |---|---:|---:|---|
-${elementy.join('\n')}` : '- no anatomy for this page — a service page outside the S3 corpus (no keywords)'}
+${elementy.join('\n')}
+
+*Verdicts are the anatomy’s own words (\`structure/rules-s3.json\`): обязательна / обязателен — the norm of
+the genre; на решение — to decide; редкая, не норма — rare, not the norm; гэп — one document; не считается —
+too few documents to count.*` : '- no anatomy for this page — a service page outside the S3 corpus (no keywords)'}
 
 ## Page corpus documents for fact-checking (${k ? k.docs.length : 0}, hosts ${k ? new Set(k.docs.map((d) => d.host)).size : 0})
 
@@ -264,7 +300,7 @@ ${k && k.docs.length ? k.docs.map((d) => `- ${d.host} — ${d.url}`).join('\n') 
 ## Art (П79 п. 3, П85 п. 7)
 
 - License class of every publisher image on the site: ${licencja.map((l) => `«${l}»`).join('; ')} — printed in the footer for the frames this page shows.
-${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${kadry.map(([key, c]) => `  - \`${key}\` — ${c.kind}: ${c.opis ?? '—'}`).join('\n')}` : '- No game of its own: frames are chosen in this page’s batch from `src/data/game-art.json`.'}${VOPROSY_ARTA[page.url] ? `\n- ${VOPROSY_ARTA[page.url]}` : ''}
+${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${kadry.map(([key, c]) => `  - \`${key}\` — ${c.kind}: ${(c.opis ?? '—').replace(/^key art:\s*/, '')}`).join('\n')}` : '- No game of its own: frames are chosen in this page’s batch from `src/data/game-art.json`.'}${VOPROSY_ARTA[page.url] ? `\n- ${VOPROSY_ARTA[page.url]}` : ''}
 
 ## Writing rules (П42 п. 1–4 for this site, П85 п. 1; \`CLAUDE.md\` of the site, §2 and §5)
 
@@ -275,10 +311,11 @@ ${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${ka
    better not at all (§2).
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
-4. Addresses in the content — from the root and only from the structure; the \`links\` gate stops the build.
-5. Length — the contract corridor; the \`corridor\` gate stops the build outside it. No filler and no
-   cuts: if honest text does not fit, the corridor changes by a named decision with the reason in the
-   report (П43).
+4. Internal addresses — from the root and only from the structure (the \`links\` gate stops the build on
+   others); external links — only official stores and publisher pages (§5).
+5. Length — the contract corridor; the \`corridor\` gate stops the build outside it (a \`null\` corridor —
+   the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
+   corridor changes by a named decision with the reason in the report (П43).
 6. Byline and date are matters of taste: Code decides and names them in the batch report (П85 п. 1).
 7. Not one competitor phrase: facts are checked in the documents above, the wording is ours.
 `;
@@ -292,7 +329,12 @@ ${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${ka
 export const slova = (s) => (s.toLowerCase().replace(/[’‘]/g, "'").match(/[\p{L}\p{N}']+/gu) ?? []).map((w) => w.replace(/^'+|'+$/g, '')).filter(Boolean);
 
 const imenaSlovami = IMENA.map((n) => slova(n)).sort((a, b) => b.length - a.length);
-/** Имена собственные — одним знаком `§имя§`: n-граммы через имя не считаются чужими. */
+/**
+ * Имена собственные — одним знаком `§имя§`: имя идёт в n-грамму одним словом,
+ * а не своими словами. Цена (раунд 1, R1-BRIFY-11): фраза конкурента, в которой
+ * длинное название съедает больше половины слов, короче n-граммы и не ловится;
+ * «Max Payne» без номера в список не входит — это делает сторож строже.
+ */
 export function bezImen(ws) {
   const out = [];
   for (let i = 0; i < ws.length; ) {
@@ -306,9 +348,37 @@ export function bezImen(ws) {
 }
 
 const hash = (s) => createHash('sha1').update(s).digest().readUInt32LE(0);
-/** Видимый текст документа: скрипты, стили, комментарии и теги сняты. */
+
+/**
+ * Сущности текста документа — все частые именованные и числовые. `unescA`
+ * (копия анатомии для `identityOf`) раскрывает только пять, и `Max&rsquo;s`
+ * рвал n-грамму на «max rsquo s» (раунд 1, R1-BRIFY-10). Неизвестная
+ * именованная сущность — пробелом.
+ */
+const SUSHCHNOSTI = {
+  nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“',
+  sbquo: '‚', bdquo: '„', mdash: '—', ndash: '–', hellip: '…', laquo: '«', raquo: '»', copy: '©', reg: '®',
+  trade: '™', middot: '·', bull: '•', prime: '′', times: '×', eacute: 'é', egrave: 'è', ecirc: 'ê', aacute: 'á',
+  agrave: 'à', atilde: 'ã', auml: 'ä', ouml: 'ö', uuml: 'ü', ccedil: 'ç', ntilde: 'ñ', oacute: 'ó', iacute: 'í',
+  uacute: 'ú', szlig: 'ß', thinsp: ' ', ensp: ' ', emsp: ' ', zwj: '', zwnj: '', shy: '',
+};
+const raskrytVse = (s) =>
+  s.replace(/&(#x[0-9a-f]+|#\d+|[a-z][a-z0-9]*);/gi, (...g) => {
+    const k = g[1];
+    if (k[0] === '#') {
+      const n = k[1] === 'x' || k[1] === 'X' ? parseInt(k.slice(2), 16) : Number(k.slice(1));
+      try {
+        return String.fromCodePoint(n);
+      } catch {
+        return ' ';
+      }
+    }
+    return SUSHCHNOSTI[k] ?? SUSHCHNOSTI[k.toLowerCase()] ?? ' ';
+  });
+
+/** Видимый текст документа: скрипты, стили, комментарии и теги сняты, сущности раскрыты. */
 export const tekstDokumenta = (html) =>
-  unescA(
+  raskrytVse(
     html
       .replace(/<script[\s\S]*?<\/script>/gi, ' ')
       .replace(/<style[\s\S]*?<\/style>/gi, ' ')
@@ -371,6 +441,7 @@ function vesKorpus(v) {
  * ------------------------------------------------------------------ */
 
 function selftest(v) {
+  const p0 = (u) => v.struktura.pages.find((x) => x.url === u);
   const cases = [];
   const check = (imya, zhdali, fakt) => cases.push({ imya, ok: JSON.stringify(zhdali) === JSON.stringify(fakt), zhdali, fakt });
   const korpus = vesKorpus(v);
@@ -387,7 +458,13 @@ function selftest(v) {
   check('семь слов подряд — не n-грамма, не пойман', 0, chuzhie(`${chistyi}\n${ws.slice(100, 107).join(' ')}\n`, uk).length);
   check('адрес документа в строке — не формулировка', 0, chuzhie(`${chistyi}\n- ${obrazec.url}\n`, uk).length);
   check('официальное название игры — имя, не формулировка', 0, chuzhie('Max Payne 2: The Fall of Max Payne\n', ukazatel([{ url: 'x', tekst: 'the story of Max Payne 2: The Fall of Max Payne here' }])).length);
-  check('слова вокруг названия считаются', 1, chuzhie('one two three four five six seven eight\n', ukazatel([{ url: 'x', tekst: 'one two three four five six seven eight nine' }])).length);
+  check('слова вокруг названия: имя — одно слово n-граммы', 1, chuzhie('in Max Payne 3 the hero moves to a new city\n', ukazatel([{ url: 'x', tekst: 'so in Max Payne 3 the hero moves to a new city now' }])).length);
+  check('сущность &rsquo; в документе — та же фраза с апострофом поймана', 1, chuzhie('alpha bravo charlie delta Max’s echo foxtrot golf hotel\n', ukazatel([{ url: 'x', tekst: tekstDokumenta('<p>alpha bravo charlie delta Max&rsquo;s echo foxtrot golf hotel india</p>') }])).length);
+  check('ветви маршрута в брифе = PORYADOK маршрута', 'story-row,link-list', [...VETVI].join(','));
+  check('бриф /max-payne-3/: арт героя mp3-art с оговоркой мастера', true, /`mp3-art`[^|]*1920 master is small/.test(brief(p0('/max-payne-3/'), v, null)));
+  check('бриф /remake/: ключа героя нет — вопрос', true, brief(p0('/remake/'), v, null).includes('no key yet'));
+  check('бриф /quotes/: открытый вопрос коридора', true, brief(p0('/quotes/'), v, null).includes('**Open for this page:** The contract corridor 5093–6891'));
+  check('бриф /gameplay/: video — не в ядре, громкий пропуск', true, brief(p0('/gameplay/'), v, null).includes('`video` — manual, high. not in the core'));
   const uk8 = ukazatel([{ url: 'x', tekst: 'one two three four five six seven eight nine' }]);
   check('ключи через «·» — стык двух запросов не фраза', 0, chuzhie('one two three four · five six seven eight\n', uk8).length);
   check('ячейки таблицы через «|» — стык не фраза', 0, chuzhie('| one two three four | five six seven eight |\n', uk8).length);
@@ -422,21 +499,48 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   if (args.includes('--selftest')) process.exit(selftest(v) ? 0 : 1);
 
   if (args.includes('--check')) {
-    if (!existsSync(outDir)) {
-      console.error('брифов нет — npm run brief -- --all');
-      process.exit(2);
+    // Состав и побайтность: ровно по брифу на страницу дерева кроме главной,
+    // и каждый равен выводу генератора сейчас — ручная правка и отставший бриф
+    // (после npm run tree, anatomy, gameart) — отказ; «ok» о пустой папке
+    // не выдаётся (раунд 1, R1-BRIFY-5).
+    const ozhidaemye = new Map();
+    let rashozhdenie = 0;
+    for (const page of v.struktura.pages.filter((p) => p.url !== '/')) {
+      const k = page.keywords?.length ? korpusStranicy(page, v) : null;
+      const r = k ? sverkaSAnatomiej(page, v.anatomia.страницы.find((a) => a.url === page.url), k) : [];
+      if (r.length) {
+        rashozhdenie += 1;
+        console.error(`${page.url}: отбор корпуса разошёлся с анатомией: ${r.join('; ')}`);
+      }
+      ozhidaemye.set(imyaFajla(page.url), brief(page, v, k));
     }
-    const fajly = readdirSync(outDir).filter((f) => f.endsWith('.md')).sort(cmp);
+    const fajly = existsSync(outDir) ? readdirSync(outDir).filter((f) => f.endsWith('.md')).sort(cmp) : [];
+    const net = [...ozhidaemye.keys()].filter((f) => !fajly.includes(f));
+    const lishnie = fajly.filter((f) => !ozhidaemye.has(f));
     const korpus = vesKorpus(v);
     const uk = ukazatel(korpus);
-    let plokho = 0;
-    for (const f of fajly) {
-      const r = chuzhie(readFileSync(join(outDir, f), 'utf8'), uk);
-      if (r.length) plokho += 1;
-      console.log(`${r.length ? 'ЧУЖОЕ' : 'ok   '} ${f}${r.length ? ' — ' + r.map((x) => `строка ${x.stroka} (документ ${x.dokument})`).join('; ') : ''}`);
+    let plokho = rashozhdenie + net.length + lishnie.length;
+    for (const f of net) console.log(`НЕТ   ${f} — брифа страницы нет (npm run brief -- --all)`);
+    for (const f of lishnie) console.log(`ЛИШНИЙ ${f} — страницы с таким брифом в структуре нет`);
+    for (const f of fajly.filter((x) => ozhidaemye.has(x))) {
+      const tekst = readFileSync(join(outDir, f), 'utf8');
+      const otstal = tekst !== ozhidaemye.get(f);
+      const r = chuzhie(tekst, uk);
+      if (r.length || otstal) plokho += 1;
+      const pometki = [...(otstal ? ['≠ выводу генератора (правлен рукой или отстал — npm run brief -- --all)'] : []), ...r.map((x) => `чужое: строка ${x.stroka} (документ ${x.dokument})`)];
+      console.log(`${pometki.length ? 'ПЛОХО' : 'ok   '} ${f}${pometki.length ? ' — ' + pometki.join('; ') : ''}`);
     }
-    console.log(`\nсторож: брифов ${fajly.length}, документов корпуса ${korpus.length}, n-грамма ${N_GRAM} слов; с чужой последовательностью — ${plokho}`);
+    console.log(`\nсторож: брифов ${fajly.length} из ${ozhidaemye.size}, документов корпуса ${korpus.length}, n-грамма ${N_GRAM} слов; отказов — ${plokho}`);
     process.exit(plokho ? 1 : 0);
+  }
+
+  // Адрес — с ведущим «/»; иной аргумент не отбрасывается молча (раунд 1, R1-BRIFY-13).
+  // В Git Bash «/адрес/» оболочка переписывает в путь Windows — запускать
+  // с MSYS_NO_PATHCONV=1 или через npm run brief.
+  const chuzhieArgi = args.filter((a) => !a.startsWith('/') && !a.startsWith('--'));
+  if (chuzhieArgi.length) {
+    console.error(`не адрес страницы: ${chuzhieArgi.join(', ')} — адрес пишется от корня, со слэшем: /max-payne-3/`);
+    process.exit(2);
   }
 
   const stdout = args.includes('--stdout');

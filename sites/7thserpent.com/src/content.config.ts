@@ -7,8 +7,9 @@ import { z } from 'zod';
  * (`sites/ac4bf-thewatch.com/src/content.config.ts`), написанная заново в LF;
  * вынос в ядро — позже.
  *
- * ПОЛЯ SEO ЗДЕСЬ НЕ ЖИВУТ. `title`, `h1`, `description`, `keywords`, `parent`,
- * `related` — только в `structure.json` (П24 п. 3). Схема — место, где это
+ * ПОЛЯ SEO ЗДЕСЬ НЕ ЖИВУТ. `title`, `h1`, `description`, `keywords`, `parent`
+ * и сами ссылки `related` — только в `structure.json` (П24 п. 3); здесь у
+ * `related` — только заголовок секции. Схема — место, где это
  * правило перестаёт быть договорённостью и становится ошибкой сборки.
  *
  * СХЕМА СТРОГАЯ — `.strict()` у каждого объекта (бэклог 44, П52 п. 5):
@@ -29,9 +30,20 @@ import { z } from 'zod';
  * здесь видна только форма поля, там — есть ли блок.
  */
 
+/**
+ * Строка текста: пустая или из одних пробелов — отказ («судью судят», раунд 1,
+ * R1-MARSHRUT-1, -4). Пустой заголовок `related` уводил `link-list` ядра в голую
+ * ветку без секции и заголовка, пустые `year`, `title`, `meta` и абзацы печатали
+ * пустые элементы — тихие заглушки без отказа. Края строки срезаются.
+ */
+const tekst = () => z.string().trim().min(1);
+
 export const collections = {
   tresc: defineCollection({
-    loader: glob({ pattern: '**/*.md', base: './src/content/tresc' }),
+    // Id записи — путь файла, а не слаг: по слагу Astro сливает `404.md`
+    // и `404/index.md` в одну запись с предупреждением, и проверка «два файла
+    // на один адрес» маршрута дубля не видела (раунд 1, R1-MARSHRUT-3).
+    loader: glob({ pattern: '**/*.md', base: './src/content/tresc', generateId: ({ entry }) => entry }),
     schema: z
       .object({
         url: z.string().startsWith('/').endsWith('/'),
@@ -50,10 +62,10 @@ export const collections = {
                 role: z.string().min(1).optional(),
                 /** Надзаголовок ряда — роль `t-label` (у сайта нет `t-year`
                  *  первого сайта; ярлык — капслок гротеска, как год у узла трассы). */
-                year: z.string(),
-                title: z.string(),
-                meta: z.string(),
-                body: z.array(z.string()).nonempty(),
+                year: tekst(),
+                title: tekst(),
+                meta: tekst(),
+                body: z.array(tekst()).nonempty(),
                 flip: z.boolean().default(false),
                 band: z.boolean().default(false),
               })
@@ -62,7 +74,7 @@ export const collections = {
           .default([]),
 
         /* — link-list: заголовок секции; сами ссылки — `related` структуры — */
-        related: z.object({ title: z.string() }).strict().optional(),
+        related: z.object({ title: tekst() }).strict().optional(),
       })
       .strict(),
   }),

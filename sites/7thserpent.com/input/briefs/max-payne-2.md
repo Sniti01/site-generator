@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne 2 · queries 15 · demand 3020 (Ahrefs, US) |
 | corridor (contract) | 9123–12343 |
-| hero art | `mp2-art` — key art: black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white (1920×620) |
+| hero art | `mp2-art` — key art: black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white (1920×620; a 1920 master is small for a first screen — backlog 59 п. 2, decided with the first hero page) |
 
 **Keywords** (15): max payne 2 · max payne 2: the fall of max payne · max payne 2 release date · max payne 2 the fall of max payne · max payne 2 ps2 · max payne 2 ps3 · max payne 2 ps4 · max payne 2 xbox · max payne 2 review · max payne 2 fall of max payne · max payne 2 game · max payne 2 pc · max payne 2 sales · max payne 2 steam · the fall of max payne
 
@@ -68,6 +68,10 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | komentarze | 2/7 | 29 % | не норма |
 | schema-org | 3/7 | 43 % | на решение |
 
+*Verdicts are the anatomy’s own words (`structure/rules-s3.json`): обязательна / обязателен — the norm of
+the genre; на решение — to decide; редкая, не норма — rare, not the norm; гэп — one document; не считается —
+too few documents to count.*
+
 ## Page corpus documents for fact-checking (7, hosts 7)
 
 *Addresses, not text. A fact goes into print only if it is confirmed in one of these documents or in
@@ -92,7 +96,7 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
   - `mp2-k03` — screenshot [3]: Max raises a sawed-off shotgun in a night alley under a Dead End sign, fires burning behind him
   - `mp2-k01` — screenshot [1]: Max and Mona Sax side by side, both armed
   - `mp2-k02` — screenshot [2]: Max dives past a warehouse wall firing a pistol, spent casings in the air
-  - `mp2-art` — key art (library_hero_2x.jpg): key art: black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white
+  - `mp2-art` — key art (library_hero_2x.jpg): black silhouettes of Max and Mona Sax in an embrace, each holding a pistol, on white
 
 ## Writing rules (П42 п. 1–4 for this site, П85 п. 1; `CLAUDE.md` of the site, §2 and §5)
 
@@ -103,9 +107,10 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
    better not at all (§2).
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
-4. Addresses in the content — from the root and only from the structure; the `links` gate stops the build.
-5. Length — the contract corridor; the `corridor` gate stops the build outside it. No filler and no
-   cuts: if honest text does not fit, the corridor changes by a named decision with the reason in the
-   report (П43).
+4. Internal addresses — from the root and only from the structure (the `links` gate stops the build on
+   others); external links — only official stores and publisher pages (§5).
+5. Length — the contract corridor; the `corridor` gate stops the build outside it (a `null` corridor —
+   the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
+   corridor changes by a named decision with the reason in the report (П43).
 6. Byline and date are matters of taste: Code decides and names them in the batch report (П85 п. 1).
 7. Not one competitor phrase: facts are checked in the documents above, the wording is ours.

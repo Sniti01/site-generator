@@ -72,6 +72,10 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | komentarze | 11/31 | 35 % | не норма |
 | schema-org | 19/31 | 61 % | на решение |
 
+*Verdicts are the anatomy’s own words (`structure/rules-s3.json`): обязательна / обязателен — the norm of
+the genre; на решение — to decide; редкая, не норма — rare, not the norm; гэп — one document; не считается —
+too few documents to count.*
+
 ## Page corpus documents for fact-checking (31, hosts 18)
 
 *Addresses, not text. A fact goes into print only if it is confirmed in one of these documents or in
@@ -116,7 +120,7 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
 
 - License class of every publisher image on the site: «publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about» — printed in the footer for the frames this page shows.
 - Frames of Max Payne already in `src/assets/gry/`:
-  - `hero` — key art (library_hero_2x.jpg): key art: Max’s stencil silhouette with a pistol on a brick wall, in a single pool of light
+  - `hero` — key art (library_hero_2x.jpg): Max’s stencil silhouette with a pistol on a brick wall, in a single pool of light
   - `mp1-k13` — screenshot [13]: Max runs down a snow-covered New York street at night, past police barricades and an NYPD mobile arrest bus
   - `mp1-k14` — screenshot [14]: Max aims a pistol at the camera on the same snowy street, the police bus behind him
   - `mp1-k09` — screenshot [9]: Max dives sideways through a subway station, firing a pistol in mid-air
@@ -135,9 +139,10 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
    better not at all (§2).
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
-4. Addresses in the content — from the root and only from the structure; the `links` gate stops the build.
-5. Length — the contract corridor; the `corridor` gate stops the build outside it. No filler and no
-   cuts: if honest text does not fit, the corridor changes by a named decision with the reason in the
-   report (П43).
+4. Internal addresses — from the root and only from the structure (the `links` gate stops the build on
+   others); external links — only official stores and publisher pages (§5).
+5. Length — the contract corridor; the `corridor` gate stops the build outside it (a `null` corridor —
+   the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
+   corridor changes by a named decision with the reason in the report (П43).
 6. Byline and date are matters of taste: Code decides and names them in the batch report (П85 п. 1).
 7. Not one competitor phrase: facts are checked in the documents above, the wording is ours.

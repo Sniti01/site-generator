@@ -67,6 +67,10 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | komentarze | 10/25 | 40 % | на решение |
 | schema-org | 22/25 | 88 % | обязателен |
 
+*Verdicts are the anatomy’s own words (`structure/rules-s3.json`): обязательна / обязателен — the norm of
+the genre; на решение — to decide; редкая, не норма — rare, not the norm; гэп — one document; не считается —
+too few documents to count.*
+
 ## Page corpus documents for fact-checking (25, hosts 14)
 
 *Addresses, not text. A fact goes into print only if it is confirmed in one of these documents or in
@@ -111,7 +115,7 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
   - `mp3-k06` — screenshot [6]: Max in green light, a submachine gun raised beside his face
   - `mp3-k10` — screenshot [10]: Max in a white tank top firing two submachine guns in a warehouse
   - `mp3-k01` — screenshot [1]: Max in a suit climbs a stairwell with a pistol, a man following below
-  - `mp3-art` — key art (library_hero_2x.jpg): key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze
+  - `mp3-art` — key art (library_hero_2x.jpg): Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze
 
 ## Writing rules (П42 п. 1–4 for this site, П85 п. 1; `CLAUDE.md` of the site, §2 and §5)
 
@@ -122,9 +126,10 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
    better not at all (§2).
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
-4. Addresses in the content — from the root and only from the structure; the `links` gate stops the build.
-5. Length — the contract corridor; the `corridor` gate stops the build outside it. No filler and no
-   cuts: if honest text does not fit, the corridor changes by a named decision with the reason in the
-   report (П43).
+4. Internal addresses — from the root and only from the structure (the `links` gate stops the build on
+   others); external links — only official stores and publisher pages (§5).
+5. Length — the contract corridor; the `corridor` gate stops the build outside it (a `null` corridor —
+   the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
+   corridor changes by a named decision with the reason in the report (П43).
 6. Byline and date are matters of taste: Code decides and names them in the batch report (П85 п. 1).
 7. Not one competitor phrase: facts are checked in the documents above, the wording is ours.

@@ -38,14 +38,25 @@
  *
  * РАЗБОР — регулярными выражениями по тексту, с учётом кавычек в тегах;
  * комментарии HTML вырезаются до чтения (копия в комментарии не считается
- * ни «есть», ни «нет»). Сущности в значениях атрибутов и тексте раскрываются
+ * ни «есть», ни «нет»); содержимое `<template>` и `<noscript>` не документ,
+ * а сырой текст `<script>`, `<style>`, `<title>`, `<textarea>` — не теги
+ * (гасятся пробелами той же длины). `og:site_name` читается и в `property`,
+ * и в `name`. Сущности в значениях атрибутов и тексте раскрываются
  * (`&amp;`, `&#…;`, `&quot;`, `&lt;`, `&gt;`, `&apos;`, `&nbsp;`); внутри
  * `<script>` — нет (так читает браузер). Тип скрипта — без учёта регистра.
+ * Блок JSON-LD вне `<head>` — отказ (строже поисковика: сайт печатает
+ * разметку в голове).
  *
- * ЧЕГО НЕ СУДИТ: других тегов Open Graph (`og:title`, `og:description`,
- * `og:locale` — литералы из структуры, их никто не сверял и прежде), `hreflang`,
- * `robots` и `noindex`; вид крошек (роль, цвет, отступы — ядро и глаза);
- * страницы вне `dist/**\/index.html` (карты сайта — не страницы).
+ * ЧЕГО НЕ СУДИТ: других тегов Open Graph (`og:title` и `og:description` —
+ * из структуры, `og:locale` — литерал `Base.astro`), `hreflang`, `robots`
+ * и `noindex`; вид крошек (роль, цвет, отступы — ядро и глаза) и атрибут
+ * `hidden` у их навигации; страницы вне `dist/**\/index.html` (карты сайта —
+ * не страницы). Пределы разбора («судью судят», раунд 1): голова — текст
+ * до первого `</head>`, неявное закрытие головы браузером (`<img>` или текст
+ * в голове) не моделируется, `</head>` обязателен (R1-GLOWA-3, -9); повтор
+ * ключа внутри JSON-LD не виден — `JSON.parse` оставляет последнее значение,
+ * а сайт печатает разметку через `JSON.stringify` (R1-GLOWA-6); вырожденный
+ * комментарий `<!-->` не распознаётся.
  *
  * Код возврата: 0 — сверено, 1 — отказ, 2 — ошибка входа.
  */
@@ -79,6 +90,15 @@ export const raskryt = (s) =>
 
 const bezKommentariev = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
 
+/**
+ * Содержимое элемента — пробелами той же длины: теги внутри него не теги
+ * страницы, а позиции (граница `<head>`) не сдвигаются. «Судью судят», раунд 1:
+ * meta и JSON-LD внутри `<template>`, `<noscript>`, `<script>`, `<title>`
+ * засчитывались (R1-GLOWA-4, -5).
+ */
+const zabelit = (html, imena) =>
+  html.replace(new RegExp(`(<(${imena.join('|')})(?=[\\s>])(?:[^>"']|"[^"]*"|'[^']*')*>)([\\s\\S]*?)(<\\/\\2\\s*>)`, 'gi'), (...g) => g[1] + ' '.repeat(g[3].length) + g[4]);
+
 /** Атрибуты тега: имя — строчными, значение — с раскрытыми сущностями. */
 export function atributy(tekstTega) {
   const out = {};
@@ -108,18 +128,23 @@ const tekst = (frag) => raskryt(frag.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, '
  * @param {string} html
  */
 export function razobrat(html) {
-  const h = bezKommentariev(html);
+  // Шаблоны и noscript — не документ: их содержимое гасится для всех поисков;
+  // для поиска тегов гасится ещё и сырой текст script, style, title, textarea.
+  const h = zabelit(bezKommentariev(html), ['template', 'noscript']);
+  const hTegi = zabelit(h, ['script', 'style', 'title', 'textarea']);
   const konecGolovy = h.search(/<\/head\s*>/i);
   const golova = konecGolovy >= 0 ? h.slice(0, konecGolovy) : '';
   const vGolove = (poz) => konecGolovy >= 0 && poz < konecGolovy;
 
-  const meta = tegi(h, ['meta']);
-  const siteName = meta.filter((t) => (t.atr.property ?? '').toLowerCase() === 'og:site_name');
-  const linki = tegi(h, ['link']);
+  const meta = tegi(hTegi, ['meta']);
+  // og:site_name объявляют через property (Open Graph) — и через name тоже
+  // читают: вторая запись с другим значением не должна пройти (R1-GLOWA-8).
+  const siteName = meta.filter((t) => [t.atr.property, t.atr.name].some((v) => (v ?? '').toLowerCase() === 'og:site_name'));
+  const linki = tegi(hTegi, ['link']);
   const canonical = linki.filter((t) => (t.atr.rel ?? '').toLowerCase().split(/\s+/).includes('canonical'));
 
   const ld = [];
-  for (const m of h.matchAll(/<script\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/script\s*>/gi)) {
+  for (const m of h.matchAll(/<script(?=[\s>])((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/script\s*>/gi)) {
     const atr = atributy(`<script${m[1]}>`);
     if ((atr.type ?? '').trim().toLowerCase() !== 'application/ld+json') continue;
     let obj;
@@ -133,16 +158,19 @@ export function razobrat(html) {
   }
 
   const navy = [];
-  for (const t of tegi(h, ['nav'])) {
+  for (const t of tegi(hTegi, ['nav'])) {
     if (!klassy(t.atr).has('crumbs')) continue;
-    const konec = h.indexOf('</nav', t.poz);
-    const vnutri = h.slice(t.poz + t.tekst.length, konec < 0 ? h.length : konec);
+    const ostatok = h.slice(t.poz);
+    const konec = ostatok.search(/<\/nav\s*>/i);
+    const vnutri = ostatok.slice(t.tekst.length, konec < 0 ? ostatok.length : konec);
+    // Звено — каждая ссылка и текущее звено; ссылка без класса звена — тоже
+    // звено (лишнее), а не невидимка (R1-GLOWA-7).
     const zvenya = [];
-    for (const m of vnutri.matchAll(/<(a|span)\b((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/\1\s*>/gi)) {
+    for (const m of vnutri.matchAll(/<(a|span)(?=[\s>])((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/\1\s*>/gi)) {
       const atr = atributy(`<${m[1]}${m[2]}>`);
       const k = klassy(atr);
-      if (m[1].toLowerCase() === 'a' && k.has('crumbs__link')) zvenya.push({ vid: 'ссылка', href: atr.href, label: tekst(m[3]) });
-      else if (m[1].toLowerCase() === 'span' && k.has('crumbs__current')) zvenya.push({ vid: 'текущая', current: atr['aria-current'], label: tekst(m[3]) });
+      if (m[1].toLowerCase() === 'a') zvenya.push({ vid: k.has('crumbs__link') ? 'ссылка' : 'ссылка без класса звена', href: atr.href, label: tekst(m[3]) });
+      else if (k.has('crumbs__current')) zvenya.push({ vid: 'текущая', current: atr['aria-current'], label: tekst(m[3]) });
     }
     navy.push({ label: t.atr['aria-label'], zvenya });
   }
@@ -171,6 +199,7 @@ export function cepochka(struktura, url) {
     if (vidennye.has(p.url)) throw new Error(`цикл в parent у ${p.url}`);
     vidennye.add(p.url);
     out.unshift({ url: p.url, label: p.url === '/' ? 'Home' : p.h1 });
+    if (p.parent && !po.has(p.parent)) throw new Error(`родитель ${p.parent} страницы ${p.url} вне структуры`);
     p = p.parent ? po.get(p.parent) : null;
   }
   return out;
@@ -230,7 +259,7 @@ export function sudit(url, html, struktura) {
     }
     if (o['@type'] === 'WebSite') websites.push(o);
     else if (o['@type'] === 'BreadcrumbList') spiski.push(o);
-    else otkaz('JSON-LD', `тип «${o['@type']}» вне договора (WebSite, BreadcrumbList)`);
+    else otkaz('JSON-LD', `тип ${JSON.stringify(o['@type'])} вне договора: одна строка «WebSite» или «BreadcrumbList»`);
   }
 
   const glavnaya = url === '/';
@@ -249,7 +278,13 @@ export function sudit(url, html, struktura) {
 
   // Крошки: разметка и видимые
   const bezRazmetki = glavnaya || url === '/404/';
-  const cep = cepochka(struktura, url);
+  let cep;
+  try {
+    cep = cepochka(struktura, url);
+  } catch (e) {
+    otkaz('структура', `цепочка крошек не строится: ${e.message}`);
+    return otkazy;
+  }
   if (bezRazmetki) {
     if (spiski.length) otkaz('BreadcrumbList', `BreadcrumbList на ${url}: ${spiski.length} — на главной и /404/ его нет`);
   } else if (spiski.length !== 1) otkaz('BreadcrumbList', `BreadcrumbList: ${spiski.length}, нужен ровно один`);
@@ -261,7 +296,11 @@ export function sudit(url, html, struktura) {
     if (z.length !== cep.length) otkaz('BreadcrumbList', `звеньев ${z.length}, по договору ${cep.length}`);
     cep.forEach((c, i) => {
       const e = z[i];
-      if (!e || typeof e !== 'object') return;
+      if (e === undefined) return; // недостающее звено уже названо счётом выше
+      if (!e || typeof e !== 'object' || Array.isArray(e)) {
+        otkaz('BreadcrumbList', `звено ${i + 1}: не объект (${JSON.stringify(e)})`); // R1-GLOWA-1
+        return;
+      }
       if (!rovnoKluchi(e, KLUCHI_ZVENA)) otkaz('BreadcrumbList', `звено ${i + 1}: ключи ${Object.keys(e).join(', ')}`);
       if (e['@type'] !== 'ListItem') otkaz('BreadcrumbList', `звено ${i + 1}: @type «${e['@type']}»`);
       if (e.position !== i + 1) otkaz('BreadcrumbList', `звено ${i + 1}: position ${JSON.stringify(e.position)}`);
@@ -274,6 +313,7 @@ export function sudit(url, html, struktura) {
     if (f.navy.length) otkaz('крошки', `на главной nav.crumbs: ${f.navy.length} — у главной одно звено, крошек нет`);
   } else if (f.navy.length !== 1) otkaz('крошки', `nav.crumbs: ${f.navy.length}, нужна ровно одна`);
   else {
+    if (!(f.navy[0].label ?? '').trim()) otkaz('крошки', 'у nav.crumbs нет aria-label — навигация без имени для скринридера');
     const z = f.navy[0].zvenya;
     if (z.length !== cep.length) otkaz('крошки', `видимых звеньев ${z.length}, по договору ${cep.length}`);
     cep.forEach((c, i) => {
@@ -363,7 +403,7 @@ function selftest(dist, struktura) {
   const guide = stranicaGuide(domen);
   const zamena = (s, iz, na) => {
     if (!s.includes(iz)) throw new Error(`самопроверка: образец не несёт «${iz.slice(0, 60)}» — мутация не применилась бы`);
-    return s.replace(iz, na);
+    return s.replace(iz, () => na);
   };
   const siteNameTeg = (s) => s.match(/<meta property="og:site_name"[^>]*>/)[0];
   const ldBlok = (s, tip) => s.match(new RegExp(`<script type="application/ld\\+json">[^<]*"@type":"${tip}"[^<]*</script>`))[0];
@@ -399,7 +439,7 @@ function selftest(dist, struktura) {
     ['WebSite: @context по http', { '/': zamena(glav, '"@context":"https://schema.org","@type":"WebSite"', '"@context":"http://schema.org","@type":"WebSite"') }, ['WebSite']],
     ['WebSite дважды, второй — тип скрипта заглавными', { '/': zamena(glav, webSite, webSite + webSite.replace('application/ld+json', 'Application/LD+JSON')) }, ['WebSite']],
     ['WebSite на /404/', { '/404/': zamena(s404, '</head>', webSite + '</head>') }, ['WebSite']],
-    ['WebSite в @graph', { '/': zamena(glav, webSite, webSite.replace(/>(\{[^<]*\})</, (m, o) => `>{"@context":"https://schema.org","@graph":[${o}]}<`)) }, ['JSON-LD', 'WebSite']],
+    ['WebSite в @graph', { '/': zamena(glav, webSite, webSite.replace(/>(\{[^<]*\})</, (...g) => `>{"@context":"https://schema.org","@graph":[${g[1]}]}<`)) }, ['JSON-LD', 'WebSite']],
     ['JSON-LD не разбирается', { '/': zamena(glav, '"url":"https://www.7thserpent.com/"}', '"url":"https://www.7thserpent.com/",}') }, ['JSON-LD', 'WebSite']],
     ['JSON-LD чужого типа', { '/404/': zamena(s404, '</head>', '<script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"x"}</script></head>') }, ['JSON-LD']],
     // Без `www` в canonical главной расходится и `url` WebSite с canonical страницы — два отказа, оба верные.
@@ -417,17 +457,46 @@ function selftest(dist, struktura) {
     ['guide: видимые крошки сняты', { '/max-payne-3/guide/': guide.replace(/<nav[\s\S]*<\/nav>/, '') }, ['крошки']],
     ['guide: видимый ярлык ≠ h1', { '/max-payne-3/guide/': zamena(guide, '>Max Payne 3 (2012): São Paulo', '>Max Payne 3: São Paulo') }, ['крошки']],
     ['guide: ссылка звена на чужой адрес', { '/max-payne-3/guide/': zamena(guide, 'href="/max-payne-3/"', 'href="/max-payne-2/"') }, ['крошки']],
-    ['guide: последнее звено ссылкой', { '/max-payne-3/guide/': zamena(guide, '<span class="crumbs__current" aria-current="page">', '<span class="crumbs__current">') }, ['крошки']],
+    ['guide: последнее звено без aria-current', { '/max-payne-3/guide/': zamena(guide, '<span class="crumbs__current" aria-current="page">', '<span class="crumbs__current">') }, ['крошки']],
+    ['guide: последнее звено — ссылка crumbs__link', { '/max-payne-3/guide/': zamena(guide, `<span class="crumbs__current" aria-current="page">${'Max Payne 3 walkthrough'}`, '<a class="crumbs__link" href="/max-payne-3/guide/">Max Payne 3 walkthrough').replace('trophies</span>', 'trophies</a>') }, ['крошки']],
     ['главная: видимые крошки', { '/': zamena(glav, '<main', kroshki404 + '<main') }, ['крошки']],
     ['/404/: видимые крошки сняты', { '/404/': zamena(s404, kroshki404, '') }, ['крошки']],
     ['страница вне структуры', { '/nie-ma/': s404 }, ['вне структуры']],
     ['сборка без главной', { '/404/': s404 }, ['главной нет']],
     ['пустая сборка', {}, ['пусто']],
+    // — раунд 1 «судью судят»: ветви без своей пробы (R1-GLOWA-2) и обходы разбора (R1-GLOWA-1, -4, -5, -7, -8; R1-PROBY-9) —
+    ['/404/: canonical перенесён в <body>', { '/404/': zamena(zamena(s404, '<link rel="canonical" href="https://www.7thserpent.com/404/">', ''), '<main', '<link rel="canonical" href="https://www.7thserpent.com/404/"><main') }, ['canonical']],
+    ['/404/: canonical на другой адрес', { '/404/': zamena(s404, 'href="https://www.7thserpent.com/404/"', 'href="https://www.7thserpent.com/"') }, ['canonical']],
+    ['/404/: </head> снят', { '/404/': zamena(s404, '</head>', '') }, ['головы нет', 'canonical', 'og:site_name']],
+    ['/404/: JSON-LD не разбирается', { '/404/': zamena(s404, '</head>', '<script type="application/ld+json">{"@type":"WebSite",}</script></head>') }, ['JSON-LD']],
+    ['/404/: JSON-LD — массив', { '/404/': zamena(s404, '</head>', '<script type="application/ld+json">[]</script></head>') }, ['JSON-LD']],
+    ['/404/: JSON-LD — null', { '/404/': zamena(s404, '</head>', '<script type="application/ld+json">null</script></head>') }, ['JSON-LD']],
+    ['guide: BreadcrumbList перенесён в <body>', { '/max-payne-3/guide/': zamena(zamena(guide, guideList, ''), '<main', guideList + '<main') }, ['JSON-LD']],
+    ['guide: лишний ключ списка', { '/max-payne-3/guide/': zamena(guide, '"@type":"BreadcrumbList"', '"@type":"BreadcrumbList","name":"x"') }, ['BreadcrumbList']],
+    ['guide: @context списка по http', { '/max-payne-3/guide/': zamena(guide, '"@context":"https://schema.org","@type":"BreadcrumbList"', '"@context":"http://schema.org","@type":"BreadcrumbList"') }, ['BreadcrumbList']],
+    ['guide: лишний ключ звена', { '/max-payne-3/guide/': zamena(guide, '"position":1,', '"position":1,"url":"x",') }, ['BreadcrumbList']],
+    ['guide: @type звена не ListItem', { '/max-payne-3/guide/': zamena(guide, '{"@type":"ListItem","position":2', '{"@type":"Thing","position":2') }, ['BreadcrumbList']],
+    ['guide: звено 2 — null', { '/max-payne-3/guide/': guide.replace(/\{"@type":"ListItem","position":2,[^}]*\}/, 'null') }, ['BreadcrumbList']],
+    ['guide: звено 2 — строка', { '/max-payne-3/guide/': guide.replace(/\{"@type":"ListItem","position":2,[^}]*\}/, '"x"') }, ['BreadcrumbList']],
+    ['guide: </script> в имени звена без экранирования', { '/max-payne-3/guide/': zamena(guide, '"name":"Max Payne 3 walkthrough', '"name":"</script>Max Payne 3 walkthrough') }, ['JSON-LD', 'BreadcrumbList']],
+    ['guide: среднее видимое звено снято', { '/max-payne-3/guide/': guide.replace(/<li class="crumbs__item"><a class="crumbs__link" href="\/max-payne-3\/">[^<]*<\/a><span[^>]*>\/<\/span><\/li>/, '') }, ['крошки']],
+    ['guide: среднее звено текущим, не ссылкой', { '/max-payne-3/guide/': guide.replace(/<a class="crumbs__link" href="\/max-payne-3\/">([^<]*)<\/a>/, '<span class="crumbs__current" aria-current="page">$1</span>') }, ['крошки']],
+    ['guide: две nav.crumbs', { '/max-payne-3/guide/': guide.replace(/(<nav[\s\S]*<\/nav>)/, '$1$1') }, ['крошки']],
+    ['guide: лишняя ссылка без класса в крошках', { '/max-payne-3/guide/': zamena(guide, '</ol></nav>', '<li><a href="/x/">x</a></li></ol></nav>') }, ['крошки']],
+    ['guide: nav.crumbs без aria-label', { '/max-payne-3/guide/': zamena(guide, ' aria-label="Breadcrumbs"', '') }, ['крошки']],
+    ['og:site_name только внутри <script>', { '/': zamena(glav, siteNameTeg(glav), `<script>var s='${siteNameTeg(glav)}';</script>`) }, ['og:site_name']],
+    ['og:site_name только внутри <template>', { '/': zamena(glav, siteNameTeg(glav), `<template>${siteNameTeg(glav)}</template>`) }, ['og:site_name']],
+    ['og:site_name только внутри <noscript>', { '/': zamena(glav, siteNameTeg(glav), `<noscript>${siteNameTeg(glav)}</noscript>`) }, ['og:site_name']],
+    ['og:site_name только внутри <title>', { '/': zamena(zamena(glav, siteNameTeg(glav), ''), '</title>', siteNameTeg(glav) + '</title>') }, ['og:site_name']],
+    ['второй og:site_name через name= с другим значением', { '/404/': zamena(s404, '</head>', '<meta name="og:site_name" content="Max Payne Wiki"></head>') }, ['og:site_name']],
+    ['WebSite только внутри <template>', { '/': zamena(glav, webSite, `<template>${webSite}</template>`) }, ['WebSite']],
+    ['WebSite тегом script-x', { '/': zamena(glav, webSite, webSite.replace('<script ', '<script-x ').replace('</script>', '</script-x>')) }, ['WebSite']],
+    ['guide: родитель вне структуры', { '/max-payne-3/guide/': guide }, ['структура'], { '/max-payne-3/guide/': { parent: '/nie-ma/' } }],
   ];
 
   let plokho = 0;
   const itog = [];
-  for (const [imya, stranicy, zhdem] of proby) {
+  for (const [imya, stranicy, zhdem, pravkaStruktury] of proby) {
     const nabor = Object.entries(stranicy).map(([url, html]) => ({ url, html }));
     // Одиночная мутированная страница судится вместе с чистыми соседями —
     // чтобы «главной нет» и «пусто» не ловили каждую пробу; соседи не мутированы.
@@ -435,11 +504,16 @@ function selftest(dist, struktura) {
     if (zhdem && !['главной нет', 'пусто'].some((v) => zhdem.includes(v))) {
       if (!stranicy['/']) polnyi.push({ url: '/', html: glav });
     }
-    const otkazy = suditNabor(polnyi, struktura);
+    const s = pravkaStruktury
+      ? { ...struktura, pages: struktura.pages.map((p) => (pravkaStruktury[p.url] ? { ...p, ...pravkaStruktury[p.url] } : p)) }
+      : struktura;
+    const otkazy = suditNabor(polnyi, s);
     const vidy = new Set(otkazy.map((o) => o.vid));
+    // Множество видов отказа — ровно ожидаемое («судью судят», раунд 1, R1-GLOWA-2:
+    // «хотя бы один из ждущих» пропускал снятые проверки, выживали 16 мутантов из 18).
     let ok;
     if (zhdem === null) ok = otkazy.length === 0;
-    else ok = otkazy.length > 0 && [...vidy].every((v) => zhdem.includes(v)) && zhdem.some((v) => vidy.has(v));
+    else ok = vidy.size === new Set(zhdem).size && zhdem.every((v) => vidy.has(v));
     if (!ok) plokho += 1;
     itog.push({ imya, ok, vidy: [...vidy], pervyi: otkazy[0]?.chto ?? '—' });
     console.log(`${ok ? 'ok  ' : 'ПЛОХО'} ${imya.padEnd(64)} ${zhdem === null ? 'ждём: сверено' : 'ждём: ' + zhdem.join(' | ')}; получено: ${otkazy.length ? [...vidy].join(' | ') + ' — ' + otkazy[0].chto : 'сверено'}`);
@@ -456,7 +530,12 @@ const isMain = Boolean(process.argv[1]) && fileURLToPath(import.meta.url) === re
 if (isMain) {
   const args = process.argv.slice(2);
   const iDist = args.indexOf('--dist');
-  const dist = iDist >= 0 ? join(process.cwd(), args[iDist + 1] ?? '') : join(root, 'dist');
+  if (iDist >= 0 && (!args[iDist + 1] || args[iDist + 1].startsWith('--'))) {
+    console.error('--dist без папки: укажите путь сборки (от текущей папки или абсолютный)');
+    process.exit(2);
+  }
+  // `resolve`, не `join`: абсолютный путь остаётся собой (раунд 1, R1-GLOWA-11).
+  const dist = iDist >= 0 ? resolve(process.cwd(), args[iDist + 1]) : join(root, 'dist');
   let struktura;
   try {
     struktura = JSON.parse(readFileSync(join(root, 'structure/structure.json'), 'utf8'));
@@ -479,7 +558,7 @@ if (isMain) {
   const otkazy = suditNabor(stranicy, struktura);
   for (const s of stranicy) {
     const f = razobrat(s.html);
-    const ld = f.ld.filter((b) => !b.oshibka).map((b) => b.obj['@type']).join(', ') || '—';
+    const ld = f.ld.filter((b) => !b.oshibka).map((b) => (b.obj && typeof b.obj === 'object' ? b.obj['@type'] : JSON.stringify(b.obj))).join(', ') || '—';
     console.log(`  ${s.url.padEnd(24)} og:site_name ${f.siteName.length}, JSON-LD: ${ld}, крошек: ${f.navy.map((n) => n.zvenya.length).join('/') || '—'}`);
   }
   if (otkazy.length) {

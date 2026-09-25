@@ -3,35 +3,43 @@
  * Иконки сайта из знака (сессия 11, П83 и дополнение: знак — «Семёрка из
  * трассы», фавикон — из того же рисунка, с `favicon.ico`).
  *
- * Источник один — `src/data/znak.json`: рисунок шапки (его рисует
- * `src/components/Znak.astro`), иконка на сетке 32 и пиксельная иконка
- * на сетке 16; краска каждой части — ИМЯ токена темы. Значения красок
+ * Источник один — `src/data/znak.json`: три рисунка одного знака — шапка
+ * (её рисует `src/components/Znak.astro`), иконка на сетке 32 и пиксельная
+ * иконка на сетке 16; краска каждой части — ИМЯ токена темы. Значения красок
  * инструмент берёт из `src/styles/global.css`, поэтому литералы в файлах
  * иконок равны токенам по построению, а не по памяти.
  *
- *   node tools/znak.mjs            — пишет в public/ шесть файлов (ниже)
+ *   node tools/znak.mjs            — пишет в public/ шесть файлов (ниже);
+ *                                    при отказе проверок 1–2 не пишет ничего
  *   node tools/znak.mjs --check    — ничего не пишет; exit 1 при любом отказе:
- *     1) краска — токен темы: каждое её объявление в `global.css` вне
- *        комментариев — ровно `#rrggbb`, и все объявления одного имени равны
- *        (токен в комментарии — не токен; `rgb()`, `var()`, `#rgb`,
- *        `!important` — отказ с этой причиной, а не «не токен»);
- *     2) гарнитура — тема: `global.css` грузит `@fontsource/bodoni-moda/latin-600.css`,
- *        `--font-display` начинается с 'Bodoni Moda'; файл контуров — woff
- *        из `@font-face` этого листа (normal, 600), а не поле данных; контур
- *        каждой надписи равен пересчёту из него по `size`, `track`, `x`, `y`;
- *     3) имя — подпись: буквы надписей подряд равны буквам `site.znak`
- *        (`src/data/site.ts`) без цифр и пробелов, заглавными: видимое имя
- *        знака и подпись ссылки знака — одно имя (WCAG 2.5.3);
- *     4) файлы: в `public/` ровно шесть файлов, и каждый ПОБАЙТНО равен тому,
- *        что инструмент написал бы сейчас (при расхождении PNG и ICO сказано,
- *        равны ли пиксели: «пиксели те же» — файл перекодирован или получил
- *        чанки, «пиксели другие» — другой рисунок);
- *     5) `<head>` `src/layouts/Base.astro` (без фронтматтера, HTML-комментариев
- *        и выражений `{…}`): ссылки на иконки — ровно шесть ожидаемых тегов
- *        `<link>` с `rel`, `href`, `type`, `sizes`, иных иконок нет;
- *        с `--dist` — то же в `<head>` собранного `dist/index.html`.
- *   node tools/znak.mjs --selftest — отрицательные и положительные пробы
- *     сверки на мутациях настоящих входов в памяти (ничего не пишет).
+ *     1) краска — токен темы: имя объявлено в верхнем блоке `:root { … }`
+ *        `global.css` (его и получает компонент через `var()`), каждое
+ *        объявление там — ровно `#rrggbb`, все равны, и больше нигде в листе
+ *        (другие селекторы, `@media`, `@theme`) это имя не объявлено.
+ *        Разбор — токенайзером CSS: комментарии, строки с экранированием,
+ *        вложенность блоков, BOM; токен в комментарии или строке — не токен;
+ *     2) гарнитура — тема: среди операторов верхнего уровня `global.css` есть
+ *        ровно `@import '@fontsource/bodoni-moda/latin-600.css';` (без условий
+ *        media и supports), а `--font-display` в верхнем `@theme` начинается
+ *        с 'Bodoni Moda'; файл контуров — woff из `@font-face` этого листа
+ *        (normal, 600); контур каждой надписи равен пересчёту из него
+ *        по `size`, `track`, `x`, `y`;
+ *     3) файлы: иконочных файлов в `public/` (`favicon*`, `icon-*`,
+ *        `apple-touch-icon*`, `*.webmanifest`) ровно шесть, каждый — файл,
+ *        а не папка, и каждый ПОБАЙТНО равен тому, что
+ *        инструмент написал бы сейчас; прочие файлы `public/` (например,
+ *        `robots.txt`) не судятся. Диагноз расхождения: «не PNG» или «не ICO»
+ *        по сигнатуре, иначе — те же ли пиксели.
+ *     С `--dist` — ещё и иконочные файлы `dist/` побайтно равны `public/`
+ *     (сборка не отстала от иконок).
+ *   node tools/znak.mjs --selftest — пробы сверки на мутациях настоящих входов
+ *     в памяти (ничего не пишет): каждая ветвь сверки — хотя бы одной пробой.
+ *
+ * Что сверка НЕ судит и кто судит это (судья собранной страницы в браузере —
+ * `docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs`): как знак
+ * рисует браузер (каскад, обводка «TH», принудительные цвета, знак = одобренный
+ * эскиз A), ссылки иконок в `<head>` собранной страницы и запросы браузера,
+ * подписи ссылки знака и картинки подвала против видимого имени.
  *
  * ФАЙЛЫ: `favicon.svg` (вкладку Chromium рисует из него), `favicon.ico`
  * (16 и 32 в одном файле, PNG внутри — для клиентов, которые просят
@@ -43,15 +51,20 @@
  * ПРЕДЕЛЫ (названы): контуры считает `fontkitten` — зависимость Astro, а не
  * сайта; пропадёт из дерева — проверка 2 упадёт громко. Кернинга у контуров
  * нет (fontkitten без раскладки) — ни у эскиза, ни у пересчёта: проверка 2
- * ловит дрейф данных от гарнитуры, а не ошибку самого способа. PNG растрирует
- * `sharp` (librsvg), не браузер; побайтная сверка держится на версии sharp —
- * смена версии даст громкий отказ проверки 4, лечится `npm run znak`
- * с просмотром иконок. Как знак рисует браузер (каскад, обводка «TH»,
- * принудительные цвета) сверка не судит — это `wiernosc.mjs` доклада сессии 11
- * и приёмка глазами. `theme-color` в `<head>` со `--bg` не сверяется.
- * В сборку и гейты сверка не входит: включить её — решение владельца.
+ * ловит дрейф данных от гарнитуры, а не ошибку способа. Контуры пересчитывает
+ * и помощник эскиза `docs/reports/2026-09-24-7thserpent-znak/instrumenty/glify.mjs`;
+ * новый контур — им, затем `d` в `znak.json`. После обновления
+ * `@fontsource/bodoni-moda` с другими контурами проверка 2 упадёт; новый `d`
+ * разведёт знак с одобренным эскизом A и с эталоном `_baseline/` — это
+ * пересъёмка эталона и приёмка глазами, то есть решение владельца, а не
+ * починка сверки. PNG растрирует `sharp` (librsvg),
+ * не браузер; побайтная сверка держится на версии sharp — смена версии даст
+ * громкий отказ проверки 3, лечится `npm run znak` с просмотром иконок.
+ * Подобие иконок шапке (три рисунка) — приёмка глазами. `theme-color`
+ * со `--bg` не сверяется. В сборку и гейты сверка не входит: включить её —
+ * решение владельца.
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, statSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -62,97 +75,95 @@ const sharp = require('sharp');
 const fk = await import(pathToFileURL(require.resolve('fontkitten')).href);
 
 const IMPORT_GARNITURY = '@fontsource/bodoni-moda/latin-600.css';
-const PLIKI = ['favicon.svg', 'favicon.ico', 'favicon-16x16.png', 'favicon-32x32.png', 'icon-192.png', 'apple-touch-icon.png'];
-const LINKI = [
-  { rel: 'icon', href: '/favicon.ico', sizes: '32x32' },
-  { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
-  { rel: 'icon', href: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-  { rel: 'icon', href: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-  { rel: 'icon', href: '/icon-192.png', type: 'image/png', sizes: '192x192' },
-  { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
-];
+const IKONOCHNY = /^(favicon|icon-|apple-touch-icon)|\.webmanifest$/;
 
-// ── Разбор CSS ───────────────────────────────────────────────────────────
-/** Снимает комментарии CSS, не трогая строк в кавычках (как `bezKomentarzy` гейта контраста ядра). */
-export function bezKomentarzyCss(s) {
-  let out = '';
-  for (let i = 0; i < s.length; i++) {
-    const c = s[i];
-    if (c === '"' || c === "'") {
-      const j = s.indexOf(c, i + 1);
-      const k = j < 0 ? s.length : j + 1;
-      out += s.slice(i, k);
-      i = k - 1;
-    } else if (c === '/' && s[i + 1] === '*') {
-      const j = s.indexOf('*/', i + 2);
-      i = j < 0 ? s.length : j + 1;
-    } else out += c;
+// ── Токенайзер CSS ───────────────────────────────────────────────────────
+/**
+ * Разбор листа в дерево: оператор верхнего уровня `{ tip: 'at' | 'rule', prelude, body?, children? }`.
+ * Комментарии снимаются, строки (с экранированием) сохраняются целыми, BOM снимается.
+ * Объявления блока — `decls: [{ imie, wartosc }]` (только на своём уровне, не во вложенных).
+ */
+export function drzewoCss(src) {
+  const s = src.replace(/^﻿/, '');
+  let i = 0;
+  const chitatStroku = (q) => {
+    let out = q;
+    i++;
+    while (i < s.length) {
+      const c = s[i];
+      if (c === '\\') { out += c + (s[i + 1] ?? ''); i += 2; continue; }
+      out += c;
+      i++;
+      if (c === q) break;
+    }
+    return out;
+  };
+  function blok(glub) {
+    const uzly = [];
+    const decls = [];
+    let bufer = '';
+    while (i < s.length) {
+      const c = s[i];
+      if (c === '/' && s[i + 1] === '*') { const j = s.indexOf('*/', i + 2); i = j < 0 ? s.length : j + 2; continue; }
+      if (c === '"' || c === "'") { bufer += chitatStroku(c); continue; }
+      if (c === '\\') { bufer += c + (s[i + 1] ?? ''); i += 2; continue; }
+      if (/^url\($/i.test(s.slice(i - 3, i + 1)) && !/["']/.test(s.slice(i + 1).trimStart()[0] ?? '')) {
+        const j = s.indexOf(')', i + 1);
+        const k = j < 0 ? s.length : j + 1;
+        bufer += s.slice(i, k);
+        i = k;
+        continue;
+      }
+      if (c === '{') {
+        i++;
+        const prelude = bufer.trim();
+        bufer = '';
+        const wn = blok(glub + 1);
+        uzly.push({ tip: prelude.startsWith('@') ? 'at' : 'rule', prelude, decls: wn.decls, children: wn.uzly });
+        continue;
+      }
+      if (c === '}') { i++; if (bufer.trim()) dodajDecl(bufer, decls, uzly, glub); return { uzly, decls }; }
+      if (c === ';') { i++; dodajDecl(bufer, decls, uzly, glub); bufer = ''; continue; }
+      bufer += c;
+      i++;
+    }
+    if (bufer.trim()) dodajDecl(bufer, decls, uzly, glub);
+    return { uzly, decls };
   }
-  return out;
+  function dodajDecl(txt, decls, uzly, glub) {
+    const t = txt.trim();
+    if (!t) return;
+    if (t.startsWith('@')) { uzly.push({ tip: 'at', prelude: t, oper: true }); return; }
+    const m = /^(--[a-zA-Z0-9-]+|[a-zA-Z-]+)\s*:([\s\S]*)$/.exec(t);
+    if (m && glub > 0) decls.push({ imie: m[1], wartosc: m[2].trim() });
+  }
+  return blok(0).uzly;
 }
-/** Все объявления `--имя: значение` вне комментариев: имя → [значения]. */
-export function deklaracje(css) {
-  const m = new Map();
-  // Объявление начинается после `{`, `;` или пробела: `.x--accent:hover` в селекторе — не объявление.
-  for (const d of bezKomentarzyCss(css).matchAll(/(?:^|[{;\s])--([a-zA-Z0-9-]+)\s*:\s*([^;}]*)/g)) {
-    const [, imie, wartosc] = d;
-    if (!m.has(imie)) m.set(imie, []);
-    m.get(imie).push(wartosc.trim());
-  }
-  return m;
+/** Все объявления `--имя` дерева с местом: верхний `:root`, верхний `@theme` или «иначе». */
+export function deklaracje(drzewo) {
+  const out = [];
+  const obhod = (uzly, gde) => {
+    for (const u of uzly) {
+      if (u.oper) continue;
+      const tut = gde ?? (u.tip === 'rule' && u.prelude === ':root' ? ':root' : u.tip === 'at' && /^@theme\b/.test(u.prelude) ? '@theme' : 'другой блок');
+      for (const d of u.decls ?? []) if (d.imie.startsWith('--')) out.push({ imie: d.imie.slice(2), wartosc: d.wartosc, gde: tut });
+      obhod(u.children ?? [], 'вложенный блок');
+    }
+  };
+  obhod(drzewo, null);
+  return out;
 }
 function kraska(dekl, imie, gdzie, bledy) {
-  const w = dekl.get(imie);
-  if (!w) { bledy.push(`${gdzie}: краска «${imie}» — не токен src/styles/global.css (объявления --${imie} вне комментариев нет)`); return '#ff00ff'; }
-  const zle = w.filter((v) => !/^#[0-9a-f]{6}$/i.test(v));
-  if (zle.length) { bledy.push(`${gdzie}: токен --${imie} объявлен не как #rrggbb: ${zle.map((v) => `«${v}»`).join(', ')} — иконки не могут взять его значение`); return '#ff00ff'; }
-  const rozne = [...new Set(w.map((v) => v.toLowerCase()))];
-  if (rozne.length > 1) { bledy.push(`${gdzie}: токен --${imie} объявлен с разными значениями: ${rozne.join(', ')}`); return '#ff00ff'; }
+  const vse = dekl.filter((d) => d.imie === imie);
+  const root = vse.filter((d) => d.gde === ':root');
+  const chuzhie = vse.filter((d) => d.gde !== ':root');
+  if (!root.length) { bledy.push(`${gdzie}: краска «${imie}» — не токен темы: в верхнем :root global.css нет --${imie}${chuzhie.length ? ` (есть только: ${[...new Set(chuzhie.map((d) => d.gde))].join(', ')})` : ''}`); return '#ff00ff'; }
+  if (chuzhie.length) bledy.push(`${gdzie}: токен --${imie} переопределён вне верхнего :root (${chuzhie.map((d) => `${d.gde}: «${d.wartosc}»`).join(', ')}) — знак на странице и иконки могут разойтись`);
+  const zle = root.filter((d) => !/^#[0-9a-f]{6}$/i.test(d.wartosc));
+  if (zle.length) { bledy.push(`${gdzie}: токен --${imie} объявлен не как #rrggbb: ${zle.map((d) => `«${d.wartosc}»`).join(', ')} — иконки не могут взять его значение`); return '#ff00ff'; }
+  const rozne = [...new Set(root.map((d) => d.wartosc.toLowerCase()))];
+  if (rozne.length > 1) { bledy.push(`${gdzie}: токен --${imie} объявлен в :root с разными значениями: ${rozne.join(', ')}`); return '#ff00ff'; }
   return rozne[0];
-}
-
-// ── Разбор <head> ────────────────────────────────────────────────────────
-/** Текст `<head>` страницы без HTML-комментариев; для .astro — без фронтматтера и выражений `{…}`. */
-export function glowa(tekst, astro) {
-  let s = tekst;
-  if (astro) {
-    const m = /^---\r?\n[\s\S]*?\r?\n---\r?\n/.exec(s);
-    if (m) s = s.slice(m[0].length);
-  }
-  s = s.replace(/<!--[\s\S]*?-->/g, '');
-  if (astro) {
-    let out = '';
-    let gl = 0;
-    for (const c of s) {
-      if (c === '{') gl++;
-      else if (c === '}') gl = Math.max(0, gl - 1);
-      else if (!gl) out += c;
-    }
-    s = out;
-  }
-  const a = s.search(/<head[\s>]/i);
-  const b = s.search(/<\/head>/i);
-  return a < 0 || b < a ? null : s.slice(a, b);
-}
-export function linkiIkon(head) {
-  const out = [];
-  for (const t of head.matchAll(/<link\b([^>]*)>/gi)) {
-    const at = {};
-    for (const a of t[1].matchAll(/([a-zA-Z-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)) at[a[1].toLowerCase()] = a[2] ?? a[3];
-    if (/(^|\s)(icon|apple-touch-icon|shortcut|mask-icon)(\s|$)/i.test(at.rel ?? '')) out.push(at);
-  }
-  return out;
-}
-function sverkaLinkov(head, gdzie, bledy) {
-  if (head === null) { bledy.push(`${gdzie}: <head> не найден`); return; }
-  const jest = linkiIkon(head);
-  const klucz = (l) => ['rel', 'href', 'type', 'sizes'].map((k) => `${k}=${l[k] ?? ''}`).join(' ');
-  const jestK = jest.map(klucz);
-  for (const l of LINKI) {
-    if (!jestK.includes(klucz(l))) bledy.push(`${gdzie}: в <head> нет <link ${klucz(l)}>`);
-  }
-  const ozhid = LINKI.map(klucz);
-  for (const k of jestK) if (!ozhid.includes(k)) bledy.push(`${gdzie}: лишняя иконка в <head>: <link ${k}>`);
 }
 
 // ── Рисунки и файлы ──────────────────────────────────────────────────────
@@ -188,48 +199,55 @@ function ico(obrazy) {
   });
   return Buffer.concat([head, ...obrazy.map(([, b]) => b)]);
 }
+const SYG_PNG = Buffer.from('89504e470d0a1a0a', 'hex');
 async function piksele(buf) {
   try {
     const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
     return `${info.width}x${info.height}:${data.toString('base64')}`;
   } catch { return null; }
 }
-async function pikseleIco(buf) {
-  try {
-    const n = buf.readUInt16LE(4);
-    const out = [];
-    for (let i = 0; i < n; i++) {
-      const e = 6 + 16 * i;
-      out.push(await piksele(buf.subarray(buf.readUInt32LE(e + 12), buf.readUInt32LE(e + 12) + buf.readUInt32LE(e + 8))));
-    }
-    return out.join('|');
-  } catch { return null; }
+async function diagnoz(imie, stary, nowy) {
+  if (imie.endsWith('.png')) {
+    if (!stary.subarray(0, 8).equals(SYG_PNG)) return 'не PNG (сигнатура другая)';
+  } else if (imie.endsWith('.ico')) {
+    if (stary.length < 6 || stary.readUInt16LE(0) !== 0 || stary.readUInt16LE(2) !== 1) return 'не ICO (заголовок другой)';
+    return 'каталог или записи ICO другие';
+  } else return 'текст другой';
+  const [a, b] = [await piksele(stary), await piksele(nowy)];
+  if (a === null) return 'PNG не читается';
+  return a === b ? 'пиксели те же (перекодирован или чанки)' : 'пиксели другие (другой рисунок)';
 }
 
 /**
  * Сверка — чистая функция над входами (для --check и --selftest).
- * @param w { css, znak, base, dist?, siteTs, fontCss, fontBuf, publiczne: Map<имя, Buffer> | null }
- * @returns { bledy, pliki: Map<имя, Buffer> }
+ * @param {object} w входы: css, znak, fontCss, fontBuf, publiczne (Map имя → Buffer | 'dir'), dist? (Map имя → Buffer)
+ * @returns {Promise<{ bledy: string[], pliki: Map<string, Buffer> }>}
  */
 export async function sverka(w) {
   const bledy = [];
-  const dekl = deklaracje(w.css);
+  const drzewo = drzewoCss(w.css);
+  const dekl = deklaracje(drzewo);
   const farba = (imie, gdzie) => kraska(dekl, imie, gdzie, bledy);
 
-  // 1–2. Гарнитура — тема; контуры — из неё.
-  const cssBez = bezKomentarzyCss(w.css);
-  if (!cssBez.includes(`@import '${IMPORT_GARNITURY}'`) && !cssBez.includes(`@import "${IMPORT_GARNITURY}"`)) {
-    bledy.push(`гарнитура: global.css не грузит ${IMPORT_GARNITURY} — буквы знака не стоят на гарнитуре темы`);
+  // 2. Гарнитура — тема.
+  const importy = drzewo.filter((u) => u.oper && /^@import\b/.test(u.prelude)).map((u) => u.prelude);
+  const nuzhny = [`@import '${IMPORT_GARNITURY}'`, `@import "${IMPORT_GARNITURY}"`];
+  if (!importy.some((p) => nuzhny.includes(p))) {
+    const pohozhie = importy.filter((p) => p.includes('bodoni-moda'));
+    bledy.push(`гарнитура: среди операторов верхнего уровня global.css нет ровно @import '${IMPORT_GARNITURY}';${pohozhie.length ? ` (есть: ${pohozhie.join(' | ')})` : ''} — буквы знака не стоят на гарнитуре темы`);
   }
-  const fd = dekl.get('font-display');
-  if (!fd || !fd.every((v) => /^['"]Bodoni Moda['"]/.test(v))) bledy.push(`гарнитура: --font-display не начинается с 'Bodoni Moda' (${fd ? fd.join(' | ') : 'нет'})`);
-  const ff = [...w.fontCss.matchAll(/@font-face\s*{([^}]*)}/g)].map((m) => m[1]).find((b) => /font-style:\s*normal/.test(b) && /font-weight:\s*600/.test(b));
-  const woff = ff && /url\(\.\/files\/([^)]+\.woff)\)/.exec(ff);
-  if (!woff) bledy.push(`гарнитура: в ${IMPORT_GARNITURY} нет @font-face normal 600 с woff`);
-  if (w.fontPlik && woff && w.fontPlik !== woff[1]) bledy.push(`гарнитура: контуры считаются из ${w.fontPlik}, а тема грузит ${woff[1]}`);
+  const vlozhennye = [];
+  const iskat = (uzly) => { for (const u of uzly) { for (const c of u.children ?? []) { if (c.oper && c.prelude.includes('bodoni-moda')) vlozhennye.push(`${u.prelude} { ${c.prelude} }`); } iskat(u.children ?? []); } };
+  iskat(drzewo);
+  if (vlozhennye.length) bledy.push(`гарнитура: импорт Бодони внутри блока: ${vlozhennye.join('; ')}`);
+  const fd = dekl.filter((d) => d.imie === 'font-display');
+  const fdTheme = fd.filter((d) => d.gde === '@theme');
+  if (!fdTheme.length || !fdTheme.every((d) => /^['"]Bodoni Moda['"]/.test(d.wartosc))) bledy.push(`гарнитура: --font-display в верхнем @theme не начинается с 'Bodoni Moda' (${fdTheme.length ? fdTheme.map((d) => d.wartosc).join(' | ') : 'нет'})`);
+  if (fd.some((d) => d.gde !== '@theme')) bledy.push(`гарнитура: --font-display объявлен вне верхнего @theme (${fd.filter((d) => d.gde !== '@theme').map((d) => d.gde).join(', ')})`);
   const napisy = w.znak.shapka.napisy ?? [];
   if (!napisy.length) bledy.push('надписи: у знака нет надписей — имя знака не нарисовано');
-  if (w.fontBuf) {
+  if (!w.fontBuf) bledy.push(`гарнитура: в ${IMPORT_GARNITURY} нет @font-face normal 600 с woff`);
+  else {
     const font = fk.create(w.fontBuf);
     for (const n of napisy) {
       if ('font' in n) bledy.push(`надпись «${n.tekst}»: поле font не читается — гарнитура знака берётся из темы (${IMPORT_GARNITURY})`);
@@ -242,22 +260,14 @@ export async function sverka(w) {
         if (d) czesci.push(d);
         x += g.advanceWidth * s + n.track * n.size;
       }
-      if (czesci.join('') !== n.d) bledy.push(`надпись «${n.tekst}»: контур в znak.json не равен пересчёту из гарнитуры темы (size ${n.size}, track ${n.track}, x ${n.x}, y ${n.y})`);
+      if (!n.d || czesci.join('') !== n.d) bledy.push(`надпись «${n.tekst}»: контур в znak.json не равен пересчёту из гарнитуры темы (size ${n.size}, track ${n.track}, x ${n.x}, y ${n.y})`);
     }
   }
+  // 1. Краски шапки (иконки судятся при сборке файлов ниже).
   for (const c of w.znak.shapka.czesci) farba(c.farba, `шапка, ${c.opis}`);
   for (const n of napisy) farba(n.farba, `шапка, надпись «${n.tekst}»`);
 
-  // 3. Имя — подпись.
-  const znakSite = /znak:\s*'([^']+)'/.exec(w.siteTs);
-  if (!znakSite) bledy.push('имя: в src/data/site.ts нет site.znak');
-  else {
-    const litery = znakSite[1].replace(/[\d\s]/g, '').toUpperCase();
-    const narysowane = napisy.map((n) => n.tekst).join('');
-    if (litery !== narysowane) bledy.push(`имя: надписи знака «${narysowane}» не равны буквам site.znak «${znakSite[1]}» (${litery}) — видимое имя и подпись ссылки разошлись`);
-  }
-
-  // 4. Файлы.
+  // 3. Файлы.
   const svg32 = ikonaSvg(w.znak.ikona, farba);
   const svg16 = ikonaSvg(w.znak.ikona16, farba);
   const p16 = await png(svg16, 16, 16);
@@ -270,45 +280,41 @@ export async function sverka(w) {
     ['icon-192.png', await png(svg32, 32, 192)],
     ['apple-touch-icon.png', await png(svg32, 32, 180)],
   ]);
-  if (w.publiczne) {
-    for (const imie of w.publiczne.keys()) if (!pliki.has(imie)) bledy.push(`public/${imie}: лишний файл — в public/ только иконки знака`);
-    for (const [imie, nowy] of pliki) {
-      const stary = w.publiczne.get(imie);
-      if (!stary) { bledy.push(`public/${imie}: файла нет — npm run znak`); continue; }
-      if (stary.equals(nowy)) continue;
-      if (imie.endsWith('.svg')) { bledy.push(`public/${imie}: отстал от src/data/znak.json и токенов — npm run znak`); continue; }
-      const f = imie.endsWith('.ico') ? pikseleIco : piksele;
-      const [a, b] = [await f(stary), await f(nowy)];
-      bledy.push(`public/${imie}: байты не равны тому, что пишет инструмент; ${a === null ? 'файл не читается как ' + (imie.endsWith('.ico') ? 'ICO с PNG' : 'PNG') : a === b ? 'пиксели те же (перекодирован, чанки или каталог)' : 'пиксели другие (другой рисунок)'} — npm run znak`);
+  const sverit = async (mapa, gde) => {
+    for (const [imie, v] of mapa) {
+      if (!IKONOCHNY.test(imie)) continue;
+      if (v === 'dir') { bledy.push(`${gde}/${imie}: папка с иконочным именем — в ${gde}/ иконки только файлами`); continue; }
+      if (!pliki.has(imie)) bledy.push(`${gde}/${imie}: лишний иконочный файл — иконки знака ровно шесть`);
     }
-  }
-
-  // 5. <head>.
-  sverkaLinkov(glowa(w.base, true), 'src/layouts/Base.astro', bledy);
-  if (w.dist !== undefined) sverkaLinkov(w.dist === null ? null : glowa(w.dist, false), 'dist/index.html', bledy);
-
+    for (const [imie, nowy] of pliki) {
+      const stary = mapa.get(imie);
+      if (!stary || stary === 'dir') { if (!stary) bledy.push(`${gde}/${imie}: файла нет — npm run znak${gde === 'dist' ? ', затем сборка' : ''}`); continue; }
+      if (!stary.equals(nowy)) bledy.push(`${gde}/${imie}: байты не равны тому, что пишет инструмент; ${await diagnoz(imie, stary, nowy)} — npm run znak${gde === 'dist' ? ', затем сборка' : ''}`);
+    }
+  };
+  if (w.publiczne) await sverit(w.publiczne, 'public');
+  if (w.dist) await sverit(w.dist, 'dist');
   return { bledy, pliki };
 }
 
 // ── Входы с диска ────────────────────────────────────────────────────────
+function katalog(dir) {
+  if (!existsSync(dir)) return new Map();
+  return new Map(readdirSync(dir).map((f) => [f, statSync(join(dir, f)).isDirectory() ? 'dir' : readFileSync(join(dir, f))]));
+}
 function wejscie({ dist = false } = {}) {
   const fontCssPath = require.resolve(IMPORT_GARNITURY);
   const fontCss = readFileSync(fontCssPath, 'utf8');
   const ff = [...fontCss.matchAll(/@font-face\s*{([^}]*)}/g)].map((m) => m[1]).find((b) => /font-style:\s*normal/.test(b) && /font-weight:\s*600/.test(b));
   const woff = ff && /url\(\.\/files\/([^)]+\.woff)\)/.exec(ff);
-  const pub = join(siteRoot, 'public');
-  const publiczne = existsSync(pub) ? new Map(readdirSync(pub).map((f) => [f, readFileSync(join(pub, f))])) : new Map();
-  const distPath = join(siteRoot, 'dist', 'index.html');
   return {
     css: readFileSync(join(siteRoot, 'src/styles/global.css'), 'utf8'),
     znak: JSON.parse(readFileSync(join(siteRoot, 'src/data/znak.json'), 'utf8')),
-    base: readFileSync(join(siteRoot, 'src/layouts/Base.astro'), 'utf8'),
-    siteTs: readFileSync(join(siteRoot, 'src/data/site.ts'), 'utf8'),
     fontCss,
     fontPlik: woff ? woff[1] : null,
     fontBuf: woff ? readFileSync(join(dirname(fontCssPath), 'files', woff[1])) : null,
-    publiczne,
-    ...(dist ? { dist: existsSync(distPath) ? readFileSync(distPath, 'utf8') : null } : {}),
+    publiczne: katalog(join(siteRoot, 'public')),
+    ...(dist ? { dist: katalog(join(siteRoot, 'dist')) } : {}),
   };
 }
 
@@ -329,43 +335,65 @@ async function selftest() {
   const baza = wejscie();
   const { pliki } = await sverka({ ...baza, publiczne: null });
   const czyste = () => ({ ...baza, znak: structuredClone(baza.znak), publiczne: new Map(pliki) });
+  const font700 = readFileSync(join(dirname(require.resolve(IMPORT_GARNITURY)), 'files', 'bodoni-moda-latin-700-normal.woff'));
+  const cudzyRysunek = await sharp({ create: { width: 32, height: 32, channels: 4, background: '#ff0000' } }).png().toBuffer();
+  const I = `@import '${IMPORT_GARNITURY}';`;
   const proby = [
     ['чистые входы', (w) => w, null],
-    ['токен только в комментарии', (w) => { w.css += '\n/* было: --glow: #ffffff; */'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, 'не токен'],
-    ['поздний не-hex токен', (w) => { w.css += '\n:root { --accent: rgb(255 0 0); }'; return w; }, 'не как #rrggbb'],
-    ['поздний #rgb', (w) => { w.css += '\n:root { --accent: #f00; }'; return w; }, 'не как #rrggbb'],
-    ['поздний #rrggbb с другим значением', (w) => { w.css += '\n:root { --accent: #ff0000; }'; return w; }, 'разными значениями'],
+    ['чистые входы и robots.txt в public/', (w) => { w.publiczne.set('robots.txt', Buffer.from('User-agent: *\n')); return w; }, null],
+    ['токен только в комментарии', (w) => { w.css += '\n/* было: --glow: #ffffff; */'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, 'не токен темы'],
+    ['комментарий после экранированной кавычки', (w) => { w.css += '\n.q::before { content: "\\""; }\n/* было: --glow: #ffffff; */\n.z::before { content: "x"; }'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, 'не токен темы'],
+    ['объявление внутри строки', (w) => { w.css += '\n.q::after { content: " --glow: #ffffff;"; }'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, 'не токен темы'],
+    ['имя только в @theme', (w) => { w.znak.shapka.czesci[1].farba = 'color-accent'; return w; }, 'есть только: @theme'],
+    ['url() без кавычек с «;» и «{»', (w) => { w.css += '\n.q { background: url(data:a;b{c); }\n:root { --glow: #ffffff; }'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, null],
+    ['экранированная скобка в селекторе', (w) => { w.css += '\n.a\\{b { color: red; }\n:root { --glow: #ffffff; }'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, null],
+    ['токен внутри @layer', (w) => { w.css += '\n@layer base { :root { --glow: #ffffff; } }'; w.znak.shapka.napisy[1].farba = 'glow'; return w; }, 'есть только: вложенный блок'],
+    ['токен только в @media', (w) => { w.css += '\n@media print { :root { --glow: #ffffff; } }'; w.znak.shapka.napisy[0].farba = 'glow'; return w; }, 'не токен темы'],
+    ['поздний не-hex в :root', (w) => { w.css += '\n:root { --accent: rgb(255 0 0); }'; return w; }, 'не как #rrggbb'],
+    ['поздний var() в :root', (w) => { w.css += '\n:root { --accent: var(--ink); }'; return w; }, 'не как #rrggbb'],
+    ['поздний #rgb в :root', (w) => { w.css += '\n:root { --accent: #f00; }'; return w; }, 'не как #rrggbb'],
     ['!important', (w) => { w.css += '\n:root { --accent: #eca84a !important; }'; return w; }, 'не как #rrggbb'],
+    ['другое значение в :root', (w) => { w.css += '\n:root { --accent: #ff0000; }'; return w; }, 'разными значениями'],
+    ['после вложенного правила', (w) => { w.css += '\n:root{.x{color:red}--accent:#ff0000}'; return w; }, 'разными значениями'],
+    ['переопределение в другом селекторе', (w) => { w.css += '\n.ft { --accent: #ff0000; }'; return w; }, 'переопределён вне верхнего :root'],
     ['другое значение только в комментарии', (w) => { w.css += '\n/* прежде --accent: #ff0000; */'; return w; }, null],
-    ['тема грузит Бодони 400', (w) => { w.css = w.css.split(`'${IMPORT_GARNITURY}'`).join("'@fontsource/bodoni-moda/latin-400.css'"); return w; }, 'не грузит'],
+    ['BOM в начале листа', (w) => { w.css = '﻿' + w.css; return w; }, null],
+    ['тема грузит Бодони 400', (w) => { w.css = w.css.split(I).join("@import '@fontsource/bodoni-moda/latin-400.css';"); return w; }, 'нет ровно @import'],
+    ['@import с условием print', (w) => { w.css = w.css.split(I).join(`@import '${IMPORT_GARNITURY}' print;`); return w; }, 'нет ровно @import'],
+    ['@import с supports()', (w) => { w.css = w.css.split(I).join(`@import '${IMPORT_GARNITURY}' supports(display: nope);`); return w; }, 'нет ровно @import'],
+    ['@import только внутри @media', (w) => { w.css = w.css.split(I).join(`@import '@fontsource/bodoni-moda/latin-400.css';\n@media print { ${I} }`); return w; }, 'внутри блока'],
+    ['@import только в строке', (w) => { w.css = w.css.split(I).join(`@import '@fontsource/bodoni-moda/latin-400.css';\n.q::before { content: "${I}"; }`); return w; }, 'нет ровно @import'],
     ['--font-display — другая гарнитура', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'/, "--font-display: 'Playfair Display'"); return w; }, "не начинается с 'Bodoni Moda'"],
-    ['контуры считаются из другого файла', (w) => { w.fontPlik = 'bodoni-moda-latin-700-normal.woff'; return w; }, 'а тема грузит'],
+    ['--font-display через var()', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'[^;]*;/, '--font-display: var(--x);'); return w; }, "не начинается с 'Bodoni Moda'"],
+    ['--font-display вне @theme', (w) => { w.css += "\n.x { --font-display: 'Bodoni Moda', serif; }"; return w; }, 'вне верхнего @theme'],
+    ['контуры из woff 700', (w) => { w.fontBuf = font700; return w; }, 'не равен пересчёту'],
+    ['в листе гарнитуры нет woff 600', (w) => { w.fontBuf = null; return w; }, 'нет @font-face normal 600'],
     ['поле font в данных', (w) => { w.znak.shapka.napisy[0].font = 'x.woff'; return w; }, 'поле font не читается'],
     ['контур надписи правлен', (w) => { w.znak.shapka.napisy[0].d = w.znak.shapka.napisy[0].d.replace('26.9', '27.9'); return w; }, 'не равен пересчёту'],
+    ['контур надписи пуст', (w) => { w.znak.shapka.napisy[0].d = ''; return w; }, 'не равен пересчёту'],
     ['параметр надписи правлен', (w) => { w.znak.shapka.napisy[1].track = 0.11; return w; }, 'не равен пересчёту'],
     ['надписей нет', (w) => { w.znak.shapka.napisy = []; return w; }, 'нет надписей'],
-    ['имя не равно site.znak', (w) => { w.siteTs = w.siteTs.replace("znak: '7th Serpent'", "znak: '7th Snake'"); return w; }, 'не равны буквам site.znak'],
-    ['SVG под именем PNG', (w) => { w.publiczne.set('favicon-32x32.png', pliki.get('favicon.svg')); return w; }, 'favicon-32x32.png: байты'],
+    ['краска пиксельной иконки — не токен', (w) => { w.znak.ikona16.prostokaty[0].farba = 'glow'; return w; }, 'иконка 16: краска «glow»'],
+    ['SVG под именем PNG', (w) => { w.publiczne.set('favicon-32x32.png', pliki.get('favicon.svg')); return w; }, 'не PNG'],
     ['PNG с чанком gAMA', (w) => { w.publiczne.set('apple-touch-icon.png', sGama(pliki.get('apple-touch-icon.png'))); return w; }, 'пиксели те же'],
-    ['ICO: тип записи правлен', (w) => { const b = Buffer.from(pliki.get('favicon.ico')); b.writeUInt16LE(2, 2); w.publiczne.set('favicon.ico', b); return w; }, 'favicon.ico: байты'],
-    ['ICO: высота записи правлена', (w) => { const b = Buffer.from(pliki.get('favicon.ico')); b.writeUInt8(0, 7); w.publiczne.set('favicon.ico', b); return w; }, 'favicon.ico: байты'],
-    ['лишний файл в public/', (w) => { w.publiczne.set('logo.png', pliki.get('icon-192.png')); return w; }, 'лишний файл'],
+    ['PNG с чужим рисунком', (w) => { w.publiczne.set('favicon-32x32.png', cudzyRysunek); return w; }, 'пиксели другие'],
+    ['PNG битый после сигнатуры', (w) => { w.publiczne.set('favicon-16x16.png', Buffer.concat([SYG_PNG, Buffer.from('мусор')])); return w; }, 'PNG не читается'],
+    ['SVG правлен', (w) => { w.publiczne.set('favicon.svg', Buffer.from(pliki.get('favicon.svg').toString().replace('#eca84a', '#eca84b'))); return w; }, 'текст другой'],
+    ['лишний манифест', (w) => { w.publiczne.set('site.webmanifest', Buffer.from('{}')); return w; }, 'лишний иконочный файл'],
+    ['ICO пустой', (w) => { w.publiczne.set('favicon.ico', Buffer.alloc(0)); return w; }, 'не ICO'],
+    ['ICO: тип записи правлен', (w) => { const b = Buffer.from(pliki.get('favicon.ico')); b.writeUInt16LE(2, 2); w.publiczne.set('favicon.ico', b); return w; }, 'не ICO'],
+    ['ICO: высота записи правлена', (w) => { const b = Buffer.from(pliki.get('favicon.ico')); b.writeUInt8(0, 7); w.publiczne.set('favicon.ico', b); return w; }, 'каталог или записи ICO'],
+    ['лишний иконочный файл', (w) => { w.publiczne.set('favicon-48x48.png', pliki.get('icon-192.png')); return w; }, 'лишний иконочный файл'],
+    ['папка с иконочным именем', (w) => { w.publiczne.set('icon-set', 'dir'); return w; }, 'папка с иконочным именем'],
     ['файла нет', (w) => { w.publiczne.delete('icon-192.png'); return w; }, 'файла нет'],
-    ['ссылка в HTML-комментарии', (w) => { w.base = w.base.replace(/(<link rel="icon" href="\/favicon.svg"[^>]*>)/, '<!-- $1 -->'); return w; }, 'нет <link rel=icon href=/favicon.svg'],
-    ['ссылка в выражении-комментарии', (w) => { w.base = w.base.replace(/(<link rel="icon" href="\/favicon.svg"[^>]*>)/, '{/* $1 */}'); return w; }, 'нет <link rel=icon href=/favicon.svg'],
-    ['ссылка под {false && …}', (w) => { w.base = w.base.replace(/(<link rel="icon" href="\/favicon.svg"[^>]*>)/, '{false && $1}'); return w; }, 'нет <link rel=icon href=/favicon.svg'],
-    ['чужой rel', (w) => { w.base = w.base.replace('<link rel="icon" href="/favicon-32x32.png"', '<link rel="alternate" href="/favicon-32x32.png"'); return w; }, 'нет <link rel=icon href=/favicon-32x32.png'],
-    ['ссылки в <body>', (w) => { const m = w.base.match(/\s*<link rel="(icon|apple-touch-icon)"[^>]*>/g); for (const l of m) w.base = w.base.replace(l, ''); w.base = w.base.replace('<body>', '<body>' + m.join('')); return w; }, 'нет <link'],
-    ['href только во фронтматтере', (w) => { const m = w.base.match(/\s*<link rel="(icon|apple-touch-icon)"[^>]*>/g); for (const l of m) w.base = w.base.replace(l, ''); w.base = w.base.replace('/**', '/** href="/favicon.svg" href="/favicon.ico"'); return w; }, 'нет <link'],
-    ['чужая иконка', (w) => { w.base = w.base.replace('<link rel="apple-touch-icon"', '<link rel="icon" href="https://example.com/x.png" />\n    <link rel="apple-touch-icon"'); return w; }, 'лишняя иконка'],
-    ['dist без иконок', (w) => { w.dist = '<html><head><title>x</title></head><body></body></html>'; return w; }, 'dist/index.html: в <head> нет'],
+    ['dist отстал от public', (w) => { w.dist = new Map(pliki); w.dist.set('favicon.svg', Buffer.from('<svg/>')); return w; }, 'dist/favicon.svg'],
   ];
   let zle = 0;
   for (const [nazwa, mut, zhdem] of proby) {
     const { bledy } = await sverka(mut(czyste()));
     const ok = zhdem === null ? bledy.length === 0 : bledy.some((b) => b.includes(zhdem));
     if (!ok) zle++;
-    console.log(`${ok ? 'ok ' : 'НЕТ'}  ${nazwa}: ждём ${zhdem === null ? 'сверено' : `отказ «${zhdem}»`}, факт ${bledy.length ? `отказ (${bledy.length}): ${bledy[0]}` : 'сверено'}`);
+    console.log(`${ok ? 'ok ' : 'НЕТ'}  ${nazwa}: ждём ${zhdem === null ? 'сверено' : `отказ «${zhdem}»`}, факт ${bledy.length ? `отказ (${bledy.length}): ${bledy.find((b) => zhdem && b.includes(zhdem)) ?? bledy[0]}` : 'сверено'}`);
   }
   console.log(`\nznak --selftest: ${proby.length - zle}/${proby.length} проб`);
   if (zle) process.exit(1);
@@ -379,10 +407,9 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       await selftest();
     } else {
       const w = wejscie({ dist: process.argv.includes('--dist') });
-      const { bledy, pliki } = await sverka({ ...w, publiczne: CHECK ? w.publiczne : null });
+      const { bledy, pliki } = await sverka({ ...w, publiczne: CHECK ? w.publiczne : null, dist: w.dist });
+      if (!CHECK && bledy.length) throw Object.assign(new Error('не пишу: входы с отказом'), { bledy });
       if (!CHECK) {
-        const zle = bledy.filter((b) => !b.startsWith('src/layouts') && !b.startsWith('dist/'));
-        if (zle.length) throw Object.assign(new Error('не пишу: входы с отказом'), { bledy: zle });
         const pub = join(siteRoot, 'public');
         mkdirSync(pub, { recursive: true });
         for (const [imie, buf] of pliki) writeFileSync(join(pub, imie), buf);
@@ -392,9 +419,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
         for (const b of bledy) console.error(`  - ${b}`);
         process.exit(1);
       }
-      const d = deklaracje(w.css);
-      const kolory = [...new Set([w.znak.ikona.tlo, ...w.znak.ikona.czesci.map((c) => c.farba)])].map((t) => `${t} ${d.get(t)?.[0]}`).join(', ');
-      console.log(`znak: ${CHECK ? 'сверено' : 'записано'} — ${pliki.size} файлов public/ (${[...pliki.keys()].join(', ')}); надписей ${w.znak.shapka.napisy.length} — контуры равны ${w.fontPlik}; имя = site.znak; ссылки в <head>${w.dist !== undefined ? ' и в dist/index.html' : ''}; краски: ${kolory}`);
+      const d = deklaracje(drzewoCss(w.css)).filter((x) => x.gde === ':root');
+      const imena = [...new Set([...w.znak.shapka.czesci.map((c) => c.farba), ...w.znak.shapka.napisy.map((n) => n.farba), w.znak.ikona.tlo, ...w.znak.ikona.czesci.map((c) => c.farba), ...w.znak.ikona16.prostokaty.map((p) => p.farba)])];
+      const kolory = imena.map((t) => `${t} ${d.find((x) => x.imie === t)?.wartosc}`).join(', ');
+      console.log(`znak: ${CHECK ? 'сверено' : 'записано'} — ${pliki.size} иконок public/${w.dist ? ' и dist/' : ''} (${[...pliki.keys()].join(', ')}); надписей ${w.znak.shapka.napisy.length} — контуры равны ${w.fontPlik}; краски трёх рисунков: ${kolory}`);
     }
   } catch (e) {
     console.error(`znak: ОТКАЗ — ${e.message}`);

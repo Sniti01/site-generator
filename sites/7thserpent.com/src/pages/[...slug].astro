@@ -13,14 +13,16 @@
  * ГЛАВНАЯ ЗДЕСЬ НЕ ЖИВЁТ: у неё свой шаблон (`index.astro`, как у первого
  * сайта, П32 п. 4) и свой эталон. Файл содержания с адресом `/` — отказ.
  *
- * ЧТО МАРШРУТ ПЕЧАТАЕТ (пачка 0). Две ветви — `story-row` (с вхождениями
- * по роли) и `link-list`: стенд маршрута — `/404/` (П85 п. 6), вхождения
- * по роли на нём не стоят и держатся положительной пробой P2
- * `tools/proby-tresci.mjs`; ветвь без стенда и без пробы не пишется.
- * Условие `gotowy` в списке печати держит форму первого сайта: оба блока
- * маршрута в ядре есть, и пробой его не достать без правки словаря ядра.
- * Остальные блоки дерева, которые ядро умеет
- * (`hero-key-art`, `byline`, `gallery`, `cta-band`), приходят ветвью вместе
+ * ЧТО МАРШРУТ ПЕЧАТАЕТ. Три ветви — `story-row` (с вхождениями по роли;
+ * ряд с кадром или без), `link-list` и `cta-band`. Пачка 0: `story-row`
+ * без кадра и `link-list`, стенд — `/404/` (П85 п. 6); вхождения по роли
+ * на нём не стоят и держатся положительной пробой P2 `tools/proby-tresci.mjs`.
+ * Пачка 1 (П89): `cta-band` — первая страница формы `/pc/`, кадр ряда —
+ * `/media/` (ответ владельца 2 в П89); ветвь без страницы и без пробы
+ * не пишется. Условие `gotowy` в списке печати держит форму первого сайта:
+ * все три блока маршрута в ядре есть, и пробой его не достать без правки
+ * словаря ядра. Остальные блоки дерева, которые ядро умеет
+ * (`hero-key-art`, `byline`, `gallery`), приходят ветвью вместе
  * с первой страницей своей формы — со стопом на глаза владельца (план P4
  * в докладе сессии 12). Страница, объявившая такой блок, не собирается,
  * и отказ говорит именно это — «ветви нет», а не «нет содержания».
@@ -37,17 +39,21 @@
  * а общая сверка «`blocks[]` и печать разошлись» остаётся последним рубежом.
  * Предел порядка («судью судят», раунды 1–2, R1-MARSHRUT-10, R2-MARSHRUT-5):
  * поле блока без ветви (`byline:`) отвергает раньше схема; любое вхождение
- * с ролью у блока вне `ROLE_UMIE` (`video#x`, `cta-band#x`) — проверка ролей,
+ * с ролью у блока вне `ROLE_UMIE` (`video#x`, `gallery#x`) — проверка ролей,
  * и её совет «научите маршрут роли» у блока без ветви неточен; повтор `id`
  * ряда — сторож якорей ядра после сборки. Отказ громкий, но называет
  * не «ветви нет».
  */
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { getPage } from '../lib/structure';
+import { kadr } from '../data/media';
 import slownik from '@factory/core/structure/blocks.json';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
+import CtaBand from '@factory/core/blocks/CtaBand.astro';
+import SmartImage from '@factory/core/media/SmartImage.astro';
 
 export async function getStaticPaths() {
   const wpisy = await getCollection('tresc');
@@ -120,6 +126,7 @@ if (powtory.length) {
 const POLE_BLOKA: Record<string, string> = {
   rows: 'story-row',
   related: 'link-list',
+  cta: 'cta-band',
 };
 const POLYA_STRANITSY = new Set(['url']);
 const obyavleny = new Set(wystapienia.map((b) => b.block));
@@ -183,7 +190,7 @@ if (ryadyBezVkhozhdeniya.length) {
  * который ядро умеет, а шаблон не печатает, — отказ «ветви нет» (не тихий
  * пропуск и не «нет содержания»): ветвь приходит с первой страницей формы.
  */
-const PORYADOK = ['story-row', 'link-list'];
+const PORYADOK = ['story-row', 'link-list', 'cta-band'];
 const bezVetvi = wystapienia.filter((b) => gotowy(b.block) && !PORYADOK.includes(b.block)).map(klucz);
 if (bezVetvi.length) {
   throw new Error(
@@ -234,6 +241,7 @@ const ryadyDlya = (role?: string) => dane.rows.filter((r) => rolOf(r.role) === r
 const maTresc: Record<string, (role?: string) => boolean> = {
   'story-row': (role) => ryadyDlya(role).length > 0,
   'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
+  'cta-band': () => Boolean(dane.cta),
 };
 
 /**
@@ -264,19 +272,30 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
 
 /**
  * Ключи кадров издателя на странице — подвалу: нота об арте и класс лицензии
- * печатаются только по ним (П79 п. 3, «на все страницы» — П85 п. 7). У ветвей
- * пачки 0 полей с кадром нет: ключи приходят вместе с ветвями, которые кадр
- * печатают (герой, кадр ряда, галерея), и собираются здесь.
+ * печатаются только по ним (П79 п. 3, «на все страницы» — П85 п. 7). Кадр
+ * пока печатает одна ветвь — ряд (`art` ряда, пачка 1, П89); ключи берутся
+ * из тех же рядов, что печатаются ниже (вхождения из `drukowane`), а сам кадр
+ * разрешается здесь, до разметки: ключ без файла или записи прерывает сборку
+ * в `kadr()`, а не печатает пустую рамку. Герой и галерея добавят свои ключи
+ * вместе со своими ветвями.
  */
-const kluczeArtu: string[] = [];
+const ryadyPechati = wystapienia
+  .filter((b) => b.block === 'story-row' && drukowane.includes(klucz(b)))
+  .flatMap((b) => ryadyDlya(b.role));
+const kadry = new Map(
+  [...new Set(ryadyPechati.map((r) => r.art).filter((k): k is string => Boolean(k)))].map((k) => [k, kadr(k)])
+);
+const kluczeArtu: string[] = [...kadry.keys()];
 
 /*
  * `h1` ПЕЧАТАЕТ МАРШРУТ — заголовок принадлежит странице, а не секции
  * (решение владельца 2026-09-11, бэклог 23 у первого сайта). Роль —
  * `.t-headline`, как у `h1` главной: восемь ролей ядра, новых нет (П85 п. 1).
- * `.page-head` — имя-крючок без правил, форма первого сайта: вид ветки без
- * героя решает владелец глазами на стенде `/404/`. Что `<h1>` ровно один,
- * проверяет сторож сборки `core/gates/after-build.mjs`.
+ * `.page-head` — крючок формы первого сайта; правило у него одно — без нижней
+ * отбивки (пачка 1, П86 п. 8, П89): `h1` стоит над первым блоком, а не над
+ * пустотой двух отбивок `.section` подряд (стенд `/404/`, около 260 px на 1440).
+ * Правило — в `<style>` этого файла: элемент печатает только маршрут. Что
+ * `<h1>` ровно один, проверяет сторож сборки `core/gates/after-build.mjs`.
  */
 ---
 
@@ -300,6 +319,21 @@ const kluczeArtu: string[] = [];
                 <p>{abzac}</p>
               ))}
             </Fragment>
+            {
+              /* Кадр ряда — форма первого сайта (кадр в месте `kadr`); ядро само
+                 решает «два столбца или один» по отрисованному месту (П44). */
+              ryad.art && (
+                <SmartImage
+                  slot="kadr"
+                  class="kadr-ryadu"
+                  src={kadry.get(ryad.art)!.src}
+                  alt={kadry.get(ryad.art)!.alt}
+                  widths={[640, 960, 1280]}
+                  sizes="(max-width: 1024px) 92vw, 600px"
+                  quality={72}
+                />
+              )
+            }
           </StoryRow>
         ))
       )
@@ -310,4 +344,36 @@ const kluczeArtu: string[] = [];
       <LinkList items={pokrewne} title={dane.related.title} titleId="related-title" />
     )
   }
+
+  {
+    /* Призыв без арта (П89, слова владельца, п. 3): места `art` маршрут
+       не подаёт, скрим ядра — как есть (литерал фона первого сайта, бэклог 56
+       п. 2); контраст текста принимается замером пикселей собранной страницы. */
+    drukowane.includes('cta-band') && dane.cta && (
+      <CtaBand title={dane.cta.title} lead={dane.cta.lead} href={dane.cta.href} label={dane.cta.label} id="cta-title">
+        <Icon slot="akcja" name="arrow-right" size={18} />
+      </CtaBand>
+    )
+  }
 </Base>
+
+<style>
+  /* Шапка страницы без нижней отбивки (П86 п. 8, П89): отбивку до `h1` даёт
+     верх `.section`, а расстояние до содержания — верх первого блока. */
+  .page-head {
+    padding-block-end: 0;
+  }
+
+  /* Кадр ряда — дуотон стали, как у панелей рядов главной (`GameRow.astro`:
+     те же доли и тот же фильтр) — «Ночь и один фонарь», скриншоты — сталью;
+     нота подвала обещает «toned to the site’s colors». Селектор двойным
+     классом: `SmartImage` печатает `.foto` ядра, правило обязано его перебить
+     при любом порядке листов. */
+  :global(.foto.kadr-ryadu) {
+    --era: color-mix(in oklab, var(--accent-2), var(--ink));
+  }
+
+  :global(.foto.kadr-ryadu img) {
+    filter: grayscale(1) contrast(1.12) brightness(1.3);
+  }
+</style>

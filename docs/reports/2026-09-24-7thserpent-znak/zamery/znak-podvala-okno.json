@@ -1,0 +1,53 @@
+{
+  "instrument": "znak-podvala-okno.mjs",
+  "brauzer": "Chromium 151.0.7922.34",
+  "sborka": {
+    "adres": "http://localhost:4331/",
+    "kommit": "77e4f1d764933b32c3a8161e132082e82ec6c229",
+    "gryaz_sajta": [],
+    "pliki": [
+      {
+        "put": "/",
+        "sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/index.CmgQJVSa.css",
+        "sha256": "a0674b3bb3ca4f347c288f0d1e6779ff5f7d6b4d02518fbd238fed2bb5f355f6",
+        "rowny_dist": true
+      }
+    ],
+    "bledy": []
+  },
+  "okna": {
+    "390": {
+      "ramka_znaka_okno": {
+        "x": 16,
+        "y": 402.515625,
+        "w": 138,
+        "h": 38,
+        "sy": 7884
+      },
+      "verh_okno": 398,
+      "verh_dokument": 8282,
+      "drob_raznaya": false,
+      "subpikseley": 0,
+      "max": 0
+    },
+    "1440": {
+      "ramka_znaka_okno": {
+        "x": 132,
+        "y": 431.1875,
+        "w": 138,
+        "h": 38,
+        "sy": 6153
+      },
+      "verh_okno": 427,
+      "verh_dokument": 6580,
+      "drob_raznaya": false,
+      "subpikseley": 0,
+      "max": 0
+    }
+  },
+  "bledy": []
+}

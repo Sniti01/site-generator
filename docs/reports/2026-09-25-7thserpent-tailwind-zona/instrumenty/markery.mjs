@@ -118,6 +118,7 @@ function samoproverka() {
     ['(r2-markery-1) ведущий ноль', ['d', '--est', '071', '--net', '73'], false],
     ['(r2-markery-1) ноль', ['d', '--est', '71', '--net', '0'], false],
     ['шесть цифр', ['d', '--est', '999999', '--net', '73'], true],
+    ['(r3-markery-1) семь цифр — за границей', ['d', '--est', '1000000', '--net', '73'], false],
     ['верные аргументы', ['d', '--est', '71,72', '--net', '73,74'], true],
   ];
   for (const [imya, a, zhdem] of argi) {

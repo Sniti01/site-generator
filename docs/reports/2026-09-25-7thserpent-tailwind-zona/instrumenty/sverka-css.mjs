@@ -14,13 +14,17 @@
 //      листья. Последовательности до и после сравниваются наибольшей общей подпоследовательностью:
 //      ушедшие и пришедшие листья.
 //   3. Слой — число прямых детей-правил блоков `<обёртка>` верхнего уровня (правило, @-правило
-//      с блоком или инструкция — по одному; комментарии не считаются); по умолчанию
-//      `@layer utilities`. `--schet 20:19` сверяет и абсолютные числа.
+//      с блоком или инструкция — по одному; комментарии и голые объявления не считаются); по
+//      умолчанию `@layer utilities`. `--schet 20:19` сверяет и абсолютные числа.
 //   4. Побайтно (Buffer): байты «до» без единственного вхождения ушедшего правила равны байтам
 //      «после»; лист без этого правила равен побайтно.
 //   5. Селектора ушедшего правила нет ни в одном листе «после»: ни у какого блока дерева на
 //      любой глубине, ни в списке селекторов через запятую (минификатор сливает правила
-//      с одинаковым телом), с объявлениями или без.
+//      с одинаковым телом), с объявлениями или без. Сравнение — текстом селектора после
+//      снятия комментариев: `:is(.lowercase)`, `:where(.lowercase)` и экранированная запись
+//      (`.\6c owercase`) им не видны; вложенный `.x{.lowercase{}}` даёт ложный отказ.
+//      Поэтому ушедшее правило (`--ushlo`) — ровно один простой селектор без комментариев:
+//      список через запятую и @-правило — код 2.
 //   6. Прочие файлы: те же пути, кроме листов (хеш в имени). HTML — в каждом файле «после» нет
 //      старых имён сменившихся листов, новых — столько же, сколько старых в «до»; каждый
 //      `<link rel="stylesheet" href>` «после» ведёт на лист сборки «после»; после замены имён на
@@ -28,9 +32,9 @@
 // Вердикт «сверено» — только если во всей сборке ушёл ровно один лист `<обёртка> › <правило>`
 // с ровно тем телом, ничего не пришло, слой уменьшился ровно на 1 (и совпал с --schet, если он
 // дан), побайтная проверка сошлась, правила нет в «после» и прочие файлы равны. Иначе — «отказ»
-// и код 1. Код 2 — неверные аргументы: неизвестный флаг, флаг без значения или с пустым
-// значением, --ushlo не одно правило с объявлениями, --schet не «число:число», папка сборки
-// не существует.
+// и код 1. Код 2 — неверные аргументы: неизвестный флаг, флаг дважды, флаг без значения или
+// с пустым значением (''), --ushlo не одно правило с объявлениями и одним простым селектором,
+// --schet не «число:число» по 1–6 цифр, не две папки сборок или папки нет.
 // ПРЕДЕЛЫ (названы): разбор — для минифицированного вывода сборки: строки с экранированием,
 // обратная косая вне строк (`\'`, `\{`, `\;` в селекторах произвольных значений Tailwind —
 // экранированный знак идёт в текст, а не в разбор), скобки, комментарии, вложенные блоки;
@@ -39,8 +43,9 @@
 // ищутся по `href="…"` в кавычках в теге `<link` с `rel="stylesheet"` и считаются от корня
 // сборки: href без кавычек, rel со списком значений, пробелы вокруг «=», сущности в имени,
 // относительные пути и ссылки из скриптов этой проверкой не видны (у сайта ссылки только вида
-// `<link rel="stylesheet" href="/_astro/…css">`); устаревшее имя листа в любом синтаксисе
-// ловит счёт имён байтами. Замена имён — по имени файла без папки.
+// `<link rel="stylesheet" href="/_astro/…css">`); устаревшее имя листа в любом синтаксисе,
+// кроме имени, записанного сущностями (`&#46;`), ловит счёт имён байтами. Замена имён — по
+// имени файла без папки.
 import { readFileSync, readdirSync, statSync, writeFileSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 
@@ -129,17 +134,24 @@ export const klyuch = (l) => l.put + ' {' + l.tekst.join(';') + '}';
 
 export function sloyUtilit(derevo, sloy = '@layer utilities') {
   let n = 0, blokov = 0;
-  for (const d of derevo) if (d.tip === 'blok' && d.prelude === sloy) { blokov++; n += d.deti.filter(x => x.tip !== 'komm').length; }
+  for (const d of derevo) if (d.tip === 'blok' && d.prelude === sloy) { blokov++; n += d.deti.filter(x => x.tip === 'blok' || x.tip === 'instr').length; }
   return { pravil: n, blokov };
 }
 
-// Селекторы прелюдии через запятую верхнего уровня (вне скобок и строк).
+// Селекторы прелюдии через запятую верхнего уровня (вне скобок, строк и комментариев;
+// комментарии снимаются).
 export function selektory(prelude) {
   const out = [];
   let buf = '', skobki = 0;
   for (let i = 0; i < prelude.length; i++) {
     const c = prelude[i];
     if (c === '\\') { buf += c + (prelude[i + 1] ?? ''); i++; continue; }
+    if (c === '/' && prelude[i + 1] === '*') {
+      const j = prelude.indexOf('*/', i + 2);
+      if (j < 0) throw new Error('незакрытый комментарий в прелюдии: ' + prelude);
+      i = j + 1;
+      continue;
+    }
     if (c === '"' || c === "'") { const j = konecStroki(prelude, i); buf += prelude.slice(i, j + 1); i = j; continue; }
     if (c === '(' || c === '[') skobki++;
     if (c === ')' || c === ']') skobki--;
@@ -219,7 +231,12 @@ function pravilo(s) {
   const d = razobrat(s);
   if (d.length !== 1 || d[0].tip !== 'blok' || d[0].deti.length === 0 || d[0].deti.some(x => x.tip !== 'decl'))
     throw new Error('--ushlo: ждали одно правило с объявлениями, получено: ' + s);
-  return { tekst: s, prelude: d[0].prelude, telo: d[0].deti.map(x => x.tekst) };
+  const p = d[0].prelude;
+  // Раунд 3 «судью судят» (r3-css-1): проверка «селектора нет в «после»» сравнивает по одному
+  // селектору, поэтому ушедшее правило — ровно один простой селектор.
+  if (p.startsWith('@') || p.includes('/*') || selektory(p).length !== 1)
+    throw new Error('--ushlo: ждали правило с одним селектором без @, списка и комментариев, получено: ' + s);
+  return { tekst: s, prelude: p, telo: d[0].deti.map(x => x.tekst) };
 }
 
 // Ссылки на листы стилей в HTML: href тегов <link rel="stylesheet">.
@@ -268,7 +285,9 @@ export function sverit(fDo, fPosle, { ushlo = '.lowercase{text-transform:lowerca
     const r = raznica(lDo, lPosle);
     const uDo = sloyUtilit(dDo, sloy), uPosle = sloyUtilit(dPosle, sloy);
     utilDo += uDo.pravil; utilPosle += uPosle.pravil;
-    const vPosle = blokovSSelektorom(dPosle, ozh.prelude);
+    let vPosle;
+    try { vPosle = blokovSSelektorom(dPosle, ozh.prelude); }
+    catch (e) { otkazy.push(`${o}: разбор селекторов «после» — ${e.message}`); vPosle = 0; }
     pravilaVPosle += vPosle;
     const vhozhdeniy = vhozhdeniya(bDo, ozh.tekst);
     let pobaitno, pobaitnoOk;
@@ -436,6 +455,14 @@ function samoproverka() {
     ['Н34 (r2-css-1) .lowercase в списке селекторов после слияния', sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: '.x,.lowercase{text-transform:lowercase}' }), sborka(BEZ, NEW, { vtoroj: '.x,.lowercase{text-transform:lowercase}' }), 'отказ'],
     ['П5 .lowercase-x и [data-a=".lowercase"] — другие селекторы', sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: '.lowercase-x{a:b}[data-a=".lowercase,.lowercase"]{a:b}:is(.a,.lowercase) .b{a:b}' }), sborka(BEZ, NEW, { vtoroj: '.lowercase-x{a:b}[data-a=".lowercase,.lowercase"]{a:b}:is(.a,.lowercase) .b{a:b}' }), 'сверено'],
     ['П6 (r2-css-4) комментарий в слое утилит обеих сборок не входит в счёт', sborka(OBRAZEC.replace('@layer utilities{', '@layer utilities{/*k*/'), 'LinkList.OLD.css'), sborka(BEZ.replace('@layer utilities{', '@layer utilities{/*k*/'), NEW), 'сверено', { schet: [6, 5] }],
+    // Раунд 3 (r3-css-2, r3-css-3, r3-css-5): комментарии в прелюдии «после» не прячут селектор
+    // и не роняют разбор; голое объявление в слое не входит в счёт.
+    ['Н35 (r3-css-2) .x,/*c*/.lowercase в «после»', sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: '.x,/*c*/.lowercase{text-transform:lowercase}' }), sborka(BEZ, NEW, { vtoroj: '.x,/*c*/.lowercase{text-transform:lowercase}' }), 'отказ'],
+    ['Н36 (r3-css-2) .x/*(*/,.lowercase — скобка в комментарии', sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: '.x/*(*/,.lowercase{text-transform:lowercase}' }), sborka(BEZ, NEW, { vtoroj: '.x/*(*/,.lowercase{text-transform:lowercase}' }), 'отказ'],
+    ["Н37 (r3-css-2) кавычки в двух комментариях", sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: ".x/*'*/,.lowercase,.y/*'*/{text-transform:lowercase}" }), sborka(BEZ, NEW, { vtoroj: ".x/*'*/,.lowercase,.y/*'*/{text-transform:lowercase}" }), 'отказ'],
+    ['Н38 (r3-css-2) .lowercase/**/ и .lowercase /*c*/ в @media', sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: '.lowercase/**/{a:b}@media print{.lowercase /*c*/{a:b}}' }), sborka(BEZ, NEW, { vtoroj: '.lowercase/**/{a:b}@media print{.lowercase /*c*/{a:b}}' }), 'отказ'],
+    ["П7 (r3-css-3) кавычка в комментарии прелюдии — без исключения", sborka(OBRAZEC, 'LinkList.OLD.css', { vtoroj: ".x/*'*/{color:red}" }), sborka(BEZ, NEW, { vtoroj: ".x/*'*/{color:red}" }), 'сверено'],
+    ['П8 (r3-css-5) голое объявление в слое обеих сборок не входит в счёт', sborka(OBRAZEC.replace('@layer utilities{', '@layer utilities{color:red;'), 'LinkList.OLD.css'), sborka(BEZ.replace('@layer utilities{', '@layer utilities{color:red;'), NEW), 'сверено', { schet: [6, 5] }],
   ];
   let proshlo = 0;
   const itog = [];
@@ -472,6 +499,11 @@ function samoproverka() {
     ['флаг в конце без значения', ['a', 'b', '--schet'], false],
     ['флаг дважды', ['a', 'b', '--schet', '1:0', '--schet', '1:0'], false],
     ['одна папка', ['a', '--schet', '20:19'], false],
+    ['(r3-css-1) --ushlo со списком селекторов', ['a', 'b', '--ushlo', '.a,.b{color:red}'], false],
+    ['(r3-css-1) --ushlo с @-правилом', ['a', 'b', '--ushlo', '@font-face{font-family:x}'], false],
+    ['(r3-css-1) --ushlo с комментарием в прелюдии', ['a', 'b', '--ushlo', '.a/*c*/{color:red}'], false],
+    ['(r3-css-6) --schet из 7 цифр', ['a', 'b', '--schet', '1000000:0'], false],
+    ['--schet из 6 цифр', ['a', 'b', '--schet', '999999:0'], true],
     ['верный вызов', ['a', 'b', '--schet', '20:19', '--ushlo', '.lowercase{text-transform:lowercase}'], true],
   ];
   for (const [imya, a, zhdem] of argi) {
@@ -510,7 +542,7 @@ export function razobratArgumenty(args) {
   if (opt['--sloy'] !== undefined) o.sloy = opt['--sloy'];
   if (opt['--schet'] !== undefined) {
     const m = opt['--schet'].match(/^(\d{1,6}):(\d{1,6})$/);
-    if (!m) return { oshibka: '--schet: ждали <до>:<после>, например 20:19' };
+    if (!m) return { oshibka: '--schet: ждали <до>:<после> по 1–6 цифр, например 20:19' };
     o.schet = [Number(m[1]), Number(m[2])];
   }
   return { poz, o, json: opt['--json'] };
@@ -535,7 +567,7 @@ if (process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('/sverka-css
     for (const x of l.ushlo) console.log(`  ушло   #${x.nomer}: ${x.klyuch}`);
     for (const x of l.prishlo) console.log(`  пришло #${x.nomer}: ${x.klyuch}`);
   }
-  console.log(`слой ${r.sloy.imya} всего (прямых детей-правил: правило, @-правило, инструкция; без комментариев): ${r.sloy.do} → ${r.sloy.posle}`);
+  console.log(`слой ${r.sloy.imya} всего (прямых детей-правил: правило, @-правило, инструкция; без комментариев и голых объявлений): ${r.sloy.do} → ${r.sloy.posle}`);
   console.log(`прочие файлы: ${r.prochie.vsegoDo}; побайтно равны ${r.prochie.ravnyhPobaitno}; HTML проверено ${r.prochie.htmlProvereno}, из них равны после замены имени листа ${r.prochie.htmlRavnyhPosleZameny}; различаются ${r.prochie.razlichny.length}`);
   for (const x of r.otkazy) console.log('ОТКАЗ: ' + x);
   console.log('ВЕРДИКТ: ' + r.verdikt);

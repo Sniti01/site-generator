@@ -110,7 +110,7 @@ set the anatomy measured; the count is checked against `s3-anatomy.json`.*
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
 4. Internal addresses — from the root and only from the structure (the `links` gate stops the build on
-   others); external links — only official stores and publisher pages (§5).
+   others); «where to play» links — only official stores (§5).
 5. Length — the contract corridor; the `corridor` gate stops the build outside it (a `null` corridor —
    the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
    corridor changes by a named decision with the reason in the report (П43).

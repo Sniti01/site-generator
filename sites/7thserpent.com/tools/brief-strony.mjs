@@ -219,8 +219,9 @@ const OTKRYTOE = {
   '/privacy/': 'Text — at publication (П63 п. 5, П85 п. 6): US privacy facts and the site mailbox are the owner’s; this brief is kept for that session.',
   '/404/': 'Written in pachka 0 — the route stand (П85 п. 6).',
 };
-/** Ключевой арт с мастером 1920 — мал для первого экрана (бэклог 59 п. 2). */
-const MALY_MASTER = new Set(['mp2-art', 'mp3-art']);
+/** Ключевой арт уже 3840 (мастер первого экрана, `MASTER_HERO` инструмента арта) —
+ *  мал для первого экрана (бэклог 59 п. 2); по ширине записи, не по списку ключей. */
+const malyMaster = (c) => (c?.width ?? 0) < 3840;
 
 function brief(page, v, k) {
   const { struktura, anatomia, art } = v;
@@ -239,7 +240,7 @@ function brief(page, v, k) {
   const heroArt = !hero
     ? 'not applicable — the page declares no `hero-key-art`'
     : igra?.klucz && art[igra.klucz]
-      ? `\`${igra.klucz}\` — ${art[igra.klucz].opis} (${art[igra.klucz].width}×${art[igra.klucz].height}${MALY_MASTER.has(igra.klucz) ? '; a 1920 master is small for a first screen — backlog 59 п. 2, decided with the first hero page' : ''})`
+      ? `\`${igra.klucz}\` — ${art[igra.klucz].opis} (${art[igra.klucz].width}×${art[igra.klucz].height}${malyMaster(art[igra.klucz]) ? `; a ${art[igra.klucz].width} master is small for a first screen — backlog 59 п. 2, decided with the first hero page` : ''})`
       : 'no key yet — a question in this page’s batch';
 
   return `# Brief: \`${page.url}\`
@@ -312,7 +313,7 @@ ${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${ka
 3. US English, fan-site voice; no piracy, «where to play», not «where to buy»; no publisher identity.
    Quotes — short, one or two lines, with game and chapter (П67 п. 2).
 4. Internal addresses — from the root and only from the structure (the \`links\` gate stops the build on
-   others); external links — only official stores and publisher pages (§5).
+   others); «where to play» links — only official stores (§5).
 5. Length — the contract corridor; the \`corridor\` gate stops the build outside it (a \`null\` corridor —
    the number goes to the report, no verdict). No filler and no cuts: if honest text does not fit, the
    corridor changes by a named decision with the reason in the report (П43).
@@ -530,13 +531,13 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       const pometki = [...(otstal ? ['≠ выводу генератора (правлен рукой или отстал — npm run brief -- --all)'] : []), ...r.map((x) => `чужое: строка ${x.stroka} (документ ${x.dokument})`)];
       console.log(`${pometki.length ? 'ПЛОХО' : 'ok   '} ${f}${pometki.length ? ' — ' + pometki.join('; ') : ''}`);
     }
-    console.log(`\nсторож: брифов ${fajly.length} из ${ozhidaemye.size}, документов корпуса ${korpus.length}, n-грамма ${N_GRAM} слов; отказов — ${plokho}`);
+    console.log(`\nсторож: брифов ${fajly.filter((f) => ozhidaemye.has(f)).length} из ${ozhidaemye.size} (лишних ${lishnie.length}), документов корпуса ${korpus.length}, n-грамма ${N_GRAM} слов; отказов — ${plokho}`);
     process.exit(plokho ? 1 : 0);
   }
 
   // Адрес — с ведущим «/»; иной аргумент не отбрасывается молча (раунд 1, R1-BRIFY-13).
-  // В Git Bash «/адрес/» оболочка переписывает в путь Windows — запускать
-  // с MSYS_NO_PATHCONV=1 или через npm run brief.
+  // В Git Bash «/адрес/» оболочка переписывает в путь Windows (и через npm run тоже) —
+  // запускать с MSYS_NO_PATHCONV=1 или из PowerShell (раунд 2, R2-INSTRUMENTY-5).
   const chuzhieArgi = args.filter((a) => !a.startsWith('/') && !a.startsWith('--'));
   if (chuzhieArgi.length) {
     console.error(`не адрес страницы: ${chuzhieArgi.join(', ')} — адрес пишется от корня, со слэшем: /max-payne-3/`);

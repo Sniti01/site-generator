@@ -6,8 +6,9 @@
  *   node tools/glowa.mjs                — судит dist/ сайта
  *   node tools/glowa.mjs --dist <папка> — судит другую сборку (пробы маршрута)
  *   node tools/glowa.mjs --selftest     — мутации на страницах dist/ и на литеральной
- *                                         странице маршрута: каждая обязана дать отказ
- *                                         своего вида, чистые — «сверено»
+ *                                         странице маршрута: множество видов отказа —
+ *                                         ровно ожидаемое, чистые — «сверено»
+ *   Другие аргументы — код 2.
  *
  * ЧТО СУДИТ, по каждой странице `dist/**\/index.html` (кроме `_astro/`):
  *   1. адрес страницы есть в `structure/structure.json`;
@@ -26,10 +27,14 @@
  *      `position` 1…n, `name` — «Home» у главной, иначе `h1` страницы, `item` —
  *      абсолютный адрес звена; ключи звена и списка — ровно договорные;
  *   7. видимые крошки `nav.crumbs`: на главной их нет, на остальных — одна
- *      навигация, ссылки — звенья цепочки кроме последнего, последнее —
- *      текстом с `aria-current="page"`, ярлыки и адреса — те же, что у
- *      `BreadcrumbList` (на `/404/` видимые крошки есть, разметки нет —
- *      форма первого сайта).
+ *      навигация с именем (`aria-label` или `aria-labelledby`); ВСЕ ссылки
+ *      внутри неё — ровно звенья цепочки кроме последнего, у каждой класс
+ *      `crumbs__link`, закрытый тег, адрес и ярлык звена; последнее —
+ *      единственный `span.crumbs__current` с `aria-current="page"`, без ссылки
+ *      внутри и после него; ярлыки и адреса — те же, что у `BreadcrumbList`
+ *      (на `/404/` видимые крошки есть, разметки нет — форма первого сайта);
+ *   8. разметка головы (`canonical`, `og:site_name`, JSON-LD) внутри
+ *      `<noscript>` — отказ: скребок без JS читает её как настоящую.
  *
  * НЕЗАВИСИМОСТЬ СУДЬИ. Имя и альтернативное имя — литералы из слов владельца
  * (П85 п. 3), не из `src/data/site.ts`: судья, который читает ожидание из того
@@ -38,9 +43,10 @@
  *
  * РАЗБОР — регулярными выражениями по тексту, с учётом кавычек в тегах;
  * комментарии HTML вырезаются до чтения (копия в комментарии не считается
- * ни «есть», ни «нет»); содержимое `<template>` и `<noscript>` не документ,
- * а сырой текст `<script>`, `<style>`, `<title>`, `<textarea>` — не теги
- * (гасятся пробелами той же длины). `og:site_name` читается и в `property`,
+ * ни «есть», ни «нет»); затем гасится сырой текст `<script>`, `<style>`,
+ * `<title>`, `<textarea>` (не теги), затем содержимое `<template>` (инертный
+ * фрагмент) — пробелами той же длины; содержимое `<noscript>` читается и судится
+ * отдельным отказом (п. 8). `og:site_name` читается и в `property`,
  * и в `name`. Сущности в значениях атрибутов и тексте раскрываются
  * (`&amp;`, `&#…;`, `&quot;`, `&lt;`, `&gt;`, `&apos;`, `&nbsp;`); внутри
  * `<script>` — нет (так читает браузер). Тип скрипта — без учёта регистра.
@@ -56,7 +62,13 @@
  * в голове) не моделируется, `</head>` обязателен (R1-GLOWA-3, -9); повтор
  * ключа внутри JSON-LD не виден — `JSON.parse` оставляет последнее значение,
  * а сайт печатает разметку через `JSON.stringify` (R1-GLOWA-6); вырожденный
- * комментарий `<!-->` не распознаётся.
+ * комментарий `<!-->` не распознаётся; комментарии вырезаются до сырого текста,
+ * и строки «<!--» и «-->» в двух скриптах сцепляются, стирая разметку между
+ * ними (класс старый, раунд 2, R2-GLOWA-2). Раунд 2: шаблон — только
+ * закрытый плоский `<template>…</template>`; незакрытый, вложенный,
+ * `<template/>`, `</template x>` и декларативный shadow DOM (`shadowrootmode`,
+ * рисуется на экране) моделируются не так, как у браузера (R2-GLOWA-3);
+ * невидимые символы в ярлыках не отличаются от видимых.
  *
  * Код возврата: 0 — сверено, 1 — отказ, 2 — ошибка входа.
  */
@@ -91,13 +103,31 @@ export const raskryt = (s) =>
 const bezKommentariev = (html) => html.replace(/<!--[\s\S]*?-->/g, '');
 
 /**
- * Содержимое элемента — пробелами той же длины: теги внутри него не теги
- * страницы, а позиции (граница `<head>`) не сдвигаются. «Судью судят», раунд 1:
- * meta и JSON-LD внутри `<template>`, `<noscript>`, `<script>`, `<title>`
- * засчитывались (R1-GLOWA-4, -5).
+ * Диапазоны содержимого элементов `[от, до)` — одним проходом слева направо
+ * по всем именам сразу: какой элемент открылся первым, тот и владеет текстом
+ * до своего закрывающего тега (так браузер читает сырой текст).
  */
-const zabelit = (html, imena) =>
-  html.replace(new RegExp(`(<(${imena.join('|')})(?=[\\s>])(?:[^>"']|"[^"]*"|'[^']*')*>)([\\s\\S]*?)(<\\/\\2\\s*>)`, 'gi'), (...g) => g[1] + ' '.repeat(g[3].length) + g[4]);
+const diapazony = (html, imena) =>
+  [...html.matchAll(new RegExp(`(<(${imena.join('|')})(?=[\\s>])(?:[^>"']|"[^"]*"|'[^']*')*>)([\\s\\S]*?)<\\/\\2\\s*>`, 'gi'))].map((m) => [
+    m.index + m[1].length,
+    m.index + m[1].length + m[3].length,
+  ]);
+/**
+ * Содержимое диапазонов — пробелами той же длины: теги внутри него не теги
+ * страницы, а позиции (граница `<head>`) не сдвигаются. «Судью судят»: meta
+ * и JSON-LD внутри `<template>`, `<script>`, `<title>` засчитывались (раунд 1,
+ * R1-GLOWA-4, -5); гашение шаблонов раньше сырого текста сцепляло строки
+ * «<template>» и «</template>» двух скриптов (раунд 2, R2-GLOWA-2).
+ */
+const pogasit = (html, dz) => {
+  let out = '';
+  let i = 0;
+  for (const [a, b] of dz) {
+    out += html.slice(i, a) + ' '.repeat(b - a);
+    i = b;
+  }
+  return out + html.slice(i);
+};
 
 /** Атрибуты тега: имя — строчными, значение — с раскрытыми сущностями. */
 export function atributy(tekstTega) {
@@ -128,57 +158,78 @@ const tekst = (frag) => raskryt(frag.replace(/<[^>]*>/g, ' ')).replace(/\s+/g, '
  * @param {string} html
  */
 export function razobrat(html) {
-  // Шаблоны и noscript — не документ: их содержимое гасится для всех поисков;
-  // для поиска тегов гасится ещё и сырой текст script, style, title, textarea.
-  const h = zabelit(bezKommentariev(html), ['template', 'noscript']);
-  const hTegi = zabelit(h, ['script', 'style', 'title', 'textarea']);
+  const h0 = bezKommentariev(html);
+  // 1. Сырой текст script, style, title, textarea — не теги; гасится ПЕРВЫМ,
+  //    чтобы строки «<template>» и «</noscript>» внутри скриптов не стали
+  //    границами (раунд 2, R2-GLOWA-2) и JSON-LD внутри title, style, textarea
+  //    не засчитывался (R2-GLOWA-4).
+  const hS = pogasit(h0, diapazony(h0, ['script', 'style', 'title', 'textarea']));
+  // 2. Содержимое <template> — не документ (инертный фрагмент).
+  const h = pogasit(hS, diapazony(hS, ['template']));
+  // 3. <noscript> не гасится: скребок без JS читает meta и link из него как
+  //    настоящие элементы головы — такая разметка считается И даёт отказ
+  //    своего вида (раунд 2, R2-GLOWA-1: гашение прятало вторую запись).
+  const noscript = diapazony(h, ['noscript']);
+  const vNoscript = (poz) => noscript.some(([a, b]) => poz >= a && poz < b);
   const konecGolovy = h.search(/<\/head\s*>/i);
   const golova = konecGolovy >= 0 ? h.slice(0, konecGolovy) : '';
   const vGolove = (poz) => konecGolovy >= 0 && poz < konecGolovy;
 
-  const meta = tegi(hTegi, ['meta']);
+  const meta = tegi(h, ['meta']);
   // og:site_name объявляют через property (Open Graph) — и через name тоже
   // читают: вторая запись с другим значением не должна пройти (R1-GLOWA-8).
   const siteName = meta.filter((t) => [t.atr.property, t.atr.name].some((v) => (v ?? '').toLowerCase() === 'og:site_name'));
-  const linki = tegi(hTegi, ['link']);
+  const linki = tegi(h, ['link']);
   const canonical = linki.filter((t) => (t.atr.rel ?? '').toLowerCase().split(/\s+/).includes('canonical'));
 
+  // JSON-LD: теги скриптов — по тексту без сырого текста и шаблонов (их
+  // содержимое там погашено), содержимое — из исходного текста по тем же позициям.
   const ld = [];
-  for (const m of h.matchAll(/<script(?=[\s>])((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/script\s*>/gi)) {
+  for (const m of h.matchAll(/<script(?=[\s>])((?:[^>"']|"[^"]*"|'[^']*')*)>(\s*)<\/script\s*>/gi)) {
     const atr = atributy(`<script${m[1]}>`);
     if ((atr.type ?? '').trim().toLowerCase() !== 'application/ld+json') continue;
+    const ot = m.index + `<script${m[1]}>`.length;
+    const tekstBloka = h0.slice(ot, ot + m[2].length);
     let obj;
     let oshibka = null;
     try {
-      obj = JSON.parse(m[2]);
+      obj = JSON.parse(tekstBloka);
     } catch (e) {
       oshibka = e.message;
     }
-    ld.push({ obj, oshibka, vGolove: vGolove(m.index) });
+    ld.push({ obj, oshibka, vGolove: vGolove(m.index), vNoscript: vNoscript(m.index) });
   }
 
+  // Видимые крошки: ВСЕ открывающие <a> внутри навигации (не только закрытые
+  // пары верхнего уровня — ссылка внутри текущего звена или разделителя тоже
+  // ссылка, раунд 2, R2-GLOWA-7) и текущие звенья span.crumbs__current.
   const navy = [];
-  for (const t of tegi(hTegi, ['nav'])) {
+  for (const t of tegi(h, ['nav'])) {
     if (!klassy(t.atr).has('crumbs')) continue;
     const ostatok = h.slice(t.poz);
     const konec = ostatok.search(/<\/nav\s*>/i);
     const vnutri = ostatok.slice(t.tekst.length, konec < 0 ? ostatok.length : konec);
-    // Звено — каждая ссылка и текущее звено; ссылка без класса звена — тоже
-    // звено (лишнее), а не невидимка (R1-GLOWA-7).
-    const zvenya = [];
-    for (const m of vnutri.matchAll(/<(a|span)(?=[\s>])((?:[^>"']|"[^"]*"|'[^']*')*)>([\s\S]*?)<\/\1\s*>/gi)) {
-      const atr = atributy(`<${m[1]}${m[2]}>`);
-      const k = klassy(atr);
-      if (m[1].toLowerCase() === 'a') zvenya.push({ vid: k.has('crumbs__link') ? 'ссылка' : 'ссылка без класса звена', href: atr.href, label: tekst(m[3]) });
-      else if (k.has('crumbs__current')) zvenya.push({ vid: 'текущая', current: atr['aria-current'], label: tekst(m[3]) });
-    }
-    navy.push({ label: t.atr['aria-label'], zvenya });
+    const doZakrytiya = (poz, imya) => {
+      const z = vnutri.slice(poz).search(new RegExp(`<\\/${imya}\\s*>`, 'i'));
+      return z < 0 ? null : vnutri.slice(poz, poz + z);
+    };
+    const ssylki = tegi(vnutri, ['a']).map((a) => {
+      const telo = doZakrytiya(a.poz + a.tekst.length, 'a');
+      return { href: a.atr.href, klass: klassy(a.atr).has('crumbs__link'), label: telo === null ? null : tekst(telo), poz: a.poz };
+    });
+    const tekushchie = tegi(vnutri, ['span'])
+      .filter((s) => klassy(s.atr).has('crumbs__current'))
+      .map((s) => {
+        const telo = doZakrytiya(s.poz + s.tekst.length, 'span') ?? '';
+        return { current: s.atr['aria-current'], label: tekst(telo), ssylkaVnutri: /<a(?=[\s>/])/i.test(telo), poz: s.poz };
+      });
+    navy.push({ label: t.atr['aria-label'], labelledby: t.atr['aria-labelledby'], ssylki, tekushchie });
   }
 
   return {
     estGolova: konecGolovy >= 0,
-    siteName: siteName.map((t) => ({ content: t.atr.content, vGolove: vGolove(t.poz) })),
-    canonical: canonical.map((t) => ({ href: t.atr.href, vGolove: vGolove(t.poz) })),
+    siteName: siteName.map((t) => ({ content: t.atr.content, vGolove: vGolove(t.poz), vNoscript: vNoscript(t.poz) })),
+    canonical: canonical.map((t) => ({ href: t.atr.href, vGolove: vGolove(t.poz), vNoscript: vNoscript(t.poz) })),
     ld,
     navy,
     golovaDlina: golova.length,
@@ -243,6 +294,15 @@ export function sudit(url, html, struktura) {
   else if (!f.siteName[0].vGolove) otkaz('og:site_name', 'meta og:site_name вне <head>');
   else if (f.siteName[0].content !== OZHIDANIE.imya) otkaz('og:site_name', `og:site_name «${f.siteName[0].content}» ≠ «${OZHIDANIE.imya}»`);
 
+  // Разметка головы внутри <noscript> — отказ своего вида (раунд 2, R2-GLOWA-1):
+  // сайт её там не печатает, а скребок без JS прочтёт её как настоящую.
+  const vNoscript = [
+    ...f.canonical.filter((c) => c.vNoscript).map(() => 'link rel=canonical'),
+    ...f.siteName.filter((s) => s.vNoscript).map(() => 'meta og:site_name'),
+    ...f.ld.filter((b) => b.vNoscript).map(() => 'JSON-LD'),
+  ];
+  if (vNoscript.length) otkaz('noscript', `внутри <noscript>: ${vNoscript.join(', ')} — скребок без JS прочтёт это как разметку головы`);
+
   // JSON-LD
   const websites = [];
   const spiski = [];
@@ -254,7 +314,8 @@ export function sudit(url, html, struktura) {
     if (!b.vGolove) otkaz('JSON-LD', 'блок JSON-LD вне <head>');
     const o = b.obj;
     if (!o || typeof o !== 'object' || Array.isArray(o) || '@graph' in o) {
-      otkaz('JSON-LD', 'блок — не одиночный объект (массив или @graph): разметки сверх договора сайт не печатает');
+      const chto = o === null ? 'null' : Array.isArray(o) ? 'массив' : typeof o !== 'object' ? `значение ${typeof o}` : '@graph';
+      otkaz('JSON-LD', `блок — не одиночный объект (${chto}): разметки сверх договора сайт не печатает`);
       continue;
     }
     if (o['@type'] === 'WebSite') websites.push(o);
@@ -313,18 +374,29 @@ export function sudit(url, html, struktura) {
     if (f.navy.length) otkaz('крошки', `на главной nav.crumbs: ${f.navy.length} — у главной одно звено, крошек нет`);
   } else if (f.navy.length !== 1) otkaz('крошки', `nav.crumbs: ${f.navy.length}, нужна ровно одна`);
   else {
-    if (!(f.navy[0].label ?? '').trim()) otkaz('крошки', 'у nav.crumbs нет aria-label — навигация без имени для скринридера');
-    const z = f.navy[0].zvenya;
-    if (z.length !== cep.length) otkaz('крошки', `видимых звеньев ${z.length}, по договору ${cep.length}`);
-    cep.forEach((c, i) => {
-      const e = z[i];
+    const n = f.navy[0];
+    if (!(n.label ?? '').trim() && !(n.labelledby ?? '').trim()) otkaz('крошки', 'у nav.crumbs нет имени (aria-label или aria-labelledby) — навигация без имени для скринридера');
+    // Ссылки — все <a> внутри навигации, ровно звенья цепочки кроме последнего.
+    const ssylki = n.ssylki;
+    if (ssylki.length !== cep.length - 1) otkaz('крошки', `ссылок в крошках ${ssylki.length}, по договору ${cep.length - 1} (все звенья, кроме текущего)`);
+    cep.slice(0, -1).forEach((c, i) => {
+      const e = ssylki[i];
       if (!e) return;
-      const posledneye = i === cep.length - 1;
-      if (posledneye) {
-        if (e.vid !== 'текущая' || e.current !== 'page') otkaz('крошки', `последнее звено — не текст с aria-current="page"`);
-      } else if (e.vid !== 'ссылка' || e.href !== c.url) otkaz('крошки', `звено ${i + 1}: ссылка ${e.href ?? '—'} ≠ ${c.url}`);
-      if (e.label !== c.label) otkaz('крошки', `звено ${i + 1}: ярлык «${e.label}» ≠ «${c.label}»`);
+      if (!e.klass) otkaz('крошки', `звено ${i + 1}: ссылка без класса crumbs__link`);
+      if (e.href !== c.url) otkaz('крошки', `звено ${i + 1}: адрес ${e.href ?? '—'} ≠ ${c.url}`);
+      if (e.label === null) otkaz('крошки', `звено ${i + 1}: ссылка не закрыта`);
+      else if (e.label !== c.label) otkaz('крошки', `звено ${i + 1}: ярлык «${e.label}» ≠ «${c.label}»`);
     });
+    // Текущее звено — ровно одно, последним, текстом с aria-current="page" и без ссылки внутри.
+    const posl = cep[cep.length - 1];
+    if (n.tekushchie.length !== 1) otkaz('крошки', `текущих звеньев (span.crumbs__current) ${n.tekushchie.length}, нужно ровно одно`);
+    else {
+      const t = n.tekushchie[0];
+      if (t.current !== 'page') otkaz('крошки', 'текущее звено без aria-current="page"');
+      if (t.ssylkaVnutri) otkaz('крошки', 'внутри текущего звена — ссылка');
+      if (ssylki.some((s) => s.poz > t.poz)) otkaz('крошки', 'после текущего звена ещё есть ссылки');
+      if (t.label !== posl.label) otkaz('крошки', `текущее звено: ярлык «${t.label}» ≠ «${posl.label}»`);
+    }
   }
   return otkazy;
 }
@@ -418,7 +490,8 @@ function selftest(dist, struktura) {
     return zamena(html, blok, `<script type="application/ld+json">${JSON.stringify(obj)}</script>`);
   };
 
-  /** [имя, страницы {url: html}, ждём: null — сверено, иначе множество видов отказа] */
+  /** [имя, страницы {url: html}, ждём: null — сверено, иначе множество видов отказа,
+   *   правка структуры в памяти {url: поля} — необязательно] */
   const proby = [
     ['чистые: главная, /404/, литеральная /max-payne-3/guide/', { '/': glav, '/404/': s404, '/max-payne-3/guide/': guide }, null],
     ['og:site_name: атрибуты в обратном порядке и в одинарных кавычках — законно', { '/': zamena(glav, siteNameTeg(glav), "<meta content='7th Serpent' property='og:site_name'>") }, null],
@@ -486,12 +559,35 @@ function selftest(dist, struktura) {
     ['guide: nav.crumbs без aria-label', { '/max-payne-3/guide/': zamena(guide, ' aria-label="Breadcrumbs"', '') }, ['крошки']],
     ['og:site_name только внутри <script>', { '/': zamena(glav, siteNameTeg(glav), `<script>var s='${siteNameTeg(glav)}';</script>`) }, ['og:site_name']],
     ['og:site_name только внутри <template>', { '/': zamena(glav, siteNameTeg(glav), `<template>${siteNameTeg(glav)}</template>`) }, ['og:site_name']],
-    ['og:site_name только внутри <noscript>', { '/': zamena(glav, siteNameTeg(glav), `<noscript>${siteNameTeg(glav)}</noscript>`) }, ['og:site_name']],
+    ['og:site_name только внутри <noscript>', { '/': zamena(glav, siteNameTeg(glav), `<noscript>${siteNameTeg(glav)}</noscript>`) }, ['noscript']],
     ['og:site_name только внутри <title>', { '/': zamena(zamena(glav, siteNameTeg(glav), ''), '</title>', siteNameTeg(glav) + '</title>') }, ['og:site_name']],
     ['второй og:site_name через name= с другим значением', { '/404/': zamena(s404, '</head>', '<meta name="og:site_name" content="Max Payne Wiki"></head>') }, ['og:site_name']],
     ['WebSite только внутри <template>', { '/': zamena(glav, webSite, `<template>${webSite}</template>`) }, ['WebSite']],
     ['WebSite тегом script-x', { '/': zamena(glav, webSite, webSite.replace('<script ', '<script-x ').replace('</script>', '</script-x>')) }, ['WebSite']],
     ['guide: родитель вне структуры', { '/max-payne-3/guide/': guide }, ['структура'], { '/max-payne-3/guide/': { parent: '/nie-ma/' } }],
+    // — раунд 2 «судью судят»: обходы правок раунда 1 и ветви без пробы (R2-GLOWA-1, -2, -4, -5, -7, -9) —
+    ['/404/: второй og:site_name с чужим значением в <noscript>', { '/404/': zamena(s404, '</head>', '<noscript><meta property="og:site_name" content="Max Payne Wiki"></noscript></head>') }, ['og:site_name', 'noscript']],
+    ['/404/: второй canonical в <noscript>', { '/404/': zamena(s404, '</head>', '<noscript><link rel="canonical" href="https://www.7thserpent.com/"></noscript></head>') }, ['canonical', 'noscript']],
+    ['главная: второй WebSite в <noscript>', { '/': zamena(glav, webSite, webSite + `<noscript>${webSite}</noscript>`) }, ['WebSite', 'noscript']],
+    ['/404/: второй og между строками «<noscript>» и «</noscript>» двух скриптов', { '/404/': zamena(s404, '</head>', '<script>var a="<noscript>";</script><meta property="og:site_name" content="Max Payne Wiki"><script>var b="</noscript>";</script></head>') }, ['og:site_name']],
+    ['/404/: законный og между строками «<template>» и «</template>» скриптов — сверено', { '/': glav, '/404/': zamena(zamena(s404, siteNameTeg(s404), ''), '</head>', `<script>var a="<template>";</script>${siteNameTeg(s404)}<script>var b="</template>";</script></head>`) }, null],
+    ['главная: WebSite только внутри <title>', { '/': zamena(zamena(glav, webSite, ''), '</title>', webSite + '</title>') }, ['WebSite']],
+    ['главная: WebSite только внутри <style>', { '/': zamena(glav, webSite, `<style>${webSite}</style>`) }, ['WebSite']],
+    ['главная: WebSite только внутри <TEMPLATE>', { '/': zamena(glav, webSite, `<TEMPLATE>${webSite}</TEMPLATE>`) }, ['WebSite']],
+    ['главная: og:site_name только внутри <style>', { '/': zamena(glav, siteNameTeg(glav), `<style>${siteNameTeg(glav)}</style>`) }, ['og:site_name']],
+    ['/404/: второй og:site_name с property заглавными', { '/404/': zamena(s404, '</head>', '<meta property="OG:site_name" content="Max Payne Wiki"></head>') }, ['og:site_name']],
+    ['/404/: второй canonical с rel из двух слов', { '/404/': zamena(s404, '</head>', '<link rel="canonical alternate" href="https://www.7thserpent.com/"></head>') }, ['canonical']],
+    ['главная: второй WebSite с типом скрипта в пробелах', { '/': zamena(glav, webSite, webSite + webSite.replace('type="application/ld+json"', 'type=" application/ld+json "')) }, ['WebSite']],
+    ['/404/: canonical снят', { '/404/': zamena(s404, '<link rel="canonical" href="https://www.7thserpent.com/404/">', '') }, ['canonical']],
+    ['/404/: JSON-LD — строка', { '/404/': zamena(s404, '</head>', '<script type="application/ld+json">"x"</script></head>') }, ['JSON-LD']],
+    ['guide: BreadcrumbList дважды', { '/max-payne-3/guide/': zamena(guide, guideList, guideList + guideList) }, ['BreadcrumbList']],
+    ['guide: цикл в parent', { '/max-payne-3/guide/': guide }, ['структура'], { '/max-payne-3/': { parent: '/max-payne-3/guide/' } }],
+    ['guide: ссылка внутри текущего звена', { '/max-payne-3/guide/': zamena(guide, 'aria-current="page">', 'aria-current="page"><a class="crumbs__link" href="/evil/">x</a>') }, ['крошки']],
+    ['guide: ссылка внутри разделителя', { '/max-payne-3/guide/': zamena(guide, '<span class="crumbs__sep" aria-hidden="true">/</span></li><li class="crumbs__item"><span', '<span class="crumbs__sep" aria-hidden="true"><a href="/evil/">/</a></span></li><li class="crumbs__item"><span') }, ['крошки']],
+    ['guide: незакрытая лишняя <a> в конце крошек', { '/max-payne-3/guide/': zamena(guide, '</ol></nav>', '<a href="/evil/">x</ol></nav>') }, ['крошки']],
+    ['guide: среднее звено — <a> без класса на верный адрес', { '/max-payne-3/guide/': zamena(guide, '<a class="crumbs__link" href="/max-payne-3/">', '<a href="/max-payne-3/">') }, ['крошки']],
+    ['guide: aria-label из пробела', { '/max-payne-3/guide/': zamena(guide, 'aria-label="Breadcrumbs"', 'aria-label=" "') }, ['крошки']],
+    ['guide: имя навигации через aria-labelledby — законно', { '/': glav, '/max-payne-3/guide/': zamena(guide, 'aria-label="Breadcrumbs"', 'aria-labelledby="x"') }, null],
   ];
 
   let plokho = 0;
@@ -530,6 +626,13 @@ const isMain = Boolean(process.argv[1]) && fileURLToPath(import.meta.url) === re
 if (isMain) {
   const args = process.argv.slice(2);
   const iDist = args.indexOf('--dist');
+  // Неизвестный аргумент — отказ, а не суд собственного dist/ (раунд 2, R2-GLOWA-8:
+  // «--dist=путь» и опечатка «--selftets» молча судили dist/ сайта).
+  const lishnie = args.filter((a, i) => a !== '--selftest' && a !== '--dist' && !(iDist >= 0 && i === iDist + 1));
+  if (lishnie.length) {
+    console.error(`неизвестные аргументы: ${lishnie.join(' ')} — есть --dist <папка> и --selftest`);
+    process.exit(2);
+  }
   if (iDist >= 0 && (!args[iDist + 1] || args[iDist + 1].startsWith('--'))) {
     console.error('--dist без папки: укажите путь сборки (от текущей папки или абсолютный)');
     process.exit(2);
@@ -558,13 +661,18 @@ if (isMain) {
   const otkazy = suditNabor(stranicy, struktura);
   for (const s of stranicy) {
     const f = razobrat(s.html);
-    const ld = f.ld.filter((b) => !b.oshibka).map((b) => (b.obj && typeof b.obj === 'object' ? b.obj['@type'] : JSON.stringify(b.obj))).join(', ') || '—';
-    console.log(`  ${s.url.padEnd(24)} og:site_name ${f.siteName.length}, JSON-LD: ${ld}, крошек: ${f.navy.map((n) => n.zvenya.length).join('/') || '—'}`);
+    const ld =
+      f.ld
+        .filter((b) => !b.oshibka)
+        .map((b) => (b.obj && typeof b.obj === 'object' && !Array.isArray(b.obj) ? b.obj['@type'] : JSON.stringify(b.obj)))
+        .join(', ') || '—';
+    const kroshki = f.navy.map((n) => n.ssylki.length + n.tekushchie.length).join('/') || '—';
+    console.log(`  ${s.url.padEnd(24)} og:site_name ${f.siteName.length}, JSON-LD: ${ld}, звеньев крошек: ${kroshki}`);
   }
   if (otkazy.length) {
-    console.error(`\nОТКАЗ — ${otkazy.length}:`);
+    console.error(`\nОТКАЗ — ${otkazy.length} (сборка ${dist}):`);
     for (const o of otkazy) console.error(`  ${o.url}: [${o.vid}] ${o.chto}`);
     process.exit(1);
   }
-  console.log(`\nсверено: ${stranicy.length} стр. — og:site_name «${OZHIDANIE.imya}» на каждой, WebSite на главной, BreadcrumbList и крошки по договору`);
+  console.log(`\nсверено: ${stranicy.length} стр. сборки ${dist} — og:site_name «${OZHIDANIE.imya}» на каждой, WebSite на главной, BreadcrumbList и крошки по договору`);
 }

@@ -27,9 +27,13 @@
  * не должно: иначе прерванный прогон (Ctrl+C посреди сборки, снятый процесс)
  * оставил бы подмену, и следующий принял бы её за исходник («судью судят»,
  * раунд 1, R1-PROBY-1). Свою правку этих файлов — `git add` до запуска.
- * Ctrl+C и SIGTERM не обрывают пробу: текущая сборка кончается, файлы
- * возвращаются, прогон выходит с кодом 130. Снятый без сигнала процесс
- * возврата не сделает — его остаток поймает сверка следующего старта.
+ * Ctrl+C приходит всей консоли и обрывает текущую сборку; прогон узнаёт это
+ * по коду сборки (сигнал SIGINT или 0xC000013A на Windows), возвращает файлы
+ * и выходит с кодом 130, не считая прерванную пробу плохой («судью судят»,
+ * раунд 2, R2-INSTRUMENTY-1: флаг из обработчика сигнала при синхронном
+ * цикле не ставился никогда). SIGTERM на Windows не перехватывается, и
+ * снятый так или без сигнала процесс возврата не сделает — его остаток поймает
+ * сверка следующего старта.
  * Пока идут пробы, сборку, `tree:check`, `glowa` и коммиты параллельно
  * не запускать: файлы на диске на время сборки подменены.
  *
@@ -73,6 +77,10 @@ const sha = (b) => createHash('sha256').update(b).digest('hex');
 /* — сверка старта: подмен и остатков прерванного прогона нет — */
 const git = (args) => spawnSync('git', args, { cwd: root, encoding: 'utf8' });
 const diff = git(['diff', '--quiet', '--', ...OTSLEZHIVAEMYE]);
+if (diff.error || diff.status === null) {
+  console.error(`git не запускается (${diff.error?.message ?? 'нет кода'}) — сверить файлы проб с индексом нечем`);
+  process.exit(2);
+}
 if (diff.status !== 0) {
   console.error(
     `файлы проб отличаются от индекса git: ${git(['diff', '--name-only', '--', ...OTSLEZHIVAEMYE]).stdout.trim().replace(/\n/g, ', ')}\n` +
@@ -137,6 +145,9 @@ const PROBY = [
   { id: 'N5', imya: 'адрес без слэша на конце', sudya: 'url.endsWith схемы', fajly: { [P.stend]: zamena(stend, 'url: /404/', 'url: /404') }, zhdem: ['tresc → 404.md data does not match collection schema', 'url: Invalid string: must end with "/"'], kod: 'не 0' },
   { id: 'N23', imya: 'заголовок `related` пустой', sudya: 'tekst() схемы', fajly: { [P.stend]: zamena(stend, '  title: Where to go from here', "  title: ''") }, zhdem: ['tresc → 404.md data does not match collection schema', 'related.title: Too small'], kod: 'не 0' },
   { id: 'N24', imya: 'мета ряда из одних пробелов', sudya: 'tekst() схемы', fajly: { [P.stend]: zamena(stend, '    meta: A mistyped link or an address that is not on this site', "    meta: '   '") }, zhdem: ['tresc → 404.md data does not match collection schema', 'rows.0.meta: Too small'], kod: 'не 0' },
+  { id: 'N25', imya: 'надзаголовок ряда пустой', sudya: 'tekst() схемы', fajly: { [P.stend]: zamena(stend, '    year: Error 404\n', "    year: ''\n") }, zhdem: ['tresc → 404.md data does not match collection schema', 'rows.0.year: Too small'], kod: 'не 0' },
+  { id: 'N26', imya: 'заголовок ряда из пробелов', sudya: 'tekst() схемы', fajly: { [P.stend]: zamena(stend, '    title: Nothing at this address\n', "    title: '  '\n") }, zhdem: ['tresc → 404.md data does not match collection schema', 'rows.0.title: Too small'], kod: 'не 0' },
+  { id: 'N27', imya: 'пустой абзац ряда', sudya: 'tekst() схемы', fajly: { [P.stend]: zamena(stend, '    body:\n', "    body:\n      - ''\n") }, zhdem: ['tresc → 404.md data does not match collection schema', 'rows.0.body.0: Too small'], kod: 'не 0' },
   // — маршрут, по порядку проверок —
   { id: 'N6', imya: 'адрес мимо структуры', sudya: 'getPage — адрес мимо структуры', fajly: { [P.stend]: zamena(stend, 'url: /404/', 'url: /nie-ma-takiej/') }, zhdem: ['Адреса /nie-ma-takiej/ нет в structure.json'], kod: 'не 0' },
   { id: 'N7', imya: 'два файла на один адрес', sudya: 'getStaticPaths', fajly: { [P.vremenny]: vremenny('/404/', ['related:', '  title: Proba']) }, zhdem: ['Два файла содержания на один адрес', '/404/: '], kod: 'не 0' },
@@ -151,7 +162,7 @@ const PROBY = [
   { id: 'N14', imya: 'блок ядра без ветви маршрута (cta-band)', sudya: 'ветви нет', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'link-list', 'cta-band'); } }) }, zhdem: ['ветви маршрута для него нет', 'cta-band'], kod: 'не 0' },
   { id: 'N15', imya: 'тип страницы без приписки вида', sudya: 'VID', fajly: { [P.struktura]: strukturaS({ '/max-payne-1/': (p) => { p.type = 'proba'; } }) }, zhdem: ['Тип «proba»', 'без приписки в VID'], kod: 'не 0' },
   { id: 'N16', imya: 'вхождение с ролью без своих рядов', sudya: '«blocks[] = напечатанному»', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'story-row#proba', 'link-list'); } }) }, zhdem: ['blocks[] и печать разошлись', 'без содержания: story-row#proba'], kod: 'не 0' },
-  { id: 'N17', imya: 'link-list без заголовка в содержании', sudya: '«blocks[] = напечатанному»', fajly: { [P.stend]: zamena(stend, 'related:\n  title: Where to go from here\n', '') }, zhdem: ['blocks[] и печать разошлись', 'без содержания: link-list\n'], kod: 'не 0' },
+  { id: 'N17', imya: 'link-list без заголовка в содержании', sudya: '«blocks[] = напечатанному»', fajly: { [P.stend]: zamena(stend, 'related:\n  title: Where to go from here\n', '') }, zhdem: ['blocks[] и печать разошлись', 'без содержания: link-list (нет заголовка related в содержании)'], kod: 'не 0' },
   { id: 'N20', imya: 'related структуры пуст при объявленном link-list', sudya: '«blocks[] = напечатанному»', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.related = []; } }) }, zhdem: ['blocks[] и печать разошлись', 'без содержания: link-list (related структуры пуст)'], kod: 'не 0' },
   { id: 'N18', imya: 'порядок blocks[] против порядка шаблона', sudya: '«blocks[] = напечатанному»', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('link-list', 'story-row'); } }) }, zhdem: ['blocks[] и печать разошлись', 'разошёлся только порядок'], kod: 'не 0' },
   {
@@ -199,6 +210,30 @@ const PROBY = [
     html: { '/max-payne-3/guide/': (h) => (zvenyev(h) === 3 ? null : `звеньев BreadcrumbList ${zvenyev(h)}, ждали 3`) },
   },
   {
+    // Пустая роль вхождения в структуре — «без роли» и для рядов (раунд 2, R2-MARSHRUT-2;
+    // гейт структуры '' у необязательного role пропускает).
+    id: 'P5', imya: 'вхождение story-row с role "" в структуре — ряды без роли', sudya: 'rolOf маршрута',
+    fajly: {
+      [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = [{ block: 'story-row', source: 'manual', confidence: 'high', role: '' }, ...bloki('link-list')]; } }),
+    },
+    zhdem: [], kod: 0,
+    html: { '/404/': (h) => (h.includes('id="not-found"') ? null : 'ряда not-found на странице нет') },
+  },
+  {
+    // Страница без link-list, в чьём related — страница типа без приписки: VID
+    // не спрашивается (раунд 1, R1-MARSHRUT-9; проба — раунд 2, R2-MARSHRUT-2).
+    id: 'P6', imya: 'related без link-list: вид связанной страницы не спрашивается', sudya: 'pokrewne только при link-list',
+    fajly: {
+      [P.struktura]: strukturaS({
+        '/privacy/': (p) => { p.blocks = bloki('story-row'); p.related = ['/movie/']; },
+        '/movie/': (p) => { p.type = 'proba'; },
+      }),
+      [P.vremenny]: vremenny('/privacy/'),
+    },
+    zhdem: [], kod: 0,
+    html: { '/privacy/': (h) => (h.includes('id="proba-ryad"') ? null : 'ряда proba-ryad на странице нет') },
+  },
+  {
     id: 'P4', imya: 'страница второго уровня: крошки и BreadcrumbList по договору', sudya: 'Base.astro + tools/glowa.mjs',
     fajly: {
       [P.struktura]: strukturaS({ '/pc/': (p) => { p.blocks = bloki('story-row', 'link-list'); p.corridor = null; } }),
@@ -212,7 +247,19 @@ const PROBY = [
 /* ------------------------------------------------------------------ */
 
 const argi = process.argv.slice(2);
-const imena = argi.filter((a) => !a.startsWith('--') && argi[argi.indexOf(a) - 1] !== '--vyvod');
+// --vyvod <папка>: папка обязана быть; значение — не имя пробы (раунд 2, R2-INSTRUMENTY-5).
+const iVyvod = argi.indexOf('--vyvod');
+const papkaVyvoda = iVyvod >= 0 ? argi[iVyvod + 1] : null;
+if (iVyvod >= 0 && (!papkaVyvoda || papkaVyvoda.startsWith('--') || !existsSync(papkaVyvoda))) {
+  console.error(`--vyvod без существующей папки: ${papkaVyvoda ?? '—'}`);
+  process.exit(2);
+}
+const flagi = argi.filter((a, i) => a.startsWith('--') && !['--vyvod', '--pokazat'].includes(a) && !(iVyvod >= 0 && i === iVyvod + 1));
+if (flagi.length) {
+  console.error(`неизвестные флаги: ${flagi.join(' ')} — есть --pokazat и --vyvod <папка>`);
+  process.exit(2);
+}
+const imena = argi.filter((a, i) => !a.startsWith('--') && !(iVyvod >= 0 && i === iVyvod + 1));
 const neizvestnye = imena.filter((a) => !PROBY.some((p) => p.id === a.toUpperCase()));
 if (neizvestnye.length) {
   console.error(`неизвестные пробы: ${neizvestnye.join(', ')} — есть ${PROBY.map((p) => p.id).join(', ')}`);
@@ -270,6 +317,8 @@ for (const p of proby) {
     });
     out = `${r.stdout ?? ''}\n${r.stderr ?? ''}`;
     kod = r.status;
+    // Ctrl+C оборвал сборку: сигнал (POSIX) или STATUS_CONTROL_C_EXIT (0xC000013A, Windows).
+    if (r.signal === 'SIGINT' || kod === 3221225786 || kod === -1073741510) prervano = `Ctrl+C во время ${p.id}`;
     if (kod === 0) {
       for (const url of Object.keys(p.html ?? {})) {
         const f = join(root, OUT, url.slice(1), 'index.html');
@@ -300,8 +349,11 @@ for (const p of proby) {
     }
   }
 
-  const iVyvod = argi.indexOf('--vyvod');
-  if (iVyvod >= 0 && argi[iVyvod + 1]) writeFileSync(join(argi[iVyvod + 1], `${p.id}.log`), out);
+  if (prervano) {
+    console.error(`\nпрервано (${prervano}): проба не судится, файлы возвращены и сверены побайтово`);
+    process.exit(130);
+  }
+  if (papkaVyvoda) writeFileSync(join(papkaVyvoda, `${p.id}.log`), out);
   const net = p.zhdem.filter((s) => !out.includes(s));
   const zamechaniya = [];
   if (p.kod === 'не 0' && kod === 0) zamechaniya.push('сборка прошла, а ждали отказа');

@@ -31,7 +31,13 @@
     "gameart": "node tools/fetch-game-art.mjs",
     "znak": "node tools/znak.mjs",
     "znak:check": "node tools/znak.mjs --check",
-    "znak:selftest": "node tools/znak.mjs --selftest"
+    "znak:selftest": "node tools/znak.mjs --selftest",
+    "brief": "node tools/brief-strony.mjs",
+    "brief:check": "node tools/brief-strony.mjs --check",
+    "brief:selftest": "node tools/brief-strony.mjs --selftest",
+    "glowa": "node tools/glowa.mjs",
+    "glowa:selftest": "node tools/glowa.mjs --selftest",
+    "tresc:proby": "node tools/proby-tresci.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

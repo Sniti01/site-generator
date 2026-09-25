@@ -254,5 +254,16 @@
     "source": "https://store.steampowered.com/app/12140/",
     "width": 1440,
     "height": 1080
+  },
+  "mp3-art": {
+    "file": "mp3-art.jpg",
+    "game": "Max Payne 3",
+    "appid": 204100,
+    "kind": "key art (library_hero_2x.jpg)",
+    "opis": "key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze",
+    "license": "publisher material (Rockstar Games), not under a free license — used solely to identify the games in the series that the site’s pages are about",
+    "source": "https://store.steampowered.com/app/204100/",
+    "width": 1920,
+    "height": 620
   }
 }

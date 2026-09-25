@@ -90,6 +90,10 @@
       "slot": "mp3",
       "appid": 204100,
       "name": "Max Payne 3",
+      "art": {
+        "asset": "library_hero",
+        "opis": "key art: Max, bearded, crouches behind a rusted metal wall with a pistol; on the left a bald man in a tank top holds a shotgun under a utility pole in green haze"
+      },
       "zrzuty": [
         {
           "i": 15,

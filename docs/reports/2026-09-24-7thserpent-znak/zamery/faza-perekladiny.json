@@ -1,15 +1,10 @@
 {
-  "instrument": "materialy-priemki.mjs",
+  "instrument": "faza-perekladiny.mjs",
   "brauzer": "Chromium 151.0.7922.34",
-  "chrome": "C:/Users/MSI/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe",
-  "instrument_sha256": "40194aedb6ff429bac441180a1b6c7d35d02946099d2bd0386ffc413a898193d",
+  "instrument_sha256": "bac926102aa3e68f15ef7f7d6ca1c51e246f86ef0958d4d2b9ea8a6afe623770",
   "pomoshchnik_sha256": "acdb34d9bc9a495ee578cfe0d67d416058b88054fa0d6fd7bf2a8f22b2ba84f9",
   "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
-  "gryaz_sajta": [
-    " M sites/7thserpent.com/CLAUDE.md",
-    " M sites/7thserpent.com/DESIGN.md",
-    " M sites/7thserpent.com/_baseline/README.md"
-  ],
+  "gryaz_sajta": [],
   "gryaz_instrumentov": [
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
@@ -435,338 +430,859 @@
     ],
     "bledy": []
   },
-  "stany": {
-    "фокус 1440 DPR 1": {
-      "brand": true,
-      "fv": true
-    },
-    "фокус 1440 DPR 2": {
-      "brand": true,
-      "fv": true
-    },
-    "ящик 390 DPR 3": {
-      "exp": "true",
-      "hidden": false,
-      "h": 279.375
-    },
-    "экран владельца 2194": {
-      "znakX": 504,
-      "pasek": 10
-    },
-    "ящик 390 DPR 1.75": {
-      "exp": "true",
-      "hidden": false,
-      "h": 279.375
-    },
-    "фокус 1440 DPR 1.75": {
-      "brand": true,
-      "fv": true
-    },
-    "favicon.ico в <img>: naturalWidth": 32,
-    "favicon.ico в <img> 16 против записи 16: субпикселей с разницей больше 8": 62
-  },
-  "pliki": {
-    "znak-dpr1-x4.png": "84ac69a65a8e1ec3c981a4f5ac2bb75474febdbe61b1864f935881553f9f10f5",
-    "pervy-ekran-1440.png": "607c105157763ec1becee98ef0f6fbade4f035cc667ecc69ce744c7c2f908793",
-    "podval-1440.png": "28e993c72e06575c44a62d5021e493a1c35546eeb7843cb47939faf0ac314645",
-    "shapka-1440.png": "8db43323a4f2e4840a29ced60d88bee7384248d155abe46c8e5872784e78f8bd",
-    "fokus-1440.png": "c907aec9dbe4c42e48e1caccd47ff39b2eaacd00e38592fad42eab68fe5da881",
-    "shapka-390.png": "b1c9b7f5daf81b2603e8ad7617f165a38c6cc1f15ec9c91397e8670cfe9b5a8b",
-    "pervy-ekran-390.png": "1eaef5fcade20640884cae1119864951189c6bd8b346fedccee087d8b3d1d582",
-    "yashchik-390.png": "947e01a6b97ae3c0ec06772f8904abd7f683207ae07f1be6b904f7b4208acf4b",
-    "podval-390.png": "7b8973b4379b8c8c9d938925b1ee648fd80694d84b82e6fe2e37a75f13fd0f77",
-    "znak-plotnosti.png": "6714b2fd9e71703529bc7597ac98410181222c5a58f40b4bf2619b2a9ac04e75",
-    "podval-plotnosti.png": "e2daf5d85f09186932bb1afc67b34819d1ae93e661188a92cef8668c17c08100",
-    "ekran-vladelca.png": "a7c29219d465a65f373425dfb10749f1573473b79298d6edb433f5eec4aca329",
-    "shapka-nad-soderzhimym.png": "61cbab57105a32fad018ca0db02789ed8e1ebedb9b59a673dd19d3fb00e5d2a0",
-    "prinuditelnye-cveta.png": "2ed89f9f180c2e6370cfe9969ec22a0b275223ac97c864c2c9b5e780d240d170",
-    "okno-plotnosti.png": "ad0c0098e8121604488e6b99f954219c7acc6e87dd83f1f56eea6b1a0e9c125c",
-    "ikony.png": "b7ca08d494cfbd3673317da2ada94b1c21e245e053867f7660d3e254a1aee565"
-  },
-  "ne_zapisano": [],
-  "okno": {
-    "1.25 шапка": {
-      "skala": 1.25,
-      "gde": "шапка",
-      "prokrutka_okno": 0,
-      "prokrutka_bez_okna": 0,
-      "nachalo_stranicy_v_okne": [
-        9,
-        109
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 15,
-        "w": 138,
-        "h": 38
+  "okna": [
+    {
+      "dpr": 0.9,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 13.5,
+        "verh_ustr": 18,
+        "niz_ustr": 21.6,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          141,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 1,
+        "chetkij": false
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 15,
-        "w": 138,
-        "h": 38
-      },
-      "pikseley": 10614,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 647,
-          "max": 109
-        },
-        "posle_vyravnivaniya": {
-          "n": 647,
-          "max": 109,
-          "dx": 0,
-          "dy": 0
-        }
-      },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 638,
-          "max": 110
-        },
-        "posle_vyravnivaniya": {
-          "n": 638,
-          "max": 110,
-          "dx": 0,
-          "dy": 0
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 388.0688,
+        "verh_ustr": 392.5688,
+        "niz_ustr": 396.1687,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          207,
+          229,
+          229,
+          164,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       }
     },
-    "1.25 подвал": {
-      "skala": 1.25,
-      "gde": "подвал",
-      "prokrutka_okno": 5899.2001953125,
-      "prokrutka_bez_okna": 5904,
-      "nachalo_stranicy_v_okne": [
-        9,
-        109
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 214.52500915527344,
-        "w": 138,
-        "h": 38
+    {
+      "dpr": 1,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 15,
+        "verh_ustr": 20,
+        "niz_ustr": 24,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 214.34375,
-        "w": 138,
-        "h": 38
-      },
-      "pikseley": 10614,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 833,
-          "max": 136
-        },
-        "posle_vyravnivaniya": {
-          "n": 810,
-          "max": 136,
-          "dx": 0,
-          "dy": -1
-        }
-      },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 833,
-          "max": 137
-        },
-        "posle_vyravnivaniya": {
-          "n": 810,
-          "max": 137,
-          "dx": 0,
-          "dy": -1
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 431.1875,
+        "verh_ustr": 436.1875,
+        "niz_ustr": 440.1875,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          229,
+          229,
+          229,
+          229,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       }
     },
-    "1.5 шапка": {
-      "skala": 1.5,
-      "gde": "шапка",
-      "prokrutka_okno": 0,
-      "prokrutka_bez_okna": 0,
-      "nachalo_stranicy_v_okne": [
-        11,
-        131
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 15,
-        "w": 138,
-        "h": 38
+    {
+      "dpr": 1.1,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 16.5,
+        "verh_ustr": 22,
+        "niz_ustr": 26.4,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          97,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 1,
+        "chetkij": false
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 15,
-        "w": 138,
-        "h": 38
-      },
-      "pikseley": 15111,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 1008,
-          "max": 138
-        },
-        "posle_vyravnivaniya": {
-          "n": 1008,
-          "max": 138,
-          "dx": 0,
-          "dy": 0
-        }
-      },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 1006,
-          "max": 137
-        },
-        "posle_vyravnivaniya": {
-          "n": 1006,
-          "max": 137,
-          "dx": 0,
-          "dy": 0
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 474.3063,
+        "verh_ustr": 479.8063,
+        "niz_ustr": 484.2063,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          36,
+          229,
+          229,
+          229,
+          229,
+          79,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       }
     },
-    "1.5 подвал": {
-      "skala": 1.5,
-      "gde": "подвал",
-      "prokrutka_okno": 5896,
-      "prokrutka_bez_okna": 5905,
-      "nachalo_stranicy_v_okne": [
-        11,
-        131
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 213.70834350585938,
-        "w": 138,
-        "h": 38
+    {
+      "dpr": 1.25,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 18.75,
+        "verh_ustr": 25,
+        "niz_ustr": 30,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 213.34375,
-        "w": 138,
-        "h": 38
-      },
-      "pikseley": 15111,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 1700,
-          "max": 222
-        },
-        "posle_vyravnivaniya": {
-          "n": 0,
-          "max": 3,
-          "dx": 0,
-          "dy": -2
-        }
-      },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 1701,
-          "max": 221
-        },
-        "posle_vyravnivaniya": {
-          "n": 0,
-          "max": 0,
-          "dx": 0,
-          "dy": -2
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 538.9844,
+        "verh_ustr": 545.2344,
+        "niz_ustr": 550.2344,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          176,
+          229,
+          229,
+          229,
+          229,
+          67,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       }
     },
-    "1.75 шапка": {
-      "skala": 1.75,
-      "gde": "шапка",
-      "prokrutka_okno": 0,
-      "prokrutka_bez_okna": 0,
-      "nachalo_stranicy_v_okne": [
-        12,
-        153
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 15.000000953674316,
-        "w": 138,
-        "h": 38
+    {
+      "dpr": 1.33,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 19.95,
+        "verh_ustr": 26.6,
+        "niz_ustr": 31.92,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          97,
+          229,
+          229,
+          229,
+          229,
+          212,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 15,
-        "w": 138,
-        "h": 38
-      },
-      "pikseley": 20736,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 1652,
-          "max": 227
-        },
-        "posle_vyravnivaniya": {
-          "n": 841,
-          "max": 111,
-          "dx": 0,
-          "dy": 1
-        }
-      },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 1651,
-          "max": 220
-        },
-        "posle_vyravnivaniya": {
-          "n": 840,
-          "max": 110,
-          "dx": 0,
-          "dy": 1
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 573.4794,
+        "verh_ustr": 580.1294,
+        "niz_ustr": 585.4494,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          149,
+          229,
+          229,
+          229,
+          229,
+          162,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       }
     },
-    "1.75 подвал": {
-      "skala": 1.75,
-      "gde": "подвал",
-      "prokrutka_okno": 5895.4287109375,
-      "prokrutka_bez_okna": 5905,
-      "nachalo_stranicy_v_okne": [
-        12,
-        153
-      ],
-      "ramka_okno": {
-        "x": 32,
-        "y": 214.9732208251953,
-        "w": 138,
-        "h": 38
+    {
+      "dpr": 1.5,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 22.5,
+        "verh_ustr": 30,
+        "niz_ustr": 36,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       },
-      "ramka_bez_okna": {
-        "x": 32,
-        "y": 214.84375,
-        "w": 138,
-        "h": 38
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 646.7813,
+        "verh_ustr": 654.2813,
+        "niz_ustr": 660.2813,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          121,
+          229,
+          229,
+          229,
+          229,
+          229,
+          121,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 1.75,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 26.25,
+        "verh_ustr": 35,
+        "niz_ustr": 42,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       },
-      "pikseley": 20736,
-      "kak_est": {
-        "kak_vyrezano": {
-          "n": 1412,
-          "max": 222
-        },
-        "posle_vyravnivaniya": {
-          "n": 0,
-          "max": 0,
-          "dx": 0,
-          "dy": 1
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 754.5781,
+        "verh_ustr": 763.3281,
+        "niz_ustr": 770.3281,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          67,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          176,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 1.925,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 28.875,
+        "verh_ustr": 38.5,
+        "niz_ustr": 46.2,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          119,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          53,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
       },
-      "tolko_znak": {
-        "kak_vyrezano": {
-          "n": 1412,
-          "max": 220
-        },
-        "posle_vyravnivaniya": {
-          "n": 0,
-          "max": 0,
-          "dx": 0,
-          "dy": 1
-        }
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 830.0359,
+        "verh_ustr": 839.6609,
+        "niz_ustr": 847.3609,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          52,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          127,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 2,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 30,
+        "verh_ustr": 40,
+        "niz_ustr": 48,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
+      },
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 862.375,
+        "verh_ustr": 872.375,
+        "niz_ustr": 880.375,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
+      }
+    },
+    {
+      "dpr": 2.1875,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 32.8125,
+        "verh_ustr": 43.75,
+        "niz_ustr": 52.5,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          64,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          119,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      },
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 943.2227,
+        "verh_ustr": 954.1602,
+        "niz_ustr": 962.9102,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          135,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          54,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 2.5,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 37.5,
+        "verh_ustr": 50,
+        "niz_ustr": 60,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
+      },
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 1077.9688,
+        "verh_ustr": 1090.4688,
+        "niz_ustr": 1100.4688,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          121,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          121,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 2.625,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 39.375,
+        "verh_ustr": 52.5,
+        "niz_ustr": 63,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          119,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 1,
+        "chetkij": false
+      },
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 1131.8672,
+        "verh_ustr": 1144.9922,
+        "niz_ustr": 1155.4922,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          202,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          148,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 2,
+        "chetkij": false
+      }
+    },
+    {
+      "dpr": 3,
+      "шапка": {
+        "y_css": 15,
+        "y_ustr": 45,
+        "verh_ustr": 60,
+        "niz_ustr": 72,
+        "stolbec_R": [
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9,
+          9
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
+      },
+      "подвал": {
+        "y_css": 431.1875,
+        "y_ustr": 1293.5625,
+        "verh_ustr": 1308.5625,
+        "niz_ustr": 1320.5625,
+        "stolbec_R": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          229,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ],
+        "poluton_strok": 0,
+        "chetkij": true
       }
     }
-  },
-  "bledy": []
+  ]
 }

@@ -1,14 +1,11 @@
 {
   "instrument": "kontrast-znaka.mjs",
-  "instrument_sha256": "88d81eac15678fb13136880be3210124dad07feb58e9741f012ce0fbfca058c9",
+  "instrument_sha256": "6bbfd3939c593884a071dff163323a97b2c06c30cfdd696b5e90064b384cfef0",
   "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
-  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
-  "gryaz_sajta": [
-    "M sites/7thserpent.com/tools/znak.mjs"
-  ],
+  "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
+  "gryaz_sajta": [],
   "gryaz_instrumentov": [
     "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
-    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs"
   ],
@@ -42,7 +39,10 @@
     },
     {
       "nazwa": "лист над шапкой",
-      "zhdem": "белый лист не между",
+      "zhdem": [
+        "белый лист не между",
+        "ниже порога"
+      ],
       "ok": true,
       "bledy": [
         "390 DPR 1: белый лист не между шапкой и содержимым (сверху: div#bialy-list > a.hdr__brand > div.hdr__inner > header.hdr)",
@@ -57,6 +57,41 @@
       "ok": true,
       "bledy": [
         "390 DPR 1: кольцо фокуса rgb(136, 153, 170), а не --accent-text #f2bd6e"
+      ]
+    },
+    {
+      "nazwa": "кольца фокуса нет",
+      "zhdem": "кольца фокуса нет",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1: кольца фокуса нет — outline-style none, outline-width 2px (раунд 4, R4-BRAUZER-10)"
+      ]
+    },
+    {
+      "nazwa": "фокус на ссылку знака не встаёт",
+      "zhdem": "фокус на ссылке знака не встал",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1: фокус на ссылке знака не встал — кольцо не снято"
+      ]
+    },
+    {
+      "nazwa": "токен фонаря не #rrggbb",
+      "zhdem": "не #rrggbb",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1: токены краски не #rrggbb — --accent: «rgb(236 168 74)»"
+      ]
+    },
+    {
+      "nazwa": "тёмная заливка частей знака при прежних токенах",
+      "zhdem": "ниже порога",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1, граница: фонарь 1.14:1 ниже порога 3:1",
+        "390 DPR 1, граница: снег 1.14:1 ниже порога 4.5:1",
+        "390 DPR 1, замер: фонарь 1.32:1 ниже порога 3:1",
+        "390 DPR 1, замер: снег 1.32:1 ниже порога 4.5:1"
       ]
     }
   ]

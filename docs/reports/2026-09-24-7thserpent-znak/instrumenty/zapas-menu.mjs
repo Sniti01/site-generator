@@ -8,8 +8,10 @@
 //     список шире навигации; зазор знак–первый пункт;
 //   меню в ящике (до 960): зазор знак–бургер;
 //   на всех ширинах: знак 138 × 38.
-// Отказ (exit 1) при корневом кегле по умолчанию (16 px): перенос, переполнение, запас
-// меньше 0, знак не 138 × 38, знак налезает на бургер; сервер отдаёт не dist/.
+// Отказ (exit 1) при корневом кегле по умолчанию (16 px): перенос, переполнение, пункты
+// в несколько рядов или ниже шапки (раунд 4, R4-BRAUZER-8), запас меньше 0, знак
+// не 138 × 38, знак налезает на бургер, бургер или знак за краем окна или бургер
+// не виден (R4-BRAUZER-9); сервер отдаёт не dist/.
 // Крупный шрифт настроек браузера (20 и 24 px — корневой кегль 125 и 150 %: кегли
 // сайта в rem, своего размера у html нет) — замер без отказа: что будет с меню у
 // зрителя с крупным шрифтом, решает владелец (R3-POLNOTA-9).
@@ -49,11 +51,16 @@ async function zamer(koren, mut, shiriny) {
       const nav = document.querySelector('.hdr__nav');
       if (getComputedStyle(nav).display === 'none') {
         const b = document.querySelector('.hdr__burger').getBoundingClientRect();
-        return { tryb: 'ящик', znak, znak_burger: +(b.left - brand.right).toFixed(2) };
+        // Бургер и знак — в окне, бургер виден (R4-BRAUZER-9).
+        return { tryb: 'ящик', znak, znak_burger: +(b.left - brand.right).toFixed(2), za_kraem: b.right > innerWidth + 0.5 || brand.right > innerWidth + 0.5 || b.width === 0 };
       }
       const n = nav.getBoundingClientRect();
       const ul = nav.querySelector('.hdr__list');
       const li = [...ul.children].map((x) => x.getBoundingClientRect());
+      // Перенос рядами: пункты на разной высоте или список ниже шапки (R4-BRAUZER-8).
+      const hdr = document.querySelector('.hdr').getBoundingClientRect();
+      const ryady = new Set(li.map((x) => Math.round(x.top))).size;
+      const nizhe = ul.getBoundingClientRect().bottom > hdr.bottom + 0.5;
       const linki = [...ul.querySelectorAll('.hdr__link')];
       const strok = (a) => { const r = document.createRange(); r.selectNodeContents(a); return new Set([...r.getClientRects()].filter((x) => x.width > 0).map((x) => Math.round(x.top))).size; };
       const search = document.querySelector('.hdr__search');
@@ -63,6 +70,8 @@ async function zamer(koren, mut, shiriny) {
         zapas: +(n.right - li[li.length - 1].right).toFixed(2),
         perenos: linki.filter((a) => strok(a) > 1).map((a) => a.textContent.trim()),
         perepolnenie: ul.scrollWidth > nav.clientWidth,
+        ryady,
+        nizhe_shapki: nizhe,
         znak_punkt: +(li[0].left - brand.right).toFixed(2),
         poisk: search && getComputedStyle(search).display !== 'none' ? +search.getBoundingClientRect().width.toFixed(2) : 0,
       };
@@ -76,8 +85,8 @@ function itog(shiriny) {
   const stroka = shiriny.filter((s) => s.tryb === 'строка');
   const yashchik = shiriny.filter((s) => s.tryb === 'ящик');
   return {
-    menu_v_stroke: stroka.length ? { ot: stroka[0].w, do: stroka.at(-1).w, min_zapas: minBy(stroka, 'zapas'), perenos_na: stroka.filter((s) => s.perenos.length).map((s) => s.w), perepolnenie_na: stroka.filter((s) => s.perepolnenie).map((s) => s.w), znak_punkt: [...new Set(stroka.map((s) => s.znak_punkt))], poisk: [...new Set(stroka.map((s) => s.poisk))] } : null,
-    yashchik: yashchik.length ? { ot: yashchik[0].w, do: yashchik.at(-1).w, min_znak_burger: minBy(yashchik, 'znak_burger') } : null,
+    menu_v_stroke: stroka.length ? { ot: stroka[0].w, do: stroka.at(-1).w, min_zapas: minBy(stroka, 'zapas'), perenos_na: stroka.filter((s) => s.perenos.length).map((s) => s.w), perepolnenie_na: stroka.filter((s) => s.perepolnenie).map((s) => s.w), ryadami_na: stroka.filter((s) => s.ryady > 1 || s.nizhe_shapki).map((s) => s.w), znak_punkt: [...new Set(stroka.map((s) => s.znak_punkt))], poisk: [...new Set(stroka.map((s) => s.poisk))] } : null,
+    yashchik: yashchik.length ? { ot: yashchik[0].w, do: yashchik.at(-1).w, min_znak_burger: minBy(yashchik, 'znak_burger'), za_kraem_na: yashchik.filter((s) => s.za_kraem).map((s) => s.w) } : null,
     znak_ne_138x38_na: shiriny.filter((s) => !s.znak || s.znak[0] !== 138 || s.znak[1] !== 38).map((s) => s.w),
   };
 }
@@ -86,6 +95,8 @@ function sad(it) {
   const m = it.menu_v_stroke;
   if (m?.perenos_na.length) bledy.push(`перенос пунктов меню на ширинах ${m.perenos_na.join(', ')}`);
   if (m?.perepolnenie_na.length) bledy.push(`переполнение: список меню шире навигации на ширинах ${m.perepolnenie_na.join(', ')}`);
+  if (m?.ryadami_na.length) bledy.push(`рядами: пункты меню в несколько рядов или ниже шапки на ширинах ${m.ryadami_na.slice(0, 10).join(', ')}${m.ryadami_na.length > 10 ? '…' : ''}`);
+  if (it.yashchik?.za_kraem_na.length) bledy.push(`за краем: бургер или знак за краем окна (или бургер не виден) на ширинах ${it.yashchik.za_kraem_na.slice(0, 10).join(', ')}`);
   if (m && m.min_zapas.zapas < 0) bledy.push(`запас меню меньше 0: ${m.min_zapas.zapas} на ${m.min_zapas.w}`);
   if (it.yashchik && it.yashchik.min_znak_burger.znak_burger < 0) bledy.push(`знак налезает на бургер: ${it.yashchik.min_znak_burger.znak_burger} на ${it.yashchik.min_znak_burger.w}`);
   if (it.znak_ne_138x38_na.length) bledy.push(`размер: знак не 138 × 38 на ширинах ${it.znak_ne_138x38_na.slice(0, 10).join(', ')}${it.znak_ne_138x38_na.length > 10 ? '…' : ''}`);
@@ -112,15 +123,19 @@ try {
     const DLINNY = 'The complete Max Payne series and its remake in order';
     const proby = [
       { nazwa: 'чистая страница', mut: null, zhdem: null },
-      { nazwa: 'длинный пункт меню', mut: { dom: new Function(`document.querySelector('.hdr__link').textContent = ${JSON.stringify(DLINNY)};`) }, zhdem: 'перенос' },
-      { nazwa: 'длинный пункт с nowrap', mut: { css: '.hdr__link { white-space: nowrap }', dom: new Function(`document.querySelector('.hdr__link').textContent = ${JSON.stringify(DLINNY + ' ' + DLINNY)};`) }, zhdem: 'переполнение' },
+      { nazwa: 'длинный пункт меню', mut: { dom: new Function(`document.querySelector('.hdr__link').textContent = ${JSON.stringify(DLINNY)};`) }, zhdem: ['перенос', 'рядами'] },
+      { nazwa: 'длинный пункт с nowrap', mut: { css: '.hdr__link { white-space: nowrap }', dom: new Function(`document.querySelector('.hdr__link').textContent = ${JSON.stringify(DLINNY + ' ' + DLINNY)};`) }, zhdem: ['переполнение', 'запас меню меньше 0'] },
       { nazwa: 'знак 130 px', mut: { css: '.hdr__brand svg.znak { width: 130px }' }, zhdem: 'размер' },
       { nazwa: 'бургер поверх знака', mut: { css: '@media (max-width: 960px) { .hdr__burger { position: absolute; left: 40px } }' }, zhdem: 'знак налезает' },
+      { nazwa: 'меню в два ряда (flex-wrap и лишние пункты)', mut: { css: '.hdr__list { flex-wrap: wrap }', dom: new Function("const ul = document.querySelector('.hdr__list'); for (let k = 0; k < 8; k++) ul.append(ul.firstElementChild.cloneNode(true));") }, zhdem: ['рядами'] },
+      { nazwa: 'бургер за краем окна', mut: { css: '@media (max-width: 960px) { .hdr__burger { position: relative; left: 300px } }' }, zhdem: 'за краем' },
     ];
     const wyniki = [];
     for (const p of proby) {
       const bledy = sad(itog(await zamer(null, p.mut, UZKIE)));
-      const ok = p.zhdem === null ? bledy.length === 0 : bledy.some((b) => b.startsWith(p.zhdem));
+      // Строго (R4-POLNOTA-2): каждый вид встретился и каждая строка — одного из видов.
+      const vidy = p.zhdem === null ? [] : [].concat(p.zhdem);
+      const ok = p.zhdem === null ? bledy.length === 0 : vidy.every((v) => bledy.some((b) => b.startsWith(v))) && bledy.every((b) => vidy.some((v) => b.startsWith(v)));
       wyniki.push({ nazwa: p.nazwa, zhdem: p.zhdem, ok, bledy });
       console.log(`${ok ? 'ok ' : 'НЕТ'}  ${p.nazwa}: ждём ${p.zhdem ? `отказ «${p.zhdem}»` : 'сверено'}, факт ${bledy.length ? bledy.join('; ') : 'сверено'}`);
     }

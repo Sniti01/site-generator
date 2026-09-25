@@ -1,24 +1,22 @@
 {
   "instrument": "kontrast-znaka.mjs",
   "brauzer": "Chromium 151.0.7922.34",
-  "instrument_sha256": "88d81eac15678fb13136880be3210124dad07feb58e9741f012ce0fbfca058c9",
-  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
-  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
+  "instrument_sha256": "6bbfd3939c593884a071dff163323a97b2c06c30cfdd696b5e90064b384cfef0",
+  "pomoshchnik_sha256": "acdb34d9bc9a495ee578cfe0d67d416058b88054fa0d6fd7bf2a8f22b2ba84f9",
+  "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
   "gryaz_sajta": [
-    "M sites/7thserpent.com/CLAUDE.md",
+    " M sites/7thserpent.com/CLAUDE.md",
     " M sites/7thserpent.com/DESIGN.md",
-    " M sites/7thserpent.com/_baseline/README.md",
-    " M sites/7thserpent.com/src/layouts/Base.astro",
-    " M sites/7thserpent.com/tools/znak.mjs"
+    " M sites/7thserpent.com/_baseline/README.md"
   ],
   "gryaz_instrumentov": [
-    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/vkladka-dowod.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs",
-    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/znak-podvala-okno.mjs"
+    "?? docs/reports/2026-09-24-7thserpent-znak/instrumenty/faza-perekladiny.mjs"
   ],
   "sborka": {
     "adres": "http://localhost:4331/",
@@ -448,7 +446,19 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
-      "kolco_fokusa": "rgb(242, 189, 110)",
+      "zalivka_znaka": {
+        "fonar": "rgb(236, 168, 74)",
+        "sneg": [
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)"
+        ]
+      },
+      "kolco_fokusa": {
+        "color": "rgb(242, 189, 110)",
+        "style": "solid",
+        "width": "2px"
+      },
       "polosa_shapki": 69,
       "sloj": [
         "a.hdr__brand",
@@ -476,7 +486,19 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
-      "kolco_fokusa": "rgb(242, 189, 110)",
+      "zalivka_znaka": {
+        "fonar": "rgb(236, 168, 74)",
+        "sneg": [
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)"
+        ]
+      },
+      "kolco_fokusa": {
+        "color": "rgb(242, 189, 110)",
+        "style": "solid",
+        "width": "2px"
+      },
       "polosa_shapki": 69,
       "sloj": [
         "a.hdr__brand",
@@ -504,7 +526,19 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
-      "kolco_fokusa": "rgb(242, 189, 110)",
+      "zalivka_znaka": {
+        "fonar": "rgb(236, 168, 74)",
+        "sneg": [
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)"
+        ]
+      },
+      "kolco_fokusa": {
+        "color": "rgb(242, 189, 110)",
+        "style": "solid",
+        "width": "2px"
+      },
       "polosa_shapki": 69,
       "sloj": [
         "a.hdr__brand",
@@ -532,7 +566,19 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
-      "kolco_fokusa": "rgb(242, 189, 110)",
+      "zalivka_znaka": {
+        "fonar": "rgb(236, 168, 74)",
+        "sneg": [
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)",
+          "rgb(229, 234, 238)"
+        ]
+      },
+      "kolco_fokusa": {
+        "color": "rgb(242, 189, 110)",
+        "style": "solid",
+        "width": "2px"
+      },
       "polosa_shapki": 69,
       "sloj": [
         "a.hdr__brand",

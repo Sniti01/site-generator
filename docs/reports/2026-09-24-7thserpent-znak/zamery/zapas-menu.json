@@ -1,15 +1,12 @@
 {
   "instrument": "zapas-menu.mjs",
   "brauzer": "Chromium 151.0.7922.34",
-  "instrument_sha256": "e5255d8f854a6979e3c52badf80049bc9fd63ff5d8adbbc2f4a8a8e8a741455e",
+  "instrument_sha256": "9b8722ff3933231a77185837a266d1acf8f8794d18d11eabdc9207c38efd68b2",
   "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
-  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
-  "gryaz_sajta": [
-    "M sites/7thserpent.com/tools/znak.mjs"
-  ],
+  "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
+  "gryaz_sajta": [],
   "gryaz_instrumentov": [
-    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
-    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs"
   ],
   "sborka": {
@@ -442,11 +439,14 @@
         "zapas": 279.25,
         "perenos": [],
         "perepolnenie": false,
+        "ryady": 1,
+        "nizhe_shapki": false,
         "znak_punkt": 24,
         "poisk": 0
       },
       "perenos_na": [],
       "perepolnenie_na": [],
+      "ryadami_na": [],
       "znak_punkt": [
         24
       ],
@@ -464,8 +464,10 @@
           138,
           38
         ],
-        "znak_burger": 118
-      }
+        "znak_burger": 118,
+        "za_kraem": false
+      },
+      "za_kraem_na": []
     },
     "znak_ne_138x38_na": []
   },
@@ -486,11 +488,14 @@
             "zapas": 181.31,
             "perenos": [],
             "perepolnenie": false,
+            "ryady": 1,
+            "nizhe_shapki": false,
             "znak_punkt": 24,
             "poisk": 0
           },
           "perenos_na": [],
           "perepolnenie_na": [],
+          "ryadami_na": [],
           "znak_punkt": [
             24
           ],
@@ -508,8 +513,10 @@
               138,
               38
             ],
-            "znak_burger": 118
-          }
+            "znak_burger": 118,
+            "za_kraem": false
+          },
+          "za_kraem_na": []
         },
         "znak_ne_138x38_na": []
       },
@@ -530,11 +537,14 @@
             "zapas": 83.39,
             "perenos": [],
             "perepolnenie": false,
+            "ryady": 1,
+            "nizhe_shapki": false,
             "znak_punkt": 24,
             "poisk": 0
           },
           "perenos_na": [],
           "perepolnenie_na": [],
+          "ryadami_na": [],
           "znak_punkt": [
             24
           ],
@@ -552,8 +562,10 @@
               138,
               38
             ],
-            "znak_burger": 118
-          }
+            "znak_burger": 118,
+            "za_kraem": false
+          },
+          "za_kraem_na": []
         },
         "znak_ne_138x38_na": []
       },
@@ -568,7 +580,8 @@
         138,
         38
       ],
-      "znak_burger": 118
+      "znak_burger": 118,
+      "za_kraem": false
     },
     {
       "w": 321,
@@ -577,7 +590,8 @@
         138,
         38
       ],
-      "znak_burger": 119
+      "znak_burger": 119,
+      "za_kraem": false
     },
     {
       "w": 322,
@@ -586,7 +600,8 @@
         138,
         38
       ],
-      "znak_burger": 120
+      "znak_burger": 120,
+      "za_kraem": false
     },
     {
       "w": 323,
@@ -595,7 +610,8 @@
         138,
         38
       ],
-      "znak_burger": 121
+      "znak_burger": 121,
+      "za_kraem": false
     },
     {
       "w": 324,
@@ -604,7 +620,8 @@
         138,
         38
       ],
-      "znak_burger": 122
+      "znak_burger": 122,
+      "za_kraem": false
     },
     {
       "w": 325,
@@ -613,7 +630,8 @@
         138,
         38
       ],
-      "znak_burger": 123
+      "znak_burger": 123,
+      "za_kraem": false
     },
     {
       "w": 326,
@@ -622,7 +640,8 @@
         138,
         38
       ],
-      "znak_burger": 124
+      "znak_burger": 124,
+      "za_kraem": false
     },
     {
       "w": 327,
@@ -631,7 +650,8 @@
         138,
         38
       ],
-      "znak_burger": 125
+      "znak_burger": 125,
+      "za_kraem": false
     },
     {
       "w": 328,
@@ -640,7 +660,8 @@
         138,
         38
       ],
-      "znak_burger": 126
+      "znak_burger": 126,
+      "za_kraem": false
     },
     {
       "w": 329,
@@ -649,7 +670,8 @@
         138,
         38
       ],
-      "znak_burger": 127
+      "znak_burger": 127,
+      "za_kraem": false
     },
     {
       "w": 330,
@@ -658,7 +680,8 @@
         138,
         38
       ],
-      "znak_burger": 128
+      "znak_burger": 128,
+      "za_kraem": false
     },
     {
       "w": 331,
@@ -667,7 +690,8 @@
         138,
         38
       ],
-      "znak_burger": 129
+      "znak_burger": 129,
+      "za_kraem": false
     },
     {
       "w": 332,
@@ -676,7 +700,8 @@
         138,
         38
       ],
-      "znak_burger": 130
+      "znak_burger": 130,
+      "za_kraem": false
     },
     {
       "w": 333,
@@ -685,7 +710,8 @@
         138,
         38
       ],
-      "znak_burger": 131
+      "znak_burger": 131,
+      "za_kraem": false
     },
     {
       "w": 334,
@@ -694,7 +720,8 @@
         138,
         38
       ],
-      "znak_burger": 132
+      "znak_burger": 132,
+      "za_kraem": false
     },
     {
       "w": 335,
@@ -703,7 +730,8 @@
         138,
         38
       ],
-      "znak_burger": 133
+      "znak_burger": 133,
+      "za_kraem": false
     },
     {
       "w": 336,
@@ -712,7 +740,8 @@
         138,
         38
       ],
-      "znak_burger": 134
+      "znak_burger": 134,
+      "za_kraem": false
     },
     {
       "w": 337,
@@ -721,7 +750,8 @@
         138,
         38
       ],
-      "znak_burger": 135
+      "znak_burger": 135,
+      "za_kraem": false
     },
     {
       "w": 338,
@@ -730,7 +760,8 @@
         138,
         38
       ],
-      "znak_burger": 136
+      "znak_burger": 136,
+      "za_kraem": false
     },
     {
       "w": 339,
@@ -739,7 +770,8 @@
         138,
         38
       ],
-      "znak_burger": 137
+      "znak_burger": 137,
+      "za_kraem": false
     },
     {
       "w": 340,
@@ -748,7 +780,8 @@
         138,
         38
       ],
-      "znak_burger": 138
+      "znak_burger": 138,
+      "za_kraem": false
     },
     {
       "w": 341,
@@ -757,7 +790,8 @@
         138,
         38
       ],
-      "znak_burger": 139
+      "znak_burger": 139,
+      "za_kraem": false
     },
     {
       "w": 342,
@@ -766,7 +800,8 @@
         138,
         38
       ],
-      "znak_burger": 140
+      "znak_burger": 140,
+      "za_kraem": false
     },
     {
       "w": 343,
@@ -775,7 +810,8 @@
         138,
         38
       ],
-      "znak_burger": 141
+      "znak_burger": 141,
+      "za_kraem": false
     },
     {
       "w": 344,
@@ -784,7 +820,8 @@
         138,
         38
       ],
-      "znak_burger": 142
+      "znak_burger": 142,
+      "za_kraem": false
     },
     {
       "w": 345,
@@ -793,7 +830,8 @@
         138,
         38
       ],
-      "znak_burger": 143
+      "znak_burger": 143,
+      "za_kraem": false
     },
     {
       "w": 346,
@@ -802,7 +840,8 @@
         138,
         38
       ],
-      "znak_burger": 144
+      "znak_burger": 144,
+      "za_kraem": false
     },
     {
       "w": 347,
@@ -811,7 +850,8 @@
         138,
         38
       ],
-      "znak_burger": 145
+      "znak_burger": 145,
+      "za_kraem": false
     },
     {
       "w": 348,
@@ -820,7 +860,8 @@
         138,
         38
       ],
-      "znak_burger": 146
+      "znak_burger": 146,
+      "za_kraem": false
     },
     {
       "w": 349,
@@ -829,7 +870,8 @@
         138,
         38
       ],
-      "znak_burger": 147
+      "znak_burger": 147,
+      "za_kraem": false
     },
     {
       "w": 350,
@@ -838,7 +880,8 @@
         138,
         38
       ],
-      "znak_burger": 148
+      "znak_burger": 148,
+      "za_kraem": false
     },
     {
       "w": 351,
@@ -847,7 +890,8 @@
         138,
         38
       ],
-      "znak_burger": 149
+      "znak_burger": 149,
+      "za_kraem": false
     },
     {
       "w": 352,
@@ -856,7 +900,8 @@
         138,
         38
       ],
-      "znak_burger": 150
+      "znak_burger": 150,
+      "za_kraem": false
     },
     {
       "w": 353,
@@ -865,7 +910,8 @@
         138,
         38
       ],
-      "znak_burger": 151
+      "znak_burger": 151,
+      "za_kraem": false
     },
     {
       "w": 354,
@@ -874,7 +920,8 @@
         138,
         38
       ],
-      "znak_burger": 152
+      "znak_burger": 152,
+      "za_kraem": false
     },
     {
       "w": 355,
@@ -883,7 +930,8 @@
         138,
         38
       ],
-      "znak_burger": 153
+      "znak_burger": 153,
+      "za_kraem": false
     },
     {
       "w": 356,
@@ -892,7 +940,8 @@
         138,
         38
       ],
-      "znak_burger": 154
+      "znak_burger": 154,
+      "za_kraem": false
     },
     {
       "w": 357,
@@ -901,7 +950,8 @@
         138,
         38
       ],
-      "znak_burger": 155
+      "znak_burger": 155,
+      "za_kraem": false
     },
     {
       "w": 358,
@@ -910,7 +960,8 @@
         138,
         38
       ],
-      "znak_burger": 156
+      "znak_burger": 156,
+      "za_kraem": false
     },
     {
       "w": 359,
@@ -919,7 +970,8 @@
         138,
         38
       ],
-      "znak_burger": 157
+      "znak_burger": 157,
+      "za_kraem": false
     },
     {
       "w": 360,
@@ -928,7 +980,8 @@
         138,
         38
       ],
-      "znak_burger": 158
+      "znak_burger": 158,
+      "za_kraem": false
     },
     {
       "w": 361,
@@ -937,7 +990,8 @@
         138,
         38
       ],
-      "znak_burger": 159
+      "znak_burger": 159,
+      "za_kraem": false
     },
     {
       "w": 362,
@@ -946,7 +1000,8 @@
         138,
         38
       ],
-      "znak_burger": 160
+      "znak_burger": 160,
+      "za_kraem": false
     },
     {
       "w": 363,
@@ -955,7 +1010,8 @@
         138,
         38
       ],
-      "znak_burger": 161
+      "znak_burger": 161,
+      "za_kraem": false
     },
     {
       "w": 364,
@@ -964,7 +1020,8 @@
         138,
         38
       ],
-      "znak_burger": 162
+      "znak_burger": 162,
+      "za_kraem": false
     },
     {
       "w": 365,
@@ -973,7 +1030,8 @@
         138,
         38
       ],
-      "znak_burger": 163
+      "znak_burger": 163,
+      "za_kraem": false
     },
     {
       "w": 366,
@@ -982,7 +1040,8 @@
         138,
         38
       ],
-      "znak_burger": 164
+      "znak_burger": 164,
+      "za_kraem": false
     },
     {
       "w": 367,
@@ -991,7 +1050,8 @@
         138,
         38
       ],
-      "znak_burger": 165
+      "znak_burger": 165,
+      "za_kraem": false
     },
     {
       "w": 368,
@@ -1000,7 +1060,8 @@
         138,
         38
       ],
-      "znak_burger": 166
+      "znak_burger": 166,
+      "za_kraem": false
     },
     {
       "w": 369,
@@ -1009,7 +1070,8 @@
         138,
         38
       ],
-      "znak_burger": 167
+      "znak_burger": 167,
+      "za_kraem": false
     },
     {
       "w": 370,
@@ -1018,7 +1080,8 @@
         138,
         38
       ],
-      "znak_burger": 168
+      "znak_burger": 168,
+      "za_kraem": false
     },
     {
       "w": 371,
@@ -1027,7 +1090,8 @@
         138,
         38
       ],
-      "znak_burger": 169
+      "znak_burger": 169,
+      "za_kraem": false
     },
     {
       "w": 372,
@@ -1036,7 +1100,8 @@
         138,
         38
       ],
-      "znak_burger": 170
+      "znak_burger": 170,
+      "za_kraem": false
     },
     {
       "w": 373,
@@ -1045,7 +1110,8 @@
         138,
         38
       ],
-      "znak_burger": 171
+      "znak_burger": 171,
+      "za_kraem": false
     },
     {
       "w": 374,
@@ -1054,7 +1120,8 @@
         138,
         38
       ],
-      "znak_burger": 172
+      "znak_burger": 172,
+      "za_kraem": false
     },
     {
       "w": 375,
@@ -1063,7 +1130,8 @@
         138,
         38
       ],
-      "znak_burger": 173
+      "znak_burger": 173,
+      "za_kraem": false
     },
     {
       "w": 376,
@@ -1072,7 +1140,8 @@
         138,
         38
       ],
-      "znak_burger": 174
+      "znak_burger": 174,
+      "za_kraem": false
     },
     {
       "w": 377,
@@ -1081,7 +1150,8 @@
         138,
         38
       ],
-      "znak_burger": 175
+      "znak_burger": 175,
+      "za_kraem": false
     },
     {
       "w": 378,
@@ -1090,7 +1160,8 @@
         138,
         38
       ],
-      "znak_burger": 176
+      "znak_burger": 176,
+      "za_kraem": false
     },
     {
       "w": 379,
@@ -1099,7 +1170,8 @@
         138,
         38
       ],
-      "znak_burger": 177
+      "znak_burger": 177,
+      "za_kraem": false
     },
     {
       "w": 380,
@@ -1108,7 +1180,8 @@
         138,
         38
       ],
-      "znak_burger": 178
+      "znak_burger": 178,
+      "za_kraem": false
     },
     {
       "w": 381,
@@ -1117,7 +1190,8 @@
         138,
         38
       ],
-      "znak_burger": 179
+      "znak_burger": 179,
+      "za_kraem": false
     },
     {
       "w": 382,
@@ -1126,7 +1200,8 @@
         138,
         38
       ],
-      "znak_burger": 180
+      "znak_burger": 180,
+      "za_kraem": false
     },
     {
       "w": 383,
@@ -1135,7 +1210,8 @@
         138,
         38
       ],
-      "znak_burger": 181
+      "znak_burger": 181,
+      "za_kraem": false
     },
     {
       "w": 384,
@@ -1144,7 +1220,8 @@
         138,
         38
       ],
-      "znak_burger": 182
+      "znak_burger": 182,
+      "za_kraem": false
     },
     {
       "w": 385,
@@ -1153,7 +1230,8 @@
         138,
         38
       ],
-      "znak_burger": 183
+      "znak_burger": 183,
+      "za_kraem": false
     },
     {
       "w": 386,
@@ -1162,7 +1240,8 @@
         138,
         38
       ],
-      "znak_burger": 184
+      "znak_burger": 184,
+      "za_kraem": false
     },
     {
       "w": 387,
@@ -1171,7 +1250,8 @@
         138,
         38
       ],
-      "znak_burger": 185
+      "znak_burger": 185,
+      "za_kraem": false
     },
     {
       "w": 388,
@@ -1180,7 +1260,8 @@
         138,
         38
       ],
-      "znak_burger": 186
+      "znak_burger": 186,
+      "za_kraem": false
     },
     {
       "w": 389,
@@ -1189,7 +1270,8 @@
         138,
         38
       ],
-      "znak_burger": 187
+      "znak_burger": 187,
+      "za_kraem": false
     },
     {
       "w": 390,
@@ -1198,7 +1280,8 @@
         138,
         38
       ],
-      "znak_burger": 188
+      "znak_burger": 188,
+      "za_kraem": false
     },
     {
       "w": 391,
@@ -1207,7 +1290,8 @@
         138,
         38
       ],
-      "znak_burger": 189
+      "znak_burger": 189,
+      "za_kraem": false
     },
     {
       "w": 392,
@@ -1216,7 +1300,8 @@
         138,
         38
       ],
-      "znak_burger": 190
+      "znak_burger": 190,
+      "za_kraem": false
     },
     {
       "w": 393,
@@ -1225,7 +1310,8 @@
         138,
         38
       ],
-      "znak_burger": 191
+      "znak_burger": 191,
+      "za_kraem": false
     },
     {
       "w": 394,
@@ -1234,7 +1320,8 @@
         138,
         38
       ],
-      "znak_burger": 192
+      "znak_burger": 192,
+      "za_kraem": false
     },
     {
       "w": 395,
@@ -1243,7 +1330,8 @@
         138,
         38
       ],
-      "znak_burger": 193
+      "znak_burger": 193,
+      "za_kraem": false
     },
     {
       "w": 396,
@@ -1252,7 +1340,8 @@
         138,
         38
       ],
-      "znak_burger": 194
+      "znak_burger": 194,
+      "za_kraem": false
     },
     {
       "w": 397,
@@ -1261,7 +1350,8 @@
         138,
         38
       ],
-      "znak_burger": 195
+      "znak_burger": 195,
+      "za_kraem": false
     },
     {
       "w": 398,
@@ -1270,7 +1360,8 @@
         138,
         38
       ],
-      "znak_burger": 196
+      "znak_burger": 196,
+      "za_kraem": false
     },
     {
       "w": 399,
@@ -1279,7 +1370,8 @@
         138,
         38
       ],
-      "znak_burger": 197
+      "znak_burger": 197,
+      "za_kraem": false
     },
     {
       "w": 400,
@@ -1288,7 +1380,8 @@
         138,
         38
       ],
-      "znak_burger": 198
+      "znak_burger": 198,
+      "za_kraem": false
     },
     {
       "w": 401,
@@ -1297,7 +1390,8 @@
         138,
         38
       ],
-      "znak_burger": 198.94
+      "znak_burger": 198.94,
+      "za_kraem": false
     },
     {
       "w": 402,
@@ -1306,7 +1400,8 @@
         138,
         38
       ],
-      "znak_burger": 199.84
+      "znak_burger": 199.84,
+      "za_kraem": false
     },
     {
       "w": 403,
@@ -1315,7 +1410,8 @@
         138,
         38
       ],
-      "znak_burger": 200.78
+      "znak_burger": 200.78,
+      "za_kraem": false
     },
     {
       "w": 404,
@@ -1324,7 +1420,8 @@
         138,
         38
       ],
-      "znak_burger": 201.69
+      "znak_burger": 201.69,
+      "za_kraem": false
     },
     {
       "w": 405,
@@ -1333,7 +1430,8 @@
         138,
         38
       ],
-      "znak_burger": 202.63
+      "znak_burger": 202.63,
+      "za_kraem": false
     },
     {
       "w": 406,
@@ -1342,7 +1440,8 @@
         138,
         38
       ],
-      "znak_burger": 203.53
+      "znak_burger": 203.53,
+      "za_kraem": false
     },
     {
       "w": 407,
@@ -1351,7 +1450,8 @@
         138,
         38
       ],
-      "znak_burger": 204.47
+      "znak_burger": 204.47,
+      "za_kraem": false
     },
     {
       "w": 408,
@@ -1360,7 +1460,8 @@
         138,
         38
       ],
-      "znak_burger": 205.38
+      "znak_burger": 205.38,
+      "za_kraem": false
     },
     {
       "w": 409,
@@ -1369,7 +1470,8 @@
         138,
         38
       ],
-      "znak_burger": 206.28
+      "znak_burger": 206.28,
+      "za_kraem": false
     },
     {
       "w": 410,
@@ -1378,7 +1480,8 @@
         138,
         38
       ],
-      "znak_burger": 207.22
+      "znak_burger": 207.22,
+      "za_kraem": false
     },
     {
       "w": 411,
@@ -1387,7 +1490,8 @@
         138,
         38
       ],
-      "znak_burger": 208.13
+      "znak_burger": 208.13,
+      "za_kraem": false
     },
     {
       "w": 412,
@@ -1396,7 +1500,8 @@
         138,
         38
       ],
-      "znak_burger": 209.06
+      "znak_burger": 209.06,
+      "za_kraem": false
     },
     {
       "w": 413,
@@ -1405,7 +1510,8 @@
         138,
         38
       ],
-      "znak_burger": 209.97
+      "znak_burger": 209.97,
+      "za_kraem": false
     },
     {
       "w": 414,
@@ -1414,7 +1520,8 @@
         138,
         38
       ],
-      "znak_burger": 210.91
+      "znak_burger": 210.91,
+      "za_kraem": false
     },
     {
       "w": 415,
@@ -1423,7 +1530,8 @@
         138,
         38
       ],
-      "znak_burger": 211.81
+      "znak_burger": 211.81,
+      "za_kraem": false
     },
     {
       "w": 416,
@@ -1432,7 +1540,8 @@
         138,
         38
       ],
-      "znak_burger": 212.75
+      "znak_burger": 212.75,
+      "za_kraem": false
     },
     {
       "w": 417,
@@ -1441,7 +1550,8 @@
         138,
         38
       ],
-      "znak_burger": 213.66
+      "znak_burger": 213.66,
+      "za_kraem": false
     },
     {
       "w": 418,
@@ -1450,7 +1560,8 @@
         138,
         38
       ],
-      "znak_burger": 214.56
+      "znak_burger": 214.56,
+      "za_kraem": false
     },
     {
       "w": 419,
@@ -1459,7 +1570,8 @@
         138,
         38
       ],
-      "znak_burger": 215.5
+      "znak_burger": 215.5,
+      "za_kraem": false
     },
     {
       "w": 420,
@@ -1468,7 +1580,8 @@
         138,
         38
       ],
-      "znak_burger": 216.41
+      "znak_burger": 216.41,
+      "za_kraem": false
     },
     {
       "w": 421,
@@ -1477,7 +1590,8 @@
         138,
         38
       ],
-      "znak_burger": 217.34
+      "znak_burger": 217.34,
+      "za_kraem": false
     },
     {
       "w": 422,
@@ -1486,7 +1600,8 @@
         138,
         38
       ],
-      "znak_burger": 218.25
+      "znak_burger": 218.25,
+      "za_kraem": false
     },
     {
       "w": 423,
@@ -1495,7 +1610,8 @@
         138,
         38
       ],
-      "znak_burger": 219.19
+      "znak_burger": 219.19,
+      "za_kraem": false
     },
     {
       "w": 424,
@@ -1504,7 +1620,8 @@
         138,
         38
       ],
-      "znak_burger": 220.09
+      "znak_burger": 220.09,
+      "za_kraem": false
     },
     {
       "w": 425,
@@ -1513,7 +1630,8 @@
         138,
         38
       ],
-      "znak_burger": 221
+      "znak_burger": 221,
+      "za_kraem": false
     },
     {
       "w": 426,
@@ -1522,7 +1640,8 @@
         138,
         38
       ],
-      "znak_burger": 221.94
+      "znak_burger": 221.94,
+      "za_kraem": false
     },
     {
       "w": 427,
@@ -1531,7 +1650,8 @@
         138,
         38
       ],
-      "znak_burger": 222.84
+      "znak_burger": 222.84,
+      "za_kraem": false
     },
     {
       "w": 428,
@@ -1540,7 +1660,8 @@
         138,
         38
       ],
-      "znak_burger": 223.78
+      "znak_burger": 223.78,
+      "za_kraem": false
     },
     {
       "w": 429,
@@ -1549,7 +1670,8 @@
         138,
         38
       ],
-      "znak_burger": 224.69
+      "znak_burger": 224.69,
+      "za_kraem": false
     },
     {
       "w": 430,
@@ -1558,7 +1680,8 @@
         138,
         38
       ],
-      "znak_burger": 225.63
+      "znak_burger": 225.63,
+      "za_kraem": false
     },
     {
       "w": 431,
@@ -1567,7 +1690,8 @@
         138,
         38
       ],
-      "znak_burger": 226.53
+      "znak_burger": 226.53,
+      "za_kraem": false
     },
     {
       "w": 432,
@@ -1576,7 +1700,8 @@
         138,
         38
       ],
-      "znak_burger": 227.47
+      "znak_burger": 227.47,
+      "za_kraem": false
     },
     {
       "w": 433,
@@ -1585,7 +1710,8 @@
         138,
         38
       ],
-      "znak_burger": 228.38
+      "znak_burger": 228.38,
+      "za_kraem": false
     },
     {
       "w": 434,
@@ -1594,7 +1720,8 @@
         138,
         38
       ],
-      "znak_burger": 229.28
+      "znak_burger": 229.28,
+      "za_kraem": false
     },
     {
       "w": 435,
@@ -1603,7 +1730,8 @@
         138,
         38
       ],
-      "znak_burger": 230.22
+      "znak_burger": 230.22,
+      "za_kraem": false
     },
     {
       "w": 436,
@@ -1612,7 +1740,8 @@
         138,
         38
       ],
-      "znak_burger": 231.13
+      "znak_burger": 231.13,
+      "za_kraem": false
     },
     {
       "w": 437,
@@ -1621,7 +1750,8 @@
         138,
         38
       ],
-      "znak_burger": 232.06
+      "znak_burger": 232.06,
+      "za_kraem": false
     },
     {
       "w": 438,
@@ -1630,7 +1760,8 @@
         138,
         38
       ],
-      "znak_burger": 232.97
+      "znak_burger": 232.97,
+      "za_kraem": false
     },
     {
       "w": 439,
@@ -1639,7 +1770,8 @@
         138,
         38
       ],
-      "znak_burger": 233.91
+      "znak_burger": 233.91,
+      "za_kraem": false
     },
     {
       "w": 440,
@@ -1648,7 +1780,8 @@
         138,
         38
       ],
-      "znak_burger": 234.81
+      "znak_burger": 234.81,
+      "za_kraem": false
     },
     {
       "w": 441,
@@ -1657,7 +1790,8 @@
         138,
         38
       ],
-      "znak_burger": 235.75
+      "znak_burger": 235.75,
+      "za_kraem": false
     },
     {
       "w": 442,
@@ -1666,7 +1800,8 @@
         138,
         38
       ],
-      "znak_burger": 236.66
+      "znak_burger": 236.66,
+      "za_kraem": false
     },
     {
       "w": 443,
@@ -1675,7 +1810,8 @@
         138,
         38
       ],
-      "znak_burger": 237.56
+      "znak_burger": 237.56,
+      "za_kraem": false
     },
     {
       "w": 444,
@@ -1684,7 +1820,8 @@
         138,
         38
       ],
-      "znak_burger": 238.5
+      "znak_burger": 238.5,
+      "za_kraem": false
     },
     {
       "w": 445,
@@ -1693,7 +1830,8 @@
         138,
         38
       ],
-      "znak_burger": 239.41
+      "znak_burger": 239.41,
+      "za_kraem": false
     },
     {
       "w": 446,
@@ -1702,7 +1840,8 @@
         138,
         38
       ],
-      "znak_burger": 240.34
+      "znak_burger": 240.34,
+      "za_kraem": false
     },
     {
       "w": 447,
@@ -1711,7 +1850,8 @@
         138,
         38
       ],
-      "znak_burger": 241.25
+      "znak_burger": 241.25,
+      "za_kraem": false
     },
     {
       "w": 448,
@@ -1720,7 +1860,8 @@
         138,
         38
       ],
-      "znak_burger": 242.19
+      "znak_burger": 242.19,
+      "za_kraem": false
     },
     {
       "w": 449,
@@ -1729,7 +1870,8 @@
         138,
         38
       ],
-      "znak_burger": 243.09
+      "znak_burger": 243.09,
+      "za_kraem": false
     },
     {
       "w": 450,
@@ -1738,7 +1880,8 @@
         138,
         38
       ],
-      "znak_burger": 244
+      "znak_burger": 244,
+      "za_kraem": false
     },
     {
       "w": 451,
@@ -1747,7 +1890,8 @@
         138,
         38
       ],
-      "znak_burger": 244.94
+      "znak_burger": 244.94,
+      "za_kraem": false
     },
     {
       "w": 452,
@@ -1756,7 +1900,8 @@
         138,
         38
       ],
-      "znak_burger": 245.84
+      "znak_burger": 245.84,
+      "za_kraem": false
     },
     {
       "w": 453,
@@ -1765,7 +1910,8 @@
         138,
         38
       ],
-      "znak_burger": 246.78
+      "znak_burger": 246.78,
+      "za_kraem": false
     },
     {
       "w": 454,
@@ -1774,7 +1920,8 @@
         138,
         38
       ],
-      "znak_burger": 247.69
+      "znak_burger": 247.69,
+      "za_kraem": false
     },
     {
       "w": 455,
@@ -1783,7 +1930,8 @@
         138,
         38
       ],
-      "znak_burger": 248.63
+      "znak_burger": 248.63,
+      "za_kraem": false
     },
     {
       "w": 456,
@@ -1792,7 +1940,8 @@
         138,
         38
       ],
-      "znak_burger": 249.53
+      "znak_burger": 249.53,
+      "za_kraem": false
     },
     {
       "w": 457,
@@ -1801,7 +1950,8 @@
         138,
         38
       ],
-      "znak_burger": 250.47
+      "znak_burger": 250.47,
+      "za_kraem": false
     },
     {
       "w": 458,
@@ -1810,7 +1960,8 @@
         138,
         38
       ],
-      "znak_burger": 251.38
+      "znak_burger": 251.38,
+      "za_kraem": false
     },
     {
       "w": 459,
@@ -1819,7 +1970,8 @@
         138,
         38
       ],
-      "znak_burger": 252.28
+      "znak_burger": 252.28,
+      "za_kraem": false
     },
     {
       "w": 460,
@@ -1828,7 +1980,8 @@
         138,
         38
       ],
-      "znak_burger": 253.22
+      "znak_burger": 253.22,
+      "za_kraem": false
     },
     {
       "w": 461,
@@ -1837,7 +1990,8 @@
         138,
         38
       ],
-      "znak_burger": 254.13
+      "znak_burger": 254.13,
+      "za_kraem": false
     },
     {
       "w": 462,
@@ -1846,7 +2000,8 @@
         138,
         38
       ],
-      "znak_burger": 255.06
+      "znak_burger": 255.06,
+      "za_kraem": false
     },
     {
       "w": 463,
@@ -1855,7 +2010,8 @@
         138,
         38
       ],
-      "znak_burger": 255.97
+      "znak_burger": 255.97,
+      "za_kraem": false
     },
     {
       "w": 464,
@@ -1864,7 +2020,8 @@
         138,
         38
       ],
-      "znak_burger": 256.91
+      "znak_burger": 256.91,
+      "za_kraem": false
     },
     {
       "w": 465,
@@ -1873,7 +2030,8 @@
         138,
         38
       ],
-      "znak_burger": 257.81
+      "znak_burger": 257.81,
+      "za_kraem": false
     },
     {
       "w": 466,
@@ -1882,7 +2040,8 @@
         138,
         38
       ],
-      "znak_burger": 258.75
+      "znak_burger": 258.75,
+      "za_kraem": false
     },
     {
       "w": 467,
@@ -1891,7 +2050,8 @@
         138,
         38
       ],
-      "znak_burger": 259.66
+      "znak_burger": 259.66,
+      "za_kraem": false
     },
     {
       "w": 468,
@@ -1900,7 +2060,8 @@
         138,
         38
       ],
-      "znak_burger": 260.56
+      "znak_burger": 260.56,
+      "za_kraem": false
     },
     {
       "w": 469,
@@ -1909,7 +2070,8 @@
         138,
         38
       ],
-      "znak_burger": 261.5
+      "znak_burger": 261.5,
+      "za_kraem": false
     },
     {
       "w": 470,
@@ -1918,7 +2080,8 @@
         138,
         38
       ],
-      "znak_burger": 262.41
+      "znak_burger": 262.41,
+      "za_kraem": false
     },
     {
       "w": 471,
@@ -1927,7 +2090,8 @@
         138,
         38
       ],
-      "znak_burger": 263.34
+      "znak_burger": 263.34,
+      "za_kraem": false
     },
     {
       "w": 472,
@@ -1936,7 +2100,8 @@
         138,
         38
       ],
-      "znak_burger": 264.25
+      "znak_burger": 264.25,
+      "za_kraem": false
     },
     {
       "w": 473,
@@ -1945,7 +2110,8 @@
         138,
         38
       ],
-      "znak_burger": 265.19
+      "znak_burger": 265.19,
+      "za_kraem": false
     },
     {
       "w": 474,
@@ -1954,7 +2120,8 @@
         138,
         38
       ],
-      "znak_burger": 266.09
+      "znak_burger": 266.09,
+      "za_kraem": false
     },
     {
       "w": 475,
@@ -1963,7 +2130,8 @@
         138,
         38
       ],
-      "znak_burger": 267
+      "znak_burger": 267,
+      "za_kraem": false
     },
     {
       "w": 476,
@@ -1972,7 +2140,8 @@
         138,
         38
       ],
-      "znak_burger": 267.94
+      "znak_burger": 267.94,
+      "za_kraem": false
     },
     {
       "w": 477,
@@ -1981,7 +2150,8 @@
         138,
         38
       ],
-      "znak_burger": 268.84
+      "znak_burger": 268.84,
+      "za_kraem": false
     },
     {
       "w": 478,
@@ -1990,7 +2160,8 @@
         138,
         38
       ],
-      "znak_burger": 269.78
+      "znak_burger": 269.78,
+      "za_kraem": false
     },
     {
       "w": 479,
@@ -1999,7 +2170,8 @@
         138,
         38
       ],
-      "znak_burger": 270.69
+      "znak_burger": 270.69,
+      "za_kraem": false
     },
     {
       "w": 480,
@@ -2008,7 +2180,8 @@
         138,
         38
       ],
-      "znak_burger": 271.63
+      "znak_burger": 271.63,
+      "za_kraem": false
     },
     {
       "w": 481,
@@ -2017,7 +2190,8 @@
         138,
         38
       ],
-      "znak_burger": 272.53
+      "znak_burger": 272.53,
+      "za_kraem": false
     },
     {
       "w": 482,
@@ -2026,7 +2200,8 @@
         138,
         38
       ],
-      "znak_burger": 273.47
+      "znak_burger": 273.47,
+      "za_kraem": false
     },
     {
       "w": 483,
@@ -2035,7 +2210,8 @@
         138,
         38
       ],
-      "znak_burger": 274.38
+      "znak_burger": 274.38,
+      "za_kraem": false
     },
     {
       "w": 484,
@@ -2044,7 +2220,8 @@
         138,
         38
       ],
-      "znak_burger": 275.28
+      "znak_burger": 275.28,
+      "za_kraem": false
     },
     {
       "w": 485,
@@ -2053,7 +2230,8 @@
         138,
         38
       ],
-      "znak_burger": 276.22
+      "znak_burger": 276.22,
+      "za_kraem": false
     },
     {
       "w": 486,
@@ -2062,7 +2240,8 @@
         138,
         38
       ],
-      "znak_burger": 277.13
+      "znak_burger": 277.13,
+      "za_kraem": false
     },
     {
       "w": 487,
@@ -2071,7 +2250,8 @@
         138,
         38
       ],
-      "znak_burger": 278.06
+      "znak_burger": 278.06,
+      "za_kraem": false
     },
     {
       "w": 488,
@@ -2080,7 +2260,8 @@
         138,
         38
       ],
-      "znak_burger": 278.97
+      "znak_burger": 278.97,
+      "za_kraem": false
     },
     {
       "w": 489,
@@ -2089,7 +2270,8 @@
         138,
         38
       ],
-      "znak_burger": 279.91
+      "znak_burger": 279.91,
+      "za_kraem": false
     },
     {
       "w": 490,
@@ -2098,7 +2280,8 @@
         138,
         38
       ],
-      "znak_burger": 280.81
+      "znak_burger": 280.81,
+      "za_kraem": false
     },
     {
       "w": 491,
@@ -2107,7 +2290,8 @@
         138,
         38
       ],
-      "znak_burger": 281.75
+      "znak_burger": 281.75,
+      "za_kraem": false
     },
     {
       "w": 492,
@@ -2116,7 +2300,8 @@
         138,
         38
       ],
-      "znak_burger": 282.66
+      "znak_burger": 282.66,
+      "za_kraem": false
     },
     {
       "w": 493,
@@ -2125,7 +2310,8 @@
         138,
         38
       ],
-      "znak_burger": 283.56
+      "znak_burger": 283.56,
+      "za_kraem": false
     },
     {
       "w": 494,
@@ -2134,7 +2320,8 @@
         138,
         38
       ],
-      "znak_burger": 284.5
+      "znak_burger": 284.5,
+      "za_kraem": false
     },
     {
       "w": 495,
@@ -2143,7 +2330,8 @@
         138,
         38
       ],
-      "znak_burger": 285.41
+      "znak_burger": 285.41,
+      "za_kraem": false
     },
     {
       "w": 496,
@@ -2152,7 +2340,8 @@
         138,
         38
       ],
-      "znak_burger": 286.34
+      "znak_burger": 286.34,
+      "za_kraem": false
     },
     {
       "w": 497,
@@ -2161,7 +2350,8 @@
         138,
         38
       ],
-      "znak_burger": 287.25
+      "znak_burger": 287.25,
+      "za_kraem": false
     },
     {
       "w": 498,
@@ -2170,7 +2360,8 @@
         138,
         38
       ],
-      "znak_burger": 288.19
+      "znak_burger": 288.19,
+      "za_kraem": false
     },
     {
       "w": 499,
@@ -2179,7 +2370,8 @@
         138,
         38
       ],
-      "znak_burger": 289.09
+      "znak_burger": 289.09,
+      "za_kraem": false
     },
     {
       "w": 500,
@@ -2188,7 +2380,8 @@
         138,
         38
       ],
-      "znak_burger": 290
+      "znak_burger": 290,
+      "za_kraem": false
     },
     {
       "w": 501,
@@ -2197,7 +2390,8 @@
         138,
         38
       ],
-      "znak_burger": 290.94
+      "znak_burger": 290.94,
+      "za_kraem": false
     },
     {
       "w": 502,
@@ -2206,7 +2400,8 @@
         138,
         38
       ],
-      "znak_burger": 291.84
+      "znak_burger": 291.84,
+      "za_kraem": false
     },
     {
       "w": 503,
@@ -2215,7 +2410,8 @@
         138,
         38
       ],
-      "znak_burger": 292.78
+      "znak_burger": 292.78,
+      "za_kraem": false
     },
     {
       "w": 504,
@@ -2224,7 +2420,8 @@
         138,
         38
       ],
-      "znak_burger": 293.69
+      "znak_burger": 293.69,
+      "za_kraem": false
     },
     {
       "w": 505,
@@ -2233,7 +2430,8 @@
         138,
         38
       ],
-      "znak_burger": 294.63
+      "znak_burger": 294.63,
+      "za_kraem": false
     },
     {
       "w": 506,
@@ -2242,7 +2440,8 @@
         138,
         38
       ],
-      "znak_burger": 295.53
+      "znak_burger": 295.53,
+      "za_kraem": false
     },
     {
       "w": 507,
@@ -2251,7 +2450,8 @@
         138,
         38
       ],
-      "znak_burger": 296.47
+      "znak_burger": 296.47,
+      "za_kraem": false
     },
     {
       "w": 508,
@@ -2260,7 +2460,8 @@
         138,
         38
       ],
-      "znak_burger": 297.38
+      "znak_burger": 297.38,
+      "za_kraem": false
     },
     {
       "w": 509,
@@ -2269,7 +2470,8 @@
         138,
         38
       ],
-      "znak_burger": 298.28
+      "znak_burger": 298.28,
+      "za_kraem": false
     },
     {
       "w": 510,
@@ -2278,7 +2480,8 @@
         138,
         38
       ],
-      "znak_burger": 299.22
+      "znak_burger": 299.22,
+      "za_kraem": false
     },
     {
       "w": 511,
@@ -2287,7 +2490,8 @@
         138,
         38
       ],
-      "znak_burger": 300.13
+      "znak_burger": 300.13,
+      "za_kraem": false
     },
     {
       "w": 512,
@@ -2296,7 +2500,8 @@
         138,
         38
       ],
-      "znak_burger": 301.06
+      "znak_burger": 301.06,
+      "za_kraem": false
     },
     {
       "w": 513,
@@ -2305,7 +2510,8 @@
         138,
         38
       ],
-      "znak_burger": 301.97
+      "znak_burger": 301.97,
+      "za_kraem": false
     },
     {
       "w": 514,
@@ -2314,7 +2520,8 @@
         138,
         38
       ],
-      "znak_burger": 302.91
+      "znak_burger": 302.91,
+      "za_kraem": false
     },
     {
       "w": 515,
@@ -2323,7 +2530,8 @@
         138,
         38
       ],
-      "znak_burger": 303.81
+      "znak_burger": 303.81,
+      "za_kraem": false
     },
     {
       "w": 516,
@@ -2332,7 +2540,8 @@
         138,
         38
       ],
-      "znak_burger": 304.75
+      "znak_burger": 304.75,
+      "za_kraem": false
     },
     {
       "w": 517,
@@ -2341,7 +2550,8 @@
         138,
         38
       ],
-      "znak_burger": 305.66
+      "znak_burger": 305.66,
+      "za_kraem": false
     },
     {
       "w": 518,
@@ -2350,7 +2560,8 @@
         138,
         38
       ],
-      "znak_burger": 306.56
+      "znak_burger": 306.56,
+      "za_kraem": false
     },
     {
       "w": 519,
@@ -2359,7 +2570,8 @@
         138,
         38
       ],
-      "znak_burger": 307.5
+      "znak_burger": 307.5,
+      "za_kraem": false
     },
     {
       "w": 520,
@@ -2368,7 +2580,8 @@
         138,
         38
       ],
-      "znak_burger": 308.41
+      "znak_burger": 308.41,
+      "za_kraem": false
     },
     {
       "w": 521,
@@ -2377,7 +2590,8 @@
         138,
         38
       ],
-      "znak_burger": 309.34
+      "znak_burger": 309.34,
+      "za_kraem": false
     },
     {
       "w": 522,
@@ -2386,7 +2600,8 @@
         138,
         38
       ],
-      "znak_burger": 310.25
+      "znak_burger": 310.25,
+      "za_kraem": false
     },
     {
       "w": 523,
@@ -2395,7 +2610,8 @@
         138,
         38
       ],
-      "znak_burger": 311.19
+      "znak_burger": 311.19,
+      "za_kraem": false
     },
     {
       "w": 524,
@@ -2404,7 +2620,8 @@
         138,
         38
       ],
-      "znak_burger": 312.09
+      "znak_burger": 312.09,
+      "za_kraem": false
     },
     {
       "w": 525,
@@ -2413,7 +2630,8 @@
         138,
         38
       ],
-      "znak_burger": 313
+      "znak_burger": 313,
+      "za_kraem": false
     },
     {
       "w": 526,
@@ -2422,7 +2640,8 @@
         138,
         38
       ],
-      "znak_burger": 313.94
+      "znak_burger": 313.94,
+      "za_kraem": false
     },
     {
       "w": 527,
@@ -2431,7 +2650,8 @@
         138,
         38
       ],
-      "znak_burger": 314.84
+      "znak_burger": 314.84,
+      "za_kraem": false
     },
     {
       "w": 528,
@@ -2440,7 +2660,8 @@
         138,
         38
       ],
-      "znak_burger": 315.78
+      "znak_burger": 315.78,
+      "za_kraem": false
     },
     {
       "w": 529,
@@ -2449,7 +2670,8 @@
         138,
         38
       ],
-      "znak_burger": 316.69
+      "znak_burger": 316.69,
+      "za_kraem": false
     },
     {
       "w": 530,
@@ -2458,7 +2680,8 @@
         138,
         38
       ],
-      "znak_burger": 317.63
+      "znak_burger": 317.63,
+      "za_kraem": false
     },
     {
       "w": 531,
@@ -2467,7 +2690,8 @@
         138,
         38
       ],
-      "znak_burger": 318.53
+      "znak_burger": 318.53,
+      "za_kraem": false
     },
     {
       "w": 532,
@@ -2476,7 +2700,8 @@
         138,
         38
       ],
-      "znak_burger": 319.47
+      "znak_burger": 319.47,
+      "za_kraem": false
     },
     {
       "w": 533,
@@ -2485,7 +2710,8 @@
         138,
         38
       ],
-      "znak_burger": 320.38
+      "znak_burger": 320.38,
+      "za_kraem": false
     },
     {
       "w": 534,
@@ -2494,7 +2720,8 @@
         138,
         38
       ],
-      "znak_burger": 321.28
+      "znak_burger": 321.28,
+      "za_kraem": false
     },
     {
       "w": 535,
@@ -2503,7 +2730,8 @@
         138,
         38
       ],
-      "znak_burger": 322.22
+      "znak_burger": 322.22,
+      "za_kraem": false
     },
     {
       "w": 536,
@@ -2512,7 +2740,8 @@
         138,
         38
       ],
-      "znak_burger": 323.13
+      "znak_burger": 323.13,
+      "za_kraem": false
     },
     {
       "w": 537,
@@ -2521,7 +2750,8 @@
         138,
         38
       ],
-      "znak_burger": 324.06
+      "znak_burger": 324.06,
+      "za_kraem": false
     },
     {
       "w": 538,
@@ -2530,7 +2760,8 @@
         138,
         38
       ],
-      "znak_burger": 324.97
+      "znak_burger": 324.97,
+      "za_kraem": false
     },
     {
       "w": 539,
@@ -2539,7 +2770,8 @@
         138,
         38
       ],
-      "znak_burger": 325.91
+      "znak_burger": 325.91,
+      "za_kraem": false
     },
     {
       "w": 540,
@@ -2548,7 +2780,8 @@
         138,
         38
       ],
-      "znak_burger": 326.81
+      "znak_burger": 326.81,
+      "za_kraem": false
     },
     {
       "w": 541,
@@ -2557,7 +2790,8 @@
         138,
         38
       ],
-      "znak_burger": 327.75
+      "znak_burger": 327.75,
+      "za_kraem": false
     },
     {
       "w": 542,
@@ -2566,7 +2800,8 @@
         138,
         38
       ],
-      "znak_burger": 328.66
+      "znak_burger": 328.66,
+      "za_kraem": false
     },
     {
       "w": 543,
@@ -2575,7 +2810,8 @@
         138,
         38
       ],
-      "znak_burger": 329.56
+      "znak_burger": 329.56,
+      "za_kraem": false
     },
     {
       "w": 544,
@@ -2584,7 +2820,8 @@
         138,
         38
       ],
-      "znak_burger": 330.5
+      "znak_burger": 330.5,
+      "za_kraem": false
     },
     {
       "w": 545,
@@ -2593,7 +2830,8 @@
         138,
         38
       ],
-      "znak_burger": 331.41
+      "znak_burger": 331.41,
+      "za_kraem": false
     },
     {
       "w": 546,
@@ -2602,7 +2840,8 @@
         138,
         38
       ],
-      "znak_burger": 332.34
+      "znak_burger": 332.34,
+      "za_kraem": false
     },
     {
       "w": 547,
@@ -2611,7 +2850,8 @@
         138,
         38
       ],
-      "znak_burger": 333.25
+      "znak_burger": 333.25,
+      "za_kraem": false
     },
     {
       "w": 548,
@@ -2620,7 +2860,8 @@
         138,
         38
       ],
-      "znak_burger": 334.19
+      "znak_burger": 334.19,
+      "za_kraem": false
     },
     {
       "w": 549,
@@ -2629,7 +2870,8 @@
         138,
         38
       ],
-      "znak_burger": 335.09
+      "znak_burger": 335.09,
+      "za_kraem": false
     },
     {
       "w": 550,
@@ -2638,7 +2880,8 @@
         138,
         38
       ],
-      "znak_burger": 336
+      "znak_burger": 336,
+      "za_kraem": false
     },
     {
       "w": 551,
@@ -2647,7 +2890,8 @@
         138,
         38
       ],
-      "znak_burger": 336.94
+      "znak_burger": 336.94,
+      "za_kraem": false
     },
     {
       "w": 552,
@@ -2656,7 +2900,8 @@
         138,
         38
       ],
-      "znak_burger": 337.84
+      "znak_burger": 337.84,
+      "za_kraem": false
     },
     {
       "w": 553,
@@ -2665,7 +2910,8 @@
         138,
         38
       ],
-      "znak_burger": 338.78
+      "znak_burger": 338.78,
+      "za_kraem": false
     },
     {
       "w": 554,
@@ -2674,7 +2920,8 @@
         138,
         38
       ],
-      "znak_burger": 339.69
+      "znak_burger": 339.69,
+      "za_kraem": false
     },
     {
       "w": 555,
@@ -2683,7 +2930,8 @@
         138,
         38
       ],
-      "znak_burger": 340.63
+      "znak_burger": 340.63,
+      "za_kraem": false
     },
     {
       "w": 556,
@@ -2692,7 +2940,8 @@
         138,
         38
       ],
-      "znak_burger": 341.53
+      "znak_burger": 341.53,
+      "za_kraem": false
     },
     {
       "w": 557,
@@ -2701,7 +2950,8 @@
         138,
         38
       ],
-      "znak_burger": 342.47
+      "znak_burger": 342.47,
+      "za_kraem": false
     },
     {
       "w": 558,
@@ -2710,7 +2960,8 @@
         138,
         38
       ],
-      "znak_burger": 343.38
+      "znak_burger": 343.38,
+      "za_kraem": false
     },
     {
       "w": 559,
@@ -2719,7 +2970,8 @@
         138,
         38
       ],
-      "znak_burger": 344.28
+      "znak_burger": 344.28,
+      "za_kraem": false
     },
     {
       "w": 560,
@@ -2728,7 +2980,8 @@
         138,
         38
       ],
-      "znak_burger": 345.22
+      "znak_burger": 345.22,
+      "za_kraem": false
     },
     {
       "w": 561,
@@ -2737,7 +2990,8 @@
         138,
         38
       ],
-      "znak_burger": 346.13
+      "znak_burger": 346.13,
+      "za_kraem": false
     },
     {
       "w": 562,
@@ -2746,7 +3000,8 @@
         138,
         38
       ],
-      "znak_burger": 347.06
+      "znak_burger": 347.06,
+      "za_kraem": false
     },
     {
       "w": 563,
@@ -2755,7 +3010,8 @@
         138,
         38
       ],
-      "znak_burger": 347.97
+      "znak_burger": 347.97,
+      "za_kraem": false
     },
     {
       "w": 564,
@@ -2764,7 +3020,8 @@
         138,
         38
       ],
-      "znak_burger": 348.91
+      "znak_burger": 348.91,
+      "za_kraem": false
     },
     {
       "w": 565,
@@ -2773,7 +3030,8 @@
         138,
         38
       ],
-      "znak_burger": 349.81
+      "znak_burger": 349.81,
+      "za_kraem": false
     },
     {
       "w": 566,
@@ -2782,7 +3040,8 @@
         138,
         38
       ],
-      "znak_burger": 350.75
+      "znak_burger": 350.75,
+      "za_kraem": false
     },
     {
       "w": 567,
@@ -2791,7 +3050,8 @@
         138,
         38
       ],
-      "znak_burger": 351.66
+      "znak_burger": 351.66,
+      "za_kraem": false
     },
     {
       "w": 568,
@@ -2800,7 +3060,8 @@
         138,
         38
       ],
-      "znak_burger": 352.56
+      "znak_burger": 352.56,
+      "za_kraem": false
     },
     {
       "w": 569,
@@ -2809,7 +3070,8 @@
         138,
         38
       ],
-      "znak_burger": 353.5
+      "znak_burger": 353.5,
+      "za_kraem": false
     },
     {
       "w": 570,
@@ -2818,7 +3080,8 @@
         138,
         38
       ],
-      "znak_burger": 354.41
+      "znak_burger": 354.41,
+      "za_kraem": false
     },
     {
       "w": 571,
@@ -2827,7 +3090,8 @@
         138,
         38
       ],
-      "znak_burger": 355.34
+      "znak_burger": 355.34,
+      "za_kraem": false
     },
     {
       "w": 572,
@@ -2836,7 +3100,8 @@
         138,
         38
       ],
-      "znak_burger": 356.25
+      "znak_burger": 356.25,
+      "za_kraem": false
     },
     {
       "w": 573,
@@ -2845,7 +3110,8 @@
         138,
         38
       ],
-      "znak_burger": 357.19
+      "znak_burger": 357.19,
+      "za_kraem": false
     },
     {
       "w": 574,
@@ -2854,7 +3120,8 @@
         138,
         38
       ],
-      "znak_burger": 358.09
+      "znak_burger": 358.09,
+      "za_kraem": false
     },
     {
       "w": 575,
@@ -2863,7 +3130,8 @@
         138,
         38
       ],
-      "znak_burger": 359
+      "znak_burger": 359,
+      "za_kraem": false
     },
     {
       "w": 576,
@@ -2872,7 +3140,8 @@
         138,
         38
       ],
-      "znak_burger": 359.94
+      "znak_burger": 359.94,
+      "za_kraem": false
     },
     {
       "w": 577,
@@ -2881,7 +3150,8 @@
         138,
         38
       ],
-      "znak_burger": 360.84
+      "znak_burger": 360.84,
+      "za_kraem": false
     },
     {
       "w": 578,
@@ -2890,7 +3160,8 @@
         138,
         38
       ],
-      "znak_burger": 361.78
+      "znak_burger": 361.78,
+      "za_kraem": false
     },
     {
       "w": 579,
@@ -2899,7 +3170,8 @@
         138,
         38
       ],
-      "znak_burger": 362.69
+      "znak_burger": 362.69,
+      "za_kraem": false
     },
     {
       "w": 580,
@@ -2908,7 +3180,8 @@
         138,
         38
       ],
-      "znak_burger": 363.63
+      "znak_burger": 363.63,
+      "za_kraem": false
     },
     {
       "w": 581,
@@ -2917,7 +3190,8 @@
         138,
         38
       ],
-      "znak_burger": 364.53
+      "znak_burger": 364.53,
+      "za_kraem": false
     },
     {
       "w": 582,
@@ -2926,7 +3200,8 @@
         138,
         38
       ],
-      "znak_burger": 365.47
+      "znak_burger": 365.47,
+      "za_kraem": false
     },
     {
       "w": 583,
@@ -2935,7 +3210,8 @@
         138,
         38
       ],
-      "znak_burger": 366.38
+      "znak_burger": 366.38,
+      "za_kraem": false
     },
     {
       "w": 584,
@@ -2944,7 +3220,8 @@
         138,
         38
       ],
-      "znak_burger": 367.28
+      "znak_burger": 367.28,
+      "za_kraem": false
     },
     {
       "w": 585,
@@ -2953,7 +3230,8 @@
         138,
         38
       ],
-      "znak_burger": 368.22
+      "znak_burger": 368.22,
+      "za_kraem": false
     },
     {
       "w": 586,
@@ -2962,7 +3240,8 @@
         138,
         38
       ],
-      "znak_burger": 369.13
+      "znak_burger": 369.13,
+      "za_kraem": false
     },
     {
       "w": 587,
@@ -2971,7 +3250,8 @@
         138,
         38
       ],
-      "znak_burger": 370.06
+      "znak_burger": 370.06,
+      "za_kraem": false
     },
     {
       "w": 588,
@@ -2980,7 +3260,8 @@
         138,
         38
       ],
-      "znak_burger": 370.97
+      "znak_burger": 370.97,
+      "za_kraem": false
     },
     {
       "w": 589,
@@ -2989,7 +3270,8 @@
         138,
         38
       ],
-      "znak_burger": 371.91
+      "znak_burger": 371.91,
+      "za_kraem": false
     },
     {
       "w": 590,
@@ -2998,7 +3280,8 @@
         138,
         38
       ],
-      "znak_burger": 372.81
+      "znak_burger": 372.81,
+      "za_kraem": false
     },
     {
       "w": 591,
@@ -3007,7 +3290,8 @@
         138,
         38
       ],
-      "znak_burger": 373.75
+      "znak_burger": 373.75,
+      "za_kraem": false
     },
     {
       "w": 592,
@@ -3016,7 +3300,8 @@
         138,
         38
       ],
-      "znak_burger": 374.66
+      "znak_burger": 374.66,
+      "za_kraem": false
     },
     {
       "w": 593,
@@ -3025,7 +3310,8 @@
         138,
         38
       ],
-      "znak_burger": 375.56
+      "znak_burger": 375.56,
+      "za_kraem": false
     },
     {
       "w": 594,
@@ -3034,7 +3320,8 @@
         138,
         38
       ],
-      "znak_burger": 376.5
+      "znak_burger": 376.5,
+      "za_kraem": false
     },
     {
       "w": 595,
@@ -3043,7 +3330,8 @@
         138,
         38
       ],
-      "znak_burger": 377.41
+      "znak_burger": 377.41,
+      "za_kraem": false
     },
     {
       "w": 596,
@@ -3052,7 +3340,8 @@
         138,
         38
       ],
-      "znak_burger": 378.34
+      "znak_burger": 378.34,
+      "za_kraem": false
     },
     {
       "w": 597,
@@ -3061,7 +3350,8 @@
         138,
         38
       ],
-      "znak_burger": 379.25
+      "znak_burger": 379.25,
+      "za_kraem": false
     },
     {
       "w": 598,
@@ -3070,7 +3360,8 @@
         138,
         38
       ],
-      "znak_burger": 380.19
+      "znak_burger": 380.19,
+      "za_kraem": false
     },
     {
       "w": 599,
@@ -3079,7 +3370,8 @@
         138,
         38
       ],
-      "znak_burger": 381.09
+      "znak_burger": 381.09,
+      "za_kraem": false
     },
     {
       "w": 600,
@@ -3088,7 +3380,8 @@
         138,
         38
       ],
-      "znak_burger": 382
+      "znak_burger": 382,
+      "za_kraem": false
     },
     {
       "w": 601,
@@ -3097,7 +3390,8 @@
         138,
         38
       ],
-      "znak_burger": 382.94
+      "znak_burger": 382.94,
+      "za_kraem": false
     },
     {
       "w": 602,
@@ -3106,7 +3400,8 @@
         138,
         38
       ],
-      "znak_burger": 383.84
+      "znak_burger": 383.84,
+      "za_kraem": false
     },
     {
       "w": 603,
@@ -3115,7 +3410,8 @@
         138,
         38
       ],
-      "znak_burger": 384.78
+      "znak_burger": 384.78,
+      "za_kraem": false
     },
     {
       "w": 604,
@@ -3124,7 +3420,8 @@
         138,
         38
       ],
-      "znak_burger": 385.69
+      "znak_burger": 385.69,
+      "za_kraem": false
     },
     {
       "w": 605,
@@ -3133,7 +3430,8 @@
         138,
         38
       ],
-      "znak_burger": 386.63
+      "znak_burger": 386.63,
+      "za_kraem": false
     },
     {
       "w": 606,
@@ -3142,7 +3440,8 @@
         138,
         38
       ],
-      "znak_burger": 387.53
+      "znak_burger": 387.53,
+      "za_kraem": false
     },
     {
       "w": 607,
@@ -3151,7 +3450,8 @@
         138,
         38
       ],
-      "znak_burger": 388.47
+      "znak_burger": 388.47,
+      "za_kraem": false
     },
     {
       "w": 608,
@@ -3160,7 +3460,8 @@
         138,
         38
       ],
-      "znak_burger": 389.38
+      "znak_burger": 389.38,
+      "za_kraem": false
     },
     {
       "w": 609,
@@ -3169,7 +3470,8 @@
         138,
         38
       ],
-      "znak_burger": 390.28
+      "znak_burger": 390.28,
+      "za_kraem": false
     },
     {
       "w": 610,
@@ -3178,7 +3480,8 @@
         138,
         38
       ],
-      "znak_burger": 391.22
+      "znak_burger": 391.22,
+      "za_kraem": false
     },
     {
       "w": 611,
@@ -3187,7 +3490,8 @@
         138,
         38
       ],
-      "znak_burger": 392.13
+      "znak_burger": 392.13,
+      "za_kraem": false
     },
     {
       "w": 612,
@@ -3196,7 +3500,8 @@
         138,
         38
       ],
-      "znak_burger": 393.06
+      "znak_burger": 393.06,
+      "za_kraem": false
     },
     {
       "w": 613,
@@ -3205,7 +3510,8 @@
         138,
         38
       ],
-      "znak_burger": 393.97
+      "znak_burger": 393.97,
+      "za_kraem": false
     },
     {
       "w": 614,
@@ -3214,7 +3520,8 @@
         138,
         38
       ],
-      "znak_burger": 394.91
+      "znak_burger": 394.91,
+      "za_kraem": false
     },
     {
       "w": 615,
@@ -3223,7 +3530,8 @@
         138,
         38
       ],
-      "znak_burger": 395.81
+      "znak_burger": 395.81,
+      "za_kraem": false
     },
     {
       "w": 616,
@@ -3232,7 +3540,8 @@
         138,
         38
       ],
-      "znak_burger": 396.75
+      "znak_burger": 396.75,
+      "za_kraem": false
     },
     {
       "w": 617,
@@ -3241,7 +3550,8 @@
         138,
         38
       ],
-      "znak_burger": 397.66
+      "znak_burger": 397.66,
+      "za_kraem": false
     },
     {
       "w": 618,
@@ -3250,7 +3560,8 @@
         138,
         38
       ],
-      "znak_burger": 398.56
+      "znak_burger": 398.56,
+      "za_kraem": false
     },
     {
       "w": 619,
@@ -3259,7 +3570,8 @@
         138,
         38
       ],
-      "znak_burger": 399.5
+      "znak_burger": 399.5,
+      "za_kraem": false
     },
     {
       "w": 620,
@@ -3268,7 +3580,8 @@
         138,
         38
       ],
-      "znak_burger": 400.41
+      "znak_burger": 400.41,
+      "za_kraem": false
     },
     {
       "w": 621,
@@ -3277,7 +3590,8 @@
         138,
         38
       ],
-      "znak_burger": 401.34
+      "znak_burger": 401.34,
+      "za_kraem": false
     },
     {
       "w": 622,
@@ -3286,7 +3600,8 @@
         138,
         38
       ],
-      "znak_burger": 402.25
+      "znak_burger": 402.25,
+      "za_kraem": false
     },
     {
       "w": 623,
@@ -3295,7 +3610,8 @@
         138,
         38
       ],
-      "znak_burger": 403.19
+      "znak_burger": 403.19,
+      "za_kraem": false
     },
     {
       "w": 624,
@@ -3304,7 +3620,8 @@
         138,
         38
       ],
-      "znak_burger": 404.09
+      "znak_burger": 404.09,
+      "za_kraem": false
     },
     {
       "w": 625,
@@ -3313,7 +3630,8 @@
         138,
         38
       ],
-      "znak_burger": 405
+      "znak_burger": 405,
+      "za_kraem": false
     },
     {
       "w": 626,
@@ -3322,7 +3640,8 @@
         138,
         38
       ],
-      "znak_burger": 405.94
+      "znak_burger": 405.94,
+      "za_kraem": false
     },
     {
       "w": 627,
@@ -3331,7 +3650,8 @@
         138,
         38
       ],
-      "znak_burger": 406.84
+      "znak_burger": 406.84,
+      "za_kraem": false
     },
     {
       "w": 628,
@@ -3340,7 +3660,8 @@
         138,
         38
       ],
-      "znak_burger": 407.78
+      "znak_burger": 407.78,
+      "za_kraem": false
     },
     {
       "w": 629,
@@ -3349,7 +3670,8 @@
         138,
         38
       ],
-      "znak_burger": 408.69
+      "znak_burger": 408.69,
+      "za_kraem": false
     },
     {
       "w": 630,
@@ -3358,7 +3680,8 @@
         138,
         38
       ],
-      "znak_burger": 409.63
+      "znak_burger": 409.63,
+      "za_kraem": false
     },
     {
       "w": 631,
@@ -3367,7 +3690,8 @@
         138,
         38
       ],
-      "znak_burger": 410.53
+      "znak_burger": 410.53,
+      "za_kraem": false
     },
     {
       "w": 632,
@@ -3376,7 +3700,8 @@
         138,
         38
       ],
-      "znak_burger": 411.47
+      "znak_burger": 411.47,
+      "za_kraem": false
     },
     {
       "w": 633,
@@ -3385,7 +3710,8 @@
         138,
         38
       ],
-      "znak_burger": 412.38
+      "znak_burger": 412.38,
+      "za_kraem": false
     },
     {
       "w": 634,
@@ -3394,7 +3720,8 @@
         138,
         38
       ],
-      "znak_burger": 413.28
+      "znak_burger": 413.28,
+      "za_kraem": false
     },
     {
       "w": 635,
@@ -3403,7 +3730,8 @@
         138,
         38
       ],
-      "znak_burger": 414.22
+      "znak_burger": 414.22,
+      "za_kraem": false
     },
     {
       "w": 636,
@@ -3412,7 +3740,8 @@
         138,
         38
       ],
-      "znak_burger": 415.13
+      "znak_burger": 415.13,
+      "za_kraem": false
     },
     {
       "w": 637,
@@ -3421,7 +3750,8 @@
         138,
         38
       ],
-      "znak_burger": 416.06
+      "znak_burger": 416.06,
+      "za_kraem": false
     },
     {
       "w": 638,
@@ -3430,7 +3760,8 @@
         138,
         38
       ],
-      "znak_burger": 416.97
+      "znak_burger": 416.97,
+      "za_kraem": false
     },
     {
       "w": 639,
@@ -3439,7 +3770,8 @@
         138,
         38
       ],
-      "znak_burger": 417.91
+      "znak_burger": 417.91,
+      "za_kraem": false
     },
     {
       "w": 640,
@@ -3448,7 +3780,8 @@
         138,
         38
       ],
-      "znak_burger": 418.81
+      "znak_burger": 418.81,
+      "za_kraem": false
     },
     {
       "w": 641,
@@ -3457,7 +3790,8 @@
         138,
         38
       ],
-      "znak_burger": 419.75
+      "znak_burger": 419.75,
+      "za_kraem": false
     },
     {
       "w": 642,
@@ -3466,7 +3800,8 @@
         138,
         38
       ],
-      "znak_burger": 420.66
+      "znak_burger": 420.66,
+      "za_kraem": false
     },
     {
       "w": 643,
@@ -3475,7 +3810,8 @@
         138,
         38
       ],
-      "znak_burger": 421.56
+      "znak_burger": 421.56,
+      "za_kraem": false
     },
     {
       "w": 644,
@@ -3484,7 +3820,8 @@
         138,
         38
       ],
-      "znak_burger": 422.5
+      "znak_burger": 422.5,
+      "za_kraem": false
     },
     {
       "w": 645,
@@ -3493,7 +3830,8 @@
         138,
         38
       ],
-      "znak_burger": 423.41
+      "znak_burger": 423.41,
+      "za_kraem": false
     },
     {
       "w": 646,
@@ -3502,7 +3840,8 @@
         138,
         38
       ],
-      "znak_burger": 424.34
+      "znak_burger": 424.34,
+      "za_kraem": false
     },
     {
       "w": 647,
@@ -3511,7 +3850,8 @@
         138,
         38
       ],
-      "znak_burger": 425.25
+      "znak_burger": 425.25,
+      "za_kraem": false
     },
     {
       "w": 648,
@@ -3520,7 +3860,8 @@
         138,
         38
       ],
-      "znak_burger": 426.19
+      "znak_burger": 426.19,
+      "za_kraem": false
     },
     {
       "w": 649,
@@ -3529,7 +3870,8 @@
         138,
         38
       ],
-      "znak_burger": 427.09
+      "znak_burger": 427.09,
+      "za_kraem": false
     },
     {
       "w": 650,
@@ -3538,7 +3880,8 @@
         138,
         38
       ],
-      "znak_burger": 428
+      "znak_burger": 428,
+      "za_kraem": false
     },
     {
       "w": 651,
@@ -3547,7 +3890,8 @@
         138,
         38
       ],
-      "znak_burger": 428.94
+      "znak_burger": 428.94,
+      "za_kraem": false
     },
     {
       "w": 652,
@@ -3556,7 +3900,8 @@
         138,
         38
       ],
-      "znak_burger": 429.84
+      "znak_burger": 429.84,
+      "za_kraem": false
     },
     {
       "w": 653,
@@ -3565,7 +3910,8 @@
         138,
         38
       ],
-      "znak_burger": 430.78
+      "znak_burger": 430.78,
+      "za_kraem": false
     },
     {
       "w": 654,
@@ -3574,7 +3920,8 @@
         138,
         38
       ],
-      "znak_burger": 431.69
+      "znak_burger": 431.69,
+      "za_kraem": false
     },
     {
       "w": 655,
@@ -3583,7 +3930,8 @@
         138,
         38
       ],
-      "znak_burger": 432.63
+      "znak_burger": 432.63,
+      "za_kraem": false
     },
     {
       "w": 656,
@@ -3592,7 +3940,8 @@
         138,
         38
       ],
-      "znak_burger": 433.53
+      "znak_burger": 433.53,
+      "za_kraem": false
     },
     {
       "w": 657,
@@ -3601,7 +3950,8 @@
         138,
         38
       ],
-      "znak_burger": 434.47
+      "znak_burger": 434.47,
+      "za_kraem": false
     },
     {
       "w": 658,
@@ -3610,7 +3960,8 @@
         138,
         38
       ],
-      "znak_burger": 435.38
+      "znak_burger": 435.38,
+      "za_kraem": false
     },
     {
       "w": 659,
@@ -3619,7 +3970,8 @@
         138,
         38
       ],
-      "znak_burger": 436.28
+      "znak_burger": 436.28,
+      "za_kraem": false
     },
     {
       "w": 660,
@@ -3628,7 +3980,8 @@
         138,
         38
       ],
-      "znak_burger": 437.22
+      "znak_burger": 437.22,
+      "za_kraem": false
     },
     {
       "w": 661,
@@ -3637,7 +3990,8 @@
         138,
         38
       ],
-      "znak_burger": 438.13
+      "znak_burger": 438.13,
+      "za_kraem": false
     },
     {
       "w": 662,
@@ -3646,7 +4000,8 @@
         138,
         38
       ],
-      "znak_burger": 439.06
+      "znak_burger": 439.06,
+      "za_kraem": false
     },
     {
       "w": 663,
@@ -3655,7 +4010,8 @@
         138,
         38
       ],
-      "znak_burger": 439.97
+      "znak_burger": 439.97,
+      "za_kraem": false
     },
     {
       "w": 664,
@@ -3664,7 +4020,8 @@
         138,
         38
       ],
-      "znak_burger": 440.91
+      "znak_burger": 440.91,
+      "za_kraem": false
     },
     {
       "w": 665,
@@ -3673,7 +4030,8 @@
         138,
         38
       ],
-      "znak_burger": 441.81
+      "znak_burger": 441.81,
+      "za_kraem": false
     },
     {
       "w": 666,
@@ -3682,7 +4040,8 @@
         138,
         38
       ],
-      "znak_burger": 442.75
+      "znak_burger": 442.75,
+      "za_kraem": false
     },
     {
       "w": 667,
@@ -3691,7 +4050,8 @@
         138,
         38
       ],
-      "znak_burger": 443.66
+      "znak_burger": 443.66,
+      "za_kraem": false
     },
     {
       "w": 668,
@@ -3700,7 +4060,8 @@
         138,
         38
       ],
-      "znak_burger": 444.56
+      "znak_burger": 444.56,
+      "za_kraem": false
     },
     {
       "w": 669,
@@ -3709,7 +4070,8 @@
         138,
         38
       ],
-      "znak_burger": 445.5
+      "znak_burger": 445.5,
+      "za_kraem": false
     },
     {
       "w": 670,
@@ -3718,7 +4080,8 @@
         138,
         38
       ],
-      "znak_burger": 446.41
+      "znak_burger": 446.41,
+      "za_kraem": false
     },
     {
       "w": 671,
@@ -3727,7 +4090,8 @@
         138,
         38
       ],
-      "znak_burger": 447.34
+      "znak_burger": 447.34,
+      "za_kraem": false
     },
     {
       "w": 672,
@@ -3736,7 +4100,8 @@
         138,
         38
       ],
-      "znak_burger": 448.25
+      "znak_burger": 448.25,
+      "za_kraem": false
     },
     {
       "w": 673,
@@ -3745,7 +4110,8 @@
         138,
         38
       ],
-      "znak_burger": 449.19
+      "znak_burger": 449.19,
+      "za_kraem": false
     },
     {
       "w": 674,
@@ -3754,7 +4120,8 @@
         138,
         38
       ],
-      "znak_burger": 450.09
+      "znak_burger": 450.09,
+      "za_kraem": false
     },
     {
       "w": 675,
@@ -3763,7 +4130,8 @@
         138,
         38
       ],
-      "znak_burger": 451
+      "znak_burger": 451,
+      "za_kraem": false
     },
     {
       "w": 676,
@@ -3772,7 +4140,8 @@
         138,
         38
       ],
-      "znak_burger": 451.94
+      "znak_burger": 451.94,
+      "za_kraem": false
     },
     {
       "w": 677,
@@ -3781,7 +4150,8 @@
         138,
         38
       ],
-      "znak_burger": 452.84
+      "znak_burger": 452.84,
+      "za_kraem": false
     },
     {
       "w": 678,
@@ -3790,7 +4160,8 @@
         138,
         38
       ],
-      "znak_burger": 453.78
+      "znak_burger": 453.78,
+      "za_kraem": false
     },
     {
       "w": 679,
@@ -3799,7 +4170,8 @@
         138,
         38
       ],
-      "znak_burger": 454.69
+      "znak_burger": 454.69,
+      "za_kraem": false
     },
     {
       "w": 680,
@@ -3808,7 +4180,8 @@
         138,
         38
       ],
-      "znak_burger": 455.63
+      "znak_burger": 455.63,
+      "za_kraem": false
     },
     {
       "w": 681,
@@ -3817,7 +4190,8 @@
         138,
         38
       ],
-      "znak_burger": 456.53
+      "znak_burger": 456.53,
+      "za_kraem": false
     },
     {
       "w": 682,
@@ -3826,7 +4200,8 @@
         138,
         38
       ],
-      "znak_burger": 457.47
+      "znak_burger": 457.47,
+      "za_kraem": false
     },
     {
       "w": 683,
@@ -3835,7 +4210,8 @@
         138,
         38
       ],
-      "znak_burger": 458.38
+      "znak_burger": 458.38,
+      "za_kraem": false
     },
     {
       "w": 684,
@@ -3844,7 +4220,8 @@
         138,
         38
       ],
-      "znak_burger": 459.28
+      "znak_burger": 459.28,
+      "za_kraem": false
     },
     {
       "w": 685,
@@ -3853,7 +4230,8 @@
         138,
         38
       ],
-      "znak_burger": 460.22
+      "znak_burger": 460.22,
+      "za_kraem": false
     },
     {
       "w": 686,
@@ -3862,7 +4240,8 @@
         138,
         38
       ],
-      "znak_burger": 461.13
+      "znak_burger": 461.13,
+      "za_kraem": false
     },
     {
       "w": 687,
@@ -3871,7 +4250,8 @@
         138,
         38
       ],
-      "znak_burger": 462.06
+      "znak_burger": 462.06,
+      "za_kraem": false
     },
     {
       "w": 688,
@@ -3880,7 +4260,8 @@
         138,
         38
       ],
-      "znak_burger": 462.97
+      "znak_burger": 462.97,
+      "za_kraem": false
     },
     {
       "w": 689,
@@ -3889,7 +4270,8 @@
         138,
         38
       ],
-      "znak_burger": 463.91
+      "znak_burger": 463.91,
+      "za_kraem": false
     },
     {
       "w": 690,
@@ -3898,7 +4280,8 @@
         138,
         38
       ],
-      "znak_burger": 464.81
+      "znak_burger": 464.81,
+      "za_kraem": false
     },
     {
       "w": 691,
@@ -3907,7 +4290,8 @@
         138,
         38
       ],
-      "znak_burger": 465.75
+      "znak_burger": 465.75,
+      "za_kraem": false
     },
     {
       "w": 692,
@@ -3916,7 +4300,8 @@
         138,
         38
       ],
-      "znak_burger": 466.66
+      "znak_burger": 466.66,
+      "za_kraem": false
     },
     {
       "w": 693,
@@ -3925,7 +4310,8 @@
         138,
         38
       ],
-      "znak_burger": 467.56
+      "znak_burger": 467.56,
+      "za_kraem": false
     },
     {
       "w": 694,
@@ -3934,7 +4320,8 @@
         138,
         38
       ],
-      "znak_burger": 468.5
+      "znak_burger": 468.5,
+      "za_kraem": false
     },
     {
       "w": 695,
@@ -3943,7 +4330,8 @@
         138,
         38
       ],
-      "znak_burger": 469.41
+      "znak_burger": 469.41,
+      "za_kraem": false
     },
     {
       "w": 696,
@@ -3952,7 +4340,8 @@
         138,
         38
       ],
-      "znak_burger": 470.34
+      "znak_burger": 470.34,
+      "za_kraem": false
     },
     {
       "w": 697,
@@ -3961,7 +4350,8 @@
         138,
         38
       ],
-      "znak_burger": 471.25
+      "znak_burger": 471.25,
+      "za_kraem": false
     },
     {
       "w": 698,
@@ -3970,7 +4360,8 @@
         138,
         38
       ],
-      "znak_burger": 472.19
+      "znak_burger": 472.19,
+      "za_kraem": false
     },
     {
       "w": 699,
@@ -3979,7 +4370,8 @@
         138,
         38
       ],
-      "znak_burger": 473.09
+      "znak_burger": 473.09,
+      "za_kraem": false
     },
     {
       "w": 700,
@@ -3988,7 +4380,8 @@
         138,
         38
       ],
-      "znak_burger": 474
+      "znak_burger": 474,
+      "za_kraem": false
     },
     {
       "w": 701,
@@ -3997,7 +4390,8 @@
         138,
         38
       ],
-      "znak_burger": 474.94
+      "znak_burger": 474.94,
+      "za_kraem": false
     },
     {
       "w": 702,
@@ -4006,7 +4400,8 @@
         138,
         38
       ],
-      "znak_burger": 475.84
+      "znak_burger": 475.84,
+      "za_kraem": false
     },
     {
       "w": 703,
@@ -4015,7 +4410,8 @@
         138,
         38
       ],
-      "znak_burger": 476.78
+      "znak_burger": 476.78,
+      "za_kraem": false
     },
     {
       "w": 704,
@@ -4024,7 +4420,8 @@
         138,
         38
       ],
-      "znak_burger": 477.69
+      "znak_burger": 477.69,
+      "za_kraem": false
     },
     {
       "w": 705,
@@ -4033,7 +4430,8 @@
         138,
         38
       ],
-      "znak_burger": 478.63
+      "znak_burger": 478.63,
+      "za_kraem": false
     },
     {
       "w": 706,
@@ -4042,7 +4440,8 @@
         138,
         38
       ],
-      "znak_burger": 479.53
+      "znak_burger": 479.53,
+      "za_kraem": false
     },
     {
       "w": 707,
@@ -4051,7 +4450,8 @@
         138,
         38
       ],
-      "znak_burger": 480.47
+      "znak_burger": 480.47,
+      "za_kraem": false
     },
     {
       "w": 708,
@@ -4060,7 +4460,8 @@
         138,
         38
       ],
-      "znak_burger": 481.38
+      "znak_burger": 481.38,
+      "za_kraem": false
     },
     {
       "w": 709,
@@ -4069,7 +4470,8 @@
         138,
         38
       ],
-      "znak_burger": 482.28
+      "znak_burger": 482.28,
+      "za_kraem": false
     },
     {
       "w": 710,
@@ -4078,7 +4480,8 @@
         138,
         38
       ],
-      "znak_burger": 483.22
+      "znak_burger": 483.22,
+      "za_kraem": false
     },
     {
       "w": 711,
@@ -4087,7 +4490,8 @@
         138,
         38
       ],
-      "znak_burger": 484.13
+      "znak_burger": 484.13,
+      "za_kraem": false
     },
     {
       "w": 712,
@@ -4096,7 +4500,8 @@
         138,
         38
       ],
-      "znak_burger": 485.06
+      "znak_burger": 485.06,
+      "za_kraem": false
     },
     {
       "w": 713,
@@ -4105,7 +4510,8 @@
         138,
         38
       ],
-      "znak_burger": 485.97
+      "znak_burger": 485.97,
+      "za_kraem": false
     },
     {
       "w": 714,
@@ -4114,7 +4520,8 @@
         138,
         38
       ],
-      "znak_burger": 486.91
+      "znak_burger": 486.91,
+      "za_kraem": false
     },
     {
       "w": 715,
@@ -4123,7 +4530,8 @@
         138,
         38
       ],
-      "znak_burger": 487.81
+      "znak_burger": 487.81,
+      "za_kraem": false
     },
     {
       "w": 716,
@@ -4132,7 +4540,8 @@
         138,
         38
       ],
-      "znak_burger": 488.75
+      "znak_burger": 488.75,
+      "za_kraem": false
     },
     {
       "w": 717,
@@ -4141,7 +4550,8 @@
         138,
         38
       ],
-      "znak_burger": 489.66
+      "znak_burger": 489.66,
+      "za_kraem": false
     },
     {
       "w": 718,
@@ -4150,7 +4560,8 @@
         138,
         38
       ],
-      "znak_burger": 490.56
+      "znak_burger": 490.56,
+      "za_kraem": false
     },
     {
       "w": 719,
@@ -4159,7 +4570,8 @@
         138,
         38
       ],
-      "znak_burger": 491.5
+      "znak_burger": 491.5,
+      "za_kraem": false
     },
     {
       "w": 720,
@@ -4168,7 +4580,8 @@
         138,
         38
       ],
-      "znak_burger": 492.41
+      "znak_burger": 492.41,
+      "za_kraem": false
     },
     {
       "w": 721,
@@ -4177,7 +4590,8 @@
         138,
         38
       ],
-      "znak_burger": 493.34
+      "znak_burger": 493.34,
+      "za_kraem": false
     },
     {
       "w": 722,
@@ -4186,7 +4600,8 @@
         138,
         38
       ],
-      "znak_burger": 494.25
+      "znak_burger": 494.25,
+      "za_kraem": false
     },
     {
       "w": 723,
@@ -4195,7 +4610,8 @@
         138,
         38
       ],
-      "znak_burger": 495.19
+      "znak_burger": 495.19,
+      "za_kraem": false
     },
     {
       "w": 724,
@@ -4204,7 +4620,8 @@
         138,
         38
       ],
-      "znak_burger": 496.09
+      "znak_burger": 496.09,
+      "za_kraem": false
     },
     {
       "w": 725,
@@ -4213,7 +4630,8 @@
         138,
         38
       ],
-      "znak_burger": 497
+      "znak_burger": 497,
+      "za_kraem": false
     },
     {
       "w": 726,
@@ -4222,7 +4640,8 @@
         138,
         38
       ],
-      "znak_burger": 497.94
+      "znak_burger": 497.94,
+      "za_kraem": false
     },
     {
       "w": 727,
@@ -4231,7 +4650,8 @@
         138,
         38
       ],
-      "znak_burger": 498.84
+      "znak_burger": 498.84,
+      "za_kraem": false
     },
     {
       "w": 728,
@@ -4240,7 +4660,8 @@
         138,
         38
       ],
-      "znak_burger": 499.78
+      "znak_burger": 499.78,
+      "za_kraem": false
     },
     {
       "w": 729,
@@ -4249,7 +4670,8 @@
         138,
         38
       ],
-      "znak_burger": 500.69
+      "znak_burger": 500.69,
+      "za_kraem": false
     },
     {
       "w": 730,
@@ -4258,7 +4680,8 @@
         138,
         38
       ],
-      "znak_burger": 501.63
+      "znak_burger": 501.63,
+      "za_kraem": false
     },
     {
       "w": 731,
@@ -4267,7 +4690,8 @@
         138,
         38
       ],
-      "znak_burger": 502.53
+      "znak_burger": 502.53,
+      "za_kraem": false
     },
     {
       "w": 732,
@@ -4276,7 +4700,8 @@
         138,
         38
       ],
-      "znak_burger": 503.47
+      "znak_burger": 503.47,
+      "za_kraem": false
     },
     {
       "w": 733,
@@ -4285,7 +4710,8 @@
         138,
         38
       ],
-      "znak_burger": 504.38
+      "znak_burger": 504.38,
+      "za_kraem": false
     },
     {
       "w": 734,
@@ -4294,7 +4720,8 @@
         138,
         38
       ],
-      "znak_burger": 505.28
+      "znak_burger": 505.28,
+      "za_kraem": false
     },
     {
       "w": 735,
@@ -4303,7 +4730,8 @@
         138,
         38
       ],
-      "znak_burger": 506.22
+      "znak_burger": 506.22,
+      "za_kraem": false
     },
     {
       "w": 736,
@@ -4312,7 +4740,8 @@
         138,
         38
       ],
-      "znak_burger": 507.13
+      "znak_burger": 507.13,
+      "za_kraem": false
     },
     {
       "w": 737,
@@ -4321,7 +4750,8 @@
         138,
         38
       ],
-      "znak_burger": 508.06
+      "znak_burger": 508.06,
+      "za_kraem": false
     },
     {
       "w": 738,
@@ -4330,7 +4760,8 @@
         138,
         38
       ],
-      "znak_burger": 508.97
+      "znak_burger": 508.97,
+      "za_kraem": false
     },
     {
       "w": 739,
@@ -4339,7 +4770,8 @@
         138,
         38
       ],
-      "znak_burger": 509.91
+      "znak_burger": 509.91,
+      "za_kraem": false
     },
     {
       "w": 740,
@@ -4348,7 +4780,8 @@
         138,
         38
       ],
-      "znak_burger": 510.81
+      "znak_burger": 510.81,
+      "za_kraem": false
     },
     {
       "w": 741,
@@ -4357,7 +4790,8 @@
         138,
         38
       ],
-      "znak_burger": 511.75
+      "znak_burger": 511.75,
+      "za_kraem": false
     },
     {
       "w": 742,
@@ -4366,7 +4800,8 @@
         138,
         38
       ],
-      "znak_burger": 512.66
+      "znak_burger": 512.66,
+      "za_kraem": false
     },
     {
       "w": 743,
@@ -4375,7 +4810,8 @@
         138,
         38
       ],
-      "znak_burger": 513.56
+      "znak_burger": 513.56,
+      "za_kraem": false
     },
     {
       "w": 744,
@@ -4384,7 +4820,8 @@
         138,
         38
       ],
-      "znak_burger": 514.5
+      "znak_burger": 514.5,
+      "za_kraem": false
     },
     {
       "w": 745,
@@ -4393,7 +4830,8 @@
         138,
         38
       ],
-      "znak_burger": 515.41
+      "znak_burger": 515.41,
+      "za_kraem": false
     },
     {
       "w": 746,
@@ -4402,7 +4840,8 @@
         138,
         38
       ],
-      "znak_burger": 516.34
+      "znak_burger": 516.34,
+      "za_kraem": false
     },
     {
       "w": 747,
@@ -4411,7 +4850,8 @@
         138,
         38
       ],
-      "znak_burger": 517.25
+      "znak_burger": 517.25,
+      "za_kraem": false
     },
     {
       "w": 748,
@@ -4420,7 +4860,8 @@
         138,
         38
       ],
-      "znak_burger": 518.19
+      "znak_burger": 518.19,
+      "za_kraem": false
     },
     {
       "w": 749,
@@ -4429,7 +4870,8 @@
         138,
         38
       ],
-      "znak_burger": 519.09
+      "znak_burger": 519.09,
+      "za_kraem": false
     },
     {
       "w": 750,
@@ -4438,7 +4880,8 @@
         138,
         38
       ],
-      "znak_burger": 520
+      "znak_burger": 520,
+      "za_kraem": false
     },
     {
       "w": 751,
@@ -4447,7 +4890,8 @@
         138,
         38
       ],
-      "znak_burger": 520.94
+      "znak_burger": 520.94,
+      "za_kraem": false
     },
     {
       "w": 752,
@@ -4456,7 +4900,8 @@
         138,
         38
       ],
-      "znak_burger": 521.84
+      "znak_burger": 521.84,
+      "za_kraem": false
     },
     {
       "w": 753,
@@ -4465,7 +4910,8 @@
         138,
         38
       ],
-      "znak_burger": 522.78
+      "znak_burger": 522.78,
+      "za_kraem": false
     },
     {
       "w": 754,
@@ -4474,7 +4920,8 @@
         138,
         38
       ],
-      "znak_burger": 523.69
+      "znak_burger": 523.69,
+      "za_kraem": false
     },
     {
       "w": 755,
@@ -4483,7 +4930,8 @@
         138,
         38
       ],
-      "znak_burger": 524.63
+      "znak_burger": 524.63,
+      "za_kraem": false
     },
     {
       "w": 756,
@@ -4492,7 +4940,8 @@
         138,
         38
       ],
-      "znak_burger": 525.53
+      "znak_burger": 525.53,
+      "za_kraem": false
     },
     {
       "w": 757,
@@ -4501,7 +4950,8 @@
         138,
         38
       ],
-      "znak_burger": 526.47
+      "znak_burger": 526.47,
+      "za_kraem": false
     },
     {
       "w": 758,
@@ -4510,7 +4960,8 @@
         138,
         38
       ],
-      "znak_burger": 527.38
+      "znak_burger": 527.38,
+      "za_kraem": false
     },
     {
       "w": 759,
@@ -4519,7 +4970,8 @@
         138,
         38
       ],
-      "znak_burger": 528.28
+      "znak_burger": 528.28,
+      "za_kraem": false
     },
     {
       "w": 760,
@@ -4528,7 +4980,8 @@
         138,
         38
       ],
-      "znak_burger": 529.22
+      "znak_burger": 529.22,
+      "za_kraem": false
     },
     {
       "w": 761,
@@ -4537,7 +4990,8 @@
         138,
         38
       ],
-      "znak_burger": 530.13
+      "znak_burger": 530.13,
+      "za_kraem": false
     },
     {
       "w": 762,
@@ -4546,7 +5000,8 @@
         138,
         38
       ],
-      "znak_burger": 531.06
+      "znak_burger": 531.06,
+      "za_kraem": false
     },
     {
       "w": 763,
@@ -4555,7 +5010,8 @@
         138,
         38
       ],
-      "znak_burger": 531.97
+      "znak_burger": 531.97,
+      "za_kraem": false
     },
     {
       "w": 764,
@@ -4564,7 +5020,8 @@
         138,
         38
       ],
-      "znak_burger": 532.91
+      "znak_burger": 532.91,
+      "za_kraem": false
     },
     {
       "w": 765,
@@ -4573,7 +5030,8 @@
         138,
         38
       ],
-      "znak_burger": 533.81
+      "znak_burger": 533.81,
+      "za_kraem": false
     },
     {
       "w": 766,
@@ -4582,7 +5040,8 @@
         138,
         38
       ],
-      "znak_burger": 534.75
+      "znak_burger": 534.75,
+      "za_kraem": false
     },
     {
       "w": 767,
@@ -4591,7 +5050,8 @@
         138,
         38
       ],
-      "znak_burger": 535.66
+      "znak_burger": 535.66,
+      "za_kraem": false
     },
     {
       "w": 768,
@@ -4600,7 +5060,8 @@
         138,
         38
       ],
-      "znak_burger": 536.56
+      "znak_burger": 536.56,
+      "za_kraem": false
     },
     {
       "w": 769,
@@ -4609,7 +5070,8 @@
         138,
         38
       ],
-      "znak_burger": 537.5
+      "znak_burger": 537.5,
+      "za_kraem": false
     },
     {
       "w": 770,
@@ -4618,7 +5080,8 @@
         138,
         38
       ],
-      "znak_burger": 538.41
+      "znak_burger": 538.41,
+      "za_kraem": false
     },
     {
       "w": 771,
@@ -4627,7 +5090,8 @@
         138,
         38
       ],
-      "znak_burger": 539.34
+      "znak_burger": 539.34,
+      "za_kraem": false
     },
     {
       "w": 772,
@@ -4636,7 +5100,8 @@
         138,
         38
       ],
-      "znak_burger": 540.25
+      "znak_burger": 540.25,
+      "za_kraem": false
     },
     {
       "w": 773,
@@ -4645,7 +5110,8 @@
         138,
         38
       ],
-      "znak_burger": 541.19
+      "znak_burger": 541.19,
+      "za_kraem": false
     },
     {
       "w": 774,
@@ -4654,7 +5120,8 @@
         138,
         38
       ],
-      "znak_burger": 542.09
+      "znak_burger": 542.09,
+      "za_kraem": false
     },
     {
       "w": 775,
@@ -4663,7 +5130,8 @@
         138,
         38
       ],
-      "znak_burger": 543
+      "znak_burger": 543,
+      "za_kraem": false
     },
     {
       "w": 776,
@@ -4672,7 +5140,8 @@
         138,
         38
       ],
-      "znak_burger": 543.94
+      "znak_burger": 543.94,
+      "za_kraem": false
     },
     {
       "w": 777,
@@ -4681,7 +5150,8 @@
         138,
         38
       ],
-      "znak_burger": 544.84
+      "znak_burger": 544.84,
+      "za_kraem": false
     },
     {
       "w": 778,
@@ -4690,7 +5160,8 @@
         138,
         38
       ],
-      "znak_burger": 545.78
+      "znak_burger": 545.78,
+      "za_kraem": false
     },
     {
       "w": 779,
@@ -4699,7 +5170,8 @@
         138,
         38
       ],
-      "znak_burger": 546.69
+      "znak_burger": 546.69,
+      "za_kraem": false
     },
     {
       "w": 780,
@@ -4708,7 +5180,8 @@
         138,
         38
       ],
-      "znak_burger": 547.63
+      "znak_burger": 547.63,
+      "za_kraem": false
     },
     {
       "w": 781,
@@ -4717,7 +5190,8 @@
         138,
         38
       ],
-      "znak_burger": 548.53
+      "znak_burger": 548.53,
+      "za_kraem": false
     },
     {
       "w": 782,
@@ -4726,7 +5200,8 @@
         138,
         38
       ],
-      "znak_burger": 549.47
+      "znak_burger": 549.47,
+      "za_kraem": false
     },
     {
       "w": 783,
@@ -4735,7 +5210,8 @@
         138,
         38
       ],
-      "znak_burger": 550.38
+      "znak_burger": 550.38,
+      "za_kraem": false
     },
     {
       "w": 784,
@@ -4744,7 +5220,8 @@
         138,
         38
       ],
-      "znak_burger": 551.28
+      "znak_burger": 551.28,
+      "za_kraem": false
     },
     {
       "w": 785,
@@ -4753,7 +5230,8 @@
         138,
         38
       ],
-      "znak_burger": 552.22
+      "znak_burger": 552.22,
+      "za_kraem": false
     },
     {
       "w": 786,
@@ -4762,7 +5240,8 @@
         138,
         38
       ],
-      "znak_burger": 553.13
+      "znak_burger": 553.13,
+      "za_kraem": false
     },
     {
       "w": 787,
@@ -4771,7 +5250,8 @@
         138,
         38
       ],
-      "znak_burger": 554.06
+      "znak_burger": 554.06,
+      "za_kraem": false
     },
     {
       "w": 788,
@@ -4780,7 +5260,8 @@
         138,
         38
       ],
-      "znak_burger": 554.97
+      "znak_burger": 554.97,
+      "za_kraem": false
     },
     {
       "w": 789,
@@ -4789,7 +5270,8 @@
         138,
         38
       ],
-      "znak_burger": 555.91
+      "znak_burger": 555.91,
+      "za_kraem": false
     },
     {
       "w": 790,
@@ -4798,7 +5280,8 @@
         138,
         38
       ],
-      "znak_burger": 556.81
+      "znak_burger": 556.81,
+      "za_kraem": false
     },
     {
       "w": 791,
@@ -4807,7 +5290,8 @@
         138,
         38
       ],
-      "znak_burger": 557.75
+      "znak_burger": 557.75,
+      "za_kraem": false
     },
     {
       "w": 792,
@@ -4816,7 +5300,8 @@
         138,
         38
       ],
-      "znak_burger": 558.66
+      "znak_burger": 558.66,
+      "za_kraem": false
     },
     {
       "w": 793,
@@ -4825,7 +5310,8 @@
         138,
         38
       ],
-      "znak_burger": 559.56
+      "znak_burger": 559.56,
+      "za_kraem": false
     },
     {
       "w": 794,
@@ -4834,7 +5320,8 @@
         138,
         38
       ],
-      "znak_burger": 560.5
+      "znak_burger": 560.5,
+      "za_kraem": false
     },
     {
       "w": 795,
@@ -4843,7 +5330,8 @@
         138,
         38
       ],
-      "znak_burger": 561.41
+      "znak_burger": 561.41,
+      "za_kraem": false
     },
     {
       "w": 796,
@@ -4852,7 +5340,8 @@
         138,
         38
       ],
-      "znak_burger": 562.34
+      "znak_burger": 562.34,
+      "za_kraem": false
     },
     {
       "w": 797,
@@ -4861,7 +5350,8 @@
         138,
         38
       ],
-      "znak_burger": 563.25
+      "znak_burger": 563.25,
+      "za_kraem": false
     },
     {
       "w": 798,
@@ -4870,7 +5360,8 @@
         138,
         38
       ],
-      "znak_burger": 564.19
+      "znak_burger": 564.19,
+      "za_kraem": false
     },
     {
       "w": 799,
@@ -4879,7 +5370,8 @@
         138,
         38
       ],
-      "znak_burger": 565.09
+      "znak_burger": 565.09,
+      "za_kraem": false
     },
     {
       "w": 800,
@@ -4888,7 +5380,8 @@
         138,
         38
       ],
-      "znak_burger": 566
+      "znak_burger": 566,
+      "za_kraem": false
     },
     {
       "w": 801,
@@ -4897,7 +5390,8 @@
         138,
         38
       ],
-      "znak_burger": 567
+      "znak_burger": 567,
+      "za_kraem": false
     },
     {
       "w": 802,
@@ -4906,7 +5400,8 @@
         138,
         38
       ],
-      "znak_burger": 568
+      "znak_burger": 568,
+      "za_kraem": false
     },
     {
       "w": 803,
@@ -4915,7 +5410,8 @@
         138,
         38
       ],
-      "znak_burger": 569
+      "znak_burger": 569,
+      "za_kraem": false
     },
     {
       "w": 804,
@@ -4924,7 +5420,8 @@
         138,
         38
       ],
-      "znak_burger": 570
+      "znak_burger": 570,
+      "za_kraem": false
     },
     {
       "w": 805,
@@ -4933,7 +5430,8 @@
         138,
         38
       ],
-      "znak_burger": 571
+      "znak_burger": 571,
+      "za_kraem": false
     },
     {
       "w": 806,
@@ -4942,7 +5440,8 @@
         138,
         38
       ],
-      "znak_burger": 572
+      "znak_burger": 572,
+      "za_kraem": false
     },
     {
       "w": 807,
@@ -4951,7 +5450,8 @@
         138,
         38
       ],
-      "znak_burger": 573
+      "znak_burger": 573,
+      "za_kraem": false
     },
     {
       "w": 808,
@@ -4960,7 +5460,8 @@
         138,
         38
       ],
-      "znak_burger": 574
+      "znak_burger": 574,
+      "za_kraem": false
     },
     {
       "w": 809,
@@ -4969,7 +5470,8 @@
         138,
         38
       ],
-      "znak_burger": 575
+      "znak_burger": 575,
+      "za_kraem": false
     },
     {
       "w": 810,
@@ -4978,7 +5480,8 @@
         138,
         38
       ],
-      "znak_burger": 576
+      "znak_burger": 576,
+      "za_kraem": false
     },
     {
       "w": 811,
@@ -4987,7 +5490,8 @@
         138,
         38
       ],
-      "znak_burger": 577
+      "znak_burger": 577,
+      "za_kraem": false
     },
     {
       "w": 812,
@@ -4996,7 +5500,8 @@
         138,
         38
       ],
-      "znak_burger": 578
+      "znak_burger": 578,
+      "za_kraem": false
     },
     {
       "w": 813,
@@ -5005,7 +5510,8 @@
         138,
         38
       ],
-      "znak_burger": 579
+      "znak_burger": 579,
+      "za_kraem": false
     },
     {
       "w": 814,
@@ -5014,7 +5520,8 @@
         138,
         38
       ],
-      "znak_burger": 580
+      "znak_burger": 580,
+      "za_kraem": false
     },
     {
       "w": 815,
@@ -5023,7 +5530,8 @@
         138,
         38
       ],
-      "znak_burger": 581
+      "znak_burger": 581,
+      "za_kraem": false
     },
     {
       "w": 816,
@@ -5032,7 +5540,8 @@
         138,
         38
       ],
-      "znak_burger": 582
+      "znak_burger": 582,
+      "za_kraem": false
     },
     {
       "w": 817,
@@ -5041,7 +5550,8 @@
         138,
         38
       ],
-      "znak_burger": 583
+      "znak_burger": 583,
+      "za_kraem": false
     },
     {
       "w": 818,
@@ -5050,7 +5560,8 @@
         138,
         38
       ],
-      "znak_burger": 584
+      "znak_burger": 584,
+      "za_kraem": false
     },
     {
       "w": 819,
@@ -5059,7 +5570,8 @@
         138,
         38
       ],
-      "znak_burger": 585
+      "znak_burger": 585,
+      "za_kraem": false
     },
     {
       "w": 820,
@@ -5068,7 +5580,8 @@
         138,
         38
       ],
-      "znak_burger": 586
+      "znak_burger": 586,
+      "za_kraem": false
     },
     {
       "w": 821,
@@ -5077,7 +5590,8 @@
         138,
         38
       ],
-      "znak_burger": 587
+      "znak_burger": 587,
+      "za_kraem": false
     },
     {
       "w": 822,
@@ -5086,7 +5600,8 @@
         138,
         38
       ],
-      "znak_burger": 588
+      "znak_burger": 588,
+      "za_kraem": false
     },
     {
       "w": 823,
@@ -5095,7 +5610,8 @@
         138,
         38
       ],
-      "znak_burger": 589
+      "znak_burger": 589,
+      "za_kraem": false
     },
     {
       "w": 824,
@@ -5104,7 +5620,8 @@
         138,
         38
       ],
-      "znak_burger": 590
+      "znak_burger": 590,
+      "za_kraem": false
     },
     {
       "w": 825,
@@ -5113,7 +5630,8 @@
         138,
         38
       ],
-      "znak_burger": 591
+      "znak_burger": 591,
+      "za_kraem": false
     },
     {
       "w": 826,
@@ -5122,7 +5640,8 @@
         138,
         38
       ],
-      "znak_burger": 592
+      "znak_burger": 592,
+      "za_kraem": false
     },
     {
       "w": 827,
@@ -5131,7 +5650,8 @@
         138,
         38
       ],
-      "znak_burger": 593
+      "znak_burger": 593,
+      "za_kraem": false
     },
     {
       "w": 828,
@@ -5140,7 +5660,8 @@
         138,
         38
       ],
-      "znak_burger": 594
+      "znak_burger": 594,
+      "za_kraem": false
     },
     {
       "w": 829,
@@ -5149,7 +5670,8 @@
         138,
         38
       ],
-      "znak_burger": 595
+      "znak_burger": 595,
+      "za_kraem": false
     },
     {
       "w": 830,
@@ -5158,7 +5680,8 @@
         138,
         38
       ],
-      "znak_burger": 596
+      "znak_burger": 596,
+      "za_kraem": false
     },
     {
       "w": 831,
@@ -5167,7 +5690,8 @@
         138,
         38
       ],
-      "znak_burger": 597
+      "znak_burger": 597,
+      "za_kraem": false
     },
     {
       "w": 832,
@@ -5176,7 +5700,8 @@
         138,
         38
       ],
-      "znak_burger": 598
+      "znak_burger": 598,
+      "za_kraem": false
     },
     {
       "w": 833,
@@ -5185,7 +5710,8 @@
         138,
         38
       ],
-      "znak_burger": 599
+      "znak_burger": 599,
+      "za_kraem": false
     },
     {
       "w": 834,
@@ -5194,7 +5720,8 @@
         138,
         38
       ],
-      "znak_burger": 600
+      "znak_burger": 600,
+      "za_kraem": false
     },
     {
       "w": 835,
@@ -5203,7 +5730,8 @@
         138,
         38
       ],
-      "znak_burger": 601
+      "znak_burger": 601,
+      "za_kraem": false
     },
     {
       "w": 836,
@@ -5212,7 +5740,8 @@
         138,
         38
       ],
-      "znak_burger": 602
+      "znak_burger": 602,
+      "za_kraem": false
     },
     {
       "w": 837,
@@ -5221,7 +5750,8 @@
         138,
         38
       ],
-      "znak_burger": 603
+      "znak_burger": 603,
+      "za_kraem": false
     },
     {
       "w": 838,
@@ -5230,7 +5760,8 @@
         138,
         38
       ],
-      "znak_burger": 604
+      "znak_burger": 604,
+      "za_kraem": false
     },
     {
       "w": 839,
@@ -5239,7 +5770,8 @@
         138,
         38
       ],
-      "znak_burger": 605
+      "znak_burger": 605,
+      "za_kraem": false
     },
     {
       "w": 840,
@@ -5248,7 +5780,8 @@
         138,
         38
       ],
-      "znak_burger": 606
+      "znak_burger": 606,
+      "za_kraem": false
     },
     {
       "w": 841,
@@ -5257,7 +5790,8 @@
         138,
         38
       ],
-      "znak_burger": 607
+      "znak_burger": 607,
+      "za_kraem": false
     },
     {
       "w": 842,
@@ -5266,7 +5800,8 @@
         138,
         38
       ],
-      "znak_burger": 608
+      "znak_burger": 608,
+      "za_kraem": false
     },
     {
       "w": 843,
@@ -5275,7 +5810,8 @@
         138,
         38
       ],
-      "znak_burger": 609
+      "znak_burger": 609,
+      "za_kraem": false
     },
     {
       "w": 844,
@@ -5284,7 +5820,8 @@
         138,
         38
       ],
-      "znak_burger": 610
+      "znak_burger": 610,
+      "za_kraem": false
     },
     {
       "w": 845,
@@ -5293,7 +5830,8 @@
         138,
         38
       ],
-      "znak_burger": 611
+      "znak_burger": 611,
+      "za_kraem": false
     },
     {
       "w": 846,
@@ -5302,7 +5840,8 @@
         138,
         38
       ],
-      "znak_burger": 612
+      "znak_burger": 612,
+      "za_kraem": false
     },
     {
       "w": 847,
@@ -5311,7 +5850,8 @@
         138,
         38
       ],
-      "znak_burger": 613
+      "znak_burger": 613,
+      "za_kraem": false
     },
     {
       "w": 848,
@@ -5320,7 +5860,8 @@
         138,
         38
       ],
-      "znak_burger": 614
+      "znak_burger": 614,
+      "za_kraem": false
     },
     {
       "w": 849,
@@ -5329,7 +5870,8 @@
         138,
         38
       ],
-      "znak_burger": 615
+      "znak_burger": 615,
+      "za_kraem": false
     },
     {
       "w": 850,
@@ -5338,7 +5880,8 @@
         138,
         38
       ],
-      "znak_burger": 616
+      "znak_burger": 616,
+      "za_kraem": false
     },
     {
       "w": 851,
@@ -5347,7 +5890,8 @@
         138,
         38
       ],
-      "znak_burger": 617
+      "znak_burger": 617,
+      "za_kraem": false
     },
     {
       "w": 852,
@@ -5356,7 +5900,8 @@
         138,
         38
       ],
-      "znak_burger": 618
+      "znak_burger": 618,
+      "za_kraem": false
     },
     {
       "w": 853,
@@ -5365,7 +5910,8 @@
         138,
         38
       ],
-      "znak_burger": 619
+      "znak_burger": 619,
+      "za_kraem": false
     },
     {
       "w": 854,
@@ -5374,7 +5920,8 @@
         138,
         38
       ],
-      "znak_burger": 620
+      "znak_burger": 620,
+      "za_kraem": false
     },
     {
       "w": 855,
@@ -5383,7 +5930,8 @@
         138,
         38
       ],
-      "znak_burger": 621
+      "znak_burger": 621,
+      "za_kraem": false
     },
     {
       "w": 856,
@@ -5392,7 +5940,8 @@
         138,
         38
       ],
-      "znak_burger": 622
+      "znak_burger": 622,
+      "za_kraem": false
     },
     {
       "w": 857,
@@ -5401,7 +5950,8 @@
         138,
         38
       ],
-      "znak_burger": 623
+      "znak_burger": 623,
+      "za_kraem": false
     },
     {
       "w": 858,
@@ -5410,7 +5960,8 @@
         138,
         38
       ],
-      "znak_burger": 624
+      "znak_burger": 624,
+      "za_kraem": false
     },
     {
       "w": 859,
@@ -5419,7 +5970,8 @@
         138,
         38
       ],
-      "znak_burger": 625
+      "znak_burger": 625,
+      "za_kraem": false
     },
     {
       "w": 860,
@@ -5428,7 +5980,8 @@
         138,
         38
       ],
-      "znak_burger": 626
+      "znak_burger": 626,
+      "za_kraem": false
     },
     {
       "w": 861,
@@ -5437,7 +5990,8 @@
         138,
         38
       ],
-      "znak_burger": 627
+      "znak_burger": 627,
+      "za_kraem": false
     },
     {
       "w": 862,
@@ -5446,7 +6000,8 @@
         138,
         38
       ],
-      "znak_burger": 628
+      "znak_burger": 628,
+      "za_kraem": false
     },
     {
       "w": 863,
@@ -5455,7 +6010,8 @@
         138,
         38
       ],
-      "znak_burger": 629
+      "znak_burger": 629,
+      "za_kraem": false
     },
     {
       "w": 864,
@@ -5464,7 +6020,8 @@
         138,
         38
       ],
-      "znak_burger": 630
+      "znak_burger": 630,
+      "za_kraem": false
     },
     {
       "w": 865,
@@ -5473,7 +6030,8 @@
         138,
         38
       ],
-      "znak_burger": 631
+      "znak_burger": 631,
+      "za_kraem": false
     },
     {
       "w": 866,
@@ -5482,7 +6040,8 @@
         138,
         38
       ],
-      "znak_burger": 632
+      "znak_burger": 632,
+      "za_kraem": false
     },
     {
       "w": 867,
@@ -5491,7 +6050,8 @@
         138,
         38
       ],
-      "znak_burger": 633
+      "znak_burger": 633,
+      "za_kraem": false
     },
     {
       "w": 868,
@@ -5500,7 +6060,8 @@
         138,
         38
       ],
-      "znak_burger": 634
+      "znak_burger": 634,
+      "za_kraem": false
     },
     {
       "w": 869,
@@ -5509,7 +6070,8 @@
         138,
         38
       ],
-      "znak_burger": 635
+      "znak_burger": 635,
+      "za_kraem": false
     },
     {
       "w": 870,
@@ -5518,7 +6080,8 @@
         138,
         38
       ],
-      "znak_burger": 636
+      "znak_burger": 636,
+      "za_kraem": false
     },
     {
       "w": 871,
@@ -5527,7 +6090,8 @@
         138,
         38
       ],
-      "znak_burger": 637
+      "znak_burger": 637,
+      "za_kraem": false
     },
     {
       "w": 872,
@@ -5536,7 +6100,8 @@
         138,
         38
       ],
-      "znak_burger": 638
+      "znak_burger": 638,
+      "za_kraem": false
     },
     {
       "w": 873,
@@ -5545,7 +6110,8 @@
         138,
         38
       ],
-      "znak_burger": 639
+      "znak_burger": 639,
+      "za_kraem": false
     },
     {
       "w": 874,
@@ -5554,7 +6120,8 @@
         138,
         38
       ],
-      "znak_burger": 640
+      "znak_burger": 640,
+      "za_kraem": false
     },
     {
       "w": 875,
@@ -5563,7 +6130,8 @@
         138,
         38
       ],
-      "znak_burger": 641
+      "znak_burger": 641,
+      "za_kraem": false
     },
     {
       "w": 876,
@@ -5572,7 +6140,8 @@
         138,
         38
       ],
-      "znak_burger": 642
+      "znak_burger": 642,
+      "za_kraem": false
     },
     {
       "w": 877,
@@ -5581,7 +6150,8 @@
         138,
         38
       ],
-      "znak_burger": 643
+      "znak_burger": 643,
+      "za_kraem": false
     },
     {
       "w": 878,
@@ -5590,7 +6160,8 @@
         138,
         38
       ],
-      "znak_burger": 644
+      "znak_burger": 644,
+      "za_kraem": false
     },
     {
       "w": 879,
@@ -5599,7 +6170,8 @@
         138,
         38
       ],
-      "znak_burger": 645
+      "znak_burger": 645,
+      "za_kraem": false
     },
     {
       "w": 880,
@@ -5608,7 +6180,8 @@
         138,
         38
       ],
-      "znak_burger": 646
+      "znak_burger": 646,
+      "za_kraem": false
     },
     {
       "w": 881,
@@ -5617,7 +6190,8 @@
         138,
         38
       ],
-      "znak_burger": 647
+      "znak_burger": 647,
+      "za_kraem": false
     },
     {
       "w": 882,
@@ -5626,7 +6200,8 @@
         138,
         38
       ],
-      "znak_burger": 648
+      "znak_burger": 648,
+      "za_kraem": false
     },
     {
       "w": 883,
@@ -5635,7 +6210,8 @@
         138,
         38
       ],
-      "znak_burger": 649
+      "znak_burger": 649,
+      "za_kraem": false
     },
     {
       "w": 884,
@@ -5644,7 +6220,8 @@
         138,
         38
       ],
-      "znak_burger": 650
+      "znak_burger": 650,
+      "za_kraem": false
     },
     {
       "w": 885,
@@ -5653,7 +6230,8 @@
         138,
         38
       ],
-      "znak_burger": 651
+      "znak_burger": 651,
+      "za_kraem": false
     },
     {
       "w": 886,
@@ -5662,7 +6240,8 @@
         138,
         38
       ],
-      "znak_burger": 652
+      "znak_burger": 652,
+      "za_kraem": false
     },
     {
       "w": 887,
@@ -5671,7 +6250,8 @@
         138,
         38
       ],
-      "znak_burger": 653
+      "znak_burger": 653,
+      "za_kraem": false
     },
     {
       "w": 888,
@@ -5680,7 +6260,8 @@
         138,
         38
       ],
-      "znak_burger": 654
+      "znak_burger": 654,
+      "za_kraem": false
     },
     {
       "w": 889,
@@ -5689,7 +6270,8 @@
         138,
         38
       ],
-      "znak_burger": 655
+      "znak_burger": 655,
+      "za_kraem": false
     },
     {
       "w": 890,
@@ -5698,7 +6280,8 @@
         138,
         38
       ],
-      "znak_burger": 656
+      "znak_burger": 656,
+      "za_kraem": false
     },
     {
       "w": 891,
@@ -5707,7 +6290,8 @@
         138,
         38
       ],
-      "znak_burger": 657
+      "znak_burger": 657,
+      "za_kraem": false
     },
     {
       "w": 892,
@@ -5716,7 +6300,8 @@
         138,
         38
       ],
-      "znak_burger": 658
+      "znak_burger": 658,
+      "za_kraem": false
     },
     {
       "w": 893,
@@ -5725,7 +6310,8 @@
         138,
         38
       ],
-      "znak_burger": 659
+      "znak_burger": 659,
+      "za_kraem": false
     },
     {
       "w": 894,
@@ -5734,7 +6320,8 @@
         138,
         38
       ],
-      "znak_burger": 660
+      "znak_burger": 660,
+      "za_kraem": false
     },
     {
       "w": 895,
@@ -5743,7 +6330,8 @@
         138,
         38
       ],
-      "znak_burger": 661
+      "znak_burger": 661,
+      "za_kraem": false
     },
     {
       "w": 896,
@@ -5752,7 +6340,8 @@
         138,
         38
       ],
-      "znak_burger": 662
+      "znak_burger": 662,
+      "za_kraem": false
     },
     {
       "w": 897,
@@ -5761,7 +6350,8 @@
         138,
         38
       ],
-      "znak_burger": 663
+      "znak_burger": 663,
+      "za_kraem": false
     },
     {
       "w": 898,
@@ -5770,7 +6360,8 @@
         138,
         38
       ],
-      "znak_burger": 664
+      "znak_burger": 664,
+      "za_kraem": false
     },
     {
       "w": 899,
@@ -5779,7 +6370,8 @@
         138,
         38
       ],
-      "znak_burger": 665
+      "znak_burger": 665,
+      "za_kraem": false
     },
     {
       "w": 900,
@@ -5788,7 +6380,8 @@
         138,
         38
       ],
-      "znak_burger": 666
+      "znak_burger": 666,
+      "za_kraem": false
     },
     {
       "w": 901,
@@ -5797,7 +6390,8 @@
         138,
         38
       ],
-      "znak_burger": 667
+      "znak_burger": 667,
+      "za_kraem": false
     },
     {
       "w": 902,
@@ -5806,7 +6400,8 @@
         138,
         38
       ],
-      "znak_burger": 668
+      "znak_burger": 668,
+      "za_kraem": false
     },
     {
       "w": 903,
@@ -5815,7 +6410,8 @@
         138,
         38
       ],
-      "znak_burger": 669
+      "znak_burger": 669,
+      "za_kraem": false
     },
     {
       "w": 904,
@@ -5824,7 +6420,8 @@
         138,
         38
       ],
-      "znak_burger": 670
+      "znak_burger": 670,
+      "za_kraem": false
     },
     {
       "w": 905,
@@ -5833,7 +6430,8 @@
         138,
         38
       ],
-      "znak_burger": 671
+      "znak_burger": 671,
+      "za_kraem": false
     },
     {
       "w": 906,
@@ -5842,7 +6440,8 @@
         138,
         38
       ],
-      "znak_burger": 672
+      "znak_burger": 672,
+      "za_kraem": false
     },
     {
       "w": 907,
@@ -5851,7 +6450,8 @@
         138,
         38
       ],
-      "znak_burger": 673
+      "znak_burger": 673,
+      "za_kraem": false
     },
     {
       "w": 908,
@@ -5860,7 +6460,8 @@
         138,
         38
       ],
-      "znak_burger": 674
+      "znak_burger": 674,
+      "za_kraem": false
     },
     {
       "w": 909,
@@ -5869,7 +6470,8 @@
         138,
         38
       ],
-      "znak_burger": 675
+      "znak_burger": 675,
+      "za_kraem": false
     },
     {
       "w": 910,
@@ -5878,7 +6480,8 @@
         138,
         38
       ],
-      "znak_burger": 676
+      "znak_burger": 676,
+      "za_kraem": false
     },
     {
       "w": 911,
@@ -5887,7 +6490,8 @@
         138,
         38
       ],
-      "znak_burger": 677
+      "znak_burger": 677,
+      "za_kraem": false
     },
     {
       "w": 912,
@@ -5896,7 +6500,8 @@
         138,
         38
       ],
-      "znak_burger": 678
+      "znak_burger": 678,
+      "za_kraem": false
     },
     {
       "w": 913,
@@ -5905,7 +6510,8 @@
         138,
         38
       ],
-      "znak_burger": 679
+      "znak_burger": 679,
+      "za_kraem": false
     },
     {
       "w": 914,
@@ -5914,7 +6520,8 @@
         138,
         38
       ],
-      "znak_burger": 680
+      "znak_burger": 680,
+      "za_kraem": false
     },
     {
       "w": 915,
@@ -5923,7 +6530,8 @@
         138,
         38
       ],
-      "znak_burger": 681
+      "znak_burger": 681,
+      "za_kraem": false
     },
     {
       "w": 916,
@@ -5932,7 +6540,8 @@
         138,
         38
       ],
-      "znak_burger": 682
+      "znak_burger": 682,
+      "za_kraem": false
     },
     {
       "w": 917,
@@ -5941,7 +6550,8 @@
         138,
         38
       ],
-      "znak_burger": 683
+      "znak_burger": 683,
+      "za_kraem": false
     },
     {
       "w": 918,
@@ -5950,7 +6560,8 @@
         138,
         38
       ],
-      "znak_burger": 684
+      "znak_burger": 684,
+      "za_kraem": false
     },
     {
       "w": 919,
@@ -5959,7 +6570,8 @@
         138,
         38
       ],
-      "znak_burger": 685
+      "znak_burger": 685,
+      "za_kraem": false
     },
     {
       "w": 920,
@@ -5968,7 +6580,8 @@
         138,
         38
       ],
-      "znak_burger": 686
+      "znak_burger": 686,
+      "za_kraem": false
     },
     {
       "w": 921,
@@ -5977,7 +6590,8 @@
         138,
         38
       ],
-      "znak_burger": 687
+      "znak_burger": 687,
+      "za_kraem": false
     },
     {
       "w": 922,
@@ -5986,7 +6600,8 @@
         138,
         38
       ],
-      "znak_burger": 688
+      "znak_burger": 688,
+      "za_kraem": false
     },
     {
       "w": 923,
@@ -5995,7 +6610,8 @@
         138,
         38
       ],
-      "znak_burger": 689
+      "znak_burger": 689,
+      "za_kraem": false
     },
     {
       "w": 924,
@@ -6004,7 +6620,8 @@
         138,
         38
       ],
-      "znak_burger": 690
+      "znak_burger": 690,
+      "za_kraem": false
     },
     {
       "w": 925,
@@ -6013,7 +6630,8 @@
         138,
         38
       ],
-      "znak_burger": 691
+      "znak_burger": 691,
+      "za_kraem": false
     },
     {
       "w": 926,
@@ -6022,7 +6640,8 @@
         138,
         38
       ],
-      "znak_burger": 692
+      "znak_burger": 692,
+      "za_kraem": false
     },
     {
       "w": 927,
@@ -6031,7 +6650,8 @@
         138,
         38
       ],
-      "znak_burger": 693
+      "znak_burger": 693,
+      "za_kraem": false
     },
     {
       "w": 928,
@@ -6040,7 +6660,8 @@
         138,
         38
       ],
-      "znak_burger": 694
+      "znak_burger": 694,
+      "za_kraem": false
     },
     {
       "w": 929,
@@ -6049,7 +6670,8 @@
         138,
         38
       ],
-      "znak_burger": 695
+      "znak_burger": 695,
+      "za_kraem": false
     },
     {
       "w": 930,
@@ -6058,7 +6680,8 @@
         138,
         38
       ],
-      "znak_burger": 696
+      "znak_burger": 696,
+      "za_kraem": false
     },
     {
       "w": 931,
@@ -6067,7 +6690,8 @@
         138,
         38
       ],
-      "znak_burger": 697
+      "znak_burger": 697,
+      "za_kraem": false
     },
     {
       "w": 932,
@@ -6076,7 +6700,8 @@
         138,
         38
       ],
-      "znak_burger": 698
+      "znak_burger": 698,
+      "za_kraem": false
     },
     {
       "w": 933,
@@ -6085,7 +6710,8 @@
         138,
         38
       ],
-      "znak_burger": 699
+      "znak_burger": 699,
+      "za_kraem": false
     },
     {
       "w": 934,
@@ -6094,7 +6720,8 @@
         138,
         38
       ],
-      "znak_burger": 700
+      "znak_burger": 700,
+      "za_kraem": false
     },
     {
       "w": 935,
@@ -6103,7 +6730,8 @@
         138,
         38
       ],
-      "znak_burger": 701
+      "znak_burger": 701,
+      "za_kraem": false
     },
     {
       "w": 936,
@@ -6112,7 +6740,8 @@
         138,
         38
       ],
-      "znak_burger": 702
+      "znak_burger": 702,
+      "za_kraem": false
     },
     {
       "w": 937,
@@ -6121,7 +6750,8 @@
         138,
         38
       ],
-      "znak_burger": 703
+      "znak_burger": 703,
+      "za_kraem": false
     },
     {
       "w": 938,
@@ -6130,7 +6760,8 @@
         138,
         38
       ],
-      "znak_burger": 704
+      "znak_burger": 704,
+      "za_kraem": false
     },
     {
       "w": 939,
@@ -6139,7 +6770,8 @@
         138,
         38
       ],
-      "znak_burger": 705
+      "znak_burger": 705,
+      "za_kraem": false
     },
     {
       "w": 940,
@@ -6148,7 +6780,8 @@
         138,
         38
       ],
-      "znak_burger": 706
+      "znak_burger": 706,
+      "za_kraem": false
     },
     {
       "w": 941,
@@ -6157,7 +6790,8 @@
         138,
         38
       ],
-      "znak_burger": 707
+      "znak_burger": 707,
+      "za_kraem": false
     },
     {
       "w": 942,
@@ -6166,7 +6800,8 @@
         138,
         38
       ],
-      "znak_burger": 708
+      "znak_burger": 708,
+      "za_kraem": false
     },
     {
       "w": 943,
@@ -6175,7 +6810,8 @@
         138,
         38
       ],
-      "znak_burger": 709
+      "znak_burger": 709,
+      "za_kraem": false
     },
     {
       "w": 944,
@@ -6184,7 +6820,8 @@
         138,
         38
       ],
-      "znak_burger": 710
+      "znak_burger": 710,
+      "za_kraem": false
     },
     {
       "w": 945,
@@ -6193,7 +6830,8 @@
         138,
         38
       ],
-      "znak_burger": 711
+      "znak_burger": 711,
+      "za_kraem": false
     },
     {
       "w": 946,
@@ -6202,7 +6840,8 @@
         138,
         38
       ],
-      "znak_burger": 712
+      "znak_burger": 712,
+      "za_kraem": false
     },
     {
       "w": 947,
@@ -6211,7 +6850,8 @@
         138,
         38
       ],
-      "znak_burger": 713
+      "znak_burger": 713,
+      "za_kraem": false
     },
     {
       "w": 948,
@@ -6220,7 +6860,8 @@
         138,
         38
       ],
-      "znak_burger": 714
+      "znak_burger": 714,
+      "za_kraem": false
     },
     {
       "w": 949,
@@ -6229,7 +6870,8 @@
         138,
         38
       ],
-      "znak_burger": 715
+      "znak_burger": 715,
+      "za_kraem": false
     },
     {
       "w": 950,
@@ -6238,7 +6880,8 @@
         138,
         38
       ],
-      "znak_burger": 716
+      "znak_burger": 716,
+      "za_kraem": false
     },
     {
       "w": 951,
@@ -6247,7 +6890,8 @@
         138,
         38
       ],
-      "znak_burger": 717
+      "znak_burger": 717,
+      "za_kraem": false
     },
     {
       "w": 952,
@@ -6256,7 +6900,8 @@
         138,
         38
       ],
-      "znak_burger": 718
+      "znak_burger": 718,
+      "za_kraem": false
     },
     {
       "w": 953,
@@ -6265,7 +6910,8 @@
         138,
         38
       ],
-      "znak_burger": 719
+      "znak_burger": 719,
+      "za_kraem": false
     },
     {
       "w": 954,
@@ -6274,7 +6920,8 @@
         138,
         38
       ],
-      "znak_burger": 720
+      "znak_burger": 720,
+      "za_kraem": false
     },
     {
       "w": 955,
@@ -6283,7 +6930,8 @@
         138,
         38
       ],
-      "znak_burger": 721
+      "znak_burger": 721,
+      "za_kraem": false
     },
     {
       "w": 956,
@@ -6292,7 +6940,8 @@
         138,
         38
       ],
-      "znak_burger": 722
+      "znak_burger": 722,
+      "za_kraem": false
     },
     {
       "w": 957,
@@ -6301,7 +6950,8 @@
         138,
         38
       ],
-      "znak_burger": 723
+      "znak_burger": 723,
+      "za_kraem": false
     },
     {
       "w": 958,
@@ -6310,7 +6960,8 @@
         138,
         38
       ],
-      "znak_burger": 724
+      "znak_burger": 724,
+      "za_kraem": false
     },
     {
       "w": 959,
@@ -6319,7 +6970,8 @@
         138,
         38
       ],
-      "znak_burger": 725
+      "znak_burger": 725,
+      "za_kraem": false
     },
     {
       "w": 960,
@@ -6328,7 +6980,8 @@
         138,
         38
       ],
-      "znak_burger": 726
+      "znak_burger": 726,
+      "za_kraem": false
     },
     {
       "w": 961,
@@ -6340,6 +6993,8 @@
       "zapas": 279.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6353,6 +7008,8 @@
       "zapas": 280.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6366,6 +7023,8 @@
       "zapas": 281.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6379,6 +7038,8 @@
       "zapas": 282.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6392,6 +7053,8 @@
       "zapas": 283.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6405,6 +7068,8 @@
       "zapas": 284.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6418,6 +7083,8 @@
       "zapas": 285.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6431,6 +7098,8 @@
       "zapas": 286.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6444,6 +7113,8 @@
       "zapas": 287.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6457,6 +7128,8 @@
       "zapas": 288.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6470,6 +7143,8 @@
       "zapas": 289.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6483,6 +7158,8 @@
       "zapas": 290.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6496,6 +7173,8 @@
       "zapas": 291.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6509,6 +7188,8 @@
       "zapas": 292.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6522,6 +7203,8 @@
       "zapas": 293.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6535,6 +7218,8 @@
       "zapas": 294.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6548,6 +7233,8 @@
       "zapas": 295.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6561,6 +7248,8 @@
       "zapas": 296.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6574,6 +7263,8 @@
       "zapas": 297.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6587,6 +7278,8 @@
       "zapas": 298.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6600,6 +7293,8 @@
       "zapas": 299.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6613,6 +7308,8 @@
       "zapas": 300.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6626,6 +7323,8 @@
       "zapas": 301.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6639,6 +7338,8 @@
       "zapas": 302.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6652,6 +7353,8 @@
       "zapas": 303.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6665,6 +7368,8 @@
       "zapas": 304.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6678,6 +7383,8 @@
       "zapas": 305.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6691,6 +7398,8 @@
       "zapas": 306.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6704,6 +7413,8 @@
       "zapas": 307.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6717,6 +7428,8 @@
       "zapas": 308.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6730,6 +7443,8 @@
       "zapas": 309.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6743,6 +7458,8 @@
       "zapas": 310.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6756,6 +7473,8 @@
       "zapas": 311.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6769,6 +7488,8 @@
       "zapas": 312.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6782,6 +7503,8 @@
       "zapas": 313.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6795,6 +7518,8 @@
       "zapas": 314.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6808,6 +7533,8 @@
       "zapas": 315.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6821,6 +7548,8 @@
       "zapas": 316.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6834,6 +7563,8 @@
       "zapas": 317.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6847,6 +7578,8 @@
       "zapas": 318.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6860,6 +7593,8 @@
       "zapas": 319.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6873,6 +7608,8 @@
       "zapas": 320.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6886,6 +7623,8 @@
       "zapas": 321.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6899,6 +7638,8 @@
       "zapas": 322.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6912,6 +7653,8 @@
       "zapas": 323.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6925,6 +7668,8 @@
       "zapas": 324.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6938,6 +7683,8 @@
       "zapas": 325.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6951,6 +7698,8 @@
       "zapas": 326.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6964,6 +7713,8 @@
       "zapas": 327.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6977,6 +7728,8 @@
       "zapas": 328.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -6990,6 +7743,8 @@
       "zapas": 329.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7003,6 +7758,8 @@
       "zapas": 330.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7016,6 +7773,8 @@
       "zapas": 331.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7029,6 +7788,8 @@
       "zapas": 332.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7042,6 +7803,8 @@
       "zapas": 333.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7055,6 +7818,8 @@
       "zapas": 334.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7068,6 +7833,8 @@
       "zapas": 335.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7081,6 +7848,8 @@
       "zapas": 336.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7094,6 +7863,8 @@
       "zapas": 337.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7107,6 +7878,8 @@
       "zapas": 338.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7120,6 +7893,8 @@
       "zapas": 339.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7133,6 +7908,8 @@
       "zapas": 340.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7146,6 +7923,8 @@
       "zapas": 341.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7159,6 +7938,8 @@
       "zapas": 342.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7172,6 +7953,8 @@
       "zapas": 343.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7185,6 +7968,8 @@
       "zapas": 344.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7198,6 +7983,8 @@
       "zapas": 345.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7211,6 +7998,8 @@
       "zapas": 346.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7224,6 +8013,8 @@
       "zapas": 347.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7237,6 +8028,8 @@
       "zapas": 348.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7250,6 +8043,8 @@
       "zapas": 349.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7263,6 +8058,8 @@
       "zapas": 350.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7276,6 +8073,8 @@
       "zapas": 351.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7289,6 +8088,8 @@
       "zapas": 352.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7302,6 +8103,8 @@
       "zapas": 353.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7315,6 +8118,8 @@
       "zapas": 354.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7328,6 +8133,8 @@
       "zapas": 355.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7341,6 +8148,8 @@
       "zapas": 356.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7354,6 +8163,8 @@
       "zapas": 357.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7367,6 +8178,8 @@
       "zapas": 358.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7380,6 +8193,8 @@
       "zapas": 359.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7393,6 +8208,8 @@
       "zapas": 360.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7406,6 +8223,8 @@
       "zapas": 361.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7419,6 +8238,8 @@
       "zapas": 362.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7432,6 +8253,8 @@
       "zapas": 363.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7445,6 +8268,8 @@
       "zapas": 364.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7458,6 +8283,8 @@
       "zapas": 365.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7471,6 +8298,8 @@
       "zapas": 366.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7484,6 +8313,8 @@
       "zapas": 367.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7497,6 +8328,8 @@
       "zapas": 368.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7510,6 +8343,8 @@
       "zapas": 369.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7523,6 +8358,8 @@
       "zapas": 370.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7536,6 +8373,8 @@
       "zapas": 371.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7549,6 +8388,8 @@
       "zapas": 372.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7562,6 +8403,8 @@
       "zapas": 373.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7575,6 +8418,8 @@
       "zapas": 374.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7588,6 +8433,8 @@
       "zapas": 375.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7601,6 +8448,8 @@
       "zapas": 376.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7614,6 +8463,8 @@
       "zapas": 377.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7627,6 +8478,8 @@
       "zapas": 378.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7640,6 +8493,8 @@
       "zapas": 379.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7653,6 +8508,8 @@
       "zapas": 380.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7666,6 +8523,8 @@
       "zapas": 381.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7679,6 +8538,8 @@
       "zapas": 382.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7692,6 +8553,8 @@
       "zapas": 383.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7705,6 +8568,8 @@
       "zapas": 384.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7718,6 +8583,8 @@
       "zapas": 385.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7731,6 +8598,8 @@
       "zapas": 386.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7744,6 +8613,8 @@
       "zapas": 387.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7757,6 +8628,8 @@
       "zapas": 388.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7770,6 +8643,8 @@
       "zapas": 389.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7783,6 +8658,8 @@
       "zapas": 390.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7796,6 +8673,8 @@
       "zapas": 391.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7809,6 +8688,8 @@
       "zapas": 392.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7822,6 +8703,8 @@
       "zapas": 393.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7835,6 +8718,8 @@
       "zapas": 394.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7848,6 +8733,8 @@
       "zapas": 395.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7861,6 +8748,8 @@
       "zapas": 396.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7874,6 +8763,8 @@
       "zapas": 397.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7887,6 +8778,8 @@
       "zapas": 398.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7900,6 +8793,8 @@
       "zapas": 399.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7913,6 +8808,8 @@
       "zapas": 400.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7926,6 +8823,8 @@
       "zapas": 401.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7939,6 +8838,8 @@
       "zapas": 402.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7952,6 +8853,8 @@
       "zapas": 403.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7965,6 +8868,8 @@
       "zapas": 404.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7978,6 +8883,8 @@
       "zapas": 405.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -7991,6 +8898,8 @@
       "zapas": 406.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8004,6 +8913,8 @@
       "zapas": 407.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8017,6 +8928,8 @@
       "zapas": 408.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8030,6 +8943,8 @@
       "zapas": 409.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8043,6 +8958,8 @@
       "zapas": 410.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8056,6 +8973,8 @@
       "zapas": 411.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8069,6 +8988,8 @@
       "zapas": 412.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8082,6 +9003,8 @@
       "zapas": 413.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8095,6 +9018,8 @@
       "zapas": 414.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8108,6 +9033,8 @@
       "zapas": 415.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8121,6 +9048,8 @@
       "zapas": 416.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8134,6 +9063,8 @@
       "zapas": 417.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8147,6 +9078,8 @@
       "zapas": 418.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8160,6 +9093,8 @@
       "zapas": 419.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8173,6 +9108,8 @@
       "zapas": 420.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8186,6 +9123,8 @@
       "zapas": 421.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8199,6 +9138,8 @@
       "zapas": 422.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8212,6 +9153,8 @@
       "zapas": 423.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8225,6 +9168,8 @@
       "zapas": 424.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8238,6 +9183,8 @@
       "zapas": 425.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8251,6 +9198,8 @@
       "zapas": 426.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8264,6 +9213,8 @@
       "zapas": 427.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8277,6 +9228,8 @@
       "zapas": 428.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8290,6 +9243,8 @@
       "zapas": 429.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8303,6 +9258,8 @@
       "zapas": 430.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8316,6 +9273,8 @@
       "zapas": 431.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8329,6 +9288,8 @@
       "zapas": 432.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8342,6 +9303,8 @@
       "zapas": 433.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8355,6 +9318,8 @@
       "zapas": 434.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8368,6 +9333,8 @@
       "zapas": 435.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8381,6 +9348,8 @@
       "zapas": 436.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8394,6 +9363,8 @@
       "zapas": 437.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8407,6 +9378,8 @@
       "zapas": 438.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8420,6 +9393,8 @@
       "zapas": 439.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8433,6 +9408,8 @@
       "zapas": 440.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8446,6 +9423,8 @@
       "zapas": 441.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8459,6 +9438,8 @@
       "zapas": 442.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8472,6 +9453,8 @@
       "zapas": 443.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8485,6 +9468,8 @@
       "zapas": 444.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8498,6 +9483,8 @@
       "zapas": 445.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8511,6 +9498,8 @@
       "zapas": 446.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8524,6 +9513,8 @@
       "zapas": 447.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8537,6 +9528,8 @@
       "zapas": 448.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8550,6 +9543,8 @@
       "zapas": 449.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8563,6 +9558,8 @@
       "zapas": 450.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8576,6 +9573,8 @@
       "zapas": 451.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8589,6 +9588,8 @@
       "zapas": 452.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8602,6 +9603,8 @@
       "zapas": 453.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8615,6 +9618,8 @@
       "zapas": 454.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8628,6 +9633,8 @@
       "zapas": 455.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8641,6 +9648,8 @@
       "zapas": 456.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8654,6 +9663,8 @@
       "zapas": 457.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8667,6 +9678,8 @@
       "zapas": 458.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8680,6 +9693,8 @@
       "zapas": 459.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8693,6 +9708,8 @@
       "zapas": 460.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8706,6 +9723,8 @@
       "zapas": 461.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8719,6 +9738,8 @@
       "zapas": 462.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8732,6 +9753,8 @@
       "zapas": 463.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8745,6 +9768,8 @@
       "zapas": 464.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8758,6 +9783,8 @@
       "zapas": 465.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8771,6 +9798,8 @@
       "zapas": 466.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8784,6 +9813,8 @@
       "zapas": 467.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8797,6 +9828,8 @@
       "zapas": 468.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8810,6 +9843,8 @@
       "zapas": 469.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8823,6 +9858,8 @@
       "zapas": 470.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8836,6 +9873,8 @@
       "zapas": 471.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8849,6 +9888,8 @@
       "zapas": 472.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8862,6 +9903,8 @@
       "zapas": 473.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8875,6 +9918,8 @@
       "zapas": 474.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8888,6 +9933,8 @@
       "zapas": 475.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8901,6 +9948,8 @@
       "zapas": 476.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8914,6 +9963,8 @@
       "zapas": 477.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8927,6 +9978,8 @@
       "zapas": 478.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8940,6 +9993,8 @@
       "zapas": 479.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8953,6 +10008,8 @@
       "zapas": 480.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8966,6 +10023,8 @@
       "zapas": 481.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8979,6 +10038,8 @@
       "zapas": 482.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -8992,6 +10053,8 @@
       "zapas": 483.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9005,6 +10068,8 @@
       "zapas": 484.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9018,6 +10083,8 @@
       "zapas": 485.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9031,6 +10098,8 @@
       "zapas": 486.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9044,6 +10113,8 @@
       "zapas": 487.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9057,6 +10128,8 @@
       "zapas": 488.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9070,6 +10143,8 @@
       "zapas": 489.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9083,6 +10158,8 @@
       "zapas": 490.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9096,6 +10173,8 @@
       "zapas": 491.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9109,6 +10188,8 @@
       "zapas": 492.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9122,6 +10203,8 @@
       "zapas": 493.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9135,6 +10218,8 @@
       "zapas": 494.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9148,6 +10233,8 @@
       "zapas": 495.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9161,6 +10248,8 @@
       "zapas": 496.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9174,6 +10263,8 @@
       "zapas": 497.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     },
@@ -9187,6 +10278,8 @@
       "zapas": 498.25,
       "perenos": [],
       "perepolnenie": false,
+      "ryady": 1,
+      "nizhe_shapki": false,
       "znak_punkt": 24,
       "poisk": 0
     }

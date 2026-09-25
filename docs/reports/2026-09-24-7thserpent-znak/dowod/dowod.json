@@ -2,23 +2,22 @@
   "instrument": "vkladka-dowod.mjs",
   "brauzer": "Chromium 151.0.7922.34",
   "chrome": "C:/Users/MSI/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe",
-  "instrument_sha256": "d61c7096f10cc1754a0802e6abac6ee5b1dba29c88be2f8c8db569da25b9ddec",
-  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
-  "head_pri_progone": "1faf3961727f791dcd884659fa72ec3b79a32aa3",
+  "instrument_sha256": "94c87af3f72ad246e99e221ff039315506d7b2bc10c2f23f45481ff17bdddf49",
+  "pomoshchnik_sha256": "acdb34d9bc9a495ee578cfe0d67d416058b88054fa0d6fd7bf2a8f22b2ba84f9",
+  "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
   "gryaz_sajta": [
-    "M sites/7thserpent.com/CLAUDE.md",
+    " M sites/7thserpent.com/CLAUDE.md",
     " M sites/7thserpent.com/DESIGN.md",
-    " M sites/7thserpent.com/_baseline/README.md",
-    " M sites/7thserpent.com/src/layouts/Base.astro"
+    " M sites/7thserpent.com/_baseline/README.md"
   ],
   "gryaz_instrumentov": [
-    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/vkladka-dowod.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
     " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs",
-    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/znak-podvala-okno.mjs"
+    "?? docs/reports/2026-09-24-7thserpent-znak/instrumenty/faza-perekladiny.mjs"
   ],
   "dist_index_sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
   "kopia_0_ravna_dist": true,
@@ -80,7 +79,7 @@
   },
   "przebiegi": {
     "a-1-svetlaya": {
-      "okno": "pid 37628 window 900x420 title ok",
+      "okno": "pid 49052 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -94,7 +93,7 @@
       "czerwonych": 0
     },
     "a-1-temnaya": {
-      "okno": "pid 49096 window 900x420 title ok",
+      "okno": "pid 20044 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -108,7 +107,7 @@
       "czerwonych": 0
     },
     "a-1.75-svetlaya": {
-      "okno": "pid 17848 window 1575x735 title ok",
+      "okno": "pid 35852 window 1575x735 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -122,7 +121,7 @@
       "czerwonych": 0
     },
     "a-1.75-temnaya": {
-      "okno": "pid 30072 window 1575x735 title ok",
+      "okno": "pid 43968 window 1575x735 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -136,7 +135,7 @@
       "czerwonych": 0
     },
     "a-2-svetlaya": {
-      "okno": "pid 26820 window 1800x840 title ok",
+      "okno": "pid 40568 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -150,7 +149,7 @@
       "czerwonych": 0
     },
     "a-2-temnaya": {
-      "okno": "pid 40716 window 1800x840 title ok",
+      "okno": "pid 44608 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -164,7 +163,7 @@
       "czerwonych": 0
     },
     "0-1-svetlaya": {
-      "okno": "pid 7792 window 900x420 title ok",
+      "okno": "pid 1620 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -178,7 +177,7 @@
       "czerwonych": 0
     },
     "0-1-temnaya": {
-      "okno": "pid 38080 window 900x420 title ok",
+      "okno": "pid 43124 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -192,7 +191,7 @@
       "czerwonych": 0
     },
     "0-1.75-svetlaya": {
-      "okno": "pid 21436 window 1575x735 title ok",
+      "okno": "pid 34260 window 1575x735 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -206,7 +205,7 @@
       "czerwonych": 0
     },
     "0-1.75-temnaya": {
-      "okno": "pid 34116 window 1575x735 title ok",
+      "okno": "pid 43940 window 1575x735 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -220,7 +219,7 @@
       "czerwonych": 0
     },
     "0-2-svetlaya": {
-      "okno": "pid 45692 window 1800x840 title ok",
+      "okno": "pid 38292 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -234,7 +233,7 @@
       "czerwonych": 0
     },
     "0-2-temnaya": {
-      "okno": "pid 21524 window 1800x840 title ok",
+      "okno": "pid 40404 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -248,7 +247,7 @@
       "czerwonych": 0
     },
     "b-1-svetlaya": {
-      "okno": "pid 14128 window 900x420 title ok",
+      "okno": "pid 45032 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -266,7 +265,7 @@
       }
     },
     "c-1-svetlaya": {
-      "okno": "pid 48388 window 900x420 title ok",
+      "okno": "pid 41824 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -280,7 +279,7 @@
       "czerwonych": 0
     },
     "d-1-svetlaya": {
-      "okno": "pid 13816 window 900x420 title ok",
+      "okno": "pid 38348 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon-32x32.png"
       ],
@@ -294,7 +293,7 @@
       "czerwonych": 1
     },
     "b-2-svetlaya": {
-      "okno": "pid 44484 window 1800x840 title ok",
+      "okno": "pid 45724 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -312,7 +311,7 @@
       }
     },
     "c-2-svetlaya": {
-      "okno": "pid 44168 window 1800x840 title ok",
+      "okno": "pid 43476 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -326,7 +325,7 @@
       "czerwonych": 0
     },
     "d-2-svetlaya": {
-      "okno": "pid 36108 window 1800x840 title ok",
+      "okno": "pid 46624 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon-32x32.png"
       ],

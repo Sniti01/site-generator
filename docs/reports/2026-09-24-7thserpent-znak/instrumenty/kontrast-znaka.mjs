@@ -73,6 +73,7 @@ async function okno(w, h, dpr, mut, doY) {
       return { H: document.body.scrollHeight, niezaladowane: [...document.images].filter((i) => !(i.complete && i.naturalWidth > 0)).length };
     });
     if (mut?.css) await page.addStyleTag({ content: mut.css });
+    if (mut?.dom) await page.evaluate(mut.dom);
     await page.waitForTimeout(100);
     const g = await page.evaluate(() => {
       const css = getComputedStyle(document.documentElement);
@@ -85,12 +86,18 @@ async function okno(w, h, dpr, mut, doY) {
     if (zle.length) { bledy.push(`${tag}: токены краски не #rrggbb — ${zle.map(([k, v]) => `--${k}: «${v}»`).join(', ')}`); return { bledy }; }
     // Кольцо фокуса — вычисленное, в :focus-visible с клавиатуры.
     for (let k = 0; k < 25; k++) { await page.keyboard.press('Tab'); if (await page.evaluate(() => document.activeElement?.classList.contains('hdr__brand'))) break; }
-    const kolco = await page.evaluate(() => { const a = document.activeElement; return a?.classList.contains('hdr__brand') && a.matches(':focus-visible') ? getComputedStyle(a).outlineColor : null; });
+    const kolcoSt = await page.evaluate(() => { const a = document.activeElement; if (!(a?.classList.contains('hdr__brand') && a.matches(':focus-visible'))) return null; const s = getComputedStyle(a); return { color: s.outlineColor, style: s.outlineStyle, width: s.outlineWidth }; });
     await page.evaluate(() => document.activeElement?.blur());
+    const kolco = kolcoSt?.color ?? null;
     const kolcoHex = rgbHex(kolco);
-    if (!kolcoHex) bledy.push(`${tag}: фокус на ссылке знака не встал — кольцо не снято`);
+    if (!kolcoSt) bledy.push(`${tag}: фокус на ссылке знака не встал — кольцо не снято`);
+    else if (kolcoSt.style === 'none' || kolcoSt.width === '0px') bledy.push(`${tag}: кольца фокуса нет — outline-style ${kolcoSt.style}, outline-width ${kolcoSt.width} (раунд 4, R4-BRAUZER-10)`);
     else if (kolcoHex !== g.krasy['accent-text'].toLowerCase()) bledy.push(`${tag}: кольцо фокуса ${kolco}, а не --accent-text ${g.krasy['accent-text']}`);
-    const K = { accent: L(...hex(g.krasy.accent)), ink: L(...hex(g.krasy.ink)), kolco: kolcoHex ? L(...hex(kolcoHex)) : L(...hex(g.krasy['accent-text'])) };
+    // Контраст — по тому, чем знак закрашен на самом деле, а не по токенам (R4-BRAUZER-10):
+    // фонарь — трассер, снег — перекладина и надписи (берётся самая тёмная из них).
+    const zaliv = await page.evaluate(() => { const s = document.querySelector('.hdr__brand svg.znak'); const p = s.querySelectorAll('polygon'); return { fonar: getComputedStyle(p[1]).fill, sneg: [getComputedStyle(p[0]).fill, ...[...s.querySelectorAll('path')].map((x) => getComputedStyle(x).fill)] }; });
+    const Lz = (c) => { const h = rgbHex(c); return h ? L(...hex(h)) : 0; };
+    const K = { accent: Lz(zaliv.fonar), ink: Math.min(...zaliv.sneg.map(Lz)), kolco: kolcoHex ? L(...hex(kolcoHex)) : L(...hex(g.krasy['accent-text'])) };
     await page.evaluate(() => { document.querySelector('.hdr__brand .znak').style.visibility = 'hidden'; });
     const wyciag = async () => {
       const buf = await page.screenshot({ clip: { x: 0, y: 0, width: w, height: g.pasa } });
@@ -135,7 +142,7 @@ async function okno(w, h, dpr, mut, doY) {
     if (p.niezaladowane) bledy.push(`${tag}: не загружено картинок — ${p.niezaladowane}; замер не по всей странице`);
     return {
       bledy,
-      okno: { krasy: g.krasy, kolco_fokusa: kolco, polosa_shapki: g.pasa, sloj: sloj.verh, niezagruzheno_kartinok: p.niezaladowane, granica_fon_nad_belym: `rgb(${gran.rgb.join(' ')})`, granica, zamer_hudshiy_fon: `rgb(${naj.rgb.join(' ')})`, zamer_scrollY: naj.y, zamer },
+      okno: { krasy: g.krasy, zalivka_znaka: zaliv, kolco_fokusa: kolcoSt, polosa_shapki: g.pasa, sloj: sloj.verh, niezagruzheno_kartinok: p.niezaladowane, granica_fon_nad_belym: `rgb(${gran.rgb.join(' ')})`, granica, zamer_hudshiy_fon: `rgb(${naj.rgb.join(' ')})`, zamer_scrollY: naj.y, zamer },
     };
   } finally {
     await ctx.close();
@@ -158,13 +165,20 @@ try {
       { nazwa: 'чистая страница', mut: null, zhdem: null },
       { nazwa: 'тёмный фонарь', mut: { css: ':root { --accent: #5a4a30 !important }' }, zhdem: 'фонарь' },
       { nazwa: 'прозрачная шапка', mut: { css: '.hdr { background: transparent !important }' }, zhdem: 'ниже порога' },
-      { nazwa: 'лист над шапкой', mut: { zListu: 51 }, zhdem: 'белый лист не между' },
+      { nazwa: 'лист над шапкой', mut: { zListu: 51 }, zhdem: ['белый лист не между', 'ниже порога'] },
       { nazwa: 'кольцо фокуса не того цвета', mut: { css: '.hdr__brand:focus-visible { outline-color: #8899aa !important }' }, zhdem: 'кольцо фокуса' },
+      // Раунд 4 (R4-BRAUZER-10, -11): ветви без проб.
+      { nazwa: 'кольца фокуса нет', mut: { css: '.hdr__brand:focus-visible { outline-style: none !important }' }, zhdem: 'кольца фокуса нет' },
+      { nazwa: 'фокус на ссылку знака не встаёт', mut: { dom: "document.querySelector('.hdr__brand').setAttribute('tabindex', '-1')" }, zhdem: 'фокус на ссылке знака не встал' },
+      { nazwa: 'токен фонаря не #rrggbb', mut: { css: ':root { --accent: rgb(236 168 74) !important }' }, zhdem: 'не #rrggbb' },
+      { nazwa: 'тёмная заливка частей знака при прежних токенах', mut: { css: '.znak polygon, .znak path { fill: #333 !important }' }, zhdem: 'ниже порога' },
     ];
     const wyniki = [];
     for (const p of proby) {
       const { bledy } = await okno(390, 844, 1, p.mut, 600);
-      const ok = p.zhdem === null ? bledy.length === 0 : bledy.some((b) => b.includes(p.zhdem));
+      // Строго (R4-POLNOTA-2): каждый вид встретился и каждая строка — одного из видов.
+      const vidy = p.zhdem === null ? [] : [].concat(p.zhdem);
+      const ok = p.zhdem === null ? bledy.length === 0 : vidy.every((v) => bledy.some((b) => b.includes(v))) && bledy.every((b) => vidy.some((v) => b.includes(v)));
       wyniki.push({ nazwa: p.nazwa, zhdem: p.zhdem, ok, bledy });
       console.log(`${ok ? 'ok ' : 'НЕТ'}  ${p.nazwa}: ждём ${p.zhdem ? `отказ «${p.zhdem}»` : 'сверено'}, факт ${bledy.length ? bledy.join('; ') : 'сверено'}`);
     }

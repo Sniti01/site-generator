@@ -4,15 +4,22 @@
   "brauzer": "Chromium 151.0.7922.34",
   "chrome": "C:/Users/MSI/AppData/Local/ms-playwright/chromium-1234/chrome-win64/chrome.exe",
   "instrument": "wiernosc.mjs",
-  "instrument_sha256": "cced4a7c235a8510a9cc1fce7483665395c8d78f9a11a1fed56dc4a228164ff0",
-  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
-  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
+  "instrument_sha256": "9a1ebd3d13fbca663b4ea52b8a2d2d72efbf60f5397dca2e2b842bed71cd56fc",
+  "pomoshchnik_sha256": "acdb34d9bc9a495ee578cfe0d67d416058b88054fa0d6fd7bf2a8f22b2ba84f9",
+  "head_pri_progone": "875fb7ec7732950c5e5ad03c739f99d00f28a1de",
   "gryaz_sajta": [
-    "M sites/7thserpent.com/tools/znak.mjs"
+    " M sites/7thserpent.com/CLAUDE.md",
+    " M sites/7thserpent.com/DESIGN.md",
+    " M sites/7thserpent.com/_baseline/README.md"
   ],
   "gryaz_instrumentov": [
-    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
-    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs"
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/vkladka-dowod.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs",
+    "?? docs/reports/2026-09-24-7thserpent-znak/instrumenty/faza-perekladiny.mjs"
   ],
   "eskiz": {
     "znak.html": "ac61b3942c350871746ecbdae9e584e14ccf17ec70ea92bba0bbf46db6de9271",
@@ -24,6 +31,10 @@
     {
       "w": 1440,
       "dpr": 1,
+      "prokrutka": {
+        "tochek": 15,
+        "zle": []
+      },
       "stany": [
         {
           "stan": "вверху",
@@ -135,7 +146,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -251,7 +263,8 @@
             "max": 3
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -358,7 +371,7 @@
             "max": 0,
             "zalito": 2365,
             "snimkov": [
-              3,
+              4,
               3
             ]
           },
@@ -367,7 +380,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -483,7 +497,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -502,7 +517,7 @@
             "max": 0,
             "zalito": 3062,
             "snimkov": [
-              3,
+              4,
               3
             ]
           },
@@ -524,7 +539,7 @@
             "max": 0,
             "zalito": 3062,
             "snimkov": [
-              3,
+              4,
               3
             ]
           },
@@ -546,7 +561,7 @@
             "max": 0,
             "zalito": 3062,
             "snimkov": [
-              3,
+              4,
               3
             ]
           },
@@ -568,7 +583,7 @@
             "max": 0,
             "zalito": 3062,
             "snimkov": [
-              3,
+              4,
               3
             ]
           },
@@ -599,7 +614,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -712,10 +728,11 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -762,7 +779,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         },
         {
@@ -828,14 +845,19 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 390,
       "dpr": 1,
+      "prokrutka": {
+        "tochek": 22,
+        "zle": []
+      },
       "stany": [
         {
           "stan": "вверху",
@@ -878,7 +900,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 2
+            "max": 3
           }
         },
         {
@@ -969,7 +991,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 25
     },
     {
       "w": 390,
@@ -1107,7 +1130,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 390,
@@ -1154,7 +1178,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 3
+            "max": 2
           }
         },
         {
@@ -1245,7 +1269,8 @@
             "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 390,
@@ -1383,7 +1408,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 390,
@@ -1521,7 +1547,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 390,
@@ -1656,10 +1683,11 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 390,
@@ -1794,10 +1822,11 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         }
-      ]
+      ],
+      "otvety": 18
     },
     {
       "w": 1440,
@@ -1914,7 +1943,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 2194,
@@ -1941,7 +1971,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 2
+            "max": 3
           }
         },
         {
@@ -1963,7 +1993,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 2
+            "max": 3
           }
         },
         {
@@ -1985,7 +2015,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 2
+            "max": 3
           }
         },
         {
@@ -2007,7 +2037,7 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 2
+            "max": 3
           }
         },
         {
@@ -2032,7 +2062,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 2194,
@@ -2149,7 +2180,8 @@
             "max": 1
           }
         }
-      ]
+      ],
+      "otvety": 27
     },
     {
       "w": 1440,
@@ -2201,7 +2233,8 @@
           }
         }
       ],
-      "canvasText": "rgb(0, 0, 0)"
+      "canvasText": "rgb(0, 0, 0)",
+      "otvety": 15
     },
     {
       "w": 1440,
@@ -2253,7 +2286,8 @@
           }
         }
       ],
-      "canvasText": "rgb(255, 255, 255)"
+      "canvasText": "rgb(255, 255, 255)",
+      "otvety": 15
     },
     {
       "w": 1440,
@@ -2301,11 +2335,12 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 1
+            "max": 2
           }
         }
       ],
-      "canvasText": "rgb(0, 0, 0)"
+      "canvasText": "rgb(0, 0, 0)",
+      "otvety": 15
     },
     {
       "w": 1440,
@@ -2353,11 +2388,12 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 0
+            "max": 1
           }
         }
       ],
-      "canvasText": "rgb(255, 255, 255)"
+      "canvasText": "rgb(255, 255, 255)",
+      "otvety": 15
     },
     {
       "w": 390,
@@ -2409,7 +2445,8 @@
           }
         }
       ],
-      "canvasText": "rgb(0, 0, 0)"
+      "canvasText": "rgb(0, 0, 0)",
+      "otvety": 12
     },
     {
       "w": 390,
@@ -2457,11 +2494,12 @@
           },
           "nakladka": {
             "n": 0,
-            "max": 0
+            "max": 1
           }
         }
       ],
-      "canvasText": "rgb(255, 255, 255)"
+      "canvasText": "rgb(255, 255, 255)",
+      "otvety": 12
     }
   ],
   "dostepnost": [
@@ -2637,6 +2675,12 @@
           "rowny_dist": true
         },
         {
+          "put": "/_astro/public-sans-latin-600-normal.Fru-LXNs.woff2",
+          "status": 200,
+          "sha256": "c7842f97346df1b3b470e9d71acde90f132dd858508ec5ae6606401e5d0938f7",
+          "rowny_dist": true
+        },
+        {
           "put": "/_astro/bodoni-moda-latin-600-normal.DbXDFeqY.woff2",
           "status": 200,
           "sha256": "a4975772d313f22af5758888ce83dad5001e9a3afb9cf8bde805ad1c5caeaacc",
@@ -2655,18 +2699,6 @@
           "rowny_dist": true
         },
         {
-          "put": "/_astro/public-sans-latin-600-normal.Fru-LXNs.woff2",
-          "status": 200,
-          "sha256": "c7842f97346df1b3b470e9d71acde90f132dd858508ec5ae6606401e5d0938f7",
-          "rowny_dist": true
-        },
-        {
-          "put": "/_astro/mp2-k00.NhbLr7d7_2abLSS.webp",
-          "status": 200,
-          "sha256": "4dbc5d3b59a1374f0a4a6771685e1bb6ae689ce75ec49b090dbb0437a6801a29",
-          "rowny_dist": true
-        },
-        {
           "put": "/_astro/mp1-k09.CiIc_kkf_VX4ih.webp",
           "status": 200,
           "sha256": "a486c11413a4689cd2db573830bdfb058b5fb5b3e4b9e4f909feca1816fb62f0",
@@ -2676,6 +2708,12 @@
           "put": "/_astro/mp2-k01.Bwb7jlM1_Z1wmfNA.webp",
           "status": 200,
           "sha256": "6576f6871791cd6059eb8c1b2dd18a5def9f9ef7a59e460a53c0ffad65b835b5",
+          "rowny_dist": true
+        },
+        {
+          "put": "/_astro/mp2-k00.NhbLr7d7_2abLSS.webp",
+          "status": 200,
+          "sha256": "4dbc5d3b59a1374f0a4a6771685e1bb6ae689ce75ec49b090dbb0437a6801a29",
           "rowny_dist": true
         },
         {
@@ -2691,15 +2729,15 @@
           "rowny_dist": true
         },
         {
-          "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
-          "status": 200,
-          "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
-          "rowny_dist": true
-        },
-        {
           "put": "/_astro/mp3-k04.CiTa_XSb_TwD7s.webp",
           "status": 200,
           "sha256": "d08e41205e172416681f503cfeeddc663fe9a22057cfd89d9d65afd41294c4c8",
+          "rowny_dist": true
+        },
+        {
+          "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
+          "status": 200,
+          "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
           "rowny_dist": true
         },
         {
@@ -2715,15 +2753,15 @@
           "rowny_dist": true
         },
         {
-          "put": "/_astro/mp1-k06.blJYoQpw_Z2wwzWy.webp",
-          "status": 200,
-          "sha256": "0bccf717369a345d8cb71a758ab582bc3473d41d29bfe6b96b3bcbfaff249381",
-          "rowny_dist": true
-        },
-        {
           "put": "/_astro/mp2-art.CiLGZVc0_1HhYBs.webp",
           "status": 200,
           "sha256": "40ec6e581696a7c0a1244f81118c8a9fabf6293f8d10c2abd8bb3dd7bbc862a9",
+          "rowny_dist": true
+        },
+        {
+          "put": "/_astro/mp1-k06.blJYoQpw_Z2wwzWy.webp",
+          "status": 200,
+          "sha256": "0bccf717369a345d8cb71a758ab582bc3473d41d29bfe6b96b3bcbfaff249381",
           "rowny_dist": true
         },
         {
@@ -2818,15 +2856,15 @@
           "rowny_dist": true
         },
         {
-          "put": "/_astro/mp1-k13.C2kgWkUz_ZA98zx.webp",
-          "status": 200,
-          "sha256": "78eb1382a4426dcadf546c6cc27f3df4ffbe9bfee5bed50d1e677a3008bf8699",
-          "rowny_dist": true
-        },
-        {
           "put": "/_astro/mp1-k14.DR0et4Uc_Z1J2fH7.webp",
           "status": 200,
           "sha256": "5d68b1560c0f29d6a99ffc65bea5abd2f320559ddfd1f5a08558255b6300f940",
+          "rowny_dist": true
+        },
+        {
+          "put": "/_astro/mp1-k13.C2kgWkUz_ZA98zx.webp",
+          "status": 200,
+          "sha256": "78eb1382a4426dcadf546c6cc27f3df4ffbe9bfee5bed50d1e677a3008bf8699",
           "rowny_dist": true
         },
         {
@@ -2860,15 +2898,15 @@
           "rowny_dist": true
         },
         {
-          "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
-          "status": 200,
-          "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
-          "rowny_dist": true
-        },
-        {
           "put": "/_astro/mp3-k04.CiTa_XSb_TwD7s.webp",
           "status": 200,
           "sha256": "d08e41205e172416681f503cfeeddc663fe9a22057cfd89d9d65afd41294c4c8",
+          "rowny_dist": true
+        },
+        {
+          "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
+          "status": 200,
+          "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
           "rowny_dist": true
         },
         {

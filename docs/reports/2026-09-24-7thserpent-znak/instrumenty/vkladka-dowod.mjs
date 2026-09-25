@@ -29,7 +29,9 @@
 //
 // Пишет в <папка доклада>: vkladka-<масштаб>x-<тема>.png (верх окна, вариант 0),
 // vkladka-para.png, vkladka.json; в <папка доклада>/dowod/: dowod-<вариант>-<масштаб>x.png
-// (полоса вкладок) и dowod.json. Отказ (exit 1) — любой вывод не тот.
+// (полоса вкладок) и dowod.json — только если все выводы подтвердились: снимки сперва
+// лежат во временной папке (раунд 4, R4-MATERIALY-4). Отказ (exit 1) — любой вывод
+// не тот; тогда в папку доклада ложится лишь vkladka-otkaz.json.
 //
 // ПРЕДЕЛЫ: один движок (Chromium из кеша Playwright, версия — в выгрузке); окно
 // Windows 11, тема браузера — флаг, а не системная; что другие движки берут
@@ -40,8 +42,8 @@ import { createRequire } from 'node:module';
 import http from 'node:http';
 import { execFileSync } from 'node:child_process';
 import { readFile, stat } from 'node:fs/promises';
-import { cpSync, rmSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { join, extname, dirname } from 'node:path';
+import { cpSync, rmSync, readFileSync, writeFileSync, mkdirSync, copyFileSync } from 'node:fs';
+import { join, extname, dirname, basename } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { PW, CHROME, REPO, SITE, sha, pochodzenie } from './sborka.mjs';
 
@@ -54,6 +56,9 @@ if (!DOKLAD || !KOPIE) { console.error('node vkladka-dowod.mjs <папка до�
 const DOWOD = join(DOKLAD, 'dowod');
 mkdirSync(DOWOD, { recursive: true });
 mkdirSync(KOPIE, { recursive: true });
+const TMP = join(KOPIE, '_snimki');
+rmSync(TMP, { recursive: true, force: true });
+mkdirSync(TMP, { recursive: true });
 
 async function przemaluj(buf, rgb) {
   const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -181,12 +186,13 @@ try {
     piksele[`${w}-${klucz}`] = wycinek;
     const wynik = { okno: msg, zapros_ikon: zaprosIkon, ramka: r, zielonych: +(g / n).toFixed(3), czerwonych: +(c / n).toFixed(3) };
     const imieSkali = String(skala).replace('.', '_');
+    // Снимки — во временную папку; в папку доклада — только после выводов без отказов.
     if (w === '0') {
-      const f = join(DOKLAD, `vkladka-${imieSkali}x-${tema}.png`);
+      const f = join(TMP, `vkladka-${imieSkali}x-${tema}.png`);
       await sharp(syroj).extract({ left: 0, top: 0, width: W, height: Math.min(meta.height, Math.round(150 * skala)) }).toFile(f);
       snimki[`vkladka-${imieSkali}x-${tema}.png`] = sha(readFileSync(f));
     } else if (tema === 'svetlaya') {
-      const f = join(DOWOD, `dowod-${w}-${imieSkali}x.png`);
+      const f = join(TMP, `dowod-${w}-${imieSkali}x.png`);
       await sharp(syroj).extract({ left: 0, top: 0, width: Math.min(W, Math.round(500 * skala)), height: Math.round(40 * skala) }).toFile(f);
       snimki[`dowod/dowod-${w}-${imieSkali}x.png`] = sha(readFileSync(f));
     }
@@ -261,9 +267,9 @@ try {
   const bl = await chromium.launch({ executablePath: CHROME });
   const lp = await bl.newPage({ viewport: { width: 700, height: 200 }, deviceScaleFactor: 1 });
   await lp.setContent(html);
-  await lp.screenshot({ path: join(DOKLAD, 'vkladka-para.png'), fullPage: true });
+  await lp.screenshot({ path: join(TMP, 'vkladka-para.png'), fullPage: true });
   await bl.close();
-  snimki['vkladka-para.png'] = sha(readFileSync(join(DOKLAD, 'vkladka-para.png')));
+  snimki['vkladka-para.png'] = sha(readFileSync(join(TMP, 'vkladka-para.png')));
 
   const kopia0 = readFileSync(join(KOPIE, 'dowod-0', 'index.html'));
   const zapis = {
@@ -280,8 +286,16 @@ try {
     para,
     bledy,
   };
-  writeFileSync(join(DOWOD, 'dowod.json'), JSON.stringify({ ...zapis, para: undefined }, null, 2) + '\n');
-  writeFileSync(join(DOKLAD, 'vkladka.json'), JSON.stringify({ instrument: zapis.instrument, brauzer: zapis.brauzer, instrument_sha256: zapis.instrument_sha256, head_pri_progone: zapis.head_pri_progone, gryaz_sajta: zapis.gryaz_sajta, gryaz_instrumentov: zapis.gryaz_instrumentov, dist_index_sha256: zapis.dist_index_sha256, snimki, przebiegi_0: Object.fromEntries(Object.entries(przebiegi).filter(([k]) => k.startsWith('0-'))), para, dowod: 'dowod/dowod.json' }, null, 2) + '\n');
+  if (bledy.length) {
+    writeFileSync(join(DOKLAD, 'vkladka-otkaz.json'), JSON.stringify(zapis, null, 2) + '\n');
+    console.error(`vkladka-dowod: ОТКАЗ — ${bledy.length}; снимки в папку доклада не перенесены, запись — vkladka-otkaz.json`);
+  } else {
+    for (const f of Object.keys(snimki)) copyFileSync(join(TMP, basename(f)), join(DOKLAD, f));
+    writeFileSync(join(DOWOD, 'dowod.json'), JSON.stringify({ ...zapis, para: undefined }, null, 2) + '\n');
+    writeFileSync(join(DOKLAD, 'vkladka.json'), JSON.stringify({ instrument: zapis.instrument, brauzer: zapis.brauzer, chrome: CHROME, instrument_sha256: zapis.instrument_sha256, pomoshchnik_sha256: zapis.pomoshchnik_sha256, head_pri_progone: zapis.head_pri_progone, gryaz_sajta: zapis.gryaz_sajta, gryaz_instrumentov: zapis.gryaz_instrumentov, dist_index_sha256: zapis.dist_index_sha256, bledy, wniosek, snimki, przebiegi_0: Object.fromEntries(Object.entries(przebiegi).filter(([k]) => k.startsWith('0-'))), para, dowod: 'dowod/dowod.json' }, null, 2) + '\n');
+    rmSync(join(DOKLAD, 'vkladka-otkaz.json'), { force: true });
+  }
+  rmSync(TMP, { recursive: true, force: true });
   console.log(JSON.stringify({ wniosek, para, bledy }, null, 2));
 } finally {
   server.close();

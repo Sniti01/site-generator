@@ -7,8 +7,12 @@
 //
 //   node materialy-priemki.mjs <папка вывода> [адрес]
 //
-// Каждое состояние перед снимком проверяется. Не то состояние — отказ (exit 1), и файл
-// под принятым именем НЕ пишется; подпись листа берётся из проверки, а не из текста.
+// Каждое состояние перед снимком проверяется (у каждого окна ещё и devicePixelRatio,
+// принудительные цвета и схема, полоса прокрутки там, где она обещана). Все файлы
+// пишутся во временную папку и переносятся в папку вывода вместе с materialy.json
+// только при нуле отказов; при отказе (exit 1) в папку вывода ложится лишь
+// materialy-otkaz.json, прежние материалы не трогаются (раунд 4, R4-MATERIALY-2).
+// Подпись листа берётся из проверки, а не из текста.
 // Пишет:
 //   shapka-1440.png          — шапка 1440 (68 строк, без волоса — как кадры эталона):
 //                              DPR 1 во всю ширину и DPR 2 крупно (левая часть)
@@ -42,7 +46,7 @@
 //   materialy.json           — браузер, происхождение, сборка, состояния, числа, sha256 файлов
 import { createRequire } from 'node:module';
 import { execFileSync } from 'node:child_process';
-import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, copyFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -70,7 +74,10 @@ const browser = await chromium.launch({ executablePath: CHROME });
 const browserPasek = await chromium.launch({ executablePath: CHROME, ignoreDefaultArgs: ['--hide-scrollbars'] });
 const zapis = { instrument: 'materialy-priemki.mjs', brauzer: `Chromium ${browser.version()}`, chrome: CHROME, ...pochodzenie(import.meta.url), sborka: sb, stany: {}, pliki: {}, ne_zapisano: [] };
 const bledy = [];
-const zapisz = (f, buf) => { writeFileSync(join(OUT, f), buf); zapis.pliki[f] = sha(buf); };
+const TMP = join(tmpdir(), 'materialy-7ths-priemki');
+rmSync(TMP, { recursive: true, force: true });
+mkdirSync(TMP, { recursive: true });
+const zapisz = (f, buf) => { writeFileSync(join(TMP, f), buf); zapis.pliki[f] = sha(buf); };
 // Файл, чьё состояние не подтвердилось, под принятым именем не пишется.
 const zapiszEsli = (ok, f, buf) => { if (ok) zapisz(f, buf); else zapis.ne_zapisano.push(f); };
 
@@ -78,6 +85,12 @@ const otkryt = async (w, h, dpr, extra = {}, br = browser) => {
   const ctx = await br.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: dpr, ...extra });
   const page = await ctx.newPage();
   await page.goto(URL_, { waitUntil: 'load' });
+  // Окно — то, что обещано: плотность, принудительные цвета и схема, полоса прокрутки.
+  const st = await page.evaluate(() => ({ dpr: devicePixelRatio, forced: matchMedia('(forced-colors: active)').matches, dark: matchMedia('(prefers-color-scheme: dark)').matches, pasek: innerWidth - document.documentElement.clientWidth }));
+  if (Math.abs(st.dpr - dpr) > 1e-6) bledy.push(`${w} DPR ${dpr}: devicePixelRatio окна ${st.dpr}`);
+  if (!!extra.forcedColors !== st.forced) bledy.push(`${w} DPR ${dpr}: принудительные цвета ${st.forced}, ждали ${!!extra.forcedColors}`);
+  if (extra.colorScheme && (extra.colorScheme === 'dark') !== st.dark) bledy.push(`${w} DPR ${dpr}: схема не ${extra.colorScheme}`);
+  if (br === browserPasek && !(st.pasek > 0)) bledy.push(`${w} DPR ${dpr}: полосы прокрутки нет, а окно с полосой`);
   const nie = await page.evaluate(async () => {
     await document.fonts.ready;
     const vid = () => [...document.images].filter((i) => { const r = i.getBoundingClientRect(); return r.bottom > 0 && r.top < innerHeight && r.width > 0; });
@@ -204,7 +217,7 @@ try {
       const { ctx, page } = await otkryt(2194, 1100, 1.75, {}, browserPasek);
       const x = await page.evaluate(() => ({ znakX: document.querySelector('.hdr__brand svg.znak').getBoundingClientRect().x, pasek: innerWidth - document.documentElement.clientWidth }));
       zapis.stany['экран владельца 2194'] = x;
-      wiersze.push([{ png: await page.screenshot({ clip: { x: 0, y: 0, width: 760, height: 69 } }), podpis: `окно 2194 × 1100 CSS px при 1,75 (экран 3840 px, 175 %) с полосой прокрутки Windows ${x.pasek} px — левая часть 760 px; знак с x ${x.znakX}` }]);
+      wiersze.push([{ png: await page.screenshot({ clip: { x: 0, y: 0, width: 760, height: 69 } }), podpis: `окно 2194 × 1100 CSS px при 1,75 (экран 3840 px, 175 %) с полосой прокрутки безоконного Chromium (${x.pasek} CSS px; на левый вырез 760 px не попадает, но сужает раскладку) — знак с x ${x.znakX}` }]);
       await ctx.close();
     }
     {
@@ -215,11 +228,17 @@ try {
       await ctx.close();
     }
     {
-      const { ctx, page } = await otkryt(1440, 900, 1.75, { forcedColors: 'active', colorScheme: 'light' });
-      wiersze.push([{ png: await page.screenshot({ clip: { x: 0, y: 0, width: 760, height: 69 } }), podpis: '1440 при 1,75, принудительные цвета, светлая схема' }]);
+      const { ctx, page } = await otkryt(1440, 900, 1.75);
+      const ok = await fokusNaZnak(page, '1440 DPR 1.75');
+      if (ok) wiersze.push([{ png: await page.screenshot({ clip: { x: 100, y: 0, width: 420, height: 69 } }), podpis: '1440 при 1,75 — фокус с клавиатуры на ссылке знака (проверено: :focus-visible)' }]);
       await ctx.close();
     }
-    await list('ekran-vladelca.png', 'Экран владельца: 175 % (DPR 1,75), снимки Chromium без окна. Обводки «TH» при этой плотности нет — контур гарнитуры. Шапка — 69 строк, с волосом снизу.', wiersze);
+    for (const sch of ['light', 'dark']) {
+      const { ctx, page } = await otkryt(1440, 900, 1.75, { forcedColors: 'active', colorScheme: sch });
+      wiersze.push([{ png: await page.screenshot({ clip: { x: 0, y: 0, width: 760, height: 69 } }), podpis: `1440 при 1,75, принудительные цвета, ${sch === 'light' ? 'светлая' : 'тёмная'} схема` }]);
+      await ctx.close();
+    }
+    await list('ekran-vladelca.png', 'Экран владельца: 175 % (DPR 1,75) — снимки Chromium БЕЗ окна (растр окна браузера при 1,75 другой: okno-plotnosti.png). Обводки «TH» при этой плотности нет — контур гарнитуры. Шапка — 69 строк, с волосом снизу. Перекладина шапки здесь чёткая; в окне браузера при 1,25–1,75 она в полутоне.', wiersze);
   }
   { // Шапка над содержимым в худшей точке замера контраста
     const wiersze = [];
@@ -347,7 +366,7 @@ try {
       await okno.close();
       rmSync(udd, { recursive: true, force: true });
     }
-    await list('okno-plotnosti.png', 'Знак в растре окна браузера (Chromium с окном, headless: false) при масштабе 1,25, 1,5 и 1,75 против той же страницы без окна при той же плотности, пиксели устройства ×3. Знак без окна ставится в ту же точку окна; остаток сдвига меньше пикселя даёт сдвиг растра, поэтому вырезы выравниваются целым сдвигом до 3 пикселей устройства, и в подписи — оба числа. «Как есть» — со шапкой и размытым содержимым под ней; «только знак» — всё прочее скрыто. Расхождение — пиксель, у которого хоть один канал отличается больше чем на 8 из 255.', wiersze);
+    await list('okno-plotnosti.png', 'Знак в растре окна браузера (Chromium с окном, headless: false) при масштабе 1,25, 1,5 и 1,75 против той же страницы без окна при той же плотности, пиксели устройства ×3. Знак без окна ставится в ту же точку окна, но растр знака в окне бывает сдвинут на целую строку устройства (причина не разобрана: остаток раскладки её не объясняет), поэтому вырезы выравниваются целым сдвигом до 3 пикселей устройства, и в подписи — оба числа. «Как есть» — со шапкой и размытым содержимым под ней; «только знак» — всё прочее скрыто. Расхождение — пиксель, у которого хоть один канал отличается больше чем на 8 из 255.', wiersze);
   }
   { // Иконки
     const b64 = (f, mime) => `data:${mime};base64,${readFileSync(join(PUB, f)).toString('base64')}`;
@@ -398,9 +417,15 @@ ${cell('apple-touch-icon.png · как на iOS', `<img src="${b64('apple-touch-
   await browserPasek.close();
 }
 zapis.bledy = bledy;
-writeFileSync(join(OUT, 'materialy.json'), JSON.stringify(zapis, null, 2) + '\n');
 if (bledy.length) {
-  console.error(`materialy-priemki: ОТКАЗ — ${bledy.length}${zapis.ne_zapisano.length ? `; не записано: ${zapis.ne_zapisano.join(', ')}` : ''}`);
+  writeFileSync(join(OUT, 'materialy-otkaz.json'), JSON.stringify(zapis, null, 2) + '\n');
+  console.error(`materialy-priemki: ОТКАЗ — ${bledy.length}; в ${OUT} ничего не перенесено, кроме materialy-otkaz.json${zapis.ne_zapisano.length ? `; не снято: ${zapis.ne_zapisano.join(', ')}` : ''}`);
   for (const b of bledy) console.error(`  - ${b}`);
   process.exitCode = 1;
-} else console.log(`materialy-priemki: готово — ${Object.keys(zapis.pliki).length} файлов в ${OUT}; окно (только знак, после выравнивания): ${Object.values(zapis.okno).map((o) => `${o.skala} ${o.gde} ${o.tolko_znak.posle_vyravnivaniya.n}`).join(', ')}`);
+} else {
+  for (const f of Object.keys(zapis.pliki)) copyFileSync(join(TMP, f), join(OUT, f));
+  writeFileSync(join(OUT, 'materialy.json'), JSON.stringify(zapis, null, 2) + '\n');
+  rmSync(join(OUT, 'materialy-otkaz.json'), { force: true });
+  console.log(`materialy-priemki: готово — ${Object.keys(zapis.pliki).length} файлов в ${OUT}; окно (только знак, после выравнивания): ${Object.values(zapis.okno).map((o) => `${o.skala} ${o.gde} ${o.tolko_znak.posle_vyravnivaniya.n}`).join(', ')}`);
+}
+rmSync(TMP, { recursive: true, force: true });

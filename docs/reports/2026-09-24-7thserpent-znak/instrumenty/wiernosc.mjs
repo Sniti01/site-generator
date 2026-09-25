@@ -19,8 +19,9 @@
 //  0. Эскиз — тот, что одобрил владелец: sha256 файлов voprosy/A-semerka-trassa/
 //     (znak.html, favicon.svg, favicon-16.svg) равны закреплённым ниже.
 //  1. Сборка — та, что лежит в dist/: каждый ответ сервера со своего адреса
-//     (HTML, CSS, шрифты, картинки, иконки) — статус 200 и побайтно равен файлу
-//     dist/ по тому же пути; сбой загрузки — отказ; иконки dist/ равны public/.
+//     (HTML, CSS, шрифты, картинки, иконки) во всех окнах — статус 200 и побайтно
+//     равен файлу dist/ по тому же пути (статус и байты — разные виды отказа);
+//     сбой загрузки — отказ; иконки dist/ равны public/.
 //  2. Строение знака: на странице ровно два svg.znak — прямой потомок .hdr__brand
 //     и прямой потомок .ft__brand; атрибуты width, height, viewBox — как у эскиза;
 //     дети — ровно три polygon и два path, points и d по порядку равны эскизу;
@@ -31,10 +32,12 @@
 //     плотности до 1,5 и нет выше; у «SERPENT» и у многоугольников обводки нет.
 //     Смена токена краски — тоже отказ, намеренно: знак разойдётся с одобренным
 //     эскизом, новый эскиз и приёмка — решение владельца.
-//  4. Смешивание и движение: у знака и всех его предков mix-blend-mode — normal,
-//     backdrop-filter — только у .hdr (размытие шапки ядра); у знака, его частей
-//     и предков нет CSS-анимаций («Движения нет»; проверяется до того, как снимок
-//     гасит анимации).
+//  4. Смешивание, рисование за коробкой и движение: у знака и всех его предков
+//     mix-blend-mode — normal, backdrop-filter — только у .hdr (размытие шапки ядра);
+//     у знака и его частей нет filter, box-shadow, -webkit-box-reflect и outline;
+//     у знака, его частей и предков нет CSS-анимаций — после загрузки и в каждом
+//     состоянии (наведение, фокус, ящик), до того как снимок их гасит, — и рамка знака
+//     не меняется сама за 500 мс при живых анимациях («Движения нет»).
 //  5. Пиксели знака — два сравнения в каждом состоянии.
 //     (а) Рисунок: знак страницы против эскиза, нарисованного на отдельной пустой
 //     странице (краски — литералы иконки эскиза, не токены сайта) с той же
@@ -46,10 +49,15 @@
 //     скрыт только svg.znak, с эскизом поверх (альфа эскиза, сложение «поверх»).
 //     Ловит то, что (а) прячет: перекрытие знака элементом, псевдоэлементом предка
 //     или содержимым над шапкой, смешивание со страницей. Допуск — округление
-//     сложения: 3 уровня из 255 на канал.
-//     Рамка — коробка знака плюс 2 px. Устойчивый снимок — три одинаковых подряд
-//     (до восьми), иначе «растр нестабилен» — отказ, а не проход. Перед снятием —
-//     в пяти точках (центр каждой части) elementFromPoint попадает в сам знак.
+//     сложения: 3 уровня из 255 на канал; изменения мельче 3 уровней наложение
+//     не видит. Рамка (а) — коробка знака плюс 2 px; рамка (б) — вся полоса шапки
+//     во всю ширину окна или знак подвала ± 60 px (что знак рисует за коробкой).
+//     Устойчивый снимок — три одинаковых подряд (до восьми), иначе «растр
+//     нестабилен» — отказ, а не проход. Перед (б) — в пяти точках (центр каждой
+//     части) elementFromPoint попадает в сам знак (своё pointer-events: none
+//     у знака на время проверки снимается — это не перекрытие). В окнах 1440 и 390
+//     при DPR 1 шапка судится (б) и точками ещё и на всей прокрутке страницы шагом
+//     в полвысоты окна и в крайней точке (в --selftest — только 1440, шагом в высоту).
 //     Окна: 1440 и 390 при DPR 1, 1,25, 1,5, 1,51, 1,75, 2, 3; с полосой прокрутки
 //     Windows — 1440 и 2194 (ширина экрана владельца, 3840 px при 175 %) при 1,75;
 //     2194 при 1,75 и без полосы. Состояния: вверху, при прокрутке, наведение
@@ -77,7 +85,10 @@
 //     растрированному тем же способом, что tools/znak.mjs (sharp, librsvg).
 //
 // ПРЕДЕЛЫ (названы): один движок — Chromium из кеша Playwright (путь и версия —
-// в выгрузке, пути — в sborka.mjs). Эмуляция принудительных цветов — не настоящая
+// в выгрузке, пути — в sborka.mjs). Плотности — только названные семь: «(а) = 0»
+// и допуск (б) 3 замерены на них; при других (замерено: 2,5) судья даёт ложный
+// отказ на нетронутой сборке, а 0,9, 1,1, 1,925 и 2,625 не снимались вовсе
+// (раунд 4, R4-BRAUZER-7, R4-POLNOTA-4). Эмуляция принудительных цветов — не настоящая
 // контрастная тема Windows; в принудительных цветах судятся только «вверху»
 // и подвал, без наведения, фокуса и ящика. Цветовая схема окон — светлая
 // (умолчание Playwright), prefers-contrast и prefers-reduced-motion не задаются.
@@ -150,8 +161,9 @@ const LINKI = [
   { rel: 'icon', href: '/icon-192.png', type: 'image/png', sizes: '192x192' },
   { rel: 'apple-touch-icon', href: '/apple-touch-icon.png' },
 ];
-// Допуск наложения — округление сложения 8-битной альфы «поверх» (замерено на нетронутой
-// сборке: до 3 уровней на краях, 1–6 субпикселей в 3 окнах из 23).
+// Допуск наложения — округление сложения 8-битной альфы «поверх». Замерено на нетронутой
+// сборке: максимум 3 уровня на краях во всех 23 окнах; допуск равен замеренному
+// максимуму, запаса нет (раунд 4, R4-PROZA-5).
 const TOL_NAKLADKI = 3;
 
 // (а) Со страницы убирается всё, кроме знака и его предков; у предков — фон, рамка, тень,
@@ -188,7 +200,7 @@ const vp = (o) => ({ width: o.w, height: o.h ?? (o.w > 500 ? 900 : 844) });
 const PLOTNOSTI = [1, 1.25, 1.5, 1.51, 1.75, 2, 3];
 const PELNY = {
   piksele: [
-    ...[1440, 390].flatMap((w) => PLOTNOSTI.map((dpr) => ({ w, dpr }))),
+    ...[1440, 390].flatMap((w) => PLOTNOSTI.map((dpr) => ({ w, dpr, ...(dpr === 1 ? { prokrutka: 0.5 } : {}) }))),
     { w: 1440, dpr: 1.75, pasek: true }, { w: 2194, h: 1100, dpr: 1.75, pasek: true }, { w: 2194, h: 1100, dpr: 1.75 },
     { w: 1440, dpr: 1, forced: 'light' }, { w: 1440, dpr: 1, forced: 'dark' }, { w: 1440, dpr: 2, forced: 'light' },
     { w: 1440, dpr: 2, forced: 'dark' }, { w: 390, dpr: 1, forced: 'light' }, { w: 390, dpr: 3, forced: 'dark' },
@@ -197,7 +209,7 @@ const PELNY = {
   przewin: [1440, 390],
 };
 const KROTKI = {
-  piksele: [{ w: 1440, dpr: 1 }, { w: 1440, dpr: 1.75 }, { w: 1440, dpr: 2 }, { w: 390, dpr: 1 }, { w: 1440, dpr: 1.75, pasek: true }, { w: 1440, dpr: 1, forced: 'light' }, { w: 390, dpr: 1, forced: 'dark' }],
+  piksele: [{ w: 1440, dpr: 1, prokrutka: 1 }, { w: 1440, dpr: 1.75 }, { w: 1440, dpr: 2 }, { w: 390, dpr: 1 }, { w: 1440, dpr: 1.75, pasek: true }, { w: 1440, dpr: 1, forced: 'light' }, { w: 390, dpr: 1, forced: 'dark' }],
   ax: [1440, 390],
   przewin: [1440],
 };
@@ -237,11 +249,25 @@ const MUTACJE = [
   { nazwa: 'подпись ссылки знака', dom: () => document.querySelector('.hdr__brand').setAttribute('aria-label', 'Home'), zhdem: 'доступность' },
   { nazwa: 'подпись подвала пропала', dom: () => { const s = document.querySelector('.ft__brand svg.znak'); s.removeAttribute('aria-label'); s.removeAttribute('role'); s.setAttribute('aria-hidden', 'true'); }, zhdem: 'доступность' },
   { nazwa: 'внешний запрос', dom: () => { new Image().src = 'https://example.invalid/p.gif'; }, zhdem: 'запросы' },
+  // Раунд 4: изолирующая проба наложения — точки проходят сквозь блок (pointer-events: none),
+  // рисунок (а) его прячет; ловит только (б), и каждая строка отказа — «наложение» (R4-POLNOTA-2).
+  { nazwa: 'непрозрачный блок поверх знака, сквозь который проходят точки', dom: () => { const r = document.querySelector('.hdr__brand svg').getBoundingClientRect(); const d = document.createElement('div'); d.style.cssText = `position:fixed;left:${r.x}px;top:${r.y}px;width:${r.width}px;height:${r.height}px;background:#000;pointer-events:none;z-index:2147483647`; document.body.append(d); }, zhdem: ['наложение'], tolko: true },
+  { nazwa: 'тень у знака за коробкой', css: '.hdr__brand svg { box-shadow: 0 0 0 6px #eca84a }', zhdem: ['за коробкой', 'наложение'] },
+  { nazwa: 'анимация только по наведению', css: '@keyframes h7ths { 50% { opacity: .4 } } .hdr__brand:hover svg { animation: h7ths 1s infinite }', zhdem: ['движение'] },
+  { nazwa: 'pointer-events: none у знака — не перекрытие', css: '.hdr__brand svg { pointer-events: none }', zhdem: null },
+  { nazwa: 'призыв над шапкой при прокрутке', css: '.cta { position: relative; z-index: 60 }', zhdem: ['наложение: шапка, при прокрутке'], tolko: true },
 ];
 // Подмены своего сервера над dist/ (проверка «сборка = dist/»).
 const PODMENY = [
   { nazwa: 'лист стилей со статусом 203 и чужим байтом', odpowiedz: (p, b) => (p.endsWith('.css') ? { status: 203, b: Buffer.concat([b, Buffer.from('/*x*/')]) } : null), zhdem: 'сборка' },
   { nazwa: 'шрифт 404', odpowiedz: (p) => (/\.woff2?$/.test(p) ? { status: 404, b: Buffer.alloc(0) } : null), zhdem: 'сборка' },
+  // Раунд 4: каждая подмена — своим видом отказа (R4-BRAUZER-6).
+  { nazwa: 'лист стилей со статусом 203 теми же байтами', odpowiedz: (p, b) => (p.endsWith('.css') ? { status: 203, b } : null), zhdem: ['ждали 200'], tolko: true },
+  { nazwa: 'шрифт со статусом 200 чужими байтами', odpowiedz: (p, b) => (p.endsWith('.woff2') ? { status: 200, b: Buffer.concat([b, Buffer.from('x')]) } : null), zhdem: ['байты не равны dist/'], tolko: true },
+  // Иконки против эскиза и dist/ (R4-POLNOTA-3) — судит ikony() по адресу подмены.
+  { nazwa: 'favicon-32x32.png подменён записью 16', ikony: true, odpowiedz: (p) => (p === '/favicon-32x32.png' ? { status: 200, b: readFileSync(plikDist('/favicon-16x16.png')) } : null), zhdem: ['сборка: иконка', 'иконки:'], tolko: true },
+  { nazwa: 'favicon.ico с одной записью', ikony: true, odpowiedz: (p, b) => (p === '/favicon.ico' ? { status: 200, b: (() => { const c = Buffer.from(b); c.writeUInt16LE(1, 4); return c; })() } : null), zhdem: ['сборка: иконка', 'иконки:'], tolko: true },
+  { nazwa: 'favicon.svg другой', ikony: true, odpowiedz: (p, b) => (p === '/favicon.svg' ? { status: 200, b: Buffer.from(b.toString().replace('#eca84a', '#eca84b')) } : null), zhdem: ['сборка: иконка', 'иконки:'], tolko: true },
 ];
 
 // ── Помощники ────────────────────────────────────────────────────────────
@@ -259,10 +285,7 @@ async function otkryt(browser, opcje, mut, adres = URL_) {
   if (mut?.css) await page.addStyleTag({ content: mut.css });
   if (mut?.dom) await page.evaluate(mut.dom);
   // «Движения нет»: анимации знака, его частей и предков — до того, как их кончают.
-  const ruch = await page.evaluate(() => document.getAnimations().filter((a) => !(a instanceof CSSTransition)).filter((a) => {
-    const t = a.effect?.target;
-    return t && [...document.querySelectorAll('svg.znak')].some((s) => s === t || s.contains(t) || t.contains(s));
-  }).map((a) => `${a.animationName ?? 'анимация'} на ${a.effect.target.localName}${[...a.effect.target.classList].map((c) => `.${c}`).join('')}`));
+  const ruch = await page.evaluate(RUCH);
   // Конечные анимации — к концу до снимков: идущая трасса пули героя (trasa-pula),
   // даже скрытая, перерисовывает слой, и знак меняется на 1 субпиксель (замерено:
   // 1440 при 1,75 — макс 15, при 1,5 в подвале — макс 2), пока она не кончится.
@@ -273,6 +296,8 @@ async function otkryt(browser, opcje, mut, adres = URL_) {
 const stanZnakow = () => [...document.querySelectorAll('svg.znak')].map((svg) => {
   const cs = (el) => { const s = getComputedStyle(el); return { fill: s.fill, stroke: s.stroke, sw: s.strokeWidth, vis: s.visibility, disp: s.display }; };
   const r = svg.getBoundingClientRect();
+  // Что знак рисует за своей коробкой: фильтр, тень, отражение, обводка (R4-BRAUZER-1).
+  const zaKorobkoj = [svg, ...svg.children].flatMap((el) => { const s = getComputedStyle(el); return [['filter', s.filter], ['box-shadow', s.boxShadow], ['-webkit-box-reflect', s.webkitBoxReflect ?? 'none'], ['outline-style', s.outlineStyle]].filter(([, v]) => v && v !== 'none').map(([k, v]) => `${el.localName}: ${k} ${v}`); });
   const przodkowie = [];
   for (let a = svg; a; a = a.parentElement) {
     const s = getComputedStyle(a);
@@ -288,6 +313,7 @@ const stanZnakow = () => [...document.querySelectorAll('svg.znak')].map((svg) =>
     napisy: [...svg.querySelectorAll(':scope > path')].map((p) => ({ d: p.getAttribute('d'), ...cs(p) })),
     svg: cs(svg),
     przodkowie,
+    zaKorobkoj,
   };
 });
 const canvasText = (page) => page.evaluate(() => { const t = document.createElement('div'); t.style.color = 'CanvasText'; document.body.append(t); const c = getComputedStyle(t).color; t.remove(); return c; });
@@ -303,6 +329,7 @@ function sadStylu(stany, { tag, dpr, forced, ct }, bledy) {
     if (s.dzieci.join(',') !== 'polygon,polygon,polygon,path,path') bledy.push(`строение: ${t}: дети svg — ${s.dzieci.join(', ') || 'нет'}, ждали три polygon и два path`);
     if (Math.abs(s.w - 138) > 0.01 || Math.abs(s.h - 38) > 0.01) bledy.push(`размер: ${t}: знак ${s.w} × ${s.h}, ждали 138 × 38`);
     if (s.svg.vis !== 'visible' || s.svg.disp === 'none') bledy.push(`видимость: ${t}: svg visibility ${s.svg.vis}, display ${s.svg.disp}`);
+    for (const z of s.zaKorobkoj) bledy.push(`за коробкой: ${t}: ${z} — знак рисует за своей рамкой`);
     for (const p of s.przodkowie) {
       if (p.mbm !== 'normal') bledy.push(`смешивание: ${t}: mix-blend-mode ${p.mbm} у ${p.el}`);
       if (p.bdf !== 'none' && !p.hdr) bledy.push(`смешивание: ${t}: backdrop-filter ${p.bdf} у ${p.el} (разрешён только у .hdr)`);
@@ -334,8 +361,8 @@ function sadStylu(stany, { tag, dpr, forced, ct }, bledy) {
   }
 }
 
-async function zdjecie(page, clip, omit) {
-  const b = await page.screenshot({ clip, omitBackground: omit, animations: 'disabled', caret: 'hide' });
+async function zdjecie(page, clip, omit, animations = 'disabled') {
+  const b = await page.screenshot({ clip, omitBackground: omit, animations, caret: 'hide' });
   const { data, info } = await sharp(b).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
   return { data, info, png: b };
 }
@@ -366,6 +393,7 @@ async function postavit(page, ref, sel, okno) {
     return { ...o, tryb: 'flow', docX: b.x + scrollX, docY: b.y + scrollY, sx: scrollX, sy: scrollY };
   }, sel);
   if (!r) return { blad: 'знака нет' };
+  const hdrDol = await page.evaluate((s) => { const h = document.querySelector(s)?.closest('.hdr'); return h ? h.getBoundingClientRect().bottom : null; }, sel);
   await ref.evaluate((css) => { document.getElementById('miejsce').textContent = css; }, miejsce(r));
   await ref.evaluate(({ tryb, sx, sy }) => window.scrollTo({ left: tryb === 'flow' ? sx : 0, top: tryb === 'flow' ? sy : 0, behavior: 'instant' }), r);
   const polozenie = await ref.evaluate(() => { const b = document.querySelector('#r svg').getBoundingClientRect(); return { x: b.x, y: b.y }; });
@@ -374,7 +402,25 @@ async function postavit(page, ref, sel, okno) {
   const y = Math.max(0, Math.floor(r.y) - 2);
   const clip = { x, y, width: Math.min(okno.width, Math.ceil(r.x + r.width) + 2) - x, height: Math.min(okno.height, Math.ceil(r.y + r.height) + 2) - y };
   if (clip.width <= 0 || clip.height <= 0) return { blad: `знак вне окна (${JSON.stringify(r)})` };
-  return { r, clip };
+  // Широкая рамка наложения — всё, что знак может нарисовать за коробкой (R4-BRAUZER-1):
+  // у шапки — вся её полоса во всю ширину окна, у подвала — знак ± 60 px.
+  const sx0 = Math.max(0, Math.floor(r.x) - 60), sy0 = Math.max(0, Math.floor(r.y) - 60);
+  const szeroki = hdrDol !== null
+    ? { x: 0, y: 0, width: okno.width, height: Math.min(okno.height, Math.ceil(hdrDol)) }
+    : { x: sx0, y: sy0, width: Math.min(okno.width, Math.ceil(r.x + r.width) + 60) - sx0, height: Math.min(okno.height, Math.ceil(r.y + r.height) + 60) - sy0 };
+  return { r, clip, szeroki };
+}
+// «Движения нет»: CSS-анимации (не переходы) у знака, его частей и предков.
+const RUCH = () => document.getAnimations().filter((a) => !(a instanceof CSSTransition)).filter((a) => {
+  const t = a.effect?.target;
+  return t && [...document.querySelectorAll('svg.znak')].some((s) => s === t || s.contains(t) || t.contains(s));
+}).map((a) => `${a.animationName ?? 'анимация'} на ${a.effect.target.localName}${[...a.effect.target.classList].map((c) => `.${c}`).join('')}`);
+// Страж движения: два снимка рамки знака с живыми анимациями через 500 мс.
+async function strazhRuha(page, clip) {
+  const a = await zdjecie(page, clip, true, 'allow');
+  await page.waitForTimeout(500);
+  const b = await zdjecie(page, clip, true, 'allow');
+  return a.data.equals(b.data) ? null : 'рамка знака меняется сама за 500 мс';
 }
 // (а) Рисунок: страница под SKRYJ против эскиза на пустой странице.
 async function porownajRysunek(page, ref, clip) {
@@ -403,8 +449,14 @@ async function porownajNakladke(page, ref, clip) {
   for (let i = 0; i < b.length; i++) { const d = Math.abs(a.data[i] - b[i]); if (d > max) max = d; if (d > TOL_NAKLADKI) n++; }
   return { n, max };
 }
-// Пять точек — центры частей знака; elementFromPoint должен попасть в сам знак.
+// Пять точек — центры частей знака; elementFromPoint должен попасть в сам знак. На время
+// проверки знаку ставится pointer-events: auto: его собственное none — не перекрытие
+// (R4-BRAUZER-3), а элемент или псевдоэлемент поверх по-прежнему попадёт в точку.
 async function zakryt(page, sel) {
+  const pe = await page.addStyleTag({ content: 'svg.znak, svg.znak * { pointer-events: auto !important; }' });
+  try { return await zakrytBez(page, sel); } finally { await pe.evaluate((e) => e.remove()); }
+}
+async function zakrytBez(page, sel) {
   return page.evaluate((s) => {
     const svg = document.querySelector(s);
     if (!svg) return 'знака нет';
@@ -424,7 +476,7 @@ async function oknoPikseli(przegladarki, o, mut, zapis, bledy) {
   const okno = vp(o);
   const forced = o.forced ?? null;
   const browser = o.pasek ? przegladarki.pasek : przegladarki.zwykla;
-  const { ctx, page, ruch } = await otkryt(browser, { viewport: okno, deviceScaleFactor: o.dpr, ...(forced ? { forcedColors: 'active', colorScheme: forced } : {}) }, mut);
+  const { ctx, page, ruch, odpowiedzi, sboi } = await otkryt(browser, { viewport: okno, deviceScaleFactor: o.dpr, ...(forced ? { forcedColors: 'active', colorScheme: forced } : {}) }, mut);
   const tag = `${o.w} DPR ${o.dpr}${o.pasek ? ', полоса прокрутки' : ''}${forced ? `, принудительные цвета ${forced}` : ''}`;
   const wynik = { ...o, stany: [] };
   try {
@@ -488,12 +540,17 @@ async function oknoPikseli(przegladarki, o, mut, zapis, bledy) {
       const w1 = { stan: s.stan };
       if (pos.blad) { bledy.push(`пиксели: ${imie}: ${tag}: ${pos.blad}`); wynik.stany.push({ ...w1, blad: pos.blad }); await s.po?.(); continue; }
       w1.clip = pos.clip;
+      // Движение, начатое в этом состоянии (наведение, фокус, ящик, позже) — R4-BRAUZER-2.
+      const ruchTut = await page.evaluate(RUCH);
+      if (ruchTut.length) bledy.push(`движение: ${tag}, ${imie}: у знака анимации — ${ruchTut.join('; ')}`);
+      const straz = await strazhRuha(page, pos.clip);
+      if (straz) bledy.push(`движение: ${tag}, ${imie}: ${straz}`);
       w1.rysunek = await porownajRysunek(page, ref, pos.clip);
       await skryjWl(false);
       await page.waitForTimeout(150);
       const zak = await zakryt(page, s.sel);
       if (zak) bledy.push(`перекрыт: ${tag}, ${imie}: ${zak}`);
-      w1.nakladka = await porownajNakladke(page, ref, pos.clip);
+      w1.nakladka = await porownajNakladke(page, ref, pos.szeroki);
       await skryjWl(true);
       await page.waitForTimeout(150);
       await s.po?.();
@@ -506,6 +563,37 @@ async function oknoPikseli(przegladarki, o, mut, zapis, bledy) {
       if (N.blad) bledy.push(`наложение: ${imie}: ${tag}: ${N.blad}`);
       else if (N.n) bledy.push(`наложение: ${imie}: ${tag}: страница ≠ подложка с эскизом поверх — ${N.n} субпикселей больше ${TOL_NAKLADKI}, макс ${N.max}`);
     }
+    // Шапка при прокрутке всей страницы (R4-BRAUZER-4): в окнах с полем prokrutka — шагом
+    // в эту долю высоты окна и в крайней точке; перекрытие точками и наложение.
+    if (o.prokrutka) {
+      await page.mouse.move(0, okno.height - 1);
+      await page.evaluate(() => document.activeElement?.blur());
+      const maxY = await page.evaluate(() => document.documentElement.scrollHeight - innerHeight);
+      const krok = Math.floor(okno.height * o.prokrutka);
+      const tochki = [];
+      for (let y = 0; y < maxY; y += krok) tochki.push(y);
+      tochki.push(maxY);
+      const zle = [];
+      let tochek = 0;
+      for (const y of tochki) {
+        await przewinDo(page, y);
+        await page.waitForTimeout(120);
+        const pos = await postavit(page, ref, H, okno);
+        if (pos.blad) { zle.push(`${y}: ${pos.blad}`); continue; }
+        await skryjWl(false);
+        await page.waitForTimeout(100);
+        const zak = await zakryt(page, H);
+        const N = await porownajNakladke(page, ref, pos.szeroki);
+        await skryjWl(true);
+        tochek++;
+        if (zak) zle.push(`${y}: перекрыт — ${zak}`);
+        if (N.blad || N.n) zle.push(`${y}: наложение — ${N.blad ?? `${N.n} субпикселей, макс ${N.max}`}`);
+      }
+      wynik.prokrutka = { tochek, zle };
+      for (const z of zle) bledy.push(`наложение: шапка, при прокрутке: ${tag}: scrollY ${z}`);
+    }
+    // Ответы окна пикселей — тоже против dist/ (R4-BRAUZER-5).
+    if (!mut) wynik.otvety = (await sadOdpowiedzi(odpowiedzi, sboi, new URL(URL_).origin, tag, bledy)).length;
   } finally {
     await ctx.close();
   }
@@ -575,6 +663,25 @@ async function oknoDrzewa(browser, w, mut, zapis, bledy) {
 
 // ── Голова, запросы, сборка ──────────────────────────────────────────────
 const plikDist = (p) => { const s = decodeURIComponent(p); return join(SITE, 'dist', s.endsWith('/') ? `${s}index.html` : s); };
+// Ответы своего адреса: сбой загрузки, статус не 200 и байты не dist/ — три разных вида отказа.
+async function sadOdpowiedzi(odpowiedzi, sboi, ORIGIN, tag, bledy) {
+  const svoiSboi = sboi.filter((s) => s.startsWith(ORIGIN));
+  if (svoiSboi.length) bledy.push(`сборка: ${tag}: сбой загрузки — ${svoiSboi.join(', ')}`);
+  const pliki = [];
+  for (const r of odpowiedzi) {
+    const u = new URL(r.url());
+    if (u.origin !== ORIGIN) continue;
+    const buf = await r.body().catch(() => null);
+    const f = plikDist(u.pathname);
+    const dist = existsSync(f) && statSync(f).isFile() ? readFileSync(f) : null;
+    const status = r.status();
+    const rowny = !!buf && !!dist && buf.equals(dist);
+    pliki.push({ put: u.pathname, status, sha256: buf ? sha(buf) : null, rowny_dist: rowny });
+    if (status !== 200) bledy.push(`сборка: ${tag}: ${u.pathname} — ответ ${status}, ждали 200`);
+    if (!rowny) bledy.push(`сборка: ${tag}: ${u.pathname} — байты не равны dist/ (${buf ? `sha256 ${sha(buf).slice(0, 12)}` : 'без тела'}; dist/ ${dist ? sha(dist).slice(0, 12) : 'файла нет'})`);
+  }
+  return pliki;
+}
 async function oknoPrzewin(browser, w, mut, zapis, bledy, adres = URL_) {
   const ORIGIN = new URL(adres).origin;
   const { ctx, page, zaprosy, odpowiedzi, sboi } = await otkryt(browser, { viewport: vp({ w }), deviceScaleFactor: 1 }, mut, adres);
@@ -614,19 +721,7 @@ async function oknoPrzewin(browser, w, mut, zapis, bledy, adres = URL_) {
     wynik.vneshnie = vneshnie;
     if (vneshnie.length) bledy.push(`запросы: ${w}: не на свой сервер — ${vneshnie.join(', ')}`);
     if (!mut) {
-      const svoiSboi = sboi.filter((s) => s.startsWith(ORIGIN));
-      if (svoiSboi.length) bledy.push(`сборка: ${w}: сбой загрузки — ${svoiSboi.join(', ')}`);
-      const pliki = [];
-      for (const r of odpowiedzi) {
-        const u = new URL(r.url());
-        if (u.origin !== ORIGIN) continue;
-        const buf = await r.body().catch(() => null);
-        const f = plikDist(u.pathname);
-        const dist = existsSync(f) && statSync(f).isFile() ? readFileSync(f) : null;
-        const rowny = r.status() === 200 && !!buf && !!dist && buf.equals(dist);
-        pliki.push({ put: u.pathname, status: r.status(), sha256: buf ? sha(buf) : null, rowny_dist: rowny });
-        if (!rowny) bledy.push(`сборка: ${w}: ${u.pathname} — ответ ${r.status()}${buf ? `, sha256 ${sha(buf).slice(0, 12)}` : ', без тела'}; dist/ ${dist ? sha(dist).slice(0, 12) : 'файла нет'}${r.status() !== 200 ? ' (ждали 200)' : ''}`);
-      }
+      const pliki = await sadOdpowiedzi(odpowiedzi, sboi, ORIGIN, `${w}`, bledy);
       wynik.otvety = pliki;
       if (!pliki.some((p) => p.put === '/')) bledy.push(`сборка: ${w}: ответа на / нет среди ответов`);
     }
@@ -643,8 +738,8 @@ async function rastrEskiza(plik, size) {
   return sharp(svg, { density: (72 * size) / vb }).resize(size, size).ensureAlpha().raw().toBuffer();
 }
 const rastr = (buf) => sharp(buf).ensureAlpha().raw().toBuffer();
-async function ikony(bledy) {
-  const ORIGIN = new URL(URL_).origin;
+async function ikony(bledy, adres = URL_) {
+  const ORIGIN = new URL(adres).origin;
   const wynik = [];
   const pobierz = async (p) => { const r = await fetch(ORIGIN + p); if (r.status !== 200) bledy.push(`сборка: иконка ${p} — ответ ${r.status}`); return Buffer.from(await r.arrayBuffer()); };
   for (const p of LINKI.map((l) => l.href)) {
@@ -727,28 +822,41 @@ try {
     } else console.log(`wiernosc: сверено — знак шапки и подвала равен эскизу A и не перекрыт (${PELNY.piksele.length} окон, из них ${PELNY.piksele.filter((o) => o.forced).length} с принудительными цветами и ${PELNY.piksele.filter((o) => o.pasek).length} с полосой прокрутки), смешивания и движения нет, голова, дерево доступности, запросы, сборка = dist/, иконки = эскиз; выгрузка zamery/wiernosc.json`);
   } else {
     const wyniki = [];
-    const trafil = (bledy, zhdem) => bledy.find((b) => [].concat(zhdem).some((z) => b.startsWith(z)));
+    // Ожидание: null — «сверено»; строка или массив видов. Строка отказа данного вида —
+    // начинается с него (у подмен сервера — содержит его). Все названные виды должны
+    // встретиться (R4-POLNOTA-2); при tolko — и каждая строка отказа одного из видов.
+    const sudOk = (bledy, zhdem, tolko, soderzhit) => {
+      if (zhdem === null) return bledy.length === 0;
+      const vidy = [].concat(zhdem);
+      const est = (b, v) => (soderzhit ? b.includes(v) : b.startsWith(v));
+      return bledy.length > 0 && vidy.every((v) => bledy.some((b) => est(b, v))) && (!tolko || bledy.every((b) => vidy.some((v) => est(b, v))));
+    };
+    const pechat = (ok, nazwa, zhdem, bledy) => console.log(`${ok ? 'ok ' : 'НЕТ'}  ${nazwa}: ждём ${zhdem === null ? 'сверено' : `отказ «${[].concat(zhdem).join('» и «')}»`}, факт ${bledy.length ? `отказ (${bledy.length}): ${bledy[0]}` : 'сверено'}`);
     const czysty = await sud(przegladarki, KROTKI, null);
     await ikony(czysty.bledy);
     wyniki.push({ nazwa: 'чистая страница', zhdem: null, ok: czysty.bledy.length === 0, bledy: czysty.bledy });
-    console.log(`${czysty.bledy.length ? 'НЕТ' : 'ok '}  чистая страница: ждём сверено, факт ${czysty.bledy.length ? `отказ (${czysty.bledy.length}): ${czysty.bledy[0]}` : 'сверено'}`);
+    pechat(czysty.bledy.length === 0, 'чистая страница', null, czysty.bledy);
     for (const m of MUTACJE) {
       // Исключение внутри пробы — её отказ «проба сломана», а не обрыв самопроверки.
       const { bledy } = await sud(przegladarki, KROTKI, m).catch((e) => ({ bledy: [`проба сломана: ${e.message.split('\n')[0]}`] }));
-      const t = trafil(bledy, m.zhdem);
-      wyniki.push({ nazwa: m.nazwa, zhdem: m.zhdem, ok: !!t, bledy });
-      console.log(`${t ? 'ok ' : 'НЕТ'}  ${m.nazwa}: ждём отказ «${[].concat(m.zhdem).join('» или «')}», факт ${bledy.length ? `отказ (${bledy.length}): ${t ?? bledy[0]}` : 'сверено'}`);
+      const ok = sudOk(bledy, m.zhdem, m.tolko, false);
+      wyniki.push({ nazwa: m.nazwa, zhdem: m.zhdem, tolko: !!m.tolko, ok, bledy });
+      pechat(ok, m.nazwa, m.zhdem, bledy);
     }
     let port = 4990;
     for (const p of PODMENY) {
       const s = await serwer(port, p.odpowiedz);
       const bledy = [];
-      await oknoPrzewin(przegladarki.zwykla, 1440, null, [], bledy, `http://localhost:${port}/`);
+      const adres = `http://localhost:${port}/`;
+      try {
+        if (p.ikony) await ikony(bledy, adres);
+        else await oknoPrzewin(przegladarki.zwykla, 1440, null, [], bledy, adres);
+      } catch (e) { bledy.push(`проба сломана: ${e.message.split('\n')[0]}`); }
       s.close();
       port++;
-      const t = trafil(bledy, p.zhdem);
-      wyniki.push({ nazwa: p.nazwa, zhdem: p.zhdem, ok: !!t, bledy });
-      console.log(`${t ? 'ok ' : 'НЕТ'}  ${p.nazwa}: ждём отказ «${p.zhdem}», факт ${bledy.length ? `отказ (${bledy.length}): ${t ?? bledy[0]}` : 'сверено'}`);
+      const ok = sudOk(bledy, p.zhdem, p.tolko, true);
+      wyniki.push({ nazwa: p.nazwa, zhdem: p.zhdem, tolko: !!p.tolko, ok, bledy });
+      pechat(ok, p.nazwa, p.zhdem, bledy);
     }
     const zle = wyniki.filter((w) => !w.ok).length;
     writeFileSync(join(ZAMERY, 'wiernosc-selftest.json'), JSON.stringify({ ...shapka, zestaw: KROTKI, proby: wyniki }, null, 2) + '\n');

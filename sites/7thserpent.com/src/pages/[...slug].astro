@@ -257,9 +257,14 @@ const drukowane = PORYADOK.flatMap((imie) =>
 
 if (doZrobienia.join(',') !== drukowane.join(',')) {
   const brakujace = doZrobienia.filter((k) => !drukowane.includes(k));
-  const prichiny = brakujace.includes('link-list')
-    ? [pokrewne.length === 0 && 'related структуры пуст', !dane.related && 'нет заголовка related в содержании'].filter(Boolean)
-    : [];
+  // Причина — у каждого блока, чьё содержание собирается из полей: у призыва
+  // это поле `cta` («судью судят», раунд 1, R1-MARSHRUT-4).
+  const prichiny = [
+    ...(brakujace.includes('link-list')
+      ? [pokrewne.length === 0 && 'related структуры пуст', !dane.related && 'нет заголовка related в содержании']
+      : []),
+    ...(brakujace.includes('cta-band') ? ['нет поля cta в содержании'] : []),
+  ].filter(Boolean);
   const pustoVStrukture = prichiny.length ? ` (${prichiny.join('; ')})` : '';
   throw new Error(
     `blocks[] и печать разошлись на ${strona.url}.\n` +
@@ -278,6 +283,11 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
  * разрешается здесь, до разметки: ключ без файла или записи прерывает сборку
  * в `kadr()`, а не печатает пустую рамку. Герой и галерея добавят свои ключи
  * вместе со своими ветвями.
+ * Пределы («судью судят», раунд 1, R1-MARSHRUT-2, -6): пропорция кадра
+ * не судится — ключевой арт-баннер (около 3:1: `hero`, `mp2-art`, `mp3-art`)
+ * в рамке ряда 21:13 покажет около половины ширины и растянется на лестнице
+ * `640/960/1280`, поэтому в ряды идут скриншоты; один ключ в двух рядах
+ * печатает один кадр дважды без отказа; отказ `kadr()` не называет страницу.
  */
 const ryadyPechati = wystapienia
   .filter((b) => b.block === 'story-row' && drukowane.includes(klucz(b)))
@@ -359,16 +369,20 @@ const kluczeArtu: string[] = [...kadry.keys()];
 
 <style>
   /* Шапка страницы без нижней отбивки (П86 п. 8, П89): отбивку до `h1` даёт
-     верх `.section`, а расстояние до содержания — верх первого блока. */
+     верх `.section`, а расстояние до содержания — верх первого блока. Предел
+     (раунд 1, R1-MARSHRUT-5): если первым напечатается ряд с `band: true`
+     или призыв, фон начнётся прямо под `h1` — сегодня так не устроена ни одна
+     страница, держится содержанием, не проверкой. */
   .page-head {
     padding-block-end: 0;
   }
 
   /* Кадр ряда — дуотон стали, как у панелей рядов главной (`GameRow.astro`:
      те же доли и тот же фильтр) — «Ночь и один фонарь», скриншоты — сталью;
-     нота подвала обещает «toned to the site’s colors». Селектор двойным
-     классом: `SmartImage` печатает `.foto` ядра, правило обязано его перебить
-     при любом порядке листов. */
+     нота подвала обещает «toned to the site’s colors». Фильтр — двойным
+     классом: `.foto img` ядра задаёт свой `filter` с той же специфичностью,
+     и перебить его надо при любом порядке листов. `--era` у `.foto` ядро
+     не задаёт (он приходит с `:root`), двойной класс там — для единообразия. */
   :global(.foto.kadr-ryadu) {
     --era: color-mix(in oklab, var(--accent-2), var(--ink));
   }

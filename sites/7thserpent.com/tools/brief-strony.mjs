@@ -461,7 +461,7 @@ function selftest(v) {
   check('официальное название игры — имя, не формулировка', 0, chuzhie('Max Payne 2: The Fall of Max Payne\n', ukazatel([{ url: 'x', tekst: 'the story of Max Payne 2: The Fall of Max Payne here' }])).length);
   check('слова вокруг названия: имя — одно слово n-граммы', 1, chuzhie('in Max Payne 3 the hero moves to a new city\n', ukazatel([{ url: 'x', tekst: 'so in Max Payne 3 the hero moves to a new city now' }])).length);
   check('сущность &rsquo; в документе — та же фраза с апострофом поймана', 1, chuzhie('alpha bravo charlie delta Max’s echo foxtrot golf hotel\n', ukazatel([{ url: 'x', tekst: tekstDokumenta('<p>alpha bravo charlie delta Max&rsquo;s echo foxtrot golf hotel india</p>') }])).length);
-  check('ветви маршрута в брифе = PORYADOK маршрута', 'story-row,link-list', [...VETVI].join(','));
+  check('ветви маршрута в брифе = PORYADOK маршрута', 'story-row,link-list,cta-band', [...VETVI].join(','));
   check('бриф /max-payne-3/: арт героя mp3-art с оговоркой мастера', true, /`mp3-art`[^|]*1920 master is small/.test(brief(p0('/max-payne-3/'), v, null)));
   check('бриф /remake/: ключа героя нет — вопрос', true, brief(p0('/remake/'), v, null).includes('no key yet'));
   check('бриф /quotes/: открытый вопрос коридора', true, brief(p0('/quotes/'), v, null).includes('**Open for this page:** The contract corridor 5093–6891'));

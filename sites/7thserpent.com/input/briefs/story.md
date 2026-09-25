@@ -30,7 +30,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `byline` — anatomy, medium, evidence 12/28. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
-- `cta-band` — type-default, low. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `cta-band` — type-default, low. printed by the route
 
 ## Content plan (S3 anatomy, page corpus)
 

@@ -159,7 +159,7 @@ const PROBY = [
   { id: 'N11', imya: 'поле `related` без блока `link-list`', sudya: 'поле без блока', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row'); } }) }, zhdem: ['Поле без блока', '`related`', '`link-list`'], kod: 'не 0' },
   { id: 'N12', imya: 'роль у блока вне ROLE_UMIE', sudya: 'ROLE_UMIE', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'link-list#proba'); } }) }, zhdem: ['Вхождение блока с ролью, которого маршрут ещё не умеет', 'link-list#proba'], kod: 'не 0' },
   { id: 'N13', imya: 'ряд с ролью, которой страница не объявляет', sudya: 'ряд без вхождения', fajly: { [P.stend]: zamena(stend, '    year: Error 404\n', '    year: Error 404\n    role: mobile\n') }, zhdem: ['Ряды без своего вхождения story-row', '«mobile»'], kod: 'не 0' },
-  { id: 'N14', imya: 'блок ядра без ветви маршрута (cta-band)', sudya: 'ветви нет', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'link-list', 'cta-band'); } }) }, zhdem: ['ветви маршрута для него нет', 'cta-band'], kod: 'не 0' },
+  { id: 'N14', imya: 'блок ядра без ветви маршрута (gallery)', sudya: 'ветви нет', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'link-list', 'gallery'); } }) }, zhdem: ['ветви маршрута для него нет', 'gallery'], kod: 'не 0' },
   { id: 'N15', imya: 'тип страницы без приписки вида', sudya: 'VID', fajly: { [P.struktura]: strukturaS({ '/max-payne-1/': (p) => { p.type = 'proba'; } }) }, zhdem: ['Тип «proba»', 'без приписки в VID'], kod: 'не 0' },
   { id: 'N16', imya: 'вхождение с ролью без своих рядов', sudya: '«blocks[] = напечатанному»', fajly: { [P.struktura]: strukturaS({ '/404/': (p) => { p.blocks = bloki('story-row', 'story-row#proba', 'link-list'); } }) }, zhdem: ['blocks[] и печать разошлись', 'без содержания: story-row#proba'], kod: 'не 0' },
   { id: 'N17', imya: 'link-list без заголовка в содержании', sudya: '«blocks[] = напечатанному»', fajly: { [P.stend]: zamena(stend, 'related:\n  title: Where to go from here\n', '') }, zhdem: ['blocks[] и печать разошлись', 'без содержания: link-list (нет заголовка related в содержании)'], kod: 'не 0' },
@@ -236,11 +236,11 @@ const PROBY = [
   {
     id: 'P4', imya: 'страница второго уровня: крошки и BreadcrumbList по договору', sudya: 'Base.astro + tools/glowa.mjs',
     fajly: {
-      [P.struktura]: strukturaS({ '/pc/': (p) => { p.blocks = bloki('story-row', 'link-list'); p.corridor = null; } }),
-      [P.vremenny]: vremenny('/pc/', ['related:', '  title: Proba related']),
+      [P.struktura]: strukturaS({ '/story/': (p) => { p.blocks = bloki('story-row', 'link-list'); p.corridor = null; } }),
+      [P.vremenny]: vremenny('/story/', ['related:', '  title: Proba related']),
     },
     zhdem: [], kod: 0, glowa: true,
-    html: { '/pc/': (h) => (zvenyev(h) === 2 ? null : `звеньев BreadcrumbList ${zvenyev(h)}, ждали 2`) },
+    html: { '/story/': (h) => (zvenyev(h) === 2 ? null : `звеньев BreadcrumbList ${zvenyev(h)}, ждали 2`) },
   },
 ];
 

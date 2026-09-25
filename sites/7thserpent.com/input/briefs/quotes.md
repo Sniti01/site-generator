@@ -29,7 +29,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `story-row` — type-default, low. printed by the route
 - `gallery` — anatomy, medium, evidence 2/4. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
 - `link-list` — type-default, low. printed by the route
-- `cta-band` — type-default, low. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `cta-band` — type-default, low. printed by the route
 
 **Open for this page:** The contract corridor 5093–6891 conflicts with short quotes (П67 п. 2; `CLAUDE.md` of the site, §6 — «decided in pachka 0»): an open question to the owner in the pachka 0 report; until the answer, the fuse of П43 decides when the honest text exists.
 

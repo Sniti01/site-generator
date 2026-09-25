@@ -31,7 +31,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `story-row` — type-default, low. printed by the route
 - `video` — manual, high. not in the core — the route skips it loudly; its implementation comes with the first page that has it (a core change is a question to the owner)
 - `link-list` — type-default, low. printed by the route
-- `cta-band` — type-default, low. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `cta-band` — type-default, low. printed by the route
 
 ## Content plan (S3 anatomy, page corpus)
 

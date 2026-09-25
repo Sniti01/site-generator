@@ -65,7 +65,7 @@ rows:
         Evil 3 (2020) join them as action-adventures.
   - id: the-next-max-payne
     year: What’s next
-    title: The next Max Payne is a remake
+    title: "The next Max Payne is a remake"
     meta: Max Payne 1 & 2 Remake, as of September 2026
     body:
       - >-
@@ -80,7 +80,7 @@ rows:
 related:
   title: More on the series
 cta:
-  title: The best game like Max Payne
+  title: "The best game like Max Payne"
   lead: >-
     It is still the original: New York in 2001, Max’s murdered family and a
     drug called Valkyr.

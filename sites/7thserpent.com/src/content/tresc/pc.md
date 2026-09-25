@@ -3,7 +3,7 @@ url: /pc/
 rows:
   - id: max-payne-3-requirements
     year: Max Payne 3
-    title: What Max Payne 3 needs
+    title: "What Max Payne 3 needs"
     meta: The official list on Rockstar Support, last updated March 21, 2024
     body:
       - >-
@@ -23,7 +23,7 @@ rows:
         maximum DirectX 11 settings at 1920×1080 within reach of a 2 GB card.
   - id: max-payne-2-requirements
     year: Max Payne 2
-    title: What Max Payne 2 needs
+    title: "What Max Payne 2 needs"
     meta: The minimum and recommended specs published for the 2003 release
     band: true
     body:
@@ -90,7 +90,7 @@ rows:
         enemies, and Free Aim.
   - id: controls
     year: Controls
-    title: Default keys in Max Payne
+    title: "Default keys in Max Payne"
     meta: The keyboard layout of the first game on PC
     band: true
     body:

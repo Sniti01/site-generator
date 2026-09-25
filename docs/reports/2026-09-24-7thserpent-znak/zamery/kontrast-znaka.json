@@ -1,0 +1,110 @@
+{
+  "instrument": "kontrast-znaka.mjs",
+  "brauzer": "Chromium 151.0.7922.34",
+  "sborka": {
+    "adres": "http://localhost:4331/",
+    "kommit": "89296df2dcd04c4f608fbcb5421c9b5e04fb2cde",
+    "gryaz_sajta": [],
+    "pliki": [
+      {
+        "put": "/",
+        "sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/index.CmgQJVSa.css",
+        "sha256": "a0674b3bb3ca4f347c288f0d1e6779ff5f7d6b4d02518fbd238fed2bb5f355f6",
+        "rowny_dist": true
+      }
+    ],
+    "bledy": []
+  },
+  "porog": {
+    "фонарь": 3,
+    "снег": 4.5,
+    "обводка_фокуса": 3
+  },
+  "okna": {
+    "390 DPR 1": {
+      "krasy": {
+        "accent": "#eca84a",
+        "ink": "#e5eaee",
+        "accent-text": "#f2bd6e"
+      },
+      "niezagruzheno_kartinok": 0,
+      "granica_fon_nad_belym": "rgb(39 42 46)",
+      "granica": {
+        "фонарь": 7.05,
+        "снег": 11.9,
+        "обводка_фокуса": 8.43
+      },
+      "zamer_hudshiy_fon": "rgb(36 39 44)",
+      "zamer_scrollY": 3730,
+      "zamer": {
+        "фонарь": 7.32,
+        "снег": 12.37
+      }
+    },
+    "1440 DPR 1": {
+      "krasy": {
+        "accent": "#eca84a",
+        "ink": "#e5eaee",
+        "accent-text": "#f2bd6e"
+      },
+      "niezagruzheno_kartinok": 0,
+      "granica_fon_nad_belym": "rgb(39 42 46)",
+      "granica": {
+        "фонарь": 7.05,
+        "снег": 11.9,
+        "обводка_фокуса": 8.43
+      },
+      "zamer_hudshiy_fon": "rgb(33 37 41)",
+      "zamer_scrollY": 4210,
+      "zamer": {
+        "фонарь": 7.54,
+        "снег": 12.73
+      }
+    },
+    "390 DPR 2": {
+      "krasy": {
+        "accent": "#eca84a",
+        "ink": "#e5eaee",
+        "accent-text": "#f2bd6e"
+      },
+      "niezagruzheno_kartinok": 0,
+      "granica_fon_nad_belym": "rgb(39 42 46)",
+      "granica": {
+        "фонарь": 7.05,
+        "снег": 11.9,
+        "обводка_фокуса": 8.43
+      },
+      "zamer_hudshiy_fon": "rgb(36 39 44)",
+      "zamer_scrollY": 3730,
+      "zamer": {
+        "фонарь": 7.32,
+        "снег": 12.37
+      }
+    },
+    "1440 DPR 2": {
+      "krasy": {
+        "accent": "#eca84a",
+        "ink": "#e5eaee",
+        "accent-text": "#f2bd6e"
+      },
+      "niezagruzheno_kartinok": 0,
+      "granica_fon_nad_belym": "rgb(39 42 46)",
+      "granica": {
+        "фонарь": 7.05,
+        "снег": 11.9,
+        "обводка_фокуса": 8.43
+      },
+      "zamer_hudshiy_fon": "rgb(33 36 41)",
+      "zamer_scrollY": 4210,
+      "zamer": {
+        "фонарь": 7.61,
+        "снег": 12.85
+      }
+    }
+  },
+  "bledy": []
+}

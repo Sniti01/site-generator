@@ -203,7 +203,7 @@ const KROTKI = {
 };
 
 // ── Мутации самопроверки (правки страницы сразу после загрузки) ─────────
-const nakryt = (sel, cel) => () => { const r = document.querySelector(sel).getBoundingClientRect(); const d = document.createElement('div'); d.style.cssText = `position:fixed;left:${r.x}px;top:${r.y}px;width:${r.width}px;height:${r.height}px;background:${cel};z-index:2147483647`; document.body.append(d); };
+// Функции dom уходят в страницу текстом — без замыканий, всё внутри.
 const MUTACJE = [
   { nazwa: 'знак шапки 0,8', css: '.hdr__brand { opacity: .8 }', zhdem: 'пиксели: шапка, вверху' },
   { nazwa: 'свечение знака', css: '.hdr__brand svg { filter: drop-shadow(0 0 2px #eca84a) }', zhdem: 'пиксели: шапка, вверху' },
@@ -219,7 +219,7 @@ const MUTACJE = [
   { nazwa: 'плотность от 2: знак 0,9', css: '@media (min-resolution: 2dppx) { .hdr__brand svg { opacity: .9 } }', zhdem: 'пиксели: шапка, вверху' },
   { nazwa: 'знака в подвале нет', dom: () => document.querySelector('.ft__brand svg.znak')?.remove(), zhdem: 'строение' },
   { nazwa: 'контур «SERPENT» правлен', dom: () => { for (const s of document.querySelectorAll('svg.znak')) { const p = s.querySelectorAll('path')[1]; p.setAttribute('d', p.getAttribute('d').replace('M30.31', 'M30.41')); } }, zhdem: 'строение' },
-  { nazwa: 'чёрный блок поверх знака', dom: nakryt('.hdr__brand svg', '#000'), zhdem: ['перекрыт', 'наложение: шапка'] },
+  { nazwa: 'чёрный блок поверх знака', dom: () => { const r = document.querySelector('.hdr__brand svg').getBoundingClientRect(); const d = document.createElement('div'); d.style.cssText = `position:fixed;left:${r.x}px;top:${r.y}px;width:${r.width}px;height:${r.height}px;background:#000;z-index:2147483647`; document.body.append(d); }, zhdem: ['перекрыт', 'наложение: шапка'] },
   { nazwa: 'блок поверх имени, перекладина открыта', dom: () => { const r = document.querySelector('.hdr__brand svg path').getBoundingClientRect(); const d = document.createElement('div'); d.style.cssText = `position:fixed;left:${r.x}px;top:${r.y}px;width:120px;height:40px;background:#090c11;z-index:2147483647`; document.body.append(d); }, zhdem: ['перекрыт', 'наложение: шапка'] },
   { nazwa: 'псевдоэлемент ссылки поверх знака', css: '.hdr__brand { position: relative } .hdr__brand::after { content: ""; position: absolute; inset: 0; background: #e5eaee }', zhdem: ['перекрыт', 'наложение: шапка'] },
   { nazwa: 'псевдоэлемент поверх знака от плотности 1,25', css: '@media (min-resolution: 1.25dppx) { .hdr__brand { position: relative } .hdr__brand::after { content: ""; position: absolute; inset: 0; background: #e5eaee } }', zhdem: ['перекрыт', 'наложение: шапка'] },
@@ -733,7 +733,8 @@ try {
     wyniki.push({ nazwa: 'чистая страница', zhdem: null, ok: czysty.bledy.length === 0, bledy: czysty.bledy });
     console.log(`${czysty.bledy.length ? 'НЕТ' : 'ok '}  чистая страница: ждём сверено, факт ${czysty.bledy.length ? `отказ (${czysty.bledy.length}): ${czysty.bledy[0]}` : 'сверено'}`);
     for (const m of MUTACJE) {
-      const { bledy } = await sud(przegladarki, KROTKI, m);
+      // Исключение внутри пробы — её отказ «проба сломана», а не обрыв самопроверки.
+      const { bledy } = await sud(przegladarki, KROTKI, m).catch((e) => ({ bledy: [`проба сломана: ${e.message.split('\n')[0]}`] }));
       const t = trafil(bledy, m.zhdem);
       wyniki.push({ nazwa: m.nazwa, zhdem: m.zhdem, ok: !!t, bledy });
       console.log(`${t ? 'ok ' : 'НЕТ'}  ${m.nazwa}: ждём отказ «${[].concat(m.zhdem).join('» или «')}», факт ${bledy.length ? `отказ (${bledy.length}): ${t ?? bledy[0]}` : 'сверено'}`);

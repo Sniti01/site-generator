@@ -1,0 +1,17 @@
+# sha256 пяти файлов до маркеров (состояние main 46f4a4a):
+345d7fa10e188271e9680b4538a77e540323f2f7397d98e963b139dbb4071e72 *sites/7thserpent.com/src/styles/global.css
+120de783ce76325160eb8263c0f7e6c6bd193ccf6f4b12c120e4481b71ea50b0 *sites/7thserpent.com/src/content/tresc/404.md
+ecf7d2f9ba57684321e956907a016edf7497ec3b402f89f9fcad20dfe8866fb9 *sites/7thserpent.com/src/pages/[...slug].astro
+24fb8b1474e42c6f58d0906e1793bf251adecedc94d237ed6c7d75e8b6a12163 *core/chrome/Breadcrumbs.astro
+8f2c6f7d19970bd3059f49d99757a133d36c5e3512e086450912d72d5a56fa43 *core/gates/check-tokens.mjs
+
+# после отката маркеров (sha256sum -c); global.css изменён правкой 8810c0d — FAILED ожидаем:
+sites/7thserpent.com/src/styles/global.css: FAILED
+sites/7thserpent.com/src/content/tresc/404.md: OK
+sites/7thserpent.com/src/pages/[...slug].astro: OK
+core/chrome/Breadcrumbs.astro: OK
+core/gates/check-tokens.mjs: OK
+sha256sum: WARNING: 1 computed checksum did NOT match
+
+# файлы маркеров против main (git diff --stat main):
+(пусто — равны)

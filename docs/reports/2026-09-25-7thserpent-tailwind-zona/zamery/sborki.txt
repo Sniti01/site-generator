@@ -1,0 +1,43 @@
+== 1. main 46f4a4a, чистая (build-main.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 11.24s
+[build] Complete!
+
+== 2. main + маркеры (контроль до правки) (build-markery-do.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.70s
+[build] Complete!
+
+== 3. правка + маркеры (build-markery-posle.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.38s
+[build] Complete!
+
+== 4. правка, маркеры откачены, чистая (build-posle.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.45s
+[build] Complete!

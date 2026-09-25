@@ -1,0 +1,162 @@
+{
+ "run": "s1",
+ "strona": "glowna",
+ "sost": "1440",
+ "do": "http://127.0.0.1:4341/",
+ "posle": "http://127.0.0.1:4342/",
+ "listyDo": [
+  "/_astro/LinkList.DHeL5m7t.css",
+  "/_astro/index.xofYExtq.css"
+ ],
+ "listyPosle": [
+  "/_astro/LinkList.B4mIKaMJ.css",
+  "/_astro/index.xofYExtq.css"
+ ],
+ "osnovnoe": {
+  "strok": 1185,
+  "elementov": 395,
+  "svoystv_v_stroke_0": 525,
+  "razlichiy": 0,
+  "pervye": []
+ },
+ "kontrol": [
+  {
+   "imya": "К1 вернуть .lowercase в слой утилит",
+   "strok": 1185,
+   "elementov": 395,
+   "svoystv_v_stroke_0": 525,
+   "razlichiy": 0,
+   "pervye": []
+  },
+  {
+   "imya": "К2 letter-spacing h1 +0.001em",
+   "strok": 1185,
+   "elementov": 395,
+   "svoystv_v_stroke_0": 525,
+   "razlichiy": 3,
+   "pervye": [
+    {
+     "stroka": 165,
+     "metka": "55 H1#hero-title.hero__title.t-headline",
+     "ushlo": [
+      "letter-spacing:2.2px"
+     ],
+     "prishlo": [
+      "letter-spacing:2.244px"
+     ]
+    },
+    {
+     "stroka": 166,
+     "metka": "55 H1#hero-title.hero__title.t-headline::before",
+     "ushlo": [
+      "letter-spacing:2.2px"
+     ],
+     "prishlo": [
+      "letter-spacing:2.244px"
+     ]
+    },
+    {
+     "stroka": 167,
+     "metka": "55 H1#hero-title.hero__title.t-headline::after",
+     "ushlo": [
+      "letter-spacing:2.2px"
+     ],
+     "prishlo": [
+      "letter-spacing:2.244px"
+     ]
+    }
+   ]
+  },
+  {
+   "imya": "К3 a::after{outline-offset:1px}",
+   "strok": 1185,
+   "elementov": 395,
+   "svoystv_v_stroke_0": 525,
+   "razlichiy": 64,
+   "pervye": [
+    {
+     "stroka": 8,
+     "metka": "2 A.skip-link.t-button::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 17,
+     "metka": "5 A.hdr__brand::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 47,
+     "metka": "15 A.hdr__link.t-label::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 53,
+     "metka": "17 A.hdr__link.t-label::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 59,
+     "metka": "19 A.hdr__link.t-label::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 65,
+     "metka": "21 A.hdr__link.t-label::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 71,
+     "metka": "23 A.hdr__link.t-label::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    },
+    {
+     "stroka": 110,
+     "metka": "36 A.hdr__drawer-link.t-title::after",
+     "ushlo": [
+      "outline-offset:0px"
+     ],
+     "prishlo": [
+      "outline-offset:1px"
+     ]
+    }
+   ]
+  }
+ ],
+ "kontrolOk": true,
+ "itog": "сверено"
+}

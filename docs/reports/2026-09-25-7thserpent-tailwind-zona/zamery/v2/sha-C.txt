@@ -1,0 +1,8 @@
+# после отката маркеров (sha256sum -c против sha-0-iskhod — состояние 70195ca):
+sites/7thserpent.com/src/styles/global.css: OK
+sites/7thserpent.com/src/content/tresc/404.md: OK
+sites/7thserpent.com/src/pages/[...slug].astro: OK
+core/chrome/Breadcrumbs.astro: OK
+core/gates/check-tokens.mjs: OK
+git status --short:
+?? docs/reports/2026-09-25-7thserpent-tailwind-zona/

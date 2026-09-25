@@ -1,0 +1,6 @@
+_astro/LinkList: _astro/LinkList.DHeL5m7t.css (25535 Б, листьев 250) → _astro/LinkList.B4mIKaMJ.css (25499 Б, листьев 249); общих 249; слой утилит 20 → 19; побайтно — равен без ушедшего правила
+  ушло   #68: @layer utilities › .lowercase {text-transform:lowercase}
+_astro/index: _astro/index.xofYExtq.css (15307 Б, листьев 120) → _astro/index.xofYExtq.css (15307 Б, листьев 120); общих 120; слой утилит 0 → 0; побайтно — равен
+слой утилит всего: 20 → 19
+прочие файлы: 85; побайтно равны 83; HTML равны после замены имени листа 2; различаются 0
+ВЕРДИКТ: сверено

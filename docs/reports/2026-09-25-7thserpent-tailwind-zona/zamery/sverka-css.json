@@ -1,0 +1,64 @@
+{
+ "verdikt": "сверено",
+ "otkazy": [],
+ "ozhidalos": "@layer utilities › .lowercase {text-transform:lowercase}",
+ "sloyUtilit": {
+  "do": 20,
+  "posle": 19
+ },
+ "listy": [
+  {
+   "osnova": "_astro/LinkList",
+   "do": "_astro/LinkList.DHeL5m7t.css",
+   "posle": "_astro/LinkList.B4mIKaMJ.css",
+   "baitDo": 25535,
+   "baitPosle": 25499,
+   "listyevDo": 250,
+   "listyevPosle": 249,
+   "obshchih": 249,
+   "sloyUtilitDo": {
+    "pravil": 20,
+    "blokov": 1
+   },
+   "sloyUtilitPosle": {
+    "pravil": 19,
+    "blokov": 1
+   },
+   "ushlo": [
+    {
+     "nomer": 68,
+     "klyuch": "@layer utilities › .lowercase {text-transform:lowercase}"
+    }
+   ],
+   "prishlo": [],
+   "pobaitno": "равен без ушедшего правила"
+  },
+  {
+   "osnova": "_astro/index",
+   "do": "_astro/index.xofYExtq.css",
+   "posle": "_astro/index.xofYExtq.css",
+   "baitDo": 15307,
+   "baitPosle": 15307,
+   "listyevDo": 120,
+   "listyevPosle": 120,
+   "obshchih": 120,
+   "sloyUtilitDo": {
+    "pravil": 0,
+    "blokov": 0
+   },
+   "sloyUtilitPosle": {
+    "pravil": 0,
+    "blokov": 0
+   },
+   "ushlo": [],
+   "prishlo": [],
+   "pobaitno": "равен"
+  }
+ ],
+ "prochie": {
+  "vsegoDo": 85,
+  "ravnyhPobaitno": 83,
+  "htmlRavnyhPosleZameny": 2,
+  "razlichny": []
+ }
+}

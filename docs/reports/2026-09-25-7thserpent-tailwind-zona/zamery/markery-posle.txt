@@ -1,0 +1,6 @@
+сборка dist: листов CSS 2
+да  z-[71] ждали В CSS: есть — _astro/LinkList.Bl5rmwFn.css (@layer utilities › .z-\[71\]{z-index:71})
+да  z-[72] ждали В CSS: есть — _astro/LinkList.Bl5rmwFn.css (@layer utilities › .z-\[72\]{z-index:72})
+да  z-[73] ждали НЕ в CSS: нет ни селектора, ни z-index:73
+да  z-[74] ждали НЕ в CSS: нет ни селектора, ни z-index:74
+ИТОГ: все маркеры там, где ждали

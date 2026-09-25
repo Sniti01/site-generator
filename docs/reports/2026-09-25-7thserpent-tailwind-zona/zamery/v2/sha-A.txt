@@ -1,0 +1,12 @@
+# состояние A: global.css = main, маркеры 71–74 стоят
+345d7fa10e188271e9680b4538a77e540323f2f7397d98e963b139dbb4071e72 *sites/7thserpent.com/src/styles/global.css
+bcf1aef01032f8db9503d754e6a560c7177980f542a4c49ebb36c05274556044 *sites/7thserpent.com/src/content/tresc/404.md
+9cd0dfb1750e4fef06a1db3b424feb9faeae68086272b64bbdceb18265c861c8 *sites/7thserpent.com/src/pages/[...slug].astro
+2ea647e6460a35ecba8d87e0bfde4593c8a8cc97baa11db513009e7623036d4c *core/chrome/Breadcrumbs.astro
+be89a08754fb3f63e384bd848f2136303cb7858c31fe862bf8667a542e9203a9 *core/gates/check-tokens.mjs
+global.css против main: равен
+0
+ * МАРКЕР z-[71]
+ * МАРКЕР z-[72]
+# МАРКЕР z-[73]
+// МАРКЕР z-[74]

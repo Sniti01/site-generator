@@ -1,0 +1,32 @@
+== A. global.css = main, маркеры 71–74 (build-A.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.57s
+[build] Complete!
+
+== B. global.css = 70195ca, маркеры 71–74 (build-B.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.32s
+[build] Complete!
+
+== C. 70195ca, маркеры откачены, dist удалён (build-C.log)
+Bramki: 4/4 przechodzi.
+[factory:after-build] h1: 2 strony, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 2 strony, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 2 strony, 101 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 2 strony — w korytarzu 0, bez korytarza (null w umowie) 2; znaki bez spacji
+[factory:corridor]   /: 3259 — bez korytarza, liczba do raportu
+[factory:corridor]   /404/: 527 — bez korytarza, liczba do raportu
+[build] 2 page(s) built in 1.46s
+[build] Complete!

@@ -1,12 +1,45 @@
 {
   "instrument": "vkladka-dowod.mjs",
   "brauzer": "Chromium 151.0.7922.34",
-  "kommit": "6762a920ca21188a0378e598b2d95b6a885eeadb",
-  "gryaz_sajta": [],
+  "instrument_sha256": "d61c7096f10cc1754a0802e6abac6ee5b1dba29c88be2f8c8db569da25b9ddec",
+  "head_pri_progone": "1faf3961727f791dcd884659fa72ec3b79a32aa3",
+  "gryaz_sajta": [
+    "M sites/7thserpent.com/CLAUDE.md",
+    " M sites/7thserpent.com/DESIGN.md",
+    " M sites/7thserpent.com/_baseline/README.md",
+    " M sites/7thserpent.com/src/layouts/Base.astro"
+  ],
+  "gryaz_instrumentov": [
+    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/vkladka-dowod.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/znak-podvala-okno.mjs"
+  ],
   "dist_index_sha256": "13f4aaae60272226a8e266d61ef7a5182f297d8347934b9a7af74134e0dec2a7",
   "snimki": {
+    "dowod/dowod-a-1x.png": "8e7c66ec1ce7cd2b2bce7a2152888e25a818ba18c92a3caa0e132432d667d581",
+    "dowod/dowod-a-1_75x.png": "25064501c147d0127211a991d6fec68433e08bd2b5584fb97566fd599a12ea13",
+    "dowod/dowod-a-2x.png": "251d9ce02b985ac214acc946e58e734c3534d06e894f4495757b0b562f6192cd",
+    "vkladka-1x-svetlaya.png": "d0fbed4ea858f142410f8ce8c26307ea1f7eab6903c43e3f33ac9449f817c04c",
+    "vkladka-1x-temnaya.png": "127d0b8b9cb65b660ac518a6d0f85a2623b0c591a5adc0cbba47373fa3af1522",
+    "vkladka-1_75x-svetlaya.png": "101a7850589b30ca9e4b5e65515ca13bdb69816267f8cbac77c0f4747e9aee45",
+    "vkladka-1_75x-temnaya.png": "b3093024202f4a9e2168f5c0e0f59fc6b53c2a6f0be18612a3e99a2e768ba167",
+    "vkladka-2x-svetlaya.png": "1b356608de5fa54c23526fb70fd48430771e4f20e4bb3cbe34c946ef569b831f",
+    "vkladka-2x-temnaya.png": "464fbebfb901d335b50aa7b6bfff953954403a4bde678ae722c16be090d1f923",
+    "dowod/dowod-b-1x.png": "1bdee88420778bc67536c876ce4fcf4d3267d0cca6a3ea03fdb29fb087e1549b",
+    "dowod/dowod-c-1x.png": "8e7c66ec1ce7cd2b2bce7a2152888e25a818ba18c92a3caa0e132432d667d581",
+    "dowod/dowod-d-1x.png": "8616ff7a199ce56c6a7c3677df32626d53c61471c240e1b39b52799aadcf82c5",
+    "dowod/dowod-b-2x.png": "7a428d07dcd92d04aae84bea7ce6fbbe33ea4b30c079faf1ce6e3e3b876ba0f6",
+    "dowod/dowod-c-2x.png": "251d9ce02b985ac214acc946e58e734c3534d06e894f4495757b0b562f6192cd",
+    "dowod/dowod-d-2x.png": "f3ee7acf0788f1b0a09680692d5b06bf154bea4d3d076be41055fa79f076658b",
+    "vkladka-para.png": "b8e87b6651320a8d1336c70adb7dee9db12c9874859c9f9a3113bc879c983182"
+  },
+  "przebiegi_0": {
     "0-1-svetlaya": {
-      "okno": "pid 45564 window 900x420 title ok",
+      "okno": "pid 7792 window 900x420 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -19,8 +52,50 @@
       "zielonych": 0,
       "czerwonych": 0
     },
+    "0-1-temnaya": {
+      "okno": "pid 38080 window 900x420 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 56,
+        "y": 12,
+        "w": 16,
+        "h": 16
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-1.75-svetlaya": {
+      "okno": "pid 21436 window 1575x735 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 96,
+        "y": 21,
+        "w": 28,
+        "h": 28
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
+    "0-1.75-temnaya": {
+      "okno": "pid 34116 window 1575x735 title ok",
+      "zapros_ikon": [
+        "/favicon.svg"
+      ],
+      "ramka": {
+        "x": 96,
+        "y": 21,
+        "w": 28,
+        "h": 28
+      },
+      "zielonych": 0,
+      "czerwonych": 0
+    },
     "0-2-svetlaya": {
-      "okno": "pid 23412 window 1800x840 title ok",
+      "okno": "pid 45692 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -33,22 +108,8 @@
       "zielonych": 0,
       "czerwonych": 0
     },
-    "0-1-temnaya": {
-      "okno": "pid 46960 window 900x420 title ok",
-      "zapros_ikon": [
-        "/favicon.svg"
-      ],
-      "ramka": {
-        "x": 56,
-        "y": 12,
-        "w": 16,
-        "h": 16
-      },
-      "zielonych": 0,
-      "czerwonych": 0
-    },
     "0-2-temnaya": {
-      "okno": "pid 36316 window 1800x840 title ok",
+      "okno": "pid 21524 window 1800x840 title ok",
       "zapros_ikon": [
         "/favicon.svg"
       ],
@@ -70,6 +131,14 @@
     "0-1-temnaya": {
       "dolya": 0.188,
       "max": 68
+    },
+    "0-1.75-svetlaya": {
+      "dolya": 0.122,
+      "max": 55
+    },
+    "0-1.75-temnaya": {
+      "dolya": 0.122,
+      "max": 55
     },
     "0-2-svetlaya": {
       "dolya": 0.004,

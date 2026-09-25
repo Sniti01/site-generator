@@ -9,18 +9,23 @@
 //   0 — без правки: материалы приёмки и контроль;
 //   а — favicon.svg перекрашен в чистый зелёный (#00ff00), PNG и ICO прежние;
 //   б — PNG и ICO перекрашены в чистый красный (#ff0000), SVG прежний;
-//   в — как (а), и порядок ссылок иконок в <head> обратный.
+//   в — как (а), и порядок ссылок иконок в <head> обратный;
+//   г — как (б), и ссылки на favicon.svg в <head> нет (раунд 3, R3-MATERIALY-7).
 // Рамка иконки во вкладке не зашита числами: это рамка зелёных пикселей варианта (а)
-// при том же масштабе и теме (квадрат 16 × масштаб; иначе отказ). В рамке:
+// при том же масштабе и теме (квадрат 16 × масштаб с точностью до пикселя; иначе отказ).
+// В рамке:
 //   (а), (в) — зелёного не меньше 0,9: вкладку рисует favicon.svg;
+//   (г) — красного не меньше 0,9 и запрошен PNG или ICO: положительный контроль —
+//         снимок видит растровую иконку, когда вкладка её берёт;
 //   (б) — красного нет, и рамка по пикселям та же, что у (0) (доля пикселей
-//         с расхождением больше 8 — не больше 0,02): положительный контроль —
-//         правка растровых иконок до вкладки не дошла.
+//         с расхождением больше 8 — не больше 0,02): правка растровых иконок
+//         до вкладки не дошла, пока ссылка на SVG есть.
 // Пара «эскиз / вкладка»: рамка (0) против favicon.svg, нарисованного Chromium без окна
 // в <img> 16 × 16 при той же плотности (так иконку показывал лист эскиза) — число
-// расхождений и лист vkladka-para.png (увеличение 8).
-// Масштаб интерфейса 1 и 2 (--force-device-scale-factor), светлая и тёмная тема
-// браузера (--force-dark-mode). Окно открывается на экране на несколько секунд.
+// расхождений и лист vkladka-para.png (клетка 128 px: увеличение — целое, по масштабу).
+// Масштаб интерфейса 1, 1,75 (экран владельца) и 2 (--force-device-scale-factor),
+// светлая и тёмная тема браузера (--force-dark-mode). Окно открывается на экране
+// на несколько секунд.
 //
 // Пишет в <папка доклада>: vkladka-<масштаб>x-<тема>.png (верх окна, вариант 0),
 // vkladka-para.png, vkladka.json; в <папка доклада>/dowod/: dowod-<вариант>-<масштаб>x.png
@@ -38,7 +43,7 @@ import { readFile, stat } from 'node:fs/promises';
 import { cpSync, rmSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { join, extname, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { PW, CHROME, REPO, SITE, sha } from './sborka.mjs';
+import { PW, CHROME, REPO, SITE, sha, pochodzenie } from './sborka.mjs';
 
 const { chromium } = createRequire(PW)('playwright-core');
 const sharp = createRequire(join(REPO, 'package.json'))('sharp');
@@ -49,7 +54,6 @@ if (!DOKLAD || !KOPIE) { console.error('node vkladka-dowod.mjs <папка до�
 const DOWOD = join(DOKLAD, 'dowod');
 mkdirSync(DOWOD, { recursive: true });
 mkdirSync(KOPIE, { recursive: true });
-const git = (...a) => execFileSync('git', ['-C', REPO, ...a], { encoding: 'utf8' }).trim();
 
 async function przemaluj(buf, rgb) {
   const { data, info } = await sharp(buf).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
@@ -85,9 +89,21 @@ const WARIANTY = {
     for (const l of linki) h = h.replace(l, '');
     writeFileSync(join(d, 'index.html'), h.replace('</head>', linki.reverse().join('') + '</head>'));
   },
+  d: async (d) => {
+    await WARIANTY.b(d);
+    const html = readFileSync(join(d, 'index.html'), 'utf8');
+    const svg = html.match(/<link rel="icon" href="\/favicon\.svg"[^>]*>/g);
+    if (!svg || svg.length !== 1) throw new Error(`вариант г: ссылок на favicon.svg ${svg?.length ?? 0}, ждали 1`);
+    writeFileSync(join(d, 'index.html'), html.replace(svg[0], ''));
+  },
 };
+const SKALE = [1, 1.75, 2];
 // Порядок: а раньше всех — от него рамка иконки.
-const ZAPUSKI = [['a', 1, 'svetlaya'], ['a', 2, 'svetlaya'], ['a', 1, 'temnaya'], ['a', 2, 'temnaya'], ['0', 1, 'svetlaya'], ['0', 2, 'svetlaya'], ['0', 1, 'temnaya'], ['0', 2, 'temnaya'], ['b', 1, 'svetlaya'], ['b', 2, 'svetlaya'], ['c', 1, 'svetlaya'], ['c', 2, 'svetlaya']];
+const ZAPUSKI = [
+  ...SKALE.flatMap((s) => [['a', s, 'svetlaya'], ['a', s, 'temnaya']]),
+  ...SKALE.flatMap((s) => [['0', s, 'svetlaya'], ['0', s, 'temnaya']]),
+  ...[1, 2].flatMap((s) => [['b', s, 'svetlaya'], ['c', s, 'svetlaya'], ['d', s, 'svetlaya']]),
+];
 
 const mime = { '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.woff2': 'font/woff2', '.woff': 'font/woff', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.xml': 'application/xml' };
 let root = null;
@@ -110,6 +126,7 @@ const bledy = [];
 const ramki = {};
 const przebiegi = {};
 const piksele = {};
+const snimki = {};
 let wersja = null;
 const przygotowane = new Set();
 try {
@@ -149,7 +166,7 @@ try {
         if (obraz[i + 1] > 200 && obraz[i] < 90 && obraz[i + 2] < 90) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
       }
       const r = { x: x0, y: y0, w: x1 - x0 + 1, h: y1 - y0 + 1 };
-      if (x1 < 0 || Math.abs(r.w - 16 * skala) > 1 || Math.abs(r.h - 16 * skala) > 1) bledy.push(`рамка иконки (${klucz}): зелёный квадрат не найден или не ${16 * skala} — ${JSON.stringify(r)}`);
+      if (x1 < 0 || Math.abs(r.w - 16 * skala) > 1 || Math.abs(r.h - 16 * skala) > 1 || r.w !== r.h) bledy.push(`рамка иконки (${klucz}): зелёный квадрат не найден или не ${16 * skala} — ${JSON.stringify(r)}`);
       ramki[klucz] = r;
     }
     const r = ramki[klucz];
@@ -163,10 +180,15 @@ try {
     const n = r.w * r.h;
     piksele[`${w}-${klucz}`] = wycinek;
     const wynik = { okno: msg, zapros_ikon: zaprosIkon, ramka: r, zielonych: +(g / n).toFixed(3), czerwonych: +(c / n).toFixed(3) };
+    const imieSkali = String(skala).replace('.', '_');
     if (w === '0') {
-      await sharp(syroj).extract({ left: 0, top: 0, width: W, height: Math.min(meta.height, Math.round(150 * skala)) }).toFile(join(DOKLAD, `vkladka-${skala}x-${tema}.png`));
+      const f = join(DOKLAD, `vkladka-${imieSkali}x-${tema}.png`);
+      await sharp(syroj).extract({ left: 0, top: 0, width: W, height: Math.min(meta.height, Math.round(150 * skala)) }).toFile(f);
+      snimki[`vkladka-${imieSkali}x-${tema}.png`] = sha(readFileSync(f));
     } else if (tema === 'svetlaya') {
-      await sharp(syroj).extract({ left: 0, top: 0, width: Math.min(W, 500 * skala), height: Math.round(40 * skala) }).toFile(join(DOWOD, `dowod-${w}-${skala}x.png`));
+      const f = join(DOWOD, `dowod-${w}-${imieSkali}x.png`);
+      await sharp(syroj).extract({ left: 0, top: 0, width: Math.min(W, Math.round(500 * skala)), height: Math.round(40 * skala) }).toFile(f);
+      snimki[`dowod/dowod-${w}-${imieSkali}x.png`] = sha(readFileSync(f));
     }
     rmSync(syroj);
     rmSync(udd, { recursive: true, force: true });
@@ -177,53 +199,62 @@ try {
   // Выводы.
   const doli = (a, b) => { let n = 0, max = 0; for (let i = 0; i < a.length; i += 3) { const d = Math.max(Math.abs(a[i] - b[i]), Math.abs(a[i + 1] - b[i + 1]), Math.abs(a[i + 2] - b[i + 2])); if (d > 8) n++; if (d > max) max = d; } return { dolya: +(n / (a.length / 3)).toFixed(3), max }; };
   const wniosek = {};
-  for (const k of ['a-1-svetlaya', 'a-2-svetlaya', 'a-1-temnaya', 'a-2-temnaya', 'c-1-svetlaya', 'c-2-svetlaya']) {
+  for (const k of [...SKALE.flatMap((s) => [`a-${s}-svetlaya`, `a-${s}-temnaya`]), 'c-1-svetlaya', 'c-2-svetlaya']) {
     const ok = przebiegi[k].zielonych >= 0.9;
     wniosek[k] = ok ? 'рисует favicon.svg' : 'НЕ зелёный — вывод не подтверждён';
     if (!ok) bledy.push(`${k}: зелёного в рамке ${przebiegi[k].zielonych}, ждали не меньше 0,9`);
   }
   for (const s of [1, 2]) {
+    const kd = `d-${s}-svetlaya`;
+    const zapPng = przebiegi[kd].zapros_ikon.some((p) => /\.(png|ico)$/.test(p));
+    const okD = przebiegi[kd].czerwonych >= 0.9 && zapPng;
+    wniosek[kd] = okD ? 'положительный контроль: без ссылки на SVG вкладка берёт растровую иконку, и снимок её видит (красная)' : 'НЕ красная — контроль не сработал, выводы (б) ничего не доказывают';
+    if (!okD) bledy.push(`${kd}: красного в рамке ${przebiegi[kd].czerwonych}, запросы ${przebiegi[kd].zapros_ikon.join(', ') || 'нет'} — ждали не меньше 0,9 и запрос PNG или ICO`);
     const k = `b-${s}-svetlaya`;
     const kontrol = doli(piksele[k], piksele[`0-${s}-svetlaya`]);
     przebiegi[k].protiv_0 = kontrol;
     const ok = przebiegi[k].czerwonych < 0.01 && kontrol.dolya <= 0.02;
-    wniosek[k] = ok ? 'правка PNG и ICO до вкладки не дошла: рамка та же, что без правки' : 'НЕ как без правки — вывод не подтверждён';
+    wniosek[k] = ok ? 'правка PNG и ICO до вкладки не дошла, пока ссылка на SVG есть: рамка та же, что без правки' : 'НЕ как без правки — вывод не подтверждён';
     if (!ok) bledy.push(`${k}: красных ${przebiegi[k].czerwonych}, против варианта 0 — доля ${kontrol.dolya}, макс ${kontrol.max}`);
   }
-  for (const k of ['0-1-svetlaya', '0-2-svetlaya', '0-1-temnaya', '0-2-temnaya']) if (przebiegi[k].zielonych > 0.01 || przebiegi[k].czerwonych > 0.01) bledy.push(`${k}: в контроле контрольный цвет`);
+  for (const k of SKALE.flatMap((s) => [`0-${s}-svetlaya`, `0-${s}-temnaya`])) if (przebiegi[k].zielonych > 0.01 || przebiegi[k].czerwonych > 0.01) bledy.push(`${k}: в контроле контрольный цвет`);
 
   // Пара «эскиз / вкладка».
   root = join(KOPIE, 'dowod-0');
   const bez = await chromium.launch({ executablePath: CHROME });
   const para = {};
   const obrazki = {};
-  for (const s of [1, 2]) {
+  for (const s of SKALE) {
+    const px = Math.round(16 * s);
     const ctx = await bez.newContext({ viewport: { width: 64, height: 64 }, deviceScaleFactor: s });
     const p = await ctx.newPage();
     await p.setContent('<html><body style="margin:0"><img src="http://localhost:4943/favicon.svg" width="16" height="16" style="display:block"></body></html>');
     await p.waitForFunction(() => document.images[0].complete && document.images[0].naturalWidth > 0);
     const png = await p.screenshot({ clip: { x: 0, y: 0, width: 16, height: 16 } });
     await ctx.close();
-    const imit = await sharp(png).removeAlpha().raw().toBuffer();
-    obrazki[`eskiz-${s}`] = { buf: imit, w: 16 * s };
+    const { data: imit, info } = await sharp(png).removeAlpha().raw().toBuffer({ resolveWithObject: true });
+    obrazki[`eskiz-${s}`] = { buf: imit, w: info.width };
     for (const tema of ['svetlaya', 'temnaya']) {
       const k = `0-${s}-${tema}`;
       const r = ramki[`${s}-${tema}`];
-      para[k] = r.w === 16 * s && r.h === 16 * s ? doli(piksele[k], imit) : { blad: 'рамка не того размера' };
+      para[k] = r.w === info.width && r.h === info.height ? doli(piksele[k], imit) : { blad: `рамка ${r.w}×${r.h} не того размера, что <img> (${info.width}×${info.height})` };
+      if (para[k].blad) bledy.push(`пара ${k}: ${para[k].blad}`);
       obrazki[k] = { buf: piksele[k], w: r.w };
     }
+    if (info.width !== px) bledy.push(`пара ${s}: <img> 16 при плотности ${s} дал ${info.width} px, ждали ${px}`);
   }
   await bez.close();
-  // Лист пары: увеличение 8, подписи.
+  // Лист пары: клетка до 128 px, увеличение — целое по масштабу (×8 при 1, ×4 при 1,75 и 2).
   const dataUrl = async ({ buf, w }) => `data:image/png;base64,${(await sharp(buf, { raw: { width: w, height: w, channels: 3 } }).png().toBuffer()).toString('base64')}`;
-  const komorka = async (k, podpis) => `<figure><img src="${await dataUrl(obrazki[k])}" style="width:${16 * 8}px;height:${16 * 8}px"><figcaption>${podpis}</figcaption></figure>`;
+  const komorka = async (k, podpis) => { const w = obrazki[k].w; const x = Math.floor(128 / w); return `<figure><img src="${await dataUrl(obrazki[k])}" style="width:${w * x}px;height:${w * x}px"><figcaption>${podpis}; ×${x}</figcaption></figure>`; };
   let html = '<html><head><meta charset="utf-8"><style>body{margin:24px;font:14px/1.4 system-ui,sans-serif;background:#f4f4f4;color:#111} .r{display:flex;gap:24px;margin-bottom:24px} figure{margin:0;width:180px} img{image-rendering:pixelated;display:block;border:1px solid #999} figcaption{margin-top:6px}</style></head><body>';
-  html += '<p>Фавикон: вкладка Chromium ' + wersja + ' против favicon.svg, нарисованного Chromium без окна в &lt;img&gt; 16 × 16 (так иконку показывал лист эскиза). Увеличение 8, пиксель в пиксель. Доля — пикселей с расхождением больше 8 из 255.</p>';
-  for (const s of [1, 2]) {
+  html += '<p>Фавикон: вкладка Chromium ' + wersja + ' против favicon.svg, нарисованного Chromium без окна в &lt;img&gt; 16 × 16 при той же плотности (так иконку показывал лист эскиза). Пиксель в пиксель, увеличение целое — в подписи. Доля — пикселей с расхождением больше 8 из 255. Масштаб 1,75 — экран владельца (175 %), иконка 28 пикселей устройства.</p>';
+  for (const s of SKALE) {
+    const S = String(s).replace('.', ',');
     html += '<div class="r">';
-    html += await komorka(`eskiz-${s}`, `эскиз: favicon.svg в &lt;img&gt;, плотность ${s}`);
-    html += await komorka(`0-${s}-svetlaya`, `вкладка, светлая тема, масштаб ${s}: доля ${para[`0-${s}-svetlaya`].dolya}, макс ${para[`0-${s}-svetlaya`].max}`);
-    html += await komorka(`0-${s}-temnaya`, `вкладка, тёмная тема, масштаб ${s}: доля ${para[`0-${s}-temnaya`].dolya}, макс ${para[`0-${s}-temnaya`].max}`);
+    html += await komorka(`eskiz-${s}`, `эскиз: favicon.svg в &lt;img&gt;, плотность ${S}`);
+    html += await komorka(`0-${s}-svetlaya`, `вкладка, светлая тема, масштаб ${S}: доля ${para[`0-${s}-svetlaya`].dolya}, макс ${para[`0-${s}-svetlaya`].max}`);
+    html += await komorka(`0-${s}-temnaya`, `вкладка, тёмная тема, масштаб ${S}: доля ${para[`0-${s}-temnaya`].dolya}, макс ${para[`0-${s}-temnaya`].max}`);
     html += '</div>';
   }
   html += '</body></html>';
@@ -232,16 +263,17 @@ try {
   await lp.setContent(html);
   await lp.screenshot({ path: join(DOKLAD, 'vkladka-para.png'), fullPage: true });
   await bl.close();
+  snimki['vkladka-para.png'] = sha(readFileSync(join(DOKLAD, 'vkladka-para.png')));
 
   const kopia0 = readFileSync(join(KOPIE, 'dowod-0', 'index.html'));
   const zapis = {
     instrument: 'vkladka-dowod.mjs',
     brauzer: `Chromium ${wersja}`,
     chrome: CHROME,
-    kommit: git('rev-parse', 'HEAD'),
-    gryaz_sajta: git('status', '--porcelain', '--', 'sites/7thserpent.com').split('\n').filter(Boolean),
+    ...pochodzenie(import.meta.url),
     dist_index_sha256: sha(readFileSync(join(DIST, 'index.html'))),
     kopia_0_ravna_dist: kopia0.equals(readFileSync(join(DIST, 'index.html'))),
+    snimki,
     ramki,
     przebiegi,
     wniosek,
@@ -249,7 +281,7 @@ try {
     bledy,
   };
   writeFileSync(join(DOWOD, 'dowod.json'), JSON.stringify({ ...zapis, para: undefined }, null, 2) + '\n');
-  writeFileSync(join(DOKLAD, 'vkladka.json'), JSON.stringify({ instrument: zapis.instrument, brauzer: zapis.brauzer, kommit: zapis.kommit, gryaz_sajta: zapis.gryaz_sajta, dist_index_sha256: zapis.dist_index_sha256, snimki: Object.fromEntries(Object.entries(przebiegi).filter(([k]) => k.startsWith('0-'))), para, dowod: 'dowod/dowod.json' }, null, 2) + '\n');
+  writeFileSync(join(DOKLAD, 'vkladka.json'), JSON.stringify({ instrument: zapis.instrument, brauzer: zapis.brauzer, instrument_sha256: zapis.instrument_sha256, head_pri_progone: zapis.head_pri_progone, gryaz_sajta: zapis.gryaz_sajta, gryaz_instrumentov: zapis.gryaz_instrumentov, dist_index_sha256: zapis.dist_index_sha256, snimki, przebiegi_0: Object.fromEntries(Object.entries(przebiegi).filter(([k]) => k.startsWith('0-'))), para, dowod: 'dowod/dowod.json' }, null, 2) + '\n');
   console.log(JSON.stringify({ wniosek, para, bledy }, null, 2));
 } finally {
   server.close();

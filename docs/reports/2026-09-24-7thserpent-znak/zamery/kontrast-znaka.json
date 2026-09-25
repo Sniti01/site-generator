@@ -1,10 +1,27 @@
 {
   "instrument": "kontrast-znaka.mjs",
   "brauzer": "Chromium 151.0.7922.34",
+  "instrument_sha256": "88d81eac15678fb13136880be3210124dad07feb58e9741f012ce0fbfca058c9",
+  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
+  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
+  "gryaz_sajta": [
+    "M sites/7thserpent.com/CLAUDE.md",
+    " M sites/7thserpent.com/DESIGN.md",
+    " M sites/7thserpent.com/_baseline/README.md",
+    " M sites/7thserpent.com/src/layouts/Base.astro",
+    " M sites/7thserpent.com/tools/znak.mjs"
+  ],
+  "gryaz_instrumentov": [
+    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/materialy-priemki.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/vkladka-dowod.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/znak-podvala-okno.mjs"
+  ],
   "sborka": {
     "adres": "http://localhost:4331/",
-    "kommit": "89296df2dcd04c4f608fbcb5421c9b5e04fb2cde",
-    "gryaz_sajta": [],
     "pliki": [
       {
         "put": "/",
@@ -12,8 +29,408 @@
         "rowny_dist": true
       },
       {
+        "put": "/favicon.ico",
+        "sha256": "5de079753d7d848898c086e8e62e2e6f6d2fccb0dad0e56cffe527572434dbc0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon.svg",
+        "sha256": "9cf2fa94618ea0099bd4bf392a79a83ec43b1c78a0f8ce19b04a0f7dfa4de516",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon-32x32.png",
+        "sha256": "38fe74696684e1292998c2b9be17da2e581a3099815617e11671f3031f15e99d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon-16x16.png",
+        "sha256": "64bf3aa3cf7f2320fd3db71124695e2e4ffa7f216881e275b34bf545fabd94d0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/icon-192.png",
+        "sha256": "f727868b186b80c34fb9e103d9310934de9eec6e0fdb518cb5340203edbf1c10",
+        "rowny_dist": true
+      },
+      {
+        "put": "/apple-touch-icon.png",
+        "sha256": "f9bc7e098f777b675e12520a7e293a8010836430dc96bdc54338185eadb34b43",
+        "rowny_dist": true
+      },
+      {
         "put": "/_astro/index.CmgQJVSa.css",
         "sha256": "a0674b3bb3ca4f347c288f0d1e6779ff5f7d6b4d02518fbd238fed2bb5f355f6",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/bodoni-moda-latin-600-normal.DbXDFeqY.woff2",
+        "sha256": "a4975772d313f22af5758888ce83dad5001e9a3afb9cf8bde805ad1c5caeaacc",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/bodoni-moda-latin-600-normal.DgnCXU2s.woff",
+        "sha256": "13575f31a854a48efff69ddf1f35457be69ba5f85c9ff6516d44398b9b4c2513",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-400-normal.8Rpg0ruU.woff2",
+        "sha256": "36274b5787b4f03b27e65ae971d6c808a96838ccd60c9dabaee154889b6bba82",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-400-normal.SBbinRkI.woff",
+        "sha256": "edb388a938d470f8b44a273d7b4af7078e731f336afac02fc9376bdf0482193d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-500-normal.NlrCPXnF.woff2",
+        "sha256": "55e866a00caa197bc9fafa52c907f4dfe88e51bbb3f585c777931d03eb961e96",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-500-normal.vCxiVFAq.woff",
+        "sha256": "4e0f621591a48e65bb3692b35d3106cdcd28ec7924157b9e6e9a4f082ac92853",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-600-normal.Fru-LXNs.woff2",
+        "sha256": "c7842f97346df1b3b470e9d71acde90f132dd858508ec5ae6606401e5d0938f7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-600-normal.BR59oU-I.woff",
+        "sha256": "78ed7ab77673accbd667176aea231d3194e7309a3de9b544ad97efef6dbb139b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_ViOyU.webp",
+        "sha256": "3680022df777318f4c75a5418b27023e37cb83cb9c890511b4fb140edfe9c4b2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_1OX3Bb.webp",
+        "sha256": "955afad55ab995f789c3783c557cb956335e374893a266ec8e64c2d0ac687292",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_Z2ee3pp.webp",
+        "sha256": "a5e19e5ac2929c934c3f49a8f0e066393c08545fa88a8d6cdb98e27891a53517",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_2eIx7E.webp",
+        "sha256": "d18be5fe6a52ad3d0e6197b912c3871aebfd31430bd2441f5e09a220919fdaff",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_QUsj8.webp",
+        "sha256": "f95efa5ec0aa7bee3847b6ba1eff6bd4200b93e89723433991af6c6a5e870419",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_MAo1x.webp",
+        "sha256": "a10d7dfb4e4d04bbe84b55dbe3f0c2f89a42615176e6ab13dd80aa0ab7e907a7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_ZA98zx.webp",
+        "sha256": "78eb1382a4426dcadf546c6cc27f3df4ffbe9bfee5bed50d1e677a3008bf8699",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_1RUbTI.webp",
+        "sha256": "84ad890600d8a17f256c7dedfd99505e72a581eebe613534a6a15715a0de015b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_Z1qCl9b.webp",
+        "sha256": "d94a25fa1413817914e9dea93281a3e3cff9dd28c6abd59d42eacba64959fb66",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_Z160roQ.webp",
+        "sha256": "c990d42280f9a5bec91a03e4a7ac8cfce6ba4268b399e85628d84ae827d3ee00",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_Z1J2fH7.webp",
+        "sha256": "5d68b1560c0f29d6a99ffc65bea5abd2f320559ddfd1f5a08558255b6300f940",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_ZtRdSs.webp",
+        "sha256": "924347bee3ad258196d485d09bfc9d287aa70a45326981e97e5e54cea7e985dd",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_RXoGo.webp",
+        "sha256": "61aa3cbc5e7fad15b190446345ccd908b7de4447e68ddb29d29b48ef2b9df475",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_VX4ih.webp",
+        "sha256": "a486c11413a4689cd2db573830bdfb058b5fb5b3e4b9e4f909feca1816fb62f0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_2c866V.webp",
+        "sha256": "78d865494a314d8280f781bc76720a13adeba5fec2deaebefc041aa28fabc8d4",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_Z24IjU2.webp",
+        "sha256": "73532c8252bfdb396adde6b37c746bdc4029bc6d0b0369380da887b003d94e9a",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_2abLSS.webp",
+        "sha256": "4dbc5d3b59a1374f0a4a6771685e1bb6ae689ce75ec49b090dbb0437a6801a29",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_ZqV1pM.webp",
+        "sha256": "3517d25b725c0388d132fb45cc35e003078b0f46812d22b1b960d54495873897",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_1jHzkf.webp",
+        "sha256": "8e064f919c4b83bd4500a85a06665475bbfdc61f58ef6e129c0e8cf27ca15219",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_ZMnJjC.webp",
+        "sha256": "33a294942d676dcda552cffea9bd863598c212afcec342de893786f7459ac413",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_8vVBH.webp",
+        "sha256": "3ad1402fba7a66b6d3133510a4e89190fee84f86db4a087958579962d459fb07",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_1nFXqm.webp",
+        "sha256": "ebd8702058482bcbda44eaec9e7aa2e582282bb7713d2d53af5f29ed14e7c133",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_Z1HVBuq.webp",
+        "sha256": "f3b7278dae6fcc45257ff5838c55d78c357d94f29796c6ad48f578f4495c9c1b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_Z1wmfNA.webp",
+        "sha256": "6576f6871791cd6059eb8c1b2dd18a5def9f9ef7a59e460a53c0ffad65b835b5",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_ZhcdYV.webp",
+        "sha256": "c97b7c7bf37eb8b7e84610121f40f3fc7fe1a57edef387b192d9d2397da8c4ca",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_ZxFM3I.webp",
+        "sha256": "dcdcfe2324b27d5b5a804550827d5e4fa993df7491c90035a28d10ce1a1c210b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
+        "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_2dq1VO.webp",
+        "sha256": "f058b34e282f3d7f8b1ec4dc616f7b0066c62490e724b0d5b5063740d584344c",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_UR2bw.webp",
+        "sha256": "9c138624284ceeefeb2fcfaafc564f51050529f934c01a1b0cf53cb9dbc473ed",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_Lq1J4.webp",
+        "sha256": "c7315c740966ca005f57900da864df8303c696221c975028fb6bace1f94ce27e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_TwD7s.webp",
+        "sha256": "d08e41205e172416681f503cfeeddc663fe9a22057cfd89d9d65afd41294c4c8",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_ZBsB97.webp",
+        "sha256": "a3f3231158088a8f31f51bc80e7a2bd63e2f25230fe0224b50194d8b8154cc57",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_Z1LHa2E.webp",
+        "sha256": "1ab5ebadeb9241a19e6bf78c589a25061bb1118fd2b5f73462f9e34eaa9e5bde",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_28xx8X.webp",
+        "sha256": "4c676b6b742b33cb86425b4f58097594041410b6e9cdcc48868f99a7b1231716",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_BxhRo.webp",
+        "sha256": "c715c4e86c4e51c9115f74ae49ca42cf9f086a23cb400ce533b7dcf062320740",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z2aTjrt.webp",
+        "sha256": "36377f64f5bddb26017f5ae807e48eca3d74705fc777bb4b36db6022a20c254e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z1v2fkU.webp",
+        "sha256": "89603e72a2b0c8f5ca1bc86ccbe02a172b434b8c370db7797fb7e5d7f3b556d3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_X259l.webp",
+        "sha256": "7c02c65ba800b8fd3e2405f3583ead57bb88e8e849c18bd155df68f8f8e25b03",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z2lvrTy.webp",
+        "sha256": "e0d2f75db341dfcdb7fd78d5a9ca0b7d9927798d1f00ed53decc90d7ba996300",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_ZyLMFj.webp",
+        "sha256": "fca0de4c3354b1fb847f3dce55e0cecda97d29613f9ba7db76ab11341ea293f3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_1HhYBs.webp",
+        "sha256": "40ec6e581696a7c0a1244f81118c8a9fabf6293f8d10c2abd8bb3dd7bbc862a9",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_It6U3.webp",
+        "sha256": "028c0374d86c915ba52e457b3f26a5b34e899a4bf67fc13c72096c989f053ef2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_g8Ew.webp",
+        "sha256": "ebb9a49854e652174ff3cf6a8c22b9e28bbaddd8e396996e1379ad70dd4f590b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z1H3OMp.webp",
+        "sha256": "5d70728bf51cf4bf805dd3a239d941231dce41e15d279918d5d377dcc28f6758",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z2wwzWy.webp",
+        "sha256": "0bccf717369a345d8cb71a758ab582bc3473d41d29bfe6b96b3bcbfaff249381",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z1rA9cm.webp",
+        "sha256": "28e2f61e51cba3b001291f92f94d152e439a734125a9f85c267fab54dfde5a20",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_Tgj8w.webp",
+        "sha256": "a90b50f08da68b115be6e8187ad7cc93fc8bf9470332aba40c9840968a6ce5da",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_Z1ofNw6.webp",
+        "sha256": "3b638eaf1cdf10498ed6b13acb3bd9a34b596ca7ab79824700923e325172af1a",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_ZEeLFl.webp",
+        "sha256": "f6d1fe77973ea33b2f33d37b619d435eac4d9eee85633aaaeec7bd3bf95deb6c",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_ZLeg8J.webp",
+        "sha256": "ad48231f965371eb4fa95ca6cfb950eaf617d89b56ce11ce7b817a46224bfe07",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_1RJgue.webp",
+        "sha256": "72ae4e0a4400a7793b737931620c4a7714eb94482e5a6c3786551789a8387501",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_hU2P.webp",
+        "sha256": "a4adc168946e65c98d844a6f5a2dca4b705ada2e3ecb0eb601d940b01a04660e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_29weDI.webp",
+        "sha256": "7ecab4f2d2fb02be7bf4fd504d3a76d8a8e624ecd9d6f3c6fe1e97ee7e1ee3d3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_Z1SK76T.webp",
+        "sha256": "5ee2e9867fd756bb13286b9518888a963ff05d55bd5bd58392eac079e38ca50f",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_1iYFfD.webp",
+        "sha256": "8d37100420b827b0970c3e8e6c6bdb4e840136830a323cb1dc5f893f5047c2f6",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_ZWw5pH.webp",
+        "sha256": "6dbcb8e2caf64390a78f3c6fb8bfd20561f0da031cefbbed63c6ff91efd96944",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_ZrUXN2.webp",
+        "sha256": "f9c159f79848b4711c651d4c6137001f9c0b87d39353ea6bb591be06e8c9ced2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_2hFocY.webp",
+        "sha256": "51675cb74a6f1e111ac158442c4df1d74540d4d1b3744b7f399a930f82e2bb9e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_rv5gf.webp",
+        "sha256": "809bba093fefc2b69289a56fdee78b468c1dfbf3317758ac86742d7ae22c9941",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_1nTC7q.webp",
+        "sha256": "9419dda545bbc76b049944894d5c589105a98981fb74a7843c754eb6d677ce62",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_ZVF8Fu.webp",
+        "sha256": "a254a8315a29a92149af871faa81b5a55d3f3238992c93d50e29b4e6ecef7d30",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_Z8jR1W.webp",
+        "sha256": "784fd87cd1ac9bb9e61027295e13a2d36b5e11cce7fdb04f77707d82ebc11e6d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_8E3Vg.webp",
+        "sha256": "8c91b2482763115bd2ed43408dd4a10afe18d50f2fec6117ca0b45f4e04ed96d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_Z24esC3.webp",
+        "sha256": "48d5509181a82f0d220c726a0d39928186efe06b9456a2ded9015c5623bfa646",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k11.Cau1CZSA_Z1IpEKg.webp",
+        "sha256": "9ede4c5b76f780ec04057cb6a96de87c5f2ebfdb55728e85f4530328a57a4bd7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k11.Cau1CZSA_2pxYk4.webp",
+        "sha256": "ae987c727b895e351b8981bd34841b606ee9d9221c6cb5afb8e15a05dc876a69",
         "rowny_dist": true
       }
     ],
@@ -31,6 +448,14 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
+      "kolco_fokusa": "rgb(242, 189, 110)",
+      "polosa_shapki": 69,
+      "sloj": [
+        "a.hdr__brand",
+        "div.hdr__inner",
+        "header.hdr",
+        "div#bialy-list"
+      ],
       "niezagruzheno_kartinok": 0,
       "granica_fon_nad_belym": "rgb(39 42 46)",
       "granica": {
@@ -51,6 +476,14 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
+      "kolco_fokusa": "rgb(242, 189, 110)",
+      "polosa_shapki": 69,
+      "sloj": [
+        "a.hdr__brand",
+        "div.hdr__inner",
+        "header.hdr",
+        "div#bialy-list"
+      ],
       "niezagruzheno_kartinok": 0,
       "granica_fon_nad_belym": "rgb(39 42 46)",
       "granica": {
@@ -71,6 +504,14 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
+      "kolco_fokusa": "rgb(242, 189, 110)",
+      "polosa_shapki": 69,
+      "sloj": [
+        "a.hdr__brand",
+        "div.hdr__inner",
+        "header.hdr",
+        "div#bialy-list"
+      ],
       "niezagruzheno_kartinok": 0,
       "granica_fon_nad_belym": "rgb(39 42 46)",
       "granica": {
@@ -91,6 +532,14 @@
         "ink": "#e5eaee",
         "accent-text": "#f2bd6e"
       },
+      "kolco_fokusa": "rgb(242, 189, 110)",
+      "polosa_shapki": 69,
+      "sloj": [
+        "a.hdr__brand",
+        "div.hdr__inner",
+        "header.hdr",
+        "div#bialy-list"
+      ],
       "niezagruzheno_kartinok": 0,
       "granica_fon_nad_belym": "rgb(39 42 46)",
       "granica": {

@@ -1,10 +1,19 @@
 {
   "instrument": "zapas-menu.mjs",
   "brauzer": "Chromium 151.0.7922.34",
+  "instrument_sha256": "e5255d8f854a6979e3c52badf80049bc9fd63ff5d8adbbc2f4a8a8e8a741455e",
+  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
+  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
+  "gryaz_sajta": [
+    "M sites/7thserpent.com/tools/znak.mjs"
+  ],
+  "gryaz_instrumentov": [
+    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs"
+  ],
   "sborka": {
     "adres": "http://localhost:4331/",
-    "kommit": "89296df2dcd04c4f608fbcb5421c9b5e04fb2cde",
-    "gryaz_sajta": [],
     "pliki": [
       {
         "put": "/",
@@ -12,8 +21,408 @@
         "rowny_dist": true
       },
       {
+        "put": "/favicon.ico",
+        "sha256": "5de079753d7d848898c086e8e62e2e6f6d2fccb0dad0e56cffe527572434dbc0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon.svg",
+        "sha256": "9cf2fa94618ea0099bd4bf392a79a83ec43b1c78a0f8ce19b04a0f7dfa4de516",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon-32x32.png",
+        "sha256": "38fe74696684e1292998c2b9be17da2e581a3099815617e11671f3031f15e99d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/favicon-16x16.png",
+        "sha256": "64bf3aa3cf7f2320fd3db71124695e2e4ffa7f216881e275b34bf545fabd94d0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/icon-192.png",
+        "sha256": "f727868b186b80c34fb9e103d9310934de9eec6e0fdb518cb5340203edbf1c10",
+        "rowny_dist": true
+      },
+      {
+        "put": "/apple-touch-icon.png",
+        "sha256": "f9bc7e098f777b675e12520a7e293a8010836430dc96bdc54338185eadb34b43",
+        "rowny_dist": true
+      },
+      {
         "put": "/_astro/index.CmgQJVSa.css",
         "sha256": "a0674b3bb3ca4f347c288f0d1e6779ff5f7d6b4d02518fbd238fed2bb5f355f6",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/bodoni-moda-latin-600-normal.DbXDFeqY.woff2",
+        "sha256": "a4975772d313f22af5758888ce83dad5001e9a3afb9cf8bde805ad1c5caeaacc",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/bodoni-moda-latin-600-normal.DgnCXU2s.woff",
+        "sha256": "13575f31a854a48efff69ddf1f35457be69ba5f85c9ff6516d44398b9b4c2513",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-400-normal.8Rpg0ruU.woff2",
+        "sha256": "36274b5787b4f03b27e65ae971d6c808a96838ccd60c9dabaee154889b6bba82",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-400-normal.SBbinRkI.woff",
+        "sha256": "edb388a938d470f8b44a273d7b4af7078e731f336afac02fc9376bdf0482193d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-500-normal.NlrCPXnF.woff2",
+        "sha256": "55e866a00caa197bc9fafa52c907f4dfe88e51bbb3f585c777931d03eb961e96",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-500-normal.vCxiVFAq.woff",
+        "sha256": "4e0f621591a48e65bb3692b35d3106cdcd28ec7924157b9e6e9a4f082ac92853",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-600-normal.Fru-LXNs.woff2",
+        "sha256": "c7842f97346df1b3b470e9d71acde90f132dd858508ec5ae6606401e5d0938f7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/public-sans-latin-600-normal.BR59oU-I.woff",
+        "sha256": "78ed7ab77673accbd667176aea231d3194e7309a3de9b544ad97efef6dbb139b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_ViOyU.webp",
+        "sha256": "3680022df777318f4c75a5418b27023e37cb83cb9c890511b4fb140edfe9c4b2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_1OX3Bb.webp",
+        "sha256": "955afad55ab995f789c3783c557cb956335e374893a266ec8e64c2d0ac687292",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_Z2ee3pp.webp",
+        "sha256": "a5e19e5ac2929c934c3f49a8f0e066393c08545fa88a8d6cdb98e27891a53517",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_2eIx7E.webp",
+        "sha256": "d18be5fe6a52ad3d0e6197b912c3871aebfd31430bd2441f5e09a220919fdaff",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/hero.0b_-PwIh_QUsj8.webp",
+        "sha256": "f95efa5ec0aa7bee3847b6ba1eff6bd4200b93e89723433991af6c6a5e870419",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_MAo1x.webp",
+        "sha256": "a10d7dfb4e4d04bbe84b55dbe3f0c2f89a42615176e6ab13dd80aa0ab7e907a7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_ZA98zx.webp",
+        "sha256": "78eb1382a4426dcadf546c6cc27f3df4ffbe9bfee5bed50d1e677a3008bf8699",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_1RUbTI.webp",
+        "sha256": "84ad890600d8a17f256c7dedfd99505e72a581eebe613534a6a15715a0de015b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k13.C2kgWkUz_Z1qCl9b.webp",
+        "sha256": "d94a25fa1413817914e9dea93281a3e3cff9dd28c6abd59d42eacba64959fb66",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_Z160roQ.webp",
+        "sha256": "c990d42280f9a5bec91a03e4a7ac8cfce6ba4268b399e85628d84ae827d3ee00",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_Z1J2fH7.webp",
+        "sha256": "5d68b1560c0f29d6a99ffc65bea5abd2f320559ddfd1f5a08558255b6300f940",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k14.DR0et4Uc_ZtRdSs.webp",
+        "sha256": "924347bee3ad258196d485d09bfc9d287aa70a45326981e97e5e54cea7e985dd",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_RXoGo.webp",
+        "sha256": "61aa3cbc5e7fad15b190446345ccd908b7de4447e68ddb29d29b48ef2b9df475",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_VX4ih.webp",
+        "sha256": "a486c11413a4689cd2db573830bdfb058b5fb5b3e4b9e4f909feca1816fb62f0",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k09.CiIc_kkf_2c866V.webp",
+        "sha256": "78d865494a314d8280f781bc76720a13adeba5fec2deaebefc041aa28fabc8d4",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_Z24IjU2.webp",
+        "sha256": "73532c8252bfdb396adde6b37c746bdc4029bc6d0b0369380da887b003d94e9a",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_2abLSS.webp",
+        "sha256": "4dbc5d3b59a1374f0a4a6771685e1bb6ae689ce75ec49b090dbb0437a6801a29",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_ZqV1pM.webp",
+        "sha256": "3517d25b725c0388d132fb45cc35e003078b0f46812d22b1b960d54495873897",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k00.NhbLr7d7_1jHzkf.webp",
+        "sha256": "8e064f919c4b83bd4500a85a06665475bbfdc61f58ef6e129c0e8cf27ca15219",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_ZMnJjC.webp",
+        "sha256": "33a294942d676dcda552cffea9bd863598c212afcec342de893786f7459ac413",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_8vVBH.webp",
+        "sha256": "3ad1402fba7a66b6d3133510a4e89190fee84f86db4a087958579962d459fb07",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k03.D8mboaDn_1nFXqm.webp",
+        "sha256": "ebd8702058482bcbda44eaec9e7aa2e582282bb7713d2d53af5f29ed14e7c133",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_Z1HVBuq.webp",
+        "sha256": "f3b7278dae6fcc45257ff5838c55d78c357d94f29796c6ad48f578f4495c9c1b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_Z1wmfNA.webp",
+        "sha256": "6576f6871791cd6059eb8c1b2dd18a5def9f9ef7a59e460a53c0ffad65b835b5",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k01.Bwb7jlM1_ZhcdYV.webp",
+        "sha256": "c97b7c7bf37eb8b7e84610121f40f3fc7fe1a57edef387b192d9d2397da8c4ca",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_ZxFM3I.webp",
+        "sha256": "dcdcfe2324b27d5b5a804550827d5e4fa993df7491c90035a28d10ce1a1c210b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp",
+        "sha256": "19268182d154b4e92e21d856d3af95240a31b96f96a5c82e5cad438f00475dd8",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_2dq1VO.webp",
+        "sha256": "f058b34e282f3d7f8b1ec4dc616f7b0066c62490e724b0d5b5063740d584344c",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k15.DtCtVXiA_UR2bw.webp",
+        "sha256": "9c138624284ceeefeb2fcfaafc564f51050529f934c01a1b0cf53cb9dbc473ed",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_Lq1J4.webp",
+        "sha256": "c7315c740966ca005f57900da864df8303c696221c975028fb6bace1f94ce27e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_TwD7s.webp",
+        "sha256": "d08e41205e172416681f503cfeeddc663fe9a22057cfd89d9d65afd41294c4c8",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k04.CiTa_XSb_ZBsB97.webp",
+        "sha256": "a3f3231158088a8f31f51bc80e7a2bd63e2f25230fe0224b50194d8b8154cc57",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_Z1LHa2E.webp",
+        "sha256": "1ab5ebadeb9241a19e6bf78c589a25061bb1118fd2b5f73462f9e34eaa9e5bde",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_28xx8X.webp",
+        "sha256": "4c676b6b742b33cb86425b4f58097594041410b6e9cdcc48868f99a7b1231716",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k13.CP1FcbLJ_BxhRo.webp",
+        "sha256": "c715c4e86c4e51c9115f74ae49ca42cf9f086a23cb400ce533b7dcf062320740",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z2aTjrt.webp",
+        "sha256": "36377f64f5bddb26017f5ae807e48eca3d74705fc777bb4b36db6022a20c254e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z1v2fkU.webp",
+        "sha256": "89603e72a2b0c8f5ca1bc86ccbe02a172b434b8c370db7797fb7e5d7f3b556d3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_X259l.webp",
+        "sha256": "7c02c65ba800b8fd3e2405f3583ead57bb88e8e849c18bd155df68f8f8e25b03",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k10.DH3tMSkI_Z2lvrTy.webp",
+        "sha256": "e0d2f75db341dfcdb7fd78d5a9ca0b7d9927798d1f00ed53decc90d7ba996300",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_ZyLMFj.webp",
+        "sha256": "fca0de4c3354b1fb847f3dce55e0cecda97d29613f9ba7db76ab11341ea293f3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_1HhYBs.webp",
+        "sha256": "40ec6e581696a7c0a1244f81118c8a9fabf6293f8d10c2abd8bb3dd7bbc862a9",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_It6U3.webp",
+        "sha256": "028c0374d86c915ba52e457b3f26a5b34e899a4bf67fc13c72096c989f053ef2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-art.CiLGZVc0_g8Ew.webp",
+        "sha256": "ebb9a49854e652174ff3cf6a8c22b9e28bbaddd8e396996e1379ad70dd4f590b",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z1H3OMp.webp",
+        "sha256": "5d70728bf51cf4bf805dd3a239d941231dce41e15d279918d5d377dcc28f6758",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z2wwzWy.webp",
+        "sha256": "0bccf717369a345d8cb71a758ab582bc3473d41d29bfe6b96b3bcbfaff249381",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k06.blJYoQpw_Z1rA9cm.webp",
+        "sha256": "28e2f61e51cba3b001291f92f94d152e439a734125a9f85c267fab54dfde5a20",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_Tgj8w.webp",
+        "sha256": "a90b50f08da68b115be6e8187ad7cc93fc8bf9470332aba40c9840968a6ce5da",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_Z1ofNw6.webp",
+        "sha256": "3b638eaf1cdf10498ed6b13acb3bd9a34b596ca7ab79824700923e325172af1a",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k01.Bzqj22qQ_ZEeLFl.webp",
+        "sha256": "f6d1fe77973ea33b2f33d37b619d435eac4d9eee85633aaaeec7bd3bf95deb6c",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_ZLeg8J.webp",
+        "sha256": "ad48231f965371eb4fa95ca6cfb950eaf617d89b56ce11ce7b817a46224bfe07",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_1RJgue.webp",
+        "sha256": "72ae4e0a4400a7793b737931620c4a7714eb94482e5a6c3786551789a8387501",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k12.CFLOT8GF_hU2P.webp",
+        "sha256": "a4adc168946e65c98d844a6f5a2dca4b705ada2e3ecb0eb601d940b01a04660e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_29weDI.webp",
+        "sha256": "7ecab4f2d2fb02be7bf4fd504d3a76d8a8e624ecd9d6f3c6fe1e97ee7e1ee3d3",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_Z1SK76T.webp",
+        "sha256": "5ee2e9867fd756bb13286b9518888a963ff05d55bd5bd58392eac079e38ca50f",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp2-k02.vqiCCgU5_1iYFfD.webp",
+        "sha256": "8d37100420b827b0970c3e8e6c6bdb4e840136830a323cb1dc5f893f5047c2f6",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_ZWw5pH.webp",
+        "sha256": "6dbcb8e2caf64390a78f3c6fb8bfd20561f0da031cefbbed63c6ff91efd96944",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_ZrUXN2.webp",
+        "sha256": "f9c159f79848b4711c651d4c6137001f9c0b87d39353ea6bb591be06e8c9ced2",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k06.DCBb1tj5_2hFocY.webp",
+        "sha256": "51675cb74a6f1e111ac158442c4df1d74540d4d1b3744b7f399a930f82e2bb9e",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_rv5gf.webp",
+        "sha256": "809bba093fefc2b69289a56fdee78b468c1dfbf3317758ac86742d7ae22c9941",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_1nTC7q.webp",
+        "sha256": "9419dda545bbc76b049944894d5c589105a98981fb74a7843c754eb6d677ce62",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp3-k10.CjerxOln_ZVF8Fu.webp",
+        "sha256": "a254a8315a29a92149af871faa81b5a55d3f3238992c93d50e29b4e6ecef7d30",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_Z8jR1W.webp",
+        "sha256": "784fd87cd1ac9bb9e61027295e13a2d36b5e11cce7fdb04f77707d82ebc11e6d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_8E3Vg.webp",
+        "sha256": "8c91b2482763115bd2ed43408dd4a10afe18d50f2fec6117ca0b45f4e04ed96d",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k05.Jcewn-3a_Z24esC3.webp",
+        "sha256": "48d5509181a82f0d220c726a0d39928186efe06b9456a2ded9015c5623bfa646",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k11.Cau1CZSA_Z1IpEKg.webp",
+        "sha256": "9ede4c5b76f780ec04057cb6a96de87c5f2ebfdb55728e85f4530328a57a4bd7",
+        "rowny_dist": true
+      },
+      {
+        "put": "/_astro/mp1-k11.Cau1CZSA_2pxYk4.webp",
+        "sha256": "ae987c727b895e351b8981bd34841b606ee9d9221c6cb5afb8e15a05dc876a69",
         "rowny_dist": true
       }
     ],
@@ -26,6 +435,10 @@
       "min_zapas": {
         "w": 961,
         "tryb": "строка",
+        "znak": [
+          138,
+          38
+        ],
         "zapas": 279.25,
         "perenos": [],
         "perepolnenie": false,
@@ -47,3220 +460,5883 @@
       "min_znak_burger": {
         "w": 320,
         "tryb": "ящик",
+        "znak": [
+          138,
+          38
+        ],
         "znak_burger": 118
       }
-    }
+    },
+    "znak_ne_138x38_na": []
   },
   "bledy": [],
+  "krupny_shrift": {
+    "20px": {
+      "itog": {
+        "menu_v_stroke": {
+          "ot": 961,
+          "do": 1180,
+          "min_zapas": {
+            "w": 961,
+            "tryb": "строка",
+            "znak": [
+              138,
+              38
+            ],
+            "zapas": 181.31,
+            "perenos": [],
+            "perepolnenie": false,
+            "znak_punkt": 24,
+            "poisk": 0
+          },
+          "perenos_na": [],
+          "perepolnenie_na": [],
+          "znak_punkt": [
+            24
+          ],
+          "poisk": [
+            0
+          ]
+        },
+        "yashchik": {
+          "ot": 320,
+          "do": 960,
+          "min_znak_burger": {
+            "w": 320,
+            "tryb": "ящик",
+            "znak": [
+              138,
+              38
+            ],
+            "znak_burger": 118
+          }
+        },
+        "znak_ne_138x38_na": []
+      },
+      "otkazy_bez_porogov": []
+    },
+    "24px": {
+      "itog": {
+        "menu_v_stroke": {
+          "ot": 961,
+          "do": 1180,
+          "min_zapas": {
+            "w": 961,
+            "tryb": "строка",
+            "znak": [
+              138,
+              38
+            ],
+            "zapas": 83.39,
+            "perenos": [],
+            "perepolnenie": false,
+            "znak_punkt": 24,
+            "poisk": 0
+          },
+          "perenos_na": [],
+          "perepolnenie_na": [],
+          "znak_punkt": [
+            24
+          ],
+          "poisk": [
+            0
+          ]
+        },
+        "yashchik": {
+          "ot": 320,
+          "do": 960,
+          "min_znak_burger": {
+            "w": 320,
+            "tryb": "ящик",
+            "znak": [
+              138,
+              38
+            ],
+            "znak_burger": 118
+          }
+        },
+        "znak_ne_138x38_na": []
+      },
+      "otkazy_bez_porogov": []
+    }
+  },
   "shiriny": [
     {
       "w": 320,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 118
     },
     {
       "w": 321,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 119
     },
     {
       "w": 322,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 120
     },
     {
       "w": 323,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 121
     },
     {
       "w": 324,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 122
     },
     {
       "w": 325,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 123
     },
     {
       "w": 326,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 124
     },
     {
       "w": 327,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 125
     },
     {
       "w": 328,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 126
     },
     {
       "w": 329,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 127
     },
     {
       "w": 330,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 128
     },
     {
       "w": 331,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 129
     },
     {
       "w": 332,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 130
     },
     {
       "w": 333,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 131
     },
     {
       "w": 334,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 132
     },
     {
       "w": 335,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 133
     },
     {
       "w": 336,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 134
     },
     {
       "w": 337,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 135
     },
     {
       "w": 338,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 136
     },
     {
       "w": 339,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 137
     },
     {
       "w": 340,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 138
     },
     {
       "w": 341,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 139
     },
     {
       "w": 342,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 140
     },
     {
       "w": 343,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 141
     },
     {
       "w": 344,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 142
     },
     {
       "w": 345,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 143
     },
     {
       "w": 346,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 144
     },
     {
       "w": 347,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 145
     },
     {
       "w": 348,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 146
     },
     {
       "w": 349,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 147
     },
     {
       "w": 350,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 148
     },
     {
       "w": 351,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 149
     },
     {
       "w": 352,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 150
     },
     {
       "w": 353,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 151
     },
     {
       "w": 354,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 152
     },
     {
       "w": 355,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 153
     },
     {
       "w": 356,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 154
     },
     {
       "w": 357,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 155
     },
     {
       "w": 358,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 156
     },
     {
       "w": 359,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 157
     },
     {
       "w": 360,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 158
     },
     {
       "w": 361,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 159
     },
     {
       "w": 362,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 160
     },
     {
       "w": 363,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 161
     },
     {
       "w": 364,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 162
     },
     {
       "w": 365,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 163
     },
     {
       "w": 366,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 164
     },
     {
       "w": 367,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 165
     },
     {
       "w": 368,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 166
     },
     {
       "w": 369,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 167
     },
     {
       "w": 370,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 168
     },
     {
       "w": 371,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 169
     },
     {
       "w": 372,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 170
     },
     {
       "w": 373,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 171
     },
     {
       "w": 374,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 172
     },
     {
       "w": 375,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 173
     },
     {
       "w": 376,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 174
     },
     {
       "w": 377,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 175
     },
     {
       "w": 378,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 176
     },
     {
       "w": 379,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 177
     },
     {
       "w": 380,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 178
     },
     {
       "w": 381,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 179
     },
     {
       "w": 382,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 180
     },
     {
       "w": 383,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 181
     },
     {
       "w": 384,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 182
     },
     {
       "w": 385,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 183
     },
     {
       "w": 386,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 184
     },
     {
       "w": 387,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 185
     },
     {
       "w": 388,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 186
     },
     {
       "w": 389,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 187
     },
     {
       "w": 390,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 188
     },
     {
       "w": 391,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 189
     },
     {
       "w": 392,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 190
     },
     {
       "w": 393,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 191
     },
     {
       "w": 394,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 192
     },
     {
       "w": 395,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 193
     },
     {
       "w": 396,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 194
     },
     {
       "w": 397,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 195
     },
     {
       "w": 398,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 196
     },
     {
       "w": 399,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 197
     },
     {
       "w": 400,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 198
     },
     {
       "w": 401,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 198.94
     },
     {
       "w": 402,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 199.84
     },
     {
       "w": 403,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 200.78
     },
     {
       "w": 404,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 201.69
     },
     {
       "w": 405,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 202.63
     },
     {
       "w": 406,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 203.53
     },
     {
       "w": 407,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 204.47
     },
     {
       "w": 408,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 205.38
     },
     {
       "w": 409,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 206.28
     },
     {
       "w": 410,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 207.22
     },
     {
       "w": 411,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 208.13
     },
     {
       "w": 412,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 209.06
     },
     {
       "w": 413,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 209.97
     },
     {
       "w": 414,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 210.91
     },
     {
       "w": 415,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 211.81
     },
     {
       "w": 416,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 212.75
     },
     {
       "w": 417,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 213.66
     },
     {
       "w": 418,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 214.56
     },
     {
       "w": 419,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 215.5
     },
     {
       "w": 420,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 216.41
     },
     {
       "w": 421,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 217.34
     },
     {
       "w": 422,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 218.25
     },
     {
       "w": 423,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 219.19
     },
     {
       "w": 424,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 220.09
     },
     {
       "w": 425,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 221
     },
     {
       "w": 426,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 221.94
     },
     {
       "w": 427,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 222.84
     },
     {
       "w": 428,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 223.78
     },
     {
       "w": 429,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 224.69
     },
     {
       "w": 430,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 225.63
     },
     {
       "w": 431,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 226.53
     },
     {
       "w": 432,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 227.47
     },
     {
       "w": 433,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 228.38
     },
     {
       "w": 434,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 229.28
     },
     {
       "w": 435,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 230.22
     },
     {
       "w": 436,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 231.13
     },
     {
       "w": 437,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 232.06
     },
     {
       "w": 438,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 232.97
     },
     {
       "w": 439,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 233.91
     },
     {
       "w": 440,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 234.81
     },
     {
       "w": 441,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 235.75
     },
     {
       "w": 442,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 236.66
     },
     {
       "w": 443,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 237.56
     },
     {
       "w": 444,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 238.5
     },
     {
       "w": 445,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 239.41
     },
     {
       "w": 446,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 240.34
     },
     {
       "w": 447,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 241.25
     },
     {
       "w": 448,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 242.19
     },
     {
       "w": 449,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 243.09
     },
     {
       "w": 450,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 244
     },
     {
       "w": 451,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 244.94
     },
     {
       "w": 452,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 245.84
     },
     {
       "w": 453,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 246.78
     },
     {
       "w": 454,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 247.69
     },
     {
       "w": 455,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 248.63
     },
     {
       "w": 456,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 249.53
     },
     {
       "w": 457,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 250.47
     },
     {
       "w": 458,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 251.38
     },
     {
       "w": 459,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 252.28
     },
     {
       "w": 460,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 253.22
     },
     {
       "w": 461,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 254.13
     },
     {
       "w": 462,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 255.06
     },
     {
       "w": 463,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 255.97
     },
     {
       "w": 464,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 256.91
     },
     {
       "w": 465,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 257.81
     },
     {
       "w": 466,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 258.75
     },
     {
       "w": 467,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 259.66
     },
     {
       "w": 468,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 260.56
     },
     {
       "w": 469,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 261.5
     },
     {
       "w": 470,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 262.41
     },
     {
       "w": 471,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 263.34
     },
     {
       "w": 472,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 264.25
     },
     {
       "w": 473,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 265.19
     },
     {
       "w": 474,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 266.09
     },
     {
       "w": 475,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 267
     },
     {
       "w": 476,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 267.94
     },
     {
       "w": 477,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 268.84
     },
     {
       "w": 478,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 269.78
     },
     {
       "w": 479,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 270.69
     },
     {
       "w": 480,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 271.63
     },
     {
       "w": 481,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 272.53
     },
     {
       "w": 482,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 273.47
     },
     {
       "w": 483,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 274.38
     },
     {
       "w": 484,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 275.28
     },
     {
       "w": 485,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 276.22
     },
     {
       "w": 486,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 277.13
     },
     {
       "w": 487,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 278.06
     },
     {
       "w": 488,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 278.97
     },
     {
       "w": 489,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 279.91
     },
     {
       "w": 490,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 280.81
     },
     {
       "w": 491,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 281.75
     },
     {
       "w": 492,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 282.66
     },
     {
       "w": 493,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 283.56
     },
     {
       "w": 494,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 284.5
     },
     {
       "w": 495,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 285.41
     },
     {
       "w": 496,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 286.34
     },
     {
       "w": 497,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 287.25
     },
     {
       "w": 498,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 288.19
     },
     {
       "w": 499,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 289.09
     },
     {
       "w": 500,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 290
     },
     {
       "w": 501,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 290.94
     },
     {
       "w": 502,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 291.84
     },
     {
       "w": 503,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 292.78
     },
     {
       "w": 504,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 293.69
     },
     {
       "w": 505,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 294.63
     },
     {
       "w": 506,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 295.53
     },
     {
       "w": 507,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 296.47
     },
     {
       "w": 508,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 297.38
     },
     {
       "w": 509,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 298.28
     },
     {
       "w": 510,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 299.22
     },
     {
       "w": 511,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 300.13
     },
     {
       "w": 512,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 301.06
     },
     {
       "w": 513,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 301.97
     },
     {
       "w": 514,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 302.91
     },
     {
       "w": 515,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 303.81
     },
     {
       "w": 516,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 304.75
     },
     {
       "w": 517,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 305.66
     },
     {
       "w": 518,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 306.56
     },
     {
       "w": 519,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 307.5
     },
     {
       "w": 520,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 308.41
     },
     {
       "w": 521,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 309.34
     },
     {
       "w": 522,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 310.25
     },
     {
       "w": 523,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 311.19
     },
     {
       "w": 524,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 312.09
     },
     {
       "w": 525,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 313
     },
     {
       "w": 526,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 313.94
     },
     {
       "w": 527,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 314.84
     },
     {
       "w": 528,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 315.78
     },
     {
       "w": 529,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 316.69
     },
     {
       "w": 530,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 317.63
     },
     {
       "w": 531,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 318.53
     },
     {
       "w": 532,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 319.47
     },
     {
       "w": 533,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 320.38
     },
     {
       "w": 534,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 321.28
     },
     {
       "w": 535,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 322.22
     },
     {
       "w": 536,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 323.13
     },
     {
       "w": 537,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 324.06
     },
     {
       "w": 538,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 324.97
     },
     {
       "w": 539,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 325.91
     },
     {
       "w": 540,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 326.81
     },
     {
       "w": 541,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 327.75
     },
     {
       "w": 542,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 328.66
     },
     {
       "w": 543,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 329.56
     },
     {
       "w": 544,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 330.5
     },
     {
       "w": 545,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 331.41
     },
     {
       "w": 546,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 332.34
     },
     {
       "w": 547,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 333.25
     },
     {
       "w": 548,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 334.19
     },
     {
       "w": 549,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 335.09
     },
     {
       "w": 550,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 336
     },
     {
       "w": 551,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 336.94
     },
     {
       "w": 552,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 337.84
     },
     {
       "w": 553,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 338.78
     },
     {
       "w": 554,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 339.69
     },
     {
       "w": 555,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 340.63
     },
     {
       "w": 556,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 341.53
     },
     {
       "w": 557,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 342.47
     },
     {
       "w": 558,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 343.38
     },
     {
       "w": 559,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 344.28
     },
     {
       "w": 560,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 345.22
     },
     {
       "w": 561,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 346.13
     },
     {
       "w": 562,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 347.06
     },
     {
       "w": 563,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 347.97
     },
     {
       "w": 564,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 348.91
     },
     {
       "w": 565,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 349.81
     },
     {
       "w": 566,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 350.75
     },
     {
       "w": 567,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 351.66
     },
     {
       "w": 568,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 352.56
     },
     {
       "w": 569,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 353.5
     },
     {
       "w": 570,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 354.41
     },
     {
       "w": 571,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 355.34
     },
     {
       "w": 572,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 356.25
     },
     {
       "w": 573,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 357.19
     },
     {
       "w": 574,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 358.09
     },
     {
       "w": 575,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 359
     },
     {
       "w": 576,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 359.94
     },
     {
       "w": 577,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 360.84
     },
     {
       "w": 578,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 361.78
     },
     {
       "w": 579,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 362.69
     },
     {
       "w": 580,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 363.63
     },
     {
       "w": 581,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 364.53
     },
     {
       "w": 582,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 365.47
     },
     {
       "w": 583,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 366.38
     },
     {
       "w": 584,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 367.28
     },
     {
       "w": 585,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 368.22
     },
     {
       "w": 586,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 369.13
     },
     {
       "w": 587,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 370.06
     },
     {
       "w": 588,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 370.97
     },
     {
       "w": 589,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 371.91
     },
     {
       "w": 590,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 372.81
     },
     {
       "w": 591,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 373.75
     },
     {
       "w": 592,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 374.66
     },
     {
       "w": 593,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 375.56
     },
     {
       "w": 594,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 376.5
     },
     {
       "w": 595,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 377.41
     },
     {
       "w": 596,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 378.34
     },
     {
       "w": 597,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 379.25
     },
     {
       "w": 598,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 380.19
     },
     {
       "w": 599,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 381.09
     },
     {
       "w": 600,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 382
     },
     {
       "w": 601,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 382.94
     },
     {
       "w": 602,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 383.84
     },
     {
       "w": 603,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 384.78
     },
     {
       "w": 604,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 385.69
     },
     {
       "w": 605,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 386.63
     },
     {
       "w": 606,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 387.53
     },
     {
       "w": 607,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 388.47
     },
     {
       "w": 608,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 389.38
     },
     {
       "w": 609,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 390.28
     },
     {
       "w": 610,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 391.22
     },
     {
       "w": 611,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 392.13
     },
     {
       "w": 612,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 393.06
     },
     {
       "w": 613,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 393.97
     },
     {
       "w": 614,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 394.91
     },
     {
       "w": 615,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 395.81
     },
     {
       "w": 616,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 396.75
     },
     {
       "w": 617,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 397.66
     },
     {
       "w": 618,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 398.56
     },
     {
       "w": 619,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 399.5
     },
     {
       "w": 620,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 400.41
     },
     {
       "w": 621,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 401.34
     },
     {
       "w": 622,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 402.25
     },
     {
       "w": 623,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 403.19
     },
     {
       "w": 624,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 404.09
     },
     {
       "w": 625,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 405
     },
     {
       "w": 626,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 405.94
     },
     {
       "w": 627,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 406.84
     },
     {
       "w": 628,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 407.78
     },
     {
       "w": 629,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 408.69
     },
     {
       "w": 630,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 409.63
     },
     {
       "w": 631,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 410.53
     },
     {
       "w": 632,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 411.47
     },
     {
       "w": 633,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 412.38
     },
     {
       "w": 634,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 413.28
     },
     {
       "w": 635,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 414.22
     },
     {
       "w": 636,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 415.13
     },
     {
       "w": 637,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 416.06
     },
     {
       "w": 638,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 416.97
     },
     {
       "w": 639,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 417.91
     },
     {
       "w": 640,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 418.81
     },
     {
       "w": 641,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 419.75
     },
     {
       "w": 642,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 420.66
     },
     {
       "w": 643,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 421.56
     },
     {
       "w": 644,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 422.5
     },
     {
       "w": 645,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 423.41
     },
     {
       "w": 646,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 424.34
     },
     {
       "w": 647,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 425.25
     },
     {
       "w": 648,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 426.19
     },
     {
       "w": 649,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 427.09
     },
     {
       "w": 650,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 428
     },
     {
       "w": 651,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 428.94
     },
     {
       "w": 652,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 429.84
     },
     {
       "w": 653,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 430.78
     },
     {
       "w": 654,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 431.69
     },
     {
       "w": 655,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 432.63
     },
     {
       "w": 656,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 433.53
     },
     {
       "w": 657,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 434.47
     },
     {
       "w": 658,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 435.38
     },
     {
       "w": 659,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 436.28
     },
     {
       "w": 660,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 437.22
     },
     {
       "w": 661,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 438.13
     },
     {
       "w": 662,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 439.06
     },
     {
       "w": 663,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 439.97
     },
     {
       "w": 664,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 440.91
     },
     {
       "w": 665,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 441.81
     },
     {
       "w": 666,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 442.75
     },
     {
       "w": 667,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 443.66
     },
     {
       "w": 668,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 444.56
     },
     {
       "w": 669,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 445.5
     },
     {
       "w": 670,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 446.41
     },
     {
       "w": 671,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 447.34
     },
     {
       "w": 672,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 448.25
     },
     {
       "w": 673,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 449.19
     },
     {
       "w": 674,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 450.09
     },
     {
       "w": 675,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 451
     },
     {
       "w": 676,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 451.94
     },
     {
       "w": 677,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 452.84
     },
     {
       "w": 678,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 453.78
     },
     {
       "w": 679,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 454.69
     },
     {
       "w": 680,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 455.63
     },
     {
       "w": 681,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 456.53
     },
     {
       "w": 682,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 457.47
     },
     {
       "w": 683,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 458.38
     },
     {
       "w": 684,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 459.28
     },
     {
       "w": 685,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 460.22
     },
     {
       "w": 686,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 461.13
     },
     {
       "w": 687,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 462.06
     },
     {
       "w": 688,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 462.97
     },
     {
       "w": 689,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 463.91
     },
     {
       "w": 690,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 464.81
     },
     {
       "w": 691,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 465.75
     },
     {
       "w": 692,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 466.66
     },
     {
       "w": 693,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 467.56
     },
     {
       "w": 694,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 468.5
     },
     {
       "w": 695,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 469.41
     },
     {
       "w": 696,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 470.34
     },
     {
       "w": 697,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 471.25
     },
     {
       "w": 698,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 472.19
     },
     {
       "w": 699,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 473.09
     },
     {
       "w": 700,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 474
     },
     {
       "w": 701,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 474.94
     },
     {
       "w": 702,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 475.84
     },
     {
       "w": 703,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 476.78
     },
     {
       "w": 704,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 477.69
     },
     {
       "w": 705,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 478.63
     },
     {
       "w": 706,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 479.53
     },
     {
       "w": 707,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 480.47
     },
     {
       "w": 708,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 481.38
     },
     {
       "w": 709,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 482.28
     },
     {
       "w": 710,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 483.22
     },
     {
       "w": 711,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 484.13
     },
     {
       "w": 712,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 485.06
     },
     {
       "w": 713,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 485.97
     },
     {
       "w": 714,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 486.91
     },
     {
       "w": 715,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 487.81
     },
     {
       "w": 716,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 488.75
     },
     {
       "w": 717,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 489.66
     },
     {
       "w": 718,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 490.56
     },
     {
       "w": 719,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 491.5
     },
     {
       "w": 720,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 492.41
     },
     {
       "w": 721,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 493.34
     },
     {
       "w": 722,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 494.25
     },
     {
       "w": 723,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 495.19
     },
     {
       "w": 724,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 496.09
     },
     {
       "w": 725,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 497
     },
     {
       "w": 726,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 497.94
     },
     {
       "w": 727,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 498.84
     },
     {
       "w": 728,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 499.78
     },
     {
       "w": 729,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 500.69
     },
     {
       "w": 730,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 501.63
     },
     {
       "w": 731,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 502.53
     },
     {
       "w": 732,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 503.47
     },
     {
       "w": 733,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 504.38
     },
     {
       "w": 734,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 505.28
     },
     {
       "w": 735,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 506.22
     },
     {
       "w": 736,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 507.13
     },
     {
       "w": 737,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 508.06
     },
     {
       "w": 738,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 508.97
     },
     {
       "w": 739,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 509.91
     },
     {
       "w": 740,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 510.81
     },
     {
       "w": 741,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 511.75
     },
     {
       "w": 742,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 512.66
     },
     {
       "w": 743,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 513.56
     },
     {
       "w": 744,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 514.5
     },
     {
       "w": 745,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 515.41
     },
     {
       "w": 746,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 516.34
     },
     {
       "w": 747,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 517.25
     },
     {
       "w": 748,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 518.19
     },
     {
       "w": 749,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 519.09
     },
     {
       "w": 750,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 520
     },
     {
       "w": 751,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 520.94
     },
     {
       "w": 752,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 521.84
     },
     {
       "w": 753,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 522.78
     },
     {
       "w": 754,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 523.69
     },
     {
       "w": 755,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 524.63
     },
     {
       "w": 756,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 525.53
     },
     {
       "w": 757,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 526.47
     },
     {
       "w": 758,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 527.38
     },
     {
       "w": 759,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 528.28
     },
     {
       "w": 760,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 529.22
     },
     {
       "w": 761,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 530.13
     },
     {
       "w": 762,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 531.06
     },
     {
       "w": 763,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 531.97
     },
     {
       "w": 764,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 532.91
     },
     {
       "w": 765,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 533.81
     },
     {
       "w": 766,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 534.75
     },
     {
       "w": 767,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 535.66
     },
     {
       "w": 768,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 536.56
     },
     {
       "w": 769,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 537.5
     },
     {
       "w": 770,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 538.41
     },
     {
       "w": 771,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 539.34
     },
     {
       "w": 772,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 540.25
     },
     {
       "w": 773,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 541.19
     },
     {
       "w": 774,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 542.09
     },
     {
       "w": 775,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 543
     },
     {
       "w": 776,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 543.94
     },
     {
       "w": 777,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 544.84
     },
     {
       "w": 778,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 545.78
     },
     {
       "w": 779,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 546.69
     },
     {
       "w": 780,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 547.63
     },
     {
       "w": 781,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 548.53
     },
     {
       "w": 782,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 549.47
     },
     {
       "w": 783,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 550.38
     },
     {
       "w": 784,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 551.28
     },
     {
       "w": 785,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 552.22
     },
     {
       "w": 786,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 553.13
     },
     {
       "w": 787,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 554.06
     },
     {
       "w": 788,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 554.97
     },
     {
       "w": 789,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 555.91
     },
     {
       "w": 790,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 556.81
     },
     {
       "w": 791,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 557.75
     },
     {
       "w": 792,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 558.66
     },
     {
       "w": 793,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 559.56
     },
     {
       "w": 794,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 560.5
     },
     {
       "w": 795,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 561.41
     },
     {
       "w": 796,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 562.34
     },
     {
       "w": 797,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 563.25
     },
     {
       "w": 798,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 564.19
     },
     {
       "w": 799,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 565.09
     },
     {
       "w": 800,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 566
     },
     {
       "w": 801,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 567
     },
     {
       "w": 802,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 568
     },
     {
       "w": 803,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 569
     },
     {
       "w": 804,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 570
     },
     {
       "w": 805,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 571
     },
     {
       "w": 806,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 572
     },
     {
       "w": 807,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 573
     },
     {
       "w": 808,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 574
     },
     {
       "w": 809,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 575
     },
     {
       "w": 810,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 576
     },
     {
       "w": 811,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 577
     },
     {
       "w": 812,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 578
     },
     {
       "w": 813,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 579
     },
     {
       "w": 814,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 580
     },
     {
       "w": 815,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 581
     },
     {
       "w": 816,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 582
     },
     {
       "w": 817,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 583
     },
     {
       "w": 818,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 584
     },
     {
       "w": 819,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 585
     },
     {
       "w": 820,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 586
     },
     {
       "w": 821,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 587
     },
     {
       "w": 822,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 588
     },
     {
       "w": 823,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 589
     },
     {
       "w": 824,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 590
     },
     {
       "w": 825,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 591
     },
     {
       "w": 826,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 592
     },
     {
       "w": 827,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 593
     },
     {
       "w": 828,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 594
     },
     {
       "w": 829,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 595
     },
     {
       "w": 830,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 596
     },
     {
       "w": 831,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 597
     },
     {
       "w": 832,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 598
     },
     {
       "w": 833,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 599
     },
     {
       "w": 834,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 600
     },
     {
       "w": 835,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 601
     },
     {
       "w": 836,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 602
     },
     {
       "w": 837,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 603
     },
     {
       "w": 838,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 604
     },
     {
       "w": 839,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 605
     },
     {
       "w": 840,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 606
     },
     {
       "w": 841,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 607
     },
     {
       "w": 842,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 608
     },
     {
       "w": 843,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 609
     },
     {
       "w": 844,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 610
     },
     {
       "w": 845,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 611
     },
     {
       "w": 846,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 612
     },
     {
       "w": 847,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 613
     },
     {
       "w": 848,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 614
     },
     {
       "w": 849,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 615
     },
     {
       "w": 850,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 616
     },
     {
       "w": 851,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 617
     },
     {
       "w": 852,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 618
     },
     {
       "w": 853,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 619
     },
     {
       "w": 854,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 620
     },
     {
       "w": 855,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 621
     },
     {
       "w": 856,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 622
     },
     {
       "w": 857,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 623
     },
     {
       "w": 858,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 624
     },
     {
       "w": 859,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 625
     },
     {
       "w": 860,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 626
     },
     {
       "w": 861,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 627
     },
     {
       "w": 862,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 628
     },
     {
       "w": 863,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 629
     },
     {
       "w": 864,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 630
     },
     {
       "w": 865,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 631
     },
     {
       "w": 866,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 632
     },
     {
       "w": 867,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 633
     },
     {
       "w": 868,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 634
     },
     {
       "w": 869,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 635
     },
     {
       "w": 870,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 636
     },
     {
       "w": 871,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 637
     },
     {
       "w": 872,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 638
     },
     {
       "w": 873,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 639
     },
     {
       "w": 874,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 640
     },
     {
       "w": 875,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 641
     },
     {
       "w": 876,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 642
     },
     {
       "w": 877,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 643
     },
     {
       "w": 878,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 644
     },
     {
       "w": 879,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 645
     },
     {
       "w": 880,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 646
     },
     {
       "w": 881,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 647
     },
     {
       "w": 882,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 648
     },
     {
       "w": 883,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 649
     },
     {
       "w": 884,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 650
     },
     {
       "w": 885,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 651
     },
     {
       "w": 886,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 652
     },
     {
       "w": 887,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 653
     },
     {
       "w": 888,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 654
     },
     {
       "w": 889,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 655
     },
     {
       "w": 890,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 656
     },
     {
       "w": 891,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 657
     },
     {
       "w": 892,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 658
     },
     {
       "w": 893,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 659
     },
     {
       "w": 894,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 660
     },
     {
       "w": 895,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 661
     },
     {
       "w": 896,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 662
     },
     {
       "w": 897,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 663
     },
     {
       "w": 898,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 664
     },
     {
       "w": 899,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 665
     },
     {
       "w": 900,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 666
     },
     {
       "w": 901,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 667
     },
     {
       "w": 902,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 668
     },
     {
       "w": 903,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 669
     },
     {
       "w": 904,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 670
     },
     {
       "w": 905,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 671
     },
     {
       "w": 906,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 672
     },
     {
       "w": 907,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 673
     },
     {
       "w": 908,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 674
     },
     {
       "w": 909,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 675
     },
     {
       "w": 910,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 676
     },
     {
       "w": 911,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 677
     },
     {
       "w": 912,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 678
     },
     {
       "w": 913,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 679
     },
     {
       "w": 914,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 680
     },
     {
       "w": 915,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 681
     },
     {
       "w": 916,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 682
     },
     {
       "w": 917,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 683
     },
     {
       "w": 918,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 684
     },
     {
       "w": 919,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 685
     },
     {
       "w": 920,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 686
     },
     {
       "w": 921,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 687
     },
     {
       "w": 922,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 688
     },
     {
       "w": 923,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 689
     },
     {
       "w": 924,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 690
     },
     {
       "w": 925,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 691
     },
     {
       "w": 926,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 692
     },
     {
       "w": 927,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 693
     },
     {
       "w": 928,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 694
     },
     {
       "w": 929,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 695
     },
     {
       "w": 930,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 696
     },
     {
       "w": 931,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 697
     },
     {
       "w": 932,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 698
     },
     {
       "w": 933,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 699
     },
     {
       "w": 934,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 700
     },
     {
       "w": 935,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 701
     },
     {
       "w": 936,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 702
     },
     {
       "w": 937,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 703
     },
     {
       "w": 938,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 704
     },
     {
       "w": 939,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 705
     },
     {
       "w": 940,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 706
     },
     {
       "w": 941,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 707
     },
     {
       "w": 942,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 708
     },
     {
       "w": 943,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 709
     },
     {
       "w": 944,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 710
     },
     {
       "w": 945,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 711
     },
     {
       "w": 946,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 712
     },
     {
       "w": 947,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 713
     },
     {
       "w": 948,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 714
     },
     {
       "w": 949,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 715
     },
     {
       "w": 950,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 716
     },
     {
       "w": 951,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 717
     },
     {
       "w": 952,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 718
     },
     {
       "w": 953,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 719
     },
     {
       "w": 954,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 720
     },
     {
       "w": 955,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 721
     },
     {
       "w": 956,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 722
     },
     {
       "w": 957,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 723
     },
     {
       "w": 958,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 724
     },
     {
       "w": 959,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 725
     },
     {
       "w": 960,
       "tryb": "ящик",
+      "znak": [
+        138,
+        38
+      ],
       "znak_burger": 726
     },
     {
       "w": 961,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 279.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3270,6 +6346,10 @@
     {
       "w": 962,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 280.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3279,6 +6359,10 @@
     {
       "w": 963,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 281.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3288,6 +6372,10 @@
     {
       "w": 964,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 282.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3297,6 +6385,10 @@
     {
       "w": 965,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 283.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3306,6 +6398,10 @@
     {
       "w": 966,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 284.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3315,6 +6411,10 @@
     {
       "w": 967,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 285.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3324,6 +6424,10 @@
     {
       "w": 968,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 286.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3333,6 +6437,10 @@
     {
       "w": 969,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 287.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3342,6 +6450,10 @@
     {
       "w": 970,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 288.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3351,6 +6463,10 @@
     {
       "w": 971,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 289.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3360,6 +6476,10 @@
     {
       "w": 972,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 290.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3369,6 +6489,10 @@
     {
       "w": 973,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 291.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3378,6 +6502,10 @@
     {
       "w": 974,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 292.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3387,6 +6515,10 @@
     {
       "w": 975,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 293.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3396,6 +6528,10 @@
     {
       "w": 976,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 294.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3405,6 +6541,10 @@
     {
       "w": 977,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 295.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3414,6 +6554,10 @@
     {
       "w": 978,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 296.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3423,6 +6567,10 @@
     {
       "w": 979,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 297.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3432,6 +6580,10 @@
     {
       "w": 980,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 298.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3441,6 +6593,10 @@
     {
       "w": 981,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 299.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3450,6 +6606,10 @@
     {
       "w": 982,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 300.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3459,6 +6619,10 @@
     {
       "w": 983,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 301.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3468,6 +6632,10 @@
     {
       "w": 984,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 302.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3477,6 +6645,10 @@
     {
       "w": 985,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 303.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3486,6 +6658,10 @@
     {
       "w": 986,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 304.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3495,6 +6671,10 @@
     {
       "w": 987,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 305.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3504,6 +6684,10 @@
     {
       "w": 988,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 306.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3513,6 +6697,10 @@
     {
       "w": 989,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 307.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3522,6 +6710,10 @@
     {
       "w": 990,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 308.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3531,6 +6723,10 @@
     {
       "w": 991,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 309.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3540,6 +6736,10 @@
     {
       "w": 992,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 310.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3549,6 +6749,10 @@
     {
       "w": 993,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 311.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3558,6 +6762,10 @@
     {
       "w": 994,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 312.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3567,6 +6775,10 @@
     {
       "w": 995,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 313.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3576,6 +6788,10 @@
     {
       "w": 996,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 314.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3585,6 +6801,10 @@
     {
       "w": 997,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 315.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3594,6 +6814,10 @@
     {
       "w": 998,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 316.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3603,6 +6827,10 @@
     {
       "w": 999,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 317.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3612,6 +6840,10 @@
     {
       "w": 1000,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 318.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3621,6 +6853,10 @@
     {
       "w": 1001,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 319.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3630,6 +6866,10 @@
     {
       "w": 1002,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 320.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3639,6 +6879,10 @@
     {
       "w": 1003,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 321.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3648,6 +6892,10 @@
     {
       "w": 1004,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 322.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3657,6 +6905,10 @@
     {
       "w": 1005,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 323.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3666,6 +6918,10 @@
     {
       "w": 1006,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 324.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3675,6 +6931,10 @@
     {
       "w": 1007,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 325.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3684,6 +6944,10 @@
     {
       "w": 1008,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 326.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3693,6 +6957,10 @@
     {
       "w": 1009,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 327.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3702,6 +6970,10 @@
     {
       "w": 1010,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 328.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3711,6 +6983,10 @@
     {
       "w": 1011,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 329.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3720,6 +6996,10 @@
     {
       "w": 1012,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 330.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3729,6 +7009,10 @@
     {
       "w": 1013,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 331.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3738,6 +7022,10 @@
     {
       "w": 1014,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 332.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3747,6 +7035,10 @@
     {
       "w": 1015,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 333.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3756,6 +7048,10 @@
     {
       "w": 1016,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 334.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3765,6 +7061,10 @@
     {
       "w": 1017,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 335.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3774,6 +7074,10 @@
     {
       "w": 1018,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 336.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3783,6 +7087,10 @@
     {
       "w": 1019,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 337.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3792,6 +7100,10 @@
     {
       "w": 1020,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 338.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3801,6 +7113,10 @@
     {
       "w": 1021,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 339.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3810,6 +7126,10 @@
     {
       "w": 1022,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 340.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3819,6 +7139,10 @@
     {
       "w": 1023,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 341.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3828,6 +7152,10 @@
     {
       "w": 1024,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 342.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3837,6 +7165,10 @@
     {
       "w": 1025,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 343.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3846,6 +7178,10 @@
     {
       "w": 1026,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 344.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3855,6 +7191,10 @@
     {
       "w": 1027,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 345.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3864,6 +7204,10 @@
     {
       "w": 1028,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 346.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3873,6 +7217,10 @@
     {
       "w": 1029,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 347.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3882,6 +7230,10 @@
     {
       "w": 1030,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 348.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3891,6 +7243,10 @@
     {
       "w": 1031,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 349.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3900,6 +7256,10 @@
     {
       "w": 1032,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 350.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3909,6 +7269,10 @@
     {
       "w": 1033,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 351.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3918,6 +7282,10 @@
     {
       "w": 1034,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 352.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3927,6 +7295,10 @@
     {
       "w": 1035,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 353.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3936,6 +7308,10 @@
     {
       "w": 1036,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 354.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3945,6 +7321,10 @@
     {
       "w": 1037,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 355.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3954,6 +7334,10 @@
     {
       "w": 1038,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 356.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3963,6 +7347,10 @@
     {
       "w": 1039,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 357.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3972,6 +7360,10 @@
     {
       "w": 1040,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 358.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3981,6 +7373,10 @@
     {
       "w": 1041,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 359.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3990,6 +7386,10 @@
     {
       "w": 1042,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 360.25,
       "perenos": [],
       "perepolnenie": false,
@@ -3999,6 +7399,10 @@
     {
       "w": 1043,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 361.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4008,6 +7412,10 @@
     {
       "w": 1044,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 362.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4017,6 +7425,10 @@
     {
       "w": 1045,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 363.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4026,6 +7438,10 @@
     {
       "w": 1046,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 364.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4035,6 +7451,10 @@
     {
       "w": 1047,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 365.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4044,6 +7464,10 @@
     {
       "w": 1048,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 366.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4053,6 +7477,10 @@
     {
       "w": 1049,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 367.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4062,6 +7490,10 @@
     {
       "w": 1050,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 368.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4071,6 +7503,10 @@
     {
       "w": 1051,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 369.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4080,6 +7516,10 @@
     {
       "w": 1052,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 370.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4089,6 +7529,10 @@
     {
       "w": 1053,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 371.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4098,6 +7542,10 @@
     {
       "w": 1054,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 372.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4107,6 +7555,10 @@
     {
       "w": 1055,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 373.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4116,6 +7568,10 @@
     {
       "w": 1056,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 374.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4125,6 +7581,10 @@
     {
       "w": 1057,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 375.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4134,6 +7594,10 @@
     {
       "w": 1058,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 376.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4143,6 +7607,10 @@
     {
       "w": 1059,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 377.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4152,6 +7620,10 @@
     {
       "w": 1060,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 378.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4161,6 +7633,10 @@
     {
       "w": 1061,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 379.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4170,6 +7646,10 @@
     {
       "w": 1062,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 380.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4179,6 +7659,10 @@
     {
       "w": 1063,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 381.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4188,6 +7672,10 @@
     {
       "w": 1064,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 382.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4197,6 +7685,10 @@
     {
       "w": 1065,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 383.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4206,6 +7698,10 @@
     {
       "w": 1066,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 384.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4215,6 +7711,10 @@
     {
       "w": 1067,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 385.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4224,6 +7724,10 @@
     {
       "w": 1068,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 386.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4233,6 +7737,10 @@
     {
       "w": 1069,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 387.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4242,6 +7750,10 @@
     {
       "w": 1070,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 388.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4251,6 +7763,10 @@
     {
       "w": 1071,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 389.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4260,6 +7776,10 @@
     {
       "w": 1072,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 390.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4269,6 +7789,10 @@
     {
       "w": 1073,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 391.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4278,6 +7802,10 @@
     {
       "w": 1074,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 392.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4287,6 +7815,10 @@
     {
       "w": 1075,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 393.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4296,6 +7828,10 @@
     {
       "w": 1076,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 394.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4305,6 +7841,10 @@
     {
       "w": 1077,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 395.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4314,6 +7854,10 @@
     {
       "w": 1078,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 396.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4323,6 +7867,10 @@
     {
       "w": 1079,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 397.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4332,6 +7880,10 @@
     {
       "w": 1080,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 398.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4341,6 +7893,10 @@
     {
       "w": 1081,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 399.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4350,6 +7906,10 @@
     {
       "w": 1082,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 400.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4359,6 +7919,10 @@
     {
       "w": 1083,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 401.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4368,6 +7932,10 @@
     {
       "w": 1084,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 402.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4377,6 +7945,10 @@
     {
       "w": 1085,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 403.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4386,6 +7958,10 @@
     {
       "w": 1086,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 404.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4395,6 +7971,10 @@
     {
       "w": 1087,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 405.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4404,6 +7984,10 @@
     {
       "w": 1088,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 406.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4413,6 +7997,10 @@
     {
       "w": 1089,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 407.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4422,6 +8010,10 @@
     {
       "w": 1090,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 408.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4431,6 +8023,10 @@
     {
       "w": 1091,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 409.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4440,6 +8036,10 @@
     {
       "w": 1092,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 410.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4449,6 +8049,10 @@
     {
       "w": 1093,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 411.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4458,6 +8062,10 @@
     {
       "w": 1094,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 412.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4467,6 +8075,10 @@
     {
       "w": 1095,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 413.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4476,6 +8088,10 @@
     {
       "w": 1096,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 414.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4485,6 +8101,10 @@
     {
       "w": 1097,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 415.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4494,6 +8114,10 @@
     {
       "w": 1098,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 416.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4503,6 +8127,10 @@
     {
       "w": 1099,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 417.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4512,6 +8140,10 @@
     {
       "w": 1100,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 418.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4521,6 +8153,10 @@
     {
       "w": 1101,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 419.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4530,6 +8166,10 @@
     {
       "w": 1102,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 420.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4539,6 +8179,10 @@
     {
       "w": 1103,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 421.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4548,6 +8192,10 @@
     {
       "w": 1104,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 422.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4557,6 +8205,10 @@
     {
       "w": 1105,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 423.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4566,6 +8218,10 @@
     {
       "w": 1106,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 424.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4575,6 +8231,10 @@
     {
       "w": 1107,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 425.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4584,6 +8244,10 @@
     {
       "w": 1108,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 426.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4593,6 +8257,10 @@
     {
       "w": 1109,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 427.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4602,6 +8270,10 @@
     {
       "w": 1110,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 428.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4611,6 +8283,10 @@
     {
       "w": 1111,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 429.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4620,6 +8296,10 @@
     {
       "w": 1112,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 430.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4629,6 +8309,10 @@
     {
       "w": 1113,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 431.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4638,6 +8322,10 @@
     {
       "w": 1114,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 432.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4647,6 +8335,10 @@
     {
       "w": 1115,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 433.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4656,6 +8348,10 @@
     {
       "w": 1116,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 434.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4665,6 +8361,10 @@
     {
       "w": 1117,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 435.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4674,6 +8374,10 @@
     {
       "w": 1118,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 436.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4683,6 +8387,10 @@
     {
       "w": 1119,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 437.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4692,6 +8400,10 @@
     {
       "w": 1120,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 438.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4701,6 +8413,10 @@
     {
       "w": 1121,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 439.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4710,6 +8426,10 @@
     {
       "w": 1122,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 440.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4719,6 +8439,10 @@
     {
       "w": 1123,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 441.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4728,6 +8452,10 @@
     {
       "w": 1124,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 442.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4737,6 +8465,10 @@
     {
       "w": 1125,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 443.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4746,6 +8478,10 @@
     {
       "w": 1126,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 444.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4755,6 +8491,10 @@
     {
       "w": 1127,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 445.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4764,6 +8504,10 @@
     {
       "w": 1128,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 446.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4773,6 +8517,10 @@
     {
       "w": 1129,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 447.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4782,6 +8530,10 @@
     {
       "w": 1130,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 448.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4791,6 +8543,10 @@
     {
       "w": 1131,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 449.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4800,6 +8556,10 @@
     {
       "w": 1132,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 450.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4809,6 +8569,10 @@
     {
       "w": 1133,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 451.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4818,6 +8582,10 @@
     {
       "w": 1134,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 452.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4827,6 +8595,10 @@
     {
       "w": 1135,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 453.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4836,6 +8608,10 @@
     {
       "w": 1136,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 454.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4845,6 +8621,10 @@
     {
       "w": 1137,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 455.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4854,6 +8634,10 @@
     {
       "w": 1138,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 456.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4863,6 +8647,10 @@
     {
       "w": 1139,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 457.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4872,6 +8660,10 @@
     {
       "w": 1140,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 458.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4881,6 +8673,10 @@
     {
       "w": 1141,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 459.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4890,6 +8686,10 @@
     {
       "w": 1142,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 460.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4899,6 +8699,10 @@
     {
       "w": 1143,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 461.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4908,6 +8712,10 @@
     {
       "w": 1144,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 462.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4917,6 +8725,10 @@
     {
       "w": 1145,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 463.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4926,6 +8738,10 @@
     {
       "w": 1146,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 464.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4935,6 +8751,10 @@
     {
       "w": 1147,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 465.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4944,6 +8764,10 @@
     {
       "w": 1148,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 466.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4953,6 +8777,10 @@
     {
       "w": 1149,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 467.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4962,6 +8790,10 @@
     {
       "w": 1150,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 468.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4971,6 +8803,10 @@
     {
       "w": 1151,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 469.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4980,6 +8816,10 @@
     {
       "w": 1152,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 470.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4989,6 +8829,10 @@
     {
       "w": 1153,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 471.25,
       "perenos": [],
       "perepolnenie": false,
@@ -4998,6 +8842,10 @@
     {
       "w": 1154,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 472.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5007,6 +8855,10 @@
     {
       "w": 1155,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 473.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5016,6 +8868,10 @@
     {
       "w": 1156,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 474.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5025,6 +8881,10 @@
     {
       "w": 1157,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 475.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5034,6 +8894,10 @@
     {
       "w": 1158,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 476.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5043,6 +8907,10 @@
     {
       "w": 1159,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 477.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5052,6 +8920,10 @@
     {
       "w": 1160,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 478.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5061,6 +8933,10 @@
     {
       "w": 1161,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 479.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5070,6 +8946,10 @@
     {
       "w": 1162,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 480.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5079,6 +8959,10 @@
     {
       "w": 1163,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 481.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5088,6 +8972,10 @@
     {
       "w": 1164,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 482.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5097,6 +8985,10 @@
     {
       "w": 1165,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 483.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5106,6 +8998,10 @@
     {
       "w": 1166,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 484.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5115,6 +9011,10 @@
     {
       "w": 1167,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 485.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5124,6 +9024,10 @@
     {
       "w": 1168,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 486.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5133,6 +9037,10 @@
     {
       "w": 1169,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 487.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5142,6 +9050,10 @@
     {
       "w": 1170,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 488.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5151,6 +9063,10 @@
     {
       "w": 1171,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 489.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5160,6 +9076,10 @@
     {
       "w": 1172,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 490.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5169,6 +9089,10 @@
     {
       "w": 1173,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 491.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5178,6 +9102,10 @@
     {
       "w": 1174,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 492.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5187,6 +9115,10 @@
     {
       "w": 1175,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 493.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5196,6 +9128,10 @@
     {
       "w": 1176,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 494.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5205,6 +9141,10 @@
     {
       "w": 1177,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 495.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5214,6 +9154,10 @@
     {
       "w": 1178,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 496.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5223,6 +9167,10 @@
     {
       "w": 1179,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 497.25,
       "perenos": [],
       "perepolnenie": false,
@@ -5232,6 +9180,10 @@
     {
       "w": 1180,
       "tryb": "строка",
+      "znak": [
+        138,
+        38
+      ],
       "zapas": 498.25,
       "perenos": [],
       "perepolnenie": false,

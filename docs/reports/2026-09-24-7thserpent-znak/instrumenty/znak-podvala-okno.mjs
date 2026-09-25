@@ -4,20 +4,24 @@
 // 1440 × 900 и 390 × 844; зерно снято (display: none), конечные анимации — к концу.
 // Полный кадр (fullPage) и кадр окна, где знак подвала в середине окна; рамка знака
 // плюс 4 px вырезается из обоих по координатам документа и окна. Ждём 0 различий.
-// Выгрузка — ../zamery/znak-podvala-okno.json; отказ (exit 1) — различия или сервер
-// отдаёт не dist/.
+// Замер доказывает что-то, только если полный кадр снят своим растром, а не растром
+// окна (R3-BRAUZER-13): признак растра окна — первое окно полного кадра побайтно равно
+// кадру окна при прокрутке 0 (README эталона, «Две природы расхождений»). Этот признак
+// пишется в выгрузку; при растре окна замер не судит ничего — отказ.
+// Выгрузка — ../zamery/znak-podvala-okno.json; отказ (exit 1) — различия, полный кадр
+// в растре окна или сервер отдаёт не dist/.
 //   node znak-podvala-okno.mjs [адрес]
 import { createRequire } from 'node:module';
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { PW, CHROME, REPO, ZAMERY, sborkaIliOtkaz } from './sborka.mjs';
+import { PW, CHROME, REPO, ZAMERY, sborkaIliOtkaz, pochodzenie } from './sborka.mjs';
 
 const { chromium } = createRequire(PW)('playwright-core');
 const sharp = createRequire(join(REPO, 'package.json'))('sharp');
 const URL_ = process.argv[2] ?? 'http://localhost:4331/';
 const sb = await sborkaIliOtkaz(URL_, 'znak-podvala-okno');
 const browser = await chromium.launch({ executablePath: CHROME });
-const wynik = { instrument: 'znak-podvala-okno.mjs', brauzer: `Chromium ${browser.version()}`, sborka: sb, okna: {} };
+const wynik = { instrument: 'znak-podvala-okno.mjs', brauzer: `Chromium ${browser.version()}`, ...pochodzenie(import.meta.url), sborka: sb, okna: {} };
 const bledy = [];
 try {
   for (const [w, h] of [[1440, 900], [390, 844]]) {
@@ -34,6 +38,14 @@ try {
     });
     await page.waitForTimeout(300);
     const pelny = await page.screenshot({ fullPage: true });
+    // Признак растра окна: первое окно полного кадра побайтно равно кадру окна при прокрутке 0.
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
+    await page.waitForTimeout(300);
+    const okno0 = await sharp(await page.screenshot()).raw().toBuffer();
+    const pervoe = await sharp(pelny).extract({ left: 0, top: 0, width: w, height: h }).raw().toBuffer();
+    let raznyh = 0;
+    for (let i = 0; i < okno0.length; i++) if (okno0[i] !== pervoe[i]) raznyh++;
+    const rastrOkna = raznyh === 0;
     await page.evaluate(() => document.querySelector('.ft__brand svg.znak').scrollIntoView({ block: 'center', behavior: 'instant' }));
     await page.waitForTimeout(300);
     const r = await page.evaluate(() => { const b = document.querySelector('.ft__brand svg.znak').getBoundingClientRect(); return { x: b.x, y: b.y, w: b.width, h: b.height, sy: scrollY }; });
@@ -47,8 +59,9 @@ try {
     const b = await sharp(pelny).extract({ left, top: topDok, width, height }).raw().toBuffer();
     let n = 0, max = 0;
     for (let i = 0; i < a.length; i++) { const d = Math.abs(a[i] - b[i]); if (d) { n++; if (d > max) max = d; } }
-    wynik.okna[w] = { ramka_znaka_okno: r, verh_okno: topOkno, verh_dokument: topDok, drob_raznaya: drobnyj, subpikseley: n, max };
+    wynik.okna[w] = { ramka_znaka_okno: r, verh_okno: topOkno, verh_dokument: topDok, drob_raznaya: drobnyj, pervoe_okno_polnogo_raznyh_subpikseley: raznyh, polny_v_rastre_okna: rastrOkna, subpikseley: n, max };
     if (n) bledy.push(`${w}: знак подвала в кадре окна против полного кадра — ${n} субпикселей, макс ${max}`);
+    if (rastrOkna) bledy.push(`${w}: полный кадр снят растром окна (первое окно побайтно равно кадру окна) — замер ничего не доказывает`);
     await ctx.close();
   }
 } finally {

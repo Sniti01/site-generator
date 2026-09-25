@@ -1,0 +1,63 @@
+{
+  "instrument": "kontrast-znaka.mjs",
+  "instrument_sha256": "88d81eac15678fb13136880be3210124dad07feb58e9741f012ce0fbfca058c9",
+  "pomoshchnik_sha256": "826bae3c3d1806aac69c781c71f94b2453c91e86e6b5e8a0ef89433023159604",
+  "head_pri_progone": "4c11041f413f3e9151baf9a8980c8e43639d999e",
+  "gryaz_sajta": [
+    "M sites/7thserpent.com/tools/znak.mjs"
+  ],
+  "gryaz_instrumentov": [
+    "M docs/reports/2026-09-24-7thserpent-znak/instrumenty/kontrast-znaka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/sborka.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs",
+    " M docs/reports/2026-09-24-7thserpent-znak/instrumenty/zapas-menu.mjs"
+  ],
+  "proby": [
+    {
+      "nazwa": "чистая страница",
+      "zhdem": null,
+      "ok": true,
+      "bledy": []
+    },
+    {
+      "nazwa": "тёмный фонарь",
+      "zhdem": "фонарь",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1, граница: фонарь 1.69:1 ниже порога 3:1",
+        "390 DPR 1, замер: фонарь 2.15:1 ниже порога 3:1"
+      ]
+    },
+    {
+      "nazwa": "прозрачная шапка",
+      "zhdem": "ниже порога",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1, граница: фонарь 2.05:1 ниже порога 3:1",
+        "390 DPR 1, граница: снег 1.21:1 ниже порога 4.5:1",
+        "390 DPR 1, граница: обводка_фокуса 1.71:1 ниже порога 3:1",
+        "390 DPR 1, замер: фонарь 1.22:1 ниже порога 3:1",
+        "390 DPR 1, замер: снег 2.06:1 ниже порога 4.5:1"
+      ]
+    },
+    {
+      "nazwa": "лист над шапкой",
+      "zhdem": "белый лист не между",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1: белый лист не между шапкой и содержимым (сверху: div#bialy-list > a.hdr__brand > div.hdr__inner > header.hdr)",
+        "390 DPR 1, граница: фонарь 2.05:1 ниже порога 3:1",
+        "390 DPR 1, граница: снег 1.21:1 ниже порога 4.5:1",
+        "390 DPR 1, граница: обводка_фокуса 1.71:1 ниже порога 3:1"
+      ]
+    },
+    {
+      "nazwa": "кольцо фокуса не того цвета",
+      "zhdem": "кольцо фокуса",
+      "ok": true,
+      "bledy": [
+        "390 DPR 1: кольцо фокуса rgb(136, 153, 170), а не --accent-text #f2bd6e"
+      ]
+    }
+  ]
+}

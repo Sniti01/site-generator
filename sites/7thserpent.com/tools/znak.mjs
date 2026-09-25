@@ -17,19 +17,26 @@
  *        вложенность блоков). Всё, чего разбор не понимает, — громкий отказ,
  *        а не пропуск: текст вне блока на верхнем уровне (браузер склеил бы
  *        его с селектором следующего правила и выбросил правило), объявление
- *        с нечитаемым именем (экранирование в имени, `--font-*`), лишняя «}»
- *        на верхнем уровне, незакрытый блок;
+ *        с нечитаемым именем (экранирование в имени), custom property
+ *        со значением-блоком (`--имя: {…}` — браузер объявит его, разбор увидел
+ *        бы правило), сброс пространства имён не `initial`, лишняя «}»
+ *        на верхнем уровне, незакрытый блок. Имена свойств — идентификаторы CSS,
+ *        в том числе не-ASCII; сброс Tailwind `--x-*: initial` читается как сброс;
  *     1) краска — токен темы: имя объявлено в верхнем блоке `:root { … }`
  *        `global.css` (селектор ровно `:root`; его и получает компонент через
  *        `var()`), каждое объявление там — ровно `#rrggbb`, все равны, и больше
  *        нигде в листе (другие селекторы, `@media`, `@layer`, `@theme`) это имя
- *        не объявлено; токен в комментарии или строке — не токен;
+ *        не объявлено и не зарегистрировано `@property`; токен в комментарии
+ *        или строке — не токен;
  *     2) гарнитура — тема: среди операторов верхнего уровня `global.css` есть
  *        ровно `@import '@fontsource/bodoni-moda/latin-600.css';` (без условий
  *        media и supports, не в блоке), своей `@font-face` для 'Bodoni Moda'
- *        в листе нет, а `--font-display` объявлен только в верхнем `@theme`
- *        (голом, `inline` или `static`; `@theme reference` в CSS не выходит)
- *        и начинается с 'Bodoni Moda'; файл контуров — woff из `@font-face`
+ *        в листе нет ни на какой глубине (имя сравнивается как его читает CSS:
+ *        регистр, кавычки, пробелы, экранирование), а `--font-display` объявлен
+ *        только в верхнем `@theme` (голом, `inline` или `static`; `@theme reference`
+ *        в CSS не выходит), первым в списке стоит ровно 'Bodoni Moda' (за ним —
+ *        запятая или конец), сброса `--font-*` или `--*` после него в `@theme` нет
+ *        и `@property --font-display` нет; файл контуров — woff из `@font-face`
  *        листа гарнитуры (normal, 600); контур каждой надписи равен пересчёту
  *        из него по `size`, `track`, `x`, `y`;
  *     3) файлы: иконочных имён в `public/` (`favicon*`, `icon-*`,
@@ -41,9 +48,10 @@
  *        и размеры записей), иначе те же ли пиксели каждой записи; SVG — текст.
  *     С `--dist` — то же для иконочных имён `dist/` (сборка не отстала от иконок).
  *   node tools/znak.mjs --selftest — пробы сверки на мутациях настоящих входов
- *     в памяти (ничего не пишет). Проба проходит, только если отказ есть
- *     и КАЖДАЯ его строка — ожидаемого вида (или отказа нет у пробы «сверено»):
- *     проба не засчитывается по чужой причине.
+ *     в памяти (ничего не пишет). Проба проходит, только если отказ есть,
+ *     КАЖДАЯ его строка — ожидаемого вида и каждый названный вид встретился
+ *     (или отказа нет у пробы «сверено»): проба не засчитывается по чужой причине.
+ *     Выбор папок (`katalog`: только иконочные имена, lstat) в памяти не пробуется.
  *
  * Что сверка НЕ судит и кто судит это (судья собранной страницы в браузере —
  * `docs/reports/2026-09-24-7thserpent-znak/instrumenty/wiernosc.mjs`): как знак
@@ -52,15 +60,19 @@
  * подписи ссылки знака и картинки подвала против видимого имени. Листы,
  * которые `global.css` импортирует (ядро, `tailwindcss`, `@fontsource`), сверка
  * не читает: переопределение токена там видит только судья в браузере
- * (краска частей знака = литералы иконки).
+ * (краска частей знака = литералы иконки). Разбор — модель CSS, а не CSS:
+ * то, что он понимает, он судит строго, а для форм, которых не знает сегодня,
+ * последний судья — вычисленные краски на собранной странице (`wiernosc.mjs`).
  *
  * ФАЙЛЫ: `favicon.svg` (вкладку Chromium 151 с окном рисует из него — доказано
  * цветом, `vkladka-dowod.mjs` доклада), `favicon.ico` (16 и 32, PNG внутри),
  * `favicon-16x16.png` и `favicon-32x32.png`, `icon-192.png`,
  * `apple-touch-icon.png` (180). Назначение ICO, PNG, 192 и 180 — клиентам,
  * которые берут `/favicon.ico` сами, браузерам без SVG-иконок, ярлыку Android
- * и домашнему экрану iOS (углы скругляет система); кроме Chromium 151 это
- * не проверялось (бэклог 60 п. 4). 16 px — свой рисунок по пиксельной сетке
+ * и домашнему экрану iOS (углы скругляет система) — это назначение, не проверка:
+ * в Chromium 151 проверено только, что вкладка берёт `favicon.svg`, а без ссылки
+ * на него — `favicon-32x32.png` (и при масштабе 1); ICO, 192 и 180 не проверены
+ * нигде (бэклог 60 п. 4). 16 px — свой рисунок по пиксельной сетке
  * (`ikona16`), остальные — `ikona`.
  *
  * ПРЕДЕЛЫ (названы): контуры считает `fontkitten` — зависимость Astro, а не
@@ -122,8 +134,11 @@ export function drzewoCss(src) {
     if (!t) return;
     if (t.startsWith('@')) { uzly.push({ tip: 'at', prelude: t, oper: true }); return; }
     if (glub === 0) { bledy.push(`лист: текст вне блока на верхнем уровне: «${skrot(t)}» — браузер склеит его с селектором следующего правила`); return; }
-    const m = /^(--[a-zA-Z0-9_-]+|-?[a-zA-Z][a-zA-Z0-9-]*)\s*:([\s\S]*)$/.exec(t);
+    // Имя: идентификатор CSS (и не-ASCII), обычное свойство или сброс пространства
+    // имён Tailwind `--x-*` / `--*` (только со значением initial).
+    const m = /^(--[-\w\u0080-￿]+|--(?:[-\w]*-)?\*|-?[a-zA-Z][a-zA-Z0-9-]*)\s*:([\s\S]*)$/.exec(t);
     if (!m) { bledy.push(`лист: объявление не читается: «${skrot(t)}» — сверка не знает, что оно объявляет`); return; }
+    if (m[1].endsWith('*') && m[2].trim() !== 'initial') { bledy.push(`лист: объявление не читается: «${skrot(t)}» — сброс пространства имён бывает только initial`); return; }
     decls.push({ imie: m[1], wartosc: m[2].trim() });
   }
   function blok(glub) {
@@ -146,6 +161,9 @@ export function drzewoCss(src) {
         i++;
         const prelude = bufer.trim();
         bufer = '';
+        // `--имя: … {` — у custom property блок входит в значение: браузер объявит
+        // --имя, а разбор увидел бы вложенное правило (R4-SVERKA-1).
+        if (/^--[^:{}]*:/.test(prelude)) bledy.push(`лист: у ${prelude.split(':')[0].trim()} значение-блок «{…}» — браузер читает это как объявление, сверка его не судит`);
         const wn = blok(glub + 1);
         uzly.push({ tip: prelude.startsWith('@') ? 'at' : 'rule', prelude, decls: wn.decls, children: wn.uzly });
         continue;
@@ -274,7 +292,13 @@ async function diagnoz(imie, stary, nowy) {
 export async function sverka(w) {
   const { uzly: drzewo, bledy } = drzewoCss(w.css);
   const dekl = deklaracje(drzewo);
-  const farba = (imie, gdzie) => kraska(dekl, imie, gdzie, bledy);
+  // Краски, которые рисунки действительно взяли, — для строки итога (R4-SVERKA-6, -7).
+  const kraski = new Map();
+  const farba = (imie, gdzie) => { const v = kraska(dekl, imie, gdzie, bledy); kraski.set(imie, v); return v; };
+  const imenaKrasok = new Set([
+    ...w.znak.shapka.czesci.map((c) => c.farba), ...(w.znak.shapka.napisy ?? []).map((n) => n.farba),
+    ...[w.znak.ikona, w.znak.ikona16].flatMap((ik) => [ik.tlo, ...(ik.czesci ?? []).map((c) => c.farba), ...(ik.prostokaty ?? []).map((p) => p.farba)]),
+  ]);
 
   // 2. Гарнитура — тема.
   const importy = drzewo.filter((u) => u.oper && /^@import\b/.test(u.prelude)).map((u) => u.prelude);
@@ -285,9 +309,17 @@ export async function sverka(w) {
   }
   const vlozhennye = [];
   const svoiFontFace = [];
+  const property = [];
+  // Имя гарнитуры — как его читает CSS: экранирование раскрыто, кавычки сняты,
+  // пробелы сведены, регистр не важен (R4-SVERKA-3).
+  const imyaGarnitury = (v) => v.replace(/\\([0-9a-f]{1,6})\s?/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/\\(.)/g, '$1').replace(/["']/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
   const iskat = (lista) => {
     for (const u of lista) {
-      if (!u.oper && /^@font-face$/i.test(u.prelude) && (u.decls ?? []).some((d) => d.imie === 'font-family' && /bodoni moda/i.test(d.wartosc))) svoiFontFace.push(u.prelude);
+      if (!u.oper && /^@font-face$/i.test(u.prelude) && (u.decls ?? []).some((d) => d.imie.toLowerCase() === 'font-family' && imyaGarnitury(d.wartosc).includes('bodoni moda'))) svoiFontFace.push(u.prelude);
+      // @property у токена знака меняет его на странице (наследование, синтаксис,
+      // начальное значение) — R4-SVERKA-2.
+      const pr = /^@property\s+--([-\w\u0080-￿]+)$/i.exec(u.prelude);
+      if (pr && (imenaKrasok.has(pr[1]) || pr[1] === 'font-display')) property.push(`--${pr[1]}`);
       for (const c of u.children ?? []) if (c.oper && c.prelude.includes('bodoni-moda')) vlozhennye.push(`${u.prelude} { ${c.prelude} }`);
       iskat(u.children ?? []);
     }
@@ -295,10 +327,17 @@ export async function sverka(w) {
   iskat(drzewo);
   if (vlozhennye.length) bledy.push(`гарнитура: импорт Бодони внутри блока: ${vlozhennye.join('; ')}`);
   if (svoiFontFace.length) bledy.push(`гарнитура: в global.css своя @font-face для 'Bodoni Moda' (${svoiFontFace.length}) — она подменит файл темы, а контуры знака считаются из файла темы`);
+  if (property.length) bledy.push(`краска: токен ${property.join(', ')} зарегистрирован @property — наследование, синтаксис и начальное значение меняют его на странице, иконки этого не знают`);
   const fd = dekl.filter((d) => d.imie === 'font-display');
   const fdTheme = fd.filter((d) => d.gde === '@theme');
-  if (!fdTheme.length || !fdTheme.every((d) => /^['"]Bodoni Moda['"]/.test(d.wartosc))) bledy.push(`гарнитура: --font-display в верхнем @theme не начинается с 'Bodoni Moda' (${fdTheme.length ? fdTheme.map((d) => d.wartosc).join(' | ') : 'нет'})`);
+  // Список гарнитур начинается ровно с 'Bodoni Moda' — за ним запятая или конец (R4-SVERKA-8).
+  if (!fdTheme.length || !fdTheme.every((d) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(d.wartosc))) bledy.push(`гарнитура: --font-display в верхнем @theme не начинается с 'Bodoni Moda' (${fdTheme.length ? fdTheme.map((d) => d.wartosc).join(' | ') : 'нет'})`);
   if (fd.some((d) => d.gde !== '@theme')) bledy.push(`гарнитура: --font-display объявлен вне верхнего @theme (${fd.filter((d) => d.gde !== '@theme').map((d) => d.gde).join(', ')})`);
+  // Сброс пространства имён в @theme после --font-display его убирает (R4-SVERKA-9);
+  // сброс до него и сброс чужого пространства — законная идиома Tailwind.
+  const poFd = dekl.findIndex((d) => d.imie === 'font-display' && d.gde === '@theme');
+  const sbrosy = dekl.map((d, k) => ({ ...d, k })).filter((d) => d.gde === '@theme' && (d.imie === '*' || d.imie === 'font-*') && d.k > poFd && poFd >= 0);
+  if (sbrosy.length) bledy.push(`гарнитура: сброс --${sbrosy[0].imie}: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы`);
   const napisy = w.znak.shapka.napisy ?? [];
   if (!napisy.length) bledy.push('надписи: у знака нет надписей — имя знака не нарисовано');
   if (!w.fontBuf) bledy.push(`гарнитура: в ${IMPORT_GARNITURY} нет @font-face normal 600 с woff`);
@@ -349,7 +388,7 @@ export async function sverka(w) {
   };
   if (w.publiczne) await sverit(w.publiczne, 'public');
   if (w.dist) await sverit(w.dist, 'dist');
-  return { bledy, pliki };
+  return { bledy, pliki, kraski };
 }
 
 // ── Входы с диска ────────────────────────────────────────────────────────
@@ -399,7 +438,9 @@ async function selftest() {
   const przedRoot = (w, txt) => { const k = w.css.indexOf('\n:root {'); w.css = `${w.css.slice(0, k)}\n${txt}${w.css.slice(k)}`; return w; };
   const glow = (w) => { w.znak.shapka.napisy[1].farba = 'glow'; return w; };
   const icoZ = (a16, a32) => ico([[16, a16], [32, a32]]);
-  // [имя, мутация, ожидание]: null — «сверено»; строка или массив — каждая строка отказа содержит одну из них.
+  // [имя, мутация, ожидание]: null — «сверено»; строка или массив — каждая строка отказа содержит
+  // одну из них, и каждая из них встретилась.
+  const theme = (w, txt) => { w.css = w.css.replace('\n@theme {', `\n@theme {\n  ${txt}`); return w; };
   const proby = [
     ['чистые входы', (w) => w, null],
     ['чистые входы и robots.txt в public/', (w) => { w.publiczne.set('robots.txt', Buffer.from('User-agent: *\n')); return w; }, null],
@@ -430,16 +471,38 @@ async function selftest() {
     ['экранирование в имени токена в :root', (w) => { w.css += '\n:root { --acc\\65nt: #ff0000; }'; return w; }, 'объявление не читается'],
     ['экранирование в имени токена в другом селекторе', (w) => { w.css += '\n.hdr { --acc\\65nt: #ff0000; }'; return w; }, 'объявление не читается'],
     ['экранирование в имени --font-display', (w) => { w.css += "\n:root { --font-displ\\61y: 'Playfair Display', serif; }"; return w; }, 'объявление не читается'],
-    ['сброс --font-* в позднем @theme', (w) => { w.css += '\n@theme { --font-*: initial; }'; return w; }, 'объявление не читается'],
-    ['сброс --* в позднем @theme', (w) => { w.css += '\n@theme { --*: initial; }'; return w; }, 'объявление не читается'],
+    ['сброс --font-* в позднем @theme', (w) => { w.css += '\n@theme { --font-*: initial; }'; return w; }, 'сброс --font-*'],
+    ['сброс --* в позднем @theme', (w) => { w.css += '\n@theme { --*: initial; }'; return w; }, 'сброс --*:'],
     ['@theme reference', (w) => { w.css = w.css.replace('\n@theme {', '\n@theme reference {'); return w; }, ['в верхнем @theme не начинается', 'объявлен вне верхнего @theme']],
+    ['@theme inline', (w) => { w.css = w.css.replace('\n@theme {', '\n@theme inline {'); return w; }, null],
+    ['@theme static', (w) => { w.css = w.css.replace('\n@theme {', '\n@theme static {'); return w; }, null],
+    ['--font-display убран из @theme', (w) => { w.css = w.css.replace(/\n\s*--font-display:[^;]*;/, ''); return w; }, 'в верхнем @theme не начинается'],
+    ['сброс --color-* в начале @theme', (w) => theme(w, '--color-*: initial;'), null],
+    ['сброс --font-* в начале @theme', (w) => theme(w, '--font-*: initial;'), null],
+    ['сброс --font-* после --font-display', (w) => { w.css = w.css.replace(/(\n\s*--font-display:[^;]*;)/, '$1\n  --font-*: initial;'); return w; }, 'сброс --font-*'],
+    ['сброс не initial', (w) => theme(w, '--color-*: red;'), 'сброс пространства имён бывает только initial'],
+    ['не-ASCII имя свойства', (w) => { w.css += '\n.x { --цвет: #ff0000; }'; return w; }, null],
+    ['значение-блок у токена в :root', (w) => { w.css += '\n:root { --accent: {}; }'; return w; }, 'значение-блок'],
+    ['значение-блок у токена в другом селекторе', (w) => { w.css += '\n.hdr { --accent: { color: red } }'; return w; }, 'значение-блок'],
+    ['значение-блок без пробела', (w) => { w.css += '\n:root { --accent:hover {} }'; return w; }, 'значение-блок'],
+    ['@property у фонаря', (w) => { w.css += "\n@property --accent { syntax: '<color>'; inherits: false; initial-value: #ff0000; }"; return w; }, 'зарегистрирован @property'],
+    ['@property у снега', (w) => { w.css += "\n@property --ink { syntax: '*'; inherits: false; }"; return w; }, 'зарегистрирован @property'],
+    ['@property у чужого токена', (w) => { w.css += "\n@property --glow { syntax: '<color>'; inherits: true; initial-value: #ffffff; }"; return w; }, null],
     ['тема грузит Бодони 400', (w) => { w.css = w.css.split(I).join("@import '@fontsource/bodoni-moda/latin-400.css';"); return w; }, 'нет ровно @import'],
     ['@import с условием print', (w) => { w.css = w.css.split(I).join(`@import '${IMPORT_GARNITURY}' print;`); return w; }, 'нет ровно @import'],
     ['@import с supports()', (w) => { w.css = w.css.split(I).join(`@import '${IMPORT_GARNITURY}' supports(display: nope);`); return w; }, 'нет ровно @import'],
     ['@import только внутри @media', (w) => { w.css = w.css.split(I).join(`@import '@fontsource/bodoni-moda/latin-400.css';\n@media print { ${I} }`); return w; }, ['внутри блока', 'нет ровно @import']],
     ['@import только в строке', (w) => { w.css = w.css.split(I).join(`@import '@fontsource/bodoni-moda/latin-400.css';\n.q::before { content: "${I}"; }`); return w; }, 'нет ровно @import'],
     ['своя @font-face Бодони в листе', (w) => { w.css += "\n@font-face { font-family: 'Bodoni Moda'; font-weight: 600; src: url(x.woff2); }"; return w; }, 'своя @font-face'],
-    ['--font-display — другая гарнитура', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'/, "--font-display: 'Playfair Display'"); return w; }, "не начинается с 'Bodoni Moda'"],
+    ['своя @font-face Бодони — FONT-FAMILY и лишний пробел', (w) => { w.css += "\n@font-face { FONT-FAMILY: 'bodoni   moda'; src: url(x.woff2); }"; return w; }, 'своя @font-face'],
+    ['своя @font-face Бодони — экранирование в имени', (w) => { w.css += "\n@font-face { font-family: Bodoni\\20 Moda; src: url(x.woff2); }"; return w; }, 'своя @font-face'],
+    ['своя @font-face Бодони внутри @media', (w) => { w.css += "\n@media all { @font-face { font-family: 'Bodoni Moda'; src: url(x.woff2); } }"; return w; }, 'своя @font-face'],
+    ['чужая @font-face', (w) => { w.css += "\n@font-face { font-family: 'Inna'; src: url(x.woff2); }"; return w; }, null],
+    ['@import в двойных кавычках', (w) => { w.css = w.css.split(I).join(`@import "${IMPORT_GARNITURY}";`); return w; }, null],
+    ['поздний :root с тем же значением заглавными', (w) => { w.css += '\n:root { --accent: #ECA84A; }'; return w; }, null],
+    ['url() в кавычках со скобкой', (w) => { w.css += '\n.q { background: url("a)b"); }'; return w; }, null],
+    ['--font-display без запятой после Бодони', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'\s*,/, "--font-display: 'Bodoni Moda' 'Public Sans',"); return w; }, "не начинается с 'Bodoni Moda'"],
+    ['--font-display с мусором после кавычки', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'/, "--font-display: 'Bodoni Moda'x"); return w; }, "не начинается с 'Bodoni Moda'"],    ['--font-display — другая гарнитура', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'/, "--font-display: 'Playfair Display'"); return w; }, "не начинается с 'Bodoni Moda'"],
     ['--font-display — Бодони второй', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'/, "--font-display: 'Playfair Display', 'Bodoni Moda'"); return w; }, "не начинается с 'Bodoni Moda'"],
     ['--font-display через var()', (w) => { w.css = w.css.replace(/--font-display:\s*'Bodoni Moda'[^;]*;/, '--font-display: var(--x);'); return w; }, "не начинается с 'Bodoni Moda'"],
     ['--font-display вне @theme', (w) => { w.css += "\n.x { --font-display: 'Bodoni Moda', serif; }"; return w; }, 'вне верхнего @theme'],
@@ -462,6 +525,9 @@ async function selftest() {
     ['ICO: высота записи правлена', (w) => { const b = Buffer.from(pliki.get('favicon.ico')); b.writeUInt8(0, 7); w.publiczne.set('favicon.ico', b); return w; }, 'каталог ICO другой'],
     ['ICO: чужая запись 32', (w) => { w.publiczne.set('favicon.ico', icoZ(pliki.get('favicon-16x16.png'), cudzyRysunek)); return w; }, 'пиксели записи 32 другие'],
     ['ICO: та же запись, перекодирована', (w) => { w.publiczne.set('favicon.ico', icoZ(pliki.get('favicon-16x16.png'), sGama(pliki.get('favicon-32x32.png')))); return w; }, 'пиксели записей те же'],
+    ['ICO: чужая запись 16', (w) => { w.publiczne.set('favicon.ico', icoZ(cudzyRysunek, pliki.get('favicon-32x32.png'))); return w; }, 'пиксели записи 16 другие'],
+    ['ICO: обрезанный каталог', (w) => { w.publiczne.set('favicon.ico', pliki.get('favicon.ico').subarray(0, 20)); return w; }, 'не ICO'],
+    ['иконка 16 из многоугольников', (w) => { w.publiczne = null; w.znak.ikona16 = { siatka: 16, tlo: 'bg', czesci: [{ opis: 'семёрка', farba: 'accent', points: '3,4 11,4 8,14 6,14' }] }; return w; }, null],
     ['лишний манифест', (w) => { w.publiczne.set('site.webmanifest', Buffer.from('{}')); return w; }, 'лишний иконочный файл'],
     ['лишний иконочный файл', (w) => { w.publiczne.set('favicon-48x48.png', pliki.get('icon-192.png')); return w; }, 'лишний иконочный файл'],
     ['иконочное имя — не файл', (w) => { w.publiczne.set('icon-set', 'nie-plik'); return w; }, 'не обычный файл'],
@@ -474,7 +540,8 @@ async function selftest() {
   for (const [nazwa, mut, zhdem] of proby) {
     const { bledy } = await sverka(mut(czyste()));
     const vidy = zhdem === null ? [] : [].concat(zhdem);
-    const ok = zhdem === null ? bledy.length === 0 : bledy.length > 0 && bledy.every((b) => vidy.some((v) => b.includes(v)));
+    // Строго: каждая строка отказа — одного из видов, и каждый названный вид встретился (R4-SVERKA-4).
+    const ok = zhdem === null ? bledy.length === 0 : bledy.length > 0 && bledy.every((b) => vidy.some((v) => b.includes(v))) && vidy.every((v) => bledy.some((b) => b.includes(v)));
     if (!ok) zle++;
     const chuzhoe = bledy.find((b) => !vidy.some((v) => b.includes(v)));
     console.log(`${ok ? 'ok ' : 'НЕТ'}  ${nazwa}: ждём ${zhdem === null ? 'сверено' : `отказ «${vidy.join('» или «')}»`}, факт ${bledy.length ? `отказ (${bledy.length}): ${chuzhoe ?? bledy[0]}` : 'сверено'}`);
@@ -491,7 +558,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       await selftest();
     } else {
       const w = wejscie({ dist: process.argv.includes('--dist') });
-      const { bledy, pliki } = await sverka({ ...w, publiczne: CHECK ? w.publiczne : null, dist: w.dist });
+      const { bledy, pliki, kraski } = await sverka({ ...w, publiczne: CHECK ? w.publiczne : null, dist: w.dist });
       if (!CHECK && bledy.length) throw Object.assign(new Error('не пишу: входы с отказом'), { bledy });
       if (!CHECK) {
         const pub = join(siteRoot, 'public');
@@ -503,10 +570,8 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
         for (const b of bledy) console.error(`  - ${b}`);
         process.exit(1);
       }
-      const d = deklaracje(drzewoCss(w.css).uzly).filter((x) => x.gde === ':root');
-      const imena = [...new Set([...w.znak.shapka.czesci.map((c) => c.farba), ...w.znak.shapka.napisy.map((n) => n.farba), w.znak.ikona.tlo, ...w.znak.ikona.czesci.map((c) => c.farba), w.znak.ikona16.tlo, ...w.znak.ikona16.prostokaty.map((p) => p.farba)])];
-      const kolory = imena.map((t) => `${t} ${d.find((x) => x.imie === t)?.wartosc}`).join(', ');
-      console.log(`znak: ${CHECK ? 'сверено' : 'записано'} — ${pliki.size} иконок public/${w.dist ? ' и dist/' : ''} (${[...pliki.keys()].join(', ')}); надписей ${w.znak.shapka.napisy.length} — контуры равны ${w.fontPlik}; краски трёх рисунков (с фонами иконок): ${kolory}`);
+      const kolory = [...kraski].map(([t, v]) => `${t} ${v}`).join(', ');
+      console.log(`znak: ${CHECK ? 'сверено' : 'записано'} — ${pliki.size} иконок public/${w.dist ? ' и dist/' : ''} (${[...pliki.keys()].join(', ')}); надписей ${w.znak.shapka.napisy.length} — контуры равны ${w.fontPlik}; краски, которые взяли три рисунка: ${kolory}`);
     }
   } catch (e) {
     console.error(`znak: ОТКАЗ — ${e.message}`);

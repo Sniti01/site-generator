@@ -110,7 +110,19 @@ async function appDetails(appid) {
   const url = `https://store.steampowered.com/api/appdetails?appids=${appid}&cc=us&l=english`;
   await sleep(900);
   const data = await (await politeFetch(url)).json();
-  const entry = data[String(appid)];
+  // С 2026-09-25 Steam отдаёт Max Payne 3 (204100) под ключом другого
+  // приложения (`1319730`) с `steam_appid: 204100` внутри (пачка 0, П85 п. 7):
+  // запись ищется и по `steam_appid`, подмена ключа печатается. Две записи
+  // с этим `steam_appid` — отказ, а не выбор наугад.
+  let entry = data[String(appid)];
+  if (!entry) {
+    const po = Object.entries(data).filter(([, e]) => e?.success && e.data?.steam_appid === appid);
+    if (po.length > 1) throw new Error(`Steam отдал ${po.length} записей с steam_appid ${appid}: ${po.map(([k]) => k).join(', ')}`);
+    if (po.length === 1) {
+      console.log(`          appid ${appid}: Steam отдал запись под ключом ${po[0][0]} (steam_appid ${appid})`);
+      entry = po[0][1];
+    }
+  }
   if (!entry?.success) throw new Error(`Steam не знает appid ${appid}`);
   cache.set(appid, entry.data);
   return entry.data;

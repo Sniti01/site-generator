@@ -1,0 +1,98 @@
+
+> 7thserpent.com@0.1.0 glowa:selftest
+> node tools/glowa.mjs --selftest
+
+ok   чистые: главная, /404/, литеральная /max-payne-3/guide/          ждём: сверено; получено: сверено
+ok   og:site_name: атрибуты в обратном порядке и в одинарных кавычках — законно ждём: сверено; получено: сверено
+ok   og:site_name: значение сущностями — законно                      ждём: сверено; получено: сверено
+ok   og:site_name снят                                                ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   og:site_name — домен вместо имени                                ждём: og:site_name; получено: og:site_name — og:site_name «7thserpent.com» ≠ «7th Serpent»
+ok   og:site_name дважды                                              ждём: og:site_name; получено: og:site_name — meta og:site_name: 2, нужна ровно одна
+ok   og:site_name перенесён в <body>                                  ждём: og:site_name; получено: og:site_name — meta og:site_name вне <head>
+ok   og:site_name только в комментарии                                ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   WebSite снят с главной                                           ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   WebSite только в комментарии                                     ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   WebSite: name — домен                                            ждём: WebSite; получено: WebSite — name «7thserpent.com» ≠ «7th Serpent»
+ok   WebSite: alternateName — другой                                  ждём: WebSite; получено: WebSite — alternateName «7th Serpent» ≠ «7thserpent.com»
+ok   WebSite: url без www                                             ждём: WebSite; получено: WebSite — url «https://7thserpent.com/» ≠ canonical главной по договору «https://www.7thserpent.com/»
+ok   WebSite: url без слэша                                           ждём: WebSite; получено: WebSite — url «https://www.7thserpent.com» ≠ canonical главной по договору «https://www.7thserpent.com/»
+ok   WebSite: url по http                                             ждём: WebSite; получено: WebSite — url «http://www.7thserpent.com/» ≠ canonical главной по договору «https://www.7thserpent.com/»
+ok   WebSite: лишний ключ                                             ждём: WebSite; получено: WebSite — ключи WebSite: @context, @type, name, alternateName, url, potentialAction — нужны ровно @context, @type, name, alternateName, url
+ok   WebSite: @context по http                                        ждём: WebSite; получено: WebSite — @context «http://schema.org» ≠ «https://schema.org»
+ok   WebSite дважды, второй — тип скрипта заглавными                  ждём: WebSite; получено: WebSite — на главной WebSite: 2, нужен ровно один
+ok   WebSite на /404/                                                 ждём: WebSite; получено: WebSite — WebSite на /404/: 1 — только на главной
+ok   WebSite в @graph                                                 ждём: JSON-LD | WebSite; получено: JSON-LD | WebSite — блок — не одиночный объект (@graph): разметки сверх договора сайт не печатает
+ok   JSON-LD не разбирается                                           ждём: JSON-LD | WebSite; получено: JSON-LD | WebSite — блок не разбирается как JSON: Expected double-quoted property name in JSON at position 141 (line 1 column 142)
+ok   JSON-LD чужого типа                                              ждём: JSON-LD; получено: JSON-LD — тип "Organization" вне договора: одна строка «WebSite» или «BreadcrumbList»
+ok   canonical главной — без www                                      ждём: canonical | WebSite; получено: canonical | WebSite — canonical https://7thserpent.com/ ≠ https://www.7thserpent.com/
+ok   canonical дважды                                                 ждём: canonical; получено: canonical — link rel=canonical: 2, нужен ровно один
+ok   BreadcrumbList на главной                                        ждём: BreadcrumbList; получено: BreadcrumbList — BreadcrumbList на /: 1 — на главной и /404/ его нет
+ok   BreadcrumbList на /404/                                          ждём: BreadcrumbList; получено: BreadcrumbList — BreadcrumbList на /404/: 1 — на главной и /404/ его нет
+ok   guide: BreadcrumbList снят                                       ждём: BreadcrumbList; получено: BreadcrumbList — BreadcrumbList: 0, нужен ровно один
+ok   guide: position звена 2 — 9                                      ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: position 9
+ok   guide: звенья 2 и 3 местами (с их position)                      ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: position 3
+ok   guide: name звена ≠ h1                                           ждём: BreadcrumbList; получено: BreadcrumbList — звено 3: name «Max Payne 3 guide: all chapters, golden guns, clues and trophies» ≠ «Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies»
+ok   guide: item относительный                                        ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: item «/max-payne-3/» ≠ «https://www.7thserpent.com/max-payne-3/»
+ok   guide: лишнее звено                                              ждём: BreadcrumbList; получено: BreadcrumbList — звеньев 4, по договору 3
+ok   guide: position строкой                                          ждём: BreadcrumbList; получено: BreadcrumbList — звено 1: position "1"
+ok   guide: видимые крошки сняты                                      ждём: крошки; получено: крошки — nav.crumbs: 0, нужна ровно одна
+ok   guide: видимый ярлык ≠ h1                                        ждём: крошки; получено: крошки — звено 2: ярлык «Max Payne 3: São Paulo, platforms and what to know before playing» ≠ «Max Payne 3 (2012): São Paulo, platforms and what to know before playing»
+ok   guide: ссылка звена на чужой адрес                               ждём: крошки; получено: крошки — звено 2: адрес /max-payne-2/ ≠ /max-payne-3/
+ok   guide: последнее звено без aria-current                          ждём: крошки; получено: крошки — текущее звено без aria-current="page"
+ok   guide: последнее звено — ссылка crumbs__link                     ждём: крошки; получено: крошки — ссылок в крошках 3, по договору 2 (все звенья, кроме текущего)
+ok   главная: видимые крошки                                          ждём: крошки; получено: крошки — на главной nav.crumbs: 1 — у главной одно звено, крошек нет
+ok   /404/: видимые крошки сняты                                      ждём: крошки; получено: крошки — nav.crumbs: 0, нужна ровно одна
+ok   страница вне структуры                                           ждём: вне структуры; получено: вне структуры — адреса /nie-ma/ нет в structure.json
+ok   сборка без главной                                               ждём: главной нет; получено: главной нет — WebSite живёт на главной, а её в сборке нет
+ok   пустая сборка                                                    ждём: пусто; получено: пусто — страниц нет — «сверено» о пустом множестве не выдаётся
+ok   /404/: canonical перенесён в <body>                              ждём: canonical; получено: canonical — link rel=canonical вне <head>
+ok   /404/: canonical на другой адрес                                 ждём: canonical; получено: canonical — canonical https://www.7thserpent.com/ ≠ https://www.7thserpent.com/404/
+ok   /404/: </head> снят                                              ждём: головы нет | canonical | og:site_name; получено: головы нет | canonical | og:site_name — нет </head> — судить нечего
+ok   /404/: JSON-LD не разбирается                                    ждём: JSON-LD; получено: JSON-LD — блок не разбирается как JSON: Expected double-quoted property name in JSON at position 19 (line 1 column 20)
+ok   /404/: JSON-LD — массив                                          ждём: JSON-LD; получено: JSON-LD — блок — не одиночный объект (массив): разметки сверх договора сайт не печатает
+ok   /404/: JSON-LD — null                                            ждём: JSON-LD; получено: JSON-LD — блок — не одиночный объект (null): разметки сверх договора сайт не печатает
+ok   guide: BreadcrumbList перенесён в <body>                         ждём: JSON-LD; получено: JSON-LD — блок JSON-LD вне <head>
+ok   guide: лишний ключ списка                                        ждём: BreadcrumbList; получено: BreadcrumbList — ключи BreadcrumbList: @context, @type, name, itemListElement
+ok   guide: @context списка по http                                   ждём: BreadcrumbList; получено: BreadcrumbList — @context «http://schema.org»
+ok   guide: лишний ключ звена                                         ждём: BreadcrumbList; получено: BreadcrumbList — звено 1: ключи @type, position, url, name, item
+ok   guide: @type звена не ListItem                                   ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: @type «Thing»
+ok   guide: звено 2 — null                                            ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: не объект (null)
+ok   guide: звено 2 — строка                                          ждём: BreadcrumbList; получено: BreadcrumbList — звено 2: не объект ("x")
+ok   guide: </script> в имени звена без экранирования                 ждём: JSON-LD | BreadcrumbList; получено: JSON-LD | BreadcrumbList — блок не разбирается как JSON: Unterminated string in JSON at position 368 (line 1 column 369)
+ok   guide: среднее видимое звено снято                               ждём: крошки; получено: крошки — ссылок в крошках 1, по договору 2 (все звенья, кроме текущего)
+ok   guide: среднее звено текущим, не ссылкой                         ждём: крошки; получено: крошки — ссылок в крошках 1, по договору 2 (все звенья, кроме текущего)
+ok   guide: две nav.crumbs                                            ждём: крошки; получено: крошки — nav.crumbs: 2, нужна ровно одна
+ok   guide: лишняя ссылка без класса в крошках                        ждём: крошки; получено: крошки — ссылок в крошках 3, по договору 2 (все звенья, кроме текущего)
+ok   guide: nav.crumbs без aria-label                                 ждём: крошки; получено: крошки — у nav.crumbs нет имени (aria-label или aria-labelledby) — навигация без имени для скринридера
+ok   og:site_name только внутри <script>                              ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   og:site_name только внутри <template>                            ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   og:site_name только внутри <noscript>                            ждём: noscript; получено: noscript — внутри <noscript>: meta og:site_name — скребок без JS прочтёт это как разметку головы
+ok   og:site_name только внутри <title>                               ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   второй og:site_name через name= с другим значением               ждём: og:site_name; получено: og:site_name — meta og:site_name: 2, нужна ровно одна
+ok   WebSite только внутри <template>                                 ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   WebSite тегом script-x                                           ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   guide: родитель вне структуры                                    ждём: структура; получено: структура — цепочка крошек не строится: родитель /nie-ma/ страницы /max-payne-3/guide/ вне структуры
+ok   /404/: второй og:site_name с чужим значением в <noscript>        ждём: og:site_name | noscript; получено: og:site_name | noscript — meta og:site_name: 2, нужна ровно одна
+ok   /404/: второй canonical в <noscript>                             ждём: canonical | noscript; получено: canonical | noscript — link rel=canonical: 2, нужен ровно один
+ok   главная: второй WebSite в <noscript>                             ждём: WebSite | noscript; получено: noscript | WebSite — внутри <noscript>: JSON-LD — скребок без JS прочтёт это как разметку головы
+ok   /404/: второй og между строками «<noscript>» и «</noscript>» двух скриптов ждём: og:site_name; получено: og:site_name — meta og:site_name: 2, нужна ровно одна
+ok   /404/: законный og между строками «<template>» и «</template>» скриптов — сверено ждём: сверено; получено: сверено
+ok   главная: WebSite только внутри <title>                           ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   главная: WebSite только внутри <style>                           ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   главная: WebSite только внутри <TEMPLATE>                        ждём: WebSite; получено: WebSite — на главной WebSite: 0, нужен ровно один
+ok   главная: og:site_name только внутри <style>                      ждём: og:site_name; получено: og:site_name — meta og:site_name: 0, нужна ровно одна
+ok   /404/: второй og:site_name с property заглавными                 ждём: og:site_name; получено: og:site_name — meta og:site_name: 2, нужна ровно одна
+ok   /404/: второй canonical с rel из двух слов                       ждём: canonical; получено: canonical — link rel=canonical: 2, нужен ровно один
+ok   главная: второй WebSite с типом скрипта в пробелах               ждём: WebSite; получено: WebSite — на главной WebSite: 2, нужен ровно один
+ok   /404/: canonical снят                                            ждём: canonical; получено: canonical — link rel=canonical: 0, нужен ровно один
+ok   /404/: JSON-LD — строка                                          ждём: JSON-LD; получено: JSON-LD — блок — не одиночный объект (значение string): разметки сверх договора сайт не печатает
+ok   guide: BreadcrumbList дважды                                     ждём: BreadcrumbList; получено: BreadcrumbList — BreadcrumbList: 2, нужен ровно один
+ok   guide: цикл в parent                                             ждём: структура; получено: структура — цепочка крошек не строится: цикл в parent у /max-payne-3/guide/
+ok   guide: ссылка внутри текущего звена                              ждём: крошки; получено: крошки — ссылок в крошках 3, по договору 2 (все звенья, кроме текущего)
+ok   guide: ссылка внутри разделителя                                 ждём: крошки; получено: крошки — ссылок в крошках 3, по договору 2 (все звенья, кроме текущего)
+ok   guide: незакрытая лишняя <a> в конце крошек                      ждём: крошки; получено: крошки — ссылок в крошках 3, по договору 2 (все звенья, кроме текущего)
+ok   guide: среднее звено — <a> без класса на верный адрес            ждём: крошки; получено: крошки — звено 2: ссылка без класса crumbs__link
+ok   guide: aria-label из пробела                                     ждём: крошки; получено: крошки — у nav.crumbs нет имени (aria-label или aria-labelledby) — навигация без имени для скринридера
+ok   guide: имя навигации через aria-labelledby — законно             ждём: сверено; получено: сверено
+
+самопроверка: 92/92

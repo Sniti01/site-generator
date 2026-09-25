@@ -1,0 +1,4 @@
+cta .cta__title                худший пиксель 16.04:1 на 360x740 (строка y 243.2 «Running smoothly? Next come the mods»), p99 не ниже 16.05:1
+cta .cta__lead                 худший пиксель 8.33:1 на 360x740 (строка y 340.0 «High-resolution texture packs and more f»), p99 не ниже 8.33:1
+
+Итог: окон 31, строк 122; самый тесный худший пиксель — 8.33:1 (360x740, .cta__lead, y 340.0), порог 4,5:1.

@@ -1,0 +1,3 @@
+LinkList.B4mIKaMJ.css: блоков слоя 1, правил 19 — .relative | .container | @media (width>=40rem) | @media (width>=48rem) | @media (width>=64rem) | @media (width>=80rem) | @media (width>=96rem) | .block | .flex | .hidden | .transform | .resize | .flex-wrap | .border | .text-wrap | .outline | .filter | .backdrop-filter | .transition
+index.xofYExtq.css: блоков слоя 0, правил 0
+всего: 19

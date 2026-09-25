@@ -79,7 +79,7 @@ sha256; маркеры `@source` — инструментом правки, с �
 
 | Что | Число |
 |---|---|
-| Коммитов в `7thserpent-pachka-0` | 9 до доклада (с докладом — 10) |
+| Коммитов в `7thserpent-pachka-0` | 8 до доклада (с докладом — 9); исправлено при закрытии по обзору (П86 п. 6) — было «9 до доклада (с докладом — 10)» |
 | Второй сайт | маршрут `src/pages/[...slug].astro`, схема `src/content.config.ts`, стенд `src/content/tresc/404.md`, `src/layouts/Base.astro` (крошки, `og:site_name`, `WebSite`, `BreadcrumbList`), `src/lib/structure.ts` (`getBreadcrumbs`), `astro.config.mjs` (`links`, `corridor`), комментарии `src/data/site.ts`; арт `src/assets/gry/mp3-art.jpg`, `src/data/games.json`, `src/data/game-art.json`; инструменты `tools/glowa.mjs`, `tools/proby-tresci.mjs`, `tools/brief-strony.mjs` (новые), `tools/fetch-game-art.mjs` (починка); `input/briefs/` — 17 брифов; `package.json` — шесть команд |
 | Ядро, первый сайт, `structure.json`, корневые `package.json` и `package-lock.json`, файлы знака и судей сессии 11 | ни байта |
 | Корень | `DECISIONS.md` (П85 и дополнение), `docs/BACKLOG.md` (раздел 61), этот доклад и папка `docs/reports/2026-09-25-7thserpent-pachka-0/` |

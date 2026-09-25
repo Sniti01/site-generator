@@ -1,0 +1,14 @@
+{
+ "что": "Кадры стенда маршрута /404/ для взгляда владельца (П85, стоп): первый экран и полная страница на 1440 и 390",
+ "снято": "сборка 42fa5f3 (финальная голова пачки 0 до доклада), astro preview на порту 4331, Playwright MCP, headless Chromium, DPR 1, полоса прокрутки скрыта, шрифты загружены, осадка 700 мс и 2 rAF",
+ "файлы": ["404-1440-pervy-ekran.png", "404-1440-polnaya.png", "404-390-pervy-ekran.png", "404-390-polnaya.png"],
+ "кадры": [
+  { "w": 1440, "h": 900, "canonical": "https://www.7thserpent.com/404/", "clientWidth": 1440, "dpr": 1, "высота": 1876,
+    "h1": { "top": 241, "h": 50, "текст": "THIS PAGE DOES NOT EXIST", "роль": "t-headline" },
+    "крошки": "Home / This page does not exist", "ряд_not-found": { "top": 419, "h": 544 }, "заголовок_списка_top": 1027, "подвал_top": 1453 },
+  { "w": 390, "h": 844, "canonical": "https://www.7thserpent.com/404/", "clientWidth": 390, "dpr": 1, "высота": 2553,
+    "h1": { "top": 185, "h": 65, "текст": "THIS PAGE DOES NOT EXIST", "роль": "t-headline" },
+    "крошки": "Home / This page does not exist", "ряд_not-found": { "top": 322, "h": 503 }, "заголовок_списка_top": 861, "подвал_top": 1527 }
+ ],
+ "первая_съёмка": "сборка dd75d9f — те же числа на обоих окнах"
+}

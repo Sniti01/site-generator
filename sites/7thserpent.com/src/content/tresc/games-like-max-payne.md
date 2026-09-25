@@ -8,15 +8,15 @@ rows:
     body:
       - >-
         Red Dead Redemption 2 is the closest relative in the family sense:
-        Rockstar Games developed and published it, it first came out in 2018,
-        and RAWG lists it on PC, PlayStation 4 and Xbox One. Two players in the
-        thread named it. One had not finished it but had heard its main
+        Rockstar Games developed and published it, and it first came out in
+        2018. Two players in the thread named it. One had not finished it but had heard its main
         characters are morally compromised; the other said Arthur is as strong
         a lead as Max.
       - >-
-        Spec Ops: The Line (2012, Yager) and Sleeping Dogs: Definitive Edition
-        (2014, United Front Games, Square Enix London Studios and Feral
-        Interactive) turn up both on RAWG’s list and in the same Steam thread.
+        Spec Ops: The Line (2012, Yager) turns up both on RAWG’s list and in
+        the same Steam thread. So does Sleeping Dogs, which RAWG lists in its
+        2014 Definitive Edition (United Front Games, Square Enix London Studios
+        and Feral Interactive).
   - id: remedy
     year: Remedy
     title: Remedy’s own games
@@ -43,12 +43,12 @@ rows:
         Gear Solid games (3, 4 and Phantom Pain). Others added Yakuza 0 with
         the rest of the Kiryu games, and BioShock came up in passing.
       - >-
-        Days Gone came with a reason that sounds like Max: a hero who searches
-        for his wife while grieving her. Another reply grouped the first The
-        Last of Us, The Suffering and The Darkness as gritty personal dramas,
-        with the warning that all three bring zombies or the paranormal and
-        are nothing really like Max Payne. One answer simply said that Max
-        Payne 3 has no equal.
+        Days Gone came with a reason that sounds like Max: its hero keeps
+        looking for his wife even as he mourns her. Another reply put the first
+        The Last of Us, The Suffering and The Darkness in the same dark,
+        character-driven vein, then added that zombies and the supernatural
+        make all three a different kind of game. One answer simply said that
+        Max Payne 3 has no equal.
   - id: rawg-shooters
     year: Gameplay
     title: The shooters on RAWG’s list

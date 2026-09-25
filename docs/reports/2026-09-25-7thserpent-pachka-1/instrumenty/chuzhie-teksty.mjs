@@ -5,10 +5,13 @@
 //   node chuzhie-teksty.mjs <dist> [--proba]
 //
 // ТЕКСТ СТРАНИЦЫ — всё, что написано в сессии и попадает в HTML страницы маршрута:
-//   - видимый текст единственного <main>: по строке на блочный элемент (p, h1–h3, li, dd,
-//     dt, figcaption, blockquote, div, section, header, footer, span.t-label); строчные теги
-//     (a, span, em, strong, b, i, small, abbr) снимаются без пробела, чтобы ссылка или
-//     выделение внутри фразы не рвали её («судью судят», раунд 1, R1-INSTR-1);
+//   - видимый текст единственного <main>: по строке на блочный элемент (p, h1–h4, li, dd,
+//     dt, figcaption, blockquote, div, section, header, footer, nav, ul, ol, main, br);
+//     строчные теги (a, span, em, strong, b, i, small, abbr, time, cite, q) снимаются ДВАЖДЫ —
+//     вплотную (ссылка внутри фразы не рвёт её, раунд 1, R1-INSTR-1) и через пробел (соседние
+//     строчные элементы, стоящие на экране раздельно, не склеиваются в одно слово, раунд 2,
+//     R2-INSTR-1: «RTX Remix</span><span>Guide» давало «remixguide»); проверяются оба варианта,
+//     находки объединяются. Прочие теги (wbr, sup, mark…) — пробелом (предел, R2-INSTR-3);
 //   - значения alt у картинок в <main>, <title>, meta description, og:title, og:description —
 //     каждое отдельной строкой (R1-INSTR-2).
 // Отказ (код 2): на странице нет ровно одного <main>, или в тексте <main> меньше 100 слов —
@@ -20,7 +23,9 @@
 // на строку: число в итоге — число строк с чужой последовательностью (R1-INSTR-5);
 // строка режется по «|» и «·», как у сторожа брифов (R1-INSTR-4): фраза, разорванная этими
 // знаками, не ловится; JSON-LD и aria-label не проверяются (их пишет не сессия, а Base.astro
-// и ядро из структуры).
+// и ядро из структуры); границы <main>, комментариев и скриптов ищутся регулярными выражениями,
+// не по правилам HTML: `<!-->` или строка «</main>» внутри скрипта обрежут текст (R2-INSTR-2;
+// в сборке сайта их нет); alt — только в двойных кавычках (так печатает Astro, R2-INSTR-3).
 import { readFileSync, existsSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
@@ -52,14 +57,14 @@ const STROCHNYE = 'a|span|em|strong|b|i|small|abbr|time|cite|q';
 const atr = (tag, imya) => (tag.match(new RegExp(`\\s${imya}="([^"]*)"`, 'i')) || [])[1];
 const raskryt = (s) => B.tekstDokumenta(`<p>${s}</p>`).trim();
 
-function tekstStranicy(h, url) {
+function tekstStranicy(h, url, strochnyeNa = '') {
   const nachala = [...h.matchAll(/<main\b/gi)].length;
   if (nachala !== 1) throw new Error(`${url}: <main> — ${nachala}, нужен ровно один`);
   const main = h.slice(h.search(/<main\b/i), h.search(/<\/main>/i));
   const bezKoda = main.replace(/<script[\s\S]*?<\/script>/gi, ' ').replace(/<style[\s\S]*?<\/style>/gi, ' ').replace(/<!--[\s\S]*?-->/g, ' ');
   const alty = [...bezKoda.matchAll(/<img\b[^>]*>/gi)].map((m) => atr(m[0], 'alt')).filter(Boolean).map(raskryt);
   const vidimy = bezKoda
-    .replace(new RegExp(`</?(?:${STROCHNYE})\\b[^>]*>`, 'gi'), '')
+    .replace(new RegExp(`</?(?:${STROCHNYE})\\b[^>]*>`, 'gi'), strochnyeNa)
     .replace(new RegExp(`</?(?:${BLOCHNYE})\\b[^>]*>`, 'gi'), '\n')
     .replace(/<br\s*\/?>/gi, '\n');
   const stroki = B.tekstDokumenta(vidimy).split('\n').map((s) => s.replace(/\s+/g, ' ').trim()).filter(Boolean);
@@ -98,9 +103,10 @@ for (const url of ['/pc/', '/games-like-max-payne/', '/media/']) {
     h = h.slice(0, i) + kusok.join(' ') + ' ' + h.slice(i);
     console.log(`проба: в первый абзац /pc/ вставлено 12 слов документа ${d.url}, седьмое — в <a>`);
   }
-  let t;
+  let t, tProbel;
   try {
     t = tekstStranicy(h, url);
+    tProbel = tekstStranicy(h, url, ' ');
   } catch (e) {
     console.error(e.message);
     otkaz = true;
@@ -112,7 +118,9 @@ for (const url of ['/pc/', '/games-like-max-payne/', '/media/']) {
     otkaz = true;
     continue;
   }
-  const vse = [...t.stroki, ...t.dop];
+  // Оба варианта снятия строчных тегов; строки второго, совпавшие с первым, не повторяются.
+  const vplotnuyu = new Set(t.stroki);
+  const vse = [...t.stroki, ...tProbel.stroki.filter((s) => !vplotnuyu.has(s)), ...t.dop];
   const tekst = vse.join('\n');
   const naydeno = B.chuzhie(tekst, uk);
   vsego += naydeno.length;

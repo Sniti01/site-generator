@@ -8,9 +8,9 @@ rows:
     body:
       - >-
         The Max Payne 3 cover went public on March 7, 2012, two months before
-        the game reached shelves. It updates art first shown in fall 2011: a
-        scarred Max with São Paulo behind him, helicopters in the sky and a
-        woman from the city at his side.
+        the game reached shelves. It updates art first shown in fall 2011:
+        São Paulo and its helicopters behind a scarred Max, and a local woman
+        in the picture with him.
       - >-
         The series logo sits on Wikimedia Commons, taken from Remedy’s page for
         the remake and marked as a possible trademark. A font blog names
@@ -28,7 +28,8 @@ rows:
         less than animated cutscenes, worked better, could be reshuffled when
         the plot changed and let each player read a frame their own way. Sam
         Lake modeled for Max in the first game, actor Timothy Gibbs in the
-        second, where Max also gained a smirk after one fixed expression.
+        second, where a face stuck on one expression gained a wider range,
+        including a smirk and moving eyebrows.
       - >-
         Around the launch of Max Payne 3, a three-part comic series made with
         Marvel Custom Solutions went back over the first two games and Max’s
@@ -74,9 +75,9 @@ rows:
     body:
       - >-
         The debut trailer of Max Payne 3 came out on September 14, 2011. In
-        one TheGamer roundup of ten Max Payne memes, three are about
-        painkillers that heal gunshot wounds, and Tenor keeps a GIF of Max
-        yelling “goddamnit” from Max Payne 3.
+        one TheGamer roundup of ten Max Payne memes, three are about his
+        painkillers: pills that fix a gunshot wound, and how many he takes.
+        Tenor keeps a GIF of Max yelling “goddamnit” from Max Payne 3.
 related:
   title: More from the series
 cta:

@@ -9,6 +9,10 @@ const nabor = [
   ['/mods/', 1], ['/', 1], ['/max-payne-1/', 1], ['https://www.youtube.com/rockstargames', 1],
   ['//evil.example/x', 0], ['/\\evil.example/', 0], ['https://', 0], ['https:///mods/', 0], ['https://\\evil', 0],
   ['http://x.com/', 0], ['javascript:alert(1)', 0], ['mods/', 0], ['/ mods/', 0], [' /mods/', 0], ['/mods/\u00a0', 0],
+  // \u0440\u0430\u0443\u043d\u0434 2 (R2-MARSHRUT-1): \u0432\u043d\u0435\u0448\u043d\u0438\u0439 \u0430\u0434\u0440\u0435\u0441 \u0431\u0435\u0437 \u0445\u043e\u0441\u0442\u0430; \u0437\u0430\u043a\u043e\u043d\u043d\u044b\u0435 \u0444\u043e\u0440\u043c\u044b
+  ['https://?x', 0], ['https://#x', 0], ['https://:443/', 0], ['https://@/', 0], ['https://%2F/', 0], ['https://user@evil.example/', 0],
+  ['/?q=1', 1], ['/#top', 1], ['/mods/?a=1&b=2', 1], ['https://www.youtube.com/@RockstarGames', 1], ['https://store.steampowered.com/app/204100/', 1],
+  ['https://example.com:8443/x', 1], ['https://\u043f\u0440\u0438\u043c\u0435\u0440.\u0440\u0444/', 1],
 ];
 let plokho = 0;
 for (const [u, zhdem] of nabor) {

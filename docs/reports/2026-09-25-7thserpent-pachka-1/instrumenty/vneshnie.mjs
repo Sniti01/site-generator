@@ -15,13 +15,19 @@
 //   `\68` и `\"` раскрывается, строки внутри image-set(…), @import «…»;
 //   исполняемый JS (файлы .js/.mjs и <script> без type=application/ld+json и json) — любая
 //   строка вида http(s)://… или //… считается подозрением и печатается (эвристика, не разбор).
-//   Адрес нормализуется: пробелы по краям сняты, обратная косая → прямая (как у браузера:
-//   `/\host` = `//host`), схема — строчными.
+//   Адрес разбирается `new URL(адрес, страница сайта)` — парсером WHATWG, как у браузера
+//   (раунд 2; первая правка нормализовала руками: снимала пробелы и меняла `\` на `/`).
 // ПРЕДЕЛЫ (названы): ping у ссылок (уходит по щелчку); адреса, собранные скриптом из частей;
 // @font-face src с format() разбираются как url(…) — да, остальные дескрипторы — нет;
 // свой хост в абсолютной записи (https://www.7thserpent.com/…) считается своим, хотя при
 // локальной съёмке он ушёл бы на боевой сайт (R1-INSTR-8) — такие адреса печатаются
 // отдельной строкой, если они загрузки.
+// Раунд 2 («судью судят»), не чинится — у репозитория нет парсера HTML по стандарту, разбор
+// тегов — регулярными выражениями: повтор атрибута (браузер берёт первый, инструмент — последний),
+// `<!-->`, `--!>`, `</script x>`, тип скрипта ищется по всей строке атрибутов (R2-INSTR-11, -12);
+// meta refresh без `url=`, обработчики `on…=`, `iframe srcdoc`, адреса `data:` (R2-INSTR-14).
+// Основной довод «внешних загрузок нет» — браузерная проверка (performance, zamery/vneshnie-zaprosy.json);
+// этот разбор — вторая, статическая линия.
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, extname } from 'node:path';
 
@@ -34,16 +40,22 @@ const files = [];
 const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : files.push(p); } };
 walk(dist);
 
-const SUSHCH = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", colon: ':', sol: '/', bsol: '\\', period: '.', nbsp: ' ' };
+const SUSHCH = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", colon: ':', sol: '/', bsol: '\\', period: '.', nbsp: ' ', tab: '\t', newline: '\n' };
 const raskryt = (s) => s.replace(/&(#x[0-9a-f]+|#\d+|[a-z]+);?/gi, (m, k) => {
   if (k[0] === '#') { const n = k[1].toLowerCase() === 'x' ? parseInt(k.slice(2), 16) : Number(k.slice(1)); try { return String.fromCodePoint(n); } catch { return m; } }
   return SUSHCH[k.toLowerCase()] ?? m;
 });
 const cssRaskryt = (s) => s.replace(/\\([0-9a-f]{1,6})\s?/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/\\(.)/g, '$1');
-const norm = (u) => u.trim().replace(/\\/g, '/').replace(/^[a-z][a-z0-9+.-]*:/i, (m) => m.toLowerCase());
-const SVOY = /^(?:https?:)?\/\/(?:www\.)?7thserpent\.com(?:[:/?#]|$)/i;
-const vneshniy = (u) => { const n = norm(u); return /^(?:https?:)?\/\//i.test(n) && !SVOY.test(n); };
-const svoyAbs = (u) => SVOY.test(norm(u));
+// Адрес разбирается парсером WHATWG (`new URL`) против адреса страницы сайта — так же, как его
+// разберёт браузер: управляющие знаки и пробелы по краям снимаются, табы и переводы строк внутри
+// выбрасываются, `\` читается как `/`, `http:host` на https-странице — внешний, userinfo не
+// маскирует хост («судью судят», раунд 2, R2-INSTR-8, -9, -10). Внешний — схема http(s) и хост
+// не 7thserpent.com / www.7thserpent.com. Не разбирается — не загрузка (браузер не пойдёт).
+const BAZA = 'https://www.7thserpent.com/pc/';
+const SVOI_HOSTY = new Set(['www.7thserpent.com', '7thserpent.com']);
+const razobrat = (u) => { try { return new URL(u, BAZA); } catch { return null; } };
+const vneshniy = (u) => { const r = razobrat(u); return !!r && (r.protocol === 'http:' || r.protocol === 'https:') && !SVOI_HOSTY.has(r.hostname); };
+const svoyAbs = (u) => { const r = razobrat(u); return !!r && SVOI_HOSTY.has(r.hostname) && /^[\x00-\x20]*(?:[a-z][a-z0-9+.-]*:|[/\\]{2})/i.test(u); };
 
 const zagruzki = [], svoiAbs = [], ssylki = [], podozrenia = [];
 const zapis = (f, chto, u) => {
@@ -53,10 +65,11 @@ const zapis = (f, chto, u) => {
 const srcsetAdresa = (v) => v.split(',').map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
 
 function css(f, t, gde) {
-  const r = cssRaskryt(t);
+  // Комментарии CSS снимаются до поиска: `@import/**/"…"` (раунд 2, R2-INSTR-13).
+  const r = cssRaskryt(t.replace(/\/\*[\s\S]*?\*\//g, ' '));
   for (const m of r.matchAll(/url\(\s*(?:"([^"]*)"|'([^']*)'|([^)]*?))\s*\)/gi)) zapis(f, `${gde} url()`, m[1] ?? m[2] ?? m[3] ?? '');
   for (const m of r.matchAll(/image-set\(([^;{}]*)\)/gi)) for (const s of m[1].matchAll(/"([^"]*)"|'([^']*)'/g)) zapis(f, `${gde} image-set`, s[1] ?? s[2]);
-  for (const m of r.matchAll(/@import\s+(?:url\()?\s*["']?([^"')\s;]+)/gi)) zapis(f, `${gde} @import`, m[1]);
+  for (const m of r.matchAll(/@import\s*(?:url\()?\s*["']?([^"')\s;]+)/gi)) zapis(f, `${gde} @import`, m[1]);
 }
 function js(f, t, gde) {
   for (const m of t.matchAll(/["'`]((?:https?:)?\/\/[^"'`\s]+)["'`]/gi)) if (vneshniy(m[1])) podozrenia.push(`${f}: ${gde} строка ${m[1]}`);
@@ -86,7 +99,9 @@ for (const f of files) {
     const chto = (imya) => `<${tag} ${imya}>`;
     for (const imya of ['src', 'data', 'poster', 'background']) if (at[imya] !== undefined) zapis(rel, chto(imya), at[imya]);
     for (const imya of ['srcset', 'imagesrcset']) if (at[imya] !== undefined) for (const u of srcsetAdresa(at[imya])) zapis(rel, chto(imya), u);
-    if (at.style) css(rel, at.style, chto('style'));
+    // url() — в значении любого атрибута: style и презентационные атрибуты SVG (fill, filter,
+    // mask, clip-path…) — раунд 2, R2-INSTR-7 (первая редакция искала url( по всему HTML).
+    for (const [imya, v] of Object.entries(at)) if (/url\s*\(|@import/i.test(v)) css(rel, v, chto(imya));
     const href = at.href ?? at['xlink:href'];
     if (href !== undefined) {
       if (tag === 'a' || tag === 'area') {

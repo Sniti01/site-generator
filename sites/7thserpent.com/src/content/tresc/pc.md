@@ -7,12 +7,12 @@ rows:
     meta: The official list on Rockstar Support, last updated March 21, 2024
     body:
       - >-
-        Rockstar’s page gives one block of minimum requirements, each part a
-        range. The low end: 64-bit Windows 10, an Intel
-        dual-core at 2.4 GHz or an AMD dual-core at 2.6 GHz, 2 GB of RAM and a
-        512 MB card such as the NVIDIA 8600 GT or the Radeon HD 3400. The high
-        end: an Intel i7 3930K or an AMD FX-8150 with a GeForce GTX 680 (2 GB)
-        or a Radeon HD 7970 (3 GB). The install takes 35 GB.
+        Rockstar’s page lists minimum requirements only: 64-bit Windows 10,
+        2 GB of RAM and 35 GB of disk, with processor and graphics card as
+        ranges: from an Intel dual-core at 2.4 GHz or an AMD
+        dual-core at 2.6 GHz with a 512 MB card such as the NVIDIA 8600 GT or
+        the Radeon HD 3400, up to an Intel i7 3930K or an AMD FX-8150 with a
+        GeForce GTX 680 (2 GB) or a Radeon HD 7970 (3 GB).
       - >-
         As of September 2026 the game also needs a Rockstar Games account: you
         sign in to install it, activation goes online, and the Rockstar Games
@@ -45,8 +45,8 @@ rows:
         Payne Sound Fix: unpack it into the game folder and run MaxBatch.bat.
         Special Agent Squeaky’s guide for the Steam version swaps in three
         sound files instead; a player confirmed it on Windows 11 in October
-        2025. The patch’s author now points players to an all-in-one fix,
-        updated regularly.
+        2025. The patch’s author has since called it obsolete and, that
+        October, pointed players to a newer all-in-one fix.
       - >-
         The game ignores a frame-rate limit set in the Nvidia control panel,
         so one player’s recipe adds the dgVoodoo 2 wrapper and a startup-hang
@@ -55,10 +55,10 @@ rows:
         a 1080p patch and a 60 fps limit.
       - >-
         In the game’s setup screen, leave antialiasing off: it causes white
-        shapes on textures and can stop the game after the opening cutscene.
-        On Windows 10 and 11, turn on Enable Task Switching there, and keep the
-        game folder name to letters and numbers. A CD copy needs patch 1.05
-        first.
+        shapes on textures, and a Steam guide suggests it when the game will
+        not get past the opening cutscene. On Windows 10 and 11, turn on Enable
+        Task Switching there, and keep the game folder name to letters and
+        numbers.
   - id: widescreen
     year: Widescreen
     title: Widescreen and resolution
@@ -82,10 +82,10 @@ rows:
     body:
       - >-
         On PC, Max Payne and Max Payne 2 read only the keyboard and mouse. A
-        gamepad works through Steam, in Big Picture mode with a community
-        profile or with the Controller Companion app and a Workshop layout. It
-        is a mapping, not real support: in Max Payne 2 the game keeps running
-        while you pick a weapon.
+        gamepad works through Steam’s Big Picture mode with a community
+        profile; for Max Payne 2, a player in 2023 also suggested the
+        Controller Companion app. It is a mapping, not real support: in Max
+        Payne 2 the game keeps running while you pick a weapon.
       - >-
         Max Payne 3 supports gamepads itself. Its Gamepad Targeting setting
         offers Hard Lock and Soft Lock, which pull the reticle toward enemies,

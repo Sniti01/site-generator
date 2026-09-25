@@ -10,7 +10,8 @@
 //   node proby-p1.mjs --tolko-dist — только сверка `dist/`
 //
 // СТАРТ: подменяемые файлы обязаны совпадать с индексом git (как у проб договора); временная
-// папка сборки — `.astro/dist-proba-p1` (в .gitignore сайта — `.astro/`). Пока идут пробы,
+// папка сборки — `.astro/dist-proba-p1` (правило `.astro/` — в корневом .gitignore репозитория,
+// действует на любой глубине). Пока идут пробы,
 // сборки, `tree:check`, `glowa`, пробы договора и коммиты не запускать. Ctrl+C не нажимать:
 // прерванный прогон — `git diff` и `git checkout -- <файл>`.
 // ОТРИЦАТЕЛЬНАЯ проба ждёт ненулевой код и все свои строки в выводе сборки.
@@ -106,21 +107,44 @@ if (!tolkoDist) {
 }
 
 // — сверка собранных страниц dist/ (или `--dist <папка>` — копия сборки, для проб самой сверки) —
+// Раунд 2 «судью судят»: кадры — по ключам в напечатанных <img src> и в порядке рядов (R2-MARSHRUT-3);
+// нота — только внутри p.ft__art-note подвала (-4); адрес кнопки сравнивается после раскрытия
+// сущностей (-6); файлы содержания — по всему дереву, как у загрузчика `**/*.md` (-7); свежесть —
+// заголовки рядов и призыва из файла содержания обязаны стоять в HTML страницы (-8: старая сборка
+// с прежними текстами — отказ, а не «ok»). Файл содержания разбирается пакетом `yaml` (тот же
+// YAML 1.2, что у загрузчика Astro), а не регулярками.
 const iDist = process.argv.indexOf('--dist');
 const dist = iDist >= 0 ? process.argv[iDist + 1] : join(root, 'dist');
 if (!existsSync(dist)) { console.error('нет dist/ сайта — сначала npm run build'); process.exit(2); }
+const { parse: yamlParse } = await import('yaml');
 const struktura = JSON.parse(readFileSync(P.struktura, 'utf8'));
 const kredity = JSON.parse(readFileSync(join(root, 'src/data/game-art.json'), 'utf8'));
 const tresc = join(root, 'src/content/tresc');
+const mdFajly = [];
+const obkhod = (d) => { for (const x of readdirSync(d, { withFileTypes: true })) { const p = join(d, x.name); if (x.isDirectory()) obkhod(p); else if (x.name.endsWith('.md')) mdFajly.push(p); } };
+obkhod(tresc);
+const raskryt = (s) => s.replace(/&(#x[0-9a-f]+|#\d+|amp|lt|gt|quot|apos|nbsp);/gi, (m, k) => {
+  if (k[0] === '#') return String.fromCodePoint(k[1].toLowerCase() === 'x' ? parseInt(k.slice(2), 16) : Number(k.slice(1)));
+  return { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' }[k.toLowerCase()];
+});
 let stranic = 0;
-for (const f of readdirSync(tresc).filter((x) => x.endsWith('.md'))) {
-  const md = readFileSync(join(tresc, f), 'utf8');
-  const url = (md.match(/^url: (\S+)$/m) || [])[1];
+for (const f of mdFajly) {
+  const md = readFileSync(f, 'utf8');
+  const fm = md.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  const dane = fm ? yamlParse(fm[1]) : null;
+  const url = dane?.url;
   const page = struktura.pages.find((p) => p.url === url);
-  const html = readFileSync(join(dist, url.slice(1), 'index.html'), 'utf8');
-  const main = html.slice(html.search(/<main\b/), html.search(/<\/main>/));
   const zam = [];
   stranic += 1;
+  if (!page) { console.log(`ПЛОХО dist ${f}: адрес ${url} не в структуре`); plokho += 1; continue; }
+  const htmlF = join(dist, url.slice(1), 'index.html');
+  if (!existsSync(htmlF)) { console.log(`ПЛОХО dist ${url}: страницы нет в сборке`); plokho += 1; continue; }
+  const html = readFileSync(htmlF, 'utf8');
+  const main = html.slice(html.search(/<main\b/), html.search(/<\/main>/));
+  const tekstHtml = raskryt(html);
+  // свежесть: заголовки рядов и призыва — в HTML
+  const rows = dane.rows ?? [];
+  for (const t of [...rows.map((r) => r.title), dane.cta?.title].filter(Boolean)) if (!tekstHtml.includes(t)) zam.push(`в HTML нет заголовка «${t}» из файла содержания — сборка старая или печать разошлась`);
   // призыв
   const ctaObyavlen = page.blocks.some((b) => b.block === 'cta-band');
   const sekcii = [...main.matchAll(/<section class="([^"]*)"/g)].map((m) => m[1]);
@@ -128,25 +152,27 @@ for (const f of readdirSync(tresc).filter((x) => x.endsWith('.md'))) {
   if (ctaObyavlen) {
     if (ctaN !== 1) zam.push(`призывов ${ctaN}, ждали 1`);
     else if (!sekcii[sekcii.length - 1].split(/\s+/).includes('cta')) zam.push('призыв не последний блок <main>');
-    const hrefMd = (md.match(/^cta:\n(?:  .*\n)*?  href: (\S+)$/m) || [])[1];
     const knopka = (main.match(/<a[^>]*class="btn btn-primary[^"]*cta__btn[^"]*"[^>]*>/) || [''])[0];
-    const hrefHtml = (knopka.match(/href="([^"]*)"/) || [])[1];
-    if (!hrefMd || hrefHtml !== hrefMd) zam.push(`кнопка призыва ведёт на ${hrefHtml}, в содержании ${hrefMd}`);
+    const hrefHtml = raskryt((knopka.match(/href="([^"]*)"/) || [])[1] ?? '');
+    if (!dane.cta?.href || hrefHtml !== dane.cta.href) zam.push(`кнопка призыва ведёт на ${hrefHtml}, в содержании ${dane.cta?.href}`);
   } else if (ctaN !== 0) zam.push(`призыв напечатан (${ctaN}), а блока нет`);
-  // кадры и нота
-  const klyuchiMd = [...md.matchAll(/^    art: (\S+)$/gm)].map((m) => m[1]);
-  const kadrov = [...main.matchAll(/<div class="foto kadr-ryadu"/g)].length;
-  if (kadrov !== klyuchiMd.length) zam.push(`кадров ${kadrov}, рядов с art ${klyuchiMd.length}`);
-  const nota = html.match(/Games: ([^<.]+)\./);
+  // кадры: ключи напечатанных картинок в порядке рядов
+  const klyuchiMd = rows.map((r) => r.art).filter(Boolean);
+  const kadry = [...main.matchAll(/<div class="foto kadr-ryadu"[^>]*>\s*<img\b[^>]*\bsrc="([^"]*)"/g)].map((m) => (m[1].match(/\/_astro\/([a-z0-9-]+)\./) || [])[1] ?? '?');
+  if (kadry.join(',') !== klyuchiMd.join(',')) zam.push(`кадры страницы [${kadry.join(', ')}] ≠ ключи рядов [${klyuchiMd.join(', ')}]`);
+  // нота подвала — только внутри p.ft__art-note
+  const noty = [...html.matchAll(/<p class="ft__art-note[^"]*"[^>]*>([\s\S]*?)<\/p>/g)].map((m) => raskryt(m[1]).replace(/\s+/g, ' '));
+  const igryNoty = (noty.join(' ').match(/Games: ([^.]+)\./) || [])[1];
+  const klass = noty.some((n) => /License class: /.test(n));
   const igryKadrov = [...new Set(klyuchiMd.map((k) => kredity[k]?.game))].sort();
-  if (klyuchiMd.length === 0 && nota) zam.push('кадров нет, а нота об арте есть');
+  if (klyuchiMd.length === 0 && noty.length) zam.push('кадров нет, а нота об арте есть');
   if (klyuchiMd.length > 0) {
-    if (!nota) zam.push('кадры есть, а ноты об арте нет');
-    else if (nota[1].split(', ').sort().join('|') !== igryKadrov.join('|')) zam.push(`игры ноты «${nota[1]}» ≠ игры кадров «${igryKadrov.join(', ')}»`);
-    if (!/License class: /.test(html)) zam.push('нет строки класса лицензии');
+    if (!igryNoty) zam.push('кадры есть, а ноты об арте нет');
+    else if (igryNoty.split(', ').sort().join('|') !== igryKadrov.join('|')) zam.push(`игры ноты «${igryNoty}» ≠ игры кадров «${igryKadrov.join(', ')}»`);
+    if (!klass) zam.push('нет строки класса лицензии');
   }
   if (zam.length) plokho += 1;
-  console.log(`${zam.length ? 'ПЛОХО' : 'ok   '} dist ${url.padEnd(24)} призыв ${ctaObyavlen ? 'объявлен' : 'нет'}, кадров ${kadrov}${nota ? ', нота: ' + nota[1] : ''}`);
+  console.log(`${zam.length ? 'ПЛОХО' : 'ok   '} dist ${url.padEnd(24)} призыв ${ctaObyavlen ? 'объявлен' : 'нет'}, кадров ${kadry.length}${igryNoty ? ', нота: ' + igryNoty : ''}`);
   for (const z of zam) console.log('      ' + z);
 }
 if (!stranic) { console.error('страниц маршрута не найдено'); process.exit(2); }

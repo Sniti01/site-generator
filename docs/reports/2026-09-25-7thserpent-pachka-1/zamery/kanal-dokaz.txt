@@ -1,0 +1,6 @@
+http://store.rockstargames.com/game/buy-max-payne-3 (снимок 2026-09-18T13:49:03.604Z, файл raw/store.rockstargames.com/8b73094e0cdacb8f.html.gz):
+  адреса youtube.com в разметке: https://www.youtube.com/iframe_api, https://www.youtube.com/rockstargames
+  ссылка: https://www.youtube.com/rockstargames — подпись «YouTube»
+https://support.rockstargames.com/articles/4WfWrkEJIqfJrPvUIaP1Qs/max-payne-3-pc-system-requirements (снимок 2026-09-18T13:51:12.238Z, файл raw/support.rockstargames.com/5be107dc05b4e454.html.gz):
+  адреса youtube.com в разметке: —
+итог: https://www.youtube.com/rockstargames — ссылка <a> с подписью «YouTube» на странице магазина издателя

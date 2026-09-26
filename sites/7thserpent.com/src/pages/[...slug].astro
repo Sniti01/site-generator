@@ -379,8 +379,12 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
        правило `sizes` главной (`HomeHero.astro`): баннер около 3:1 при
        `object-fit: cover`; лестницу Astro обрезает по мастеру (1920 у `mp2-art`
        и `mp3-art`, бэклог 59 п. 2 — растяжение числом в докладе). Подпись
-       кадра — место `podpis` у `SmartImage` (`.foto__credit` ядра, `credit.css`:
-       своя подложка поверх кадра, правый верхний угол). */
+       кадра — место `dopisek` героя ядра (П91 «Как прочитано» п. 5): в DOM
+       после скрима и колонки текста, поэтому рисуется поверх скрима, а чтец
+       экрана читает её после `h1`. Первая редакция клала её местом `podpis`
+       у `SmartImage` (`.foto__credit`) — внутри рамки арта, ПОД скримом: на
+       641–1024 px подпись почти исчезала («судью судят», раунд 1,
+       P2-R1-MARSHRUT-1). */
     geroyPechati ? (
       <div
         class:list={['geroy', !kluchevoyArt && 'geroy--stal']}
@@ -402,11 +406,10 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
             sizes="(max-width: 1024px) 200vw, 170vw"
             loading="eager"
             quality={80}
-          >
-            {geroyPechati.podpis && <Fragment slot="podpis">{geroyPechati.podpis}</Fragment>}
-          </SmartImage>
+          />
           <Fragment slot="lead">{geroyPechati.lead}</Fragment>
           <Icon slot="ikona-glowna" name={ikonaGlavnoy} size={18} />
+          {geroyPechati.podpis && <p class="podpis-geroya t-caption" slot="dopisek">{geroyPechati.podpis}</p>}
         </HeroKeyArt>
       </div>
     ) : (
@@ -552,10 +555,12 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
 
   /* 641–1024 px: ядро сдвигает арт под колонку текста (`inset: 0 -20% 0 20%`,
      прозрачность 0,75), а колонка занимает всю ширину — скрим держит текст
-     по всей ширине, арт виден приглушённым. Подпись кадра (`.foto__credit`,
-     правый верхний угол `.foto`) уехала бы вместе с артом за правый край
-     окна — на этих ширинах она отступает на те же 20 %. */
-  @media (min-width: 641px) and (max-width: 1024px) {
+     по всей ширине, арт виден приглушённым. Диапазон записан синтаксисом
+     сравнения: при масштабе страницы ширина бывает дробной, и пара
+     `max-width: 640px` / `min-width: 641px` оставляла щель 640–641 px, где
+     действовала раскладка ядра ≤1024 без этого скрима (раунд 1,
+     P2-R1-MARSHRUT-5); граница совпадает с `max-width: 640px` ядра. */
+  @media (640px < width <= 1024px) {
     .geroy :global(.hero__scrim) {
       background:
         linear-gradient(
@@ -566,15 +571,29 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
         ),
         linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
     }
+  }
 
-    .geroy :global(.hero__art .foto__credit) {
-      right: 20%;
-    }
+  /* Подпись кадра героя (место `dopisek` ядра; `/remake/`: кадр оригинала).
+     Правый верхний угол героя — над артом на любой ширине (до 640 px арт —
+     полоса сверху), поверх скрима: `z-index` 1, как у колонки текста ядра,
+     и позже её в DOM. Подложка — та же, что у подписи кадра ядра
+     (`credit.css`: `--bg` 78 %), роль — `.t-caption`, цвет — `--ink-muted`;
+     новых токенов и ролей нет. */
+  .podpis-geroya {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    max-width: 100%;
+    margin: 0;
+    padding: var(--space-3xs) var(--space-xs);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
+    color: var(--ink-muted);
   }
 
   /* До 640 px ядро складывает героя: арт полосой сверху, текст ниже на фоне;
      скрим — доли ядра, цвет — от токена, как у героя главной. */
-  @media (max-width: 640px) {
+  @media (width <= 640px) {
     .geroy :global(.hero__scrim) {
       background: linear-gradient(
         0deg,

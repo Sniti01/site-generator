@@ -40,7 +40,8 @@ import { z } from 'zod';
  * пустые `year`, `title`, `meta` и абзацы печатали пустые элементы — тихие
  * заглушки без отказа. Края строки срезаются.
  * Пределы (раунд 2): невидимые знаки вне класса пробельных (U+200B, мягкий
- * перенос, U+2060) проходят и печатают «пустой» элемент (R2-MARSHRUT-3); ряд
+ * перенос, U+2060, U+180E) проходят и печатают «пустой» элемент (R2-MARSHRUT-3;
+ * с пачки 2 — и у полей героя и подписи, P2-R1-MARSHRUT-8); ряд
  * без надзаголовка или меты невыразим — `year` и `meta` обязательны, как у
  * первого сайта; решение — с первой страницей, где ряду они не нужны
  * (`/privacy/`, публикация) (R2-MARSHRUT-5).
@@ -57,14 +58,17 @@ const klyuchKadra = () => z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
  * `href` — якорь раздела этой страницы (`#id` ряда, kebab) или адрес от корня
  * сайта; адрес от корня не начинается с `//` или `/\` (браузер увёл бы такой
  * адрес на чужой хост — тот же запрет, что у `cta.href`, R1-MARSHRUT-1 пачки 1),
- * пробелов нет. Внешних адресов у кнопок героя нет: первый экран ведёт внутрь
- * сайта. Что якорь есть на странице, судит сторож `anchors` после сборки, что
- * адрес есть в структуре — сторож `links`.
+ * пробелов и `#` в нём нет: якорь на ДРУГОЙ странице (`/max-payne-1/#where`)
+ * не судит никто — `anchors` смотрит только адреса из одного `#…`, `links`
+ * отрезает фрагмент («судью судят», раунд 1, P2-R1-MARSHRUT-7). Внешних адресов
+ * у кнопок героя нет: первый экран ведёт внутрь сайта. Что якорь есть на
+ * странице, судит сторож `anchors` после сборки, что адрес есть в структуре —
+ * сторож `links`.
  */
 const knopka = () =>
   z
     .object({
-      href: z.string().regex(/^(?:#[a-z0-9]+(?:-[a-z0-9]+)*|\/(?![/\\])\S*)$/),
+      href: z.string().regex(/^(?:#[a-z0-9]+(?:-[a-z0-9]+)*|\/(?![/\\])[^\s#]*)$/),
       label: tekst(),
     })
     .strict();
@@ -89,7 +93,7 @@ export const collections = {
            страницы. `artFocus` — кадровка арта (`object-position`: «x% y%»),
            нет поля — середина кадра. `artCaption` — подпись кадра, когда на нём
            не игра страницы (`/remake/`: кадр оригинала, П91 п. 4–5); печатается
-           местом `podpis` у `SmartImage` ядра (`.foto__credit`). */
+           местом `dopisek` героя ядра, ролью `.t-caption` (маршрут). */
         art: klyuchKadra().optional(),
         artFocus: z.string().regex(/^(?:100|[1-9]?\d)% (?:100|[1-9]?\d)%$/).optional(),
         artCaption: tekst().optional(),
@@ -98,8 +102,12 @@ export const collections = {
         secondary: knopka().optional(),
 
         /* — byline (пачка 2, П91) — поля первого сайта. `date` — машинная дата
-           для `<time datetime>`: календарная дата ГГГГ-ММ-ДД (31 февраля — отказ);
-           `dateLabel` — та же дата словами; `role` — приписка перед автором. */
+           для `<time datetime>`: календарная дата ГГГГ-ММ-ДД (31 февраля — отказ),
+           не раньше 2000 года и не позже дня сборки; `dateLabel` — та же дата
+           словами, ровно так, как её пишет американский английский («September
+           26, 2026»), — иначе машинная и видимая даты расходились бы без отказа
+           («судью судят», раунд 1, P2-R1-MARSHRUT-4); `role` — приписка перед
+           автором. */
         byline: z
           .object({
             author: tekst(),
@@ -114,6 +122,14 @@ export const collections = {
             role: tekst().optional(),
           })
           .strict()
+          .superRefine((b, ctx) => {
+            const d = new Date(`${b.date}T00:00:00Z`);
+            if (Number.isNaN(d.getTime())) return;
+            if (d.getUTCFullYear() < 2000) ctx.addIssue({ code: 'custom', path: ['date'], message: 'дата подписи раньше 2000 года' });
+            if (d.getTime() > Date.now()) ctx.addIssue({ code: 'custom', path: ['date'], message: 'дата подписи позже дня сборки' });
+            const slovami = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(d);
+            if (b.dateLabel !== slovami) ctx.addIssue({ code: 'custom', path: ['dateLabel'], message: `не та же дата словами: ждали «${slovami}»` });
+          })
           .optional(),
 
         /* — story-row, по записи на ряд —

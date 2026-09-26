@@ -23,7 +23,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - —
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
-- `byline` — manual, high. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `byline` — manual, high. printed by the route
 - `story-row` — type-default, low. printed by the route
 
 **Open for this page:** Text — at publication (П63 п. 5, П85 п. 6): US privacy facts and the site mailbox are the owner’s; this brief is kept for that session.

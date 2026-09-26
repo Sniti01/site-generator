@@ -27,8 +27,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/remake/` — Max Payne 1 & 2 Remake: release date, platforms and news
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
-- `hero-key-art` — type-default, low. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
-- `byline` — anatomy, medium, evidence 3/7. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `hero-key-art` — type-default, low. printed by the route
+- `byline` — anatomy, medium, evidence 3/7. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
 - `cta-band` — type-default, low. printed by the route

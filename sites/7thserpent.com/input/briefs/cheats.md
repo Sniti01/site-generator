@@ -27,7 +27,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
-- `byline` — anatomy, medium, evidence 13/30. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)
+- `byline` — anatomy, medium, evidence 13/30. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
 - `cta-band` — type-default, low. printed by the route

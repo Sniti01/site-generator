@@ -222,11 +222,13 @@ const PROBY = [
   {
     // Страница без link-list, в чьём related — страница типа без приписки: VID
     // не спрашивается (раунд 1, R1-MARSHRUT-9; проба — раунд 2, R2-MARSHRUT-2).
+    // Заместитель (П91 п. 0в): связанная — /404/, её нет в related ни одной страницы
+    // дерева; /movie/ стоит в related у /max-payne-1/, собранной с пачки 2.
     id: 'P6', imya: 'related без link-list: вид связанной страницы не спрашивается', sudya: 'pokrewne только при link-list',
     fajly: {
       [P.struktura]: strukturaS({
-        '/privacy/': (p) => { p.blocks = bloki('story-row'); p.related = ['/movie/']; },
-        '/movie/': (p) => { p.type = 'proba'; },
+        '/privacy/': (p) => { p.blocks = bloki('story-row'); p.related = ['/404/']; },
+        '/404/': (p) => { p.type = 'proba'; },
       }),
       [P.vremenny]: vremenny('/privacy/'),
     },

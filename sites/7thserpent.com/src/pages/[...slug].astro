@@ -13,19 +13,22 @@
  * ГЛАВНАЯ ЗДЕСЬ НЕ ЖИВЁТ: у неё свой шаблон (`index.astro`, как у первого
  * сайта, П32 п. 4) и свой эталон. Файл содержания с адресом `/` — отказ.
  *
- * ЧТО МАРШРУТ ПЕЧАТАЕТ. Три ветви — `story-row` (с вхождениями по роли;
- * ряд с кадром или без), `link-list` и `cta-band`. Пачка 0: `story-row`
- * без кадра и `link-list`, стенд — `/404/` (П85 п. 6); вхождения по роли
- * на нём не стоят и держатся положительной пробой P2 `tools/proby-tresci.mjs`.
- * Пачка 1 (П89): `cta-band` — первая страница формы `/pc/`, кадр ряда —
- * `/media/` (ответ владельца 2 в П89); ветвь без страницы и без пробы
+ * ЧТО МАРШРУТ ПЕЧАТАЕТ. Пять ветвей — `hero-key-art`, `byline`, `story-row`
+ * (с вхождениями по роли; ряд с кадром или без), `link-list` и `cta-band`.
+ * Пачка 0: `story-row` без кадра и `link-list`, стенд — `/404/` (П85 п. 6);
+ * вхождения по роли на нём не стоят и держатся положительной пробой P2
+ * `tools/proby-tresci.mjs`. Пачка 1 (П89): `cta-band` — первая страница формы
+ * `/pc/`, кадр ряда — `/media/` (ответ владельца 2 в П89). Пачка 2 (П91):
+ * `hero-key-art` — первая страница формы `/max-payne-3/`, `byline` —
+ * `/max-payne-2/`; вхождения по роли — `/max-payne-1/` (`story-row#mobile`)
+ * и `/remake/` (`story-row#max-payne-4`). Ветвь без страницы и без пробы
  * не пишется. Условие `gotowy` в списке печати держит форму первого сайта:
- * все три блока маршрута в ядре есть, и пробой его не достать без правки
- * словаря ядра. Остальные блоки дерева, которые ядро умеет
- * (`hero-key-art`, `byline`, `gallery`), приходят ветвью вместе
- * с первой страницей своей формы — со стопом на глаза владельца (план P4
- * в докладе сессии 12). Страница, объявившая такой блок, не собирается,
- * и отказ говорит именно это — «ветви нет», а не «нет содержания».
+ * все пять блоков маршрута в ядре есть, и пробой его не достать без правки
+ * словаря ядра. Остальные блоки дерева, которые ядро умеет (`gallery`),
+ * приходят ветвью вместе с первой страницей своей формы — со стопом на глаза
+ * владельца (план P4 в докладе сессии 12). Страница, объявившая такой блок,
+ * не собирается, и отказ говорит именно это — «ветви нет», а не «нет
+ * содержания».
  *
  * БЛОК, КОТОРОГО НЕТ В ЯДРЕ, ПРОПУСКАЕТСЯ ГРОМКО. Готовность — поле
  * `реализован` в `core/structure/blocks.json`, а не список в этом файле.
@@ -48,8 +51,10 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { getPage } from '../lib/structure';
-import { kadr } from '../data/media';
+import { kadr, credits } from '../data/media';
 import slownik from '@factory/core/structure/blocks.json';
+import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
+import Byline from '@factory/core/blocks/Byline.astro';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import CtaBand from '@factory/core/blocks/CtaBand.astro';
@@ -124,6 +129,15 @@ if (powtory.length) {
  * схемы — или поле страницы, или поле блока, третьего ящика нет.
  */
 const POLE_BLOKA: Record<string, string> = {
+  // Арт героя, его кадровка и подпись — поля героя, а не страницы, как
+  // `art` у первого сайта: кадр страницы здесь печатает только герой (П91).
+  art: 'hero-key-art',
+  artFocus: 'hero-key-art',
+  artCaption: 'hero-key-art',
+  lead: 'hero-key-art',
+  primary: 'hero-key-art',
+  secondary: 'hero-key-art',
+  byline: 'byline',
   rows: 'story-row',
   related: 'link-list',
   cta: 'cta-band',
@@ -149,6 +163,36 @@ if (bezBloka.length) {
       '\nУберите поле из файла содержания или объявите блок в структуре — поле, которого никто не печатает, — тихая заглушка.'
   );
 }
+
+/**
+ * ГЕРОЙ — ЧЕТЫРЕ ПОЛЯ РАЗОМ ИЛИ НИЧЕГО (форма первого сайта, бэклог 28, П52
+ * п. 5): `lead`, `primary`, `secondary` — и `art`, потому что у этого сайта
+ * запасной графики нет (П85 п. 2) и герой без кадра — скрим над пустотой,
+ * форма, которой владелец не видел. Страница, объявившая `hero-key-art`
+ * без полного набора, не собирается, и отказ называет поле раньше общей
+ * сверки «blocks[] и печать разошлись», которая сказала бы только «без
+ * содержания». Поля героя без блока ловит проверка «поле без блока» выше.
+ */
+const POLYA_GEROYA = ['lead', 'primary', 'secondary', 'art'];
+const geroyBez = POLYA_GEROYA.filter((pole) => !est_pole(pole));
+if (obyavleny.has('hero-key-art') && geroyBez.length) {
+  throw new Error(
+    'Блок hero-key-art объявлен на ' + strona.url + ', а в содержании нет: ' + geroyBez.map((p) => '`' + p + '`').join(', ') + '.\n' +
+      'Герой печатается только полным набором `lead`, `primary`, `secondary` и `art` — допишите поля или снимите блок в структуре.'
+  );
+}
+const geroy =
+  dane.lead && dane.primary && dane.secondary && dane.art
+    ? {
+        lead: dane.lead,
+        primary: dane.primary,
+        secondary: dane.secondary,
+        kadr: kadr(dane.art), // ключ без файла или записи прерывает сборку здесь, до разметки
+        klyuch: dane.art,
+        fokus: dane.artFocus,
+        podpis: dane.artCaption,
+      }
+    : undefined;
 
 /**
  * РОЛЬ УМЕЕТ ОДИН БЛОК — `story-row`, и остальные разбиваются об это ГРОМКО
@@ -190,7 +234,7 @@ if (ryadyBezVkhozhdeniya.length) {
  * который ядро умеет, а шаблон не печатает, — отказ «ветви нет» (не тихий
  * пропуск и не «нет содержания»): ветвь приходит с первой страницей формы.
  */
-const PORYADOK = ['story-row', 'link-list', 'cta-band'];
+const PORYADOK = ['hero-key-art', 'byline', 'story-row', 'link-list', 'cta-band'];
 const bezVetvi = wystapienia.filter((b) => gotowy(b.block) && !PORYADOK.includes(b.block)).map(klucz);
 if (bezVetvi.length) {
   throw new Error(
@@ -239,6 +283,8 @@ const ryadyDlya = (role?: string) => dane.rows.filter((r) => rolOf(r.role) === r
  * в условиях печати ниже: список и печать считаются из одного источника.
  */
 const maTresc: Record<string, (role?: string) => boolean> = {
+  'hero-key-art': () => Boolean(geroy),
+  byline: () => Boolean(dane.byline),
   'story-row': (role) => ryadyDlya(role).length > 0,
   'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
   'cta-band': () => Boolean(dane.cta),
@@ -264,6 +310,7 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
       ? [pokrewne.length === 0 && 'related структуры пуст', !dane.related && 'нет заголовка related в содержании']
       : []),
     ...(brakujace.includes('cta-band') ? ['нет поля cta в содержании'] : []),
+    ...(brakujace.includes('byline') ? ['нет поля byline в содержании'] : []),
   ].filter(Boolean);
   const pustoVStrukture = prichiny.length ? ` (${prichiny.join('; ')})` : '';
   throw new Error(
@@ -278,11 +325,11 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
 /**
  * Ключи кадров издателя на странице — подвалу: нота об арте и класс лицензии
  * печатаются только по ним (П79 п. 3, «на все страницы» — П85 п. 7). Кадр
- * пока печатает одна ветвь — ряд (`art` ряда, пачка 1, П89); ключи берутся
- * из тех же рядов, что печатаются ниже (вхождения из `drukowane`), а сам кадр
- * разрешается здесь, до разметки: ключ без файла или записи прерывает сборку
- * в `kadr()`, а не печатает пустую рамку. Герой и галерея добавят свои ключи
- * вместе со своими ветвями.
+ * печатают две ветви — герой (`art` страницы, пачка 2, П91) и ряд (`art` ряда,
+ * пачка 1, П89); ключи берутся из того, что печатается ниже (вхождения из
+ * `drukowane`), а сам кадр разрешается до разметки: ключ без файла или записи
+ * прерывает сборку в `kadr()`, а не печатает пустую рамку. Галерея добавит
+ * свои ключи вместе со своей ветвью.
  * Пределы («судью судят», раунд 1, R1-MARSHRUT-2, -6): пропорция кадра
  * не судится — ключевой арт-баннер (около 3:1: `hero`, `mp2-art`, `mp3-art`)
  * в рамке ряда 21:13 покажет около половины ширины и растянется на лестнице
@@ -295,7 +342,16 @@ const ryadyPechati = wystapienia
 const kadry = new Map(
   [...new Set(ryadyPechati.map((r) => r.art).filter((k): k is string => Boolean(k)))].map((k) => [k, kadr(k)])
 );
-const kluczeArtu: string[] = [...kadry.keys()];
+const geroyPechati = drukowane.includes('hero-key-art') ? geroy : undefined;
+const kluczeArtu: string[] = [...new Set([...(geroyPechati ? [geroyPechati.klyuch] : []), ...kadry.keys()])];
+
+/*
+ * ТОН КАДРА ГЕРОЯ — по виду материала, правило главной (П79, «Ночь и один
+ * фонарь»): ключевой арт — фонарём (`--era` ядра по умолчанию = `--accent`,
+ * как у героя главной), скриншот — сталью, как ряды и панели. Вид — из записи
+ * кадра (`kind` в `game-art.json` пишет инструмент арта), не из имени ключа.
+ */
+const kluchevoyArt = geroyPechati ? /^key art\b/.test(credits[geroyPechati.klyuch]?.kind ?? '') : false;
 
 /*
  * `h1` ПЕЧАТАЕТ МАРШРУТ — заголовок принадлежит странице, а не секции
@@ -306,13 +362,72 @@ const kluczeArtu: string[] = [...kadry.keys()];
  * пустотой двух отбивок `.section` подряд (стенд `/404/`, около 260 px на 1440).
  * Правило — в `<style>` этого файла: элемент печатает только маршрут. Что
  * `<h1>` ровно один, проверяет сторож сборки `core/gates/after-build.mjs`.
+ * С героем (пачка 2, П91) `h1` стоит в месте `tytul` героя ядра с классом
+ * `hero__title` — как `h1` героя главной (`HomeHero.astro`); `.page-head`
+ * тогда не печатается. Текст в обеих ветвях один — `strona.h1` структуры.
  */
+const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' : 'arrow-right';
 ---
 
 <Base title={strona.title} description={strona.description} klucze={kluczeArtu}>
-  <header class="page-head container section">
-    <h1 class="t-headline" id="page-title">{strona.h1}</h1>
-  </header>
+  {
+    /* Герой — форма первого сайта и главной (П91 п. 2): механизм экрана — ядра
+       (`HeroKeyArt`: секция, скрим, колонка текста, две кнопки), арт — место
+       `art` с `SmartImage` ядра. Обёртка `.geroy` несёт то, что принадлежит
+       витрине: кадровку (`--fokus` из `artFocus`) и тон скриншота
+       (`.geroy--stal`); правила — в `<style>` ниже. Ширины сверх 100vw —
+       правило `sizes` главной (`HomeHero.astro`): баннер около 3:1 при
+       `object-fit: cover`; лестницу Astro обрезает по мастеру (1920 у `mp2-art`
+       и `mp3-art`, бэклог 59 п. 2 — растяжение числом в докладе). Подпись
+       кадра — место `podpis` у `SmartImage` (`.foto__credit` ядра, `credit.css`:
+       своя подложка поверх кадра, правый верхний угол). */
+    geroyPechati ? (
+      <div
+        class:list={['geroy', !kluchevoyArt && 'geroy--stal']}
+        style={geroyPechati.fokus ? `--fokus: ${geroyPechati.fokus}` : undefined}
+      >
+        <HeroKeyArt
+          titleId="page-title"
+          primaryHref={geroyPechati.primary.href}
+          primaryLabel={geroyPechati.primary.label}
+          secondaryHref={geroyPechati.secondary.href}
+          secondaryLabel={geroyPechati.secondary.label}
+        >
+          <h1 class="hero__title t-headline" id="page-title" slot="tytul">{strona.h1}</h1>
+          <SmartImage
+            slot="art"
+            src={geroyPechati.kadr.src}
+            alt={geroyPechati.kadr.alt}
+            widths={[1200, 1600, 2400, 3200]}
+            sizes="(max-width: 1024px) 200vw, 170vw"
+            loading="eager"
+            quality={80}
+          >
+            {geroyPechati.podpis && <Fragment slot="podpis">{geroyPechati.podpis}</Fragment>}
+          </SmartImage>
+          <Fragment slot="lead">{geroyPechati.lead}</Fragment>
+          <Icon slot="ikona-glowna" name={ikonaGlavnoy} size={18} />
+        </HeroKeyArt>
+      </div>
+    ) : (
+      <header class="page-head container section">
+        <h1 class="t-headline" id="page-title">{strona.h1}</h1>
+      </header>
+    )
+  }
+
+  {
+    /* Подпись — блок ядра как есть (П91 п. 2): кто и когда; машинная дата —
+       в `<time datetime>` ядра. */
+    drukowane.includes('byline') && dane.byline && (
+      <Byline
+        author={dane.byline.author}
+        date={dane.byline.date}
+        dateLabel={dane.byline.dateLabel}
+        role={dane.byline.role}
+      />
+    )
+  }
 
   {
     /* Единственный блок, который печатается циклом по вхождениям (ROLE_UMIE):
@@ -389,5 +504,84 @@ const kluczeArtu: string[] = [...kadry.keys()];
 
   :global(.foto.kadr-ryadu img) {
     filter: grayscale(1) contrast(1.12) brightness(1.3);
+  }
+
+  /* Герой (пачка 2, П91). Кадровка арта — поле `artFocus` файла содержания
+     (`object-position`), нет поля — середина кадра, как у ядра. */
+  .geroy :global(.hero__art .foto img) {
+    object-position: var(--fokus, 50% 50%);
+  }
+
+  /* Скриншот в герое — сталью, те же доли и фильтр, что у кадра ряда выше;
+     ключевой арт остаётся фонарём (`--era` ядра по умолчанию), как у героя
+     главной. */
+  .geroy--stal :global(.hero__art .foto) {
+    --era: color-mix(in oklab, var(--accent-2), var(--ink));
+  }
+
+  .geroy--stal :global(.hero__art .foto img) {
+    filter: grayscale(1) contrast(1.12) brightness(1.3);
+  }
+
+  /* Скрим героя — от токена фона, правилом маршрута (П91 п. 3): скрим ядра
+     как есть замер пикселей не прошёл (лид 1,4–2,3:1 на 641–1200 px, у светлых
+     артов и 3,2–3,7:1 на 1440–1920; `zamery/kontrast-geroy/` доклада). Цвет —
+     `--bg` через `color-mix`, как у героя и призыва главной (`HomeHero.astro`,
+     `StartBand.astro`), доли — свои; раскладку героя ядра маршрут не трогает.
+     От 1025 px арт стоит справа (ядро: `inset: 0 0 0 32%`), а колонка текста —
+     слева, шириной до 720 px от края `.container`: плотная часть скрима идёт
+     до правого края колонки (`--kolonka`, от `--container` и `--gutter`)
+     и гаснет за ней, так что открытым остаётся арт справа от текста. Нижний
+     слой — доли ядра. */
+  .geroy {
+    --kolonka: calc(max(0px, (100% - var(--container)) / 2) + var(--gutter) + 720px);
+  }
+
+  .geroy :global(.hero__scrim) {
+    background:
+      linear-gradient(
+        90deg,
+        color-mix(in srgb, var(--bg) 96%, transparent) 0 30%,
+        color-mix(in srgb, var(--bg) 88%, transparent) calc(var(--kolonka) - 120px),
+        color-mix(in srgb, var(--bg) 80%, transparent) calc(var(--kolonka) + 24px),
+        color-mix(in srgb, var(--bg) 12%, transparent) calc(var(--kolonka) + 22%),
+        transparent 100%
+      ),
+      linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
+  }
+
+  /* 641–1024 px: ядро сдвигает арт под колонку текста (`inset: 0 -20% 0 20%`,
+     прозрачность 0,75), а колонка занимает всю ширину — скрим держит текст
+     по всей ширине, арт виден приглушённым. Подпись кадра (`.foto__credit`,
+     правый верхний угол `.foto`) уехала бы вместе с артом за правый край
+     окна — на этих ширинах она отступает на те же 20 %. */
+  @media (min-width: 641px) and (max-width: 1024px) {
+    .geroy :global(.hero__scrim) {
+      background:
+        linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--bg) 96%, transparent) 0 30%,
+          color-mix(in srgb, var(--bg) 80%, transparent) 60%,
+          color-mix(in srgb, var(--bg) 70%, transparent) 100%
+        ),
+        linear-gradient(0deg, color-mix(in srgb, var(--bg) 88%, transparent), transparent 42%);
+    }
+
+    .geroy :global(.hero__art .foto__credit) {
+      right: 20%;
+    }
+  }
+
+  /* До 640 px ядро складывает героя: арт полосой сверху, текст ниже на фоне;
+     скрим — доли ядра, цвет — от токена, как у героя главной. */
+  @media (max-width: 640px) {
+    .geroy :global(.hero__scrim) {
+      background: linear-gradient(
+        0deg,
+        var(--bg) 0 6%,
+        color-mix(in srgb, var(--bg) 55%, transparent) 34%,
+        transparent 72%
+      );
+    }
   }
 </style>

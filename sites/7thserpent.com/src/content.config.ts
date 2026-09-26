@@ -17,11 +17,12 @@ import { z } from 'zod';
  * отрезанное поле. Литеральная опечатка в имени поля блока иначе исчезала бы
  * вместе с полем.
  *
- * ПОЛЯ — ТОЛЬКО У ВЕТВЕЙ, КОТОРЫЕ МАРШРУТ ПЕЧАТАЕТ. Маршрут печатает три
- * блока — `story-row` и `link-list` (пачка 0, стенд `/404/`, П85 п. 6)
- * и `cta-band` (пачка 1, П89: `/pc/`, `/games-like-max-payne/`, `/media/`);
- * ряд — с кадром или без (кадр ряда — пачка 1, ответ владельца 2 в П89).
- * Поля остальных блоков дерева (`hero-key-art`, `byline`, `gallery`)
+ * ПОЛЯ — ТОЛЬКО У ВЕТВЕЙ, КОТОРЫЕ МАРШРУТ ПЕЧАТАЕТ. Маршрут печатает пять
+ * блоков — `story-row` и `link-list` (пачка 0, стенд `/404/`, П85 п. 6),
+ * `cta-band` (пачка 1, П89: `/pc/`, `/games-like-max-payne/`, `/media/`),
+ * `hero-key-art` и `byline` (пачка 2, П91: `/max-payne-1/`, `/max-payne-2/`,
+ * `/max-payne-3/`, `/remake/`); ряд — с кадром или без (кадр ряда — пачка 1,
+ * ответ владельца 2 в П89). Поля остальных блоков дерева (`gallery`)
  * приходят в схему вместе с их ветвью маршрута и первой страницей формы
  * (план P4, доклад сессии 12). Поле, которого никто не печатает, — тихая
  * заглушка: схема его не примет, а маршрут откажет на блоке без ветви.
@@ -46,6 +47,28 @@ import { z } from 'zod';
  */
 const tekst = () => z.string().trim().min(1);
 
+/** Ключ кадра — ключ разрешателя `kadr()` (`src/data/media.ts`): файл
+ *  `src/assets/gry/<ключ>.jpg` и запись `game-art.json`. Ключ без файла или
+ *  записи — прерванная сборка в `kadr()`, не пустая рамка. */
+const klyuchKadra = () => z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/);
+
+/**
+ * Кнопка героя (пачка 2, П91) — форма первого сайта (`link`: `href`, `label`).
+ * `href` — якорь раздела этой страницы (`#id` ряда, kebab) или адрес от корня
+ * сайта; адрес от корня не начинается с `//` или `/\` (браузер увёл бы такой
+ * адрес на чужой хост — тот же запрет, что у `cta.href`, R1-MARSHRUT-1 пачки 1),
+ * пробелов нет. Внешних адресов у кнопок героя нет: первый экран ведёт внутрь
+ * сайта. Что якорь есть на странице, судит сторож `anchors` после сборки, что
+ * адрес есть в структуре — сторож `links`.
+ */
+const knopka = () =>
+  z
+    .object({
+      href: z.string().regex(/^(?:#[a-z0-9]+(?:-[a-z0-9]+)*|\/(?![/\\])\S*)$/),
+      label: tekst(),
+    })
+    .strict();
+
 export const collections = {
   tresc: defineCollection({
     // Id записи — путь файла, а не слаг: по слагу Astro сливает `404.md`
@@ -57,6 +80,41 @@ export const collections = {
     schema: z
       .object({
         url: z.string().startsWith('/').endsWith('/'),
+
+        /* — hero-key-art (пачка 2, П91) — поля первого сайта: `lead`, `primary`,
+           `secondary`, `art`. Все четыре — необязательны для схемы и обязательны
+           разом для героя: страница, объявившая `hero-key-art` без полного набора,
+           не собирается, и отказ называет поле (маршрут). `art` обязателен у героя
+           этого сайта — запасной графики нет, п. 4 П91 называет арт каждой
+           страницы. `artFocus` — кадровка арта (`object-position`: «x% y%»),
+           нет поля — середина кадра. `artCaption` — подпись кадра, когда на нём
+           не игра страницы (`/remake/`: кадр оригинала, П91 п. 4–5); печатается
+           местом `podpis` у `SmartImage` ядра (`.foto__credit`). */
+        art: klyuchKadra().optional(),
+        artFocus: z.string().regex(/^(?:100|[1-9]?\d)% (?:100|[1-9]?\d)%$/).optional(),
+        artCaption: tekst().optional(),
+        lead: tekst().optional(),
+        primary: knopka().optional(),
+        secondary: knopka().optional(),
+
+        /* — byline (пачка 2, П91) — поля первого сайта. `date` — машинная дата
+           для `<time datetime>`: календарная дата ГГГГ-ММ-ДД (31 февраля — отказ);
+           `dateLabel` — та же дата словами; `role` — приписка перед автором. */
+        byline: z
+          .object({
+            author: tekst(),
+            date: z
+              .string()
+              .regex(/^\d{4}-\d{2}-\d{2}$/)
+              .refine((s) => {
+                const d = new Date(`${s}T00:00:00Z`);
+                return !Number.isNaN(d.getTime()) && d.toISOString().slice(0, 10) === s;
+              }, 'не календарная дата'),
+            dateLabel: tekst(),
+            role: tekst().optional(),
+          })
+          .strict()
+          .optional(),
 
         /* — story-row, по записи на ряд —
            `role` — вхождение блока с ролью (`story-row#mobile` на `/max-payne-1/`,
@@ -76,11 +134,9 @@ export const collections = {
                 title: tekst(),
                 meta: tekst(),
                 body: z.array(tekst()).nonempty(),
-                /** Кадр ряда — ключ разрешателя `kadr()` (`src/data/media.ts`):
-                 *  файл `src/assets/gry/<ключ>.jpg` и запись `game-art.json`.
-                 *  Ключ без файла или записи — прерванная сборка в `kadr()`,
-                 *  не пустая рамка. Нет поля — ряд в один столбец (П44). */
-                art: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).optional(),
+                /** Кадр ряда — ключ разрешателя `kadr()` (`klyuchKadra` выше).
+                 *  Нет поля — ряд в один столбец (П44). */
+                art: klyuchKadra().optional(),
                 flip: z.boolean().default(false),
                 band: z.boolean().default(false),
               })

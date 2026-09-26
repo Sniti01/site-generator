@@ -25,7 +25,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/gameplay/` — How Max Payne plays: bullet time, shootdodge, painkillers and weapons
 - `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
 - `/mods/` — The best Max Payne mods: from the Kung Fu mod to RTX Remix
-- `/pc/` — Max Payne on a modern PC: system requirements, fixes and controller support
+- `/pc/` — Max Payne on PC: requirements, fixes and controllers
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
 - `hero-key-art` — type-default, low. core block without a route branch yet — the branch is written with the first page of its form, owner’s look (plan P4)

@@ -24,7 +24,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/max-payne-1/` — Max Payne (2001): the original game, its ports and the mobile version
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing
 - `/remake/` — Max Payne 1 & 2 Remake: release date, platforms and news
-- `/media/` — Max Payne art and media: covers, wallpapers, comics and soundtracks
+- `/media/` — Max Payne art and media: cover art, comics, soundtracks and memes
 - `/movie/` — Max Payne, the 2008 movie: cast, plot and where to watch it
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:

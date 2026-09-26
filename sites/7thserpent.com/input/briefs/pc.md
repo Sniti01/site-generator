@@ -9,9 +9,9 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | Field | Value |
 |---|---|
 | type | `guide` |
-| h1 | Max Payne on a modern PC: system requirements, fixes and controller support |
+| h1 | Max Payne on PC: requirements, fixes and controllers |
 | title | Max Payne on PC — system requirements, Windows fixes, controller |
-| description | How to run Max Payne 1, 2 and 3 on a modern PC: system requirements, widescreen and sound fixes, Windows 10 and 11 issues, and controller support in the first two. |
+| description | What Max Payne 3 and Max Payne 2 need on PC, sound, frame-rate and widescreen fixes for the 2001 original on Windows 10 and 11, and how controllers work in each game. |
 | parent | `/` |
 | cluster | max payne 3 pc · queries 17 · demand 410 (Ahrefs, US) |
 | corridor (contract) | 2870–3884 |

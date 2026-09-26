@@ -9,9 +9,9 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | Field | Value |
 |---|---|
 | type | `topic` |
-| h1 | Max Payne art and media: covers, wallpapers, comics and soundtracks |
+| h1 | Max Payne art and media: cover art, comics, soundtracks and memes |
 | title | Max Payne cover art, wallpapers, concept art, memes, soundtrack |
-| description | Cover art and box art of all three games, wallpapers, screenshots, concept art, the logo and font, the graphic novel, trailers, the HEALTH soundtrack, memes and GIFs. |
+| description | The Max Payne 3 cover, the logo and its font, the comic-panel storytelling and the Max Payne 3 comics, concept art, music from Late Goodbye to HEALTH, trailers, memes and GIFs. |
 | parent | `/` |
 | cluster | max payne cover · queries 40 · demand 950 (Ahrefs, US) |
 | corridor (contract) | 1986–2686 |

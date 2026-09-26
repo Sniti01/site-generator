@@ -23,7 +23,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne
 - `/story/` — Max Payne story and characters: from New York to São Paulo
 - `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
-- `/pc/` — Max Payne on a modern PC: system requirements, fixes and controller support
+- `/pc/` — Max Payne on PC: requirements, fixes and controllers
 - `/remake/` — Max Payne 1 & 2 Remake: release date, platforms and news
 - `/movie/` — Max Payne, the 2008 movie: cast, plot and where to watch it
 

@@ -20,7 +20,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 **Keywords** (9): max payne 3 mods · max payne 2 mods · max payne mods · max payne kung fu mod · max payne 3 mod · max payne 3 fusionfix · max payne 3 sam lake mod · max payne rtx remix · sam lake max payne 3
 
 **Related** (`link-list` prints them from the structure, titled by their `h1`):
-- `/pc/` — Max Payne on a modern PC: system requirements, fixes and controller support
+- `/pc/` — Max Payne on PC: requirements, fixes and controllers
 - `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne

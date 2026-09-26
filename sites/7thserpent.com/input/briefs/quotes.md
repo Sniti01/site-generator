@@ -21,7 +21,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 
 **Related** (`link-list` prints them from the structure, titled by their `h1`):
 - `/story/` — Max Payne story and characters: from New York to São Paulo
-- `/media/` — Max Payne art and media: covers, wallpapers, comics and soundtracks
+- `/media/` — Max Payne art and media: cover art, comics, soundtracks and memes
 - `/voice-and-face/` — Who is behind Max Payne: the voice, the face and the creators
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:

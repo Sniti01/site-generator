@@ -10,8 +10,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 |---|---|
 | type | `topic` |
 | h1 | Games like Max Payne: what to play next |
-| title | Games like Max Payne — shooters with bullet time and noir stories |
-| description | If you finished Max Payne 3 and want more: the games closest to Max Payne in gameplay and mood, from Remedy’s own titles to modern shooters with bullet time. |
+| title | Games like Max Payne — shooters, Remedy games and story picks |
+| description | Finished Max Payne and want more? The games RAWG and a Steam thread both suggest, Remedy’s own titles, story-first picks, RAWG’s shooters and the remake. |
 | parent | `/` |
 | cluster | games like max payne · queries 7 · demand 340 (Ahrefs, US) |
 | corridor (contract) | null — no verdict, the number goes to the batch report (named decision) |

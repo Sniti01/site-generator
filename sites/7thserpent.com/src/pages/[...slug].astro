@@ -578,7 +578,12 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
      полоса сверху), поверх скрима: `z-index` 1, как у колонки текста ядра,
      и позже её в DOM. Подложка — та же, что у подписи кадра ядра
      (`credit.css`: `--bg` 78 %), роль — `.t-caption`, цвет — `--ink-muted`;
-     новых токенов и ролей нет. */
+     новых токенов и ролей нет. Строки — ровными (`text-wrap: balance`): на 320
+     и 360 px подпись переносится, и без выравнивания на вторую строку уходило
+     одно слово (раунд 2, P2-R2-MARSHRUT-6). Предел (раунд 2, P2-R2-MARSHRUT-4):
+     подложка 78 % пропускает 22 % арта, и над белым пикселем кадра контраст
+     был бы около 4,4:1 — порог держит замер на нынешнем кадре `/remake/`,
+     а не устройство; новый кадр или кадровка — новый замер. */
   .podpis-geroya {
     position: absolute;
     top: 0;
@@ -589,6 +594,7 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
     padding: var(--space-3xs) var(--space-xs);
     background: color-mix(in srgb, var(--bg) 78%, transparent);
     color: var(--ink-muted);
+    text-wrap: balance;
   }
 
   /* До 640 px ядро складывает героя: арт полосой сверху, текст ниже на фоне;

@@ -107,7 +107,13 @@ export const collections = {
            словами, ровно так, как её пишет американский английский («September
            26, 2026»), — иначе машинная и видимая даты расходились бы без отказа
            («судью судят», раунд 1, P2-R1-MARSHRUT-4); `role` — приписка перед
-           автором. */
+           автором. «День сборки» — местная календарная дата машины сборки,
+           строкой ГГГГ-ММ-ДД (раунд 2, P2-R2-MARSHRUT-1: сравнение с полночью UTC
+           отказывало сегодняшней дате с 00:00 до 02:00 по Варшаве). Не календарная
+           дата — один отказ, без второго ложного про `dateLabel` (раунд 2,
+           P2-R2-MARSHRUT-2). Предел: Astro кеширует разобранную запись, пока файл
+           и схема не меняются, — «не позже дня сборки» судится при разборе файла,
+           а не при каждой сборке. */
         byline: z
           .object({
             author: tekst(),
@@ -124,9 +130,11 @@ export const collections = {
           .strict()
           .superRefine((b, ctx) => {
             const d = new Date(`${b.date}T00:00:00Z`);
-            if (Number.isNaN(d.getTime())) return;
+            if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== b.date) return;
             if (d.getUTCFullYear() < 2000) ctx.addIssue({ code: 'custom', path: ['date'], message: 'дата подписи раньше 2000 года' });
-            if (d.getTime() > Date.now()) ctx.addIssue({ code: 'custom', path: ['date'], message: 'дата подписи позже дня сборки' });
+            const t = new Date();
+            const denSborki = `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
+            if (b.date > denSborki) ctx.addIssue({ code: 'custom', path: ['date'], message: `дата подписи ${b.date} позже дня сборки ${denSborki}` });
             const slovami = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }).format(d);
             if (b.dateLabel !== slovami) ctx.addIssue({ code: 'custom', path: ['dateLabel'], message: `не та же дата словами: ждали «${slovami}»` });
           })

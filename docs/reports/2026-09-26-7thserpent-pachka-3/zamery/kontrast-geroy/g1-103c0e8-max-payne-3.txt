@@ -1,0 +1,7 @@
+сборка 103c0e8 (копия dist-g1 = dist/ коммита 103c0e8, п. 0г — sizes героя; сервер 127.0.0.1:4422), кадры .playwright-mcp/ka-p3g1/max-payne-3, съёмка — копия kontrast-geroy-snyatie.js сессии 15, вычислитель главной без правки
+herotitle .hero__title         худший пиксель 12.42:1 на 768x1024 (строка y 479.9 «Max Payne 3 (2012): São Paulo, platforms»), p99 не ниже 13.00:1
+herolead .hero__lead           худший пиксель 6.18:1 на 900x700 (строка y 312.7 «Nine years after the second game, Max is»), p99 не ниже 6.44:1
+herobtn .btn-secondary         худший пиксель 12.96:1 на 768x1024 (строка y 137.3 «The walkthrough»), p99 не ниже 13.27:1
+
+Итог: окон 31, строк 253; самый тесный худший пиксель — 6.18:1 (900x700, .hero__lead, y 312.7), порог 4,5:1.
+max-payne-3 exit=0

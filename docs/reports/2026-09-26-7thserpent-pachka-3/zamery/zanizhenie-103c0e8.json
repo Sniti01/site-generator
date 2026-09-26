@@ -1,0 +1,3062 @@
+[
+  {
+    "adres": "/max-payne-3/",
+    "okno": "360x740",
+    "geroy": 874.3,
+    "granica": 296,
+    "ramka": [
+      360,
+      296
+    ],
+    "narisovano": 917,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 917,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "390x844",
+    "geroy": 920,
+    "granica": 337.6,
+    "ramka": [
+      390,
+      337.6
+    ],
+    "narisovano": 1045,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1046,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "414x896",
+    "geroy": 944.5,
+    "granica": 358.4,
+    "ramka": [
+      414,
+      358.4
+    ],
+    "narisovano": 1110,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1110,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "480x800",
+    "geroy": 853.9,
+    "granica": 320,
+    "ramka": [
+      480,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 991,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "560x800",
+    "geroy": 863.6,
+    "granica": 320,
+    "ramka": [
+      560,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1120,
+    "zanizhenie": 0.885,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "600x900",
+    "geroy": 908.5,
+    "granica": 360,
+    "ramka": [
+      600,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1200,
+    "zanizhenie": 0.929,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "640x900",
+    "geroy": 885.1,
+    "granica": 360,
+    "ramka": [
+      640,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.871,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "641x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      641,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "700x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      700,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "720x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "768x1024",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      768,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "800x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      800,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "820x1180",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      820,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "860x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      860,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "900x700",
+    "geroy": 630,
+    "granica": 630,
+    "ramka": [
+      900,
+      629
+    ],
+    "narisovano": 1948,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1951,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "960x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      960,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1000x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1000,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1024x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      1024,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2140,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1025x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      697,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1060x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1100x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      748,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1140x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      775.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1180x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      802.4,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1194x834",
+    "geroy": 750.6,
+    "granica": 750.6,
+    "ramka": [
+      811.9,
+      749.6
+    ],
+    "narisovano": 2321,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2324,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1200x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      816,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1280x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      870.4,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1359x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.1,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1360x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1440x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      979.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1600x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1088,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2720,
+    "zanizhenie": 0.921,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1920x1080",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1305.6,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 3264,
+    "zanizhenie": 0.872,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "320x640",
+    "geroy": 895.6,
+    "granica": 260,
+    "ramka": [
+      320,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 805,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "640x360",
+    "geroy": 785.1,
+    "granica": 260,
+    "ramka": [
+      640,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.629,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "800x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      800,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1024x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      1024,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2048,
+    "zanizhenie": 0.906,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1280x720",
+    "geroy": 648,
+    "granica": 648,
+    "ramka": [
+      870.4,
+      647
+    ],
+    "narisovano": 2004,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2176,
+    "zanizhenie": 0.921,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1366x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      928.9,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2322,
+    "zanizhenie": 0.92,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "2560x1440",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1740.8,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 4352,
+    "zanizhenie": 0.654,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "3840x2160",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      2611.2,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 6528,
+    "zanizhenie": 0.436,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "641x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      641,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "680x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      680,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "720x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1025x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      697,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1060x600",
+    "geroy": 602.8,
+    "granica": 600,
+    "ramka": [
+      720.8,
+      601.8
+    ],
+    "narisovano": 1864,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 1.003,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-3/",
+    "okno": "1100x600",
+    "geroy": 605.9,
+    "granica": 600,
+    "ramka": [
+      748,
+      604.9
+    ],
+    "narisovano": 1873,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1870,
+    "zanizhenie": 1.002,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "360x740",
+    "geroy": 778.6,
+    "granica": 296,
+    "ramka": [
+      360,
+      296
+    ],
+    "narisovano": 917,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 917,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "390x844",
+    "geroy": 822.3,
+    "granica": 337.6,
+    "ramka": [
+      390,
+      337.6
+    ],
+    "narisovano": 1045,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1046,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "414x896",
+    "geroy": 845,
+    "granica": 358.4,
+    "ramka": [
+      414,
+      358.4
+    ],
+    "narisovano": 1110,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1110,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "480x800",
+    "geroy": 784.3,
+    "granica": 320,
+    "ramka": [
+      480,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 991,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "560x800",
+    "geroy": 762.1,
+    "granica": 320,
+    "ramka": [
+      560,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1120,
+    "zanizhenie": 0.885,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "600x900",
+    "geroy": 804.8,
+    "granica": 360,
+    "ramka": [
+      600,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1200,
+    "zanizhenie": 0.929,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "640x900",
+    "geroy": 807.4,
+    "granica": 360,
+    "ramka": [
+      640,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.871,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "641x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      641,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "700x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      700,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "720x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "768x1024",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      768,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "800x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      800,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "820x1180",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      820,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "860x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      860,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "900x700",
+    "geroy": 630,
+    "granica": 630,
+    "ramka": [
+      900,
+      629
+    ],
+    "narisovano": 1948,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1951,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "960x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      960,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1000x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1000,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1024x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      1024,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2140,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1025x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      697,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1060x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1100x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      748,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1140x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      775.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1180x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      802.4,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1194x834",
+    "geroy": 750.6,
+    "granica": 750.6,
+    "ramka": [
+      811.9,
+      749.6
+    ],
+    "narisovano": 2321,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2324,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1200x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      816,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1280x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      870.4,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1359x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.1,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1360x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1440x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      979.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1600x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1088,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2720,
+    "zanizhenie": 0.921,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1920x1080",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1305.6,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 3264,
+    "zanizhenie": 0.872,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "320x640",
+    "geroy": 799.9,
+    "granica": 260,
+    "ramka": [
+      320,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 805,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "640x360",
+    "geroy": 707.4,
+    "granica": 260,
+    "ramka": [
+      640,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.629,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "800x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      800,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1024x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      1024,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2048,
+    "zanizhenie": 0.906,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1280x720",
+    "geroy": 648,
+    "granica": 648,
+    "ramka": [
+      870.4,
+      647
+    ],
+    "narisovano": 2004,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2176,
+    "zanizhenie": 0.921,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1366x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      928.9,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2322,
+    "zanizhenie": 0.92,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "2560x1440",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1740.8,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 4352,
+    "zanizhenie": 0.654,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "3840x2160",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      2611.2,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 6528,
+    "zanizhenie": 0.436,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "641x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      641,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "680x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      680,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "720x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1025x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      697,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1060x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720.8,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-2/",
+    "okno": "1100x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      748,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1870,
+    "zanizhenie": 0.992,
+    "kandidat": 1920,
+    "zhdali": 1920
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "360x740",
+    "geroy": 874.3,
+    "granica": 296,
+    "ramka": [
+      360,
+      296
+    ],
+    "narisovano": 917,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 917,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "390x844",
+    "geroy": 860.5,
+    "granica": 337.6,
+    "ramka": [
+      390,
+      337.6
+    ],
+    "narisovano": 1045,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1046,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "414x896",
+    "geroy": 884.3,
+    "granica": 358.4,
+    "ramka": [
+      414,
+      358.4
+    ],
+    "narisovano": 1110,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1110,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "480x800",
+    "geroy": 853.9,
+    "granica": 320,
+    "ramka": [
+      480,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 991,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "560x800",
+    "geroy": 798.9,
+    "granica": 320,
+    "ramka": [
+      560,
+      320
+    ],
+    "narisovano": 991,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1120,
+    "zanizhenie": 0.885,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "600x900",
+    "geroy": 842.6,
+    "granica": 360,
+    "ramka": [
+      600,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1200,
+    "zanizhenie": 0.929,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "640x900",
+    "geroy": 846.3,
+    "granica": 360,
+    "ramka": [
+      640,
+      360
+    ],
+    "narisovano": 1115,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.871,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "641x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      641,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "700x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      700,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "720x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "768x1024",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      768,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "800x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      800,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "820x1180",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      820,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2849,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "860x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      860,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "900x700",
+    "geroy": 630,
+    "granica": 630,
+    "ramka": [
+      900,
+      629
+    ],
+    "narisovano": 1948,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1951,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "960x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      960,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1000x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1000,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1024x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      1024,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2140,
+    "zanizhenie": 0.999,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1025x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      697,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1060x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1100x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      748,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1140x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      775.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1180x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      802.4,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1194x834",
+    "geroy": 750.6,
+    "granica": 750.6,
+    "ramka": [
+      811.9,
+      749.6
+    ],
+    "narisovano": 2321,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2324,
+    "zanizhenie": 0.999,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1200x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      816,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1280x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      870.4,
+      719
+    ],
+    "narisovano": 2227,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2230,
+    "zanizhenie": 0.999,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1359x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.1,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1360x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.8,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1440x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      979.2,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2508,
+    "zanizhenie": 0.999,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1600x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1088,
+      809
+    ],
+    "narisovano": 2505,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2720,
+    "zanizhenie": 0.921,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1920x1080",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1305.6,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 3264,
+    "zanizhenie": 0.872,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "320x640",
+    "geroy": 869.1,
+    "granica": 260,
+    "ramka": [
+      320,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 805,
+    "zanizhenie": 1,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "640x360",
+    "geroy": 746.3,
+    "granica": 260,
+    "ramka": [
+      640,
+      260
+    ],
+    "narisovano": 805,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 123.88vh, 805.17px)",
+    "sizes": 1280,
+    "zanizhenie": 0.629,
+    "kandidat": 1600,
+    "zhdali": 1600
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "800x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      800,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1024x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      1024,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2048,
+    "zanizhenie": 0.906,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1280x720",
+    "geroy": 648,
+    "granica": 648,
+    "ramka": [
+      870.4,
+      647
+    ],
+    "narisovano": 2004,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2176,
+    "zanizhenie": 0.921,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1366x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      928.9,
+      690.2
+    ],
+    "narisovano": 2137,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 2322,
+    "zanizhenie": 0.92,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "2560x1440",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1740.8,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 4352,
+    "zanizhenie": 0.654,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "3840x2160",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      2611.2,
+      919
+    ],
+    "narisovano": 2846,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 6528,
+    "zanizhenie": 0.436,
+    "kandidat": 3200,
+    "zhdali": 3200
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "641x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      641,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "680x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      680,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "720x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1025x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      697,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1060x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720.8,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1858,
+    "zanizhenie": 0.998,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/max-payne-1/",
+    "okno": "1100x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      748,
+      599
+    ],
+    "narisovano": 1855,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(1858.07px, 278.71vh, 2849.04px))",
+    "sizes": 1870,
+    "zanizhenie": 0.992,
+    "kandidat": 2400,
+    "zhdali": 2400
+  },
+  {
+    "adres": "/remake/",
+    "okno": "360x740",
+    "geroy": 895.9,
+    "granica": 296,
+    "ramka": [
+      360,
+      296
+    ],
+    "narisovano": 395,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 720,
+    "zanizhenie": 0.548,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "390x844",
+    "geroy": 914.3,
+    "granica": 337.6,
+    "ramka": [
+      390,
+      337.6
+    ],
+    "narisovano": 450,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 780,
+    "zanizhenie": 0.577,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "414x896",
+    "geroy": 938.4,
+    "granica": 358.4,
+    "ramka": [
+      414,
+      358.4
+    ],
+    "narisovano": 478,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 828,
+    "zanizhenie": 0.577,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "480x800",
+    "geroy": 846.5,
+    "granica": 320,
+    "ramka": [
+      480,
+      320
+    ],
+    "narisovano": 480,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 960,
+    "zanizhenie": 0.5,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "560x800",
+    "geroy": 854.5,
+    "granica": 320,
+    "ramka": [
+      560,
+      320
+    ],
+    "narisovano": 560,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 1120,
+    "zanizhenie": 0.5,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "600x900",
+    "geroy": 870.7,
+    "granica": 360,
+    "ramka": [
+      600,
+      360
+    ],
+    "narisovano": 600,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 1200,
+    "zanizhenie": 0.5,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "640x900",
+    "geroy": 874.5,
+    "granica": 360,
+    "ramka": [
+      640,
+      360
+    ],
+    "narisovano": 640,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 1280,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "641x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      641,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1282,
+    "zanizhenie": 0.841,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "700x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      700,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1400,
+    "zanizhenie": 0.77,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "720x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1440,
+    "zanizhenie": 0.749,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "768x1024",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      768,
+      919
+    ],
+    "narisovano": 1225,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1536,
+    "zanizhenie": 0.798,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "800x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      800,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1600,
+    "zanizhenie": 0.674,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "820x1180",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      820,
+      919
+    ],
+    "narisovano": 1225,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1640,
+    "zanizhenie": 0.747,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "860x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      860,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1720,
+    "zanizhenie": 0.627,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "900x700",
+    "geroy": 630,
+    "granica": 630,
+    "ramka": [
+      900,
+      629
+    ],
+    "narisovano": 900,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1800,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "960x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      960,
+      719
+    ],
+    "narisovano": 960,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1920,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1000x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1000,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2000,
+    "zanizhenie": 0.539,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1024x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      1024,
+      690.2
+    ],
+    "narisovano": 1024,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2048,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1025x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      697,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1743,
+    "zanizhenie": 0.619,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1060x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      720.8,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1802,
+    "zanizhenie": 0.599,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1100x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      748,
+      719
+    ],
+    "narisovano": 959,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1870,
+    "zanizhenie": 0.513,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1140x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      775.2,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1938,
+    "zanizhenie": 0.557,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1180x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      802.4,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2006,
+    "zanizhenie": 0.538,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1194x834",
+    "geroy": 750.6,
+    "granica": 750.6,
+    "ramka": [
+      811.9,
+      749.6
+    ],
+    "narisovano": 999,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2030,
+    "zanizhenie": 0.492,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1200x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      816,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2040,
+    "zanizhenie": 0.529,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1280x800",
+    "geroy": 720,
+    "granica": 720,
+    "ramka": [
+      870.4,
+      719
+    ],
+    "narisovano": 959,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2176,
+    "zanizhenie": 0.441,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1359x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.1,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2310,
+    "zanizhenie": 0.467,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1360x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      924.8,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2312,
+    "zanizhenie": 0.467,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1440x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      979.2,
+      809
+    ],
+    "narisovano": 1079,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2448,
+    "zanizhenie": 0.441,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1600x900",
+    "geroy": 810,
+    "granica": 810,
+    "ramka": [
+      1088,
+      809
+    ],
+    "narisovano": 1088,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2720,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1920x1080",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1305.6,
+      919
+    ],
+    "narisovano": 1306,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 3264,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "320x640",
+    "geroy": 916.8,
+    "granica": 260,
+    "ramka": [
+      320,
+      260
+    ],
+    "narisovano": 347,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 640,
+    "zanizhenie": 0.542,
+    "kandidat": 1200,
+    "zhdali": 1200
+  },
+  {
+    "adres": "/remake/",
+    "okno": "640x360",
+    "geroy": 774.5,
+    "granica": 260,
+    "ramka": [
+      640,
+      260
+    ],
+    "narisovano": 640,
+    "uslovie": "(width <= 640px)",
+    "dlina": "max(200vw, 53.34vh, 346.67px)",
+    "sizes": 1280,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "800x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      800,
+      599
+    ],
+    "narisovano": 800,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1600,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1024x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      1024,
+      599
+    ],
+    "narisovano": 1024,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2048,
+    "zanizhenie": 0.5,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1280x720",
+    "geroy": 648,
+    "granica": 648,
+    "ramka": [
+      870.4,
+      647
+    ],
+    "narisovano": 870,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2176,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1366x768",
+    "geroy": 691.2,
+    "granica": 691.2,
+    "ramka": [
+      928.9,
+      690.2
+    ],
+    "narisovano": 929,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 2322,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "2560x1440",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      1740.8,
+      919
+    ],
+    "narisovano": 1741,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 4352,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "3840x2160",
+    "geroy": 920,
+    "granica": 920,
+    "ramka": [
+      2611.2,
+      919
+    ],
+    "narisovano": 2611,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 6528,
+    "zanizhenie": 0.4,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "641x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      641,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1282,
+    "zanizhenie": 0.623,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "680x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      680,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1360,
+    "zanizhenie": 0.587,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "720x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "(width <= 1024px)",
+    "dlina": "max(200vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1440,
+    "zanizhenie": 0.555,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1025x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      697,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1743,
+    "zanizhenie": 0.458,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1060x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      720.8,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1802,
+    "zanizhenie": 0.443,
+    "kandidat": 1280,
+    "zhdali": 1280
+  },
+  {
+    "adres": "/remake/",
+    "okno": "1100x600",
+    "geroy": 600,
+    "granica": 600,
+    "ramka": [
+      748,
+      599
+    ],
+    "narisovano": 799,
+    "uslovie": "—",
+    "dlina": "max(170vw, clamp(800px, 120vh, 1226.67px))",
+    "sizes": 1870,
+    "zanizhenie": 0.427,
+    "kandidat": 1280,
+    "zhdali": 1280
+  }
+]

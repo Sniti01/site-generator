@@ -1,0 +1,7 @@
+сборка 103c0e8 (копия dist-g1 = dist/ коммита 103c0e8, п. 0г — sizes героя; сервер 127.0.0.1:4422), кадры .playwright-mcp/ka-p3g1/max-payne-1, съёмка — копия kontrast-geroy-snyatie.js сессии 15, вычислитель главной без правки
+herotitle .hero__title         худший пиксель 11.25:1 на 641x900 (строка y 386.5 «Max Payne (2001): the original game, its»), p99 не ниже 11.41:1
+herolead .hero__lead           худший пиксель 5.64:1 на 700x900 (строка y 268.0 «New York, 2001: a murdered family, a dru»), p99 не ниже 5.74:1
+herobtn .btn-secondary         худший пиксель 12.84:1 на 641x900 (строка y 137.6 «The sequel»), p99 не ниже 12.96:1
+
+Итог: окон 31, строк 227; самый тесный худший пиксель — 5.64:1 (700x900, .hero__lead, y 268.0), порог 4,5:1.
+max-payne-1 exit=0

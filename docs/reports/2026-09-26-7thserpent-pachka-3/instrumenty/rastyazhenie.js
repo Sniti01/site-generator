@@ -19,8 +19,8 @@
 // 800×900); кадровка (`object-position`) на растяжение не влияет; при cover по ширине (рамка шире
 // кадра) растяжение считается так же.
 async (page) => {
-  const BASE = 'http://127.0.0.1:4421';
-  const SBORKA = 'b64609d';
+  const BASE = 'http://127.0.0.1:4422';
+  const SBORKA = '103c0e8';
   const STRANICY = ['/max-payne-3/', '/max-payne-2/', '/max-payne-1/', '/remake/'];
   const OKNA = [[390, 844], [800, 900], [1024, 768], [1280, 720], [1366, 768], [1440, 900], [1600, 900], [1920, 1080], [2560, 1440], [3840, 2160]];
   const browser = page.context().browser();

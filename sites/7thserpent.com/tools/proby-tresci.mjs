@@ -236,11 +236,10 @@ const PROBY = [
     html: { '/privacy/': (h) => (h.includes('id="proba-ryad"') ? null : 'ряда proba-ryad на странице нет') },
   },
   {
+    // Заместитель (П93 п. 6): /story/ собрана из своего файла (пачка 3) — подмены структуры
+    // и временного файла ушли; судится собранная страница как есть.
     id: 'P4', imya: 'страница второго уровня: крошки и BreadcrumbList по договору', sudya: 'Base.astro + tools/glowa.mjs',
-    fajly: {
-      [P.struktura]: strukturaS({ '/story/': (p) => { p.blocks = bloki('story-row', 'link-list'); p.corridor = null; } }),
-      [P.vremenny]: vremenny('/story/', ['related:', '  title: Proba related']),
-    },
+    fajly: {},
     zhdem: [], kod: 0, glowa: true,
     html: { '/story/': (h) => (zvenyev(h) === 2 ? null : `звеньев BreadcrumbList ${zvenyev(h)}, ждали 2`) },
   },

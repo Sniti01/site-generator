@@ -17,13 +17,14 @@ const r4 = (x) => x.toFixed(4);
 const r1 = (x) => (Math.round(x * 10) / 10).toString();
 const k = z.kletki;
 const plokhie = k.filter((x) => !x.sverka);
-const shire = k.filter((x) => x.zanizhenie > 1);
+// «больше 1» — сверх 1,0005: значение sizes раскладка округляет до 1/64 px (раунд 2, P3-R2-INSTR-5)
+const shire = k.filter((x) => x.zanizhenie > 1.0005);
 const L = [
   `сборка ${z.sborka}, сервер ${z.base}, DPR 1; инструмент instrumenty/zanizhenie.js, текст — instrumenty/zanizhenie-itog.mjs`,
   `часть 1 — клетки с навигацией: ${k.length} (4 страницы × ${k.length / 4} окон); разбор sizes против значения браузера (naturalWidth × w / ширина файла): расхождений больше 1 px или чужой кадр — ${plokhie.length}${plokhie.length ? ': ' + plokhie.map((x) => x.adres + ' ' + x.okno).join(', ') : ''}`,
   `часть 1 — клетки, где sizes меньше нарисованной ширины: ${shire.map((x) => `${x.adres} ${x.okno} ×${r4(x.zanizhenie)}`).join(', ') || 'нет'}`,
   'часть 2 — скан ширин 641–2560 шагом 1 px при высоте окна 600 (нижняя граница высоты героя — 600 px):',
-  ...Object.entries(z.skan).map(([a, s]) => `  ${a}: наибольшее занижение ×${r4(s.hudshee.zanizhenie)} на ${s.hudshee.okno} (герой ${r1(s.hudshee.geroy)}, нарисовано ${r1(s.hudshee.narisovano)}, sizes ${r1(s.hudshee.znachenie)}); герой выше границы на ширинах ${s.rostOtrezki.join(', ') || 'нигде'}`),
+  ...Object.entries(z.skan).map(([a, s]) => `  ${a}: наибольшее занижение ×${r4(s.hudshee.zanizhenie)} на ${s.hudshee.okno} (герой ${r1(s.hudshee.geroy)}, нарисовано ${r1(s.hudshee.narisovano)}, sizes ${r1(s.hudshee.znachenie)}); герой выше границы на ширинах ${s.rostOtrezki.join(', ') || 'нигде'}; занижение больше 1 на ширинах ${(s.zanizhenieOtrezki ?? []).join(', ') || 'нигде'}`),
   'до 640 px высота рамки арта от текста не зависит (полоса max(40vh, 260px)); герой там выше рамки, но нарисованная ширина — от рамки',
   '',
   'клетки части 1:',

@@ -1,0 +1,11 @@
+# Опыт «судью судят», раунд 1 (заместитель P4, 26d32e7): судья пробы должен уронить P4, когда крошки
+# сломаны. Мутация — sites/7thserpent.com/src/layouts/Base.astro, условие BreadcrumbList
+# «kroshki.length > 1» заменено на «> 2» (на страницах второго уровня его нет); прогон
+# `node tools/proby-tresci.mjs P4 --pokazat`, код возврата 1; Base.astro сразу возвращён
+# `git checkout --`, git status чист. Ниже — вывод как есть.
+
+ПЛОХО P4   страница второго уровня: крошки и BreadcrumbList по договору     код 0 — проверка: Base.astro + tools/glowa.mjs
+      /story/: звеньев BreadcrumbList 0, ждали 2
+      tools/glowa.mjs по сборке пробы — код 1:   /remake/: [BreadcrumbList] BreadcrumbList: 0, нужен ровно один |   /story/: [BreadcrumbList] BreadcrumbList: 0, нужен ровно один |   /voice-and-face/: [BreadcrumbList] BreadcrumbList: 0, нужен ровно один
+
+0/1 проб: отрицательные отказывают своей проверкой, положительные собираются; файлы возвращены и сверены побайтово

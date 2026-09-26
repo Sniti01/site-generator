@@ -26,10 +26,14 @@
 // начинается позже. До 640 px высота рамки арта от текста не зависит (полоса max(40vh, 260px)), поэтому
 // там скана нет.
 // ПРЕДЕЛЫ: высоты окна кроме 600 сканом не судятся (граница выше — запас больше); полоса прокрутки
-// headless-Chromium — 0 (имитация полосы 17 px в раунде 1 дала те же числа, P3-R1-INSTR-14); DPR 1.
+// headless-Chromium — 0 (имитация полосы 17 px в раунде 1 дала те же числа, P3-R1-INSTR-14); DPR 1;
+// шрифт браузера — по умолчанию (16 px): при крупном шрифте пользователя текст растит героя сильнее
+// (до ×1,43 при 24 px, P3-R1-MARSHRUT-3), этот инструмент его не меряет (P3-R2-INSTR-8); значение sizes
+// мерится шириной блока, раскладка округляет её до 1/64 px — «больше 1» считается сверх 1,0005
+// (P3-R2-INSTR-5).
 async (page) => {
-  const BASE = 'http://127.0.0.1:4422';
-  const SBORKA = '103c0e8';
+  const BASE = 'http://127.0.0.1:4425';
+  const SBORKA = '1d68052';
   const STRANICY = [
     ['/max-payne-3/', 'mp3-art', 1920 / 620],
     ['/max-payne-2/', 'mp2-art', 1920 / 620],
@@ -120,19 +124,27 @@ async (page) => {
     await p.goto(BASE + adres, { waitUntil: 'load' });
     let hudshee = null;
     const rost = [];
+    const nizhe = [];
     for (let w = 641; w <= 2560; w++) {
       await p.setViewportSize({ width: w, height: 600 });
       const m = await p.evaluate(([prop, klyuch, merkaTekst]) => eval('(' + merkaTekst + ')')(prop, klyuch), [prop, klyuch, MERKA.toString()]);
       if (m.geroy > m.granica + 0.5) rost.push(w);
+      // занижение больше 1 сверх округления единиц раскладки (1/64 px, раунд 2, P3-R2-INSTR-5)
+      if (m.zanizhenie > 1.0005) nizhe.push(w);
       if (!hudshee || m.zanizhenie > hudshee.zanizhenie) hudshee = { okno: w + 'x600', ...m };
     }
-    const otrezki = [];
-    for (const w of rost) {
-      const posl = otrezki[otrezki.length - 1];
-      if (posl && posl[1] === w - 1) posl[1] = w;
-      else otrezki.push([w, w]);
-    }
-    skan[adres] = { hudshee, rostOtrezki: otrezki.map(([a, b]) => (a === b ? String(a) : a + '–' + b)), rostShirin: rost.length };
+    const otrezki = (spisok) => {
+      const o = [];
+      for (const w of spisok) {
+        const posl = o[o.length - 1];
+        if (posl && posl[1] === w - 1) posl[1] = w;
+        else o.push([w, w]);
+      }
+      return o.map(([a, b]) => (a === b ? String(a) : a + '–' + b));
+    };
+    // Полоса роста героя и полоса занижения — разные: с какой-то ширины член 170vw больше нарисованной
+    // ширины, и рост героя уже не занижает sizes (раунд 2, P3-R2-INSTR-7).
+    skan[adres] = { hudshee, rostOtrezki: otrezki(rost), rostShirin: rost.length, zanizhenieOtrezki: otrezki(nizhe) };
   }
   await ctx.close();
   const itog = { sborka: SBORKA, base: BASE, kletki, skan };
@@ -141,6 +153,6 @@ async (page) => {
   return [
     'сборка ' + SBORKA + ', сервер ' + BASE + ', DPR 1',
     'клеток ' + kletki.length + '; разбор sizes против значения браузера (naturalWidth): расхождений больше 1 px или чужой кадр — ' + plokhih.length + (plokhih.length ? ': ' + plokhih.map((k) => k.adres + ' ' + k.okno).join(', ') : ''),
-    ...Object.entries(skan).map(([a, s]) => `${a} скан 641–2560×600: наибольшее занижение ×${s.hudshee.zanizhenie.toFixed(4)} на ${s.hudshee.okno}; герой выше границы на ширинах ${s.rostOtrezki.join(', ') || 'нигде'}`),
+    ...Object.entries(skan).map(([a, s]) => `${a} скан 641–2560×600: наибольшее занижение ×${s.hudshee.zanizhenie.toFixed(4)} на ${s.hudshee.okno}; герой выше границы на ширинах ${s.rostOtrezki.join(', ') || 'нигде'}; занижение больше 1 на ширинах ${s.zanizhenieOtrezki.join(', ') || 'нигде'}`),
   ].join('\n');
 }

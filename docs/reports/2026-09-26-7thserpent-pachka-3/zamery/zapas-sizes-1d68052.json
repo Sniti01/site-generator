@@ -5,7 +5,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "390x844",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1045,
+      "raschet": 1045.5472,
       "b": 780,
       "prezhnee": 780,
       "ok": true
@@ -13,7 +15,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "640x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1280,
+      "raschet": 1280,
       "b": 1280,
       "prezhnee": 1280,
       "ok": true
@@ -21,7 +25,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "641x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1282,
       "prezhnee": 1282,
       "ok": true
@@ -29,7 +35,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "800x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1600,
       "prezhnee": 1600,
       "ok": true
@@ -37,7 +45,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "1024x768",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2140,
+      "raschet": 2140.4928,
       "b": 2048,
       "prezhnee": 2048,
       "ok": true
@@ -45,7 +55,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "1025x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1742,
       "prezhnee": 1742.5,
       "ok": true
@@ -53,7 +65,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "1440x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 2448,
       "prezhnee": 2448,
       "ok": true
@@ -61,7 +75,9 @@
     {
       "adres": "/max-payne-3/",
       "okno": "1920x1080",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 3263,
+      "raschet": 3264,
       "b": 3263,
       "prezhnee": 3264,
       "ok": true
@@ -69,7 +85,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "390x844",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1045,
+      "raschet": 1045.5472,
       "b": 780,
       "prezhnee": 780,
       "ok": true
@@ -77,7 +95,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "640x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1280,
+      "raschet": 1280,
       "b": 1280,
       "prezhnee": 1280,
       "ok": true
@@ -85,7 +105,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "641x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1282,
       "prezhnee": 1282,
       "ok": true
@@ -93,7 +115,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "800x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1600,
       "prezhnee": 1600,
       "ok": true
@@ -101,7 +125,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "1024x768",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2140,
+      "raschet": 2140.4928,
       "b": 2048,
       "prezhnee": 2048,
       "ok": true
@@ -109,7 +135,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "1025x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1742,
       "prezhnee": 1742.5,
       "ok": true
@@ -117,7 +145,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "1440x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 2448,
       "prezhnee": 2448,
       "ok": true
@@ -125,7 +155,9 @@
     {
       "adres": "/max-payne-2/",
       "okno": "1920x1080",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 3263,
+      "raschet": 3264,
       "b": 3263,
       "prezhnee": 3264,
       "ok": true
@@ -133,7 +165,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "390x844",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1045,
+      "raschet": 1045.5472,
       "b": 780,
       "prezhnee": 780,
       "ok": true
@@ -141,7 +175,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "640x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 1280,
+      "raschet": 1280,
       "b": 1280,
       "prezhnee": 1280,
       "ok": true
@@ -149,7 +185,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "641x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1282,
       "prezhnee": 1282,
       "ok": true
@@ -157,7 +195,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "800x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1600,
       "prezhnee": 1600,
       "ok": true
@@ -165,7 +205,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "1024x768",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2140,
+      "raschet": 2140.4928,
       "b": 2048,
       "prezhnee": 2048,
       "ok": true
@@ -173,7 +215,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "1025x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 1742,
       "prezhnee": 1742.5,
       "ok": true
@@ -181,7 +225,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "1440x900",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 2508,
+      "raschet": 2508.39,
       "b": 2448,
       "prezhnee": 2448,
       "ok": true
@@ -189,7 +235,9 @@
     {
       "adres": "/max-payne-1/",
       "okno": "1920x1080",
+      "sizes": "(max-width: 640px) max(200vw, 123.88vh, 805.17px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(1858.07px, 278.71vh, 2849.04px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(1858.07px, 278.71vh, 2849.04px)), 170vw",
       "a": 3264,
+      "raschet": 3264,
       "b": 3264,
       "prezhnee": 3264,
       "ok": true
@@ -197,7 +245,9 @@
     {
       "adres": "/remake/",
       "okno": "390x844",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 780,
+      "raschet": 780,
       "b": 780,
       "prezhnee": 780,
       "ok": true
@@ -205,7 +255,9 @@
     {
       "adres": "/remake/",
       "okno": "640x900",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 1280,
+      "raschet": 1280,
       "b": 1280,
       "prezhnee": 1280,
       "ok": true
@@ -213,7 +265,9 @@
     {
       "adres": "/remake/",
       "okno": "641x900",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 1282,
+      "raschet": 1282,
       "b": 1282,
       "prezhnee": 1282,
       "ok": true
@@ -221,7 +275,9 @@
     {
       "adres": "/remake/",
       "okno": "800x900",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 1600,
+      "raschet": 1600,
       "b": 1600,
       "prezhnee": 1600,
       "ok": true
@@ -229,7 +285,9 @@
     {
       "adres": "/remake/",
       "okno": "1024x768",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 2048,
+      "raschet": 2048,
       "b": 2048,
       "prezhnee": 2048,
       "ok": true
@@ -237,7 +295,9 @@
     {
       "adres": "/remake/",
       "okno": "1025x900",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 1742,
+      "raschet": 1742.5,
       "b": 1742,
       "prezhnee": 1742.5,
       "ok": true
@@ -245,7 +305,9 @@
     {
       "adres": "/remake/",
       "okno": "1440x900",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 2448,
+      "raschet": 2448,
       "b": 2448,
       "prezhnee": 2448,
       "ok": true
@@ -253,7 +315,9 @@
     {
       "adres": "/remake/",
       "okno": "1920x1080",
+      "sizes": "(max-width: 640px) max(200vw, 53.34vh, 346.67px), (max-width: 640px) 200vw, (max-width: 1024px) max(200vw, clamp(800px, 120vh, 1226.67px)), (max-width: 1024px) 200vw, (min-width: 0px) max(170vw, clamp(800px, 120vh, 1226.67px)), 170vw",
       "a": 3264,
+      "raschet": 3264,
       "b": 3264,
       "prezhnee": 3264,
       "ok": true

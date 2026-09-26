@@ -7,8 +7,10 @@
 // Первые строки вывода — обе папки. Разный размер кадра — строка «размер», без счёта. Файлы только
 // в одной папке — строка «нет пары». Сравниваются три канала цвета; у каждого файла — своё число каналов
 // (RGB или RGBA), альфа не считается («судью судят», раунд 1, P3-R1-INSTR-11: первая редакция читала
-// оба файла шагом первого и при RGB против RGBA сравнивала не те байты). Кадр с одним или двумя
-// каналами (серый) — отказ строкой «каналы».
+// оба файла шагом первого и при RGB против RGBA сравнивала не те байты). Кадр, который декодер ядра
+// не читает (серый, палитровый, 16-битный PNG), — строка «не читается» с причиной, прогон идёт дальше;
+// строка «каналы» — для кадра меньше чем с тремя каналами, если декодер его прочёл («судью судят»,
+// раунд 2, P3-R2-INSTR-4). Расширение — .png в любом регистре.
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { decodePng } from '../../../../core/accept/pixels.mjs';
@@ -19,14 +21,20 @@ if (!a || !b) {
   process.exit(2);
 }
 console.log(`до: ${resolve(a)}\nпосле: ${resolve(b)}`);
-const imena = [...new Set([...readdirSync(a), ...readdirSync(b)])].filter((f) => f.endsWith('.png')).sort();
+const imena = [...new Set([...readdirSync(a), ...readdirSync(b)])].filter((f) => /\.png$/i.test(f)).sort();
 for (const f of imena) {
   if (!existsSync(join(a, f)) || !existsSync(join(b, f))) {
     console.log(`${f}: нет пары`);
     continue;
   }
-  const x = decodePng(readFileSync(join(a, f)));
-  const y = decodePng(readFileSync(join(b, f)));
+  let x, y;
+  try {
+    x = decodePng(readFileSync(join(a, f)));
+    y = decodePng(readFileSync(join(b, f)));
+  } catch (e) {
+    console.log(`${f}: не читается — ${e.message}`);
+    continue;
+  }
   if (x.width !== y.width || x.height !== y.height) {
     console.log(`${f}: размер ${x.width}×${x.height} → ${y.width}×${y.height}`);
     continue;

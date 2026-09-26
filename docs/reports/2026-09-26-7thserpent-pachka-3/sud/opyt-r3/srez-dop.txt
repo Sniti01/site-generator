@@ -1,0 +1,31 @@
+/pc/: слов <main> у среза 873; строк вне <main> (title, meta, og, alt) 4; совпадений в них 0
+/games-like-max-payne/: слов <main> у среза 654; строк вне <main> (title, meta, og, alt) 4; совпадений в них 0
+/media/: слов <main> у среза 576; строк вне <main> (title, meta, og, alt) 7; совпадений в них 2
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+/max-payne-1/: слов <main> у среза 571; строк вне <main> (title, meta, og, alt) 6; совпадений в них 0
+/max-payne-2/: слов <main> у среза 2190; строк вне <main> (title, meta, og, alt) 9; совпадений в них 15
+   title: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   title: «payne 2 the fall of max payne 2003» — https://en.wikipedia.org/wiki/Max_Payne_3
+   description: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   og:title: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   og:title: «payne 2 the fall of max payne 2003» — https://en.wikipedia.org/wiki/Max_Payne_3
+   og:description: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+/max-payne-3/: слов <main> у среза 1108; строк вне <main> (title, meta, og, alt) 7; совпадений в них 0
+/remake/: слов <main> у среза 877; строк вне <main> (title, meta, og, alt) 5; совпадений в них 0
+/story/: слов <main> у среза 1363; строк вне <main> (title, meta, og, alt) 7; совпадений в них 2
+   alt: «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   alt: «payne 2 the fall of max payne max» — https://en.wikipedia.org/wiki/Max_Payne_3
+/voice-and-face/: слов <main> у среза 820; строк вне <main> (title, meta, og, alt) 5; совпадений в них 0
+/cheats/: слов <main> у среза 812; строк вне <main> (title, meta, og, alt) 4; совпадений в них 0
+/mods/: слов <main> у среза 721; строк вне <main> (title, meta, og, alt) 4; совпадений в них 0
+итого совпадений вне <main>: 19

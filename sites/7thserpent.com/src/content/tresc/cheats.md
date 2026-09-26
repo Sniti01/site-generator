@@ -65,7 +65,7 @@ rows:
     meta: Harder modes, a bonus level and a second ending
     body:
       - >-
-        Besides the default Fugitive, Max Payne has Hard-Boiled, Dead on
+        Besides the default Fugitive setting, Max Payne has Hard-Boiled, Dead on
         Arrival, limited to seven saves in each chapter, and New York Minute,
         with a clock on every chapter. Beat Dead on Arrival for
         The Last Challenge, one last gunfight against a crowd of enemies with
@@ -85,8 +85,8 @@ rows:
         Max Payne 3 hands out its cheats as rewards: finish the story
         on Hard for Unlimited Painkillers and on Hardcore for One Hit Kill,
         collect every golden gun part for unlimited ammo and every clue for a
-        constant bullet-time camera, and earn all gold awards in Arcade mode
-        (“Score Arcade,” IGN says) for unlimited bullet time. Hard also opens the Old School and Hardcore
+        constant bullet-time camera, and earn all gold awards in what IGN
+        calls Score Arcade for unlimited bullet time. Hard also opens the Old School and Hardcore
         difficulties.
   - id: mobile-and-ps4
     year: Mobile and PS4
@@ -111,8 +111,8 @@ rows:
         mod menus players use in Max Payne 3 are fan-made scripts. One trainer
         download site warns that a trainer usually fits one version of the
         game, may stop working or misbehave after an update or a language
-        change, and carries an especially high risk of damaging the game, at
-        worst to the point of a reinstall.
+        change, and that the chance of glitches or even damage to the game, at
+        worst needing a reinstall, is especially high.
 related:
   title: Where to go next
 cta:

@@ -1,0 +1,69 @@
+{
+  "sborka": "8dfd05d",
+  "story-1440": {
+    "nezagruzheno": 0,
+    "vysota": 7999,
+    "hero": null,
+    "byline": {
+      "y": 341,
+      "h": 115,
+      "w": 1440
+    },
+    "h1": {
+      "y": 241,
+      "h": 100,
+      "w": 1176
+    },
+    "podpisKadra": null,
+    "strokH1": 2,
+    "kroshki": {
+      "y": 69,
+      "h": 44,
+      "w": 1440
+    }
+  },
+  "story-390": {
+    "nezagruzheno": 0,
+    "vysota": 10528,
+    "hero": null,
+    "byline": {
+      "y": 357,
+      "h": 87,
+      "w": 390
+    },
+    "h1": {
+      "y": 227,
+      "h": 130,
+      "w": 358
+    },
+    "podpisKadra": null,
+    "strokH1": 4,
+    "kroshki": {
+      "y": 69,
+      "h": 86,
+      "w": 390
+    }
+  },
+  "story-320": {
+    "nezagruzheno": 0,
+    "vysota": 11893,
+    "hero": null,
+    "byline": {
+      "y": 386,
+      "h": 114,
+      "w": 320
+    },
+    "h1": {
+      "y": 227,
+      "h": 160,
+      "w": 288
+    },
+    "podpisKadra": null,
+    "strokH1": 5,
+    "kroshki": {
+      "y": 69,
+      "h": 86,
+      "w": 320
+    }
+  }
+}

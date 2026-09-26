@@ -1,0 +1,23 @@
+
+> 7thserpent.com@0.1.0 brief:check
+> node tools/brief-strony.mjs --check
+
+ok    404.md
+ok    cheats.md
+ok    gameplay.md
+ok    games-like-max-payne.md
+ok    max-payne-1.md
+ok    max-payne-2.md
+ok    max-payne-3-guide.md
+ok    max-payne-3.md
+ok    media.md
+ok    mods.md
+ok    movie.md
+ok    pc.md
+ok    privacy.md
+ok    quotes.md
+ok    remake.md
+ok    story.md
+ok    voice-and-face.md
+
+сторож: брифов 17 из 17 (лишних 0), документов корпуса 612, n-грамма 8 слов; отказов — 0

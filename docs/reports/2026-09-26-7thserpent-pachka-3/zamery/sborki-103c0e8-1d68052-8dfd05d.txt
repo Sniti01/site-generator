@@ -1,0 +1,17 @@
+финальная: dist-final (128 файлов)
+
+== 103c0e8: dist-g1 (121 файлов); различаются 15: _astro/mp1-k06.blJYoQpw_Z82MfH.webp, _astro/mp1-k06.blJYoQpw_kE6hd.webp, _astro/mp1-k06.blJYoQpw_kL1i4.webp, cheats/index.html, index.html, max-payne-1/index.html, max-payne-2/index.html, max-payne-3/index.html, media/index.html, mods/index.html, pc/index.html, remake/index.html, sitemap-0.xml, story/index.html, voice-and-face/index.html
+  max-payne-1/index.html: различаются; без атрибутов sizes — РАЗЛИЧАЮТСЯ И ВНЕ sizes
+  max-payne-2/index.html: различаются; без атрибутов sizes — равны (различие только в sizes)
+  max-payne-3/index.html: различаются; без атрибутов sizes — РАЗЛИЧАЮТСЯ И ВНЕ sizes
+  remake/index.html: различаются; без атрибутов sizes — равны (различие только в sizes)
+
+== 1d68052: dist-r1 (128 файлов); различаются 1: cheats/index.html
+  max-payne-1/index.html: побайтно равны
+  max-payne-2/index.html: побайтно равны
+  max-payne-3/index.html: побайтно равны
+  remake/index.html: побайтно равны
+
+(пометка ведущего) Папки: dist-g1 — копия dist/ сборки 103c0e8 (замер контраста героев kontrast-geroy/g1-103c0e8-*, кадры kadry/geroi-posle), dist-r1 — копия dist/ сборки 1d68052 (rastyazhenie-posle-r1.json, zanizhenie-1d68052, zapas-sizes-1d68052), dist-final — копия dist/ сборки 8dfd05d (zamery/server-4426-sborka.txt).
+Против 1d68052 различается только /cheats/ — замеры в браузере на 1d68052 действуют для 8dfd05d без оговорок.
+Против 103c0e8 у /max-payne-1/ и /max-payne-3/ первое различие вне sizes — на символе 21040 и 26886, после конца секции героя (14946 и 15062): подпись ссылки на /cheats/ в списке related (h1 /cheats/ из договора п. 0а, d627a41). Секция героя отличается только атрибутом sizes (запасные записи b5dc9c7); где max() понятна (Chromium замера), значение sizes у 103c0e8 и b5dc9c7 одно и то же — опыт линзы раунда 2, 375 клеток из 375 (sud/sud-r2-nakhodki.md, P3-R2-MARSHRUT-2). Поэтому замер контраста героев на 103c0e8 действует для 8dfd05d.

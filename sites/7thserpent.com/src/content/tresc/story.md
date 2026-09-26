@@ -9,7 +9,7 @@ rows:
   - id: who-is-max
     year: The hero
     title: Who Max Payne is
-    meta: A New York cop across three games, from 2001 to 2012
+    meta: The man at the center of all three games, 2001 to 2012
     body:
       - >-
         Max Payne is a New York detective whose life fell apart in 1998. Three
@@ -85,7 +85,7 @@ rows:
   - id: max-payne-3-2012
     year: Max Payne 3 · 2012
     title: São Paulo, nine years later
-    meta: Rockstar’s game, up to the night Max shaves his head
+    meta: Rockstar’s game, up to the point where Max shaves his head
     art: mp3-k15
     band: true
     body:
@@ -101,7 +101,7 @@ rows:
         A street gang, Comando Sombra, snatches Fabiana from a nightclub. The
         ransom handover at a football stadium is ambushed by the Crachá Preto,
         a vigilante militia, and when the militia later storms Rodrigo’s office
-        to kill Max, Rodrigo dies instead. Blaming himself, Max quits drinking,
+        to kill Max, Max survives and Rodrigo is killed. Blaming himself, Max quits drinking,
         shaves his head and heads into the Nova Esperança favela to find
         Fabiana.
   - id: characters
@@ -155,15 +155,16 @@ rows:
     meta: Alex Casey, Sam Lake’s face and James McCaffrey’s voice
     body:
       - >-
-        Not by name. In Remedy’s Alan Wake (2010), Alex Casey, the New York
-        detective of Alan Wake’s famous crime novels, was a playful nod to Max
-        Payne. Alan Wake 2 (2023) makes Casey an FBI agent working with Saga
-        Anderson and gives him Sam Lake’s face, the one the first Max had, and
-        McCaffrey’s voice. Game Rant’s verdict: not Max on paper, the same man
-        in all but name.
+        The Escapist’s answer is no, with a catch. In Remedy’s Alan Wake
+        (2010), Alex Casey, the New York detective of Alan Wake’s famous crime
+        novels, was a playful nod to Max Payne. Alan Wake 2 (2023) has an FBI
+        agent named Alex Casey, Saga Anderson’s partner, with Sam Lake’s face,
+        the one the first Max had, and McCaffrey’s voice. Game Rant’s verdict:
+        not Max on paper, the same man in all but name.
       - >-
         Remedy’s connected universe, confirmed with Control in 2019, takes in
-        Alan Wake but not Max Payne, whose rights belong to Rockstar. Lake
+        Alan Wake but not Max Payne, whose rights, as of September 2026, belong
+        to Rockstar. Lake
         himself, The Escapist reports, has put the Max Payne games outside it.
         An Easter egg in the first Alan Wake says Max died in 2016; Wikipedia
         does not treat it as canon.

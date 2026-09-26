@@ -12,13 +12,13 @@ rows:
     meta: Kung Fu Edition 3.0 by Kenneth Yeung
     body:
       - >-
-        The first game’s best-known mod is Kenneth Yeung’s Kung Fu Edition, a
-        personal project he started in 2001; version 3.0 came out in 2003. It
-        brings the style of Hong Kong kung fu films to Max Payne: fists and a
-        fighting staff, more than 20 moves with combos and a skill level that
-        grows, wall runs and wall jumps, two new shootdodges, bodies you can
-        juggle, and a dojo that teaches the basics. Rock Paper Shotgun ranks it
-        among the best things players ever added to the game.
+        Rock Paper Shotgun counts Kenneth Yeung’s Kung Fu Edition among the
+        best fan additions to the first game. It began as a personal project
+        in 2001, and version 3.0 came out in 2003. It brings the style of Hong
+        Kong kung fu films to Max Payne: fists and a fighting staff, more than
+        20 moves with combos and a skill level that grows, wall runs and wall
+        jumps, two new shootdodges, bodies you can juggle, and a dojo that
+        teaches the basics.
       - >-
         To play it, unzip the mod into the folder with MaxPayne.exe, start the
         game and pick it under Choose Customized Games in the startup window.
@@ -32,14 +32,15 @@ rows:
         NVIDIA’s RTX Remix lets modders rebuild old games with full path-traced
         lighting, and both Remedy games have fan projects. In April 2026 the
         modder Neo_minigan released a path-tracing mod for Max Payne —
-        DSOGaming counts it as the game’s third — that, like the two before it,
-        covers only the prologue and Roscoe Street Station and keeps the
-        original art direction. It is an early beta with visual bugs.
+        DSOGaming counts it as the game’s third — that keeps the original art
+        direction and, like the two before it, covers only the prologue and
+        Roscoe Street Station. DSOGaming called it an early beta that may show
+        visual bugs.
       - >-
         The lighting is expensive. In a January 2024 video of an earlier Remix
         mod, Max Payne fell from over 1,000 frames per second to around 60 on
-        an RTX 4080. Darko9.13’s Max Payne 2 RTX Remix, playable while still in
-        development, adds realistic lighting, physically based materials and
+        an RTX 4080. Darko9.13’s Max Payne 2 RTX Remix, playable in November
+        2025 while still in development, adds realistic lighting, physically based materials and
         better textures; at 4K with DLSS 4 on Performance it dropped to about
         40 fps in one scene on an RTX 5080, and 1440p on Balanced came close to
         60.
@@ -59,8 +60,9 @@ rows:
         Marathon games.
       - >-
         Most Max Payne 2 mods unpack into the game folder and let you choose
-        which one to run at launch. Many ask you to add -skipstartup -developer
-        -developerkeys to the shortcut or to Steam’s launch options, and some
+        which one to run at launch. Many recommend adding -skipstartup
+        -developer -developerkeys to the shortcut or to Steam’s launch options,
+        and some
         need the Max Payne 2 Weapon Patch first.
   - id: fusionfix
     year: Max Payne 3

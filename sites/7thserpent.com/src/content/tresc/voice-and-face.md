@@ -104,13 +104,14 @@ rows:
   - id: remake-cast
     year: The remake
     title: Who will play Max next?
-    meta: As of September 2026, the studios are not saying
+    meta: As of September 2026, Remedy leaves any news to Rockstar
     body:
       - >-
         As of September 2026, Remedy is keeping quiet about the Max Payne 1 & 2
-        Remake: in August it said again that any announcement is up to
-        Rockstar. McCaffrey died in 2023; asked that October, Lake called it too
-        early to know whether his face would be used again.
+        Remake: in August it confirmed that any announcement is up to Rockstar.
+        In October 2023, two months before McCaffrey died, TechRadar reported
+        Lake telling Eurogamer that it was too soon to know whether his own
+        face would return.
 related:
   title: More about Max
 cta:

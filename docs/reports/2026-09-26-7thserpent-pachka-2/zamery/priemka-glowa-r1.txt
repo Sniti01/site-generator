@@ -1,0 +1,12 @@
+  /                        og:site_name 1, JSON-LD: WebSite, звеньев крошек: —
+  /404/                    og:site_name 1, JSON-LD: —, звеньев крошек: 2
+  /games-like-max-payne/   og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /max-payne-1/            og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /max-payne-2/            og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /max-payne-3/            og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /media/                  og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /pc/                     og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+  /remake/                 og:site_name 1, JSON-LD: BreadcrumbList, звеньев крошек: 2
+
+сверено: 9 стр. сборки D:\SEO\cloud\site-generator\sites\7thserpent.com\dist — og:site_name «7th Serpent» на каждой, WebSite на главной, BreadcrumbList и крошки по договору
+glowa exit=0

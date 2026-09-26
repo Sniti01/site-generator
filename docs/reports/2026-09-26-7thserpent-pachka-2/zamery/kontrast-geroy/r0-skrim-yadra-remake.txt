@@ -1,0 +1,49 @@
+hero .hero__title              худший пиксель 5.29:1 на 720x900 (строка y 411.4 «Max Payne 1 & 2 Remake: release date, pl»), p99 не ниже 6.44:1
+hero .hero__lead               худший пиксель 1.57:1 на 641x900 (строка y 540.7 «Remedy is rebuilding the first two games»), p99 не ниже 2.08:1
+herobtn .btn-secondary         худший пиксель 10.05:1 на 720x900 (строка y 137.5 «The 2001 original»), p99 не ниже 10.23:1
+podpis .foto__credit           худший пиксель 6.27:1 на 480x800 (строка y 116.8 «Pictured: the original Max Payne (2001),»), p99 не ниже 6.76:1
+
+Ниже 4,5:1 — 24:
+  641x900 hero .hero__lead 1.57
+  700x900 hero .hero__lead 1.62
+  720x900 hero .hero__lead 1.57
+  768x1024 hero .hero__lead 1.60
+  800x900 hero .hero__lead 1.62
+  820x1180 hero .hero__lead 1.62
+  860x900 hero .hero__lead 1.62
+  900x700 hero .hero__lead 1.62
+  960x800 hero .hero__lead 3.92
+  1000x900 hero .hero__lead 3.79
+  1024x768 hero .hero__lead 3.91
+  1025x900 hero .hero__lead 2.14
+  1060x900 hero .hero__lead 3.95
+  1100x800 hero .hero__lead 3.69
+  1140x900 hero .hero__lead 3.56
+  1180x900 hero .hero__lead 4.11
+  1194x834 hero .hero__lead 3.84
+  1200x900 hero .hero__lead 4.15
+  1280x800 hero .hero__lead 3.36
+  1359x900 hero .hero__lead 3.61
+  1360x900 hero .hero__lead 3.59
+  1440x900 hero .hero__lead 3.39
+  1600x900 hero .hero__lead 3.50
+  1920x1080 hero .hero__lead 3.72
+
+Ошибки замера — 14:
+  360x740 hero: строка «Remedy is rebuilding the first two games» (.hero__lead, y 744.2) вне кадра
+  360x740 hero: строка «Remedy is rebuilding the first two games» (.hero__lead, y 770.9) вне кадра
+  360x740 hero: строка «Remedy is rebuilding the first two games» (.hero__lead, y 797.7) вне кадра
+  641x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  700x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  720x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  768x1024 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  800x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  820x1180 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  860x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  900x700 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  960x800 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  1000x900 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+  1024x768 podpis: строка «Pictured: the original Max Payne (2001),» (.foto__credit, y 116.8) срезана краем кадра
+
+Итог: окон 31, строк 259; самый тесный худший пиксель — 1.57:1 (641x900, .hero__lead, y 540.7), порог 4,5:1.
+remake exit=1

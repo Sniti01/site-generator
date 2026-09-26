@@ -1,0 +1,7 @@
+сборка 1ae7c58 (копия dist-r1, сервер 127.0.0.1:4415), кадры .playwright-mcp/ka-p2r2/max-payne-3, скрим маршрута, подпись кадра — место dopisek
+herotitle .hero__title         худший пиксель 11.92:1 на 700x900 (строка y 385.3 «Max Payne 3 (2012): São Paulo, platforms»), p99 не ниже 13.00:1
+herolead .hero__lead           худший пиксель 6.18:1 на 900x700 (строка y 312.7 «Nine years after the second game, Max is»), p99 не ниже 6.44:1
+herobtn .btn-secondary         худший пиксель 13.00:1 на 768x1024 (строка y 137.3 «The walkthrough»), p99 не ниже 13.20:1
+
+Итог: окон 31, строк 253; самый тесный худший пиксель — 6.18:1 (900x700, .hero__lead, y 312.7), порог 4,5:1.
+max-payne-3 exit=0

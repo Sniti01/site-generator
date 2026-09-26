@@ -1,0 +1,89 @@
+
+> 7thserpent.com@0.1.0 tree:check
+> node tools/build-tree.mjs --dry-run
+
+объявлено страниц: 18 (волна 1: 18, волна 2: 0)
+типы: home 1, game 4, guide 4, topic 7, legal 2
+
+страницы по объёму:
+    17540/мес   23 запр.  волна 1  home   /
+    11620/мес   60 запр.  волна 1  game   /max-payne-3/
+     9480/мес   30 запр.  волна 1  game   /remake/
+     8190/мес   34 запр.  волна 1  topic  /movie/
+     3860/мес   50 запр.  волна 1  game   /max-payne-1/
+     3020/мес   15 запр.  волна 1  game   /max-payne-2/
+     2160/мес   39 запр.  волна 1  topic  /voice-and-face/
+     1100/мес    9 запр.  волна 1  guide  /mods/
+      990/мес   28 запр.  волна 1  guide  /max-payne-3/guide/
+      950/мес   40 запр.  волна 1  topic  /media/
+      670/мес   32 запр.  волна 1  guide  /cheats/
+      590/мес   35 запр.  волна 1  topic  /story/
+      440/мес   19 запр.  волна 1  topic  /gameplay/
+      410/мес   17 запр.  волна 1  guide  /pc/
+      340/мес    7 запр.  волна 1  topic  /games-like-max-payne/
+      270/мес    3 запр.  волна 1  topic  /quotes/
+        0/мес    0 запр.  волна 1  legal  /privacy/
+        0/мес    0 запр.  волна 1  legal  /404/
+
+учёт: 441 на страницах + 8 exclusions + 59 no_page = 508 из 508
+
+темы по страницам (пар: 35):
+  /  order · rating
+  /max-payne-1/  guides · gameplay @ max payne mobile
+  /max-payne-2/  business @ max payne 2
+  /max-payne-3/  reviews @ max payne 3 · rating @ max payne 3 · business @ max payne 3
+  /max-payne-3/guide/  guides @ max payne 3
+  /movie/  similar @ max payne (film)
+  /voice-and-face/  creators · creators @ max payne 2 · creators @ max payne 3 · appearance · appearance @ max payne 3
+  /story/  lore · lore @ max payne 1 · lore @ max payne 2 · lore @ max payne 3 · remedy_universe
+  /gameplay/  gameplay · gameplay @ max payne 2 · gameplay @ max payne 3
+  /cheats/  cheats · cheats @ max payne 1 · cheats @ max payne 2 · cheats @ max payne 3
+  /mods/  mods · mods @ max payne 3
+  /media/  media · media @ max payne 2 · media @ max payne 3
+  /pc/  pc_tech · pc_tech @ max payne 2
+  /games-like-max-payne/  similar
+
+фраз, отправленных в no_page объявлением (no_page_ключи): 1
+  «max payne apk download» из кластера «max payne apk»  — нелегальное распространение: «apk download» — сборка вне магазина приложений; официальная мобильная версия (Google Play, App Store) — раздел хаба MP1 (S0 §4.4, П65 п. 1 и 3)
+
+страниц вне выгрузки (спроса нет по определению): 2
+  /privacy/  — Служебная страница, спроса нет по определению; `cluster: null` служебной разрешён П26 п. 2, прецедент — `/prywatnosc/` первого сайта (П42). Заведена с деревом (S0 §11 считал её в 15–19 страницах); текст — сессия публикации, приватность США — открытый вопрос П63 п. 5.
+  /404/  — Страница ошибки 404 — служебная, спроса нет по определению; тип `legal` — единственный служебный в закрытом списке (П52 п. 1–3, П60: отдельный тип не заводится). Из sitemap исключается интеграцией (`404/`), в структуре стоит по П24 п. 1 и правилу гейта коридора «исключений нет — только через structure.json».
+
+коридор из контракта, не из анатомии (именованные решения, П43): 2
+  /  null  (анатомия: [4532,6132])
+  /games-like-max-payne/  null  (анатомия: [2996,4054])
+
+блоки: 75 — type-default 57, manual 9, anatomy 9
+блоки анатомии: byline medium 8; gallery medium 1
+  /max-payne-2/  byline medium 3/7
+  /max-payne-3/guide/  byline medium 15/25
+  /voice-and-face/  byline medium 14/23
+  /story/  byline medium 12/28
+  /gameplay/  byline medium 13/23
+  /cheats/  byline medium 13/30
+  /mods/  byline medium 10/17
+  /quotes/  byline medium 2/4
+  /quotes/  gallery medium 2/4
+коридоры: 14 числом, 4 null
+  /  null
+  /max-payne-1/  [2067,2797]
+  /max-payne-2/  [9123,12343]
+  /max-payne-3/  [4677,6327]
+  /max-payne-3/guide/  [3174,4294]
+  /movie/  [5170,6994]
+  /remake/  [3753,5077]
+  /voice-and-face/  [3753,5077]
+  /story/  [5057,6841]
+  /gameplay/  [3562,4819]
+  /cheats/  [2747,3717]
+  /mods/  [3023,4091]
+  /media/  [1986,2686]
+  /quotes/  [5093,6891]
+  /pc/  [2870,3884]
+  /games-like-max-payne/  null
+  /privacy/  null
+  /404/  null
+  коридор-ориентир (медиана ниши, своих документов меньше минимума): /games-like-max-payne/ — в контракте null, анатомия [2996,4054]; гейт не судит (null — именованное решение), число печатается строкой
+structure/structure.json совпадает с построенным
+tree:check exit=0

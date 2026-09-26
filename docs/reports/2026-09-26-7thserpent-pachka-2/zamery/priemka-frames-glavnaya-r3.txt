@@ -1,0 +1,32 @@
+эталонных кадров: 13, снятых: 13
+НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 20: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: _baseline\szum.json — зон 19; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-around-1440x900.png: эталон 1440×900, снято 1440×900
+  в допуске    baseline-desktop-blok-around-1440x900.png: зона 6-лента-карточка-3-1440-блок — 2 (макс 1)
+  размер ок baseline-desktop-blok-catalog-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-catalog-1440x900.png
+  размер ок baseline-desktop-blok-games-in-order-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-games-in-order-1440x900.png
+  размер ок baseline-desktop-blok-quote-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-quote-1440x900.png
+  размер ок baseline-desktop-blok-start-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-start-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×7134, снято 1440×7134
+  в допуске    baseline-desktop-full-1440.png: зона 7-лента-карточка-3-1440-полный — 2 (макс 1)
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-2-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-2-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-3-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-3-1440x900.png
+  размер ок baseline-desktop-layer-remake-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-remake-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×9515, снято 390×9515
+  0 различий   baseline-mobile-full-390.png
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 13 — 0 различий 11, в допуске 2, вне допуска 0.
+frames exit=0

@@ -1,0 +1,27 @@
+hero .hero__title              худший пиксель 3.93:1 на 700x900 (строка y 385.3 «Max Payne 3 (2012): São Paulo, platforms»), p99 не ниже 8.31:1
+hero .hero__lead               худший пиксель 1.80:1 на 1025x900 (строка y 564.6 «Nine years after the second game, Max is»), p99 не ниже 2.17:1
+herobtn .btn-secondary         худший пиксель 5.73:1 на 700x900 (строка y 137.3 «The walkthrough»), p99 не ниже 6.10:1
+
+Ниже 4,5:1 — 14:
+  641x900 hero .hero__lead 2.18
+  700x900 hero .hero__title 3.93
+  700x900 hero .hero__lead 2.24
+  720x900 hero .hero__lead 2.23
+  768x1024 hero .hero__lead 2.27
+  800x900 hero .hero__lead 2.15
+  820x1180 hero .hero__lead 2.18
+  860x900 hero .hero__lead 2.09
+  900x700 hero .hero__lead 1.99
+  960x800 hero .hero__lead 2.17
+  1000x900 hero .hero__lead 2.28
+  1025x900 hero .hero__lead 1.80
+  1060x900 hero .hero__lead 1.97
+  1100x800 hero .hero__lead 2.10
+
+Ошибки замера — 3:
+  360x740 hero: строка «Nine years after the second game, Max is» (.hero__lead, y 722.6) срезана краем кадра
+  360x740 hero: строка «Nine years after the second game, Max is» (.hero__lead, y 749.3) вне кадра
+  360x740 hero: строка «Nine years after the second game, Max is» (.hero__lead, y 776.1) вне кадра
+
+Итог: окон 31, строк 250; самый тесный худший пиксель — 1.80:1 (1025x900, .hero__lead, y 564.6), порог 4,5:1.
+max-payne-3 exit=1

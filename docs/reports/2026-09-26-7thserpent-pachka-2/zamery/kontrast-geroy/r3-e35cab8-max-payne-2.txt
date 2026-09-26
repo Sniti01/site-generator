@@ -1,0 +1,7 @@
+сборка e35cab8 (копия dist-r3, побайтно = dist/ коммита, сверенному proby-p2 при чистом дереве; сервер 127.0.0.1:4416), кадры .playwright-mcp/ka-p2r3/max-payne-2, скрим маршрута, подпись кадра — место dopisek, text-wrap: balance
+herotitle .hero__title         худший пиксель 12.42:1 на 641x900 (строка y 405.9 «Max Payne 2: The Fall of Max Payne»), p99 не ниже 12.50:1
+herolead .hero__lead           худший пиксель 5.64:1 на 700x900 (строка y 227.8 «Two years after the first game, Max is a»), p99 не ниже 6.16:1
+herobtn .btn-secondary         худший пиксель 12.65:1 на 700x900 (строка y 137.1 «The first game»), p99 не ниже 12.77:1
+
+Итог: окон 31, строк 193; самый тесный худший пиксель — 5.64:1 (700x900, .hero__lead, y 227.8), порог 4,5:1.
+max-payne-2 exit=0

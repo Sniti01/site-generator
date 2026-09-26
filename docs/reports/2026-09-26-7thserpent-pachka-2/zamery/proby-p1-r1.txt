@@ -1,0 +1,21 @@
+ok    Q1 поле cta в содержании, а блока cta-band у страницы нет     код 1
+ok    Q2 cta-band объявлен, поля cta в содержании нет               код 1
+ok    Q3 href призыва «/\host/» — схема                             код 1
+ok    Q4 href призыва «//host/» — схема                             код 1
+ok    Q5 href призыва «http://» — схема                             код 1
+ok    Q6 кадр ряда с неизвестным ключом — разрешатель kadr()        код 1
+ok    Q7 ключ кадра не kebab — схема                                код 1
+ok    Q8 вхождение cta-band с ролью — ROLE_UMIE                     код 1
+ok    Q9 порядок: cta-band перед link-list в blocks[]               код 1
+пробы: 9/9; файлы возвращены и сверены побайтово
+ok    dist /404/                    призыв нет, кадров 0
+ok    dist /games-like-max-payne/   призыв объявлен, кадров 0
+ok    dist /max-payne-1/            призыв объявлен, кадров 1, нота: Max Payne
+ok    dist /max-payne-2/            призыв объявлен, кадров 4, нота: Max Payne 2: The Fall of Max Payne
+ok    dist /max-payne-3/            призыв объявлен, кадров 2, нота: Max Payne 3
+ok    dist /media/                  призыв объявлен, кадров 3, нота: Max Payne, Max Payne 2: The Fall of Max Payne, Max Payne 3
+ok    dist /pc/                     призыв объявлен, кадров 0
+ПЛОХО dist /remake/                 призыв объявлен, кадров 0, нота: Max Payne
+      кадров нет, а нота об арте есть
+ПЛОХО: 1
+proby-p1 exit=1

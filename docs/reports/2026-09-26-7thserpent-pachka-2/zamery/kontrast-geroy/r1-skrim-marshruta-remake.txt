@@ -1,0 +1,7 @@
+herotitle .hero__title         худший пиксель 11.93:1 на 860x900 (строка y 381.0 «Max Payne 1 & 2 Remake: release date, pl»), p99 не ниже 12.29:1
+herolead .hero__lead           худший пиксель 5.64:1 на 641x900 (строка y 320.7 «Remedy is rebuilding the first two games»), p99 не ниже 6.21:1
+herobtn .btn-secondary         худший пиксель 13.53:1 на 860x900 (строка y 137.5 «The 2001 original»), p99 не ниже 13.67:1
+podpis .foto__credit           худший пиксель 6.27:1 на 480x800 (строка y 116.8 «Pictured: the original Max Payne (2001),»), p99 не ниже 6.76:1
+
+Итог: окон 31, строк 273; самый тесный худший пиксель — 5.64:1 (641x900, .hero__lead, y 320.7), порог 4,5:1.
+remake exit=0

@@ -1,0 +1,32 @@
+эталонных кадров: 13, снятых: 13
+НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.
+ГЕОМЕТРИЯ: совпала — вьюпортов 2, слоёв 20: высоты страниц и положение слоёв те же.
+ЗОНЫ ШУМА: _baseline\szum.json — зон 19; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-around-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-around-1440x900.png
+  размер ок baseline-desktop-blok-catalog-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-catalog-1440x900.png
+  размер ок baseline-desktop-blok-games-in-order-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-games-in-order-1440x900.png
+  размер ок baseline-desktop-blok-quote-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-quote-1440x900.png
+  размер ок baseline-desktop-blok-start-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-start-1440x900.png
+  размер ок baseline-desktop-full-1440.png: эталон 1440×7134, снято 1440×7134
+  ВНЕ ДОПУСКА  baseline-desktop-full-1440.png: 1349 субпикселей, макс 4, рамка 210×329 от (1089, 1016), первый (1187, 1016) G 15→13; в допуске: зона 11-панели-1-1440-полный — 31627 (макс 1)
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-layer-max-payne-1440x900.png: 32850 субпикселей, макс 4, рамка 210×329 от (1089, 284), первый (1097, 284) R 98→97
+  размер ок baseline-desktop-layer-max-payne-2-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-layer-max-payne-2-1440x900.png: 151 субпикселей, макс 2, рамка 198×43 от (1095, 0), первый (1216, 0) G 19→20
+  размер ок baseline-desktop-layer-max-payne-3-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-3-1440x900.png
+  размер ок baseline-desktop-layer-remake-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-remake-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×9515, снято 390×9515
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 14547 субпикселей, макс 3, рамка 130×204 от (235, 1583), первый (237, 1583) R 101→100
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 13 — 0 различий 9, в допуске 0, вне допуска 4 — ОТКАЗ.
+frames exit=1

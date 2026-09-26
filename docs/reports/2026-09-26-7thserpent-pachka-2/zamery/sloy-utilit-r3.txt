@@ -1,0 +1,3 @@
+/_astro/SmartImage.BMbqpUCi.css: @layer utilities — правил 19: .relative | .container | @media (width>=40rem) | @media (width>=48rem) | @media (width>=64rem) | @media (width>=80rem) | @media (width>=96rem) | .block | .flex | .hidden | .transform | .resize | .flex-wrap | .border | .text-wrap | .outline | .filter | .backdrop-filter | .transition
+источников CSS: 10 (файлов 2, встроенных <style> 8); блоков слоя utilities: 1
+всего: 19

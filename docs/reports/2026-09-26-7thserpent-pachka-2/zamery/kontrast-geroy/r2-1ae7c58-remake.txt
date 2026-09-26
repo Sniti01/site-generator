@@ -1,0 +1,8 @@
+сборка 1ae7c58 (копия dist-r1, сервер 127.0.0.1:4415), кадры .playwright-mcp/ka-p2r2/remake, скрим маршрута, подпись кадра — место dopisek
+herotitle .hero__title         худший пиксель 11.93:1 на 700x900 (строка y 411.3 «Max Payne 1 & 2 Remake: release date, pl»), p99 не ниже 12.74:1
+herolead .hero__lead           худший пиксель 6.69:1 на 1920x1080 (строка y 356.6 «Remedy is rebuilding the first two games»), p99 не ниже 7.16:1
+herobtn .btn-secondary         худший пиксель 14.61:1 на 641x900 (строка y 137.7 «The 2001 original»), p99 не ниже 14.83:1
+podpis .podpis-geroya          худший пиксель 5.38:1 на 390x844 (строка y 159.5 «Pictured: the original Max Payne (2001),»), p99 не ниже 6.93:1
+
+Итог: окон 31, строк 292; самый тесный худший пиксель — 5.38:1 (390x844, .podpis-geroya, y 159.5), порог 4,5:1.
+remake exit=0

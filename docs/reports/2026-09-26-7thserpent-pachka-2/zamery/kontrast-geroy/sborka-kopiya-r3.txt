@@ -1,0 +1,3 @@
+diff -rq dist/ (сборка e35cab8, npm run build в 11:49; proby-p2 --tolko-dist по нему — 8/8 при чистом дереве, zamery/proby-p2-r2.txt) против раздаваемой копии scratchpad/dist-r3 (сервер 127.0.0.1:4416 замеров r3):
+diff exit=0 (0 — различий нет)
+файлов: 117

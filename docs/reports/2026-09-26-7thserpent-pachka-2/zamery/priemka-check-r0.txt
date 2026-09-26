@@ -1,0 +1,19 @@
+
+> 7thserpent.com@0.1.0 check
+> astro check
+
+[2m10:29:49[22m [34m[content][39m Syncing content
+[2m10:29:49[22m [34m[content][39m Synced content
+[2m10:29:49[22m [34m[types][39m Generated [2m639ms[22m
+[2m10:29:49[22m [34m[check][39m Getting diagnostics for Astro files in D:\SEO\cloud\site-generator\sites\7thserpent.com...
+[96mtools/fetch-corpus.mjs[0m:[93m471[0m:[93m25[0m - [93mwarning[0m[90m ts(6198): [0mAll destructured elements are unused.
+
+[7m471[0m function writeRun(done, { attempted, counts, startedAt, hosts }) {
+[7m   [0m [93m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (75 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+
+(пометка ведущего: из вывода срезано 4 байт CR — astro check цитирует строки tools/fetch-corpus.mjs, файл в CRLF; новые файлы репозитория — LF, инвариант 1)

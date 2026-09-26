@@ -105,8 +105,8 @@ related:
 cta:
   title: Running smoothly? Next come the mods
   lead: >-
-    High-resolution texture packs and more for the PC versions — the mods
-    page picks up where the fixes stop.
+    Path-traced lighting, kung fu moves and Sam Lake’s face back on Max — the
+    mods page picks up where the fixes stop.
   href: /mods/
   label: See the mods
 ---

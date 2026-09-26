@@ -1,0 +1,46 @@
+
+> 7thserpent.com@0.1.0 accept:frames
+> node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-24-9/p3-a1/glowna _baseline
+
+эталонных кадров: 13, снятых: 13
+НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.
+ГЕОМЕТРИЯ: сдвигов 3 (в эталоне вьюпортов 2, слоёв 20):
+  СДВИГ  высота 1440: эталон 7134, снято 7106 (-28) — страница
+  СДВИГ  1440 #start-title offsetTop: эталон 6157.16, снято 6129.11 (-28.05) — выше слоя
+  СДВИГ  1440 #content высота: эталон 6418.19, снято 6390.14 (-28.05) — внутри слоя
+ЗОНЫ ШУМА: _baseline\szum.json — зон 19; каждый субпиксель вне зон или выше её «макс» — отказ.
+  размер ок baseline-desktop-blok-around-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-around-1440x900.png
+  размер ок baseline-desktop-blok-catalog-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-blok-catalog-1440x900.png: 47473 субпикселей, макс 222, рамка 907×377 от (132, 466), первый (609, 466) R 30→9
+  размер ок baseline-desktop-blok-games-in-order-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-games-in-order-1440x900.png
+  размер ок baseline-desktop-blok-quote-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-blok-quote-1440x900.png
+  размер ок baseline-desktop-blok-start-1440x900.png: эталон 1440×900, снято 1440×900
+  ВНЕ ДОПУСКА  baseline-desktop-blok-start-1440x900.png: 60147 субпикселей, макс 2, рамка 1440×429 от (0, 0), первый (547, 0) G 16→15
+  РАЗМЕР   baseline-desktop-full-1440.png: эталон 1440×7134, снято 1440×7106
+           высота разошлась — чаще всего не прокручен низ перед съёмкой (см. protocol)
+  ВНЕ ДОПУСКА  baseline-desktop-full-1440.png: размеры разошлись: эталон 1440×7134, снято 1440×7106 — сравнивать нечего
+  размер ок baseline-desktop-hero-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-hero-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-2-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-2-1440x900.png
+  размер ок baseline-desktop-layer-max-payne-3-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-max-payne-3-1440x900.png
+  размер ок baseline-desktop-layer-remake-1440x900.png: эталон 1440×900, снято 1440×900
+  0 различий   baseline-desktop-layer-remake-1440x900.png
+  размер ок baseline-mobile-full-390.png: эталон 390×9515, снято 390×9515
+  ВНЕ ДОПУСКА  baseline-mobile-full-390.png: 9624 субпикселей, макс 162, рамка 296×44 от (33, 6760), первый (183, 6760) R 29→9
+  размер ок baseline-mobile-hero-390x844.png: эталон 390×844, снято 390×844
+  0 различий   baseline-mobile-hero-390x844.png
+ИТОГ ПИКСЕЛЕЙ: кадров 13 — 0 различий 9, в допуске 0, вне допуска 4 — ОТКАЗ.
+npm error Lifecycle script `accept:frames` failed with error:
+npm error code 1
+npm error path D:\SEO\cloud\site-generator\sites\7thserpent.com
+npm error workspace 7thserpent.com@0.1.0
+npm error location D:\SEO\cloud\site-generator\sites\7thserpent.com
+npm error command failed
+npm error command C:\WINDOWS\system32\cmd.exe /d /s /c node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-24-9/p3-a1/glowna _baseline

@@ -1,0 +1,13 @@
+baseline-desktop-blok-around-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-blok-catalog-1440x900.png: 1440×900, субпикселей 47473, макс 222, рамка 907×377 от (132, 466)
+baseline-desktop-blok-games-in-order-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-blok-quote-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-blok-start-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-full-1440.png: 1440×7134, субпикселей 47473, макс 222, рамка 907×377 от (132, 5555)
+baseline-desktop-hero-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-layer-max-payne-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-layer-max-payne-2-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-layer-max-payne-3-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-desktop-layer-remake-1440x900.png: 1440×900, субпикселей 0, макс 0
+baseline-mobile-full-390.png: размер 390×9515 → 390×9543
+baseline-mobile-hero-390x844.png: 390×844, субпикселей 0, макс 0

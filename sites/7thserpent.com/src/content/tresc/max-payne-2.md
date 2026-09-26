@@ -65,10 +65,9 @@ rows:
     meta: How the campaign is built and what it unlocks
     body:
       - >-
-        The campaign is linear and split into three parts, each made up of
-        several chapters. Most of it puts you in Max’s shoes, but in several
-        levels of parts two and three you play as Mona. You start with a 9mm pistol and work up to
-        shotguns, submachine guns, assault rifles and sniper rifles, and a
+        The campaign is linear and split into three parts. Most of it puts you
+        in Max’s shoes, but in several levels of parts two and three you play
+        as Mona. You start with a 9mm pistol and work up to shotguns, submachine guns, assault rifles and sniper rifles, and a
         grenade or a Molotov cocktail now sits in its own secondary slot. Up
         close, either hero can pistol-whip an enemy.
       - >-
@@ -115,11 +114,12 @@ rows:
         after an explosion. Weapons, bombs and Molotovs were tuned to behave
         more naturally, and their sound was redone to match.
       - >-
-        The game supports only DirectX 8.1, yet its graphics imitate DirectX 9
-        by making the most of effects such as reflections, refraction, shaders
-        and ghosting; the developers singled out Max’s lucid dreams, where the
-        whole screen goes blurry and soft. Characters have more polygons than before, so
-        their outlines look smoother, and far more facial expressions: in the
+        Officially it needs no more than DirectX 8.1, yet ghosting, shader
+        effects, reflections and refraction are pushed far enough that the
+        picture looks like DirectX 9 work. The developers named Max’s lucid
+        dreams, where the whole picture turns hazy and loses focus, as a scene
+        where the effects pay off. Characters have more polygons than before,
+        so their outlines look smoother, and far more facial expressions: in the
         first game Max had just one, here he smirks and raises his eyebrows.
   - id: cast
     year: Cast
@@ -200,13 +200,14 @@ rows:
     band: true
     body:
       - >-
-        Remedy made the game itself; Rockstar Vienna ported it to Xbox and
-        PlayStation 2 within seven weeks of the PC release. Metacritic rates
+        Remedy made the game itself; Rockstar Vienna handled the Xbox and
+        PlayStation 2 ports, which came out within seven weeks of the PC
+        version. Metacritic rates
         the Xbox version 84 and the PS2 one 73 — the only one of the three to
         land in mixed territory.
       - >-
         A New Zealand Herald reviewer praised the Xbox port for looking close
-        to the PC game, but found the PS2 version only an okay job, noticeably
+        to the PC game, but found the PS2 version only “an okay job”, noticeably
         rougher on the eye and outclassed by the stronger machines.
   - id: reviews
     year: Reviews
@@ -231,9 +232,10 @@ rows:
         otherwise excellent game.
       - >-
         It collected several awards: Outstanding Art Direction at the 2004
-        Golden Satellite Awards, Editors’ Choice from GamePro, IGN, GameSpy and
-        GameSpot, Game of the Month from Game Informer, and five nominations
-        at the 7th Interactive Achievement Awards, Game of the Year among them.
+        Golden Satellite Awards, Editors’ Choice picks at GamePro, IGN, GameSpy
+        and GameSpot, and a Game of the Month title from Game Informer. At the 7th
+        Interactive Achievement Awards it was nominated five times, Game of the
+        Year among them.
   - id: sales
     year: Sales
     title: A hit with critics, a miss in stores

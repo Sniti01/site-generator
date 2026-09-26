@@ -86,8 +86,9 @@ rows:
         are not rated.
       - >-
         The ESRB summary describes a strip club with topless dancers that Max
-        visits; players on the Steam forums in 2021 said there is no setting
-        to switch the nudity off and named two chapters where it shows up. The
+        visits; one player on the Steam forums in 2021 said there is no setting
+        to switch the nudity off, and others in the same thread named the
+        chapters where it shows up. The
         same summary mentions cutscenes of Max drinking heavily and a couple of
         scenes where characters snort cocaine.
   - id: gameplay

@@ -25,8 +25,8 @@ rows:
         both Max Payne (2001) and Max Payne 2: The Fall of Max Payne (2003).
         Remedy Entertainment, the Finnish studio that made both originals,
         is building it under a development agreement with Rockstar Games, and
-        it is not a touch-up: the games are being rebuilt from the ground up
-        on Northlight, Remedy’s in-house engine.
+        it is not a touch-up: Remedy is remaking both games from scratch on
+        Northlight, its in-house engine.
       - >-
         Rockstar owns the series, funds the project and will publish it. As of
         September 2026 Remedy’s page for the game names three platforms:
@@ -61,9 +61,9 @@ rows:
         April 2022: Remedy announced the project, then in its concept stage.
         October 2023: the studio told investors it had moved into production
         readiness. From the second quarter of 2024 the remake has been in full
-        production, and every report covered in the press since then, most
-        recently in August 2026, has kept it there — the state of play as of
-        September 2026.
+        production, and Remedy’s reports of August 2025, May 2026 and August
+        2026 still describe it that way — the state of play as of September
+        2026.
       - >-
         In February 2025 Remedy reported steady progress, and in April 2025
         it said the project had advanced toward major development stages.
@@ -94,7 +94,7 @@ rows:
         2 for Xbox One and Xbox Series X|S, where the trilogy has been
         backward compatible since November 2021, and on PC all three games are
         on Steam. On PlayStation, the US PlayStation Store lists the first
-        game for PS4.
+        game for PS4 and notes that it can be played on PS5 as well.
   - id: max-payne-4
     role: max-payne-4
     year: Max Payne 4

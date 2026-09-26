@@ -21,18 +21,18 @@ rows:
     body:
       - >-
         Max has left the NYPD and spends his days on drink and painkillers,
-        until trouble with the New York mob drives him out of the city. Raul
+        until trouble with the local mob drives him out of New York. Raul
         Passos, whom he met in that mess, offers him private security work in
         South America, and nine years after the second game Max is guarding
         the wealthy Branco family in São Paulo: real-estate magnate Rodrigo,
         his wife Fabiana, her sister Giovanna, the politician Victor and the
         party-loving Marcelo.
       - >-
-        When a street gang kidnaps Fabiana, Max is pulled into a war between
-        factions that runs through the whole city — the Comando Sombra gang,
-        a vigilante militia called the Crachá Preto and the UFE, the city’s
-        police special unit. Somewhere along the way he quits drinking and
-        shaves his head. That older, bald, bearded Max drew a harsh reaction,
+        When a street gang kidnaps Fabiana, Max is pulled into a fight that
+        reaches far beyond one gang — the Comando Sombra, who took her, and a
+        vigilante militia called the Crachá Preto among the rivals. Somewhere
+        along the way he quits drinking and shaves his head. That older, bald,
+        bearded Max drew a harsh reaction,
         and Rockstar answered with a look that changes over the course of the
         game and the classic Max in flashbacks.
   - id: release
@@ -42,7 +42,7 @@ rows:
     band: true
     body:
       - >-
-        Rockstar Studios — Rockstar’s own studios working as one team, led by
+        Rockstar Studios — Rockstar’s own studios working as one team, mainly
         Vancouver, London, Toronto and New England — made the game, and Remedy
         only consulted near the end. It reached PS3 and Xbox 360 first, on May
         15, 2012 (May 18), then Windows on May 29 (June 1) and OS X on
@@ -50,17 +50,17 @@ rows:
         how the characters move.
       - >-
         Getting there took a while: planned for late 2009, the game slipped
-        to 2010 and then to 2011, dropped off Take-Two’s release schedule in
-        December 2010, got a March 2012 date in September 2011 and took one
-        last two-month delay to May.
+        to 2010 and then to 2011, was left off Take-Two’s lineup for its
+        2011–12 year in December 2010, got a March 2012 date in September 2011
+        and took one last two-month delay to May.
   - id: where-to-play
     year: Today
     title: Where to play it today
     meta: Official stores, as of September 2026
     body:
       - >-
-        On PC, as of September 2026, the version sold on Steam and the
-        Rockstar Store includes all the downloadable content — Rockstar made
+        On PC, as of September 2026, the version on Steam and the Rockstar
+        Store includes all the downloadable content — Rockstar made
         every pack free on PC in April 2021. You need a Rockstar Games account
         to activate it (it can be linked to Steam), and the store lists
         Windows 10 as the minimum. On Steam Deck, Valve rates it Playable: the
@@ -85,11 +85,11 @@ rows:
         sexual content, and the use of drugs and alcohol. Online interactions
         are not rated.
       - >-
-        The nudity comes from a strip club with topless dancers that Max
-        visits, according to the ESRB summary; players on the Steam forums in
-        2021 said there is no setting to switch it off, but the scene is
-        short. The same summary mentions cutscenes of Max drinking heavily and
-        a couple of scenes where characters snort cocaine.
+        The ESRB summary describes a strip club with topless dancers that Max
+        visits; players on the Steam forums in 2021 said there is no setting
+        to switch the nudity off and named two chapters where it shows up. The
+        same summary mentions cutscenes of Max drinking heavily and a couple of
+        scenes where characters snort cocaine.
   - id: gameplay
     year: Gameplay
     title: Linear, not open world
@@ -107,7 +107,7 @@ rows:
       - >-
         Max carries three guns at most, two handguns and one two-handed
         weapon, and holding a pistol in each hand means dropping the big one.
-        Health does not come back on its own: painkillers are the only way.
+        Health does not come back on its own; painkillers restore it.
   - id: multiplayer
     year: Multiplayer
     title: Online, then and now
@@ -124,8 +124,8 @@ rows:
       - >-
         In September 2021 Rockstar switched off online play and the Social
         Club features of the PS3 and Xbox 360 versions. As of September 2026,
-        players on the PC
-        version were still posting on the Steam forums in search of opponents.
+        players on the PC version were still posting on the Steam forums in
+        search of opponents.
   - id: reception
     year: Reception
     title: Reviews and sales
@@ -135,16 +135,17 @@ rows:
         Critics rated it highly for its direction, acting, story and
         soundtrack. IGN gave it 9 and singled out James McCaffrey as Max, while
         Edge, at 7, found it an unusually cautious game for Rockstar. In
-        Brazil, reviewers were split on how it shows São Paulo, and many
-        objected to the accents of Brazilian characters voiced by Portuguese
-        actors.
+        Brazil, reviewers were split on how it shows São Paulo, and most of
+        them criticized the accents of some Brazilian characters; TechTudo’s
+        reviewer put that down to Portuguese actors voicing the main Brazilian
+        roles.
       - >-
         It shipped about 3 million copies in its first week and sold 440,000
         in the US in May 2012, by NPD’s count, yet in July 2012 Take-Two said
         sales were below expectations; by May 2013 shipments reached 4
-        million. Before launch, an analyst at Sterne Agee put the cost at up
-        to $105 million, which Wikipedia’s list of the most expensive games
-        files as an unofficial estimate.
+        million. Before launch, an analyst at Sterne Agee estimated the cost at
+        $105 million, which Wikipedia’s list of the most expensive games files
+        as an unofficial estimate.
 related:
   title: More on Max Payne 3
 cta:

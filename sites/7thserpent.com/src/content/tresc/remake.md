@@ -1,12 +1,12 @@
 ---
 url: /remake/
-art: mp1-k14
-artFocus: 60% 50%
+art: mp1-k13
+artFocus: 55% 60%
 artCaption: "Pictured: the original Max Payne (2001), not the remake"
 lead: >-
   Remedy is rebuilding the first two games as a single new one, headed for
-  PlayStation 5, Xbox Series X|S and PC, with Rockstar Games paying for it
-  and publishing it. As of September 2026 it is still in development, and nobody
+  PlayStation 5, Xbox Series X|S and PC, with Rockstar Games funding and
+  publishing it. As of September 2026 it is still in development, and nobody
   has named a release date.
 primary:
   href: "#release-date"
@@ -25,8 +25,8 @@ rows:
         both Max Payne (2001) and Max Payne 2: The Fall of Max Payne (2003).
         Remedy Entertainment, the Finnish studio that made both originals,
         is building it under a development agreement with Rockstar Games, and
-        it is not a touch-up: the games are being rebuilt on Northlight, the
-        engine Remedy develops for its own projects.
+        it is not a touch-up: the games are being rebuilt from the ground up
+        on Northlight, Remedy’s in-house engine.
       - >-
         Rockstar owns the series, funds the project and will publish it. As of
         September 2026 Remedy’s page for the game names three platforms:
@@ -61,17 +61,18 @@ rows:
         April 2022: Remedy announced the project, then in its concept stage.
         October 2023: the studio told investors it had moved into production
         readiness. From the second quarter of 2024 the remake has been in full
-        production, and every report since, as of September 2026, has kept it
-        there.
+        production, and every report covered in the press since then, most
+        recently in August 2026, has kept it there — the state of play as of
+        September 2026.
       - >-
         In February 2025 Remedy reported steady progress, and in April 2025
         it said the project had advanced toward major development stages.
         Its report for the second quarter of 2025, covered by PlayStation
         Universe on August 12, 2025, called the work with Rockstar close and
-        productive. The Q1 2026 report, out on May 5, 2026, said only
-        that full production continued. The half-year report of August 11,
-        2026 confirmed the game is still in development — the latest word as of
-        September 2026.
+        productive. The Q1 2026 report, out on May 5, 2026, said only that
+        full production continued, with no other development news. The
+        half-year report of August 11, 2026 confirmed the game is still in
+        development — the latest word as of September 2026.
   - id: voice
     year: Max’s voice
     title: Who voices Max
@@ -90,9 +91,10 @@ rows:
     body:
       - >-
         As of September 2026 the Xbox store lists both Max Payne and Max Payne
-        2 for Xbox One and Xbox Series X|S through backward compatibility, and
-        on PC all three games are on Steam. On PlayStation, the first game
-        came to PS4 in 2016.
+        2 for Xbox One and Xbox Series X|S, where the trilogy has been
+        backward compatible since November 2021, and on PC all three games are
+        on Steam. On PlayStation, the US PlayStation Store lists the first
+        game for PS4.
   - id: max-payne-4
     role: max-payne-4
     year: Max Payne 4
@@ -104,23 +106,23 @@ rows:
         Not one that anyone has announced. As of September 2026 the newest
         game in the series is still Max Payne 3 from May 2012 — that is how
         Wikipedia’s series article, edited on September 16, 2026, lists it —
-        and the only new Max Payne project on record is this remake of the first
-        two games. A Max Payne 5 has never been announced either.
+        and the only new Max Payne game on record is this remake of the first
+        two. A Max Payne 5 has never been announced either.
       - >-
         Back in July 2018, SVG made the case that Rockstar had little reason
         to return: Max Payne 3 ends with Max on a beach with no one left to
-        fight, and Take-Two had blamed part of a $110 million quarterly loss
-        in 2012 on weak sales of that game and Spec Ops: The Line. Four years
-        later Remedy announced the remake instead. As of September 2026, that
-        is where the story of a new Max Payne stops.
+        fight, and a $110 million quarterly loss at Take-Two in 2012 was put
+        down largely to weak sales of that game and Spec Ops: The Line. Less
+        than four years later Remedy announced the remake instead. As of
+        September 2026, that is where the story of a new Max Payne stops.
 related:
   title: More from the series
 cta:
   title: Until then, the original
   lead: >-
-    As of September 2026 the remake has no date, but the game it retells is
-    easy to find: the first game’s page covers every version, from the 2001
-    PC release to the phone port.
+    As of September 2026 the remake has no date, but the first of the two
+    games it retells is easy to find: its page covers every version, from the
+    2001 PC release to the phone port.
   href: /max-payne-1/
   label: See Max Payne (2001)
 ---

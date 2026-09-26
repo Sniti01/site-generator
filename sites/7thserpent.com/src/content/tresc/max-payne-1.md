@@ -17,7 +17,7 @@ rows:
     year: "2001"
     title: New York, three years after
     meta: Remedy Entertainment · Windows, July 25, 2001 · Metacritic 89 on PC
-    art: mp1-k13
+    art: mp1-k09
     body:
       - >-
         Three years after addicts high on a designer drug called Valkyr killed
@@ -35,12 +35,12 @@ rows:
     body:
       - >-
         Rockstar brought the game to PlayStation 2 on December 11, 2001 and to
-        Xbox on December 18; Mac OS X followed on July 16, 2002. On the PS2
-        the levels were cut into smaller pieces to fit the console’s memory,
-        with less detail than on PC or Xbox. The Game Boy Advance version,
-        out December 16, 2003, is a different game: Möbius Entertainment
-        remade it as an isometric shooter that keeps the story, many of the
-        comic panels and some of the voice acting.
+        Xbox on December 18; a Mac OS X version, published by MacSoft,
+        followed on July 16, 2002. On the PS2 the levels were cut into smaller
+        pieces to fit the console’s memory, with less detail than on PC or
+        Xbox. The Game Boy Advance version, out December 16, 2003, changes the
+        most: Möbius Entertainment rebuilt it as an isometric shooter that
+        keeps the story, many of the comic panels and some of the voice acting.
   - id: where-to-play
     year: Today
     title: Where to play it today
@@ -49,15 +49,16 @@ rows:
       - >-
         It returned on Xbox 360 as an Xbox Original in 2009, on PS3 as a PS2
         Classic in 2012 and on PlayStation 4 in 2016. As of September 2026 the
-        Xbox store lists it for Xbox One and Xbox Series X|S, where the whole
-        trilogy became backward compatible on November 15, 2021, and Steam
-        carries it on PC. HowLongToBeat puts the main story at about 8 hours
-        and everything at about 11½.
+        US PlayStation Store lists the PS4 version, the Xbox store lists it for
+        Xbox One and Xbox Series X|S, where the whole trilogy became backward
+        compatible on November 15, 2021, and Steam carries it on PC.
+        HowLongToBeat puts the main story at about 8 hours and everything at
+        about 11½.
   - id: mobile
     role: mobile
     year: Max Payne Mobile
     title: The phone version
-    meta: iOS and Android since 2012 · as of September 2026
+    meta: Released for iOS and Android in 2012 · as of September 2026
     band: true
     body:
       - >-
@@ -73,8 +74,8 @@ related:
 cta:
   title: Playing it on a modern PC?
   lead: >-
-    The 2001 original needs a few fixes for sound and widescreen on Windows 10
-    and 11 — the PC page collects them.
+    On Windows 10 and 11 the 2001 original may need a sound fix, and a
+    widescreen fix for modern screens — the PC page collects them.
   href: /pc/
   label: Max Payne on PC
 ---

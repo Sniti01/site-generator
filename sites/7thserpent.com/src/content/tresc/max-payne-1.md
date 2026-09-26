@@ -50,7 +50,8 @@ rows:
         It returned on Xbox 360 as an Xbox Original in 2009, on PS3 as a PS2
         Classic in 2012 and on PlayStation 4 in 2016. As of September 2026 the
         US PlayStation Store lists that PS4 version, which adds trophies and
-        1080p rendering and can be played on PS5 too; the Xbox store lists the
+        1080p rendering and also runs on PS5, though the store warns that some
+        PS4 features may be missing there; the Xbox store lists the
         game for Xbox One and Xbox Series X|S, where the whole trilogy became
         backward compatible on November 15, 2021; and Steam carries it on PC.
         HowLongToBeat puts the main story at about 8 hours and everything at

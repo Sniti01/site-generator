@@ -94,7 +94,8 @@ rows:
         2 for Xbox One and Xbox Series X|S, where the trilogy has been
         backward compatible since November 2021, and on PC all three games are
         on Steam. On PlayStation, the US PlayStation Store lists the first
-        game for PS4 and notes that it can be played on PS5 as well.
+        game for PS4 and notes that it also runs on PS5, where some PS4
+        features may be missing.
   - id: max-payne-4
     role: max-payne-4
     year: Max Payne 4

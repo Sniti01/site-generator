@@ -114,11 +114,11 @@ rows:
         after an explosion. Weapons, bombs and Molotovs were tuned to behave
         more naturally, and their sound was redone to match.
       - >-
-        Officially it needs no more than DirectX 8.1, yet ghosting, shader
-        effects, reflections and refraction are pushed far enough that the
-        picture looks like DirectX 9 work. The developers named Max’s lucid
-        dreams, where the whole picture turns hazy and loses focus, as a scene
-        where the effects pay off. Characters have more polygons than before,
+        Max’s lucid dreams, where the whole picture turns hazy and loses focus,
+        are the scene the developers pointed to when they talked about the
+        effects. The game’s renderer works through DirectX 8.1, yet ghosting,
+        shader effects, reflections and refraction are pushed far enough that
+        it looks like DirectX 9 work. Characters have more polygons than before,
         so their outlines look smoother, and far more facial expressions: in the
         first game Max had just one, here he smirks and raises his eyebrows.
   - id: cast

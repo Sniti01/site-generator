@@ -1,3 +1,5 @@
+до: C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\4cec3deb-6d32-416d-984b-6302dc5b4d6f\scratchpad\etalon-do-d37a3dc
+после: D:\SEO\cloud\site-generator\.playwright-mcp\opyt-p3\glowna
 baseline-desktop-blok-around-1440x900.png: 1440×900, субпикселей 0, макс 0
 baseline-desktop-blok-catalog-1440x900.png: 1440×900, субпикселей 47473, макс 222, рамка 907×377 от (132, 466)
 baseline-desktop-blok-games-in-order-1440x900.png: 1440×900, субпикселей 0, макс 0

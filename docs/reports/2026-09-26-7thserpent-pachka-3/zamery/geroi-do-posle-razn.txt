@@ -1,3 +1,5 @@
+до: D:\SEO\cloud\site-generator\docs\reports\2026-09-26-7thserpent-pachka-3\kadry\geroi-do
+после: D:\SEO\cloud\site-generator\docs\reports\2026-09-26-7thserpent-pachka-3\kadry\geroi-posle
 max-payne-1-1440-pervy-ekran.png: 1440×900, субпикселей 0, макс 0
 max-payne-1-390-pervy-ekran.png: 390×844, субпикселей 0, макс 0
 max-payne-1-800-pervy-ekran.png: 800×900, субпикселей 346092, макс 32, рамка 640×787 от (160, 113)

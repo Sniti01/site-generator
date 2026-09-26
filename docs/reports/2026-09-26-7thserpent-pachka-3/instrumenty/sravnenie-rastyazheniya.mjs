@@ -11,36 +11,80 @@
 // сменилось округление, и «нарисовано» гуляет на 1–3 px при той же рамке и том же кандидате
 // (1024×768 при DPR 3 у /max-payne-1/: ×2 «до» и ×2,01 «после»). Поэтому здесь:
 //   - рамка «до» и «после» обязана совпасть (те же правила CSS — та же рамка);
+//   - кадр — тот же: ключ файла кандидата (имя до первой точки) «до» = «после»; при том же кандидате —
+//     тот же файл `src` целиком (хеш Astro), иначе нарушение («судью судят», раунд 1, P3-R1-INSTR-7);
 //   - кандидат «после» обязан быть не меньше кандидата «до» — это и есть «растяжение не больше»;
 //   - растяжение печатается по точной пропорции мастера (ширина/высота из src/data/game-art.json,
 //     ключ — имя файла кандидата до первой точки): max(ширина рамки, высота рамки × пропорция) × DPR /
 //     ширина кандидата. Рамка в выгрузке округлена до целых — одинаково в обеих колонках.
-// Число инструмента печатается рядом; клетка, где оно «после» больше, а рамка и кандидат те же, —
-// помечается «шум округления», не нарушение.
-// Выход: 0 — нигде не хуже; 1 — есть клетка с меньшим кандидатом, другой рамкой или без пары; 2 — вход.
+// Число инструмента печатается рядом; клетка, где оно «после» больше не более чем на 0,02 при той же
+// рамке и том же файле кандидата, — «шум округления»; больше 0,02 — нарушение (раунд 1, P3-R1-INSTR-10).
+// ВХОД ОТКАЗЫВАЕТ (выход 2, раунд 1, P3-R1-INSTR-5, -6, -8, -9): файл не читается или не JSON-массив;
+// два файла побайтно равны; ключ клетки повторяется; у клетки нечисловые кандидат, DPR или рамка; нет
+// записи game-art.json для кадра. ПРЕДЕЛ (P3-R1-INSTR-8): сборки в выгрузке нет — какая сборка «до»
+// и какая «после», знает только тот, кто снимал; отказ на равных файлах ловит лишь грубую подмену.
+// Выход: 0 — нигде не хуже; 1 — есть клетка с меньшим кандидатом, другой рамкой, другим кадром, без пары
+// или с ростом числа инструмента сверх 0,02; 2 — вход.
 import { readFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const [, , fDo, fPosle] = process.argv;
-if (!fDo || !fPosle) {
-  console.error('node sravnenie-rastyazheniya.mjs <до.json> <после.json>');
+const vkhod = (s) => {
+  console.error('вход: ' + s);
   process.exit(2);
+};
+const [, , fDo, fPosle] = process.argv;
+if (!fDo || !fPosle) vkhod('node sravnenie-rastyazheniya.mjs <до.json> <после.json>');
+let bDo, bPosle;
+try {
+  bDo = readFileSync(fDo);
+  bPosle = readFileSync(fPosle);
+} catch (e) {
+  vkhod(e.message);
 }
-const chitat = (f) => {
-  const t = readFileSync(f, 'utf8');
-  return JSON.parse(t.slice(t.indexOf('[')));
+if (bDo.equals(bPosle)) vkhod('файлы «до» и «после» побайтно равны — сравнивать нечего');
+const chitat = (b, f) => {
+  let o;
+  try {
+    const t = b.toString('utf8');
+    o = JSON.parse(t.slice(t.indexOf('[')));
+  } catch (e) {
+    vkhod(`${f}: не JSON (${e.message})`);
+  }
+  if (!Array.isArray(o)) vkhod(`${f}: не массив`);
+  return o;
 };
 const koren = join(dirname(fileURLToPath(import.meta.url)), '../../../..');
-const art = JSON.parse(readFileSync(join(koren, 'sites/7thserpent.com/src/data/game-art.json'), 'utf8'));
+let art;
+try {
+  art = JSON.parse(readFileSync(join(koren, 'sites/7thserpent.com/src/data/game-art.json'), 'utf8'));
+} catch (e) {
+  vkhod('game-art.json: ' + e.message);
+}
+const klyuchKadra = (src) => String(src).split('.')[0];
 const proporciya = (src) => {
-  const k = src.split('.')[0];
-  if (!art[k]) throw new Error('нет записи game-art.json для кадра ' + src);
+  const k = klyuchKadra(src);
+  if (!art[k]) vkhod('нет записи game-art.json для кадра ' + src);
   return art[k].width / art[k].height;
 };
 const klyuch = (r) => `${r.adres} ${r.okno}@${r.dpr}`;
-const DO = new Map(chitat(fDo).map((r) => [klyuch(r), r]));
-const POSLE = new Map(chitat(fPosle).map((r) => [klyuch(r), r]));
+const karta = (stroki, f) => {
+  const m = new Map();
+  for (const r of stroki) {
+    const k = klyuch(r);
+    if (m.has(k)) vkhod(`${f}: клетка ${k} повторяется`);
+    const chislo = (x) => typeof x === 'number' && Number.isFinite(x) && x > 0;
+    if (!chislo(r.kandidat) || !chislo(r.dpr) || !Array.isArray(r.ramka) || !r.ramka.every(chislo) || typeof r.src !== 'string') {
+      vkhod(`${f}: у клетки ${k} нечисловые кандидат, DPR или рамка, или нет src`);
+    }
+    m.set(k, r);
+  }
+  return m;
+};
+const strokiDo = chitat(bDo, fDo);
+const strokiPosle = chitat(bPosle, fPosle);
+const DO = karta(strokiDo, fDo);
+const POSLE = karta(strokiPosle, fPosle);
 
 const stroki = [];
 let narusheniy = 0;
@@ -55,12 +99,12 @@ for (const k of vse) {
     stroki.push(`НАРУШЕНИЕ ${k}: клетки нет ${a ? '«после»' : '«до»'}`);
     continue;
   }
-  const p = proporciya(b.src);
-  if (proporciya(a.src) !== p) {
+  if (klyuchKadra(a.src) !== klyuchKadra(b.src)) {
     narusheniy += 1;
     stroki.push(`НАРУШЕНИЕ ${k}: кадр сменился (${a.src} → ${b.src})`);
     continue;
   }
+  const p = proporciya(b.src);
   const tochno = (r) => (Math.max(r.ramka[0], r.ramka[1] * p) * r.dpr) / r.kandidat;
   const tDo = tochno(a);
   const tPosle = tochno(b);
@@ -75,14 +119,22 @@ for (const k of vse) {
   } else if (b.kandidat > a.kandidat) {
     vid = `лучше: кандидат ${a.kandidat} → ${b.kandidat}`;
     luchshe += 1;
-  }
-  if (ramkaTa && b.kandidat === a.kandidat && b.rastyazhenie > a.rastyazhenie) {
-    vid += `; шум округления инструмента ×${a.rastyazhenie} → ×${b.rastyazhenie}`;
-    shuma += 1;
+  } else if (a.src !== b.src) {
+    vid = `НАРУШЕНИЕ: тот же кандидат ${a.kandidat}, другой файл (${a.src} → ${b.src})`;
+    narusheniy += 1;
+  } else if (b.rastyazhenie > a.rastyazhenie) {
+    if (b.rastyazhenie - a.rastyazhenie <= 0.02 + 1e-9) {
+      vid += `; шум округления инструмента ×${a.rastyazhenie} → ×${b.rastyazhenie}`;
+      shuma += 1;
+    } else {
+      vid = `НАРУШЕНИЕ: число инструмента выросло сверх округления ×${a.rastyazhenie} → ×${b.rastyazhenie}`;
+      narusheniy += 1;
+    }
   }
   stroki.push(`${k.padEnd(28)} рамка ${b.ramka.join('×').padEnd(9)} кандидат ${String(a.kandidat).padStart(4)} → ${String(b.kandidat).padStart(4)}  точно ×${tDo.toFixed(2)} → ×${tPosle.toFixed(2)}  (инструмент ×${a.rastyazhenie} → ×${b.rastyazhenie})  ${vid}`);
 }
-console.log(`до: ${fDo}\nпосле: ${fPosle}\n`);
+const tozhe = vse.length - luchshe - narusheniy;
+console.log(`до: ${fDo} (строк ${strokiDo.length})\nпосле: ${fPosle} (строк ${strokiPosle.length})\n`);
 console.log(stroki.join('\n'));
-console.log(`\nклеток ${vse.length}; лучше ${luchshe}; то же ${vse.length - luchshe - narusheniy}; нарушений ${narusheniy}; шум округления инструмента ${shuma}`);
+console.log(`\nклеток ${vse.length}; лучше ${luchshe}; то же ${tozhe}; нарушений ${narusheniy}; шум округления инструмента ${shuma}`);
 process.exit(narusheniy ? 1 : 0);

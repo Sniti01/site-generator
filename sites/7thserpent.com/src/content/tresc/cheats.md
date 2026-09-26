@@ -110,7 +110,7 @@ rows:
         changes how it behaves, for god mode, no reloading or one-hit kills; the
         mod menus players use in Max Payne 3 are fan-made scripts. One trainer
         download site warns that a trainer usually fits one version of the
-        game, may stop working or misbehave after an update or a language
+        game and may stop working or misbehave after an update or a language
         change, and that the chance of glitches or even damage to the game, at
         worst needing a reinstall, is especially high.
 related:

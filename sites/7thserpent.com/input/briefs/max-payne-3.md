@@ -23,7 +23,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/max-payne-3/guide/` — Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne
 - `/gameplay/` — How Max Payne plays: bullet time, shootdodge, painkillers and weapons
-- `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
+- `/cheats/` — Max Payne cheats: codes, unlocks and trainers
 - `/mods/` — The best Max Payne mods: from the Kung Fu mod to RTX Remix
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
 

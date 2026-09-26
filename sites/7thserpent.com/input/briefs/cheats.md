@@ -9,9 +9,9 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | Field | Value |
 |---|---|
 | type | `guide` |
-| h1 | Max Payne cheats for every game: PC codes, console cheats and trainers |
-| title | Max Payne cheats — PC, PS2, PS4 and Xbox codes for every game |
-| description | Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, how cheats work in Max Payne 3, the developer console, trainers, and which cheats disable achievements. |
+| h1 | Max Payne cheats: codes, unlocks and trainers |
+| title | Max Payne cheats — PC commands, PS2 and Xbox codes, unlocks |
+| description | Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, the developer console, how Max Payne 3 unlocks its cheats, and what trainers are. |
 | parent | `/` |
 | cluster | max payne cheats · queries 32 · demand 670 (Ahrefs, US) |
 | corridor (contract) | 2747–3717 |

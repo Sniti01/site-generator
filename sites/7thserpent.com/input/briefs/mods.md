@@ -11,7 +11,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | type | `guide` |
 | h1 | The best Max Payne mods: from the Kung Fu mod to RTX Remix |
 | title | Best Max Payne mods — for Max Payne 1, 2 and 3, plus RTX Remix |
-| description | The mods worth installing for Max Payne 1, 2 and 3: classics like the Kung Fu mod, texture packs, RTX Remix, FusionFix for Max Payne 3, and how to install them. |
+| description | The mods worth installing for Max Payne 1, 2 and 3: the Kung Fu mod and other classics, RTX Remix path tracing, FusionFix and the Sam Lake face mod, and how to install the classics. |
 | parent | `/` |
 | cluster | max payne mods · queries 9 · demand 1100 (Ahrefs, US) |
 | corridor (contract) | 3023–4091 |
@@ -21,7 +21,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 
 **Related** (`link-list` prints them from the structure, titled by their `h1`):
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
-- `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
+- `/cheats/` — Max Payne cheats: codes, unlocks and trainers
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne
 

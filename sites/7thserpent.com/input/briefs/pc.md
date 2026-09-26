@@ -21,7 +21,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 
 **Related** (`link-list` prints them from the structure, titled by their `h1`):
 - `/mods/` — The best Max Payne mods: from the Kung Fu mod to RTX Remix
-- `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
+- `/cheats/` — Max Payne cheats: codes, unlocks and trainers
 - `/max-payne-1/` — Max Payne (2001): the original game, its ports and the mobile version
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing

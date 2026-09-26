@@ -21,7 +21,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 
 **Related** (`link-list` prints them from the structure, titled by their `h1`):
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing
-- `/cheats/` — Max Payne cheats for every game: PC codes, console cheats and trainers
+- `/cheats/` — Max Payne cheats: codes, unlocks and trainers
 - `/gameplay/` — How Max Payne plays: bullet time, shootdodge, painkillers and weapons
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
 

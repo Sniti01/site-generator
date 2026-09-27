@@ -1,0 +1,386 @@
+[
+ {
+  "id": "sod5-hangul-1160",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Aᅠnewᅠfeatureᅠtoᅠtheᅠseriesᅠisᅠtheᅠcoverᅠsystem,ᅠwhichᅠallowsᅠplayers. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет U+1160 в классе «пробел» на :219. Сегодня это пробел, и 8-граммы «a new feature to the series is the» … «series is the cover system which allows players» дают отказ «вне кавычек». Мутант без ᅠ на :219 снимает знак через :220 (DICP), слова склеиваются в одно, итог «чисто», и --proba 128/128 это пропускает. Путь: строка YAML \"…ᅠ…\" в rows[].body."
+ },
+ {
+  "id": "sod5-hangul-115f",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Aᅟnewᅟfeatureᅟtoᅟtheᅟseriesᅟisᅟtheᅟcoverᅟsystem,ᅟwhichᅟallowsᅟplayers. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "То же для U+115F (HANGUL CHOSEONG FILLER, тоже DICP). Сегодня отказ. Мутант без ᅟ на :219 даёт «чисто» и проходит 128/128."
+ },
+ {
+  "id": "sod5-adres-v-opisanii",
+  "zameny": [
+   [
+    "<meta name=\"description\" content=\"A Max Payne 3 guide:",
+    "<meta name=\"description\" content=\"Source: https://en.wikipedia.org/wiki/Max_Payne_3⠀A⠀new⠀feature⠀to⠀the⠀series⠀is⠀the⠀cover⠀system,⠀which⠀allows⠀players⠀to⠀gain⠀a⠀tactical⠀advantage. A Max Payne 3 guide:"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет вызов bezAdresov на :346 (правка раунда 4, строки головы и атрибутов без сверки со сторожем). Сегодня адрес вырезается по знакам URL до U+2800, slova режет по U+2800, и фраза Википедии даёт отказ. Мутант :346 → bezAdresovStorozha («\\S+») съедает всё до пробела перед «A Max Payne 3 guide:», итог «чисто», и 128/128 это пропускает. Путь: description страницы в pages-s2.json (Base.astro:93), тот же исход у alt через opis записи game-art.json (media.ts:54)."
+ },
+ {
+  "id": "sod5-adres-znaki",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "As of September 2026 (source: https://howlongtobeat.com/game/5821?view=main&amp;sort=-time_%20all&amp;q=Max&#39;s+[pc]*2!x~y@x,y;z:8080#Main_Story(solo)end ), HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Закрепляет состав знаков URL на :155. Все знаки адреса (цифры, - _ ~ ? # [ ] @ ! & ' ( ) * + , ; = % :) входят в класс, и за каждым стоят буквы или цифры. Поэтому bezAdresov и bezAdresovStorozha съедают одно и то же, сверка :194 молчит, и итог «чисто». Мутант, который выбросит из :155 любой из этих знаков, оставит хвост адреса словами: слова разойдутся со сторожем, будет код 2, и атака не пройдёт. Сегодняшние порчи (:487, :574, :598) держат только буквы, «.» и «/». Знак «$» в атаку не вошёл, чтобы стенд с String.replace не прочитал «$…» как шаблон. «&» и «'» записаны так, как их печатает Astro (&amp;, &#39;)."
+ },
+ {
+  "id": "sod5-mesto-znaki",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3):",
+    "IX. The favela again, during a police raid – Max&#39;s 2nd sweep of the UFE’s turf &amp; a rooftop-to-rooftop chase — (6 / 3):"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Законная правка места главы IX знаками, которые белый список на :390 разрешает (шапка :51–52): цифры, «'», «’», «&», «-», «–», «—». Заголовок на :388 один (IX), счёт один, forma проходит, итог «чисто». Мутант, который выбросит любой из этих семи знаков из класса :390, даёт ложный отказ «не за номером своей главы IX». Сегодня ни одна порча этого не ловит (128/128)."
+ },
+ {
+  "id": "sod5-arabskij-nomer",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, 10. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Название IX стоит за пунктом «10. A bus station and a bus ride (6 / 2):» в том же виде «номер. место (счёт): “название”», что и соседние главы, и читается как название главы X. «10.» на :388 заголовком не считается, а на :390 весь отрезок из белого списка. Итог сегодня — «чисто», код 0. Если это решат пределом, его надо назвать в шапке рядом с :66–69 и :96."
+ },
+ {
+  "id": "sod5-strochnyj-nomer",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, x. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Тот же класс, что sod5-arabskij-nomer: строчное римское «x.». :388 ищет только прописные [IVXLC], а строчная x на :390 проходит как латиница. Сегодня «чисто»."
+ },
+ {
+  "id": "sod5-fraza-cherez-abzac",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series is</p><p data-astro-cid-n67f4zmd>the cover system, which allows players to</p><p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Это 14 слов подряд из en.wikipedia.org/wiki/Max_Payne_3 («a new feature to the series is the cover system which allows players to»), разрезанные на два элемента rows[].body по 7 слов. Каждый <p> на :259 и :265 — отдельная строка, окна 8-грамм (:324) между строками не строятся, и итог сегодня «чисто», код 0. Читатель видит фразу конкурента целиком, через перенос абзаца. Если это решат пределом, его надо назвать в шапке, как у сторожа брифов (brief-strony.mjs:45–47)."
+ },
+ {
+  "id": "r5reg-sao-v-meste",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The São Paulo favela again, during a police raid (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Законное место главы IX с «ã» — это латинская буква, а место главы II на той же странице — «A São Paulo nightclub». Сегодня :390 не пропускает «ã», и выходит отказ «не за номером своей главы IX», код 1. На 83d8d3a было «чисто»: тогда forma пропускала любые буквы места, см. sod4-greki-x, код 0. Годится исход «назвать в шапке :51 «латиница A–Z без диакритики»». Расширять класс до \\p{Script=Latin} нельзя: вернутся Ⅹ, Ｘ и ꞏ."
+ },
+ {
+  "id": "r5reg-iri-v-tekste",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Map: https://pt.wikipedia.org/wiki/São_Paulo As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Адрес с не-ASCII буквой в видимом тексте, чужих слов нет. :155 режет адрес на «ã», и «ão», «paulo» остаются словами. Сторож (:156) съедает весь адрес. :194 бросает исключение, итог — код 2. До раунда 4 (`\\S+`) было «чисто». Годится назвать это в :74–75 или добавить в :155 \\p{L}\\p{N} с флагом u; тогда sod4-2 и порча :574 останутся в силе."
+ },
+ {
+  "id": "r5reg-belyy-spisok-chisto",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again — Max’s 2nd visit, during the UPP&#39;s 6–8 am police raid &amp; shoot-out (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "В месте IX стоят все знаки белого списка, кроме букв, пробела, «,» и «.»: цифры, «—», «’», «'» (Astro печатает его как &#39;), «–», «&» (&amp;), «-». Заголовок один (IX), счёт один, форма проходит — сегодня «чисто». Мутант :390 без любого из этих знаков даёт ложный отказ «не за номером своей главы IX» и при этом проходит 128/128."
+ },
+ {
+  "id": "r5reg-adres-shirokiy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Source: https://example.com/a-b_c~d.e/f?g=h&amp;i=j;k,l+m*n!o$p@q&#39;r(s)t%20u#v As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Адрес, в котором есть все знаки класса :155. Сегодня он срезается целиком, слова совпадают со сторожем, итог «чисто». Мутант с узким классом, например `[A-Za-z0-9./:]`, оставляет хвост адреса словами, и сверка :194 даёт код 2. Порчи :487 и :574 этого не ловят: в них только «https://example.com/x»."
+ },
+ {
+  "id": "r5reg-adres-v-description",
+  "zameny": [
+   [
+    "name=\"description\" content=\"A Max Payne 3 guide:",
+    "name=\"description\" content=\"See https://example.com/x⠀A⠀new⠀feature⠀to⠀the⠀series⠀is⠀the⠀cover⠀system,⠀which⠀allows⠀players⠀to⠀gain⠀a⠀tactical⠀advantage. A Max Payne 3 guide:"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Правка sod4-2 в строках головы: :346 режет адрес классом :155, фраза Википедии через U+2800 остаётся словами — сегодня отказ. Мутант :346 с `bezAdresovStorozha` (как до раунда 4) съедает всё до пробела после «advantage.» и выдаёт «чисто», проходя 128/128: порча :574 стоит только в тексте <main>. Путь через договор: pages-s2.json → structure.json → Base."
+ },
+ {
+  "id": "r5reg-hangul-115f",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the seriesᅟis the cover system, which allows players toᅟgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+115F стоит в классе «пробел» :219. Сегодня это пробел, и фраза даёт отказ. Мутант без ᅟ в классе снимает знак как Default_Ignorable (:220). Получаются «seriesis» и «playersto», ни одного окна из 8 слов не остаётся, итог «чисто». Порчи :545, :586, :587 этот знак не содержат."
+ },
+ {
+  "id": "r5reg-hangul-1160",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the seriesᅠis the cover system, which allows players toᅠgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "То же для U+1160 (:219). Мутант без ᅠ в классе склеивает слова и выдаёт «чисто», проходя 128/128."
+ },
+ {
+  "id": "r5reg-stenografiya-1bca2",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series𛲢is the cover system, which allows players to𛲢gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+1BCA2 — середина диапазона :219. Сегодня это пробел, итог — отказ. Мутант с одним \\u{1BCA0} вместо диапазона снимает U+1BCA2 как Default_Ignorable и выдаёт «чисто». Порча :587 проверяет только U+1BCA0."
+ },
+ {
+  "id": "r5reg-cr-syroy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series\ris the cover system, which allows players to\rgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Сырой CR вплотную между словами. Путь через содержание: строка YAML в двойных кавычках с \\r. Браузер сводит CR к переводу строки и рисует пробел. Сегодня :211 даёт пробел, итог — отказ. Мутант :211 `[\\t\\n]` отдаёт CR в :212, где он снимается, слова склеиваются, итог «чисто». Мутант проходит 128/128: порчи :478 и :540 проверяют только \\n, :582 — только \\t."
+ },
+ {
+  "id": "r5reg-hex-a",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series&#xA;is the cover system, which allows players to&#xA;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Шестнадцатеричная ссылка на LF (:209, ветвь `x0*[9ad]`). Сегодня это пробел, итог — отказ. Мутант без шестнадцатеричной ветви или без «a» в ней снимает ссылку второй заменой (:210), итог «чисто», и проходит 128/128. Путь только через шаблон: «&» из содержания маршрут экранирует. То же верно для &#x9;, &#xD; и десятичной &#9;."
+ },
+ {
+  "id": "r5reg-la-chisto",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a police raid, L.A. style (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "За «L.» стоит буква, и :388 (`(?![\\p{L}\\p{N}])`) не считает его заголовком. Заголовок один (IX), знаки из белого списка — сегодня «чисто». Мутант без просмотра вперёд находит два заголовка и даёт ложный отказ «не за номером своей главы IX». Он проходит 128/128: :573 держит только просмотр назад."
+ },
+ {
+  "id": "proby-r5-alt-adres-2800",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"Max Payne 3 — https://en.wikipedia.org/wiki/Max_Payne_3⠀A⠀new⠀feature⠀to⠀the⠀series⠀is⠀the⠀cover⠀system,⠀which⠀allows⠀players⠀to⠀gain⠀a⠀tactical⠀advantage\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет правку раунда 4 в dopStroki (:346). Фраза Википедии приклеена к адресу знаком U+2800, который рисуется пустым промежутком. Нынешний код обрывает адрес на U+2800 и даёт отказ по 11 окнам. Мутант «:346 до пробела» (поведение до раунда 4) съедает всё значение и выдаёт «чисто». Порча :574 его не ловит, потому что стоит в тексте. Путь: alt из записи кадра."
+ },
+ {
+  "id": "proby-r5-adres-znaki-url",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Source: https://en.wikipedia.org/wiki/S%C3%A3o_Paulo_(city)?action=history&amp;oldid=1234;x=1,2#Max-Payne~3 As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Законный адрес со знаками «% _ ( ) ? = & ; , # - ~» и цифрами. Все они есть в классе :155, поэтому адрес съедается так же, как у сторожа, и сегодня итог «чисто». Мутант, вынувший любой из этих знаков, обрывает адрес раньше, хвост становится словами, и сверка :193–194 даёт код 2. Порчи :487, :574 и :598 (адрес «example.com/x») этого не видят."
+ },
+ {
+  "id": "proby-r5-mesto-belyy-spisok",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again — the UFE's dusk-to-dawn raid, Max’s 2nd day &amp; 1–2 C4 charges (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Закрепляет допуск белого списка :390: «—», «'», «-», «,», «’», цифры, «&», «–». Заголовок в отрезке один (IX), а в «C4» точки нет. Счёт один, forma проходит, сегодня итог «чисто». Мутант `[A-Za-z ,.]*` даёт ложный отказ «не за номером своей главы IX» и проходит 128/128."
+ },
+ {
+  "id": "proby-r5-granica-zagolovka",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a C.I.A. raid on room 12C. (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Закрепляет просмотр вперёд и \\p{N} в просмотре назад на :388. В «C.I.A.» за точкой идёт буква, в «12C.» перед числом стоит цифра, поэтому заголовков, кроме IX, нет, и сегодня итог «чисто». Мутант «без просмотра вперёд» находит C и I, мутант `(?<!\\p{L})` находит C. Оба дают ложный отказ «не за номером своей главы IX»."
+ },
+ {
+  "id": "proby-r5-cr-syroy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series\ris the cover system, which allows players to\rgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Сырой CR стоит вплотную в двух местах: «series|is» и «to|gain». Этими двумя разрывами задеты все 11 окон (расчёт r4reg-5). Браузер читает CR как перевод строки. Сегодня :211 превращает CR в пробел, и выходит отказ. Мутант :211 `[\\t\\n]` снимает CR на :212, получаются «seriesis» и «togain», итог «чисто». Путь через содержание: YAML \"\\r\"."
+ },
+ {
+  "id": "proby-r5-9-desyatichnaya",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series&#9;is the cover system, which allows players to&#9;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет ветвь `9|` на :209. Сегодня &#9; становится пробелом, и выходит отказ. Мутант без `9|` отдаёт ссылку на :210, та снимается в '', слова склеиваются, итог «чисто». Путь только через шаблон."
+ },
+ {
+  "id": "proby-r5-x9-shestn",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series&#x9;is the cover system, which allows players to&#x9;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет шестнадцатеричную ветвь `x0*[9ad]` на :209. Сегодня &#x9; становится пробелом, и выходит отказ. Мутант без этой ветви отдаёт ссылку на :210, та снимается в '', итог «чисто». Путь только через шаблон."
+ },
+ {
+  "id": "proby-r5-x1-razdel",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series &#x1; is the cover system, which allows players &#x1; to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет шестнадцатеричную ветвь на :210. Сегодня &#x1; снимается, фраза остаётся целой, и выходит отказ. У мутанта без этой ветви сторож раскрывает ссылку в U+0001, то есть в RAZDEL (:201). Строка рвётся на :265 на куски из 6, 7 и 5 слов, ни одного окна из 8 слов фразы не остаётся, итог «чисто». Порча :480 держит только десятичную &#1;. Путь только через шаблон."
+ },
+ {
+  "id": "proby-r5-hangul-115f",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the seriesᅟis the cover system, which allows players toᅟgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+115F стоит вплотную в двух местах. Сегодня chistit (:219) заменяет его пробелом, и выходит отказ. Мутант, вынувший ᅟ из класса, снимает знак как Default_Ignorable (:220), слова склеиваются, итог «чисто». Порчи :545 и :586 держат только U+3164 и U+FFA0."
+ },
+ {
+  "id": "proby-r5-hangul-1160",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the seriesᅠis the cover system, which allows players toᅠgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "То же для U+1160: сегодня отказ, у мутанта без ᅠ в классе :219 итог «чисто»."
+ },
+ {
+  "id": "proby-r5-1bca3",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series𛲣is the cover system, which allows players to𛲣gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+1BCA3 стоит вплотную в двух местах. Сегодня это пробел, и выходит отказ. Мутант, сузивший диапазон :219 до одного `\\u{1BCA0}`, снимает U+1BCA3 как Default_Ignorable, итог «чисто». Порча :587 держит только U+1BCA0."
+ },
+ {
+  "id": "proby-r5-sao-v-meste",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a police raid in São Paulo (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Место главы IX с латинской «ã», как в месте главы II на этой же странице. Шапка (:51) обещает «латиницу». Сегодня :390 даёт отказ «не за номером своей главы IX»: класс только A–Za–z. Годятся два исхода: «чисто» после расширения списка или отказ, если предел «латиница без диакритики» будет назван в шапке."
+ },
+ {
+  "id": "proby-r5-iri-adres",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Source: https://pt.wikipedia.org/wiki/São_Paulo As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Законный адрес IRI в тексте. Сегодня :155 обрывает его на «ã», «ão» и «paulo» становятся словами, сторож (:156) съедает адрес целиком, выходит код 2. До раунда 4 было «чисто». Годятся два исхода: «чисто» (не-ASCII буквы внутри адреса) или код 2, если такой адрес назван пределом в шапке рядом с :74–75."
+ }
+]

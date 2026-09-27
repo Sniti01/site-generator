@@ -21,3 +21,5 @@ Result (75 files):
 
 
 код выхода: 0
+
+(CR-байтов срезано: 4 — astro check цитирует строки CRLF-файла tools/fetch-corpus.mjs)

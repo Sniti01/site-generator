@@ -2,6 +2,7 @@
 url: /voice-and-face/
 art: mp3-k04
 artFocus: 0% 30%
+artCaption: "Pictured: Max in Max Payne 3, 2012 — a game screenshot, not a photo"
 lead: >-
   James McCaffrey voiced Max in all three games. The face was Sam Lake’s in
   the first, Timothy Gibbs’s in the second and McCaffrey’s own in the third.

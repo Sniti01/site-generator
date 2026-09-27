@@ -4,8 +4,8 @@ art: mp1-k14
 artFocus: 100% 40%
 lead: >-
   A New York detective loses his wife and baby daughter to men high on a new
-  drug called Valkyr, and the loss follows him through all three games. The
-  endings wait in one row marked Spoilers.
+  drug called Valkyr, and the loss haunts him long after. The endings wait in
+  one row marked Spoilers.
 primary:
   href: "#max-payne-2001"
   label: Start with 2001

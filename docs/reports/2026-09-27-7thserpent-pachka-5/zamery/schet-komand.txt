@@ -1,0 +1,8 @@
+== e8a9ee58-f89a-4747-a426-4b7c6edaccc2.jsonl: команд оболочки 80, с находками 1
+  #52 [сочетание] «Строки сторожей и коридоров в журнале сборки» — cd "D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/zamery" && grep -a "korytarz\|/gameplay/:\|/movie/:\|guide/:\|pominięt\|пропуск\|links\]\|h1\]\|anchors\]" priemka-build.txt | grep -av "├─" | sed -n '1,40p' 2>/dev/null; true
+== a034c3f57bec76708.output: команд оболочки 0, с находками 0
+== a893b9ffbf0ec6f36.output: команд оболочки 0, с находками 0
+== a9abd67efa3dbde06.output: команд оболочки 0, с находками 0
+== a9e027268d6d5b70a.output: команд оболочки 0, с находками 0
+== ae292a8a93dea2a1b.output: команд оболочки 0, с находками 0
+== ae59707945e39df5c.output: команд оболочки 0, с находками 0

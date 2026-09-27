@@ -1,0 +1,6 @@
+$ git add --renormalize . && git status --porcelain | wc -l
+(папка: D:/SEO/cloud/site-generator; чистое дерево после коммита материалов 40928da)
+
+0
+
+— перенормализация не добавила в индекс ни одного файла.

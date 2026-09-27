@@ -16,8 +16,8 @@ rows:
         back on what happened, and in Max Payne and Max Payne 2 he narrates
         over graphic-novel panels. Inside his head he talks in metaphors and
         wordplay that often clash with what he actually says to people. Sam
-        Lake wrote the first two games; Max Payne 3 was written by Dan Houser,
-        Michael Unsworth and Rupert Humphries. James McCaffrey voiced Max in
+        Lake wrote the first two games; Dan Houser, Michael Unsworth and Rupert
+        Humphries wrote Max Payne 3. James McCaffrey voiced Max in
         all three. By his own account, the first game meant about six hours a
         day in the booth and some 400 pages of script, and he said he had
         never played it.

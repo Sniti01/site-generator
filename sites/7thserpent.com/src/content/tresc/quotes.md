@@ -129,7 +129,7 @@ rows:
         Scares”; Max Payne 3 has “It’s Drive or Shoot, Sister.”
       - >-
         Max Payne 3 even has an achievement called “It’s Fear That Gives Men
-        Wings,” almost word for word the first game’s chapter title.
+        Wings” — almost word for word the first game’s chapter title.
 gallery:
   title: The three games
   lead: >-
@@ -141,7 +141,7 @@ gallery:
     - art: mp2-k03
       caption: 'Max Payne 2: The Fall of Max Payne (2003) — a sawed-off shotgun in a dead-end alley'
     - art: mp3-k06
-      caption: Max Payne 3 (2012) — Max with a submachine gun raised beside his face
+      caption: Max Payne 3 (2012) — Max, head bowed, a submachine gun and a pistol raised
 related:
   title: The story behind the lines
 cta:

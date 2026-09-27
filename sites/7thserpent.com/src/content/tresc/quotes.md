@@ -1,5 +1,17 @@
 ---
 url: /quotes/
+art: mp2-k00
+artFocus: 60% 40%
+artCaption: "Pictured: Max Payne 2 (2003), picked for the game, not for any line below"
+lead: >-
+  Short lines from all three games, each with the chapter where you hear it,
+  plus who wrote them and who gave Max his voice.
+primary:
+  href: "#max-payne-2001"
+  label: Read the lines
+secondary:
+  href: "#how-max-talks"
+  label: How Max talks
 byline:
   role: Written by
   author: 7th Serpent

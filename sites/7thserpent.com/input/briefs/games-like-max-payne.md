@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | games like max payne · queries 7 · demand 340 (Ahrefs, US) |
 | corridor (contract) | null — no verdict, the number goes to the batch report (named decision) |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (7): games like max payne · games like max payne 3 · games similar to max payne · games similar to max payne 3 · max payne like games · max payne similar games · max payne type games
 
@@ -26,6 +26,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/remake/` — Max Payne 1 & 2 Remake: release date, platforms and news
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
 - `cta-band` — type-default, low. printed by the route

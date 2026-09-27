@@ -1,5 +1,17 @@
 ---
 url: /media/
+art: mp3-k06
+artFocus: 15% 30%
+artCaption: "Pictured: a Max Payne 3 (2012) screenshot, not the cover"
+lead: >-
+  The covers, the comic panels, the art, the music and the trailers of the
+  Max Payne games — where each comes from and who made it.
+primary:
+  href: "#graphic-novel"
+  label: The comic panels
+secondary:
+  href: "#soundtrack"
+  label: The soundtrack
 rows:
   - id: covers-logo-font
     year: Covers

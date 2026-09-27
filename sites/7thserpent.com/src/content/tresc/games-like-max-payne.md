@@ -1,5 +1,17 @@
 ---
 url: /games-like-max-payne/
+art: mp1-k09
+artFocus: 100% 50%
+lead: >-
+  What to play after Max Payne, from RAWG’s list of similar games and a Steam
+  thread started in October 2025: the picks both agree on, Remedy’s other
+  games, story-first choices and shooters.
+primary:
+  href: "#both-lists-agree"
+  label: Where both lists agree
+secondary:
+  href: /remake/
+  label: The next Max Payne
 rows:
   - id: both-lists-agree
     year: Both lists

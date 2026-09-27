@@ -1,5 +1,16 @@
 ---
 url: /voice-and-face/
+art: mp3-k04
+artFocus: 0% 30%
+lead: >-
+  James McCaffrey voiced Max in all three games. The face was Sam Lake’s in
+  the first, Timothy Gibbs’s in the second and McCaffrey’s own in the third.
+primary:
+  href: "#the-voice"
+  label: The voice
+secondary:
+  href: "#the-first-face"
+  label: The three faces
 byline:
   role: Written by
   author: 7th Serpent

@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/max-payne-3/` |
 | cluster | max payne 3 guide · queries 28 · demand 990 (Ahrefs, US) |
 | corridor (contract) | 3174–4294 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (28): how long is max payne 3 · max payne 3 mission list · how many chapters in max payne 3 · max payne 3 chapters · max payne 3 golden guns · max payne 3 walkthrough · how many chapters are in max payne 3 · max payne 3 achievements · max payne 3 collectibles · max payne 3 how long to beat · how long to beat max payne 3 · max payne 3 guide · max payne 3 trophies · hltb max payne 3 · max payne 3 achievement guide · max payne 3 airport · max payne 3 airport shootout · max payne 3 chapter 12 · max payne 3 chapter 4 · max payne 3 chapter 7 · max payne 3 clues · max payne 3 clues and golden gun locations · max payne 3 favela · max payne 3 golden gun locations · max payne 3 golden gun parts · max payne 3 length · max payne 3 levels · max payne 3 trophy guide
 
@@ -26,6 +26,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 15/25. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `video` — manual, high. not in the core — the route skips it loudly; its implementation comes with the first page that has it (a core change is a question to the owner)

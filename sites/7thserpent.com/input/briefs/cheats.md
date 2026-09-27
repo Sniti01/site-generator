@@ -14,8 +14,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | description | Cheat codes for Max Payne 1 and 2 on PC, PS2 and Xbox, the developer console, how Max Payne 3 unlocks its cheats, and what trainers are. |
 | parent | `/` |
 | cluster | max payne cheats · queries 32 · demand 670 (Ahrefs, US) |
-| corridor (contract) | 2747–3717 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| corridor (contract) | 2747–3859 |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (32): max payne 3 cheats · max payne cheats · max payne 3 trainer · max payne ps2 cheats · max payne cheats ps2 · max payne cheats ps4 · max payne 3 cheat codes · max payne 3 cheats pc · max payne cheat codes · cheats for max payne 3 · max payne 1 cheats · max payne 1 trainer · max payne 2 cheats · max payne 2 cheats ps2 · max payne 2 cheats xbox · max payne 2 pc cheats · max payne 2 ps2 cheats · max payne 2 trainer · max payne 3 cheat codes pc · max payne 3 cheats ps3 · max payne 3 mod menu · max payne 3 pc cheats · max payne 3 unlockables · max payne cheats pc · max payne cheats ps5 · max payne cheats xbox · max payne gba cheats · max payne mobile cheats · max payne ps4 cheats · max payne trainer · max payne xbox cheats · trainer max payne 3
 
@@ -27,6 +27,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/pc/` — Max Payne on PC: requirements, fixes and controllers
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 13/30. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
@@ -35,7 +36,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 ## Content plan (S3 anatomy, page corpus)
 
 - documents 30 from 17 hosts, basket **high**
-- **characters without spaces — the contract corridor: 2747–3717**; the anatomy gives 2747–3717, median 3232
+- **characters without spaces — the contract corridor: 2747–3859**; the anatomy gives 2747–3717, median 3232
 - headings: h2 median 0, h3 median 1
 
 | Topic (our vocabulary) | documents | share | verdict |

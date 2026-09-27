@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | who is max payne · queries 35 · demand 590 (Ahrefs, US) |
 | corridor (contract) | 5057–6841 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (35): max payne 3 characters · is alex casey max payne · alan wake 2 max payne · max payne character · is max payne in alan wake 2 · max payne 2 mona sax · alan wake max payne · max payne 3 story · max payne in alan wake 2 · max payne valkyrie · mona sax max payne 2 · alex casey max payne · control max payne · max payne 3 character · max payne 3 ending · max payne 3 girl · max payne 3 plot · max payne alan wake · max payne alex casey · max payne and mona sax · max payne beard · max payne brewer · max payne characters · max payne control · max payne death · max payne dog · max payne mona sax · max payne plot · max payne story · max payne valkyr · max payne wife · max payne: home · mona sax max payne · valkyrie max payne · who is max payne
 
@@ -27,6 +27,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/movie/` — Max Payne, the 2008 movie: cast, plot and where to watch it
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 12/28. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route

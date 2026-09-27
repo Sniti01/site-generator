@@ -1,5 +1,16 @@
 ---
 url: /cheats/
+art: mp1-k12
+artFocus: 100% 20%
+lead: >-
+  Developer-console commands for the first two games on PC, pause-menu codes
+  on PS2, the hidden cheat menu on Xbox and what finishing each game unlocks.
+primary:
+  href: "#pc-console"
+  label: PC console
+secondary:
+  href: "#unlocks"
+  label: Unlocks
 byline:
   role: Written by
   author: 7th Serpent

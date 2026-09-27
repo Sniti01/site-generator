@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne bullet time · queries 19 · demand 440 (Ahrefs, US) |
 | corridor (contract) | 3562–4819 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (19): max payne 2 gameplay · max payne 3 bullet time · max payne 3 gameplay · max payne bullet time · max payne gameplay · max payne gameplay bullet time · max payne 3 bullet time gameplay · max payne 3 gunplay · max payne 1 gameplay · max payne 2 bullet time · max payne 2 walkthrough · max payne 3 arcade mode · max payne 3 new york minute · max payne 3 shootdodge · max payne 3 weapons · max payne 3 xbox 360 gameplay · max payne beretta · max payne painkillers · max payne shootdodge
 
@@ -27,6 +27,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/games-like-max-payne/` — Games like Max Payne: what to play next
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 13/23. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `video` — manual, high. not in the core — the route skips it loudly; its implementation comes with the first page that has it (a core change is a question to the owner)

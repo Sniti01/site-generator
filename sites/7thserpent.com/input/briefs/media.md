@@ -14,8 +14,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | description | The Max Payne 3 cover, the logo and its font, the comic-panel storytelling and the Max Payne 3 comics, concept art, music from Late Goodbye to HEALTH, trailers, memes and GIFs. |
 | parent | `/` |
 | cluster | max payne cover · queries 40 · demand 950 (Ahrefs, US) |
-| corridor (contract) | 1986–2686 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| corridor (contract) | 1986–2864 |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (40): max payne 3 cover art · max payne meme · max payne logo · max payne 3 art · max payne comic · max payne cover · max payne 3 artwork · max payne 3 cover · max payne wallpaper · max payne 3 trailer · max payne font · max payne ps2 cover · max payne 2 cover · max payne 2 wallpaper · max payne 3 gif · max payne 3 logo · max payne 3 soundtrack · max payne 3 wallpaper · max payne art · max payne cover art · max payne gif · max payne memes · health max payne 3 · max payne 1 cover · max payne 1 screenshots · max payne 1 wallpaper · max payne 2 screenshots · max payne 3 comic · max payne 3 concept art · max payne 3 cover girl · max payne 3 font · max payne 3 ps3 cover · max payne 3 screenshots · max payne 3 trailers · max payne artwork · max payne avatar · max payne box art · max payne game cover · max payne screenshots · max payne trailer
 
@@ -26,6 +26,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/` — The Max Payne series, game by game
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
 - `cta-band` — type-default, low. printed by the route
@@ -33,7 +34,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 ## Content plan (S3 anatomy, page corpus)
 
 - documents 58 from 40 hosts, basket **high**
-- **characters without spaces — the contract corridor: 1986–2686**; the anatomy gives 1986–2686, median 2336
+- **characters without spaces — the contract corridor: 1986–2864**; the anatomy gives 1986–2686, median 2336
 - headings: h2 median 2, h3 median 0
 
 | Topic (our vocabulary) | documents | share | verdict |

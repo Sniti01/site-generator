@@ -413,6 +413,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
@@ -670,6 +675,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
@@ -752,6 +762,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
@@ -817,6 +832,11 @@
     "/games-like-max-payne/"
    ],
    "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
     {
      "block": "byline",
      "source": "anatomy",
@@ -902,6 +922,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "byline",
      "source": "anatomy",
      "confidence": "medium",
@@ -926,7 +951,7 @@
    "wave": 1,
    "corridor": [
     2747,
-    3717
+    3859
    ],
    "volume": 670
   },
@@ -956,6 +981,11 @@
     "/max-payne-2/"
    ],
    "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
     {
      "block": "byline",
      "source": "anatomy",
@@ -1043,6 +1073,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1061,7 +1096,7 @@
    "wave": 1,
    "corridor": [
     1986,
-    2686
+    2864
    ],
    "volume": 950
   },
@@ -1084,6 +1119,11 @@
     "/voice-and-face/"
    ],
    "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
     {
      "block": "byline",
      "source": "anatomy",
@@ -1155,6 +1195,11 @@
    ],
    "blocks": [
     {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
+    {
      "block": "story-row",
      "source": "type-default",
      "confidence": "low"
@@ -1173,7 +1218,7 @@
    "wave": 1,
    "corridor": [
     2870,
-    3884
+    4051
    ],
    "volume": 410
   },
@@ -1201,6 +1246,11 @@
     "/remake/"
    ],
    "blocks": [
+    {
+     "block": "hero-key-art",
+     "source": "manual",
+     "confidence": "high"
+    },
     {
      "block": "story-row",
      "source": "type-default",

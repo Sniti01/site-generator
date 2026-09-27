@@ -1,5 +1,17 @@
 ---
 url: /mods/
+art: mp1-k05
+artFocus: 100% 40%
+artCaption: "Pictured: the original Max Payne (2001), without mods"
+lead: >-
+  Kung fu moves for the first game, path tracing for the first two, classic
+  mods for the sequel, fixes for Max Payne 3 and Sam Lake’s face back on Max.
+primary:
+  href: "#kung-fu-mod"
+  label: The Kung Fu mod
+secondary:
+  href: "#rtx-remix"
+  label: Path tracing
 byline:
   role: Written by
   author: 7th Serpent

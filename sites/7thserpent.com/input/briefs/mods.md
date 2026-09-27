@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne mods · queries 9 · demand 1100 (Ahrefs, US) |
 | corridor (contract) | 3023–4091 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (9): max payne 3 mods · max payne 2 mods · max payne mods · max payne kung fu mod · max payne 3 mod · max payne 3 fusionfix · max payne 3 sam lake mod · max payne rtx remix · sam lake max payne 3
 
@@ -26,6 +26,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/max-payne-2/` — Max Payne 2: The Fall of Max Payne
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 10/17. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route

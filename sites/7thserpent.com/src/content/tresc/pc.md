@@ -1,5 +1,17 @@
 ---
 url: /pc/
+art: mp3-k01
+artFocus: 100% 30%
+lead: >-
+  What Max Payne 2 and 3 need to run, and the fixes players use to get the
+  2001 original going on Windows 10 and 11: sound, frame rate, widescreen and
+  controllers.
+primary:
+  href: "#max-payne-on-windows-10-and-11"
+  label: Fix the 2001 original
+secondary:
+  href: "#max-payne-3-requirements"
+  label: System requirements
 rows:
   - id: max-payne-3-requirements
     year: Max Payne 3

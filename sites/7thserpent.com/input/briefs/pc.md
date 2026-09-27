@@ -14,8 +14,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | description | What Max Payne 3 and Max Payne 2 need on PC, sound, frame-rate and widescreen fixes for the 2001 original on Windows 10 and 11, and how controllers work in each game. |
 | parent | `/` |
 | cluster | max payne 3 pc · queries 17 · demand 410 (Ahrefs, US) |
-| corridor (contract) | 2870–3884 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| corridor (contract) | 2870–4051 |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (17): max payne 3 pc · max payne 3 system requirements · max payne pc controller support · gamesystemrequirements max payne 2 minimum ram · max payne controller support · max payne widescreen fix · max payne 2 pc controller support · max payne 2 system requirements · max payne windows 10 · max payne 1 controller support · max payne 2 controller support · max payne 2 widescreen fix · max payne 3 pc requirements · max payne 3 system requirements pc · max payne controls · max payne pc controller · max payne sound fix
 
@@ -27,6 +27,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/max-payne-3/` — Max Payne 3 (2012): São Paulo, platforms and what to know before playing
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route
 - `cta-band` — type-default, low. printed by the route
@@ -34,7 +35,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 ## Content plan (S3 anatomy, page corpus)
 
 - documents 25 from 17 hosts, basket **high**
-- **characters without spaces — the contract corridor: 2870–3884**; the anatomy gives 2870–3884, median 3377
+- **characters without spaces — the contract corridor: 2870–4051**; the anatomy gives 2870–3884, median 3377
 - headings: h2 median 2, h3 median 1
 
 | Topic (our vocabulary) | documents | share | verdict |

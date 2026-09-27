@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne va · queries 39 · demand 2160 (Ahrefs, US) |
 | corridor (contract) | 3753–5077 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (39): max payne face · james mccaffrey max payne · max payne voice actor · sam lake max payne · max payne actor · max payne bald · max payne character designer · max payne 1 face · max payne 3 voice actor · max payne 3 face · max payne sam lake · sam lake max payne face · max payne 3 cast · james mccaffrey max payne 3 · max payne 3 bald · max payne 3 face model · max payne developer · max payne face model · max payne james mccaffrey · max payne va · remedy max payne · voice of max payne · who made max payne · who voices max payne · max payne 1 voice actor · max payne 3 james mccaffrey · max payne 3 shaved head · max payne 3 voice actors · max payne cosplay · max payne creator · max payne face texture · max payne model · max payne original face · max payne remedy · max payne voice · remedy entertainment max payne · timothy gibbs max payne · who owns max payne · who played max payne
 
@@ -28,6 +28,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/movie/` — Max Payne, the 2008 movie: cast, plot and where to watch it
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 14/23. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `link-list` — type-default, low. printed by the route

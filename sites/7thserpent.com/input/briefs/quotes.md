@@ -15,7 +15,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | parent | `/` |
 | cluster | max payne quotes · queries 3 · demand 270 (Ahrefs, US) |
 | corridor (contract) | 5093–6891 |
-| hero art | not applicable — the page declares no `hero-key-art` |
+| hero art | no key yet — a question in this page’s batch |
 
 **Keywords** (3): max payne quotes · max payne 3 quotes · max payne 2 quotes
 
@@ -25,6 +25,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 - `/voice-and-face/` — Who is behind Max Payne: the voice, the face and the creators
 
 **blocks[]** — the set and order of sections; each printed block needs its field in the content file:
+- `hero-key-art` — manual, high. printed by the route
 - `byline` — anatomy, medium, evidence 2/4. printed by the route
 - `story-row` — type-default, low. printed by the route
 - `gallery` — anatomy, medium, evidence 2/4. printed by the route

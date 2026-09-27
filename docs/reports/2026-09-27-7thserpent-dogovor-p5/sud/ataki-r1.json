@@ -1,0 +1,926 @@
+[
+ {
+  "id": "izv-perenos-n",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>New feature to the series is the\ncover system, which allows players to gain. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "14 слов Википедии (001, Max Payne 3), в замене литеральный перенос строки после 7-го слова. Браузер покажет пробел, фраза на экране цельная. Сегодня судья разрежет строку и промолчит. Контроль: та же замена с пробелом вместо \\n даёт отказ."
+ },
+ {
+  "id": "izv-perenos-10",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>New feature to the series is the&#10;cover system, which allows players to gain. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Тот же разрыв сущностью &#10;: raskrytVse превращает её в \\n до split."
+ },
+ {
+  "id": "izv-myagkiy-perenos",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>New feature to the series is the co&#173;ver system, which allows players to gain. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Мягкий перенос (числовая сущность) внутри «cover» невидим, но слово рвётся на «co» и «ver». Слева 7 слов корпуса, справа 6. Литеральный U+00AD или &#8203; ведут себя так же."
+ },
+ {
+  "id": "izv-wbr",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>New feature to the series is the co<wbr>ver system, which allows players to gain. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "<wbr> невидим, а судья заменяет его пробелом. Предел p5 R2-INSTR-3, в шапке glavy не назван."
+ },
+ {
+  "id": "izv-skrytye-kavychki",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "<span hidden>“</span>Here I Was Again, Halfway Down the World.<span hidden>”</span>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "На экране название IX без кавычек, [hidden] даёт display:none. Судья видит символы кавычек и разрешает. Все проверки (один раз, Chapters, номер) проходят."
+ },
+ {
+  "id": "izv-q",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "<q>Here I Was Again, Halfway Down the World.</q>"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Браузер рисует у <q> кавычки “ ”, на экране то же, что сейчас. Судья их не видит и сегодня отказывает («вне кавычек», «в кавычках 0 раз»): ложный отказ."
+ },
+ {
+  "id": "izv-turetskiy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>Deneyeyim dedim. Oyunu yükledim, açtım, çalışmadı. İnternetten çözüm aradım. Oyun fazlasıyla eski. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "12 подряд слов документа 314 (howlongtobeat, отзывы) с «İ». glavy снимает регистр пословно и получает токен с U+0307, поэтому молчит. Контроль: chuzhie-p5 на той же порче даёт на гайде лишнюю строку."
+ },
+ {
+  "id": "izv-title-atr",
+  "zameny": [
+   [
+    "href=\"#golden-guns\" data-astro-cid-m3tnyskv>Golden guns and clues</a>",
+    "href=\"#golden-guns\" title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\" data-astro-cid-m3tnyskv>Golden guns and clues</a>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "",
+  "zachem": "Подсказка кнопки героя видна при наведении. Её не судят ни glavy, ни p5, хотя шапка glavy говорит, что title судит p5. aria-label устроен так же."
+ },
+ {
+  "id": "izv-alt-styk",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "",
+  "zachem": "Страница нарушает правило. glavy по объявленному разделению промолчит и выдаст итог «только внутри кавычек…». Сигнал только один: у p5 на гайде 3 строки вместо ожидаемых 2. Проверка стыка: механической связи нет."
+ },
+ {
+  "id": "izv-main-obrez",
+  "zameny": [
+   [
+    "<section class=\"cta\" aria-labelledby",
+    "<!-- </main> --><section class=\"cta\" aria-labelledby"
+   ],
+   [
+    "Bullet time, shootdodges, painkillers and the Last Stand:",
+    "A new feature to the series is the cover system, which allows players to gain a tactical advantage. Bullet time, shootdodges, painkillers and the Last Stand:"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Комментарий невидим, призыв на экране с чужой фразой. Судья режет <main> на «</main>» из комментария; до обрезки около 700 слов, и охрана 300 молчит."
+ },
+ {
+  "id": "izv-vplotnuyu",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>New feature to the series is the co<em>ver</em> system, which allows players to gain. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Ловит только ветвь «вплотную» (cover), вариант через пробел даёт «co ver». Сегодня отказ обязан быть. Порчи с этим в --proba нет, и замену '' на ' ' в строке 124 проба не заметит."
+ },
+ {
+  "id": "izv-pustoe",
+  "zameny": [
+   [
+    "<main id=\"content\">",
+    "<main id=\"content\"><!-- </main> -->"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "меньше 300 слов",
+  "zachem": "Охрана пустого извлечения без пробы. Сработает исключением (стек, код 1 — как у отказа по существу), не кодом 2, как у p5."
+ },
+ {
+  "id": "izv-sushchnosti-kontrol",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "&#8220;Here I Was Again, Halfway&nbsp;Down the World.&#8221;"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Контроль сущностей: на экране то же самое. tekstDokumenta раскрывает &#8220;, &#8221; и &nbsp; до разбора, отказа быть не должно."
+ },
+ {
+  "id": "izv-k-h1",
+  "zameny": [
+   [
+    "id=\"page-title\" data-astro-cid-n67f4zmd>Max Payne 3 walkthrough",
+    "id=\"page-title\" data-astro-cid-n67f4zmd>A new feature to the series is the cover system. Max Payne 3 walkthrough"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: чужая фраза в h1 героя."
+ },
+ {
+  "id": "izv-k-lid",
+  "zameny": [
+   [
+    "<p class=\"hero__lead t-lead measure\" data-astro-cid-m3tnyskv>Fourteen chapters,",
+    "<p class=\"hero__lead t-lead measure\" data-astro-cid-m3tnyskv>A new feature to the series is the cover system. Fourteen chapters,"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: лид героя."
+ },
+ {
+  "id": "izv-k-knopka",
+  "zameny": [
+   [
+    "href=\"#chapters\" data-astro-cid-m3tnyskv>All 14 chapters<svg",
+    "href=\"#chapters\" data-astro-cid-m3tnyskv>A new feature to the series is the cover system<svg"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: надпись кнопки героя. Кнопки идут одной строкой, svg даёт пробел."
+ },
+ {
+  "id": "izv-k-byline",
+  "zameny": [
+   [
+    "data-astro-cid-d6goylod>Written by</span>",
+    "data-astro-cid-d6goylod>A new feature to the series is the cover system. Written by</span>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: подпись byline (span вплотную к span)."
+ },
+ {
+  "id": "izv-k-tlabel",
+  "zameny": [
+   [
+    "data-astro-cid-n67f4zmd>Chapters</p>",
+    "data-astro-cid-n67f4zmd>A new feature to the series is the cover system</p>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: t-label ряда Chapters. Проверки названий при этом не ломаются, секция id=\"chapters\" на месте."
+ },
+ {
+  "id": "izv-k-meta",
+  "zameny": [
+   [
+    "data-astro-cid-ko6adimc>Where each one takes place · golden gun parts / clues</p>",
+    "data-astro-cid-ko6adimc>A new feature to the series is the cover system · golden gun parts / clues</p>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: meta ряда. Строку со «·» glavy не режет."
+ },
+ {
+  "id": "izv-k-h2",
+  "zameny": [
+   [
+    "id=\"chapters-title\" data-astro-cid-ko6adimc>Fourteen chapters, in order</h2>",
+    "id=\"chapters-title\" data-astro-cid-ko6adimc>A new feature to the series is the cover system</h2>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: h2 ряда."
+ },
+ {
+  "id": "izv-k-svyazannye",
+  "zameny": [
+   [
+    "data-astro-cid-m2yyudgx>Max Payne on PC: requirements, fixes and controllers</span>",
+    "data-astro-cid-m2yyudgx>A new feature to the series is the cover system</span>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: заголовок в «связанных» (span рядом со span «Guide»)."
+ },
+ {
+  "id": "izv-k-cta-knopka",
+  "zameny": [
+   [
+    "data-astro-cid-rtqd6vyo>How Max Payne plays<svg",
+    "data-astro-cid-rtqd6vyo>A new feature to the series is the cover system<svg"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: надпись кнопки призыва."
+ },
+ {
+  "id": "izv-k-figcaption",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<figure><figcaption>A new feature to the series is the cover system</figcaption></figure><p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: figcaption (сейчас на гайде его нет)."
+ },
+ {
+  "id": "izv-k-cite-abbr",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd>A new <cite>feature</cite> to the <abbr title=\"x\">series</abbr> is the cover system. As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль покрытия: строчные cite и abbr внутри фразы."
+ },
+ {
+  "id": "izv-podval",
+  "zameny": [
+   [
+    "data-astro-cid-eghvtlpg>An unofficial Max Payne fan site.",
+    "data-astro-cid-eghvtlpg>An unofficial Max Payne fan site. A new feature to the series is the cover system."
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Граница: подвал вне <main>, его не судит ни один судья. По объявленной области glavy обязан молчать. Судить ли шаблон, решает владелец."
+ },
+ {
+  "id": "izv-kroshki",
+  "zameny": [
+   [
+    "aria-current=\"page\" data-astro-cid-woptr46g>Max Payne 3 walkthrough",
+    "aria-current=\"page\" data-astro-cid-woptr46g>A new feature to the series is the cover system. Max Payne 3 walkthrough"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Граница: крошки вне <main>. Их текст — h1 страниц, которые судятся в своих <main>. Расхождение крошки с h1 — вопрос другого сторожа."
+ },
+ {
+  "id": "vosmigrammy-pritjazh-imya",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "As part of their research for Max Payne 3’s setting, the developers conducted field research. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V1: 15 слов подряд из Википедии (001…Max_Payne_3.txt:716). В указателе `for §imya§ s setting`, на странице `for max payne 3's setting`. Каждое 8-окно задевает max, payne или 3's. Жду от инструмента «отказов нет»."
+ },
+ {
+  "id": "vosmigrammy-pritjazh-bez-imeni",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "Dangerous docks, Rockstar’s staying true to Max Payne’s roots while simultaneously updating the franchise. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V1 без IMENA: 14 слов подряд из engadget (442…:262). В указателе `max payne s roots` (притяжательное после тега), на странице `payne's`. Каждое окно задевает payne's."
+ },
+ {
+  "id": "vosmigrammy-apostrof-akut",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "From my perspective now, it’s simply funny, that Sam Lake hasn’t just played Max. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V2: 14 слов подряд из gog (352…:435, в корпусе «it´s», «hasn´t» с U+00B4). Каждое 8-окно задевает it's или hasn't."
+ },
+ {
+  "id": "vosmigrammy-turetskoe-I",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "Sıkıntı yoktu. İdare eder dedim ve oyuna daldım. İlk denediğim zamanlar. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V3: 11 слов подряд из 314-howlongtobeat…:3. Сторож (и chuzhie-p5 на том же стенде) поймает по `sıkıntı yoktu i dare eder dedim ve oyuna`. Инструмент держит «i̇dare» и «i̇lk» одним словом и промолчит."
+ },
+ {
+  "id": "vosmigrammy-shy-syroy",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "This is defi­nitely not the kind of film that jumps. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V4: сырой U+00AD внутри «definitely» (536-blu_ray…:860). Браузер показывает слово целым, а инструмент видит «defi» + «nitely», и все окна гаснут."
+ },
+ {
+  "id": "vosmigrammy-shy-chislovoy",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "This is defi&#173;nitely not the kind of film that jumps. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V4: числовая &#173; раскрывается в U+00AD (brief-strony.mjs:370-372) и рвёт слово."
+ },
+ {
+  "id": "vosmigrammy-shy-imenovanny",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "This is defi&shy;nitely not the kind of film that jumps. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Контроль к V4: именованная &shy; удаляется (brief-strony.mjs:364), слово склеивается — инструмент обязан поймать. Вместе с двумя атаками выше показывает, что три одинаковые на экране записи судятся по-разному."
+ },
+ {
+  "id": "vosmigrammy-wbr",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "This is defi<wbr>nitely not the kind of film that jumps. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V4: <wbr> нет в STROCHNYE (:109), его снимает tekstDokumenta пробелом — слово рвётся в обоих вариантах. Предел назван у chuzhie-p5, в новой шапке — нет."
+ },
+ {
+  "id": "vosmigrammy-imya-cifry",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "It is the sequel to Max Payne 2: The Fall of Max Payne (2003) and the third entry. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V5: ветки без пробы. Фраза Википедии (001…:714), в которой каждое совпадающее окно содержит §imya§ (слияние IMENA на странице, :96-104) и цифру 2003. Обязана дать отказ; если нет — слияние сломано."
+ },
+ {
+  "id": "vosmigrammy-apostrof-tipograf",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "On Blu-ray; 20th Century Fox’s Blu-ray release once again delivers. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V5: каждое окно содержит «fox's» — ’ на странице против ' в корпусе (536…:857), плюс дефис «Blu-ray» и слово «20th». Проверяет сведение апострофа :88. Обязана дать отказ."
+ },
+ {
+  "id": "vosmigrammy-imya-mix",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "It is the sequel to “Max Payne 2: The Fall” of Max Payne (2003) and the third entry. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "через границу кавычек",
+  "zachem": "V5: название из IMENA пересекает границу кавычек и получает метку 'mix' (:101). Окна содержат {-1,'mix'}, поэтому ждём ветку «через границу». Ни одна из 15 порч этой ветки не касается."
+ },
+ {
+  "id": "vosmigrammy-nemeckie-kavychki",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3):",
+    "IX. The favela again, during a „police“ raid (6 / 3):"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "V6: своё слово в немецких кавычках в описании места. Закрывающая “ открывает пару до ” названия IX. Жду от инструмента «в кавычках, но не название главы списка» и «в кавычках 0 раз» при чистой по правилу странице."
+ },
+ {
+  "id": "vosmigrammy-kodirovka",
+  "zameny": [
+   [
+    "As of September 2026, HowLongToBeat puts",
+    "Is never washed out, as faces, building façades, clothing, and all sorts of objects. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "V7: 14 слов подряд из blu-ray.com (536…:862-863). В указателе «fa�ades» даёт «fa ades»; каждое окно задевает «façades». Жду «отказов нет»."
+ },
+ {
+  "id": "vosmigrammy-registr-nazvaniya",
+  "zameny": [
+   [
+    "Halfway Down the World.”",
+    "Halfway Down The World.”"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "V8: полное название IX в регистре Steam. По правилу это то же полное название в кавычках; инструмент откажет, потому что normR учитывает регистр."
+ },
+ {
+  "id": "nazvaniya-ix-za-nomerom-x",
+  "zameny": [
+   [
+    "during a police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "during a police raid (6 / 3): X. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Находка nazvaniya-1: название IX стоит сразу за заголовком главы X. Окно стр. 173 = « IX. … (6 / 3): X. … (6 / 2): », и выражение стр. 174 его принимает. Предсказание: инструмент промолчит (exit 0)."
+ },
+ {
+  "id": "nazvaniya-xiii-za-nomerom-xiv",
+  "zameny": [
+   [
+    "police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”",
+    "police station (9 / 7): XIV. The airport (6 / 1): “A Fat Bald Dude with a Bad Temper.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы XIII",
+  "zachem": "Находка nazvaniya-1, второе название: XIII стоит за заголовком XIV. Стыка «1 a fat bald dude…» в корпусе нет (там «13: A Fat…», «XIII: A Fat…»). Предсказание: молчание."
+ },
+ {
+  "id": "nazvaniya-kavychki-v-meste",
+  "zameny": [
+   [
+    "IX. The favela again, during",
+    "IX. The “favela” again, during"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Находка nazvaniya-2: название IX стоит за своим номером, но ” в месте главы сдвигает начало окна. Предсказание: ложный отказ «не за номером своей главы IX»."
+ },
+ {
+  "id": "nazvaniya-tochka-vne-kavychek",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "“Here I Was Again, Halfway Down the World”."
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Находка nazvaniya-3: полное название в кавычках, точка за кавычкой (корпус пишет название без точки). Предсказание: два ложных отказа — «в кавычках, но не название главы списка» и «в кавычках 0 раз»."
+ },
+ {
+  "id": "nazvaniya-registr-steam",
+  "zameny": [
+   [
+    "A Fat Bald Dude with a Bad Temper.”",
+    "A Fat Bald Dude With a Bad Temper.”"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Находка nazvaniya-3: регистр названия XIII как у Steam 2076733393 и portforward. Предсказание: те же два ложных отказа."
+ },
+ {
+  "id": "nazvaniya-vlozhennaya-sekciya",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>I. A private party",
+    "<section></section><p data-astro-cid-n67f4zmd>I. A private party"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Находка nazvaniya-4: невидимая вложенная секция в теле ряда Chapters обрезает ряд на стр. 154. Предсказание: два ложных отказа «не в ряду «Chapters»»."
+ },
+ {
+  "id": "nazvaniya-kopiya-cherez-probel",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+    "<p data-astro-cid-n67f4zmd><span style=\"margin-right:.3em\">“Here I Was Again, Halfway Down the</span><span>World.”</span> As of September 2026, HowLongToBeat"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках 2 раз",
+  "zachem": "Находка nazvaniya-5: вторая видимая копия названия IX в ряду Length без номера существует только в чтении «через пробел». Предсказание: отказов нет, у IX «8-грамм 2»."
+ },
+ {
+  "id": "nazvaniya-net-ryada",
+  "zameny": [
+   [
+    "id=\"chapters\" aria-labelledby",
+    "id=\"glavy\" aria-labelledby"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "ряда «Chapters» (секция id=\"chapters\") на странице нет",
+  "zachem": "Находка nazvaniya-6: ветвь стр. 156 без пробы; ряд по объявленному правилу — это секция id=\"chapters\". Атака подтверждает, что ветвь срабатывает."
+ },
+ {
+  "id": "nazvaniya-xi-vmesto-ix",
+  "zameny": [
+   [
+    "IX. The favela again",
+    "XI. The favela again"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Подтверждение по линзе: похожий номер XI вместо IX. Якорь `^\\s*IX\\.` его отвергает — ожидаю отказ, как требует правило."
+ },
+ {
+  "id": "nazvaniya-xii-vmesto-xiii",
+  "zameny": [
+   [
+    "XIII. A prison",
+    "XII. A prison"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы XIII",
+  "zachem": "Подтверждение по линзе: похожий номер XII вместо XIII. `^\\s*XIII\\.` не совпадает с «XII.» — ожидаю отказ."
+ },
+ {
+  "id": "nazvaniya-nomer-v-drugom-abzace",
+  "zameny": [
+   [
+    "during a police raid (6 / 3): “Here I Was Again",
+    "during a police raid (6 / 3):</p><p data-astro-cid-n67f4zmd>“Here I Was Again"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Подтверждение по линзе: номер в конце одного абзаца, название в начале следующего. Окно — от начала строки и пустое (стр. 172–173), объявлено «в одной строке» — ожидаю отказ."
+ },
+ {
+  "id": "nazvaniya-vlozhennye-kavychki",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "“as the game puts it, “Here I Was Again, Halfway Down the World.””"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках, но не название главы списка",
+  "zachem": "Подтверждение по линзе: название в «“ ”» внутри другой пары. Первая “ сопрягается с ” после World., текст пары не равен названию — строгий отказ (плюс «в кавычках 0 раз»). Ложного «чисто» нет."
+ },
+ {
+  "id": "nazvaniya-pryamye-kavychki",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "\"Here I Was Again, Halfway Down the World.\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Подтверждение по линзе: прямые кавычки. По названному пределу (стр. 33) это не кавычки, 8-грамма считается вне кавычек — строгий отказ."
+ },
+ {
+  "id": "nazvaniya-em-v-slove",
+  "zameny": [
+   [
+    "Halfway Down the World.”",
+    "Half<em>way</em> Down the World.”"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Подтверждение по линзе: название разорвано тегом внутри слова. Во «вплотную» оно цело (допуск, счёт 1); «через пробел» даёт «half way» — ни название, ни 8-грамма корпуса. Ожидаю чисто."
+ },
+ {
+  "id": "nazvaniya-bez-chastey",
+  "zameny": [
+   [
+    "during a police raid (6 / 3): “Here",
+    "during a police raid: “Here"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Подтверждение по линзе: номер на месте, «(части / улики)» снято. Формат «<номер>. <место> (<части> / <улики>): » объявлен в шапке (стр. 20–21), поэтому отказ по объявленному правилу. Текст отказа говорит «не за номером», хотя номер на месте, но формат в нём напечатан."
+ },
+ {
+  "id": "nazvaniya-xiii-ischezlo",
+  "zameny": [
+   [
+    "(9 / 7): “A Fat Bald Dude with a Bad Temper.”",
+    "(9 / 7):"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках 0 раз",
+  "zachem": "Подтверждение по линзе: одно из двух названий исчезло вовсе. По П99 п. 2 и П100 IX и XIII печатаются полностью — ожидаю отказ стр. 169."
+ },
+ {
+  "id": "nazvaniya-slovo-zameneno",
+  "zameny": [
+   [
+    "A Fat Bald Dude with a Bad Temper.”",
+    "A Fat Bald Guy with a Bad Temper.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках 0 раз",
+  "zachem": "Подтверждение по линзе: слово названия изменено. Чужой 8-граммы больше нет, но и полного названия нет — отказ даёт только счёт (стр. 169)."
+ },
+ {
+  "id": "proby-odna-na-stroku",
+  "zameny": [
+   [
+    "Halfway Down the World.” X. A bus station",
+    "Halfway Down the World.” A new feature to the series is the cover system, which allows players to gain a tactical advantage. X. A bus station"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Фраза корпуса (en.wikipedia.org/wiki/Max_Payne_3: «A new feature to the series is the cover system, which allows players to gain a tactical advantage») стоит вне кавычек в той же строке, сразу после разрешённого названия IX. Порча для мутации «одна находка на строку» (N1): нынешний инструмент обязан отказать, сломанный промолчит."
+ },
+ {
+  "id": "proby-klyuch-seg",
+  "zameny": [
+   [
+    "Halfway Down the World.” X. A bus station",
+    "Halfway Down the World.” Here I was again, halfway down the world. X. A bus station"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Та же 8-грамма, что у названия IX (thehdroom), в той же строке повторена вне кавычек. Ловит мутацию «ключ повтора без seg» (N2), заодно и «одна находка на строку» (N1)."
+ },
+ {
+  "id": "proby-svoya-para",
+  "zameny": [
+   [
+    "“It’s Drive or Shoot, Sister.”",
+    "“A new feature to the series is the cover system, which allows players to gain a tactical advantage.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках, но не название главы списка",
+  "zachem": "Фраза корпуса в кавычках главы X стоит в одной строке с целым названием IX. Ловит мутацию «разрешено, если любая пара строки — название» (N3)."
+ },
+ {
+  "id": "proby-vplotnuyu",
+  "zameny": [
+   [
+    "Chapter VII has the most, nine. One chain",
+    "Chapter VII has the most, nine. New feature to the ser<em></em>ies is the cover system, which allows players. One chain"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "12 слов корпуса, пятое разрезано пустым <em>. Вплотную видно «series», через пробел — «ser ies», и в варианте через пробел нет ни одного окна из 8 слов. После слов стоит «One», а не «to», поэтому окно «is the cover system which allows players to» не образуется. Ловит мутацию «только вариант через пробел» (N4)."
+ },
+ {
+  "id": "proby-teg-vne-spiska",
+  "zameny": [
+   [
+    "Chapter VII has the most, nine. One chain",
+    "Chapter VII has the most, nine. New feature to the ser<wbr>ies is the cover system, which allows players. One chain"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "На экране «series» целое (<wbr> лишь разрешает перенос), и 12 слов корпуса видны подряд. Инструмент в обоих вариантах читает «ser ies». Ожидаю, что нынешний инструмент скажет «чисто», то есть ложное «чисто» (N5). Второй прогон — та же замена с «ser&#173;ies» вместо «ser<wbr>ies», ожидание то же."
+ },
+ {
+  "id": "proby-yakor-nachala",
+  "zameny": [
+   [
+    "IX. The favela again",
+    "XIX. The favela again"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Чужой номер, который кончается на свой. С `^` — отказ, без `^` — принято (N6)."
+ },
+ {
+  "id": "proby-yakor-konca",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here",
+    "police raid (6 / 3): see below: “Here"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Между «(6 / 3):» и названием вставлен лишний текст. С `\\s*$` — отказ, без него — принято (N7)."
+ },
+ {
+  "id": "proby-chasti-uliki",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here",
+    "police raid: “Here"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Сняты «(части / улики)». Шаблон строки 174 обязан отказать; мутация «части/улики необязательны» пройдёт (N7)."
+ },
+ {
+  "id": "proby-net-ryada",
+  "zameny": [
+   [
+    "id=\"chapters\" aria-labelledby=\"chapters-title\"",
+    "id=\"chapter-list\" aria-labelledby=\"chapters-title\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "ряда «Chapters» (секция id=\"chapters\") на странице нет",
+  "zachem": "Ветвь строки 156 без пробы. Если её удалить, проверка ряда молча выключается охраной `glavy &&` в строке 171 (N8)."
+ },
+ {
+  "id": "proby-hvost-v-kavychkah",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "“Here I Was Again, Halfway Down the World. A new feature to the series is the cover system, which allows players to gain a tactical advantage.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в кавычках, но не название главы списка",
+  "zachem": "В кавычках полное название с точкой и хвост из фразы корпуса. Отличает равенство в строке 143 от includes/startsWith, чего порча 10 не делает (N9). Вторым отказом ждать «в кавычках 0 раз»."
+ },
+ {
+  "id": "proby-imena",
+  "zameny": [
+   [
+    "Chapter VII has the most, nine. One chain",
+    "Chapter VII has the most, nine. It is the sequel to Max Payne 2: The Fall of Max Payne (2003) and the third. One chain"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Фраза en.wikipedia.org/wiki/Max_Payne_3, в которой каждое 8-словное окно задевает официальное название. Со слиянием IMENA окно «it is the sequel to §imya§ 2003 and» совпадает, без слияния окон нет (N10)."
+ },
+ {
+  "id": "pravilo-posle-XIII-fraza",
+  "zameny": [
+   [
+    "Bad Temper.” XIV. The airport",
+    "Bad Temper.” Finding all three Golden Gun parts will unlock the Golden MD-97L rifle. XIV. The airport"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "В абзаце XIII после разрешённого названия стоит фраза thehdroom (247-…txt:212), вне кавычек. Сторож отдаёт на этот абзац одну находку, и она уже занята XIII. Нынешний код обязан отказать (continue в 147). Атака закрывает пробел пробы: при break в 147 все 15 порч проходят, а эта ловит."
+ },
+ {
+  "id": "pravilo-IX-vtoroy-raz-bez-kavychek",
+  "zameny": [
+   [
+    "Halfway Down the World.” X. A bus station",
+    "Halfway Down the World.” Here I Was Again, Halfway Down the World. X. A bus station"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Одна и та же 8-грамма в строке стоит дважды: внутри кавычек IX (разрешено) и вне кавычек. Атака проверяет, что `seg` в ключе строки 140 не даёт второму вхождению уйти как повтору. Счёт названий в кавычках остаётся 1, так что отказ может дать только разбор 8-грамм."
+ },
+ {
+  "id": "pravilo-adres-vnutri-frazy",
+  "zameny": [
+   [
+    "Halfway Down the World.” X. A bus station",
+    "Halfway Down the World.” Finding all three Golden https://7thserpent.com/ Gun parts will unlock X. A bus station"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "8 слов thehdroom разорваны адресом 4+4. Сторож (brief-strony.mjs:412) вынимает адрес и ловит 8-грамму «finding all three golden gun parts will unlock», но в chuzhie-p5 абзац IX уже занят названием. Разбор держит «https 7thserpent com» словами и ожидаемо промолчит. Это предел, который образец назвал «мягче», а шапка копии потеряла."
+ },
+ {
+  "id": "pravilo-I-s-tochkoy",
+  "zameny": [
+   [
+    "Bad Temper.” XIV. The airport",
+    "Bad Temper.” Oyunu yükledim, açtım, çalışmadı. İnternetten çözüm aradım. Oyun fazlasıyla eski. XIV. The airport"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "10 подряд видимых слов документа 314-howlongtobeat…reviews_latest_1 («İ» — U+0130, стоит на 5-м месте, так что его содержит каждое окно). Сторож режет «İnternetten» на «i nternetten» и ловит, а разбор снимает регистр пословно, получает «i̇nternetten» и ожидаемо промолчит. Это расхождение образец назвал, а копия — нет."
+ },
+ {
+  "id": "pravilo-myagkiy-perenos",
+  "zameny": [
+   [
+    "Bad Temper.” XIV. The airport",
+    "Bad Temper.” Finding all three Golden Gun parts will un­lock the Golden MD-97L rifle. XIV. The airport"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Между «un» и «lock» стоит буквальный мягкий перенос U+00AD. На экране это 12 подряд слов thehdroom, но знак рвёт слово у разбора, у сторожа и у среза окончаний: слева 7 слов корпуса, справа 6. Ожидаемый вывод разбора — «чисто». Это предел, не названный в шапке."
+ },
+ {
+  "id": "pravilo-metki-ryadov-pomenyany",
+  "zameny": [
+   [
+    ">Chapters</p>",
+    ">@@@</p>"
+   ],
+   [
+    ">Length</p>",
+    ">Chapters</p>"
+   ],
+   [
+    ">@@@</p>",
+    ">Length</p>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не в ряду «Chapters»",
+  "zachem": "Метки двух рядов меняются местами, id не трогаются. Названия IX и XIII стоят в ряду с видимой меткой «Length». Образец опознаёт ряд по `.t-label`, прочтение П100 п. 4 говорит «в ряду «Chapters»». Разбор опознаёт ряд по id=\"chapters\" (154) и ожидаемо промолчит."
+ },
+ {
+  "id": "pravilo-nomer-bez-schetov",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a police raid, six parts and three clues: “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Номер IX по-прежнему стоит перед названием, название в кавычках ровно один раз и в ряду Chapters, чужих 8-грамм нет. По прочтению («за номером своей главы») это чисто, но регулярное выражение 174 требует «(\\d+ / \\d+):» и ожидаемо даст отказ «не за номером своей главы IX». Это ложный отказ из-за раскладки, которую зашил сам инструмент."
+ },
+ {
+  "id": "pravilo-net-id-chapters",
+  "zameny": [
+   [
+    "id=\"chapters\" aria-labelledby",
+    "id=\"glavy\" aria-labelledby"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "ряда «Chapters»",
+  "zachem": "Ветвь строки 156 без пробы: секции id=\"chapters\" нет. Если ветвь сломана, проверка ряда (171) пропустится молча, и названия пройдут без ряда. Атака подтверждает, что отказ есть."
+ }
+]

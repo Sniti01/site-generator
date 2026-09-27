@@ -1,0 +1,478 @@
+как ждали  izv-perenos-n: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 7
+как ждали  izv-perenos-10: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 7
+как ждали  izv-myagkiy-perenos: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 7
+как ждали  izv-wbr: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 7
+НЕ КАК ЖДАЛИ  izv-skrytye-kavychki: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  izv-q: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+как ждали  izv-turetskiy: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «deneyeyim dedim oyunu yükledim açtım çalışmadı i nternetten» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «dedim oyunu yükledim açtım çalışmadı i nternetten çözüm» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «oyunu yükledim açtım çalışmadı i nternetten çözüm aradım» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «yükledim açtım çalışmadı i nternetten çözüm aradım oyun» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «açtım çalışmadı i nternetten çözüm aradım oyun fazlasıyla» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «çalışmadı i nternetten çözüm aradım oyun fazlasıyla eski» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     итог: отказов 6
+как ждали  izv-title-atr: код 1 (ждали отказ)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 6; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     итог: отказов 11
+как ждали  izv-alt-styk: код 1 (ждали отказ)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     итог: отказов 11
+как ждали  izv-main-obrez: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 37: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 37: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  izv-vplotnuyu: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 7
+НЕ КАК ЖДАЛИ  izv-pustoe: код 0 (ждали отказ, «меньше 300 слов»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  izv-sushchnosti-kontrol: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  izv-k-h1: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 1: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 1: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 1: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-lid: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 2: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 2: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 2: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-knopka: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 3: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 3: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 39: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 39: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 39: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 5
+как ждали  izv-k-byline: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 4: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 4: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 4: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 40: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 40: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 40: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 6
+как ждали  izv-k-tlabel: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 5: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 5: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 5: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ у ряда id="chapters" видимая метка «A new feature to the series is the cover system», ждали «Chapters»
+     итог: отказов 4
+как ждали  izv-k-meta: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 7: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 7: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 7: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-h2: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 6: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 6: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 6: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-svyazannye: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 35: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 35: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 44: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 44: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 44: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 5
+как ждали  izv-k-cta-knopka: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 38: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-figcaption: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 39, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-k-cite-abbr: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 6; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  izv-podval: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  izv-kroshki: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  vosmigrammy-pritjazh-imya: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  vosmigrammy-pritjazh-bez-imeni: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  vosmigrammy-apostrof-akut: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  vosmigrammy-turetskoe-I: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «sıkıntı yoktu i dare eder dedim ve oyuna» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «yoktu i dare eder dedim ve oyuna daldım» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «i dare eder dedim ve oyuna daldım i» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «dare eder dedim ve oyuna daldım i lk» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «eder dedim ve oyuna daldım i lk denediğim» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 14: «dedim ve oyuna daldım i lk denediğim zamanlar» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     итог: отказов 6
+как ждали  vosmigrammy-shy-syroy: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «this is definitely not the kind of film» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «is definitely not the kind of film that» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «definitely not the kind of film that jumps» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     итог: отказов 3
+как ждали  vosmigrammy-shy-chislovoy: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «this is definitely not the kind of film» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «is definitely not the kind of film that» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «definitely not the kind of film that jumps» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     итог: отказов 3
+как ждали  vosmigrammy-shy-imenovanny: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «this is definitely not the kind of film» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «is definitely not the kind of film that» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «definitely not the kind of film that jumps» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     итог: отказов 3
+как ждали  vosmigrammy-wbr: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «this is definitely not the kind of film» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «is definitely not the kind of film that» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «definitely not the kind of film that jumps» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     итог: отказов 3
+как ждали  vosmigrammy-imya-cifry: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «it is the sequel to §imya§ 2003 and» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the sequel to §imya§ 2003 and the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the sequel to §imya§ 2003 and the third» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «sequel to §imya§ 2003 and the third entry» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 4
+как ждали  vosmigrammy-apostrof-tipograf: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «on blu ray 20th century fox's blu ray» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «blu ray 20th century fox's blu ray release» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «ray 20th century fox's blu ray release once» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «20th century fox's blu ray release once again» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     ОТКАЗ вне кавычек, строка 14: «century fox's blu ray release once again delivers» — https://www.blu-ray.com/movies/Max-Payne-Blu-ray/3159/
+     итог: отказов 5
+как ждали  vosmigrammy-imya-mix: код 1 (ждали отказ, «через границу кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ через границу кавычек, строка 14: «it is the sequel to §imya§ 2003 and» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ через границу кавычек, строка 14: «is the sequel to §imya§ 2003 and the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ через границу кавычек, строка 14: «the sequel to §imya§ 2003 and the third» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ через границу кавычек, строка 14: «sequel to §imya§ 2003 and the third entry» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 4
+НЕ КАК ЖДАЛИ  vosmigrammy-nemeckie-kavychki: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+НЕ КАК ЖДАЛИ  vosmigrammy-kodirovka: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     итог: чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  vosmigrammy-registr-nazvaniya: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+как ждали  nazvaniya-ix-za-nomerom-x: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «X. A bus station and a bus ride (6 / 2):»
+     итог: отказов 1
+как ждали  nazvaniya-xiii-za-nomerom-xiv: код 1 (ждали отказ, «не за номером своей главы XIII»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<части> / <улики>): »): «XIV. The airport (6 / 1):»
+     итог: отказов 1
+НЕ КАК ЖДАЛИ  nazvaniya-kavychki-v-meste: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The “favela” again, during a police raid (6 / 3):»
+     итог: отказов 1
+НЕ КАК ЖДАЛИ  nazvaniya-tochka-vne-kavychek: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+НЕ КАК ЖДАЛИ  nazvaniya-registr-steam: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 10: «a fat bald dude with a bad temper» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+НЕ КАК ЖДАЛИ  nazvaniya-vlozhennaya-sekciya: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не в ряду «Chapters»
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» не в ряду «Chapters»
+     итог: отказов 2
+как ждали  nazvaniya-kopiya-cherez-probel: код 1 (ждали отказ, «в кавычках 2 раз»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 2 раз, ждали 1
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не в ряду «Chapters»
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «»
+     итог: отказов 3
+как ждали  nazvaniya-net-ryada: код 1 (ждали отказ, «ряда «Chapters» (секция id="chapters") на странице нет»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ ряда «Chapters» (секция id="chapters") на странице нет
+     итог: отказов 1
+как ждали  nazvaniya-xi-vmesto-ix: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «XI. The favela again, during a police raid (6 / 3):»
+     итог: отказов 1
+как ждали  nazvaniya-xii-vmesto-xiii: код 1 (ждали отказ, «не за номером своей главы XIII»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<части> / <улики>): »): «XII. A prison and a police station (9 / 7):»
+     итог: отказов 1
+как ждали  nazvaniya-nomer-v-drugom-abzace: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 39, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «»
+     итог: отказов 1
+как ждали  nazvaniya-vlozhennye-kavychki: код 1 (ждали отказ, «в кавычках, но не название главы списка»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+как ждали  nazvaniya-pryamye-kavychki: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+НЕ КАК ЖДАЛИ  nazvaniya-em-v-slove: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 1
+как ждали  nazvaniya-bez-chastey: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid:»
+     итог: отказов 1
+как ждали  nazvaniya-xiii-ischezlo: код 1 (ждали отказ, «в кавычках 0 раз»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» в кавычках 0 раз, ждали 1
+     итог: отказов 1
+как ждали  nazvaniya-slovo-zameneno: код 1 (ждали отказ, «в кавычках 0 раз»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» в кавычках 0 раз, ждали 1
+     итог: отказов 1
+как ждали  proby-odna-na-stroku: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 9: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  proby-klyuch-seg: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     итог: отказов 1
+как ждали  proby-svoya-para: код 1 (ждали отказ, «в кавычках, но не название главы списка»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  proby-vplotnuyu: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 22: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 5
+как ждали  proby-teg-vne-spiska: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 22: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 5
+как ждали  proby-yakor-nachala: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «XIX. The favela again, during a police raid (6 / 3):»
+     итог: отказов 1
+как ждали  proby-yakor-konca: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid (6 / 3): see belo»
+     итог: отказов 1
+как ждали  proby-chasti-uliki: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid:»
+     итог: отказов 1
+как ждали  proby-net-ryada: код 1 (ждали отказ, «ряда «Chapters» (секция id="chapters") на странице нет»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ ряда «Chapters» (секция id="chapters") на странице нет
+     итог: отказов 1
+как ждали  proby-hvost-v-kavychkah: код 1 (ждали отказ, «в кавычках, но не название главы списка»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ в кавычках, но не название главы списка, строка 9: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 13
+как ждали  proby-imena: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 22: «it is the sequel to §imya§ 2003 and» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «is the sequel to §imya§ 2003 and the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 22: «the sequel to §imya§ 2003 and the third» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 3
+как ждали  pravilo-posle-XIII-fraza: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 10: «finding all three golden gun parts will unlock» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «all three golden gun parts will unlock the» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «three golden gun parts will unlock the golden» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «golden gun parts will unlock the golden md» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «gun parts will unlock the golden md 97l» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «parts will unlock the golden md 97l rifle» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     итог: отказов 6
+как ждали  pravilo-IX-vtoroy-raz-bez-kavychek: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     итог: отказов 1
+как ждали  pravilo-adres-vnutri-frazy: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «finding all three golden gun parts will unlock» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     итог: отказов 1
+как ждали  pravilo-I-s-tochkoy: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 10: «oyunu yükledim açtım çalışmadı i nternetten çözüm aradım» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 10: «yükledim açtım çalışmadı i nternetten çözüm aradım oyun» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 10: «açtım çalışmadı i nternetten çözüm aradım oyun fazlasıyla» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     ОТКАЗ вне кавычек, строка 10: «çalışmadı i nternetten çözüm aradım oyun fazlasıyla eski» — https://howlongtobeat.com/game/5736/reviews/latest/1
+     итог: отказов 4
+как ждали  pravilo-myagkiy-perenos: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 10: «finding all three golden gun parts will unlock» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «all three golden gun parts will unlock the» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «three golden gun parts will unlock the golden» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «golden gun parts will unlock the golden md» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «gun parts will unlock the golden md 97l» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ вне кавычек, строка 10: «parts will unlock the golden md 97l rifle» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     итог: отказов 6
+НЕ КАК ЖДАЛИ  pravilo-metki-ryadov-pomenyany: код 1 (ждали отказ, «не в ряду «Chapters»»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ у ряда id="chapters" видимая метка «Length», ждали «Chapters»
+     итог: отказов 1
+НЕ КАК ЖДАЛИ  pravilo-nomer-bez-schetov: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid, six parts and th»
+     итог: отказов 1
+как ждали  pravilo-net-id-chapters: код 1 (ждали отказ, «ряда «Chapters»»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк title, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ ряда «Chapters» (секция id="chapters") на странице нет
+     итог: отказов 1

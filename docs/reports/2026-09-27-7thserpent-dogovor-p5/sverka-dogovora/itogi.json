@@ -1,0 +1,894 @@
+{
+  "summary": "Состязательная сверка договора /max-payne-3/guide/ и /gameplay/ и названий глав IX, XIII с корпусом",
+  "agentCount": 8,
+  "logs": [
+    "линз вернулось: 7 из 7"
+  ],
+  "result": {
+    "itogi": [
+      {
+        "stranica": "/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md)",
+        "linza": "Напечатано ли: каждая клауза title и нового description сверена с тем, что печатает файл содержания (lead, rows[].title/meta/body, cta), и с выдержкой из корпуса (korpus-tekst, поиск Grep).",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne 3 guide — chapters, golden guns, clues, achievements",
+            "klauzy": [
+              {
+                "klauza": "Max Payne 3 guide",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Here is Max Payne 3 chapter by chapter, with what to collect in each and the achievements that go with them.»",
+                "v_korpuse": "не искал: это метка жанра, а не факт",
+                "zametka": "Страница — обзор-справочник по темам, а не пошаговое прохождение. Для слова «guide» этого достаточно."
+              },
+              {
+                "klauza": "chapters",
+                "verdikt": "держится",
+                "na_stranice": "rows[chapters].title: «Fourteen chapters, in order»; body перечисляет I–XIV с местом действия и названием, например «XIV. The airport (6 / 1): “One Card Left to Play.”»",
+                "v_korpuse": "247-thehdroom_com_news_max_payne_3_clues_and_golden_guns_parts_locations_guide_39106_.txt:147 — «Each of Max Payne 3’s 14 chapters includes either one or two unlockable Golden Guns which have been split into three parts.»",
+                "zametka": "Страница печатает все 14 глав, ничего не пропущено."
+              },
+              {
+                "klauza": "golden guns",
+                "verdikt": "держится",
+                "na_stranice": "rows[golden-guns].title: «84 parts, 28 guns»; body: «Every chapter hides one to three golden guns, each in three parts… A finished gun turns gold, does 10% more damage and holds more rounds per magazine.»",
+                "v_korpuse": "105-www_ign_com_wikis_max_payne_3_Golden_Guns.txt — «increases the weapon's damage by 10%, and has an increased ammo capacity per magazine»; 247-thehdroom…txt:147 — «split into three parts»",
+                "zametka": "Эта клауза — метка темы, и тему страница раскрывает: что такое золотое оружие, что оно даёт, как его искать, сколько частей и стволов. Имена стволов названы только для главы XIV. Мест не обещано, и мест страница не печатает."
+              },
+              {
+                "klauza": "clues",
+                "verdikt": "держится",
+                "na_stranice": "rows[clues].title: «65 clues, no markers»; body: «Clues are things you examine (papers, objects, now and then a body), and no marker on the map shows where they are. Chapter VII has the most, nine.»",
+                "v_korpuse": "247-thehdroom…txt:146 — «Clues, found when examining objects – even corpses»; :148 — «there is no blinking marker on the map showing where they are»",
+                "zametka": "Метка темы, тема раскрыта. Из улик по имени названа только цепочка ex-cop (II → VII → XIV)."
+              },
+              {
+                "klauza": "achievements",
+                "verdikt": "держится",
+                "na_stranice": "rows[achievements].title: «Achievements and trophies»; body: «the Steam edition with all its add-ons lists 67 achievements. Four story ones go by difficulty… Among the ones set in a single chapter are…»; кроме того, в golden-guns есть «A License To Kill», в clues — «An Echo Of The Past»",
+                "v_korpuse": "003-store_steampowered_com_app_204100_Max_Payne_3_.txt:747 — «Includes 67 Steam Achievements»; 130-www_ign_com_wikis_max_payne_3_Achievements_and_Trophies.txt:4 — «Feel the Payne», «That Old Familiar Feeling», «So Much For Being Subtle»",
+                "zametka": "В заголовке это голая метка темы без артикля и без «all». Страница даёт по теме число (67 в Steam, с датой) и около 10 имён. Слово держится, но на пределе: полного списка нет ни на странице, ни в корпусе. IGN сам пишет: «Please help fill Trophy values once that information is available!» Слово «trophies» из h1 в проверку не входит."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.",
+            "klauzy": [
+              {
+                "klauza": "A chapter-by-chapter Max Payne 3 guide",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Here is Max Payne 3 chapter by chapter, with what to collect in each…»; rows[chapters] — строка на каждую главу I–XIV (место действия, части/улики, название)",
+                "v_korpuse": "не искал: это метка формы. Для сведения: в корпусе «chapter-by-chapter» стоит рядом с местами — 247-thehdroom…txt:149 «locations guide is designed to help you find where all these cool hidden collectibles are located, chapter-by-chapter»",
+                "zametka": "Формулу страница печатает сама, но по главам идёт только одна строка из шести, остальное разложено по темам. На каждую главу приходится одна строка-сводка, пошагового текста нет. Что будет «по главам», уточняет перечень после двоеточия, поэтому клауза держится. Риск в другом: в жанре (см. thehdroom) «chapter-by-chapter» + «per chapter» означает путеводитель по местам, а мест страница не печатает."
+              },
+              {
+                "klauza": "how many chapters there are",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Fourteen chapters, 28 golden guns split into 84 parts, 65 clues…»; rows[chapters].title: «Fourteen chapters, in order»",
+                "v_korpuse": "247-thehdroom…txt:147 — «Each of Max Payne 3’s 14 chapters»",
+                "zametka": "Число напечатано дважды."
+              },
+              {
+                "klauza": "how long it takes",
+                "verdikt": "держится",
+                "na_stranice": "rows[length]: «As of September 2026, HowLongToBeat puts the story at about 10 hours and everything at about 33. In 2012 the IGN and HeyUGuys reviews both said 10 to 12… IGN’s chapter videos… run from about 18 minutes for the first chapter to 43 for the seventh.»",
+                "v_korpuse": "310-howlongtobeat_com_game_5739.txt:3 — «Main Story 10 Hours» … «Completionist 33 Hours» (то же в §2 CLAUDE.md сайта: MP3 ≈ 10 ч / ≈ 33 ч)",
+                "zametka": "Длина напечатана с датой и источником."
+              },
+              {
+                "klauza": "golden gun parts and clues per chapter",
+                "verdikt": "держится",
+                "na_stranice": "rows[chapters].meta: «Where each one takes place · golden gun parts / clues»; body: «I. … (3 / 2)… VII. The favela (6 / 9)… XIII. … (9 / 7)… XIV. The airport (6 / 1)»",
+                "v_korpuse": "247-thehdroom…txt:150–319 — заголовки глав в той же форме, например «Chapter 4: Anybody Can Buy Me A Drink (9 Golden Gun Parts, 3 Clues)», «Chapter 14: One Card Left to Play (6 Golden Gun Parts, 1 Clue)»",
+                "zametka": "Страница печатает число частей и улик для каждой из 14 глав, почти дословно по meta. Мест и перечня предметов по главам нет: стволы названы только для XIV, из улик — только ex-cop. Без слова «how many» клаузу можно прочитать как «какие части и улики где лежат», тем более рядом с «chapter-by-chapter». Строже было бы «how many golden gun parts and clues each chapter hides». Слово «locations» из прежнего description убрано верно: мест страница не печатает."
+              },
+              {
+                "klauza": "the airport shootout",
+                "verdikt": "держится",
+                "na_stranice": "rows[airport].title: «The airport shootout»; body: «The last chapter sends Max through terminal 2 of Piratininga Airport with corrupt police on his heels: over luggage conveyors, through the departures lounge to TEARS by HEALTH… and out to a chase on the runway that ends the story.»",
+                "v_korpuse": "427-www_thegamer_com_max_payne_3_airport_level_.txt:33 — «10 Years On, Max Payne 3's Airport Shootout Is Still Sensational»",
+                "zametka": "Отдельный ряд, обещание выполнено."
+              },
+              {
+                "klauza": "and the achievements",
+                "verdikt": "обещает больше",
+                "na_stranice": "rows[achievements]: «the Steam edition with all its add-ons lists 67 achievements. Four story ones go by difficulty: Feel the Payne… Serious Payne… Payne In The Ass… Maximum Payne… Among the ones set in a single chapter are That Old Familiar Feeling (IV…), So Much For Being Subtle (VII…) and Sometimes You Get Lucky (XII). A New York Minute asks you to finish the Arcade mode of that name.» Ещё два — в других рядах: «A License To Kill», «An Echo Of The Past».",
+                "v_korpuse": "003-store_steampowered_com_app_204100_Max_Payne_3_.txt:747 — «Includes 67 Steam Achievements». Полного списка в корпусе нет: 130-www_ign_com_wikis_max_payne_3_Achievements_and_Trophies.txt:3 — «Please help fill Trophy values once that information is available!»; лист фактов §7: «ИТОГ по пункту «полный список трофеев»: нет»",
+                "zametka": "С определённым артиклем «the achievements» — это набор достижений игры, то есть весь список. Страница печатает число 67 и 10 имён; её собственная формула — «Among the ones…», то есть выборка. Кто ищет «max payne 3 achievements / achievement guide / trophy guide» (все эти ключи есть в брифе), по такому описанию ждёт перечня, а его нет. Корпус перечня тоже не держит. Это мягкая форма той же ошибки, что у прежнего «every trophy»: слово «every» убрано, а объём обещания остался шире напечатанного."
+              }
+            ],
+            "verdikt_polya": "опровергнуто",
+            "zamena": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the key achievements."
+          }
+        ],
+        "itog": "Заголовок (title) держится. Все четыре его метки (chapters, golden guns, clues, achievements) — названия тем, и у каждой есть свой ряд на странице. Метка «achievements» на пределе: печатается число 67 и около 10 имён, а не перечень, но голая метка темы перечня не обещает.\n\nНовое описание (description) опровергнуто по одной клаузе. «and the achievements» с определённым артиклем обещает набор достижений игры. Страница печатает выборку («Among the ones…»): число 67 в Steam и 10 имён. Полного списка нет и в корпусе: у IGN он неполный и сам просит дозаполнения, в листе фактов итог «полный список трофеев: нет». Остальные клаузы подтверждены цитатами со страницы и из корпуса: число глав (14), длина (HLTB 10/33, с датой), части и улики по главам (числа у всех 14 глав, как в заголовках thehdroom), перестрелка в аэропорту. Предложенная замена отличается одним словом: «and the key achievements».\n\nЕщё один риск, хотя эта клауза держится. «chapter-by-chapter … golden gun parts and clues per chapter» в жанре читается как путеводитель по местам (thehdroom: «locations guide … chapter-by-chapter»), а страница печатает только числа. Если нужна строгость, вместо «golden gun parts and clues per chapter» можно написать «how many golden gun parts and clues each chapter hides». Прежнее описание было хуже нового по двум клаузам. «golden gun and clue locations»: мест страница не печатает, только числа и общее «как искать». «every trophy»: печатаются 67 и 10 имён, по трофеям PlayStation — ничего. Обе ошибки новая формулировка убрала, вторая частично осталась в «the achievements».",
+        "_stranica": "/max-payne-3/guide/",
+        "_linza": "Напечатано ли"
+      },
+      {
+        "stranica": "/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md)",
+        "linza": "Держит ли корпус: для каждой фактической клаузы title (оставлен) и нового description нужна дословная опора в корпусе (612 файлов в scratchpad/korpus-tekst). Отдельно искал документы, которые противоречат клаузе: о числе глав, о длине прохождения, о числах частей и улик по главам, об аэропорте и о числе достижений.",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne 3 guide — chapters, golden guns, clues, achievements",
+            "klauzy": [
+              {
+                "klauza": "Max Payne 3 guide",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Here is Max Payne 3 chapter by chapter, with what to collect in each and the achievements that go with them.»",
+                "v_korpuse": "102-www_ign_com_wikis_max_payne_3_Walkthrough.txt: «Max Payne 3 Guide Start tracking progress … Home › Guides › Max Payne 3 Walkthrough»; 247-thehdroom_com_news_max_payne_3_clues_and_golden_guns_parts_locations_guide_39106_.txt — сам документ называется «…Locations Guide»",
+                "zametka": "Это жанровая метка, фактического утверждения в ней нет. Страница — справочник, и жанр гайда в корпусе есть."
+              },
+              {
+                "klauza": "chapters",
+                "verdikt": "держится",
+                "na_stranice": "row chapters: «Fourteen chapters, in order»; primary: «All 14 chapters»",
+                "v_korpuse": "247-thehdroom_…39106_.txt: «Each of Max Payne 3’s 14 chapters includes either one or two unlockable Golden Guns which have been split into three parts.»; 479-portforward_com_…Chapter_IV_Anyone_can_buy_me_a_drink_htm.txt: «This Max Payne 3 walkthrough is divided into 14 total pages.»; 283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt: «Chapter XIV: One Card Left to Play»",
+                "zametka": "Противоречий нет. Поиск «chapter 15 / chapter XV» по всему корпусу даёт 0 совпадений. Поиск «N chapters/levels/missions» у MP3 находит только «14 chapters» (thehdroom); «12 levels» стоит в документе Amazon о Max Payne для GBA, это не MP3."
+              },
+              {
+                "klauza": "golden guns",
+                "verdikt": "держится",
+                "na_stranice": "row golden-guns: «Every chapter hides one to three golden guns, each in three parts … A finished gun turns gold, does 10% more damage and holds more rounds per magazine.»",
+                "v_korpuse": "105-www_ign_com_wikis_max_payne_3_Golden_Guns.txt: «An assembled Golden Gun changes the color of the equipped weapon to gold, increases the weapon's damage by 10%, and has an increased ammo capacity per magazine.»; 102-www_ign_com_wikis_max_payne_3_Walkthrough.txt: таблица «Golden Guns / Clues / Tourists», где «Chapter 4 3», «Chapter 13 3»",
+                "zametka": "Есть два расхождения, но заголовка они не касаются. (1) Сам thehdroom пишет «either one or two» ствола на главу, а в своих главах 4 и 13 даёт по 9 частей, то есть по 3 ствола; «one to three» на странице совпадает с IGN. (2) Форум 147-steamcommunity_com_app_204100_discussions…: «golden gun parts (which from knowledge are just an aesthetic)» — мнение игрока против справочника IGN."
+              },
+              {
+                "klauza": "clues",
+                "verdikt": "держится",
+                "na_stranice": "row clues: «65 clues, no markers» / «Clues are things you examine (papers, objects, now and then a body), and no marker on the map shows where they are.»",
+                "v_korpuse": "247-thehdroom_…39106_.txt: «They are split between Clues, found when examining objects – even corpses – while playing through the campaign, and Golden Gun parts»; «These are much harder to find since there is no blinking marker on the map showing where they are.»",
+                "zametka": "Противоречий не нашёл."
+              },
+              {
+                "klauza": "achievements",
+                "verdikt": "держится",
+                "na_stranice": "row achievements: «As of September 2026, the Steam edition with all its add-ons lists 67 achievements.»; дальше названы Feel the Payne, Serious Payne, Payne In The Ass, Maximum Payne, That Old Familiar Feeling, So Much For Being Subtle, Sometimes You Get Lucky, A New York Minute, а в других рядах — A License To Kill и An Echo Of The Past",
+                "v_korpuse": "003-store_steampowered_com_app_204100_Max_Payne_3_.txt: «Includes 67 Steam Achievements», «View Steam Achievements (67)»; 105-www_ign_com_wikis_max_payne_3_Golden_Guns.txt: «Collecting all the Golden Gun parts also nets you A License To Kill Achievement or Trophy .»; 204-www_ign_com_wikis_max_payne_3_Chapter_4.txt: «ACHIEVEMENT: That Old familiar feeling Kill all the enemies shining lasers through the hallway windows.»",
+                "zametka": "В заголовке числа нет, поэтому расхождение по числу его не задевает: 199-rawg_io_games_max_payne_3_suggestions.txt даёт «Achievements 66», Steam — 67, страница печатает 67 со ссылкой на Steam и датой. В заголовке стоит «achievements», а не «trophies»: трофеи PlayStation корпус не держит, IGN прямо пишет «Please help fill Trophy values once that information is available!» (130-www_ign_com_wikis_max_payne_3_Achievements_and_Trophies.txt)."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.",
+            "klauzy": [
+              {
+                "klauza": "A chapter-by-chapter Max Payne 3 guide",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Here is Max Payne 3 chapter by chapter…»; row chapters: строки I–XIV, в каждой место действия, «golden gun parts / clues» и название главы",
+                "v_korpuse": "102-www_ign_com_wikis_max_payne_3_Walkthrough.txt: «Walkthrough Chapter 1 Chapter 2 Chapter 3 … Chapter 13 Chapter 14»; 238-www_gamesradar_com_max_payne_3_golden_gun_parts_and_clues_guide_.txt: «Table of Contents: Chapter 1 Chapter 2 … Chapter 13 Chapter 14»",
+                "zametka": "Деление на главы держат и корпус, и страница. Страница даёт по одной строке-сводке на главу, пошагового прохождения нет, но description и не обещает «walkthrough» (это слово есть только в h1, он вне проверки)."
+              },
+              {
+                "klauza": "how many chapters there are",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Fourteen chapters, 28 golden guns split into 84 parts, 65 clues and one airport to finish on.»",
+                "v_korpuse": "247-thehdroom_…39106_.txt: «Each of Max Payne 3’s 14 chapters…»; 484-portforward_com_games_walkthroughs_Max_Payne_3_Chapter_XII_The_Great_American_Savior_of_th.txt: «This Max Payne 3 walkthrough is divided into 14 total pages. … 14 - Chapter XIV: One Card Left to Play»",
+                "zametka": "Противоречий нет: главы 15/XV в корпусе нет. «Part I/II/III Complete» у IGN (130-…Achievements_and_Trophies.txt: «Complete Part I Of The Story») — это части сюжета, а не другое число глав. Расхождением это не считаю."
+              },
+              {
+                "klauza": "how long it takes",
+                "verdikt": "держится",
+                "na_stranice": "row length: «As of September 2026, HowLongToBeat puts the story at about 10 hours and everything at about 33. In 2012 the IGN and HeyUGuys reviews both said 10 to 12…»",
+                "v_korpuse": "310-howlongtobeat_com_game_5739.txt: «Main Story 10 Hours … Main + Sides 13 … Completionist 33 Hours»; 136-www_ign_com_articles_2012_05_14_max_payne_3_review.txt: «The single-player story lasts around 10-12 hours.»; 341-www_heyuguys_com_review_max_payne_3_put_down_your_glass_and_pick_up_a_gun_.txt: «lasting anywhere from 10-12 hours pending your difficulty of choice»",
+                "zametka": "В description числа нет, поэтому клаузу не опровергает ни одна цифра. В корпусе есть разнобой по числам: 235-www_ign_com_games_max_payne_3.txt — «HowLongToBeat 11 hrs Main Story 13 hrs Story + Sides 34 hrs Everything» (страница взяла HLTB-первоисточник и §2); 079-www_resetera_com_threads_max_payne_3s…: «MP3 is 12 hours»; 567-www_shacknews_com_article_74374_…: «about 3 hours of game play and 4 hours of unskippable cut scenes» (комментарий читателя). Всё это — разнобой в оценках, а не противоречие клаузе «how long it takes»."
+              },
+              {
+                "klauza": "golden gun parts and clues per chapter",
+                "verdikt": "держится",
+                "na_stranice": "row chapters, meta: «Where each one takes place · golden gun parts / clues»; body: «I. … (3 / 2) … IV. … (9 / 3) … VII. The favela (6 / 9) … XIII. … (9 / 7) … XIV. The airport (6 / 1)»",
+                "v_korpuse": "247-thehdroom_…39106_.txt, все 14 заголовков, например «Chapter 1: Something Rotten In the Air (3 Golden Gun Parts, 2 Clues)», «Chapter 7: A Hangover Sent Direct From Mother Nature (6 Golden Gun Parts, 9 Clues)», «Chapter 14: One Card Left to Play (6 Golden Gun Parts, 1 Clue)»; 102-www_ign_com_wikis_max_payne_3_Walkthrough.txt: столбцы Golden Guns / Clues («Chapter 1 1 / 2», «Chapter 7 2 / 9», «Chapter 14 2 / 1»); 513-www_noobfeed_com_…chapter_4…: «you can find nine Golden Gun parts and three Clues»; 478-www_gamepressure_com_…chapter_vii…: «NUMBER OF CLUES: 9»",
+                "zametka": "Сверил все 14 строк страницы с заголовками thehdroom: совпадают. Улики совпадают со столбцом IGN, части — со стволами IGN, умноженными на 3. Противоречащих чисел по главам в корпусе не нашёл; GamesRadar p. 5 даёт то же для главы 4 («(9 parts, 3 clues)»). Новая формулировка обещает число на главу, а не места. Прежнее «golden gun and clue locations» обещало больше, чем страница печатает, и замена это правит."
+              },
+              {
+                "klauza": "the airport shootout",
+                "verdikt": "держится",
+                "na_stranice": "row airport: «The airport shootout» / «The last chapter sends Max through terminal 2 of Piratininga Airport with corrupt police on his heels…»",
+                "v_korpuse": "427-www_thegamer_com_max_payne_3_airport_level_.txt: «10 Years On, Max Payne 3's Airport Shootout Is Still Sensational»; там же: «comes in the final chapter, where Max finds himself being pursued through a busy international airport by an army of corrupt cops»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt: «Max pursues them to the airport, leading to an intense fight with the UFE.»; 190-steamcommunity_com_sharedfiles_filedetails_id_2183808363.txt: «Used by several UFE officers on the airport trams in Chapter 14.»",
+                "zametka": "Сочетание «Airport Shootout» стоит дословно в заголовке thegamer. Противоречий нет: ни один документ не ставит аэропорт в другую главу (поиск «airport» рядом с «chapter 12/13/XIII» — 0 совпадений)."
+              },
+              {
+                "klauza": "and the achievements",
+                "verdikt": "держится",
+                "na_stranice": "row achievements: «67 on Steam, as of September 2026»; четыре сюжетных по сложности, открытие Hardcore и Old School через Hard, три сценовых по главам, A New York Minute; в рядах golden-guns и clues — A License To Kill и An Echo Of The Past",
+                "v_korpuse": "003-store_steampowered_com_app_204100_Max_Payne_3_.txt: «Includes 67 Steam Achievements»; 130-www_ign_com_wikis_max_payne_3_Achievements_and_Trophies.txt: «30 G Feel the Payne Story Complete [MEDIUM] … 35 G An Echo Of The Past Find All Clues 40 G A License To Kill Collect All Golden Guns 100 G A New York Minute Finish In A New York Minute»; 187-www_ign_com_wikis_max_payne_3_Chapter_7.txt: «Achievement : So Much For Being Subtle Kill 9 enemies in free aim mode while riding the chain to the top of the wareho[use]»",
+                "zametka": "Держится при чтении «обзор достижений»: страница называет около 11 из 67. Если читать «the achievements» как «все достижения», это было бы шире страницы, но и корпус полного проверенного списка не держит: у IGN неполный список, «Please help fill Trophy values». Прежнее «every trophy» корпус не держал, и замена это правит. Расхождение по числу (rawg «Achievements 66» против Steam 67) описания не касается: числа в нём нет."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          }
+        ],
+        "itog": "Опровержений нет: title (оставлен) и новый description держатся по линзе «держит ли корпус». У каждой фактической клаузы есть дословная опора, и противоречащих документов не нашлось.\n\nГлавные опоры:\n- 14 глав: thehdroom (247), portforward (479/484), S2 (283).\n- Части и улики по главам: заголовки thehdroom по всем 14 главам совпадают со столбцами IGN Walkthrough (102).\n- Длина: HLTB 5739 (310), обзоры IGN (136) и HeyUGuys (341).\n- «Airport Shootout»: дословно в заголовке thegamer (427); Википедия (001), S3 (190).\n- Достижения: Steam «Includes 67 Steam Achievements» (003), IGN (105, 130, 187, 204).\n\nЧто искал как противоречия и что нашёл:\n- Глава 15/XV — 0 совпадений.\n- Длина — числа расходятся, но в description чисел нет: IGN games — HLTB 11/34 (235), комментарии resetera «12 hours» и shacknews «3 hours of game play». Клаузу это не опровергает.\n- Число достижений: rawg 66 против Steam 67. В title и description числа нет.\n- Внутренняя ошибка thehdroom «one or two» ствола на главу: страница пишет «one to three», как у IGN.\n\nЗамена в description снимает два обещания прежней редакции, которые корпус и страница не держали:\n- «golden gun and clue locations» — мест страница не печатает, только числа;\n- «every trophy» — полного списка трофеев в корпусе нет, у IGN «Please help fill Trophy values».\n\nЗдоровье и Last Stand в title и description этой страницы не упоминаются. Last Stand есть только в призыве (cta): Википедия (001) пишет «\"Last Stand\" mechanic», а IGN Chapter_12 (214) и S3 (190) — «last man standing»; поле договора это не задевает.\n\nОстаточный риск один. Артикль в «and the achievements» можно прочитать как «все достижения», а страница называет около 11 из 67. Это слабее прежнего «every trophy», и корпус полного списка тоже не даёт, поэтому я не опровергаю.\n\nОграничение проверки: работал только через Read/Grep/Glob. Кроме заголовков, первые строки с URL проверил у thehdroom, IGN Walkthrough, HLTB и thegamer.",
+        "_stranica": "/max-payne-3/guide/",
+        "_linza": "Держит ли корпус"
+      },
+      {
+        "stranica": "/max-payne-3/guide/",
+        "linza": "Читатель из выдачи: что человек из поиска Google ждёт увидеть по каждому слову title и description и что страница ему даёт на самом деле (файл содержания src/content/tresc/max-payne-3-guide.md). Слова сверены с корпусом (korpus-tekst, 612 файлов) и с листом фактов и отчётом скептика пачки 5.",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne 3 guide — chapters, golden guns, clues, achievements",
+            "klauzy": [
+              {
+                "klauza": "Max Payne 3 guide",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Here is Max Payne 3 chapter by chapter, with what to collect in each and the achievements that go with them.»; ряд golden-guns: «you can replay any chapter from any checkpoint to pick up what you missed»; ряд clues: «meet the former cop in the nightclub restroom in chapter II, or he will not turn up again in chapter VII»",
+                "v_korpuse": "Проверка по корпусу для слова жанра не нужна. Для ожидания читателя: 247-thehdroom_com_...39106_.txt, строка 149: «The following Max Payne 3 Clues and Golden Guns parts locations guide is designed to help you find where all these cool hidden collectibles are located, chapter-by-chapter.»",
+                "zametka": "Как справка «guide» держится: на странице есть практические советы (части светятся; у улик нет маркера; можно переиграть главу с чекпойнта; цепочку Ex-Cop легко пропустить; указаны условия трёх достижений глав и открытие Hardcore/Old School). Прохождения при этом нет. Риск в том, что h1 «walkthrough» (он вне проверки) и жанр выдачи (IGN, portforward, gamepressure — это пошаговые тексты и места сборных) подталкивают читать «guide» как прохождение. Этот риск должно снимать описание, которое честно называет объём, а нынешнее описание его не снимает (см. ниже)."
+              },
+              {
+                "klauza": "chapters",
+                "verdikt": "держится",
+                "na_stranice": "ряд chapters: «Fourteen chapters, in order»; все 14 глав I–XIV с местом, числами «части / улики» и названием, например «XIV. The airport (6 / 1): “One Card Left to Play.”»",
+                "v_korpuse": "247-thehdroom_com_...39106_.txt, строка 147: «Each of Max Payne 3’s 14 chapters includes either one or two unlockable Golden Guns which have been split into three parts.»",
+                "zametka": "Тема раскрыта: все главы по порядку, у каждой место и числа. Объём слово не задаёт, лишнего не обещает."
+              },
+              {
+                "klauza": "golden guns",
+                "verdikt": "держится",
+                "na_stranice": "ряд golden-guns «84 parts, 28 guns»: «A finished gun turns gold, does 10% more damage and holds more rounds per magazine. Collect all 84 parts for the A License To Kill achievement»",
+                "v_korpuse": "105-www_ign_com_wikis_max_payne_3_Golden_Guns.txt: «increases the weapon's damage by 10%»; 247-thehdroom: «These Golden Guns parts literally jump off the screen with their glow so they are easy to spot»",
+                "zametka": "Как тема держится. В title нет «locations», поэтому мест слово не обещает. Если человек пришёл по запросу «golden gun locations», мест он не найдёт; как это прочитать, решает описание."
+              },
+              {
+                "klauza": "clues",
+                "verdikt": "держится",
+                "na_stranice": "ряд clues «65 clues, no markers»: «Clues are things you examine (papers, objects, now and then a body), and no marker on the map shows where they are. Chapter VII has the most, nine.»",
+                "v_korpuse": "247-thehdroom, строка 148: «These are much harder to find since there is no blinking marker on the map showing where they are.»; строка 146: «Clues, found when examining objects – even corpses»",
+                "zametka": "Тема раскрыта отдельным рядом. Про места слово ничего не говорит."
+              },
+              {
+                "klauza": "achievements",
+                "verdikt": "держится",
+                "na_stranice": "ряд achievements: «As of September 2026, the Steam edition with all its add-ons lists 67 achievements.» Дальше по имени названы четыре достижения за сложность, три за сцены глав и A New York Minute; A License To Kill и An Echo Of The Past — в рядах golden-guns и clues",
+                "v_korpuse": "003-store_steampowered_com_app_204100_Max_Payne_3_.txt, строка 747: «Includes 67 Steam Achievements»; 204-www_ign_com_wikis_max_payne_3_Chapter_4.txt: «That Old familiar feeling»; 187-www_ign_com_wikis_max_payne_3_Chapter_7.txt: «So Much For Being Subtle»",
+                "zametka": "Слово стоит без «all» или «every», как одна из четырёх тем, и у темы есть свой раздел, поэтому держится. Оговорка: из 67 по имени названо около десяти. Человек по запросу «max payne 3 achievements» или «trophy guide» может ждать полного списка, поэтому объём обязано задать описание. Полного списка нет ни в корпусе страницы, ни в общем корпусе: у IGN 44 уникальных имени с мультиплеером, и сама страница пишет «Please help fill Trophy values once that information is available» (130-...Achievements_and_Trophies.txt, строка 3)."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.",
+            "klauzy": [
+              {
+                "klauza": "A chapter-by-chapter Max Payne 3 guide",
+                "verdikt": "обещает больше",
+                "na_stranice": "Страница разбита по темам, а не по главам: ряды Chapters, Length, Golden guns, Clues, Chapter XIV, Achievements. На главы разложен один ряд, по строке на главу, например «VII. The favela (6 / 9): “A Hangover Sent Direct from Mother Nature.”» Советы есть только у IV, VII и XII (достижения) и у XIV (аэропорт).",
+                "v_korpuse": "247-thehdroom, строка 149: «...locations guide is designed to help you find where all these cool hidden collectibles are located, chapter-by-chapter.» Там же, со строки 150, по каждой главе идут места частей и улик. По листу фактов (раздел «Обещания договора») пошаговые тексты в корпусе страницы есть только для гл. 1, 4, 7 и 12.",
+                "zametka": "«Chapter-by-chapter guide» описывает всю страницу как устроенную по главам. Читатель ждёт раздел на каждую главу с тем, как её пройти или что в ней искать. Получает одну строку на главу: место, два числа, название. К тому же в корпусе этим словом конкурент называет гайд по местам сборных (thehdroom), так что жанровое ожидание — места. Выражение взято у конкурента, но сторож 8 слов его не ловит."
+              },
+              {
+                "klauza": "how many chapters there are",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Fourteen chapters, 28 golden guns split into 84 parts, 65 clues»; ряд chapters: «Fourteen chapters, in order»",
+                "v_korpuse": "247-thehdroom, строка 147: «Each of Max Payne 3’s 14 chapters includes...»",
+                "zametka": "Ответ дан прямо, числом."
+              },
+              {
+                "klauza": "how long it takes",
+                "verdikt": "держится",
+                "na_stranice": "ряд length: «As of September 2026, HowLongToBeat puts the story at about 10 hours and everything at about 33. In 2012 the IGN and HeyUGuys reviews both said 10 to 12»",
+                "v_korpuse": "310-howlongtobeat_com_game_5739.txt, строка 3: «Main Story 10 Hours Main + Sides 13 Hours Completionist 33 Hours»; 136-www_ign_com_articles_2012_05_14_max_payne_3_review.txt, строка 4: «The single-player story lasts around 10-12 hours.»",
+                "zametka": "Ответ дан с источником и датой."
+              },
+              {
+                "klauza": "golden gun parts and clues per chapter",
+                "verdikt": "обещает больше",
+                "na_stranice": "Только числа в скобках: «I. A private party and a kidnapping attempt on the Brancos (3 / 2)» и meta «Where each one takes place · golden gun parts / clues». Какие стволы собираются в главе, сказано только для XIV («make the Rotary Grenade Launcher and the RPD»). Из улик по имени названа только цепочка Ex-Cop. Где лежат части и улики, не сказано ни у одной главы.",
+                "v_korpuse": "Числа корпус держит: 247-thehdroom, строка 150: «Chapter 1: Something Rotten In the Air (3 Golden Gun Parts, 2 Clues)» (и так по всем 14). Сами слова — заголовок гайда по местам у конкурента: 238-www_gamesradar_com_max_payne_3_golden_gun_parts_and_clues_guide_.txt, строка 9: «Max Payne 3 golden gun parts and clues guide | GamesRadar+»",
+                "zametka": "Двумя клаузами раньше стоит «how many chapters», а здесь «how many» нет. Поэтому «golden gun parts and clues per chapter» читается как перечень самих частей и улик по главам, то есть где они лежат. Это то самое обещание мест, которое владелец велел снять («У гайда нет мест каждой части», П100). Правка заменила «locations» на «per chapter», и обещание осталось. Кроме того, пять слов подряд совпадают с заголовком GamesRadar, а в обратном порядке «clues and golden gun» — это заголовки gamepressure и noobfeed."
+              },
+              {
+                "klauza": "the airport shootout",
+                "verdikt": "держится",
+                "na_stranice": "ряд airport «The airport shootout»: «The last chapter sends Max through terminal 2 of Piratininga Airport with corrupt police on his heels ... out to a chase on the runway that ends the story.»",
+                "v_korpuse": "427-www_thegamer_com_max_payne_3_airport_level_.txt, строка 33: «10 Years On, Max Payne 3's Airport Shootout Is Still Sensational»",
+                "zametka": "Тема раскрыта отдельным рядом: ход уровня, музыка, номинация, части. Тактики нет, но тема её и не обещает. Два слова совпадают с заголовком thegamer, и это ключевой запрос кластера, так что это приемлемо."
+              },
+              {
+                "klauza": "and the achievements",
+                "verdikt": "обещает больше",
+                "na_stranice": "«the Steam edition with all its add-ons lists 67 achievements». По имени около десяти: Feel the Payne, Serious Payne, Payne In The Ass, Maximum Payne, That Old Familiar Feeling, So Much For Being Subtle, Sometimes You Get Lucky, A New York Minute, A License To Kill, An Echo Of The Past.",
+                "v_korpuse": "003-store_steampowered: «Includes 67 Steam Achievements». Полного списка в корпусе нет: 130-www_ign_com_wikis_max_payne_3_Achievements_and_Trophies.txt [общий корпус, не корпус страницы]: «Please help fill Trophy values once that information is available». Итог листа фактов: «полный список трофеев: нет».",
+                "zametka": "Определённый артикль «the» означает все достижения. Человек из выдачи ждёт список 67 с условиями, а получает число и около десяти имён. Это мягче прежнего «every trophy», но того же класса: полный список обещан, а корпус его не держит."
+              }
+            ],
+            "verdikt_polya": "опровергнуто",
+            "zamena": "All 14 Max Payne 3 chapters in order and where each is set, how long it takes, golden gun part and clue counts per chapter, the airport shootout, and some achievements by name."
+          }
+        ],
+        "itog": "Title держится. Это перечень из четырёх тем без «all», «every» и «locations», и у каждой темы на странице свой ряд. Слово «guide» держится как справка с советами, но в паре с h1 «walkthrough» (он вне проверки) склоняет ждать прохождения, поэтому объём обязано задать описание.\n\nНовое description опровергнуто, три клаузы обещают больше, чем страница даёт:\n1) «A chapter-by-chapter … guide» описывает всю страницу как разбитую по главам. На деле она разбита по темам, на главы разложен один ряд, по строке на главу. В корпусе этим же выражением thehdroom называет свой гайд по местам сборных.\n2) «golden gun parts and clues per chapter» стоит без «how many» и читается как перечень или места частей и улик по главам. Страница даёт только числа (N / M); стволы названы лишь у XIV, улики — лишь цепочка Ex-Cop. Замена «locations» на «per chapter» не сняла обещание мест, которое владелец велел убрать (П100 п. 1). К тому же пять слов подряд совпадают с заголовком GamesRadar «golden gun parts and clues guide».\n3) «and the achievements»: артикль обещает полный набор, а страница даёт 67 (Steam, сентябрь 2026) и около десяти имён. Полного списка корпус не держит.\n\nДержатся клаузы «how many chapters there are», «how long it takes» и «the airport shootout».\n\nПредложенная замена: «All 14 Max Payne 3 chapters in order and where each is set, how long it takes, golden gun part and clue counts per chapter, the airport shootout, and some achievements by name.» Каждая клауза есть на странице: кнопка «All 14 chapters», meta «Where each one takes place», числа (N / M), ряд airport, названные достижения. Поиском по корпусу эти формулировки не нашлись; «all 14» и «chapters of Max Payne 3» встречаются по разу, в коротком виде. Длину (~170 знаков) и 8-граммы должен проверить сторож брифов.\n\nВне объёма, строкой: lead страницы («with what to collect in each») тоже обещает названия сборных по главам, а даёт числа. Это текст страницы, по П100 его не трогают.",
+        "_stranica": "/max-payne-3/guide/",
+        "_linza": "Читатель из выдачи"
+      },
+      {
+        "stranica": "/gameplay/",
+        "linza": "Напечатано ли: каждая клауза title и description сверена с тем, что печатает файл содержания sites/7thserpent.com/src/content/tresc/gameplay.md (lead, rows[].title/meta/body, cta), с опорой в корпусе korpus-tekst. Ищу, где поле обещает то, чего страница не печатает, или печатает уже, в том числе когда черта одной игры подана как черта всей серии.",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne gameplay — bullet time, shootdodge, weapons and modes",
+            "klauzy": [
+              {
+                "klauza": "Max Payne gameplay",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Slow motion you switch on yourself, a dive you can keep shooting from, and painkillers to patch Max up. How the three games play, and what the second and third changed.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 710: «The first is \" bullet time \", an ability that when triggered – either when standing or diving to dodge gunfire – slows down time for a brief period.»",
+                "zametka": "Страница разбирает геймплей всех трёх игр, так что заголовок она покрывает целиком: при прочтении «Max Payne» как первой игры тема тоже раскрыта (ряды bullet-time, painkillers, weapons, modes начинаются с первой игры)."
+              },
+              {
+                "klauza": "bullet time",
+                "verdikt": "держится",
+                "na_stranice": "ряд bullet-time: «Trigger bullet time standing or in mid-dive and, for a short while, everything slows down, Max included…»; ряд max-payne-2: «Bullet time 2.0»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 710: «either when standing or diving to dodge gunfire – slows down time for a brief period.»; 022-en_wikipedia_org_wiki_Max_Payne_2_The_Fall_of_Max_Payne.txt, стр. 721: «the developers referred to it as \"version 2.0\".»",
+                "zametka": "Отдельный ряд плюс ряд о версии 2.0 во второй игре."
+              },
+              {
+                "klauza": "shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряд shootdodge, meta «Rockstar’s name for Max’s classic move»; body: «The dive sends Max flying in whatever direction you choose, in slow motion, gun still firing; a Rockstar representative called it the shootdodge at a 2012 preview of Max Payne 3.»",
+                "v_korpuse": "442-www_engadget_com_2012_03_01_learning_how_to_shootdodge_with_max_payne_3_html.txt, стр. 254: «the term \"shootdodge,\" the portmanteau a Rockstar rep used to describe \"Max's classic dive move.\"»",
+                "zametka": "Страница прямо называет термин именем Rockstar для классического прыжка, так что слово в title ничего лишнего не обещает."
+              },
+              {
+                "klauza": "weapons",
+                "verdikt": "держится",
+                "na_stranice": "ряд weapons: «In the first game Max starts with a Beretta and picks up more as he goes…»; «Max Payne 3 puts a limit on it: two one-handed guns and one two-handed weapon, picked from a weapon wheel.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 708: «such as handguns, assault rifles, shotguns, and grenades, with Max Payne capable of dual wielding one-handed weapons for increased firepower at the expense of higher ammo consumption.»",
+                "zametka": "Title не обещает полного списка оружия, а страница его и не даёт. Обещание не шире напечатанного."
+              },
+              {
+                "klauza": "modes",
+                "verdikt": "держится",
+                "na_stranice": "ряд modes: «The first game already had New York Minute… alongside the Hard-Boiled and Dead on Arrival difficulties…»; «Max Payne 2 brought back New York Minute… and added Dead Man Walking»; «Max Payne 3 gathers its challenges in an Arcade mode: Score Attack… New York Minute…»; «online play, up to 16 players, including Gang Wars and Payne Killer»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 712: «and \"New York Minute\", which forces the player to complete each chapter within an allotted time.»; 022-…Max_Payne_2….txt, стр. 689: «Two special game modes are also activated: New York Minute and Dead Man Walking.»; 195-www_ign_com_wikis_max_payne_3_Arcade_Mode.txt, стр. 5: «Within Arcade Mode are two specialized sub-modes»",
+                "zametka": "Режимы напечатаны для каждой из трёх игр."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers and the Last Stand, weapons and modes, and what Max Payne 2 and 3 changed.",
+            "klauzy": [
+              {
+                "klauza": "What makes Max Payne play the way it does",
+                "verdikt": "держится",
+                "na_stranice": "lead: «How the three games play, and what the second and third changed.»",
+                "v_korpuse": "не искал (рамка, а не факт; опоры частных клауз — ниже)",
+                "zametka": "Это рамка перечня, фактов в ней нет. Но из-за неё перечень читается как описание основы игры, в отличие от последней клаузы «what Max Payne 2 and 3 changed» (см. клаузу про Last Stand)."
+              },
+              {
+                "klauza": "bullet time and shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряд bullet-time: «Trigger bullet time standing or in mid-dive…»; ряд shootdodge: «a Rockstar representative called it the shootdodge…»",
+                "v_korpuse": "016-…Max_Payne_video_game_.txt, стр. 710 (см. title); 442-www_engadget_com_…shootdodge….txt, стр. 254: «the portmanteau a Rockstar rep used to describe \"Max's classic dive move.\"»",
+                "zametka": "Обе темы напечатаны отдельными рядами. Прыжок в первой игре тоже есть (ряд bullet-time: «in mid-dive»), так что при любом прочтении «Max Payne» клауза держится."
+              },
+              {
+                "klauza": "painkillers",
+                "verdikt": "держится",
+                "na_stranice": "ряд painkillers: «only painkillers, lying around the level or dropped by enemies, bring his health back. Max Payne 2 hands out more of them…»; «Max Payne 3 keeps the pills»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 708: «to replenish it, players must find and make use of painkillers scattered around the level or dropped by enemies.»",
+                "zametka": "Прежнее правило «instead of regenerating health» (шире корпуса: блог о MP2, мультиплеер MP3) новая формулировка убрала. Осталось только название темы, и оно напечатано для всех трёх игр."
+              },
+              {
+                "klauza": "the Last Stand",
+                "verdikt": "обещает больше",
+                "na_stranice": "ряд painkillers: «Max Payne 3 keeps the pills and adds the Last Stand: when your health runs out and you have at least one painkiller, you get a moment to shoot whoever hit you last and stay alive…»; ряд max-payne-3: «Old School, which takes the Last Stand away.»",
+                "v_korpuse": "001-en_wikipedia_org_wiki_Max_Payne_3.txt, стр. 724: «The game also introduces a \"Last Stand\" mechanic, granting players a grace period when health is fully depleted that allows the player to kill the enemy that last wounded them in order to remain alive»",
+                "zametka": "Страница печатает Last Stand, но только как новинку третьей игры («adds»); корпус тоже пишет «introduces». В описании Last Stand стоит в перечне того, что делает Max Payne «the way it does», а его противопоставлено «what Max Payne 2 and 3 changed». Так механику третьей игры относят к основе серии, а при прочтении «Max Payne» как первой игры — к первой игре, чего страница не печатает. Это ровно случай «общее правило там, где страница говорит о части игр». Если «Max Payne» читать как серию, клауза держится, но построение фразы подталкивает к противопоставлению основы и перемен. Правка небольшая: перенести Last Stand в хвост про перемены."
+              },
+              {
+                "klauza": "weapons and modes",
+                "verdikt": "держится",
+                "na_stranice": "ряд weapons (meta «What Max can carry, game by game»); ряд modes (meta «Extra modes, then online»)",
+                "v_korpuse": "016-…Max_Payne_video_game_.txt, стр. 708 и 712; 022-…Max_Payne_2….txt, стр. 689; 195-www_ign_com_wikis_max_payne_3_Arcade_Mode.txt, стр. 5 (выдержки — в title)",
+                "zametka": "Обе темы есть для всех трёх игр."
+              },
+              {
+                "klauza": "what Max Payne 2 and 3 changed",
+                "verdikt": "держится",
+                "na_stranice": "ряд max-payne-2, meta «What the 2003 sequel changed»: «Remedy rebuilt slow motion for the sequel and called it version 2.0.»; ряд max-payne-3, meta «What Rockstar changed in 2012»: «Rockstar’s game brought the first cover system to the series…»",
+                "v_korpuse": "022-en_wikipedia_org_wiki_Max_Payne_2_The_Fall_of_Max_Payne.txt, стр. 721: «the developers referred to it as \"version 2.0\".»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt, стр. 722: «A new feature to the series is the cover system»",
+                "zametka": "Двум сиквелам посвящены отдельные ряды. Именно сюда по смыслу относится Last Stand."
+              }
+            ],
+            "verdikt_polya": "опровергнуто",
+            "zamena": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers, weapons and modes, and what Max Payne 2 and 3 changed, Last Stand included. (159 знаков: Last Stand перенесён к переменам сиквелов, как на странице — «Max Payne 3 … adds the Last Stand». Длиннее, 167 знаков: «…painkillers and Max Payne 3’s Last Stand, weapons and modes, and what Max Payne 2 and 3 changed.»)"
+          }
+        ],
+        "itog": "Title «Max Payne gameplay — bullet time, shootdodge, weapons and modes» держится. Все пять клауз напечатаны отдельными рядами (bullet-time, shootdodge, weapons, modes), и корпус их подтверждает: Википедия MP1 и MP2, Engadget, IGN Arcade Mode.\n\nНовый description опровергнут по одной клаузе — «the Last Stand». Страница печатает эту механику только как новинку Max Payne 3 («Max Payne 3 keeps the pills and adds the Last Stand»); корпус тоже пишет «The game also introduces a \"Last Stand\" mechanic». Описание же ставит Last Stand в перечень основы игры, которому противопоставлено «what Max Payne 2 and 3 changed». Так черта одной игры подаётся как черта серии, а если «Max Payne» читать как первую игру — как черта первой игры. Если читать «Max Payne» как серию, клауза формально держится, поэтому находка пограничная, но правка дешёвая: «…painkillers, weapons and modes, and what Max Payne 2 and 3 changed, Last Stand included.» (159 знаков). Остальные клаузы описания напечатаны и держатся в корпусе.\n\nДля справки о прежнем description: замена оправдана. «Painkillers instead of regenerating health» шире корпуса: по блогу о MP2 здоровье частично восстанавливается само, в мультиплеере MP3 тоже (скептик, п. 3–4), а страница об отсутствии регенерации говорит только для сюжета MP3 («In its story, health does not come back by itself»). «With videos» страница печатает уже: призыв даёт одну ссылку на один ролик Rockstar и прямо говорит «We link to it rather than embed anyone’s video». В новом описании обоих изъянов нет.\n\nПроверено по файлам: sites/7thserpent.com/src/content/tresc/gameplay.md; docs/reports/2026-09-27-7thserpent-pachka-5/fakty/gameplay.md; docs/reports/2026-09-27-7thserpent-pachka-5/skeptiki/gameplay.md; sites/7thserpent.com/input/briefs/gameplay.md; корпус — korpus-tekst/001, 016, 022, 136, 195, 442.",
+        "_stranica": "/gameplay/",
+        "_linza": "Напечатано ли"
+      },
+      {
+        "stranica": "/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay.md)",
+        "linza": "Держит ли корпус: для каждой фактической клаузы title (оставлен) и description (новый) искал опору в korpus-tekst (Grep без учёта регистра, выдержки сверены с файлами). Отдельно искал документы-противоречия: восстановление здоровья, Last Stand и Last Man Standing в MP1/MP2, условие Last Stand, «что изменилось» в MP3. Номера строк даны по korpus-tekst. В листе фактов нумерация другая, потому что он собран по другой выгрузке.",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne gameplay — bullet time, shootdodge, weapons and modes",
+            "klauzy": [
+              {
+                "klauza": "Max Payne gameplay (тема страницы — геймплей серии)",
+                "verdikt": "держится",
+                "na_stranice": "lead: «How the three games play, and what the second and third changed.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt:697 «The gameplay is heavily influenced by the Hong Kong action cinema genre, particularly the work of director John Woo»",
+                "zametka": "Это рамка, а не отдельный факт. Страница целиком о геймплее трёх игр."
+              },
+              {
+                "klauza": "bullet time",
+                "verdikt": "держится",
+                "na_stranice": "ряд bullet-time: «Trigger bullet time standing or in mid-dive and, for a short while, everything slows down, Max included»; ряд max-payne-2: «Remedy rebuilt slow motion for the sequel and called it version 2.0.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt:710 «\" bullet time \", an ability that when triggered – either when standing or diving to dodge gunfire – slows down time for a brief period.»; 022-en_wikipedia_org_wiki_Max_Payne_2_The_Fall_of_Max_Payne.txt:721 «the developers referred to it as \"version 2.0\".»",
+                "zametka": "Противоречий нет. «Bullet Time» — товарный знак Warner Bros. (006-store_rockstargames_com_game_buy_max_payne_3.txt:9). На использование термина в title это не влияет."
+              },
+              {
+                "klauza": "shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряд shootdodge: «a Rockstar representative called it the shootdodge at a 2012 preview of Max Payne 3. In Max Payne 2 the dive slows time without draining the meter. In Max Payne 3 you can dive as often as you like»",
+                "v_korpuse": "442-www_engadget_com_2012_03_01_learning_how_to_shootdodge_with_max_payne_3_html.txt:254 «the term \"shootdodge,\" the portmanteau a Rockstar rep used to describe \"Max's classic dive move.\"»; 022-...Max_Payne_2...txt:691 «the character can also execute a shoot-dodge maneuver»; 006-store_rockstargames_com_game_buy_max_payne_3.txt:5 «advanced new Bullet Time® and Shootdodge™ effects»",
+                "zametka": "Слово ввела Rockstar в 2012 году, но Википедия MP2 называет так же (shoot-dodge) и приём MP2, поэтому в заголовке о серии термин уместен. Противоречий не найдено. Претензии ResetEra к «landing lag» — это мнение, а не опровержение."
+              },
+              {
+                "klauza": "weapons",
+                "verdikt": "держится",
+                "na_stranice": "ряд weapons: «In the first game Max starts with a Beretta and picks up more as he goes»; «Max Payne 3 puts a limit on it: two one-handed guns and one two-handed weapon, picked from a weapon wheel.»",
+                "v_korpuse": "016-...Max_Payne_video_game_.txt:708 «gain access to a variety of other weapons as they progress through each level, such as handguns, assault rifles, shotguns, and grenades»; 191-www_ign_com_wikis_max_payne_3_Weapons.txt:3 «Max is able to carry up to two single handed weapons that can be mixed for dual-wielding, and one two-handed weapon; a total of three weapons at a time.»",
+                "zametka": "Противоречий нет. Колесо оружия ResetEra отрицает («no weapon wheel»), IGN подтверждает. Это касается текста страницы, а не title."
+              },
+              {
+                "klauza": "modes",
+                "verdikt": "держится",
+                "na_stranice": "ряд modes: «The first game already had New York Minute… Max Payne 2 brought back New York Minute… and added Dead Man Walking»; «Max Payne 3 gathers its challenges in an Arcade mode… The game was also the first in the series with online play»",
+                "v_korpuse": "022-...Max_Payne_2...txt:689 «Two special game modes are also activated: New York Minute and Dead Man Walking.»; 195-www_ign_com_wikis_max_payne_3_Arcade_Mode.txt:5 «Within Arcade Mode are two specialized sub-modes»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt:729 «The online multiplayer mode features maps and modes that dynamically change within a match.»",
+                "zametka": "В MP1 Википедия называет New York Minute уровнем сложности (016:712 «several other difficulties levels: … \"New York Minute\"»), а не режимом. Страница называет Hard-Boiled и Dead on Arrival сложностями, это корректно. Для «modes» в целом хватает MP2 и MP3."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers and the Last Stand, weapons and modes, and what Max Payne 2 and 3 changed.",
+            "klauzy": [
+              {
+                "klauza": "What makes Max Payne play the way it does",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Slow motion you switch on yourself, a dive you can keep shooting from, and painkillers to patch Max up. How the three games play»",
+                "v_korpuse": "нет (рамка без фактического утверждения; факты проверены в клаузах ниже)",
+                "zametka": "Вводная рамка, сама ничего не утверждает."
+              },
+              {
+                "klauza": "bullet time and shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряды bullet-time и shootdodge (см. title); ряд shootdodge: «In Max Payne 3 you can dive as often as you like, and the price is the landing»",
+                "v_korpuse": "016-...Max_Payne_video_game_.txt:710 (bullet time, см. title); 442-www_engadget_...html:259 «Unlike bullet time in Max Payne 3 , the \"shootdodge\" move is unlimited… After taking the leap, Max remains an open target on the ground»",
+                "zametka": "Противоречий не найдено."
+              },
+              {
+                "klauza": "painkillers",
+                "verdikt": "держится",
+                "na_stranice": "ряд painkillers: «only painkillers, lying around the level or dropped by enemies, bring his health back. Max Payne 2 hands out more of them»; «Max Payne 3 keeps the pills»",
+                "v_korpuse": "016-...Max_Payne_video_game_.txt:708 «players must find and make use of painkillers scattered around the level or dropped by enemies»; 022-...Max_Payne_2...txt:689 «more health in the form of painkillers is made available»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt:724 «Should players take damage, painkillers can be used to regenerate health.»",
+                "zametka": "Новая формулировка просто называет painkillers и не утверждает, что восстановления здоровья нет. Поэтому противоречий по регенерации (см. итог) здесь нет."
+              },
+              {
+                "klauza": "the Last Stand",
+                "verdikt": "держится",
+                "na_stranice": "ряд painkillers: «Max Payne 3 keeps the pills and adds the Last Stand: when your health runs out and you have at least one painkiller, you get a moment to shoot whoever hit you last and stay alive»; ряд max-payne-3: «Old School, which takes the Last Stand away»",
+                "v_korpuse": "001-en_wikipedia_org_wiki_Max_Payne_3.txt:724 «The game also introduces a \"Last Stand\" mechanic, granting players a grace period when health is fully depleted that allows the player to kill the enemy that last wounded them in order to remain alive, so long as the player has at least one recovery item.»; 496-mp3multiplayer_wordpress_com_2012_06_18_loadouts_.txt:149 «you are instantly put into Last Stand, which is similar to the single player campaign»; 597-forum_speeddemosarchive_...html:844 «Bullet Time / Last Stand slows down the clock.»",
+                "zametka": "Второе название того же приёма — «Last Man Standing» (442-engadget:261; 319-nvidia…tweak_guide:634 «Old School: The Last Man Standing feature is disabled.»; 190-steam 2183808363:753; 214-ign…Chapter_12:16). Это вариант имени, а не противоречие. Приём есть только в MP3: Википедия пишет «introduces». Ни один документ не относит его к MP1 или MP2, ни один не отрицает. Подробности механики расходятся: Engadget (442:261) не называет условием painkiller и описывает награду как «the equivalent of a single health pickup». В description условия нет, так что это расхождение его не задевает. Мелкий риск: в перечне «What makes Max Payne play» Last Stand стоит рядом с painkillers как общая черта серии, хотя он только в MP3. Страница прямо печатает его как нововведение MP3, так что ложного утверждения нет."
+              },
+              {
+                "klauza": "weapons and modes",
+                "verdikt": "держится",
+                "na_stranice": "ряды weapons и modes (см. title)",
+                "v_korpuse": "191-www_ign_com_wikis_max_payne_3_Weapons.txt:3; 016-...Max_Payne_video_game_.txt:708; 022-...Max_Payne_2...txt:689; 195-www_ign_com_wikis_max_payne_3_Arcade_Mode.txt:5 (выдержки — в клаузах title)",
+                "zametka": "То же, что в title."
+              },
+              {
+                "klauza": "what Max Payne 2 and 3 changed",
+                "verdikt": "держится",
+                "na_stranice": "ряд max-payne-2 (meta «What the 2003 sequel changed»): «Remedy rebuilt slow motion for the sequel and called it version 2.0… Havok physics came in too»; ряд max-payne-3 (meta «What Rockstar changed in 2012»): «Rockstar’s game brought the first cover system to the series»",
+                "v_korpuse": "022-...Max_Payne_2...txt:721 «The bullet time mode that Max Payne was known for was improved; the developers referred to it as \"version 2.0\".»; 022:681 «Due to the Havok physics engine being used, the game also features improved ragdoll physics»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt:722 «A new feature to the series is the cover system»; 001:726 «Unlike the previous games in the series, the player character can only hold three weapons at a time.»",
+                "zametka": "Встречные оценки есть, но это мнения о масштабе изменений, а не опровержение конкретных нововведений: 481-www_digitalspy…txt:12 «the fundamentals remain largely unchanged»; 001:798 (Edge) «a surprisingly conservative game from Rockstar». Клауза обещает рассказать, что изменилось, а не что изменилось многое. Держится."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          }
+        ],
+        "itog": "Оба поля держатся. Опровергнутых клауз нет. Title (оставлен): bullet time, shootdodge, weapons и modes подтверждены Википедией MP1/MP2/MP3, Engadget, IGN Weapons и IGN Arcade Mode, и все они напечатаны на странице. Новый description тоже держится по всем клаузам. «Last Stand» подтверждают 001-Википедия MP3:724, mp3multiplayer:149 и speeddemosarchive:844. Во втором варианте имени, «Last Man Standing», это тот же приём: Engadget:261, NVIDIA:634, Steam 2183808363, IGN Chapter 12. Приём есть только в MP3, и документов, которые относят его к MP1/MP2 или отрицают его, нет.\n\nЗамена прежнего description оправдана по корпусу. (1) Формулу «painkillers instead of regenerating health» как абсолютную опровергают три документа: 066-superadventuresingaming:415 о MP2 («the health gauge automatically recovers to his shoulders», это БЛОГ), 496-mp3multiplayer:119 о мультиплеере MP3 («slower health and stamina regeneration») и 341-heyuguys:407 о лоадаутах MP3 («fast health regeneration»). Новая формулировка «painkillers and the Last Stand» этих противоречий не задевает. (2) «with videos» страница не выполняет: на ней нет встроенного ролика, есть только CTA-ссылка на страницу ролика Rockstar (071-www_rockstargames_com_videos_ka956139.txt:8). Новый description это обещание снял.\n\nМелочи, вердикта не меняют. Last Stand стоит в перечне общих черт серии, хотя он только в MP3, но страница прямо печатает его как нововведение MP3. Digital Spy («fundamentals remain largely unchanged») и Edge («surprisingly conservative») оценивают масштаб изменений, а конкретные изменения MP2/MP3 не опровергают. Номера строк в листе фактов относятся к другой выгрузке и с korpus-tekst не совпадают. Выдержки при этом совпадают дословно.",
+        "_stranica": "/gameplay/",
+        "_linza": "Держит ли корпус"
+      },
+      {
+        "stranica": "/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay.md)",
+        "linza": "Читатель из выдачи: чего человек из поиска Google ждёт от каждого слова title и description и получает ли он это на странице.",
+        "polya": [
+          {
+            "pole": "title",
+            "tekst": "Max Payne gameplay — bullet time, shootdodge, weapons and modes",
+            "klauzy": [
+              {
+                "klauza": "Max Payne gameplay",
+                "verdikt": "держится",
+                "na_stranice": "lead: «Slow motion you switch on yourself, a dive you can keep shooting from, and painkillers to patch Max up. How the three games play, and what the second and third changed.»",
+                "v_korpuse": "не искал: родовое слово, отдельной опоры не требует. К двусмысленности: 167-www_ign_com_games_max_payne_gameplay.txt — на этом адресе IGN только список роликов («Max Payne PlayStation 2 Gameplay», «Max Payne Xbox Live Gameplay - Subway Station»)",
+                "zametka": "По запросу «max payne gameplay» часть людей ищет видеозапись игры: соседний документ выдачи у IGN — именно список роликов. Страница видео не встраивает, в cta только ссылка на ролик Rockstar. Перечень после тире (bullet time, shootdodge, weapons, modes) ясно говорит, что речь о механике, поэтому обмана нет. «Max Payne» можно понять и как одну игру 2001 года, но страница охватывает все три — это приятная неожиданность, а не недостача."
+              },
+              {
+                "klauza": "bullet time",
+                "verdikt": "держится",
+                "na_stranice": "ряд bullet-time: «Trigger bullet time standing or in mid-dive and, for a short while, everything slows down, Max included»; ряд max-payne-2: «Remedy rebuilt slow motion for the sequel and called it version 2.0.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 710: «to dodge gunfire – slows down time for a brief period.»",
+                "zametka": "Для механики MP1 и MP2 это главная тема страницы: два ряда плюс cta."
+              },
+              {
+                "klauza": "shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряд shootdodge: «The dive sends Max flying in whatever direction you choose, in slow motion, gun still firing; a Rockstar representative called it the shootdodge at a 2012 preview of Max Payne 3.»",
+                "v_korpuse": "442-www_engadget_com_2012_03_01_learning_how_to_shootdodge_with_max_payne_3_html.txt, стр. 254: «the portmanteau a Rockstar rep used to describe \"Max's classic dive move.\"»",
+                "zametka": "Страница объясняет, откуда термин, и описывает прыжок в MP2 и MP3. Читатель, который пришёл с термином из MP3, найдёт ответ."
+              },
+              {
+                "klauza": "weapons",
+                "verdikt": "держится",
+                "na_stranice": "ряд weapons: «Max Payne 3 puts a limit on it: two one-handed guns and one two-handed weapon, picked from a weapon wheel.»; «In the first game Max starts with a Beretta and picks up more as he goes»",
+                "v_korpuse": "191-www_ign_com_wikis_max_payne_3_Weapons.txt, стр. 3: «two-handed weapon; a total of three weapons at a time.»",
+                "zametka": "Кто ищет «max payne 3 weapons», может ждать каталог стволов с характеристиками. Страница даёт правила ношения по играм и несколько названий: Beretta, Ingram, бейсбольная бита, M79, Molotov, обрез. Title не говорит «all» или «list», голое «weapons» в перечне аспектов геймплея это покрывает. Граница — полного списка нет."
+              },
+              {
+                "klauza": "modes",
+                "verdikt": "держится",
+                "na_stranice": "ряд modes: «The first game already had New York Minute… Max Payne 2 brought back New York Minute… and added Dead Man Walking»; «Max Payne 3 gathers its challenges in an Arcade mode: Score Attack replays story levels for points, and New York Minute runs on a clock that kills top up.»; «online play, up to 16 players, including Gang Wars and Payne Killer»; ряд max-payne-3: «Hardcore… and Old School»",
+                "v_korpuse": "022-en_wikipedia_org_wiki_Max_Payne_2_The_Fall_of_Max_Payne.txt, стр. 689: «Two special game modes are also activated: New York Minute and Dead Man Walking.»; 195-www_ign_com_wikis_max_payne_3_Arcade_Mode.txt, стр. 6: «Score Attack Mode New York Minute Mode»; 481-www_digitalspy_…txt, стр. 20: «Payne Killer pits Payne and his buddy Passos against teams of human opposition.»",
+                "zametka": "Это обзор режимов всех трёх игр, по одной-две фразы на каждый. Сетевой игре отведена одна фраза: 16 игроков, два режима по названию, отключение на консолях. Тот, кто ищет гайд по мультиплееру MP3, его не найдёт, но title мультиплеер не называет. Мелочь вне полей: Википедия MP1 (016, стр. 712) называет New York Minute одним из уровней сложности («several other difficulties levels»), а не режимом. Страница ставит его рядом со сложностями — читатель не будет обманут."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          },
+          {
+            "pole": "description",
+            "tekst": "What makes Max Payne play the way it does: bullet time and shootdodge, painkillers and the Last Stand, weapons and modes, and what Max Payne 2 and 3 changed.",
+            "klauzy": [
+              {
+                "klauza": "What makes Max Payne play the way it does",
+                "verdikt": "держится",
+                "na_stranice": "lead: «How the three games play, and what the second and third changed.»",
+                "v_korpuse": "не искал: рамочная фраза, фактов не несёт",
+                "zametka": "Обещает объяснение механики, и страница по построению этим и является."
+              },
+              {
+                "klauza": "bullet time and shootdodge",
+                "verdikt": "держится",
+                "na_stranice": "ряды bullet-time и shootdodge (см. title); «In Max Payne 2 the dive slows time without draining the meter. In Max Payne 3 you can dive as often as you like»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 710: «slows down time for a brief period.»; 442-www_engadget_…html, стр. 254: «the portmanteau a Rockstar rep used to describe \"Max's classic dive move.\"»",
+                "zametka": "То же, что в title."
+              },
+              {
+                "klauza": "painkillers and the Last Stand",
+                "verdikt": "держится",
+                "na_stranice": "ряд painkillers: «only painkillers, lying around the level or dropped by enemies, bring his health back»; «Max Payne 3 keeps the pills and adds the Last Stand: when your health runs out and you have at least one painkiller, you get a moment to shoot whoever hit you last and stay alive, at the cost of all your remaining bullet time.»",
+                "v_korpuse": "016-en_wikipedia_org_wiki_Max_Payne_video_game_.txt, стр. 708: «use of painkillers scattered around the level or dropped by enemies.»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt, стр. 724: «The game also introduces a \"Last Stand\" mechanic, granting players a grace period when health is fully depleted that allows the player to kill the enemy that last wounded them in order to remain ali[ve]»",
+                "zametka": "Прежнее «instead of regenerating health» заменено, и завышение ушло. Сравнение было шире корпуса: в MP2, по блогу (066-superadventuresingaming…, стр. 415), шкала сама восстанавливается «to his shoulders», а в мультиплеере MP3 (496-mp3multiplayer…, стр. 118) — «slower health and stamina regeneration». Две мелкие двусмысленности. Первая: Last Stand есть только в MP3, а в описании он стоит среди общих черт серии, до «what Max Payne 2 and 3 changed». Страница же прямо относит его к MP3, так что читатель это увидит. Вторая: название расходится — Engadget и NVIDIA пишут «Last Man Standing» (319-www_nvidia_…, «Old School: The Last Man Standing feature is disabled»). «Last Stand» держат Википедия, speeddemosarchive и mp3multiplayer, так что форма законна."
+              },
+              {
+                "klauza": "weapons and modes",
+                "verdikt": "держится",
+                "na_stranice": "ряды weapons и modes (см. title)",
+                "v_korpuse": "191-www_ign_com_wikis_max_payne_3_Weapons.txt, стр. 3: «a total of three weapons at a time.»; 022-…Max_Payne_2…txt, стр. 689: «Two special game modes are also activated: New York Minute and Dead Man Walking.»",
+                "zametka": "Те же границы, что в title: оружие — это правила ношения, а не каталог; режимы — обзор, сетевой игре отведена одна фраза. Ни «all», ни «guide», ни «multiplayer» описание не обещает."
+              },
+              {
+                "klauza": "and what Max Payne 2 and 3 changed",
+                "verdikt": "держится",
+                "na_stranice": "ряд max-payne-2, meta «What the 2003 sequel changed»; ряд max-payne-3, meta «What Rockstar changed in 2012»: «Rockstar’s game brought the first cover system to the series»",
+                "v_korpuse": "022-en_wikipedia_org_wiki_Max_Payne_2_The_Fall_of_Max_Payne.txt, стр. 681: «The bullet-time mechanic has been upgraded in the game to allow players to move faster as they kill mo[re]»; 001-en_wikipedia_org_wiki_Max_Payne_3.txt, стр. 722: «A new feature to the series is the cover system»",
+                "zametka": "Каждой игре отведён свой ряд, и изменения видны и в других рядах: прыжок, painkillers, оружие, режимы."
+              }
+            ],
+            "verdikt_polya": "держится",
+            "zamena": ""
+          }
+        ],
+        "itog": "Оба поля держатся, замена не нужна. Каждое слово title и нового description печатается на странице (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/gameplay.md), и корпус его подтверждает. У каждой клаузы есть свой ряд: bullet-time, shootdodge, painkillers с Last Stand, weapons, modes, max-payne-2, max-payne-3.\n\nНовая редакция description снимает оба завышения прежней:\n(1) «painkillers instead of regenerating health» было шире корпуса. В MP2, по блогу, здоровье само восстанавливается «to his shoulders» (066-superadventuresingaming…, стр. 415). В мультиплеере MP3 здоровье тоже восстанавливается («slower health and stamina regeneration», 496-mp3multiplayer…, стр. 118).\n(2) Обещание «with videos» страница не выполняла: встроенных роликов нет, есть одна ссылка cta на страницу Rockstar (rockstargames.com/videos/ka956139). Читатель из выдачи ждал бы видео на странице.\n\nОстаточные мелкие риски, не опровержения:\n- По запросу «gameplay» часть выдачи ищет видеозапись: в корпусе на адресе IGN games/max-payne/gameplay только список роликов. Перечень после тире в title уводит смысл к механике.\n- «weapons» — это правила ношения по играм, а не каталог стволов.\n- «modes» — обзор режимов трёх игр, сетевой игре отведена одна фраза.\n- Last Stand есть только в MP3, а в description он стоит среди общих черт серии. Корпус расходится в названии: «Last Stand» у Википедии, «Last Man Standing» у Engadget и NVIDIA.\n- В title около 63 знаков, в description около 157 — на границе обрезки в выдаче, но смысловые слова идут первыми.\n\nОпоры сверены Grep по выгрузке C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/ed4b202e-cd0c-4a7c-9082-f3fd74eefed1/scratchpad/korpus-tekst (файлы 001, 016, 022, 066, 167, 191, 195, 442, 481, 496). Сверены также с листом фактов и отчётом скептика в D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/.",
+        "_stranica": "/gameplay/",
+        "_linza": "Читатель из выдачи"
+      },
+      {
+        "nazvaniya": [
+          {
+            "glava": "IX",
+            "napechatano": "“Here I Was Again, Halfway Down the World.”",
+            "napisaniya_v_korpuse": [
+              {
+                "fajl": "247-thehdroom_com_news_max_payne_3_clues_and_golden_guns_parts_locations_guide_39106_.txt:250",
+                "tekst": "Chapter 9: Here I Was Again, Halfway Down the World (6 Golden Gun Parts, 3 Clues)"
+              },
+              {
+                "fajl": "283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt:691",
+                "tekst": "Chapter IX: Here I Was Again, Halfway Down The World"
+              },
+              {
+                "fajl": "283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt:859",
+                "tekst": "Chapter IX: Here I Was Again, Halfway Down The World"
+              },
+              {
+                "fajl": "484-portforward_com_games_walkthroughs_Max_Payne_3_Chapter_XII_The_Great_American_Savior_of_th.txt:267 и :475",
+                "tekst": "9 - Chapter IX: Here I Was Again (сокращённо, без второй половины)"
+              }
+            ],
+            "verdikt": "держится",
+            "zametka": "thehdroom пишет слово в слово так же, как напечатано, включая строчное «the» и запятую после «Again». У руководства Steam «The» с заглавной: это различие в регистре, а не опровержение. portforward даёт только короткую форму. Другими словами название в корпусе не встречается: регистронезависимый поиск по «Here I Was Again», «Halfway Down» и «Half way Down» находит только эти три документа. Число частей и улик (6 / 3) совпадает с thehdroom."
+          },
+          {
+            "glava": "XIII",
+            "napechatano": "“A Fat Bald Dude with a Bad Temper.”",
+            "napisaniya_v_korpuse": [
+              {
+                "fajl": "247-thehdroom_com_news_max_payne_3_clues_and_golden_guns_parts_locations_guide_39106_.txt:301",
+                "tekst": "Chapter 13: A Fat Bald Dude with a Bad Temper (9 Golden Gun Parts, 7 Clues)"
+              },
+              {
+                "fajl": "283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt:715",
+                "tekst": "Chapter XIII: A Fat Bald Dude With a Bad Temper"
+              },
+              {
+                "fajl": "283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt:891",
+                "tekst": "Chapter XIII: A Fat Bald Dude With a Bad Temper"
+              },
+              {
+                "fajl": "484-portforward_com_games_walkthroughs_Max_Payne_3_Chapter_XII_The_Great_American_Savior_of_th.txt:268 и :476",
+                "tekst": "13 - Chapter XIII: A Fat Bald Dude With a Bad Temper"
+              }
+            ],
+            "verdikt": "держится",
+            "zametka": "thehdroom пишет слово в слово так же, как напечатано, со строчным «with». У Steam и portforward «With» с заглавной: это различие в регистре, а не опровержение. Других написаний в корпусе нет: поиск по «Fat Bald Dude», «Bald Dude» и «Bad Temper» находит только эти три документа. Число частей и улик (9 / 7) совпадает с thehdroom."
+          }
+        ],
+        "tolko_dva_nazvaniya": true,
+        "punktuaciya_kak_u_ostalnyh": true,
+        "ostalnye_nazvaniya": "Опровержений нет: по словам все 12 названий держатся, расходятся только регистр и уже разобранные варианты. I «Something Rotten in the Air»: ровно такого написания нет ни у одного документа. У thehdroom и IGN (110) «In the Air», у Steam «In The Air», у portforward (479) «in the air». Напечатанное соединяет строчное «in» из portforward и заглавное «Air» у остальных. II «Nothing but the Second Best»: ровного совпадения тоже нет. У thehdroom «But the Second Best», у Steam «But The Second Best», у portforward «but the Second best»; совпадение с нашей строкой нашлось только в тексте нашего же сайта (zamery/chuzhie-srez-okonchaniy.txt). III: у thehdroom точно так же. IV «Anyone Can Buy Me a Drink»: у GamesRadar (233) точно так же. У thehdroom, IGN 204 и IGN 198 «Anybody»; это известное расхождение, оно уже разобрано в листе фактов и у скептиков (п. 5), решено оставить. V: у thehdroom, Steam и portforward точно так же. VI: у Steam и portforward точно так же, у thehdroom «A Dame, A Dork, and a Drunk». VII: у Steam точно так же. У thehdroom, IGN 187 и YouTube «From», portforward сокращает. VIII: у Steam «Ain't … Otherwise» (прямой апостроф, различие только типографское), у thehdroom нет «Otherwise», у portforward «Ain'No». X: у thehdroom точно так же («It’s Drive or Shoot, Sister»). У Steam нет запятой, у portforward опечатка «Sisiter». XI: у Steam и portforward точно так же. У thehdroom глава 11 по ошибке подписана «It’s Drive or Shoot, Sister», как повтор главы 10; это ошибка документа. XII: у thehdroom, Steam, portforward и YouTube 438/457 точно так же, у IGN 214/209 и YouTube 441 «Savior Of the Poor». XIV: у thehdroom, Steam и portforward точно так же.",
+        "itog": "Ряд «Chapters» в D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md (строки 26–46) сверен с прежним текстом слово в слово. Все три абзаца отличаются только названиями IX («Here I Was Again…» стало «Here I Was Again, Halfway Down the World.») и XIII («A Fat Bald Dude…» стало «A Fat Bald Dude with a Bad Temper.»). Описания мест, числа (6 / 3) и (9 / 7), римские номера и остальные 12 названий не изменились. Многоточий «…» в файле не осталось. Прямых кавычек, неразрывных и нулевых пробелов, табуляций и пробелов в конце строк в ряду нет. Кавычки у обоих названий типографские, как у остальных. Оба полных названия держатся по корпусу: thehdroom (247) пишет их слово в слово, как напечатано, включая регистр «the» и «with». У Steam (283) и portforward (484) заглавные «The» и «With»; это различие в регистре, а не опровержение. Других написаний в корпусе нет. Пунктуация как у остальных 12 названий: точка внутри закрывающей кавычки. Косметическая мелочь, не дефект: строки 39 и 45 после вставки длиннее соседних, их не перенесли по ширине. В свёрнутом блоке YAML «>-» перенос строки превращается в пробел, так что на печать это не влияет. Проверка шла по сохранённым выдержкам корпуса и рабочему файлу. Прежний текст взят из задания, git-версия файла не открывалась, потому что оболочка запрещена.",
+        "_stranica": "/max-payne-3/guide/",
+        "_linza": "названия глав"
+      }
+    ],
+    "kritik": {
+      "obyazatelno_ispravit": [
+        {
+          "stranica": "/max-payne-3/guide/ (sites/7thserpent.com/structure/pages-s2.json:97; то же в structure.json:375 и в брифе input/briefs/max-payne-3-guide.md:14)",
+          "pole": "description (новый): «A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.»",
+          "pochemu": "Две клаузы обещают больше, чем печатает страница. Обе — ровно то, что владелец велел снять (П100 п. 1: «У гайда нет мест каждой части и полного списка трофеев»).\n\n1) «and the achievements». Определённый артикль означает набор достижений игры целиком. Страница печатает число 67 (Steam, «As of September 2026») и 10 имён: четыре за сложность, три за главы (сама страница пишет «Among the ones set in a single chapter…», то есть выборку), A New York Minute, A License To Kill, An Echo Of The Past. Полного списка корпус тоже не держит. IGN 130:3: «Please help fill Trophy values once that information is available!». Статья Rockstar Newswire «Complete List» (029) выгружена только заголовком. Лист фактов §7: «полный список трофеев: нет». В брифе есть ключи «max payne 3 achievement guide» и «trophy guide»: по такому описанию человек из выдачи ждёт перечень. Это мягкая форма прежнего «every trophy».\n\n2) «golden gun parts and clues per chapter». Без «how many» клауза читается как перечень самих частей и улик по главам, то есть как гайд по местам. Так устроен жанр. Эти пять слов — голова заголовка GamesRadar «Max Payne 3 golden gun parts and clues guide» (238:9, 233:9), и там главы с «(9 parts, 3 clues)» идут перед местами. thehdroom 247:149 называет свой гайд «locations guide … chapter-by-chapter». В брифе есть ключи «golden gun locations» и «clues and golden gun locations». Страница печатает только числа (N / M) у 14 глав, стволы названы лишь для XIV, из улик — только цепочка ex-cop. Замена «locations» на «per chapter» обещание мест не сняла.\n\nПредложения проверяющих не годятся. «the key achievements» (линза 1) — оценка, которой страница не даёт, и клаузу 2 она не правит. Вариант линзы 3 (176 знаков) держится, но убирает «how many chapters there are» (ключ «how many chapters in max payne 3»).\n\nЗамена справа — 167 знаков против нынешних 171. Каждая клауза напечатана: 14 глав, длина по HLTB, числа (N / M) у всех 14 глав, ряд airport, 10 имён достижений. Grep по korpus-tekst (612 файлов): «how many golden gun», «each chapter has/holds/hides», «some achievements», «Max Payne 3 guide: how» — 0 совпадений. «chapter-by-chapter» снят по длине и из-за риска, названного линзой 3. Если ведущий его оставит — вариант в местах вкуса.",
+          "zamena": "A Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements."
+        }
+      ],
+      "ne_provereno": [
+        "Сторож 8 слов (brief:check / чужие) на новых description обеих страниц и на предложенной замене не запускался: оболочка запрещена. Grep проверил только отдельные куски: «how many golden gun», «each chapter has/holds/hides», «part and clue», «clue counts», «some achievements», «painkillers and the Last», «Max Payne 2 and 3 changed», «Last Stand included», «3's Last Stand» — везде 0. «what makes Max Payne» совпадает с IGN 2001 (156:3, «what makes Max Payne so good»), но это 4 слова и рамка прежнего description. Нужен механический прогон после правки.",
+        "Печать title и description в <head> собранной страницы (<title>, meta description, og:title, og:description) по dist/ ни одна линза не смотрела. Проверено только, что pages-s2.json:96–97, 159–160, structure.json:375 и 803 и оба брифа (строка 14) совпадают между собой.",
+        "Что ряд «Chapters» гайда отличается от HEAD только хвостами IX и XIII, линза 7 сверила с текстом из задания, а не с git-версией (оболочка запрещена). Утверждение «ни байта, кроме двух названий» нужно подтвердить git diff.",
+        "Тезис «полного списка достижений корпус не держит» опирается на отсутствие текста в выгрузке. У Rockstar Newswire «The Achievements and Trophies of Max Payne 3: Complete List» (029) есть только заголовок, страница IGN «Platinum Trophy Guide» не выгружена. Если бы их текст был в снимке, вывод о корпусе мог бы стать другим. Вывод о странице (печатает 67 и 10 имён) от этого не зависит.",
+        "Число «44 уникальных имени у IGN с мультиплеером» (лист фактов §7, линза 3) я заново не пересчитывал. На вердикт оно не влияет."
+      ],
+      "mesta_vkusa": [
+        "Гайд, «chapter-by-chapter». Страница разложена по темам, по главам идёт только ряд «Chapters» (строка на главу), хотя lead сам пишет «chapter by chapter». Вместе с h1 «walkthrough» (он вне объёма) это подталкивает ждать прохождения. В замене слово снято. Если ведущий хочет его оставить, вариант на 186 знаков: «A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements.»",
+        "Гайд, как назвать выборку достижений. «some achievements» — нейтрально и честно. Другие варианты: «a selection of achievements»; «ten achievements by name» — точно, но хрупко, если текст страницы изменится. «key» и «highlights» — оценки, которых страница не даёт. Число 67 в description лучше не выносить: без даты и источника оно спорит с rawg («Achievements 66», 199).",
+        "Гайд, title «… achievements» (оставлен). Это голая метка темы без «all» и «every», у темы есть ряд, поэтому поле держится. Но оно на пределе: названо 10 из 67. Ведущему стоит назвать это в докладе.",
+        "Гайд, «golden gun parts and clues». Пять слов подряд совпадают с заголовком GamesRadar (238:9); в обратном порядке («clues and golden guns») — с заголовками thehdroom и gamepressure. Это названия предметов игры, 8-словный сторож их не ловит. С «how many … each chapter has» фраза уже не читается как заголовок чужого гайда по местам.",
+        "/gameplay/, «painkillers and the Last Stand». Last Stand есть только в MP3: Википедия 001:724 пишет «introduces», и ни один из 12 документов с «last (man) stand» не относит его к MP1 или MP2 (175 — моды Left 4 Dead 2, не в счёт). В перечне «What makes Max Payne play…» он стоит до «what Max Payne 2 and 3 changed». Опровержения нет: страница Last Stand печатает, и при чтении «Max Payne» как серии клауза верна. Дешёвое уточнение — «painkillers and Max Payne 3’s Last Stand» (167 знаков). Вариант линзы 4 «…, Last Stand included.» по-английски неуклюж.",
+        "/gameplay/, название механики. «Last Stand» у Википедии (001), speeddemosarchive (597) и mp3multiplayer (496); «Last Man Standing» у Engadget (442), NVIDIA (319) и S3 (190). description повторяет форму страницы, менять не нужно.",
+        "/gameplay/, title «Max Payne gameplay». По запросу «max payne gameplay» часть выдачи ищет видеозапись (IGN 167 — список роликов). Ролик на странице — только ссылка cta на rockstargames.com/videos/ka956139, как и сказал владелец. Перечень после тире уводит смысл к механике, поле держится.",
+        "Длина в выдаче. Замена гайда — 167 знаков, description /gameplay/ — 157. Google обычно режет около 155–160 знаков, поэтому последняя клауза гайда в выдаче может не показаться. Жёсткого гейта длины в tools/build-tree.mjs нет. На сайте уже есть description по 185 знаков и больше (/mods/, /media/).",
+        "Вне объёма, строкой в доклад и бэклог — это тексты страниц, П100 их замораживает. (а) lead гайда «with what to collect in each» обещает названия сборных по главам, а печатает числа. (б) Ряд гайда «Achievements and trophies»: по трофеям PlayStation в корпусе и на странице нет ничего. (в) Ряд modes на /gameplay/: Википедия MP1 (016:712) числит New York Minute среди уровней сложности, а страница ставит его «alongside the Hard-Boiled and Dead on Arrival difficulties». Не ложь, но расходится с источником.",
+        "Косметика файла содержания. Строки 39 и 45 в max-payne-3-guide.md после вставки длиннее соседних и не перенесены. В свёрнутом YAML-блоке «>-» на печать это не влияет."
+      ],
+      "itog": "Обязательная правка одна: description гайда. В нём две клаузы обещают больше напечатанного, и обе — те самые обещания, которые владелец велел снять (П100 п. 1).\n\n- «and the achievements» с определённым артиклем обещает весь набор достижений. Страница печатает число 67 и 10 имён («Among the ones…»). Полного списка корпус тоже не держит: у IGN 130:3 стоит «Please help fill Trophy values», у Rockstar 029 есть только заголовок.\n- «golden gun parts and clues per chapter» без «how many» читается как гайд по местам. Это голова заголовка GamesRadar «golden gun parts and clues guide» (238:9), а thehdroom называет свой «locations guide … chapter-by-chapter» (247:149). Страница печатает только числа (N / M).\n\nЗамена — 167 знаков: «A Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements.» Каждая клауза напечатана. Grep по корпусу для новых кусков даёт 0 совпадений. «chapter-by-chapter» снят по длине и из-за риска, который назвала линза 3; вариант с ним — в местах вкуса.\n\nTitle гайда держится: четыре метки тем, у каждой свой ряд. «achievements» — на пределе.\n\nОбе строки /gameplay/ держатся: title и новый description. «with videos» и «instead of regenerating health» сняты верно. Клауза «painkillers and the Last Stand» не опровергнута: страница Last Stand печатает, корпус держит его только для MP3, и ни один документ не относит его к MP1 или MP2. Подача в перечне основы серии — место вкуса. Уточнение: «painkillers and Max Payne 3’s Last Stand» (167 знаков).\n\nНазвания глав IX и XIII держатся дословно по thehdroom (247:250, 247:301). У Steam (283) и portforward (484) расходится только регистр.\n\nНе проверено механически:\n- 8-словный сторож на новых полях и на замене;\n- печать в <head> по dist/;\n- git diff ряда глав против HEAD.\n\nПосле правки pages-s2.json нужны npm run tree, перегенерация брифов и brief:check.\n\nФайлы:\n- D:/SEO/cloud/site-generator/sites/7thserpent.com/structure/pages-s2.json (строки 97, 160);\n- D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md;\n- D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/gameplay.md;\n- D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/fakty/max-payne-3-guide.md (§7 и «Обещания договора»)."
+    }
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Линзы"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Критик"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "max-payne-3-guide:napechatano",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a011e5ec44d2cd5c3",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560788,
+      "queuedAt": 1790529560737,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7ths…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529716078,
+      "tokens": 100772,
+      "toolCalls": 16,
+      "durationMs": 155283,
+      "resultPreview": "{\"stranica\":\"/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md)\",\"linza\":\"Напечатано ли: каждая клауза title и нового description сверена с тем, что печатает файл содержания (lead, rows[].title/meta/body, cta), и с выдержкой из корпуса (korpus-tekst, поиск Grep).\",\"polya\":[{\"pole\":\"title\",\"tekst\":\"Max Payne 3 guide — chapters, golden guns,…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "max-payne-3-guide:korpus",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a39716ad8e5136aad",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560790,
+      "queuedAt": 1790529560737,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7ths…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529781335,
+      "tokens": 127957,
+      "toolCalls": 39,
+      "durationMs": 219454,
+      "resultPreview": "{\"stranica\":\"/max-payne-3/guide/ (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md)\",\"linza\":\"Держит ли корпус: для каждой фактической клаузы title (оставлен) и нового description нужна дословная опора в корпусе (612 файлов в scratchpad/korpus-tekst). Отдельно искал документы, которые противоречат клаузе: о числе глав, о длине прохождения, о числах частей и у…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "max-payne-3-guide:chitatel",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a6bd51bdccd1a8ad9",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560791,
+      "queuedAt": 1790529560737,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/max-payne-3/guide/",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529780499,
+      "tokens": 118578,
+      "toolCalls": 20,
+      "durationMs": 218616,
+      "resultPreview": "{\"stranica\":\"/max-payne-3/guide/\",\"linza\":\"Читатель из выдачи: что человек из поиска Google ждёт увидеть по каждому слову title и description и что страница ему даёт на самом деле (файл содержания src/content/tresc/max-payne-3-guide.md). Слова сверены с корпусом (korpus-tekst, 612 файлов) и с листом фактов и отчётом скептика пачки 5.\",\"polya\":[{\"pole\":\"title\",\"tekst\":\"Max Payne 3 guide — chapters,…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "gameplay:napechatano",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a57991bf26ea63193",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560792,
+      "queuedAt": 1790529560738,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/gameplay/",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529719000,
+      "tokens": 102073,
+      "toolCalls": 14,
+      "durationMs": 157118,
+      "resultPreview": "{\"stranica\":\"/gameplay/\",\"linza\":\"Напечатано ли: каждая клауза title и description сверена с тем, что печатает файл содержания sites/7thserpent.com/src/content/tresc/gameplay.md (lead, rows[].title/meta/body, cta), с опорой в корпусе korpus-tekst. Ищу, где поле обещает то, чего страница не печатает, или печатает уже, в том числе когда черта одной игры подана как черта всей серии.\",\"polya\":[{\"pole\"…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "gameplay:korpus",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a06fd2a5c098ab2aa",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560793,
+      "queuedAt": 1790529560738,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529746176,
+      "tokens": 124926,
+      "toolCalls": 28,
+      "durationMs": 184294,
+      "resultPreview": "{\"stranica\":\"/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay.md)\",\"linza\":\"Держит ли корпус: для каждой фактической клаузы title (оставлен) и description (новый) искал опору в korpus-tekst (Grep без учёта регистра, выдержки сверены с файлами). Отдельно искал документы-противоречия: восстановление здоровья, Last Stand и Last Man Standing в MP1/MP2, условие Last Stand, «что изменилось» в…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "gameplay:chitatel",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a166bcd411535c328",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560793,
+      "queuedAt": 1790529560738,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529726971,
+      "tokens": 106722,
+      "toolCalls": 20,
+      "durationMs": 165088,
+      "resultPreview": "{\"stranica\":\"/gameplay/ (sites/7thserpent.com/src/content/tresc/gameplay.md)\",\"linza\":\"Читатель из выдачи: чего человек из поиска Google ждёт от каждого слова title и description и получает ли он это на странице.\",\"polya\":[{\"pole\":\"title\",\"tekst\":\"Max Payne gameplay — bullet time, shootdodge, weapons and modes\",\"klauzy\":[{\"klauza\":\"Max Payne gameplay\",\"verdikt\":\"держится\",\"na_stranice\":\"lead: «Slo…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "glavy",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a5820bf6ae7854b1d",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529560794,
+      "queuedAt": 1790529560739,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Опровержений нет: по словам все 12 названий держатся, расхо…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790529681427,
+      "tokens": 78484,
+      "toolCalls": 22,
+      "durationMs": 120631,
+      "resultPreview": "{\"nazvaniya\":[{\"glava\":\"IX\",\"napechatano\":\"“Here I Was Again, Halfway Down the World.”\",\"napisaniya_v_korpuse\":[{\"fajl\":\"247-thehdroom_com_news_max_payne_3_clues_and_golden_guns_parts_locations_guide_39106_.txt:250\",\"tekst\":\"Chapter 9: Here I Was Again, Halfway Down the World (6 Golden Gun Parts, 3 Clues)\"},{\"fajl\":\"283-steamcommunity_com_sharedfiles_filedetails_id_2076733393.txt:691\",\"tekst\":\"Cha…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "kritik",
+      "phaseIndex": 2,
+      "phaseTitle": "Критик",
+      "agentId": "a7f3056177ecdb2e9",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790529782593,
+      "queuedAt": 1790529782574,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Обязательная правка одна: description гайда. В нём две клау…",
+      "promptPreview": "Ты — независимый проверяющий в репозитории D:/SEO/cloud/site-generator (фабрика SEO-сайтов; сайт — sites/7thserpent.com, фан-сайт Max Payne на английском).\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только инструменты Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nПравило сайта для SEO-полей: title и description страницы обещают только то, что страни…",
+      "promptFramed": true,
+      "lastProgressAt": 1790530068583,
+      "tokens": 217122,
+      "toolCalls": 37,
+      "durationMs": 285989,
+      "resultPreview": "{\"obyazatelno_ispravit\":[{\"stranica\":\"/max-payne-3/guide/ (sites/7thserpent.com/structure/pages-s2.json:97; то же в structure.json:375 и в брифе input/briefs/max-payne-3-guide.md:14)\",\"pole\":\"description (новый): «A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.»\",\"pochemu\":\"Д…"
+    }
+  ],
+  "totalTokens": 976634,
+  "totalToolCalls": 196
+}

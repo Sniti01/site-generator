@@ -1,0 +1,119 @@
+
+### названия глав
+  IX: держится — thehdroom пишет слово в слово так же, как напечатано, включая строчное «the» и запятую после «Again». У руководства Steam «The» с заглавной: это различие в регистре, а не опровержение. portforward даёт только короткую форму. Другими словами название в корпусе не встречается: регистронезависимый поис
+  XIII: держится — thehdroom пишет слово в слово так же, как напечатано, со строчным «with». У Steam и portforward «With» с заглавной: это различие в регистре, а не опровержение. Других написаний в корпусе нет: поиск по «Fat Bald Dude», «Bald Dude» и «Bad Temper» находит только эти три документа. Число частей и улик (
+  только два названия: true; пунктуация как у остальных: true
+  остальные: Опровержений нет: по словам все 12 названий держатся, расходятся только регистр и уже разобранные варианты. I «Something Rotten in the Air»: ровно такого написания нет ни у одного документа. У thehdroom и IGN (110) «In the Air», у Steam «In The Air», у portforward (479) «in the air». Напечатанное соединяет строчное «in» из portforward и заглавное «Air» у остальных. II «Nothing but the Second Best»: ровного совпадения тоже нет. У thehdroom «But the Second Best», у Steam «But The Second Best», у portforward «but the Second best»; совпадение с нашей строкой нашлось только в тексте нашего же сайта (zamery/chuzhie-srez-okonchaniy.txt). III: у thehdroom точно так же. IV «Anyone Can Buy Me a Drink»: у GamesRadar (233) точно так же. У thehdroom, IGN 204 и IGN 198 «Anybody»; это известное расхождение, оно уже разобрано в листе фактов и у скептиков (п. 5), решено оставить. V: у thehdroom, Steam и 
+  итог: Ряд «Chapters» в D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md (строки 26–46) сверен с прежним текстом слово в слово. Все три абзаца отличаются только названиями IX («Here I Was Again…» стало «Here I Was Again, Halfway Down the World.») и XIII («A Fat Bald Dude…» стало «A Fat Bald Dude with a Bad Temper.»). Описания мест, числа (6 / 3) и (9 / 7), римские номера и остальные 12 названий не изменились. Многоточий «…» в файле не осталось. Прямых кавычек, нер
+
+### /max-payne-3/guide/ (D:/SEO/cloud/site-g — Напечатано ли: каждая клауза title и нового description свер
+  [title] держится
+  [description] опровергнуто → ЗАМЕНА: A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the key achievements.
+     - «and the achievements»: обещает больше — С определённым артиклем «the achievements» — это набор достижений игры, то есть весь список. Страница печатает число 67 и 10 имён; её собственная формула — «Among the ones…», то есть выборка. Кто ищет «max payne 3 achievements / achievement guide / trophy guide» (все эти ключи есть в брифе), по такому описанию ждёт перечня, а его нет. Корпус перечня тоже не держит. Это мягкая форма той же ошибки, что у прежнего «every trophy»: слово «every» убрано, а объём обещания остался шире напечатанного.
+  итог: Заголовок (title) держится. Все четыре его метки (chapters, golden guns, clues, achievements) — названия тем, и у каждой есть свой ряд на странице. Метка «achievements» на пределе: печатается число 67 и около 10 имён, а не перечень, но голая метка темы перечня не обещает.
+
+Новое описание (description) опровергнуто по одной клаузе. «and the achievements» с определённым артиклем обещает набор достижений игры. Страница печатает выборку («Among the ones…»): число 67 в Steam и 10 имён. Полного списка нет и в корпусе: у IGN он неполный и сам просит дозаполнения, в листе фактов итог «полный список трофеев: нет». Остальные клаузы подтверждены цитатами со страницы и из корпуса: число глав (14), длина
+
+### /gameplay/ — Напечатано ли: каждая клауза title и description сверена с т
+  [title] держится
+  [description] опровергнуто → ЗАМЕНА: What makes Max Payne play the way it does: bullet time and shootdodge, painkillers, weapons and modes, and what Max Payne 2 and 3 changed, Last Stand included. (159 знаков: Last Stand перенесён к переменам сиквелов, как на странице — «Max Payne 3 … adds the Last Stand». Длиннее, 167 знаков: «…painkillers and Max Payne 3’s Last Stand, weapons and modes, and what Max Payne 2 and 3 changed.»)
+     - «the Last Stand»: обещает больше — Страница печатает Last Stand, но только как новинку третьей игры («adds»); корпус тоже пишет «introduces». В описании Last Stand стоит в перечне того, что делает Max Payne «the way it does», а его противопоставлено «what Max Payne 2 and 3 changed». Так механику третьей игры относят к основе серии, а при прочтении «Max Payne» как первой игры — к первой игре, чего страница не печатает. Это ровно случай «общее правило там, где страница говорит о части игр». Если «Max Payne» читать как серию, клауза
+  итог: Title «Max Payne gameplay — bullet time, shootdodge, weapons and modes» держится. Все пять клауз напечатаны отдельными рядами (bullet-time, shootdodge, weapons, modes), и корпус их подтверждает: Википедия MP1 и MP2, Engadget, IGN Arcade Mode.
+
+Новый description опровергнут по одной клаузе — «the Last Stand». Страница печатает эту механику только как новинку Max Payne 3 («Max Payne 3 keeps the pills and adds the Last Stand»); корпус тоже пишет «The game also introduces a "Last Stand" mechanic». Описание же ставит Last Stand в перечень основы игры, которому противопоставлено «what Max Payne 2 and 3 changed». Так черта одной игры подаётся как черта серии, а если «Max Payne» читать как первую иг
+
+### /gameplay/ (sites/7thserpent.com/src/con — Читатель из выдачи: чего человек из поиска Google ждёт от ка
+  [title] держится
+  [description] держится
+  итог: Оба поля держатся, замена не нужна. Каждое слово title и нового description печатается на странице (D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/gameplay.md), и корпус его подтверждает. У каждой клаузы есть свой ряд: bullet-time, shootdodge, painkillers с Last Stand, weapons, modes, max-payne-2, max-payne-3.
+
+Новая редакция description снимает оба завышения прежней:
+(1) «painkillers instead of regenerating health» было шире корпуса. В MP2, по блогу, здоровье само восстанавливается «to his shoulders» (066-superadventuresingaming…, стр. 415). В мультиплеере MP3 здоровье тоже восстанавливается («slower health and stamina regeneration», 496-mp3multiplayer…, стр. 118).
+(2) О
+
+### /gameplay/ (sites/7thserpent.com/src/con — Держит ли корпус: для каждой фактической клаузы title (остав
+  [title] держится
+  [description] держится
+  итог: Оба поля держатся. Опровергнутых клауз нет. Title (оставлен): bullet time, shootdodge, weapons и modes подтверждены Википедией MP1/MP2/MP3, Engadget, IGN Weapons и IGN Arcade Mode, и все они напечатаны на странице. Новый description тоже держится по всем клаузам. «Last Stand» подтверждают 001-Википедия MP3:724, mp3multiplayer:149 и speeddemosarchive:844. Во втором варианте имени, «Last Man Standing», это тот же приём: Engadget:261, NVIDIA:634, Steam 2183808363, IGN Chapter 12. Приём есть только в MP3, и документов, которые относят его к MP1/MP2 или отрицают его, нет.
+
+Замена прежнего description оправдана по корпусу. (1) Формулу «painkillers instead of regenerating health» как абсолютную опр
+
+### /max-payne-3/guide/ — Читатель из выдачи: что человек из поиска Google ждёт увидет
+  [title] держится
+  [description] опровергнуто → ЗАМЕНА: All 14 Max Payne 3 chapters in order and where each is set, how long it takes, golden gun part and clue counts per chapter, the airport shootout, and some achievements by name.
+     - «A chapter-by-chapter Max Payne 3 guide»: обещает больше — «Chapter-by-chapter guide» описывает всю страницу как устроенную по главам. Читатель ждёт раздел на каждую главу с тем, как её пройти или что в ней искать. Получает одну строку на главу: место, два числа, название. К тому же в корпусе этим словом конкурент называет гайд по местам сборных (thehdroom), так что жанровое ожидание — места. Выражение взято у конкурента, но сторож 8 слов его не ловит.
+     - «golden gun parts and clues per chapter»: обещает больше — Двумя клаузами раньше стоит «how many chapters», а здесь «how many» нет. Поэтому «golden gun parts and clues per chapter» читается как перечень самих частей и улик по главам, то есть где они лежат. Это то самое обещание мест, которое владелец велел снять («У гайда нет мест каждой части», П100). Правка заменила «locations» на «per chapter», и обещание осталось. Кроме того, пять слов подряд совпадают с заголовком GamesRadar, а в обратном порядке «clues and golden gun» — это заголовки gamepressure 
+     - «and the achievements»: обещает больше — Определённый артикль «the» означает все достижения. Человек из выдачи ждёт список 67 с условиями, а получает число и около десяти имён. Это мягче прежнего «every trophy», но того же класса: полный список обещан, а корпус его не держит.
+  итог: Title держится. Это перечень из четырёх тем без «all», «every» и «locations», и у каждой темы на странице свой ряд. Слово «guide» держится как справка с советами, но в паре с h1 «walkthrough» (он вне проверки) склоняет ждать прохождения, поэтому объём обязано задать описание.
+
+Новое description опровергнуто, три клаузы обещают больше, чем страница даёт:
+1) «A chapter-by-chapter … guide» описывает всю страницу как разбитую по главам. На деле она разбита по темам, на главы разложен один ряд, по строке на главу. В корпусе этим же выражением thehdroom называет свой гайд по местам сборных.
+2) «golden gun parts and clues per chapter» стоит без «how many» и читается как перечень или места частей и 
+
+### /max-payne-3/guide/ (D:/SEO/cloud/site-g — Держит ли корпус: для каждой фактической клаузы title (остав
+  [title] держится
+  [description] держится
+  итог: Опровержений нет: title (оставлен) и новый description держатся по линзе «держит ли корпус». У каждой фактической клаузы есть дословная опора, и противоречащих документов не нашлось.
+
+Главные опоры:
+- 14 глав: thehdroom (247), portforward (479/484), S2 (283).
+- Части и улики по главам: заголовки thehdroom по всем 14 главам совпадают со столбцами IGN Walkthrough (102).
+- Длина: HLTB 5739 (310), обзоры IGN (136) и HeyUGuys (341).
+- «Airport Shootout»: дословно в заголовке thegamer (427); Википедия (001), S3 (190).
+- Достижения: Steam «Includes 67 Steam Achievements» (003), IGN (105, 130, 187, 204).
+
+Что искал как противоречия и что нашёл:
+- Глава 15/XV — 0 совпадений.
+- Длина — числа расходятс
+
+### КРИТИК
+  ИСПРАВИТЬ /max-payne-3/guide/ (sites/7thserpent.com/structure/pages-s2.json:97; то же в structure.json:375 и в брифе input/briefs/max-payne-3-guide.md:14) [description (новый): «A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun parts and clues per chapter, the airport shootout, and the achievements.»]: Две клаузы обещают больше, чем печатает страница. Обе — ровно то, что владелец велел снять (П100 п. 1: «У гайда нет мест каждой части и полного списка трофеев»).
+
+1) «and the achievements». Определённый артикль означает набор достижений игры целиком. Страница печатает число 67 (Steam, «As of September 2026») и 10 имён: четыре за сложность, три за главы (сама страница пишет «Among the ones set in a single chapter…», то есть выборку), A New York Minute, A License To Kill, An Echo Of The Past. Полного списка корпус тоже не держит. IGN 130:3: «Please help fill Trophy values once that information is available!». Статья Rockstar Newswire «Complete List» (029) выгружена только заголовком. Лист фактов §7: «полный список трофеев: нет». В брифе есть ключи «max payne 3 achievement guide» и «trophy guide»: по такому описанию человек из выдачи ждёт перечень. Это мягкая форма прежнего «every trophy».
+
+2) «golden gun parts and clues per chapter». Без «how many» клауза читается как перечень самих частей и улик по главам, то есть как гайд по местам. Так устроен жанр. Эти пять слов — голова заголовка GamesRadar «Max Payne 3 golden gun parts and clues guide» (238:9, 233:9), и там главы с «(9 parts, 3 clues)» идут перед местами. thehdroom 247:149 называет свой гайд «locations guide … chapter-by-chapter». В брифе есть ключи «golden gun locations» и «clues and golden gun locations». Страница печатает только числа (N / M) у 14 глав, стволы названы лишь для XIV, из улик — только цепочка ex-cop. Замена «locations» на «per chapter» обещание мест не сняла.
+
+Предложения проверяющих не годятся. «the key achievements» (линза 1) — оценка, которой страница не даёт, и клаузу 2 она не правит. Вариант линзы 3 (176 знаков) держится, но убирает «how many chapters there are» (ключ «how many chapters in max payne 3»).
+
+Замена справа — 167 знаков против нынешних 171. Каждая клауза напечатана: 14 глав, длина по HLTB, числа (N / M) у всех 14 глав, ряд airport, 10 имён достижений. Grep по korpus-tekst (612 файлов): «how many golden gun», «each chapter has/holds/hides», «some achievements», «Max Payne 3 guide: how» — 0 совпадений. «chapter-by-chapter» снят по длине и из-за риска, названного линзой 3. Если ведущий его оставит — вариант в местах вкуса.
+     → A Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements.
+  не проверено: Сторож 8 слов (brief:check / чужие) на новых description обеих страниц и на предложенной замене не запускался: оболочка запрещена. Grep проверил только отдельные куски: «how many golden gun», «each chapter has/holds/hides», «part and clue», «clue counts», «some achievements», «painkillers and the Last», «Max Payne 2 and 3 changed», «Last Stand included», «3's Last Stand» — везде 0. «what makes Max Payne» совпадает с IGN 2001 (156:3, «what makes Max Payne so good»), но это 4 слова и рамка прежнего description. Нужен механический прогон после правки.
+  не проверено: Печать title и description в <head> собранной страницы (<title>, meta description, og:title, og:description) по dist/ ни одна линза не смотрела. Проверено только, что pages-s2.json:96–97, 159–160, structure.json:375 и 803 и оба брифа (строка 14) совпадают между собой.
+  не проверено: Что ряд «Chapters» гайда отличается от HEAD только хвостами IX и XIII, линза 7 сверила с текстом из задания, а не с git-версией (оболочка запрещена). Утверждение «ни байта, кроме двух названий» нужно подтвердить git diff.
+  не проверено: Тезис «полного списка достижений корпус не держит» опирается на отсутствие текста в выгрузке. У Rockstar Newswire «The Achievements and Trophies of Max Payne 3: Complete List» (029) есть только заголовок, страница IGN «Platinum Trophy Guide» не выгружена. Если бы их текст был в снимке, вывод о корпусе мог бы стать другим. Вывод о странице (печатает 67 и 10 имён) от этого не зависит.
+  не проверено: Число «44 уникальных имени у IGN с мультиплеером» (лист фактов §7, линза 3) я заново не пересчитывал. На вердикт оно не влияет.
+  место вкуса: Гайд, «chapter-by-chapter». Страница разложена по темам, по главам идёт только ряд «Chapters» (строка на главу), хотя lead сам пишет «chapter by chapter». Вместе с h1 «walkthrough» (он вне объёма) это подталкивает ждать прохождения. В замене слово снято. Если ведущий хочет его оставить, вариант на 186 знаков: «A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements.»
+  место вкуса: Гайд, как назвать выборку достижений. «some achievements» — нейтрально и честно. Другие варианты: «a selection of achievements»; «ten achievements by name» — точно, но хрупко, если текст страницы изменится. «key» и «highlights» — оценки, которых страница не даёт. Число 67 в description лучше не выносить: без даты и источника оно спорит с rawg («Achievements 66», 199).
+  место вкуса: Гайд, title «… achievements» (оставлен). Это голая метка темы без «all» и «every», у темы есть ряд, поэтому поле держится. Но оно на пределе: названо 10 из 67. Ведущему стоит назвать это в докладе.
+  место вкуса: Гайд, «golden gun parts and clues». Пять слов подряд совпадают с заголовком GamesRadar (238:9); в обратном порядке («clues and golden guns») — с заголовками thehdroom и gamepressure. Это названия предметов игры, 8-словный сторож их не ловит. С «how many … each chapter has» фраза уже не читается как заголовок чужого гайда по местам.
+  место вкуса: /gameplay/, «painkillers and the Last Stand». Last Stand есть только в MP3: Википедия 001:724 пишет «introduces», и ни один из 12 документов с «last (man) stand» не относит его к MP1 или MP2 (175 — моды Left 4 Dead 2, не в счёт). В перечне «What makes Max Payne play…» он стоит до «what Max Payne 2 and 3 changed». Опровержения нет: страница Last Stand печатает, и при чтении «Max Payne» как серии клауза верна. Дешёвое уточнение — «painkillers and Max Payne 3’s Last Stand» (167 знаков). Вариант линзы 4 «…, Last Stand included.» по-английски неуклюж.
+  место вкуса: /gameplay/, название механики. «Last Stand» у Википедии (001), speeddemosarchive (597) и mp3multiplayer (496); «Last Man Standing» у Engadget (442), NVIDIA (319) и S3 (190). description повторяет форму страницы, менять не нужно.
+  место вкуса: /gameplay/, title «Max Payne gameplay». По запросу «max payne gameplay» часть выдачи ищет видеозапись (IGN 167 — список роликов). Ролик на странице — только ссылка cta на rockstargames.com/videos/ka956139, как и сказал владелец. Перечень после тире уводит смысл к механике, поле держится.
+  место вкуса: Длина в выдаче. Замена гайда — 167 знаков, description /gameplay/ — 157. Google обычно режет около 155–160 знаков, поэтому последняя клауза гайда в выдаче может не показаться. Жёсткого гейта длины в tools/build-tree.mjs нет. На сайте уже есть description по 185 знаков и больше (/mods/, /media/).
+  место вкуса: Вне объёма, строкой в доклад и бэклог — это тексты страниц, П100 их замораживает. (а) lead гайда «with what to collect in each» обещает названия сборных по главам, а печатает числа. (б) Ряд гайда «Achievements and trophies»: по трофеям PlayStation в корпусе и на странице нет ничего. (в) Ряд modes на /gameplay/: Википедия MP1 (016:712) числит New York Minute среди уровней сложности, а страница ставит его «alongside the Hard-Boiled and Dead on Arrival difficulties». Не ложь, но расходится с источником.
+  место вкуса: Косметика файла содержания. Строки 39 и 45 в max-payne-3-guide.md после вставки длиннее соседних и не перенесены. В свёрнутом YAML-блоке «>-» на печать это не влияет.
+  итог: Обязательная правка одна: description гайда. В нём две клаузы обещают больше напечатанного, и обе — те самые обещания, которые владелец велел снять (П100 п. 1).
+
+- «and the achievements» с определённым артиклем обещает весь набор достижений. Страница печатает число 67 и 10 имён («Among the ones…»). Полного списка корпус тоже не держит: у IGN 130:3 стоит «Please help fill Trophy values», у Rockstar 029 есть только заголовок.
+- «golden gun parts and clues per chapter» без «how many» читается как гайд по местам. Это голова заголовка GamesRadar «golden gun parts and clues guide» (238:9), а thehdroom называет свой «locations guide … chapter-by-chapter» (247:149). Страница печатает только числа (N / M).
+
+Замена — 167 знаков: «A Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements.» Каждая клауза напечатана. Grep по корпусу для новых кусков даёт 0 совпадений. «chapter-by-chapter» снят по длине и из-за риска, который назвала линза 3; вариант с ним — в местах вкуса.
+
+Title гайда держится: четыре метки тем, у каждой свой ряд. «achievements» — на пределе.
+
+Обе строки /gameplay/ держатся: title и новый description. «with videos» и «instead of regenerating health» сняты верно. Клауза «painkillers and the Last Stand» не опровергнута: страница Last Stand печатает, корпус держит его только для MP3, и ни один документ не относит его к MP1 или MP2. Подача в перечне основы серии — место вкуса. Уточнение: «painkillers and Max Payne 3’s Last Stand» (167 знаков).
+
+Названия глав IX и XIII держатся дословно по thehdroom (247:250, 247:301). У Steam (283) и portforward (484) расходится только регистр.
+
+Не проверено механически:
+- 8-словный сторож на новых полях и на замене;
+- печать в <head> по dist/;
+- git diff ряда глав против HEAD.
+
+После правки pages-s2.json нужны npm run tree, перегенерация брифов и brief:check.
+
+Файлы:
+- D:/SEO/cloud/site-generator/sites/7thserpent.com/structure/pages-s2.json (строки 97, 160);
+- D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md;
+- D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content/tresc/gameplay.md;
+- D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/fakty/max-payne-3-guide.md (§7 и «Обещания договора»).

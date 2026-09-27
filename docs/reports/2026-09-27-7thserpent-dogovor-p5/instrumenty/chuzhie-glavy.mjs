@@ -8,8 +8,10 @@
 // 8-граммы — та же формула sha1, первые 4 байта), по всем скачанным документам корпуса.
 // СЛОВА СТРОКИ — функциями сторожа (раунд 1 «судью судят», V3/V5): строка режется на куски вне и внутри пар кавычек,
 // слова куска — `slova` сторожа, адреса `https?://…` вырезаются пробелом, как у функции `chuzhie` сторожа (pravilo-2),
-// названия игр сливаются в одно слово, как `bezImen`; по каждой строке слова сверяются с `bezImen(slova(строка без
-// адресов))` — расхождение — код 2 («разбор недостоверен»). Строже сторожа: строка не режется по «·» и «|».
+// но по знакам URL, а не «до пробела» (раунд 4, sod4-2: слова, приклеенные к адресу знаком U+2800 или тире, остаются
+// словами); названия игр сливаются в одно слово, как `bezImen`; по каждой строке слова сверяются с `bezImen(slova(строка
+// без адресов «до пробела»))`, как режет сторож, — расхождение — код 2 («разбор недостоверен»). Строже сторожа: строка
+// не режется по «·» и «|».
 // ТЕКСТ СТРАНИЦЫ — как его видит читатель (раунды 1–3):
 //   - строки <main>: по строке на блочный элемент (p, h1–h6, li, dl/dt/dd, figure, figcaption, blockquote, div, section,
 //     article, aside, header, footer, nav, ul, ol, main, pre, hr, address, details, summary, form, fieldset, legend);
@@ -20,7 +22,8 @@
 //     C0 (в том числе \v и \f), C1 и DEL, невидимые знаки \p{Default_Ignorable_Code_Point} (мягкий перенос, U+200B,
 //     U+2060, U+034F, селекторы вариантов, знаки направления…) и именованные сущности невидимых знаков, которых нет
 //     в таблице сторожа (&ZeroWidthSpace;, &NoBreak;, &lrm;, &rlm;…), снимаются — браузер их не рисует, и слово
-//     на экране целое; заполнители хангыля (U+3164, U+115F, U+1160, U+FFA0) — пробел: их браузер рисует пробелом;
+//     на экране целое; заполнители хангыля (U+3164, U+115F, U+1160, U+FFA0) и форматные знаки стенографии
+//     U+1BCA0–U+1BCA3 — пробел: их браузер рисует пустым глифом или рамкой, не прячет (HarfBuzz);
 //     управляющие C0 снимаются только в тексте, имя тега они не меняют; текст приводится к NFC; границы <main> ищутся
 //     по маске, где скрипты, стили, комментарии и все атрибуты тегов (в кавычках и без) забиты пробелами; «<main-…>» —
 //     не <main>;
@@ -43,9 +46,11 @@
 //     что и строки прочтений;
 //   - за номером своей главы: отрезок от предыдущей закрывающей кавычки (или начала строки) до открывающей кавычки
 //     названия — ровно «<свой номер>. <место> (<части> / <улики>): »: другого римского заголовка «<номер>.» и другого
-//     счёта «(<части> / <улики>):» в нём нет (раунды 1–3: nazvaniya-1, nazv2-1, proby-r2-6, obh3-10). Заголовок —
+//     счёта «(<части> / <улики>):» в нём нет (раунды 1–4: nazvaniya-1, nazv2-1, proby-r2-6, obh3-10, sod4-1). Заголовок —
 //     римское число из I, V, X, L, C с точкой, вокруг которого нет букв и цифр (перед ним может стоять любой знак:
-//     пробел, «·», «;», тире…), после приведения к NFKC (Ⅹ, Ｘ) и замены похожей кириллицы (Х, І, С, Ѵ).
+//     пробел, «·», «;», тире…). Место — белым списком: латиница, цифры, пробел и « , . ’ ' & - – — »; любой другой
+//     знак, в том числе буква, похожая на латинскую (греческая Χ, кириллическая Х, Ⅹ, Ｘ, «ꞏ»), — отказ (строже:
+//     список похожих знаков незакрываем). Счёт — «(6 / 3):» или «(6/3):».
 //
 //   node chuzhie-glavy.mjs <dist> [--proba]
 //   Коды: 0 — чисто; 1 — отказы; 2 — извлечение или разбор недостоверны (итог не выдаётся).
@@ -79,10 +84,16 @@
 //   - разметка разбирается регулярными выражениями, а не токенизатором HTML: пустой комментарий «<!-->», «--!>»,
 //     содержимое RCDATA и сырого текста (<textarea>, <title> в теле, <noscript>,
 //     <xmp>), сырой «<» перед не-буквой в тексте («<3»), ссылки без «;» («&#1»), текст вида «<section …>» внутри
-//     значения атрибута — разбираются иначе, чем в браузере (obh3-2, obh3-8, obh3-9). Содержание страницы маршрут
+//     значения атрибута, тегоподобный текст внутри комментария («<!-- <p class=x--> … -->»: маска атрибутов прячет
+//     первый «-->») — разбираются иначе, чем в браузере (obh3-2, obh3-8, obh3-9, proby-r4-11). Содержание страницы маршрут
 //     экранирует (в тексте «<», «>», «&»; в атрибутах «&» и «"»), путь к этим расхождениям — только через шаблон
 //     маршрута или ядра;
 //   - видимый текст CSS content: не судится;
+//   - буквы-двойники и знаки совместимости ВНУТРИ слов текста (кириллические «е», «а», «о» в латинском слове, греческая
+//     «ο», 𝐬𝐞𝐫𝐢𝐞𝐬, лигатуры «ﬁ», полноширинные буквы) не сводятся к латинице: страница приводится только к NFC, фраза
+//     корпуса с такой буквой на экране неотличима, а у судей — другое слово (sod4-5; предел семейства судей: сторож,
+//     копия сторожа, срез окончаний — строкой в доклад и бэклог); у номера главы такие знаки дают отказ (белый список);
+//   - счёт в другом виде, чем «(<части> / <улики>):» («(6 / 3) —») — отказ «не за номером» (строже);
 //   - указатель корпуса — сторожа брифов как есть: документ, где апостроф записан «´» (V2), текст декодирован не в той
 //     кодировке (U+FFFD, V7), тег стоит перед «’s» (V1) или невидимый знак стоит внутри слова (U+200C в документе
 //     tv.apple.com, obh3-13: страница склеивает слово, указатель режет), разбит иначе, чем та же фраза на странице, —
@@ -138,7 +149,11 @@ const hash = (s) => createHash('sha1').update(s).digest().readUInt32LE(0);
 /** Документ корпуса с этой 8-граммой или null: хеш в указателе и подтверждение по нормализованному тексту. */
 const nayti = (g) => (uk.h.has(hash(g)) ? uk.teksty.find((t) => t.norm.includes(` ${g} `)) : null);
 const imenaSlovami = B.IMENA.map((n) => B.slova(n)).sort((a, b) => b.length - a.length);
-const bezAdresov = (t) => t.replace(/https?:\/\/\S+/g, ' ');
+/** Адрес — знаками URL (RFC 3986), а не «до пробела»: слова, приклеенные к адресу знаком, который пробелом не считается
+ *  (U+2800, тире), остаются словами (раунд 4, sod4-2). Сторож режет «до пробела» — при расхождении сверка слов строки
+ *  со сторожем даёт код 2. */
+const bezAdresov = (t) => t.replace(/https?:\/\/[A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=%]+/g, ' ');
+const bezAdresovStorozha = (t) => t.replace(/https?:\/\/\S+/g, ' ');
 
 /** Пары «“ ”» строки: первая “ и первая ” после неё. */
 function paryKavychek(s) {
@@ -175,7 +190,7 @@ function slovaSMetkoy(s) {
       i += imya.length;
     } else sl.push(out[i++]);
   }
-  const storozh = B.bezImen(B.slova(bezAdresov(s))).join(' ');
+  const storozh = B.bezImen(B.slova(bezAdresovStorozha(s))).join(' ');
   if (storozh !== sl.map((x) => x.w).join(' ')) throw new Error(`слова строки разошлись со сторожем брифов: «${s.slice(0, 80)}»`);
   return { slova: sl, pary: pary.map(([a, b]) => s.slice(a + 1, b)) };
 }
@@ -365,15 +380,14 @@ function sud(h) {
       if (vhozhdeniya.length !== 1) otkazy.add(`название «${gl.t}» в кавычках ${vhozhdeniya.length} раз, ждали 1`);
       for (const { s, a } of vhozhdeniya) {
         if (sekciya && !stroki_ryada.includes(s)) otkazy.add(`название «${gl.t}» не в ряду «Chapters»`);
-        // Заголовок — римское число с точкой, вокруг которого нет букв и цифр; до поиска — NFKC (Ⅹ, Ｘ → X) и кириллица,
-        // похожая на латиницу (Х, І, С, Ѵ) (раунд 3 obh3-10, proby-r3-7).
-        const otrezok = normP(s.slice(s.lastIndexOf('”', a - 1) + 1, a))
-          .normalize('NFKC')
-          .replace(/Х/g, 'X').replace(/І/g, 'I').replace(/С/g, 'C').replace(/Ѵ/g, 'V')
-          .replace(/\s+/g, ' ');
+        // Заголовок — римское число с точкой, вокруг которого нет букв и цифр (перед ним — любой знак: «·», «;», тире…).
+        // Место — белым списком: латиница, цифры, пробел и « , . ’ ' & - – — »; любой другой знак (греческая Χ, «ꞏ»,
+        // кириллица, Ⅹ, Ｘ…) — отказ: список похожих знаков незакрываем (раунды 3–4: obh3-10, sod4-1). Счёт — «(6 / 3):»
+        // или «(6/3):» (sod4-6).
+        const otrezok = normP(s.slice(s.lastIndexOf('”', a - 1) + 1, a)).replace(/\s+/g, ' ');
         const zagolovki = [...otrezok.matchAll(/(?<![\p{L}\p{N}])([IVXLC]+)\.(?![\p{L}\p{N}])/gu)];
-        const schety = [...otrezok.matchAll(/\(\d+ \/ \d+\):/g)];
-        const forma = new RegExp(`^\\s*${gl.nomer}\\.\\s[^“”]*\\(\\d+ / \\d+\\):\\s*$`);
+        const schety = [...otrezok.matchAll(/\(\d+\s*\/\s*\d+\):/g)];
+        const forma = new RegExp(`^\\s*${gl.nomer}\\.\\s[A-Za-z0-9 ,.’'&\\-–—]*\\(\\d+\\s*/\\s*\\d+\\):\\s*$`);
         if (zagolovki.length !== 1 || zagolovki[0][1] !== gl.nomer || schety.length !== 1 || !forma.test(otrezok)) {
           otkazy.add(`название «${gl.t}» не за номером своей главы ${gl.nomer} («${gl.nomer}. <место> (<части> / <улики>): »): «${otrezok.trim().slice(0, 70)}»`);
         }
@@ -435,6 +449,8 @@ if (proba) {
   };
   const vDlinu = (h, t) => vAbzac(h, t, h.indexOf('id="length"'));
   const vAtr = (h, imya, t) => { const s = `${imya}="`; const j = h.indexOf(s); return j < 0 ? h : h.slice(0, j + s.length) + t + ' ' + h.slice(j + s.length); };
+  // В начало первого alt в <main>.
+  const vAlt = (h, t) => { const i = h.search(/<main\b/i); const j = h.indexOf(' alt="', i); return j < 0 ? h : h.slice(0, j + 6) + t + ' ' + h.slice(j + 6); };
   const IX = '“Here I Was Again, Halfway Down the World.”';
   const XIII = '“A Fat Bald Dude with a Bad Temper.”';
   const X = '“It’s Drive or Shoot, Sister.”';
@@ -548,6 +564,33 @@ if (proba) {
     { imya: '«·X.» между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid ·X. A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
     { imya: 'кириллическая «Х.» между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid Х. A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
     { imya: '«X.—» без пробела между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid X.—A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
+    // Раунд 4: номер белым списком, адрес, замена кода с конца, атрибуты, пробельные знаки, метка, <main-…>.
+    { imya: 'греческая «Χ.» между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid ' + String.fromCharCode(0x3a7) + '. A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
+    { imya: '«ꞏX.» (буква-точка) между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid ' + String.fromCharCode(0xa78f) + 'X. A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
+    { imya: '«Ⅹ.» (U+2169) между IX и названием', h: html.replace('police raid (6 / 3): ' + IX, 'police raid ' + String.fromCharCode(0x2169) + '. A bus station (6 / 3): ' + IX), zhdem: 'не за номером своей главы IX' },
+    { imya: 'кириллическая буква в месте IX — строже', h: html.replace('The favela again', 'The favela ag' + String.fromCharCode(0x430) + 'in'), zhdem: 'не за номером своей главы IX' },
+    { imya: 'счёт «(6/3):» — чисто', h: html.replace('police raid (6 / 3): ' + IX, 'police raid (6/3): ' + IX), zhdem: 'чисто' },
+    { imya: '«by the PMC.» в месте IX — чисто', h: html.replace('police raid (6 / 3): ' + IX, 'police raid by the PMC. (6 / 3): ' + IX), zhdem: 'чисто' },
+    { imya: 'фраза через U+2800 вплотную к адресу', h: vAbzac(html, 'https://example.com/x' + String.fromCharCode(0x2800) + k.slice(0, 12).join(String.fromCharCode(0x2800))), zhdem: 'ИСКЛЮЧЕНИЕ слова строки разошлись со сторожем' },
+    { imya: 'два комментария перед фразой (замена с конца)', h: vAbzac(html, '<!-- a --> x <!-- bb --> ' + k.slice(0, 8).join(' ')), zhdem: 'вне кавычек' },
+    { imya: 'дубль атрибута title= (судится первый)', h: vAbzac(html, '<span title="' + k12 + '" title="HowLongToBeat">x</span>'), zhdem: 'в alt, title или описании' },
+    { imya: '&ZeroWidthSpace; внутри слова в alt', h: vAlt(html, razrez('&ZeroWidthSpace;')), zhdem: 'в alt, title или описании' },
+    { imya: 'пара «< >» в alt вокруг фразы', h: vAlt(html, 'x < 30 fps: ' + k12 + ' (> 60 fps)'), zhdem: 'в alt, title или описании' },
+    { imya: '«<!-- … -->» в description вокруг фразы', h: vAtr(html, 'name="description" content', '<!-- ' + k12 + ' -->'), zhdem: 'в alt, title или описании' },
+    { imya: '«<!-- … -->» в alt вокруг фразы', h: vAlt(html, '<!-- ' + k12 + ' -->'), zhdem: 'в alt, title или описании' },
+    { imya: 'фраза документа в placeholder=', h: vAbzac(html, '<input placeholder="' + k12 + '">'), zhdem: 'в alt, title или описании' },
+    { imya: 'табуляция вплотную между словами', h: vAbzac(html, k.slice(0, 6).join(' ') + '\t' + k.slice(6, 12).join(' ')), zhdem: 'вне кавычек' },
+    { imya: '&#13; вплотную между словами', h: vAbzac(html, k.slice(0, 6).join(' ') + '&#13;' + k.slice(6, 12).join(' ')), zhdem: 'вне кавычек' },
+    { imya: 'сырой \\v внутри слова', h: vAbzac(html, razrez(String.fromCharCode(11))), zhdem: 'вне кавычек' },
+    { imya: 'сырой \\f внутри слова', h: vAbzac(html, razrez(String.fromCharCode(12))), zhdem: 'вне кавычек' },
+    { imya: 'U+FFA0 вместо пробелов', h: vAbzac(html, k.slice(0, 12).join(String.fromCharCode(0xffa0))), zhdem: 'вне кавычек' },
+    { imya: 'U+1BCA0 вместо пробелов', h: vAbzac(html, k.slice(0, 12).join(String.fromCodePoint(0x1bca0))), zhdem: 'вне кавычек' },
+    { imya: '<script-x> и парный </script> дальше', h: vAbzac(html, '<script-x>' + k12 + '</script-x><script></script>'), zhdem: 'вне кавычек' },
+    { imya: '«</script >» и парный скрипт дальше', h: vAbzac(html, '<script>x</script > ' + k12 + ' <script></script>'), zhdem: 'вне кавычек' },
+    { imya: '<style-x> и парный </style> дальше', h: vAbzac(html, '<style-x>' + k12 + '</style-x><style></style>'), zhdem: 'вне кавычек' },
+    { imya: '«</style >» и парный стиль дальше', h: vAbzac(html, '<style>x</style > ' + k12 + ' <style></style>'), zhdem: 'вне кавычек' },
+    { imya: 'метка «Chap<!-- -->ters» — чисто', h: html.replace(/(id="chapters"[\s\S]*?<p class="t-label[^"]*"[^>]*>)Chapters</, '$1Chap<!-- -->ters<'), zhdem: 'чисто' },
+    { imya: '<main-menu> с фразой до <main> — чисто', h: html.replace(/<body\b[^>]*>/, (m) => m + '<main-menu>' + k12 + '</main-menu>'), zhdem: 'чисто' },
     // Охраны: итог не выдаётся, код 2.
     { imya: 'второй <main>', h: html.replace('</main>', '</main><main>x</main>'), zhdem: 'ИСКЛЮЧЕНИЕ <main> — 2' },
     { imya: 'пустой <main>', h: html.replace(/(<main\b[^>]*>)[\s\S]*(<\/main>)/, '$1<p>Only a few words here.</p>$2'), zhdem: 'ИСКЛЮЧЕНИЕ в тексте <main> гайда меньше 300 слов' },

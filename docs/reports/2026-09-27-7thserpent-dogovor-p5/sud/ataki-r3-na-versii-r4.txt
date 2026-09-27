@@ -1,0 +1,310 @@
+как ждали  obh3-desc-kommentariy: код 1 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     итог: отказов 11
+как ждали  obh3-alt-kommentariy: код 1 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- A new feature to the series is the cover system, which »)
+     итог: отказов 11
+НЕ КАК ЖДАЛИ  obh3-pustoy-kommentariy: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  obh3-script-probel: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+НЕ КАК ЖДАЛИ  obh3-menshe-tsifra: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  obh3-c0-v-imeni-tega: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  obh3-vt: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  obh3-hangul: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  obh3-zwsp-imenovannaya: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+НЕ КАК ЖДАЛИ  obh3-meta-posle-head: код 2 (ждали отказ)
+как ждали  obh3-main-bez-kavychek: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 6; названий списка 2
+     ОТКАЗ вне кавычек, строка 38: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 38: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  obh3-metka-v-atribute: код 1 (ждали отказ, «видимая метка «Length»»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ у ряда id="chapters" видимая метка «Length», ждали «Chapters»
+     итог: отказов 1
+как ждали  obh3-x-tire: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid; X.—A bus station and a bus»
+     итог: отказов 1
+как ждали  obh3-x-kirillica: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid, Х. A bus station and a bus»
+     итог: отказов 1
+как ждали  obh3-x-normp: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid; X.: a bus station and a bu»
+     итог: отказов 1
+как ждали  obh3-atr-vnutri-atr: код 1 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 7; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     итог: отказов 11
+НЕ КАК ЖДАЛИ  obh3-srcdoc: код 0 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  obh3-zwnj-korpus: код 0 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  r3o-kommentariy-v-stroke-ix: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  r3o-sekciya-poryadok-klassov: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  r3o-metka-klass-ne-pervyy: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  r3o-main-menu: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  r3o-chapter-ix: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ через границу кавычек, строка 9: «ain't no reprievement gonna be found otherwise chapter» — https://steamcommunity.com/sharedfiles/filedetails/?id=2076733393
+     ОТКАЗ через границу кавычек, строка 9: «no reprievement gonna be found otherwise chapter ix» — https://steamcommunity.com/sharedfiles/filedetails/?id=2076733393
+     ОТКАЗ через границу кавычек, строка 10: «the great american savior of the poor chapter» — https://steamcommunity.com/sharedfiles/filedetails/?id=2076733393
+     ОТКАЗ через границу кавычек, строка 10: «great american savior of the poor chapter xiii» — https://steamcommunity.com/sharedfiles/filedetails/?id=2076733393
+     ОТКАЗ через границу кавычек, строка 10: «american savior of the poor chapter xiii a» — https://steamcommunity.com/sharedfiles/filedetails/?id=2076733393
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «Chapter IX. The favela again, during a police raid (6 / 3):»
+     ОТКАЗ название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<части> / <улики>): »): «Chapter XIII. A prison and a police station (9 / 7):»
+     итог: отказов 7
+НЕ КАК ЖДАЛИ  r3o-dl-glava-ix: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 41, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «»
+     итог: отказов 1
+как ждали  r3o-name-v-og-description: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  r3o-favicon-svg-title: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  r3o-cp1252-kavychki: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+     итог: отказов 2
+как ждали  r3o-svg-title-v-shapke: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+НЕ КАК ЖДАЛИ  r3o-dva-title: код 2 (ждали отказ, «в <head> гайда <title>: 2»)
+НЕ КАК ЖДАЛИ  r3o-pustoy-og-title: код 2 (ждали отказ, «в <head> гайда og:title: 1»)
+как ждали  proby-r3-ryad-kommentariy-v-slove: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  proby-r3-metka-kommentariy-v-slove: код 0 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+как ждали  proby-r3-perenos-vplotnuyu: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  proby-r3-10-vplotnuyu: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  proby-r3-alt-lt-gt: код 1 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Max Payne 3 at < 30 fps: a new feature to the series is the »)
+     итог: отказов 11
+как ждали  proby-r3-posledniy-zagolovok-svoy: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid, then X. A bus station, and»
+     итог: отказов 1
+НЕ КАК ЖДАЛИ  proby-r3-dva-description: код 2 (ждали отказ, «meta description: 2»)
+как ждали  proby-r3-del: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+как ждали  proby-r3-zagolovok-posle-tochki: код 1 (ждали отказ, «не за номером своей главы IX»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid ·X. A bus station and a bus»
+     итог: отказов 1
+как ждали  proby-r3-hangul-filler: код 1 (ждали отказ, «вне кавычек»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+     ОТКАЗ вне кавычек, строка 14: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3
+     ОТКАЗ вне кавычек, строка 14: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3
+     итог: отказов 11
+НЕ КАК ЖДАЛИ  proby-r3-hidden-value: код 1 (ждали чисто)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 6; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     итог: отказов 11
+как ждали  proby-r3-placeholder: код 1 (ждали отказ, «в alt, title или описании»)
+     корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 6; названий списка 2
+     ОТКАЗ в alt, title или описании: «a new feature to the series is the» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «new feature to the series is the cover» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «feature to the series is the cover system» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «to the series is the cover system which» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the series is the cover system which allows» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «series is the cover system which allows players» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «is the cover system which allows players to» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «the cover system which allows players to gain» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «cover system which allows players to gain a» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «system which allows players to gain a tactical» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     ОТКАЗ в alt, title или описании: «which allows players to gain a tactical advantage» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «A new feature to the series is the cover system, which allow»)
+     итог: отказов 11

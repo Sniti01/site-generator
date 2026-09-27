@@ -1,0 +1,414 @@
+[
+ {
+  "id": "sod4-greki-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, Χ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Вместо заголовка главы X стоит греческая Χ (U+03A7), на экране неотличимая от «X.»: название IX читается под главой X. :371 NFKC её не меняет, :372 знает только кириллицу, :374 ищет [IVXLC], поэтому заголовок один (IX), счёт один, forma :376 проходит. Сегодня «чисто», код 0. Кириллическая «Х.» в той же позиции даёт отказ (obh3-x-kirillica, «как ждали»). Путь — текст абзаца в max-payne-3-guide.md."
+ },
+ {
+  "id": "sod4-bukva-tochka",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid ꞏX. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Это порча :548 («·X.»), только вместо U+00B7 стоит ꞏ (U+A78F LATIN LETTER SINOLOGICAL DOT) — на экране та же точка по центру. U+A78F относится к Lo, поэтому lookbehind (?<![\\p{L}\\p{N}]) (:374) не даёт «X.» считаться заголовком. Сегодня «чисто». С ǀ (U+01C0), похожей на «|», исход тот же."
+ },
+ {
+  "id": "sod4-adres-skleyka",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Source: https://en.wikipedia.org/wiki/Max_Payne_3⠀A⠀new⠀feature⠀to⠀the⠀series⠀is⠀the⠀cover⠀system,⠀which⠀allows⠀players⠀to⠀gain⠀a⠀tactical⠀advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Читатель видит адрес, а за ним фразу Википедии: слова разделены пустой клеткой Брайля U+2800, которая рисуется пустым промежутком. :141 `https?://\\S+` съедает всё до пробела перед «As», потому что U+2800 не \\s. Сторож режет так же (brief-strony.mjs:412), и сверка :178 молчит. Сегодня «чисто», код 0. Без «Source: https://…» те же слова дают отказ. С «—» вместо U+2800 исход тот же. Код 2 тоже годится (более узкий шаблон адреса разойдётся со сторожем), годится что угодно, кроме «чисто»."
+ },
+ {
+  "id": "sod4-nfkc-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, Ⅹ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Закрепляет :371. Ⅹ (U+2169) через NFKC становится «X.», заголовков два, и сегодня отказ, как ждали. Мутант без .normalize('NFKC') даёт «чисто» и проходит --proba 102/102: порчи :547–550 знаков, которые меняет NFKC, не содержат."
+ },
+ {
+  "id": "sod4-kirillica-xiv",
+  "zameny": [
+   [
+    "police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”",
+    "police station, ХІѴ. The airport (6 / 1): “A Fat Bald Dude with a Bad Temper.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы XIII",
+  "zachem": "Закрепляет замены І и Ѵ на :372. Кириллические «ХІѴ.» сводятся к «XIV.», заголовков два, и сегодня отказ, как ждали. Мутант без .replace(/І/g,'I') или без .replace(/Ѵ/g,'V') даёт «XІѴ.» или «XIѴ.», которые :374 не узнаёт, то есть «чисто». Порча :549 проверяет только Х."
+ },
+ {
+  "id": "sod4-hangul-ffa0",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Aﾠnewﾠfeatureﾠtoﾠtheﾠseriesﾠisﾠtheﾠcoverﾠsystem,ﾠwhichﾠallowsﾠplayersﾠtoﾠgainﾠaﾠtacticalﾠadvantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет U+FFA0 в классе :204. Сегодня это пробел, и фраза даёт отказ, как ждали. Мутант, вынувший ﾠ из класса, снимает знак как Default_Ignorable (:205), слова склеиваются — «чисто». Порча :529 проверяет только U+3164."
+ },
+ {
+  "id": "sod4-script-x-zakryt",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><script-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</script-x><script></script> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Это порча :530, но после фразы стоит настоящий <script></script>. Сегодня отказ: `<script(?=[\\s>\\/])` (:188) «<script-x>» скриптом не считает. Мутант без lookahead тянет «скрипт» от «<script-x>» до </script> и стирает фразу — «чисто». Порча :530 его не ловит: на странице после неё нет </script>. Путь только через шаблон."
+ },
+ {
+  "id": "sod4-style-x-zakryt",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><style-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</style-x><style></style> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "У ветви `<style(?=[\\s>\\/])` (:188) порчи нет. <style-x> — неизвестный строчный элемент, и фраза видна. Сегодня отказ. Мутант без lookahead стирает всё до </style> — «чисто». Путь только через шаблон."
+ },
+ {
+  "id": "sod4-style-probel",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><style>b{}</style >A new feature to the series is the cover system, which allows players to gain a tactical advantage.<style></style> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "У ветви `<\\/style\\s*>` (:188) порчи нет. Для браузера «</style >» закрывает стиль, и фраза видна. Сегодня отказ. Мутант `<\\/style>` тянет первый стиль до второго </style> и стирает фразу — «чисто». Для script это ловит атака obh3-script-probel, а --proba (:531, без второго скрипта) не ловит. Путь только через шаблон."
+ },
+ {
+  "id": "sod4-gomoglify-slova",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the sеries is the cover system, which allows plаyers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "В «series» и «players» стоят кириллические е (U+0435) и а (U+0430). На экране это фраза Википедии, но каждое 8-окно задевает изменённое слово, и совпадений нет. Сегодня «чисто». Приемлемый исход — сводить двойники и NFKC на стороне страницы или назвать это пределом семейства в шапке. С 𝐬𝐞𝐫𝐢𝐞𝐬 (математические буквы) исход тот же."
+ },
+ {
+  "id": "sod4-schet-bez-probelov",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here",
+    "police raid (6/3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Законная правка типографики: счёт без пробелов вокруг «/». Название IX по-прежнему стоит один раз, в ряду Chapters, сразу за «IX. … (6/3):». Сегодня :375 даёт schety = 0, и срабатывает отказ «не за номером своей главы IX» (:378), код 1. Приемлемый исход — ослабить шаблон (`\\(\\d+\\s*\\/\\s*\\d+\\)\\s*:`) или назвать предел в шапке :61–64."
+ },
+ {
+  "id": "r4reg-dva-kommentariya",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--><!--yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy-->A new feature to the series is the cover system, which allows players to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Два комментария подряд, оба около 100 знаков, и сразу за ними видимая фраза Википедии. Нынешний код снимает оба места с конца (:234) и даёт отказ. Мутант zamenitKod без reverse после замены первого места вырезает [x2, y2) уже сдвинутой строки, то есть примерно первые 100 знаков фразы, и выдаёт «чисто». Точная длина не важна, если оба комментария длиннее фразы (99 знаков) и почти равны. Ни в одной порче нет двух мест кода в <main>, так что это кандидат в PORCHI."
+ },
+ {
+  "id": "r4reg-dubl-atributa",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><span title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\" title=\"HowLongToBeat\">x</span> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Браузер оставляет первый из одноимённых атрибутов (ошибка duplicate-attribute), и подсказка показывает фразу. Нынешний код тоже берёт первое значение (:218) и даёт отказ. Мутант «последний выигрывает» судит «HowLongToBeat» и выдаёт «чисто», при этом проходит 102/102."
+ },
+ {
+  "id": "r4reg-nevidimaya-v-atribute",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"A new feature to the se&ZeroWidthSpace;ries is the cover system, which allows play&ZeroWidthSpace;ers to gain a tactical advantage\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "&ZeroWidthSpace; невидим, и alt читается целыми словами «series» и «players». Нынешний raskrytZnachenie снимает сущность (:254) и даёт отказ. Мутант без этой замены получает пробел от raskrytVse (brief-strony.mjs:377), «se ries» и «play ers» рвут все 11 окон фразы, итог «чисто». Порча :528 проверяет только текст."
+ },
+ {
+  "id": "r4reg-nfkc-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.”",
+    "police raid Ｘ. A bus station (6 / 3): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Полноширинная «Ｘ.» (U+FF38) на экране выглядит как заголовок главы X прямо перед названием IX. Нынешний код после NFKC (:371) видит два заголовка и даёт отказ. Мутант без NFKC видит один заголовок, IX, и выдаёт «чисто». Порчи :548–550 этого различия не видят."
+ },
+ {
+  "id": "r4reg-tab-vplotnuyu",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series\tis the cover system, which allows players to\tgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Сырая табуляция вплотную между словами, в двух местах. Браузер рисует её пробелом. Нынешний код заменяет её пробелом (:196) и даёт отказ. Мутант `[\\t\\n\\r]` → `[\\n]` снимает таб (:197), получаются «seriesis» и «togain», ни одного окна не остаётся, итог «чисто». Мутант проходит 102/102, потому что порчи :524 и :525 проверяют только \\n и &#10;."
+ },
+ {
+  "id": "r4reg-13-vplotnuyu",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series&#13;is the cover system, which allows players to&#13;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "То же для числовой ссылки на CR: по CSS Text 3 CR рисуется как пробел. Нынешний код даёт пробел (:194) и отказ. Мутант `0*(?:9|10|13)` → `0*10` снимает &#13; второй заменой (:195), слова склеиваются, итог «чисто»."
+ },
+ {
+  "id": "r4reg-alt-lt-gt",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage (> 60 fps on PC)\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Перенос proby-r3-alt-lt-gt: атака и сегодня проходит как ждали, но в PORCHI её нет. Мутант raskrytZnachenie без экранирования «<» и «>» (:254) отдаёт значение в tekstDokumenta, и /<[^>]+>/ (brief-strony.mjs:387) стирает всё от «< 30» до «(>». Итог мутанта «чисто», и он проходит 102/102. Путь через содержание: alt берётся из записи кадра, а Astro не экранирует «<» и «>» в атрибутах."
+ },
+ {
+  "id": "r4reg-placeholder",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><input type=\"text\" placeholder=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Перенос proby-r3-placeholder: сегодня отказ (:282), но порчи на placeholder в PORCHI нет. Мутант без 'placeholder' в списке выдаёт «чисто» и проходит 102/102."
+ },
+ {
+  "id": "r4reg-pmc-chisto",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a police raid by the PMC. (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Аббревиатура с «C.» на конце стоит в месте своей главы. Буква перед «C» делает её не заголовком: :374, `(?<![\\p{L}\\p{N}])`. Нынешний код: один заголовок IX, один счёт, forma проходит, итог «чисто». Мутант без просмотра назад считает «C.» заголовком и даёт ложный отказ «не за номером своей главы IX». Порчи «чисто» :506–508 такого места не содержат, поэтому мутант проходит 102/102."
+ },
+ {
+  "id": "r4reg-grecheskaya-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.”",
+    "police raid Χ. A bus station (6 / 3): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Греческая Χ (U+03A7) на экране неотличима от X. Название IX стоит под «X. A bus station (6 / 3):», это та же картина, что у порчи :549 с кириллической «Х.». NFKC (:371) греческую букву не меняет, :372 заменяет только кириллицу, и :374 заголовка не видит. Сегодня итог «чисто», код 0. Надо либо расширить замену (греческие Χ, Ι, кириллическая Ӏ…), либо назвать предел в шапке :47–48."
+ },
+ {
+  "id": "proby-r4-grecheskaya-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, Χ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "В замене греческая Χ (U+03A7) вместо латинской X. Читатель видит название IX под «X. A bus station and a bus ride (6 / 2):». Сегодня NFKC Χ не меняет, в перечне :372 только кириллица, а [IVXLC] — ASCII. Заголовок один (IX), счёт один, форма проходит — «чисто», код 0 (расчёт по коду). Дефект: должен быть отказ."
+ },
+ {
+  "id": "proby-r4-kommentariy-v-znachenii-zakryt",
+  "zameny": [
+   [
+    "name=\"description\" content=\"A Max Payne 3 guide:",
+    "name=\"description\" content=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage. --> A Max Payne 3 guide:"
+   ],
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage --> Max Payne 3 — close-up of Max aiming a pistol against a grey sky\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет правку obh3-1 на уровне sud (:292): комментарий с парой «-->» внутри описания и alt. Сегодня отказ, как у obh3-desc-kommentariy и obh3-alt-kommentariy. У мутанта «:292 без маски» — «чисто». Годится как порча вместо :534, где нет «-->»."
+ },
+ {
+  "id": "proby-r4-script-x-s-parnym-zakrytiem",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><script-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</script-x><script></script> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет просмотр вперёд в KOD (:188). Сегодня <script-x> — не скрипт, пустой <script></script> снимается, фраза видна — отказ. Мутант без `(?=[\\s>\\/])` тянет «скрипт» от <script-x> до </script> пустого скрипта и стирает фразу — «чисто». Порча :530 без второго скрипта этого не видит."
+ },
+ {
+  "id": "proby-r4-script-probel-s-parnym-zakrytiem",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><script></script >A new feature to the series is the cover system, which allows players to gain a tactical advantage.<script></script> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет `\\s*` в `</script\\s*>` (:188). Сегодня первый скрипт закрывается на `</script >`, фраза видна — отказ. Мутант с `<\\/script>` тянет первый скрипт до `</script>` второго — «чисто». Это obh3-script-probel; порча :531 без второго скрипта проходит и на мутанте."
+ },
+ {
+  "id": "proby-r4-nfkc-rimskaya-x",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, Ⅹ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Закрепляет NFKC (:371): в замене «Ⅹ.» (U+2169). Сегодня NFKC даёт «X.», заголовков два — отказ. У мутанта без NFKC — «чисто»."
+ },
+ {
+  "id": "proby-r4-kirillica-i",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, XІ. A yacht on the Panama Canal (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Закрепляет замену кириллической І (:372): в замене «XІ.», где І — U+0406. Сегодня получается «XI.», второй заголовок — отказ. У мутанта без замены за X стоит буква, заголовок не узнан — «чисто». Так же нужны порчи для Ѵ (U+0474) и С (U+0421)."
+ },
+ {
+  "id": "proby-r4-placeholder",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><input type=\"text\" placeholder=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет placeholder= в списке :282 (proby-r3-9). Сегодня отказ, у мутанта без 'placeholder' — «чисто»."
+ },
+ {
+  "id": "proby-r4-alt-para-lt-gt",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage (> 60 fps on PC)\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет экранирование в :254 (proby-r3-3): пара «<…>» в одном значении. Сегодня отказ. У мутанта без экранирования /<[^>]+>/ сторожа стирает «< 30 fps: … (>», и выходит «чисто»."
+ },
+ {
+  "id": "proby-r4-vt-syroy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the se\u000bries is the cover sy\u000bstem, which allows players to ga\u000bin a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Закрепляет :196 для сырого U+000B: в замене три сырых VT внутри слов. Сегодня :197 снимает знак, слова целые — отказ. Мутант :196 `[\\t\\n\\v\\f\\r]` рвёт «se ries» — «чисто». Путь через содержание: строка YAML в двойных кавычках с \\v."
+ },
+ {
+  "id": "proby-r4-metka-kommentariy-v-slove",
+  "zameny": [
+   [
+    "data-astro-cid-n67f4zmd>Chapters</p>",
+    "data-astro-cid-n67f4zmd>Chap<!-- -->ters</p>"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Закрепляет метку из сырой страницы (:355). На экране CHAPTERS, сегодня «чисто». У мутанта «метка из mainBezKoda» метка «Chap ters» — ложный отказ."
+ },
+ {
+  "id": "proby-r4-main-menu-do-main",
+  "zameny": [
+   [
+    "<button class=\"hdr__burger\"",
+    "<main-menu><span class=\"visually-hidden\">A new feature to the series is the cover system, which allows players to gain a tactical advantage.</span></main-menu><button class=\"hdr__burger\""
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Закрепляет просмотр вперёд в :296. Текст шапки по названному пределу (:91) не судится, поэтому ждём «чисто», и сегодня так и есть. Мутант :296 `/<main\\b/i` начинает <main> с <main-menu>, судит фразу в шапке и даёт отказ «вне кавычек». Порча :543 без чужого текста в шапке этого не видит."
+ },
+ {
+  "id": "proby-r4-dubl-title",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><span title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\" title=\"HowLongToBeat\">As of</span> September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Закрепляет «повтор имени — первый» (:218). Браузер оставляет первый title, подсказка — фраза. Сегодня отказ. Мутант «последний» судит «HowLongToBeat» — «чисто»."
+ },
+ {
+  "id": "proby-r4-kommentariy-psevdoteg",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><!-- <p class=x--> A new feature to the series is the cover system, which allows players to gain a tactical advantage. <!-- --> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Регрессия правки раунда 3 внутри названного класса, путь только через шаблон. Браузер закрывает комментарий на первом «-->», фраза видна — нужен отказ. Сегодня маска забивает «class=x--», и KOD тянет комментарий до второго «-->» — «чисто». «Не как ждали» здесь ожидаемо: это предел класса :79–84, пока шапка его не уточнит."
+ }
+]

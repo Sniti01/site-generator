@@ -1,0 +1,764 @@
+{
+  "summary": "Судью судят, раунд 4: chuzhie-glavy.mjs (83d8d3a)",
+  "agentCount": 3,
+  "logs": [],
+  "result": [
+    {
+      "linza": "soderzhanie (раунд 4): путь через содержание. Проверены файл содержания гайда (lead, rows[].year/title/meta/body, cta, byline, related.title, artCaption, href кнопок), pages-s2.json (title, description, h1) и записи кадров game-art.json (alt = «<игра> — <opis>», media.ts:54). Экранирование маршрута: текст печатается через html-escaper, экранируются «& < > ' \"» (node_modules/astro/dist/runtime/server/escape.js:1–3); в атрибутах только «&» и «\"» (util.js:14). Схема (content.config.ts:52, 163) алфавит не ограничивает, поэтому любой знак Юникода, в том числе через экранирование YAML \"\\uXXXX\", попадает в HTML сырым.",
+      "nahodki": [
+        {
+          "id": "sod4-1",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Проверка «за номером своей главы» узнаёт похожие знаки только из закрытого списка. Правка раунда 3 (obh3-10, proby-r3-7) сводит к латинице только NFKC и четыре кириллические буквы Х, І, С, Ѵ. Два варианта остались. (1) Греческая Χ (U+03A7) и Ι (U+0399), кириллическая Ӏ (U+04C0), лисуйские ꓫ ꓲ ꓦ, коптская Ⲭ на экране выглядят как X и I, а заголовком не считаются. (2) Знак перед числом, похожий на «·» или «|», но относящийся к буквам: ꞏ (U+A78F, Lo) или ǀ (U+01C0, Lo). Такой знак закрывает lookbehind (?<![\\p{L}\\p{N}]), и «ꞏX.» заголовком не считается, хотя порча :548 требует отказа для «·X.». В итоге название IX, поставленное под заголовок главы X, проходит чисто.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:371 — NFKC; у U+03A7, U+A78F и U+01C0 нет разложения. :372 заменяет только Х, І, С, Ѵ. :374 `(?<![\\p{L}\\p{N}])([IVXLC]+)\\.(?![\\p{L}\\p{N}])`: Χ не входит в [IVXLC], а ꞏ и ǀ — это \\p{L}. Поэтому заголовок в отрезке один (IX), счёт один, forma :376 проходит, и отказа :378 нет. Маршрут: [...slug].astro:554–556 печатает абзацы тела `<p>{abzac}</p>`, экранирует только & < > ' \", так что греческие и прочие буквы проходят сырыми. Шапка :45–48 обещает, что «другого римского заголовка «<номер>.» … в нём нет». Шрифт текста Public Sans (global.css:61), насколько известно, только латиница, поэтому Χ и кириллическую Х рисует один и тот же запасной шрифт. Довод obh3-10 («на экране неотличима») для них одинаков.",
+          "ataka": "sod4-greki-x; sod4-bukva-tochka"
+        },
+        {
+          "id": "sod4-2",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Шаблон адреса `https?://\\S+` съедает видимый текст, приклеенный к адресу знаками, которые не считаются пробелом. Пример — пустая клетка Брайля U+2800: браузер рисует её пустым промежутком. Такой же пример — тире «—» между словами. Сторож режет строку тем же шаблоном, поэтому сверка со сторожем молчит, и выходит код 0, а не код 2. Если убрать адрес, те же слова через U+2800 ловятся, потому что slova режет по не-букве. Шапка :69–70 называет только случай «адрес вплотную к кавычке и слову», и исход там — код 2. Без кавычки исход — «чисто». То же происходит в строках description, title и alt (:331).",
+          "dokazatelstvo": "chuzhie-glavy.mjs:141 `bezAdresov = (t) => t.replace(/https?:\\/\\/\\S+/g, ' ')`. \\S в JS включает U+2800 (So) и «—» (Pd). :168 режет по кускам, :178 — всю строку, оба одним шаблоном; brief-strony.mjs:412 использует тот же шаблон, поэтому throw :179 не срабатывает. chistit :202–209 U+2800 не трогает: это не Default_Ignorable, не Cc и не \\s. slova (brief-strony.mjs:330) без адреса режет «A⠀new⠀feature…» на слова. Маршрут печатает U+2800 и «—» сырыми (escape.js:1–3).",
+          "ataka": "sod4-adres-skleyka"
+        },
+        {
+          "id": "sod4-3",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Три ветви правки раунда 3, до которых содержание доходит, не проверяет ни одна порча. (1) NFKC у отрезка номера (:371): Ⅹ U+2169, Ｘ, 𝐗. (2) Замены кириллических І, С, Ѵ (:372); порча есть только для Х. (3) Заполнители хангыля U+115F, U+1160 и U+FFA0 в классе «пробел» (:204); порча есть только для U+3164. Каждая мутация — убрать .normalize('NFKC'), убрать замену І или Ѵ, вынуть ᅟ ᅠ ﾠ из класса — проходит --proba 102/102, и получается ложное «чисто». Проза: шапка :23 называет пробелом четыре заполнителя, а класс :204 меняет на пробел ещё и U+1BCA0–U+1BCA3. Их в шапке нет.",
+          "dokazatelstvo": "Порчи про заголовок: :547 (ASCII), :548 «·X.», :549 кириллическая «Х.» (U+0425, проверено по коду знака), :550 «X.—». В их отрезках нет знаков, которые меняет NFKC, и нет І, С, Ѵ. Порча хангыля :529 — String.fromCharCode(0x3164). Других порч с U+115F, U+1160 или U+FFA0 нет: фразы корпуса izKorpusa и sI (:408–427) — латиница и \\p{L}. Без :371 «Ⅹ.» не становится «X.»; без замены І в :372 «ХІѴ.» даёт «XІѴ.», которое :374 не узнаёт; без ﾠ в :204 U+FFA0 снимает Default_Ignorable (:205), и слова склеиваются.",
+          "ataka": "sod4-nfkc-x; sod4-kirillica-xiv; sod4-hangul-ffa0"
+        },
+        {
+          "id": "sod4-4",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Порчи :530 («<script-x>фраза</script-x>») и :531 («<script>x</script > фраза») не отличают правку раунда 3 от прежнего KOD. На странице после вставки нет ни одного </script>: скрипт шапки стоит до <main>, в <main> и в подвале скриптов нет. Поэтому прежний `<script[\\s\\S]*?<\\/script>` не находит конца и тоже оставляет фразу видимой. Атака раунда 3 obh3-script-probel ловит это потому, что ставит второй <script></script> после фразы, а в --proba его нет. У <style(?=…) и <\\/style\\s*> порчи нет совсем. Мутанты «без (?=[\\s>\\/])» и «без \\s* перед >» у script и у style проходят 102/102. У мутанта фраза между «<script-x>…» или «</style >» и следующим закрывающим тегом стирается.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:188 KOD; порчи :530 и :531 вставляются через vAbzac (:428–435) без второго закрывающего тега. stroki режет фрагмент main (:299–302), а за точкой вставки до </main> нет </script> и </style> (собранная страница: скрипт шапки стоит перед крошками, style — в <head>). Для style нет ни одной строки PORCHI.",
+          "ataka": "sod4-script-x-zakryt; sod4-style-x-zakryt; sod4-style-probel"
+        },
+        {
+          "id": "sod4-5",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Буквы-двойники и знаки совместимости внутри слов не сводятся к латинице. Примеры: кириллические е а о р с, греческая ο, математические 𝐬𝐞𝐫𝐢𝐞𝐬, лигатуры ﬁ и ﬂ, полноширинные буквы. Читатель видит фразу корпуса, а slova получает другие слова, и 8-граммы не совпадают. Страница приводится только к NFC. Похожие знаки инструмент сводит лишь у номера главы (:371–372). Шапка обещает «текст как его видит читатель» (:13), а пределы :86–90 и :92 говорят об указателе и окончаниях, не о двойниках на странице. Это предел всего семейства (сторож, p5, срез), но в шапке он не назван. Строже было бы сводить на стороне страницы NFKC и таблицей похожих знаков до обоих вызовов slova на :168 и :178: сверка со сторожем при этом не ломается.",
+          "dokazatelstvo": "chistit :207 `.normalize('NFC')`. slova (brief-strony.mjs:330) `[\\p{L}\\p{N}']+`, поэтому «sеries» с U+0435 — одно слово, не равное «series». В атаке ломаются 6-е и 13-е слово 18-словной фразы Википедии, и каждое 8-окно задевает одно из них. Маршрут печатает кириллицу сырой.",
+          "ataka": "sod4-gomoglify-slova"
+        },
+        {
+          "id": "sod4-6",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Обычная типографская правка счёта «(6 / 3):» → «(6/3):» или «(6 / 3) —» даёт отказ «не за номером своей главы IX», хотя название по-прежнему стоит прямо за своим номером, местом и счётом. normP снимает пробел перед «:» и после «(», но не пробелы вокруг «/». В пределах :61–64 названы только «счёт словами», «Chapter IX.» и раскладка dl/dt/dd.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:375 `/\\(\\d+ \\/ \\d+\\):/g` и :376 forma `\\(\\d+ / \\d+\\):\\s*$` требуют пробелов вокруг «/» и «:» сразу за «)». normP :120 их не добавляет. При «(6/3):» schety = 0, и срабатывает отказ :378.",
+          "ataka": "sod4-schet-bez-probelov"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "sod4-greki-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid, Χ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Вместо заголовка главы X стоит греческая Χ (U+03A7), на экране неотличимая от «X.»: название IX читается под главой X. :371 NFKC её не меняет, :372 знает только кириллицу, :374 ищет [IVXLC], поэтому заголовок один (IX), счёт один, forma :376 проходит. Сегодня «чисто», код 0. Кириллическая «Х.» в той же позиции даёт отказ (obh3-x-kirillica, «как ждали»). Путь — текст абзаца в max-payne-3-guide.md."
+        },
+        {
+          "id": "sod4-bukva-tochka",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid ꞏX. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Это порча :548 («·X.»), только вместо U+00B7 стоит ꞏ (U+A78F LATIN LETTER SINOLOGICAL DOT) — на экране та же точка по центру. U+A78F относится к Lo, поэтому lookbehind (?<![\\p{L}\\p{N}]) (:374) не даёт «X.» считаться заголовком. Сегодня «чисто». С ǀ (U+01C0), похожей на «|», исход тот же."
+        },
+        {
+          "id": "sod4-adres-skleyka",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>Source: https://en.wikipedia.org/wiki/Max_Payne_3⠀A⠀new⠀feature⠀to⠀the⠀series⠀is⠀the⠀cover⠀system,⠀which⠀allows⠀players⠀to⠀gain⠀a⠀tactical⠀advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Читатель видит адрес, а за ним фразу Википедии: слова разделены пустой клеткой Брайля U+2800, которая рисуется пустым промежутком. :141 `https?://\\S+` съедает всё до пробела перед «As», потому что U+2800 не \\s. Сторож режет так же (brief-strony.mjs:412), и сверка :178 молчит. Сегодня «чисто», код 0. Без «Source: https://…» те же слова дают отказ. С «—» вместо U+2800 исход тот же. Код 2 тоже годится (более узкий шаблон адреса разойдётся со сторожем), годится что угодно, кроме «чисто»."
+        },
+        {
+          "id": "sod4-nfkc-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid, Ⅹ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Закрепляет :371. Ⅹ (U+2169) через NFKC становится «X.», заголовков два, и сегодня отказ, как ждали. Мутант без .normalize('NFKC') даёт «чисто» и проходит --proba 102/102: порчи :547–550 знаков, которые меняет NFKC, не содержат."
+        },
+        {
+          "id": "sod4-kirillica-xiv",
+          "zameny": [
+            [
+              "police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”",
+              "police station, ХІѴ. The airport (6 / 1): “A Fat Bald Dude with a Bad Temper.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы XIII",
+          "zachem": "Закрепляет замены І и Ѵ на :372. Кириллические «ХІѴ.» сводятся к «XIV.», заголовков два, и сегодня отказ, как ждали. Мутант без .replace(/І/g,'I') или без .replace(/Ѵ/g,'V') даёт «XІѴ.» или «XIѴ.», которые :374 не узнаёт, то есть «чисто». Порча :549 проверяет только Х."
+        },
+        {
+          "id": "sod4-hangul-ffa0",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>Aﾠnewﾠfeatureﾠtoﾠtheﾠseriesﾠisﾠtheﾠcoverﾠsystem,ﾠwhichﾠallowsﾠplayersﾠtoﾠgainﾠaﾠtacticalﾠadvantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Закрепляет U+FFA0 в классе :204. Сегодня это пробел, и фраза даёт отказ, как ждали. Мутант, вынувший ﾠ из класса, снимает знак как Default_Ignorable (:205), слова склеиваются — «чисто». Порча :529 проверяет только U+3164."
+        },
+        {
+          "id": "sod4-script-x-zakryt",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><script-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</script-x><script></script> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Это порча :530, но после фразы стоит настоящий <script></script>. Сегодня отказ: `<script(?=[\\s>\\/])` (:188) «<script-x>» скриптом не считает. Мутант без lookahead тянет «скрипт» от «<script-x>» до </script> и стирает фразу — «чисто». Порча :530 его не ловит: на странице после неё нет </script>. Путь только через шаблон."
+        },
+        {
+          "id": "sod4-style-x-zakryt",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><style-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</style-x><style></style> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "У ветви `<style(?=[\\s>\\/])` (:188) порчи нет. <style-x> — неизвестный строчный элемент, и фраза видна. Сегодня отказ. Мутант без lookahead стирает всё до </style> — «чисто». Путь только через шаблон."
+        },
+        {
+          "id": "sod4-style-probel",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><style>b{}</style >A new feature to the series is the cover system, which allows players to gain a tactical advantage.<style></style> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "У ветви `<\\/style\\s*>` (:188) порчи нет. Для браузера «</style >» закрывает стиль, и фраза видна. Сегодня отказ. Мутант `<\\/style>` тянет первый стиль до второго </style> и стирает фразу — «чисто». Для script это ловит атака obh3-script-probel, а --proba (:531, без второго скрипта) не ловит. Путь только через шаблон."
+        },
+        {
+          "id": "sod4-gomoglify-slova",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the sеries is the cover system, which allows plаyers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "В «series» и «players» стоят кириллические е (U+0435) и а (U+0430). На экране это фраза Википедии, но каждое 8-окно задевает изменённое слово, и совпадений нет. Сегодня «чисто». Приемлемый исход — сводить двойники и NFKC на стороне страницы или назвать это пределом семейства в шапке. С 𝐬𝐞𝐫𝐢𝐞𝐬 (математические буквы) исход тот же."
+        },
+        {
+          "id": "sod4-schet-bez-probelov",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here",
+              "police raid (6/3): “Here"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Законная правка типографики: счёт без пробелов вокруг «/». Название IX по-прежнему стоит один раз, в ряду Chapters, сразу за «IX. … (6/3):». Сегодня :375 даёт schety = 0, и срабатывает отказ «не за номером своей главы IX» (:378), код 1. Приемлемый исход — ослабить шаблон (`\\(\\d+\\s*\\/\\s*\\d+\\)\\s*:`) или назвать предел в шапке :61–64."
+        }
+      ],
+      "defekty_koda_est": true,
+      "itog": "Линза soderzhanie, раунд 4, версия 83d8d3a: шесть находок, все низкие. Критерий П73 п. 2 не выполнен: кроме пределов и прозы есть дефекты кода.\n\nДефекты кода:\n- (а) sod4-1, ложное «чисто» через текст файла содержания. Замена похожих знаков у номера главы работает по закрытому списку (:371–372). Не узнаются греческие Χ и Ι, кириллическая Ӏ, лисуйские и коптские двойники, а также знаки-буквы вместо «·» и «|» перед числом: ꞏ U+A78F и ǀ U+01C0 закрывают lookbehind на :374. Название IX под заголовком X проходит чисто. Это неполнота правки obh3-10 и proby-r3-7.\n- (а) sod4-2, ложное «чисто»: `https?://\\S+` (:141, как у сторожа brief-strony.mjs:412) съедает видимую фразу, приклеенную к адресу знаками U+2800 или «—». Сверка со сторожем молчит, исход — код 0. В шапке (:69–70) назван только случай с кавычкой, где исход — код 2.\n- (в) sod4-3: NFKC (:371), кириллические І, С, Ѵ (:372) и заполнители хангыля U+115F, U+1160, U+FFA0 (:204) проверяет ни одна порча, мутации проходят 102/102. Путь — содержание. В шапке (:23) не названы U+1BCA0–U+1BCA3 (проза).\n- (в) sod4-4: порчи :530 и :531 не отличают правку KOD раунда 3 от прежнего шаблона, потому что на странице после них нет закрывающего </script>. У ветвей style порч нет. Путь только через шаблон.\n\nПределы, не названные в шапке:\n- sod4-5: двойники букв и знаки совместимости внутри слов — предел всего семейства судей.\n- sod4-6: счёт «(6/3)» без пробелов даёт ложный отказ.\n\nРегрессий правок раунда 3 (б) на пути содержания не нашёл. Проверены atributy (разбор по порядку), zabitAtributy и zamenitKod (сырые «<», «>», «<!--», «</main>», «<body», «<title>» в alt, description и href маскируются), bezC0 только по тексту (сырые C0 из YAML снимаются до RAZDEL; сущностей содержание не создаёт, «&» экранирован), chistit, голова до <body>, TEG для <title> и <meta>, ряд и метка по тегам. Сырой поиск </section> и </p> на :347 и :354 из содержания недостижим: внутри ряда Chapters до текста нет атрибута, который задаёт содержание, а id ограничен kebab-выражением (content.config.ts:156). Отрезок номера после NFKC ложных заголовков на нынешнем тексте не даёт.\n\nСверка «слова разошлись со сторожем» из содержания срабатывает только на уже названном «адресе у кавычки». Регистр Σ и İ по кускам и по всей строке совпадает, потому что «“» и «”» не входят в Case_Ignorable.\n\nАтак 11: 5 на ложное «чисто», 5 закрепляющих (сегодня проходят как ждали, ловят мутантов), 1 на ложный отказ. Файлы: D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs, D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/brief-strony.mjs, D:/SEO/cloud/site-generator/sites/7thserpent.com/src/pages/[...slug].astro, D:/SEO/cloud/site-generator/sites/7thserpent.com/src/content.config.ts."
+    },
+    {
+      "linza": "regressii (раунд 4): регрессии правки раунда 3 в chuzhie-glavy.mjs@83d8d3a. Проверены atributy, zabitAtributy, zamenitKod, bezC0 только по тексту, NEVIDIMYE_SUSHCHNOSTI, chistit с хангылем, raskrytZnachenie, dopStroki (голова до <body>, TEG для <title> и <meta>), ряд и метка по тегам, заголовок после NFKC и замены кириллицы, KOD с (?=[\\s>\\/]). Сверял с обычной разметкой Astro (маршрут [...slug].astro, Base.astro, StoryRow.astro) и с нынешней страницей dist/max-payne-3/guide/index.html",
+      "nahodki": [
+        {
+          "id": "r4reg-1",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Раунд 3 ввёл zamenitKod. Места скриптов, стилей и комментариев в нём заменяются с конца: `mesta.reverse()`, :234. В stroki (:241) на место кода встаёт '' или ' ', длина строки меняется, поэтому порядок с конца обязателен: при замене с начала сдвигаются индексы всех следующих мест. Ни одна порча этого не проверяет. Мутант `for (const [x, y] of mesta)` без reverse проходит --proba 102/102. На странице с двумя комментариями в <main> он вырезает видимый текст за вторым комментарием.",
+          "dokazatelstvo": "В <main> нынешней страницы нет ни <script>, ни <style>, ни «<!--»: в dist они встречаются только в голове и в шапке до <main>. Порчи с кодом в <main> — :457, :458, :476, :477, :504, :510, :531, :546. В каждой ровно одно место, а reverse у массива из одного элемента ничего не меняет. bezKoda (:292) заменяет места функцией probely (:189), длина сохраняется, и там порядок не важен. Расчёт мутанта на атаке. Прочтение «вплотную»: первый комментарий (L1 знаков) превращается в '', второй съезжает на L1 влево, а мутант вырезает [x2, y2) уже новой строки, то есть первые L1 знаков фразы за вторым комментарием. Прочтение «через пробел»: то же, со сдвигом на 1. Фраза Википедии (99 знаков) исчезает целиком, итог «чисто». Нынешний код: отказ «вне кавычек».",
+          "ataka": "r4reg-dva-kommentariya"
+        },
+        {
+          "id": "r4reg-2",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Раунд 3 ввёл atributy с правилом «повтор имени — первый» (:210, ветвь `if (!out.has(imya))`, :218). Так делает и браузер: повтор атрибута — ошибка разбора duplicate-attribute, и второй атрибут отбрасывается. Порчи с повтором имени нет. Мутант «последний выигрывает» (безусловный out.set) проходит 102/102. У `<span title=\"<фраза>\" title=\"HowLongToBeat\">` мутант судит второе значение, а подсказка на экране показывает первое. Итог мутанта — ложное «чисто».",
+          "dokazatelstvo": "В PORCHI (:441–556) нет тега с двумя одноимёнными атрибутами. Порча :535 ставит title= внутрь aria-label, но это разные имена. В <main> и в голове нынешней страницы повторов нет. vMain (:280–283) берёт a.get('title') из atributy, так что при мутанте это значение «HowLongToBeat» и 8-грамм нет.",
+          "ataka": "r4reg-dubl-atributa"
+        },
+        {
+          "id": "r4reg-3",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Раунд 3 добавил снятие NEVIDIMYE_SUSHCHNOSTI в двух местах: в stroki (:249) и в raskrytZnachenie (:254). Порча :528 («&ZeroWidthSpace; внутри слова») идёт через vAbzac, то есть через текст и stroki. Ветвь в raskrytZnachenie для alt, title=, описаний и прочих атрибутов ничем не закреплена. Мутант без `.replace(NEVIDIMYE_SUSHCHNOSTI, '')` в :254 проходит 102/102. У него raskrytVse сторожа раскрывает неизвестную именованную сущность в пробел (brief-strony.mjs:377), слово в alt рвётся, итог — «чисто».",
+          "dokazatelstvo": ":254 — `bezC0(s).replace(NEVIDIMYE_SUSHCHNOSTI, '')…`. Среди порч с атрибутами (:512–522, :533–536) нет ни одной с невидимой именованной сущностью. Через содержание сюда не попасть: Astro экранирует «&» в атрибуте как &#38;. Путь только через шаблон, но ветвь при этом не закреплена.",
+          "ataka": "r4reg-nevidimaya-v-atribute"
+        },
+        {
+          "id": "r4reg-4",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "В раунде 3 заголовок в отрезке номера ищется после `.normalize('NFKC')` (:371), и шапка (:47–48) это обещает: «(Ⅹ, Ｘ)». Порчи раунда 3 на заголовок (:548 «·X.», :549 кириллическая «Х.», :550 «X.—») проходят и без NFKC. Мутант без NFKC проходит 102/102. У него полноширинная «Ｘ.» между IX и названием заголовком не считается, итог — ложное «чисто», как до правки obh3-10.",
+          "dokazatelstvo": "В теле PORCHI нет ни одного знака U+2160–U+2188 или U+FF01–U+FF5E. Поиск нашёл «Ⅹ» и «Ｘ» только в комментариях :48 и :368. Кириллицу :549 обрабатывает не NFKC, а замена :372. Без NFKC отрезок «IX. … raid Ｘ. A bus station (6 / 3): » даёт один заголовок IX (:374), один счёт (:375), и forma (:376) проходит. Через содержание путь есть: Astro «Ｘ» не экранирует.",
+          "ataka": "r4reg-nfkc-x"
+        },
+        {
+          "id": "r4reg-5",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Раунд 3 сузил пробельные C0 до \\t \\n \\r (:191, :194, :196), а порчи вплотную закрепляют только перевод строки: :524 — сырой \\n, :525 — &#10;. Табуляция и CR (сырые, &#9;, &#13;, &#x9;, &#xd;) не закреплены ничем. Мутанты `[\\t\\n\\r]` → `[\\n]` и `0*(?:9|10|13)` → `0*10` (с `x0*[9ad]` → `x0*a`) проходят 102/102. У них таб или CR вплотную между словами снимается в пустоту (:197), слова склеиваются, итог — «чисто». Сырая табуляция достижима через содержание: YAML допускает таб внутри блочного скаляра, Astro его не трогает.",
+          "dokazatelstvo": "Порчи :462 и :463 ставят знак через pol, то есть с пробелами по краям. :524 и :525 — только \\n и &#10;. :526 — &#11;, он снимается. Табов, &#9; и &#13; в PORCHI нет. Фразу надо рвать в двух местах, на «series|is» и «to|gain»: все 11 корпусных 8-грамм фразы содержат одну из этих пар (см. вывод ataki-r3-posle-pravki.txt, :206–216).",
+          "ataka": "r4reg-tab-vplotnuyu; r4reg-13-vplotnuyu"
+        },
+        {
+          "id": "r4reg-6",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Это перенос proby-r3-3, находка не закрыта. Экранирование «<» и «>» в raskrytZnachenie (:254) не закреплено ни одной порчей: атака proby-r3-alt-lt-gt осталась атакой и в PORCHI не попала. Мутант без `.replace(/</g,'&lt;').replace(/>/g,'&gt;')` проходит 102/102. У alt с «< 30 fps: <фраза> (> 60 fps)» выражение /<[^>]+>/ сторожа (brief-strony.mjs:387) стирает всё от «<» до «>», итог — ложное «чисто». Путь через содержание есть: alt берётся из записи кадра (kadr(), route :512, :566), а Astro не экранирует «<» и «>» в атрибутах.",
+          "dokazatelstvo": "Порча :514 — только «>» в description. :519 — только «<» в alt. :533 — «<!-- x» и «y -->» в двух разных alt. :534 — «<!--» без «-->». Ни в одном судимом значении нет пары «<…>», поэтому без экранирования выражение /<[^>]+>/ ничего не стирает.",
+          "ataka": "r4reg-alt-lt-gt"
+        },
+        {
+          "id": "r4reg-7",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Это перенос proby-r3-9 в части placeholder=, находка не закрыта. В списке судимых атрибутов (:282) у alt, title, aria-label, value и label есть порчи (:518, :520, :521, :522, :536), а у placeholder нет. Мутант без 'placeholder' проходит 102/102.",
+          "dokazatelstvo": "Поиск по файлу находит «placeholder» только в шапке (:30) и в :282. Ни одной порчи на placeholder нет.",
+          "ataka": "r4reg-placeholder"
+        },
+        {
+          "id": "r4reg-8",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Граница заголовка из раунда 3 — «вокруг числа нет букв и цифр», `(?<![\\p{L}\\p{N}])` (:374). Порчи закрепляют только расширение в сторону отказа: «·X.», «X.—». Порчи «чисто» на то, что число после буквы заголовком не считается, нет. Мутант без просмотра назад проходит 102/102, а на законном месте главы вроде «during a police raid by the PMC.» даёт ложный отказ «не за номером» (буква «C.» становится заголовком).",
+          "dokazatelstvo": "Порчи «чисто» на номер — :506–508. В их отрезках нет прописных I, V, X, L, C с точкой после буквы. Отрезки IX и XIII на странице («IX. The favela again, during a police raid (6 / 3): », «XIII. A prison and a police station (9 / 7): ») тоже таких мест не содержат. Нынешний код на атаке: «PMC.» — перед «C» стоит «M», это буква, заголовок не найден; заголовок один, счёт один, forma проходит, итог «чисто».",
+          "ataka": "r4reg-pmc-chisto"
+        },
+        {
+          "id": "r4reg-9",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Правка obh3-10 раунда 3 закрыла похожие буквы перечнем: NFKC и четыре кириллические (:372, шапка :47–48). Греческая Χ (U+03A7) и Ι (U+0399), кириллическая Ӏ (U+04C0), коптские, лису и чероки-двойники от NFKC не меняются и в перечень не входят. Название IX за «Χ. A bus station (6 / 3):» читатель видит под главой X, а инструмент выдаёт «чисто». Класс тот же, что у кириллической «Х.» (порча :549), путь — содержание: Astro эти знаки не экранирует. Это не регрессия, а неполнота правки. Закрыть можно двумя способами: расширить замену или назвать предел в шапке («двойники из других письменностей, кроме кириллицы Х, І, С, Ѵ, заголовком не считаются»).",
+          "dokazatelstvo": ":371 — NFKC оставляет U+03A7 как есть (совместимого разложения у неё нет). :372 заменяет только U+0425, U+0406, U+0421, U+0474. :374 требует [IVXLC], а «Χ» относится к \\p{L}. Отрезок «IX. The favela again, during a police raid Χ. A bus station (6 / 3): » даёт один заголовок IX и один счёт, forma (:376) проходит, итог «чисто», код 0.",
+          "ataka": "r4reg-grecheskaya-x"
+        },
+        {
+          "id": "r4reg-10",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "put": "не применимо",
+          "opisanie": "Проза. chistit (:204) заменяет на пробел не только четыре заполнителя хангыля, но и U+1BCA0–U+1BCA3 (форматные знаки стенографии; HarfBuzz их не прячет, так решено по итогам раунда 3). Шапка (:22–23) и комментарий к chistit (:200–201) называют только U+3164, U+115F, U+1160, U+FFA0. Слово, разорванное таким знаком, судится как два слова, и это нигде не записано.",
+          "dokazatelstvo": ":204 — `/[ㅤᅟᅠﾠ\\u{1BCA0}-\\u{1BCA3}]/gu`. Шапка :23: «заполнители хангыля (U+3164, U+115F, U+1160, U+FFA0) — пробел». Про U+1BCA0–1BCA3 шапка молчит, а в itogi-r3.json:45 они названы.",
+          "ataka": "— (проза, атаки нет)"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "r4reg-dva-kommentariya",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--><!--yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy-->A new feature to the series is the cover system, which allows players to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Два комментария подряд, оба около 100 знаков, и сразу за ними видимая фраза Википедии. Нынешний код снимает оба места с конца (:234) и даёт отказ. Мутант zamenitKod без reverse после замены первого места вырезает [x2, y2) уже сдвинутой строки, то есть примерно первые 100 знаков фразы, и выдаёт «чисто». Точная длина не важна, если оба комментария длиннее фразы (99 знаков) и почти равны. Ни в одной порче нет двух мест кода в <main>, так что это кандидат в PORCHI."
+        },
+        {
+          "id": "r4reg-dubl-atributa",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><span title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\" title=\"HowLongToBeat\">x</span> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Браузер оставляет первый из одноимённых атрибутов (ошибка duplicate-attribute), и подсказка показывает фразу. Нынешний код тоже берёт первое значение (:218) и даёт отказ. Мутант «последний выигрывает» судит «HowLongToBeat» и выдаёт «чисто», при этом проходит 102/102."
+        },
+        {
+          "id": "r4reg-nevidimaya-v-atribute",
+          "zameny": [
+            [
+              "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+              "alt=\"A new feature to the se&ZeroWidthSpace;ries is the cover system, which allows play&ZeroWidthSpace;ers to gain a tactical advantage\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "&ZeroWidthSpace; невидим, и alt читается целыми словами «series» и «players». Нынешний raskrytZnachenie снимает сущность (:254) и даёт отказ. Мутант без этой замены получает пробел от raskrytVse (brief-strony.mjs:377), «se ries» и «play ers» рвут все 11 окон фразы, итог «чисто». Порча :528 проверяет только текст."
+        },
+        {
+          "id": "r4reg-nfkc-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.”",
+              "police raid Ｘ. A bus station (6 / 3): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Полноширинная «Ｘ.» (U+FF38) на экране выглядит как заголовок главы X прямо перед названием IX. Нынешний код после NFKC (:371) видит два заголовка и даёт отказ. Мутант без NFKC видит один заголовок, IX, и выдаёт «чисто». Порчи :548–550 этого различия не видят."
+        },
+        {
+          "id": "r4reg-tab-vplotnuyu",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the series\tis the cover system, which allows players to\tgain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Сырая табуляция вплотную между словами, в двух местах. Браузер рисует её пробелом. Нынешний код заменяет её пробелом (:196) и даёт отказ. Мутант `[\\t\\n\\r]` → `[\\n]` снимает таб (:197), получаются «seriesis» и «togain», ни одного окна не остаётся, итог «чисто». Мутант проходит 102/102, потому что порчи :524 и :525 проверяют только \\n и &#10;."
+        },
+        {
+          "id": "r4reg-13-vplotnuyu",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the series&#13;is the cover system, which allows players to&#13;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "То же для числовой ссылки на CR: по CSS Text 3 CR рисуется как пробел. Нынешний код даёт пробел (:194) и отказ. Мутант `0*(?:9|10|13)` → `0*10` снимает &#13; второй заменой (:195), слова склеиваются, итог «чисто»."
+        },
+        {
+          "id": "r4reg-alt-lt-gt",
+          "zameny": [
+            [
+              "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+              "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage (> 60 fps on PC)\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Перенос proby-r3-alt-lt-gt: атака и сегодня проходит как ждали, но в PORCHI её нет. Мутант raskrytZnachenie без экранирования «<» и «>» (:254) отдаёт значение в tekstDokumenta, и /<[^>]+>/ (brief-strony.mjs:387) стирает всё от «< 30» до «(>». Итог мутанта «чисто», и он проходит 102/102. Путь через содержание: alt берётся из записи кадра, а Astro не экранирует «<» и «>» в атрибутах."
+        },
+        {
+          "id": "r4reg-placeholder",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><input type=\"text\" placeholder=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Перенос proby-r3-placeholder: сегодня отказ (:282), но порчи на placeholder в PORCHI нет. Мутант без 'placeholder' в списке выдаёт «чисто» и проходит 102/102."
+        },
+        {
+          "id": "r4reg-pmc-chisto",
+          "zameny": [
+            [
+              "IX. The favela again, during a police raid (6 / 3): “Here",
+              "IX. The favela again, during a police raid by the PMC. (6 / 3): “Here"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Аббревиатура с «C.» на конце стоит в месте своей главы. Буква перед «C» делает её не заголовком: :374, `(?<![\\p{L}\\p{N}])`. Нынешний код: один заголовок IX, один счёт, forma проходит, итог «чисто». Мутант без просмотра назад считает «C.» заголовком и даёт ложный отказ «не за номером своей главы IX». Порчи «чисто» :506–508 такого места не содержат, поэтому мутант проходит 102/102."
+        },
+        {
+          "id": "r4reg-grecheskaya-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.”",
+              "police raid Χ. A bus station (6 / 3): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Греческая Χ (U+03A7) на экране неотличима от X. Название IX стоит под «X. A bus station (6 / 3):», это та же картина, что у порчи :549 с кириллической «Х.». NFKC (:371) греческую букву не меняет, :372 заменяет только кириллицу, и :374 заголовка не видит. Сегодня итог «чисто», код 0. Надо либо расширить замену (греческие Χ, Ι, кириллическая Ӏ…), либо назвать предел в шапке :47–48."
+        }
+      ],
+      "defekty_koda_est": true,
+      "itog": "Линза regressii, раунд 4, версия 83d8d3a.\n\n(б) Регрессий правки раунда 3 не нашёл ни на обычной разметке Astro, ни на нынешней странице. Что проверено:\n- atributy и zabitAtributy на тегах Astro. Значения в атрибутах всегда в кавычках «\"», потому что Astro экранирует «\"» и «&» (&#34;, &#38;). Поэтому TEG узнаёт каждый тег, и маска сохраняет длину (:225–227).\n- KOD с (?=[\\s>\\/]) и zamenitKod на <script type=\"module\">, JSON-LD и <style>. В самом раннем @media (640px<width<=1024px) TEG ничего не ловит. JSON-LD экранирует «<» (Base.astro:59), так что из содержания в скрипт тег не попадает.\n- bezC0 только по тексту. Тег, в котором из содержания стоит C0, TEG узнаёт целиком и снимает целиком.\n- Голова до <body>. На странице `</head><body>`, судятся 5 строк, как и раньше.\n- Ряд и метка по тегам на разметке StoryRow (class:list, id, aria-labelledby).\n- Отрезки номера IX и XIII после NFKC и замены кириллицы. Заголовок в каждом один, счёт один.\n\n(а) Ложных отказов через содержание при нынешнем маршруте не нашёл. Ложное «чисто» через содержание — одно, r4reg-9, низкое. Это неполнота правки obh3-10, а не регрессия: греческая Χ и другие двойники X, I, C, V, L из иных письменностей заголовком не считаются. Закрывается расширением замены или строкой предела в шапке.\n\n(в) Семь ветвей без порчи, мутант каждой проходит --proba 102/102, все низкие:\n- новые в раунде 3: zamenitKod без reverse; atributy «повтор — первый»; NEVIDIMYE в raskrytZnachenie; NFKC в заголовке; \\t и \\r как пробел; граница «без букв» перед числом.\n- переносы непокрытых находок раунда 3: экранирование «<» и «>» в raskrytZnachenie (proby-r3-3), placeholder (proby-r3-9).\n\nПроза — одна находка: U+1BCA0–1BCA3 в chistit (:204) шапка не называет.\n\nПопутно проверено и в находки не вынесено: `<` + управляющий знак + `script>` после bezC0 текста становится тегом <script> (например, «<\\u0001script>»). Это уже названный предел «сырой «<» перед не-буквой в тексте». Путь только через шаблон, как было и до раунда 3.\n\nКритерий остановки П73 п. 2 этим раундом по линзе regressii не выполнен: кроме предела и прозы есть низкие дефекты вида (в) и одно ложное «чисто» (а). Регрессий (б) нет.\n\nФайлы: D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs (строки :204, :218, :234, :254, :282, :371–376, :194–197, массив PORCHI :441–556); D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/brief-strony.mjs:377, :387; D:/SEO/cloud/site-generator/sites/7thserpent.com/src/layouts/Base.astro:59."
+    },
+    {
+      "linza": "proby, раунд 4. Для каждой правки раунда 3 в chuzhie-glavy.mjs@83d8d3a разобрал мысленный мутант и проверил, какая из 102 порч --proba его ловит. Искал ветви без порчи и порчи, которые проходят и на коде до правки. Всё посчитано по коду и по dist/max-payne-3/guide/index.html; стенд и оболочка не запускались.",
+      "nahodki": [
+        {
+          "id": "proby-r4-1",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Чужой заголовок главы, написанный греческой буквой, не узнаётся. Правка раунда 3 (obh3-10) закрыла гомоглифы номера перечнем: NFKC (Ⅹ, Ｘ) и четыре кириллические буквы (Х, І, С, Ѵ). Греческих Χ (U+03A7) и Ι (U+0399) в перечне нет. NFKC их в латиницу не переводит, а класс [IVXLC] — только ASCII.\n\nПример: «Χ. A bus station and a bus ride (6 / 2):» стоит перед названием IX. Читатель видит название под главой X. Судья находит один заголовок (IX), один счёт, форма проходит — «чисто», код 0.\n\nПуть через содержание: греческая буква в тексте ряда max-payne-3-guide.md, escapeHTML Astro её не трогает. Класс тот же, что у obh3-x-kirillica, которую раунд 3 признал дефектом.\n\nПравка: шире таблица похожих на I, V, X, L, C знаков (греческие Χ Ι Ϲ, Ӏ и другие) или скелет по UTS #39 плюс порча с «Χ.».",
+          "dokazatelstvo": "- :370–374: отрезок → normP → .normalize('NFKC') → замены только /Х/, /І/, /С/, /Ѵ/. Grep по кодам подтвердил U+0425, U+0406, U+0421, U+0474.\n- :374 `(?<![\\p{L}\\p{N}])([IVXLC]+)\\.(?![\\p{L}\\p{N}])` — только ASCII. NFKC(U+03A7) = U+03A7.\n- Отрезок атаки: « IX. The favela again, during a police raid, Χ. A bus station and a bus ride (6 / 2): ». Отсюда zagolovki = [IX], schety = 1, forma :376 проходит, и :377 отказа не даёт.\n- Шапка :47–48 называет только NFKC и кириллицу; предела «греческие гомоглифы» в ПРЕДЕЛАХ (:55–96) нет.\n- Итог «чисто» получен расчётом по коду, стенд не запускался.",
+          "ataka": "proby-r4-grecheskaya-x"
+        },
+        {
+          "id": "proby-r4-2",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Правку obh3-1 для значений атрибутов (описания в <head>, alt в <main>) не держит ни одна порча. Её несёт вызов zamenitKod на уровне sud (:292): из bezKoda берутся голова (:265) и атрибуты <main> (:280). Мутант «:292 без маски», то есть `const bezKoda = h.replace(KOD, probely)` как в раунде 2, проходит 102/102.\n\n- Порча :534 ставит в description «<!-- » без «-->». На собранной странице нет ни одного «-->» и ни одного «<!--», поэтому KOD без пары ничего не стирает. Порча проходит и на коде до правки.\n- Порча :533 держит только вызов в stroki (:241): фраза там в тексте, а в значениях alt («<!-- x», «y -->») её нет.\n\nПуть открыт через содержание: Astro не экранирует «<» и «>» в атрибутах. alt приходит из записи кадра, description — из pages-s2.json. brief:check перекрывает только описание; alt не перекрывает ничто.",
+          "dokazatelstvo": "- Код: :292, :265, :280.\n- Порча :534 — `vAtr(html, 'name=\"description\" content', '<!-- ' + k12)`.\n- Grep по dist/max-payne-3/guide/index.html: «-->» — 0, «<!--» — 0, «</script» — 2.\n- Порча :533 — значения alt без фразы.\n- Правку сегодня держат только атаки стенда obh3-desc-kommentariy и obh3-alt-kommentariy (ataki-r3-posle-pravki.txt:1–28), в PORCHI их нет.",
+          "ataka": "proby-r4-kommentariy-v-znachenii-zakryt"
+        },
+        {
+          "id": "proby-r4-3",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Порчи :530 («<script-x> — не скрипт») и :531 («</script > закрывает») проходят и на коде до правки раунда 3.\n\nПричина: после места вставки в <main> нет ни одного `</script>`. Оба `</script` страницы стоят до <main>: JSON-LD в голове и скрипт шапки. KOD с ленивым `[\\s\\S]*?` без пары ни с чем не совпадает, фраза видна, и отказ «вне кавычек» одинаков у правильного кода и у мутанта.\n\nМутанты на :188 проходят 102/102:\n- KOD без `(?=[\\s>\\/])` у script и style;\n- `<\\/script>` без `\\s*`.\n\nНа странице, где ниже по тексту есть другой скрипт, мутант стирает видимую фразу до его `</script>`. Атака obh3-script-probel (ataki-r3.json:43–53) держит «</script >» именно вторым `<script></script>`, но в порчу его не перенесли.",
+          "dokazatelstvo": "- Код: :188 KOD; порчи :530, :531.\n- Grep по dist: «</script» — 2. Первый — JSON-LD в голове (guide-razvernut.html:24–25), второй — скрипт шапки (:121–122); оба до `<main id=\"content\">` (:143).\n- KOD до правки (itogi-r3.json, obh3-2) — `<script\\b[\\s\\S]*?<\\/script>`: на :530 и :531 он тоже ничего не находит.",
+          "ataka": "proby-r4-script-x-s-parnym-zakrytiem, proby-r4-script-probel-s-parnym-zakrytiem"
+        },
+        {
+          "id": "proby-r4-4",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Правка раунда 3 против гомоглифов в номере главы — это пять средств: NFKC (:371) и замены Х, І, С, Ѵ (:372). Порча есть только у кириллической Х (:549). Мутанты без `.normalize('NFKC')` или без `.replace(/І/g, 'I')` (так же для С и Ѵ) проходят 102/102. С ними «Ⅹ.» (U+2169) или «XІ.» (кириллическая І) перед названием IX снова дают «чисто». Путь через содержание.",
+          "dokazatelstvo": "- Код: :371–372.\n- Порчи номера :547–:550 — ASCII и одна кириллическая Х (:549, Grep по U+0425).\n- Grep по файлу: символы Ⅹ, Ｘ, І, С, Ѵ стоят только в шапке :48 и комментарии :368–369, в PORCHI их нет.",
+          "ataka": "proby-r4-nfkc-rimskaya-x, proby-r4-kirillica-i"
+        },
+        {
+          "id": "proby-r4-5",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Находка proby-r3-3 не закрыта. Экранирование «<» и «>» в raskrytZnachenie (:254) по-прежнему не держит ни одна порча. Мутант без `.replace(/</g,'&lt;').replace(/>/g,'&gt;')` проходит 102/102.\n\nПричина: ни в одной судимой строке порч нет пары «<…>», а без пары выражение сторожа `/<[^>]+>/g` ничего не снимает:\n- :514 — только «>»;\n- :519 — только «<»;\n- :534 — «<!--» без «-->»;\n- :533 — «<!-- x» и «y -->» в разных значениях.\n\nУ мутанта alt или description вида «at < 30 fps: <фраза> (> 60 fps)» теряет фразу. Путь через содержание: Astro не экранирует «<» и «>» в атрибутах.",
+          "dokazatelstvo": "- Код: :254; brief-strony.mjs:381–388 (:387 `/<[^>]+>/g`).\n- Порчи :514, :519, :533, :534.\n- Атака proby-r3-alt-lt-gt проходит «как ждали» (ataki-r3-posle-pravki.txt:232), но в PORCHI не перенесена.",
+          "ataka": "proby-r4-alt-para-lt-gt"
+        },
+        {
+          "id": "proby-r4-6",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "содержание",
+          "opisanie": "Правку obh3-4 («\\v и \\f снимаются, пробел — только \\t \\n \\r») порча :526 держит только в форме ссылки `&#11;` (:194–195). Сырой U+000B или U+000C (:196–197) не проверяет ни одна порча. Мутант :196 `[\\t\\n\\v\\f\\r]` (как в раунде 2) проходит 102/102 и снова рвёт «se\\vries» пробелом. Путь через содержание: строка YAML в двойных кавычках с `\\v` даёт сырой U+000B, escapeHTML Astro его не трогает.\n\nТак же в одной форме держатся ещё две правки:\n- Заполнители хангыля: из четырёх знаков :204 порча есть только у U+3164 (:529).\n- Невидимые именованные сущности: держатся только в тексте (:249, :528), в значениях атрибутов (:254) порчи нет. Путь туда только через шаблон, потому что «&» в атрибутах Astro экранирует.",
+          "dokazatelstvo": "- Код: :194–197; порча :526 `razrez('&#11;')`.\n- Управляющие знаки в PORCHI: fromCharCode(2, 127, 1, 0x3164) и литералы \\u0001, ­, ͏, \\n. U+000B и U+000C нет ни в одной.\n- Хангыль: :204, :529. Сущности: :249, :254, :528.",
+          "ataka": "proby-r4-vt-syroy"
+        },
+        {
+          "id": "proby-r4-7",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Находка proby-r3-9 (вторая часть) не закрыта. placeholder= в списке судимых атрибутов (:282) не держит ни одна порча, мутант без 'placeholder' проходит 102/102. Атака proby-r3-placeholder на стенде есть, в PORCHI её нет.",
+          "dokazatelstvo": "- Код: :282.\n- Grep «placeholder» по файлу: только :30 (шапка) и :282.\n- Стенд: ataki-r3-posle-pravki.txt:297.",
+          "ataka": "proby-r4-placeholder"
+        },
+        {
+          "id": "proby-r4-8",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Правка раунда 3 берёт из сырой страницы и текст ряда (:349), и текст метки (:355). Ряд держит порча :546, метку не держит ни одна: во всех порчах метки (:503, :504, :509, :545) комментарий не стоит внутри слова. Мутант «метка из mainBezKoda» (:355 `mainBezKoda.slice(...)`) проходит 102/102. На «Chap<!-- -->ters» он даёт ложный отказ «видимая метка «Chap ters»» — ровно тот, что закрывала атака proby-r3-metka-kommentariy-v-slove.",
+          "dokazatelstvo": "- Код: :349 (sekciya из main), :355 (метка из main).\n- Порчи :503, :504 (комментарий перед тегом метки, а не в слове), :509, :545, :546.",
+          "ataka": "proby-r4-metka-kommentariy-v-slove"
+        },
+        {
+          "id": "proby-r4-9",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Правка «<main-…> — не <main>» стоит в двух местах: в счёте (:294) и в начале <main> (:296). Порча :543 держит только счёт. Мутант :296 `/<main\\b/i` проходит 102/102.\n\nВ :543 элемент <main-menu> стоит в начале <body>, и у мутанта <main> начинается с шапки. В шапке и крошках 8-грамм корпуса нет: крошки — это h1 гайда и /max-payne-3/, а они судятся и в <main>. Поэтому итог — «чисто». На странице, где в шапке до <main> стоит <main-…> и чужой текст, мутант судит шапку как <main> (ложный отказ).",
+          "dokazatelstvo": "- Код: :294, :296; порча :543.\n- Текст крошек напечатан и в <main>: guide-razvernut.html:138 = :155 (h1), :132 = :288 (связанные страницы).\n- Нынешний прогон — отказов 0.",
+          "ataka": "proby-r4-main-menu-do-main"
+        },
+        {
+          "id": "proby-r4-10",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "У atributy правило «повтор имени — первый» (:218) без порчи. Мутант «последний» (`out.set` без проверки has) проходит 102/102: ни в одной порче и на самой странице имя атрибута в теге не повторяется. У мутанта в `<span title=\"<фраза>\" title=\"x\">` судится «x». Браузер же оставляет первый атрибут (ошибка разбора duplicate-attribute), и подсказка показывает фразу.",
+          "dokazatelstvo": "- Код: :210 (комментарий «повтор имени — первый»), :218.\n- Порча :535 проверяет порядок, а не повтор.",
+          "ataka": "proby-r4-dubl-title"
+        },
+        {
+          "id": "proby-r4-11",
+          "vid": "другое",
+          "tyazhest": "низкая",
+          "put": "шаблон",
+          "opisanie": "Для сведения. Правка раунда 3 внесла новый вариант названного класса. Теперь KOD ищет комментарий по маске атрибутов (:231–236), а маска (:223–228) забивает атрибуты и у тегоподобного текста внутри комментария.\n\nВ `<!-- <p class=x--> <фраза> <!-- -->` TEG (:185) читает `<p class=x-->` как тег со значением без кавычек «x--». Маска его забивает, первый «-->» исчезает, KOD тянет комментарий до «-->» второго. Фраза стирается в обоих прочтениях — итог «чисто». Браузер закрывает комментарий на первом «-->», и фраза видна. До правки, когда KOD шёл по сырой разметке, было верно. То же со скриптом: `<script>/* <a b=</script> */`.\n\nПуть только через шаблон: содержание комментариев не создаёт, а значения атрибутов маска забивает целиком. По правилу раунда это предел класса, названного в :79–84, а не дефект кода. Строкой в доклад: правка obh3-1 обменяла один вариант класса на другой.",
+          "dokazatelstvo": "- :185 TEG: значение без кавычек `[^\\s\"'>]+` принимает «x--».\n- :223–228 zabitAtributy; :232 `zabitAtributy(s).matchAll(KOD)`.\n- Вызовы: :241 (stroki) и :292 (sud).",
+          "ataka": "proby-r4-kommentariy-psevdoteg"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "proby-r4-grecheskaya-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid, Χ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "В замене греческая Χ (U+03A7) вместо латинской X. Читатель видит название IX под «X. A bus station and a bus ride (6 / 2):». Сегодня NFKC Χ не меняет, в перечне :372 только кириллица, а [IVXLC] — ASCII. Заголовок один (IX), счёт один, форма проходит — «чисто», код 0 (расчёт по коду). Дефект: должен быть отказ."
+        },
+        {
+          "id": "proby-r4-kommentariy-v-znachenii-zakryt",
+          "zameny": [
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage. --> A Max Payne 3 guide:"
+            ],
+            [
+              "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+              "alt=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage --> Max Payne 3 — close-up of Max aiming a pistol against a grey sky\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Закрепляет правку obh3-1 на уровне sud (:292): комментарий с парой «-->» внутри описания и alt. Сегодня отказ, как у obh3-desc-kommentariy и obh3-alt-kommentariy. У мутанта «:292 без маски» — «чисто». Годится как порча вместо :534, где нет «-->»."
+        },
+        {
+          "id": "proby-r4-script-x-s-parnym-zakrytiem",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><script-x>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</script-x><script></script> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Закрепляет просмотр вперёд в KOD (:188). Сегодня <script-x> — не скрипт, пустой <script></script> снимается, фраза видна — отказ. Мутант без `(?=[\\s>\\/])` тянет «скрипт» от <script-x> до </script> пустого скрипта и стирает фразу — «чисто». Порча :530 без второго скрипта этого не видит."
+        },
+        {
+          "id": "proby-r4-script-probel-s-parnym-zakrytiem",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><script></script >A new feature to the series is the cover system, which allows players to gain a tactical advantage.<script></script> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Закрепляет `\\s*` в `</script\\s*>` (:188). Сегодня первый скрипт закрывается на `</script >`, фраза видна — отказ. Мутант с `<\\/script>` тянет первый скрипт до `</script>` второго — «чисто». Это obh3-script-probel; порча :531 без второго скрипта проходит и на мутанте."
+        },
+        {
+          "id": "proby-r4-nfkc-rimskaya-x",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid, Ⅹ. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Закрепляет NFKC (:371): в замене «Ⅹ.» (U+2169). Сегодня NFKC даёт «X.», заголовков два — отказ. У мутанта без NFKC — «чисто»."
+        },
+        {
+          "id": "proby-r4-kirillica-i",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "police raid, XІ. A yacht on the Panama Canal (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Закрепляет замену кириллической І (:372): в замене «XІ.», где І — U+0406. Сегодня получается «XI.», второй заголовок — отказ. У мутанта без замены за X стоит буква, заголовок не узнан — «чисто». Так же нужны порчи для Ѵ (U+0474) и С (U+0421)."
+        },
+        {
+          "id": "proby-r4-placeholder",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><input type=\"text\" placeholder=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Закрепляет placeholder= в списке :282 (proby-r3-9). Сегодня отказ, у мутанта без 'placeholder' — «чисто»."
+        },
+        {
+          "id": "proby-r4-alt-para-lt-gt",
+          "zameny": [
+            [
+              "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+              "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage (> 60 fps on PC)\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Закрепляет экранирование в :254 (proby-r3-3): пара «<…>» в одном значении. Сегодня отказ. У мутанта без экранирования /<[^>]+>/ сторожа стирает «< 30 fps: … (>», и выходит «чисто»."
+        },
+        {
+          "id": "proby-r4-vt-syroy",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the se\u000bries is the cover sy\u000bstem, which allows players to ga\u000bin a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Закрепляет :196 для сырого U+000B: в замене три сырых VT внутри слов. Сегодня :197 снимает знак, слова целые — отказ. Мутант :196 `[\\t\\n\\v\\f\\r]` рвёт «se ries» — «чисто». Путь через содержание: строка YAML в двойных кавычках с \\v."
+        },
+        {
+          "id": "proby-r4-metka-kommentariy-v-slove",
+          "zameny": [
+            [
+              "data-astro-cid-n67f4zmd>Chapters</p>",
+              "data-astro-cid-n67f4zmd>Chap<!-- -->ters</p>"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Закрепляет метку из сырой страницы (:355). На экране CHAPTERS, сегодня «чисто». У мутанта «метка из mainBezKoda» метка «Chap ters» — ложный отказ."
+        },
+        {
+          "id": "proby-r4-main-menu-do-main",
+          "zameny": [
+            [
+              "<button class=\"hdr__burger\"",
+              "<main-menu><span class=\"visually-hidden\">A new feature to the series is the cover system, which allows players to gain a tactical advantage.</span></main-menu><button class=\"hdr__burger\""
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Закрепляет просмотр вперёд в :296. Текст шапки по названному пределу (:91) не судится, поэтому ждём «чисто», и сегодня так и есть. Мутант :296 `/<main\\b/i` начинает <main> с <main-menu>, судит фразу в шапке и даёт отказ «вне кавычек». Порча :543 без чужого текста в шапке этого не видит."
+        },
+        {
+          "id": "proby-r4-dubl-title",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><span title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\" title=\"HowLongToBeat\">As of</span> September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Закрепляет «повтор имени — первый» (:218). Браузер оставляет первый title, подсказка — фраза. Сегодня отказ. Мутант «последний» судит «HowLongToBeat» — «чисто»."
+        },
+        {
+          "id": "proby-r4-kommentariy-psevdoteg",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><!-- <p class=x--> A new feature to the series is the cover system, which allows players to gain a tactical advantage. <!-- --> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Регрессия правки раунда 3 внутри названного класса, путь только через шаблон. Браузер закрывает комментарий на первом «-->», фраза видна — нужен отказ. Сегодня маска забивает «class=x--», и KOD тянет комментарий до второго «-->» — «чисто». «Не как ждали» здесь ожидаемо: это предел класса :79–84, пока шапка его не уточнит."
+        }
+      ],
+      "defekty_koda_est": true,
+      "itog": "Линза proby, раунд 4, chuzhie-glavy.mjs@83d8d3a (--proba 102/102). Критерий П73 п. 2 не выполнен: кроме пределов раунд нашёл один дефект кода и девять пробелов пробы. Все находки низкие. Всё посчитано по коду; стенд и оболочка не запускались.\n\n**Дефект кода (а), ложное «чисто» через содержание — proby-r4-1.** Греческая Χ (U+03A7) или Ι как заголовок чужой главы не узнаётся: перечень гомоглифов раунда 3 (:371–372) кончается на кириллице. Пример: «…police raid, Χ. A bus station and a bus ride (6 / 2): “Here I Was Again…”». Читатель видит название IX под главой X, а по расчёту выходит «чисто», код 0.\n\n**Пробелы пробы (в): ветвь без порчи, мутант проходит 102/102.**\n\nПуть через содержание:\n- **proby-r4-2.** Правку obh3-1 для описаний и alt несёт маска KOD на уровне sud (:292). Её не держит ни одна порча. Порча :534 ставит «<!--» без «-->», а на странице нет ни одного «-->», поэтому она проходит и на коде до правки.\n- **proby-r4-4.** NFKC и кириллические І, С, Ѵ без порчи; держится только Х (:549).\n- **proby-r4-5.** Экранирование «<» и «>» в значениях без порчи — proby-r3-3 не закрыта.\n- **proby-r4-6.** Сырые \\v и \\f без порчи: держится только ссылка &#11;. Из заполнителей хангыля держится только U+3164.\n\nПуть только через шаблон:\n- **proby-r4-3.** Порчи :530 и :531 проходят и на коде до правки, потому что ниже по <main> нет `</script>`.\n- **proby-r4-7.** placeholder= без порчи — proby-r3-9 не закрыта.\n- **proby-r4-8.** Метка из сырой страницы (:355) без порчи.\n- **proby-r4-9.** Просмотр вперёд в начале <main> (:296) без порчи; :543 держит только счёт.\n- **proby-r4-10.** Правило «повтор имени атрибута — первый» (:218) без порчи.\n\n**Что держится.** У остальных правок раунда 3 мутант ловит своя порча:\n- C0 только в тексте — :532;\n- \\t, \\n и \\r как пробел — :524, :525;\n- &#11; — :526;\n- DEL — :527;\n- &ZeroWidthSpace; в тексте — :528;\n- U+3164 — :529;\n- маска KOD в stroki — :533;\n- атрибуты по порядку — :535;\n- label= — :536;\n- значения без кавычек — :537;\n- голова до <body> — :538 и :542;\n- «ровно один» — :539;\n- «непустой» — :540;\n- TEG для <title> — :541;\n- счёт <main> — :543;\n- ряд и метка по тегам — :544 и :545;\n- ряд из сырой страницы — :546;\n- заголовки — :547–:550.\n\n**Для сведения, не дефект по правилу раунда — proby-r4-11.** Маска перед KOD, которую ввёл раунд 3, съедает «-->» в тегоподобном тексте комментария: `<!-- <p class=x--> фраза <!-- -->` даёт «чисто». До правки было верно. Путь только через шаблон, класс «регулярные выражения вместо токенизатора» назван на :79–84.\n\n**Проза.** :204 заменяет пробелом ещё и U+1BCA0–U+1BCA3, а шапка :23 называет только четыре заполнителя хангыля.\n\n**Атаки.** Всего 13. По расчёту 11 из них сегодня проходят как ждали: это закрепляющие атаки, их стоит перенести в PORCHI. Не как ждали пройдут две:\n- proby-r4-grecheskaya-x — это дефект;\n- proby-r4-kommentariy-psevdoteg — это названный класс.\n\nФайлы:\n- инструмент: D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs\n- собранная страница: D:/SEO/cloud/site-generator/sites/7thserpent.com/dist/max-payne-3/guide/index.html"
+    }
+  ],
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Линзы"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "r4:soderzhanie",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a233fd70c5b86af98",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790536875505,
+      "queuedAt": 1790536875465,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "soderzhanie (раунд 4): путь через содержание. Проверены фай…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 4 («судью судят», инвариант 1 корневого CLAUDE.md; критерий остановки П73 п. 2 — раунд, который находит только пределы и прозу). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия …",
+      "promptFramed": true,
+      "lastProgressAt": 1790538037431,
+      "tokens": 302642,
+      "toolCalls": 43,
+      "durationMs": 1161923,
+      "resultPreview": "{\"linza\":\"soderzhanie (раунд 4): путь через содержание. Проверены файл содержания гайда (lead, rows[].year/title/meta/body, cta, byline, related.title, artCaption, href кнопок), pages-s2.json (title, description, h1) и записи кадров game-art.json (alt = «<игра> — <opis>», media.ts:54). Экранирование маршрута: текст печатается через html-escaper, экранируются «& < > ' \\\"» (node_modules/astro/dist/r…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "r4:regressii",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "af1b5ee93bcae2652",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790536875506,
+      "queuedAt": 1790536875465,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "regressii (раунд 4): регрессии правки раунда 3 в chuzhie-gl…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 4 («судью судят», инвариант 1 корневого CLAUDE.md; критерий остановки П73 п. 2 — раунд, который находит только пределы и прозу). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия …",
+      "promptFramed": true,
+      "lastProgressAt": 1790538033164,
+      "tokens": 239005,
+      "toolCalls": 25,
+      "durationMs": 1156214,
+      "resultPreview": "{\"linza\":\"regressii (раунд 4): регрессии правки раунда 3 в chuzhie-glavy.mjs@83d8d3a. Проверены atributy, zabitAtributy, zamenitKod, bezC0 только по тексту, NEVIDIMYE_SUSHCHNOSTI, chistit с хангылем, raskrytZnachenie, dopStroki (голова до <body>, TEG для <title> и <meta>), ряд и метка по тегам, заголовок после NFKC и замены кириллицы, KOD с (?=[\\\\s>\\\\/]). Сверял с обычной разметкой Astro (маршрут …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "r4:proby",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a7ca9e4436c012a2c",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790536875507,
+      "queuedAt": 1790536875466,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "proby, раунд 4. Для каждой правки раунда 3 в chuzhie-glavy.…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 4 («судью судят», инвариант 1 корневого CLAUDE.md; критерий остановки П73 п. 2 — раунд, который находит только пределы и прозу). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия …",
+      "promptFramed": true,
+      "lastProgressAt": 1790538028974,
+      "tokens": 257617,
+      "toolCalls": 22,
+      "durationMs": 1152023,
+      "resultPreview": "{\"linza\":\"proby, раунд 4. Для каждой правки раунда 3 в chuzhie-glavy.mjs@83d8d3a разобрал мысленный мутант и проверил, какая из 102 порч --proba его ловит. Искал ветви без порчи и порчи, которые проходят и на коде до правки. Всё посчитано по коду и по dist/max-payne-3/guide/index.html; стенд и оболочка не запускались.\",\"nahodki\":[{\"id\":\"proby-r4-1\",\"vid\":\"ложное чисто\",\"tyazhest\":\"низкая\",\"put\":\"с…"
+    }
+  ],
+  "totalTokens": 799264,
+  "totalToolCalls": 90
+}

@@ -100,8 +100,8 @@ rows:
       - >-
         “Her fashion sense didn’t leave a whole lot of room for imagination,
         let alone food” — Chapter 2, “Nothing but the Second Best,” when Max
-        finds a piece of Fabiana’s clothing. From the same chapter: “This
-        place was like Baghdad and G-strings.”
+        finds a piece of Fabiana’s clothing. “This place was like Baghdad and
+        G-strings” — also Chapter 2.
       - >-
         “I stood out in this place like a streetwalker in a monastery” —
         Chapter 7, “A Hangover Sent Direct from Mother Nature,” as Max walks

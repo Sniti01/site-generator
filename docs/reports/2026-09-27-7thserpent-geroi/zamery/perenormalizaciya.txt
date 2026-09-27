@@ -1,0 +1,6 @@
+$ git add --renormalize . ; git diff --cached --name-only
+(папка: D:/SEO/cloud/site-generator; HEAD e5641ac)
+
+файлов в индексе после перенормализации: 0
+
+код выхода: 0

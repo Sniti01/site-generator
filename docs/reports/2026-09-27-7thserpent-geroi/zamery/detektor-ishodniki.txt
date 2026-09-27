@@ -1,0 +1,6 @@
+$ node .claude/skills/impeccable/scripts/detect.mjs --json sites/7thserpent.com/src/content/tresc/pc.md sites/7thserpent.com/src/content/tresc/games-like-max-payne.md sites/7thserpent.com/src/content/tresc/media.md sites/7thserpent.com/src/content/tresc/story.md sites/7thserpent.com/src/content/tresc/voice-and-face.md sites/7thserpent.com/src/content/tresc/cheats.md sites/7thserpent.com/src/content/tresc/mods.md sites/7thserpent.com/src/content/tresc/quotes.md
+(папка: D:/SEO/cloud/site-generator)
+
+[]
+
+код выхода: 0

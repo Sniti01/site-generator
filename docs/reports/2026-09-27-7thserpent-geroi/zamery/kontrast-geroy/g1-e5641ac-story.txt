@@ -1,0 +1,8 @@
+сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-a/story, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-a.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 11.80:1 на 900x700 (строка y 290.5 «Max Payne story and characters: from New»), p99 не ниже 12.40:1
+herolead .hero__lead           худший пиксель 5.89:1 на 1920x1080 (строка y 297.4 «A New York detective loses his wife and »), p99 не ниже 6.50:1
+herobtn .btn-secondary         худший пиксель 13.34:1 на 641x900 (строка y 137.6 «Who’s who»), p99 не ниже 13.51:1
+
+Итог: окон 31, строк 228; самый тесный худший пиксель — 5.89:1 (1920x1080, .hero__lead, y 297.4), порог 4,5:1.
+
+story exit=0

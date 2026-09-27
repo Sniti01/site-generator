@@ -1,0 +1,8 @@
+сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-a/games-like-max-payne, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-a.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 12.23:1 на 860x900 (строка y 358.8 «Games like Max Payne: what to play next»), p99 не ниже 12.58:1
+herolead .hero__lead           худший пиксель 5.81:1 на 900x700 (строка y 237.5 «What to play after Max Payne, from RAWG’»), p99 не ниже 5.90:1
+herobtn .btn-secondary         худший пиксель 13.34:1 на 960x800 (строка y 137.9 «The next Max Payne»), p99 не ниже 13.37:1
+
+Итог: окон 31, строк 197; самый тесный худший пиксель — 5.81:1 (900x700, .hero__lead, y 237.5), порог 4,5:1.
+
+games-like-max-payne exit=0

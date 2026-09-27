@@ -1,0 +1,39 @@
+сборка до: dist-149a040
+сборка после: dist-e5641ac
+файлов до 138, после 162
+только до (0):
+  
+только после (24):
+  _astro/mp1-k05.Jcewn-3a.jpg
+  _astro/mp1-k05.Jcewn-3a_pt2pP.webp
+  _astro/mp1-k05.Jcewn-3a_Ztr1fc.webp
+  _astro/mp1-k09.CiIc_kkf.jpg
+  _astro/mp1-k09.CiIc_kkf_Z1oLRN5.webp
+  _astro/mp1-k09.CiIc_kkf_ZI0mNi.webp
+  _astro/mp1-k12.CFLOT8GF.jpg
+  _astro/mp1-k12.CFLOT8GF_1vaEEV.webp
+  _astro/mp1-k12.CFLOT8GF_2bWaEI.webp
+  _astro/mp1-k14.DR0et4Uc.jpg
+  _astro/mp1-k14.DR0et4Uc_1GqoTB.webp
+  _astro/mp1-k14.DR0et4Uc_2ncTTo.webp
+  _astro/mp2-k00.NhbLr7d7.jpg
+  _astro/mp2-k00.NhbLr7d7_HHwoq.webp
+  _astro/mp3-k01.Bzqj22qQ.jpg
+  _astro/mp3-k01.Bzqj22qQ_y99Uh.webp
+  _astro/mp3-k01.Bzqj22qQ_Z1zi7uh.webp
+  _astro/mp3-k01.Bzqj22qQ_Z2oAYAM.webp
+  _astro/mp3-k04.CiTa_XSb.jpg
+  _astro/mp3-k04.CiTa_XSb_cc1kY.webp
+  _astro/mp3-k04.CiTa_XSb_Z1vkfKp.webp
+  _astro/mp3-k06.DCBb1tj5.jpg
+  _astro/mp3-k06.DCBb1tj5_1jRPnX.webp
+  _astro/mp3-k06.DCBb1tj5_Z22M1jz.webp
+различаются (8):
+  cheats/index.html
+  games-like-max-payne/index.html
+  media/index.html
+  mods/index.html
+  pc/index.html
+  quotes/index.html
+  story/index.html
+  voice-and-face/index.html

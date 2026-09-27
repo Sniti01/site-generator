@@ -1,0 +1,11 @@
+$ node docs/reports/2026-09-25-7thserpent-pachka-1/instrumenty/vneshnie.mjs sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+файлов разобрано (HTML, SVG, CSS, JS): 17
+внешних загрузок: 0
+подозрений в исполняемом JS: 0
+загрузок по абсолютному адресу своего хоста (ушли бы на боевой сайт): 0
+внешних ссылок <a> (переходы, не загрузки): 1
+  /media/index.html: https://www.youtube.com/rockstargames
+
+код выхода: 0

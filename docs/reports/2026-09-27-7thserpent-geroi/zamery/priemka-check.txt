@@ -1,0 +1,23 @@
+$ npm run check
+(папка: D:\SEO\cloud\site-generator\sites\7thserpent.com)
+
+
+> 7thserpent.com@0.1.0 check
+> astro check
+
+11:06:41 [content] Syncing content
+11:06:41 [content] Synced content
+11:06:41 [types] Generated 587ms
+11:06:41 [check] Getting diagnostics for Astro files in D:\SEO\cloud\site-generator\sites\7thserpent.com...
+tools/fetch-corpus.mjs:471:25 - warning ts(6198): All destructured elements are unused.
+
+471 function writeRun(done, { attempted, counts, startedAt, hosts }) {
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Result (75 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+
+
+код выхода: 0

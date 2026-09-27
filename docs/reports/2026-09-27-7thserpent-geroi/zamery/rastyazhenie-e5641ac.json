@@ -1,0 +1,3362 @@
+[
+ {
+  "adres": "/pc/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_Z1zi7uh.webp",
+  "narisovano": 549,
+  "rastyazhenie": 0.46
+ },
+ {
+  "adres": "/pc/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1600,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_Z2oAYAM.webp",
+  "narisovano": 1313,
+  "rastyazhenie": 0.82
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 0.64
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1051,
+  "rastyazhenie": 0.6
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 0.64
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1313,
+  "rastyazhenie": 0.75
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1314,
+  "rastyazhenie": 0.75
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1492,
+  "rastyazhenie": 0.85
+ },
+ {
+  "adres": "/pc/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 0.99
+ },
+ {
+  "adres": "/pc/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 1.49
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_ZI0mNi.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.38
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 0.8
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 870,
+  "rastyazhenie": 0.68
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 929,
+  "rastyazhenie": 0.73
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 0.85
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 1.02
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/media/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_Z22M1jz.webp",
+  "narisovano": 601,
+  "rastyazhenie": 0.5
+ },
+ {
+  "adres": "/media/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/media/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 0.96
+ },
+ {
+  "adres": "/media/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 0.9
+ },
+ {
+  "adres": "/media/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 0.96
+ },
+ {
+  "adres": "/media/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/media/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/media/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 1.28
+ },
+ {
+  "adres": "/media/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/media/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/story/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_2ncTTo.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.38
+ },
+ {
+  "adres": "/story/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/story/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 0.8
+ },
+ {
+  "adres": "/story/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 870,
+  "rastyazhenie": 0.68
+ },
+ {
+  "adres": "/story/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 929,
+  "rastyazhenie": 0.73
+ },
+ {
+  "adres": "/story/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/story/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 0.85
+ },
+ {
+  "adres": "/story/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 1.02
+ },
+ {
+  "adres": "/story/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/story/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_cc1kY.webp",
+  "narisovano": 601,
+  "rastyazhenie": 0.5
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 0.96
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 0.9
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 0.96
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 1.12
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 1.28
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_2bWaEI.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.38
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 0.8
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 870,
+  "rastyazhenie": 0.68
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 929,
+  "rastyazhenie": 0.73
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.84
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 0.85
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 1.02
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/mods/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1200,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_pt2pP.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.38
+ },
+ {
+  "adres": "/mods/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.75
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 0.71
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 870,
+  "rastyazhenie": 0.6
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 929,
+  "rastyazhenie": 0.65
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 0.75
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 0.76
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 0.91
+ },
+ {
+  "adres": "/mods/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.21
+ },
+ {
+  "adres": "/mods/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 1.81
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "390x844",
+  "dpr": 1,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.44
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "800x900",
+  "dpr": 1,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.05
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1024x768",
+  "dpr": 1,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 1
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1280x720",
+  "dpr": 1,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 870,
+  "rastyazhenie": 0.85
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1366x768",
+  "dpr": 1,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 929,
+  "rastyazhenie": 0.91
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1440x900",
+  "dpr": 1,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.05
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1600x900",
+  "dpr": 1,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 1.06
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1920x1080",
+  "dpr": 1,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 1.28
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "2560x1440",
+  "dpr": 1,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "3840x2160",
+  "dpr": 1,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/pc/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1600,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_Z2oAYAM.webp",
+  "narisovano": 549,
+  "rastyazhenie": 0.69
+ },
+ {
+  "adres": "/pc/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1314,
+  "rastyazhenie": 1.5
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 1.28
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1051,
+  "rastyazhenie": 1.2
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 1.28
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1313,
+  "rastyazhenie": 1.5
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1314,
+  "rastyazhenie": 1.5
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1492,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/pc/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 1.99
+ },
+ {
+  "adres": "/pc/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 2.98
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.7
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 1.6
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.45
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/media/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 601,
+  "rastyazhenie": 0.94
+ },
+ {
+  "adres": "/media/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/media/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/media/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 1.8
+ },
+ {
+  "adres": "/media/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/media/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/media/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/media/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/media/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/media/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/story/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.7
+ },
+ {
+  "adres": "/story/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/story/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 1.6
+ },
+ {
+  "adres": "/story/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/story/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.45
+ },
+ {
+  "adres": "/story/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/story/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/story/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/story/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/story/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 601,
+  "rastyazhenie": 0.94
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 1.8
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.7
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 1.6
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.36
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.45
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.69
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/mods/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.63
+ },
+ {
+  "adres": "/mods/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.5
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 1.42
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.21
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.29
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 1.5
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 1.51
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 1.81
+ },
+ {
+  "adres": "/mods/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.42
+ },
+ {
+  "adres": "/mods/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 3.63
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "390x844",
+  "dpr": 2,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.88
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "800x900",
+  "dpr": 2,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.11
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1024x768",
+  "dpr": 2,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 2
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1280x720",
+  "dpr": 2,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.7
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1366x768",
+  "dpr": 2,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.81
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1440x900",
+  "dpr": 2,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.11
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1600x900",
+  "dpr": 2,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 2.13
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1920x1080",
+  "dpr": 2,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "2560x1440",
+  "dpr": 2,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 3.4
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "3840x2160",
+  "dpr": 2,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 5.1
+ },
+ {
+  "adres": "/pc/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 549,
+  "rastyazhenie": 0.94
+ },
+ {
+  "adres": "/pc/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1314,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1051,
+  "rastyazhenie": 1.8
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1121,
+  "rastyazhenie": 1.92
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1313,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1314,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/pc/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1492,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/pc/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 2.98
+ },
+ {
+  "adres": "/pc/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1753,
+  "vsego": "1200/1600/1753",
+  "src": "mp3-k01.Bzqj22qQ_y99Uh.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 4.47
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 450,
+  "rastyazhenie": 1.05
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 2.4
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 870,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 929,
+  "rastyazhenie": 2.18
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 3.06
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/games-like-max-payne/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k09.CiIc_kkf_Z1oLRN5.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 6.12
+ },
+ {
+  "adres": "/media/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 601,
+  "rastyazhenie": 1.41
+ },
+ {
+  "adres": "/media/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/media/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 2.88
+ },
+ {
+  "adres": "/media/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 2.7
+ },
+ {
+  "adres": "/media/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 2.88
+ },
+ {
+  "adres": "/media/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/media/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/media/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 3.83
+ },
+ {
+  "adres": "/media/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/media/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k06.DCBb1tj5_1jRPnX.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 6.12
+ },
+ {
+  "adres": "/story/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 450,
+  "rastyazhenie": 1.05
+ },
+ {
+  "adres": "/story/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/story/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 2.4
+ },
+ {
+  "adres": "/story/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 870,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/story/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 929,
+  "rastyazhenie": 2.18
+ },
+ {
+  "adres": "/story/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/story/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/story/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 3.06
+ },
+ {
+  "adres": "/story/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/story/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k14.DR0et4Uc_1GqoTB.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 6.12
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 601,
+  "rastyazhenie": 1.41
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 2.88
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1150,
+  "rastyazhenie": 2.7
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1227,
+  "rastyazhenie": 2.88
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1439,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1438,
+  "rastyazhenie": 3.37
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1634,
+  "rastyazhenie": 3.83
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/voice-and-face/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp3-k04.CiTa_XSb_Z1vkfKp.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 6.12
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 450,
+  "rastyazhenie": 1.05
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 2.4
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 870,
+  "rastyazhenie": 2.04
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 929,
+  "rastyazhenie": 2.18
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.53
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 3.06
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 4.08
+ },
+ {
+  "adres": "/cheats/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1280,
+  "vsego": "1200/1280",
+  "src": "mp1-k12.CFLOT8GF_1vaEEV.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 6.12
+ },
+ {
+  "adres": "/mods/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 450,
+  "rastyazhenie": 0.94
+ },
+ {
+  "adres": "/mods/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 2.13
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 870,
+  "rastyazhenie": 1.81
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 929,
+  "rastyazhenie": 1.94
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 2.25
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 2.27
+ },
+ {
+  "adres": "/mods/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/mods/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 3.63
+ },
+ {
+  "adres": "/mods/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1440,
+  "vsego": "1200/1440",
+  "src": "mp1-k05.Jcewn-3a_Ztr1fc.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 5.44
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "390x844",
+  "dpr": 3,
+  "ramka": [
+   390,
+   338
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 450,
+  "rastyazhenie": 1.32
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "800x900",
+  "dpr": 3,
+  "ramka": [
+   800,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 3.16
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1024x768",
+  "dpr": 3,
+  "ramka": [
+   1024,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1024,
+  "rastyazhenie": 3
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1280x720",
+  "dpr": 3,
+  "ramka": [
+   870,
+   647
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 870,
+  "rastyazhenie": 2.55
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1366x768",
+  "dpr": 3,
+  "ramka": [
+   929,
+   690
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 929,
+  "rastyazhenie": 2.72
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1440x900",
+  "dpr": 3,
+  "ramka": [
+   979,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1079,
+  "rastyazhenie": 3.16
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1600x900",
+  "dpr": 3,
+  "ramka": [
+   1088,
+   809
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1088,
+  "rastyazhenie": 3.19
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "1920x1080",
+  "dpr": 3,
+  "ramka": [
+   1306,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1306,
+  "rastyazhenie": 3.83
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "2560x1440",
+  "dpr": 3,
+  "ramka": [
+   1741,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 1741,
+  "rastyazhenie": 5.1
+ },
+ {
+  "adres": "/quotes/",
+  "okno": "3840x2160",
+  "dpr": 3,
+  "ramka": [
+   2611,
+   919
+  ],
+  "kandidat": 1024,
+  "vsego": "1024",
+  "src": "mp2-k00.NhbLr7d7_HHwoq.webp",
+  "narisovano": 2611,
+  "rastyazhenie": 7.65
+ }
+]

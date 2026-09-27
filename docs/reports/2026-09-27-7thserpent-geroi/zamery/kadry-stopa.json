@@ -1,0 +1,627 @@
+{
+ "sborka": "e5641ac",
+ "pc-1440": {
+  "nezagruzheno": 0,
+  "vysota": 6345,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": null,
+  "h1": {
+   "y": 336,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "pc-390": {
+  "nezagruzheno": 0,
+  "vysota": 7984,
+  "hero": {
+   "y": 136,
+   "h": 861,
+   "w": 390
+  },
+  "byline": null,
+  "h1": {
+   "y": 505,
+   "h": 130,
+   "w": 358
+  },
+  "podpisKadra": null,
+  "strokH1": 4,
+  "kroshki": {
+   "y": 69,
+   "h": 67,
+   "w": 390
+  }
+ },
+ "pc-320": {
+  "nezagruzheno": 0,
+  "vysota": 8923,
+  "hero": {
+   "y": 155,
+   "h": 837,
+   "w": 320
+  },
+  "byline": null,
+  "h1": {
+   "y": 447,
+   "h": 160,
+   "w": 288
+  },
+  "podpisKadra": null,
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "games-like-max-payne-1440": {
+  "nezagruzheno": 0,
+  "vysota": 5519,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": null,
+  "h1": {
+   "y": 361,
+   "h": 100,
+   "w": 720
+  },
+  "podpisKadra": null,
+  "strokH1": 2,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "games-like-max-payne-390": {
+  "nezagruzheno": 0,
+  "vysota": 6878,
+  "hero": {
+   "y": 113,
+   "h": 855,
+   "w": 390
+  },
+  "byline": null,
+  "h1": {
+   "y": 482,
+   "h": 98,
+   "w": 358
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 390
+  }
+ },
+ "games-like-max-payne-320": {
+  "nezagruzheno": 0,
+  "vysota": 7421,
+  "hero": {
+   "y": 136,
+   "h": 800,
+   "w": 320
+  },
+  "byline": null,
+  "h1": {
+   "y": 428,
+   "h": 96,
+   "w": 288
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 67,
+   "w": 320
+  }
+ },
+ "media-1440": {
+  "nezagruzheno": 0,
+  "vysota": 5833,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": null,
+  "h1": {
+   "y": 351,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": {
+   "y": 113,
+   "h": 27,
+   "w": 381
+  },
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "media-390": {
+  "nezagruzheno": 0,
+  "vysota": 7585,
+  "hero": {
+   "y": 155,
+   "h": 893,
+   "w": 390
+  },
+  "byline": null,
+  "h1": {
+   "y": 524,
+   "h": 163,
+   "w": 358
+  },
+  "podpisKadra": {
+   "y": 155,
+   "h": 27,
+   "w": 381
+  },
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 390
+  }
+ },
+ "media-320": {
+  "nezagruzheno": 0,
+  "vysota": 8003,
+  "hero": {
+   "y": 155,
+   "h": 843,
+   "w": 320
+  },
+  "byline": null,
+  "h1": {
+   "y": 447,
+   "h": 191,
+   "w": 288
+  },
+  "podpisKadra": {
+   "y": 155,
+   "h": 46,
+   "w": 320
+  },
+  "strokH1": 6,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "story-1440": {
+  "nezagruzheno": 0,
+  "vysota": 8581,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": {
+   "y": 923,
+   "h": 115,
+   "w": 1440
+  },
+  "h1": {
+   "y": 336,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "story-390": {
+  "nezagruzheno": 0,
+  "vysota": 11213,
+  "hero": {
+   "y": 155,
+   "h": 887,
+   "w": 390
+  },
+  "byline": {
+   "y": 1042,
+   "h": 87,
+   "w": 390
+  },
+  "h1": {
+   "y": 524,
+   "h": 130,
+   "w": 358
+  },
+  "podpisKadra": null,
+  "strokH1": 4,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 390
+  }
+ },
+ "story-320": {
+  "nezagruzheno": 0,
+  "vysota": 12525,
+  "hero": {
+   "y": 155,
+   "h": 864,
+   "w": 320
+  },
+  "byline": {
+   "y": 1018,
+   "h": 114,
+   "w": 320
+  },
+  "h1": {
+   "y": 447,
+   "h": 160,
+   "w": 288
+  },
+  "podpisKadra": null,
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "voice-and-face-1440": {
+  "nezagruzheno": 0,
+  "vysota": 7031,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": {
+   "y": 923,
+   "h": 115,
+   "w": 1440
+  },
+  "h1": {
+   "y": 351,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "voice-and-face-390": {
+  "nezagruzheno": 0,
+  "vysota": 8594,
+  "hero": {
+   "y": 155,
+   "h": 861,
+   "w": 390
+  },
+  "byline": {
+   "y": 1015,
+   "h": 87,
+   "w": 390
+  },
+  "h1": {
+   "y": 524,
+   "h": 130,
+   "w": 358
+  },
+  "podpisKadra": null,
+  "strokH1": 4,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 390
+  }
+ },
+ "voice-and-face-320": {
+  "nezagruzheno": 0,
+  "vysota": 9489,
+  "hero": {
+   "y": 155,
+   "h": 837,
+   "w": 320
+  },
+  "byline": {
+   "y": 992,
+   "h": 114,
+   "w": 320
+  },
+  "h1": {
+   "y": 447,
+   "h": 160,
+   "w": 288
+  },
+  "podpisKadra": null,
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "cheats-1440": {
+  "nezagruzheno": 0,
+  "vysota": 7064,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": {
+   "y": 923,
+   "h": 115,
+   "w": 1440
+  },
+  "h1": {
+   "y": 376,
+   "h": 100,
+   "w": 720
+  },
+  "podpisKadra": null,
+  "strokH1": 2,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "cheats-390": {
+  "nezagruzheno": 0,
+  "vysota": 8261,
+  "hero": {
+   "y": 113,
+   "h": 828,
+   "w": 390
+  },
+  "byline": {
+   "y": 941,
+   "h": 87,
+   "w": 390
+  },
+  "h1": {
+   "y": 482,
+   "h": 98,
+   "w": 358
+  },
+  "podpisKadra": null,
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 390
+  }
+ },
+ "cheats-320": {
+  "nezagruzheno": 0,
+  "vysota": 9218,
+  "hero": {
+   "y": 155,
+   "h": 805,
+   "w": 320
+  },
+  "byline": {
+   "y": 960,
+   "h": 114,
+   "w": 320
+  },
+  "h1": {
+   "y": 447,
+   "h": 128,
+   "w": 288
+  },
+  "podpisKadra": null,
+  "strokH1": 4,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "mods-1440": {
+  "nezagruzheno": 0,
+  "vysota": 5846,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": {
+   "y": 923,
+   "h": 115,
+   "w": 1440
+  },
+  "h1": {
+   "y": 351,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": {
+   "y": 113,
+   "h": 27,
+   "w": 363
+  },
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "mods-390": {
+  "nezagruzheno": 0,
+  "vysota": 7242,
+  "hero": {
+   "y": 155,
+   "h": 861,
+   "w": 390
+  },
+  "byline": {
+   "y": 1015,
+   "h": 87,
+   "w": 390
+  },
+  "h1": {
+   "y": 524,
+   "h": 130,
+   "w": 358
+  },
+  "podpisKadra": {
+   "y": 155,
+   "h": 27,
+   "w": 363
+  },
+  "strokH1": 4,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 390
+  }
+ },
+ "mods-320": {
+  "nezagruzheno": 0,
+  "vysota": 7959,
+  "hero": {
+   "y": 155,
+   "h": 837,
+   "w": 320
+  },
+  "byline": {
+   "y": 992,
+   "h": 114,
+   "w": 320
+  },
+  "h1": {
+   "y": 447,
+   "h": 160,
+   "w": 288
+  },
+  "podpisKadra": {
+   "y": 155,
+   "h": 46,
+   "w": 320
+  },
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ },
+ "quotes-1440": {
+  "nezagruzheno": 0,
+  "vysota": 7357,
+  "hero": {
+   "y": 113,
+   "h": 810,
+   "w": 1440
+  },
+  "byline": {
+   "y": 923,
+   "h": 115,
+   "w": 1440
+  },
+  "h1": {
+   "y": 351,
+   "h": 150,
+   "w": 720
+  },
+  "podpisKadra": {
+   "y": 113,
+   "h": 27,
+   "w": 485
+  },
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 44,
+   "w": 1440
+  }
+ },
+ "quotes-390": {
+  "nezagruzheno": 0,
+  "vysota": 9682,
+  "hero": {
+   "y": 136,
+   "h": 801,
+   "w": 390
+  },
+  "byline": {
+   "y": 937,
+   "h": 87,
+   "w": 390
+  },
+  "h1": {
+   "y": 505,
+   "h": 98,
+   "w": 358
+  },
+  "podpisKadra": {
+   "y": 136,
+   "h": 46,
+   "w": 390
+  },
+  "strokH1": 3,
+  "kroshki": {
+   "y": 69,
+   "h": 67,
+   "w": 390
+  }
+ },
+ "quotes-320": {
+  "nezagruzheno": 0,
+  "vysota": 10843,
+  "hero": {
+   "y": 155,
+   "h": 811,
+   "w": 320
+  },
+  "byline": {
+   "y": 965,
+   "h": 114,
+   "w": 320
+  },
+  "h1": {
+   "y": 447,
+   "h": 160,
+   "w": 288
+  },
+  "podpisKadra": {
+   "y": 155,
+   "h": 46,
+   "w": 320
+  },
+  "strokH1": 5,
+  "kroshki": {
+   "y": 69,
+   "h": 86,
+   "w": 320
+  }
+ }
+}

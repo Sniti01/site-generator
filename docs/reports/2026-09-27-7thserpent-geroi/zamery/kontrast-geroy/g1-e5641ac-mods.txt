@@ -1,0 +1,9 @@
+сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-b/mods, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-b.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 11.47:1 на 641x900 (строка y 386.5 «The best Max Payne mods: from the Kung F»), p99 не ниже 12.58:1
+herolead .hero__lead           худший пиксель 5.79:1 на 700x900 (строка y 268.0 «Kung fu moves for the first game, path t»), p99 не ниже 6.27:1
+herobtn .btn-secondary         худший пиксель 14.13:1 на 800x900 (строка y 137.2 «Path tracing»), p99 не ниже 14.39:1
+podpis .podpis-geroya          худший пиксель 5.38:1 на 360x740 (строка y 159.5 «Pictured: the original Max Payne (2001),»), p99 не ниже 5.38:1
+
+Итог: окон 31, строк 232; самый тесный худший пиксель — 5.38:1 (360x740, .podpis-geroya, y 159.5), порог 4,5:1.
+
+mods exit=0

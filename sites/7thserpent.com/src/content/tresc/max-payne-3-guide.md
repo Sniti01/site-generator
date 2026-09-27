@@ -24,25 +24,25 @@ rows:
     meta: Where each one takes place · golden gun parts / clues
     body:
       - >-
-        I. A private party and a kidnapping attempt on the Brancos (3 / 2) —
-        “Something Rotten in the Air.” II. A São Paulo
-        nightclub (6 / 6) — “Nothing but the Second Best.” III. An ambush at a
-        football stadium (6 / 4) — “Just Another Day at the Office.” IV. A bar,
-        Max’s apartment with his NYPD badge, the rooftops and a chop shop
-        (9 / 3) — “Anyone Can Buy Me a Drink.” V. Hangars, docks and a shootout
-        from a speeding boat (6 / 6) — “Alive If Not Exactly Well.”
+        I. A private party and a kidnapping attempt on the Brancos (3 / 2):
+        “Something Rotten in the Air.” II. A São Paulo nightclub (6 / 6):
+        “Nothing but the Second Best.” III. An ambush at a football stadium
+        (6 / 4): “Just Another Day at the Office.” IV. A bar, Max’s apartment
+        with his NYPD badge, the rooftops and a chop shop (9 / 3): “Anyone Can
+        Buy Me a Drink.” V. Hangars, docks and a shootout from a speeding boat
+        (6 / 6): “Alive If Not Exactly Well.”
       - >-
-        VI. An office building that goes up in flames (3 / 5) — “A Dame, a Dork
-        and a Drunk.” VII. The favela (6 / 9) — “A Hangover Sent Direct from
-        Mother Nature.” VIII. A graveyard and a chapel, in flashback (6 / 3) —
+        VI. An office building that goes up in flames (3 / 5): “A Dame, a Dork
+        and a Drunk.” VII. The favela (6 / 9): “A Hangover Sent Direct from
+        Mother Nature.” VIII. A graveyard and a chapel, in flashback (6 / 3):
         “Ain’t No Reprievement Gonna Be Found Otherwise.” IX. The favela again,
-        during a police raid (6 / 3) — “Here I Was Again…” X. A bus station and
-        a bus ride (6 / 2) — “It’s Drive or Shoot, Sister.”
+        during a police raid (6 / 3): “Here I Was Again…” X. A bus station and
+        a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”
       - >-
-        XI. A yacht on the Panama Canal, in flashback (6 / 8) — “Suntan Oil,
+        XI. A yacht on the Panama Canal, in flashback (6 / 8): “Suntan Oil,
         Stale Margaritas and Greed.” XII. A hotel Max brings down with C4
-        (6 / 6) — “The Great American Savior of the Poor.” XIII. A prison and a
-        police station (9 / 7) — “A Fat Bald Dude…” XIV. The airport (6 / 1) —
+        (6 / 6): “The Great American Savior of the Poor.” XIII. A prison and a
+        police station (9 / 7): “A Fat Bald Dude…” XIV. The airport (6 / 1):
         “One Card Left to Play.”
   - id: length
     year: Length
@@ -76,10 +76,9 @@ rows:
     band: true
     body:
       - >-
-        Clues are things you examine — papers, objects, now and then a body —
+        Clues are things you examine (papers, objects, now and then a body),
         and no marker on the map shows where they are. Chapter VII has the
-        most, nine.
-        One chain is easy to miss: meet the former cop in the nightclub
+        most, nine. One chain is easy to miss: meet the former cop in the nightclub
         restroom in chapter II, or he will not turn up again in chapter VII,
         and you will find him for the last time in XIV. All 65 earn An Echo Of
         The Past and, on the same IGN list, a constant bullet-time camera.
@@ -91,8 +90,8 @@ rows:
       - >-
         The last chapter sends Max through terminal 2 of Piratininga Airport
         with corrupt police on his heels: over luggage conveyors, through the
-        departures lounge to TEARS by HEALTH — the only place the score uses
-        vocals — and out to a chase on the runway that ends the story. That
+        departures lounge to TEARS by HEALTH (the only place the score uses
+        vocals), and out to a chase on the runway that ends the story. That
         track earned HEALTH a Spike Video Game Awards nomination in 2012, for
         best song. The chapter’s six parts make the Rotary Grenade Launcher
         and the RPD.
@@ -104,11 +103,11 @@ rows:
     body:
       - >-
         As of September 2026, the Steam edition with all its add-ons lists 67
-        achievements. Four story ones go by difficulty — Feel the Payne on
+        achievements. Four story ones go by difficulty: Feel the Payne on
         Medium, Serious Payne on Hard, Payne In The Ass on Hardcore, Maximum
         Payne on Old School; finishing on Hard unlocks those last two. Among
-        the ones set in a single chapter: That Old Familiar Feeling (IV, every gunman
-        shining a laser through the hallway windows), So Much For Being Subtle
+        the ones set in a single chapter are That Old Familiar Feeling (IV,
+        every gunman shining a laser through the hallway windows), So Much For Being Subtle
         (VII, nine kills in free aim while the chain hauls Max up the
         warehouse) and Sometimes You Get Lucky (XII). A New York Minute asks
         you to finish the Arcade mode of that name.
@@ -117,7 +116,7 @@ related:
 cta:
   title: How the fights work
   lead: >-
-    Bullet time, shootdodges, painkillers and the Last Stand — the gameplay
+    Bullet time, shootdodges, painkillers and the Last Stand: the gameplay
     page covers what changed from the first game to the third.
   href: /gameplay/
   label: How Max Payne plays

@@ -1,0 +1,526 @@
+[
+ {
+  "id": "obh3-desc-kommentariy",
+  "zameny": [
+   [
+    "name=\"description\" content=\"A Max Payne 3 guide:",
+    "name=\"description\" content=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage. --> A Max Payne 3 guide:"
+   ],
+   [
+    "property=\"og:description\" content=\"A Max Payne 3 guide:",
+    "property=\"og:description\" content=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage. --> A Max Payne 3 guide:"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Описание — это весь текст content вместе с «<!-- … -->» и фразой Википедии, и правило судит описание всегда. maskaDoMain (:196) забивает комментарий пробелами ещё до raskrytZnachenie, поэтому content судится без фразы. Сегодня результат — «чисто». Путь через содержание: Astro не экранирует «<» в атрибутах."
+ },
+ {
+  "id": "obh3-alt-kommentariy",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"<!-- A new feature to the series is the cover system, which allows players to gain a tactical advantage --> Max Payne 3 — close-up of Max aiming a pistol against a grey sky\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "alt — это весь текст значения: его произносит читалка и показывает браузер, если картинка не загрузилась. mainChist (:223) стирает «<!-- … -->» до vMain (:208), и судится только «Max Payne 3 — close-up…» без фразы. Сегодня результат — «чисто»."
+ },
+ {
+  "id": "obh3-pustoy-kommentariy",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><!-->A new feature to the series is the cover system, which allows players to gain a tactical advantage.<!-- --> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Для браузера `<!-->` — пустой комментарий (abrupt-closing-of-empty-comment), и фраза видна. KOD (:162) ищет «-->» после «<!--» и находит конец следующего комментария, так что фраза стёрта в обоих прочтениях. p5 этот предел называет, glavy — нет. С `<!-- x --!>фраза<!-- -->` итог тот же."
+ },
+ {
+  "id": "obh3-script-probel",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><script></script >A new feature to the series is the cover system, which allows players to gain a tactical advantage.<script></script> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Для браузера `</script >` закрывает скрипт (пробел перед «>» допустим), и фраза видна. KOD ждёт `</script>` вплотную и стирает всё до конца второго, пустого скрипта. Сегодня результат — «чисто»."
+ },
+ {
+  "id": "obh3-menshe-tsifra",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Fans <3 this: a new feature to the series is the cover system, which allows players to gain a tactical advantage. Scores: 9 > 8. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Для браузера «<3» не тег (после «<» стоит не буква), и текст виден целиком. tekstDokumenta сторожа (brief-strony.mjs:387) снимает «<3 this: … 9 >» как тег, и фраза не судится. Путь только через шаблон."
+ },
+ {
+  "id": "obh3-c0-v-imeni-tega",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><scr&#1;ipt>A new feature to the series is the cover system, which allows players to gain a tactical advantage.</scr&#1;ipt> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Для браузера «scr&#1;ipt» — имя неизвестного строчного элемента (сущности в имени тега не раскрываются), и фраза видна. bezC0 (:175) снимает `&#1;` прямо в разметке, после чего KOD (:176) стирает получившийся «скрипт» вместе с фразой. p5, где bezC0 нет, эту фразу видит."
+ },
+ {
+  "id": "obh3-vt",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the se&#11;ries is the cover sy&#11;stem, which allows players to ga&#11;in a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+000B для читателя не пробел: Chrome рисует C0 нулевой ширины (на том же доводе стоят порчи :368–371), и на экране видно «series», «system», «gain». bezC0 (:167) заменяет `&#11;` пробелом, слова рвутся, и 8-грамм не остаётся. С `&#12;` итог тот же."
+ },
+ {
+  "id": "obh3-hangul",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Aㅤnewㅤfeatureㅤtoㅤtheㅤseriesㅤisㅤtheㅤcoverㅤsystem,ㅤwhichㅤallowsㅤplayersㅤtoㅤgainㅤaㅤtacticalㅤadvantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "HarfBuzz знак U+3164 не прячет, шрифт даёт для него пробельный глиф, и читатель видит фразу Википедии словами через пробелы. chistit (:172) снимает U+3164 как Default_Ignorable, и остаются два «слова» без 8-грамм. Сегодня результат — «чисто»."
+ },
+ {
+  "id": "obh3-zwsp-imenovannaya",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the se&ZeroWidthSpace;ries is the cover sy&ZeroWidthSpace;stem, which allows players to ga&ZeroWidthSpace;in a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Браузер раскрывает &ZeroWidthSpace; в U+200B нулевой ширины, и слова на экране целые. tekstDokumenta (brief-strony.mjs:377) раскрывает неизвестную именованную сущность пробелом, chistit убирать уже нечего, и слова рвутся. Это остаток izv-N2."
+ },
+ {
+  "id": "obh3-meta-posle-head",
+  "zameny": [
+   [
+    "</style></head><body>",
+    "</style></head><meta name=\"description\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage.\"><body>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "",
+  "zachem": "Парсер переносит meta из режима «after head» в <head>, и в голове документа оказываются две meta description, вторая — с фразой Википедии. Судья видит голову только до `</head>` (:197–200): там одна description, счёт проходит, вторая не судится. Годится отказ по фразе или код 2 «meta description: 2» — что угодно, кроме «чисто»."
+ },
+ {
+  "id": "obh3-main-bez-kavychek",
+  "zameny": [
+   [
+    "href=\"/gameplay/\" data-astro-cid-rtqd6vyo>How Max Payne plays",
+    "href=\"/gameplay/\" data-astro-cid-rtqd6vyo title=</main>A new feature to the series is the cover system, which allows players to gain a tactical advantage. How Max Payne plays"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Для браузера у ссылки призыва title=\"</main\", а дальше в ней видна фраза Википедии. Маска (:216) значение без кавычек не забивает, поэтому `</main>` в теге становится концом <main> (:220). До этого места около 700 слов, охрана 300 молчит, фраза не судится."
+ },
+ {
+  "id": "obh3-metka-v-atribute",
+  "zameny": [
+   [
+    "<div class=\"layer__text\" data-astro-cid-ko6adimc><p class=\"t-label\" data-astro-cid-n67f4zmd>Chapters</p>",
+    "<div class=\"layer__text\" data-astro-cid-ko6adimc data-x='<p class=\"t-label\">Chapters</p>'><p class=\"t-label\" data-astro-cid-n67f4zmd>Length</p>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "видимая метка «Length»",
+  "zachem": "На экране ряд подписан «Length», а «Chapters» есть только в значении data-x, которого читатель не видит. mainChist (:223) значения атрибутов не забивает, и выражение метки (:265) берёт первый `<p class=\"t-label\">` — тот, что внутри атрибута. Отказа нет."
+ },
+ {
+  "id": "obh3-x-tire",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid; X.—A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Читатель видит название IX сразу за «X.—A bus station and a bus ride (6 / 2):», то есть под заголовком главы X. В отрезке (:277) за «X.» стоит «—», просмотр `(?=\\s|$)` не срабатывает, и заголовок остаётся один (IX), счёт — один, форма проходит. Сегодня результат — «чисто»."
+ },
+ {
+  "id": "obh3-x-kirillica",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid, Х. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Кириллическая «Х» (U+0425) на экране неотличима от «X.», и название IX читается как стоящее под главой X. Выражение :278 знает только ASCII [IVXLC], поэтому заголовок один — IX, и результат — «чисто»."
+ },
+ {
+  "id": "obh3-x-normp",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "police raid; X. : a bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Это регрессия правки раунда 2. normP (:95, :277) снимает пробел перед «:», получается «X.:», и заголовок X не узнаётся. До правки заголовок искался по сырому отрезку выражением `(?=\\s)`, «X.» узнавался, и был отказ."
+ },
+ {
+  "id": "obh3-atr-vnutri-atr",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><span aria-label=\"See title=HLTB\" title=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\">As of</span> September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Подсказка title= с фразой видна при наведении, и правило судит title= всегда. atr (:188) находит « title=HLTB» внутри aria-label и возвращает «HLTB», а настоящий title не судится. Сегодня результат — «чисто»."
+ },
+ {
+  "id": "obh3-srcdoc",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<iframe srcdoc=\"&lt;p&gt;A new feature to the series is the cover system, which allows players to gain a tactical advantage.&lt;/p&gt;\"></iframe><p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "iframe рисует в <main> вложенный документ с фразой Википедии. srcdoc нет в списке судимых атрибутов (:208), и предел не назван. Приемлемый исход правки — судить srcdoc или назвать предел."
+ },
+ {
+  "id": "obh3-zwnj-korpus",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>Olga Kurylenko Natasha R‌G Rothaford Gray Joe Salle J‌G Joel Gordon. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Текст скопирован из документа tv.apple.com вместе с U+200C. У сторожа и у p5 получается «olga kurylenko natasha r g rothaford gray joe» — 8-грамма указателя. chistit (:172) снимает U+200C, у glavy выходит «rg», и совпадения нет. Приемлемый исход — судить так же, как указатель, или честно назвать предел (сейчас на :63–65 сказано, что копия такое тоже не ловит)."
+ },
+ {
+  "id": "r3o-kommentariy-v-stroke-ix",
+  "zameny": [
+   [
+    "police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus",
+    "police raid (6 / 3): “<!--[-->Here I Was Again, Halfway Down the World.<!--]-->” X. A bus"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Маркеры фрагмента SSR (как у Vue и Svelte) вокруг текста названия IX. На экране ничего не меняется. Сегодня: во «вплотную» строка main совпадает с исходной, а строка ряда из mainChist — «“ Here … World. ”» (:223, :262, :269). includes ложно, отсюда один отказ «не в ряду «Chapters»» (:276), код 1."
+ },
+ {
+  "id": "r3o-sekciya-poryadok-klassov",
+  "zameny": [
+   [
+    "<section class=\"layer section layer--bez-kadru\" id=\"chapters\"",
+    "<section class=\"section layer layer--bez-kadru\" id=\"chapters\""
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Порядок классов на экран не влияет, section.layer#chapters остаётся. Сегодня :262 требует `<section class=\"layer` — секция не найдена. Итог: отказ «ряда «Chapters» (секция id=\"chapters\") на странице нет», проверка «в ряду» пропущена (:276), код 1."
+ },
+ {
+  "id": "r3o-metka-klass-ne-pervyy",
+  "zameny": [
+   [
+    "<p class=\"t-label\" data-astro-cid-n67f4zmd>Chapters</p>",
+    "<p class=\"ryad__nadtytul t-label\" data-astro-cid-n67f4zmd>Chapters</p>"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Метка остаётся .t-label (капслок CSS), лишний класс стилей не имеет. Так же пишет свою метку сам сайт: GameRow.astro:97. Сегодня :265 требует `<p class=\"t-label`, metka=''. Итог: отказ «у ряда id=\"chapters\" видимая метка «», ждали «Chapters»», код 1."
+ },
+ {
+  "id": "r3o-main-menu",
+  "zameny": [
+   [
+    "<button class=\"hdr__burger\"",
+    "<main-menu><button class=\"hdr__burger\""
+   ],
+   [
+    "</button>",
+    "</button></main-menu>"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Бургер шапки обёрнут веб-компонентом <main-menu>. <main> и <head> не меняются. Сегодня :217 `/<main\\b/gi` насчитывает два «<main». Итог: исключение «<main> — 2, нужен ровно один», код 2."
+ },
+ {
+  "id": "r3o-chapter-ix",
+  "zameny": [
+   [
+    "Otherwise.” IX. The favela again",
+    "Otherwise.” Chapter IX. The favela again"
+   ],
+   [
+    "Poor.” XIII. A prison",
+    "Poor.” Chapter XIII. A prison"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Обычная правка: слово «Chapter» перед номерами глав, как в метке «Chapter XIV» на той же странице. Оба названия стоят за своими номерами. Сегодня отрезок «Chapter IX. The favela … (6 / 3): » не проходит `^\\s*IX\\.` (:280). Итог: два отказа, «не за номером своей главы IX» и «… XIII», код 1."
+ },
+ {
+  "id": "r3o-dl-glava-ix",
+  "zameny": [
+   [
+    "Otherwise.” IX. The favela again, during a police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus",
+    "Otherwise.”</p><dl data-astro-cid-n67f4zmd><dt>IX. The favela again, during a police raid (6 / 3):</dt><dd>“Here I Was Again, Halfway Down the World.”</dd></dl><p data-astro-cid-n67f4zmd>X. A bus"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Глава IX вынесена в список определений: в dt номер, место и счёт, в dd — название в кавычках, прямо под номером в ряду Chapters. Сегодня строка dd начинается с “, отрезок пустой (:277), zagolovki 0. Итог: отказ «не за номером своей главы IX … «»», код 1."
+ },
+ {
+  "id": "r3o-name-v-og-description",
+  "zameny": [
+   [
+    "name=\"description\" content=\"A Max Payne 3 guide:",
+    "name=\"description\" content=\"Each chapter name = a line Max says. A Max Payne 3 guide:"
+   ],
+   [
+    "property=\"og:description\" content=\"A Max Payne 3 guide:",
+    "property=\"og:description\" content=\"Each chapter name = a line Max says. A Max Payne 3 guide:"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "В описании своя фраза с « name = ». Оба meta по-прежнему по одному и непустые. Сегодня для og:description atr(name) находит « name = a» внутри content (:188, :203), og:description насчитывается 0 раз. Итог: исключение «в <head> гайда og:description: 0, ждали ровно один непустой», код 2."
+ },
+ {
+  "id": "r3o-favicon-svg-title",
+  "zameny": [
+   [
+    "<link rel=\"icon\" href=\"/favicon.svg\" type=\"image/svg+xml\">",
+    "<link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><title>7th Serpent</title><rect width='16' height='16' fill='%23090c11'/></svg>\" type=\"image/svg+xml\">"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "SVG-иконка сайта в data-URI с <title> внутри атрибута href. Документный <title> остаётся один. Сегодня :196 не забивает значения атрибутов, и :201 находит два <title>. Итог: исключение «в <head> гайда <title>: 2, ждали ровно один непустой», код 2."
+ },
+ {
+  "id": "r3o-cp1252-kavychki",
+  "zameny": [
+   [
+    "“Here I Was Again, Halfway Down the World.”",
+    "&#147;Here I Was Again, Halfway Down the World.&#148;"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Браузер по таблице windows-1252 из разбора числовых ссылок HTML читает &#147; и &#148; как “ и ”, так что на экране то же самое. Сегодня raskrytVse даёт U+0093 и U+0094, chistit снимает \\p{Cc} (:172), и пары кавычек нет. Итог: отказ «вне кавычек» по 8-грамме названия и «в кавычках 0 раз», код 1."
+ },
+ {
+  "id": "r3o-svg-title-v-shapke",
+  "zameny": [
+   [
+    "aria-hidden=\"true\" data-astro-cid-yruwqcb3><polygon",
+    "aria-hidden=\"true\" data-astro-cid-yruwqcb3><title>7th Serpent</title><polygon"
+   ],
+   [
+    "role=\"img\" aria-label=\"7th Serpent — 7thserpent.com\" data-astro-cid-yruwqcb3><polygon",
+    "role=\"img\" aria-label=\"7th Serpent — 7thserpent.com\" data-astro-cid-yruwqcb3><title>7th Serpent — 7thserpent.com</title><polygon"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "<title> в SVG знака шапки и подвала — обычная правка доступности; оба знака лежат в <body>, вне <head> и <main>. Сегодня чисто, как ждали: :197 режет голову по </head>. Атака закрепляет эту обрезку: мутация konec = i0 проходит --proba 75/75 и дала бы здесь код 2."
+ },
+ {
+  "id": "r3o-dva-title",
+  "zameny": [
+   [
+    "</title>",
+    "</title><title>7th Serpent</title>"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в <head> гайда <title>: 2",
+  "zachem": "Второй <title> в голове — по шапке (:23–24) это код 2. Сегодня исключение «в <head> гайда <title>: 2, ждали ровно один непустой», как ждали. Мутация `arr.length < 1` проходит --proba 75/75, и тогда второй <title> молча не судится."
+ },
+ {
+  "id": "r3o-pustoy-og-title",
+  "zameny": [
+   [
+    "property=\"og:title\" content=\"Max Payne 3 guide — chapters, golden guns, clues, achievements\"",
+    "property=\"og:title\" content=\"\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в <head> гайда og:title: 1",
+  "zachem": "Пустой og:title — по шапке (:23–24) это код 2. Сегодня исключение «в <head> гайда og:title: 1, ждали ровно один непустой», как ждали. Если снять проверку непустоты (:206 `!raskrytZnachenie(arr[0])`), --proba по-прежнему даёт 75/75."
+ },
+ {
+  "id": "proby-r3-ryad-kommentariy-v-slove",
+  "zameny": [
+   [
+    "goes up in flames (3 / 5)",
+    "goes up in fla<!-- -->mes (3 / 5)"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "На экране «flames», название IX стоит один раз, в ряду Chapters, за номером IX. Расчёт на 5de2cdc: ложный отказ «название «Here I Was Again, Halfway Down the World.» не в ряду «Chapters»». Строка ряда в прочтении «вплотную» строится из mainChist (:223, :262, :269) и даёт «fla mes», а строка прочтения (:224) — «flames» (:276). Порчи «чисто» на комментарий в абзацах VI–X и XI–XIV нет."
+ },
+ {
+  "id": "proby-r3-metka-kommentariy-v-slove",
+  "zameny": [
+   [
+    "data-astro-cid-n67f4zmd>Chapters</p>",
+    "data-astro-cid-n67f4zmd>Chap<!-- -->ters</p>"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "На экране метка CHAPTERS. Расчёт: отказ «у ряда id=\"chapters\" видимая метка «Chap ters», ждали «Chapters»», потому что метка берётся из mainChist, где комментарий стал пробелом (:265). Корень тот же, что у ряда; этот отказ был и до правки раунда 2."
+ },
+ {
+  "id": "proby-r3-perenos-vplotnuyu",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series\nis the cover system, which allows players to\ngain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "Перенос строки стоит вплотную к словам, без пробелов по краям (путь izv-N1). Сегодня отказ: :169 меняет \\n на пробел. Мутант «пробельные C0 снимать» (без :169 или с :170 перед ней) склеивает «seriesis» и «togain», целых 8-окон не остаётся — «чисто». Порча :366 этого не видит: pol ставит пробелы по краям."
+ },
+ {
+  "id": "proby-r3-10-vplotnuyu",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the series&#10;is the cover system, which allows players to&#10;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "То же для числовой ссылки. Сегодня :167 даёт пробел. У мутанта без :167 ссылку &#10; снимает в пустоту :168 — «чисто». Порча :367 этого не видит."
+ },
+ {
+  "id": "proby-r3-alt-lt-gt",
+  "zameny": [
+   [
+    "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+    "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage (> 60 fps on PC)\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "«<» стоит перед фразой, «>» после неё. Сегодня отказ: :192 экранирует оба знака. У мутанта «raskrytZnachenie без экранирования» (без обёртки <p>) выражение /<[^>]+>/ (brief-strony.mjs:387) стирает всё от «< 30» до «(>» — «чисто». Порчи :418 и :423 этого не видят."
+ },
+ {
+  "id": "proby-r3-posledniy-zagolovok-svoy",
+  "zameny": [
+   [
+    "IX. The favela again, during a police raid (6 / 3): “Here",
+    "IX. The favela again, during a police raid, then X. A bus station, and back to IX. once more (6 / 3): “Here"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "Отрезок начинается с «IX.», и forma (:280) проходит. Счёт один (:279), заголовков три: IX, X, IX. Сегодня отказ даёт только `zagolovki.length !== 1` (:281). Мутант «ближайший заголовок» (`zagolovki.at(-1)[2] !== gl.nomer`) даёт «чисто». Порча :397 его не ловит: там отрезок начинается с «X.», и отказ даёт forma."
+ },
+ {
+  "id": "proby-r3-dva-description",
+  "zameny": [
+   [
+    "<link rel=\"canonical\"",
+    "<meta name=\"description\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage.\"><link rel=\"canonical\""
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "meta description: 2",
+  "zachem": "Сегодня код 2: «в <head> гайда meta description: 2, ждали ровно один непустой» (:206). Мутант `arr.length < 1` судит только arr[0] (:209), а это первое, своё описание, — и печатает «чисто» с кодом 0. Порча :430 проверяет только счёт 0."
+ },
+ {
+  "id": "proby-r3-del",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A new feature to the se&#127;ries is the cover system, which allows play&#127;ers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "bezC0 знак U+007F не трогает (:168 и :170 работают до U+001F), его снимает только \\p{Cc} в chistit (:172) — сегодня отказ. Мутант «chistit без \\p{Cc}» рвёт «se ries» и «play ers» — «чисто». Все порчи с управляющими знаками (:368–:371) идут через bezC0."
+ },
+ {
+  "id": "proby-r3-zagolovok-posle-tochki",
+  "zameny": [
+   [
+    "during a police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+    "during a police raid ·X. A bus station and a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "не за номером своей главы IX",
+  "zachem": "На экране название IX стоит за «X. A bus station and a bus ride (6 / 2):», то есть под главой X. Знака «·» нет в классе [\\s”—–\\-(\\/] (:278), поэтому заголовок один (IX), счёт один, forma проходит. Расчёт: «чисто», код 0."
+ },
+ {
+  "id": "proby-r3-hangul-filler",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd>A&#12644;new&#12644;feature&#12644;to&#12644;the&#12644;series&#12644;is&#12644;the&#12644;cover&#12644;system,&#12644;which&#12644;allows&#12644;players&#12644;to&#12644;gain&#12644;a&#12644;tactical&#12644;advantage. As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "вне кавычек",
+  "zachem": "U+3164 входит в Default_Ignorable, но HarfBuzz рисует его пробельным глифом, так что на экране фраза Википедии идёт словами через пробел. chistit (:172) снимает знак, строка склеивается в два «слова» — «чисто», код 0 (так было и до правки). Если это оставить, надо назвать пределом и поправить шапку :19–20."
+ },
+ {
+  "id": "proby-r3-hidden-value",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><input type=\"hidden\" name=\"src\" value=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\">As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "чисто",
+  "prichina": "",
+  "zachem": "Скрытое поле на экране ничего не показывает. Расчёт: отказ «в alt, title или описании», потому что :208 берёт value= у любого тега. Если такая строгость задумана — назвать её в ПРЕДЕЛАХ."
+ },
+ {
+  "id": "proby-r3-placeholder",
+  "zameny": [
+   [
+    "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+    "<p data-astro-cid-n67f4zmd><input type=\"text\" placeholder=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat puts"
+   ]
+  ],
+  "ozhidanie": "отказ",
+  "prichina": "в alt, title или описании",
+  "zachem": "Сегодня отказ (:208). Мутант без placeholder в списке даёт «чисто». Порчи на placeholder нет, value проверяет :426."
+ }
+]

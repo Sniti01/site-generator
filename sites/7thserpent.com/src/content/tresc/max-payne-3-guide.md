@@ -24,19 +24,19 @@ rows:
     meta: Where each one takes place · golden gun parts / clues
     body:
       - >-
-        I. The Brancos’ private party and the kidnapping attempt that breaks
-        it up (3 / 2) — “Something Rotten in the Air.” II. A São Paulo
+        I. A private party and a kidnapping attempt on the Brancos (3 / 2) —
+        “Something Rotten in the Air.” II. A São Paulo
         nightclub (6 / 6) — “Nothing but the Second Best.” III. An ambush at a
         football stadium (6 / 4) — “Just Another Day at the Office.” IV. A bar,
         Max’s apartment with his NYPD badge, the rooftops and a chop shop
         (9 / 3) — “Anyone Can Buy Me a Drink.” V. Hangars, docks and a shootout
         from a speeding boat (6 / 6) — “Alive If Not Exactly Well.”
       - >-
-        VI. An office tower that goes up in flames (3 / 5) — “A Dame, a Dork
+        VI. An office building that goes up in flames (3 / 5) — “A Dame, a Dork
         and a Drunk.” VII. The favela (6 / 9) — “A Hangover Sent Direct from
         Mother Nature.” VIII. A graveyard and a chapel, in flashback (6 / 3) —
         “Ain’t No Reprievement Gonna Be Found Otherwise.” IX. The favela again,
-        during a police raid (6 / 3) — “Here I Was Again.” X. A bus station and
+        during a police raid (6 / 3) — “Here I Was Again…” X. A bus station and
         a bus ride (6 / 2) — “It’s Drive or Shoot, Sister.”
       - >-
         XI. A yacht on the Panama Canal, in flashback (6 / 8) — “Suntan Oil,
@@ -52,8 +52,9 @@ rows:
     body:
       - >-
         As of September 2026, HowLongToBeat puts the story at about 10 hours
-        and everything at about 33; reviews in 2012 said 10 to 12, depending on
-        the difficulty. IGN’s chapter videos, cutscenes included, run from
+        and everything at about 33. In 2012 the IGN and HeyUGuys reviews both
+        said 10 to 12, and HeyUGuys tied the spread to the difficulty you pick.
+        IGN’s chapter videos, cutscenes included, run from
         about 18 minutes for the first chapter to 43 for the seventh.
   - id: golden-guns
     year: Golden guns
@@ -66,7 +67,8 @@ rows:
         main path, and you can replay any chapter from any checkpoint to pick
         up what you missed. A finished gun turns gold, does 10% more damage and
         holds more rounds per magazine. Collect all 84 parts for the A License
-        To Kill achievement and the unlimited ammo cheat.
+        To Kill achievement and, by IGN’s list of Xbox 360 unlocks, an
+        unlimited ammo cheat.
   - id: clues
     year: Clues
     title: 65 clues, no markers
@@ -80,7 +82,7 @@ rows:
         One chain is easy to miss: meet the former cop in the nightclub
         restroom in chapter II, or he will not turn up again in chapter VII,
         and you will find him for the last time in XIV. All 65 earn An Echo Of
-        The Past and a constant bullet-time camera.
+        The Past and, on the same IGN list, a constant bullet-time camera.
   - id: airport
     year: Chapter XIV
     title: The airport shootout
@@ -102,7 +104,7 @@ rows:
     body:
       - >-
         As of September 2026, the Steam edition with all its add-ons lists 67
-        achievements. The story ones go by difficulty — Feel the Payne on
+        achievements. Four story ones go by difficulty — Feel the Payne on
         Medium, Serious Payne on Hard, Payne In The Ass on Hardcore, Maximum
         Payne on Old School; finishing on Hard unlocks those last two. Among
         the ones set in a single chapter: That Old Familiar Feeling (IV, every gunman

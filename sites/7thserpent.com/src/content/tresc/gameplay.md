@@ -4,8 +4,8 @@ art: mp1-k09
 artFocus: 75% 50%
 lead: >-
   Slow motion you switch on yourself, a dive you can keep shooting from, and
-  painkillers where other games let health creep back. How the three games
-  play, and what the second and third changed.
+  painkillers to patch Max up. How the three games play, and what the second
+  and third changed.
 primary:
   href: "#bullet-time"
   label: Bullet time
@@ -21,20 +21,20 @@ rows:
   - id: bullet-time
     year: Bullet time
     title: Slowing the fight down
-    meta: Max Payne, 2001 — where it started
+    meta: How it works in the first game, Max Payne (2001)
     art: mp1-k12
     body:
       - >-
-        Trigger bullet time standing or in mid-dive and, for a few seconds,
+        Trigger bullet time standing or in mid-dive and, for a short while,
         everything slows down, Max included, while you get time to react to
         each shot and aim with care. In the first game an hourglass next to the
         health figure shows how much is left, and only kills fill it up again.
-        Max has little health there — Kotaku points out that one stray bullet
-        can finish him — and slow motion is what evens the odds.
+        Max has little health there — Kotaku points out that even one stray
+        bullet can be a disaster — and slow motion is what evens the odds.
       - >-
-        The idea came from Hong Kong action films, John Woo’s above all: lead
+        The idea came from Hong Kong action films, John Woo’s above all. Lead
         designer Petri Järvilehto wanted slow motion at the core of the game,
-        as a resource for the player to spend.
+        and the team made it a resource for the player to spend.
   - id: shootdodge
     year: Shootdodge
     title: The dive
@@ -45,14 +45,14 @@ rows:
         The dive sends Max flying in whatever direction you choose, in slow
         motion, gun still firing; a Rockstar representative called it the
         shootdodge at a 2012 preview of Max Payne 3. In Max Payne 2 the dive
-        slows time without draining the meter, and in Max Payne 3 you can dive
-        as often as you like. The price is the landing: Max ends up on the
-        floor, an open target, though in the third game he can keep shooting
-        from there at any angle.
+        slows time without draining the meter. In Max Payne 3 you can dive as
+        often as you like, and the price is the landing: Max ends up on the
+        floor, an open target, though he can keep shooting from there at any
+        angle.
   - id: painkillers
     year: Painkillers
-    title: Pills, not health that comes back
-    meta: How Max heals in all three games
+    title: Pills to patch Max up
+    meta: How Max heals in the story campaigns
     body:
       - >-
         In the first game a white figure on screen turns red as Max takes
@@ -63,9 +63,9 @@ rows:
         Max Payne 3 keeps the pills and adds the Last Stand: when your health
         runs out and you have at least one painkiller, you get a moment to
         shoot whoever hit you last and stay alive, at the cost of all your
-        remaining bullet time. Health does not come back by itself there
-        either, and IGN’s review liked the pressure: wait behind a pillar and
-        the pillar crumbles first.
+        remaining bullet time. In its story, health does not come back by
+        itself, and IGN’s review liked the pressure: hide behind a pillar
+        hoping to heal and you never will, while the pillar crumbles.
   - id: weapons
     year: Weapons
     title: From a Beretta to three guns at most
@@ -75,16 +75,16 @@ rows:
       - >-
         In the first game Max starts with a Beretta and picks up more as he
         goes: other handguns, shotguns, assault rifles and grenades, from a
-        baseball bat to an M79 grenade launcher. Any one-handed gun can be
-        carried in each hand,
-        for more firepower at the cost of more ammo. Max Payne 2 gives grenades and
+        baseball bat to an M79 grenade launcher. Berettas and Ingrams also come
+        in pairs, one in each hand, for more firepower at the cost of more
+        ammo. Max Payne 2 gives grenades and
         Molotovs a slot of their own and lets Max pistol-whip anyone up close.
       - >-
         Max Payne 3 puts a limit on it: two one-handed guns and one two-handed
-        weapon, picked from a weapon wheel. Take a pistol in each hand and Max
-        drops the rifle; everything he does carry stays visible on him, even in
-        cutscenes. A sawn-off shotgun counts as one-handed, so for the first
-        time in the series you can fire two at once.
+        weapon, picked from a weapon wheel. Take a gun in each hand and Max
+        drops the two-handed one; everything he does carry stays visible on
+        him, even in cutscenes. A sawn-off shotgun counts as one-handed, so you
+        can fire two at once — a first for the series, one Steam guide notes.
   - id: max-payne-2
     year: Max Payne 2
     title: Bullet time 2.0
@@ -95,7 +95,7 @@ rows:
       - >-
         Remedy rebuilt slow motion for the sequel and called it version 2.0.
         Every kill in a streak makes Max faster and hands back part of the
-        meter, which now also refills slowly by itself; the picture turns sepia
+        meter, which now also refills slowly by itself; the screen turns sepia
         while it runs, and reloading in slow motion becomes a spin that lets Max
         look around the room. The point was to push players into the fight
         instead of waiting behind cover.
@@ -112,9 +112,10 @@ rows:
     body:
       - >-
         Rockstar’s game brought the first cover system to the series, and its
-        enemies do not wait for you to pop out: at an early preview Engadget
-        saw them flank Max under covering fire, while Rockstar’s staff kept
-        saying to dive instead. It runs on the RAGE engine with Euphoria
+        enemies do not wait for you to pop out: at a preview in March 2012
+        Engadget saw them flank Max under covering fire, and Rockstar’s staff
+        reminded the writer to use the shootdodge. It runs on the RAGE engine
+        with Euphoria
         animating the bodies, and goes from cutscene to gunfight with no
         loading screens.
       - >-
@@ -136,7 +137,7 @@ rows:
         clear each level, and added Dead Man Walking, where you hold out
         against enemies that keep coming.
       - >-
-        Max Payne 3 moves both kinds of challenge into Arcade: Score Attack
+        Max Payne 3 gathers its challenges in an Arcade mode: Score Attack
         replays story levels for points, and New York Minute runs on a clock
         that kills top up. Its Hardcore version runs the whole campaign on one
         timer with no checkpoints, and dying sends you back to the start. The
@@ -148,7 +149,7 @@ related:
 cta:
   title: See it in motion
   lead: >-
-    Rockstar Games explains Max Payne 3’s bullet time in a video from its
+    Rockstar Games keeps a video on Max Payne 3’s bullet time, part of its
     Design and Technology series, on its own site. We link to it rather than
     embed anyone’s video.
   href: https://www.rockstargames.com/videos/ka956139

@@ -23,9 +23,9 @@ rows:
         Max Payne opened in US theaters on October 17, 2008: a neo-noir action
         film from 20th Century Fox, built on Remedy’s game. John Moore directed
         it and produced it with Scott Faye and Julie Yorn. Beau Thorne wrote
-        the screenplay, his first, and Sam Lake, the writer of the games,
-        helped a little, mostly with the characters’ backstories. It runs about
-        100 minutes and cost $35 million.
+        the screenplay — his first, a Popdose review notes — and Sam Lake, who
+        wrote the first two games, gave some help, mostly with the characters’
+        backgrounds. It runs about 100 minutes and cost $35 million.
       - >-
         Moore made it with a PG-13 in mind, yet on September 5, 2008 the MPAA
         gave it an unofficial R. A few trims later it got the PG-13 — for its
@@ -62,14 +62,16 @@ rows:
         murdered with his wallet, which she had stolen, at the scene, and the
         police start to look at Max. His old partner Balder tells him her death
         may be tied to the killing of his family and is killed in his own home
-        soon after; Internal Affairs goes after Max.
+        after; Internal Affairs goes after Max, while Mona and Max learn that
+        Natasha’s tattoo stands for the wings of a Valkyrie.
       - >-
-        Natasha’s tattoo, the wings of a Valkyrie, sends Max and Mona toward
-        Valkyr. Aesir, the drug company Michelle worked for, made it under a
-        military contract, hoping for super-soldiers. A handful of test
-        subjects did well; the rest hallucinated and lost their minds, so Aesir
-        dropped the program and hid its part in it. Jack Lupino, one of the few
-        who did well, now sells the stuff as a street drug.
+        Max finds Michelle’s papers gone from storage, and her old supervisor,
+        Jason Colvin, tells him about Valkyr. Aesir, the drug company Michelle
+        worked for, made it under a military contract, hoping for
+        super-soldiers. A handful of test subjects did well; the rest
+        hallucinated and lost their minds, so Aesir dropped the program and
+        hid its part in it. Jack Lupino, one of the few who did well, now sells
+        the stuff as a street drug.
   - id: differences
     year: Film vs. game
     title: What the movie changed
@@ -85,7 +87,7 @@ rows:
         where the game’s Max learns why his family died is gone entirely.
       - >-
         Max swallows Valkyr himself to survive a freezing river, where in the
-        game Nicole Horne forces it on him at gunpoint. The game ends with Max
+        game he is dosed against his will and left for dead. The game ends with Max
         dropping a tower onto Horne’s helicopter; the film ends with him
         shooting B.B. on a helipad.
       - >-
@@ -96,7 +98,7 @@ rows:
   - id: making
     year: Production
     title: Six years to the first day of filming
-    meta: From an option in 2002 to a Toronto shoot in 2008
+    meta: From the first studio deals by 2002 to a Toronto shoot in 2008
     body:
       - >-
         Collision Entertainment optioned the game for a live-action film;
@@ -106,12 +108,12 @@ rows:
         Fox named Moore as director and Wahlberg as its star, working from
         Thorne’s script.
       - >-
-        Cameras rolled in Toronto from March 2 to May 9, 2008. The final
-        gunfight inside Aesir’s headquarters took a week on its own and more
-        than 6,000 squibs. For the games’ bullet time the crew skipped a big
-        camera array and used what it called Boom Vision: a Phantom HD camera
-        filming at 1,000 frames a second on a rig spinning twice a second. The
-        score is by Marco Beltrami and Buck Sanders.
+        Cameras rolled in Toronto on March 2, 2008, and filming was done by May
+        9. The final gunfight inside Aesir’s headquarters took a week on its
+        own and more than 6,000 squibs. For the games’ bullet time the crew
+        skipped a complex camera setup for a technique called Boom Vision: a
+        Phantom HD camera filming at 1,000 frames a second on a rig spinning
+        twice a second. The score is by Marco Beltrami and Buck Sanders.
   - id: reception
     year: Reception
     title: Number one, then panned
@@ -120,14 +122,15 @@ rows:
     body:
       - >-
         It opened at No. 1 in the US with about $17.6 million and finished
-        with $40.7 million at home and about $85.4 million worldwide. DVD sales
+        with $40.7 million at home and about $85 million worldwide. DVD sales
         brought in nearly $26 million more by August 2009.
       - >-
         Critics were far harsher. As of September 2026 it sits at 16% on Rotten
-        Tomatoes from 135 reviews, and at 31 on Metacritic. Reviewers liked the
-        look — the production design, Jonathan Sela’s photography of snow and
-        rain — and faulted the story: The Hollywood Reporter’s Kirk Honeycutt
-        felt the visuals were there to hide a predictable script. IGN named it
+        Tomatoes from 135 reviews; Metacritic gives it 31, from 25 critics. The
+        look found friends — Louise Keller singled out the production design,
+        Time Out’s Nigel Floyd Jonathan Sela’s photography of snow and rain —
+        the story far fewer: The Hollywood Reporter’s Kirk Honeycutt felt the
+        visuals were there to hide a predictable script. IGN named it
         the best video game adaptation of 2008 while noting that it had panned
         the film, and Wahlberg got a Golden Raspberry nomination for Worst
         Actor, for this and The Happening.
@@ -145,7 +148,8 @@ rows:
         The home release came on January 20, 2009, on DVD and Blu-ray alike.
         Every edition
         carries both the theatrical cut and an unrated one about three minutes
-        longer, mostly in extra computer-generated blood. The Blu-ray and the
+        longer, where the most visible change is extra computer-generated
+        blood. The Blu-ray and the
         two-disc DVD add a digital copy and Michelle Payne, an animated graphic
         novel about Max’s wife in the time before her murder; only the Blu-ray
         has a D-BOX motion track.
@@ -162,22 +166,22 @@ rows:
         Amazon Video, the Apple TV Store and Fandango At Home, and it is on DVD
         and Blu-ray; no service was streaming it for free.
       - >-
-        Those listings move: in mid-September 2026 JustWatch already marked one
-        of the subscription offers as leaving within 15 days.
+        Those listings move: in mid-September 2026 JustWatch already marked two
+        of its three subscription offers as leaving within 15 days.
   - id: sequel
     year: Sequel
-    title: No sequel, a reboot in the works
+    title: No sequel, a reboot announced in 2022
     meta: What has been announced, as of September 2026
     body:
       - >-
         The film ends with a scene after the credits in which Mona shows Max a
-        newspaper with Nicole Horne on the front page, but no second film
-        followed. What came instead, in June 2022, was word from 20th Century
-        Studios that it had a reboot in development; as of September 2026
-        Wikipedia’s article on the film has nothing newer to report.
+        newspaper with Nicole Horne on the front page. As of September 2026,
+        though, Wikipedia’s article on the film lists no second one. It records
+        a different plan instead: in June 2022, word came from 20th Century
+        Studios that it had a reboot in development, and the article has
+        nothing newer to report.
       - >-
-        Max Payne: Retribution, which also comes up in searches, is not a
-        sequel either: it is a fan film.
+        Max Payne: Retribution is not a sequel either: it is a fan film.
   - id: similar
     year: If you liked it
     title: Movies like Max Payne
@@ -186,8 +190,8 @@ rows:
     body:
       - >-
         Bestsimilar, a recommendation site, starts its list of films like this
-        one with John Wick, Hitman: Agent 47, Contraband, Out for Justice and A
-        Man Apart. Further down come Sin City, Punisher: War Zone and Narc.
+        one with Hitman: Agent 47, Out for Justice, John Wick, A Man Apart and
+        Contraband. Further down come Sin City, Punisher: War Zone and Narc.
 related:
   title: More from the series
 cta:

@@ -18,8 +18,8 @@ rows:
         wordplay that often clash with what he actually says to people. Sam
         Lake wrote the first two games; Max Payne 3 was written by Dan Houser,
         Michael Unsworth and Rupert Humphries. James McCaffrey voiced Max in
-        all three. Recording the first game took him about six hours a day in
-        the booth, for some 400 pages of script, and he later said he had
+        all three. By his own account, the first game meant about six hours a
+        day in the booth and some 400 pages of script, and he said he had
         never played it.
       - >-
         The panels were a deliberate choice: Remedy found comic pages with
@@ -31,8 +31,8 @@ rows:
         Not every critic loved the style. In a December 2001 review, IGN called
         the narration excellent but found far too much of it, with metaphors
         that never let up. In 2012, IGN’s review of Max Payne 3 praised how
-        McCaffrey delivers the script’s many “Chandlerlisms.” Every line below
-        comes with its game and the part of the game where you hear it.
+        McCaffrey delivers the script’s many “Chandlerlisms.” Every line from
+        the games below comes with its game and the chapter where you hear it.
   - id: max-payne-2001
     year: Max Payne · 2001
     title: Three lines from The American Dream
@@ -58,7 +58,7 @@ rows:
   - id: max-payne-2
     year: Max Payne 2 · 2003
     title: A film noir love story, and a TV cop
-    meta: Part I, Chapter 1, and the last words before the credits
+    meta: Part I, Chapter 1, and a line Max never says
     band: true
     body:
       - >-
@@ -66,8 +66,8 @@ rows:
         on the back of the box. To write it he studied screenwriting at the
         Theatre Academy of Finland, and the script came out several times
         longer than the first game’s. Its end-credits song, Late Goodbye by
-        Poets of the Fall, has lyrics from a Lake poem and keeps turning up in
-        the game as characters sing or hum it.
+        Poets of the Fall, has lyrics based on a Lake poem and keeps turning up
+        in the game as characters sing or hum it.
       - >-
         “In a situation like mine, you can only think in metaphors.” — Part I,
         Chapter 1, “Elevator Doors.” Max doesn’t say it: the line comes from
@@ -75,19 +75,18 @@ rows:
         warehouse, about a hard-boiled cop whose wife has been murdered. Dick
         Justice was one of the names Remedy tried for the first game before
         settling on Max Payne, and Lake modeled for the show’s hero. It is one
-        of several shows on the game’s TV sets: Lake also plays John Mirra in
-        Address Unknown and both Lord Valentine and Mama in the show Lords and
-        Ladies.
+        of several shows on the game’s TV sets: Lake is also the face of John
+        Mirra in Address Unknown and of both Lord Valentine and Mama in the
+        show Lords and Ladies.
       - >-
-        “I had a dream of my wife. She was dead. But it was all right.” — the
-        ending: Max’s last voice-over before the credits in the standard
-        ending. Beating the game on the hardest difficulty unlocks a second
-        ending with a different closing monologue.
+        The game has two endings. The standard one closes on Max’s last
+        voice-over before the credits; beating the game on the hardest
+        difficulty unlocks a second ending with a different closing monologue.
       - >-
         The writing split critics again. IGN’s reviewer was put off by some
         “hammy” dialogue, The Sunday Times called the story “pungently cheesy,”
-        and The Village Voice headlined its review with a pun of its own:
-        “Looking down the barrel of a pun.”
+        and The Village Voice opened its headline with a pun of its own:
+        “Looking down the barrel of a pun”.
   - id: max-payne-3
     year: Max Payne 3 · 2012
     title: São Paulo, a hangover and Max’s waistline
@@ -105,8 +104,8 @@ rows:
         G-strings” — also Chapter 2.
       - >-
         “I stood out in this place like a streetwalker in a monastery” —
-        Chapter 7, “A Hangover Sent Direct from Mother Nature,” as Max walks
-        through one of São Paulo’s favelas.
+        Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max
+        walks through one of São Paulo’s favelas.
       - >-
         “But the airport is the only place a fat gringo might blend in. Well,
         there or a sex club.” — Chapter 14, “One Card Left to Play,” the last
@@ -114,26 +113,24 @@ rows:
         starts, TheGamer points out, there is no time left for his usual
         poetic metaphors.
       - >-
-        Not every line is in English, and Brazilian critics were tougher on the
-        Portuguese ones. One reviewer compared them to something out of Google
-        Translate; TechTudo objected that Portuguese actors, with a noticeable
-        accent, voiced the main Brazilian characters.
+        Not every line is in English, and some Brazilian critics took issue
+        with the Portuguese ones. One reviewer compared them to something out
+        of Google Translate; TechTudo objected that Portuguese actors, with a
+        noticeable accent, voiced the main Brazilian characters.
   - id: echoes
     year: Echoes
     title: Lines that became names
     meta: Chapter titles and achievements
     body:
       - >-
-        Some of the series’ sharpest phrases are chapter titles. The first
-        game’s Chapter 6 is “Fear That Gives Men Wings”; Part I of Max Payne 2
-        runs through “No ‘Us’ in This” and “A Linear Sequence of Scares”; Max
-        Payne 3 has “It’s Drive or Shoot, Sister.”
+        Some of the series’ sharpest phrases are chapter titles. In the first
+        game, Part I, Chapter 6 is “Fear That Gives Men Wings”; Part I of Max
+        Payne 2 runs through “No ‘Us’ in This” and “A Linear Sequence of
+        Scares”; Max Payne 3 has “It’s Drive or Shoot, Sister.”
       - >-
-        Max Payne 3’s achievement list repeats words from the first two games:
-        “It’s Fear That Gives Men Wings,” “That Old Familiar Feeling,” “The
-        Only Choice Given” and “Dearest of All My Friends,” awarded for
-        killing someone on your friends list — Vlad’s pet phrase in Max Payne
-        2.
+        Max Payne 3’s achievement list repeats words from the first two games,
+        with names like “It’s Fear That Gives Men Wings,” “That Old Familiar
+        Feeling” and “The Only Choice Given.”
 gallery:
   title: The three games
   lead: >-
@@ -141,11 +138,11 @@ gallery:
     any line above.
   items:
     - art: mp1-k11
-      caption: Max Payne (2001)
+      caption: Max Payne (2001) — a shootout in a subway station
     - art: mp2-k03
-      caption: 'Max Payne 2: The Fall of Max Payne (2003)'
+      caption: 'Max Payne 2: The Fall of Max Payne (2003) — a sawed-off shotgun in a dead-end alley'
     - art: mp3-k06
-      caption: Max Payne 3 (2012)
+      caption: Max Payne 3 (2012) — Max in green light, a submachine gun raised
 related:
   title: The story behind the lines
 cta:

@@ -13,22 +13,22 @@
  * ГЛАВНАЯ ЗДЕСЬ НЕ ЖИВЁТ: у неё свой шаблон (`index.astro`, как у первого
  * сайта, П32 п. 4) и свой эталон. Файл содержания с адресом `/` — отказ.
  *
- * ЧТО МАРШРУТ ПЕЧАТАЕТ. Пять ветвей — `hero-key-art`, `byline`, `story-row`
- * (с вхождениями по роли; ряд с кадром или без), `link-list` и `cta-band`.
- * Пачка 0: `story-row` без кадра и `link-list`, стенд — `/404/` (П85 п. 6);
- * вхождения по роли на нём не стоят и держатся положительной пробой P2
- * `tools/proby-tresci.mjs`. Пачка 1 (П89): `cta-band` — первая страница формы
+ * ЧТО МАРШРУТ ПЕЧАТАЕТ. Шесть ветвей — `hero-key-art`, `byline`, `story-row`
+ * (с вхождениями по роли; ряд с кадром или без), `gallery`, `link-list`
+ * и `cta-band`. Пачка 0: `story-row` без кадра и `link-list`, стенд — `/404/`
+ * (П85 п. 6); вхождения по роли на нём не стоят и держатся положительной пробой
+ * P2 `tools/proby-tresci.mjs`. Пачка 1 (П89): `cta-band` — первая страница формы
  * `/pc/`, кадр ряда — `/media/` (ответ владельца 2 в П89). Пачка 2 (П91):
  * `hero-key-art` — первая страница формы `/max-payne-3/`, `byline` —
  * `/max-payne-2/`; вхождения по роли — `/max-payne-1/` (`story-row#mobile`)
- * и `/remake/` (`story-row#max-payne-4`). Ветвь без страницы и без пробы
- * не пишется. Условие `gotowy` в списке печати держит форму первого сайта:
- * все пять блоков маршрута в ядре есть, и пробой его не достать без правки
- * словаря ядра. Остальные блоки дерева, которые ядро умеет (`gallery`),
- * приходят ветвью вместе с первой страницей своей формы — со стопом на глаза
- * владельца (план P4 в докладе сессии 12). Страница, объявившая такой блок,
- * не собирается, и отказ говорит именно это — «ветви нет», а не «нет
- * содержания».
+ * и `/remake/` (`story-row#max-payne-4`). Пачка 4 (П95): `gallery` — первая
+ * страница формы `/quotes/`. Ветвь без страницы и без пробы не пишется.
+ * Условие `gotowy` в списке печати держит форму первого сайта: все шесть
+ * блоков маршрута в ядре есть, и пробой его не достать без правки словаря
+ * ядра. Блок ядра, которого маршрут не печатает, приходит ветвью вместе
+ * с первой страницей своей формы — со стопом на глаза владельца (план P4
+ * в докладе сессии 12). Страница, объявившая такой блок, не собирается,
+ * и отказ говорит именно это — «ветви нет», а не «нет содержания».
  *
  * БЛОК, КОТОРОГО НЕТ В ЯДРЕ, ПРОПУСКАЕТСЯ ГРОМКО. Готовность — поле
  * `реализован` в `core/structure/blocks.json`, а не список в этом файле.
@@ -56,6 +56,7 @@ import slownik from '@factory/core/structure/blocks.json';
 import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
 import Byline from '@factory/core/blocks/Byline.astro';
 import StoryRow from '@factory/core/blocks/StoryRow.astro';
+import Gallery from '@factory/core/blocks/Gallery.astro';
 import LinkList from '@factory/core/blocks/LinkList.astro';
 import CtaBand from '@factory/core/blocks/CtaBand.astro';
 import SmartImage from '@factory/core/media/SmartImage.astro';
@@ -139,6 +140,7 @@ const POLE_BLOKA: Record<string, string> = {
   secondary: 'hero-key-art',
   byline: 'byline',
   rows: 'story-row',
+  gallery: 'gallery',
   related: 'link-list',
   cta: 'cta-band',
 };
@@ -288,7 +290,7 @@ if (ryadyBezVkhozhdeniya.length) {
  * который ядро умеет, а шаблон не печатает, — отказ «ветви нет» (не тихий
  * пропуск и не «нет содержания»): ветвь приходит с первой страницей формы.
  */
-const PORYADOK = ['hero-key-art', 'byline', 'story-row', 'link-list', 'cta-band'];
+const PORYADOK = ['hero-key-art', 'byline', 'story-row', 'gallery', 'link-list', 'cta-band'];
 const bezVetvi = wystapienia.filter((b) => gotowy(b.block) && !PORYADOK.includes(b.block)).map(klucz);
 if (bezVetvi.length) {
   throw new Error(
@@ -340,6 +342,7 @@ const maTresc: Record<string, (role?: string) => boolean> = {
   'hero-key-art': () => Boolean(geroy),
   byline: () => Boolean(dane.byline),
   'story-row': (role) => ryadyDlya(role).length > 0,
+  gallery: () => Boolean(dane.gallery),
   'link-list': () => pokrewne.length > 0 && Boolean(dane.related),
   'cta-band': () => Boolean(dane.cta),
 };
@@ -365,6 +368,7 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
       : []),
     ...(brakujace.includes('cta-band') ? ['нет поля cta в содержании'] : []),
     ...(brakujace.includes('byline') ? ['нет поля byline в содержании'] : []),
+    ...(brakujace.includes('gallery') ? ['нет поля gallery в содержании'] : []),
   ].filter(Boolean);
   const pustoVStrukture = prichiny.length ? ` (${prichiny.join('; ')})` : '';
   throw new Error(
@@ -379,11 +383,11 @@ if (doZrobienia.join(',') !== drukowane.join(',')) {
 /**
  * Ключи кадров издателя на странице — подвалу: нота об арте и класс лицензии
  * печатаются только по ним (П79 п. 3, «на все страницы» — П85 п. 7). Кадр
- * печатают две ветви — герой (`art` страницы, пачка 2, П91) и ряд (`art` ряда,
- * пачка 1, П89); ключи берутся из того, что печатается ниже (вхождения из
- * `drukowane`), а сам кадр разрешается до разметки: ключ без файла или записи
- * прерывает сборку в `kadr()`, а не печатает пустую рамку. Галерея добавит
- * свои ключи вместе со своей ветвью.
+ * печатают три ветви — герой (`art` страницы, пачка 2, П91), ряд (`art` ряда,
+ * пачка 1, П89) и галерея (`art` кадра галереи, пачка 4, П95); ключи берутся
+ * из того, что печатается ниже (вхождения из `drukowane`), а сам кадр
+ * разрешается до разметки: ключ без файла или записи прерывает сборку
+ * в `kadr()`, а не печатает пустую рамку.
  * Пределы («судью судят», раунд 1, R1-MARSHRUT-2, -6): пропорция кадра
  * не судится — ключевой арт-баннер (около 3:1: `hero`, `mp2-art`, `mp3-art`)
  * в рамке ряда 21:13 покажет около половины ширины и растянется на лестнице
@@ -397,7 +401,39 @@ const kadry = new Map(
   [...new Set(ryadyPechati.map((r) => r.art).filter((k): k is string => Boolean(k)))].map((k) => [k, kadr(k)])
 );
 const geroyPechati = drukowane.includes('hero-key-art') ? geroy : undefined;
-const kluczeArtu: string[] = [...new Set([...(geroyPechati ? [geroyPechati.klyuch] : []), ...kadry.keys()])];
+
+/**
+ * ГАЛЕРЕЯ (пачка 4, П95) — блок ядра `Gallery` как есть: кадры идут ДАННЫМИ
+ * (`src`, `alt`, `caption`), форма первого сайта и прецедент `CardRail` ядра.
+ * `src` и `alt` — из записи кадра (`kadr()`: «<игра> — <опис>»), как у кадров
+ * рядов и героя, чтобы `alt` не расходился с записью; `caption` — подпись
+ * из файла содержания. Тон — дуотон стали, как у кадра ряда (правило ниже,
+ * класс `kadr-galerei`): нота подвала обещает «toned to the site’s colors».
+ * Кадр дважды в галерее или кадр, который на этой странице уже печатают герой
+ * или ряд, — отказ: второй экземпляр кадра ничего не показывает, а прошёл бы
+ * молча (у рядов между собой это предел R1-MARSHRUT-6 пачки 1, у галереи —
+ * проверка).
+ */
+const galereya = drukowane.includes('gallery') ? dane.gallery : undefined;
+const klyuchiGalerei = galereya ? galereya.items.map((k) => k.art) : [];
+const zanyato = new Set([...(geroyPechati ? [geroyPechati.klyuch] : []), ...kadry.keys()]);
+const povtorGalerei = [...new Set(klyuchiGalerei.filter((k, i) => klyuchiGalerei.indexOf(k) !== i || zanyato.has(k)))];
+if (povtorGalerei.length) {
+  throw new Error(
+    `Кадр галереи повторяет кадр этой страницы на ${strona.url}: ${povtorGalerei.join(', ')}.\n` +
+      'Один кадр печатается на странице один раз — в галерее, у героя или в ряду; возьмите другой ключ из game-art.json.'
+  );
+}
+const kadryGalerei = galereya
+  ? galereya.items.map((k) => {
+      const m = kadr(k.art); // ключ без файла или записи прерывает сборку здесь, до разметки
+      return { src: m.src, alt: m.alt, caption: k.caption, quality: 72, class: 'kadr-galerei' };
+    })
+  : [];
+
+const kluczeArtu: string[] = [
+  ...new Set([...(geroyPechati ? [geroyPechati.klyuch] : []), ...kadry.keys(), ...klyuchiGalerei]),
+];
 
 /*
  * ТОН КАДРА ГЕРОЯ — по виду материала, правило главной (П79, «Ночь и один
@@ -522,6 +558,12 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
   }
 
   {
+    /* Галерея — блок ядра как есть (П95 п. 2): секция, заголовок, сетка
+       кадров с подписями; кадры — данными (`kadryGalerei` выше). */
+    galereya && <Gallery items={kadryGalerei} title={galereya.title} titleId="gallery-title" lead={galereya.lead} />
+  }
+
+  {
     drukowane.includes('link-list') && dane.related && (
       <LinkList items={pokrewne} title={dane.related.title} titleId="related-title" />
     )
@@ -554,12 +596,16 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
      нота подвала обещает «toned to the site’s colors». Фильтр — двойным
      классом: `.foto img` ядра задаёт свой `filter` с той же специфичностью,
      и перебить его надо при любом порядке листов. `--era` у `.foto` ядро
-     не задаёт (он приходит с `:root`), двойной класс там — для единообразия. */
-  :global(.foto.kadr-ryadu) {
+     не задаёт (он приходит с `:root`), двойной класс там — для единообразия.
+     Кадр галереи (пачка 4, П95) — тот же тон, свой класс: сверки рядов
+     считают кадры ряда по `kadr-ryadu`. */
+  :global(.foto.kadr-ryadu),
+  :global(.foto.kadr-galerei) {
     --era: color-mix(in oklab, var(--accent-2), var(--ink));
   }
 
-  :global(.foto.kadr-ryadu img) {
+  :global(.foto.kadr-ryadu img),
+  :global(.foto.kadr-galerei img) {
     filter: grayscale(1) contrast(1.12) brightness(1.3);
   }
 

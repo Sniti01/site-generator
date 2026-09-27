@@ -1,14 +1,6 @@
 $ git add --renormalize . ; git diff --cached --name-only
-(папка: D:/SEO/cloud/site-generator; HEAD 38af56e)
+(папка: D:/SEO/cloud/site-generator; чистое дерево на c6381fa — после коммита всех материалов)
 
-файлов в индексе после перенормализации: 9
-docs/reports/2026-09-27-7thserpent-geroi/zamery/chuzhie-proba.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/chuzhie-srez-okonchaniy.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/chuzhie.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/okonchaniya.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/perenormalizaciya.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-build.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-check.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-itog.txt
-docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-tree-check.txt
+файлов в индексе после перенормализации: 0
+
 код выхода: 0

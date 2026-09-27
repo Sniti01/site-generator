@@ -10,8 +10,8 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 |---|---|
 | type | `topic` |
 | h1 | Max Payne quotes: the best lines from all three games |
-| title | Max Payne quotes — the famous monologues and one-liners |
-| description | The most memorable Max Payne quotes: the noir monologues of the first game, the lines of Max Payne 2, and the darkest one-liners of Max Payne 3, sorted by game. |
+| title | Max Payne quotes — short lines from all three games and who wrote them |
+| description | Short Max Payne quotes from all three games, each with the part of the game it comes from, plus who wrote and voiced Max and how his metaphor-heavy narration works. |
 | parent | `/` |
 | cluster | max payne quotes · queries 3 · demand 270 (Ahrefs, US) |
 | corridor (contract) | 5093–6891 |

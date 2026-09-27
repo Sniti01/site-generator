@@ -1,0 +1,41 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/proby-p4.mjs
+(папка: D:/SEO/cloud/site-generator)
+
+ok    G1   поле gallery в содержании, а блока gallery у страницы нет      код 1
+ok    G2   gallery объявлен, поля gallery нет                             код 1
+ok    G3   ключ кадра галереи неизвестен — разрешатель kadr()             код 1
+ok    G4   ключ кадра галереи не kebab — схема                            код 1
+ok    G5   подпись кадра из пробелов — tekst() схемы                      код 1
+ok    G6   подписи кадра нет — схема                                      код 1
+ok    G7   alt в кадре галереи — лишний ключ, .strict()                   код 1
+ok    G8   пустой список кадров — схема                                   код 1
+ok    G9   лишний ключ в gallery — .strict()                              код 1
+ok    G10  пустой заголовок галереи — tekst() схемы                       код 1
+ok    G11  один кадр дважды в галерее — отказ маршрута                    код 1
+ok    G12  кадр галереи = кадр ряда той же страницы — отказ маршрута      код 1
+ok    G13  вхождение gallery с ролью — ROLE_UMIE                          код 1
+ok    G14  порядок: gallery перед story-row в blocks[]                    код 1
+ok    G15  строка под заголовком из пробела — tekst() схемы               код 1
+ok    G17  ключа title у галереи нет — обязательность поля в схеме        код 1
+ok    G16  кадр галереи = кадр героя той же страницы — отказ маршрута     код 1
+пробы: 17/17; файлы возвращены и сверены побайтово
+сверка: D:\SEO\cloud\site-generator\sites\7thserpent.com\dist; HEAD 1c5f2d4, src и structure совпадают с HEAD
+ok    dist /404/                    галерея нет
+ok    dist /cheats/                 галерея нет
+ok    dist /gameplay/               галерея нет
+ok    dist /games-like-max-payne/   галерея нет
+ok    dist /max-payne-1/            галерея нет
+ok    dist /max-payne-2/            галерея нет
+ok    dist /max-payne-3/guide/      галерея нет
+ok    dist /max-payne-3/            галерея нет
+ok    dist /media/                  галерея нет
+ok    dist /mods/                   галерея нет
+ok    dist /movie/                  галерея нет
+ok    dist /pc/                     галерея нет
+ok    dist /quotes/                 галерея есть, кадров 3
+ok    dist /remake/                 галерея нет
+ok    dist /story/                  галерея нет
+ok    dist /voice-and-face/         галерея нет
+итог: всё как ждали
+
+код выхода: 0

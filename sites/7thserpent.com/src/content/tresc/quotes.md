@@ -31,8 +31,8 @@ rows:
         Not every critic loved the style. In a December 2001 review, IGN called
         the narration excellent but found far too much of it, with metaphors
         that never let up. In 2012, IGN’s review of Max Payne 3 praised how
-        McCaffrey delivers the script’s many “Chandlerlisms.” Every line from
-        the games below comes with its game and the chapter where you hear it.
+        McCaffrey delivers the script’s many “Chandlerlisms.” Every spoken line
+        quoted below comes with its game and the chapter where you hear it.
   - id: max-payne-2001
     year: Max Payne · 2001
     title: Three lines from The American Dream
@@ -58,7 +58,7 @@ rows:
   - id: max-payne-2
     year: Max Payne 2 · 2003
     title: A film noir love story, and a TV cop
-    meta: Part I, Chapter 1, and a line Max never says
+    meta: One line from Part I, Chapter 1 — and it isn’t Max’s
     band: true
     body:
       - >-
@@ -119,8 +119,8 @@ rows:
         noticeable accent, voiced the main Brazilian characters.
   - id: echoes
     year: Echoes
-    title: Lines that became names
-    meta: Chapter titles and achievements
+    title: Phrases that became names
+    meta: Chapter titles and an achievement
     body:
       - >-
         Some of the series’ sharpest phrases are chapter titles. In the first
@@ -128,9 +128,8 @@ rows:
         Payne 2 runs through “No ‘Us’ in This” and “A Linear Sequence of
         Scares”; Max Payne 3 has “It’s Drive or Shoot, Sister.”
       - >-
-        Max Payne 3’s achievement list repeats words from the first two games,
-        with names like “It’s Fear That Gives Men Wings,” “That Old Familiar
-        Feeling” and “The Only Choice Given.”
+        Max Payne 3 even has an achievement called “It’s Fear That Gives Men
+        Wings,” almost word for word the first game’s chapter title.
 gallery:
   title: The three games
   lead: >-
@@ -138,11 +137,11 @@ gallery:
     any line above.
   items:
     - art: mp1-k11
-      caption: Max Payne (2001) — a shootout in a subway station
+      caption: Max Payne (2001) — Max fires two pistols in a subway station
     - art: mp2-k03
       caption: 'Max Payne 2: The Fall of Max Payne (2003) — a sawed-off shotgun in a dead-end alley'
     - art: mp3-k06
-      caption: Max Payne 3 (2012) — Max in green light, a submachine gun raised
+      caption: Max Payne 3 (2012) — Max with a submachine gun raised beside his face
 related:
   title: The story behind the lines
 cta:

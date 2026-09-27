@@ -1,0 +1,75 @@
+{
+  "sborka": "d160a2d",
+  "max-payne-3-guide-1440": {
+    "nezagruzheno": 0,
+    "ryad": {
+      "y": 1038,
+      "h": 868,
+      "w": 1440
+    },
+    "abzacy": [
+      {
+        "strok": 6,
+        "znakov": 451
+      },
+      {
+        "strok": 6,
+        "znakov": 426
+      },
+      {
+        "strok": 4,
+        "znakov": 316
+      }
+    ],
+    "IX": 2,
+    "XIII": 3
+  },
+  "max-payne-3-guide-390": {
+    "nezagruzheno": 0,
+    "ryad": {
+      "y": 1203,
+      "h": 1136,
+      "w": 390
+    },
+    "abzacy": [
+      {
+        "strok": 11,
+        "znakov": 451
+      },
+      {
+        "strok": 10,
+        "znakov": 426
+      },
+      {
+        "strok": 8,
+        "znakov": 316
+      }
+    ],
+    "IX": 2,
+    "XIII": 3
+  },
+  "max-payne-3-guide-320": {
+    "nezagruzheno": 0,
+    "ryad": {
+      "y": 1206,
+      "h": 1353,
+      "w": 320
+    },
+    "abzacy": [
+      {
+        "strok": 13,
+        "znakov": 451
+      },
+      {
+        "strok": 13,
+        "znakov": 426
+      },
+      {
+        "strok": 9,
+        "znakov": 316
+      }
+    ],
+    "IX": 2,
+    "XIII": 3
+  }
+}

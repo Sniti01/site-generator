@@ -3,11 +3,13 @@
 // docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/kadry-stopa.js (сервер — статическая копия dist/ сборки
 // последнего коммита, BASE и SBORKA вписываются перед прогоном; ответ 200 и canonical сверяются; картинки грузятся сразу
 // и ждутся не дольше 8 с, недогрузка — стоп; зерно не снимается; DPR 1, полоса прокрутки headless-Chromium скрыта).
-// Кадр — сам ряд «Chapters» (секция #chapters) целиком, снимком элемента, на трёх ширинах. Числа — window.__kadry
-// (выгрузить browser_evaluate): рамка ряда, число строк абзацев, где стоят названия IX и XIII (строка абзаца).
+// Кадр — сам ряд «Chapters» (секция #chapters) целиком, на трёх ширинах: полностраничный снимок при прокрутке 0, вырезанный
+// по рамке ряда. Снимок элемента (первый прогон) длиннее окна склеивается по окнам, и липкая шапка сайта ложится поверх
+// текста ряда (390 и 320). Числа — window.__kadry (выгрузить browser_evaluate): рамка ряда, число строк абзацев, где стоят
+// названия IX и XIII (номер абзаца).
 async (page) => {
   const BASE = 'http://127.0.0.1:4435';
-  const SBORKA = 'XXXXXXX';
+  const SBORKA = 'd160a2d';
   const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-dogovor-p5/kadry/';
   const ADRES = '/max-payne-3/guide/';
   const OKNA = [[1440, 900], [390, 844], [320, 640]];
@@ -44,8 +46,9 @@ async (page) => {
     if (g.nezagruzheno) throw new Error('СТОП: ' + ADRES + ' ' + w + ' не загружено картинок: ' + g.nezagruzheno);
     if (g.IX === null || g.XIII === null) throw new Error('СТОП: полных названий IX и XIII в ряду нет');
     chisla['max-payne-3-guide-' + w] = g;
+    await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
     await page.waitForTimeout(300);
-    await page.locator('#chapters').screenshot({ path: dir + 'max-payne-3-guide-' + w + '-glavy.png' });
+    await page.screenshot({ path: dir + 'max-payne-3-guide-' + w + '-glavy.png', fullPage: true, clip: { x: 0, y: g.ryad.y, width: w, height: g.ryad.h } });
   }
   await page.evaluate((c) => { window.__kadry = c; }, { sborka: SBORKA, ...chisla });
   return 'ok: сборка ' + SBORKA + '; ' + Object.keys(chisla).join(', ');

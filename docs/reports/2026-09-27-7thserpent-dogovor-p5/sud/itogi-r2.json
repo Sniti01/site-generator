@@ -1,0 +1,952 @@
+{
+  "summary": "Судью судят, раунд 2: переписанный chuzhie-glavy.mjs (2a6ca4f)",
+  "agentCount": 4,
+  "logs": [],
+  "result": [
+    {
+      "linza": "perepis — дефекты, которые внесла переписка chuzhie-glavy.mjs (2a6ca4f): TEG, RAZDEL, BLOCHNYE, <br>, снятие \\p{Cf}, маска границ <main>, dopStroki, коды выхода и sudBezPadeniya",
+      "nahodki": [
+        {
+          "id": "perepis-meta-gt",
+          "vid": "ложное чисто",
+          "tyazhest": "средняя",
+          "opisanie": "Один знак «>» в описании страницы снимает с суда всё описание: и description, и og:description. Astro экранирует в значениях атрибутов только & и \", поэтому «>» уходит в HTML сырым. dopStroki ищет meta выражением /<meta\\b[^>]*>/, и тег обрывается на «>» внутри content. После этого atr не находит закрывающую кавычку и возвращает undefined, `|| ''` и filter(Boolean) молча выбрасывают строку. Число «строк title, описаний и атрибутов» падает с 5 до 3, но охраны на это число нет. Шапка при этом обещает судить описания «без исключений». Тот же разбор meta стоит в копии сторожа, так что описание с «>» не судит ни один судья семейства. Повод обычный: правка текста вроде «Settings > Graphics» или «->». Выход: брать content тем же TEG, что и теги <main>, и ставить охрану: пустые title или description дают код 2.",
+          "dokazatelstvo": "node_modules/astro/dist/runtime/server/render/util.js:14 — toAttributeString меняет только & и \"; sites/7thserpent.com/src/layouts/Base.astro:93, :105 — content={description}. chuzhie-glavy.mjs:176 — `golova.matchAll(/<meta\\b[^>]*>/gi)`; :166 — atr требует закрывающую кавычку; :178 — `atr(m[0], 'content') || ''`; :180 — `.filter(Boolean)`; :18 — «отдельные строки без исключений: <title>, meta description, og:title, og:description». chuzhie-p5.mjs:84-86 — тот же `<meta\\b[^>]*>`. Порчи :350-351 вставляют фразу без «>».",
+          "ataka": "perepis-meta-gt"
+        },
+        {
+          "id": "perepis-raskryt-lt",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Сырой «<» в alt, title=, aria-label или content стирает текст строки до её конца. Astro не экранирует «<» в атрибутах. raskryt оборачивает значение в <p>…</p> и отдаёт его tekstDokumenta, а там /<[^>]+>/g съедает всё от «<» до «>» закрывающего </p>. Фраза корпуса, стоящая после «<», не судится: «Max Payne 3 at < 30 fps: <фраза>» судится как «Max Payne 3 at». То же в описании («(< 12 on Hard): <фраза>»): meta не обрывается, потому что «>» нет, но raskryt стирает хвост. Выход: значение атрибута не прогонять через снятие тегов, только раскрыть сущности.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:169 — `raskryt = (s) => B.tekstDokumenta(`<p>${s}</p>`)…`; вызывается для всех dop-строк на :180 и для метки на :234. brief-strony.mjs:387 — `.replace(/<[^>]+>/g, ' ')` до раскрытия сущностей (:382). TEG (:143) принимает «<» внутри значения в кавычках, так что alt извлекается целиком (:179) и теряется только в raskryt. util.js:14 — «<» в атрибутах не экранируется.",
+          "ataka": "perepis-alt-lt"
+        },
+        {
+          "id": "perepis-maska-atr",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Маска границ <main> забивает скрипты, стили и комментарии, но не значения атрибутов, а Astro «<» в атрибутах не экранирует. Строка «</main>» в title=, alt или aria-label внутри <main> становится первой закрывающей, и всё после неё не судится. Это касается и текста, и атрибутов: vMain берётся из уже обрезанного main. Обрезанный тег не проходит TEG и остаётся в строке текстом-мусором. Охрана «≥300 слов» ловит только раннюю обрезку: если атрибут стоит в призыве, до него уже больше 300 слов. Обратный случай — «<main» в значении атрибута: nachala = 2, и выходит код 2 без итога (безопасно, но это ложная тревога). Правка по izv-N7 закрыла только комментарии и скрипты, а порча :346 проверяет только комментарий.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:186 — маска только `<script…|<style…|<!--…-->`; :190 — `i1 = maska.search(/<\\/main>/i)` берёт первое вхождение, в том числе внутри атрибута; :192 — `main = h.slice(i0, i1)`; :179 — vMain из обрезанного main; :196 — охрана по числу слов; :187-188 — «<main» в атрибуте даёт исключение. Шапка :17 — «скрипты, стили и комментарии не обрезают <main>», про атрибуты ничего нет.",
+          "ataka": "perepis-maska-atr"
+        },
+        {
+          "id": "perepis-razdel",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Строки разделяются знаком U+0001, а делятся по нему ПОСЛЕ раскрытия сущностей. Поэтому &#1; в тексте, как и сырой U+0001 (JSON контента допускает \\u0001, Astro его пропускает), становится лишней границей строки. Браузер рисует U+0001 нулевой ширины (Chrome; Firefox — рамкой с кодом), и читатель видит слова фразы подряд. Судья же режет фразу на куски по 7 слов, и 8-граммы через границу пропадают. \\p{Cf} этот знак не снимает: U+0001 относится к Cc. Выход: делить по разметке до раскрытия сущностей или до вставки RAZDEL заменять U+0000–U+001F пробелом.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:144 — `RAZDEL = '\\u0001'`; :157 — `B.tekstDokumenta(vidimy)` раскрывает &#1; (brief-strony.mjs:370-372 — `String.fromCodePoint(n)`); :159 — снимается только \\p{Cf}; :160 — `.split(RAZDEL)` после раскрытия. В PORCHI (:307-358) U+0001 нет.",
+          "ataka": "perepis-razdel"
+        },
+        {
+          "id": "perepis-probel-punkt",
+          "vid": "ложный отказ",
+          "tyazhest": "низкая",
+          "opisanie": "Прочтение «через пробел» ставит пробел на месте каждого строчного тега. Сверки, которым нужен знак вплотную, в этом прочтении ломаются на обычной разметке. Первый случай — курсив названия до точки: “Here I Was Again, Halfway Down the <em>World</em>.” даёт в кавычках «…World .». Равенство normR не выполняется, и выходит «в кавычках 0 раз, ждали 1». 8-грамма названия в этой строке вдобавок получает «в кавычках, но не название главы списка». Второй случай — счёт в span или abbr: (<span class=\"tabular\">6 / 3</span>): даёт «( 6 / 3 ):», а шаблон хвоста требует «(\\d» вплотную, и выходит «не за номером своей главы IX». Шапка называет «строже» только тег ВНУТРИ слова («Wo<em>r</em>ld»). Тег на стыке слова и знака препинания не назван, хотя так обычно и набирают название курсивом. Дефект внесла правка по nazvaniya-5: проверки названий перенесены в оба прочтения без нормализации пробела перед знаком. Выход: в прочтении «через пробел» снимать пробел перед [.,:;!?)] и после «(», или сверять название по словам slova.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:155 — неблочный тег даёт strochnyeNa; :194 — `cherezProbel = stroki(main, ' ')`; :237 — цикл по обоим прочтениям; :242 — `normR(s.slice(a + 1, b)) === n` (normR :79 только сводит пробелы и обрезает края); :211, :217 — 8-грамма в паре, не равной записи GLAVY_N, даёт отказ; :247, :250 — `/^[IVXLC]+\\.\\s[^“”]*\\(\\d+ \\/ \\d+\\):\\s*$/`. Шапка :44-45 — названо только «Wo<em>r</em>ld».",
+          "ataka": "perepis-em-tochka; perepis-schet-span"
+        },
+        {
+          "id": "perepis-nevidimye",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Снятие \\p{Cf} закрывает не все знаки, которые браузер не рисует. Вне Cf остаются знаки Default_Ignorable_Code_Point: U+034F (CGJ, Mn), селекторы вариантов U+FE00–FE0F и U+E0100–E01EF (Mn), U+180B–180D и U+17B4–17B5 (Mn), заполнители хангыля U+3164, U+115F, U+1160 и U+FFA0 (Lo). Туда же относятся управляющие Cc (U+0001–U+0008, U+000E–U+001F, U+007F–U+009F), которые Chrome рисует нулевой ширины. slova сторожа считает Mn и Cc разделителем, и слово рвётся: «se͏ries» → «se» + «ries». Знаки Lo приклеиваются к слову. На экране слово целое, а все 8-окна через него у судьи пропадают. Шапка подаёт снятие Cf как «как на экране», перечисляя «U+00AD, U+200B, U+2060…». Выход: снимать \\p{Default_Ignorable_Code_Point}, который JS знает, и Cc, кроме пробельных.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:159 и :169 — `.replace(/\\p{Cf}/gu, '')`; :14-15 шапки. brief-strony.mjs:330 — slova берёт только `[\\p{L}\\p{N}']+`, так что Mn и Cc рвут слово. Раскрытие &#847; и &#2; — brief-strony.mjs:370-372. Раунд 1 (V4, izv-N2, pravilo-4) называл только U+00AD, U+200B, U+2060, &#173; и <wbr> — они закрыты.",
+          "ataka": "perepis-cgj; perepis-c0"
+        },
+        {
+          "id": "perepis-bidi",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Обратная сторона той же правки: в \\p{Cf} лежат и знаки направления U+202A–U+202E и U+2066–U+2069, а снять их — не значит получить текст «как на экране». U+202E (RLO) рисует следующий текст задом наперёд. В HTML лежит «egatnavda lacitcat … wen A», а читатель видит «A new feature to the series is the cover system, which allows players to gain a tactical advantage». Судья снимает RLO и судит перевёрнутые слова, итог — чисто. Тот же эффект без всяких знаков даёт <bdo dir=\"rtl\"> (для судьи это строчный тег) или CSS unicode-bidi: bidi-override. Предел не назван. Выход: при RLO/RLE/LRO/bdo/dir=rtl в <main> выдавать код 2 («разбор недостоверен»), а не молчать.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:159 — U+202E и U+202C входят в Cf и снимаются; :155 — bdo не в BLOCHNYE и снимается как строчный; :141 — BLOCHNYE. Шапка :14-17 и ПРЕДЕЛЫ :37-57 о направлении текста молчат.",
+          "ataka": "perepis-rlo; perepis-bdo"
+        },
+        {
+          "id": "perepis-skript-v-slove",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Скрипты и стили снимаются пробелом в обоих прочтениях. Шапка же обещает, что любой неблочный тег снимается дважды — вплотную и через пробел, «комментарий — так же». <script> и <style> в <main> невидимы (display:none) и не рвут слово на экране: «se<script></script>ries» видно как «series», а судья в обоих прочтениях видит «se ries». Astro оставляет на месте <script is:inline> и <style is:inline>. Выход: снимать их как комментарий, через strochnyeNa.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:147-148 — `.replace(/<script…/gi, ' ')`, `.replace(/<style…/gi, ' ')` без strochnyeNa; :149 — комментарий снимается strochnyeNa; шапка :15-16.",
+          "ataka": "perepis-skript-v-slove"
+        },
+        {
+          "id": "perepis-alt-v-kommentarii",
+          "vid": "ложный отказ",
+          "tyazhest": "низкая",
+          "opisanie": "Атрибуты <main> (alt, title=, aria-label) dopStroki собирает через TEG по сырому main, не снимая комментарии и скрипты. Текст <main> при этом берётся уже после снятия, а копия сторожа берёт alt из bezKoda. Картинку, закомментированную в шаблоне, судья судит как видимую: Astro сохраняет HTML-комментарии в выводе. Её alt с фразой корпуса даёт отказ «в alt, title или описании», хотя на странице этой картинки нет. Это регресс против p5, его внесла переписка. Выход: vMain собирать по тексту без скриптов, стилей и комментариев (bezKoda из stroki).",
+          "dokazatelstvo": "chuzhie-glavy.mjs:179 — `[...main.matchAll(new RegExp(TEG, 'g'))]` по сырому main; :146-149 — у текста комментарии сняты; chuzhie-p5.mjs:75-76 — `alty` из `bezKoda`.",
+          "ataka": "perepis-alt-v-kommentarii"
+        },
+        {
+          "id": "perepis-cp1252",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "opisanie": "Числовые ссылки &#128;–&#159; браузер по HTML (numeric character reference end state) переводит по таблице windows-1252: &#146; → ’, &#147;/&#148; → “ ”, &#150; → –. Раскрытие сторожа, которым судья читает страницу, делает из них управляющие U+0080–U+009F (Cc). \\p{Cf} их не снимает, а slova по ним режет слово. «Fox&#146;s» на экране читается как «Fox’s», а у судьи это «fox» + «s»: все 8-окна с притяжательным пропадают, это ложное чисто. «&#147;…&#148;» на экране — кавычки, а у судьи кавычек нет, и название в них получит отказ (строже). Путь только через шаблон, потому что & в тексте контента Astro экранирует. ПРЕДЕЛЫ называют расхождения раскрытия только на стороне указателя корпуса (V1, V2, V7), а это сторона страницы.",
+          "dokazatelstvo": "brief-strony.mjs:370-372 — `String.fromCodePoint(n)` без таблицы 0x80–0x9F; chuzhie-glavy.mjs:157 — страница раскрывается тем же tekstDokumenta; :159 — Cc не снимается; brief-strony.mjs:330 — slova. Шапка :51-53.",
+          "ataka": "perepis-cp1252"
+        },
+        {
+          "id": "perepis-proba-probely",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "opisanie": "У нескольких новых ветвей нет порчи, и мутации проходят --proba 45/45. <br> как пробел: ни одна порча не содержит <br>, поэтому мутацию «br → RAZDEL» проба не заметит, хотя тогда фраза, разбитая <br>, пройдёт. Маска скриптов и стилей: есть порча только с комментарием, и мутация «маска только комментариев» проходит. Одинарные кавычки в atr и aria-label: есть порча только с title= в двойных кавычках. og:title: порчи нет. \\p{Cf}: порчи только с U+00AD, и мутация «\\p{Cf} → ­» проходит, хотя тогда U+200B и U+2060 снова рвут слово.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:154 — ветвь br; :307-358 — PORCHI без «<br»; :346 — единственная порча маски, с комментарием; :186 — альтернативы script|style; :166 — `'([^']*)'`; :353 — title= в двойных кавычках; :177 — og:title без порчи; :341-342 — только U+00AD.",
+          "ataka": "perepis-proba-br"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "perepis-meta-gt",
+          "zameny": [
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage. Menu > Chapters. A Max Payne 3 guide:"
+            ],
+            [
+              "property=\"og:description\" content=\"A Max Payne 3 guide:",
+              "property=\"og:description\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage. Menu > Chapters. A Max Payne 3 guide:"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Фраза Википедии в описании — отказ по правилу всегда. Сегодня чисто: оба meta обрываются на «>» (:176), content не извлекается (:166, :178), строк title, описаний и атрибутов 3 вместо 5, охраны на это нет."
+        },
+        {
+          "id": "perepis-alt-lt",
+          "zameny": [
+            [
+              "alt=\"Max Payne 3 — close-up of Max aiming a pistol against a grey sky\"",
+              "alt=\"Max Payne 3 at < 30 fps: a new feature to the series is the cover system, which allows players to gain a tactical advantage\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "TEG извлекает alt целиком (:143, :179), но raskryt (:169) через /<[^>]+>/ (brief-strony.mjs:387) стирает всё от «<» до «</p>»: судится только «Max Payne 3 at». Сегодня чисто."
+        },
+        {
+          "id": "perepis-desc-lt",
+          "zameny": [
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"Under twelve hours (< 12 on Hard): a new feature to the series is the cover system, which allows players to gain a tactical advantage. A Max Payne 3 guide:"
+            ],
+            [
+              "property=\"og:description\" content=\"A Max Payne 3 guide:",
+              "property=\"og:description\" content=\"Under twelve hours (< 12 on Hard): a new feature to the series is the cover system, which allows players to gain a tactical advantage. A Max Payne 3 guide:"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Одиночный «<» без «>»: meta не обрывается, content извлекается, но raskryt стирает хвост после «<». Судится «Under twelve hours (». Сегодня чисто."
+        },
+        {
+          "id": "perepis-maska-atr",
+          "zameny": [
+            [
+              "<a class=\"btn btn-primary t-button cta__btn\" href=\"/gameplay/\" data-astro-cid-rtqd6vyo>How Max Payne plays",
+              "<a class=\"btn btn-primary t-button cta__btn\" href=\"/gameplay/\" title=\"Skip the </main> landmark\" data-astro-cid-rtqd6vyo>A new feature to the series is the cover system, which allows players to gain a tactical advantage"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Фраза видна текстом кнопки призыва в <main>. «</main>» в title= маска (:186) не закрывает, граница (:190) встаёт внутри атрибута, до обрезки больше 300 слов (:196). Сегодня чисто, код 0."
+        },
+        {
+          "id": "perepis-razdel",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the series is &#1;the cover system, which allows players to &#1;gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "U+0001 на экране нулевой ширины (Chrome), и фраза читается подряд. Судья после раскрытия режет строку по RAZDEL (:157, :160) на куски по 7 слов. Сегодня чисто."
+        },
+        {
+          "id": "perepis-em-tochka",
+          "zameny": [
+            [
+              "“Here I Was Again, Halfway Down the World.”",
+              "“Here I Was Again, Halfway Down the <em>World</em>.”"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Полное название в кавычках, последнее слово курсивом, на экране то же название. Сегодня два отказа из прочтения «через пробел»: «в кавычках 0 раз, ждали 1» (:242) и «в кавычках, но не название главы списка» (:211, :217) — в кавычках «…World .»."
+        },
+        {
+          "id": "perepis-schet-span",
+          "zameny": [
+            [
+              "(6 / 3): “Here I Was Again",
+              "(<span class=\"tabular\">6 / 3</span>): “Here I Was Again"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Счёт частей и улик набран табличными цифрами (класс tabular уже есть на сайте), на экране «(6 / 3):». Сегодня «не за номером своей главы IX»: в прочтении «через пробел» хвост «( 6 / 3 ):» не проходит шаблон :250."
+        },
+        {
+          "id": "perepis-cgj",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the se&#847;ries is the cover system, which allows play&#847;ers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "U+034F (CGJ) невидим, на экране «series» и «players». Он Mn, а не Cf: :159 его не снимает, slova рвёт слово, и ни одного целого 8-окна не остаётся. Сегодня чисто."
+        },
+        {
+          "id": "perepis-c0",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the se&#2;ries is the cover system, which allows play&#2;ers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "U+0002 (Cc) Chrome рисует нулевой ширины. Cf его не снимает (:159), slova рвёт слово. Сегодня чисто."
+        },
+        {
+          "id": "perepis-rlo",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>&#8238;egatnavda lacitcat a niag ot sreyalp swolla hcihw ,metsys revoc eht si seires eht ot erutaef wen A&#8236; As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "RLO (U+202E) рисует отрезок задом наперёд, и читатель видит «A new feature to the series is the cover system, which allows players to gain a tactical advantage». Судья снимает U+202E и U+202C как Cf (:159) и судит перевёрнутые слова. Сегодня чисто."
+        },
+        {
+          "id": "perepis-bdo",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd><bdo dir=\"rtl\">egatnavda lacitcat a niag ot sreyalp swolla hcihw ,metsys revoc eht si seires eht ot erutaef wen A</bdo> As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "То же без знаков формата, обычным HTML-элементом: bdo снимается как строчный (:155), в обоих прочтениях слова перевёрнуты. Сегодня чисто."
+        },
+        {
+          "id": "perepis-skript-v-slove",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the se<script></script>ries is the cover system, which allows play<script></script>ers to gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "<script> невидим, на экране «series» и «players». Судья снимает script пробелом в обоих прочтениях (:147), прочтения «вплотную» у него нет. Сегодня чисто."
+        },
+        {
+          "id": "perepis-alt-v-kommentarii",
+          "zameny": [
+            [
+              "<div class=\"byline section--light\" data-astro-cid-d6goylod>",
+              "<!-- <img src=\"/old.webp\" alt=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> --><div class=\"byline section--light\" data-astro-cid-d6goylod>"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Картинка закомментирована, её нет ни на экране, ни у скринридера. Сегодня отказ «в alt, title или описании»: vMain берёт теги из сырого main вместе с комментариями (:179), а p5 — из bezKoda (chuzhie-p5.mjs:76)."
+        },
+        {
+          "id": "perepis-cp1252",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>On Blu-ray; 20th Century Fox&#146;s Blu-ray release once again delivers. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Браузер переводит &#146; в ’ (таблица windows-1252 в HTML) и показывает фразу blu-ray.com «on Blu-ray; 20th Century Fox’s Blu-ray release once again delivers». Сторож раскрывает её в U+0092 (brief-strony.mjs:372), slova режет «fox» + «s», и каждое 8-окно фразы задевает это слово. Сегодня чисто."
+        },
+        {
+          "id": "perepis-proba-br",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat puts",
+              "<p data-astro-cid-n67f4zmd>A new feature to the series is<br>the cover system, which allows players to<br>gain a tactical advantage. As of September 2026, HowLongToBeat puts"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Сегодня отказ обязан быть: <br> — пробел (:154). Порчи с <br> в --proba нет, и мутацию «br → RAZDEL» проба не заметит (45/45), а эта атака её поймает."
+        }
+      ],
+      "itog": "Линза perepis, раунд 2: 11 находок, одна средней тяжести, остальные низкие. Атак — 16. Находки раунда 1 не повторяются.\n\nГлавная (средняя, ложное «чисто»). Astro в значениях атрибутов экранирует только & и \", поэтому один «>» в описании страницы молча снимает с суда и description, и og:description. meta ищется выражением /<meta\\b[^>]*>/ (:176), content не извлекается, строка выбрасывается (:178, :180). Число строк падает с 5 до 3, охраны на это нет. Тот же разбор у копии сторожа (chuzhie-p5.mjs:84), так что описание с «>» не судит ни один судья семейства. Из той же дыры экранирования растут ещё две находки:\n- «<» в любом атрибуте стирает хвост строки в raskryt (:169);\n- «</main>» в атрибуте обрезает <main>: маска (:186) закрывает только скрипты, стили и комментарии.\n\nЛожные отказы на обычной разметке — от правки по nazvaniya-5. Проверки названий теперь идут и в прочтении «через пробел», а там строчный тег у знака препинания ломает сверки, которым нужен знак вплотную:\n- курсив названия до точки «<em>World</em>.» даёт «в кавычках 0 раз» и «не название главы списка»;\n- счёт «(<span>6 / 3</span>):» даёт «не за номером».\nОтдельно: alt закомментированной картинки судится как видимый (:179 берёт сырой main). Это регресс против p5.\n\nСнятие \\p{Cf} (:159) одновременно слишком узкое и слишком широкое:\n- мимо проходят невидимые знаки вне Cf (U+034F, селекторы вариантов, Cc — Chrome рисует их нулевой ширины) и перевод &#128;–&#159; по windows-1252 (&#146; → ’);\n- снятие RLO и bdo не даёт текста «как на экране»: читатель видит фразу, судья — перевёрнутые слова.\nRAZDEL U+0001 делится после раскрытия сущностей, и &#1; режет строку. <script> и <style> внутри слова снимаются только пробелом, вопреки шапке :16.\n\nЧто держится:\n- TEG (:143) без катастрофического перебора. Имя атрибута не содержит =, / и пробелов, три вида значения различаются по первому знаку, за значением без кавычек может идти только пробел или «/>». У каждого тега один разбор, откат линейный.\n- Все теги нынешней сборки проходят TEG: значения в кавычках, атрибуты без значения (hidden, data-astro-cid-*), «/>» у path, имена h1–h6 и с дефисом, svg.\n- Теги, которые TEG не берёт (значение без кавычек с кавычкой внутри, имя с «_», «.» или не-ASCII, атрибуты без пробела между ними), уходят в tekstDokumenta и снимаются пробелом. Блочный тег тогда склеивает строки (строже), строчный теряет прочтение «вплотную». Astro таких тегов не печатает.\n- Нехватка в BLOCHNYE (button, label, img, picture, source, video, iframe, select, option, textarea, template, noscript, dialog, menu, hgroup, search) ложного «чисто» не даёт: любой неблочный тег читается обоими способами. Склейка возможна: у карточек «связанных» заголовок и метка стоят одной строкой («playingGame» и «playing Game»), обе кнопки героя — тоже. Ложный отказ от этого возможен, только если 8-грамма корпуса пересечёт стык.\n- <br> как пробел верен.\n- Одинарные кавычки в content, alt, title= и aria-label разбираются (:166).\n- sudBezPadeniya закрыл izv-N9: охраны и расхождение со сторожем дают код 2.\n\nКоды выхода. Сбой вне sud() даёт необработанное исключение, а у Node это код 1 — тот же, что «отказы» по шапке (:33). Сюда относятся: нет manifest.jsonl, битый gzip документа корпуса, ошибка импорта brief-strony.mjs (:65, :82-90). Честнее обернуть загрузку и отдавать код 2. Атаки заменами в HTML для этого нет.\n\nОстаток раунда 1 (izv-N6), по-прежнему не назван: value и placeholder у input, CSS content."
+    },
+    {
+      "linza": "nazvaniya (раунд 2): проверки названий глав IX и XIII в chuzhie-glavy.mjs@2a6ca4f — «ближайший заголовок <римский>.» (стр. 247–250), счёт в двух прочтениях (стр. 237–243), ряд и метка ряда (стр. 231–235, 238, 245)",
+      "nahodki": [
+        {
+          "id": "nazv2-1",
+          "vid": "ложное чисто",
+          "tyazhest": "средняя",
+          "opisanie": "Проверку «за номером своей главы» обходят двумя путями, и оба идут через содержание. После правки она берёт «ближайший заголовок»: последнее совпадение `(^|[\\s”])([IVXLC]+)\\.(?=\\s)` перед кавычкой названия (стр. 247–248). Дальше она требует только `[^“”]*\\(\\d+ \\/ \\d+\\):` (стр. 250). Заголовком считается ЛЮБОЕ римское число из I, V, X, L, C с точкой и пробелом, если перед ним пробел, ” или начало строки.\n(а) Номер своей главы стоит в тексте места чужой главы: «X. A bus station after the raid of IX. Then a bus ride (6 / 2): “Here I Was Again…”». Ближайшим заголовком оказывается «IX.» из места главы X, хвост «IX. Then a bus ride (6 / 2): » проходит. Название IX стоит под заголовком X, а у главы IX чужое название.\n(б) Чужой заголовок отделён от предыдущего текста не пробелом, а тире, двоеточием или скобкой, либо прилеплен к слову: «(9 / 7)—XIV. The airport (6 / 1): “A Fat…”», «raidX.», а также формат «X: …». Выражение его не видит, ближайшим остаётся свой номер, а `[^“”]*` проглатывает чужой заголовок вместе с его счётом.\nЭто та же дыра nazvaniya-1 из раунда 1, открытая заново другим путём. Тело ряда — простой текст md (max-payne-3-guide.md:34–46, печать `<p>{abzac}</p>`, [...slug].astro:554–556). Римская ссылка на главу в тексте для страницы естественна: абзац Clues уже пишет «for the last time in XIV. All 65 earn…». Итоговая строка (стр. 384) печатает «за номером своей главы». Ни одна порча --proba (стр. 325–330) не ставит римское число в место и не прилепляет чужой заголовок, поэтому 45/45 этого не видит. В ПРЕДЕЛАХ (стр. 37–57) не названо. Как чинить: разбирать строку целиком как последовательность записей «<N>. <место> (<a> / <b>): “<название>”», где запись начинается с начала строки или после ” предыдущей записи, и брать название из записи с номером gl.nomer.",
+          "dokazatelstvo": "стр. 247 `[...pered.matchAll(/(^|[\\s”])([IVXLC]+)\\.(?=\\s)/g)]`; стр. 248 `z = zagolovki[zagolovki.length - 1]`; стр. 249 hvost от z; стр. 250 `/^[IVXLC]+\\.\\s[^“”]*\\(\\d+ \\/ \\d+\\):\\s*$/`.\nАтака (а): pered строки VI–X кончается на «… IX. The favela again, during a police raid (6 / 3): “It’s Drive or Shoot, Sister.” X. A bus station after the raid of IX. Then a bus ride (6 / 2): ». Совпадения: VI, VII, VIII, IX, X и последним « IX.» из места X, поэтому z[2]='IX'. hvost «IX. Then a bus ride (6 / 2): » проходит выражение стр. 250. Остальные проверки тоже проходят:\n- счёт — 1: одна пара строки равна записи (стр. 242);\n- строка лежит в stroki_ryada (стр. 245);\n- 8-граммы названия лежат внутри своей пары (стр. 211);\n- окон через границу, которые есть в корпусе, нет: «after the raid», «a bus ride», «bus station and» поиском по korpus-tekst не найдены. В корпусе названию предшествуют только «9», «ix», «chapter».\nАтака (б): перед XIV стоит «—», его нет в [\\s”], поэтому ближайший заголовок — « XIII.». hvost «XIII. A prison and a police station (9 / 7)—XIV. The airport (6 / 1): » проходит. Стыка «1 a fat bald dude…» в корпусе нет: в раунде 1 атака nazvaniya-xiii-za-nomerom-xiv после правки дала единственный отказ «не за номером».",
+          "ataka": "nazv2-ix-v-meste-x; nazv2-xiv-cherez-tire"
+        },
+        {
+          "id": "nazv2-2",
+          "vid": "ложный отказ",
+          "tyazhest": "низкая",
+          "opisanie": "Обратная сторона той же эвристики: название, которое стоит прямо за своим номером, получает отказ «не за номером своей главы IX». Так бывает, когда в месте СВОЕЙ главы есть римское число или инициал из букв I, V, X, L, C с точкой и пробелом: «IX. Back to the favela of VII. This time during a police raid (6 / 3): “Here…”», «near Rua C. Lima», «Part I. …». Такое число становится «ближайшим заголовком». Путь — содержание. В ПРЕДЕЛАХ названы только «кавычки внутри места главы или счёт частей и улик словами» (стр. 43). Римские числа и инициалы в месте не названы, хотя шапка (стр. 28–30) описывает заголовок как «<римский номер>. ».",
+          "dokazatelstvo": "стр. 247–251. В атаке последнее совпадение — « VII.» (пробел до и после), z[2]='VII' ≠ gl.nomer='IX' (стр. 250), и срабатывает otkazy.add на стр. 251 с хвостом «VII. This time during a police raid (6 / 3):». Счёт, ряд и 8-граммы не меняются: «favela of», «this time during», «during a police raid» в корпусе не найдены.",
+          "ataka": "nazv2-vii-v-svoem-meste"
+        },
+        {
+          "id": "nazv2-3",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Ряд и метка ищутся в сыром `main` (стр. 192 `h.slice(i0, i1)`, стр. 231, 234), а не в маске стр. 186, где комментарии, скрипты и стили забиты пробелами. Текст строк комментарии снимает (стр. 149), а поиск секции и метки их видит.\n(а) Закомментированный `<p class=\"t-label\">Chapters</p>` перед видимой меткой «Length» — первая метка, которую находит стр. 234. Проверка стр. 235 молчит, хотя на экране ряд подписан «Length». Это закрытая в раунде 1 pravilo-5, открытая заново через новую проверку метки.\n(б) Закомментированная секция `<section class=\"layer\" id=\"chapters\">` с копиями строк глав перед настоящим рядом — первое совпадение стр. 231. stroki_ryada берутся из комментария, а `includes` сравнивает строки как текст (стр. 245). Поэтому название XIII, перенесённое в ряд Achievements, проходит проверку «в ряду».\nОбратный ход: `</section>` в комментарии внутри ряда обрезает ряд, и оба названия получают отказ «не в ряду». Предел стр. 48 («до первого </section>») говорит о вложенной секции, а шапка (стр. 17) обещает, что комментарии не обрезают <main>; про ряд и метку там ничего нет.\nЕщё один неназванный случай: ряд — только ПЕРВАЯ секция с id=\"chapters\". id и year ряда — поля md (max-payne-3-guide.md:21–22). Если содержание даст два ряда `id: chapters` с меткой Chapters, название во втором получит «не в ряду», хотя по определению шапки (стр. 27) стоит в таком ряду.\nПуть для (а) и (б) — только шаблон: содержание экранируется ({ryad.year} и {abzac}, [...slug].astro:551, 555). Как чинить: искать секцию и метку в maska, а срез брать из h по тем же индексам.",
+          "dokazatelstvo": "стр. 186: maska строится, но используется только для границ <main> (стр. 187–191). Стр. 192: main — срез сырого h. Стр. 231: `main.match(/<section class=\"layer\\b[^>]*\\bid=\"chapters\"[\\s\\S]*?<\\/section>/)`. Стр. 234: первая `<p class=\"t-label…\">` в sekciya. Стр. 238: stroki(sekciya, na) — в варианте (б) sekciya целиком лежит внутри комментария и маркеров `<!--`/`-->` не содержит, поэтому стр. 149 её не снимает.\nАтака (а): metka = raskryt('Chapters') = 'Chapters', отказа нет. В тексте комментарий снят, видимая метка ряда — «Length».\nАтака (б): после трёх замен строка «XI. … Play.”» стоит в ряду Achievements. Та же строка есть в stroki_ryada из комментария. Счёт — 1 для каждого названия, потому что копии в комментарии сняты из текста (стр. 149). Номер проходит: строка не менялась.",
+          "ataka": "nazv2-metka-v-kommentarii; nazv2-ryad-v-kommentarii"
+        },
+        {
+          "id": "nazv2-4",
+          "vid": "ложный отказ",
+          "tyazhest": "низкая",
+          "opisanie": "Этот ложный отказ внесла переписка. Проверки номера и счёта теперь идут в обоих прочтениях (стр. 237), а в раунде 1 они шли только во «вплотную» (nazvaniya-5). В прочтении «через пробел» любой строчный тег становится пробелом (стр. 155), в том числе у знака препинания, а не внутри слова:\n- `<span class=\"tabular\">(6 / 3)</span>:` → «(6 / 3) :»;\n- `<strong>IX</strong>.` → «IX .», и заголовок не распознан;\n- `“<em>…World</em>.”` → «World .», и счёт даёт 0.\nВыражение стр. 250 требует «):» и «IX.» вплотную, счёт стр. 242 — равенства с записью без пробела перед точкой. На экране текст тот же. В ПРЕДЕЛАХ (стр. 44–45) назван только разрыв тегом ВНУТРИ слова названия. Путь — шаблон: содержание здесь простой текст.",
+          "dokazatelstvo": "стр. 155 `return strochnyeNa` (во втором прочтении это ' '); стр. 161 схлопывает пробелы, но « :» остаётся; стр. 237–238 и 250.\nАтака: «вплотную» даёт «raid (6 / 3): “Here» — проходит. «Через пробел» даёт «raid (6 / 3) : “Here», `\\(\\d+ \\/ \\d+\\):` не совпадает, и срабатывает стр. 251 «не за номером своей главы IX». 8-граммы обоих прочтений состоят из тех же слов, в корпусе их нет. Класс tabular у сайта есть (`layer__guide-time t-caption tabular` в той же странице).",
+          "ataka": "nazv2-schet-v-span"
+        },
+        {
+          "id": "nazv2-5",
+          "vid": "ложный отказ",
+          "tyazhest": "низкая",
+          "opisanie": "Метка ряда сравнивается с «Chapters» по исходному тексту с учётом регистра (стр. 235). Видимой её делает CSS `.t-label { text-transform: uppercase }` (sites/7thserpent.com/src/styles/global.css:225): на экране всегда «CHAPTERS», в каком бы регистре ни был исходник. `year: CHAPTERS` или `year: chapters` в md (max-payne-3-guide.md:22) экран не меняют, а инструмент отказывает: «видимая метка «CHAPTERS», ждали «Chapters»». Путь — содержание.\nКроме того, метку раскрывает только raskryt (стр. 169), где тег становится пробелом, и двух прочтений у метки нет. Тег внутри слова метки («Chap<wbr>ters», «C<span>hapters</span>») даёт отказ «Chap ters», хотя на экране «CHAPTERS».\nВыражение стр. 234 требует, чтобы class начинался с t-label: `<p class=\"eyebrow t-label\">` даёт метку «» и отказ (путь — шаблон). Ничего из этого не названо.",
+          "dokazatelstvo": "стр. 234 `/<p class=\"t-label[^\"]*\"[^>]*>([\\s\\S]*?)<\\/p>/` → raskryt (стр. 169: tekstDokumenta, где тег становится ' '). Стр. 235 `metka !== 'Chapters'` — строгое равенство с учётом регистра. global.css:219–227: у .t-label стоит text-transform: uppercase. [...slug].astro:551 `<p class=\"t-label\" slot=\"nadtytul\">{ryad.year}</p>`.",
+          "ataka": "nazv2-metka-zaglavnymi"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "nazv2-ix-v-meste-x",
+          "zameny": [
+            [
+              "(6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”",
+              "(6 / 3): “It’s Drive or Shoot, Sister.” X. A bus station after the raid of IX. Then a bus ride (6 / 2): “Here I Was Again, Halfway Down the World.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Находка nazv2-1 (а). Названия глав IX и X меняются местами, а в место главы X вставлена ссылка «of IX.». Ближайший заголовок перед названием IX — «IX.» из места X (стр. 247–248), хвост «IX. Then a bus ride (6 / 2): » проходит стр. 250. На экране у главы X название IX. Предсказание: код 0, итог «за номером своей главы»."
+        },
+        {
+          "id": "nazv2-xiv-cherez-tire",
+          "zameny": [
+            [
+              "(9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”",
+              "(9 / 7)—XIV. The airport (6 / 1): “A Fat Bald Dude with a Bad Temper.”"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы XIII",
+          "zachem": "Находка nazv2-1 (б): атака раунда 1 nazvaniya-xiii-za-nomerom-xiv, где пробел перед «XIV.» заменён тире вплотную. Перед XIV стоит «—», его нет в [\\s”] (стр. 247), поэтому ближайшим остаётся XIII, а `[^“”]*` проглатывает «(9 / 7)—XIV. The airport». Предсказание: код 0."
+        },
+        {
+          "id": "nazv2-vii-v-svoem-meste",
+          "zameny": [
+            [
+              "IX. The favela again, during a police raid (6 / 3)",
+              "IX. Back to the favela of VII. This time during a police raid (6 / 3)"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Находка nazv2-2. Название IX стоит прямо за своим номером, но в месте главы есть «VII. » — ссылка на главу VII. Ближайшим заголовком становится VII (стр. 248), и VII ≠ IX (стр. 250). Предсказание: ложный отказ «не за номером своей главы IX» с хвостом «VII. This time during a police raid (6 / 3):»."
+        },
+        {
+          "id": "nazv2-metka-v-kommentarii",
+          "zameny": [
+            [
+              "<p class=\"t-label\" data-astro-cid-n67f4zmd>Chapters</p>",
+              "<!--<p class=\"t-label\">Chapters</p>--><p class=\"t-label\" data-astro-cid-n67f4zmd>Length</p>"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "видимая метка «Length»",
+          "zachem": "Находка nazv2-3 (а). Видимая метка ряда — «Length». Метку ищет стр. 234 в сыром main, и первая `<p class=\"t-label\">` лежит в комментарии, поэтому metka='Chapters'. Предсказание: код 0 — повтор pravilo-5 раунда 1 через новую проверку метки."
+        },
+        {
+          "id": "nazv2-ryad-v-kommentarii",
+          "zameny": [
+            [
+              "<section class=\"layer section layer--bez-kadru\" id=\"chapters\"",
+              "<!--<section class=\"layer\" id=\"chapters\"><p class=\"t-label\">Chapters</p><p>VI. An office building that goes up in flames (3 / 5): “A Dame, a Dork and a Drunk.” VII. The favela (6 / 9): “A Hangover Sent Direct from Mother Nature.” VIII. A graveyard and a chapel, in flashback (6 / 3): “Ain’t No Reprievement Gonna Be Found Otherwise.” IX. The favela again, during a police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”</p><p>XI. A yacht on the Panama Canal, in flashback (6 / 8): “Suntan Oil, Stale Margaritas and Greed.” XII. A hotel Max brings down with C4 (6 / 6): “The Great American Savior of the Poor.” XIII. A prison and a police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”</p></section>--><section class=\"layer section layer--bez-kadru\" id=\"chapters\""
+            ],
+            [
+              "<p data-astro-cid-n67f4zmd>XI. A yacht on the Panama Canal, in flashback (6 / 8): “Suntan Oil, Stale Margaritas and Greed.” XII. A hotel Max brings down with C4 (6 / 6): “The Great American Savior of the Poor.” XIII. A prison and a police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”</p>",
+              ""
+            ],
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, the Steam edition",
+              "<p data-astro-cid-n67f4zmd>XI. A yacht on the Panama Canal, in flashback (6 / 8): “Suntan Oil, Stale Margaritas and Greed.” XII. A hotel Max brings down with C4 (6 / 6): “The Great American Savior of the Poor.” XIII. A prison and a police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1): “One Card Left to Play.”</p><p data-astro-cid-n67f4zmd>As of September 2026, the Steam edition"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не в ряду «Chapters»",
+          "zachem": "Находка nazv2-3 (б). Абзац с XIII переезжает в ряд Achievements. Перед настоящим рядом стоит закомментированная секция id=\"chapters\" с той же меткой и копиями строк VI–X и XI–XIV. Стр. 231 берёт её, потому что ищет в сыром main. stroki_ryada содержит строку XIII текстом (стр. 245), а счёт — 1, потому что комментарий из текста снят (стр. 149). Предсказание: код 0, хотя XIII на экране стоит в ряду Achievements."
+        },
+        {
+          "id": "nazv2-schet-v-span",
+          "zameny": [
+            [
+              "during a police raid (6 / 3): “Here",
+              "during a police raid <span class=\"tabular\">(6 / 3)</span>: “Here"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Находка nazv2-4. На экране «(6 / 3): “Here» не меняется: строчный span без отступов, класс tabular у сайта есть. Прочтение «через пробел» (стр. 155) даёт «(6 / 3) :», и стр. 250 не совпадает. Эту проверку во втором прочтении внесла переписка. Предсказание: ложный отказ «не за номером своей главы IX»."
+        },
+        {
+          "id": "nazv2-metka-zaglavnymi",
+          "zameny": [
+            [
+              "data-astro-cid-n67f4zmd>Chapters</p>",
+              "data-astro-cid-n67f4zmd>CHAPTERS</p>"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "Находка nazv2-5. У .t-label стоит text-transform: uppercase (global.css:225), поэтому на экране «CHAPTERS» и до замены, и после. Путь из содержания — `year: CHAPTERS`. Стр. 235 сравнивает с учётом регистра. Предсказание: ложный отказ «видимая метка «CHAPTERS», ждали «Chapters»»."
+        }
+      ],
+      "itog": "Линза nazvaniya, раунд 2: пять новых находок — одна средняя «ложное чисто» и четыре низкие.\n\nГлавная (nazv2-1, средняя, путь — содержание): «ближайший заголовок» (стр. 247–250) считает заголовком любое римское число с точкой и пробелом. Поэтому название IX, поставленное под заголовок X, проходит, если в месте X есть ссылка «of IX.». Название XIII проходит под XIV, если перед «XIV.» стоит тире вплотную, а не пробел. Это дыра nazvaniya-1 из раунда 1, открытая другим путём. --proba 45/45 её не видит, в ПРЕДЕЛАХ она не названа. Атаки: nazv2-ix-v-meste-x, nazv2-xiv-cherez-tire.\n\nОстальные:\n- nazv2-2 (ложный отказ, содержание): римское число или инициал в месте своей главы («of VII. This time…») даёт отказ «не за номером».\n- nazv2-3 (ложное чисто, шаблон): ряд и метка ищутся в сыром main без маски стр. 186. Закомментированная метка «Chapters» или секция id=\"chapters\" подменяет видимые, и так заново открывается pravilo-5. Ряд — только первая секция с этим id, это не названо.\n- nazv2-4 (ложный отказ, внесён перепиской): номер и счёт проверяются теперь и в прочтении «через пробел». Строчный тег у знака препинания даёт «(6 / 3) :», «IX .», «World .».\n- nazv2-5 (ложный отказ, содержание): метка сравнивается с учётом регистра, хотя .t-label на экране в верхнем регистре (global.css:225). Тег внутри метки даёт «Chap ters».\n\nЧто держится:\n- номер после открывающей кавычки чужого названия: в префиксе (^|[\\s”]) нет “, а хвост `[^“”]*` не пропускает кавычку между заголовком и названием, поэтому заголовок внутри чужой пары ближайшим не станет;\n- «XIX.», пробел перед «X.» и снятый номер — закрыты;\n- свой номер, прилепленный к слову («raidIX.»), даёт отказ, и это строже, чем нужно: на экране опечатка;\n- счёт в двух прочтениях с другим порядком строк: `includes` сравнивает строки как текст, а stroki(sekciya) и stroki(main) режутся по тем же блочным тегам, расхождений нет;\n- копия названия, видимая только в одном прочтении, ловится счётом 2 в этом прочтении.\n\nКак чинить nazv2-1 и nazv2-2: разбирать строку ряда целиком как цепочку записей «<N>. <место> (<a> / <b>): “<название>”» — с начала строки или после ” предыдущей записи — и брать название из записи с номером gl.nomer. Для nazv2-3 — искать секцию и метку по maska.\n\nПредсказания атак выведены чтением кода, на стенде ataki.mjs они не прогонялись."
+    },
+    {
+      "linza": "proby — пробы --proba (45 порч) инструмента chuzhie-glavy.mjs (2a6ca4f), раунд 2 «судью судят»: применимость, ветвь, своя ли причина, какие мутации новой версии проходят все 45",
+      "nahodki": [
+        {
+          "id": "proby-r2-1",
+          "vid": "проба не проверяет",
+          "tyazhest": "средняя",
+          "opisanie": "Порча 13 «хвост после названия внутри кавычек IX» записана как закрытие proby-N9 раунда 1, но проходит по чужой причине. Её причина «в кавычках 0 раз» возникает в счёте вхождений (chuzhie-glavy.mjs:242–243). Допуск 8-граммы (:211, `GLAVY_N.has(normR(pary[seg]))`), о котором и была N9, ни одна порча не проверяет. Если заменить в :211 точное равенство на префикс или вхождение (`[...GLAVY_N.keys()].some(t => normR(pary[seg]).startsWith(t))` или `.includes(t)`), проходят все 45 порч. Порча 12 («…World, Again.») не начинается с «…World.» и ловится; порча 13 отказывает счётом; в порчах 3 и 17 внутри кавычек не название. При такой мутации проходит чужая фраза, дописанная внутрь ВТОРОГО экземпляра названия в кавычках («“<название> <фраза корпуса>”» в любом ряду), и проходит чисто. Счёт считает только точные вхождения, поэтому он равен 1. Ряд и номер проверяются только у точного вхождения.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:211 — допуск по паре; :242 — счёт по `normR(...) === n`; :320 — порча 13 с prichina 'в кавычках 0 раз'. nahodki-r1.txt:51 (proby-N3) — «`GLAVY_N.has(normR(pary[seg]))`, строка 143»; :57 (proby-N9) — «includes/startsWith в строке 143». На атаке нынешний инструмент отказывает, причём только веткой :217–218 («в кавычках, но не название главы списка»). Мутант :211 молчит.",
+          "ataka": "proby-r2-hvost-vtoroy-ekz"
+        },
+        {
+          "id": "proby-r2-2",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Новая функция dopStroki берёт <head> как `h.slice(0, h.search(/<\\/head>/i))`, а если `</head>` нет, берёт пустую строку. Закрывающий тег head по HTML необязателен (его опускают минификаторы с removeOptionalTags). Тогда <title>, meta description, og:title и og:description молча не судятся: охраны нет, кода 2 нет, отказа нет. Печатается «строк title, описаний и атрибутов 1», и итоговая строка обещает «в <title>, описаниях и атрибутах — ни одной». Пробы 38–40 вставляют фразу в head с `</head>` и эту ветвь не видят.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:173–175: `konecGolovy < 0 ? '' : …`; :384 — текст итога; охрана «≥300 слов» (:196) есть только у <main>. Сейчас в сборке `</style></head><body>` (dist, строка 2) — проверено поиском.",
+          "ataka": "proby-r2-bez-head"
+        },
+        {
+          "id": "proby-r2-3",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "opisanie": "Шапка (:15) обещает, что <br> читается пробелом. Это исправление izv-N1 раунда 1, где <br> был перечислен вместе с \\n. Пробы 28 и 29 проверяют только литеральный \\n и &#10;, а <br> нет ни в одной порче и нет на странице. Мутация «br — блочный» (добавить 'br' в BLOCHNYE или вернуть RAZDEL на :154) возвращает прежнее поведение и проходит все 45 порч. Фраза корпуса, разорванная <br> на две части короче 8 слов, после такой мутации проходит чисто.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:154 `if (im === 'br') return ' ';`; :141 — BLOCHNYE; порчи :339–340 — только '\\n' и '&#10;'; в PORCHI (:307–358) '<br' нет.",
+          "ataka": "proby-r2-br"
+        },
+        {
+          "id": "proby-r2-4",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "opisanie": "Шапка (:25–26) обещает, что названия проверяются «в каждом из двух прочтений». Порча 10 проверяет только половину «через пробел»: копия, которая видна только в этом прочтении. Зеркальной порчи нет — копии, которая видна только «вплотную» (строчный тег внутри слова названия). Мутация «цикл :237 только по [cherezProbel, ' ']» проходит все 45 порч. При этой мутации вторая копия названия «…the Wo<em></em>rld.» в чужом ряду без номера проходит чисто. В прочтении «вплотную» её 8-грамма допущена как название (:211). В прочтении «через пробел» пара не равна названию, поэтому счёт = 1, а ряд и номер не проверяются.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:237 — цикл по двум прочтениям; :317 — порча 10 (копия через `<span></span>`, видна только через пробел); других порч со счётом в одном прочтении нет (9, 11, 13 портят оба одинаково).",
+          "ataka": "proby-r2-kopiya-vplotnuyu"
+        },
+        {
+          "id": "proby-r2-5",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "opisanie": "Три ветви dopStroki и суда дополнительных строк не проверены: og:title (:177), aria-label (:179) и слияние названий игр в строках title и описаний (:223, `bezImen`). Фраза пробы k — 12 слов из одних латинских букв (:274), имён игр в ней нет. Порчи 38–42 покрывают <title>, description, og:description, alt и title=. Каждая из трёх мутаций проходит все 45 порч: убрать og:title из :177, убрать aria-label из :179, судить :223 без bezImen. Последняя опаснее двух других: title и описания этого сайта почти всегда содержат «Max Payne 3», и фраза корпуса с именем игры в каждом 8-окне в описании пропускается.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:177 (список description|og:title|og:description), :179 (alt, title, aria-label), :223 `B.bezImen(B.slova(bezAdresov(s)))`; порчи :349–353. В указателе фраза с именем есть: стенд раунда 1 (ataki-r1-posle-pravki.txt:240) — «it is the sequel to §imya§ 2003 and» (Википедия Max_Payne_3). Что атака proby-r2-imya-v-opisanii разделяет мутанта и норму, установлено расчётом, без прогона.",
+          "ataka": "proby-r2-aria-label, proby-r2-og-title, proby-r2-imya-v-opisanii"
+        },
+        {
+          "id": "proby-r2-6",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Новая проверка номера берёт ближайший римский заголовок, но хвост от него до кавычки проверяет выражением `[^“”]*\\(\\d+ \\/ \\d+\\):\\s*$`. Оно пропускает в «месте» любое число блоков «(<части> / <улики>):». Если между счётом IX и названием стоит описание чужой главы без римского номера («a bus station and a bus ride (6 / 2): »), отказа нет. Шапка (:28–29) обещает ровно «<номер>. <место> (<части> / <улики>): ». Порча 22 («see» между счётом и кавычкой) ловит только хвост, который не кончается счётом. Это тот же класс, что nazvaniya-1 раунда 1, но без заголовка, по которому его видит новая версия.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:247 — заголовок только `[IVXLC]+\\.` после пробела или ”; :250 — `[^“”]*` без запрета скобок и счёта; места глав на странице скобок не содержат (dist, абзацы I–XIV), так что `[^“”()]*` не дал бы ложных отказов.",
+          "ataka": "proby-r2-dva-scheta"
+        },
+        {
+          "id": "proby-r2-7",
+          "vid": "проба не проверяет",
+          "tyazhest": "низкая",
+          "opisanie": "Шапка (:16–17) обещает две вещи: комментарий снимается «так же» (вплотную и через пробел), а скрипты и стили не обрезают <main>. Проба 35 проверяет только комментарий ВНЕ слова, стоящий перед абзацем глав. У неё два пробела. (а) Мутация «комментарий → пробел в обоих прочтениях» (:149) проходит все 45 порч, и фраза с «co<!-- -->ver» проходит чисто. (б) Мутация «маска забивает только комментарии» (:186 без script/style) проходит все 45 порч, и `<script>…</main>…</script>` в конце <main> молча обрезает остальной текст. Кроме того, мутацию «граница по h, а не по маске» порча 35 ловит не своей ветвью. Перед вставкой всего около 80 слов <main>, поэтому срабатывает охрана «меньше 300 слов» (:196), а не «фраза не судится».",
+          "dokazatelstvo": "chuzhie-glavy.mjs:149 `.replace(/<!--[\\s\\S]*?-->/g, strochnyeNa)`; :186 — маска из трёх альтернатив; :346 — порча 35 (vAbzac без posle: вставка в первый абзац ряда Chapters); :196 — охрана 300 слов.",
+          "ataka": "proby-r2-kommentariy-v-slove, proby-r2-script-main"
+        },
+        {
+          "id": "proby-r2-8",
+          "vid": "другое",
+          "tyazhest": "низкая",
+          "opisanie": "Новый разделитель строк RAZDEL = U+0001 ставится до раскрытия сущностей, а tekstDokumenta раскрывает `&#1;` (и литеральный U+0001) в тот же знак. Поэтому знак из содержания режет строку судьи: 8-граммы через него не видны. Ни \\p{Cf} (:159), ни `\\s` (:161) U+0001 не снимают. Chromium управляющий знак не рисует, так что читатель видит фразу подряд, а сторож брифов (без RAZDEL) видит её целиком. Путь — только шаблон: YAML управляющие знаки не пропускает, Astro экранирует `&`.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:144 `RAZDEL = '\\u0001'`; :153 блочный тег → RAZDEL; :157 `B.tekstDokumenta(vidimy)` (brief-strony.mjs:367–378: `&#\\d+;` → String.fromCodePoint); :160 `.split(RAZDEL)`.",
+          "ataka": "proby-r2-razdel-1"
+        },
+        {
+          "id": "proby-r2-9",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "opisanie": "Остаток izv-N6 раунда 1: он не закрыт и не назван. Новая версия судит alt, title= и aria-label=, но видимый текст в value= (кнопка `<input type=button>`), placeholder= и CSS `content:` не судится. В ПРЕДЕЛАХ (:37–57) этого нет. Там названы только текст вне <main>, JSON-LD и кавычки атрибутов.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:179 — список атрибутов alt/title/aria-label; :18–19 и :54–55 — перечень; nahodki-r1.txt:10 (izv-N6) называл value, placeholder и content:.",
+          "ataka": "proby-r2-input-value"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "proby-r2-hvost-vtoroy-ekz",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "“Here I Was Again, Halfway Down the World. A new feature to the series is the cover system, which allows players to gain a tactical advantage.” As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в кавычках, но не название главы списка",
+          "zachem": "Пара начинается с полного названия IX, дальше — фраза Википедии (Max_Payne_3). Точный счёт IX = 1, так что отказ даёт только допуск :211. Нынешняя версия отказывает. Мутант :211 (startsWith/includes) даёт «чисто». Как 46-я порча эта атака закрывает proby-N9 по существу."
+        },
+        {
+          "id": "proby-r2-bez-head",
+          "zameny": [
+            [
+              "</style></head><body>",
+              "</style><body>"
+            ],
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage. A Max Payne 3 guide:"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Документ без необязательного </head> — валидный HTML: браузер закрывает head на <body>. golova = '' (:174), description не судится. Сейчас инструмент даёт «чисто» (строк доп. 1) с кодом 0."
+        },
+        {
+          "id": "proby-r2-br",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "new feature to the series is the<br>cover system, which allows players to gain. As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "7 слов до <br> и 7 после: 8-граммы есть только через <br>. Нынешняя версия (:154, пробел) отказывает. Мутация «br блочный» даёт «чисто»: строка «cover system which allows players to gain as …» в указателе отсутствует — там «… to gain a tactical»."
+        },
+        {
+          "id": "proby-r2-kopiya-vplotnuyu",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "“Here I Was Again, Halfway Down the Wo<em></em>rld.” As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в кавычках 2 раз",
+          "zachem": "Зеркало порчи 10: копия видна только вплотную (на экране «World»). Нынешняя версия отказывает: «в кавычках 2 раз», «не в ряду», «не за номером». Мутант «названия только через пробел» даёт «чисто»: там «Wo rld», счёт 1, 8-грамма «…down the wo» не в корпусе."
+        },
+        {
+          "id": "proby-r2-aria-label",
+          "zameny": [
+            [
+              "href=\"/cheats/\"",
+              "href=\"/cheats/\" aria-label=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\""
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Ссылка «связанных» внутри <main>. Проверяет ветвь aria-label (:179), на которую нет порчи."
+        },
+        {
+          "id": "proby-r2-og-title",
+          "zameny": [
+            [
+              "property=\"og:title\" content=\"",
+              "property=\"og:title\" content=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage. "
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Проверяет ветвь og:title (:177), на которую нет порчи."
+        },
+        {
+          "id": "proby-r2-imya-v-opisanii",
+          "zameny": [
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"It is the sequel to Max Payne 2: The Fall of Max Payne (2003) and the A Max Payne 3 guide:"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Каждое 8-окно фразы задевает имя игры: «it is the sequel to §imya§ 2003 and» есть в указателе. Нынешняя версия отказывает. Мутант «:223 без bezImen» по расчёту даёт «чисто»."
+        },
+        {
+          "id": "proby-r2-dva-scheta",
+          "zameny": [
+            [
+              "police raid (6 / 3): “Here",
+              "police raid (6 / 3): a bus station and a bus ride (6 / 2): “Here"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "не за номером своей главы IX",
+          "zachem": "Между счётом IX и названием стоит описание и счёт главы X без номера «X.». Ближайший заголовок — IX, `[^“”]*` съедает второй «(6 / 2):». Сейчас «чисто», хотя шапка :28–29 обещает ровно одно «<место> (<части> / <улики>)»."
+        },
+        {
+          "id": "proby-r2-kommentariy-v-slove",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "new feature to the series is the co<!-- -->ver system, which allows players to gain. As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Ловит только прочтение вплотную: комментарий → '' (:149). Мутант «комментарий → пробел» даёт «чисто»: «co ver» рвёт все окна."
+        },
+        {
+          "id": "proby-r2-script-main",
+          "zameny": [
+            [
+              "As of September 2026, the Steam edition",
+              "<script>var s=\"</main>\"</script>new feature to the series is the cover system, which allows players to gain. As of September 2026, the Steam edition"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "Скрипт с «</main>» в последнем абзаце, перед ним больше 300 слов <main>. Нынешняя маска (:186) отказывает. Мутант «маска только комментарии» обрезает <main> на скрипте, охрана 300 слов молчит, результат «чисто»."
+        },
+        {
+          "id": "proby-r2-razdel-1",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "new feature to the series is &#1; the cover system which allows. As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "&#1; раскрывается в U+0001 = RAZDEL и режет строку: 6 слов до, 5 после. Сейчас «чисто». Слова по обе стороны те же, фраза видна подряд."
+        },
+        {
+          "id": "proby-r2-input-value",
+          "zameny": [
+            [
+              "As of September 2026, HowLongToBeat",
+              "<input type=\"button\" value=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "Видимая надпись кнопки — фраза корпуса. value= не судится ни строкой <main>, ни dopStroki, результат «чисто». Если оставить так, это нужно назвать пределом (остаток izv-N6)."
+        }
+      ],
+      "itog": "Все 45 порч применяются к нынешнему HTML. Литералы IX, «IX. The favela again», «XIII. A prison», « XIII. … Temper.”», «VI. … “A Dame», «police raid (6 / 3): “Here…», id=\"chapters\", id=\"length\", <title>, description, og:description и первый alt в <main> в минифицированном файле есть по одному разу. 44 порчи попадают в свою ветвь по своей причине. Подстроки причин ни в какой другой отказ не входят: «не за номером своей главы IX» не входит в сообщение о XIII, «в кавычках 2/0 раз» различимы.\n\nИсключения:\n- Порча 13 проходит по счёту (:242–243), а не по допуску :211, ради которого закрывалась proby-N9. Мутант :211 с startsWith/includes проходит 45 из 45 (proby-r2-1, средняя).\n- Порча 35 ловит мутанта «граница без маски» охраной 300 слов, а не своей ветвью.\n\nМутации из задания:\n- Убрать сверку со сторожем — ловит только порча 45.\n- Вернуть split по \\n — ловят 28 и 29, но <br> не проверен (r2-3).\n- Убрать снятие \\p{Cf} — ловят 30 и 31, но только на строках <main>; снятие в raskryt (:169) для строк title и описаний без пробы.\n- Старая проверка номера от предыдущей ” — ловит 21.\n- Считать названия только вплотную — ловит 10; обратное, только через пробел, не ловит никто (r2-4).\n- Не судить dopStroki целиком — ловят 38–42, но og:title, aria-label и bezImen в :223 без проб (r2-5).\n- Не проверять метку — ловит 26.\n\nМетка 'mix' по-прежнему без пробы, но на вердикт не влияет: окно с ней всегда null или чужая пара.\n\nХрупкость порч 7 и 30–33, основанных на razrez. По моему счёту слов d — Википедия Max_Payne_3, k = «grace period when health is fully depleted that allows the player to kill the», k[5] = «fully», так что разрез внутри слова настоящий. Но утверждения k[5].length > 2 нет. При другом корпусе или порядке документов двухбуквенное k[5] молча лишит эти порчи смысла, а они останутся «ok».\n\nНовые дефекты переписки, в порядке важности:\n- dopStroki без </head> молча не судит title и описания (r2-2).\n- Хвост номера допускает второй блок «(n / n):», то есть описание чужой главы без её номера (r2-6).\n- RAZDEL = U+0001 совпадает со знаком из &#1; (r2-8).\n\nОстаток izv-N6 (value, placeholder, CSS content:) не закрыт и не назван (r2-9). Все атаки — в HTML гайда. Найти-строки сверены поиском по dist/max-payne-3/guide/index.html."
+    },
+    {
+      "linza": "pravilo, раунд 2. Проверено: честность шапки chuzhie-glavy.mjs (2a6ca4f) против кода; стык с копией сторожа chuzhie-p5.mjs, срезом окончаний и brief:check; ложные отказы на нынешнем гайде и на обычных правках ряда глав; сравнение с образцом chuzhie-repliki.mjs",
+      "nahodki": [
+        {
+          "id": "pravilo-r2-1",
+          "vid": "ложный отказ",
+          "tyazhest": "средняя",
+          "opisanie": "Ссылка или <cite> на название главы, где тег закрывается перед точкой или запятой внутри кавычек («“<a>…the World</a>.”»), даёт ложный отказ. На экране при этом полное название в кавычках, один раз, в ряду Chapters, за номером IX. В прочтении «через пробел» строчный тег становится пробелом, получается «World .», а normR пробел перед знаком не снимает. Отказов два. «В кавычках 0 раз» даёт счёт в обоих прочтениях — его добавила переписка. «В кавычках, но не название главы списка» даёт 8-грамма названия в строке «через пробел» — эта ветвь унаследована от образца. Шапка называет только тег ВНУТРИ слова («Wo<em>r</em>ld») и только отказ «0 раз», поэтому по ней ссылка на название выглядит безопасной. Это ровно та правка ряда, о которой спрашивает линза.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:155 — нестрочный-неблочный тег → strochnyeNa (' '); :161 — схлопывание пробелов оставляет « .»; :79 normR = replace(/\\s+/g,' ')…trim() — пробел перед знаком остаётся; :211 GLAVY_N.has(normR(pary[seg])) ложно → :217–218 отказ «в кавычках, но не название главы списка»; :237–243 счёт по cherezProbel → «в кавычках 0 раз»; шапка :44–45 — предел только «строчным тегом внутри слова».",
+          "ataka": "r2-ssylka-v-nazvanii, r2-cite-xiii"
+        },
+        {
+          "id": "pravilo-r2-2",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "TEG не узнаёт тег, который браузер считает допустимым: значение без кавычек с апострофом (title=it's), атрибуты без пробела между ними, имя тега с двоеточием. Такой тег снимает уже tekstDokumenta сторожа, пробелом в ОБОИХ прочтениях. Прочтения «вплотную», которое обещает шапка («любой тег, кроме блочных, снимается дважды»), для него нет, и слово, разрезанное таким тегом, рвётся. Копия сторожа снимает <em …> по имени тега вплотную и фразу ловит. Но на строку она даёт одну находку, а в строке VI–X эта находка уже занята названием IX: строка та же, документ тот же, печатаются первые 120 знаков. Срез окончаний любой тег режет пробелом и тоже молчит. Итог приёмки по гайду берётся по разбору — чисто. Из найденных это единственная дыра в стыке без запасного судьи. Путь — только через шаблон, содержание маршрут экранирует.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:143 TEG: после «=» значение \"…\" | '…' | [^\\s\"'>]+ — на «it's» обрыв, дальше нужен \\s+ или \\/?> → совпадения нет; :151 — неузнанный тег остаётся; :157 → brief-strony.mjs:387 .replace(/<[^>]+>/g,' ') — пробел в обоих прочтениях; шапка :15–16. chuzhie-p5.mjs:78 /<\\/?(?:…|em|…)\\b[^>]*>/ → '' (ловит); brief-strony.mjs:419–421 — return после первой находки строки; chuzhie-p5.mjs:139 — печать первых 120 знаков строки. ngram-srez-okonchaniy.mjs:14 — <[^>]+> → ' '.",
+          "ataka": "r2-teg-ne-po-maske"
+        },
+        {
+          "id": "pravilo-r2-3",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Разбор режет строку там, где её не режут ни копия сторожа, ни браузер. Переписка ввела два таких места.\n(а) Список BLOCHNYE шире, чем у p5: в нём td, th, tr, tbody, thead, tfoot, caption. Внутри <p>, вне таблицы, браузер такие теги выбрасывает (режим «in body»: parse error, ignore), и текст идёт сплошь. Разбор ставит на их месте RAZDEL, а p5 — пробел, и p5 фразу ловит.\n(б) Разделитель строк — знак U+0001. Сущность &#1; (или U+0001 в тексте, в YAML это экранирование \"\\x01\") раскрывается в тот же знак и режет строку. Сторож и p5 этот знак не режут: для них это просто не буква.\nВ обоих случаях находка p5 в строке IX занята названием. Запасной судья — только срез окончаний, который ловит оба случая, но читается глазами. Шапка говорит «по строке на блочный элемент» и не говорит ни о U+0001, ни о том, что на этих тегах разбор мягче копии сторожа.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:141 (BLOCHNYE с table/thead/tbody/tfoot/tr/td/th/caption) против chuzhie-p5.mjs:66 (их нет; прочие теги — пробелом через tekstDokumenta, :81); chuzhie-glavy.mjs:144 RAZDEL='\\u0001', :153 блочный → RAZDEL, :157 tekstDokumenta → brief-strony.mjs:370–372 String.fromCodePoint(1), :158–159 не трогают Cc, :160 split(RAZDEL). Самосверка со сторожем (:136–137) идёт по уже разрезанной строке и расхождения не видит. Срез: ngram-srez-okonchaniy.mjs:20 (td нет в списке), :11 и :15 (U+0001 — не буква).",
+          "ataka": "r2-td-v-abzace, r2-razdel-0001"
+        },
+        {
+          "id": "pravilo-r2-4",
+          "vid": "ложное чисто",
+          "tyazhest": "низкая",
+          "opisanie": "Если в значении meta description или og:description есть знак «>», строка выпадает из суда молча, хотя шапка обещает «отдельные строки без исключений». Мета берётся регулярным выражением <meta\\b[^>]*>, которое обрывается на «>» внутри content. У обрезанного content нет закрывающей кавычки, atr ничего не находит, и строка отбрасывается. «>» внутри значения атрибута правка починила только для тегов <main> (TEG), а для <head> — нет. Путь есть из содержания: Astro экранирует в атрибутах только & и \", а description приходит из pages-s2.json. p5 устроен так же и тоже молчит. Запасной судья — brief:check, в брифе description печатается строкой. Дефект заметен только по счёту «строк title, описаний и атрибутов»: 3 вместо 5.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:176 /<meta\\b[^>]*>/gi; :178 atr(m[0],'content') || '' → :166 требует закрывающую кавычку → undefined → ''; :180 .filter(Boolean) выбрасывает; шапка :18 «без исключений», :142 «знак «>» … тег не обрывает» — только для TEG. node_modules/astro/dist/runtime/server/render/util.js:14 — экранируются только & и \". chuzhie-p5.mjs:84–86 — то же. brief-strony.mjs:259 — «| description | … |» в брифе.",
+          "ataka": "r2-meta-bolshe"
+        },
+        {
+          "id": "pravilo-r2-5",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "opisanie": "Невидимые и составные знаки вне \\p{Cf} рвут слово на стороне страницы. Это комбинирующие Mn — разложенная «ã» (a + U+0303, NFD) — а также U+034F и селекторы вариантов U+FE00–FE0F. Разбор снимает только \\p{Cf} и к NFC не приводит, а слово у сторожа — [\\p{L}\\p{N}'], так что знак Mn его рвёт. На экране «São Paulo», у всех трёх судей — «sa o paulo». В корпусе «ã» записана одним знаком: поиск U+0303 по тексту корпуса дал 0. Шапка называет разрывы только на стороне документа корпуса (V1, V2, V7), хотя на знаках Cf разбор уже сделан строже сторожа. Путь есть из содержания — текст YAML, скопированный откуда-то.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:159 — только /\\p{Cf}/gu; brief-strony.mjs:330 slova: match(/[\\p{L}\\p{N}']+/gu) — Mn не входит; шапка :14–15 (Cf) и :51–53 (предел — только документы корпуса). chuzhie-p5 и срез (ngram-srez-okonchaniy.mjs:15) — та же нарезка.",
+          "ataka": "r2-nfd"
+        },
+        {
+          "id": "pravilo-r2-6",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "opisanie": "Видимый текст в атрибутах, кроме alt, title= и aria-label=, не судится. Это надпись кнопки value= у <input type=button|submit>, текст placeholder= и CSS content: в <style> внутри <main> (стили вырезаются). Шапка перечисляет только три судимых атрибута и не говорит, что остальные не судятся. Это остаток находки раунда 1 izv-N6: правка закрыла title= и aria-label=, а value, placeholder и content не закрыты и не названы. p5 тоже молчит.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:179 — только atr(…,'alt'|'title'|'aria-label'); :147 — <style> вырезан; :155 — сам тег <input> снимается без текста; шапка :18–19, :54–55.",
+          "ataka": "r2-value"
+        },
+        {
+          "id": "pravilo-r2-7",
+          "vid": "предел не назван",
+          "tyazhest": "низкая",
+          "opisanie": "Стык со срезом окончаний. Разбор судит только точные 8-граммы — это его объём по П100, «Как прочитано», п. 4. Срез читается глазами по общему правилу «только названия и цитаты в кавычках». Если на гайде стоит В КАВЫЧКАХ фраза корпуса с изменёнными окончаниями (не название главы), разбор чист, срез её печатает, а общее правило среза «цитаты в кавычках» формально её пропускает. Шапка разбора о срезе молчит. Итог разбора («чужие 8-граммы на гайде — только внутри кавычек полных названий глав») читается шире его объёма. Развилка политическая: распространить «на гайде — только названия» на срез или применить к срезу допуск разбора.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:197–220 — только точные 8-граммы через nayti (:97); :384 — формулировка итога. ngram-srez-okonchaniy.mjs:15 — стемминг (features→feature, systems→system, allows→allow, gains→gain). DECISIONS.md:7571 — «со срезом окончаний — только названия и цитаты в кавычках».",
+          "ataka": "r2-srez-v-kavychkah"
+        },
+        {
+          "id": "pravilo-r2-8",
+          "vid": "другое",
+          "tyazhest": "низкая",
+          "opisanie": "Итоговая строка обещает «чужие 8-граммы на гайде — только…», а судит только <main> и <head>. Шапка сайта, крошки и подвал не судятся, это сказано в шапке. Образец писал честнее — «в тексте <main>». При чужой фразе в крошках инструмент печатает итог, который прямо ложен о странице.",
+          "dokazatelstvo": "chuzhie-glavy.mjs:384 («на гайде»); шапка :54 (вне <main> не судится); chuzhie-repliki.mjs:244 («в тексте <main>»).",
+          "ataka": "r2-itog-kroshki"
+        }
+      ],
+      "ataki": [
+        {
+          "id": "r2-ssylka-v-nazvanii",
+          "zameny": [
+            [
+              "“Here I Was Again, Halfway Down the World.”",
+              "“<a href=\"/max-payne-3/\">Here I Was Again, Halfway Down the World</a>.”"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "pravilo-r2-1. На экране: “Here I Was Again, Halfway Down the World.” — слова названия стали ссылкой; один раз, в ряду Chapters, за IX, так что по правилу чисто. Прочтение «вплотную» даёт ту же строку, что сейчас. «Через пробел» даёт «“ Here … World .”», normR — «… World .», а это не равно записи GLAVY. Предсказание стенда — код 1 и два отказа: «в кавычках, но не название главы списка» и «в кавычках 0 раз»."
+        },
+        {
+          "id": "r2-cite-xiii",
+          "zameny": [
+            [
+              "“A Fat Bald Dude with a Bad Temper.”",
+              "“<cite>A Fat Bald Dude with a Bad Temper</cite>.”"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "pravilo-r2-1, вариант с XIII и смысловой разметкой названия произведения (<cite>, на экране курсив). Предсказание стенда — те же два ложных отказа по XIII."
+        },
+        {
+          "id": "r2-teg-ne-po-maske",
+          "zameny": [
+            [
+              "Halfway Down the World.” X. A bus station",
+              "Halfway Down the World.” New feature to the series is the co<em title=it's></em>ver system, which allows players to gain. X. A bus station"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "pravilo-r2-2. На экране — 13 слов Википедии (Max Payne 3) сразу за названием IX, «cover» цело: значение без кавычек с апострофом браузер принимает. TEG этот тег не узнаёт, tekstDokumenta снимает его пробелом в обоих прочтениях, и получается «co ver»: слева 7 слов корпуса, справа 6. Предсказание стенда — код 0. chuzhie-p5 снимает <em …> вплотную и ловит, но его находка в строке VI–X — название IX, поэтому вывод p5 не меняется. Контроль: title=\"it's\" в кавычках → отказ «вне кавычек»."
+        },
+        {
+          "id": "r2-td-v-abzace",
+          "zameny": [
+            [
+              "Halfway Down the World.” X. A bus station",
+              "Halfway Down the World.” New feature to the series is the <td></td>cover system, which allows players to gain. X. A bus station"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "pravilo-r2-3 (а). Внутри <p>, вне таблицы, браузер теги <td> и </td> выбрасывает, и на экране «…is the cover system…» идёт сплошь. Разбор ставит RAZDEL: строка режется на 7 и 6 слов. Предсказание стенда — код 0. p5 ставит пробел и ловит (находка занята названием IX), срез тоже ловит. Контроль: <span></span> вместо <td></td> → отказ."
+        },
+        {
+          "id": "r2-razdel-0001",
+          "zameny": [
+            [
+              "Halfway Down the World.” X. A bus station",
+              "Halfway Down the World.” New feature to the series is the &#1; cover system, which allows players to gain. X. A bus station"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "pravilo-r2-3 (б). &#1; раскрывается в U+0001, то есть в RAZDEL, и строка режется. Сторож и p5 этот знак не режут: совпадение сторожа есть, и по П100 п. 2 его обязан разобрать разбор. Предсказание стенда — код 0. Контроль: &#32; вместо &#1; → отказ."
+        },
+        {
+          "id": "r2-meta-bolshe",
+          "zameny": [
+            [
+              "name=\"description\" content=\"A Max Payne 3 guide:",
+              "name=\"description\" content=\"Chapters > guns. A new feature to the series is the cover system, which allows players to gain a tactical advantage. A Max Payne 3 guide:"
+            ],
+            [
+              "property=\"og:description\" content=\"A Max Payne 3 guide:",
+              "property=\"og:description\" content=\"Chapters > guns. A new feature to the series is the cover system, which allows players to gain a tactical advantage. A Max Payne 3 guide:"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "в alt, title или описании",
+          "zachem": "pravilo-r2-4. Astro «>» в атрибуте не экранирует. <meta\\b[^>]*> обрывает тег на «>», у content нет закрывающей кавычки, обе строки описаний выпадают. Предсказание стенда — код 0 и «строк title, описаний и атрибутов 3». Контроль: то же без «Chapters > guns.» → отказ «в alt, title или описании»."
+        },
+        {
+          "id": "r2-nfd",
+          "zameny": [
+            [
+              "Halfway Down the World.” X. A bus station",
+              "Halfway Down the World.” Developers conducted field research around Sa&#771;o Paulo throughout development and captured footage. X. A bus station"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "вне кавычек",
+          "zachem": "pravilo-r2-5. На экране — «São Paulo» и 12 слов подряд из Википедии (Max Payne 3, раздел о разработке). «ã» разложена на a + U+0303 (Mn): slova режет «sa», «o», и выходит 5 + 6 слов. Предсказание стенда — код 0, молчат и p5, и срез. Контроль: «São» одним знаком → отказ «вне кавычек»."
+        },
+        {
+          "id": "r2-value",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+              "<p data-astro-cid-n67f4zmd><input type=\"button\" value=\"A new feature to the series is the cover system, which allows players to gain a tactical advantage\"> As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "отказ",
+          "prichina": "",
+          "zachem": "pravilo-r2-6. На экране — кнопка с надписью из 14 слов Википедии. Тег снимается без текста, а в строки атрибутов идут только alt, title= и aria-label=. Предсказание стенда — код 0."
+        },
+        {
+          "id": "r2-srez-v-kavychkah",
+          "zameny": [
+            [
+              "<p data-astro-cid-n67f4zmd>As of September 2026, HowLongToBeat",
+              "<p data-astro-cid-n67f4zmd>“A new features to the series is the cover systems, which allow players to gains a tactical advantage.” As of September 2026, HowLongToBeat"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "pravilo-r2-7. Изменено одно окончание в каждом 8-окне (features, systems, allow, gains), поэтому точных 8-грамм нет, и по объёму разбора (П100 п. 4) результат чисто. Срез (stem) на той же сборке напечатает 11 окон «… feature to the sery is the cover system …». Это фраза в кавычках, но не название главы, и общее правило среза «цитаты в кавычках» её формально пропускает. Атака описывает стык, а не дефект кода."
+        },
+        {
+          "id": "r2-itog-kroshki",
+          "zameny": [
+            [
+              "<span class=\"crumbs__current\" aria-current=\"page\" data-astro-cid-woptr46g>Max Payne 3 walkthrough",
+              "<span class=\"crumbs__current\" aria-current=\"page\" data-astro-cid-woptr46g>A new feature to the series is the cover system, which allows players to gain a tactical advantage. Max Payne 3 walkthrough"
+            ]
+          ],
+          "ozhidanie": "чисто",
+          "prichina": "",
+          "zachem": "pravilo-r2-8. Крошки — вне <main>. По объёму (П100 п. 4 — строки <main>) результат чисто, как в izv-kroshki раунда 1. Но итоговая строка напечатает «чужие 8-граммы на гайде — только внутри кавычек полных названий глав IX и XIII…», хотя на гайде видны 14 слов Википедии. Образец писал «в тексте <main>»."
+        }
+      ],
+      "itog": "Линза pravilo, раунд 2: восемь находок. Одна средняя (ложный отказ), три низких «ложное чисто», которые внесла переписка, три непоименованных предела и одна неточная формулировка итога.\n\n1. **Шапка против кода.** Проверены все свойства шапки, и в коде они есть:\n   - функции сторожа и самосверка слов по строке (стр. 136–137);\n   - «·» и «|» не режут строку;\n   - перенос, &#10; и <br> дают пробел, знаки \\p{Cf} снимаются;\n   - комментарий судится в двух прочтениях;\n   - границы <main> ищутся по маске;\n   - строки title и описаний;\n   - alt, title= и aria-label= в двух видах кавычек;\n   - «ровно один раз» в обоих прочтениях, ряд по id и метке «Chapters», номер — ближайший заголовок;\n   - коды 0/1/2;\n   - маршрут экранирует содержание — проверено: в теле set:html нет, есть только JSON-LD в Base.astro:108–109.\n\n   Не соответствует шапке:\n   - «любой тег… снимается дважды» — неверно для тега, который TEG не узнаёт (pravilo-r2-2);\n   - «по строке на блочный элемент» — строку режут ещё знак U+0001 и выброшенные браузером теги таблицы (pravilo-r2-3);\n   - «строки описаний без исключений» — неверно при «>» в content (pravilo-r2-4);\n   - предел «тег внутри слова» уже, чем реальный ложный отказ (pravilo-r2-1).\n\n2. **Стык с p5, срезом и brief:check.** Каждое место, где разбор мягче копии сторожа, в строке IX или XIII маскируется: p5 даёт одну находку на строку, и её занимает название. Запасные судьи есть не везде:\n   - U+0001 и <td> ловит срез окончаний, но его читают глазами;\n   - «>» в описании ловит brief:check;\n   - тег, не узнанный TEG, не ловит никто — это единственная дыра без запасного судьи, путь только через шаблон;\n   - разложенная «ã» и U+034F — предел всего семейства судей, путь есть из содержания.\n\n   Если судить только по коду выхода разбора, такие строки проходят.\n\n3. **Ложные отказы.** На нынешней сборке отказов 0. На обычных правках ряда глав:\n   - проходят: тире, скобки и ссылка в тексте места главы (`[^“”]*` их пропускает, пробелы схлопываются), ссылка вокруг названия вместе с кавычками или точкой, неразрывный пробел в «(6 / 3)»;\n   - ложный отказ: ссылка или <cite> на слова названия с точкой снаружи тега — pravilo-r2-1, новое;\n   - отказ по раскладке, которую шапка объявляет (стр. 28–29, класс pravilo-6 раунда 1, не новое): двоеточие заменено тире, скобки вокруг названия, «(6/3)» без пробелов.\n\n4. **Сравнение с образцом.** Ничего из того, что проверял образец, не потеряно, новая версия строже:\n   - счёт в обоих прочтениях;\n   - ряд по id и точной метке вместо startsWith;\n   - номер перед названием вместо главы после него;\n   - сломанное извлечение даёт код 2, а не падение с кодом 1.\n\n   Честность просела в одном месте: итог «на гайде» вместо «в тексте <main>» (pravilo-r2-8).\n\n5. **Для решения владельца** — стык разбора со срезом на гайде (pravilo-r2-7): распространить «только названия» на срез или применить к срезу допуск разбора.\n\nФайлы: `D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs`, `D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/chuzhie-p5.mjs`, `D:/SEO/cloud/site-generator/docs/reports/2026-09-26-7thserpent-pachka-2/zamery/ngram-srez-okonchaniy.mjs`, `D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/brief-strony.mjs`."
+    }
+  ],
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Линзы"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "r2:perepis",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a50fceabde1684264",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790531909570,
+      "queuedAt": 1790531909522,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "perepis — дефекты, которые внесла переписка chuzhie-glavy.m…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 2 («судью судят», инвариант 1 корневого CLAUDE.md). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия коммита 2a6ca4f, после правки по раунду 1): D:/SEO/cloud/site-generator/docs/…",
+      "promptFramed": true,
+      "lastProgressAt": 1790533024971,
+      "tokens": 237889,
+      "toolCalls": 32,
+      "durationMs": 1115397,
+      "resultPreview": "{\"linza\":\"perepis — дефекты, которые внесла переписка chuzhie-glavy.mjs (2a6ca4f): TEG, RAZDEL, BLOCHNYE, <br>, снятие \\\\p{Cf}, маска границ <main>, dopStroki, коды выхода и sudBezPadeniya\",\"nahodki\":[{\"id\":\"perepis-meta-gt\",\"vid\":\"ложное чисто\",\"tyazhest\":\"средняя\",\"opisanie\":\"Один знак «>» в описании страницы снимает с суда всё описание: и description, и og:description. Astro экранирует в значен…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "r2:nazvaniya",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "aa6b715381955c430",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790531909571,
+      "queuedAt": 1790531909522,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "nazvaniya (раунд 2): проверки названий глав IX и XIII в chu…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 2 («судью судят», инвариант 1 корневого CLAUDE.md). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия коммита 2a6ca4f, после правки по раунду 1): D:/SEO/cloud/site-generator/docs/…",
+      "promptFramed": true,
+      "lastProgressAt": 1790532785237,
+      "tokens": 219912,
+      "toolCalls": 36,
+      "durationMs": 874140,
+      "resultPreview": "{\"linza\":\"nazvaniya (раунд 2): проверки названий глав IX и XIII в chuzhie-glavy.mjs@2a6ca4f — «ближайший заголовок <римский>.» (стр. 247–250), счёт в двух прочтениях (стр. 237–243), ряд и метка ряда (стр. 231–235, 238, 245)\",\"nahodki\":[{\"id\":\"nazv2-1\",\"vid\":\"ложное чисто\",\"tyazhest\":\"средняя\",\"opisanie\":\"Проверку «за номером своей главы» обходят двумя путями, и оба идут через содержание. После пра…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "r2:proby",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "a2d20acb2f4f750d0",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790531909572,
+      "queuedAt": 1790531909523,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "proby — пробы --proba (45 порч) инструмента chuzhie-glavy.m…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 2 («судью судят», инвариант 1 корневого CLAUDE.md). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия коммита 2a6ca4f, после правки по раунду 1): D:/SEO/cloud/site-generator/docs/…",
+      "promptFramed": true,
+      "lastProgressAt": 1790532907413,
+      "tokens": 243562,
+      "toolCalls": 20,
+      "durationMs": 996314,
+      "resultPreview": "{\"linza\":\"proby — пробы --proba (45 порч) инструмента chuzhie-glavy.mjs (2a6ca4f), раунд 2 «судью судят»: применимость, ветвь, своя ли причина, какие мутации новой версии проходят все 45\",\"nahodki\":[{\"id\":\"proby-r2-1\",\"vid\":\"проба не проверяет\",\"tyazhest\":\"средняя\",\"opisanie\":\"Порча 13 «хвост после названия внутри кавычек IX» записана как закрытие proby-N9 раунда 1, но проходит по чужой причине. Е…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "r2:pravilo",
+      "phaseIndex": 1,
+      "phaseTitle": "Линзы",
+      "agentId": "af6d0cb874c5a3508",
+      "model": "claude-opus-5-5[1m]",
+      "state": "done",
+      "startedAt": 1790531909573,
+      "queuedAt": 1790531909523,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "pravilo, раунд 2. Проверено: честность шапки chuzhie-glavy.…",
+      "promptPreview": "Ты — состязательный проверяющий нового инструмента приёмки, раунд 2 («судью судят», инвариант 1 корневого CLAUDE.md). Репозиторий D:/SEO/cloud/site-generator.\nЖЁСТКО: не вызывай Bash и PowerShell вовсе — только Read, Grep, Glob. Ничего не пиши и не правь. Никаких команд оболочки, пустышек и присвоений.\nИнструмент (версия коммита 2a6ca4f, после правки по раунду 1): D:/SEO/cloud/site-generator/docs/…",
+      "promptFramed": true,
+      "lastProgressAt": 1790533041321,
+      "tokens": 239182,
+      "toolCalls": 41,
+      "durationMs": 1130223,
+      "resultPreview": "{\"linza\":\"pravilo, раунд 2. Проверено: честность шапки chuzhie-glavy.mjs (2a6ca4f) против кода; стык с копией сторожа chuzhie-p5.mjs, срезом окончаний и brief:check; ложные отказы на нынешнем гайде и на обычных правках ряда глав; сравнение с образцом chuzhie-repliki.mjs\",\"nahodki\":[{\"id\":\"pravilo-r2-1\",\"vid\":\"ложный отказ\",\"tyazhest\":\"средняя\",\"opisanie\":\"Ссылка или <cite> на название главы, где т…"
+    }
+  ],
+  "totalTokens": 940545,
+  "totalToolCalls": 129
+}

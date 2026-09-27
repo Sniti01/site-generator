@@ -11,7 +11,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | type | `topic` |
 | h1 | How Max Payne plays: bullet time, shootdodge, painkillers and weapons |
 | title | Max Payne gameplay — bullet time, shootdodge, weapons and modes |
-| description | What makes Max Payne play the way it does: bullet time and shootdodge, painkillers instead of regenerating health, weapons, and what Max Payne 2 and 3 changed — with videos. |
+| description | What makes Max Payne play the way it does: bullet time and shootdodge, painkillers, weapons and modes, and what Max Payne 2 and 3 changed. |
 | parent | `/` |
 | cluster | max payne bullet time · queries 19 · demand 440 (Ahrefs, US) |
 | corridor (contract) | 3562–4819 |

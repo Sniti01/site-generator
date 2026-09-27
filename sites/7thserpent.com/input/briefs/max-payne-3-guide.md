@@ -11,7 +11,7 @@ manifest. Addresses only — no competitor wording (backlog, item 1; П85 п. 5)
 | type | `guide` |
 | h1 | Max Payne 3 walkthrough: all chapters, golden guns, clues and trophies |
 | title | Max Payne 3 guide — chapters, golden guns, clues, achievements |
-| description | A chapter-by-chapter Max Payne 3 guide: how many chapters there are, how long it takes, golden gun and clue locations, the airport shootout, and every trophy. |
+| description | A Max Payne 3 guide: how many chapters there are, how long it takes, how many golden gun parts and clues each chapter has, the airport shootout, and some achievements. |
 | parent | `/max-payne-3/` |
 | cluster | max payne 3 guide · queries 28 · demand 990 (Ahrefs, US) |
 | corridor (contract) | 3174–4294 |

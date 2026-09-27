@@ -75,8 +75,9 @@ rows:
         warehouse, about a hard-boiled cop whose wife has been murdered. Dick
         Justice was one of the names Remedy tried for the first game before
         settling on Max Payne, and Lake modeled for the show’s hero. It is one
-        of several shows on the game’s TV sets: Lake is also John Mirra in
-        Address Unknown and Lord Valentine and Mama in Lords and Ladies.
+        of several shows on the game’s TV sets: Lake also plays John Mirra in
+        Address Unknown and both Lord Valentine and Mama in the show Lords and
+        Ladies.
       - >-
         “I had a dream of my wife. She was dead. But it was all right.” — the
         ending: Max’s last voice-over before the credits in the standard

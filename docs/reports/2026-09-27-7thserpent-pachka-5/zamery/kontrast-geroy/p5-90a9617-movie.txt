@@ -1,0 +1,9 @@
+сборка 90a9617 (копия dist-90a9617 = dist/ коммита 90a9617, пачка 5; сервер 127.0.0.1:4434), кадры .playwright-mcp/ka-p5/movie, съёмка — копия kontrast-geroy-snyatie.js доработки (instrumenty/kontrast-geroy-snyatie.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 11.37:1 на 641x900 (строка y 386.5 «Max Payne, the 2008 movie: cast, plot an»), p99 не ниже 13.50:1
+herolead .hero__lead           худший пиксель 6.21:1 на 1920x1080 (строка y 297.4 «Mark Wahlberg played Max and Mila Kunis »), p99 не ниже 6.36:1
+herobtn .btn-secondary         худший пиксель 13.06:1 на 641x900 (строка y 137.6 «The cast»), p99 не ниже 13.36:1
+podpis .podpis-geroya          худший пиксель 5.38:1 на 360x740 (строка y 159.5 «Pictured: Max Payne (2001), the game — n»), p99 не ниже 5.38:1
+
+Итог: окон 31, строк 260; самый тесный худший пиксель — 5.38:1 (360x740, .podpis-geroya, y 159.5), порог 4,5:1.
+
+код выхода: 0

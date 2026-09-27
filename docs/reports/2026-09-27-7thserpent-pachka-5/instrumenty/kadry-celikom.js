@@ -10,7 +10,7 @@
 // без прокрутки окна).
 async (page) => {
   const BASE = 'http://127.0.0.1:4434';
-  const SBORKA = 'VPISAT';
+  const SBORKA = '90a9617';
   if (!/^[0-9a-f]{7,40}$/.test(SBORKA)) throw new Error('СТОП: SBORKA — не хеш коммита');
   const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/kadry/';
   const PLAN = [

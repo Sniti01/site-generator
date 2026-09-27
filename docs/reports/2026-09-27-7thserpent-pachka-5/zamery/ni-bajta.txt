@@ -1,0 +1,5 @@
+$ git diff --stat main -- core sites/ac4bf-thewatch.com package.json package-lock.json .gitattributes .gitignore
+(папка: D:/SEO/cloud/site-generator)
+
+
+код выхода: 0

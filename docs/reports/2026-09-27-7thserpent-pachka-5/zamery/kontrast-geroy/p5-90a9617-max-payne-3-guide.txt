@@ -1,0 +1,8 @@
+сборка 90a9617 (копия dist-90a9617 = dist/ коммита 90a9617, пачка 5; сервер 127.0.0.1:4434), кадры .playwright-mcp/ka-p5/max-payne-3-guide, съёмка — копия kontrast-geroy-snyatie.js доработки (instrumenty/kontrast-geroy-snyatie.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 10.68:1 на 700x900 (строка y 367.8 «Max Payne 3 walkthrough: all chapters, g»), p99 не ниже 11.80:1
+herolead .hero__lead           худший пиксель 5.69:1 на 641x900 (строка y 264.1 «Fourteen chapters, 28 golden guns split »), p99 не ниже 5.94:1
+herobtn .btn-secondary         худший пиксель 13.66:1 на 900x700 (строка y 137.9 «Golden guns and clues»), p99 не ниже 13.85:1
+
+Итог: окон 31, строк 248; самый тесный худший пиксель — 5.69:1 (641x900, .hero__lead, y 264.1), порог 4,5:1.
+
+код выхода: 0

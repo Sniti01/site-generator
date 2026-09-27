@@ -17,7 +17,7 @@
 // дали бы десятки мегабайт в репозитории. Числа — window.__kadry (выгрузить browser_evaluate).
 async (page) => {
   const BASE = 'http://127.0.0.1:4434';
-  const SBORKA = 'VPISAT';
+  const SBORKA = '90a9617';
   const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/kadry/';
   const PLAN = [
     ['/gameplay/', 'gameplay', [[1440, 900], [390, 844], [320, 640]]],

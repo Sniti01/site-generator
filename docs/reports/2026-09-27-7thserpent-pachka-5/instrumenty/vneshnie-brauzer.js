@@ -18,7 +18,7 @@
 // Предел: запросы после 1,5 с тишины и после ухода со страницы не видны; `<a>` не нажимаются.
 async (page) => {
   const BASE = 'http://127.0.0.1:4434';
-  const SBORKA = 'VPISAT';
+  const SBORKA = '90a9617';
   const STRANICY = ['/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/pc/', '/media/', '/games-like-max-payne/', '/404/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/'];
   const OKNA = [[1440, 900], [390, 844]];
   const browser = page.context().browser();

@@ -1,0 +1,27 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/chuzhie-p5.mjs sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+корпус: документов 612
+/pc/: строк 42 (+5: title, описания, alt), слов 909, строк с чужой последовательностью: 0
+/games-like-max-payne/: строк 34 (+5: title, описания, alt), слов 687, строк с чужой последовательностью: 0
+/media/: строк 36 (+8: title, описания, alt), слов 616, строк с чужой последовательностью: 0
+/max-payne-1/: строк 29 (+6: title, описания, alt), слов 565, строк с чужой последовательностью: 0
+/max-payne-2/: строк 84 (+9: title, описания, alt), слов 2183, строк с чужой последовательностью: 0
+/max-payne-3/: строк 48 (+7: title, описания, alt), слов 1102, строк с чужой последовательностью: 0
+/remake/: строк 41 (+5: title, описания, alt), слов 873, строк с чужой последовательностью: 0
+/story/: строк 54 (+8: title, описания, alt), слов 1395, строк с чужой последовательностью: 0
+/voice-and-face/: строк 48 (+6: title, описания, alt), слов 857, строк с чужой последовательностью: 0
+/cheats/: строк 47 (+5: title, описания, alt), слов 836, строк с чужой последовательностью: 0
+/mods/: строк 37 (+5: title, описания, alt), слов 758, строк с чужой последовательностью: 0
+/quotes/: строк 49 (+8: title, описания, alt), слов 1203, строк с чужой последовательностью: 5
+  строка 15: «“My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, » — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+  строка 22: «“In a situation like mine, you can only think in metaphors.” — Part I, Chapter 1, “Elevator Doors.” Max doesn’t say it: » — http://superadventuresingaming.blogspot.com/2014/05/max-payne-2-fall-of-max-payne-pc.html
+  строка 29: «“Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Secon» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+  строка 30: «“I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother N» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+  строка 31: «“But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left» — https://www.thegamer.com/max-payne-3-airport-level/
+/gameplay/: строк 47 (+8: title, описания, alt), слов 1071, строк с чужой последовательностью: 0
+/max-payne-3/guide/: строк 38 (+5: title, описания, alt), слов 829, строк с чужой последовательностью: 0
+/movie/: строк 62 (+5: title, описания, alt), слов 1490, строк с чужой последовательностью: 0
+итого строк с чужой последовательностью: 5
+
+код выхода: 1

@@ -1,0 +1,82 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/kopii-otlichiya.mjs
+(папка: D:/SEO/cloud/site-generator; после того как в копии вписан хеш сборки 90a9617)
+
+=== chuzhie-p5.mjs против 2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-p4.mjs: строк отличий 7
++// Копия для сессии 18 (П98: «чужих 8-словных последовательностей в текстах пятнадцати страниц — 0 (на /quotes/ —
++// только реплики в кавычках)») — отличие от docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-p4.mjs
++// (b498fed): список страниц (плюс /gameplay/, /max-payne-3/guide/, /movie/), имя в строке запуска и эти три строки шапки.
+-//   node chuzhie-p4.mjs <dist> [--proba]
++//   node chuzhie-p5.mjs <dist> [--proba]
+-for (const url of ['/pc/', '/games-like-max-payne/', '/media/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/']) {
++for (const url of ['/pc/', '/games-like-max-payne/', '/media/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/']) {
+=== srez-okonchaniy-15.mjs против 2026-09-27-7thserpent-pachka-4/instrumenty/srez-okonchaniy-12.mjs: строк отличий 11
++// Копия для сессии 18 (П98, пятнадцать страниц) — отличие от docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/
++// srez-okonchaniy-12.mjs (b498fed): список страниц (плюс /gameplay/, /max-payne-3/guide/, /movie/), имя
++// в строке запуска и сообщении и эти три строки шапки; «12 секций» ниже — теперь 15.
+-//   node srez-okonchaniy-12.mjs <dist> <сборка>
++//   node srez-okonchaniy-15.mjs <dist> <сборка>
+-// Проверки по выводу (P3-R3-KOPII-6): 12 секций «== /…/», в каждой «N=8», в секции `/max-payne-2/` —
++// Проверки по выводу (P3-R3-KOPII-6): 15 секций «== /…/», в каждой «N=8», в секции `/max-payne-2/` —
+-  console.error('node srez-okonchaniy-12.mjs <dist> <сборка>');
++  console.error('node srez-okonchaniy-15.mjs <dist> <сборка>');
+-const STRANICY = ['/pc/', '/games-like-max-payne/', '/media/', '/max-payne-3/', '/max-payne-1/', '/max-payne-2/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/'];
++const STRANICY = ['/pc/', '/games-like-max-payne/', '/media/', '/max-payne-3/', '/max-payne-1/', '/max-payne-2/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/'];
+=== vneshnie-brauzer.js против 2026-09-27-7thserpent-geroi/instrumenty/vneshnie-brauzer.js: строк отличий 9
++// Копия для сессии 18 (П98: «в браузере — на всех семнадцати страницах») — отличие от копии доработки
++// (8ede451): адрес сервера, хеш сборки (вписываются перед прогоном), список страниц (плюс три страницы пачки 5)
++// и эти три строки шапки.
+-  const BASE = 'http://127.0.0.1:4432';
+-  const SBORKA = '38af56e';
+-  const STRANICY = ['/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/pc/', '/media/', '/games-like-max-payne/', '/404/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/'];
++  const BASE = 'http://127.0.0.1:4434';
++  const SBORKA = '90a9617';
++  const STRANICY = ['/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/pc/', '/media/', '/games-like-max-payne/', '/404/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/'];
+=== kadry-stopa.js против 2026-09-27-7thserpent-geroi/instrumenty/kadry-stopa.js: строк отличий 20
++// Копия для сессии 18 (П98: «мой взгляд на /gameplay/, /max-payne-3/guide/ и /movie/ (кадры 1440, 390 и 320)») —
++// отличие от копии доработки (8ede451): адрес сервера, хеш сборки, папка вывода, план (три страницы пачки 5)
++// и эти три строки шапки. Страницы целиком снимает отдельный kadry-celikom.js.
+-  const BASE = 'http://127.0.0.1:4432';
+-  const SBORKA = '38af56e';
+-  const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-geroi/kadry/';
++  const BASE = 'http://127.0.0.1:4434';
++  const SBORKA = '90a9617';
++  const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-pachka-5/kadry/';
+-    ['/pc/', 'pc', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/games-like-max-payne/', 'games-like-max-payne', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/media/', 'media', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/story/', 'story', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/voice-and-face/', 'voice-and-face', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/cheats/', 'cheats', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/mods/', 'mods', [[1440, 900], [390, 844], [320, 640]]],
+-    ['/quotes/', 'quotes', [[1440, 900], [390, 844], [320, 640]]],
++    ['/gameplay/', 'gameplay', [[1440, 900], [390, 844], [320, 640]]],
++    ['/max-payne-3/guide/', 'max-payne-3-guide', [[1440, 900], [390, 844], [320, 640]]],
++    ['/movie/', 'movie', [[1440, 900], [390, 844], [320, 640]]],
+=== kontrast-geroy-snyatie.js против 2026-09-27-7thserpent-geroi/instrumenty/kontrast-geroy-snyatie-a.js: строк отличий 16
++// Копия для сессии 18 (П98: «контраст текста трёх новых героев — замером полосы из 31 окна, порог 4,5:1») — отличие
++// от части А доработки (8ede451): адрес сервера, папка кадров, хеш сборки (вписывается перед прогоном), список страниц
++// (/gameplay/, /max-payne-3/guide/, /movie/ — у /movie/ подпись кадра, podpis: true) и эти три строки шапки.
+-  const BASE = 'http://127.0.0.1:4432';
+-  const DIR = 'ka-geroi-a';
+-  const SBORKA = '38af56e';
++  const BASE = 'http://127.0.0.1:4434';
++  const DIR = 'ka-p5';
++  const SBORKA = '90a9617';
+-    ['/pc/', 'pc', { podpis: false }],
+-    ['/games-like-max-payne/', 'games-like-max-payne', { podpis: false }],
+-    ['/media/', 'media', { podpis: true }],
+-    ['/story/', 'story', { podpis: false }],
++    ['/gameplay/', 'gameplay', { podpis: false }],
++    ['/max-payne-3/guide/', 'max-payne-3-guide', { podpis: false }],
++    ['/movie/', 'movie', { podpis: true }],
+=== rastyazhenie.js против 2026-09-27-7thserpent-geroi/instrumenty/rastyazhenie.js: строк отличий 8
++// Копия для сессии 18 (П98: «растяжение — числом») — отличие от копии доработки (8ede451): адрес сервера, хеш сборки
++// (вписывается перед прогоном), список страниц (три страницы пачки 5) и эти две строки шапки.
+-  const BASE = 'http://127.0.0.1:4432';
+-  const SBORKA = '38af56e';
+-  const STRANICY = ['/pc/', '/games-like-max-payne/', '/media/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/'];
++  const BASE = 'http://127.0.0.1:4434';
++  const SBORKA = '90a9617';
++  const STRANICY = ['/gameplay/', '/max-payne-3/guide/', '/movie/'];
+
+код выхода: 0

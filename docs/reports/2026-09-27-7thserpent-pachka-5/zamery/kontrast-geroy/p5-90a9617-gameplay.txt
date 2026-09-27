@@ -1,0 +1,8 @@
+сборка 90a9617 (копия dist-90a9617 = dist/ коммита 90a9617, пачка 5; сервер 127.0.0.1:4434), кадры .playwright-mcp/ka-p5/gameplay, съёмка — копия kontrast-geroy-snyatie.js доработки (instrumenty/kontrast-geroy-snyatie.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 10.68:1 на 641x900 (строка y 425.4 «How Max Payne plays: bullet time, shootd»), p99 не ниже 11.60:1
+herolead .hero__lead           худший пиксель 6.19:1 на 800x900 (строка y 275.9 «Slow motion you switch on yourself, a di»), p99 не ниже 6.33:1
+herobtn .btn-secondary         худший пиксель 13.81:1 на 900x700 (строка y 137.0 «What Max Payne 3 changed»), p99 не ниже 13.85:1
+
+Итог: окон 31, строк 231; самый тесный худший пиксель — 6.19:1 (800x900, .hero__lead, y 275.9), порог 4,5:1.
+
+код выхода: 0

@@ -1,0 +1,6 @@
+$ node .claude/skills/impeccable/scripts/detect.mjs --json sites/7thserpent.com/src/content/tresc/gameplay.md sites/7thserpent.com/src/content/tresc/max-payne-3-guide.md sites/7thserpent.com/src/content/tresc/movie.md
+(папка: D:/SEO/cloud/site-generator)
+
+[]
+
+код выхода: 0

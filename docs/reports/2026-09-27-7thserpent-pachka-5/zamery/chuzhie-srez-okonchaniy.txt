@@ -1,0 +1,180 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/srez-okonchaniy-15.mjs sites/7thserpent.com/dist 90a9617
+(папка: D:/SEO/cloud/site-generator)
+
+сборка 90a9617 (sites/7thserpent.com/dist); скрипт docs/reports/2026-09-26-7thserpent-pachka-2/zamery/ngram-srez-okonchaniy.mjs как есть: node ngram-srez-okonchaniy.mjs <dist>/<страница>/index.html 8 stem
+== /pc/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /games-like-max-payne/
+документов 612, N=8
+совпадений: 0
+== /media/
+документов 612, N=8
+совпадений: 0
+== /max-payne-3/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /max-payne-1/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /max-payne-2/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne came out on Windows on October 15, 2003 (October 24 in Europe). Rockstar and Remedy also put out developm
+«the continued disappointing sale of max payne 2» — https://en.wikipedia.org/wiki/Max_Payne_2:_The_Fall_of_Max_Payne
+   в строке: Good reviews did not turn into sales. In early 2004 Take-Two named the “continued disappointing sales” of Max Payne 2 as one reason it cut i
+совпадений: 3
+== /remake/
+документов 612, N=8
+«and max payne 2 the fall of max» — https://www.remedygames.com/games/max-payne-1-2-remake
+   в строке: As of September 2026, Max Payne 1 & 2 Remake is one title that covers both Max Payne (2001) and Max Payne 2: The Fall of Max Payne (2003). R
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: As of September 2026, Max Payne 1 & 2 Remake is one title that covers both Max Payne (2001) and Max Payne 2: The Fall of Max Payne (2003). R
+«payne 2 the fall of max payne 2003» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: As of September 2026, Max Payne 1 & 2 Remake is one title that covers both Max Payne (2001) and Max Payne 2: The Fall of Max Payne (2003). R
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 5
+== /story/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /voice-and-face/
+документов 612, N=8
+совпадений: 0
+== /cheats/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /mods/
+документов 612, N=8
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne Game
+«payne 2 the fall of max payne game» — https://www.gamepressure.com/download/max-payne-2-the-fall-of-max-payne-101-5-trainer/z9f1b
+   в строке: Max Payne 2: The Fall of Max Payne Game
+совпадений: 2
+== /quotes/
+документов 612, N=8
+«my cover had been blown the door slammed» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«cover had been blown the door slammed shut» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«had been blown the door slammed shut behind» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«been blown the door slammed shut behind me» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«blown the door slammed shut behind me and» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«the door slammed shut behind me and then» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«door slammed shut behind me and then i» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«slammed shut behind me and then i was» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«shut behind me and then i was dodging» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«behind me and then i was dodging bullet» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«me and then i was dodging bullet like» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«and then i was dodging bullet like raindrop» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html
+   в строке: “My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.” — Chapter 3, “Playing It Bogart.”
+«in a situation like mine you can only» — http://superadventuresingaming.blogspot.com/2014/05/max-payne-2-fall-of-max-payne-pc.html
+   в строке: “In a situation like mine, you can only think in metaphors.” — Part I, Chapter 1, “Elevator Doors.” Max doesn’t say it: the line comes from 
+«a situation like mine you can only think» — http://superadventuresingaming.blogspot.com/2014/05/max-payne-2-fall-of-max-payne-pc.html
+   в строке: “In a situation like mine, you can only think in metaphors.” — Part I, Chapter 1, “Elevator Doors.” Max doesn’t say it: the line comes from 
+«situation like mine you can only think in» — http://superadventuresingaming.blogspot.com/2014/05/max-payne-2-fall-of-max-payne-pc.html
+   в строке: “In a situation like mine, you can only think in metaphors.” — Part I, Chapter 1, “Elevator Doors.” Max doesn’t say it: the line comes from 
+«like mine you can only think in metaphor» — http://superadventuresingaming.blogspot.com/2014/05/max-payne-2-fall-of-max-payne-pc.html
+   в строке: “In a situation like mine, you can only think in metaphors.” — Part I, Chapter 1, “Elevator Doors.” Max doesn’t say it: the line comes from 
+«her fashion sense didn't leave a whole lot» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«fashion sense didn't leave a whole lot of» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«sense didn't leave a whole lot of room» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«didn't leave a whole lot of room for» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«leave a whole lot of room for imagination» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«a whole lot of room for imagination let» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«whole lot of room for imagination let alone» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«lot of room for imagination let alone food» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«thi place was like baghdad and g string» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “Her fashion sense didn’t leave a whole lot of room for imagination, let alone food” — Chapter 2, “Nothing but the Second Best,” when Max fi
+«i stood out in thi place like a» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max walks
+«stood out in thi place like a streetwalker» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max walks
+«out in thi place like a streetwalker in» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max walks
+«in thi place like a streetwalker in a» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max walks
+«thi place like a streetwalker in a monastery» — https://www.thegamer.com/max-payne-hilarious-quotes-make-forget-life-tragic/
+   в строке: “I stood out in this place like a streetwalker in a monastery” — Chapter 7, titled “A Hangover Sent Direct from Mother Nature,” as Max walks
+«but the airport is the only place a» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«the airport is the only place a fat» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«airport is the only place a fat gringo» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«is the only place a fat gringo might» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«the only place a fat gringo might blend» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«only place a fat gringo might blend in» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«place a fat gringo might blend in well» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«a fat gringo might blend in well there» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«fat gringo might blend in well there or» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«gringo might blend in well there or a» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«might blend in well there or a sex» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«blend in well there or a sex club» — https://www.thegamer.com/max-payne-3-airport-level/
+   в строке: “But the airport is the only place a fat gringo might blend in. Well, there or a sex club.” — Chapter 14, “One Card Left to Play,” the last 
+«max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne (2003) — a sawed-off shotgun in a dead-end alley
+«payne 2 the fall of max payne 2003» — https://en.wikipedia.org/wiki/Max_Payne_3
+   в строке: Max Payne 2: The Fall of Max Payne (2003) — a sawed-off shotgun in a dead-end alley
+совпадений: 44
+== /gameplay/
+документов 612, N=8
+совпадений: 0
+== /max-payne-3/guide/
+документов 612, N=8
+совпадений: 0
+== /movie/
+документов 612, N=8
+совпадений: 0
+секций 15; отказов проверки вывода 0
+
+код выхода: 0

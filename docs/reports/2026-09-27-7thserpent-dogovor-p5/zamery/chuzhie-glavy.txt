@@ -1,0 +1,12 @@
+$ node docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+корпус: документов 612; /max-payne-3/guide/: строк <main> 38, строк <title>, описаний и атрибутов 5; названий списка 2
+совпавшие 8-граммы лежат внутри кавычек у 2 названий списка:
+  «Here I Was Again, Halfway Down the World.» — 8-грамм 1
+      строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+  «A Fat Bald Dude with a Bad Temper.» — 8-грамм 1
+      строка 10: «a fat bald dude with a bad temper» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+итог: в <main> гайда чужие 8-граммы — только внутри кавычек полных названий глав IX и XIII; каждое — один раз в обоих прочтениях, в ряду «Chapters», за номером своей главы; в <title>, описаниях и атрибутах — ни одной
+
+код выхода: 0

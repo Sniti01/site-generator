@@ -1,0 +1,146 @@
+$ node docs/reports/2026-09-27-7thserpent-dogovor-p5/instrumenty/chuzhie-glavy.mjs sites/7thserpent.com/dist --proba
+(папка: D:/SEO/cloud/site-generator)
+
+ok    контроль                                       отказов нет
+ok    12 слов документа вне кавычек                  вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    12 слов документа в кавычках                   в кавычках, но не название главы списка, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | в кавычках, но не назва
+ok    7 слов в кавычках + 7 вне                      через границу кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | через границу кавычек, строка 8: «period 
+ok    12 слов, в середине 2 в кавычках               через границу кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | через границу кавычек, строка 8: «period 
+ok    фраза документа после IX в той же строке       вне кавычек, строка 9: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 9: «period when health is fully
+ok    8-грамма IX ещё раз вне кавычек за ним         вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/
+ok    фраза документа в кавычках главы X (строка IX) в кавычках, но не название главы списка, строка 9: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | в кавычках, но не назва
+ok    число вплотную к названию VI                   через границу кавычек, строка 9: «chapter 6 a dame a dork and a» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/ | через грани
+ok    фраза, склеенная только через пробел           вне кавычек, строка 41: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 41: «period when health is ful
+ok    слово, разрезанное пустым тегом (вплотную)     вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <u> внутри слова                               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <wbr> внутри слова                             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    комментарий внутри слова                       вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    скрипт внутри слова                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    тег, который маска TEG не узнаёт               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <td> посреди фразы                             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <br> посреди фразы                             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    перенос строки посреди фразы                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#10; посреди фразы                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#1; посреди фразы                             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+0002 внутри слова                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#2; внутри слова                              вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+0001 посреди фразы                           вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#173; внутри слова                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+00AD внутри слова                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+034F внутри слова                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    адрес посреди фразы                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    название игры в каждом окне фразы              вне кавычек, строка 8: «the pc version of §imya§ is shipped on» — https://en.wikipedia.org/wiki/Max_Payne_3
+ok    фраза со словом на «İ»                         вне кавычек, строка 8: «dedim oyunu yükledim açtım çalışmadı i nternetten çözüm» — https://howlongtobeat.com/game/5736/reviews/latest/1 | вне кавычек, строка 8: «oyunu yü
+ok    фраза с разложенной «ã» (NFD)                  вне кавычек, строка 8: «conducted field research around são paulo throughout development» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «field rese
+ok    «</main>» в комментарии перед фразой           вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «</main>» в скрипте перед фразой               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «</main>» в атрибуте перед фразой              вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    название IX без кавычек                        вне кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/ | название «H
+ok    название XIII дважды                           название «A Fat Bald Dude with a Bad Temper.» в кавычках 2 раз, ждали 1 | название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<ч
+ok    копия IX, видимая только через пробел          название «Here I Was Again, Halfway Down the World.» в кавычках 2 раз, ждали 1 | название «Here I Was Again, Halfway Down the World.» не в ряду «Chapters» | название «Her
+ok    копия IX, видимая только вплотную              название «Here I Was Again, Halfway Down the World.» в кавычках 2 раз, ждали 1 | название «Here I Was Again, Halfway Down the World.» не в ряду «Chapters» | название «Her
+ok    название IX сокращено (как до сессии 19)       название «Here I Was Again, Halfway Down the World.» в кавычках 0 раз, ждали 1
+ok    лишнее слово внутри кавычек IX                 в кавычках, но не название главы списка, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-location
+ok    хвост во второй паре, первая цела              в кавычках, но не название главы списка, строка 14: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locatio
+ok    кавычка IX закрыта раньше                      через границу кавычек, строка 9: «here i was again halfway down the world» — https://thehdroom.com/news/max-payne-3-clues-and-golden-guns-parts-locations-guide-39106/ | н
+ok    номер чужой главы у IX                         название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «X. The favela again, during a police raid (6 / 3
+ok    номер «XIX.» у IX                              название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «XIX. The favela again, during a police raid (6 /
+ok    номер снят у XIII                              название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<части> / <улики>): »): «A prison and a police station (9 / 7):»
+ok    заголовок главы X между IX и названием         название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid (6 / 
+ok    второй счёт между IX и названием               название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid (6 / 
+ok    IX под заголовком X со ссылкой «IX.»           название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «X. A bus station, back from IX. to the city (6 /
+ok    XIII под «—XIV.» вплотную                      название «A Fat Bald Dude with a Bad Temper.» не за номером своей главы XIII («XIII. <место> (<части> / <улики>): »): «XIII. A prison and a police station —XIV. The airpo
+ok    текст между счётом и кавычкой IX               название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid (6 / 
+ok    счёт частей и улик снят у IX                   название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid:»
+ok    название XIII в чужом ряду                     название «A Fat Bald Dude with a Bad Temper.» не в ряду «Chapters»
+ok    ряда с id="chapters" нет                       ряда «Chapters» (секция id="chapters") на странице нет
+ok    видимая метка ряда не «Chapters»               у ряда id="chapters" видимая метка «Length», ждали «Chapters»
+ok    метка «Chapters» только в комментарии          у ряда id="chapters" видимая метка «Length», ждали «Chapters»
+ok    <a> вокруг IX до точки — чисто                 отказов нет
+ok    счёт IX в <span> — чисто                       отказов нет
+ok    номер IX в <strong> — чисто                    отказов нет
+ok    метка CHAPTERS заглавными — чисто              отказов нет
+ok    фраза в alt картинки в комментарии — чисто     отказов нет
+ok    фраза документа в <title>                      в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в meta description             в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    «>» в description перед фразой                 в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «Settings > Graphics: grace period when h
+ok    название игры в description                    в alt, title или описании: «the pc version of §imya§ is shipped on» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «The PC version of Max Payne 3 is shipped on A Max
+ok    фраза документа в og:title                     в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в og:description               в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в alt картинки <main>          в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    «<» в alt перед фразой                         в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «at < 30 fps: grace period when health is
+ok    фраза документа в атрибуте title=              в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в aria-label                   в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в value кнопки                 в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    перенос строки вплотную между словами          вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#10; вплотную между словами                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#11; внутри слова (VT снимается)              вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    DEL внутри слова                               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &ZeroWidthSpace; внутри слова                  вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    заполнитель хангыля вместо пробелов            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <script-x> — не скрипт, текст виден            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «</script >» закрывает скрипт                  вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    управляющий знак в имени «скрипта»             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «<!--» в alt не прячет текст                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «<!--» в description перед фразой              в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- grace period when health is fully d
+ok    атрибут title= после «title=» в aria-label     в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    фраза документа в label= у option              в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    «</main>» в атрибуте без кавычек               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    meta description между </head> и <body>        ИСКЛЮЧЕНИЕ в <head> гайда meta description: 2, ждали ровно один непустой
+ok    два <title>                                    ИСКЛЮЧЕНИЕ в <head> гайда <title>: 2, ждали ровно один непустой
+ok    пустой og:title                                ИСКЛЮЧЕНИЕ в <head> гайда og:title: 1, ждали ровно один непустой
+ok    SVG с <title> в адресе иконки — чисто          отказов нет
+ok    SVG с <title> в начале тела — чисто            отказов нет
+ok    <main-menu> в начале тела — чисто              отказов нет
+ok    ряд: id раньше class, layer не первый — чисто  отказов нет
+ok    метка: t-label не первый класс — чисто         отказов нет
+ok    комментарий внутри слова строки IX — чисто     отказов нет
+ok    свой номер последним, чужой — в отрезке        название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, as in X. and IX. before, d
+ok    «·X.» между IX и названием                     название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid ·X. A
+ok    кириллическая «Х.» между IX и названием        название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid Х. A 
+ok    «X.—» без пробела между IX и названием         название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid X.—A 
+ok    греческая «Χ.» между IX и названием            название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid Χ. A 
+ok    «ꞏX.» (буква-точка) между IX и названием       название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid ꞏX. A
+ok    «Ⅹ.» (U+2169) между IX и названием             название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela again, during a police raid Ⅹ. A 
+ok    кириллическая буква в месте IX — строже        название «Here I Was Again, Halfway Down the World.» не за номером своей главы IX («IX. <место> (<части> / <улики>): »): «IX. The favela agаin, during a police raid (6 / 
+ok    счёт «(6/3):» — чисто                          отказов нет
+ok    «by the PMC.» в месте IX — чисто               отказов нет
+ok    фраза через U+2800 вплотную к адресу           ИСКЛЮЧЕНИЕ слова строки разошлись со сторожем брифов: «https://example.com/x⠀grace⠀period⠀when⠀health⠀is⠀fully⠀depleted⠀that⠀allows⠀the»
+ok    два комментария перед фразой (замена с конца)  вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3
+ok    дубль атрибута title= (судится первый)         в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    &ZeroWidthSpace; внутри слова в alt            в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    пара «< >» в alt вокруг фразы                  в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «x < 30 fps: grace period when health is 
+ok    «<!-- … -->» в description вокруг фразы        в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- grace period when health is fully d
+ok    «<!-- … -->» в alt вокруг фразы                в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «<!-- grace period when health is fully d
+ok    фраза документа в placeholder=                 в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «grace period when health is fully deplet
+ok    табуляция вплотную между словами               вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#13; вплотную между словами                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    сырой \v внутри слова                          вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    сырой \f внутри слова                          вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+FFA0 вместо пробелов                         вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+1BCA0 вместо пробелов                        вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <script-x> и парный </script> дальше           вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «</script >» и парный скрипт дальше            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    <style-x> и парный </style> дальше             вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    «</style >» и парный стиль дальше              вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    метка «Chap<!-- -->ters» — чисто               отказов нет
+ok    <main-menu> с фразой до <main> — чисто         отказов нет
+ok    U+115F вместо пробелов                         вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+1160 вместо пробелов                         вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    U+1BCA3 вместо пробелов                        вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    фраза через U+2800 вплотную к адресу в alt     в alt, title или описании: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 (строка «https://example.com/x⠀grace⠀period⠀when⠀
+ok    широкий адрес в тексте перед фразой — не код 2 вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    место IX: цифры, ’ ' & - – — — чисто           отказов нет
+ok    «L.A.» и «12C.» в месте IX — чисто             отказов нет
+ok    сырой CR вплотную между словами                вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#9; вплотную между словами                    вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#x9; вплотную между словами                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#xA; вплотную между словами                   вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    &#x1; посреди фразы                            вне кавычек, строка 8: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 8: «period when health is fully
+ok    второй <main>                                  ИСКЛЮЧЕНИЕ <main> — 2, нужен ровно один
+ok    пустой <main>                                  ИСКЛЮЧЕНИЕ в тексте <main> гайда меньше 300 слов — извлечение пустое или сломано
+ok    нет meta description                           ИСКЛЮЧЕНИЕ в <head> гайда meta description: 0, ждали ровно один непустой
+ok    слова разошлись со сторожем (адрес у кавычки)  ИСКЛЮЧЕНИЕ слова строки разошлись со сторожем брифов: «“Alpha https://example.com/”beta gamma. I. A private party and a kidnapping atte»
+проба: 140/140
+
+код выхода: 0

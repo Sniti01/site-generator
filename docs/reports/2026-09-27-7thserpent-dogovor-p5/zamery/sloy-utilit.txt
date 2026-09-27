@@ -1,0 +1,8 @@
+$ node docs/reports/2026-09-25-7thserpent-pachka-1/instrumenty/sloy.mjs sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+/_astro/CtaBand.BMbqpUCi.css: @layer utilities — правил 19: .relative | .container | @media (width>=40rem) | @media (width>=48rem) | @media (width>=64rem) | @media (width>=80rem) | @media (width>=96rem) | .block | .flex | .hidden | .transform | .resize | .flex-wrap | .border | .text-wrap | .outline | .filter | .backdrop-filter | .transition
+источников CSS: 18 (файлов 2, встроенных <style> 16); блоков слоя utilities: 1
+всего: 19
+
+код выхода: 0

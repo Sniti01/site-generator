@@ -1,0 +1,258 @@
+$ npm run build
+(папка: D:/SEO/cloud/site-generator/sites/7thserpent.com)
+
+
+> 7thserpent.com@0.1.0 build
+> npm run gates && astro build
+
+
+> 7thserpent.com@0.1.0 gates
+> node ../../core/gates/run.mjs
+
+Zapis palety: 11 par @theme/:root, zgodnych 11.
+ok   основной текст на фоне страницы; знак в шапке — перекладина и имя                                                           16.17:1  (min 4.5:1)  --ink / --bg
+ok   основной текст на полосе, в подвале и ящике меню; знак в подвале — перекладина и имя                                        15.51:1  (min 4.5:1)  --ink / --bg-band
+ok   основной текст на карточке (на вырост)                                                                                      14.73:1  (min 4.5:1)  --ink / --surface
+ok   основной текст на поднятой поверхности, тихая кнопка (на вырост)                                                            13.53:1  (min 4.5:1)  --ink / --surface-2
+ok   второстепенный текст на фоне страницы                                                                                       8.39:1  (min 4.5:1)  --ink-muted / --bg
+ok   второстепенный текст на полосе и в подвале                                                                                  8.05:1  (min 4.5:1)  --ink-muted / --bg-band
+ok   второстепенный текст на карточке: приписка места и разделитель в ленте главной                                              7.64:1  (min 4.5:1)  --ink-muted / --surface
+ok   второстепенный текст на поднятой поверхности (на вырост)                                                                    7.02:1  (min 4.5:1)  --ink-muted / --surface-2
+ok   ссылка, текстовый акцент и обводка фокуса на фоне страницы                                                                  11.45:1  (min 4.5:1)  --accent-text / --bg
+ok   ссылка, текстовый акцент и обводка фокуса на полосе                                                                         10.99:1  (min 4.5:1)  --accent-text / --bg-band
+ok   текстовый акцент на карточке: предмет страницы в ленте главной                                                              10.43:1  (min 4.5:1)  --accent-text / --surface
+ok   ссылка/текстовый акцент на поднятой поверхности (на вырост)                                                                 9.58:1  (min 4.5:1)  --accent-text / --surface-2
+ok   надпись на заливке: кнопка, ссылка «к содержанию», выделение                                                                9.37:1  (min 4.5:1)  --ink-on-accent / --accent
+ok   заливка акцента как элемент интерфейса; ромб узла и вертикаль выхода трассы в герое на фоне; знак в шапке — трассер и ромб  9.57:1  (min 3:1)  --accent / --bg
+ok   ромб узла трассы главной на полосе; знак в подвале — трассер и ромб                                                         9.19:1  (min 3:1)  --accent / --bg-band
+ok   ползунок полосы прокрутки на дорожке — элемент интерфейса                                                                   8.05:1  (min 3:1)  --ink-muted / --bg-band
+ok   сталь: счётчик группы (текст 21px/600) и орнамент (на вырост)                                                               6.89:1  (min 4.5:1)  --accent-2 / --bg
+ok   сталь на карточке (на вырост)                                                                                               6.27:1  (min 4.5:1)  --accent-2 / --surface
+ok   сообщение об опасности (на вырост)                                                                                          5.69:1  (min 4.5:1)  --danger / --bg
+ok   текст цвета ночи на снежной плашке: подписи рядов, цитата, заголовки карточек ленты                                         16.17:1  (min 4.5:1)  --bg / --ink
+
+20/20 par przechodzi.
+
+Tokeny: 43 plików (16 w src/ + 27 w core/), wszystkie rozmiary w rolach, wszystkie odstępy na skali.
+
+ok   gry/hero.jpg     первый экран главной: ключевой арт Max Payne (2001)
+ok   gry/mp1-k13.jpg  ряд Max Payne: большая панель — снежная улица
+ok   gry/mp1-k14.jpg  ряд Max Payne: малая панель
+ok   gry/mp1-k09.jpg  ряд Max Payne: малая панель
+ok   gry/mp2-k00.jpg  ряд Max Payne 2: большая панель — улица с фонарём
+ok   gry/mp2-k03.jpg  ряд Max Payne 2: малая панель
+ok   gry/mp2-k01.jpg  ряд Max Payne 2: малая панель
+ok   gry/mp3-k15.jpg  ряд Max Payne 3: большая панель — Сан-Паулу
+ok   gry/mp3-k04.jpg  ряд Max Payne 3: малая панель
+ok   gry/mp3-k13.jpg  ряд Max Payne 3: малая панель
+ok   gry/mp1-k10.jpg  ряд ремейка: большая панель — Max Payne, мраморный коридор
+ok   gry/mp2-art.jpg  ряд ремейка: малая панель — ключевой арт Max Payne 2
+ok   gry/mp1-k06.jpg  ряд ремейка: малая панель — Max Payne, метро
+ok   gry/mp3-k01.jpg  карточка ленты /story/
+ok   gry/mp1-k12.jpg  карточка ленты /voice-and-face/
+ok   gry/mp2-k02.jpg  карточка ленты /gameplay/
+ok   gry/mp3-k06.jpg  карточка ленты /quotes/
+ok   gry/mp3-k10.jpg  карточка ленты /max-payne-3/guide/
+ok   gry/mp1-k05.jpg  карточка ленты /mods/
+ok   gry/mp1-k11.jpg  полоса призыва главной: Max Payne, выстрел в метро
+
+20/20 zadeklarowanych zasobów na miejscu.
+
+Struktura: 18 stron (fala 1: 18, fala 2: 0), zagnieżdżenie 2, 2 dozwolone.
+Rozliczenie zapytań: 441 na stronach + 8 exclusions + 59 no_page wobec 508 w wyliczeniu.
+Struktura: zgodna z kontraktem.
+
+Bramki: 4/4 przechodzi.
+[2m22:19:44[22m [34m[content][39m Syncing content
+[2m22:19:44[22m [34m[content][39m Synced content
+[2m22:19:44[22m [34m[types][39m Generated [2m528ms[22m
+[2m22:19:44[22m [34m[build][39m output: [34m"static"[39m
+[2m22:19:44[22m [34m[build][39m mode: [34m"static"[39m
+[2m22:19:44[22m [34m[build][39m directory: [34mD:\SEO\cloud\site-generator\sites\7thserpent.com\dist\[39m
+[2m22:19:44[22m [34m[build][39m Collecting build info...
+[2m22:19:44[22m [34m[build][39m [32m✓ Completed in 552ms.[39m
+[2m22:19:44[22m [34m[build][39m Building static entrypoints...
+[2m22:19:45[22m [34m[vite][39m [32m✓ built in 409ms[39m
+[2m22:19:45[22m [34m[vite][39m [32m✓ built in 21ms[39m
+[2m22:19:45[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m22:19:45[22m   [34m├─[39m [2m/index.html[22m [2m(+24ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/404/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/cheats/index.html[22m [2m(+5ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/gameplay/index.html[22m  /gameplay/ — блоки объявлены, но в ядре не реализованы, пропуск: video
+ [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/games-like-max-payne/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/max-payne-1/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/max-payne-2/index.html[22m [2m(+5ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/max-payne-3/guide/index.html[22m  /max-payne-3/guide/ — блоки объявлены, но в ядре не реализованы, пропуск: video
+ [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/max-payne-3/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/media/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/mods/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/movie/index.html[22m  /movie/ — блоки объявлены, но в ядре не реализованы, пропуск: video
+ [2m(+3ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/pc/index.html[22m [2m(+3ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/quotes/index.html[22m [2m(+11ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/remake/index.html[22m [2m(+4ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/story/index.html[22m [2m(+5ms)[22m 
+[2m22:19:45[22m   [34m├─[39m [2m/voice-and-face/index.html[22m [2m(+5ms)[22m 
+[2m22:19:45[22m [32m✓ Completed in 115ms.
+[39m
+[42m[30m generating optimized images [39m[49m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_ZA98zx.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(1/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/hero.0b_-PwIh_1OX3Bb.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(2/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k14.DR0et4Uc_Z1J2fH7.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(3/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_2abLSS.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(4/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_8vVBH.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(5/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_VX4ih.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(6/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k01.Bwb7jlM1_Z1wmfNA.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(7/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_Zxy7Pv.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(8/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k13.CP1FcbLJ_28xx8X.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(9/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_1HhYBs.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(10/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k10.DH3tMSkI_Z1v2fkU.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(11/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_TwD7s.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(12/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_1RUbTI.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(13/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/hero.0b_-PwIh_Z2ee3pp.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(14/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k14.DR0et4Uc_ZtRdSs.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(15/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_ZqV1pM.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(16/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_1nFXqm.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(17/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_2c866V.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(18/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k01.Bwb7jlM1_ZhcdYV.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(19/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k13.CP1FcbLJ_BxhRo.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(20/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_2dq1VO.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(21/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_It6U3.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(22/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k10.DH3tMSkI_X259l.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(23/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_ZBsB97.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(24/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_Z1qCl9b.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(25/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k14.DR0et4Uc_Z160roQ.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(26/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_1jHzkf.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(27/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/hero.0b_-PwIh_2eIx7E.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(28/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_ZMnJjC.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(29/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_RXoGo.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(30/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k13.CP1FcbLJ_Z1LHa2E.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(31/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k01.Bwb7jlM1_Z1HVBuq.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(32/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_g8Ew.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(33/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_UR2bw.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(34/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k10.DH3tMSkI_Z2lvrTy.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(35/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_Lq1J4.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(36/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_Z24IjU2.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(37/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_MAo1x.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(38/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k14.DR0et4Uc_2ncTTo.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(39/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/hero.0b_-PwIh_QUsj8.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(40/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_Z1IUoOG.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(41/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k13.CP1FcbLJ_Z2lVaqJ.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(42/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_ZI0mNi.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(43/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k01.Bwb7jlM1_1FnwxW.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(44/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_ZyLMFj.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(45/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_ZxFM3I.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(46/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k10.DH3tMSkI_Z2aTjrt.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(47/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_Z1q37Fs.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(48/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_ZWpAma.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(49/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_1mqBXl.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(50/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k14.DR0et4Uc_1GqoTB.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(51/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_xcKQI.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(52/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k13.CP1FcbLJ_10IGgN.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(53/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/hero.0b_-PwIh_ViOyU.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(54/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k01.Bwb7jlM1_Z17Fqyz.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(55/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_Z1oLRN5.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(56/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_ZSoHyJ.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(57/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_1yzFsb.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(58/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_1jyfky.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(59/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_Z2wwzWy.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(60/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k00.NhbLr7d7_HHwoq.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(61/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_ZNnnt9.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(62/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_Z1ofNw6.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(63/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k03.D8mboaDn_Z1dqOSj.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(64/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_1RJgue.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(65/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_Z1SK76T.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(66/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_ZUth97.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(67/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k15.DtCtVXiA_Z2uJoNG.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(68/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_25YGUD.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(69/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_ZrUXN2.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(70/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_cc1kY.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(71/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_Z1rA9cm.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(72/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_1nTC7q.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(73/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k13.C2kgWkUz_Z1u9SsV.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(74/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_ZEeLFl.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(75/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_hU2P.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(76/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_1iYFfD.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(77/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k05.Jcewn-3a_8E3Vg.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(78/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k09.CiIc_kkf_1lDSxi.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(79/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_2hFocY.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(80/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-art.CiLGZVc0_2dE3D9.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(81/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k04.CiTa_XSb_Z1vkfKp.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(82/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_2pxYk4.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(83/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_ZVF8Fu.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(84/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_Z1H3OMp.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(85/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-art.dJ4d4vXZ_qqmSp.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(86/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_Tgj8w.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(87/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k05.Jcewn-3a_Z24esC3.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(88/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_ZLeg8J.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(89/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_29weDI.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(90/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_ZWw5pH.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(91/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_Z1IpEKg.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(92/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_kL1i4.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(93/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_rv5gf.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(94/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-art.dJ4d4vXZ_Z1Emlq9.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(95/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k05.Jcewn-3a_Z8jR1W.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(96/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_Z1zi7uh.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(97/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_2bWaEI.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(98/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_sWDXI.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(99/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_Z12Yvrh.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(100/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_Z22M1jz.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(101/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_Z1LH9Wp.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(102/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_Z82MfH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(103/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-art.dJ4d4vXZ_Z1wGYHD.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(104/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k05.Jcewn-3a_pt2pP.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(105/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_Z2oAYAM.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(106/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_1vaEEV.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(107/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_Z2k6j8N.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(108/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_Z1IL1r4.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(109/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_1jRPnX.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(110/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_WTd3B.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(111/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k06.blJYoQpw_kE6hd.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(112/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k05.Jcewn-3a_Ztr1fc.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(113/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp2-k02.vqiCCgU5_1Duj8V.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(114/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k01.Bzqj22qQ_y99Uh.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(115/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_ZOJ6e5.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(116/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_Z24FpaC.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(117/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_2gdSsp.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(118/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k10.CjerxOln_Z3vPex.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(119/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_1ro4sk.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(120/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_KsoDk.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(121/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_onUjD.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(122/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k12.CFLOT8GF_Z1hgbDw.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(123/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_ZRVnQQ.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(124/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_2a2w4F.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(125/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp1-k11.Cau1CZSA_xYg3p.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(126/127)[22m
+[2m22:19:45[22m   [32m▶[39m /_astro/mp3-k06.DCBb1tj5_Z1sy0Uu.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(127/127)[22m
+[2m22:19:45[22m [32m✓ Completed in 38ms.
+[39m
+[2m22:19:45[22m [34m[build][39m [32m✓ Completed in 809ms.[39m
+[2m22:19:45[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m22:19:45[22m [34m[factory:after-build][39m h1: 17 stron, na każdej dokładnie jeden nagłówek
+[2m22:19:45[22m [34m[factory:anchors][39m kotwice: 17 stron, każda kotwica ma cel, żaden id się nie powtarza
+[2m22:19:45[22m [34m[factory:links][39m linki: 17 stron, 640 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[2m22:19:45[22m [34m[factory:corridor][39m korytarz: 17 stron — w korytarzu 14, bez korytarza (null w umowie) 3; znaki bez spacji
+[2m22:19:45[22m [34m[factory:corridor][39m   /cheats/: 3850 w 2747–3859
+[2m22:19:45[22m [34m[factory:corridor][39m   /gameplay/: 4735 w 3562–4819
+[2m22:19:45[22m [34m[factory:corridor][39m   /max-payne-1/: 2526 w 2067–2797
+[2m22:19:45[22m [34m[factory:corridor][39m   /max-payne-2/: 9843 w 9123–12343
+[2m22:19:45[22m [34m[factory:corridor][39m   /max-payne-3/guide/: 3761 w 3174–4294
+[2m22:19:45[22m [34m[factory:corridor][39m   /max-payne-3/: 5067 w 4677–6327
+[2m22:19:45[22m [34m[factory:corridor][39m   /media/: 2826 w 1986–2875
+[2m22:19:45[22m [34m[factory:corridor][39m   /mods/: 3529 w 3023–4091
+[2m22:19:45[22m [34m[factory:corridor][39m   /movie/: 6702 w 5170–6994
+[2m22:19:45[22m [34m[factory:corridor][39m   /pc/: 3929 w 2870–4053
+[2m22:19:45[22m [34m[factory:corridor][39m   /quotes/: 5412 w 5093–6891
+[2m22:19:45[22m [34m[factory:corridor][39m   /remake/: 3954 w 3753–5077
+[2m22:19:45[22m [34m[factory:corridor][39m   /story/: 6306 w 5057–6841
+[2m22:19:45[22m [34m[factory:corridor][39m   /voice-and-face/: 4043 w 3753–5077
+[2m22:19:45[22m [34m[factory:corridor][39m   /: 3217 — bez korytarza, liczba do raportu
+[2m22:19:45[22m [34m[factory:corridor][39m   /404/: 527 — bez korytarza, liczba do raportu
+[2m22:19:45[22m [34m[factory:corridor][39m   /games-like-max-payne/: 3136 — bez korytarza, liczba do raportu
+[2m22:19:45[22m [34m[build][39m 17 page(s) built in [1m1.46s[22m
+[2m22:19:45[22m [34m[build][39m [1mComplete![22m
+
+код выхода: 0

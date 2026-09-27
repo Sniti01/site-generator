@@ -1,0 +1,97 @@
+$ node .claude/skills/impeccable/scripts/detect.mjs --json sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+[
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #00000073 is outside DESIGN.md colors",
+    "ignoreValue": "#00000073"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0af5 is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0af5"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0abd is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0abd"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0a1f is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0a1f"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0ae0 is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0ae0"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0a is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0a"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0a8c is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0a8c"
+  },
+  {
+    "antipattern": "design-system-color",
+    "name": "Color outside DESIGN.md",
+    "description": "A literal color is outside the DESIGN.md palette and sidecar tonal ramps. This may be legitimate, but it should be an intentional design-system addition rather than drift.",
+    "severity": "advisory",
+    "category": "quality",
+    "file": "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\dist\\_astro\\CtaBand.BMbqpUCi.css",
+    "line": 2,
+    "snippet": "Undocumented color #0d0c0ae6 is outside DESIGN.md colors",
+    "ignoreValue": "#0d0c0ae6"
+  }
+]
+impeccable detect: DEGRADED - HTML parser modules unavailable (htmlparser2, css-select, css-tree, domutils).
+Falling back to regex matching. Custom properties, selector matching and computed contrast are NOT evaluated; findings are an undercount, not a clean bill of health.
+
+код выхода: 2

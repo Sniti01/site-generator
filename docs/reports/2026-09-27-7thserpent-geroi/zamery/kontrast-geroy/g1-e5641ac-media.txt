@@ -1,9 +1,0 @@
-сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-a/media, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-a.js), вычислитель главной без правки
-herotitle .hero__title         худший пиксель 10.68:1 на 641x900 (строка y 400.6 «Max Payne art and media: cover art, comi»), p99 не ниже 11.17:1
-herolead .hero__lead           худший пиксель 5.38:1 на 641x900 (строка y 263.4 «The covers, the comic panels, the art, t»), p99 не ниже 5.46:1
-herobtn .btn-secondary         худший пиксель 13.22:1 на 641x900 (строка y 137.4 «The soundtrack»), p99 не ниже 13.34:1
-podpis .podpis-geroya          худший пиксель 5.38:1 на 360x740 (строка y 178.4 «Pictured: a Max Payne 3 (2012) screensho»), p99 не ниже 5.38:1
-
-Итог: окон 31, строк 233; самый тесный худший пиксель — 5.38:1 (360x740, .podpis-geroya, y 178.4), порог 4,5:1.
-
-media exit=0

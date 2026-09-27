@@ -13,8 +13,8 @@
 // видны (у /max-payne-2/). Полностраничных кадров нет: стоп их не просит, а длинные страницы
 // дали бы десятки мегабайт в репозитории. Числа — window.__kadry (выгрузить browser_evaluate).
 async (page) => {
-  const BASE = 'http://127.0.0.1:4431';
-  const SBORKA = 'e5641ac';
+  const BASE = 'http://127.0.0.1:4432';
+  const SBORKA = '38af56e';
   const dir = 'D:/SEO/cloud/site-generator/docs/reports/2026-09-27-7thserpent-geroi/kadry/';
   const PLAN = [
     ['/pc/', 'pc', [[1440, 900], [390, 844], [320, 640]]],

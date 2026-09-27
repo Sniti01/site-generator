@@ -1,5 +1,5 @@
 {
- "sborka": "e5641ac",
+ "sborka": "38af56e",
  "pc-1440": {
   "nezagruzheno": 0,
   "vysota": 6345,
@@ -186,10 +186,10 @@
  },
  "media-320": {
   "nezagruzheno": 0,
-  "vysota": 8003,
+  "vysota": 8030,
   "hero": {
    "y": 155,
-   "h": 843,
+   "h": 869,
    "w": 320
   },
   "byline": null,
@@ -264,14 +264,14 @@
  },
  "story-320": {
   "nezagruzheno": 0,
-  "vysota": 12525,
+  "vysota": 12498,
   "hero": {
    "y": 155,
-   "h": 864,
+   "h": 837,
    "w": 320
   },
   "byline": {
-   "y": 1018,
+   "y": 992,
    "h": 114,
    "w": 320
   },
@@ -306,7 +306,11 @@
    "h": 150,
    "w": 720
   },
-  "podpisKadra": null,
+  "podpisKadra": {
+   "y": 113,
+   "h": 27,
+   "w": 465
+  },
   "strokH1": 3,
   "kroshki": {
    "y": 69,
@@ -332,7 +336,11 @@
    "h": 130,
    "w": 358
   },
-  "podpisKadra": null,
+  "podpisKadra": {
+   "y": 155,
+   "h": 46,
+   "w": 390
+  },
   "strokH1": 4,
   "kroshki": {
    "y": 69,
@@ -358,7 +366,11 @@
    "h": 160,
    "w": 288
   },
-  "podpisKadra": null,
+  "podpisKadra": {
+   "y": 155,
+   "h": 46,
+   "w": 320
+  },
   "strokH1": 5,
   "kroshki": {
    "y": 69,
@@ -465,7 +477,7 @@
   "podpisKadra": {
    "y": 113,
    "h": 27,
-   "w": 363
+   "w": 321
   },
   "strokH1": 3,
   "kroshki": {
@@ -495,7 +507,7 @@
   "podpisKadra": {
    "y": 155,
    "h": 27,
-   "w": 363
+   "w": 321
   },
   "strokH1": 4,
   "kroshki": {

@@ -72,9 +72,9 @@
 // Выгрузка: browser_evaluate (() => JSON.stringify(window.__ka[<адрес>])) с filename
 // <dir>/<слаг>/boxes.json, затем node kontrast-art.mjs <dir>/<слаг> <dir>/<слаг>/boxes.json.
 async (page) => {
-  const BASE = 'http://127.0.0.1:4431';
+  const BASE = 'http://127.0.0.1:4432';
   const DIR = 'ka-geroi-a';
-  const SBORKA = 'e5641ac';
+  const SBORKA = '38af56e';
   if (!/^[0-9a-f]{7,40}$/.test(SBORKA)) throw new Error('СТОП: SBORKA — не хеш коммита');
   const dir = 'D:/SEO/cloud/site-generator/.playwright-mcp/' + DIR + '/';
   const STRANICY = [

@@ -1,7 +1,7 @@
-$ node docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/srez-okonchaniy-12.mjs sites/7thserpent.com/dist e5641ac
+$ node docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/srez-okonchaniy-12.mjs sites/7thserpent.com/dist 38af56e
 (папка: D:/SEO/cloud/site-generator)
 
-сборка e5641ac (sites/7thserpent.com/dist); скрипт docs/reports/2026-09-26-7thserpent-pachka-2/zamery/ngram-srez-okonchaniy.mjs как есть: node ngram-srez-okonchaniy.mjs <dist>/<страница>/index.html 8 stem
+сборка 38af56e (sites/7thserpent.com/dist); скрипт docs/reports/2026-09-26-7thserpent-pachka-2/zamery/ngram-srez-okonchaniy.mjs как есть: node ngram-srez-okonchaniy.mjs <dist>/<страница>/index.html 8 stem
 == /pc/
 документов 612, N=8
 «max payne 2 the fall of max payne» — https://en.wikipedia.org/wiki/Max_Payne_3

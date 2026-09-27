@@ -1,8 +1,0 @@
-сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-a/pc, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-a.js), вычислитель главной без правки
-herotitle .hero__title         худший пиксель 11.64:1 на 641x900 (строка y 386.5 «Max Payne on PC: requirements, fixes and»), p99 не ниже 12.40:1
-herolead .hero__lead           худший пиксель 5.87:1 на 800x900 (строка y 305.0 «What Max Payne 2 and 3 need to run, and »), p99 не ниже 6.92:1
-herobtn .btn-secondary         худший пиксель 12.75:1 на 800x900 (строка y 137.8 «System requirements»), p99 не ниже 12.90:1
-
-Итог: окон 31, строк 224; самый тесный худший пиксель — 5.87:1 (800x900, .hero__lead, y 305.0), порог 4,5:1.
-
-pc exit=0

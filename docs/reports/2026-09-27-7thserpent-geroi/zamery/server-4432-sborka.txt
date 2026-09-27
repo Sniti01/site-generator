@@ -1,4 +1,4 @@
-сервер 127.0.0.1:4431 (копия dist-e5641ac) против sites/7thserpent.com/dist (сборка e5641ac): HTTP GET 14 страниц, тело = index.html
+сервер 127.0.0.1:4432 (копия dist-38af56e) против sites/7thserpent.com/dist (сборка 38af56e): HTTP GET 14 страниц, тело = index.html
 /                        ответ 200 = dist
 /max-payne-1/            ответ 200 = dist
 /max-payne-2/            ответ 200 = dist

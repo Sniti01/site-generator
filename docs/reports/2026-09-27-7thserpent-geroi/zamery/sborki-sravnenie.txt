@@ -1,5 +1,5 @@
-сборка до: dist-149a040
-сборка после: dist-e5641ac
+сборка до: C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/c1289c04-7bd8-4ccd-88f5-29bb27f0535d/scratchpad/dist-149a040
+сборка после: C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/c1289c04-7bd8-4ccd-88f5-29bb27f0535d/scratchpad/dist-38af56e
 файлов до 138, после 162
 только до (0):
   

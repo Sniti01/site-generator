@@ -1,6 +1,6 @@
 
 > 7thserpent.com@0.1.0 accept:frames
-> node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-24-9/g1-f1/glowna _baseline
+> node ../../core/accept/frames.mjs check ../../.playwright-mcp/sesja-2026-09-24-9/g2-f1/glowna _baseline
 
 эталонных кадров: 13, снятых: 13
 НЕ СУДЬИ: списка ne-sudyi.json нет — считается, что судьи все.

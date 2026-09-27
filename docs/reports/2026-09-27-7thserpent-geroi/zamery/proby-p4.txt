@@ -19,7 +19,7 @@ ok    G15  строка под заголовком из пробела — teks
 ok    G17  ключа title у галереи нет — обязательность поля в схеме        код 1
 ok    G16  кадр галереи = кадр героя той же страницы — отказ маршрута     код 1
 пробы: 17/17; файлы возвращены и сверены побайтово
-сверка: D:\SEO\cloud\site-generator\sites\7thserpent.com\dist; HEAD e5641ac, src и structure совпадают с HEAD
+сверка: D:\SEO\cloud\site-generator\sites\7thserpent.com\dist; HEAD 38af56e, src и structure совпадают с HEAD
 ok    dist /404/                    галерея нет
 ok    dist /cheats/                 галерея нет
 ok    dist /games-like-max-payne/   галерея нет

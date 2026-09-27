@@ -1,4 +1,4 @@
-сборка e5641ac (копия dist-e5641ac = dist/ коммита e5641ac, доработка П96 — герои на всех страницах; сервер 127.0.0.1:4431), кадры .playwright-mcp/ka-geroi-b/cheats, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-b.js), вычислитель главной без правки
+сборка 38af56e (копия dist-38af56e = dist/ коммита 38af56e, доработка П96 — герои на всех страницах, тексты по скептикам; сервер 127.0.0.1:4432), кадры .playwright-mcp/ka-geroi-b/cheats, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-b.js), вычислитель главной без правки
 herotitle .hero__title         худший пиксель 11.77:1 на 1100x800 (строка y 321.8 «Max Payne cheats: codes, unlocks and tra»), p99 не ниже 13.03:1
 herolead .hero__lead           худший пиксель 6.50:1 на 720x900 (строка y 229.2 «Developer-console commands for the first»), p99 не ниже 7.16:1
 herobtn .btn-secondary         худший пиксель 14.85:1 на 1920x1080 (строка y 137.4 «Unlocks»), p99 не ниже 14.85:1

@@ -1,0 +1,9 @@
+сборка 38af56e (копия dist-38af56e = dist/ коммита 38af56e, доработка П96 — герои на всех страницах, тексты по скептикам; сервер 127.0.0.1:4432), кадры .playwright-mcp/ka-geroi-b/voice-and-face, съёмка — копия kontrast-geroy-snyatie.js пачки 3 (instrumenty/kontrast-geroy-snyatie-b.js), вычислитель главной без правки
+herotitle .hero__title         худший пиксель 11.33:1 на 641x900 (строка y 425.4 «Who is behind Max Payne: the voice, the »), p99 не ниже 11.60:1
+herolead .hero__lead           худший пиксель 5.45:1 на 641x900 (строка y 291.5 «James McCaffrey voiced Max in all three »), p99 не ниже 5.89:1
+herobtn .btn-secondary         худший пиксель 13.70:1 на 768x1024 (строка y 137.9 «The three faces»), p99 не ниже 14.01:1
+podpis .podpis-geroya          худший пиксель 5.39:1 на 600x900 (строка y 117.8 «Pictured: Max in Max Payne 3, 2012 — a g»), p99 не ниже 6.84:1
+
+Итог: окон 31, строк 234; самый тесный худший пиксель — 5.39:1 (600x900, .podpis-geroya, y 117.8), порог 4,5:1.
+
+voice-and-face exit=0

@@ -1,7 +1,7 @@
 $ node docs/reports/2026-09-26-7thserpent-pachka-2/instrumenty/proby-p2.mjs --proba
 (папка: D:/SEO/cloud/site-generator)
 
-сверка: D:\SEO\cloud\site-generator\sites\7thserpent.com\dist; HEAD e5641ac, src и structure совпадают с HEAD
+сверка: D:\SEO\cloud\site-generator\sites\7thserpent.com\dist; HEAD 38af56e, src и structure совпадают с HEAD
 ok    контроль /remake/                        замечаний 0
 ok    контроль /max-payne-2/                   замечаний 0
 ok    контроль /max-payne-3/                   замечаний 0

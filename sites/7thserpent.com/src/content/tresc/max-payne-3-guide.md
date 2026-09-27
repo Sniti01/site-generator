@@ -36,13 +36,13 @@ rows:
         and a Drunk.” VII. The favela (6 / 9): “A Hangover Sent Direct from
         Mother Nature.” VIII. A graveyard and a chapel, in flashback (6 / 3):
         “Ain’t No Reprievement Gonna Be Found Otherwise.” IX. The favela again,
-        during a police raid (6 / 3): “Here I Was Again…” X. A bus station and
+        during a police raid (6 / 3): “Here I Was Again, Halfway Down the World.” X. A bus station and
         a bus ride (6 / 2): “It’s Drive or Shoot, Sister.”
       - >-
         XI. A yacht on the Panama Canal, in flashback (6 / 8): “Suntan Oil,
         Stale Margaritas and Greed.” XII. A hotel Max brings down with C4
         (6 / 6): “The Great American Savior of the Poor.” XIII. A prison and a
-        police station (9 / 7): “A Fat Bald Dude…” XIV. The airport (6 / 1):
+        police station (9 / 7): “A Fat Bald Dude with a Bad Temper.” XIV. The airport (6 / 1):
         “One Card Left to Play.”
   - id: length
     year: Length

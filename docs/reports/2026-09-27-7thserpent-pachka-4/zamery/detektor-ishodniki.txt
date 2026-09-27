@@ -1,0 +1,6 @@
+$ node .claude/skills/impeccable/scripts/detect.mjs --json "sites/7thserpent.com/src/pages/[...slug].astro" sites/7thserpent.com/src/content.config.ts sites/7thserpent.com/src/content/tresc/quotes.md sites/7thserpent.com/src/content/tresc/pc.md
+(папка: D:/SEO/cloud/site-generator)
+
+[]
+
+код выхода: 0

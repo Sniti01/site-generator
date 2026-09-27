@@ -1,0 +1,14 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-repliki.mjs sites/7thserpent.com/dist
+(папка: D:/SEO/cloud/site-generator)
+
+корпус: документов 612; /quotes/: строк 46; реплик списка 8
+совпавшие 8-граммы лежат внутри кавычек у 6 реплик списка:
+  «My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindr»
+  «In a situation like mine, you can only think in metaphors.»
+  «Her fashion sense didn't leave a whole lot of room for imagination, let alone food»
+  «This place was like Baghdad and G-strings»
+  «I stood out in this place like a streetwalker in a monastery»
+  «But the airport is the only place a fat gringo might blend in. Well, there or a sex club.»
+итог: в тексте <main> чужие 8-граммы — только внутри кавычек реплик списка; у каждой реплики сразу за ней глава, ряд — своей игры (alt, title и описания — у chuzhie-p4.mjs)
+
+код выхода: 0

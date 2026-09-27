@@ -1,0 +1,28 @@
+$ git ls-files --eol -- <23 файлов, изменённых против main>
+
+i/lf    w/lf    attr/-text            	DECISIONS.md
+i/lf    w/lf    attr/-text            	docs/UNRESOLVED.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-p4.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-repliki.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/proby-p4.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/srez-okonchaniy-12.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/vneshnie-brauzer.js
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/sud/SVODKA-r3.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/sud/sud-r1-nakhodki.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/sud/sud-r2-nakhodki.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/sud/sud-r3-nakhodki.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/zamery/proba-n14-chisty.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-pachka-4/zamery/proba-n14-mutaciya.txt
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/CLAUDE.md
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/input/briefs/quotes.md
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/src/content.config.ts
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/src/content/tresc/pc.md
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/src/content/tresc/quotes.md
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/src/pages/[...slug].astro
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/structure/pages-s2.json
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/structure/structure.json
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/brief-strony.mjs
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/proby-tresci.mjs
+
+не LF (кроме двоичных): 0
+

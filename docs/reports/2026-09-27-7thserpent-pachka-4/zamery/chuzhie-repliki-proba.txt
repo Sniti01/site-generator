@@ -1,0 +1,21 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-4/instrumenty/chuzhie-repliki.mjs sites/7thserpent.com/dist --proba
+(папка: D:/SEO/cloud/site-generator)
+
+ok    контроль                               отказов нет
+ok    12 слов документа вне кавычек          вне кавычек, строка 6: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 6: «period when health is fully
+ok    12 слов документа в кавычках           в кавычках, но не реплика списка, строка 6: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | в кавычках, но не реплика спис
+ok    7 слов в кавычках + 7 вне              через границу кавычек, строка 6: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | через границу кавычек, строка 6: «period 
+ok    12 слов, в середине 2 в кавычках       через границу кавычек, строка 6: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | через границу кавычек, строка 6: «period 
+ok    реплика без кавычек                    вне кавычек, строка 12: «my cover had been blown the door slammed» — http://superadventuresingaming.blogspot.com/2012/05/max-payne-gba.html | вне кавычек, строка 12: «cov
+ok    глава снята (Chapter 7)                реплика «I stood out in this place like a streetwalker in a»: сразу после неё нет главы (— Chapter N, — Part I, Chapter N, — also Chapter N): « — titled »
+ok    глава снята, дальше «also Chapter 2»   реплика «Her fashion sense didn’t leave a whole lot of room»: сразу после неё нет главы (— Chapter N, — Part I, Chapter N, — also Chapter N): « — in »
+ok    глава снята, дальше «Part I»           реплика «Thank you.»: сразу после неё нет главы (— Chapter N, — Part I, Chapter N, — also Chapter N): « In »
+ok    ряд не той игры                        реплика «My cover had been blown. The door slammed shut beh» в ряду «Max Payne 3 · 2012», ждали игру «Max Payne · 2001» | реплика «Karaoke was never my strong point» в ря
+ok    реплика в чужом ряду, слова остались в своём реплика «Thank you.» в ряду «Max Payne 3 · 2012», ждали игру «Max Payne · 2001»
+ok    глава — одно «Part I»                  реплика «Thank you.»: сразу после неё нет главы (— Chapter N, — Part I, Chapter N, — also Chapter N): « — Part I, »
+ok    глава без тире                         реплика «My cover had been blown. The door slammed shut beh»: сразу после неё нет главы (— Chapter N, — Part I, Chapter N, — also Chapter N): « Chapter 3, »
+ok    реплика дважды в кавычках              реплика «Karaoke was never my strong point» в кавычках 2 раз, ждали 1
+ok    фраза документа, склеенная только через пробел вне кавычек, строка 48: «grace period when health is fully depleted that» — https://en.wikipedia.org/wiki/Max_Payne_3 | вне кавычек, строка 48: «period when health is ful
+проба: 15/15
+
+код выхода: 0

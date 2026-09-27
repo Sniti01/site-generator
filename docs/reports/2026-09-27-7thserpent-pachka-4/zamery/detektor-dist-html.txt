@@ -1,0 +1,9 @@
+$ node ../../.claude/skills/impeccable/scripts/detect.mjs --json <14 HTML сборки>
+(папка: sites/7thserpent.com)
+
+[]
+
+impeccable detect: DEGRADED - HTML parser modules unavailable (htmlparser2, css-select, css-tree, domutils).
+Falling back to regex matching. Custom properties, selector matching and computed contrast are NOT evaluated; findings are an undercount, not a clean bill of health.
+
+код выхода: 0

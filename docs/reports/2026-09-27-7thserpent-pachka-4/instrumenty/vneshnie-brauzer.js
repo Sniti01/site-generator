@@ -12,8 +12,8 @@
 // Внешний запрос — любой, чей хост не BASE. Итог — строка на страницу и окно.
 // Предел: запросы после 1,5 с тишины и после ухода со страницы не видны; `<a>` не нажимаются.
 async (page) => {
-  const BASE = 'http://127.0.0.1:4427';
-  const SBORKA = '0000000';
+  const BASE = 'http://127.0.0.1:4428';
+  const SBORKA = '149a040';
   const STRANICY = ['/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/pc/', '/media/', '/games-like-max-payne/', '/404/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/'];
   const OKNA = [[1440, 900], [390, 844]];
   const browser = page.context().browser();

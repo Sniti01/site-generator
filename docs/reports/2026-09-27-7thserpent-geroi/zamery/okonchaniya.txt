@@ -55,24 +55,24 @@ i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/chuzhie.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/detektor-dist.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/detektor-ishodniki.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/glavnaya-g1-f1-geometria.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/glavnaya-g2-f1-geometria.json
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kadry-stopa.json
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-cheats.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-games-like-max-payne.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-media.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-mods.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-pc.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-quotes.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-story.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g1-e5641ac-voice-and-face.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-cheats.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-games-like-max-payne.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-media.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-mods.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-pc.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-quotes.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-story.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kontrast-geroy/g2-38af56e-voice-and-face.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/kopii-otlichiya.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/ni-bajta.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/okonchaniya.txt
-i/lf    w/mixed attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/perenormalizaciya.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/perenormalizaciya.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-accept.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-brief-check.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-build.txt
-i/mixed w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-check.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-check.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-frames-glavnaya.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-glowa.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-itog.txt
@@ -84,10 +84,10 @@ i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/proby-p2.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/proby-p4.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/proby-tresci.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/rastyazhenie-e5641ac.json
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/rastyazhenie-e5641ac.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/rastyazhenie-38af56e.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/rastyazhenie-38af56e.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/sborki-sravnenie.txt
-i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/server-4431-sborka.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/server-4432-sborka.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/sloy-utilit.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/vneshnie-brauzer.txt
 i/lf    w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/vneshnie-staticheski.txt
@@ -169,6 +169,5 @@ i/lf    w/lf    attr/-text            	sites/7thserpent.com/structure/structure.
 i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/brief-strony.mjs
 i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/proby-tresci.mjs
 
-не LF (кроме двоичных): 2
-i/lf    w/mixed attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/perenormalizaciya.txt
-i/mixed w/lf    attr/-text            	docs/reports/2026-09-27-7thserpent-geroi/zamery/priemka-check.txt
+не LF (кроме двоичных): 0
+

@@ -13,8 +13,10 @@
 //   node proby-p4.mjs --proba      — проба самой сверки: порчи HTML собранных страниц (и копии
 //                                    содержания или структуры) в памяти; каждая обязана дать
 //                                    замечание своей причиной; контроль — неиспорченные страницы без замечаний
-// Неизвестный флаг и `--dist` без `--tolko-dist`/`--proba` — код 2, пробы не запускаются («судью судят»,
-// раунд 1, P4-R1-PROBY-8: опечатка во флаге молча включала полный режим с подменой файлов).
+// Неизвестный флаг (и с одним дефисом), `--dist` без `--tolko-dist`/`--proba`, лишнее значение после папки
+// `--dist` и имя пробы вместе с `--tolko-dist` или `--proba` — код 2, пробы не запускаются («судью судят»,
+// раунд 1, P4-R1-PROBY-8: опечатка во флаге молча включала полный режим с подменой файлов; раунд 2,
+// P4-R2-PROBY-5).
 //
 // СТАРТ: подменяемые файлы обязаны совпадать с индексом git (как у проб договора); временная папка
 // сборки — `.astro/dist-proba-p4` (правило `.astro/` — в корневом .gitignore). Пока идут пробы,
@@ -37,7 +39,9 @@
 //   во всей секции `figure` и `img` — ровно по числу кадров; в каждом `li` ровно одна `div.foto`
 //   с классом тона `kadr-galerei` и ровно одна картинка: ключ `src` и КАЖДОГО кандидата `srcset` =
 //   `art`, `alt` = «<игра> — <опис>» записи кадра (`game-art.json`, формула `kadr()`); подпись —
-//   ровно одна `figcaption` с ролью `t-caption`, текст = `caption`; другого текста в `li` нет;
+//   ровно одна `figcaption` с ролью `t-caption`, текст = `caption`; другого текста в `li` нет, в `li` ровно
+//   одна `div.foto` (пустая вторая тоже отказ); в секции ровно один `h2`, не больше одной строки под
+//   заголовком и никакого текста вне заголовка, строки под ним и кадров;
 //   класс `kadr-galerei` (словом в `class` любого элемента) в <main> — только у кадров галереи,
 //   столько же, сколько кадров; галереи нет в `blocks[]` — ни `section.gallery`, ни `kadr-galerei`;
 //   нота подвала — игры ноты = игры ВСЕХ кадров страницы (кадр героя, кадры рядов и кадры галереи
@@ -49,7 +53,8 @@
 // где кадры есть только у галереи, они кончаются ожидаемым «кадров нет, а нота об арте есть» (П95
 // «Как прочитано» п. 10); разбор HTML — регулярными выражениями по разметке, которую печатают этот
 // маршрут и блоки ядра (`Gallery`, `SmartImage`): атрибут ищется по первому вхождению имени после
-// пробела; `<picture><source>`, `sizes` и ширины кандидатов не судятся; теги внутри текста заголовка,
+// пробела; `<picture><source>`, `sizes`, ширины кандидатов, `loading`, `width`/`height` картинки не судятся;
+// тон судится только классом `kadr-galerei` — правило тона в `<style>` не судится; теги внутри текста заголовка,
 // строки под ним и подписи не судятся (на месте тега — пробел); из нот подвала берётся первая
 // «Games:» — вторая нота не судится; вложенные `section` внутри рядов или героя сверка не ждёт
 // (конец ряда — первый `</section>` после его начала); фронтматтер разбирается пакетом `yaml` с ключами
@@ -68,10 +73,12 @@ const tolkoDist = argi.includes('--tolko-dist');
 const rezhimProby = argi.includes('--proba');
 {
   const iD = argi.indexOf('--dist');
-  const neizvFlagi = argi.filter((a, i) => a.startsWith('--') && !['--tolko-dist', '--proba', '--dist'].includes(a) && !(iD >= 0 && i === iD + 1));
+  const neizvFlagi = argi.filter((a, i) => a.startsWith('-') && !['--tolko-dist', '--proba', '--dist'].includes(a) && !(iD >= 0 && i === iD + 1));
   if (neizvFlagi.length) { console.error('неизвестные флаги: ' + neizvFlagi.join(' ') + ' — есть --tolko-dist, --proba, --dist <папка>'); process.exit(2); }
   if (iD >= 0 && !tolkoDist && !rezhimProby) { console.error('--dist <папка> — только с --tolko-dist или --proba: полный режим проб сверяет dist/ сайта'); process.exit(2); }
-  if (iD >= 0 && (!argi[iD + 1] || argi[iD + 1].startsWith('--'))) { console.error('--dist без папки'); process.exit(2); }
+  if (iD >= 0 && (!argi[iD + 1] || argi[iD + 1].startsWith('-'))) { console.error('--dist без папки'); process.exit(2); }
+  const imenaProb = argi.filter((a, i) => !a.startsWith('-') && !(iD >= 0 && i === iD + 1));
+  if ((tolkoDist || rezhimProby) && imenaProb.length) { console.error('имена проб и лишние значения — только в полном режиме: ' + imenaProb.join(' ')); process.exit(2); }
 }
 const P = {
   stend: join(root, 'src/content/tresc/404.md'),
@@ -273,6 +280,14 @@ function sverka(page, dane, html) {
       else if (!lead) zam.push('строки под заголовком галереи (lead) нет');
       else if (tekst(lead[1]) !== norm(g.lead)) zam.push(`строка под заголовком галереи «${tekst(lead[1]).slice(0, 60)}», в содержании «${norm(g.lead).slice(0, 60)}»`);
       if (lead && lead.index > sek.search(/<ul\b/)) zam.push('строка под заголовком галереи стоит после сетки');
+      // Один заголовок, не больше одной строки под ним, и никакого текста в секции вне заголовка, строки
+      // под ним и кадров (раунд 2, P4-R2-PROBY-4: подпись «сцены» вне li проходила молча).
+      const h2Vse = [...sek.matchAll(/<h2\b/g)].length;
+      const leadVse = [...sek.matchAll(/<p class="gallery__lead\b/g)].length;
+      if (h2Vse !== 1) zam.push(`заголовков h2 в галерее ${h2Vse}, ждали 1`);
+      if (leadVse > 1) zam.push(`строк под заголовком галереи ${leadVse}, ждали не больше 1`);
+      const ostatok = tekst(sek.replace(/<h2\b[\s\S]*?<\/h2>/, ' ').replace(/<p class="gallery__lead\b[\s\S]*?<\/p>/, ' ').replace(/<li\b[\s\S]*?<\/li>/g, ' '));
+      if (ostatok) zam.push(`текст в галерее вне кадров и заголовка «${ostatok.slice(0, 60)}»`);
       // кадры — по месту и в порядке файла; `li` — по слову gallery__item в классе, `figure` и `img` —
       // по всей секции (раунд 1, P4-R1-PROBY-3, -5: лишний кадр вне засчитанного li проходил молча)
       const punkty = [...sek.matchAll(/<li\s[^>]*class="[^"]*(?<![\w-])gallery__item(?![\w-])[^"]*"[^>]*>([\s\S]*?)<\/li>/g)].map((m) => m[1]);
@@ -287,6 +302,9 @@ function sverka(page, dane, html) {
         const gde = `кадр галереи ${i + 1} (${it.art})`;
         const kartinkiLi = [...li.matchAll(/<img\b[^>]*>/g)];
         if (kartinkiLi.length !== 1) zam.push(`${gde}: картинок ${kartinkiLi.length}, ждали 1`);
+        // Все оболочки .foto в кадре, а не только те, за которыми вплотную картинка (раунд 2, P4-R2-PROBY-3).
+        const fotoVse = [...li.matchAll(/<div\s[^>]*class="[^"]*(?<![\w-])foto(?![\w-])[^"]*"/g)].length;
+        if (fotoVse !== 1) zam.push(`${gde}: оболочек .foto ${fotoVse}, ждали 1`);
         const foto = [...li.matchAll(/<div class="(foto\b[^"]*)"[^>]*>\s*(<img\b[^>]*>)/g)];
         if (foto.length !== 1) { zam.push(`${gde}: оболочек .foto с картинкой ${foto.length}, ждали 1`); return; }
         if (!foto[0][1].split(/\s+/).includes('kadr-galerei')) zam.push(`${gde}: без класса тона kadr-galerei («${foto[0][1]}»)`);
@@ -368,11 +386,13 @@ if (rezhimProby) {
     { imya: 'контроль /max-payne-2/', s: m2, prichina: null },
     { imya: 'контроль /pc/', s: pc, prichina: null },
     {
-      // Настоящий U+00A0 с обеих сторон, не сущность `&nbsp;` (её `raskryt` сводит к пробелу
-      // до `norm`, и контроль ничего не проверял — раунд 1, P4-R1-PROBY-1).
+      // U+00A0 с ОДНОЙ стороны, обычный пробел — с другой: подпись кадра — неразрывный в HTML, пробел
+      // в содержании; заголовок — наоборот; края содержания — U+00A0. Так контроль держит сворачивание
+      // неразрывного пробела в `norm` (раунд 1, P4-R1-PROBY-1: сущность `&nbsp;` сводилась к пробелу до
+      // `norm`; раунд 2, P4-R2-PROBY-1: U+00A0 с обеих сторон в одном месте ничего не проверял).
       imya: 'контроль: неразрывные пробелы и края', s: q, prichina: null,
-      html: (h) => h.replace(/(<figcaption\b[^>]*>Max) /, '$1 ').replace(/(<h2 class="gallery__title[^>]*>The) /, '$1 '),
-      dane: (d) => { d.gallery.items[0].caption = '  ' + d.gallery.items[0].caption.replace(' ', ' ') + ' \n'; d.gallery.title = d.gallery.title.replace(' ', ' ') + ' '; return d; },
+      html: (h) => h.replace(/(<figcaption\b[^>]*>Max) /, '$1 '),
+      dane: (d) => { d.gallery.items[0].caption = '  ' + d.gallery.items[0].caption + '  \n'; d.gallery.title = d.gallery.title.replace(' ', ' ') + ' '; return d; },
     },
     { imya: 'галерея снята', s: q, html: (h) => h.replace(GALEREYA, ''), prichina: 'галерей 0' },
     { imya: 'вторая галерея', s: q, html: (h) => h.replace('</main>', vzyat(h, GALEREYA) + '</main>'), prichina: 'галерей 2' },
@@ -428,6 +448,22 @@ if (rezhimProby) {
     { imya: 'текст сцены в кадре вне подписи', s: q, html: (h) => h.replace(/(<figure class="gallery__figure"[^>]*>)/, '$1<p>From Chapter 3</p>'), prichina: 'текст в кадре вне подписи «From Chapter 3»' },
     { imya: 'строка под заголовком после сетки', s: q, html: (h) => { const l = vzyat(h, /<p class="gallery__lead\b[\s\S]*?<\/p>/); const g = vzyat(h, GALEREYA); return h.replace(g, g.replace(l, '').replace('</ul>', '</ul>' + l)); }, prichina: 'стоит после сетки' },
     { imya: 'класс тона вторым словом на чужом элементе', s: q, html: (h) => h.replace('</main>', '<span class="x kadr-galerei"></span></main>'), prichina: 'kadr-galerei в <main> 4 раз' },
+    // Порчи раунда 2 (P4-R2-PROBY-2, -3, -4): конец героя, счёт figure и img по отдельности, <main>,
+    // вторая пустая оболочка .foto, текст секции вне кадров, второй заголовок и вторая строка под ним.
+    {
+      imya: 'галерея внутри героя (копия с галереей)', s: m2,
+      html: (h) => { const i = h.search(/<section class="hero"/); const j = h.indexOf('</section>', i); return h.slice(0, j) + vzyat(q.html, GALEREYA) + h.slice(j); },
+      dane: (d) => { d.gallery = klon(q.dane.gallery); return d; },
+      page: (p) => { p.blocks = [...p.blocks, { block: 'gallery' }]; return p; },
+      prichina: 'галерея не после героя',
+    },
+    { imya: 'лишняя figure без картинки вне li', s: q, html: (h) => { const g = vzyat(h, GALEREYA); return h.replace(g, g.replace('</ul>', '</ul><figure></figure>')); }, prichina: 'в галерее figure 4, img 3' },
+    { imya: 'лишняя img вне figure', s: q, html: (h) => { const g = vzyat(h, GALEREYA); return h.replace(g, g.replace('</ul>', '</ul><img src="/_astro/mp1-k12.x.webp" alt="">')); }, prichina: 'в галерее figure 3, img 4' },
+    { imya: '<main> снят', s: q, html: (h) => h.replace(/<main\b[^>]*>/, '<div>').replace('</main>', '</div>'), prichina: 'нет <main>' },
+    { imya: 'вторая пустая оболочка .foto в кадре', s: q, html: (h) => h.replace(/(<div class="gallery__frame"[^>]*>)/, '$1<div class="foto"></div>'), prichina: 'оболочек .foto 2' },
+    { imya: 'текст сцены после сетки', s: q, html: (h) => { const g = vzyat(h, GALEREYA); return h.replace(g, g.replace('</ul>', '</ul><p>From Chapter 3 — the scene</p>')); }, prichina: 'текст в галерее вне кадров и заголовка «From Chapter 3' },
+    { imya: 'вторая h2 в галерее', s: q, html: (h) => { const g = vzyat(h, GALEREYA); return h.replace(g, g.replace('</ul>', '</ul><h2>Proba</h2>')); }, prichina: 'заголовков h2 в галерее 2' },
+    { imya: 'вторая строка под заголовком', s: q, html: (h) => { const g = vzyat(h, GALEREYA); const l = vzyat(h, /<p class="gallery__lead\b[\s\S]*?<\/p>/); return h.replace(g, g.replace(l, l + l)); }, prichina: 'строк под заголовком галереи 2' },
   ];
   let plokhoProb = 0;
   for (const x of PORCHI) {

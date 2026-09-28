@@ -184,8 +184,9 @@ test('голова и крошки: мутации прежней самопро
 });
 
 test('сборка: все страницы по договору (контроль по dist копии)', () => {
-  // Страницы — из сборки, как у интеграции (в структуре есть и несобранная /privacy/; B1-G-17).
+  // Страницы — из сборки, как у интеграции: судится собранное, а не структура (B1-G-17). С сессии 22 (П106)
+  // собраны все 18 страниц структуры, /privacy/ — восемнадцатая.
   const stranicy = stranicyDist(dist()).map((s) => ({ url: s.url, html: readFileSync(s.file, 'utf8') }));
-  assert.equal(stranicy.length, 17);
+  assert.equal(stranicy.length, 18);
   assert.deepEqual(suditNabor(stranicy, struktura, ozhidanie), []);
 });

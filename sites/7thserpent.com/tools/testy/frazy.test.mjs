@@ -81,7 +81,7 @@ test('исключения сайта — только решённые клас
 });
 
 test('все страницы круга сборки — чисто (контроль)', () => {
-  for (const url of ['/404/', '/pc/', '/games-like-max-payne/', '/media/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/']) {
+  for (const url of ['/404/', '/pc/', '/games-like-max-payne/', '/media/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/', '/privacy/']) {
     const r = sud(url, stranica(url));
     assert.equal(r.isklyuchenie, undefined, `${url}: ${r.isklyuchenie}`);
     assert.deepEqual(r.otkazy, [], url);

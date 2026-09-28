@@ -6,18 +6,31 @@
  * сырой текст `<textarea>` и `<title>` в теле, «<» перед не-буквой, `<main>` внутри значения
  * атрибута, сущности без «;», числовые ссылки &#128;–&#159; (бэклог 68 п. 3). Токенизатор
  * и построитель дерева parse5 идут по спецификации HTML — так же, как браузер, поэтому этих
- * краёв у судей на этом фундаменте нет: что браузер считает текстом, то текст и здесь.
+ * краёв у судей на этом фундаменте нет: где кончается разметка и начинается текст, решает
+ * тот же алгоритм, что у браузера. Что из текста ВИДНО на экране, дерево не говорит (стили,
+ * скрытие) — это решает извлечение (`extract.mjs`) и называет свои пределы.
  *
  * РЕЖИМ — БЕЗ СКРИПТОВ (`scriptingEnabled: false`): содержимое `<noscript>` разбирается
  * разметкой, как у читателя и поисковика без JS. Судья, который видит только страницу
  * со скриптами, не увидел бы в `<noscript>` ни текста, ни `<meta>`, а их прочтёт скребок.
- * `<template>` — инертный фрагмент: его содержимое лежит в `content`, не среди детей, и обход
- * ниже его не видит (браузер его не рисует).
+ * ПРЕДЕЛЫ ВЕРСИИ: parse5 8.0.1 разбирает `<select>` по прежней редакции спецификации (Chrome 135+
+ * сохраняет в нём теги) и не знает декларативного теневого DOM — `<template shadowrootmode>`
+ * обход ниже раскрывает сам (браузер его рисует); прочий `<template>` — инертный фрагмент: его
+ * содержимое лежит в `content`, не среди детей, и обход его не видит.
+ *
+ * ПРОСТРАНСТВО ИМЁН: элемент внутри `<svg>` и `<math>` — не HTML, даже если зовётся `nav` или
+ * `main` (`vHtml`): блоком и `<main>` судьи считают только HTML-элементы.
+ *
+ * ОБХОД — без рекурсии (явный стек): документ корпуса с вложенностью в десятки тысяч элементов
+ * не роняет судью переполнением стека (раунд 1 «судью судят» блока А, A1-IZ-13).
  *
  * Координаты исходника (`sourceCodeLocationInfo`) — для сообщений судей: «строка N».
  */
 
 import { parse } from 'parse5';
+
+/** Пространство имён HTML. */
+export const NS_HTML = 'http://www.w3.org/1999/xhtml';
 
 /** Документ по тексту HTML — дерево parse5 (адаптер по умолчанию). */
 export function razobrat(html) {
@@ -26,6 +39,9 @@ export function razobrat(html) {
 
 /** Узел — элемент (не текст, не комментарий, не doctype). */
 export const element = (u) => Boolean(u && u.tagName);
+
+/** Элемент HTML (не SVG и не MathML). */
+export const vHtml = (u) => element(u) && u.namespaceURI === NS_HTML;
 
 /** Имя элемента строчными (у HTML оно уже строчное; у SVG бывают прописные — `foreignObject`). */
 export const imya = (u) => (u?.tagName ?? '').toLowerCase();
@@ -41,39 +57,46 @@ export function klassy(u) {
   return new Set((atr(u, 'class') ?? '').split(/[\t\n\f\r ]+/).filter(Boolean));
 }
 
+/** Шаблон теневого корня (`<template shadowrootmode>`) — его содержимое браузер рисует. */
+export const tenevoyShablon = (u) => vHtml(u) && imya(u) === 'template' && atr(u, 'shadowrootmode') !== undefined;
+
 /**
- * Все элементы под узлом в порядке документа (сам узел не входит). Содержимое `<template>`
- * не обходится — это не документ. `pred` — фильтр.
+ * Дети узла для обхода: у шаблона теневого корня — его содержимое, у прочего `<template>` —
+ * никого (инертен), у остальных — `childNodes`.
+ */
+export function deti(u) {
+  if (vHtml(u) && imya(u) === 'template') return tenevoyShablon(u) ? u.content?.childNodes ?? [] : [];
+  return u.childNodes ?? [];
+}
+
+/**
+ * Все элементы под узлом в порядке документа (сам узел не входит). Содержимое инертного
+ * `<template>` не обходится — это не документ. `pred` — фильтр.
  */
 export function elementy(koren, pred = () => true) {
   const out = [];
-  const obhod = (u) => {
-    for (const d of u.childNodes ?? []) {
-      if (!element(d)) continue;
-      if (pred(d)) out.push(d);
-      obhod(d);
-    }
-  };
-  obhod(koren);
+  const stek = [...deti(koren)].reverse();
+  while (stek.length) {
+    const u = stek.pop();
+    if (!element(u)) continue;
+    if (pred(u)) out.push(u);
+    const d = deti(u);
+    for (let i = d.length - 1; i >= 0; i--) stek.push(d[i]);
+  }
   return out;
 }
 
 /** Первый элемент под узлом по фильтру или `null`. */
 export function pervyi(koren, pred) {
-  let naiden = null;
-  const obhod = (u) => {
-    for (const d of u.childNodes ?? []) {
-      if (naiden) return;
-      if (!element(d)) continue;
-      if (pred(d)) {
-        naiden = d;
-        return;
-      }
-      obhod(d);
-    }
-  };
-  obhod(koren);
-  return naiden;
+  const stek = [...deti(koren)].reverse();
+  while (stek.length) {
+    const u = stek.pop();
+    if (!element(u)) continue;
+    if (pred(u)) return u;
+    const d = deti(u);
+    for (let i = d.length - 1; i >= 0; i--) stek.push(d[i]);
+  }
+  return null;
 }
 
 /** Предки узла снизу вверх (без самого узла, до документа). */
@@ -83,7 +106,7 @@ export function predki(u) {
   return out;
 }
 
-/** `<html>`, `<head>`, `<body>` документа — дерево parse5 строит их всегда. */
+/** `<html>`, `<head>`, `<body>` документа (у frameset `<body>` нет). */
 export function chasti(doc) {
   const html = (doc.childNodes ?? []).find((u) => imya(u) === 'html');
   const head = (html?.childNodes ?? []).find((u) => imya(u) === 'head');
@@ -95,17 +118,25 @@ export function chasti(doc) {
 export const strokaIshodnika = (u) => u?.sourceCodeLocation?.startLine ?? null;
 
 /**
- * Текст узла, как `textContent`: все потомки-тексты подряд, без комментариев и без содержимого
- * `<template>`. Для ярлыков и заголовков, где строчные теги не рвут слов; пробелы не сводятся.
+ * Видимый текст узла для ярлыков и заголовков: все потомки-тексты подряд, без комментариев,
+ * без содержимого `<script>` и `<style>` и инертного `<template>` (раунд 1, A1-IZ-11: иначе
+ * `Chap<style>…</style>ters` давало ярлык со стилем). Строчные теги слов не рвут; пробелы
+ * не сводятся.
  */
 export function tekstVsego(u) {
   let s = '';
-  const obhod = (x) => {
-    for (const d of x.childNodes ?? []) {
-      if (d.nodeName === '#text') s += d.value;
-      else if (element(d)) obhod(d);
+  const stek = [...deti(u)].reverse();
+  while (stek.length) {
+    const x = stek.pop();
+    if (x.nodeName === '#text') s += x.value;
+    else if (element(x)) {
+      if (vHtml(x) && (imya(x) === 'script' || imya(x) === 'style')) continue;
+      const d = deti(x);
+      for (let i = d.length - 1; i >= 0; i--) stek.push(d[i]);
     }
-  };
-  obhod(u);
+  }
   return s;
 }
+
+/** Сырой текст элемента из прямых детей-текстов (содержимое `<script>`: JSON-LD). */
+export const tekstDetey = (u) => (u.childNodes ?? []).filter((x) => x.nodeName === '#text').map((x) => x.value).join('');

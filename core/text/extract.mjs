@@ -7,47 +7,94 @@
  * фраза на странице и в документе резалась иначе (бэклог 68 п. 2, 3). Здесь — одно дерево
  * (parse5, `html.mjs`) и одна функция строк на всех.
  *
- * СТРОКИ. Видимый текст режется на строки по блочным элементам (`BLOCHNYE` — список судьи глав
- * сессии 19, пять раундов «судью судят»): 8-грамма судится внутри одной строки, фраза, которую
- * разрезал заголовок или абзац, — две фразы. Любой другой элемент, комментарий, скрипт и стиль
- * СТРОЧНЫЕ, и строка читается ДВАЖДЫ: вплотную (ссылка или `<em>` внутри слова не рвут его:
+ * СТРОКИ. Видимый текст режется на строки по блочным HTML-элементам (`BLOCHNYE`: список судьи глав
+ * сессии 19 и блоки браузера по умолчанию — ячейки и части таблиц, `center`, `menu`, `dir`,
+ * `hgroup`, `search`, `xmp`, `listing`, `plaintext`, `dialog`, пункты `<select>`; раунд 1 «судью
+ * судят» блока А, A1-IZ-6): 8-грамма судится внутри одной строки, фраза, которую разрезал
+ * заголовок или абзац, — две фразы. Любой другой элемент, комментарий, скрипт и стиль СТРОЧНЫЕ,
+ * и строка читается ДВАЖДЫ: вплотную (ссылка или `<em>` внутри слова не рвут его:
  * «Wo<em>r</em>ld» — «World») и через пробел (соседние строчные элементы, стоящие на экране
  * раздельно, не склеиваются: «Remix</span><span>Guide»). Судьи судят оба прочтения. `<br>` —
- * пробел в обоих: строка на экране переносится, фраза — нет.
+ * пробел в обоих: строка на экране переносится, фраза — нет. Элемент SVG или MathML с именем
+ * блока (`<svg><nav/></svg>`) — строчный, не блок (A1-IZ-4).
  *
  * ЗНАКИ, как их видит читатель (правила судьи глав сессии 19, раунды 2–5): `\t \n \r` — пробел;
  * прочие управляющие (C0, C1, DEL) и невидимые знаки (`Default_Ignorable_Code_Point`: мягкий
- * перенос, U+200B, U+2060, селекторы вариантов…) снимаются — слово на экране целое; заполнители
- * хангыля (U+3164, U+115F, U+1160, U+FFA0) и U+1BCA0–U+1BCA3 — пробел (их рисуют пустым глифом);
- * NFC; пробелы сводятся. Сущности и числовые ссылки раскрывает разборщик по спецификации (в том
- * числе &#128;–&#159; по windows-1252: «Fox&#146;s» — «Fox’s», как в браузере).
+ * перенос, U+200B, U+2060, селекторы вариантов, знаки направления, U+FEFF…) снимаются — слово на
+ * экране целое; заполнители хангыля (U+3164, U+115F, U+1160, U+FFA0) и U+1BCA0–U+1BCA3 — пробел
+ * (их рисуют пустым глифом); NFC; пробелы сводятся. Сущности и числовые ссылки раскрывает
+ * разборщик по спецификации (в том числе &#128;–&#159; по windows-1252: «Fox&#146;s» — «Fox’s»,
+ * как в браузере).
  *
- * ЧТО СЧИТАЕТСЯ ТЕКСТОМ. Всё, кроме `<script>`, `<style>`, комментариев и содержимого `<template>`.
- * Скрытое (`hidden`, классы скрытия, `aria-hidden`) считается видимым — строже: судья, который
- * верит скрытию, пропустит текст, скрытый только до первого стиля.
+ * ЧТО СЧИТАЕТСЯ ТЕКСТОМ. Всё, кроме `<script>`, `<style>`, комментариев и содержимого инертного
+ * `<template>`; содержимое `<template shadowrootmode>` браузер рисует — оно текст (A1-IZ-2).
+ * Скрытое (`hidden`, классы скрытия, `aria-hidden`) считается видимым: отдельной строкой или
+ * фразой оно даёт судье больше текста (строже).
  *
- * СТРАНИЦА (`izvlechStranicu`): строки единственного `<main>` в двух прочтениях; голова —
- * `<title>`, `description`, `og:title`, `og:description` из `<head>` (дерево кладёт туда и `<meta>`
- * между `</head>` и `<body>`, как браузер); атрибуты тегов `<main>` — `alt`, `title`, `aria-label`,
- * `value`, `placeholder`, `label`. Голова и атрибуты — отдельными строками, каждая сама по себе.
+ * ПРЕДЕЛЫ (названы; тесты `todo` в `extract.test.mjs`): скрытое ВНУТРИ видимой фразы
+ * (`<span hidden>`, текст для скринридера, `<svg><title>`, `<rp>`/`<rt>`, `<noscript>` для читателя
+ * с JS, запасной текст `<audio>`/`<video>`/`<object>`) рвёт её 8-грамму в обоих прочтениях — фраза
+ * корпуса с таким вкраплением не ловится (A1-IZ-3); порядок слов — логический, текст,
+ * развёрнутый на экране `<bdo dir="rtl">` или U+202E, судится как записан (A1-IZ-8); `<style>`
+ * внутри `<option>` — текст (parse5 8.0.1 разбирает `<select>` по прежней спецификации, A1-IZ-7);
+ * видимый текст CSS `content` (`::before`, кавычки `<q>`, номера `<ol>`) не виден; `srcdoc`
+ * у `<iframe>` не читается; буквы-двойники и знаки совместимости (`ﬁ`, полноширинные, 𝐟) не
+ * сводятся к латинице — NFC, не NFKC (предел семейства судей, бэклог 68 п. 2); текст вне `<main>`
+ * и головы (шапка, крошки, подвал) и JSON-LD судьи страниц не судят.
+ *
+ * СТРАНИЦА (`izvlechStranicu`): строки единственного HTML-`<main>` в двух прочтениях; голова —
+ * `<title>` и `<meta>` (`description`, `og:title`, `og:description`, а также `twitter:title`,
+ * `twitter:description`, `og:image:alt`) — по всему документу вне `<main>` и вне SVG/MathML: meta,
+ * которую разборщик без скриптов вынес в `<body>` (`<noscript>` с картинкой закрывает голову),
+ * тоже голова для скребка (A1-IZ-5); атрибуты самого `<main>` и его тегов — `alt`, `title`,
+ * `aria-label`, `aria-description`, `aria-roledescription`, `aria-valuetext`, `aria-placeholder`,
+ * `aria-braillelabel`, `aria-brailleroledescription`, `value`, `placeholder`, `label`, `alttext`
+ * (MathML), `abbr` (`<th>`), `summary` (`<table>`) — то, что читатель видит или слышит (A1-IZ-1,
+ * A1-IZ-10). `value=` судится у любого тега, и там, где значение не видно (строже). Голова
+ * и атрибуты — отдельными строками, каждая сама по себе.
  *
  * ДОКУМЕНТ КОРПУСА (`izvlechDokument`) — ТЕ ЖЕ строки, но всего `<body>` и с `<title>` впереди,
- * сведённые в один поток на прочтение: указатель корпуса и раньше был потоком всего документа,
- * и 8-граммы через границы его блоков остаются в указателе (прежний указатель не теряет ни одной
- * своей 8-граммы из-за блоков). `meta`, JSON-LD и атрибуты документа в указатель не идут, как
- * и прежде (сторож брифов, R1-BRIFY-4).
+ * по прочтению. Указатель корпуса делит на слова каждую строку отдельно (адреса, свёртка имён —
+ * как у строки страницы) и сводит слова в один поток: 8-граммы через границы блоков документа
+ * остаются в указателе, как в прежнем (он был потоком всего документа), а имя не сворачивается
+ * через границу блоков (A1-UK-4). `meta`, JSON-LD и атрибуты документа в указатель не идут, как
+ * и прежде (сторож брифов, R1-BRIFY-4). 8-граммы прежнего указателя, которых в новом нет, —
+ * не из-за блоков, а из разбора: значения атрибутов, которые прежний срез тегов пускал в текст
+ * на «>» внутри значения, содержимое `<template>`, иное раскрытие сущностей (замер сессии 20).
  */
 
-import { razobrat, element, imya, atr, chasti, elementy, tekstVsego } from './html.mjs';
+import { razobrat, element, vHtml, imya, atr, chasti, elementy, tekstVsego, deti, tenevoyShablon, predki } from './html.mjs';
 
-/** Блочные элементы: граница строки. Остальные — строчные (два прочтения). */
+/** Блочные HTML-элементы: граница строки. Остальные — строчные (два прочтения). */
 export const BLOCHNYE = new Set(
-  'html body p h1 h2 h3 h4 h5 h6 li dd dt dl figcaption figure blockquote div section article aside header footer nav ul ol main pre hr address details summary form fieldset legend'.split(' ')
+  (
+    'html body p h1 h2 h3 h4 h5 h6 li dd dt dl figcaption figure blockquote div section article aside header footer nav ul ol main pre hr ' +
+    'address details summary form fieldset legend table caption thead tbody tfoot tr td th center menu dir hgroup search xmp listing ' +
+    'plaintext dialog optgroup option'
+  ).split(' ')
 );
 /** Не текст: содержимое не читается, сам элемент — строчный (два прочтения вокруг него). */
 export const NE_TEKST = new Set(['script', 'style', 'template']);
 /** Атрибуты тегов `<main>`, которые читатель видит или слышит как текст. */
-export const ATRIBUTY_TEKSTA = ['alt', 'title', 'aria-label', 'value', 'placeholder', 'label'];
+export const ATRIBUTY_TEKSTA = [
+  'alt',
+  'title',
+  'aria-label',
+  'aria-description',
+  'aria-roledescription',
+  'aria-valuetext',
+  'aria-placeholder',
+  'aria-braillelabel',
+  'aria-brailleroledescription',
+  'value',
+  'placeholder',
+  'label',
+  'alttext',
+  'abbr',
+  'summary',
+];
+/** Поля головы: `name` или `property` `<meta>` (и `title` — элемент). */
+export const POLYA_META = ['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description', 'og:image:alt'];
 
 /** Строка, как её видит читатель: см. шапку, «ЗНАКИ». */
 export function chistit(s) {
@@ -63,32 +110,37 @@ export function chistit(s) {
 
 /**
  * Поток узла: тексты и отметки границ — блочной, строчной, пробела (`<br>`). Одна функция
- * на страницу и на документ; прочтения собираются из одного потока.
+ * на страницу и на документ; прочтения собираются из одного потока. Обход — явным стеком.
  */
 export function potok(koren) {
   const out = [];
-  const obhod = (u) => {
-    for (const d of u.childNodes ?? []) {
-      if (d.nodeName === '#text') out.push({ tip: 'tekst', v: d.value, uzel: d });
-      else if (d.nodeName === '#comment') out.push({ tip: 'strochnyi' });
-      else if (element(d)) {
-        const im = imya(d);
-        if (NE_TEKST.has(im)) {
-          out.push({ tip: 'strochnyi' });
-          continue;
-        }
-        if (im === 'br') {
-          out.push({ tip: 'probel' });
-          continue;
-        }
-        const tip = BLOCHNYE.has(im) ? 'blok' : 'strochnyi';
-        out.push({ tip, uzel: d });
-        obhod(d);
-        out.push({ tip, uzel: d });
-      }
+  const stek = [...deti(koren)].reverse().map((u) => ({ u }));
+  while (stek.length) {
+    const f = stek.pop();
+    if (f.zakryt) {
+      out.push({ tip: f.tip, uzel: f.u });
+      continue;
     }
-  };
-  obhod(koren);
+    const d = f.u;
+    if (d.nodeName === '#text') out.push({ tip: 'tekst', v: d.value, uzel: d });
+    else if (d.nodeName === '#comment') out.push({ tip: 'strochnyi' });
+    else if (element(d)) {
+      const im = imya(d);
+      if (NE_TEKST.has(im) && !tenevoyShablon(d)) {
+        out.push({ tip: 'strochnyi' });
+        continue;
+      }
+      if (vHtml(d) && im === 'br') {
+        out.push({ tip: 'probel' });
+        continue;
+      }
+      const tip = vHtml(d) && BLOCHNYE.has(im) ? 'blok' : 'strochnyi';
+      out.push({ tip, uzel: d });
+      stek.push({ u: d, zakryt: true, tip });
+      const ch = deti(d);
+      for (let i = ch.length - 1; i >= 0; i--) stek.push({ u: ch[i] });
+    }
+  }
   return out;
 }
 
@@ -122,50 +174,46 @@ export function stroki(tok, na) {
 /** Ошибка извлечения: страница не такова, чтобы судить её текст (итог судьи не выдаётся). */
 export class OshibkaIzvlecheniya extends Error {}
 
-/** Значения `<meta>` головы по имени (`name` или `property`, без учёта регистра). */
-function metaPo(head, klyuch) {
-  return elementy(head, (u) => imya(u) === 'meta')
-    .filter((m) => [atr(m, 'name'), atr(m, 'property')].some((v) => (v ?? '').toLowerCase() === klyuch))
-    .map((m) => atr(m, 'content') ?? '');
+/**
+ * Голова документа: `title` и `<meta>` по полям `POLYA_META` — HTML-элементы вне `<main>` (и вне
+ * SVG/MathML). Списками: «ровно по одному и непустые» решает судья.
+ */
+function golovaDokumenta(doc, main) {
+  const vne = elementy(doc, (u) => vHtml(u) && (imya(u) === 'title' || imya(u) === 'meta')).filter((u) => !predki(u).includes(main));
+  const golova = { title: vne.filter((u) => imya(u) === 'title').map((t) => chistit(tekstVsego(t))) };
+  const meta = vne.filter((u) => imya(u) === 'meta');
+  for (const pole of POLYA_META) {
+    golova[pole] = meta.filter((m) => [atr(m, 'name'), atr(m, 'property')].some((v) => (v ?? '').toLowerCase() === pole)).map((m) => chistit(atr(m, 'content') ?? ''));
+  }
+  return golova;
 }
 
-/**
- * Страница сайта. Бросает `OshibkaIzvlecheniya`, если `<main>` не ровно один или нет `<head>`.
- * Голова возвращается списками (сколько нашлось — столько и значений): «ровно по одному
- * и непустые» решает судья.
- */
+/** Страница сайта. Бросает `OshibkaIzvlecheniya`, если HTML-`<main>` не ровно один. */
 export function izvlechStranicu(html) {
   const doc = razobrat(html);
-  const { head } = chasti(doc);
-  const mainy = elementy(doc, (u) => imya(u) === 'main');
+  const mainy = elementy(doc, (u) => vHtml(u) && imya(u) === 'main');
   if (mainy.length !== 1) throw new OshibkaIzvlecheniya(`<main> — ${mainy.length}, нужен ровно один`);
   const main = mainy[0];
   const tok = potok(main);
-  const golova = {
-    title: head ? elementy(head, (u) => imya(u) === 'title').map((t) => chistit(tekstVsego(t))) : [],
-    description: head ? metaPo(head, 'description').map(chistit) : [],
-    'og:title': head ? metaPo(head, 'og:title').map(chistit) : [],
-    'og:description': head ? metaPo(head, 'og:description').map(chistit) : [],
-  };
   const atributy = [];
-  for (const u of elementy(main)) {
+  for (const u of [main, ...elementy(main)]) {
     for (const a of ATRIBUTY_TEKSTA) {
       const v = atr(u, a);
       if (v !== undefined && chistit(v)) atributy.push({ atr: a, tekst: chistit(v), uzel: u });
     }
   }
-  return { doc, main, vplotnuyu: stroki(tok, ''), cherezProbel: stroki(tok, ' '), golova, atributy };
+  return { doc, main, vplotnuyu: stroki(tok, ''), cherezProbel: stroki(tok, ' '), golova: golovaDokumenta(doc, main), atributy };
 }
 
 /**
- * Документ корпуса: `<title>` и строки `<body>` — по потоку на прочтение (см. шапку).
+ * Документ корпуса: `<title>` и строки `<body>` — списком строк на прочтение (см. шапку).
  * Документ без `<body>` (frameset) даёт только заголовок.
  */
 export function izvlechDokument(html) {
   const doc = razobrat(html);
   const { head, body } = chasti(doc);
-  const titly = head ? elementy(head, (u) => imya(u) === 'title').map((t) => chistit(tekstVsego(t))).filter(Boolean) : [];
+  const titly = head ? elementy(head, (u) => vHtml(u) && imya(u) === 'title').map((t) => chistit(tekstVsego(t))).filter(Boolean) : [];
   const tok = body ? potok(body) : [];
-  const svesti = (na) => [...titly, ...stroki(tok, na).map((s) => s.tekst)].join(' ');
+  const svesti = (na) => [...titly, ...stroki(tok, na).map((s) => s.tekst)];
   return { vplotnuyu: svesti(''), cherezProbel: svesti(' ') };
 }

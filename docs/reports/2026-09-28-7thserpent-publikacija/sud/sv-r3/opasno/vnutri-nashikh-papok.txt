@@ -1,0 +1,18 @@
+V1 ОПАСНЫЙ ПРОХОД — в mods/ — поддомен mods.7thserpent.com (раздача модов): index.php, uploads/*.zip, .htaccess
+    papka: проход | папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет; indeks: проход; первая: нет (на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)) — сверка сборки пропущена, домен — мягко
+    модель mirror --delete удалит: mods/.htaccess, mods/index.php, mods/uploads/, mods/uploads/mp2-widescreen.zip, mods/uploads/mp1-hd.zip
+    правка-кандидат (глубина по find .): отказ — чужие 5: mods/.htaccess, mods/index.php, mods/uploads/, mods/uploads/mp2-widescreen.zip, mods/uploads/mp1-hd.zip
+V2 ОПАСНЫЙ ПРОХОД — в media/ — медиатека чужого движка: wp-content/uploads/…
+    papka: проход | папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет; indeks: проход; первая: нет (на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)) — сверка сборки пропущена, домен — мягко
+    модель mirror --delete удалит: media/wp-content/, media/wp-content/uploads/, media/wp-content/uploads/2026/, media/wp-content/uploads/2026/poster.jpg
+    правка-кандидат (глубина по find .): отказ — чужие 4: media/wp-content/, media/wp-content/uploads/, media/wp-content/uploads/2026/, media/wp-content/uploads/2026/poster.jpg
+V3 ОПАСНЫЙ ПРОХОД — в privacy/ — .htpasswd и admin/ владельца; в _astro/ — чужая подпапка cache/
+    papka: проход | папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет; indeks: проход; первая: нет (на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)) — сверка сборки пропущена, домен — мягко
+    модель mirror --delete удалит: privacy/.htpasswd, privacy/admin/, privacy/admin/index.php, _astro/cache/, _astro/cache/x.bin
+    правка-кандидат (глубина по find .): отказ — чужие 5: privacy/.htpasswd, privacy/admin/, privacy/admin/index.php, _astro/cache/, _astro/cache/x.bin
+K1 проход — контроль: чистая прежняя выкладка + старые ассеты прошлой сборки в _astro/
+    papka: проход | папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет; indeks: проход; первая: нет (на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)) — сверка сборки пропущена, домен — мягко
+    модель mirror --delete удалит: _astro/index.OLDhash1.css, _astro/hero.OLD_abc.webp
+    правка-кандидат (глубина по find .): проход
+команда papka (корень чистой выкладки; то, что внутри mods/, media/, privacy/, сторож не видит): код 0 | папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет
+ИТОГ: образцов 4, опасных проходов 3; cls корня во всех образцах один и тот же — отличить может только find .

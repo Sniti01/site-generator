@@ -1,5 +1,5 @@
 # Выкладка 7thserpent.com на хостинг — GitHub Actions → FTPS (П106; форма deploy-ac4bf.yml, П54 п. 4
-# и его дополнение; «судью судят», раунд 1 — сторожа и порядок шагов).
+# и его дополнение; «судью судят», раунды 1–3 — сторожа и порядок шагов).
 #
 # ПРОТОКОЛ — FTPS (FTP с явным шифрованием TLS, порт 21), как у первого сайта: хостер тот же (П52 п. 1),
 # отдельный сайт 7thserpent.com в панели. Робот — отдельный пользователь FTP («Користувачі FTP») с «Каталогом
@@ -39,9 +39,10 @@
 #
 # Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
 # Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
-# первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2) → при первой: сборка CI = принятая (sha256
-# после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ → пересчёт файлов на сервере против
-# dist/ → live:check (SERPENT_LIVE). Красный гейт, сторож сборки или сторож выкладки останавливает прогон до
+# глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2) → при
+# первой: сборка CI = принятая (sha256 после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ без
+# главной, затем главная → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE). Красный
+# гейт, сторож сборки или сторож выкладки останавливает прогон до
 # того, как тронут сервер. Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы —
 # tools/testy/storozha-vykladki.test.mjs); циклов оболочки нет.
 #
@@ -138,12 +139,15 @@ jobs:
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+        # Порядок (SV3-O-4): корень (cls) и главная с картой прежней выкладки → суд корня → find . только после него
+        # (робот, который видит аккаунт, не обходит его целиком) → глубина. Ошибки find — в файл, их судит глубина.
         run: |
           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt
-          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist
+          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html --include-glob=sitemap-0.xml . remote-top; bye"
+          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml
           node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
+          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt 2> remote-before-oshibki.txt || echo "lftp: find закончился ненулевым кодом" >> remote-before-oshibki.txt
+          node $SITE/tools/storozha-vykladki.mjs glubina remote-before.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml remote-before-oshibki.txt
 
       - name: Первая выкладка?
         id: pervaya
@@ -167,8 +171,10 @@ jobs:
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
-        # Служебные папки хостера (сертификат, cgi) mirror не трогает и не удаляет (SV2-O-2, по документации lftp).
-        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"
+        # Служебные записи хостера (сертификат, cgi) mirror не трогает и не удаляет — папкой, ссылкой или файлом (SV2-O-2,
+        # SV3-O-1, по документации lftp). Главная — последней (SV3-O-5): mirror без неё, затем put; оборванная первая
+        # выкладка остаётся без нашего index.html, и повтор снова первый — со сверкой сборки.
+        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/ -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye"
 
       - name: Пересчёт на сервере
         env:

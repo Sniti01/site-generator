@@ -1,0 +1,985 @@
+TAP version 13
+# Subtest: секреты: все шесть, пользователи разные — проход
+ok 1 - секреты: все шесть, пользователи разные — проход
+  ---
+  duration_ms: 2.4734
+  type: 'test'
+  ...
+# Subtest: секреты: нет пароля — отказ
+ok 2 - секреты: нет пароля — отказ
+  ---
+  duration_ms: 0.186
+  type: 'test'
+  ...
+# Subtest: секреты: пароль из пробелов — отказ
+ok 3 - секреты: пароль из пробелов — отказ
+  ---
+  duration_ms: 0.1038
+  type: 'test'
+  ...
+# Subtest: секреты: нет хоста — отказ
+ok 4 - секреты: нет хоста — отказ
+  ---
+  duration_ms: 0.0874
+  type: 'test'
+  ...
+# Subtest: секреты: SV1-Z-4 нет ключа корпуса — отказ
+ok 5 - секреты: SV1-Z-4 нет ключа корпуса — отказ
+  ---
+  duration_ms: 0.1206
+  type: 'test'
+  ...
+# Subtest: секреты: порт не число — отказ
+ok 6 - секреты: порт не число — отказ
+  ---
+  duration_ms: 0.1201
+  type: 'test'
+  ...
+# Subtest: секреты: SV1-O-6 логин с кавычкой — отказ
+ok 7 - секреты: SV1-O-6 логин с кавычкой — отказ
+  ---
+  duration_ms: 0.1283
+  type: 'test'
+  ...
+# Subtest: секреты: SV1-O-6 хост с пробелом — отказ
+ok 8 - секреты: SV1-O-6 хост с пробелом — отказ
+  ---
+  duration_ms: 0.0829
+  type: 'test'
+  ...
+# Subtest: секреты: SV2-Z-7 логин с переводом строки в конце — отказ
+ok 9 - секреты: SV2-Z-7 логин с переводом строки в конце — отказ
+  ---
+  duration_ms: 0.1033
+  type: 'test'
+  ...
+# Subtest: секреты: SV2-Z-7 порт с пробелом — отказ
+ok 10 - секреты: SV2-Z-7 порт с пробелом — отказ
+  ---
+  duration_ms: 0.1514
+  type: 'test'
+  ...
+# Subtest: секреты: SV2-Z-7 хост со схемой ftp:// — отказ
+ok 11 - секреты: SV2-Z-7 хост со схемой ftp:// — отказ
+  ---
+  duration_ms: 0.1115
+  type: 'test'
+  ...
+# Subtest: секреты: SV2-Z-7 хост строкой доступа user@host:21 — отказ
+ok 12 - секреты: SV2-Z-7 хост строкой доступа user@host:21 — отказ
+  ---
+  duration_ms: 0.0685
+  type: 'test'
+  ...
+# Subtest: секреты: пользователь = пользователь первого сайта — отказ
+ok 13 - секреты: пользователь = пользователь первого сайта — отказ
+  ---
+  duration_ms: 0.0652
+  type: 'test'
+  ...
+# Subtest: секреты: пользователь = первого сайта, другой регистр — отказ
+ok 14 - секреты: пользователь = первого сайта, другой регистр — отказ
+  ---
+  duration_ms: 0.0601
+  type: 'test'
+  ...
+# Subtest: секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ
+ok 15 - секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ
+  ---
+  duration_ms: 0.0731
+  type: 'test'
+  ...
+# Subtest: SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD)
+ok 16 - SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD)
+  ---
+  duration_ms: 0.1523
+  type: 'test'
+  ...
+# Subtest: SV2-Z-7 логины вида ax572417_claude, с точкой, дефисом и @ — проход
+ok 17 - SV2-Z-7 логины вида ax572417_claude, с точкой, дефисом и @ — проход
+  ---
+  duration_ms: 0.1051
+  type: 'test'
+  ...
+# Subtest: SV1-O-2, SV2-O-3 первая выкладка: вход on, или нет нашего index.html, или на сервере нет всех ключевых файлов
+ok 18 - SV1-O-2, SV2-O-3 первая выкладка: вход on, или нет нашего index.html, или на сервере нет всех ключевых файлов
+  ---
+  duration_ms: 0.7528
+  type: 'test'
+  ...
+# Subtest: домен: имя не разрешается (оба хоста)
+ok 19 - домен: имя не разрешается (оба хоста)
+  ---
+  duration_ms: 0.3371
+  type: 'test'
+  ...
+# Subtest: домен: заглушка «not configured» через https → http
+ok 20 - домен: заглушка «not configured» через https → http
+  ---
+  duration_ms: 0.3601
+  type: 'test'
+  ...
+# Subtest: домен: SV2-Z-6 заглушка: имя в <b>, &nbsp; и голое имя на запрос www — не привязан
+ok 21 - домен: SV2-Z-6 заглушка: имя в <b>, &nbsp; и голое имя на запрос www — не привязан
+  ---
+  duration_ms: 0.1264
+  type: 'test'
+  ...
+# Subtest: домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп
+ok 22 - домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп
+  ---
+  duration_ms: 0.126
+  type: 'test'
+  ...
+# Subtest: домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп
+ok 23 - домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп
+  ---
+  duration_ms: 0.1348
+  type: 'test'
+  ...
+# Subtest: домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп
+ok 24 - домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп
+  ---
+  duration_ms: 0.1377
+  type: 'test'
+  ...
+# Subtest: домен: наша сборка отвечает, первая выкладка — стоп
+ok 25 - домен: наша сборка отвечает, первая выкладка — стоп
+  ---
+  duration_ms: 0.1139
+  type: 'test'
+  ...
+# Subtest: домен: наша сборка отвечает, не первая — проход со строкой
+ok 26 - домен: наша сборка отвечает, не первая — проход со строкой
+  ---
+  duration_ms: 0.0987
+  type: 'test'
+  ...
+# Subtest: домен: SV2-Z-4 не первая, оба хоста — таймаут: проход, «не удалось узнать»
+ok 27 - домен: SV2-Z-4 не первая, оба хоста — таймаут: проход, «не удалось узнать»
+  ---
+  duration_ms: 0.1177
+  type: 'test'
+  ...
+# Subtest: домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп
+ok 28 - домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп
+  ---
+  duration_ms: 0.1564
+  type: 'test'
+  ...
+# Subtest: домен: голый хост отвечает парковкой, www не разрешается — первая — стоп
+ok 29 - домен: голый хост отвечает парковкой, www не разрешается — первая — стоп
+  ---
+  duration_ms: 0.0702
+  type: 'test'
+  ...
+# Subtest: домен: 403 пустого каталога — первая — стоп
+ok 30 - домен: 403 пустого каталога — первая — стоп
+  ---
+  duration_ms: 0.0621
+  type: 'test'
+  ...
+# Subtest: домен: ошибка сертификата — не понять, первая — стоп
+ok 31 - домен: ошибка сертификата — не понять, первая — стоп
+  ---
+  duration_ms: 0.0533
+  type: 'test'
+  ...
+# Subtest: домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори»
+ok 32 - домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори»
+  ---
+  duration_ms: 0.0483
+  type: 'test'
+  ...
+# Subtest: домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать»
+ok 33 - домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать»
+  ---
+  duration_ms: 0.0666
+  type: 'test'
+  ...
+# Subtest: домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп
+ok 34 - домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп
+  ---
+  duration_ms: 0.0648
+  type: 'test'
+  ...
+# Subtest: домен: петля редиректов — первая — стоп
+ok 35 - домен: петля редиректов — первая — стоп
+  ---
+  duration_ms: 0.0775
+  type: 'test'
+  ...
+# Subtest: папка робота: корень аккаунта с папками доменов
+ok 36 - папка робота: корень аккаунта с папками доменов
+  ---
+  duration_ms: 1.0358
+  type: 'test'
+  ...
+# Subtest: папка робота: папка домена с www/
+ok 37 - папка робота: папка домена с www/
+  ---
+  duration_ms: 0.0898
+  type: 'test'
+  ...
+# Subtest: папка робота: папка домена с WWW/ заглавными
+ok 38 - папка робота: папка домена с WWW/ заглавными
+  ---
+  duration_ms: 0.0525
+  type: 'test'
+  ...
+# Subtest: папка робота: корень первого сайта
+ok 39 - папка робота: корень первого сайта
+  ---
+  duration_ms: 0.1857
+  type: 'test'
+  ...
+# Subtest: папка робота: index.html в списке, содержимого нет
+ok 40 - папка робота: index.html в списке, содержимого нет
+  ---
+  duration_ms: 0.0619
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A1 корень первого сайта без index.html
+ok 41 - папка робота: SV1-O-1 A1 корень первого сайта без index.html
+  ---
+  duration_ms: 0.1225
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A2 робот в папке _astro первого сайта
+ok 42 - папка робота: SV1-O-1 A2 робот в папке _astro первого сайта
+  ---
+  duration_ms: 0.0615
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A3 сайт на PHP
+ok 43 - папка робота: SV1-O-1 A3 сайт на PHP
+  ---
+  duration_ms: 0.9804
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A4 Index.html первого сайта
+ok 44 - папка робота: SV1-O-1 A4 Index.html первого сайта
+  ---
+  duration_ms: 0.0834
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A5 INDEX.HTML
+ok 45 - папка робота: SV1-O-1 A5 INDEX.HTML
+  ---
+  duration_ms: 0.0572
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A6 index.htm
+ok 46 - папка робота: SV1-O-1 A6 index.htm
+  ---
+  duration_ms: 0.0443
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-4 A8 папки доменов без отметки типа
+ok 47 - папка робота: SV1-O-4 A8 папки доменов без отметки типа
+  ---
+  duration_ms: 0.0621
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN)
+ok 48 - папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN)
+  ---
+  duration_ms: 4.9524
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-4 A10 www без косой
+ok 49 - папка робота: SV1-O-4 A10 www без косой
+  ---
+  duration_ms: 0.1294
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов»
+ok 50 - папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов»
+  ---
+  duration_ms: 0.1264
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-O-1 P1a наш index.html и WordPress рядом
+ok 51 - папка робота: SV2-O-1 P1a наш index.html и WordPress рядом
+  ---
+  duration_ms: 0.1506
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-O-1 P1b копия нашей главной в корне первого сайта (guides/)
+ok 52 - папка робота: SV2-O-1 P1b копия нашей главной в корне первого сайта (guides/)
+  ---
+  duration_ms: 0.1693
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-O-1 P1d папка поддомена blog/ рядом с нашей выкладкой
+ok 53 - папка робота: SV2-O-1 P1d папка поддомена blog/ рядом с нашей выкладкой
+  ---
+  duration_ms: 0.151
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-O-1 P1e .ssh/, mail/, tmp/ рядом с нашей выкладкой
+ok 54 - папка робота: SV2-O-1 P1e .ssh/, mail/, tmp/ рядом с нашей выкладкой
+  ---
+  duration_ms: 0.1135
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-Z-1 оборванная первая выкладка: часть нашей сборки без index.html — отказ с верной причиной
+ok 55 - папка робота: SV2-Z-1 оборванная первая выкладка: часть нашей сборки без index.html — отказ с верной причиной
+  ---
+  duration_ms: 0.1485
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-Z-1 оборванная на index.html (.in.index.html.)
+ok 56 - папка робота: SV2-Z-1 оборванная на index.html (.in.index.html.)
+  ---
+  duration_ms: 0.0774
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-Z-1 файлы хостера .htaccess и favicon.ico — удалить
+ok 57 - папка робота: SV2-Z-1 файлы хостера .htaccess и favicon.ico — удалить
+  ---
+  duration_ms: 0.076
+  type: 'test'
+  ...
+# Subtest: папка робота: пустой корень
+ok 58 - папка робота: пустой корень
+  ---
+  duration_ms: 0.0535
+  type: 'test'
+  ...
+# Subtest: папка робота: пустой корень с CRLF
+ok 59 - папка робота: пустой корень с CRLF
+  ---
+  duration_ms: 0.0639
+  type: 'test'
+  ...
+# Subtest: папка робота: пустой вывод lftp (MLSD без ./ ../)
+ok 60 - папка робота: пустой вывод lftp (MLSD без ./ ../)
+  ---
+  duration_ms: 0.0499
+  type: 'test'
+  ...
+# Subtest: папка робота: заглушка хостера (index.html без canonical)
+ok 61 - папка робота: заглушка хостера (index.html без canonical)
+  ---
+  duration_ms: 0.1176
+  type: 'test'
+  ...
+# Subtest: папка робота: свежий каталог хостера: .well-known/ и cgi-bin/
+ok 62 - папка робота: свежий каталог хостера: .well-known/ и cgi-bin/
+  ---
+  duration_ms: 0.0667
+  type: 'test'
+  ...
+# Subtest: папка робота: прежняя наша выкладка
+ok 63 - папка робота: прежняя наша выкладка
+  ---
+  duration_ms: 0.0669
+  type: 'test'
+  ...
+# Subtest: папка робота: прежняя наша выкладка и .well-known/ сертификата
+ok 64 - папка робота: прежняя наша выкладка и .well-known/ сертификата
+  ---
+  duration_ms: 0.0541
+  type: 'test'
+  ...
+# Subtest: папка робота: SV2-Z-8 прежняя наша выкладка и ссылка .well-known@ хостера
+ok 65 - папка робота: SV2-Z-8 прежняя наша выкладка и ссылка .well-known@ хостера
+  ---
+  duration_ms: 0.0536
+  type: 'test'
+  ...
+# Subtest: папка робота: прежняя наша выкладка и остаток .in. оборванной второй
+ok 66 - папка робота: прежняя наша выкладка и остаток .in. оборванной второй
+  ---
+  duration_ms: 0.0548
+  type: 'test'
+  ...
+# Subtest: SV3-O-2 приставка .in. пропускает только временный файл lftp для файла сборки
+not ok 67 - SV3-O-2 приставка .in. пропускает только временный файл lftp для файла сборки
+  ---
+  duration_ms: 0.892
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:177:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    .in.backup/: папка робота: наша сборка (index.html с canonical главной), записей 3, чужих нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:180:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-1 своя старая страница (есть в карте прежней выкладки) рядом с нашей сборкой — проход
+not ok 68 - SV3-Z-1 своя старая страница (есть в карте прежней выкладки) рядом с нашей сборкой — проход
+  ---
+  duration_ms: 0.251
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:185:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    СТОП: рядом с нашей сборкой чужие записи (1: max-payne-4) — их нет в верхе сборки; mirror --delete стёр бы их. Проверь «Каталог доступу» и содержимое 7thserpent.com/www; своё удали в файловом менеджере панели.
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:187:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-2 оборванная первая выкладка без _astro (файлы корня легли первыми) — своя причина
+not ok 69 - SV3-Z-2 оборванная первая выкладка без _astro (файлы корня легли первыми) — своя причина
+  ---
+  duration_ms: 0.2731
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:195:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /оборванная первая выкладка или файлы хостера/. Input:
+    
+    'СТОП: в корне робота непустой каталог без нашей сборки (4 записей, например .htaccess, .in.favicon-32x32.png. и 2 с именами доменов) — чужой сайт, не тот каталог или файлы хостера (.htaccess, favicon.ico — удали их в файловом менеджере панели); mirror --delete стёр бы его. Проверь «Каталог доступу» и содержимое 7thserpent.com/www.'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'СТОП: в корне робота непустой каталог без нашей сборки (4 записей, например .htaccess, .in.favicon-32x32.png. и 2 с именами доменов) — чужой сайт, не тот каталог или файлы хостера (.htaccess, favicon.ico — удали их в файловом менеджере панели); mirror --delete стёр бы его. Проверь «Каталог доступу» и содержимое 7thserpent.com/www.'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:198:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-3 имена файлов в отказе печатаются, имена доменов — нет
+not ok 70 - SV3-Z-3 имена файлов в отказе печатаются, имена доменов — нет
+  ---
+  duration_ms: 0.2083
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:201:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /favicon-48x48\.png/. Input:
+    
+    'СТОП: рядом с нашей сборкой чужие записи (3: 3 с именами доменов) — их нет в верхе сборки; mirror --delete стёр бы их. Проверь «Каталог доступу» и содержимое 7thserpent.com/www; своё удали в файловом менеджере панели.'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'СТОП: рядом с нашей сборкой чужие записи (3: 3 с именами доменов) — их нет в верхе сборки; mirror --delete стёр бы их. Проверь «Каталог доступу» и содержимое 7thserpent.com/www; своё удали в файловом менеджере панели.'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:204:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-O-3 глубина: чужое внутри наших папок при прежней выкладке — отказ; старые ассеты и своя старая страница — проход
+not ok 71 - SV3-O-3 глубина: чужое внутри наших папок при прежней выкладке — отказ; старые ассеты и своя старая страница — проход
+  ---
+  duration_ms: 0.2783
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:209:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    нет функции glubina
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:211:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: отказ не печатает имён доменов аккаунта
+ok 72 - папка робота: отказ не печатает имён доменов аккаунта
+  ---
+  duration_ms: 0.1234
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: index.html нет
+ok 73 - index.html до mirror: index.html нет
+  ---
+  duration_ms: 0.1196
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: наш
+ok 74 - index.html до mirror: наш
+  ---
+  duration_ms: 0.0706
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки
+ok 75 - index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки
+  ---
+  duration_ms: 0.0653
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: первого сайта
+ok 76 - index.html до mirror: первого сайта
+  ---
+  duration_ms: 0.0498
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: заглушка хостера без canonical
+ok 77 - index.html до mirror: заглушка хостера без canonical
+  ---
+  duration_ms: 0.111
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: canonical http без www
+ok 78 - index.html до mirror: canonical http без www
+  ---
+  duration_ms: 0.0467
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: canonical страницы, не главной
+ok 79 - index.html до mirror: canonical страницы, не главной
+  ---
+  duration_ms: 0.0446
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: два canonical
+ok 80 - index.html до mirror: два canonical
+  ---
+  duration_ms: 0.0485
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: SV1-Z-6, SV2-Z-3 пустой файл
+ok 81 - index.html до mirror: SV1-Z-6, SV2-Z-3 пустой файл
+  ---
+  duration_ms: 0.0376
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: SV1-Z-6 оборванный файл
+ok 82 - index.html до mirror: SV1-Z-6 оборванный файл
+  ---
+  duration_ms: 0.1064
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: SV2-Z-3 заглушка хостера без </html> — не «прошлая выкладка»
+ok 83 - index.html до mirror: SV2-Z-3 заглушка хостера без </html> — не «прошлая выкладка»
+  ---
+  duration_ms: 0.0629
+  type: 'test'
+  ...
+# Subtest: разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF
+ok 84 - разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF
+  ---
+  duration_ms: 0.5994
+  type: 'test'
+  ...
+# Subtest: сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ
+ok 85 - сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ
+  ---
+  duration_ms: 21.9963
+  type: 'test'
+  ...
+# Subtest: SV1-Z-1 сборка CI отличается только значениями cid и хешем имени CSS — проход, названо
+ok 86 - SV1-Z-1 сборка CI отличается только значениями cid и хешем имени CSS — проход, названо
+  ---
+  duration_ms: 24.0382
+  type: 'test'
+  ...
+# Subtest: SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI
+ok 87 - SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI
+  ---
+  duration_ms: 17.0889
+  type: 'test'
+  ...
+# Subtest: SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления)
+ok 88 - SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления)
+  ---
+  duration_ms: 13.8427
+  type: 'test'
+  ...
+# Subtest: SV2-O-5 N1 CSS переименован, а страницы ссылаются на старое имя — отказ (битая ссылка)
+ok 89 - SV2-O-5 N1 CSS переименован, а страницы ссылаются на старое имя — отказ (битая ссылка)
+  ---
+  duration_ms: 12.0708
+  type: 'test'
+  ...
+# Subtest: SV2-O-5 N1b одна страница ссылается на несуществующий CSS — отказ
+ok 90 - SV2-O-5 N1b одна страница ссылается на несуществующий CSS — отказ
+  ---
+  duration_ms: 11.3207
+  type: 'test'
+  ...
+# Subtest: SV2-O-5 N2 два CSS с одним именем, ссылки переставлены — отказ
+ok 91 - SV2-O-5 N2 два CSS с одним именем, ссылки переставлены — отказ
+  ---
+  duration_ms: 15.2421
+  type: 'test'
+  ...
+# Subtest: SV2-Z-2 N2b законная пара index.*.css с одним именем на раннере — проход
+ok 92 - SV2-Z-2 N2b законная пара index.*.css с одним именем на раннере — проход
+  ---
+  duration_ms: 20.2371
+  type: 'test'
+  ...
+# Subtest: SV3-O-6 пара CSS, различная только значением cid, ссылки переставлены — отказ
+not ok 93 - SV3-O-6 пара CSS, различная только значением cid, ссылки переставлены — отказ
+  ---
+  duration_ms: 39.3949
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:421:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:428:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-4 та же пара на раннере (иной cid ядра и хеш одного имени) — проход
+not ok 94 - SV3-Z-4 та же пара на раннере (иной cid ядра и хеш одного имени) — проход
+  ---
+  duration_ms: 32.2234
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:434:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    СТОП: сборка CI не равна принятой (abc1234) — нет 1: _astro/Card.#093470cf261c.css~_astro/Card.BBBBBBBB.css; лишние 1: _astro/Card.#093470cf261c.css~_astro/Card.ZZZZZZZZ.css; иные байты 1: _astro/Card.#093470cf261c.css; битые ссылки /_astro/ 0; метки cid в сырой сборке 0 (сверка — после нормализации cid и имён CSS). Сервер не тронут. | список сборки CI (для разбора; принять его вместо принятого — решение владельца): | {"sborka":"CI","fajlov":11,"fajly":{".htaccess":"b67f27f65f9a9596c080fef86eb075fe4620d863d694df2c920e473d23381be0","404/index.html":"f3622366721430796fe51bf75abf6611d6b6c03c4c45ba507ec53ccdee98f731","_astro/Card.BBBBBBBB.css":"251272aa0e356822245700d8b938f22b355b6bbeca9b257c0e4433e385efcb12","_astro/Card.ZZZZZZZZ.css":"52e632254bd85e6505d4a6e836f58ebc4a773b194c16ee339a94c962fb2663f7","_astro/a.webp":"a40ff3d5900fb7698b8c865041347cb49eccedc8f93945f89629ad104aaecce4","_astro/index.Cz6femgl.css":"0b5e6fead842a28ed17d8229dbb4ed0cadb73fdd24cb3ebe955256a7f0a652df","index.html":"8eb88652ef74ef3db118ab08f7e79c2a0084e898189ae58cc6a490237ed14281","privacy/index.html":"8048964de0487cd1eccc4d78530c7969e521b931f01090c0e6da204169837e58","robots.txt":"fd89345af6aca5dab85f2aa6a830e270a362b1fa6b5f19607ddd773a081ed651","sitemap-0.xml":"b2c34acc6bf53e33841dfc5d6f3bd20ceff013540a867b908cac8814aa34ee4e","sitemap-index.xml":"2a31f44da4bd7decbbd3ddfd1a37ae04d02ec665e2c2688816ccc65631586ed1"},"norm":{".htaccess":"b67f27f65f9a9596c080fef86eb075fe4620d863d694df2c920e473d23381be0","404/index.html":"2935d527eba8cadb0cf6deaf65b7113ec015bc4d7d0356a05afbc4065cd91b25","_astro/Card.#093470cf261c.css":"332eab9f20828bcde83b20dae05943e59ef5cf214c7485bfa4a0f18442a8c55c","_astro/Card.#093470cf261c.css~_astro/Card.ZZZZZZZZ.css":"07b039ece9d261fb28410529c4db8bc3b50f4ff75ae82ce0d16a10e9c65c835c","_astro/a.webp":"a40ff3d5900fb7698b8c865041347cb49eccedc8f93945f89629ad104aaecce4","_astro/index.#10fce698ea67.css":"27b2736305473d4e33d7db6d2f2e4ba47747bcd5bf143684c7527f1b65b40d58","index.html":"39a387b66bdeea7a16cd1307564f15cb9664f54f7256e3df486e5d1039cca3dc","privacy/index.html":"e9847bf36e7cbd7a2eb6435b0fdf17adc64c6fb966052f7c2d6a3cc6ee1e2ae8","robots.txt":"fd89345af6aca5dab85f2aa6a830e270a362b1fa6b5f19607ddd773a081ed651","sitemap-0.xml":"b2c34acc6bf53e33841dfc5d6f3bd20ceff013540a867b908cac8814aa34ee4e","sitemap-index.xml":"2a31f44da4bd7decbbd3ddfd1a37ae04d02ec665e2c2688816ccc65631586ed1"},"bityeSsylki":[],"metkiCid":[]}
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:440:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-5 «/_astro/» в robots.txt и комментариях — не ссылки; битая ссылка — код 1 у spisok
+not ok 95 - SV3-Z-5 «/_astro/» в robots.txt и комментариях — не ссылки; битая ссылка — код 1 у spisok
+  ---
+  duration_ms: 13.0231
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:446:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt → /_astro/* | robots.txt → /_astro/*.map$
+    + actual - expected
+    
+    + [
+    +   'robots.txt → /_astro/*',
+    +   'robots.txt → /_astro/*.map$'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'robots.txt → /_astro/*'
+    1: 'robots.txt → /_astro/*.map$'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:450:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-Z-6 .well-known в сборке — отказ папки до выкладки (mirror его не выложит); пересчёт фильтрует обе стороны
+not ok 96 - SV3-Z-6 .well-known в сборке — отказ папки до выкладки (mirror его не выложит); пересчёт фильтрует обе стороны
+  ---
+  duration_ms: 74.2072
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:459:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: пустой корень — первая выкладка
+    
+    
+    0 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:465:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV2-O-6 N5 метка нормализации «data-astro-cid-\#1» буквально в сборке — отказ
+ok 97 - SV2-O-6 N5 метка нормализации «data-astro-cid-\#1» буквально в сборке — отказ
+  ---
+  duration_ms: 11.1987
+  type: 'test'
+  ...
+# Subtest: пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ; служебные папки хостера — не считаются
+ok 98 - пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ; служебные папки хостера — не считаются
+  ---
+  duration_ms: 28.3011
+  type: 'test'
+  ...
+# Subtest: команда: неверные аргументы и нечитаемый вход — код 2
+ok 99 - команда: неверные аргументы и нечитаемый вход — код 2
+  ---
+  duration_ms: 408.022
+  type: 'test'
+  ...
+# Subtest: SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2, без сети
+ok 100 - SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2, без сети
+  ---
+  duration_ms: 193.8304
+  type: 'test'
+  ...
+# Subtest: команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT
+ok 101 - команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT
+  ---
+  duration_ms: 479.5339
+  type: 'test'
+  ...
+# Subtest: workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST
+ok 102 - workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST
+  ---
+  duration_ms: 0.1738
+  type: 'test'
+  ...
+# Subtest: workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on
+ok 103 - workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on
+  ---
+  duration_ms: 0.1341
+  type: 'test'
+  ...
+# Subtest: SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по входу или по серверу (index.html и ключевые файлы); пустой признак — первая
+ok 104 - SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по входу или по серверу (index.html и ключевые файлы); пустой признак — первая
+  ---
+  duration_ms: 0.1325
+  type: 'test'
+  ...
+# Subtest: SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал
+not ok 105 - SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал
+  ---
+  duration_ms: 0.3587
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:588:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /mirror --no-recursion --include-glob=index\.html --include-glob=sitemap-0\.xml \. remote-top/. Input:
+    
+    'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt\n' +
+      'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"\n' +
+      'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt\n' +
+      'node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist\n' +
+      'node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
+    lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
+    lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt
+    node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist
+    node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
+    
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:590:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put
+not ok 106 - SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put
+  ---
+  duration_ms: 0.1961
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:598:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /mirror [^;]*-x '\^index\\\.html\$' \$SITE\/dist\/ \.; put \$SITE\/dist\/index\.html -o index\.html; bye/. Input:
+    
+    'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:599:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл
+ok 107 - workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл
+  ---
+  duration_ms: 0.0832
+  type: 'test'
+  ...
+# Subtest: SV2-O-2, SV2-Z-8, SV3-O-1 workflow: mirror --delete не трогает служебные записи хостера — ни папкой, ни ссылкой или файлом
+not ok 108 - SV2-O-2, SV2-Z-8, SV3-O-1 workflow: mirror --delete не трогает служебные записи хостера — ни папкой, ни ссылкой или файлом
+  ---
+  duration_ms: 0.169
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:608:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /mirror --reverse --delete --verbose --parallel=4 -X \.well-known -X \.well-known\/ -X cgi-bin -X cgi-bin\/ /. Input:
+    
+    'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'lftp -e "$LFTP_SET open --env-password -u \\"$SERPENT_FTP_USER\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:609:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет
+ok 109 - SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет
+  ---
+  duration_ms: 0.1706
+  type: 'test'
+  ...
+# Subtest: SV1-Z-4, SV2-O-7 workflow: сторож секретов — до выгрузки корпуса; корпус — после npm ci, перед сборкой, ключом, без сохранения ключа
+ok 110 - SV1-Z-4, SV2-O-7 workflow: сторож секретов — до выгрузки корпуса; корпус — после npm ci, перед сборкой, ключом, без сохранения ключа
+  ---
+  duration_ms: 0.171
+  type: 'test'
+  ...
+# Subtest: workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после
+ok 111 - workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после
+  ---
+  duration_ms: 0.1098
+  type: 'test'
+  ...
+# Subtest: workflow: команды сторожей — те, что знает сторож; циклов оболочки нет
+not ok 112 - workflow: команды сторожей — те, что знает сторож; циклов оболочки нет
+  ---
+  duration_ms: 0.4827
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:637:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'domen',
+    -   'glubina',
+        'indeks',
+        'papka',
+        'pereschet',
+        'pervaya',
+        'sekrety',
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'domen'
+    1: 'glubina'
+    2: 'indeks'
+    3: 'papka'
+    4: 'pereschet'
+    5: 'pervaya'
+    6: 'sekrety'
+    7: 'sverka-dist'
+  actual:
+    0: 'domen'
+    1: 'indeks'
+    2: 'papka'
+    3: 'pereschet'
+    4: 'pervaya'
+    5: 'sekrety'
+    6: 'sverka-dist'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:640:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..112
+# tests 112
+# suites 0
+# pass 99
+# fail 13
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1657.0089

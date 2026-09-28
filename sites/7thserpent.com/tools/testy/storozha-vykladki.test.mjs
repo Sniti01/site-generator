@@ -171,6 +171,57 @@ for (const [imya, spisok, index, zhdem, kusok] of PAPKA) {
   });
 }
 
+/* — раунд 3 — */
+const nashaKarta = (puti) => `<?xml version="1.0"?><urlset>${puti.map((p) => `<url><loc>https://www.7thserpent.com${p}</loc></url>`).join('')}</urlset>`;
+
+test('SV3-O-2 приставка .in. пропускает только временный файл lftp для файла сборки', () => {
+  for (const s of ['.in.backup/', '.in.wp-config.php.', '.in.7dtd.com.pl/', '.in.x@']) {
+    const r = papka(`./\n../\n_astro/\nindex.html\n${s}\n`, nash('/'), VERKH);
+    assert.equal(r.ok, false, `${s}: ${r.stroki.join(' | ')}`);
+  }
+  assert.equal(papka('./\n../\n_astro/\nindex.html\n.in.robots.txt.\n', nash('/'), VERKH).ok, true);
+});
+
+test('SV3-Z-1 своя старая страница (есть в карте прежней выкладки) рядом с нашей сборкой — проход', () => {
+  const r = papka('./\n../\n_astro/\nindex.html\nmax-payne-4/\n', nash('/'), VERKH, nashaKarta(['/', '/max-payne-4/']));
+  assert.equal(r.ok, true, r.stroki.join(' | '));
+  const bezKarty = papka('./\n../\n_astro/\nindex.html\nmax-payne-4/\n', nash('/'), VERKH, null);
+  assert.equal(bezKarty.ok, false);
+  assert.doesNotMatch(bezKarty.stroki.join(' '), /верх/);
+  // Карта чужого хоста не в счёт.
+  assert.equal(papka('./\n../\n_astro/\nindex.html\nblog/\n', nash('/'), VERKH, '<urlset><url><loc>https://www.ac4bf-thewatch.com/blog/</loc></url></urlset>').ok, false);
+});
+
+test('SV3-Z-2 оборванная первая выкладка без _astro (файлы корня легли первыми) — своя причина', () => {
+  const r = papka('./\n../\n.htaccess\napple-touch-icon.png\nfavicon-16x16.png\n.in.favicon-32x32.png.\n', null, VERKH);
+  assert.equal(r.ok, false);
+  assert.match(r.stroki.join(' '), /оборванная первая выкладка или файлы хостера/);
+});
+
+test('SV3-Z-3 имена файлов в отказе печатаются, имена доменов — нет', () => {
+  const r = papka('./\n../\n_astro/\nindex.html\nfavicon-48x48.png\nwp-config.php\n7dtd.com.pl\n', nash('/'), VERKH);
+  const s = r.stroki.join(' ');
+  assert.match(s, /favicon-48x48\.png/);
+  assert.match(s, /wp-config\.php/);
+  assert.doesNotMatch(s, /7dtd\.com\.pl/);
+});
+
+test('SV3-O-3 глубина: чужое внутри наших папок при прежней выкладке — отказ; старые ассеты и своя старая страница — проход', () => {
+  const { glubina } = SV;
+  assert.equal(typeof glubina, 'function', 'нет функции glubina');
+  const fajly = ['index.html', '.htaccess', 'robots.txt', 'mods/index.html', 'media/index.html', 'privacy/index.html', '_astro/index.Cz6femgl.css', '_astro/a.webp'];
+  const find = (dop) => ['./', ...fajly.map((f) => './' + f), ...dop.map((f) => './' + f)].join('\n');
+  for (const chuzhoe of [['mods/index.php', 'mods/uploads/x.zip'], ['media/wp-content/uploads/x.jpg'], ['privacy/.htpasswd'], ['_astro/cache/x.bin']]) {
+    const r = glubina(find(chuzhoe), nash('/'), fajly, null);
+    assert.equal(r.ok, false, `${chuzhoe}: ${r.stroki.join(' | ')}`);
+  }
+  assert.equal(glubina(find(['_astro/old.Ab12Cd34.css', '_astro/old.webp', '.well-known/acme-challenge/t', 'cgi-bin/x.cgi', '.in.robots.txt.', '_astro/.nfs0001']), nash('/'), fajly, null).ok, true);
+  assert.equal(glubina(find(['max-payne-4/index.html']), nash('/'), fajly, nashaKarta(['/max-payne-4/'])).ok, true);
+  assert.equal(glubina(find(['max-payne-4/index.html']), nash('/'), fajly, null).ok, false);
+  // Не прежняя выкладка — корень уже судил сторож папки: глубина не судится.
+  assert.equal(glubina('./\n./index.html\n./.well-known/x\n', zaglushkaHostera, fajly, null).ok, true);
+});
+
 test('папка робота: отказ не печатает имён доменов аккаунта', () => {
   for (const s of ['./\n../\n7dtd.com.pl/\nac4bf-thewatch.com/\n', './\n../\n_astro/\nindex.html\nac4bf-thewatch.com\n']) {
     const r = papka(s, nash('/'), VERKH);
@@ -361,6 +412,64 @@ test('SV2-Z-2 N2b законная пара index.*.css с одним имене
   }
 });
 
+const DVA_CSS_CID = {
+  '_astro/Card.AAAAAAAA.css': `.a[data-astro-cid-${CID_YADRA}]{color:red}`,
+  '_astro/Card.BBBBBBBB.css': `.a[data-astro-cid-${CID_SAYTA}]{color:red}`,
+  'index.html': (html) => html('/', 'Card.AAAAAAAA.css'),
+  'privacy/index.html': (html) => html('/privacy/', 'Card.BBBBBBBB.css'),
+};
+test('SV3-O-6 пара CSS, различная только значением cid, ссылки переставлены — отказ', () => {
+  const d = sborka(DVA_CSS_CID);
+  try {
+    const prin = { sborka: 'abc1234', ...spisokSborki(d) };
+    zamenitV(d, 'index.html', 'Card.AAAAAAAA.css', 'Card.TMP.css');
+    zamenitV(d, 'privacy/index.html', 'Card.BBBBBBBB.css', 'Card.AAAAAAAA.css');
+    zamenitV(d, 'index.html', 'Card.TMP.css', 'Card.BBBBBBBB.css');
+    assert.equal(sverkaDist(d, prin).ok, false);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test('SV3-Z-4 та же пара на раннере (иной cid ядра и хеш одного имени) — проход', () => {
+  const d = sborka(DVA_CSS_CID);
+  try {
+    const prin = { sborka: 'abc1234', ...spisokSborki(d) };
+    kakNaRannere(d, [['Card.AAAAAAAA.css', 'Card.ZZZZZZZZ.css']]);
+    const r = sverkaDist(d, prin);
+    assert.equal(r.ok, true, r.stroki.join(' | '));
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test('SV3-Z-5 «/_astro/» в robots.txt и комментариях — не ссылки; битая ссылка — код 1 у spisok', () => {
+  const d = sborka({ 'robots.txt': 'User-agent: *\n# /_astro/ stylesheets are not blocked\nAllow: /_astro/*\nDisallow: /_astro/*.map$\n' });
+  try {
+    const s = spisokSborki(d);
+    assert.deepEqual(s.bityeSsylki, [], s.bityeSsylki.join(' | '));
+    zamenitV(d, 'privacy/index.html', 'index.Cz6femgl.css', 'index.ZZZZZZZZ.css');
+    const r = spawnSync(process.execPath, [STOROZH, 'spisok', d], { encoding: 'utf8' });
+    assert.equal(r.status, 1, r.stderr);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
+test('SV3-Z-6 .well-known в сборке — отказ папки до выкладки (mirror его не выложит); пересчёт фильтрует обе стороны', () => {
+  const d = sborka({ '.well-known/security.txt': 'Contact: x' });
+  try {
+    const f = join(d, 'root.txt');
+    writeFileSync(f, './\n../\n');
+    const r = spawnSync(process.execPath, [STOROZH, 'papka', f, join(d, 'net.html'), d], { encoding: 'utf8' });
+    assert.equal(r.status, 1, r.stdout);
+    assert.match(r.stdout, /\.well-known/);
+    assert.equal(pereschet(findIz(d), d).ok, true);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
 test('SV2-O-6 N5 метка нормализации «data-astro-cid-#1» буквально в сборке — отказ', () => {
   const d = sborka();
   try {
@@ -476,8 +585,18 @@ test('SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по
   assert.ok(i('сборка CI равна принятой') > i('Первая выкладка?') && i('сборка CI равна принятой') < vykladka);
 });
 
-test('SV2-O-1 workflow: сторож папки знает верх сборки', () => {
-  assert.match(shag('Сторож папки робота').run, /storozha-vykladki\.mjs papka remote-root\.txt remote-top\/index\.html \$SITE\/dist/);
+test('SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал', () => {
+  const run = shag('Сторож папки робота').run;
+  assert.match(run, /mirror --no-recursion --include-glob=index\.html --include-glob=sitemap-0\.xml \. remote-top/);
+  assert.match(run, /storozha-vykladki\.mjs papka remote-root\.txt remote-top\/index\.html \$SITE\/dist remote-top\/sitemap-0\.xml/);
+  assert.match(run, /find \.; bye" > remote-before\.txt 2> remote-before-oshibki\.txt/);
+  assert.match(run, /storozha-vykladki\.mjs glubina remote-before\.txt remote-top\/index\.html \$SITE\/dist remote-top\/sitemap-0\.xml/);
+  const [iPapka, iIndeks, iFind, iGlubina] = ['papka remote-root', 'indeks remote-top', 'find .; bye', 'glubina remote-before'].map((k) => run.indexOf(k));
+  assert.ok(iPapka < iIndeks && iIndeks < iFind && iFind < iGlubina, `${iPapka} ${iIndeks} ${iFind} ${iGlubina}`);
+});
+
+test('SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put', () => {
+  assert.match(shag('Выкладка по FTPS').run, /mirror [^;]*-x '\^index\\\.html\$' \$SITE\/dist\/ \.; put \$SITE\/dist\/index\.html -o index\.html; bye/);
 });
 
 test('workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл', () => {
@@ -486,8 +605,8 @@ test('workflow: TZ Europe/Warsaw, FTPS принудительно, сертиф�
   for (const s of ['set ftp:ssl-force true;', 'set ftp:ssl-protect-data true;', 'set ssl:verify-certificate yes;', 'set cmd:fail-exit yes;', 'set xfer:use-temp-file yes;']) assert.ok(job.env.LFTP_SET.includes(s), s);
 });
 
-test('SV2-O-2, SV2-Z-8 workflow: mirror --delete не трогает служебные папки хостера', () => {
-  assert.match(shag('Выкладка по FTPS').run, /mirror --reverse --delete --verbose --parallel=4 -X \.well-known\/ -X cgi-bin\/ \$SITE\/dist\/ \./);
+test('SV2-O-2, SV2-Z-8, SV3-O-1 workflow: mirror --delete не трогает служебные записи хостера — ни папкой, ни ссылкой или файлом', () => {
+  assert.match(shag('Выкладка по FTPS').run, /mirror --reverse --delete --verbose --parallel=4 -X \.well-known -X \.well-known\/ -X cgi-bin -X cgi-bin\/ /);
 });
 
 test('SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет', () => {
@@ -518,6 +637,6 @@ test('workflow: порядок — секреты, сборка, сторож п
 test('workflow: команды сторожей — те, что знает сторож; циклов оболочки нет', () => {
   const run = shagi.map((s) => s.run ?? '').join('\n');
   const komandy = [...run.matchAll(/storozha-vykladki\.mjs (\S+)/g)].map((m) => m[1]);
-  assert.deepEqual(komandy.sort(), ['domen', 'indeks', 'papka', 'pereschet', 'pervaya', 'sekrety', 'sverka-dist'].sort());
+  assert.deepEqual(komandy.sort(), ['domen', 'glubina', 'indeks', 'papka', 'pereschet', 'pervaya', 'sekrety', 'sverka-dist'].sort());
   assert.doesNotMatch(run, /(^|[\s;])(for|while|until)\s/m);
 });

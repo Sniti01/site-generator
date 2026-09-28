@@ -1,0 +1,15 @@
+SV3-O-1 исключения mirror в workflow: -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/
+    S1 ссылки .well-known@ cgi-bin@: mirror удалит —; не тронет .well-known@, cgi-bin@
+    S2 прежняя выкладка и .well-known@: mirror удалит —; не тронет .well-known@
+    S3 файлы .well-known и cgi-bin: mirror удалит —; не тронет .well-known, cgi-bin
+    K1 папки .well-known/ cgi-bin/: mirror удалит —; не тронет .well-known/, cgi-bin/
+SV3-O-3 V1 в mods/ чужой поддомен: glubina код 1 | СТОП: внутри папок сайта файлы, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (4: mods/.htaccess, mods/index.php, mods/uploads/mp2-widescreen.
+SV3-O-3 V2 в media/ wp-content: glubina код 1 | СТОП: внутри папок сайта файлы, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: media/wp-content/uploads/2026/poster.jpg) — mirror --delete 
+SV3-O-3 V3 в privacy/ .htpasswd и admin/, _astro/cache/: glubina код 1 | СТОП: внутри папок сайта файлы, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (3: privacy/.htpasswd, privacy/admin/index.php, _astro/cache/x.b
+SV3-O-3 K1 старые ассеты в _astro/: glubina код 0 | глубина: внутри папок сайта чужого нет (файлы сборки, прежние ассеты _astro/, страницы карты прежней выкладки, служебное)
+SV3-O-4 ошибки find в файле: glubina код 1 | СТОП: find . на сервере закончился с ошибками (1 строк; первая: find: Access failed: 550 Permission denied (./privacy)) 
+SV3-O-4 порядок cls → papka → indeks → find → glubina: да (670, 976, 1105, 1258, 1446)
+SV3-O-5 главная последней: точек обрыва mirror (0…164 файлов без главной), где повтор — «не первая»: 0; mirror закончен, put не прошёл: первая — да (на сервере нет index.html)
+    workflow: …  -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye
+SV3-Z-1 max-payne-4/ в карте прежней выкладки: papka код 0; без карты: код 1 | СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: max-payne-4) — m
+    глубина той же старой страницы с картой: код 0

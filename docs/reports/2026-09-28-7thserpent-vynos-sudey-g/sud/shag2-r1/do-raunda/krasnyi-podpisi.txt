@@ -1,0 +1,124 @@
+▶ П103 п. 4: подпись кадра героя снята на странице, где стоит сейчас, — замечание (шесть страниц)
+  ✔ /remake/ (27.3289ms)
+  ✔ /movie/ (9.5522ms)
+  ✖ /media/ (8.3668ms)
+  ✖ /mods/ (7.3856ms)
+  ✖ /quotes/ (6.8371ms)
+  ✖ /voice-and-face/ (4.7327ms)
+✖ П103 п. 4: подпись кадра героя снята на странице, где стоит сейчас, — замечание (шесть страниц) (65.6753ms)
+✖ П103 п. 4: обязательные подписи в данных сверки = страницы с подписью кадра в содержании (1.1561ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 2
+ℹ fail 6
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 257.1058
+
+✖ failing tests:
+
+test at tools\testy\sverka.test.mjs:58:13
+✖ /media/ (8.3668ms)
+  AssertionError [ERR_ASSERTION]: ждали «подпись кадра обязательна у героя /media/», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:65:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:58:13)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:58:13
+✖ /mods/ (7.3856ms)
+  AssertionError [ERR_ASSERTION]: ждали «подпись кадра обязательна у героя /mods/», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:65:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:58:13)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:58:13
+✖ /quotes/ (6.8371ms)
+  AssertionError [ERR_ASSERTION]: ждали «подпись кадра обязательна у героя /quotes/», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:65:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:58:13)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:58:13
+✖ /voice-and-face/ (4.7327ms)
+  AssertionError [ERR_ASSERTION]: ждали «подпись кадра обязательна у героя /voice-and-face/», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:65:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:58:13)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:70:1
+✖ П103 п. 4: обязательные подписи в данных сверки = страницы с подписью кадра в содержании (1.1561ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  -   '/media/',
+  -   '/mods/',
+      '/movie/',
+  -   '/quotes/',
+      '/remake/',
+  -   '/voice-and-face/'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:72:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ '/movie/', '/remake/' ],
+    expected: [ '/media/', '/mods/', '/movie/', '/quotes/', '/remake/', '/voice-and-face/' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

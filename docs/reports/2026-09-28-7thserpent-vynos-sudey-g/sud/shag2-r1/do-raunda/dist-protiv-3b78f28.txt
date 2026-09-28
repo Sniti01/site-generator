@@ -1,0 +1,6 @@
+A: ref/dist-7th-3b78f28 — файлов 162
+B: D:/SEO/cloud/site-generator/sites/7thserpent.com/dist — файлов 162
+только в A: 0 (0 байт)
+только в B: 0
+различаются: 0
+HTML в A: 17; равны в B: 17

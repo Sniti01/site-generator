@@ -11,9 +11,9 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, cpSync, readFileSync, writeFileSync, rmSync, symlinkSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
-import { sverkaStranicy, vhody, sverkaSborki } from '../sverka.mjs';
-import { stranica, SAYT, dist } from './obshchee.mjs';
-import { OBYAZATELNAYA_PODPIS } from '../../gates/sverka.mjs';
+import { sverkaStranicy, vhody, sverkaSborki } from 'file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/sverka.mjs';
+import { stranica, SAYT, dist } from 'file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/obshchee.mjs';
+import { OBYAZATELNAYA_PODPIS } from 'file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/s2r1/s2r1-zakon/gates-dva.mjs';
 
 const V = vhody(SAYT);
 // Страницы, где подпись кадра героя обязательна, — данные сверки сайта, те же, что у сторожа сборки (П103 п. 4).
@@ -71,87 +71,6 @@ test('П103 п. 4: обязательные подписи в данных св�
   const vSoderzhanii = V.soderzhanie.filter((s) => s.dane?.artCaption).map((s) => s.dane.url).sort();
   assert.deepEqual([...OBYAZATELNA].sort(), vSoderzhanii);
   assert.deepEqual(vSoderzhanii, [...S_PODPISYU].sort(), 'подпись кадра стоит не там, где назвал владелец (П103 п. 4)');
-});
-
-// «Судью судят», раунд 1 по правке шага 2 (S2R1-*): на шести страницах подпись не может исчезнуть или перестать
-// говорить о кадре молча — скрытие атрибутом у подписи и у предков героя, метка области, имя элемента, элементы
-// внутри, невидимые и управляющие знаки, страница из списка без героя; сверка слушает свой список, а сторож сборки
-// (`astro.config.mjs`) несёт тот же список, что данные сверки.
-test('S2R1: подпись кадра на шести страницах — скрыта, подменена или пуста — замечание', async (t) => {
-  const PODPIS_TEG = /<p class="podpis-geroya t-caption"( data-astro-cid-[a-z0-9]+)>/;
-  const PODPIS = /<p class="podpis-geroya t-caption"[^>]*>([\s\S]*?)<\/p>/;
-  const zamenaPodpisi = (h, f) => h.replace(PODPIS, (x, tekst) => f(x, tekst));
-  const PORCHI = [
-    ['S2R1-K-1 hidden у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption"$1 hidden>'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 hidden="until-found" у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption"$1 hidden="until-found">'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 aria-hidden у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption"$1 aria-hidden="true">'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 inert у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption"$1 inert>'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 popover у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption"$1 popover>'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 класс visually-hidden у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption visually-hidden"$1>'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-P-2 класс skip-link у подписи', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption skip-link"$1>'), null, 'атрибуты подписи кадра вне печати маршрута'],
-    ['S2R1-K-1 hidden у героя', (h) => h.replace('<section class="hero', '<section hidden class="hero'), null, 'подпись кадра скрыта предком'],
-    ['S2R1-K-1 aria-hidden у героя', (h) => h.replace('<section class="hero', '<section aria-hidden="true" class="hero'), null, 'подпись кадра скрыта предком'],
-    ['S2R1-K-1 inert у обёртки героя', (h) => h.replace('<div class="geroy', '<div inert class="geroy'), null, 'подпись кадра скрыта предком'],
-    ['S2R1-P-2 hidden у <main>', (h) => h.replace('<main id="content"', '<main hidden id="content"'), null, 'подпись кадра скрыта предком'],
-    ['S2R1-K-2 подпись без метки области', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption">'), null, 'метки области подписи кадра'],
-    ['S2R1-K-3 подпись — <dialog>', (h) => zamenaPodpisi(h, (x) => x.replace(/^<p\b/, '<dialog').replace(/<\/p>$/, '</dialog>')), null, 'подпись кадра — <dialog>'],
-    ['S2R1-K-3 подпись — <details>', (h) => zamenaPodpisi(h, (x) => x.replace(/^<p\b/, '<details').replace(/<\/p>$/, '</details>')), null, 'подпись кадра — <details>'],
-    ['S2R1-K-3 подпись — <noscript>', (h) => zamenaPodpisi(h, (x) => x.replace(/^<p\b/, '<noscript').replace(/<\/p>$/, '</noscript>')), null, 'подпись кадра — <noscript>'],
-    ['S2R1-K-4 текст подписи в <span hidden>', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, `<span hidden>${tekst}</span>`)), null, 'элементы в подписи кадра'],
-    ['S2R1-K-4 текст подписи после теневого корня без slot', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, `<template shadowrootmode="open"></template>${tekst}`)), null, 'элементы в подписи кадра'],
-    ['S2R1-K-4 текст подписи в <ruby><rp>', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, `<ruby><rp>${tekst}</rp></ruby>`)), null, 'элементы в подписи кадра'],
-    ['S2R1-K-5 подпись из одного U+200B', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, '​')), (d) => { d.artCaption = '​'; return d; }, 'подпись кадра обязательна у героя'],
-    ['S2R1-K-5 подпись из одного U+00AD', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, '­')), (d) => { d.artCaption = '­'; return d; }, 'подпись кадра обязательна у героя'],
-    ['S2R1-P-3 подпись задом наперёд (U+202E)', (h) => zamenaPodpisi(h, (x, tekst) => x.replace(tekst, '‮' + tekst)), (d) => { d.artCaption = '‮' + d.artCaption; return d; }, 'невидимые знаки в подписи кадра'],
-  ];
-  for (const url of S_PODPISYU) {
-    for (const [imya, html, dane, prichina] of PORCHI) {
-      await t.test(`${url}: ${imya}`, () => {
-        const x = po(url);
-        const h = html(x.html);
-        assert.notEqual(h, x.html, 'порча не применилась');
-        const z = sverit(x, h, dane ? dane(klon(x.dane)) : x.dane, x.page);
-        assert.ok(z.some((y) => y.includes(prichina)), `ждали «${prichina}», получено: ${z.join(' | ').slice(0, 400) || 'замечаний нет'}`);
-      });
-    }
-  }
-});
-
-test('S2R1-P-1: страница из списка обязательных подписей без героя — замечание (снять героя — громко)', () => {
-  const s404 = po('/404/');
-  for (const url of S_PODPISYU) {
-    const page = { ...klon(po(url).page), blocks: klon(s404.page.blocks) };
-    const dane = { ...klon(s404.dane), url };
-    const z = sverit(s404, s404.html, dane, page);
-    assert.ok(z.some((y) => y.includes(`подпись кадра обязательна у героя ${url}`)), `${url}: ${z.join(' | ').slice(0, 300) || 'замечаний нет'}`);
-  }
-});
-
-test('S2R1-Z-2: сверка слушает переданный список обязательных подписей', () => {
-  const media = po('/media/');
-  const bez = klon(media.dane);
-  delete bez.artCaption;
-  const html = media.html.replace(/<p class="podpis-geroya[^"]*"[^>]*>[\s\S]*?<\/p>/, '');
-  const vne = sverkaStranicy({ page: media.page, dane: bez, html, kredity: V.kredity, ikony: V.ikony, obyazatelnaPodpis: new Set(['/remake/']) });
-  assert.ok(!vne.some((y) => y.includes('подпись кадра обязательна')), `/media/ вне списка: ${vne.join(' | ')}`);
-  const story = po('/story/');
-  assert.ok(!story.dane.artCaption, 'стенд: у /story/ подписи кадра нет');
-  const v = sverkaStranicy({ page: story.page, dane: story.dane, html: story.html, kredity: V.kredity, ikony: V.ikony, obyazatelnaPodpis: new Set(['/story/']) });
-  assert.ok(v.some((y) => y.includes('подпись кадра обязательна у героя /story/')), `/story/ в списке: ${v.join(' | ') || 'замечаний нет'}`);
-});
-
-test('S2R1-P-1: адрес списка, которого нет среди страниц содержания с героем, — замечание сверки сборки', () => {
-  for (const url of ['/media', '/net-takoy/', '/404/']) {
-    const z = sverkaSborki(dist(), SAYT, { obyazatelnaPodpis: new Set([...OBYAZATELNA, url]) }).zamechaniya;
-    assert.ok(z.some((y) => y.url === url && y.chto.includes('из списка обязательных подписей')), `${url}: ${JSON.stringify(z).slice(0, 300)}`);
-  }
-});
-
-test('S2R1-Z-1, S2R1-K-7: сторож сборки из astro.config.mjs несёт тот же список, что данные сверки', async () => {
-  const { default: konfig } = await import('../../astro.config.mjs');
-  const integ = konfig.integrations.find((i) => i?.name === 'sayt:sverka-dist');
-  assert.ok(integ, 'в astro.config.mjs нет сторожа sayt:sverka-dist');
-  assert.deepEqual(integ.obyazatelnaPodpis, OBYAZATELNAYA_PODPIS);
 });
 
 test('сверка пачки 1 (призыв, кадры рядов, нота): порчи', async (t) => {

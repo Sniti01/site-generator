@@ -23,8 +23,10 @@
  *     `p.podpis-geroya.t-caption` в `<main>`, последним узлом секции героя (элемент или непустой
  *     текст) ⇔ `artCaption`, у страниц, где кадр — не игра страницы, обязательна (данные сайта:
  *     `/remake/`, `/movie/`); кнопки — ровно одна `a.btn-primary` и одна `a.btn-secondary` в герое,
- *     адрес и надпись — из содержания, иконка главной — ровно один `svg`, все его элементы — `path`
- *     стрелки вниз при якоре, вправо при адресе (`src/data/icons.ts`), путей вне `svg` нет; лид — `lead`. Героя нет — `h1` в `header.page-head`, подписи кадра нет;
+ *     адрес и надпись — из содержания, иконка главной — ровно один `svg` без `transform` и `style`, его
+ *     элементы с именами и всеми атрибутами — как разметка стрелки вниз при якоре, вправо при адресе
+ *     (`src/data/icons.ts`, разобранная так же), элементов вне `svg` нет; кадровка — последнее `--fokus`
+ *     обёртки, `--fokus` и `object-position` у потомков героя — замечание; лид — `lead`. Героя нет — `h1` в `header.page-head`, подписи кадра нет;
  *   - ПОДПИСЬ `byline` объявлена ⇔ ровно один `div.byline` — после героя и раньше первого ряда;
  *     `time[datetime]` = `date`, тексты автора, даты и приписки — из содержания;
  *   - РЯДЫ — `section.layer` в `<main>` ровно столько и в том порядке, что печатает маршрут
@@ -41,37 +43,53 @@
  *     тона `kadr-galerei` и картинкой (как у героя), ровно одна `figcaption.t-caption` = `caption`,
  *     другого текста нет; текста в секции вне заголовка, строки и кадров нет; `kadr-galerei`
  *     в `<main>` — только у кадров галереи;
+ *   - «СВЯЗАННЫЕ» объявлены ⇔ ровно одна `section.link-list`; заголовок `#related-title` = `related.title`,
+ *     адреса ссылок по порядку = `related` структуры; раздел — после рядов и галереи (V2-8);
  *   - ПРИЗЫВ объявлен ⇔ ровно одна `section.cta`, последний ребёнок `<main>`; заголовок, лид,
  *     надпись и адрес кнопки `a.cta__btn` — из содержания, кнопка — `btn-primary`;
  *   - КАРТИНКИ `<main>` — ровно по числу кадров файла содержания (герой, ряды к печати с `art`,
- *     пункты галереи), ключи `src`, `srcset` и `<source srcset>` — только ключи этих кадров;
+ *     пункты галереи); `<source>` в `<picture>` картинки кадра — только ключ этого кадра; любой адрес
+ *     `/_astro/<ключ>.` в атрибутах `<main>` и в его `<style>` — только ключ кадра страницы;
  *   - НОТА ПОДВАЛА — игры ноты («Games: …») = игры всех кадров страницы (герой, ряды, галерея)
  *     по записям, классы строки лицензии («License class: …») = классы тех же записей; «Games:»
- *     и «License class:» — по одному разу; кадров нет — ноты нет.
- * Раунд 1 «судью судят» блока В вернул проверки прежних сверок, которые новая потеряла (V1-1…V1-5),
- * и закрыл пределы прежних (V1-6, V1-7).
+ *     и «License class:» — по одному разу по всему тексту нот; кадров нет — ноты нет;
+ *   - ВСТРЕЧНО: каждая страница сборки, кроме главной, — страница прочитанного файла содержания.
+ * Раунды 1–2 «судью судят» блока В вернули проверки прежних сверок, которые новая потеряла
+ * (V1-1…V1-5, V2-1), закрыли пределы прежних (V1-6, V1-7) и пропуски (V2-3…V2-12).
  * Текст сравнивается после одной нормализации для обеих сторон (`norm`: пробельные, включая
  * неразрывный, — пробел, края срезаны — как `tekst()` схемы).
  *
  * ПРЕДЕЛЫ (названы): вид (сетка, рамки, скрим, растяжение) — кадры и глаза владельца; контраст —
  * замер пикселей; `sizes` и ширины кандидатов не судятся (судится только ключ и размеры мастера);
- * «связанные» (`link-list`) судит сторож `links` ядра (адреса) и эта сверка не судит их ярлыки;
- * текст и блоки `<main>` вне полей содержания — третья кнопка героя, абзац в колонке героя, в ряду
- * вне `year`/`title`/`meta`/`body` или в призыве, `section` без класса блока — не судятся (кроме
- * галереи; V1-8, test.todo); фронтматтер находится выражением загрузчика Astro и разбирается пакетом
- * `yaml` с ключами слияния, как `js-yaml` загрузчика; файлы и папки с точки не читаются, как загрузчиком.
+ * ярлыки «связанных» не судятся (их пишет ядро из структуры); текст и блоки `<main>` вне полей
+ * содержания — третья кнопка героя, абзац в колонке героя, в ряду вне `year`/`title`/`meta`/`body`
+ * или в призыве, `section` без класса блока — не судятся (кроме галереи; V1-8, test.todo); фронтматтер
+ * находится выражением загрузчика Astro для `---` и разбирается пакетом `yaml` с ключами слияния, как
+ * `js-yaml` загрузчика; фронтматтер TOML (`+++`, загрузчик его читает) — громкий отказ (сайт пишет YAML;
+ * V2-6, test.todo); файлы и папки с точки не читаются, по ссылкам-переходам обход идёт — как у загрузчика.
  */
 
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
-import { join, dirname, resolve } from 'node:path';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { join, dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as yamlParse } from 'yaml';
-import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, element } from '@factory/core/text/html.mjs';
+import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, tekstDetey, element } from '@factory/core/text/html.mjs';
 
 /** Одна нормализация для обеих сторон сверки. */
 export const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
 const txt = (u) => (u ? norm(tekstVsego(u)) : undefined);
 const est = (u, k) => klassy(u).has(k);
+/** Не только пробельные знаки HTML (NBSP — не пробел: строка над героем или анонимный элемент; V2-9). */
+const neProbel = (s) => /[^\t\n\f\r ]/.test(String(s ?? ''));
+/** Объявления атрибута style: `[[имя, значение]]` в порядке записи. */
+const obyavleniya = (style) =>
+  String(style ?? '')
+    .split(';')
+    .map((d) => d.split(':'))
+    .filter((p) => p.length >= 2)
+    .map(([imyaSv, ...z]) => [imyaSv.trim(), z.join(':').trim()]);
+/** Подпись иконки: элементы svg с именами и всеми атрибутами (отсортированными), строкой. */
+const podpisIkony = (svg) => JSON.stringify(elementy(svg).map((u) => [imya(u), (u.attrs ?? []).map((a) => `${a.name}=${a.value}`).sort()]));
 /** Ключ кадра — только из пути `/_astro/<ключ>.<хеш>.<расширение>` своего сайта; иначе «?». */
 export const klyuchAdresa = (u) => (String(u).match(/^\/_astro\/([a-z0-9-]+)\.[^/]+$/) || [])[1] ?? '?';
 
@@ -83,7 +101,8 @@ export function vhody(sayt) {
   const ikona = (imyaIk) => {
     const m = ikonyTs.match(new RegExp(`'${imyaIk}':\\s*'([^']*)'`));
     if (!m) throw new Error(`сверка dist: нет иконки ${imyaIk} в src/data/icons.ts`);
-    return [...m[1].matchAll(/\sd="([^"]*)"/g)].map((x) => x[1]);
+    // Разметка иконки разбирается так же, как напечатанная, — внутри svg (V2-2).
+    return podpisIkony(pervyi(razobrat(`<svg>${m[1]}</svg>`), (u) => imya(u) === 'svg'));
   };
   const ikony = { 'arrow-down': ikona('arrow-down'), 'arrow-right': ikona('arrow-right') };
   const papka = join(sayt, 'src/content/tresc');
@@ -93,7 +112,9 @@ export function vhody(sayt) {
       // Имена с точки загрузчик коллекции не видит (`**/*.md`, dot: false) — и сверка тоже (V1-10).
       if (x.name.startsWith('.')) continue;
       const p = join(d, x.name);
-      if (x.isDirectory()) obhod(p);
+      // По ссылкам загрузчик идёт (followSymbolicLinks) — и сверка тоже (V2-12).
+      const papka = x.isDirectory() || (x.isSymbolicLink() && statSync(p).isDirectory());
+      if (papka) obhod(p);
       else if (x.name.endsWith('.md')) fajly.push(p);
     }
   };
@@ -107,14 +128,19 @@ export function vhody(sayt) {
   return { struktura, kredity, ikony, soderzhanie };
 }
 
-/** Замечания о картинке кадра: ключ `src` и каждого кандидата `srcset`, `alt`, `width`/`height` — по записи. */
+/**
+ * Замечания о картинке кадра: ключ `src`, каждого кандидата `srcset` и каждого `<source>` её `<picture>` (браузер
+ * покажет источник, V2-3), `alt`, `width`/`height` — по записи.
+ */
 function sverkaKartinki(img, klyuch, gde, kredity) {
   if (!img) return [`${gde}: нет картинки`];
   const zam = [];
   const zapis = kredity[klyuch];
-  const kandidaty = (atr(img, 'srcset') ?? '').split(',').map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
+  const razbit = (s) => (s ?? '').split(',').map((c) => c.trim().split(/\s+/)[0]).filter(Boolean);
+  const kandidaty = razbit(atr(img, 'srcset'));
   if (!kandidaty.length) zam.push(`${gde}: у картинки нет srcset`);
-  const chuzhie = [...new Set([atr(img, 'src') ?? '', ...kandidaty].map(klyuchAdresa).filter((k) => k !== klyuch))];
+  const istochniki = imya(img.parentNode) === 'picture' ? (img.parentNode.childNodes ?? []).filter((u) => imya(u) === 'source').flatMap((s) => razbit(atr(s, 'srcset'))) : [];
+  const chuzhie = [...new Set([atr(img, 'src') ?? '', ...kandidaty, ...istochniki].map(klyuchAdresa).filter((k) => k !== klyuch))];
   if (chuzhie.length) zam.push(`${gde}: в src или srcset ключи ${chuzhie.join(', ')}, в содержании ${klyuch}`);
   const zhdemAlt = zapis ? `${zapis.game} — ${zapis.opis ?? 'publisher material'}` : undefined;
   if ((atr(img, 'alt') ?? '') !== zhdemAlt) zam.push(`${gde}: alt «${(atr(img, 'alt') ?? '').slice(0, 70)}» ≠ записи кадра ${klyuch} «${String(zhdemAlt).slice(0, 70)}»`);
@@ -160,8 +186,8 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
       if (sekcii[0] !== hero) zam.push('герой не первый блок <main>');
       if (atr(hero, 'aria-labelledby') !== 'page-title') zam.push(`aria-labelledby героя «${atr(hero, 'aria-labelledby') ?? '—'}», ждали page-title — id h1 героя`);
       const obertka = hero.parentNode;
-      // Обёртка — вплотную: кроме героя, только пробельный текст и комментарии (пачка 2; V1-2).
-      const obertkaVerna = imya(obertka) === 'div' && est(obertka, 'geroy') && obertka.childNodes.every((x) => x === hero || (!element(x) && (x.nodeName !== '#text' || !norm(x.value))));
+      // Обёртка — вплотную: кроме героя, только пробельный текст HTML и комментарии (пачка 2; V1-2; NBSP — не пробел, V2-9).
+      const obertkaVerna = imya(obertka) === 'div' && est(obertka, 'geroy') && obertka.childNodes.every((x) => x === hero || (!element(x) && (x.nodeName !== '#text' || !neProbel(x.value))));
       if (!obertkaVerna) zam.push('нет обёртки div.geroy вокруг одного героя — скрим, тон и кадровка маршрута героя не достанут');
       const h = h1[0];
       if (!h || !predki(h).includes(hero)) zam.push('h1 не внутри героя');
@@ -180,12 +206,16 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
         const stal = est(obertka, 'geroy--stal');
         const kluchevoy = /^key art\b/.test(kredity[dane.art]?.kind ?? '');
         if (stal === kluchevoy) zam.push(`тон кадра: geroy--stal ${stal ? 'есть' : 'нет'}, а вид записи — ${kredity[dane.art]?.kind}`);
-        const fokus = (atr(obertka, 'style') ?? '').match(/--fokus:\s*([^;"]+)/)?.[1]?.trim();
+        // Кадровка — последнее объявление с точным именем --fokus (действует последнее; V2-7).
+        const fokus = obyavleniya(atr(obertka, 'style')).filter(([imyaSv]) => imyaSv === '--fokus').at(-1)?.[1];
         if ((fokus ?? null) !== (dane.artFocus ?? null)) zam.push(`кадровка ${fokus ?? '—'}, в содержании ${dane.artFocus ?? '—'}`);
       }
+      // Кадровку задаёт только обёртка: --fokus или object-position у потомка героя её перекрывает (V2-7).
+      const vnutri = elementy(obertka).filter((u) => /--fokus|object-position/.test(atr(u, 'style') ?? ''));
+      if (vnutri.length) zam.push(`кадровка внутри героя (${vnutri.map((u) => imya(u) + '.' + [...klassy(u)].join('.')).join(', ')}) — задаёт её только обёртка`);
       if (dane.artCaption) {
         // Последний узел героя — элемент или непустой текст (текст после подписи — не «последней», V1-2).
-        const posled = hero.childNodes.filter((x) => element(x) || (x.nodeName === '#text' && norm(x.value))).at(-1);
+        const posled = hero.childNodes.filter((x) => element(x) || (x.nodeName === '#text' && neProbel(x.value))).at(-1);
         if (podpisi.length !== 1 || posled !== podpisi[0]) zam.push(`подпись кадра: в <main> ${podpisi.length} шт., последним элементом героя (место dopisek) — ${posled && est(posled, 'podpis-geroya') ? 'да' : 'нет'}; ждали одну, последней`);
         else {
           if (!est(podpisi[0], 't-caption')) zam.push(`подпись кадра без роли t-caption («${[...klassy(podpisi[0])].join(' ')}»)`);
@@ -203,11 +233,16 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
         if (txt(kn[0]) !== norm(dane[pole]?.label)) zam.push(`${pole}: надпись «${txt(kn[0])}», в содержании «${norm(dane[pole]?.label)}»`);
         if (pole === 'primary') {
           const imyaIk = String(dane.primary?.href).startsWith('#') ? 'arrow-down' : 'arrow-right';
-          // Иконка — ровно один svg, все его элементы — path с теми же d, путей вне svg нет (пачка 2; V1-3).
+          // Иконка — ровно один svg без transform и style; его элементы с именами и всеми атрибутами — как разметка
+          // src/data/icons.ts (симметрично: обе стороны разобраны parse5 в svg); элементов вне svg нет (пачка 2; V1-3, V2-1, V2-2).
           const svgi = elementy(kn[0], (u) => imya(u) === 'svg');
-          const d = svgi.length === 1 ? elementy(svgi[0]).map((p) => (imya(p) === 'path' ? atr(p, 'd') : '<' + imya(p) + '>')) : ['svg: ' + svgi.length];
-          if (elementy(kn[0], (u) => imya(u) === 'path').length !== elementy(svgi[0] ?? kn[0], (u) => imya(u) === 'path').length) d.push('path вне svg');
-          if (d.join('|') !== ikony[imyaIk].join('|')) zam.push(`иконка главной кнопки — не ${imyaIk} (адрес ${dane.primary?.href})`);
+          const svg = svgi.length === 1 ? svgi[0] : null;
+          const napechatano = svg ? podpisIkony(svg) : `svg: ${svgi.length}`;
+          const vneSvg = elementy(kn[0]).filter((u) => u !== svg && !(svg && predki(u).includes(svg)));
+          const svgSdvinut = svg && (atr(svg, 'transform') !== undefined || atr(svg, 'style') !== undefined);
+          if (napechatano !== ikony[imyaIk] || vneSvg.length || svgSdvinut) {
+            zam.push(`иконка главной кнопки — не ${imyaIk} (адрес ${dane.primary?.href}): напечатано ${napechatano}${vneSvg.length ? `; вне svg: ${vneSvg.map(imya).join(', ')}` : ''}${svgSdvinut ? '; у svg transform или style' : ''}`);
+          }
         }
       }
       const lid = pervyi(hero, (u) => est(u, 'hero__lead'));
@@ -349,6 +384,23 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
     if (tony.length) zam.push(`kadr-galerei в <main> без галереи (${tony.length})`);
   }
 
+  // «связанные» (link-list) — раздел, заголовок из содержания, адреса related структуры по порядку, место — после рядов
+  // и галереи (раньше призыва — «призыв последний»); сторож links судит только, что адрес есть в структуре (V2-8).
+  const spiski = vMain((u) => imya(u) === 'section' && est(u, 'link-list'));
+  if (bloki.includes('link-list')) {
+    if (spiski.length !== 1) zam.push(`«связанных» ${spiski.length}, ждали 1`);
+    else {
+      const sek = spiski[0];
+      const zag = pervyi(sek, (u) => atr(u, 'id') === 'related-title');
+      if (!zag || txt(zag) !== norm(dane.related?.title)) zam.push(`заголовок «связанных» «${txt(zag) ?? '—'}», в содержании «${norm(dane.related?.title)}»`);
+      const adresa = elementy(sek, (u) => imya(u) === 'a').map((a) => atr(a, 'href'));
+      if (adresa.join('|') !== (page.related ?? []).join('|')) zam.push(`адреса «связанных» [${adresa.join(', ')}] ≠ related структуры [${(page.related ?? []).join(', ')}]`);
+      const ryadySek = vMain((u) => imya(u) === 'section' && est(u, 'layer'));
+      if (ryadySek.length && por.get(sek) <= konec(ryadySek.at(-1), por)) zam.push('«связанные» не после рядов');
+      if (galerei.length === 1 && por.get(sek) <= konec(galerei[0], por)) zam.push('«связанные» не после галереи');
+    }
+  } else if (spiski.length) zam.push(`«связанные» напечатаны (${spiski.length}), а блока нет`);
+
   // призыв
   const cty = vMain((u) => imya(u) === 'section' && est(u, 'cta'));
   if (bloki.includes('cta-band')) {
@@ -382,12 +434,18 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
   const kadrov = (heroObyavlen ? 1 : 0) + zhdemRyady.filter((r) => r.art).length + (galereyaObyavlena ? (g?.items ?? []).length : 0);
   if (kartinki.length !== kadrov) zam.push(`картинок в <main> ${kartinki.length}, кадров по файлу содержания ${kadrov}`);
   const klyuchiKartinok = [...kartinki.flatMap((i) => [atr(i, 'src') ?? '', ...kandidaty(atr(i, 'srcset'))]), ...vMain((u) => imya(u) === 'source').flatMap((x) => kandidaty(atr(x, 'srcset')))].map(klyuchAdresa);
+  // И любой адрес /_astro/<ключ>. в атрибутах <main> (svg image, style, poster, data…) и в <style> внутри <main> (V2-5).
+  const ASTRO = /\/_astro\/([a-z0-9-]+)\./g;
+  for (const u of vMain(() => true)) {
+    for (const a of u.attrs ?? []) for (const m of a.value.matchAll(ASTRO)) klyuchiKartinok.push(m[1]);
+    if (imya(u) === 'style') for (const m of tekstDetey(u).matchAll(ASTRO)) klyuchiKartinok.push(m[1]);
+  }
   const vne = [...new Set(klyuchiKartinok.filter((k) => !klyuchi.includes(k)))];
   if (vne.length) zam.push(`картинки <main> с ключами вне кадров содержания: ${vne.join(', ')}`);
   const noty = elementy(doc, (u) => imya(u) === 'p' && est(u, 'ft__art-note')).map(txt);
-  // «Games:» и «License class:» — по одному разу (предел прежней пачки 4; V1-7).
+  // «Games:» и «License class:» — по одному разу, обе по всему тексту нот (предел прежней пачки 4; V1-7, V2-4).
   const gamesRaz = (noty.join(' ').match(/Games: /g) ?? []).length;
-  const licRaz = noty.filter((n) => n.startsWith('License class: ')).length;
+  const licRaz = (noty.join(' ').match(/License class: /g) ?? []).length;
   if (gamesRaz > 1 || licRaz > 1) zam.push(`нот об арте: «Games:» ${gamesRaz} раз, «License class:» ${licRaz} раз — ждали по одному`);
   const igryNoty = (noty.join(' ').match(/Games: ([^.]+)\./) || [])[1];
   const igryKadrov = [...new Set(klyuchi.map((k) => kredity[k]?.game))].sort();
@@ -442,6 +500,20 @@ export function sverkaSborki(dist, sayt, { obyazatelnaPodpis = new Set() } = {})
     }
     for (const chto of sverkaStranicy({ page, dane, html: readFileSync(f, 'utf8'), kredity, ikony, obyazatelnaPodpis })) out.push({ url: page.url, chto });
   }
+  // Встречная проверка: каждая страница сборки, кроме главной (свой шаблон), — страница файла содержания; иначе
+  // её не сверил никто (папка содержания, которую сверка не прочла, V2-12).
+  const adresaSoderzhaniya = new Set(soderzhanie.map((s) => s.dane?.url));
+  const obhodDist = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      if (e.isDirectory() && e.name !== '_astro') obhodDist(join(d, e.name));
+      else if (e.name === 'index.html') {
+        const rel = relative(dist, d).split(sep).join('/');
+        const url = rel ? `/${rel}/` : '/';
+        if (url !== '/' && !adresaSoderzhaniya.has(url)) out.push({ url, chto: 'страница сборки без файла содержания — её не сверил никто' });
+      }
+    }
+  };
+  obhodDist(dist);
   return { zamechaniya: out, stranic: soderzhanie.length };
 }
 

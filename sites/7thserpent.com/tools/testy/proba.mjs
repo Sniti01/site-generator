@@ -8,16 +8,20 @@
  * (N19, P3 — гайд, P4 — `/story/`, P6 — плановая `/privacy/`, N14 — блок ядра без ветви маршрута,
  * Q8, Q9 — `/pc/` без героя). На копии проба ставит свои условия сама: своя страница в структуре
  * копии (P6), свой блок в словаре ядра копии (N14, `sYadrom`), коридор, которого текст не достаёт
- * (N19); Ctrl+C не оставляет подмен в репозитории. Остаётся одна опора — `/404/` как страница правок
- * (`src/content/tresc/404.md`): её текст — о самом сайте, форма — ряд и «связанные»; проба,
- * которой нужна другая форма, правит структуру копии (раунд 1 «судью судят» блока В, V1-11).
+ * (N19); Ctrl+C не оставляет подмен в репозитории. ОПОРЫ, которые остаются: `/404/` как страница правок
+ * (`src/content/tresc/404.md`: текст о самом сайте, форма — ряд и «связанные»; проба, которой нужна
+ * другая форма, правит структуру копии) и буквальные строки настоящих файлов содержания в пробах пачек
+ * 1, 2, 4 (`href: /mods/` у `pc.md`, `art: mp2-k01` у `media.md`, кнопки и `art`/`artFocus` у
+ * `max-payne-3.md`); законная правка такой строки роняет пробу громко — «встречается 0 раз», не пропуском;
+ * дата подписи `max-payne-2.md` меняется по замыслу, её пробы берут из файла копии (раунды 1–2
+ * «судью судят» блока В, V1-11, V2-11). Правка фронтматтера — только заменой строки (`pravit`): запись
+ * разобранного YAML обратно меняла бы типы значений (дата без кавычек — Date у загрузчика).
  */
 
 import assert from 'node:assert/strict';
 import { mkdtempSync, existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { parse as yamlParse, stringify as yamlStringify } from 'yaml';
 import { sdelatKopiyu, udalitKopiyu, sobrat, prochest, zapisat } from '../kopiya.mjs';
 
 /** Точная замена в тексте с проверкой единственного вхождения — проба не промахивается молча. */
@@ -54,16 +58,6 @@ export const NAPOLNITEL = Array.from({ length: 110 }, (_, i) => `probaslovo${i}`
 /** Минимальный файл содержания страницы пробы (ряд с наполнителем). */
 export const vremennyi = (url, dop = []) =>
   ['---', `url: ${url}`, 'rows:', '  - id: proba-ryad', '    year: Proba', '    title: Proba row', '    meta: Proba meta', '    body:', `      - ${NAPOLNITEL}`, ...dop, '---', ''].join('\n');
-
-/** Файл содержания: разобрать, поправить объект, записать обратно (YAML). */
-export function soderzhanie(k, put, f) {
-  const t = prochest(k, put);
-  const m = t.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
-  if (!m) throw new Error(`проба: в ${put} нет фронтматтера`);
-  const o = yamlParse(m[1], { merge: true });
-  f(o);
-  zapisat(k, put, `---\n${yamlStringify(o, { lineWidth: 0 })}---\n`);
-}
 
 /** Звенья BreadcrumbList собранной страницы. */
 export const zvenyev = (h) => (h.match(/"@type":"ListItem"/g) ?? []).length;

@@ -8,7 +8,7 @@
 //   npm run proverki
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, cpSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, cpSync, readFileSync, writeFileSync, rmSync, symlinkSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { sverkaStranicy, vhody, sverkaSborki } from '../sverka.mjs';
@@ -294,7 +294,8 @@ test('раунд 1 блока В: порчи', async (t) => {
     { imya: 'V1-2 текст в герое после подписи кадра', s: rm, html: (h) => h.replace(/(<p class="podpis-geroya[^>]*>[^<]*<\/p>)(<\/section>)/, '$1Proba$2'), prichina: 'последним элементом героя (место dopisek) — нет' },
     // V1-3 (пачка 2: svg иконки главной кнопки целиком).
     { imya: 'V1-3 лишний элемент в svg иконки главной кнопки', s: rm, html: (h) => h.replace(DOWN, DOWN + '<line x1="12" y1="3" x2="12" y2="15"/>'), prichina: 'иконка главной кнопки' },
-    { imya: 'V1-3 путь иконки вне svg', s: rm, html: (h) => h.replace(/(href="#release-date"[^>]*>When it comes out)<svg[\s\S]*?<\/svg>/, '$1<i>' + DOWN + '</i>'), prichina: 'иконка главной кнопки' },
+    // Раунд 2 (V2-10): путь вне svg при целом svg — прежняя порча удаляла svg и ловилась чужой причиной «svg: 0».
+    { imya: 'V1-3 путь иконки вне svg при целом svg', s: rm, html: (h) => h.replace(/(href="#release-date"[^>]*>When it comes out<svg\b[^>]*>[\s\S]*?<\/svg>)/, (x) => x + '<i>' + DOWN + '</i>'), prichina: 'иконка главной кнопки' },
     // V1-4 (пачка 1: кнопка призыва — btn-primary).
     { imya: 'V1-4 кнопка призыва не главная (btn-secondary)', s: pc, html: (h) => h.replace('class="btn btn-primary t-button cta__btn"', 'class="btn btn-secondary t-button cta__btn"'), prichina: 'кнопка призыва без btn-primary' },
     // V1-5 (пачки 1 и 2: кадр ряда — div.foto).
@@ -308,6 +309,83 @@ test('раунд 1 блока В: порчи', async (t) => {
     { imya: 'V1-7 вторая нота «Games:» с чужой игрой', s: rm, html: (h) => h.replace(/(<p class="ft__art-note[^"]*"[^>]*>License class)/, '<p class="ft__art-note t-caption">Games: Max Payne 3.</p>$1'), prichina: '«Games:» 2 раз' },
     { imya: 'V1-7 вторая фраза «Games:» в ноте', s: rm, html: (h) => h.replace('Games: Max Payne.', 'Games: Max Payne. Games: Max Payne 3.'), prichina: '«Games:» 2 раз' },
   ]);
+});
+
+/* — «судью судят», блок В, раунд 2 (V2-*) — */
+
+test('раунд 2 блока В: порчи', async (t) => {
+  const media = po('/media/');
+  const rm = po('/remake/');
+  const q = po('/quotes/');
+  const DOWN = '<path d="m6 9 6 6 6-6"/>';
+  const adres = (h, k) => h.match(new RegExp(`/_astro/${k}\\.[^" ,]+`))[0];
+  const NOTA_LIC = /(<p class="ft__art-note[^"]*"[^>]*>License class[^<]*<\/p>)/;
+  await progon(t, [
+    { imya: 'V2-1 стрелка вниз повёрнута в стрелку вправо (transform у path)', s: rm, html: (h) => h.replace(DOWN, '<path d="m6 9 6 6 6-6" transform="rotate(-90 12 12)"/>'), prichina: 'иконка главной кнопки' },
+    { imya: 'V2-1 путь стрелки невидим (stroke="none")', s: rm, html: (h) => h.replace(DOWN, '<path d="m6 9 6 6 6-6" stroke="none"/>'), prichina: 'иконка главной кнопки' },
+    { imya: 'V2-1 svg иконки повёрнут стилем', s: rm, html: (h) => h.replace(/(When it comes out<svg\b)/, '$1 style="transform:rotate(-90deg)"'), prichina: 'иконка главной кнопки' },
+    { imya: 'V2-3 /media/: <picture><source> кадра ряда вокруг картинки героя', s: media, html: (h) => h.replace(/(<div class="hero__art"[^>]*><div class="foto">)(<img\b[^>]*>)/, (_x, a, i) => a + `<picture><source srcset="${adres(h, 'mp2-k01')} 1200w">` + i + '</picture>'), prichina: 'кадр героя: в src или srcset ключи mp2-k01' },
+    { imya: 'V2-3 /quotes/: <source> кадра 2 вокруг кадра 1 галереи', s: q, html: (h) => h.replace(/(<div class="foto kadr-galerei"[^>]*>)(<img\b[^>]*>)/, (_x, a, i) => a + `<picture><source srcset="${adres(h, 'mp2-k03')} 480w">` + i + '</picture>'), prichina: 'кадр галереи 1 (mp1-k11): в src или srcset ключи mp2-k03' },
+    { imya: 'V2-4 «License class:» внутри ноты «Games:»', s: rm, html: (h) => h.replace('Games: Max Payne.', 'Games: Max Payne. License class: CC BY-SA 4.0.'), prichina: '«License class:» 2 раз' },
+    { imya: 'V2-4 вторая нота с «License class:» не в начале', s: rm, html: (h) => h.replace(NOTA_LIC, '<p class="ft__art-note t-caption">Also: License class: CC BY-SA 4.0.</p>$1'), prichina: '«License class:» 2 раз' },
+    { imya: 'V2-5 svg <image> другой игры в рамке героя', s: rm, html: (h) => h.replace('<div class="hero__scrim"', '<svg width="100%" height="100%"><image href="/_astro/mp3-k15.x.webp" width="100%" height="100%"/></svg><div class="hero__scrim"'), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'V2-5 фон другой игры в style обёртки героя', s: rm, html: (h) => h.replace('style="--fokus: 55% 60%"', 'style="--fokus: 55% 60%; background-image: url(/_astro/mp3-k15.x.webp)"'), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'V2-7 второе --fokus в style обёртки', s: rm, html: (h) => h.replace('style="--fokus: 55% 60%"', 'style="--fokus: 55% 60%; --fokus: 10% 50%"'), prichina: 'кадровка 10% 50%' },
+    { imya: 'V2-7 --fokus внутри имени другого свойства первым', s: rm, html: (h) => h.replace('style="--fokus: 55% 60%"', 'style="--old--fokus: 55% 60%; --fokus: 10% 50%"'), prichina: 'кадровка 10% 50%' },
+    { imya: 'V2-7 --fokus у потомка героя (.foto рамки) перекрывает обёртку', s: rm, html: (h) => h.replace(/(<div class="hero__art"[^>]*>)<div class="foto">/, '$1<div class="foto" style="--fokus: 10% 50%">'), prichina: 'кадровка внутри героя' },
+    { imya: 'V2-8 заголовок «связанных» не из содержания', s: rm, html: (h) => h.replace('>More from the series<', '>Proba<'), prichina: 'заголовок «связанных»' },
+    { imya: 'V2-8 «связанные» сняты', s: rm, html: (h) => h.replace(/<section class="link-list[\s\S]*?<\/section>/, () => ''), prichina: '«связанных» 0' },
+    { imya: 'V2-8 адрес «связанных» — другая страница структуры', s: rm, html: (h) => h.replace('<a class="layer__guide-link" href="/max-payne-2/"', '<a class="layer__guide-link" href="/cheats/"'), prichina: 'адреса «связанных»' },
+    { imya: 'V2-8 последний ряд ниже «связанных»', s: rm, html: (h) => { const r = [...h.matchAll(/<section class="layer\b[\s\S]*?<\/section>/g)].at(-1)[0]; return h.replace(r, () => '').replace(/<section class="link-list[\s\S]*?<\/section>/, (l) => l + r); }, prichina: '«связанные» не после рядов' },
+    { imya: 'V2-9 &nbsp; в обёртке героя перед героем', s: rm, html: (h) => h.replace(/(<div class="geroy[^"]*"[^>]*>)(?=<section class="hero")/, '$1&nbsp;'), prichina: 'нет обёртки' },
+    { imya: 'V2-9 &nbsp; в герое после подписи кадра', s: rm, html: (h) => h.replace(/(<p class="podpis-geroya[^>]*>[^<]*<\/p>)(<\/section>)/, '$1&nbsp;$2'), prichina: 'последним элементом героя (место dopisek) — нет' },
+    { imya: 'V2-10 вторая нота «License class:» отдельным абзацем', s: rm, html: (h) => h.replace(NOTA_LIC, '$1<p class="ft__art-note t-caption">License class: CC BY-SA 4.0.</p>'), prichina: '«License class:» 2 раз' },
+  ]);
+});
+
+test('V2-2 законная иконка из line/polyline в icons.ts и в печати — замечаний нет', () => {
+  const k = zerkalo();
+  try {
+    const DOWN = '<path d="m6 9 6 6 6-6"/>';
+    const NOVAYA = '<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>';
+    const f = join(k, 'src/data/icons.ts');
+    const byl = readFileSync(f, 'utf8');
+    writeFileSync(f, byl.replace(`'arrow-down': '${DOWN}'`, `'arrow-down': '${NOVAYA}'`));
+    assert.notEqual(readFileSync(f, 'utf8'), byl, 'правка icons.ts не применилась');
+    const Vk = vhody(k);
+    const x = po('/remake/');
+    assert.deepEqual(sverkaStranicy({ page: x.page, dane: x.dane, html: x.html.replace(DOWN, NOVAYA), kredity: Vk.kredity, ikony: Vk.ikony, obyazatelnaPodpis: OBYAZATELNA }), []);
+  } finally {
+    rmSync(k, { recursive: true, force: true });
+  }
+});
+
+test.todo('V2-6 предел: фронтматтер TOML (+++) — громкий отказ (сайт пишет YAML; загрузчик Astro читает и TOML)');
+
+test('V2-12 папка содержания — ссылка-переход: сверка идёт по ней, как загрузчик', () => {
+  const k = zerkalo();
+  const vne = mkdtempSync(join(tmpdir(), 'sverka-vne-'));
+  try {
+    writeFileSync(join(vne, 'proba.md'), '---\nurl: /proba-v2-12/\n---\n');
+    symlinkSync(vne, join(k, 'src/content/tresc/svyaz'), 'junction');
+    const z = sverkaSborki(dist(), k, { obyazatelnaPodpis: OBYAZATELNA }).zamechaniya;
+    assert.ok(z.some((x) => x.chto.includes('/proba-v2-12/')), JSON.stringify(z));
+  } finally {
+    unlinkSync(join(k, 'src/content/tresc/svyaz'));
+    rmSync(k, { recursive: true, force: true });
+    rmSync(vne, { recursive: true, force: true });
+  }
+});
+
+test('V2-12 встречная проверка: страница сборки без файла содержания — замечание', () => {
+  const k = zerkalo();
+  try {
+    rmSync(join(k, 'src/content/tresc/404.md'));
+    const z = sverkaSborki(dist(), k, { obyazatelnaPodpis: OBYAZATELNA }).zamechaniya;
+    assert.ok(z.some((x) => x.url === '/404/' && x.chto.includes('без файла содержания')), JSON.stringify(z));
+  } finally {
+    rmSync(k, { recursive: true, force: true });
+  }
 });
 
 test.todo('V1-8 предел: третья кнопка в герое (a.btn без primary/secondary) — не судится');

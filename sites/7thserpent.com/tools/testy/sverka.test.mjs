@@ -13,9 +13,11 @@ import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
 import { sverkaStranicy, vhody, sverkaSborki } from '../sverka.mjs';
 import { stranica, SAYT, dist } from './obshchee.mjs';
+import { OBYAZATELNAYA_PODPIS } from '../../gates/sverka.mjs';
 
 const V = vhody(SAYT);
-const OBYAZATELNA = new Set(['/remake/', '/movie/']);
+// Страницы, где подпись кадра героя обязательна, — данные сверки сайта, те же, что у сторожа сборки (П103 п. 4).
+const OBYAZATELNA = new Set(OBYAZATELNAYA_PODPIS);
 const klon = (o) => JSON.parse(JSON.stringify(o));
 /** Страница: структура, содержание, HTML собранной копии. */
 const po = (url) => {
@@ -44,6 +46,31 @@ test('контроль: все страницы маршрута сборки �
     const x = po(s.dane.url);
     assert.deepEqual(sverit(x, x.html, x.dane, x.page), [], s.dane.url);
   }
+});
+
+// Подпись кадра героя обязательна на всех страницах, где стоит сейчас (П103 п. 4, П96; сессия 21, шаг 2):
+// снятая подпись — отказ на каждой из шести страниц, названных владельцем; список данных сверки равен
+// страницам с `artCaption` в содержании (новая подпись без строки в данных — тоже отказ теста).
+const S_PODPISYU = ['/remake/', '/movie/', '/media/', '/mods/', '/quotes/', '/voice-and-face/'];
+test('П103 п. 4: подпись кадра героя снята на странице, где стоит сейчас, — замечание (шесть страниц)', async (t) => {
+  const PODPIS = /<p class="podpis-geroya[^"]*"[^>]*>[\s\S]*?<\/p>/;
+  for (const url of S_PODPISYU) {
+    await t.test(url, () => {
+      const x = po(url);
+      assert.ok(x.dane.artCaption, `у ${url} в содержании нет artCaption — стенд разошёлся со словами владельца`);
+      assert.match(x.html, PODPIS, `у ${url} в сборке нет подписи кадра`);
+      const dane = klon(x.dane);
+      delete dane.artCaption;
+      const z = sverit(x, x.html.replace(PODPIS, ''), dane, x.page);
+      assert.ok(z.some((y) => y.includes(`подпись кадра обязательна у героя ${url}`)), `ждали «подпись кадра обязательна у героя ${url}», получено: ${z.join(' | ').slice(0, 400) || 'замечаний нет'}`);
+    });
+  }
+});
+
+test('П103 п. 4: обязательные подписи в данных сверки = страницы с подписью кадра в содержании', () => {
+  const vSoderzhanii = V.soderzhanie.filter((s) => s.dane?.artCaption).map((s) => s.dane.url).sort();
+  assert.deepEqual([...OBYAZATELNA].sort(), vSoderzhanii);
+  assert.deepEqual(vSoderzhanii, [...S_PODPISYU].sort(), 'подпись кадра стоит не там, где назвал владелец (П103 п. 4)');
 });
 
 test('сверка пачки 1 (призыв, кадры рядов, нота): порчи', async (t) => {

@@ -22,8 +22,8 @@
  *     по ним, П102 п. 1, R1-P1-2); `.foto__credit` в рамке арта нет; тон — `geroy--stal` ⇔ вид
  *     записи не «key art»; кадровка — `--fokus` ⇔ `artFocus`; подпись кадра — ровно одна
  *     `p.podpis-geroya.t-caption` в `<main>`, последним узлом секции героя (элемент или непустой
- *     текст) ⇔ `artCaption`, у страниц, где кадр — не игра страницы, обязательна (данные сайта:
- *     `/remake/`, `/movie/`); кнопки — ровно одна `a.btn-primary` и одна `a.btn-secondary` в герое,
+ *     текст) ⇔ `artCaption`, у страниц, где кадр можно принять за другое, обязательна (П96; данные
+ *     сайта — `gates/sverka.mjs`: везде, где подпись стоит, П103 п. 4); кнопки — ровно одна `a.btn-primary` и одна `a.btn-secondary` в герое,
  *     адрес и надпись (нарисованный текст: без `<title>` и `<desc>` svg, с текстом svg и теневого корня — R4-V-Z-1,
  *     R4-V-K-10, R4-V-K-11) — из содержания, в контурной кнопке элементов нет (R4-V-K-12), иконка главной — ровно один `svg` верхнего уровня,
  *     атрибуты его корня — ровно печать `core/primitives/Icon.astro`, его элементы с именами, всеми атрибутами
@@ -295,7 +295,7 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
           if (txt(podpisi[0]) !== norm(dane.artCaption)) zam.push(`текст подписи кадра «${txt(podpisi[0])}», в содержании «${norm(dane.artCaption)}»`);
         }
       } else if (podpisi.length) zam.push('подпись кадра напечатана, а в содержании её нет');
-      if (obyazatelnaPodpis.has(page.url) && !dane.artCaption) zam.push(`подпись кадра обязательна у героя ${page.url} (кадр — не игра страницы), а artCaption нет`);
+      if (obyazatelnaPodpis.has(page.url) && !dane.artCaption) zam.push(`подпись кадра обязательна у героя ${page.url} (кадр можно принять за другое, П96, П103 п. 4), а artCaption нет`);
       for (const [klass, pole] of [['btn-primary', 'primary'], ['btn-secondary', 'secondary']]) {
         const kn = elementy(hero, (u) => imya(u) === 'a' && est(u, klass));
         if (kn.length !== 1) {
@@ -650,7 +650,7 @@ export function sverkaSborki(dist, sayt, { obyazatelnaPodpis = new Set() } = {})
 
 /**
  * Интеграция Astro — сторож сборки сайта. `obyazatelnaPodpis` — адреса, где подпись кадра героя
- * обязательна (кадр — не игра страницы).
+ * обязательна (кадр можно принять за другое; данные — `gates/sverka.mjs`).
  * @param {{ obyazatelnaPodpis?: string[] }} [opcii]
  * @returns {import('astro').AstroIntegration}
  */

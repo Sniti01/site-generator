@@ -1,0 +1,498 @@
+▶ GR3-K-1: --font-display на странице только под условием (@media, supports) — отказ
+  ✖ весь tailwindcss с print (36.1412ms)
+  ✖ тема Tailwind отдельным импортом с print (35.2947ms)
+  ✖ тема Tailwind отдельным импортом с supports(display: nonsense) (27.4728ms)
+  ✖ тема Tailwind отдельным импортом с (min-width: 100000px) (29.3389ms)
+✖ GR3-K-1: --font-display на странице только под условием (@media, supports) — отказ (129.4665ms)
+▶ GR3-K-2, GR3-Z-2: разрешатель импортов — как у плагина @tailwindcss/vite (разрешатель Vite сборки)
+  ✖ K-2: псевдоним Vite сайта подменяет лист гарнитуры темы гранью с local(Georgia) — отказ (32.9637ms)
+  ✔ K-2, контроль: конфигурация Vite без псевдонимов — сверено (29.5169ms)
+  ✖ Z-2: импорт по корню Vite (/src/…) на законный лист — сверено (20.4872ms)
+  ✖ Z-2 (проверяющий): пакет с exports import → zlo.css, style → dobro.css — сборка берёт zlo.css — отказ (35.4024ms)
+✖ GR3-K-2, GR3-Z-2: разрешатель импортов — как у плагина @tailwindcss/vite (разрешатель Vite сборки) (119.5417ms)
+▶ GR3-K-2 (проверяющий): конвейер CSS сборки, которого судья не повторяет, — громкий отказ
+  ✖ файл настроек PostCSS в корне Vite (33.2089ms)
+  ✖ поле postcss в package.json корня Vite (28.7987ms)
+  ✖ настройки vite.css сайта (28.3775ms)
+  ✖ плагин Vite сайта, кроме Tailwind (31.3946ms)
+  ✖ псевдонимы paths в tsconfig сайта (27.4488ms)
+✖ GR3-K-2 (проверяющий): конвейер CSS сборки, которого судья не повторяет, — громкий отказ (150.344ms)
+▶ GR3-K-3: родовое имя первым в цепочке имён — список не читается; имя из двух слов с родовым вторым — читается
+  ✖ отказ: 'Bodoni Moda', serif Georgia (31.1854ms)
+  ✖ отказ: 'Bodoni Moda', sans-serif Moda (26.6654ms)
+  ✖ отказ: 'Bodoni Moda', monospace x, serif (25.6742ms)
+  ✖ отказ: 'Bodoni Moda', SERIF Georgia (30.7487ms)
+  ✖ отказ: 'Bodoni Moda', cursive Moda, serif (26.0278ms)
+  ✔ сверено: 'Bodoni Moda', Georgia serif (29.4344ms)
+  ✔ сверено: 'Bodoni Moda', serif (29.7106ms)
+✖ GR3-K-3: родовое имя первым в цепочке имён — список не читается; имя из двух слов с родовым вторым — читается (200.7279ms)
+▶ GR3-Z-1: var() токена темы в хвосте списка — сверено, если имя объявлено на странице; иначе отказ
+  ✖ сверено: 'Bodoni Moda', var(--font-serif) (16.5406ms)
+  ✖ сверено: 'Bodoni Moda', var(--font-serif, Georgia, serif) (14.4309ms)
+  ✖ сверено: 'Bodoni Moda', var(--net-takogo, Georgia, serif) (15.1101ms)
+  ✖ отказ: 'Bodoni Moda', var(--net-takogo) (14.572ms)
+  ✖ отказ: 'Bodoni Moda', var(--net-takogo, 10px) (16.1135ms)
+✖ GR3-Z-1: var() токена темы в хвосте списка — сверено, если имя объявлено на странице; иначе отказ (77.6911ms)
+▶ GR3-Z-3: ветви источников сканера — корень сайта без source(), ничего при source(none)
+  ✔ без source() — сканер идёт по корню сайта: утилита из корня — отказ (66.7647ms)
+  ✔ source(none) и @source '../../src' — корень не читается: сверено (29.1591ms)
+  ✔ source(none) без @source — сверено (32.7672ms)
+✔ GR3-Z-3: ветви источников сканера — корень сайта без source(), ничего при source(none) (129.2865ms)
+▶ GR3-Z-5: правило перехвата — диапазоны unicode-range и вес грани
+  ✖ diapazony: «?», диапазон, нечитаемое — весь Юникод (0.1502ms)
+  ✖ dlyaRoliTemy: italic — нет; 600 и диапазон с 600 — да; вес не числом — да (запас) (0.1331ms)
+  ✔ поздняя своя грань без веса забирает знаки — строки перехвата нет, одна «своя @font-face» (34.0118ms)
+  ✔ поздняя своя грань с нечитаемым unicode-range забирает все знаки — строки перехвата нет (30.1902ms)
+✖ GR3-Z-5: правило перехвата — диапазоны unicode-range и вес грани (65.0732ms)
+ℹ tests 39
+ℹ suites 0
+ℹ pass 9
+ℹ fail 30
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1239.2767
+
+✖ failing tests:
+
+test at tools\testy\znak.test.mjs:543:46
+✖ весь tailwindcss с print (36.1412ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «только под условием», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:543:46
+✖ тема Tailwind отдельным импортом с print (35.2947ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «только под условием», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:543:46
+✖ тема Tailwind отдельным импортом с supports(display: nonsense) (27.4728ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «только под условием», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:543:46
+✖ тема Tailwind отдельным импортом с (min-width: 100000px) (29.3389ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «только под условием», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:543:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:546:11
+✖ K-2: псевдоним Vite сайта подменяет лист гарнитуры темы гранью с local(Georgia) — отказ (32.9637ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:551:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:546:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:558:11
+✖ Z-2: импорт по корню Vite (/src/…) на законный лист — сверено (20.4872ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не собрал global.css (Can't resolve '/src/dop.css' in 'D:\SEO\cloud\site-generator\sites\7thserpent.com\src\styles') — гарнитуру на странице судить нечем
+  + actual - expected
+  
+  + [
+  +   "гарнитура: Tailwind сайта не собрал global.css (Can't resolve '/src/dop.css' in 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\src\\styles') — гарнитуру на странице судить нечем"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:565:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:558:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: Tailwind сайта не собрал global.css (Can't resolve '/src/dop.css' in 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\src\\styles') — гарнитуру на странице судить нечем" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:567:11
+✖ Z-2 (проверяющий): пакет с exports import → zlo.css, style → dobro.css — сборка берёт zlo.css — отказ (35.4024ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:577:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:567:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:581:11
+✖ файл настроек PostCSS в корне Vite (33.2089ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «в конвейере CSS сборки», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:586:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:581:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:588:11
+✖ поле postcss в package.json корня Vite (28.7987ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «в конвейере CSS сборки», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:593:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:588:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:595:11
+✖ настройки vite.css сайта (28.3775ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «в конвейере CSS сборки», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:598:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:595:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:600:11
+✖ плагин Vite сайта, кроме Tailwind (31.3946ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «в конвейере CSS сборки», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:603:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:600:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:605:11
+✖ псевдонимы paths в tsconfig сайта (27.4488ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «в конвейере CSS сборки», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:608:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:605:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:614:35
+✖ отказ: 'Bodoni Moda', serif Georgia (31.1854ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:614:35
+✖ отказ: 'Bodoni Moda', sans-serif Moda (26.6654ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:614:35
+✖ отказ: 'Bodoni Moda', monospace x, serif (25.6742ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:614:35
+✖ отказ: 'Bodoni Moda', SERIF Georgia (30.7487ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:614:35
+✖ отказ: 'Bodoni Moda', cursive Moda, serif (26.0278ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:614:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:619:13
+✖ сверено: 'Bodoni Moda', var(--font-serif) (16.5406ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif)) — на странице гарнитура заголовков падает на наследуемую
+  + actual - expected
+  
+  + [
+  +   "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif)) — на странице гарнитура заголовков падает на наследуемую"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:47)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif)) — на странице гарнитура заголовков падает на наследуемую" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:619:13
+✖ сверено: 'Bodoni Moda', var(--font-serif, Georgia, serif) (14.4309ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую
+  + actual - expected
+  
+  + [
+  +   "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:47)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:619:13
+✖ сверено: 'Bodoni Moda', var(--net-takogo, Georgia, serif) (15.1101ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую
+  + actual - expected
+  
+  + [
+  +   "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:47)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:619:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:622:13
+✖ отказ: 'Bodoni Moda', var(--net-takogo) (14.572ms)
+  AssertionError [ERR_ASSERTION]: строки отказа чужого вида (ждали «Tailwind сайта не выводит»)
+  + actual - expected
+  
+  + [
+  +   "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo)) — на странице гарнитура заголовков падает на наследуемую"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:49:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:622:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:622:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo)) — на странице гарнитура заголовков падает на наследуемую" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:622:13
+✖ отказ: 'Bodoni Moda', var(--net-takogo, 10px) (16.1135ms)
+  AssertionError [ERR_ASSERTION]: строки отказа чужого вида (ждали «Tailwind сайта не выводит»)
+  + actual - expected
+  
+  + [
+  +   "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo, 10px)) — на странице гарнитура заголовков падает на наследуемую"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:49:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:622:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:622:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo, 10px)) — на странице гарнитура заголовков падает на наследуемую" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:645:11
+✖ diapazony: «?», диапазон, нечитаемое — весь Юникод (0.1502ms)
+  TypeError: diapazony is not a function
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:648:22)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:645:11)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+
+test at tools\testy\znak.test.mjs:654:11
+✖ dlyaRoliTemy: italic — нет; 600 и диапазон с 600 — да; вес не числом — да (запас) (0.1331ms)
+  TypeError: dlyaRoliTemy is not a function
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:657:18)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:654:11)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

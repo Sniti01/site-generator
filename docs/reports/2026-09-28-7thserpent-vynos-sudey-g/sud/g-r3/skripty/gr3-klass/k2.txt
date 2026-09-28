@@ -1,0 +1,35 @@
+=== B1 своя грань font-family с !important в импортированном листе
+вердикт: СВЕРЕНО
+на странице:
+  @font-face :: font-family: Bodoni Moda
+  @font-face :: src: url("../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2") format("woff2"), url("../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff") format("woff")
+  @font-face :: font-family: Public Sans
+  @font-face :: src: url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-400-normal.woff2") format("woff2"), url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-400-normal.woff") format("woff")
+  @font-face :: font-family: Public Sans
+  @font-face :: src: url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-500-normal.woff2") format("woff2"), url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-500-normal.woff") format("woff")
+  @font-face :: font-family: Public Sans
+  @font-face :: src: url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-600-normal.woff2") format("woff2"), url("../../../../node_modules/@fontsource/public-sans/files/public-sans-latin-600-normal.woff") format("woff")
+  @font-face :: src: local(Georgia)
+=== B2 @source inline() с ядом
+вердикт: ОТКАЗ 1
+  - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака
+на странице:
+  @layer theme > :root, :host :: --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+  @layer utilities > .\[--font-display\:Georgia\] :: --font-display: Georgia
+=== B3 @theme inline у сайта
+вердикт: СВЕРЕНО
+на странице:
+  @layer theme > :root, :host :: --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== B4 prefix(tw) у tailwindcss
+вердикт: ОТКАЗ 1
+  - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: ничего) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака
+на странице:
+  нет
+=== B5 @config с fontFamily.display = Georgia
+вердикт: СВЕРЕНО
+на странице:
+  @layer theme > :root, :host :: --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== A2m тема Tailwind в media print (minify как в сборке)
+вердикт: СВЕРЕНО
+на странице:
+  @media print > @layer theme > :root,:host :: --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif

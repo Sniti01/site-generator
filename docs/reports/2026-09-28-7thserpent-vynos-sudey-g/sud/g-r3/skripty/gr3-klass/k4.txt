@@ -1,0 +1,20 @@
+=== kontrol
+  spisokGarniturChitaetsya: true
+  вердикт: СВЕРЕНО
+  lightningcss font-family: .a { font-family: Bodoni Moda, ui-serif, Georgia, Times New Roman, serif; }  предупреждений 0
+=== родовое имя первым в цепочке имён: serif Georgia
+  spisokGarniturChitaetsya: true
+  вердикт: СВЕРЕНО
+  lightningcss font-family: .a { font-family: "Bodoni Moda", serif Georgia; }  предупреждений 0
+=== родовое имя первым в цепочке имён: sans-serif Moda
+  spisokGarniturChitaetsya: true
+  вердикт: СВЕРЕНО
+  lightningcss font-family: .a { font-family: "Bodoni Moda", sans-serif Moda; }  предупреждений 0
+=== родовое имя первым в цепочке имён: monospace x
+  spisokGarniturChitaetsya: true
+  вердикт: СВЕРЕНО
+  lightningcss font-family: .a { font-family: "Bodoni Moda", monospace x, serif; }  предупреждений 0
+=== перевод строки внутри строки
+  spisokGarniturChitaetsya: true
+  вердикт: ОТКАЗ гарнитура: Tailwind сайта не собрал global.css (D:\SEO\cloud\site-generator\sites\7thserpent.com\src\styles\global.css:60:34: Unterminated string: 'Times') — га
+  lightningcss font-family:   предупреждений 1: Unexpected token BadString("Times")

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head></head><body><pre id="out">ITOG
+serif X = false; X serif = true
+sans-serif X = false; X sans-serif = true
+monospace X = false; X monospace = true
+cursive X = false; X cursive = true
+fantasy X = false; X fantasy = true
+system-ui X = false; X system-ui = true
+ui-serif X = true; X ui-serif = true
+ui-sans-serif X = true; X ui-sans-serif = true
+ui-monospace X = true; X ui-monospace = true
+ui-rounded X = true; X ui-rounded = true
+math X = false; X math = true
+emoji X = true; X emoji = true
+fangsong X = true; X fangsong = true
+generic X = true; X generic = true
+-webkit-body X = false; X -webkit-body = true
+inherit X = true; X inherit = true
+default X = true; X default = true
+initial X = true; X initial = true
+KONEC</pre>
+<script>
+const r = [];
+for (const g of ['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'math', 'emoji', 'fangsong', 'generic', '-webkit-body', 'inherit', 'default', 'initial'])
+  r.push(g + ' X = ' + CSS.supports('font-family', "'Bodoni Moda', " + g + ' X') + '; X ' + g + ' = ' + CSS.supports('font-family', "'Bodoni Moda', X " + g));
+document.getElementById('out').textContent = 'ITOG\n' + r.join('\n') + '\nKONEC';
+</script>
+</body></html>

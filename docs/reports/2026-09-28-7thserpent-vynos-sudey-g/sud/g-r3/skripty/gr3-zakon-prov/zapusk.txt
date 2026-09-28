@@ -1,0 +1,47 @@
+== z3-bez-source [настоящий] код 0
+ВЕРДИКТ z3-bez-source: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+   stderr: (node:40696) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== z3-bez-source [M20] код 0
+ВЕРДИКТ z3-bez-source: СВЕРЕНО
+   stderr: (node:42264) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== z3-none-src [настоящий] код 0
+ВЕРДИКТ z3-none-src: СВЕРЕНО
+   stderr: (node:29188) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== z3-none-src [M21] код 0
+ВЕРДИКТ z3-none-src: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+   stderr: (node:34884) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== z3-none-bez-source-voobshche [настоящий] код 0
+ВЕРДИКТ z3-none-bez-source-voobshche: СВЕРЕНО
+   stderr: (node:37144) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== z3-none-bez-source-voobshche [M21] код 0
+ВЕРДИКТ z3-none-bez-source-voobshche: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+   stderr: (node:37440) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== storozh [настоящий, чистый источник] код 0
+logger.info: знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема
+ВЕРДИКТ сторожа: прошёл
+   stderr: (node:23420) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== storozh [настоящий, .ft { --accent } в источнике] код 0
+logger.error: знак: отказ — 11
+ВЕРДИКТ сторожа: ОТКАЗ Знак сайта разошёлся с источником — 11: - шапка, трассер — диагональ семёрки клином, фонарь: токен --accent переопределён вне верхнего :root (другой блок: «#ff0000») — знак на странице и иконки могут разойтись - шапка, ромб узла на изломе, фонарь: токен --accent переопределён вне верхнего :root (другой блок: «#ff0000») — знак на странице и иконки могут разойтись - иконка 32, трассер: токен --accen
+   stderr: (node:40148) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== storozh [M23, .ft { --accent } в источнике] код 0
+logger.info: знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема
+ВЕРДИКТ сторожа: прошёл
+   stderr: (node:33320) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== тесты под K1: pass 111, fail 230, todo 3; код 1
+== тесты под M14: pass 341, fail 0, todo 3; код 0
+== тесты под M16: pass 341, fail 0, todo 3; код 0
+== тесты под M17: pass 341, fail 0, todo 3; код 0
+== тесты под M20: pass 341, fail 0, todo 3; код 0
+== тесты под M21: pass 341, fail 0, todo 3; код 0
+== тесты под M23: pass 341, fail 0, todo 3; код 0
+== тесты без мутации: pass 341, fail 0, todo 3; код 0

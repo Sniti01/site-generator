@@ -1,0 +1,20 @@
+=== kontrol: чистые входы
+вердикт: СВЕРЕНО
+--font-display на странице:
+  @layer theme > :root, :host :: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== A1 tailwindcss с media print
+вердикт: СВЕРЕНО
+--font-display на странице:
+  @media print > @layer theme > :root, :host :: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== A2 тема Tailwind отдельно, с media print
+вердикт: СВЕРЕНО
+--font-display на странице:
+  @media print > @layer theme > :root, :host :: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== A3 тема Tailwind отдельно, supports(display: nonsense)
+вердикт: СВЕРЕНО
+--font-display на странице:
+  @supports (display: nonsense) > @layer theme > :root, :host :: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+=== A4 тема Tailwind отдельно, (min-width: 100000px)
+вердикт: СВЕРЕНО
+--font-display на странице:
+  @media (min-width: 100000px) > @layer theme > :root, :host :: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif

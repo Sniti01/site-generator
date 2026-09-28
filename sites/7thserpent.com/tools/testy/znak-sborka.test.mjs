@@ -62,6 +62,17 @@ test('сторож сборки знака: иконка сборки не та 
   });
 });
 
+test('GR3-Z-4: сторож сборки знака — отказ источника (краска переопределена вне :root), иконки те же (без гейтов) — astro build падает, совет — источник', () => {
+  naKopii((k) => {
+    zapisat(k, 'src/styles/global.css', `${prochest(k, 'src/styles/global.css')}\n.ft { --accent: #ff0000; }\n`);
+    const r = sobrat(k);
+    assert.notEqual(r.kod, 0);
+    assert.match(r.vyvod, /Знак сайта разошёлся с источником/);
+    assert.match(r.vyvod, /переопределён вне верхнего :root/);
+    assert.match(r.vyvod, /Сначала — источник знака/);
+  });
+});
+
 test('R5-SVERKA-6: запись иконок и строка итога — новая краска токена попадает в файлы и в итог; при отказе не пишется ничего', () => {
   naKopii((k) => {
     zapisat(k, 'src/styles/global.css', zamena(prochest(k, 'src/styles/global.css'), '\n  --accent: #eca84a;', '\n  --accent: #eca84b;'));

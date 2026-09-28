@@ -1,0 +1,5 @@
+=== сборка bez-psevdonima: css global-C_l-xZlt.css; граней Bodoni Moda 1
+  @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(/assets/bodoni-moda-latin-600-normal-DbXDFeqY.woff2)format("woff2"),url(/assets/bodoni-moda-latin-600-normal-DgnCXU2s.woff)fo
+=== сборка s-psevdonimom: css global-DrNooeTT.css; граней Bodoni Moda 1
+  @font-face{font-family:Bodoni Moda;font-style:normal;font-weight:600;src:local(Georgia)}
+=== судья знака на тех же входах (astro.config.mjs он не читает): СВЕРЕНО

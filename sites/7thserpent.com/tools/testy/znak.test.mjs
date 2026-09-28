@@ -6,7 +6,7 @@
 //   npm run proverki
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
@@ -532,3 +532,163 @@ test('GR2-Z-7: отказ сторожа — «npm run znak» только у и
 test.todo('GR2-K-4 (предел): CSS страницы не из global.css — <style> компонентов Astro (сайта и ядра) и style= в разметке — судья знака не судит: гейт судит CSS, который вырастает из global.css, сторож sayt:znak-dist — иконки сборки (слова владельца); style= вне <main> и у <html>/<body> страниц маршрута судит сверка dist');
 test.todo('GR2-Z-2 (предел): кандидат с --font-display текстом в любом файле зоны сканера (и мёртвый, на элементах не стоит) — отказ: судится каждое --font-display вывода, а не только действующее на документ');
 test.todo('GR1-K-6 (предел): правило роли заголовка с другой гарнитурой (.t-headline { font-family: Georgia }) — не судится: судья знака судит --font-display, а не то, что роль берёт гарнитуру темы (строка «все» «Пределов после раунда 5»; её видят кадры эталона)');
+// ── Часть 6. «Судью судят» по блоку Г, раунд 3 — последний (GR3-*) ─────────────────────────────────────────
+const IMPORT_TW = "@import 'tailwindcss' source('../../src');";
+const RASKLADKA_TEMY = (uslovie) => `@layer theme, base, components, utilities;\n@import 'tailwindcss/theme.css' layer(theme) ${uslovie};\n@import 'tailwindcss/preflight.css' layer(base);\n@import 'tailwindcss/utilities.css' layer(utilities) source('../../src');`;
+test('GR3-K-1: --font-display на странице только под условием (@media, supports) — отказ', async (t) => {
+  const SLUCHAI = [
+    ["весь tailwindcss с print", (w) => { w.css = zamenitStroku(w.css, IMPORT_TW, "@import 'tailwindcss' source('../../src') print;"); return w; }],
+    ...['print', 'supports(display: nonsense)', '(min-width: 100000px)'].map((u) => [`тема Tailwind отдельным импортом с ${u}`, (w) => { w.css = zamenitStroku(w.css, IMPORT_TW, RASKLADKA_TEMY(u)); return w; }]),
+  ];
+  for (const [imya, mut] of SLUCHAI) await t.test(imya, async () => sudit((await sverka(mut(czyste()))).bledy, 'только под условием'));
+  await t.test('тема под print и Бодони на классе, а не на :root — отказ', async () => {
+    const w = sListom(czyste(), ".zag { --font-display: 'Bodoni Moda', serif; }\n");
+    w.css = zamenitStroku(w.css, IMPORT_TW, "@import 'tailwindcss' source('../../src') print;");
+    sudit((await sverka(w)).bledy, 'только под условием');
+  });
+});
+test('GR3-K-2, GR3-Z-2: разрешатель импортов — как у плагина @tailwindcss/vite (разрешатель Vite сборки)', async (t) => {
+  await t.test('K-2: псевдоним Vite сайта подменяет лист гарнитуры темы гранью с local(Georgia) — отказ', async () => {
+    const d = vremennaya();
+    writeFileSync(join(d, 'fake-600.css'), "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-weight: 600; src: local('Georgia'); }\n");
+    const w = czyste();
+    w.vite = { resolve: { alias: [{ find: IMPORT_GARNITURY, replacement: put(join(d, 'fake-600.css')) }] }, plugins: [] };
+    sudit((await sverka(w)).bledy, 'своя @font-face');
+  });
+  await t.test('K-2, контроль: конфигурация Vite без псевдонимов — сверено', async () => {
+    const w = czyste();
+    w.vite = { plugins: [] };
+    sudit((await sverka(w)).bledy, null);
+  });
+  await t.test('Z-2: импорт по корню Vite (/src/…) на законный лист — сверено', async () => {
+    const koren = vremennaya();
+    mkdirSync(join(koren, 'src'));
+    writeFileSync(join(koren, 'src', 'dop.css'), '.dop { color: red; }\n');
+    const w = czyste();
+    w.korenVite = koren;
+    w.css = zamenitStroku(w.css, POSLE_YADRA, `${POSLE_YADRA}\n@import '/src/dop.css';`);
+    sudit((await sverka(w)).bledy, null);
+  });
+  await t.test('Z-2 (проверяющий): пакет с exports import → zlo.css, style → dobro.css — сборка берёт zlo.css — отказ', async () => {
+    const d = vremennaya();
+    const pkg = join(d, 'node_modules', 'pkg-import');
+    mkdirSync(pkg, { recursive: true });
+    writeFileSync(join(pkg, 'package.json'), JSON.stringify({ name: 'pkg-import', version: '1.0.0', exports: { './list.css': { import: './zlo.css', style: './dobro.css' } } }));
+    writeFileSync(join(pkg, 'zlo.css'), ':root { --font-display: Georgia, serif; }\n');
+    writeFileSync(join(pkg, 'dobro.css'), '.dobro { color: green; }\n');
+    writeFileSync(join(d, 'list.css'), "@import 'pkg-import/list.css';\n");
+    const w = czyste();
+    w.css = zamenitStroku(w.css, POSLE_YADRA, `${POSLE_YADRA}\n@import '${put(join(d, 'list.css'))}';`);
+    sudit((await sverka(w)).bledy, 'Tailwind сайта не выводит');
+  });
+});
+test('GR3-K-2 (проверяющий): конвейер CSS сборки, которого судья не повторяет, — громкий отказ', async (t) => {
+  await t.test('файл настроек PostCSS в корне Vite', async () => {
+    const koren = vremennaya();
+    writeFileSync(join(koren, 'postcss.config.mjs'), 'export default { plugins: [] };\n');
+    const w = czyste();
+    w.korenVite = koren;
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+  await t.test('файл настроек PostCSS в папке выше корня Vite', async () => {
+    const vyshe = vremennaya();
+    writeFileSync(join(vyshe, '.postcssrc.json'), '{ "plugins": {} }\n');
+    mkdirSync(join(vyshe, 'koren'));
+    const w = czyste();
+    w.korenVite = join(vyshe, 'koren');
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+  await t.test('поле postcss в package.json корня Vite', async () => {
+    const koren = vremennaya();
+    writeFileSync(join(koren, 'package.json'), JSON.stringify({ name: 'x', postcss: { plugins: {} } }));
+    const w = czyste();
+    w.korenVite = koren;
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+  await t.test('настройки vite.css сайта', async () => {
+    const w = czyste();
+    w.vite = { css: { postcss: { plugins: [] } }, plugins: [] };
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+  await t.test('плагин Vite сайта, кроме Tailwind', async () => {
+    const w = czyste();
+    w.vite = { plugins: [{ name: 'svoi-plagin', transform: () => null }] };
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+  await t.test('псевдонимы paths в tsconfig сайта', async () => {
+    const w = czyste();
+    w.tsconfig = '{ "extends": "astro/tsconfigs/strict", "compilerOptions": { "paths": { "@/*": ["src/*"] } } }';
+    sudit((await sverka(w)).bledy, 'в конвейере CSS сборки');
+  });
+});
+test('GR3-K-3: родовое имя первым в цепочке имён — список не читается; имя из двух слов с родовым вторым — читается', async (t) => {
+  const PLOHIE = ["'Bodoni Moda', serif Georgia", "'Bodoni Moda', sans-serif Moda", "'Bodoni Moda', monospace x, serif", "'Bodoni Moda', SERIF Georgia", "'Bodoni Moda', cursive Moda, serif"];
+  const ZAKONNYE = ["'Bodoni Moda', Georgia serif", "'Bodoni Moda', serif"];
+  for (const v of PLOHIE) await t.test(`отказ: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, 'список --font-display не читается'));
+  for (const v of ZAKONNYE) await t.test(`сверено: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, null));
+});
+test('GR3-Z-1: var() токена темы в хвосте списка — сверено, если имя объявлено на странице; иначе отказ', async (t) => {
+  for (const v of ["'Bodoni Moda', var(--font-serif)", "'Bodoni Moda', var(--font-serif, Georgia, serif)", "'Bodoni Moda', var(--net-takogo, Georgia, serif)"]) {
+    await t.test(`сверено: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, null));
+  }
+  for (const v of ["'Bodoni Moda', var(--net-takogo)", "'Bodoni Moda', var(--net-takogo, 10px)", "'Bodoni Moda', var(--color-accent)", "'Bodoni Moda', var(--font-display)"]) {
+    await t.test(`отказ: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, 'Tailwind сайта не выводит'));
+  }
+  await t.test('отказ: имя объявлено только под @media print', async () => {
+    const w = sListom(SPISOK_ZAMENA("'Bodoni Moda', var(--zapas-print)")(czyste()), '@media print { :root { --zapas-print: Georgia, serif; } }\n');
+    sudit((await sverka(w)).bledy, 'Tailwind сайта не выводит');
+  });
+});
+test('GR3: команда --check — код 0 и «сверено»: сверка импортирует astro.config.mjs, а он — модуль команды (без await на верхнем уровне)', () => {
+  const r = spawnSync(process.execPath, [join(SAYT, 'tools/znak.mjs'), '--check'], { cwd: SAYT, encoding: 'utf8', timeout: 120000 });
+  assert.equal(r.status, 0, `${r.stdout}${r.stderr}`);
+  assert.match(r.stdout, /^znak: сверено — 6 иконок public\//);
+});
+test('GR3-Z-3: ветви источников сканера — корень сайта без source(), ничего при source(none)', async (t) => {
+  // Слово «proverki» есть в корне сайта (tools/proverki.mjs, package.json) и нет в src/ и core/**/*.astro.
+  const UTILITA = '@utility proverki { --font-display: Georgia, serif; }\n';
+  await t.test('без source() — сканер идёт по корню сайта: утилита из корня — отказ', async () => {
+    const w = sListom(czyste(), UTILITA);
+    w.css = zamenitStroku(w.css, IMPORT_TW, "@import 'tailwindcss';");
+    sudit((await sverka(w)).bledy, 'Tailwind сайта не выводит');
+  });
+  await t.test("source(none) и @source '../../src' — корень не читается: сверено", async () => {
+    const w = sListom(czyste(), UTILITA);
+    w.css = zamenitStroku(w.css, IMPORT_TW, "@import 'tailwindcss' source(none);\n@source '../../src';");
+    sudit((await sverka(w)).bledy, null);
+  });
+  await t.test('source(none) без @source — сверено', async () => {
+    const w = sListom(czyste(), UTILITA);
+    w.css = zamenitStroku(w.css, IMPORT_TW, "@import 'tailwindcss' source(none);");
+    sudit((await sverka(w)).bledy, null);
+  });
+});
+test('GR3-Z-5: правило перехвата — диапазоны unicode-range и вес грани', async (t) => {
+  await t.test('diapazony: «?», диапазон, нечитаемое — весь Юникод', () => {
+    const { diapazony } = znakModul;
+    const VSE = [[0, 0x10ffff]];
+    assert.deepEqual(diapazony('U+4??'), [[0x400, 0x4ff]]);
+    assert.deepEqual(diapazony('U+0-7F, U+1EE??'), [[0, 0x7f], [0x1ee00, 0x1eeff]]);
+    assert.deepEqual(diapazony('U+0102'), [[0x102, 0x102]]);
+    assert.deepEqual(diapazony(null), VSE);
+    for (const v of ['U+1??-2FF', 'U+7F-0', 'U+1234567', 'x']) assert.deepEqual(diapazony(v), VSE, v);
+  });
+  await t.test('dlyaRoliTemy: italic — нет; 600 и диапазон с 600 — да; вес не числом — да (запас)', () => {
+    const { dlyaRoliTemy, drzewoCss } = znakModul;
+    const gran = (d) => drzewoCss(`@font-face { font-family: 'Bodoni Moda'; ${d} }`).uzly[0];
+    assert.equal(dlyaRoliTemy(gran('font-style: italic; font-weight: 600;')), false);
+    assert.equal(dlyaRoliTemy(gran('font-weight: 600;')), true);
+    assert.equal(dlyaRoliTemy(gran('font-weight: 500 700;')), true);
+    assert.equal(dlyaRoliTemy(gran('font-weight: 700;')), false);
+    assert.equal(dlyaRoliTemy(gran('font-weight: bold;')), true);
+    assert.equal(dlyaRoliTemy(gran('')), true);
+  });
+  await t.test('поздняя своя грань без веса забирает знаки — строки перехвата нет, одна «своя @font-face»', async () => {
+    const w = sListom(posleTemy(czyste(), 'latin-ext-600.css'), "@font-face { font-family: 'Bodoni Moda'; src: url(x.woff2); }\n");
+    sudit((await sverka(w)).bledy, 'своя @font-face');
+  });
+  await t.test('поздняя своя грань с нечитаемым unicode-range забирает все знаки — строки перехвата нет', async () => {
+    const w = sListom(posleTemy(czyste(), 'latin-ext-600.css'), "@font-face { font-family: 'Bodoni Moda'; font-weight: 600; unicode-range: U+1??-2FF; src: url(x.woff2); }\n");
+    sudit((await sverka(w)).bledy, 'своя @font-face');
+  });
+});

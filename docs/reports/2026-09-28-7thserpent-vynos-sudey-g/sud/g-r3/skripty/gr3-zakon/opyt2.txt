@@ -1,0 +1,11 @@
+(а) объявления --font-display и --font-serif на странице:
+    --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+    --font-display: "Bodoni Moda", var(--font-serif);
+   font-family с var(--font-display): 1
+
+(б) разрешение «/src/styles/global.css» из папки global.css:
+    Vite (как плагин сборки): D:/SEO/cloud/site-generator/sites/7thserpent.com/src/styles/global.css
+    @tailwindcss/node без customCssResolver (как судья): ОШИБКА Can't resolve '/src/styles/global.css' in 'D:\SEO\cloud\site-generator\sites\7thserpent.com\src\styles'
+    мини-корень, с customCssResolver Vite (сборка): собрано — /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+.dop{color:red}
+    мини-корень, без него (судья): ОШИБКА Can't resolve '/src/styles/dop.css' in 'C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\gr3\gr3-zakon\mini-koren\src\styles'

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html><head><style>
+body { font-family: 'Public Sans', sans-serif; }
+@media print { @layer theme { :root, :host { --fdp: 'Bodoni Moda', serif; } } }
+@media supports(display: nonsense) { @layer theme { :root, :host { --fds: 'Bodoni Moda', serif; } } }
+@layer theme { :root, :host { --fdk: 'Bodoni Moda', serif; --fd1: 'Bodoni Moda', serif Georgia; --fd2: 'Bodoni Moda', cursive Moda, serif; --fd3: 'Bodoni Moda', Georgia serif; } }
+#p { font-family: var(--fdp); } #s { font-family: var(--fds); } #k { font-family: var(--fdk); }
+#a { font-family: var(--fd1); } #b { font-family: var(--fd2); } #c { font-family: var(--fd3); }
+</style></head><body>
+<div id="p">x</div><div id="s">x</div><div id="k">x</div><div id="a">x</div><div id="b">x</div><div id="c">x</div>
+<pre id="out">ITOG
+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/151.0.7922.34 Safari/537.36
+p: "Public Sans", sans-serif
+s: "Public Sans", sans-serif
+k: "Bodoni Moda", serif
+a: "Public Sans", sans-serif
+b: "Public Sans", sans-serif
+c: "Bodoni Moda", "Georgia serif"
+supports 'Bodoni Moda', serif Georgia = false
+supports 'Bodoni Moda', cursive Moda, serif = false
+supports 'Bodoni Moda', Georgia serif = true
+supports 'Bodoni Moda', serif = true
+KONEC</pre>
+<script>
+const r = [navigator.userAgent];
+for (const id of ['p', 's', 'k', 'a', 'b', 'c']) r.push(id + ': ' + getComputedStyle(document.getElementById(id)).fontFamily);
+for (const v of ["'Bodoni Moda', serif Georgia", "'Bodoni Moda', cursive Moda, serif", "'Bodoni Moda', Georgia serif", "'Bodoni Moda', serif"]) r.push('supports ' + v + ' = ' + CSS.supports('font-family', v));
+document.getElementById('out').textContent = 'ITOG\n' + r.join('\n') + '\nKONEC';
+</script>
+</body></html>

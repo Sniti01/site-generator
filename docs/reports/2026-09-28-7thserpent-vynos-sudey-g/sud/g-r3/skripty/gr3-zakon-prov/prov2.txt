@@ -1,0 +1,50 @@
+== мини-корень: exports { "./list.css": { <условие>: zlo.css, style: dobro.css } }
+   import: плагин (Vite) → :root{--font-display:Georgia, serif} || судья (@tailwindcss/node) → .dobro{color:green}   ← РАЗНЫЕ ЛИСТЫ
+   browser: плагин (Vite) → .dobro{color:green} || судья (@tailwindcss/node) → .dobro{color:green}
+   module: плагин (Vite) → .dobro{color:green} || судья (@tailwindcss/node) → .dobro{color:green}
+   production: плагин (Vite) → .dobro{color:green} || судья (@tailwindcss/node) → .dobro{color:green}
+   default: плагин (Vite) → :root{--font-display:Georgia, serif} || судья (@tailwindcss/node) → :root{--font-display:Georgia, serif}
+
+== импорты global.css: разрешатель плагина против @tailwindcss/node (без customCssResolver)
+   tailwindcss
+      Vite: D:/SEO/cloud/site-generator/node_modules/tailwindcss/index.css
+      node: D:\SEO\cloud\site-generator\node_modules\tailwindcss\index.css
+   @fontsource/bodoni-moda/latin-600.css
+      Vite: D:/SEO/cloud/site-generator/node_modules/@fontsource/bodoni-moda/latin-600.css
+      node: D:\SEO\cloud\site-generator\node_modules\@fontsource\bodoni-moda\latin-600.css
+   @fontsource/public-sans/latin-400.css
+      Vite: D:/SEO/cloud/site-generator/node_modules/@fontsource/public-sans/latin-400.css
+      node: D:\SEO\cloud\site-generator\node_modules\@fontsource\public-sans\latin-400.css
+   @fontsource/public-sans/latin-500.css
+      Vite: D:/SEO/cloud/site-generator/node_modules/@fontsource/public-sans/latin-500.css
+      node: D:\SEO\cloud\site-generator\node_modules\@fontsource\public-sans\latin-500.css
+   @fontsource/public-sans/latin-600.css
+      Vite: D:/SEO/cloud/site-generator/node_modules/@fontsource/public-sans/latin-600.css
+      node: D:\SEO\cloud\site-generator\node_modules\@fontsource\public-sans\latin-600.css
+   @factory/core/styles/reset.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/reset.css
+      node: D:\SEO\cloud\site-generator\core\styles\reset.css
+   @factory/core/styles/base.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/base.css
+      node: D:\SEO\cloud\site-generator\core\styles\base.css
+   @factory/core/styles/layout.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/layout.css
+      node: D:\SEO\cloud\site-generator\core\styles\layout.css
+   @factory/core/styles/button.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/button.css
+      node: D:\SEO\cloud\site-generator\core\styles\button.css
+   @factory/core/styles/card.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/card.css
+      node: D:\SEO\cloud\site-generator\core\styles\card.css
+   @factory/core/styles/foto.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/foto.css
+      node: D:\SEO\cloud\site-generator\core\styles\foto.css
+   @factory/core/styles/credit.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/credit.css
+      node: D:\SEO\cloud\site-generator\core\styles\credit.css
+   @factory/core/styles/motion.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/motion.css
+      node: D:\SEO\cloud\site-generator\core\styles\motion.css
+   @factory/core/styles/a11y.css
+      Vite: D:/SEO/cloud/site-generator/core/styles/a11y.css
+      node: D:\SEO\cloud\site-generator\core\styles\a11y.css

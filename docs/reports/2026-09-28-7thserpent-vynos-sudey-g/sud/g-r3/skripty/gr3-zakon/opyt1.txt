@@ -1,0 +1,24 @@
+контроль: чистые входы
+   СВЕРЕНО
+V1 --font-display: 'Bodoni Moda', var(--font-serif)
+   ОТКАЗ (1):
+     - гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif)) — на странице гарнитура заголовков падает на наследуемую
+V2 --font-display: 'Bodoni Moda', var(--font-serif, Georgia, serif)
+   ОТКАЗ (1):
+     - гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif, Georgia, serif)) — на странице гарнитура заголовков падает на наследуемую
+V3 в импортированном листе :root { --font-display: 'Bodoni Moda', var(--font-serif) }
+   ОТКАЗ (1):
+     - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | "Bodoni Moda", var(--font-serif)) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака
+R1 @import '/src/styles/global.css' (корень Vite; файл есть)
+   ОТКАЗ (1):
+     - гарнитура: Tailwind сайта не собрал global.css (Can't resolve '/src/styles/global.css' in 'D:\SEO\cloud\site-generator\sites\7thserpent.com\src\styles') — гарнитуру на странице судить нечем
+T1 тема дважды (ещё раз в конце импортов)
+   СВЕРЕНО
+T2 после темы index.css (400, все подмножества)
+   СВЕРЕНО
+T3 после темы 600-italic.css
+   СВЕРЕНО
+T4 после темы latin-ext-400.css
+   СВЕРЕНО
+T5 перед темой math-600.css и symbols-600.css
+   СВЕРЕНО

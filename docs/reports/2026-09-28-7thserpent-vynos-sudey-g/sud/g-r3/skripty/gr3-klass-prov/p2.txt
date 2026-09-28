@@ -1,0 +1,7 @@
+=== kontrol: граней Bodoni Moda 1
+  @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(/assets/bodoni-moda-latin-600-normal-DbXDFeqY.woff2)format("woff2"),url(/assets/bodoni-moda-latin-600-nor
+=== alias: граней Bodoni Moda 1
+  @font-face{font-family:Bodoni Moda;font-style:normal;font-weight:600;src:local(Georgia)}
+=== postcss-svoi: граней Bodoni Moda 1
+  @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:local(Georgia)}
+=== судья знака на тех же входах: СВЕРЕНО

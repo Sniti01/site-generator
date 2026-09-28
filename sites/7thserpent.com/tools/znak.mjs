@@ -37,12 +37,21 @@
  *        в CSS не выходит), первым в списке стоит ровно 'Bodoni Moda' (за ним —
  *        запятая или конец), весь список читается как `font-family` (строка или
  *        имена через запятую, без пустых элементов, чисел и CSS-wide keywords —
- *        R5-SVERKA-5), сброса `--font-*` или `--*` после него в `@theme` нет
+ *        R5-SVERKA-5, без родового имени первым в цепочке имён — GR3-K-3; элемент
+ *        `var(--имя[, запас])` — по форме, его значение судит страница — GR3-Z-1),
+ *        сброса `--font-*` или `--*` после него в `@theme` нет
  *        и `@property --font-display` нет; ПОСЛЕДНЕЕ СЛОВО — самому Tailwind сайта:
  *        CSS страницы собирается путём сборки (плагин @tailwindcss/vite: `compile()`
- *        @tailwindcss/node, кандидаты сканера oxide по источникам листа, `build`,
- *        `optimize`; без сети) и читается разбором сверки — каждое `--font-display`
- *        на странице обязано нести 'Bodoni Moda' первым и читаемый список, своя
+ *        @tailwindcss/node с разрешателями Vite, как их строит плагин, — настройки
+ *        `vite` сайта из `astro.config.mjs`, корень Vite — папка сайта, GR3-K-2, -Z-2;
+ *        кандидаты сканера oxide по источникам листа, `build`, `optimize`; без сети);
+ *        чего путь судьи не повторяет — плагин Vite сайта, кроме Tailwind, `vite.css`,
+ *        PostCSS (файл настроек или поле `postcss` от корня Vite до корня диска),
+ *        `paths` tsconfig — громкий отказ «в конвейере CSS сборки»; вывод читается
+ *        разбором сверки — каждое `--font-display`
+ *        на странице обязано нести 'Bodoni Moda' первым и читаемый список (`var()` —
+ *        по объявлениям на странице без условий, запас — если имени нет), хотя бы одно —
+ *        на `:root` без условий (под `@media`, `@supports`, `@container` — отказ, GR3-K-1), своя
  *        `@font-face` 'Bodoni Moda' на любой глубине — ровно грань пакета темы (все его
  *        листы — начертания, подмножества — тем же путём сборки: дескрипторы и `src`
  *        целиком; `local()`, чужой адрес, другой файл под тем же весом — отказ),
@@ -104,7 +113,12 @@
  * сайта, а не сайта (их API, версии — по lock; пропадут — инструмент не запустится):
  * смена поведения Tailwind меняет вердикт вместе со страницей — это и нужно;
  * кандидаты сканера — один раз на процесс для тех же источников, грани пакета темы —
- * один раз на процесс (обновление пакета меняет их вместе со страницей). Роль заголовка
+ * один раз на процесс (обновление пакета меняет их вместе со страницей). Путь судьи —
+ * путь плагина с оговорками (GR3): окружение разрешателя — ssr (страницы Astro собирает
+ * на сервере; client пробы не различают); `optimize` — без сжатия (сборка сжимает; разбор
+ * судит то же дерево); собственные плагины и псевдонимы Astro в конфигурации Vite не
+ * повторяются — только настройки `vite` сайта; грань в правиле перехвата с весом не числом
+ * годится для роли, но на вердикт это не влияет (такая грань — не грань пакета темы). Роль заголовка
  * с другой гарнитурой (`.t-headline { font-family: Georgia }`) не судится: судится
  * `--font-display`, а не то, что роль берёт гарнитуру темы (строка «все» «Пределов
  * после раунда 5»; её видят кадры эталона; GR1-K-6, тест todo). Судится CSS, который
@@ -115,12 +129,15 @@
  * токеном в начале правила на верхнем уровне — громкий отказ, хотя браузер их
  * отбрасывает (GR1-K-5); внутри строк, имён и прелюдий это не они (GR2-Z-3). Запас
  * в безопасную сторону (ложный отказ, R5-SVERKA-7): пробелы в имени своей
- * `@font-face` сводятся и в кавычках; грань пакета темы того же начертания с другим
+ * `@font-face` сводятся и в кавычках (`'bodoni   moda'` — отказ, хотя для CSS это
+ * другая гарнитура); грань пакета темы того же начертания с другим
  * файлом позже темы — отказ, хотя гарнитура та же (600.css после темы: Ă и
- * комбинируемые знаки берут грани latin-ext и math; GR2-Z-1); грань с весом не числом
- * (нет, `normal`, `bold`) или `oblique` годится для роли темы; пробелы в имени
- * (`'bodoni   moda'` — отказ, хотя для CSS это
- * другая гарнитура); имя из `--` в списке `--font-display` не читается; не-ASCII
+ * комбинируемые знаки берут грани latin-ext и math; GR2-Z-1); родовые `ui-*`, `emoji`,
+ * `fangsong` первыми в цепочке имён — отказ (Chromium 151 принимает их как имя) и
+ * CSS-wide keyword в цепочке — отказ (он тоже, GR3-K-3); `var()` в списке — только
+ * элементом целиком, объявление без условий — только правилом `:root`, `html`
+ * (`:root, :host`) на верхнем уровне или в `@layer`; PostCSS ищется до корня диска,
+ * даже если Vite ищет короче; имя из `--` в списке `--font-display` не читается; не-ASCII
  * принимается только в именах custom property; `@theme default` у основного
  * `--font-display` — отказ «вне верхнего @theme», хотя Tailwind его выводит. Кернинга у контуров нет (fontkitten
  * без раскладки) — ни у эскиза, ни у пересчёта: проверка 2 ловит дрейф данных
@@ -141,7 +158,7 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, lstatSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve, isAbsolute } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const siteRoot = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -296,13 +313,35 @@ export const razekranirovat = (s) =>
   });
 
 const CSS_SHIROKIE = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'default']);
+// Родовые имена: первым в цепочке имён элемент не читается (GR3-K-3; Chromium 151 — serif, sans-serif, monospace,
+// cursive, fantasy, system-ui, math, -webkit-body; ui-*, emoji, fangsong он принимает как имя — запас в безопасную сторону).
+const RODOVYE = new Set(['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'math', '-webkit-body', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'emoji', 'fangsong']);
 const IDENT = /^-?(?:[a-zA-Z_\u0080-￿]|\\[0-9a-fA-F]{1,6}[ \t\n\r\f]?|\\[^\n\r\f0-9a-fA-F])(?:[-\w\u0080-￿]|\\[0-9a-fA-F]{1,6}[ \t\n\r\f]?|\\[^\n\r\f0-9a-fA-F])*/;
+/** Конец скобки, открытой в `s[i]` (строки и вложенные скобки — целиком); нет — -1. */
+function konecSkobki(s, i) {
+  let glub = 0;
+  for (let j = i; j < s.length; j++) {
+    if (s[j] === '\\') { j++; continue; }
+    if (s[j] === '"' || s[j] === "'") {
+      const q = s[j];
+      for (j++; j < s.length && s[j] !== q; j++) if (s[j] === '\\') j++;
+      continue;
+    }
+    if (s[j] === '(') glub++;
+    if (s[j] === ')' && --glub === 0) return j;
+  }
+  return -1;
+}
 /**
  * Читается ли значение как `font-family` (R5-SVERKA-5): элементы через запятую, каждый — ровно одна строка или
- * одно и больше имён (`<family-name> = <string> | <custom-ident>+`), без CSS-wide keywords и `default`; пустой
- * элемент, две строки подряд, число, функция — не читается.
+ * одно и больше имён (`<family-name> = <string> | <custom-ident>+`), без CSS-wide keywords и `default` и без родового
+ * имени первым в цепочке из нескольких (GR3-K-3); пустой элемент, две строки подряд, число, функция — не читается.
+ * Элемент `var(--имя[, запас])` целиком (GR3-Z-1): без `razreshit` (модель листа) — принимается по форме, его судит
+ * страница; с `razreshit` (имя → значение, объявленное на странице без условий, или undefined) — читается подставленное
+ * значение имени, а не объявлено — запас; нет и запаса — не читается.
  */
-export function spisokGarniturChitaetsya(v) {
+export function spisokGarniturChitaetsya(v, razreshit = null, glubina = 0) {
+  if (glubina > 8) return false;
   const s = String(v).trim();
   const elementy = [[]];
   for (let i = 0; i < s.length; ) {
@@ -325,10 +364,26 @@ export function spisokGarniturChitaetsya(v) {
     }
     const m = IDENT.exec(s.slice(i));
     if (!m) return false;
+    if (s[i + m[0].length] === '(') {
+      if (razekranirovat(m[0]).toLowerCase() !== 'var') return false;
+      const k = konecSkobki(s, i + m[0].length);
+      if (k < 0) return false;
+      const vn = /^\(\s*(--[-\w\u0080-￿]+)\s*(?:,([\s\S]*))?\)$/.exec(s.slice(i + m[0].length, k + 1));
+      if (!vn) return false;
+      let chitaetsya = true;
+      if (razreshit) {
+        const znachenie = razreshit(vn[1].slice(2));
+        chitaetsya = znachenie !== undefined ? spisokGarniturChitaetsya(znachenie, razreshit, glubina + 1) : vn[2] !== undefined && spisokGarniturChitaetsya(vn[2], razreshit, glubina + 1);
+      }
+      if (!chitaetsya) return false;
+      elementy.at(-1).push({ var: true });
+      i = k + 1;
+      continue;
+    }
     elementy.at(-1).push({ stroka: false, imya: razekranirovat(m[0]).toLowerCase() });
     i += m[0].length;
   }
-  return elementy.every((e) => e.length > 0 && ((e.length === 1 && e[0].stroka) || e.every((x) => !x.stroka && !CSS_SHIROKIE.has(x.imya))));
+  return elementy.every((e) => e.length > 0 && ((e.length === 1 && (e[0].stroka || e[0].var)) || (e.every((x) => !x.stroka && !x.var && !CSS_SHIROKIE.has(x.imya)) && !(e.length > 1 && RODOVYE.has(e[0].imya)))));
 }
 
 // Имя гарнитуры — как его читает CSS: экранирование раскрыто (и продолжение строки, R5-SVERKA-3), кавычки сняты,
@@ -355,7 +410,7 @@ const deskriptor = (u, imya) => {
 };
 const VSE_ZNAKI = [[0, 0x10ffff]];
 /** `unicode-range` → [[от, до], …]; не читается — весь Юникод (браузер отбрасывает такой дескриптор). */
-function diapazony(v) {
+export function diapazony(v) {
   if (v === null) return VSE_ZNAKI;
   const out = [];
   for (const el of v.split(',')) {
@@ -371,10 +426,11 @@ const peresech = (a, b) => a.flatMap(([l1, h1]) => b.map(([l2, h2]) => [Math.max
 const bez = (a, b) => b.reduce((ost, [l2, h2]) => ost.flatMap(([l1, h1]) => [[l1, Math.min(h1, l2 - 1)], [Math.max(l1, h2 + 1), h1]]).filter(([l, h]) => l <= h), a);
 /**
  * Годится ли грань для роли темы — normal 600: не `italic` (грань normal темы для normal всегда ближе), вес — 600
- * или диапазон с 600. Вес не числом (нет, `normal`, `bold`) и `oblique` — годится: запас в безопасную сторону, у граней
- * пакета темы их нет.
+ * или диапазон с 600. Вес не числом (нет, `normal`, `bold`) и `oblique` — годится. На вердикт это не влияет: у граней
+ * пакета темы вес — число и `italic`/`normal`, а чужую грань отвергает «не грань пакета темы» раньше; влияет на состав
+ * строк — поздняя чужая грань забирает знаки и гасит строку перехвата (GR3-Z-5).
  */
-function dlyaRoliTemy(u) {
+export function dlyaRoliTemy(u) {
   if (deskriptor(u, 'font-style') === 'italic') return false;
   const m = /^(\d+(?:\.\d+)?)(?:\s+(\d+(?:\.\d+)?))?$/.exec(deskriptor(u, 'font-weight') ?? '');
   if (!m) return true;
@@ -383,8 +439,74 @@ function dlyaRoliTemy(u) {
 }
 const u4 = (n) => `U+${n.toString(16).toUpperCase().padStart(4, '0')}`;
 const CSS_PUT = join(siteRoot, 'src/styles/global.css');
-const kompilirovat = (css) => twNode.compile(css, { base: dirname(CSS_PUT), from: CSS_PUT, shouldRewriteUrls: true, onDependency: () => {} });
-const vyvodBezKandidatov = async (css) => drzewoCss(twNode.optimize((await kompilirovat(css)).build([]), { minify: false }).code);
+// Vite той сборки, что у Astro сайта; настройки `vite` сайта — из astro.config.mjs (импорт — при первом суде, не на верхнем
+// уровне: конфигурация сама импортирует этот модуль).
+const viteAstro = createRequire(require.resolve('astro/package.json'));
+let VITE = null;
+const viteMod = () => (VITE ??= import(pathToFileURL(viteAstro.resolve('vite')).href));
+let VITE_SAYTA = null;
+const viteSayta = () => (VITE_SAYTA ??= import(pathToFileURL(join(siteRoot, 'astro.config.mjs')).href).then((m) => m.default?.vite ?? {}));
+const RAZRESHATELI = new WeakMap();
+/**
+ * Разрешатели листов и модулей — как их строит плагин @tailwindcss/vite для compile() (GR3-K-2, GR3-Z-2): `createResolver`
+ * Vite с настройками `resolve` сайта (псевдонимы, условия), для CSS — расширение `.css`, поле `style`, условия `style`
+ * и режима, без index, относительные первыми; две попытки (только псевдонимы, затем всё), ответ — абсолютный путь
+ * `.css` (для модулей — не `.css`); окружение — ssr (страницы Astro собирает на сервере). Корень Vite — `koren`.
+ */
+function razreshateli(nastroyki, koren) {
+  if (!RAZRESHATELI.has(nastroyki)) RAZRESHATELI.set(nastroyki, new Map());
+  const poKornyu = RAZRESHATELI.get(nastroyki);
+  if (!poKornyu.has(koren)) poKornyu.set(koren, (async () => {
+    const vite = await viteMod();
+    const { plugins, ...bezPlaginov } = nastroyki;
+    // Окружение ssr объявлено явно: без конфигурации Astro Vite его не создаёт.
+    const cfg = await vite.resolveConfig({ ...bezPlaginov, environments: { ssr: {}, ...bezPlaginov.environments }, root: koren, configFile: false, logLevel: 'silent' }, 'build');
+    const css = cfg.createResolver({ ...cfg.resolve, extensions: ['.css'], mainFields: ['style'], conditions: ['style', 'development|production'], tryIndex: false, preferRelative: true });
+    const js = cfg.createResolver(cfg.resolve);
+    const obertka = (r, filtr) => async (id, base) => {
+      const importer = resolve(base, '__placeholder__.ts');
+      for (const tolkoPsevdonimy of [true, false]) {
+        let s = await r(id, importer, tolkoPsevdonimy, true);
+        if (s && s !== id) {
+          if (s[0] === '.') s = resolve(base, s);
+          if (filtr(s) && isAbsolute(s)) return s;
+        }
+      }
+    };
+    return { customCssResolver: obertka(css, (s) => s.endsWith('.css')), customJsResolver: obertka(js, (s) => !s.endsWith('.css')) };
+  })());
+  return poKornyu.get(koren);
+}
+const POSTCSS = ['.postcssrc', '.postcssrc.json', '.postcssrc.yaml', '.postcssrc.yml', '.postcssrc.js', '.postcssrc.cjs', '.postcssrc.mjs', '.postcssrc.ts', '.postcssrc.cts', '.postcssrc.mts', 'postcss.config.js', 'postcss.config.cjs', 'postcss.config.mjs', 'postcss.config.ts', 'postcss.config.cts', 'postcss.config.mts', '.config/postcssrc', '.config/postcssrc.json', '.config/postcssrc.yaml', '.config/postcssrc.yml', '.config/postcssrc.js', '.config/postcssrc.cjs', '.config/postcssrc.mjs', '.config/postcssrc.ts', '.config/postcssrc.cts', '.config/postcssrc.mts'];
+/**
+ * Что в конвейере CSS сборки после Tailwind судья не повторяет (GR3-K-2, свой член проверяющего): плагин Vite сайта, кроме
+ * Tailwind; настройки `vite.css`; PostCSS — файл настроек или поле `postcss` в `package.json` от корня Vite до корня диска
+ * (Vite ищет его сам, `postcss-load-config`; поиск до корня диска — не уже, чем у него); псевдонимы `paths` tsconfig
+ * (их Astro отдаёт Vite своим плагином). Любое — громкий отказ: гарнитуру на странице судить нечем.
+ */
+function konveyerCss(nastroyki, koren, tsconfig) {
+  const out = [];
+  const chuzhie = [nastroyki.plugins ?? []].flat(Infinity).filter(Boolean).filter((p) => !String(p?.name ?? '').startsWith('@tailwindcss/vite'));
+  if (chuzhie.length) out.push(`плагин Vite сайта ${chuzhie.map((p) => `«${p?.name ?? '?'}»`).join(', ')}`);
+  if (nastroyki.css && Object.keys(nastroyki.css).length) out.push(`настройки vite.css сайта (${Object.keys(nastroyki.css).join(', ')})`);
+  for (let d = koren; ; d = dirname(d)) {
+    const f = POSTCSS.find((x) => existsSync(join(d, x)));
+    if (f) { out.push(`PostCSS (${join(d, f)})`); break; }
+    const pj = join(d, 'package.json');
+    if (existsSync(pj)) {
+      let polya;
+      try { polya = JSON.parse(readFileSync(pj, 'utf8')); } catch { polya = { postcss: 'не читается' }; }
+      if (polya && typeof polya === 'object' && 'postcss' in polya) { out.push(`PostCSS (поле postcss в ${pj})`); break; }
+    }
+    if (dirname(d) === d) break;
+  }
+  if (tsconfig && /"paths"\s*:/.test(tsconfig)) out.push('псевдонимы paths в tsconfig сайта');
+  return out;
+}
+const kompilirovat = (css, r) => twNode.compile(css, { base: dirname(CSS_PUT), from: CSS_PUT, shouldRewriteUrls: true, onDependency: () => {}, ...r });
+// Грани пакета — разрешателем Vite без настроек сайта: образец — сам пакет, а не то, во что его превращают псевдонимы сайта.
+const vyvodBezKandidatov = async (css) => drzewoCss(twNode.optimize((await kompilirovat(css, await razreshateli(BEZ_NASTROEK, siteRoot))).build([]), { minify: false }).code);
+const BEZ_NASTROEK = {};
 let PAKET_TEMY = null;
 /**
  * Грани пакета темы — все листы `@fontsource/bodoni-moda` (начертания, подмножества), как их выводит путь сборки
@@ -409,9 +531,9 @@ const KANDIDATY = new Map();
  * CSS страницы, как его собирает сборка сайта по этому листу `global.css` (путь плагина @tailwindcss/vite: источники —
  * `root` и `sources` компилятора, кандидаты сканера, `build`, `optimize`; без сети; R5-SVERKA-1, GR1-K-1, GR1-Z-1…Z-3).
  */
-async function cssStranicy(css) {
-  const c = await kompilirovat(css);
-  const istochniki = (c.root === 'none' ? [] : c.root === null ? [{ base: siteRoot, pattern: '**/*', negated: false }] : [{ ...c.root, negated: false }]).concat(c.sources);
+async function cssStranicy(css, nastroyki, koren) {
+  const c = await kompilirovat(css, await razreshateli(nastroyki, koren));
+  const istochniki = (c.root === 'none' ? [] : c.root === null ? [{ base: koren, pattern: '**/*', negated: false }] : [{ ...c.root, negated: false }]).concat(c.sources);
   let kandidaty = [];
   if (c.features & twNode.Features.Utilities) {
     const klyuch = JSON.stringify(istochniki);
@@ -563,14 +685,42 @@ export async function sverka(w) {
   // лист, который модель отвергла как нечитаемый («лист:»), или по месту, сбросу и списку `--font-display` (GR1-Z-11):
   // там его ответ ничего не добавляет; прочие отказы модели (импорт гарнитуры, краски, @property, своя @font-face
   // в global.css) его не отменяют (GR2: пропуск по импорту гарнитуры снят — грани всего пакета темы законны).
-  if (!bledy.some((b) => /^(лист:|гарнитура: (--font-display|сброс|список))/.test(b))) {
+  // Путь сборки — с настройками Vite сайта (astro.config.mjs; тесты подают свои: w.vite, корень w.korenVite, w.tsconfig).
+  let nastroyki = w.vite;
+  if (nastroyki === undefined) {
+    try { nastroyki = await viteSayta(); } catch (e) { bledy.push(`гарнитура: настройки сборки сайта (astro.config.mjs) не читаются (${String(e.message).split('\n')[0]}) — гарнитуру на странице судить нечем`); }
+  }
+  const koren = w.korenVite ?? siteRoot;
+  const tsPut = join(siteRoot, 'tsconfig.json');
+  if (nastroyki) for (const x of konveyerCss(nastroyki, koren, w.tsconfig !== undefined ? w.tsconfig : existsSync(tsPut) ? readFileSync(tsPut, 'utf8') : null)) bledy.push(`гарнитура: в конвейере CSS сборки ${x} — судья знака его не повторяет, гарнитуру на странице судить нечем`);
+  if (nastroyki && !bledy.some((b) => /^(лист:|гарнитура: (--font-display|сброс|список))/.test(b))) {
     try {
-      const { uzly: stranica, bledy: nechitaemo } = drzewoCss(await cssStranicy(w.css));
+      const { uzly: stranica, bledy: nechitaemo } = drzewoCss(await cssStranicy(w.css, nastroyki, koren));
       if (nechitaemo.length) bledy.push(`гарнитура: вывод Tailwind сайта не читается разбором сверки (${nechitaemo[0]}) — гарнитуру на странице судить нечем`);
       else {
-        const naStranice = deklaracje(stranica).filter((d) => d.imie === 'font-display').map((d) => d.wartosc);
-        if (!naStranice.length || !naStranice.every((v) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(v) && spisokGarniturChitaetsya(v))) {
-          bledy.push(`гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: ${naStranice.join(' | ') || 'ничего'}) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака`);
+        // Объявления custom property на странице — с местом: «на корне без условий» — правило `:root` (`:root, :host`,
+        // `html`) на верхнем уровне или только в `@layer`; под `@media`, `@supports`, `@container` и прочими блоками
+        // и во вложенных правилах — условно (GR3-K-1). var() списка разрешается по объявлениям на корне без условий (GR3-Z-1).
+        const obyavleniya = [];
+        const korenSelektor = (p) => { const s = p.split(',').map((x) => x.trim()); return s.every((x) => [':root', ':host', 'html'].includes(x)) && s.some((x) => x !== ':host'); };
+        const obhod = (lista, uslovno) => {
+          for (const u of lista) {
+            if (u.oper) continue;
+            const p = razekranirovat(u.prelude ?? '').trim();
+            const naKorne = !uslovno && u.tip === 'rule' && korenSelektor(p);
+            for (const d of u.decls ?? []) if (d.imie.startsWith('--')) obyavleniya.push({ imie: d.imie.slice(2), wartosc: d.wartosc, naKorne });
+            obhod(u.children ?? [], uslovno || !(u.tip === 'at' && /^@layer\b/i.test(p)));
+          }
+        };
+        obhod(stranica, false);
+        const naKorne = new Map(obyavleniya.filter((d) => d.naKorne).map((d) => [d.imie, d.wartosc]));
+        const razreshit = (imya) => naKorne.get(imya);
+        const bodoni = (v) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(v) && spisokGarniturChitaetsya(v, razreshit);
+        const naStranice = obyavleniya.filter((d) => d.imie === 'font-display');
+        if (!naStranice.length || !naStranice.every((d) => bodoni(d.wartosc))) {
+          bledy.push(`гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: ${naStranice.map((d) => d.wartosc).join(' | ') || 'ничего'}) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака`);
+        } else if (!naStranice.some((d) => d.naKorne)) {
+          bledy.push(`гарнитура: --font-display на странице только под условием (@media, @supports, @container или во вложенном правиле, а не на :root) — на экране гарнитура заголовков наследуемая`);
         }
         // Импорт, который путь сборки не раскрыл (`@import url(…)`, удалённый адрес), браузер загрузит сам — лист,
         // которого сверка не видела (GR2-K-1); `@property --font-display` на любой глубине меняет переменную на странице
@@ -728,7 +878,10 @@ export default function znakDist() {
 }
 
 // ── Запуск ───────────────────────────────────────────────────────────────
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+// Команда — функцией, без await на верхнем уровне: сверка импортирует astro.config.mjs, а он — этот модуль; пока модуль
+// не вычислен до конца, такой импорт ждал бы сам себя.
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) zapusk();
+async function zapusk() {
   const CHECK = process.argv.includes('--check');
   try {
     if (process.argv.includes('--selftest')) {

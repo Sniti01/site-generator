@@ -1,0 +1,10 @@
+vite 8.2.2
+resolveConfig: ок object
+createResolver есть: function ; createIdResolver есть: function
+createResolver css: ок function
+css tailwindcss ssr: ок tailwindcss
+css tailwindcss client: ок D:/SEO/cloud/site-generator/node_modules/tailwindcss/index.css
+css @fontsource ssr: ок D:/SEO/cloud/site-generator/node_modules/@fontsource/bodoni-moda/latin-600.css
+createIdResolver: ок function
+окружения: client, ssr
+idResolver ssr env: ок tailwindcss

@@ -1,0 +1,24 @@
+== настоящий (код 0)
+A1 без source() — корень сайта; утилита hero (слово src/): ждём отказ, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+A2 без source(); утилита proverki (слово вне src/, в корне сайта): ждём отказ, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+B1 source(none) + @source '../../src'; утилита proverki — вне зоны: ждём сверено, факт сверено
+B2 source('../../src') (как сейчас); утилита proverki — вне зоны: ждём сверено, факт сверено
+(node:16104) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+== M20 root null — сканер пуст (код 0)
+A1 без source() — корень сайта; утилита hero (слово src/): ждём отказ, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+A2 без source(); утилита proverki (слово вне src/, в корне сайта): ждём отказ, факт сверено
+B1 source(none) + @source '../../src'; утилита proverki — вне зоны: ждём сверено, факт сверено
+B2 source('../../src') (как сейчас); утилита proverki — вне зоны: ждём сверено, факт сверено
+(node:38800) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+== M21 root none — корень сайта (код 0)
+A1 без source() — корень сайта; утилита hero (слово src/): ждём отказ, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+A2 без source(); утилита proverki (слово вне src/, в корне сайта): ждём отказ, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+B1 source(none) + @source '../../src'; утилита proverki — вне зоны: ждём сверено, факт отказ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New
+B2 source('../../src') (как сейчас); утилита proverki — вне зоны: ждём сверено, факт сверено
+(node:40204) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+

@@ -1,0 +1,46 @@
+== GR3-Z-1: var() в списке --font-display
+spisokGarniturChitaetsya("'Bodoni Moda', var(--font-serif)") = false
+контроль: чистые входы
+   СВЕРЕНО
+Z1-a: 'Bodoni Moda', var(--font-serif)
+   ОТКАЗ (1):
+     - гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-serif)) — на странице гарнитура заголовков падает на наследуемую
+Z1-b: 'Bodoni Moda', var(--font-sans)
+   ОТКАЗ (1):
+     - гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--font-sans)) — на странице гарнитура заголовков падает на наследуемую
+Z1-c: 'Bodoni Moda', var(--net-takogo-tokena) (имя не объявлено — в браузере весь font-family недействителен)
+   ОТКАЗ (1):
+     - гарнитура: список --font-display не читается как font-family ('Bodoni Moda', var(--net-takogo-tokena)) — на странице гарнитура заголовков падает на наследуемую
+   вывод пути сборки (build без кандидатов): --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; || --font-display: "Bodoni Moda", var(--font-serif);
+
+== GR3-Z-2: разрешатель листов Vite против @tailwindcss/node
+Z2-a: @import '/src/styles/global.css' (корень Vite)
+   ОТКАЗ (1):
+     - гарнитура: Tailwind сайта не собрал global.css (Can't resolve '/src/styles/global.css' in 'D:\SEO\cloud\site-generator\sites\7thserpent.com\src\styles') — гарнитуру на странице судить нечем
+   мини-корень, с customCssResolver Vite (как плагин): собрано — /*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+.dop{color:red}
+   мини-корень, без него (как судья): ОШИБКА Can't resolve '/src/styles/dop.css' in 'C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\gr3\gr3-zakon-prov\mini-koren\src\styles'
+
+== GR3-Z-5: ветви dlyaRoliTemy !m, diapazony нечитаемый и «?» — различимы ли строками отказа
+Z5-0 контроль: latin-ext-600 после темы (перехват)
+   ОТКАЗ (1):
+     - гарнитура: грань 'Bodoni Moda' пакета темы на странице перехватывает у файла темы знаки начертания normal 600 (url("../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-mod…: знаков 1114112, первый U+0000) — буквы заголовков могут взять другой файл, а контуры знака считаются из файла темы
+Z5-a: latin-ext-600 после темы + поздняя чужая грань без font-weight
+   ОТКАЗ (2):
+     - гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+     - гарнитура: своя @font-face для 'Bodoni Moda' на странице — не грань пакета темы (url("chuzhaya.woff2")) — она подменит файл темы, а контуры знака считаются из файла темы
+Z5-b: то же, чужая грань font-weight: 600, unicode-range: U+0??
+   ОТКАЗ (3):
+     - гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+     - гарнитура: своя @font-face для 'Bodoni Moda' на странице — не грань пакета темы (url("chuzhaya.woff2")) — она подменит файл темы, а контуры знака считаются из файла темы
+     - гарнитура: грань 'Bodoni Moda' пакета темы на странице перехватывает у файла темы знаки начертания normal 600 (url("../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-mod…: знаков 1113856, первый U+0100) — буквы заголовков могут взять другой файл, а контуры знака считаются из файла темы
+Z5-c: то же, чужая грань font-weight: 600, unicode-range: U+1??-2FF (нечитаемый)
+   ОТКАЗ (2):
+     - гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+     - гарнитура: своя @font-face для 'Bodoni Moda' на странице — не грань пакета темы (url("chuzhaya.woff2")) — она подменит файл темы, а контуры знака считаются из файла темы
+Z5-d: только поздняя чужая грань без font-weight (без перехвата)
+   ОТКАЗ (2):
+     - гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+     - гарнитура: своя @font-face для 'Bodoni Moda' на странице — не грань пакета темы (url("chuzhaya.woff2")) — она подменит файл темы, а контуры знака считаются из файла темы
+   путь сборки печатает: @font-face { font-family: Bodoni Moda; font-style: normal; src: url("chuzhaya.woff2"); font-weight: bold; unicode-range: U0??, U1??-2FF; } @font-face { font-family: Bodoni Moda; font-style: normal; src: url("chuzhaya.woff2"); font-weight: normal; } 
+   пакет темы: веса 400, 500, 600, 700, 800, 900; unicode-range с «?»: 0 из 52; граней 148; font-stretch: false

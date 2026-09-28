@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><style>
+body { font-family: 'Public Sans', sans-serif; }
+@media print { @layer theme { :root, :host { --fdp: 'Bodoni Moda', serif; } } }
+@media supports(display: nonsense) { @layer theme { :root, :host { --fds: 'Bodoni Moda', serif; } } }
+@layer theme { :root, :host { --fdk: 'Bodoni Moda', serif; --fd1: 'Bodoni Moda', serif Georgia; --fd2: 'Bodoni Moda', cursive Moda, serif; --fd3: 'Bodoni Moda', Georgia serif; } }
+#p { font-family: var(--fdp); } #s { font-family: var(--fds); } #k { font-family: var(--fdk); }
+#a { font-family: var(--fd1); } #b { font-family: var(--fd2); } #c { font-family: var(--fd3); }
+</style></head><body>
+<div id="p">x</div><div id="s">x</div><div id="k">x</div><div id="a">x</div><div id="b">x</div><div id="c">x</div>
+<pre id="out"></pre>
+<script>
+const r = [navigator.userAgent];
+for (const id of ['p', 's', 'k', 'a', 'b', 'c']) r.push(id + ': ' + getComputedStyle(document.getElementById(id)).fontFamily);
+for (const v of ["'Bodoni Moda', serif Georgia", "'Bodoni Moda', cursive Moda, serif", "'Bodoni Moda', Georgia serif", "'Bodoni Moda', serif"]) r.push('supports ' + v + ' = ' + CSS.supports('font-family', v));
+document.getElementById('out').textContent = 'ITOG\n' + r.join('\n') + '\nKONEC';
+</script></body></html>

@@ -1,0 +1,33 @@
+=== K1 контроль
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+=== K1 целиком с print
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @media print > @layer theme > :root,:host
+=== K1 тема отдельно с print
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @media print > @layer theme > :root,:host
+=== K1 (свой) целиком с supports(display: nonsense)
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @media supports(display: nonsense) > @layer theme > :root,:host
+=== K1 (свой) целиком с not all
+  вердикт: ОТКАЗ: гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: ничего) — сброс, вид @th
+  --font-display на странице (minify): нет
+=== K3 контроль serif
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+=== K3 serif Georgia
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+=== K3 (свой) cursive Moda, serif
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+=== K3 (свой) SERIF Georgia (регистр)
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+=== K3 законное Georgia serif
+  вердикт: СВЕРЕНО
+  --font-display на странице (minify): @layer theme > :root,:host
+spisokGarniturChitaetsya('Bodoni Moda', serif Georgia) = true
+spisokGarniturChitaetsya('Bodoni Moda', cursive Moda, serif) = true
+spisokGarniturChitaetsya('Bodoni Moda', Georgia serif) = true

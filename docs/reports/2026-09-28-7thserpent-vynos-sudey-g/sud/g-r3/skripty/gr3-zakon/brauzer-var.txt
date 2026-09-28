@@ -1,0 +1,5 @@
+HeadlessChrome/153 (playwright, about:blank, без сети), лист в памяти страницы:
+  :root{--font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; --font-display: "Bodoni Moda", var(--font-serif); --plohoi: "Bodoni Moda",, serif}
+  body{font-family: monospace} .a{font-family: var(--font-display)} .b{font-family: var(--plohoi)}
+getComputedStyle(.a).fontFamily = "Bodoni Moda", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif   (список действителен, Бодони первым)
+getComputedStyle(.b).fontFamily = monospace   (контроль: нечитаемый список отброшен, наследуемая)

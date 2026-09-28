@@ -1,0 +1,8 @@
+<!doctype html>
+<html><body><pre id="out"></pre>
+<script>
+const r = [];
+for (const g of ['serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'math', 'emoji', 'fangsong', 'generic', '-webkit-body', 'inherit', 'default', 'initial'])
+  r.push(g + ' X = ' + CSS.supports('font-family', "'Bodoni Moda', " + g + ' X') + '; X ' + g + ' = ' + CSS.supports('font-family', "'Bodoni Moda', X " + g));
+document.getElementById('out').textContent = 'ITOG\n' + r.join('\n') + '\nKONEC';
+</script></body></html>

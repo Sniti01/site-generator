@@ -1,0 +1,12 @@
+Chromium (HeadlessChrome/153.0.0.0, Playwright MCP, about:blank, без сети), 2026-09-28.
+Лист: body{font-family:'Public Sans',sans-serif}
+      :root{--fd1:'Bodoni Moda', serif Georgia; --fd2:'Bodoni Moda', ui-serif, Georgia, serif}
+      .a{font-family:var(--fd1)} .b{font-family:var(--fd2)}
+      @media print{:root{--fd3:'Bodoni Moda', serif}} .c{font-family:var(--fd3)}
+Вычисленный font-family:
+  .a (serif Georgia)        -> "Public Sans", sans-serif   (список недействителен, наследуется)
+  .b (контроль)             -> "Bodoni Moda", ui-serif, Georgia, serif
+  .c (переменная только в @media print) -> "Public Sans", sans-serif
+  CSS.supports('font-family', "'Bodoni Moda', serif Georgia") -> false
+Побочный эффект: Playwright MCP записал два пустых снимка page-2026-09-28T15-42-07-*.yml в D:\SEO\cloud\site-generator\.playwright-mcp\
+(папка есть в .gitignore и была раньше); оба файла сразу удалены, git status пуст.

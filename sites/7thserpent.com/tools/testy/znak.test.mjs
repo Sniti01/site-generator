@@ -6,11 +6,12 @@
 //   npm run proverki
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
+import { tmpdir } from 'node:os';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { sverka, wejscie, ico, SYG_PNG, IMPORT_GARNITURY } from '../znak.mjs';
+import znakDist, { sverka, wejscie, ico, SYG_PNG, IMPORT_GARNITURY } from '../znak.mjs';
 
 const SAYT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
 const require = createRequire(join(SAYT, 'package.json'));
@@ -308,4 +309,52 @@ test('R5-SVERKA-7: своя @font-face другой гарнитуры, в им�
       sudit((await sverka(w)).bledy, null);
     });
   }
+});
+
+// ── Часть 3. Знак в сборке (П84 п. 2, П104 блок Г): гейт сайта и сторож сборки ─────────────────────────────────
+// Гейт источников — `tools/geity.mjs` (`npm run gates`: гейты ядра и `znak.mjs --check`); сторож сборки
+// `sayt:znak-dist` — прежний `--check --dist` на `astro:build:done`. Здесь — без сборки: сторож на своей папке
+// иконок, подключение в конфиге и в скриптах; сборка копии с отказом знака — `znak-sborka.test.mjs`.
+test('сторож сборки знака: иконки папки сборки = то, что пишет инструмент, — сверено; иначе отказ', async (t) => {
+  const integ = znakDist();
+  assert.equal(integ.name, 'sayt:znak-dist');
+  const logger = { error: () => {}, info: () => {} };
+  const storozh = (papka) => integ.hooks['astro:build:done']({ dir: pathToFileURL(papka + '/'), logger });
+  const papkaS = (pravka) => {
+    const d = mkdtempSync(join(tmpdir(), 'znak-dist-'));
+    const m = new Map(pliki);
+    pravka?.(m);
+    for (const [imie, buf] of m) writeFileSync(join(d, imie), buf);
+    writeFileSync(join(d, 'index.html'), '<!doctype html><title>x</title>');
+    return d;
+  };
+  const SLUCHAI = [
+    ['контроль: иконки как у инструмента', null, null],
+    ['favicon.svg в сборке другой', (m) => m.set('favicon.svg', Buffer.from('<svg/>')), /dist\/favicon\.svg: байты не равны/],
+    ['лишний иконочный файл в сборке', (m) => m.set('favicon-48x48.png', pliki.get('icon-192.png')), /dist\/favicon-48x48\.png: лишний/],
+    ['иконки нет в сборке', (m) => m.delete('favicon.ico'), /dist\/favicon\.ico: файла нет/],
+  ];
+  for (const [imya, pravka, zhdem] of SLUCHAI) {
+    await t.test(imya, async () => {
+      const d = papkaS(pravka);
+      try {
+        if (zhdem === null) await storozh(d);
+        else await assert.rejects(() => storozh(d), zhdem);
+      } finally {
+        rmSync(d, { recursive: true, force: true });
+      }
+    });
+  }
+});
+
+test('знак в сборке: сторож sayt:znak-dist подключён в astro.config.mjs, npm run gates — гейты сайта (ядро и знак)', async () => {
+  const { default: konfig } = await import('../../astro.config.mjs');
+  assert.ok(konfig.integrations.some((i) => i?.name === 'sayt:znak-dist'), 'в astro.config.mjs нет сторожа sayt:znak-dist');
+  const pkg = JSON.parse(readFileSync(join(SAYT, 'package.json'), 'utf8'));
+  assert.equal(pkg.scripts.gates, 'node tools/geity.mjs');
+  assert.equal(pkg.scripts.build, 'npm run gates && astro build');
+  assert.equal(pkg.scripts['znak:selftest'], undefined, 'znak:selftest убран (пробы — тестами)');
+  const geity = readFileSync(join(SAYT, 'tools/geity.mjs'), 'utf8');
+  assert.match(geity, /core\/gates\/run\.mjs/);
+  assert.match(geity, /tools\/znak\.mjs'\), '--check'/);
 });

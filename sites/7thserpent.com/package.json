@@ -9,7 +9,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "contrast": "node ../../core/gates/check-contrast.mjs",
-    "gates": "node ../../core/gates/run.mjs",
+    "gates": "node tools/geity.mjs",
     "accept": "node ../../core/accept/selftest.mjs .",
     "accept:manifest": "node ../../core/accept/manifest.mjs",
     "accept:css": "node ../../core/accept/css-triples.mjs",

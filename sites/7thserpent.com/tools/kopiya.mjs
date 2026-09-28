@@ -238,13 +238,14 @@ function astroBin() {
 
 /**
  * Сборка копии: `astro build` (только сборка — без гейтов источников; `sGeityami` — сначала
- * гейты ядра, как `npm run build`). Возвращает `{ kod, vyvod }`; код 0 — собралось.
+ * гейты сайта копии, как `npm run build`: `tools/geity.mjs` — гейты ядра и сверка знака, П104 блок Г).
+ * Возвращает `{ kod, vyvod }`; код 0 — собралось.
  */
 export function sobrat(k, { sGeityami = false } = {}) {
   const env = { ...process.env, FORCE_COLOR: '0', NO_COLOR: '1' };
   let vyvod = '';
   if (sGeityami) {
-    const g = spawnSync(process.execPath, [join(k.koren, 'core/gates/run.mjs')], { cwd: k.sayt, encoding: 'utf8', env, maxBuffer: 256 * 1024 * 1024 });
+    const g = spawnSync(process.execPath, [join(k.sayt, 'tools/geity.mjs')], { cwd: k.sayt, encoding: 'utf8', env, maxBuffer: 256 * 1024 * 1024 });
     vyvod += `${g.stdout ?? ''}${g.stderr ?? ''}`;
     if (g.status !== 0) return { kod: g.status, vyvod };
   }

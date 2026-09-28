@@ -106,8 +106,11 @@
  * `sharp` (librsvg), не браузер; побайтная сверка держится на версии sharp —
  * смена версии даст громкий отказ проверки 3, лечится `npm run znak` с просмотром
  * иконок. Подобие иконок шапке (три рисунка) — приёмка глазами. `theme-color`
- * со `--bg` не сверяется. В сборку и гейты сверка не входит: включить её —
- * решение владельца.
+ * со `--bg` не сверяется. В сборке (П84 п. 2, П104 блок Г): `--check` — гейт сайта
+ * (`tools/geity.mjs`, `npm run gates`, до `astro build`), сверка иконок сборки —
+ * сторож `sayt:znak-dist` (`astro.config.mjs`); отказ любого роняет сборку.
+ * Судьи знака в браузере (`wiernosc.mjs` и остальные в папке доклада сессии 11) —
+ * ручные, вне сборки и гейтов (П84 п. 6: `playwright-core` не зависимость).
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, lstatSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -518,6 +521,7 @@ function katalog(dir) {
     return [f, st.isFile() ? readFileSync(join(dir, f)) : 'nie-plik'];
   }));
 }
+/** Входы с диска; `dist` — true (папка `dist/` сайта), путь к папке сборки или false. */
 export function wejscie({ dist = false } = {}) {
   const fontCssPath = require.resolve(IMPORT_GARNITURY);
   const fontCss = readFileSync(fontCssPath, 'utf8');
@@ -529,7 +533,30 @@ export function wejscie({ dist = false } = {}) {
     fontPlik: woff ? woff[1] : null,
     fontBuf: woff ? readFileSync(join(dirname(fontCssPath), 'files', woff[1])) : null,
     publiczne: katalog(join(siteRoot, 'public')),
-    ...(dist ? { dist: katalog(join(siteRoot, 'dist')) } : {}),
+    ...(dist ? { dist: katalog(dist === true ? join(siteRoot, 'dist') : dist) } : {}),
+  };
+}
+
+/**
+ * Сторож сборки (П104 блок Г: «сверка --dist (иконки dist/ = public/) — сторожем сборки»): после `astro build` —
+ * та же сверка, что `--check --dist`: краски, гарнитура, иконки `public/` и иконки собранной папки — то, что пишет
+ * инструмент; отказ роняет сборку. Гейт источников (до сборки) — `tools/geity.mjs` (`znak.mjs --check`).
+ * @returns {import('astro').AstroIntegration}
+ */
+export default function znakDist() {
+  return {
+    name: 'sayt:znak-dist',
+    hooks: {
+      'astro:build:done': async ({ dir, logger }) => {
+        const w = wejscie({ dist: fileURLToPath(dir) });
+        const { bledy, pliki } = await sverka(w);
+        if (bledy.length) {
+          logger.error(`знак: отказ — ${bledy.length}`);
+          throw new Error(`Знак сайта разошёлся с источником — ${bledy.length}:\n` + bledy.map((b) => `  - ${b}`).join('\n') + '\nnpm run znak, затем сборка.');
+        }
+        logger.info(`знак: сверено — ${pliki.size} иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема`);
+      },
+    },
   };
 }
 
@@ -543,6 +570,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       process.exit(2);
     } else {
       const w = wejscie({ dist: process.argv.includes('--dist') });
+      // Сверка иконок сборки — и сторожем сборки (`sayt:znak-dist`); `--dist` вручную — для проверки готовой dist/.
       const { bledy, pliki, kraski } = await sverka({ ...w, publiczne: CHECK ? w.publiczne : null, dist: w.dist });
       if (!CHECK && bledy.length) throw Object.assign(new Error('не пишу: входы с отказом'), { bledy });
       if (!CHECK) {

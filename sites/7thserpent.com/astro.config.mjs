@@ -13,6 +13,7 @@ import { dannye as dannyeFraz } from './gates/phrases.mjs';
 import { ozhidanie as ozhidanieGolovy } from './gates/head.mjs';
 import { OBYAZATELNAYA_PODPIS } from './gates/sverka.mjs';
 import sverka from './tools/sverka.mjs';
+import znakDist from './tools/znak.mjs';
 
 export default defineConfig({
   // Канонический адрес с `www` — слово владельца 2026-09-18 (П62 п. 4), как
@@ -53,6 +54,8 @@ export default defineConfig({
   // подпись, ряды и их кадры, галерея, призыв, нота подвала (`tools/sverka.mjs`);
   // подпись кадра героя обязательна там, где кадр можно принять за другое, — везде, где она стоит
   // (П96, П103 п. 4; данные — `gates/sverka.mjs`).
+  // С сессии 21 (П84 п. 2, П104 блок Г): `znakDist` — иконки знака в сборке равны тому, что пишет
+  // `tools/znak.mjs` (прежний `znak:check --dist`); гейт источников знака — `tools/geity.mjs`.
   integrations: [
     sitemap(),
     afterBuild(),
@@ -61,6 +64,7 @@ export default defineConfig({
     corridor({ structure: 'structure/structure.json' }),
     head({ structure: 'structure/structure.json', ozhidanie: ozhidanieGolovy }),
     sverka({ obyazatelnaPodpis: OBYAZATELNAYA_PODPIS }),
+    znakDist(),
     masters({ istochniki: 'src' }),
     phrases({ corpus: 'input/corpus', dannye: dannyeFraz }),
   ],

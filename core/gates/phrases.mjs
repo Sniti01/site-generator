@@ -20,7 +20,7 @@
  * Строка не режется по «·» и «|» (строже сторожа брифов: у брифа это разделители ключей и ячеек).
  * Адреса `https?://…` — пробелом (не формулировка). Имена сайта (`dannye.imena`) — одним словом.
  *
- * ОТКАЗ И ГРОМКОСТЬ. Ноль страниц в круге — отказ; страница не читается (`<main>` не ровно один,
+ * ОТКАЗ И ГРОМКОСТЬ. Ноль страниц в круге — отказ; файла страницы нет — отказ; страница не читается (`<main>` не ровно один,
  * голова не по одному значению) — отказ; в `<main>` меньше `minSlov` слов — отказ («0 чужих»
  * о пустом извлечении не выдаётся); без корпуса или с неполным — отказ `OshibkaKorpusa`;
  * исключение сайта для страницы, которой нет в сборке, — отказ (данные отстали).
@@ -38,7 +38,7 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { izvlechStranicu, OshibkaIzvlecheniya } from '../text/extract.mjs';
 import { N_GRAM, REZHIMY, slova, imenaSlovami, bezImen, vRezhime, bezAdresov } from '../text/words.mjs';
-import { ukazatelKorpusa } from '../text/corpus.mjs';
+import { ukazatelKorpusa, KESH_PO_UMOLCHANIYU } from '../text/corpus.mjs';
 import { paryKavychek, sudIsklyucheniy } from './exceptions.mjs';
 import { plikStrony } from './after-build.mjs';
 
@@ -153,6 +153,10 @@ export function sudSborki(stranicy, uk, dannye) {
     if (!urls.has(e.stranica)) otkazy.push({ url: e.stranica, chto: `исключение сайта (${e.klass} «${e.tekst.slice(0, 50)}») для страницы, которой нет в сборке или в круге сторожа — данные отстали` });
   }
   for (const s of stranicy) {
+    if (s.html === null) {
+      otkazy.push({ url: s.url, chto: 'файла страницы нет в сборке' });
+      continue;
+    }
     try {
       const r = sudStranicy(s.url, s.html, uk, dannye);
       for (const chto of r.otkazy) otkazy.push({ url: s.url, chto });
@@ -167,10 +171,11 @@ export function sudSborki(stranicy, uk, dannye) {
 
 /**
  * Интеграция Astro. `corpus` — папка корпуса от корня сайта; `dannye` — данные сайта:
- * `{ imena, isklyucheniya, stranica(url) → boolean, minSlov }`.
+ * `{ imena, isklyucheniya, stranica(url) → boolean, minSlov }`; `kesh` — папка кеша указателя
+ * (по умолчанию — временная папка системы; `null` — без кеша).
  * @returns {import('astro').AstroIntegration}
  */
-export default function phrases({ corpus = 'input/corpus', dannye }) {
+export default function phrases({ corpus = 'input/corpus', dannye, kesh = KESH_PO_UMOLCHANIYU }) {
   let koren = null;
   return {
     name: 'factory:phrases',
@@ -180,14 +185,14 @@ export default function phrases({ corpus = 'input/corpus', dannye }) {
       },
       'astro:build:done': ({ dir, pages, logger }) => {
         const dist = fileURLToPath(dir);
-        const uk = ukazatelKorpusa(join(koren, corpus), { imena: dannye.imena ?? [] });
+        const uk = ukazatelKorpusa(join(koren, corpus), { imena: dannye.imena ?? [], kesh });
         const stranicy = [];
         for (const { pathname } of pages) {
           const url = adres(pathname);
           if (!dannye.stranica(url)) continue;
           const f = plikStrony(dist, pathname);
           if (!f || !existsSync(f)) {
-            stranicy.push({ url, html: '' });
+            stranicy.push({ url, html: null });
             continue;
           }
           stranicy.push({ url, html: readFileSync(f, 'utf8') });
@@ -206,6 +211,13 @@ export default function phrases({ corpus = 'input/corpus', dannye }) {
         logger.info(
           `8 слов: страниц ${itogi.length}, документов корпуса ${uk.dokumentov} (без 8-грамм — ${uk.pustyh})${uk.izKesha ? ', указатель из кеша' : ''}; чужих 8-грамм вне исключений — 0; исключений с совпадениями — ${razr}`
         );
+        // Разрешённое — по исключениям: приёмка читает, какие исключения сработали и сколько 8-грамм легло в каждое.
+        for (const x of itogi) {
+          for (const [tekst, sovp] of x.razresheno) {
+            const srez = sovp.filter((s) => s.startsWith('срез')).length;
+            logger.info(`  ${x.url}: «${tekst.slice(0, 60)}» — совпадений ${sovp.length} (точно ${sovp.length - srez}, срез ${srez})`);
+          }
+        }
       },
     },
   };

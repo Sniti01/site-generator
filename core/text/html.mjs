@@ -38,9 +38,13 @@ import { parse } from 'parse5';
 /** Пространство имён HTML. */
 export const NS_HTML = 'http://www.w3.org/1999/xhtml';
 
-/** Документ по тексту HTML — дерево parse5 (адаптер по умолчанию). */
-export function razobrat(html) {
-  return parse(html, { scriptingEnabled: false, sourceCodeLocationInfo: true });
+/**
+ * Документ по тексту HTML — дерево parse5 (адаптер по умолчанию). `skripty: true` — прочтение
+ * читателя со скриптами: `<noscript>` — сырой текст, разметки в нём нет (судье головы — сравнить
+ * два прочтения, раунд 1 «судью судят» блока Б, B1-G-1).
+ */
+export function razobrat(html, { skripty = false } = {}) {
+  return parse(html, { scriptingEnabled: skripty, sourceCodeLocationInfo: true });
 }
 
 /** Узел — элемент (не текст, не комментарий, не doctype). */

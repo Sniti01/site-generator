@@ -69,6 +69,17 @@ test('/pc/: 12 слов документа в первом абзаце, сед�
   zhdat('/pc/', html.slice(0, i) + kus.join(' ') + ' ' + html.slice(i), 'вне кавычек', html);
 });
 
+test('исключения сайта — только решённые классы: реплики /quotes/ (П95), полные названия глав IX и XIII (П99 п. 2)', () => {
+  const E = dannye.isklyucheniya;
+  assert.equal(E.length, 10);
+  assert.deepEqual([...new Set(E.map((e) => e.klass))].sort(), ['название главы', 'реплика']);
+  assert.equal(E.filter((e) => e.klass === 'реплика' && e.stranica === '/quotes/' && e.posle && !e.pered && e.ryad.id === undefined).length, 8);
+  assert.deepEqual(
+    E.filter((e) => e.klass === 'название главы' && e.stranica === '/max-payne-3/guide/' && e.ryad.id === 'chapters' && e.pered && !e.posle).map((e) => e.tekst),
+    ['Here I Was Again, Halfway Down the World.', 'A Fat Bald Dude with a Bad Temper.']
+  );
+});
+
 test('все страницы круга сборки — чисто (контроль)', () => {
   for (const url of ['/404/', '/pc/', '/games-like-max-payne/', '/media/', '/max-payne-1/', '/max-payne-2/', '/max-payne-3/', '/remake/', '/story/', '/voice-and-face/', '/cheats/', '/mods/', '/quotes/', '/gameplay/', '/max-payne-3/guide/', '/movie/']) {
     const r = sud(url, stranica(url));
@@ -113,6 +124,22 @@ test('реплики /quotes/: порчи разбора реплик', async (t
       })(),
       ['Thank you', 'не в своём ряду'],
     ],
+    [
+      'реплика в чужом ряду, перед его меткой — скрипт с меткой своей игры (B1-F-1)',
+      (() => {
+        const bez = html.replace('“Thank you.” — Chapter 2, “Live from the Crime Scene.”', 'Thank you. Live from the Crime Scene.');
+        const i = bez.indexOf('>', bez.indexOf('id="max-payne-3"')) + 1;
+        const s = bez.slice(0, i) + '<script type="text/plain" class="t-label">Max Payne · 2001</script>' + bez.slice(i);
+        const m = /<div class="layer__body[^"]*"[^>]*>\s*<p\b[^>]*>/g;
+        m.lastIndex = i;
+        const x = m.exec(s);
+        return x ? s.slice(0, x.index + x[0].length) + '“Thank you.” — Chapter 2, from the bank. ' + s.slice(x.index + x[0].length) : s;
+      })(),
+      ['Thank you', 'не в своём ряду'],
+    ],
+    // Метка прописными в исходнике (на экране та же — CSS uppercase): сверка с регистром — ложный отказ,
+    // громкий, не пропуск (раунд 1 блока Б, B1-F-4; прежний разбор реплик — так же).
+    ['метка MAX PAYNE · 2001 прописными — отказ (строже)', html.replace(/(<p class="t-label[^"]*"[^>]*>)Max Payne · 2001/, '$1MAX PAYNE · 2001'), ['Karaoke', 'не в своём ряду']],
     ['глава — одно «Part I»', html.replace('“Thank you.” — Chapter 2,', '“Thank you.” — Part I,'), ['Thank you', 'сосед после кавычки']],
     ['глава без тире', html.replace('raindrops.” — Chapter 3,', 'raindrops.” Chapter 3,'), ['My cover', 'сосед после кавычки']],
     ['реплика дважды в кавычках', vPervyAbzac(html, '“Karaoke was never my strong point” — Chapter 8.'), 'в кавычках 2 раз'],
@@ -179,6 +206,8 @@ test('названия глав гайда: порчи разбора глав',
     ['7 слов в кавычках + 7 вне', vAbzac(html, '“' + k.slice(0, 7).join(' ') + '” ' + k.slice(7, 14).join(' ')), 'через границу кавычек'],
     ['12 слов, в середине 2 в кавычках', vAbzac(html, k.slice(0, 5).join(' ') + ' “' + k.slice(5, 7).join(' ') + '” ' + k.slice(7, 12).join(' ')), 'через границу кавычек'],
     ['фраза документа после IX в той же строке', html.replace(IX, IX + ' ' + k12), 'вне кавычек'],
+    // ПРЕДЕЛ (прежний sod5-4; раунд 1 блока Б, B1-F-3): чужой номер другой записью — не заголовок.
+    ['ПРЕДЕЛ sod5-4: чужой номер «10.» в месте IX — не заголовок, чисто', html.replace('police raid (6 / 3): ' + IX, 'police raid, then 10. A bus station (6 / 3): ' + IX), 'чисто'],
     ['8-грамма IX ещё раз вне кавычек за ним', html.replace(IX, IX + ' here I was again, halfway down the world'), 'вне кавычек'],
     ['фраза документа в кавычках главы X (строка IX)', html.replace(X, '“' + k12 + '”'), 'в кавычках, но не исключение сайта'],
     ['число вплотную к названию VI', html.replace('VI. An office building that goes up in flames (3 / 5): “A Dame', 'VI. An office building that goes up in flames, chapter 6: “A Dame'), 'через границу кавычек'],

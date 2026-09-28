@@ -44,7 +44,8 @@ export default defineConfig({
   // нет (точно и со срезом окончаний), кроме решённых исключений (реплики
   // `/quotes/`, полные названия глав гайда); без корпуса `input/corpus/raw`
   // (вне git) — громкий отказ; `head` — голова и крошки (прежний `tools/glowa.mjs`);
-  // `masters` — в сборке нет файлов, побайтно равных `src/assets/**` (П102 п. 1).
+  // `masters` — в сборке нет файлов, побайтно равных растровым картинкам `src/**`
+  // (П102 п. 1).
   integrations: [
     sitemap(),
     afterBuild(),
@@ -52,7 +53,7 @@ export default defineConfig({
     links({ structure: 'structure/structure.json' }),
     corridor({ structure: 'structure/structure.json' }),
     head({ structure: 'structure/structure.json', ozhidanie: ozhidanieGolovy }),
-    masters({ assets: 'src/assets' }),
+    masters({ istochniki: 'src' }),
     phrases({ corpus: 'input/corpus', dannye: dannyeFraz }),
   ],
   vite: {

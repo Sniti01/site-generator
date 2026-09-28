@@ -9,11 +9,14 @@
  * сайта: текст, страница, ряд и сосед; судья правил класса не знает, он сверяет данные.
  *
  * ИСКЛЮЧЕНИЕ — `{ klass, stranica, tekst, ryad, posle?, pered? }`:
- *   - `tekst` — ровно то, что стоит в кавычках (сравнение после сведения пробелов, апострофов
- *     и пробела перед знаком препинания — след строчного тега в прочтении «через пробел»);
- *   - `ryad` — `{ id?, metka }`: строка стоит в секции `section.layer` (ряд `story-row`),
- *     у которой `id` равен `ryad.id` (если задан), а видимая метка — первый элемент с классом
- *     `t-label` внутри секции — подходит под `ryad.metka` (регулярное выражение);
+ *   - `tekst` — ровно то, что стоит в кавычках (сравнение после сведения пробелов и апострофов,
+ *     пробела перед знаком препинания и после «( [ “» — след строчного тега в прочтении «через
+ *     пробел»);
+ *   - `ryad` — `{ id?, metka }`: ближайшая над строкой HTML-секция `section.layer` (ряд `story-row`;
+ *     вложенная секция — свой ряд) с `id`, равным `ryad.id` (если задан), и первой в документе
+ *     с этим `id`; её метка — первый HTML-элемент `.t-label` секции (не скрипт, не стиль, не метка
+ *     вложенной секции), текст по модели строк — подходит под `ryad.metka` (регулярное выражение,
+ *     с регистром: метка прописными в исходнике — ложный отказ, громкий);
  *   - `posle` — текст сразу за закрывающей кавычкой до следующей открывающей (или конца строки)
  *     подходит под выражение (глава за репликой);
  *   - `pered` — текст от предыдущей закрывающей кавычки (или начала строки) до открывающей
@@ -22,18 +25,22 @@
  *
  * ВИДЫ ОТКАЗА: «вне кавычек»; «через границу кавычек» (часть слов 8-граммы в кавычках, часть —
  * вне или в другой паре); «в кавычках, но не исключение сайта»; по исключению — «в кавычках N раз»,
- * «не в своём ряду», «сосед после», «сосед перед»; «исключение для страницы вне сборки».
+ * «не в ряду story-row», «не в своём ряду», «сосед после», «сосед перед»; «исключение для страницы
+ * вне сборки».
  * Голова и атрибуты страницы исключений не знают — там любая чужая 8-грамма отказ (судит сторож).
  *
  * ПРЕДЕЛЫ (прежние, названы в шапках судей сессий 17 и 19): кавычки — только символы «“ ”» парами
  * в одной строке, кусок без пары — вне кавычек (строже); кавычки, которые рисует браузер (`<q>`,
  * CSS `content`), не видны — исключение в `<q>` получит отказ (строже); немецкая закрывающая “
  * открывает пару (строже); что текст исключения верен и его глава верна, судит сверка с документами,
- * не этот судья.
+ * не этот судья. СКРЫТОЕ (атрибут `hidden`, CSS) извлечение считает видимым: для сторожа это строже,
+ * а здесь МЯГЧЕ — скрытые кавычки вокруг исключения, скрытая метка ряда, скрытый сосед засчитываются
+ * (путь — только через шаблон сайта, содержание экранируется; прежний разбор глав называл так же,
+ * izv-N3; раунд 1 блока Б, B1-F-2 — test.todo).
  */
 
-import { klassy, predki, imya, atr, pervyi, tekstVsego } from '../text/html.mjs';
-import { chistit } from '../text/extract.mjs';
+import { klassy, predki, imya, atr, pervyi, vHtml } from '../text/html.mjs';
+import { potok, stroki, NE_TEKST } from '../text/extract.mjs';
 import { APOSTROFY } from '../text/words.mjs';
 
 /** Пробел перед знаком препинания и после открывающей скобки — след строчного тега в прочтении «через пробел». */
@@ -54,12 +61,26 @@ export function paryKavychek(s) {
   return pary;
 }
 
-/** Ряд строки: ближайшая секция `section.layer` над её узлом, её `id` и видимая метка. */
-export function ryadStroki(stroka) {
-  const sek = predki(stroka.uzel).find((u) => imya(u) === 'section' && klassy(u).has('layer'));
+/** Секция ряда: HTML-элемент `section` с классом `layer` (SVG-элемент с тем же именем — не ряд, B1-F-1). */
+const sekciyaRyada = (u) => vHtml(u) && imya(u) === 'section' && klassy(u).has('layer');
+
+/**
+ * Ряд строки: ближайшая секция `section.layer` над её узлом, её `id` и метка. Метка — первый
+ * HTML-элемент `.t-label` секции, не `<script>`/`<style>`/`<template>`, чья ближайшая секция ряда —
+ * она сама (метка вложенной секции — метка того ряда); текст метки — по модели строк, `<br>` —
+ * пробел (раунд 1 «судью судят» блока Б, B1-F-1, B1-F-4). `pervyiId` — секция первая в документе
+ * с этим `id` (как `getElementById`; дубль id — не свой ряд, B1-F-5).
+ */
+export function ryadStroki(stroka, doc) {
+  const sek = predki(stroka.uzel).find(sekciyaRyada);
   if (!sek) return null;
-  const metka = pervyi(sek, (u) => klassy(u).has('t-label'));
-  return { id: atr(sek, 'id') ?? null, metka: metka ? chistit(tekstVsego(metka)) : '' };
+  const metka = pervyi(sek, (u) => vHtml(u) && !NE_TEKST.has(imya(u)) && klassy(u).has('t-label') && predki(u).find(sekciyaRyada) === sek);
+  const id = atr(sek, 'id') ?? null;
+  return {
+    id,
+    pervyiId: id !== null && doc ? pervyi(doc, (u) => atr(u, 'id') === id) === sek : false,
+    metka: metka ? stroki(potok(metka), '').map((s) => s.tekst).join(' ') : '',
+  };
 }
 
 /**
@@ -98,10 +119,11 @@ export function sudIsklyucheniy(izvl, sovpadeniya, isklyucheniya) {
       const gde = `${e.klass} «${e.tekst.slice(0, 60)}»`;
       if (vhozhdeniya.length !== 1) otkazy.add(`${gde}: в кавычках ${vhozhdeniya.length} раз, ждали 1 (прочтение ${imyaP === 'vplotnuyu' ? 'вплотную' : 'через пробел'})`);
       for (const { st, a, b } of vhozhdeniya) {
-        const r = ryadStroki(st);
+        const r = ryadStroki(st, izvl.doc);
         if (!r) otkazy.add(`${gde}: не в ряду story-row (над строкой нет section.layer)`);
-        else if ((e.ryad.id !== undefined && r.id !== e.ryad.id) || !e.ryad.metka.test(r.metka)) {
-          otkazy.add(`${gde}: не в своём ряду — ряд id «${r.id ?? '—'}» с меткой «${r.metka}», ждали${e.ryad.id !== undefined ? ` id «${e.ryad.id}»,` : ''} метку ${e.ryad.metka}`);
+        else if ((e.ryad.id !== undefined && (r.id !== e.ryad.id || !r.pervyiId)) || !e.ryad.metka.test(r.metka)) {
+          const dubl = e.ryad.id !== undefined && r.id === e.ryad.id && !r.pervyiId ? ' (не первый элемент документа с этим id)' : '';
+          otkazy.add(`${gde}: не в своём ряду — ряд id «${r.id ?? '—'}»${dubl} с меткой «${r.metka}», ждали${e.ryad.id !== undefined ? ` id «${e.ryad.id}»,` : ''} метку ${e.ryad.metka}`);
         }
         if (e.posle) {
           const sled = st.tekst.indexOf('“', b + 1);

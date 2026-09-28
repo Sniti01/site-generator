@@ -7,9 +7,9 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
-import { suditNabor } from '@factory/core/gates/head.mjs';
+import { suditNabor, stranicyDist } from '@factory/core/gates/head.mjs';
 import { ozhidanie } from '../../gates/head.mjs';
-import { stranica, SAYT } from './obshchee.mjs';
+import { stranica, dist, SAYT } from './obshchee.mjs';
 
 const struktura = JSON.parse(readFileSync(join(SAYT, 'structure/structure.json'), 'utf8'));
 const domen = struktura.site.domain.replace(/\/+$/, '');
@@ -139,9 +139,11 @@ test('голова и крошки: мутации прежней самопро
     ['guide: родитель вне структуры', { [G]: guide }, ['структура'], { [G]: { parent: '/nie-ma/' } }],
     ['/404/: второй og:site_name с чужим значением в <noscript>', { '/404/': zamena(s404, '</head>', '<noscript><meta property="og:site_name" content="Max Payne Wiki"></noscript></head>') }, ['og:site_name', 'noscript']],
     ['/404/: второй canonical в <noscript>', { '/404/': zamena(s404, '</head>', '<noscript><link rel="canonical" href="https://www.7thserpent.com/"></noscript></head>') }, ['canonical', 'noscript']],
-    // РАСХОЖДЕНИЕ: <script> внутри <noscript> головы разборщик без скриптов выносит из <noscript> (так его прочтёт
-    // скребок без JS) — второй WebSite судится как настоящая разметка головы: «WebSite», без вида «noscript».
-    ['главная: второй WebSite в <noscript>', { '/': zamena(glav, webSite, webSite + `<noscript>${webSite}</noscript>`) }, ['WebSite']],
+    // <script> внутри <noscript> головы разборщик без скриптов выносит из <noscript> — вид «noscript» даёт
+    // второе прочтение, со скриптами: разметка головы двух прочтений разная (раунд 1 блока Б, B1-G-1; было
+    // РАСХОЖДЕНИЕ «только WebSite» — снято, итог как у прежнего судьи).
+    ['главная: второй WebSite в <noscript>', { '/': zamena(glav, webSite, webSite + `<noscript>${webSite}</noscript>`) }, ['WebSite', 'noscript']],
+    ['главная: единственный WebSite в <noscript> головы (B1-G-1)', { '/': zamena(glav, webSite, `<noscript>${webSite}</noscript>`) }, ['noscript']],
     ['/404/: второй og между строками «<noscript>» и «</noscript>» двух скриптов', { '/404/': zamena(s404, '</head>', '<script>var a="<noscript>";</script><meta property="og:site_name" content="Max Payne Wiki"><script>var b="</noscript>";</script></head>') }, ['og:site_name']],
     ['/404/: законный og между строками «<template>» и «</template>» скриптов — сверено', { '/': glav, '/404/': zamena(zamena(s404, siteNameTeg(s404), ''), '</head>', `<script>var a="<template>";</script>${siteNameTeg(s404)}<script>var b="</template>";</script></head>`) }, null],
     ['главная: WebSite только внутри <title>', { '/': zamena(zamena(glav, webSite, ''), '</title>', webSite + '</title>') }, ['WebSite']],
@@ -182,6 +184,8 @@ test('голова и крошки: мутации прежней самопро
 });
 
 test('сборка: все страницы по договору (контроль по dist копии)', () => {
-  const stranicy = struktura.pages.filter((p) => p.url !== '/privacy/').map((p) => ({ url: p.url, html: stranica(p.url) }));
+  // Страницы — из сборки, как у интеграции (в структуре есть и несобранная /privacy/; B1-G-17).
+  const stranicy = stranicyDist(dist()).map((s) => ({ url: s.url, html: readFileSync(s.file, 'utf8') }));
+  assert.equal(stranicy.length, 17);
   assert.deepEqual(suditNabor(stranicy, struktura, ozhidanie), []);
 });

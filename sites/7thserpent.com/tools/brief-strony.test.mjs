@@ -66,6 +66,15 @@ test('бриф: ветви, арт, открытое', () => {
   assert.equal(imyaFajla('/max-payne-3/guide/'), 'max-payne-3-guide.md');
 });
 
+test('B1-G-14: ключевой арт 3840 — без оговорки малого мастера (бэклог 61 п. 3: отрицательная проба)', () => {
+  const b = brief(p0('/max-payne-1/'), v, null);
+  assert.match(b, /`hero` — [^|]*\(3840×\d+\)/);
+  assert.doesNotMatch(b, /master is small/);
+});
+
+test.todo('B1-G-15 (предел, не проявлен — таких адресов в манифесте ноль): адрес с не-ASCII знаком — хвост слага после знака остаётся словами');
+test.todo('B1-G-16 (предел, не проявлен): ключ запроса из 8 слов и больше, совпавший с заголовком документа, — отказ «чужое» (ложный, громкий)');
+
 test('отбор корпуса страницы = анатомии (все страницы с фразами); подменённая запись — расхождение названо', () => {
   for (const p of v.struktura.pages.filter((x) => x.keywords?.length)) {
     assert.deepEqual(sverkaSAnatomiej(p, v.anatomia.страницы.find((a) => a.url === p.url), korpusStranicy(p, v)), [], p.url);

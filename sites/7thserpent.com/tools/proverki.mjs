@@ -11,15 +11,19 @@
  *      и маршрута — тесты, которые собирают свои копии сами.
  *   3. Копия удаляется (`--ostavit` — оставить и напечатать путь).
  *
- * Код выхода — код `node --test` (0 — все тесты прошли), 2 — копия не собралась или ошибка входа.
- * Файлы сайта на месте не правятся ничем: прерванный прогон оставляет только временную папку.
+ * Код выхода — код `node --test` (0 — все тесты прошли), 2 — копия не снялась или не собралась,
+ * ошибка входа или ноль прошедших тестов (шаблон `--test-name-pattern` ни с чем не совпал —
+ * «прошло» о пустом наборе не выдаётся; раунд 1 «судью судят» блока Б, B1-G-11).
+ * Файлы сайта на месте не правятся ничем. Ctrl+C: дочерний `node --test` прерывается, копия
+ * убирается (обработчик SIGINT не даёт процессу умереть до `finally`); копии прогонов, прерванных
+ * иначе, убираются на старте следующего (старше 12 часов, по метке копии — `tools/kopiya.mjs`).
  */
 
-import { readdirSync, existsSync, mkdtempSync } from 'node:fs';
+import { readdirSync, existsSync, mkdtempSync, readFileSync, rmSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
 import { join, relative } from 'node:path';
 import { tmpdir } from 'node:os';
-import { sdelatKopiyu, sobrat, udalitKopiyu, SAYT, REPO } from './kopiya.mjs';
+import { sdelatKopiyu, sobrat, udalitKopiyu, ubratStaryeKopii, SAYT, REPO } from './kopiya.mjs';
 
 const argi = process.argv.slice(2);
 const lishnie = argi.filter((a) => !['--ostavit'].includes(a) && !a.startsWith('--test-name-pattern='));
@@ -38,8 +42,18 @@ if (!testy.length) {
   process.exit(2);
 }
 
-const k = sdelatKopiyu(mkdtempSync(join(tmpdir(), 'proverki-')));
+for (const p of ubratStaryeKopii()) console.log(`убрана копия прерванного прогона: ${p}`);
+process.on('SIGINT', () => console.error('\nпрервано — копия убирается'));
+
+let k;
+try {
+  k = sdelatKopiyu(mkdtempSync(join(tmpdir(), 'proverki-')));
+} catch (e) {
+  console.error(`копия сайта не снялась: ${e.message}`);
+  process.exit(2);
+}
 let kod = 2;
+const tap = join(k.koren, 'itog.tap');
 try {
   console.log(`копия сайта: ${k.sayt}`);
   const t0 = Date.now();
@@ -49,14 +63,29 @@ try {
     console.error(`\nсборка копии не прошла (код ${s.kod}) — тесты не запускаются`);
   } else {
     console.log(`сборка копии: ${Math.round((Date.now() - t0) / 1000)} с; тестов-файлов ${testy.length}`);
-    const r = spawnSync(process.execPath, ['--test', ...argi.filter((a) => a.startsWith('--test-name-pattern=')), ...testy.map((f) => relative(SAYT, f))], {
-      cwd: SAYT,
-      stdio: 'inherit',
-      env: { ...process.env, PROVERKI_DIST: join(k.sayt, 'dist') },
-    });
+    const r = spawnSync(
+      process.execPath,
+      [
+        '--test',
+        '--test-reporter=spec',
+        '--test-reporter-destination=stdout',
+        '--test-reporter=tap',
+        `--test-reporter-destination=${tap}`,
+        ...argi.filter((a) => a.startsWith('--test-name-pattern=')),
+        ...testy.map((f) => relative(SAYT, f)),
+      ],
+      { cwd: SAYT, stdio: 'inherit', env: { ...process.env, PROVERKI_DIST: join(k.sayt, 'dist') } }
+    );
     kod = r.status ?? 2;
+    const itog = existsSync(tap) ? readFileSync(tap, 'utf8') : '';
+    const proshlo = Number(/^# pass (\d+)$/m.exec(itog)?.[1] ?? 0);
+    if (kod === 0 && proshlo === 0) {
+      console.error('прошедших тестов ноль — «всё прошло» о пустом наборе не выдаётся (шаблон имён ни с чем не совпал?)');
+      kod = 2;
+    }
   }
 } finally {
+  rmSync(tap, { force: true });
   if (argi.includes('--ostavit')) console.log(`копия оставлена: ${k.koren}`);
   else udalitKopiyu(k);
 }

@@ -9,47 +9,69 @@
  * служебных `clone` и `fsPath`) — оригинал помечен используемым (сессия 10: 12 мастеров панелей;
  * сессия 16: 14 мастеров героев, П102 п. 1). В обоих случаях сборка зелёная и страницы верны —
  * мастер лежит в `dist/` мёртвым весом, и увидеть его можно только сверкой байтов. Сторож её
- * и делает: SHA-256 каждого файла `src/assets/**` против каждого файла сборки.
+ * и делает: SHA-256 каждой исходной картинки против каждого файла сборки.
  *
- * ГРОМКО: нет папки исходных картинок или в ней ноль файлов — отказ (сторож о пустом множестве
- * «утечек нет» не говорит). Круг — вся сборка, а не только `_astro/`: мастер, скопированный
- * в `public/` под своим именем, тоже мёртвый вес.
+ * КРУГ ИСХОДНИКОВ — растровые картинки (`jpg`, `jpeg`, `png`, `webp`, `avif`, `gif`, `tif`, `tiff`)
+ * в папках исходников сайта (по умолчанию — весь `src/`: поле `image()` коллекции и картинка рядом
+ * с данными утекают тем же механизмом; раунд 1 «судью судят» блока Б, B1-G-13). SVG — не мастер:
+ * Astro печатает его без преобразования, побайтная копия в сборке законна.
+ *
+ * ГРОМКО: нет папки исходников или в ней ноль картинок — отказ (сторож о пустом множестве
+ * «утечек нет» не говорит). Круг сборки — вся сборка, а не только `_astro/`: мастер, скопированный
+ * в `public/` под своим именем, тоже мёртвый вес; ссылка на папку в сборке обходится.
  *
  * ПРЕДЕЛ: равенство — побайтное; мастер, пережатый без изменения размеров (другой JPEG), сторож
- * не видит — такой файл Astro сам не пишет.
+ * не видит — такой файл Astro сам не пишет. Сжатые копии (`.gz`, `.br`) не раскрываются — сжатия
+ * в сборках фабрики нет.
  */
 
-import { readFileSync, readdirSync, existsSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { join, relative } from 'node:path';
+import { join, relative, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const obhod = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? obhod(join(d, e.name)) : [join(d, e.name)]));
+/** Растровые картинки — то, что Astro преобразует и чей оригинал может утечь. */
+const KARTINKI = new Set(['.jpg', '.jpeg', '.png', '.webp', '.avif', '.gif', '.tif', '.tiff']);
+
+/** Все файлы под папкой; ссылки на папки обходятся (раунд 1 блока Б, B1-G-13: не EISDIR). */
+const obhod = (d) =>
+  readdirSync(d, { withFileTypes: true }).flatMap((e) => {
+    const p = join(d, e.name);
+    const papka = e.isDirectory() || (e.isSymbolicLink() && statSync(p).isDirectory());
+    return papka ? obhod(p) : [p];
+  });
 const sha = (f) => createHash('sha256').update(readFileSync(f)).digest('hex');
 
 /**
- * Утечки: `[{ fajl, master }]` — файл сборки (от `dist`) и исходник (от `assets`), побайтно равные.
- * Бросает, если папки исходников нет или она пуста.
+ * Утечки: `[{ fajl, master }]` — файл сборки (от `dist`) и исходная картинка (от своей папки
+ * исходников), побайтно равные. `istochniki` — папка или список папок. Бросает, если папки нет
+ * или картинок в них ноль.
  */
-export function utechki(dist, assets) {
-  if (!existsSync(assets)) throw new Error(`сторож утечки: нет папки исходных картинок ${assets}`);
-  const mastera = obhod(assets);
-  if (!mastera.length) throw new Error(`сторож утечки: в ${assets} ноль файлов — «утечек нет» о пустом множестве не выдаётся`);
+export function utechki(dist, istochniki) {
   const poHeshu = new Map();
-  for (const f of mastera) poHeshu.set(sha(f), relative(assets, f).replace(/\\/g, '/'));
+  let masterov = 0;
+  for (const papka of [istochniki].flat()) {
+    if (!existsSync(papka)) throw new Error(`сторож утечки: нет папки исходников ${papka}`);
+    for (const f of obhod(papka)) {
+      if (!KARTINKI.has(extname(f).toLowerCase())) continue;
+      masterov += 1;
+      poHeshu.set(sha(f), relative(papka, f).replace(/\\/g, '/'));
+    }
+  }
+  if (!masterov) throw new Error(`сторож утечки: в ${[istochniki].flat().join(', ')} ноль картинок — «утечек нет» о пустом множестве не выдаётся`);
   const out = [];
   for (const f of obhod(dist)) {
     const m = poHeshu.get(sha(f));
     if (m) out.push({ fajl: relative(dist, f).replace(/\\/g, '/'), master: m });
   }
-  return { utechki: out, masterov: mastera.length };
+  return { utechki: out, masterov };
 }
 
 /**
- * Интеграция Astro. `assets` — папка исходных картинок от корня сайта (`src/assets`).
+ * Интеграция Astro. `istochniki` — папка или папки исходников от корня сайта (по умолчанию `src`).
  * @returns {import('astro').AstroIntegration}
  */
-export default function masters({ assets = 'src/assets' } = {}) {
+export default function masters({ istochniki = 'src' } = {}) {
   let koren = null;
   return {
     name: 'factory:masters',
@@ -58,17 +80,18 @@ export default function masters({ assets = 'src/assets' } = {}) {
         koren = fileURLToPath(config.root);
       },
       'astro:build:done': ({ dir, logger }) => {
-        const r = utechki(fileURLToPath(dir), join(koren, assets));
+        const papki = [istochniki].flat();
+        const r = utechki(fileURLToPath(dir), papki.map((p) => join(koren, p)));
         if (r.utechki.length) {
           logger.error(`утечка мастеров: ${r.utechki.length}`);
           throw new Error(
-            `В сборке ${r.utechki.length} файлов, побайтно равных исходным картинкам (${assets}):\n` +
+            `В сборке ${r.utechki.length} файлов, побайтно равных исходным картинкам (${papki.join(', ')}):\n` +
               r.utechki.map((u) => `  ${u.fajl} = ${u.master}`).join('\n') +
               '\nМастер уходит в сборку, если картинка импортирована, но не напечатана, или если прочитано свойство импорта ' +
-              '(width, height, src, format…): пропорцию берите из записи кредитов, непечатаемый кадр уберите из папки.'
+              '(width, height, src, format…): размеры берите из данных сайта, не из импорта; непечатаемую картинку уберите из папки.'
           );
         }
-        logger.info(`утечка мастеров: исходных картинок ${r.masterov}, в сборке ни одной`);
+        logger.info(`утечка мастеров: исходных картинок ${r.masterov} (${papki.join(', ')}), в сборке ни одной`);
       },
     },
   };

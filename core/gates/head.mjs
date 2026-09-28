@@ -24,7 +24,11 @@
  *      `span.crumbs__current` с `aria-current="page"`, без ссылки внутри и после него; вложенная
  *      `nav` внутри крошек — отказ (бэклог 61 п. 3);
  *   8. разметка головы (`canonical`, `og:site_name`, JSON-LD) внутри `<noscript>` — отказ: скребок
- *      без JS прочтёт её как настоящую.
+ *      без JS прочтёт её как настоящую; и когда разборщик вынес её из `<noscript>` головы (там
+ *      `<script>`, `<title>` или текст закрывают `<noscript>`, и всё за ними уходит в голову) —
+ *      страница разбирается второй раз, как у читателя со скриптами, и разметка головы двух
+ *      прочтений должна совпасть (раунд 1 «судью судят» блока Б, B1-G-1); `nav.crumbs` внутри
+ *      `<noscript>` — отказ (читатель со скриптами крошек не видит).
  *
  * НЕЗАВИСИМОСТЬ СУДЬИ. Имя, второе имя и контекст — из данных сайта (`gates/`), литералами из слов
  * владельца (П85 п. 3), не из кода печати: судья, который читает ожидание оттуда же, откуда печать,
@@ -33,21 +37,49 @@
  * ПРЕДЕЛЫ ПРЕЖНЕГО СУДЬИ, СНЯТЫЕ ТОКЕНИЗАТОРОМ (бэклог 61 п. 3): `<noscript>` как граница разбора,
  * строки-теги в значениях атрибутов, самозакрытые формы сырого текста, неявное закрытие головы,
  * вырожденный комментарий `<!-->`, скрипты с «<!--» и «-->» — дерево строит браузерный разборщик.
- * Модель — страница без скриптов: `<script>` внутри `<noscript>` головы разборщик выносит из
- * `<noscript>` (так его и прочтёт скребок без JS) — он судится как разметка головы, а не пунктом 8.
+ * Модель — страница без скриптов, сверенная с прочтением со скриптами (пункт 8).
+ *
+ * ПРОСТРАНСТВО ИМЁН: крошки — HTML-элемент `nav` (SVG-элемент с тем же именем — не ориентир,
+ * B1-G-6); `link`, `meta` и `script` головы считаются в любом пространстве (строже: SVG-скрипт
+ * JSON-LD — «вне head»). Цель `aria-labelledby` — в светлом дереве: за границу теневого корня
+ * ссылка по id не ходит (B1-G-7).
  *
  * ЧЕГО НЕ СУДИТ: другие теги Open Graph, `hreflang`, `robots`, вид крошек; повтор ключа внутри
- * JSON-LD не виден (`JSON.parse` оставляет последнее значение); невидимые знаки в ярлыках
- * сравниваются как есть (ярлык с U+200B — другой ярлык, отказ).
+ * JSON-LD не виден (`JSON.parse` оставляет последнее значение); невидимые знаки и NBSP в ярлыках
+ * сравниваются как есть, и по краям тоже (ярлык с U+200B или U+FEFF — другой ярлык, отказ; прежний
+ * судья сводил `\s` — РАСХОЖДЕНИЕ, строже). ПРЕДЕЛЫ (B1-G-7, test.todo): имя крошек, лежащее только
+ * в скрытом потомке цели `aria-labelledby` (accname его отбрасывает), засчитывается; теневой корень
+ * без `<slot>` над `nav.crumbs` (светлые дети не рисуются) не виден.
  */
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { razobrat, elementy, imya, atr, klassy, predki, chasti, tekstVsego, tekstDetey } from '../text/html.mjs';
+import { razobrat, elementy, imya, atr, klassy, predki, chasti, tekstVsego, tekstDetey, vHtml, tenevoyShablon } from '../text/html.mjs';
 
-/** Текст для сравнения ярлыков: пробельные сведены, края сняты (невидимые знаки остаются). */
-const yarlyk = (s) => s.replace(/[\t\n\f\r ]+/g, ' ').trim();
+/**
+ * Текст для сравнения ярлыков: пробельные ASCII сведены, края сняты только от них — невидимые
+ * знаки и NBSP остаются и по краям (`trim()` снял бы U+FEFF и NBSP, B1-G-8).
+ */
+const yarlyk = (s) => s.replace(/[\t\n\f\r ]+/g, ' ').replace(/^ | $/g, '');
+
+const ldSkript = (u) => imya(u) === 'script' && (atr(u, 'type') ?? '').trim().toLowerCase() === 'application/ld+json';
+const canonicalLink = (u) => imya(u) === 'link' && (atr(u, 'rel') ?? '').toLowerCase().split(/[\t\n\f\r ]+/).includes('canonical');
+const siteNameMeta = (u) => imya(u) === 'meta' && [atr(u, 'property'), atr(u, 'name')].some((v) => (v ?? '').toLowerCase() === 'og:site_name');
+
+/**
+ * Разметка головы одного прочтения — строкой для сравнения прочтений: `canonical`, `og:site_name`,
+ * JSON-LD в порядке документа, с отметкой «в голове».
+ */
+function razmetkaGolovy(doc) {
+  const { head } = chasti(doc);
+  const vGolove = (u) => Boolean(head) && predki(u).includes(head);
+  return JSON.stringify(
+    elementy(doc)
+      .filter((u) => canonicalLink(u) || siteNameMeta(u) || ldSkript(u))
+      .map((u) => [imya(u), vGolove(u), ldSkript(u) ? tekstDetey(u) : atr(u, canonicalLink(u) ? 'href' : 'content') ?? null])
+  );
+}
 
 /** Разбор страницы в факты для суда. */
 export function razobratGolovu(html) {
@@ -56,23 +88,22 @@ export function razobratGolovu(html) {
   const vse = elementy(doc);
   const vGolove = (u) => Boolean(head) && predki(u).includes(head);
   const vNoscript = (u) => predki(u).some((p) => imya(p) === 'noscript');
-  const canonical = vse.filter((u) => imya(u) === 'link' && (atr(u, 'rel') ?? '').toLowerCase().split(/[\t\n\f\r ]+/).includes('canonical'));
-  const siteName = vse.filter((u) => imya(u) === 'meta' && [atr(u, 'property'), atr(u, 'name')].some((v) => (v ?? '').toLowerCase() === 'og:site_name'));
-  const ld = vse
-    .filter((u) => imya(u) === 'script' && (atr(u, 'type') ?? '').trim().toLowerCase() === 'application/ld+json')
-    .map((u) => {
-      const tekst = tekstDetey(u);
-      let obj;
-      let oshibka = null;
-      try {
-        obj = JSON.parse(tekst);
-      } catch (e) {
-        oshibka = e.message;
-      }
-      return { obj, oshibka, vGolove: vGolove(u), vNoscript: vNoscript(u) };
-    });
+  const canonical = vse.filter(canonicalLink);
+  const siteName = vse.filter(siteNameMeta);
+  const ld = vse.filter(ldSkript).map((u) => {
+    const tekst = tekstDetey(u);
+    let obj;
+    let oshibka = null;
+    try {
+      obj = JSON.parse(tekst);
+    } catch (e) {
+      oshibka = e.message;
+    }
+    return { obj, oshibka, vGolove: vGolove(u), vNoscript: vNoscript(u) };
+  });
+  // Крошки — HTML-элемент nav (SVG-элемент с тем же именем — не ориентир навигации, B1-G-6).
   const navy = vse
-    .filter((u) => imya(u) === 'nav' && klassy(u).has('crumbs'))
+    .filter((u) => vHtml(u) && imya(u) === 'nav' && klassy(u).has('crumbs'))
     .map((n) => {
       const vnutri = elementy(n);
       const ssylki = vnutri.filter((u) => imya(u) === 'a');
@@ -80,8 +111,9 @@ export function razobratGolovu(html) {
       const poryadok = new Map(vnutri.map((u, i) => [u, i]));
       const labelledby = atr(n, 'aria-labelledby');
       const idy = (labelledby ?? '').split(/[\t\n\f\r ]+/).filter(Boolean);
+      // Ссылка по id за границу теневого корня не ходит: цель — в светлом дереве документа (B1-G-7).
       const imyaPoSsylke = idy
-        .map((id) => vse.find((u) => atr(u, 'id') === id))
+        .map((id) => vse.find((u) => atr(u, 'id') === id && !predki(u).some(tenevoyShablon)))
         .filter(Boolean)
         .map((u) => yarlyk(tekstVsego(u)))
         .join(' ')
@@ -90,6 +122,7 @@ export function razobratGolovu(html) {
         label: atr(n, 'aria-label'),
         labelledby,
         imyaPoSsylke,
+        vNoscript: vNoscript(n),
         vlozhennayaNav: vnutri.some((u) => imya(u) === 'nav'),
         ssylki: ssylki.map((a) => ({ href: atr(a, 'href'), klass: klassy(a).has('crumbs__link'), label: yarlyk(tekstVsego(a)), poz: poryadok.get(a) })),
         tekushchie: tekushchie.map((s) => ({
@@ -106,6 +139,9 @@ export function razobratGolovu(html) {
     siteName: siteName.map((u) => ({ content: atr(u, 'content'), vGolove: vGolove(u), vNoscript: vNoscript(u) })),
     ld,
     navy,
+    // Разметка головы у читателя со скриптами другая — часть её стоит в <noscript>, даже если разборщик
+    // без скриптов вынес её оттуда (в голове `<script>` закрывает `<noscript>`, B1-G-1).
+    dvaProchteniya: razmetkaGolovy(doc) === razmetkaGolovy(razobrat(html, { skripty: true })),
   };
 }
 
@@ -164,6 +200,10 @@ export function sudit(url, html, struktura, ozhidanie) {
     ...f.ld.filter((b) => b.vNoscript).map(() => 'JSON-LD'),
   ];
   if (vNoscript.length) otkaz('noscript', `внутри <noscript>: ${vNoscript.join(', ')} — скребок без JS прочтёт это как разметку головы`);
+  else if (!f.dvaProchteniya) {
+    otkaz('noscript', 'разметка головы (canonical, og:site_name, JSON-LD) у читателя со скриптами и без них разная — часть её стоит в <noscript>');
+  }
+  if (f.navy.some((n) => n.vNoscript)) otkaz('noscript', 'nav.crumbs внутри <noscript> — читатель со скриптами крошек не видит');
 
   const websites = [];
   const spiski = [];

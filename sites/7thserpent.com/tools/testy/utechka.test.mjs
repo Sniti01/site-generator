@@ -30,14 +30,14 @@ const UPALA = /В сборке \d+ файлов, побайтно равных �
 test('контроль: копия без мутаций собирается, утечек нет', () => {
   const r = sborkaS(() => {});
   assert.equal(r.kod, 0, r.vyvod.slice(-2000));
-  assert.match(r.vyvod, /утечка мастеров: исходных картинок 21, в сборке ни одной/);
+  assert.match(r.vyvod, /утечка мастеров: исходных картинок 21 \(src\), в сборке ни одной/);
 });
 
 test('мутация «вернуть src.width»: sizesGeroya получает импорт — сборка падает сторожем утечки', () => {
   const r = sborkaS((k) => pravka(k, 'src/pages/[...slug].astro', 'sizesGeroya(credits[geroyPechati.klyuch], geroyPechati.klyuch)', 'sizesGeroya(geroyPechati.kadr.src, geroyPechati.klyuch)'));
   assert.notEqual(r.kod, 0);
   assert.match(r.vyvod, UPALA);
-  assert.match(r.vyvod, /_astro\/mp3-art\.[^.]+\.jpg = gry\/mp3-art\.jpg/);
+  assert.match(r.vyvod, /_astro\/mp3-art\.[^.]+\.jpg = assets\/gry\/mp3-art\.jpg/);
 });
 
 test('кадр, скачанный до своей страницы (непечатаемый файл в src/assets/gry), — сборка падает', () => {
@@ -45,13 +45,13 @@ test('кадр, скачанный до своей страницы (непеч�
   // с ним в один ресурс, и в сборку она не выходит (замер сессии 20).
   const r = sborkaS((k) => writeFileSync(join(k.sayt, 'src/assets/gry/mp3-k99.jpg'), Buffer.concat([readFileSync(join(k.sayt, 'src/assets/gry/mp1-k10.jpg')), Buffer.from([0])])));
   assert.notEqual(r.kod, 0);
-  assert.match(r.vyvod, /= gry\/mp3-k99\.jpg/);
+  assert.match(r.vyvod, /= assets\/gry\/mp3-k99\.jpg/);
 });
 
 test('разворот импорта на главной ({ ...art.src }) — сборка падает', () => {
   const r = sborkaS((k) => pravka(k, 'src/components/HomeHero.astro', "const art = kadr('hero');", "const art = kadr('hero');\nconst razvorot = { ...art.src };\nvoid razvorot;"));
   assert.notEqual(r.kod, 0);
-  assert.match(r.vyvod, /= gry\/hero\.jpg/);
+  assert.match(r.vyvod, /= assets\/gry\/hero\.jpg/);
 });
 
 test('чтение свойства импорта в блоке ядра (Gallery: src.height) — сборка падает', () => {
@@ -72,11 +72,11 @@ test('чтение свойства импорта в блоке ядра (Galle
 test('отрицательный контроль: «width» in импорт и чтение fsPath оригинал не помечают — сборка зелёная', () => {
   const r = sborkaS((k) => pravka(k, 'src/components/HomeHero.astro', "const art = kadr('hero');", "const art = kadr('hero');\nconst estShirina = 'width' in art.src;\nconst put = art.src.fsPath;\nvoid estShirina;\nvoid put;"));
   assert.equal(r.kod, 0, r.vyvod.slice(-2000));
-  assert.match(r.vyvod, /утечка мастеров: исходных картинок 21, в сборке ни одной/);
+  assert.match(r.vyvod, /утечка мастеров: исходных картинок 21 \(src\), в сборке ни одной/);
 });
 
-test('сторож громко: нет папки исходных картинок или она пуста', () => {
+test('сторож громко: нет папки исходников или в ней ноль картинок', () => {
   const pusto = mkdtempSync(join(tmpdir(), 'utechka-pusto-'));
   assert.throws(() => utechki(pusto, join(pusto, 'net')), /нет папки/);
-  assert.throws(() => utechki(pusto, pusto), /ноль файлов/);
+  assert.throws(() => utechki(pusto, pusto), /ноль картинок/);
 });

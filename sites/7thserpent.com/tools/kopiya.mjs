@@ -20,12 +20,20 @@
  * Относительные пути сайта к ядру (`@source` зоны Tailwind, `../../core/gates/run.mjs`) в копии
  * те же, что в репозитории.
  *
- * УДАЛЕНИЕ: сначала снимаются ссылки (их цели не трогаются), затем папка копии.
+ * Ссылок рабочих пространств (`node_modules/<сайт>` → `sites/<сайт>`) в копии нет: сборке они
+ * не нужны, а первый сайт — «ни байта» (раунд 1 «судью судят» блока Б, B1-G-10).
+ *
+ * УДАЛЕНИЕ — ТОЛЬКО `udalitKopiyu` или `ubratStaryeKopii`: обход по `lstat`, ссылка снимается
+ * и внутрь неё обход не идёт — цели (ядро, пакеты, корпус) не трогаются. ОПАСНО: Windows
+ * PowerShell 5.1 `Remove-Item -Recurse -Force` заходит внутрь перехода и удалит цели — ядро,
+ * `node_modules` репозитория и сырой корпус. Прерванный прогон оставляет копию во временной папке;
+ * в корне копии — метка `METKA`, по ней `proverki` на старте убирает копии старше 12 часов.
  */
 
-import { cpSync, existsSync, mkdirSync, readdirSync, rmSync, symlinkSync, unlinkSync, readFileSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, symlinkSync, unlinkSync, readFileSync, writeFileSync, lstatSync, rmdirSync, realpathSync, statSync } from 'node:fs';
 import { spawnSync } from 'node:child_process';
-import { join, resolve, dirname, relative, isAbsolute } from 'node:path';
+import { join, resolve, dirname, relative, isAbsolute, sep } from 'node:path';
+import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
 
@@ -37,53 +45,111 @@ const IMYA_SAYTA = relative(join(REPO, 'sites'), SAYT);
 
 const KOPIRUETSYA = ['src', 'public', 'structure', 'gates', 'tools', 'astro.config.mjs', 'package.json', 'tsconfig.json'];
 
-/** Путь внутри репозитория? (копия там — отказ: копия не должна жить в дереве, которое судят). */
+/**
+ * Путь внутри репозитория? (копия там — отказ: копия не должна жить в дереве, которое судят).
+ * `REPO/..x` — внутри: выход наверх — только сегмент «..» целиком (B1-G-9).
+ */
 const vRepo = (p) => {
   const r = relative(REPO, resolve(p));
-  return !r.startsWith('..') && !isAbsolute(r);
+  return !(r === '..' || r.startsWith('..' + sep) || r.startsWith('../') || isAbsolute(r));
 };
+
+/** Метка корня копии: по ней уборка отличает копию от чужой папки. */
+export const METKA = '.kopiya-sayta';
 
 const ssylka = (cel, put, spisok) => {
   symlinkSync(cel, put, 'junction');
   spisok.push(put);
 };
 
+/** Удалить дерево, не заходя в ссылки: ссылка снимается, её цель не трогается. */
+function bezopasnoUdalit(put) {
+  let st;
+  try {
+    st = lstatSync(put);
+  } catch {
+    return;
+  }
+  if (st.isSymbolicLink()) unlinkSync(put);
+  else if (st.isDirectory()) {
+    for (const x of readdirSync(put)) bezopasnoUdalit(join(put, x));
+    rmdirSync(put);
+  } else unlinkSync(put);
+}
+
 /**
  * Снять копию в папку `kuda` (её не должно быть или она пуста). `sYadrom` — ядро копией, а не ссылкой.
  * Возвращает `{ koren, sayt, ssylki }`: корень копии, папку сайта в копии, список созданных ссылок.
+ * Сбой посреди снятия — частичная копия убирается (сначала ссылки), ошибка идёт дальше.
  */
 export function sdelatKopiyu(kuda, { sYadrom = false } = {}) {
   const koren = resolve(kuda);
   if (vRepo(koren)) throw new Error(`копия внутри репозитория — ${koren}: только вне ${REPO}`);
   if (existsSync(koren) && readdirSync(koren).length) throw new Error(`папка копии не пуста: ${koren}`);
   const ssylki = [];
-  const sayt = join(koren, 'sites', IMYA_SAYTA);
-  mkdirSync(sayt, { recursive: true });
-  for (const x of KOPIRUETSYA) {
-    if (existsSync(join(SAYT, x))) cpSync(join(SAYT, x), join(sayt, x), { recursive: true });
+  try {
+    mkdirSync(koren, { recursive: true });
+    writeFileSync(join(koren, METKA), `копия ${SAYT}\n`);
+    const sayt = join(koren, 'sites', IMYA_SAYTA);
+    mkdirSync(sayt, { recursive: true });
+    for (const x of KOPIRUETSYA) {
+      if (existsSync(join(SAYT, x))) cpSync(join(SAYT, x), join(sayt, x), { recursive: true });
+    }
+    mkdirSync(join(sayt, 'input'), { recursive: true });
+    if (existsSync(join(SAYT, 'input/corpus'))) ssylka(join(SAYT, 'input/corpus'), join(sayt, 'input/corpus'), ssylki);
+    mkdirSync(join(sayt, 'node_modules'));
+    if (sYadrom) cpSync(join(REPO, 'core'), join(koren, 'core'), { recursive: true });
+    else ssylka(join(REPO, 'core'), join(koren, 'core'), ssylki);
+    const nm = join(koren, 'node_modules');
+    mkdirSync(nm);
+    for (const x of readdirSync(join(REPO, 'node_modules'))) {
+      const iz = join(REPO, 'node_modules', x);
+      if (x === '@factory') {
+        mkdirSync(join(nm, '@factory'));
+        ssylka(join(koren, 'core'), join(nm, '@factory', 'core'), ssylki);
+      } else if (x === '.bin' || x === '.package-lock.json' || x === '.cache') continue;
+      // Ссылка рабочего пространства (сайт репозитория) — сборке копии не нужна (B1-G-10).
+      else if (lstatSync(iz).isSymbolicLink() && vRepo(realpathSync(iz))) continue;
+      else ssylka(iz, join(nm, x), ssylki);
+    }
+    return { koren, sayt, ssylki, sYadrom };
+  } catch (e) {
+    udalitKopiyu({ koren, ssylki });
+    throw e;
   }
-  mkdirSync(join(sayt, 'input'), { recursive: true });
-  if (existsSync(join(SAYT, 'input/corpus'))) ssylka(join(SAYT, 'input/corpus'), join(sayt, 'input/corpus'), ssylki);
-  mkdirSync(join(sayt, 'node_modules'));
-  if (sYadrom) cpSync(join(REPO, 'core'), join(koren, 'core'), { recursive: true });
-  else ssylka(join(REPO, 'core'), join(koren, 'core'), ssylki);
-  const nm = join(koren, 'node_modules');
-  mkdirSync(nm);
-  for (const x of readdirSync(join(REPO, 'node_modules'))) {
-    if (x === '@factory') {
-      mkdirSync(join(nm, '@factory'));
-      ssylka(join(koren, 'core'), join(nm, '@factory', 'core'), ssylki);
-    } else if (x === '.bin' || x === '.package-lock.json' || x === '.cache') continue;
-    else ssylka(join(REPO, 'node_modules', x), join(nm, x), ssylki);
-  }
-  return { koren, sayt, ssylki, sYadrom };
 }
 
-/** Удалить копию: сначала ссылки (их цели целы), затем папку. */
+/** Удалить копию: сначала известные ссылки, затем дерево обходом по `lstat` (в ссылки не заходит). */
 export function udalitKopiyu(k) {
   if (vRepo(k.koren)) throw new Error(`отказ удалять папку внутри репозитория: ${k.koren}`);
-  for (const s of [...k.ssylki].reverse()) if (existsSync(s)) unlinkSync(s);
-  rmSync(k.koren, { recursive: true, force: true });
+  for (const s of [...k.ssylki].reverse()) {
+    try {
+      if (lstatSync(s).isSymbolicLink()) unlinkSync(s);
+    } catch {
+      // ссылки уже нет
+    }
+  }
+  bezopasnoUdalit(k.koren);
+}
+
+/**
+ * Убрать копии прерванных прогонов: папки в `papka` (временная папка системы) с меткой `METKA`
+ * в корне, изменённые раньше `starshe` мс назад. Возвращает убранные пути.
+ */
+export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 } = {}) {
+  const ubrano = [];
+  for (const x of readdirSync(papka)) {
+    const p = join(papka, x);
+    try {
+      if (!lstatSync(p).isDirectory() || !existsSync(join(p, METKA)) || vRepo(p)) continue;
+      if (Date.now() - statSync(p).mtimeMs < starshe) continue;
+      bezopasnoUdalit(p);
+      ubrano.push(p);
+    } catch {
+      // чужая или занятая папка — пропустить
+    }
+  }
+  return ubrano;
 }
 
 /** Файл копии: прочитать, записать (путь — от папки сайта в копии). */

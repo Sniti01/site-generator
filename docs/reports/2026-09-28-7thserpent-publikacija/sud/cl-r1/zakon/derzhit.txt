@@ -1,0 +1,50 @@
+
+=== H0 образец: dist/ как есть, .htaccess как в public/, блок хостера перед файлом: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H1 Cache-Control дважды (nginx + Apache) — Headers.get склеит через запятую: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H2 robots: блок хостера с CRLF, наш файл с LF: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H3 robots: BOM в начале ответа (снимается text()): 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H4 robots: блок хостера ПОСЛЕ нашего файла, без пустой строки: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H5 robots: блок хостера без пустой строки перед нашим файлом, пробелы в метках: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H6 sitemap-0.xml с отступами и переносами (pretty): 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H7 заголовки в ВЕРХНЕМ регистре, CF-Cache-Status: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 5
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H8 title страницы 404 с &mdash; вместо тире (сущность): 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== H9 canonical главной без кавычек и с / в конце тега: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается

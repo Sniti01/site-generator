@@ -1,0 +1,28 @@
+
+=== Z4a вызов Cloudflare (cf-mitigated: challenge) на каждый запрос: 0/26
+ПЛОХО http → https: статус                                 ждём 301  факт 403  — http://www.7thserpent.com/
+ПЛОХО http → https: Location                               ждём https://www.7thserpent.com/  факт —  — один скачок на канонический адрес
+ПЛОХО 7thserpent.com → www.7thserpent.com: статус          ждём 301  факт 403  — https://7thserpent.com/
+ПЛОХО 7thserpent.com → www.7thserpent.com: Location        ждём https://www.7thserpent.com/  факт —  — один скачок на канонический адрес
+ПЛОХО http://7thserpent.com → https www.7thserpent.com: статус ждём 301  факт 403  — http://7thserpent.com/
+  справка: robots.txt мимо кэша: Cf-Cache-Status —; из кэша: Cf-Cache-Status —, Age —
+
+=== Z4b 526 Invalid SSL certificate на каждый запрос: 0/26
+ПЛОХО http → https: статус                                 ждём 301  факт 526  — http://www.7thserpent.com/
+ПЛОХО http → https: Location                               ждём https://www.7thserpent.com/  факт —  — один скачок на канонический адрес
+ПЛОХО 7thserpent.com → www.7thserpent.com: статус          ждём 301  факт 526  — https://7thserpent.com/
+  справка: robots.txt мимо кэша: Cf-Cache-Status —; из кэша: Cf-Cache-Status —, Age —
+
+=== Z4c __cf_bm от Cloudflare на главной и /privacy/: 25/26
+ПЛОХО главная и /privacy/: без Set-Cookie                  ждём true  факт false  — ставят: главная: __cf_bm; /privacy/: __cf_bm — /privacy/ обещает, что сайт cookies не ставит
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== Z4d Always Use HTTPS: http://голый → https://голый: 25/26
+ПЛОХО http://7thserpent.com → https www.7thserpent.com: Location ждём https://www.7thserpent.com/  факт https://7thserpent.com/  — один скачок на канонический адрес
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+ИТОГ Z4: a=0/26 (первая строка: http → https: статус ждём 301 факт 403); b=0/26; c=25/26 [ставят: главная: __cf_bm; /privacy/: __cf_bm — /privacy/ обещает, что сайт cookies не ставит]; d=25/26 [http://7thserpent.com → https www.7thserpent.com: Location: факт https://7thserpent.com/ — один скачок на канонический адрес]

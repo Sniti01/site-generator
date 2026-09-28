@@ -1,0 +1,22 @@
+здоровый: 26/26
+КРАСНЕЕТ 308 вместо 301 (http://www): http → https: статус
+КРАСНЕЕТ Location относительный «/» с голого https: 7thserpent.com → www.7thserpent.com: Location
+КРАСНЕЕТ два скачка: http://голый → http://www: http://7thserpent.com → https www.7thserpent.com: Location
+КРАСНЕЕТ Location с портом: 7thserpent.com → www.7thserpent.com: Location
+КРАСНЕЕТ http://www отвечает 200 без редиректа: http → https: статус | http → https: Location
+КРАСНЕЕТ главная — сборка первого сайта (canonical чужой): главная: canonical
+КРАСНЕЕТ главная без canonical: главная: canonical
+КРАСНЕЕТ главная — 301 на /index.html: главная: статус | главная: canonical | главная: Cache-Control у HTML | главная и /privacy/: без Set-Cookie
+КРАСНЕЕТ Cache-Control без заголовка: главная: Cache-Control у HTML
+КРАСНЕЕТ мягкая 404: 302 на /404/: несуществующий адрес: статус | несуществующий адрес: наша страница
+КРАСНЕЕТ мягкая 404: 200 с главной: несуществующий адрес: статус | несуществующий адрес: наша страница
+КРАСНЕЕТ 404 с title «Page not found» без имени сайта: несуществующий адрес: наша страница
+КРАСНЕЕТ индекс карты ведёт на две карты: sitemap-index.xml: ведёт на sitemap-0.xml
+КРАСНЕЕТ карта на голом хосте: sitemap-0.xml: адреса = структура
+КРАСНЕЕТ карта с http://: sitemap-0.xml: адреса = структура
+КРАСНЕЕТ robots.txt: наш файл без строки Sitemap: robots.txt: наш файл целиком | robots.txt: вне нашего файла — только блок хостера | robots.txt: Sitemap
+КРАСНЕЕТ robots.txt: блок Cloudflare без меток (голый текст Content-Signal): robots.txt: вне нашего файла — только блок хостера
+КРАСНЕЕТ robots.txt: блок хостера закрывает Bingbot: robots.txt: вне нашего файла — только блок хостера
+КРАСНЕЕТ robots.txt: блок хостера «User-agent: *» + «Disallow: /wp-admin/»: robots.txt: вне нашего файла — только блок хостера
+КРАСНЕЕТ /privacy/: только скрипт email-decode (адрес в mailto): /privacy/: без обфускации почты Cloudflare
+КРАСНЕЕТ Set-Cookie на /privacy/ (cf_clearance): главная и /privacy/: без Set-Cookie

@@ -1,0 +1,81 @@
+— образец здорового сайта
+здоровый: 42/42 ok; ПЛОХО: —
+  справки: 
+
+— /robots.txt (как его берут роботы) из кэша Cloudflare — «User-agent: * / Disallow: /»
+CL1-P-1a: 41/42 ok; ПЛОХО: robots.txt без параметра (его берут роботы): 200, поисковики не закрыты; «robots.txt: наш файл целиком» ok; «robots.txt: вне нашего файла — только блок хостера» ok; нарушение: роботы видят https://www.7thserpent.com/robots.txt → Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: robots.txt из кэша не равен ответу мимо кэша — кэш Cloudflare
+
+— то же, но Cf-Cache-Status DYNAMIC — это не кэш, а живой ответ пути /robots.txt
+CL1-P-1b: 40/42 ok; ПЛОХО: robots.txt без параметра (его берут роботы): 200, поисковики не закрыты | robots.txt без параметра: расхождение — только кэш; «robots.txt: наш файл целиком» ok; нарушение: роботы видят https://www.7thserpent.com/robots.txt (DYNAMIC) → Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— /robots.txt без параметра — 503 (параметр идёт мимо, путь роботов — нет)
+CL1-P-1c: 40/42 ok; ПЛОХО: robots.txt без параметра (его берут роботы): 200, поисковики не закрыты | robots.txt без параметра: расхождение — только кэш; «robots.txt: статус (мимо кэша)» ok; нарушение: роботы видят https://www.7thserpent.com/robots.txt → статус 503
+  справки: 
+
+— Caching Level «Ignore query string»: ?live-check= отдаётся из того же кэша (HIT), на сервере уже иной файл
+CL1-P-2: 41/42 ok; ПЛОХО: robots.txt: мимо кэша на деле; «robots.txt: наш файл целиком» ok; «robots.txt: вне нашего файла — только блок хостера» ok; нарушение: «мимо кэша» пришёл HIT, Age 9000; на сервере за кэшем: Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— HTML: Cache-Control «public, max-age=14400, must-revalidate»
+CL1-P-3a: 41/42 ok; ПЛОХО: главная: Cache-Control у HTML; «главная: Cache-Control у HTML» ПЛОХО; нарушение: браузер 4 часа отдаёт HTML из своего кэша без запроса; .htaccess обещает max-age=0
+  справки: 
+
+— HTML: два заголовка (nginx «max-age=14400» + Apache) — fetch склеивает «max-age=14400, public, max-age=0, must-revalidate»
+CL1-P-3b: 41/42 ok; ПЛОХО: главная: Cache-Control у HTML; «главная: Cache-Control у HTML» ПЛОХО; нарушение: RFC 9111 §4.2.1: при двух max-age кэш вправе взять первый (14400) — свежесть 4 часа не исключена
+  справки: 
+
+— HTML с края Cloudflare: Cf-Cache-Status HIT, Age 5400 (Cache Everything + Edge TTL)
+CL1-P-4: 41/42 ok; ПЛОХО: главная: HTML не из кэша Cloudflare; «главная: Cache-Control у HTML» ok; «главная: статус» ok; нарушение: главная: cf-cache-status HIT, age 5400 — правка дойдёт до читателя через Edge TTL, не «на следующем визите»
+  справки: 
+
+— редирект теряет путь: любой http:// и голый хост → 301 на корень
+CL1-P-5: 39/42 ok; ПЛОХО: http → https /max-payne-1/: Location | 7thserpent.com → www.7thserpent.com /max-payne-1/: Location | http://7thserpent.com → https www.7thserpent.com /max-payne-1/: Location; «http → https: Location» ok; «7thserpent.com → www.7thserpent.com: Location» ok; «http://7thserpent.com → https www.7thserpent.com: Location» ok; нарушение: http://7thserpent.com/max-payne-1/ → 301 https://www.7thserpent.com/ (ждём https://www.7thserpent.com/max-payne-1/; .htaccess: https://www.7thserpent.com/$1)
+  справки: 
+
+— Cloudflare правит HTML: Web Analytics (beacon static.cloudflareinsights.com) и JS detections (/cdn-cgi/challenge-platform/…/jsd/main.js), без Set-Cookie в заголовке
+CL1-P-6: 41/42 ok; ПЛОХО: HTML без вставок Cloudflare (почта, аналитика, JS detections); «главная и /privacy/: без Set-Cookie» нет такой; «/privacy/: без обфускации почты Cloudflare» нет такой; нарушение: /privacy/: <script> в сборке 2, на живом 4; сторонний хост static.cloudflareinsights.com: есть; /cdn-cgi/: есть — против «no analytics», «set no cookies», «sends no requests to anyone else»
+  справки: 
+
+— страница игры, /privacy/ и /404/ — 200 со списком каталога Apache (index.html не лёг)
+CL1-P-7: 37/42 ok; ПЛОХО: адреса карты: 200 и свой canonical | /404/ напрямую: canonical | страница /max-payne-1/: canonical | /privacy/: canonical | /privacy/: адрес ящика напечатан (mailto:); «страница /max-payne-1/: статус» ok; «/privacy/: статус» ok; «/privacy/: без обфускации почты Cloudflare» нет такой; «/404/ напрямую: статус» ok; нарушение: /max-payne-1/: title «Index of /max-payne-1/», canonical 0 шт.; /privacy/: title «Index of /privacy/», canonical 0 шт.; /404/: title «Index of /404/», canonical 0 шт.
+  справки: 
+
+— Email Address Obfuscation ВКЛЮЧЕНА, на /privacy/ адреса ещё нет (до «ящик заведён» или сборка без строки адреса)
+CL1-P-8: 41/42 ok; ПЛОХО: /privacy/: адрес ящика напечатан (mailto:); «/privacy/: без обфускации почты Cloudflare» нет такой; нарушение: та же настройка на странице с адресом: __cf_email__, email-decode; адресов на живой /privacy/: 0
+  справки: 
+
+— блок хостера: «User-agent: Googlebot» + «Disallow /» (без двоеточия — Google принимает)
+CL1-P-9a: 40/42 ok; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt без параметра (его берут роботы): 200, поисковики не закрыты; «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; нарушение: Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— блок хостера: «Dissallow: /» для Googlebot (опечатка, которую Google принимает)
+CL1-P-9b: 40/42 ok; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt без параметра (его берут роботы): 200, поисковики не закрыты; «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; нарушение: Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— блок хостера: «User agent: Googlebot» (пробел вместо дефиса — Google принимает) + «Disallow: /»
+CL1-P-9c: 40/42 ok; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt без параметра (его берут роботы): 200, поисковики не закрыты; «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; нарушение: Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— блок хостера ПОСЛЕ нашего файла, правило без User-agent: «Disallow: /*» продолжает нашу группу «User-agent: *»
+CL1-P-10: 40/42 ok; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt без параметра (его берут роботы): 200, поисковики не закрыты; «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; «robots.txt: наш файл целиком» ok; нарушение: Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО
+  справки: 
+
+— несуществующий адрес с расширением статики (его отдаёт nginx) — 404 заглушкой nginx, не нашей страницей
+CL1-P-11: 42/42 ok; ПЛОХО: —; «несуществующий адрес: статус» ok; «несуществующий адрес: наша страница» ok; нарушение: /favicon-64x64.png → 404 «404 Not Found»; /sitemap-1.xml → 404 «404 Not Found»; /_astro/old.css → 404 «404 Not Found»
+  справки: 
+
+— Set-Cookie на странице игры и на ответе 404 (главная и /privacy/ чистые)
+CL1-P-12: 41/42 ok; ПЛОХО: все ответы: без Set-Cookie; «главная и /privacy/: без Set-Cookie» нет такой; нарушение: /max-payne-1/: set-cookie «_cfuvid=Qx1.2-3»; /net-takoy/: «_cfuvid=Qx1.2-3» — против «The site’s pages set no cookies»
+  справки: 
+
+— X-Robots-Tag: noindex, nofollow на всех HTML (правило хостера или Transform Rule Cloudflare)
+CL1-P-13: 41/42 ok; ПЛОХО: все ответы: X-Robots-Tag без noindex; «главная: статус» ok; «главная: canonical» ok; нарушение: главная: x-robots-tag «noindex, nofollow» — против «Every page is open to indexing» (public/robots.txt)
+  справки: 
+
+— выкладка легла не вся: адреса карты, кроме главной, игры и /privacy/, отвечают 404
+CL1-P-14: 41/42 ok; ПЛОХО: адреса карты: 200 и свой canonical; «sitemap-0.xml: адреса = структура» ok; нарушение: адресов карты не 200: 14 из 17 (например /max-payne-2/, /max-payne-3/, /max-payne-3/guide/)
+  справки: 
+
+контроль модели Google: наш Googlebot /max-payne-1/: разрешено, /: разрешено; хостер+наш Googlebot /max-payne-1/: разрешено, /: разрешено; «*: Disallow: /» Googlebot /max-payne-1/: ЗАПРЕЩЕНО, /: ЗАПРЕЩЕНО; ничья Googlebot /max-payne-1/: разрешено, /: разрешено

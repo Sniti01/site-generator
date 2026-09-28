@@ -1,0 +1,5 @@
+a) без адреса, настройка ВКЛ: ok — Scrape Shield → Email Address Obfuscation выключена
+b) с адресом, настройка ВЫКЛ: ok — Scrape Shield → Email Address Obfuscation выключена
+c) с адресом, настройка ВКЛ: ПЛОХО — найдено: __cf_email__, email-decode, data-cfemail — Email Address Obfuscation включена (П77 п. 6)
+
+ИТОГ Z3: a=ok «Scrape Shield → Email Address Obfuscation выключена»; b=ok; c=ПЛОХО

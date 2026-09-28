@@ -30,8 +30,10 @@
 #
 # The error page is a page of the structure (`/404/`, type `legal`) and is
 # built through the shared route into a folder — `dist/404/index.html`, not
-# `dist/404.html`. Apache serves it for every missing address with status
-# 404 (an internal subrequest; the status stays 404).
+# `dist/404.html`. Apache serves it for every missing page address with
+# status 404 (an internal subrequest; the status stays 404). A missing static
+# file (a picture, a stylesheet, an icon) never reaches Apache: nginx answers
+# it with its own 404.
 # ─────────────────────────────────────────────────────────────────────────
 ErrorDocument 404 /404/index.html
 

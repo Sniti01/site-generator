@@ -1,0 +1,22 @@
+
+=== Z1a кэш без строки запроса: запрос «мимо кэша» получил HIT: 24/26
+ПЛОХО robots.txt: наш файл целиком                         ждём true  факт false  — public/robots.txt одним куском, отдельными строками
+ПЛОХО robots.txt: вне нашего файла — только блок хостера   ждём true  факт false  — чужое: # robots.txt — www.7thserpent.com (7th Serpent) | # | # A static site built with Astro. Every page is open to indexing: there is no admin
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status HIT; из кэша: Cf-Cache-Status HIT, Age 9120
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== Z1b контроль: Standard, параметр обходит кэш: 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 9120
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+  справка: robots.txt из кэша (200) не равен ответу мимо кэша — это кэш Cloudflare, не отказ: роботы видят кэш до его истечения или очистки
+
+=== Z1c Cache Everything: sitemap-0.xml из кэша (прошлая выкладка без /privacy/): 24/26
+ПЛОХО sitemap-0.xml: адресов                               ждём 17  факт 16  — страницы структуры без /404/
+ПЛОХО sitemap-0.xml: адреса = структура                    ждём true  факт false  — лишние: —; нет: https://www.7thserpent.com/privacy/
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+ИТОГ Z1: a=24/26 [robots.txt: наш файл целиком; robots.txt: вне нашего файла — только блок хостера]; b=26/26; c=24/26 [sitemap-0.xml: адресов; sitemap-0.xml: адреса = структура]

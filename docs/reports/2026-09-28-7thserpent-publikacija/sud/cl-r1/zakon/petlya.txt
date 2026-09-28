@@ -1,0 +1,4 @@
+301 manual: status=301 location=https://www.7thserpent.com/
+два Cache-Control: «public, max-age=0, must-revalidate» must-revalidate=true; Set-Cookie: «a=1; path=/, b=2; path=/»
+gzip + BOM + CRLF: "Sitemap: https://www.7thserpent.com/sitemap-index.xml\r\n"
+br + charset=windows-1251 (тело в UTF-8): "# robots.txt — www\n"

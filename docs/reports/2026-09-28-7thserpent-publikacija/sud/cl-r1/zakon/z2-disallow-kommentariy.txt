@@ -1,0 +1,13 @@
+
+=== Z2 блок хостера: User-agent: * / Disallow: # комментарий: 25/26
+ПЛОХО robots.txt: вне нашего файла — только блок хостера   ждём true  факт false  — чужое: adm.tools: * — Disallow: # nothing is blocked for other robots
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 4 — не наш, не отключается
+
+=== Z2 контроль: User-agent: * / Disallow: (пусто): 26/26
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 4 — не наш, не отключается
+
+ИТОГ Z2: с комментарием 25/26, zakryvayut=["adm.tools: * — Disallow: # nothing is blocked for other robots"]; без комментария 26/26

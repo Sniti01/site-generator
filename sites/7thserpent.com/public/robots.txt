@@ -9,8 +9,8 @@
 #             Google renders a page the way a browser does, and blocked CSS
 #             looks to it like a page without a layout.
 #   /404/     the error page; the server returns it with status 404 for every
-#             missing address, the sitemap leaves it out, and no page links
-#             to it.
+#             missing page address, the sitemap leaves it out, and no page
+#             links to it.
 #   AI crawlers — they are not blocked either. Blocks that the hosting
 #             provider or Cloudflare may prepend to this file on the live
 #             server are not part of it (`npm run live:check` tells them

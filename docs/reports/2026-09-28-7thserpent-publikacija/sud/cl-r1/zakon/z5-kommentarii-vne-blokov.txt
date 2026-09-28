@@ -1,0 +1,14 @@
+
+=== Z5a комментарий хостера над его блоком: 25/26
+ПЛОХО robots.txt: вне нашего файла — только блок хостера   ждём true  факт false  — чужое: # robots.txt served by adm.tools hosting
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+=== Z5b пустой комментарий «#» между блоком хостера и нашим файлом: 25/26
+ПЛОХО robots.txt: вне нашего файла — только блок хостера   ждём true  факт false  — чужое: #
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS; из кэша: Cf-Cache-Status HIT, Age 812
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+
+ИТОГ Z5: a=25/26 [чужое: # robots.txt served by adm.tools hosting]; b=25/26 [чужое: #]

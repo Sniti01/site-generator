@@ -29,6 +29,7 @@ import { join, relative } from 'node:path';
 import { tmpdir } from 'node:os';
 import { pathToFileURL } from 'node:url';
 import { sdelatKopiyu, sobrat, udalitKopiyu, ubratStaryeKopii, SAYT, REPO, OSTAVLENA } from './kopiya.mjs';
+import { kodProverki } from './schet-testov.mjs';
 
 const argi = process.argv.slice(2);
 const lishnie = argi.filter((a) => !['--ostavit'].includes(a) && !a.startsWith('--test-name-pattern='));
@@ -96,18 +97,16 @@ try {
     );
     await ustupit();
     if (prervano) throw Object.assign(new Error('прервано'), { prervano: true });
-    kod = r.status ?? 2;
-    // Счёт — своим репортёром по событиям настоящих тестов (B2-1): Node 26 ставит «ok» файлу без тестов.
+    // Счёт — своим репортёром по событиям тестов (B2-1, B3-4, B3-5); код — по коду node и по счёту.
     const itog = existsSync(itogFajl) ? JSON.parse(readFileSync(itogFajl, 'utf8')) : null;
     if (!itog) {
       console.error('итога счёта тестов нет — «всё прошло» не выдаётся');
       kod = 2;
     } else {
       console.log(`тестов: прошло ${itog.proshlo}, упало ${itog.upalo}`);
-      if (kod === 0 && itog.proshlo === 0) {
-        console.error('прошедших тестов ноль — «всё прошло» о пустом наборе не выдаётся (шаблон имён ни с чем не совпал?)');
-        kod = 2;
-      }
+      kod = kodProverki(r.status ?? 2, itog);
+      if (kod === 2 && r.status === 0) console.error('прошедших тестов ноль — «всё прошло» о пустом наборе не выдаётся (шаблон имён ни с чем не совпал?)');
+      if (kod === 1 && r.status === 0) console.error('node --test вышел с 0, а упавшие по счёту есть (skip с выполненным телом?) — прогон не прошёл');
     }
   }
 } catch (e) {

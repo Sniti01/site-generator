@@ -128,6 +128,21 @@ test('B2-2 (контроль): крошки в теле и <noscript> с таб�
   assert.deepEqual(vidy('/a/b/', stranicaB({ golova: spisok([['Home', '/'], ['Page A', '/a/'], ['Page B', '/a/b/']]) + '<noscript><link rel="stylesheet" href="/x.css"></noscript>' })), []);
 });
 
+/* — «судью судят», блок Б, раунд 3 (B3-*) — */
+
+test('B3-1: ярлык звена крошек только в <noscript> внутри звена — читатель со скриптами его не видит: отказ «noscript»', () => {
+  const sluchai = {
+    'ярлык ссылки': stranicaB().replace('href="/">Home<', 'href="/"><noscript>Home</noscript><'),
+    'ярлык текущего звена': stranicaB().replace('aria-current="page">Page B<', 'aria-current="page"><noscript>Page B</noscript><'),
+  };
+  const propushcheno = Object.entries(sluchai).filter(([, html]) => !vidy('/a/b/', html).includes('noscript')).map(([k]) => k);
+  assert.deepEqual(propushcheno, []);
+});
+
+test('B3-3: <noscript> с картинкой внутри nav.crumbs до звеньев — звенья и имя у обоих читателей одни: чисто', () => {
+  assert.deepEqual(vidy('/a/b/', stranicaB().replace('<ol>', '<noscript><img src="/p.gif" alt=""></noscript><ol>')), []);
+});
+
 test('страница вне структуры; пустая сборка; сборка без главной', () => {
   assert.deepEqual(vidy('/net/', stranicaB()), ['вне структуры']);
   assert.equal(suditNabor([], struktura, ozhidanie)[0].vid, 'пусто');

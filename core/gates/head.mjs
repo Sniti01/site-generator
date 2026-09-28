@@ -58,7 +58,7 @@
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { razobrat, elementy, imya, atr, klassy, predki, chasti, tekstVsego, tekstDetey, vHtml, tenevoyShablon } from '../text/html.mjs';
+import { razobrat, elementy, imya, atr, klassy, predki, chasti, tekstVsego, tekstDetey, vHtml, tenevoyShablon, deti } from '../text/html.mjs';
 import { chistit } from '../text/extract.mjs';
 
 /**
@@ -86,10 +86,30 @@ function razmetkaGolovy(doc) {
 }
 
 /**
- * Крошки одного прочтения: HTML-элементы `nav.crumbs` (SVG-элемент с тем же именем — не ориентир
- * навигации, B1-G-6) — ссылки, текущее звено, имя навигации.
+ * Текст для читателя со скриптами: как `tekstVsego`, но без содержимого `<noscript>` (у него это сырой
+ * текст, которого на экране нет; раунд 3 «судью судят» блока Б, B3-1).
  */
-function krohi(doc) {
+function tekstSoSkriptami(u) {
+  let s = '';
+  const stek = [...deti(u)].reverse();
+  while (stek.length) {
+    const x = stek.pop();
+    if (x.nodeName === '#text') s += x.value;
+    else if (x.tagName && !['script', 'style', 'noscript'].includes(imya(x))) {
+      const d = deti(x);
+      for (let i = d.length - 1; i >= 0; i--) stek.push(d[i]);
+    }
+  }
+  return s;
+}
+
+/**
+ * Крошки одного прочтения: HTML-элементы `nav.crumbs` (SVG-элемент с тем же именем — не ориентир
+ * навигации, B1-G-6) — ссылки, текущее звено, имя навигации. `skripty` — прочтение со скриптами:
+ * текст ярлыков и цели имени — без `<noscript>` (B3-1).
+ */
+function krohi(doc, skripty = false) {
+  const tekst = skripty ? tekstSoSkriptami : tekstVsego;
   const vse = elementy(doc);
   const vNoscript = (u) => predki(u).some((p) => imya(p) === 'noscript');
   return vse
@@ -105,7 +125,7 @@ function krohi(doc) {
       const imyaPoSsylke = idy
         .map((id) => vse.find((u) => atr(u, 'id') === id && !vShablone(u)))
         .filter(Boolean)
-        .map((u) => yarlyk(tekstVsego(u)))
+        .map((u) => yarlyk(tekst(u)))
         .join(' ')
         .trim();
       return {
@@ -114,10 +134,10 @@ function krohi(doc) {
         imyaPoSsylke,
         vNoscript: vNoscript(n),
         vlozhennayaNav: vnutri.some((u) => imya(u) === 'nav'),
-        ssylki: ssylki.map((a) => ({ href: atr(a, 'href'), klass: klassy(a).has('crumbs__link'), label: yarlyk(tekstVsego(a)), poz: poryadok.get(a) })),
+        ssylki: ssylki.map((a) => ({ href: atr(a, 'href'), klass: klassy(a).has('crumbs__link'), label: yarlyk(tekst(a)), poz: poryadok.get(a) })),
         tekushchie: tekushchie.map((s) => ({
           current: atr(s, 'aria-current'),
-          label: yarlyk(tekstVsego(s)),
+          label: yarlyk(tekst(s)),
           ssylkaVnutri: elementy(s).some((u) => imya(u) === 'a'),
           poz: poryadok.get(s),
         })),
@@ -125,8 +145,19 @@ function krohi(doc) {
     });
 }
 
-/** Крошки строкой для сравнения прочтений (без отметки «в noscript» — она своя у каждого прочтения). */
-const krohiStrokoy = (navy) => JSON.stringify(navy.map(({ vNoscript, ...n }) => n));
+/**
+ * Крошки строкой для сравнения прочтений: без отметки «в noscript» (она своя у каждого прочтения);
+ * положение звена — ранг среди ссылок и текущего звена, а не индекс среди всех элементов `nav`
+ * (картинка в `<noscript>` внутри крошек — элемент только у читателя без скриптов, B3-3).
+ */
+const krohiStrokoy = (navy) =>
+  JSON.stringify(
+    navy.map(({ vNoscript, ...n }) => {
+      const pozy = [...n.ssylki, ...n.tekushchie].map((x) => x.poz).sort((a, b) => a - b);
+      const rang = (x) => ({ ...x, poz: pozy.indexOf(x.poz) });
+      return { ...n, ssylki: n.ssylki.map(rang), tekushchie: n.tekushchie.map(rang) };
+    })
+  );
 
 /** Разбор страницы в факты для суда. */
 export function razobratGolovu(html) {
@@ -163,7 +194,7 @@ export function razobratGolovu(html) {
     dvaProchteniya: razmetkaGolovy(doc) === razmetkaGolovy(sSkriptami),
     // Крошки и имя навигации — так же: `<nav>` в `<noscript>` головы разборщик без скриптов выносит
     // в тело; цель `aria-labelledby` в `<noscript>` читатель со скриптами не находит (B2-2, B2-5).
-    krohiDvuhProchteniy: krohiStrokoy(navy) === krohiStrokoy(krohi(sSkriptami)),
+    krohiDvuhProchteniy: krohiStrokoy(navy) === krohiStrokoy(krohi(sSkriptami, true)),
   };
 }
 

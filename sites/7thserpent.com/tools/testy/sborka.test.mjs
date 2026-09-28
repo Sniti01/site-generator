@@ -61,6 +61,21 @@ function faily(koren) {
 // доклада). Здесь — всё остальное: те же файлы, те же байты картинок и шрифтов, тот же текст CSS и HTML.
 const bezCid = (s) => s.replace(/data-astro-cid-[a-z0-9]+/g, 'data-astro-cid-X').replace(/(\/_astro\/[A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+\.css/g, '$1.css');
 const imyaBezHesha = (f) => (f.endsWith('.css') ? f.replace(/^(_astro\/[A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+\.css$/, '$1.css') : f);
+/** Файлы по имени без хеша CSS: группы, а не ключи (два `index.*.css` — два файла одной группы, B3-8). */
+function gruppy(spisok) {
+  const g = new Map();
+  for (const f of spisok) {
+    const k = imyaBezHesha(f);
+    if (!g.has(k)) g.set(k, []);
+    g.get(k).push(f);
+  }
+  return g;
+}
+
+test('B3-8: два CSS с одним именем до хеша (index.*.css двух страниц) — оба в сравнении копий', () => {
+  const f = ['_astro/index.AAAA1111.css', '_astro/index.BBBB2222.css'];
+  assert.equal(gruppy(f).get('_astro/index.css').length, f.length);
+});
 
 test('B1-G-12: копия с ядром-копией = копия с ядром-ссылкой (сборка proverki), кроме значений data-astro-cid ядра', () => {
   const a = dist();
@@ -69,14 +84,13 @@ test('B1-G-12: копия с ядром-копией = копия с ядром-
     posle: (k, r) => {
       assert.equal(r.kod, 0, r.vyvod.slice(-2000));
       const b = join(k.sayt, 'dist');
-      const fa = new Map(faily(a).map((f) => [imyaBezHesha(f), f]));
-      const fb = new Map(faily(b).map((f) => [imyaBezHesha(f), f]));
-      assert.deepEqual([...fb.keys()], [...fa.keys()]);
-      const raznye = [...fa].filter(([klyuch, f]) => {
-        const x = readFileSync(join(a, f));
-        const y = readFileSync(join(b, fb.get(klyuch)));
-        return /\.(css|html)$/.test(f) ? bezCid(x.toString('utf8')) !== bezCid(y.toString('utf8')) : !x.equals(y);
-      });
+      const ga = gruppy(faily(a));
+      const gb = gruppy(faily(b));
+      assert.deepEqual([...gb.keys()].sort(), [...ga.keys()].sort());
+      // Содержимое группы — мультимножество: тексты CSS и HTML без значений cid, прочее — байты (base64).
+      const soderzhimoe = (koren, fajly) =>
+        fajly.map((f) => (/\.(css|html)$/.test(f) ? bezCid(readFileSync(join(koren, f), 'utf8')) : readFileSync(join(koren, f)).toString('base64'))).sort();
+      const raznye = [...ga].filter(([klyuch, fajly]) => JSON.stringify(soderzhimoe(a, fajly)) !== JSON.stringify(soderzhimoe(b, gb.get(klyuch))));
       assert.deepEqual(raznye.map(([klyuch]) => klyuch), []);
     },
   });

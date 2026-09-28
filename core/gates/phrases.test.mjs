@@ -126,6 +126,11 @@ test('B2-11: метка «своего» ряда только в <noscript> ч�
   assert.ok(sudStranicy('/q/', html, uk, dannye).otkazy.some((o) => o.includes('не в своём ряду')));
 });
 
+test('B3-2: текст метки ряда только в <noscript> внутри .t-label — читатель со скриптами метки не видит: «не в своём ряду»', () => {
+  const html = stranica(`<section class="layer" id="r3"><p class="t-label"><noscript>Game · 2001</noscript></p><p>${REP}</p></section>`);
+  assert.ok(sudStranicy('/q/', html, uk, dannye).otkazy.some((o) => o.includes('не в своём ряду')));
+});
+
 test('B1-F-4: метка ряда с <br> — <br> пробел, как в строках', () => {
   const html = stranica(`<section class="layer" id="r1"><p class="t-label">Game<br>· 2001</p><div class="layer__body"><p>${REP}</p></div></section>`);
   assert.deepEqual(sudStranicy('/q/', html, uk, dannye).otkazy, []);

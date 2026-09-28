@@ -7,7 +7,7 @@ import { mkdtempSync, mkdirSync, writeFileSync, existsSync, symlinkSync, realpat
 import { join, relative } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawn } from 'node:child_process';
-import { sdelatKopiyu, udalitKopiyu, ubratStaryeKopii, zapisat, REPO, METKA, OSTAVLENA } from '../kopiya.mjs';
+import { sdelatKopiyu, udalitKopiyu, ubratStaryeKopii, zapisat, zapisatVYadro, REPO, METKA, OSTAVLENA } from '../kopiya.mjs';
 
 test('B1-G-9: папка «..x» внутри репозитория — репозиторий: удалять отказ', () => {
   assert.throws(() => udalitKopiyu({ koren: join(REPO, '..kopiya-proba'), ssylki: [] }), /внутри репозитория/);
@@ -93,5 +93,32 @@ test('B2-7: запись в копию — только внутри папки 
     assert.throws(() => zapisat(k, 'input/corpus/x.txt', 'x'), /вне папки сайта копии|ссылк/);
   } finally {
     udalitKopiyu(k);
+  }
+});
+
+/* — «судью судят», блок Б, раунд 3 (B3-*) — */
+
+test('B3-6: запись в ядро копии — только внутри ядра копии: «..» из ядра — отказ (иначе сквозь ссылки копии — в пакеты и корпус репозитория)', () => {
+  const k = sdelatKopiyu(mkdtempSync(join(tmpdir(), 'kopiya-')), { sYadrom: true });
+  try {
+    // Проба безопасна и без охраны: «..» ведёт в папку сайта копии (не в ссылку), в живое дерево не пишет.
+    const vne = join('..', relative(k.koren, k.sayt), 'proba-b3-6.txt');
+    assert.throws(() => zapisatVYadro(k, vne, 'x'), /вне ядра копии|ссылк/);
+    assert.equal(existsSync(join(k.sayt, 'proba-b3-6.txt')), false);
+  } finally {
+    udalitKopiyu(k);
+  }
+});
+
+test('B3-7: копия идущего прогона (её процесс жив) старше 12 часов по времени папки — уборка не трогает', () => {
+  const tmp = mkdtempSync(join(tmpdir(), 'kopii-'));
+  const k = sdelatKopiyu(mkdtempSync(join(tmp, 'proverki-')));
+  try {
+    const davno = new Date(Date.now() - 48 * 3600 * 1000);
+    utimesSync(k.koren, davno, davno);
+    assert.deepEqual(ubratStaryeKopii({ papka: tmp, starshe: 12 * 3600 * 1000 }), []);
+    assert.ok(existsSync(join(k.koren, METKA)));
+  } finally {
+    if (existsSync(k.koren)) udalitKopiyu(k);
   }
 });

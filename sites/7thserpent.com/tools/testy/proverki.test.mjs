@@ -36,6 +36,35 @@ test('B2-1: упавший тест — упал; подтест — свой с
   assert.deepEqual(schet(kod, null), { proshlo: 2, upalo: 1 });
 });
 
+test('B3-4: набор describe — не тест: пустой набор и набор из одних пропущенных — прошло 0; набор из двух тестов — 2', () => {
+  assert.deepEqual(schet("import { describe, it } from 'node:test';\ndescribe('pusto', () => {});\ndescribe('g', () => { it.skip('s', () => {}); it.todo('t'); });\n", null), { proshlo: 0, upalo: 0 });
+  assert.deepEqual(schet("import { describe, it } from 'node:test';\ndescribe('g', () => { it('a', () => {}); it('b', () => {}); });\n", null), { proshlo: 2, upalo: 0 });
+});
+
+test('B3-4 (контроль правки): упавший хук набора — в упавших', () => {
+  assert.ok(schet("import { describe, it, after } from 'node:test';\ndescribe('g', () => { after(() => { throw new Error('a'); }); it('ok', () => {}); });\n", null).upalo > 0);
+});
+
+test('B3-5: падение вне тестов (файл не импортируется) — в упавших, не «упало 0»', () => {
+  assert.ok(schet("import './net-takogo-fajla.mjs';\n", null).upalo > 0);
+});
+
+test("B3-5: skip/todo — по наличию поля: skip '' с упавшим телом — упало; t.skip('') — не прошло; todo '' — не упало", () => {
+  assert.deepEqual(
+    schet("import { test } from 'node:test';\ntest('x', { skip: '' }, () => { throw new Error('telo'); });\ntest('y', (t) => { t.skip(''); });\ntest('z', { todo: '' }, () => { throw new Error('t'); });\n", null),
+    { proshlo: 0, upalo: 1 }
+  );
+});
+
+test('B3-5: код proverki — упавшие по счёту при коде node 0 дают не 0', async () => {
+  const { kodProverki } = await import('../schet-testov.mjs');
+  assert.equal(typeof kodProverki, 'function', 'нет решения о коде по счёту');
+  assert.notEqual(kodProverki(0, { proshlo: 5, upalo: 1 }), 0);
+  assert.equal(kodProverki(0, { proshlo: 0, upalo: 0 }), 2);
+  assert.equal(kodProverki(0, { proshlo: 3, upalo: 0 }), 0);
+  assert.equal(kodProverki(1, { proshlo: 3, upalo: 0 }), 1);
+});
+
 test('B2-1: шаблон имён ни с чем не совпал — proverki даёт код 2', () => {
   const r = spawnSync(process.execPath, [join(SAYT, 'tools/proverki.mjs'), '--test-name-pattern=^B2-1 никогда не совпадёт$'], {
     cwd: SAYT,

@@ -115,7 +115,8 @@ export function sdelatKopiyu(kuda, { sYadrom = false } = {}) {
   const ssylki = [];
   try {
     mkdirSync(koren, { recursive: true });
-    writeFileSync(join(koren, METKA), `копия ${SAYT}\n`);
+    // В метке — процесс, снявший копию: пока он жив, уборка копию не трогает (B3-7).
+    writeFileSync(join(koren, METKA), `${JSON.stringify({ pid: process.pid, sayt: SAYT })}\n`);
     const sayt = join(koren, 'sites', IMYA_SAYTA);
     mkdirSync(sayt, { recursive: true });
     for (const x of KOPIRUETSYA) {
@@ -161,7 +162,9 @@ export function udalitKopiyu(k) {
 /**
  * Убрать копии прерванных прогонов: папки в `papka` (временная папка системы) с меткой `METKA`
  * в корне, изменённые раньше `starshe` мс назад; копии, оставленные по `--ostavit` (отметка
- * `OSTAVLENA`), не трогаются — их удаляет тот, кто оставил (`udalitKopiyu`). Возвращает убранные пути.
+ * `OSTAVLENA`), не трогаются — их удаляет тот, кто оставил (`udalitKopiyu`); копия, чей процесс
+ * (pid в метке) жив, — тоже (B3-7; повтор pid чужим процессом оставит мусор, но не удалит живое).
+ * Возвращает убранные пути.
  */
 export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 } = {}) {
   const ubrano = [];
@@ -170,6 +173,7 @@ export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 
     try {
       if (!lstatSync(p).isDirectory() || !existsSync(join(p, METKA)) || existsSync(join(p, OSTAVLENA)) || vRepo(p)) continue;
       if (Date.now() - statSync(p).mtimeMs < starshe) continue;
+      if (processZhiv(p)) continue;
       bezopasnoUdalit(p);
       ubrano.push(p);
     } catch {
@@ -179,18 +183,35 @@ export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 
   return ubrano;
 }
 
+/** Жив ли процесс, снявший копию (pid из метки); метки без pid — прежние, процесс считается мёртвым. */
+function processZhiv(koren) {
+  let pid;
+  try {
+    pid = JSON.parse(readFileSync(join(koren, METKA), 'utf8')).pid;
+  } catch {
+    return false;
+  }
+  if (!Number.isInteger(pid) || pid <= 0) return false;
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (e) {
+    return e.code === 'EPERM';
+  }
+}
+
 /**
- * Путь записи в копию: внутри папки сайта копии и не сквозь ссылку-переход (ядро, корпус, пакеты —
- * живое дерево репозитория; раунд 2 блока Б, B2-7). Иначе — отказ.
+ * Путь записи в копию: внутри `koren` (папка сайта копии или ядро копии) и не сквозь ссылку-переход
+ * (ядро, корпус, пакеты — живое дерево репозитория; раунды 2–3 блока Б, B2-7, B3-6). Иначе — отказ.
  */
-function putZapisi(k, put) {
-  const p = resolve(k.sayt, put);
-  const r = relative(k.sayt, p);
-  if (!r || r === '..' || r.startsWith('..' + sep) || r.startsWith('../') || isAbsolute(r)) throw new Error(`запись вне папки сайта копии: ${put}`);
-  let tek = k.sayt;
+function putZapisi(koren, put, gde) {
+  const p = resolve(koren, put);
+  const r = relative(koren, p);
+  if (!r || r === '..' || r.startsWith('..' + sep) || r.startsWith('../') || isAbsolute(r)) throw new Error(`запись вне ${gde}: ${put}`);
+  let tek = koren;
   for (const chast of r.split(sep)) {
     tek = join(tek, chast);
-    if (lstatIliNull(tek)?.isSymbolicLink()) throw new Error(`запись сквозь ссылку-переход копии (${relative(k.sayt, tek)}): ${put} — это живое дерево репозитория`);
+    if (lstatIliNull(tek)?.isSymbolicLink()) throw new Error(`запись сквозь ссылку-переход копии (${relative(koren, tek)}): ${put} — это живое дерево репозитория`);
   }
   return p;
 }
@@ -198,14 +219,14 @@ function putZapisi(k, put) {
 /** Файл копии: прочитать, записать (путь — от папки сайта в копии; запись — только в саму копию). */
 export const prochest = (k, put) => readFileSync(join(k.sayt, put), 'utf8');
 export const zapisat = (k, put, tekst) => {
-  const p = putZapisi(k, put);
+  const p = putZapisi(k.sayt, put, 'папки сайта копии');
   mkdirSync(dirname(p), { recursive: true });
   writeFileSync(p, tekst);
 };
-/** Файл ядра копии (только при `sYadrom`: иначе это ядро репозитория). */
+/** Файл ядра копии (только при `sYadrom`: иначе это ядро репозитория; запись — только внутри ядра копии). */
 export const zapisatVYadro = (k, put, tekst) => {
   if (!k.sYadrom) throw new Error('ядро копии — ссылка на ядро репозитория: правка ядра — только в копии с sYadrom');
-  writeFileSync(join(k.koren, 'core', put), tekst);
+  writeFileSync(putZapisi(join(k.koren, 'core'), put, 'ядра копии'), tekst);
 };
 
 /** Бинарник Astro из зависимостей сайта (без npm и без оболочки). */

@@ -1,0 +1,13 @@
+
+=== a) вызов Cloudflare на двух адресах карты (очередь запросов с одного адреса): 41/43
+ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical  ждём true  факт false  — 2 из 17: /pc/ (ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен), /quotes/ (ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен)
+ПЛОХО HTML без вставок Cloudflare и чужих ресурсов  ждём true  факт false  — /pc/: /cdn-cgi/, challenge-platform | /quotes/: /cdn-cgi/, challenge-platform — /privacy/ обещает: без сторонних запросов и чужих скриптов
+
+=== b) 522 на одном адресе карты: 41/43
+ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical  ждём true  факт false  — 1 из 17: /mods/ (ответ 522; 522: соединение Cloudflare с сервером — таймаут)
+ПЛОХО HTML без вставок Cloudflare и чужих ресурсов  ждём true  факт false  — /mods/: /cdn-cgi/ — /privacy/ обещает: без сторонних запросов и чужих скриптов
+
+=== c) вставки Web Analytics и JS detections на главной (ПЛОХО верно; смотрим подсказку): 42/43
+ПЛОХО HTML без вставок Cloudflare и чужих ресурсов  ждём true  факт false  — /: /cdn-cgi/, cloudflareinsights, challenge-platform — /privacy/ обещает: без сторонних запросов и чужих скриптов
+
+ИТОГ Z4: a) ПЛОХО «/pc/: /cdn-cgi/, challenge-platform | /quotes/: /cdn-cgi/, challenge-platform — /privacy/ обещает: без сторонних запросов и чужих скриптов»; b) ПЛОХО «/mods/: /cdn-cgi/ — /privacy/ обещает: без сторонних запросов и чужих скриптов»; c) ПЛОХО «/: /cdn-cgi/, cloudflareinsights, challenge-platform — /privacy/ обещает: без сторонних запросов и чужих скриптов»

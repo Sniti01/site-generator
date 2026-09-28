@@ -1,0 +1,12 @@
+
+=== a) главная: EXPIRED (сервер ответил 200): 43/43
+
+=== b) главная: REVALIDATED (сервер ответил 304 — не изменилась): 42/43
+ПЛОХО главная: HTML не из кэша Cloudflare  ждём true  факт false  — Cf-Cache-Status REVALIDATED (Age 0) — правило кэша Cloudflare держит HTML; правка не дойдёт до читателя
+
+=== c) robots.txt мимо кэша: EXPIRED (ключ кэша без строки запроса, сервер ответил 200): 43/43
+
+=== d) robots.txt мимо кэша: REVALIDATED (то же, сервер ответил 304): 42/43
+ПЛОХО robots.txt мимо кэша: обход кэша сработал  ждём true  факт false  — Cf-Cache-Status REVALIDATED — ответ из кэша Cloudflare (REVALIDATED, Age 0) — обход не удался: строка запроса вне ключа кэша; Purge by URL и повторить
+
+ИТОГ Z5: a) 43/43; b) 42/43; c) 43/43; d) 42/43

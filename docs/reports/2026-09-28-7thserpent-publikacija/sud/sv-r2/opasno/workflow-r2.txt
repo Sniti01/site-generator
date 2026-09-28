@@ -1,0 +1,8 @@
+условие сверки: «steps.pervaya.outputs.pervaya == 'on'»; SERPENT_PERVAYA домена: «${{ steps.pervaya.outputs.pervaya }}»; сторож домена: pervyi = SERPENT_PERVAYA !== 'off'
+  выход «on»: сверка сборки идёт, домен как для первой
+  выход «off»: сверка сборки пропущена, домен как для обновления
+  выход «»: сверка сборки пропущена, домен как для первой — РАСХОЖДЕНИЕ
+mirror: «mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .» — исключений (-x/--exclude) для .well-known/ и cgi-bin/: НЕТ
+порядок: секреты 2, корпус 3, npm ci 4, сборка 5, сторож папки 7, первая 8, домен 9, сверка 10, выкладка 11, пересчёт 12
+npm ci: «npm ci» — сырьё корпуса на диске во время скриптов установки зависимостей: ДА
+вход SERPENT_FIRST: варианты ["off","on"], тип choice; env шага «Первая выкладка?»: «${{ inputs.SERPENT_FIRST || 'off' }}»

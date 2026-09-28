@@ -1,0 +1,6 @@
+a) cookie на 301 http://www…/max-payne-1/: ПЛОХО — ставят: __cf_bm (/max-payne-1/, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+b) cookie на самой странице https://www…/max-payne-1/: ПЛОХО — ставят: __cf_bm (/max-payne-1/, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+c) cookie на 301 http://www…/: ПЛОХО — ставят: __cf_bm (/, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+d) cookie на главной https://www…/: ПЛОХО — ставят: __cf_bm (главная, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+
+ИТОГ Z7: a) «__cf_bm (/max-payne-1/, Cloudflare»; b) «__cf_bm (/max-payne-1/, Cloudflare»; c) «__cf_bm (/, Cloudflare»; d) «__cf_bm (главная, Cloudflare»

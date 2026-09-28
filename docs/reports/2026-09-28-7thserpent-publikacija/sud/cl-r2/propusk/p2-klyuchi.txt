@@ -1,0 +1,21 @@
+
+a) «User-agents:» (ключ с лишней s) — у Google это User-agent
+  блок хостера + наш файл; группа: "User-agents: Googlebot\nUser-agents: Bingbot\nDisallow: /\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  zakrytoPoiskovikam: []
+  модель Google: googlebot /: ЗАКРЫТ, googlebot /max-payne-1/: ЗАКРЫТ, googlebot /privacy/: ЗАКРЫТ; bingbot /: ЗАКРЫТ, bingbot /max-payne-1/: ЗАКРЫТ, bingbot /privacy/: ЗАКРЫТ
+
+b) «Disallowed:» — у Google это Disallow
+  блок хостера + наш файл; группа: "User-agent: Googlebot\nUser-agent: Bingbot\nDisallowed: /\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  zakrytoPoiskovikam: []
+  модель Google: googlebot /: ЗАКРЫТ, googlebot /max-payne-1/: ЗАКРЫТ, googlebot /privacy/: ЗАКРЫТ; bingbot /: ЗАКРЫТ, bingbot /max-payne-1/: ЗАКРЫТ, bingbot /privacy/: ЗАКРЫТ
+
+c) «User-agent: * (all robots)» — у Google общая группа
+  блок хостера + наш файл; группа: "User-agent: * (all robots)\nDisallow: /*\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  zakrytoPoiskovikam: []
+  модель Google: googlebot /: ЗАКРЫТ, googlebot /max-payne-1/: ЗАКРЫТ, googlebot /privacy/: ЗАКРЫТ; bingbot /: ЗАКРЫТ, bingbot /max-payne-1/: ЗАКРЫТ, bingbot /privacy/: ЗАКРЫТ

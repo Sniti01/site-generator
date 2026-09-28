@@ -1,0 +1,30 @@
+модель Google = пробы инструмента: да
+
+a) блок хостера закрывает две страницы карты
+  блок: "User-agent: *\nDisallow: /movie/\nDisallow: /cheats/\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt: вне нашего файла — только блок хостера» — факт true — вне нашего файла — управляемые блоки и комментарии
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  модель Google: googlebot /movie/: ЗАКРЫТ, googlebot /cheats/: ЗАКРЫТ; bingbot /movie/: ЗАКРЫТ, bingbot /cheats/: ЗАКРЫТ
+  инструмент zakrytoPoiskovikam(те же пути): ["googlebot /movie/","googlebot /cheats/","bingbot /movie/","bingbot /cheats/"]
+  прежняя редакция 45052d0: 25/26; красные robots: «robots.txt: вне нашего файла — только блок хостера» — false — чужое: adm.tools: * — Disallow: /movie/ | adm.tools: * — Disallow: /cheats/
+
+b) блок хостера закрывает CSS (Google рисует страницу без вёрстки)
+  блок: "User-agent: *\nDisallow: /*.css$\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt: вне нашего файла — только блок хостера» — факт true — вне нашего файла — управляемые блоки и комментарии
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  модель Google: googlebot /_astro/index.DyC2kF5m.css: ЗАКРЫТ; bingbot /_astro/index.DyC2kF5m.css: ЗАКРЫТ
+  инструмент zakrytoPoiskovikam(те же пути): ["googlebot /_astro/index.DyC2kF5m.css","bingbot /_astro/index.DyC2kF5m.css"]
+  прежняя редакция 45052d0: 25/26; красные robots: «robots.txt: вне нашего файла — только блок хостера» — false — чужое: adm.tools: * — Disallow: /*.css$
+
+c) блок хостера закрывает Googlebot-Image (картинки /_astro/)
+  блок: "User-agent: Googlebot-Image\nDisallow: /\n"
+  инструмент 816ba46: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты
+  ok «robots.txt: вне нашего файла — только блок хостера» — факт true — вне нашего файла — управляемые блоки и комментарии
+  ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша или безвредная копия из кэша
+  модель Google: googlebot /_astro/mp1-k09.BvX1.webp: открыт; bingbot /_astro/mp1-k09.BvX1.webp: открыт; googlebot-image /_astro/mp1-k09.BvX1.webp: ЗАКРЫТ
+  инструмент zakrytoPoiskovikam(те же пути): []
+  прежняя редакция 45052d0: 25/26; красные robots: «robots.txt: вне нашего файла — только блок хостера» — false — чужое: adm.tools: googlebot-image — Disallow: /
+
+страница игры в PUTI: /max-payne-1/; пути-образцы инструмента: /, /max-payne-1/, /privacy/, /_astro/

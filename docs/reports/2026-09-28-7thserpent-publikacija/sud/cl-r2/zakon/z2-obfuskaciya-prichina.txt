@@ -1,0 +1,12 @@
+
+=== a) адрес ссылкой mailto, обфускация включена: 40/43
+ПЛОХО /privacy/: без обфускации почты Cloudflare  ждём true  факт false  — найдено: __cf_email__, email-decode, data-cfemail, /cdn-cgi/l/email-protection — Scrape Shield → Email Address Obfuscation включена (П77 п. 6)
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена
+ПЛОХО HTML без вставок Cloudflare и чужих ресурсов  ждём true  факт false  — /privacy/: /cdn-cgi/, __cf_email__, data-cfemail — /privacy/ обещает: без сторонних запросов и чужих скриптов
+
+=== b) адрес текстом (форма первого сайта), обфускация включена: 40/43
+ПЛОХО /privacy/: без обфускации почты Cloudflare  ждём true  факт false  — найдено: __cf_email__, email-decode, data-cfemail, /cdn-cgi/l/email-protection — Scrape Shield → Email Address Obfuscation включена (П77 п. 6)
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена
+ПЛОХО HTML без вставок Cloudflare и чужих ресурсов  ждём true  факт false  — /privacy/: /cdn-cgi/, __cf_email__, data-cfemail — /privacy/ обещает: без сторонних запросов и чужих скриптов
+
+ИТОГ Z2: a) «адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена»; b) «адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена»

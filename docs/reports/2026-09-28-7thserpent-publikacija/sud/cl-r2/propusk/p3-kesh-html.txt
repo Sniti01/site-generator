@@ -1,0 +1,6 @@
+a) главная Cf-Cache-Status MISS: 43/43; ok «главная: HTML не из кэша Cloudflare» — факт true — Cf-Cache-Status MISS
+a) главная Cf-Cache-Status EXPIRED: 43/43; ok «главная: HTML не из кэша Cloudflare» — факт true — Cf-Cache-Status EXPIRED
+b) все страницы, кроме главной, — HIT, Age 86400 (16 стр.): 43/43; ok «главная: HTML не из кэша Cloudflare» — факт true — Cf-Cache-Status DYNAMIC
+c) главная s-maxage=86400: 43/43; ok «главная: Cache-Control у HTML (max-age=0, must-revalidate)» — факт true — .htaccess, mod_headers; пришло: «public, max-age=0, s-maxage=86400, must-revalidate»
+c) главная CDN-Cache-Control: max-age=86400: 43/43; ok «главная: Cache-Control у HTML (max-age=0, must-revalidate)» — факт true — .htaccess, mod_headers; пришло: «public, max-age=0, must-revalidate»
+d) все страницы, кроме главной, — Cache-Control public, max-age=86400: 43/43; ok «главная: Cache-Control у HTML (max-age=0, must-revalidate)» — факт true — .htaccess, mod_headers; пришло: «public, max-age=0, must-revalidate»

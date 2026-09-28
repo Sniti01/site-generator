@@ -1,0 +1,5 @@
+ПЛОХО главная: статус  факт 503 — https://www.7thserpent.com/
+ПЛОХО главная: Cache-Control у HTML (max-age=0, must-revalidate)  факт false — .htaccess, mod_headers; пришло: «public, max-age=0, must-revalidate»
+ПЛОХО главная: HTML не из кэша Cloudflare  факт false — Cf-Cache-Status DYNAMIC
+
+ИТОГ Z8: 35/43; «HTML не из кэша»: «Cf-Cache-Status DYNAMIC»; «Cache-Control»: «.htaccess, mod_headers; пришло: «public, max-age=0, must-revalidate»»

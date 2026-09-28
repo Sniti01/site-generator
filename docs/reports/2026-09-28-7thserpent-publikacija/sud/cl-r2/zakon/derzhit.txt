@@ -1,0 +1,35 @@
+CC1 s-maxage=0 вместе с max-age=0: 43/43
+CC2 private: 43/43
+CC3 no-cache вместе с max-age=0: 43/43
+CC4 два заголовка, склеенные fetch (оба max-age=0): 43/43
+CC5 регистр и пробелы: Public, Max-Age = 0, Must-Revalidate: 43/43
+CC6 s-maxage=600 (кэш края, браузер — 0): 43/43
+CF-гл MISS на главной: 43/43
+CF-гл BYPASS на главной: 43/43
+CF-гл DYNAMIC на главной: 43/43
+CF-гл EXPIRED на главной: 43/43
+CF-гл без Cf-Cache-Status на главной: 43/43
+CF-мимо BYPASS на robots.txt мимо кэша: 43/43
+CF-мимо DYNAMIC на robots.txt мимо кэша: 43/43
+CF-мимо EXPIRED на robots.txt мимо кэша: 43/43
+CF-мимо без Cf-Cache-Status: 43/43
+BEZ HIT с Age, тело равно: 43/43
+BEZ MISS, тело равно: 43/43
+BEZ DYNAMIC, тело равно: 43/43
+BEZ REVALIDATED с Age, тело равно: 43/43
+RB1 Allow: без значения, Crawl-delay, Host, Sitemap внутри блока: 43/43
+RB2 двойные пробелы и TAB: 43/43
+RB3 группа * хостера с Disallow: /cgi-bin/ и /*.php$: 43/43
+RB4 Googlebot-Image и Google-Extended закрыты (не Googlebot): 43/43
+RB5 блок хостера с CRLF и TAB-отступом строк: 43/43
+RB6 блок хостера после файла, группа * с Disallow: пустым: 43/43
+PR1 mailto:?subject=: 43/43
+PR2 адрес в двух местах (текст и ссылка): 43/43
+PR3 MAILTO: заглавными и атрибут Astro: 43/43
+XR1 noarchive, nosnippet на главной: 43/43
+SC1 ждём ПЛОХО: __cf_bm на 301 голого хоста: 42/43
+    ПЛОХО ответы без Set-Cookie: ставят: __cf_bm (7thserpent.com/, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+KN1 ждём ПЛОХО (не форма стека): canonical /cheats/ с хостом заглавными: 42/43
+    ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical: 1 из 17: /cheats/ (canonical https://WWW.7thserpent.com/cheats/)
+
+ИТОГ держит: CC1=43/43 CC2=43/43 CC3=43/43 CC4=43/43 CC5=43/43 CC6=43/43 CF-гл=43/43 CF-гл=43/43 CF-гл=43/43 CF-гл=43/43 CF-гл=43/43 CF-мимо=43/43 CF-мимо=43/43 CF-мимо=43/43 CF-мимо=43/43 BEZ=43/43 BEZ=43/43 BEZ=43/43 BEZ=43/43 RB1=43/43 RB2=43/43 RB3=43/43 RB4=43/43 RB5=43/43 RB6=43/43 PR1=43/43 PR2=43/43 PR3=43/43 XR1=43/43 SC1=42/43 KN1=42/43

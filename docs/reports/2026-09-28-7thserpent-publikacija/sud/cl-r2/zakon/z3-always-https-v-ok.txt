@@ -1,0 +1,8 @@
+ok    http → https /: Location  ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — Always Use HTTPS на Cloudflare включён — выключить (второй скачок)
+ok    голый → www /: Location  ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — один скачок на канонический адрес с тем же путём
+ok    http голый → https www /: Location  ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — один скачок на канонический адрес с тем же путём
+ok    http → https /max-payne-1/: Location  ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — Always Use HTTPS на Cloudflare включён — выключить (второй скачок)
+ok    голый → www /max-payne-1/: Location  ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — один скачок на канонический адрес с тем же путём
+ok    http голый → https www /max-payne-1/: Location  ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — один скачок на канонический адрес с тем же путём
+
+ИТОГ Z3: здоровый сайт 43/43; ok-строк Location с «Always Use HTTPS … включён — выключить»: 2 (http → https /: Location; http → https /max-payne-1/: Location)

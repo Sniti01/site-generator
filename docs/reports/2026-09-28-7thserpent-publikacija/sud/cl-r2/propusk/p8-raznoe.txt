@@ -1,0 +1,4 @@
+a) блок хостера: User-agent: msnbot / Disallow: /: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты; zakrytoPoiskovikam: []; модель robots.cc: googlebot /: открыт
+b) блок хостера: User-agent: * / Disallow: /%70rivacy/: 43/43; ok «robots.txt: поисковики не закрыты» — факт true — Googlebot и Bingbot: /, /max-payne-1/, /privacy/, /_astro/ — открыты; zakrytoPoiskovikam: []; модель robots.cc: googlebot /privacy/: открыт
+c) страница игры: canonical только в комментарии: 43/43; ok «страница /max-payne-1/: canonical» — факт https://www.7thserpent.com/max-payne-1/ — своя страница, не список каталога
+d) ни одного заголовка cf-* (Cloudflare не проксирует): 43/43; ok «главная: HTML не из кэша Cloudflare» — факт true — Cf-Cache-Status —

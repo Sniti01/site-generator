@@ -1,0 +1,5 @@
+X-Robots-Tag: unavailable_after: 2020-01-01 на всех страницах: 43/43; ok «страницы без X-Robots-Tag noindex» — факт true — страниц 19
+X-Robots-Tag: googlebot: unavailable_after: 1 Jan 2021 00:00:00 GMT: 43/43; ok «страницы без X-Robots-Tag noindex» — факт true — страниц 19
+<meta name="robots" content="noindex"> в <head> всех страниц: 43/43; ok «страницы без X-Robots-Tag noindex» — факт true — страниц 19
+<meta name="googlebot" content="none"> в <head> всех страниц: 43/43; ok «страницы без X-Robots-Tag noindex» — факт true — страниц 19
+контроль (X-Robots-Tag: noindex): 42/43; ПЛОХО «страницы без X-Robots-Tag noindex» — факт false — /: noindex | /cheats/: noindex | /gameplay/: noindex — robots.t…

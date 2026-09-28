@@ -1,0 +1,7 @@
+
+=== H0 dist как есть, адрес ящика ссылкой mailto: 43/43
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status MISS
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 8 — не наш, не отключается
+  справка: robots.txt без параметра: Cf-Cache-Status HIT, Age 812
+ИТОГ H0: 43/43

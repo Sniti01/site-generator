@@ -1,0 +1,1926 @@
+TAP version 13
+# Subtest: здоровый живой сайт — все 44 проверки ok
+not ok 1 - здоровый живой сайт — все 44 проверки ok
+  ---
+  duration_ms: 7.7579
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:108:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:110:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: домен не подключён (имя не разрешается) — 0 из 44
+not ok 2 - домен не подключён (имя не разрешается) — 0 из 44
+  ---
+  duration_ms: 0.6814
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:119:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:121:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44
+not ok 3 - домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44
+  ---
+  duration_ms: 1.242
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:125:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    ПЛОХО http → https /: статус: 404 — http://www.7thserpent.com/ | ПЛОХО http → https /: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО голый → www /: статус: 302 — https://7thserpent.com/ | ПЛОХО голый → www /: Location: http://7thserpent.com/ — один скачок на канонический адрес с тем же путём | ПЛОХО http голый → https www /: статус: 404 — http://7thserpent.com/ | ПЛОХО http голый → https www /: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО http → https /max-payne-1/: статус: 404 — http://www.7thserpent.com/max-payne-1/ | ПЛОХО http → https /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО голый → www /max-payne-1/: статус: 302 — https://7thserpent.com/max-payne-1/ | ПЛОХО голый → www /max-payne-1/: Location: http://7thserpent.com/max-payne-1/ — один скачок на канонический адрес с тем же путём | ПЛОХО http голый → https www /max-payne-1/: статус: 404 — http://7thserpent.com/max-payne-1/ | ПЛОХО http голый → https www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО главная: статус: 302 — https://www.7thserpent.com/ | ПЛОХО главная: canonical: 0 шт. — Base.astro от Astro.site | ПЛОХО главная: Cache-Control у HTML (max-age=0, must-revalidate): false — .htaccess, mod_headers; пришло: «—» | ПЛОХО главная: HTML не из кэша Cloudflare: false — Cf-Cache-Status — | ПЛОХО robots.txt мимо кэша: статус: 302 — параметр запроса мимо кэша Cloudflare | ПЛОХО robots.txt мимо кэша: обход кэша сработал: false — ответ 302 | ПЛОХО robots.txt: наш файл целиком: ответ 302 — ответ 302 | ПЛОХО robots.txt: блока Cloudflare нет: ответ 302 — ответ 302 | ПЛОХО robots.txt: вне нашего файла — только блок хостера: ответ 302 — ответ 302 | ПЛОХО robots.txt: поисковики не закрыты: ответ 302 — ответ 302 | ПЛОХО robots.txt: строка Sitemap: false — ответ 302 | ПЛОХО robots.txt без параметра (его берут роботы): false — ответ 302 — роботы robots.txt не получают | ПЛОХО sitemap-index.xml: статус: 302 —  | ПЛОХО sitemap-index.xml: ведёт на sitemap-0.xml: — — Cf-Cache-Status — | ПЛОХО sitemap-0.xml: статус: 302 —  | ПЛОХО sitemap-0.xml: адресов: ответ 302 — страницы структуры без /404/; Cf-Cache-Status —, Age — | ПЛОХО sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/, https://www.7thserpent.com/cheats/, https://www.7thserpent.com/gameplay/; Cf-Cache-Status —, Age — | ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical: false — адресов карты 0 | ПЛОХО несуществующий адрес: статус: 302 — ErrorDocument 404 /404/index.html | ПЛОХО несуществующий адрес: наша страница: — — title /404/ из структуры, не заглушка хостера | ПЛОХО /404/ напрямую: статус: 302 — страница структуры, вне карты | ПЛОХО /404/ напрямую: canonical: — — ответ 302 | ПЛОХО страница /max-payne-1/: статус: 302 —  | ПЛОХО страница /max-payne-1/: canonical: ответ 302 — своя страница, не список каталога | ПЛОХО /privacy/: статус: 302 —  | ПЛОХО /privacy/: canonical: ответ 302 —  | ПЛОХО /privacy/: без обфускации почты Cloudflare: ответ 302 — маркеров обфускации нет | ПЛОХО /privacy/: адрес ящика открытым текстом: false — ответ 302 | ПЛОХО HTML без вставок Cloudflare и чужих ресурсов: false — главная — ответ 302 | ПЛОХО страницы без X-Robots-Tag noindex: false — главная — ответ 302 | ПЛОХО ответы без Set-Cookie: false — главная — ответ 302
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:128:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: блок Cloudflare (управляемый robots.txt не снят)
+not ok 4 - порча: блок Cloudflare (управляемый robots.txt не снят)
+  ---
+  duration_ms: 1.4124
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: чужая группа вне блоков
+not ok 5 - порча: чужая группа вне блоков
+  ---
+  duration_ms: 2.2064
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: наш файл изменён (Allow → Disallow)
+not ok 6 - порча: наш файл изменён (Allow → Disallow)
+  ---
+  duration_ms: 1.9873
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: блок хостера закрывает Googlebot
+not ok 7 - порча: блок хостера закрывает Googlebot
+  ---
+  duration_ms: 0.9801
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: блок хостера без END
+not ok 8 - порча: блок хостера без END
+  ---
+  duration_ms: 0.932
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: robots.txt мимо кэша — 404
+not ok 9 - порча: robots.txt мимо кэша — 404
+  ---
+  duration_ms: 1.031
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: robots.txt с CRLF — чисто
+not ok 10 - порча: robots.txt с CRLF — чисто
+  ---
+  duration_ms: 1.0471
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия
+not ok 11 - порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия
+  ---
+  duration_ms: 1.4957
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /»
+not ok 12 - порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /»
+  ---
+  duration_ms: 0.961
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-9c блок хостера: «User agent: Googlebot»
+not ok 13 - порча: CL1-P-9c блок хостера: «User agent: Googlebot»
+  ---
+  duration_ms: 0.9935
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу
+not ok 14 - порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу
+  ---
+  duration_ms: 1.2212
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-Z-2 «Disallow: \# комментарий» в группе * хостера — чисто
+not ok 15 - порча: CL1-Z-2 «Disallow: \# комментарий» в группе * хостера — чисто
+  ---
+  duration_ms: 0.8398
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ
+not ok 16 - порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ
+  ---
+  duration_ms: 0.8335
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/
+not ok 17 - порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/
+  ---
+  duration_ms: 1.3952
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-1b блок хостера: * закрывает CSS
+not ok 18 - порча: CL2-P-1b блок хостера: * закрывает CSS
+  ---
+  duration_ms: 0.8475
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-1c блок хостера: Googlebot-Image закрыт
+not ok 19 - порча: CL2-P-1c блок хостера: Googlebot-Image закрыт
+  ---
+  duration_ms: 0.9131
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-1 блок хостера: msnbot закрыт — строгость к блоку
+not ok 20 - порча: CL2-P-1 блок хостера: msnbot закрыт — строгость к блоку
+  ---
+  duration_ms: 1.0169
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-5a «User-agents: Googlebot»
+not ok 21 - порча: CL2-P-5a «User-agents: Googlebot»
+  ---
+  duration_ms: 0.7847
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-5b «Disallowed: /»
+not ok 22 - порча: CL2-P-5b «Disallowed: /»
+  ---
+  duration_ms: 0.8125
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-5c «User-agent: * (all robots)»
+not ok 23 - порча: CL2-P-5c «User-agent: * (all robots)»
+  ---
+  duration_ms: 1.0876
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла
+not ok 24 - порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла
+  ---
+  duration_ms: 0.9061
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — чисто
+not ok 25 - порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — чисто
+  ---
+  duration_ms: 0.877
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ
+not ok 26 - порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ
+  ---
+  duration_ms: 1.0626
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех
+not ok 27 - порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех
+  ---
+  duration_ms: 0.8787
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша
+not ok 28 - порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша
+  ---
+  duration_ms: 0.9246
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-1c без параметра — 503
+not ok 29 - порча: CL1-P-1c без параметра — 503
+  ---
+  duration_ms: 1.2173
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare
+not ok 30 - порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare
+  ---
+  duration_ms: 0.8588
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков
+not ok 31 - порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков
+  ---
+  duration_ms: 0.8783
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-4c без параметра из кэша — нашего файла нет
+not ok 32 - порча: CL2-P-4c без параметра из кэша — нашего файла нет
+  ---
+  duration_ms: 1.0836
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам
+not ok 33 - порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам
+  ---
+  duration_ms: 1.0456
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate
+not ok 34 - порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate
+  ---
+  duration_ms: 0.9045
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-3b два Cache-Control, склеенные fetch
+not ok 35 - порча: CL1-P-3b два Cache-Control, склеенные fetch
+  ---
+  duration_ms: 1.0302
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: Cache-Control без must-revalidate
+not ok 36 - порча: Cache-Control без must-revalidate
+  ---
+  duration_ms: 0.8104
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-2 s-maxage=86400 на главной
+not ok 37 - порча: CL2-P-2 s-maxage=86400 на главной
+  ---
+  duration_ms: 0.7984
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-2 CDN-Cache-Control: max-age=86400
+not ok 38 - порча: CL2-P-2 CDN-Cache-Control: max-age=86400
+  ---
+  duration_ms: 1.0263
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-2 max-age=86400 на странице фильма
+not ok 39 - порча: CL2-P-2 max-age=86400 на странице фильма
+  ---
+  duration_ms: 0.8485
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-4 главная из кэша Cloudflare
+not ok 40 - порча: CL1-P-4 главная из кэша Cloudflare
+  ---
+  duration_ms: 0.814
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-2 страница фильма из кэша Cloudflare
+not ok 41 - порча: CL2-P-2 страница фильма из кэша Cloudflare
+  ---
+  duration_ms: 1.0602
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто
+not ok 42 - порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто
+  ---
+  duration_ms: 0.8597
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: canonical главной на голый хост
+not ok 43 - порча: canonical главной на голый хост
+  ---
+  duration_ms: 0.7891
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: два canonical на главной
+not ok 44 - порча: два canonical на главной
+  ---
+  duration_ms: 0.9429
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-8 canonical игры только в комментарии (и в сборке)
+not ok 45 - порча: CL2-P-8 canonical игры только в комментарии (и в сборке)
+  ---
+  duration_ms: 1.2818
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections
+not ok 46 - порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections
+  ---
+  duration_ms: 1.1865
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: чужая таблица стилей на главной
+not ok 47 - порча: чужая таблица стилей на главной
+  ---
+  duration_ms: 1.6844
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-3 srcset на чужой хост
+not ok 48 - порча: CL2-P-3 srcset на чужой хост
+  ---
+  duration_ms: 0.9993
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-3 base href на чужой хост
+not ok 49 - порча: CL2-P-3 base href на чужой хост
+  ---
+  duration_ms: 0.909
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie
+not ok 50 - порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie
+  ---
+  duration_ms: 0.9394
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-3 вставка только на 404
+not ok 51 - порча: CL2-P-3 вставка только на 404
+  ---
+  duration_ms: 0.9807
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»
+not ok 52 - порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»
+  ---
+  duration_ms: 0.9845
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-13 X-Robots-Tag: noindex на страницах
+not ok 53 - порча: CL1-P-13 X-Robots-Tag: noindex на страницах
+  ---
+  duration_ms: 1.268
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-6 X-Robots-Tag: unavailable_after
+not ok 54 - порча: CL2-P-6 X-Robots-Tag: unavailable_after
+  ---
+  duration_ms: 0.8622
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-6 X-Robots-Tag: googlebot: none
+not ok 55 - порча: CL2-P-6 X-Robots-Tag: googlebot: none
+  ---
+  duration_ms: 0.8012
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-6 meta robots noindex в самой сборке
+not ok 56 - порча: CL2-P-6 meta robots noindex в самой сборке
+  ---
+  duration_ms: 0.7996
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто
+not ok 57 - порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто
+  ---
+  duration_ms: 0.8491
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто
+not ok 58 - порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто
+  ---
+  duration_ms: 1.1849
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-12 Set-Cookie на странице игры и на 404
+not ok 59 - порча: CL1-P-12 Set-Cookie на странице игры и на 404
+  ---
+  duration_ms: 1.0408
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: Set-Cookie на главной
+not ok 60 - порча: Set-Cookie на главной
+  ---
+  duration_ms: 0.8278
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-9 ни одного cf-ray — Cloudflare не проксирует
+not ok 61 - порча: CL2-P-9 ни одного cf-ray — Cloudflare не проксирует
+  ---
+  duration_ms: 0.8421
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-5 редирект страницы теряет путь
+not ok 62 - порча: CL1-P-5 редирект страницы теряет путь
+  ---
+  duration_ms: 0.8152
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: Always Use HTTPS: http://голый → https://голый
+not ok 63 - порча: Always Use HTTPS: http://голый → https://голый
+  ---
+  duration_ms: 0.8974
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: 302 вместо 301
+not ok 64 - порча: 302 вместо 301
+  ---
+  duration_ms: 1.3145
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: карта без /privacy/
+not ok 65 - порча: карта без /privacy/
+  ---
+  duration_ms: 1.0176
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: карта с /404/
+not ok 66 - порча: карта с /404/
+  ---
+  duration_ms: 0.8064
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: карта: дубль вместо /privacy/ (тот же счёт)
+not ok 67 - порча: карта: дубль вместо /privacy/ (тот же счёт)
+  ---
+  duration_ms: 0.8221
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: индекс ведёт на sitemap-1.xml
+not ok 68 - порча: индекс ведёт на sitemap-1.xml
+  ---
+  duration_ms: 0.8042
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-14 14 из 17 адресов карты — 404
+not ok 69 - порча: CL1-P-14 14 из 17 адресов карты — 404
+  ---
+  duration_ms: 0.781
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: несуществующий адрес — 404 хостера
+not ok 70 - порча: несуществующий адрес — 404 хостера
+  ---
+  duration_ms: 1.3163
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: несуществующий адрес — наша страница со статусом 200
+not ok 71 - порча: несуществующий адрес — наша страница со статусом 200
+  ---
+  duration_ms: 0.8137
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: /404/ напрямую — 404
+not ok 72 - порча: /404/ напрямую — 404
+  ---
+  duration_ms: 0.8235
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: страница игры — 500
+not ok 73 - порча: страница игры — 500
+  ---
+  duration_ms: 0.7699
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-7 страница игры — список каталога Apache
+not ok 74 - порча: CL1-P-7 страница игры — список каталога Apache
+  ---
+  duration_ms: 0.8502
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто
+not ok 75 - порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто
+  ---
+  duration_ms: 0.9893
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-Z-1 адрес ящика с &\#64; — чисто
+not ok 76 - порча: CL2-Z-1 адрес ящика с &\#64; — чисто
+  ---
+  duration_ms: 1.1636
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: /privacy/ с __cf_email__ вместо адреса
+not ok 77 - порча: /privacy/ с __cf_email__ вместо адреса
+  ---
+  duration_ms: 0.8135
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке)
+not ok 78 - порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке)
+  ---
+  duration_ms: 0.8863
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-7 адрес ящика первого сайта
+not ok 79 - порча: CL2-P-7 адрес ящика первого сайта
+  ---
+  duration_ms: 0.9837
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-7 адрес ящика только в комментарии
+not ok 80 - порча: CL2-P-7 адрес ящика только в комментарии
+  ---
+  duration_ms: 0.8215
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: /privacy/ — 404
+not ok 81 - порча: /privacy/ — 404
+  ---
+  duration_ms: 0.7837
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:229:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:231:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: справки: кэш, положение блока хостера, комментарии вне меток
+not ok 82 - справки: кэш, положение блока хостера, комментарии вне меток
+  ---
+  duration_ms: 2.7209
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:236:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + [
+    +   '/privacy/: адрес ящика открытым текстом'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: '/privacy/: адрес ящика открытым текстом'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:240:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: CL1-Z-1 обход кэша не удался — причина названа в строке
+ok 83 - CL1-Z-1 обход кэша не удался — причина названа в строке
+  ---
+  duration_ms: 0.9626
+  type: 'test'
+  ...
+# Subtest: подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare
+not ok 84 - подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare
+  ---
+  duration_ms: 0.3979
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:255:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    ПЛОХО http → https /: статус: 403 — http://www.7thserpent.com/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО http → https /: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО голый → www /: статус: 403 — https://7thserpent.com/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО голый → www /: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО http голый → https www /: статус: 403 — http://7thserpent.com/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО http голый → https www /: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО http → https /max-payne-1/: статус: 403 — http://www.7thserpent.com/max-payne-1/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО http → https /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО голый → www /max-payne-1/: статус: 403 — https://7thserpent.com/max-payne-1/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО голый → www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО http голый → https www /max-payne-1/: статус: 403 — http://7thserpent.com/max-payne-1/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО http голый → https www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём | ПЛОХО главная: статус: 403 — https://www.7thserpent.com/; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО главная: canonical: 0 шт. — Base.astro от Astro.site | ПЛОХО главная: Cache-Control у HTML (max-age=0, must-revalidate): false — .htaccess, mod_headers; пришло: «—» | ПЛОХО главная: HTML не из кэша Cloudflare: false — Cf-Cache-Status — | ПЛОХО robots.txt мимо кэша: статус: 403 — параметр запроса мимо кэша Cloudflare; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО robots.txt мимо кэша: обход кэша сработал: false — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО robots.txt: наш файл целиком: ответ 403 — ответ 403 | ПЛОХО robots.txt: блока Cloudflare нет: ответ 403 — ответ 403 | ПЛОХО robots.txt: вне нашего файла — только блок хостера: ответ 403 — ответ 403 | ПЛОХО robots.txt: поисковики не закрыты: ответ 403 — ответ 403 | ПЛОХО robots.txt: строка Sitemap: false — ответ 403 | ПЛОХО robots.txt без параметра (его берут роботы): false — ответ 403 — роботы robots.txt не получают; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО sitemap-index.xml: статус: 403 — вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО sitemap-index.xml: ведёт на sitemap-0.xml: — — Cf-Cache-Status — | ПЛОХО sitemap-0.xml: статус: 403 — вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО sitemap-0.xml: адресов: ответ 403 — страницы структуры без /404/; Cf-Cache-Status —, Age — | ПЛОХО sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/, https://www.7thserpent.com/cheats/, https://www.7thserpent.com/gameplay/; Cf-Cache-Status —, Age — | ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical: false — адресов карты 0 | ПЛОХО несуществующий адрес: статус: 403 — ErrorDocument 404 /404/index.html; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО несуществующий адрес: наша страница: Just a moment... — title /404/ из структуры, не заглушка хостера | ПЛОХО /404/ напрямую: статус: 403 — страница структуры, вне карты; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО /404/ напрямую: canonical: — — ответ 403 | ПЛОХО страница /max-payne-1/: статус: 403 — вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО страница /max-payne-1/: canonical: ответ 403 — своя страница, не список каталога | ПЛОХО /privacy/: статус: 403 — вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | ПЛОХО /privacy/: canonical: ответ 403 —  | ПЛОХО /privacy/: без обфускации почты Cloudflare: ответ 403 — маркеров обфускации нет | ПЛОХО /privacy/: адрес ящика открытым текстом: false — ответ 403 | ПЛОХО HTML без вставок Cloudflare и чужих ресурсов: false — главная — ответ 403 | ПЛОХО страницы без X-Robots-Tag noindex: false — главная — ответ 403 | ПЛОХО ответы без Set-Cookie: false — главная — ответ 403
+    
+    43 !== 44
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 44
+  actual: 43
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: разбор robots.txt: наш файл только отдельными строками
+ok 85 - разбор robots.txt: наш файл только отдельными строками
+  ---
+  duration_ms: 0.2342
+  type: 'test'
+  ...
+# Subtest: поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image
+not ok 86 - поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image
+  ---
+  duration_ms: 0.3184
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:286:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'googlebot /',
+    -   'googlebot-image /',
+        'bingbot /'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'googlebot /'
+    1: 'googlebot-image /'
+    2: 'bingbot /'
+  actual:
+    0: 'googlebot /'
+    1: 'bingbot /'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:291:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается
+not ok 87 - canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается
+  ---
+  duration_ms: 0.3053
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:298:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + [
+    +   'https://www.7thserpent.com/a/'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'https://www.7thserpent.com/a/'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:302:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: команда: неверные аргументы — код 2, без сети
+ok 88 - команда: неверные аргументы — код 2, без сети
+  ---
+  duration_ms: 106.8061
+  type: 'test'
+  ...
+1..88
+# tests 88
+# suites 0
+# pass 3
+# fail 85
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 323.9282

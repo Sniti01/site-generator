@@ -1,0 +1,8 @@
+a) текстом (форма первого сайта): ok — в тексте: box@7thserpent.com
+b) разметка в YAML, экранирована: ok — в тексте: box@7thserpent.com
+c) «email us» + адрес в скобках: ok — в тексте: box@7thserpent.com
+d) &#64;: ok — в тексте: box@7thserpent.com
+e) mailto: ok — в тексте: box@7thserpent.com
+f) без адреса (сегодняшняя сборка): ПЛОХО — адреса ящика на странице нет — порядок П52 п. 3
+g) обфускация включена: ПЛОХО — адрес скрыт обфускацией Cloudflare (строка выше) — Scrape Shield → Email Address Obfuscation
+ИТОГ набросок: a) ok; b) ok; c) ok; d) ok; e) ok; f) ПЛОХО; g) ПЛОХО

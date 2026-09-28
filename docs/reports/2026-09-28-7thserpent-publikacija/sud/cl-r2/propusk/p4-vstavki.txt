@@ -1,0 +1,33 @@
+srcset у img: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <img src="/_astro/a.webp" srcset="https://img.tracker.example/a.webp 2x" alt="">
+srcset у source в picture: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <picture><source srcset="https://img.tracker.example/a.avif" type="image/avif"><img src="/_astro/a.webp" alt=""></picture>
+style= с url(): 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <div style="background-image:url(https://img.tracker.example/bg.png)"></div>
+<style> с @import (чужой шрифт): 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <style>@import url("https://fonts.googleapis.com/css2?family=Inter");</style>
+<object data>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <object data="https://img.tracker.example/pixel.svg" type="image/svg+xml"></object>
+<embed src>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <embed src="https://img.tracker.example/pixel.svg" type="image/svg+xml">
+<video poster>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <video poster="https://img.tracker.example/p.jpg" controls></video>
+<input type=image src>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <input type="image" src="https://img.tracker.example/b.png" alt="go">
+<svg><image href>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <svg width="1" height="1"><image href="https://img.tracker.example/x.png"/></svg>
+<link rel=preconnect>: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <link rel="preconnect" href="https://fonts.gstatic.com">
+<base href> — все /_astro/… страницы идут на чужой хост: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <base href="https://cdn.tracker.example/">
+схема сущностью: &#x68;ttps://: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <script src="&#x68;ttps://t.tracker.example/t.js"></script>
+пробел перед адресом (браузер его срезает): 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <script src=" https://t.tracker.example/t.js"></script>
+обратные косые: https:\\host (браузер читает как //): 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <script src="https:\\t.tracker.example/t.js"></script>
+«>» в значении атрибута до src: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19
+    вставка: <img alt="2001 > 2003" src="https://img.tracker.example/x.png">
+встроенный скрипт: sendBeacon, import(), document.cookie, localStorage: 43/43; ok «HTML без вставок Cloudflare и чужих ресурсов» — факт true — страниц 19; ok «ответы без Set-Cookie» — факт true — ответов 29
+    вставка: <script>navigator.sendBeacon('https://stats.tracker.example/c',location.href);import('https://stats.tracker.example/m.js');document.cookie='v=1; max-age=31536000; path=/';localStorage.setItem('v','1')</script>
+контроль (src="https://…" у script): 42/43; ПЛОХО «HTML без вставок Cloudflare и чужих ресурсов» — факт false — /privacy/: https://t.tracker.example/t.js — /privacy/ обещает: без сторонних запросов и чужих скриптов

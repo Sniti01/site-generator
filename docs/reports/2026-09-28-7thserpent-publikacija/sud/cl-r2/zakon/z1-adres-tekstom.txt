@@ -1,0 +1,18 @@
+первый сайт, /privacy/: mailto нет; строка — «Contact on personal data matters: Jakub, jakub@ac4bf-thewatch.com. Requests for access to data, its rectification or erasure, and questions about this policy can be sent to this address.»
+
+=== a) форма первого сайта: адрес открытым текстом в абзаце: 42/43
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена
+
+=== b) разметка ссылки в YAML ряда — Astro экранирует её в текст: 42/43
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — адреса ящика на странице нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена
+
+=== c) ссылка «email us» и адрес открытым текстом рядом в скобках: 42/43
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — mailto есть, открытым текстом — нет: box@7thserpent.com
+
+=== d) адрес сущностью &#64; в ссылке и в тексте (браузер показывает box@7thserpent.com): 42/43
+ПЛОХО /privacy/: адрес ящика открытым текстом  ждём true  факт false  — mailto есть, открытым текстом — нет: box&#64;7thserpent.com
+
+=== e) контроль: ссылка mailto с адресом в тексте ссылки: 43/43
+
+в видимом тексте варианта a) адрес ЕСТЬ; якорь «are not used to profile anyone.</p>»
+ИТОГ Z1: a) ПЛОХО; b) ПЛОХО; c) ПЛОХО; d) ПЛОХО; e) ok

@@ -1,0 +1,14 @@
+
+=== a) max-image-preview:none на страницах (превью картинок, не индекс): 42/43
+ПЛОХО страницы без X-Robots-Tag noindex  ждём true  факт false  — /: max-image-preview:none | /cheats/: max-image-preview:none | /gameplay/: max-image-preview:none — robots.txt обещает: всё открыто для индекса
+
+=== b) noindex только на ответе 404 несуществующего адреса: 42/43
+ПЛОХО страницы без X-Robots-Tag noindex  ждём true  факт false  — /net-takoy-stranicy-m1/: noindex — robots.txt обещает: всё открыто для индекса
+
+=== c) контроль: noarchive на страницах: 43/43
+
+=== d) контроль: noindex на карте сайта: 43/43
+
+=== e) контроль: max-image-preview:large, max-snippet:-1 на страницах: 43/43
+
+ИТОГ Z6: a) 42/43; b) 42/43; c) 43/43; d) 43/43; e) 43/43

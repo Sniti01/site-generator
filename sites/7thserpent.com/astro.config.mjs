@@ -11,6 +11,7 @@ import head from '@factory/core/gates/head.mjs';
 import masters from '@factory/core/gates/masters.mjs';
 import { dannye as dannyeFraz } from './gates/phrases.mjs';
 import { ozhidanie as ozhidanieGolovy } from './gates/head.mjs';
+import sverka from './tools/sverka.mjs';
 
 export default defineConfig({
   // Канонический адрес с `www` — слово владельца 2026-09-18 (П62 п. 4), как
@@ -46,6 +47,10 @@ export default defineConfig({
   // (вне git) — громкий отказ; `head` — голова и крошки (прежний `tools/glowa.mjs`);
   // `masters` — в сборке нет файлов, побайтно равных растровым картинкам `src/**`
   // (П102 п. 1).
+  // И сторож сайта (П102 блок В: «одна сверка dist вместо сверок пачек 1, 2, 4»):
+  // `sverka` — страница такова, как обещают её файл содержания и структура: герой,
+  // подпись, ряды и их кадры, галерея, призыв, нота подвала (`tools/sverka.mjs`);
+  // подпись кадра героя обязательна там, где кадр — не игра страницы.
   integrations: [
     sitemap(),
     afterBuild(),
@@ -53,6 +58,7 @@ export default defineConfig({
     links({ structure: 'structure/structure.json' }),
     corridor({ structure: 'structure/structure.json' }),
     head({ structure: 'structure/structure.json', ozhidanie: ozhidanieGolovy }),
+    sverka({ obyazatelnaPodpis: ['/remake/', '/movie/'] }),
     masters({ istochniki: 'src' }),
     phrases({ corpus: 'input/corpus', dannye: dannyeFraz }),
   ],

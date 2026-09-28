@@ -34,8 +34,7 @@
     "znak:selftest": "node tools/znak.mjs --selftest",
     "brief": "node tools/brief-strony.mjs",
     "brief:check": "node tools/brief-strony.mjs --check",
-    "proverki": "node tools/proverki.mjs",
-    "tresc:proby": "node tools/proby-tresci.mjs"
+    "proverki": "node tools/proverki.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

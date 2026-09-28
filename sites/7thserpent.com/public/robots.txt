@@ -1,0 +1,26 @@
+# robots.txt — www.7thserpent.com (7th Serpent)
+#
+# A static site (Astro). Every page is open to indexing: there is no admin
+# area, no login, no on-site search, no pagination and no addresses with
+# parameters, so there is nothing to disallow.
+#
+# What is deliberately NOT blocked (so nobody "fixes" it later):
+#   /_astro/  stylesheets, fonts and images with a content hash in the name;
+#             Google renders a page the way a browser does, and blocked CSS
+#             looks to it like a page without a layout.
+#   /404/     the error page; the server returns it with status 404 for every
+#             missing address, the sitemap leaves it out, and no page links
+#             to it.
+#   AI crawlers — they are not blocked either. Blocks that the hosting
+#             provider or Cloudflare may prepend to this file on the live
+#             server are not part of it (`npm run live:check` tells them
+#             apart from this file).
+#
+# The Sitemap line carries the full address, because the file is also read
+# from outside the domain. The canonical address is https WITH www (`site` in
+# astro.config.mjs; the owner's decision П62 p. 4).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://www.7thserpent.com/sitemap-index.xml

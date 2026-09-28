@@ -1,0 +1,72 @@
+# Server configuration for www.7thserpent.com (7th Serpent)
+#
+# Hosting: the same provider as the owner's first site (decisions П52 p. 1,
+# П106). The file lives in public/, so Astro copies it into dist/ on every
+# build and it travels with the site.
+#
+# What works here is known from the first site on the same hosting (measured
+# 2026-08-26 on the neighbouring 7dtd.com.pl and 2026-09-15 on the first
+# site, `x-ray … wal`): nginx stands in front and only requests for HTML
+# reach Apache and this file. So the file holds only what Apache really does
+# for this site:
+#   WORKS:  ErrorDocument, the redirect to one https address, Cache-Control
+#           for HTML.
+# Rules for static files (CSS, fonts, images, the icons without a hash in
+# their names, robots.txt, sitemaps) would be dead here: nginx serves those
+# files, and their caching is set in the hosting panel (launch checklist).
+# There are no dead rules in this file.
+# Every directive sits in <IfModule>: on shared hosting a directive of an
+# unknown module is not ignored, it takes the site down with error 500.
+#
+# LAUNCH ORDER (П52 p. 3, strict): the mailbox works → the domain is bound
+# to this build → https check (`npm run live:check`) → Search Console.
+#
+# WHEN BINDING THE DOMAIN: the SSL certificate in the panel (Let's Encrypt)
+# FIRST, traffic to this build AFTER — a redirect to https without a working
+# certificate gives a page nobody can open.
+
+# ─────────────────────────────────────────────────────────────────────────
+# 404 page
+#
+# The error page is a page of the structure (`/404/`, type `legal`) and is
+# built through the shared route into a folder — `dist/404/index.html`, not
+# `dist/404.html`. Apache serves it for every missing address with status
+# 404 (an internal subrequest; the status stays 404).
+# ─────────────────────────────────────────────────────────────────────────
+ErrorDocument 404 /404/index.html
+
+# ─────────────────────────────────────────────────────────────────────────
+# One canonical address: https, WITH www
+#
+# `link rel="canonical"` of every page and the sitemap addresses point to
+# https://www.7thserpent.com/… (`site` in astro.config.mjs; П62 p. 4). The
+# server leads there in a single 301 hop for http://, for the address
+# without www and for http:// without www — never two hops.
+#
+# `%{HTTPS}` can be `off` despite the padlock in the browser when TLS ends at
+# a proxy (here: Cloudflare), so the proxy's header is asked too; otherwise
+# the redirect would loop.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ - [E=NO_HTTPS:1]
+
+  RewriteCond %{ENV:NO_HTTPS} =1 [OR]
+  RewriteCond %{HTTP_HOST} !^www\.7thserpent\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.7thserpent.com/$1 [R=301,L]
+</IfModule>
+
+# ─────────────────────────────────────────────────────────────────────────
+# Caching of HTML
+#
+# HTML has no content hash in its name: `must-revalidate`, so that a
+# correction reaches the reader on the next visit.
+# ─────────────────────────────────────────────────────────────────────────
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+</IfModule>

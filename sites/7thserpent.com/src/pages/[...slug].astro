@@ -239,10 +239,16 @@ const geroy =
  * наибольшее ×1,008 на 1091×600; при крупном шрифте браузера занижение больше
  * (до ×1,43 при 24 px, P3-R1-MARSHRUT-3, P3-R2-MARSHRUT). Числа — в докладе
  * сессии 16.
+ * ПРОПОРЦИЯ — ИЗ ЗАПИСИ КРЕДИТОВ (размеры мастера в `game-art.json`), а не из
+ * импортированной картинки, как у панелей `GameRow.astro`: чтение `width`
+ * и `height` импорта помечает оригинал используемым, и Astro кладёт мастер-JPEG
+ * в сборку («Дополнение к П81» п. 3). Первая редакция читала `src.width`
+ * и `src.height` — 14 мастеров героев уходили в `dist/_astro` (П102 п. 1);
+ * размеры записей равны размерам файлов (сверка на старте сессии 20, 21 из 21).
  */
 const vverkh = (x: number) => Math.ceil(x * 100) / 100;
-function sizesGeroya(src: { width: number; height: number }) {
-  const p = src.width / src.height;
+function sizesGeroya(zapis: { width: number; height: number }) {
+  const p = zapis.width / zapis.height;
   const vysota = `clamp(${vverkh(600 * p)}px, ${vverkh(90 * p)}vh, ${vverkh(920 * p)}px)`;
   return [
     `(max-width: 640px) max(200vw, ${vverkh(40 * p)}vh, ${vverkh(260 * p)}px)`,
@@ -511,7 +517,7 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
             src={geroyPechati.kadr.src}
             alt={geroyPechati.kadr.alt}
             widths={[1200, 1600, 2400, 3200]}
-            sizes={sizesGeroya(geroyPechati.kadr.src)}
+            sizes={sizesGeroya(credits[geroyPechati.klyuch])}
             loading="eager"
             quality={80}
           />

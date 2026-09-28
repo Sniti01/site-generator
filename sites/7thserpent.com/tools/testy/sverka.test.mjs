@@ -1,14 +1,18 @@
 // Одна сверка dist/ (`tools/sverka.mjs`, П102 блок В) — порчи прежних сверок пачек 1, 2 и 4 (`proba-sverki-dist.mjs`
 // пачки 1 — 9, `proby-p2.mjs --proba` — 77, `proby-p4.mjs --proba` — 59) тестами новой. Порчи правят HTML собранной
 // страницы (и копию содержания или структуры) в памяти; каждая обязана дать замечание своей причиной, контроль —
-// ни одного. Стенд «страница без героя» — `/404/` (прежде `/pc/`, до героев П96): четыре порчи сверки пачки 2 и одна
-// пачки 4 со стендом `/pc/` давали ожидаемое ПЛОХО (П97 п. 3) — здесь они на `/404/`. Где причина нового судьи
-// сказана иначе, чем прежнего, у порчи — «новая причина».
+// ни одного. Стенд «страница без героя» — `/404/` (прежде `/pc/`, до героев П96): четыре порчи сверки пачки 2,
+// одна пачки 4 и одна пачки 1 («нота на странице без кадров») со стендом `/pc/` давали ожидаемое ПЛОХО (П97 п. 3) —
+// здесь они на `/404/`. Где причина нового судьи сказана иначе, чем прежнего, у порчи — «новая причина».
+// Раунд 1 «судью судят» блока В — порчи V1-*: проверки прежних сверок, которые новая потеряла, и их пределы.
 //   npm run proverki
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { sverkaStranicy, vhody } from '../sverka.mjs';
-import { stranica, SAYT } from './obshchee.mjs';
+import { mkdtempSync, mkdirSync, cpSync, readFileSync, writeFileSync, rmSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { tmpdir } from 'node:os';
+import { sverkaStranicy, vhody, sverkaSborki } from '../sverka.mjs';
+import { stranica, SAYT, dist } from './obshchee.mjs';
 
 const V = vhody(SAYT);
 const OBYAZATELNA = new Set(['/remake/', '/movie/']);
@@ -268,4 +272,78 @@ test('сверка пачки 4 (галерея, нота): порчи', async (
     { imya: 'вторая h2 в галерее', s: q, html: (h) => { const g = vzyat(h, GALEREYA); return h.replace(g, g.replace('</ul>', '</ul><h2>Proba</h2>')); }, prichina: 'заголовков h2 в галерее 2' },
     { imya: 'вторая строка под заголовком', s: q, html: (h) => { const g = vzyat(h, GALEREYA); const l = vzyat(h, /<p class="gallery__lead\b[\s\S]*?<\/p>/); return h.replace(g, g.replace(l, l + l)); }, prichina: 'строк под заголовком галереи 2' },
   ]);
+});
+
+/* — «судью судят», блок В, раунд 1 (V1-*): проверки прежних сверок, которые новая потеряла, и пропуски — */
+
+test('раунд 1 блока В: порчи', async (t) => {
+  const media = po('/media/');
+  const rm = po('/remake/');
+  const m2 = po('/max-payne-2/');
+  const pc = po('/pc/');
+  const kadrMedia = (h, i) => [...h.matchAll(/<div class="foto kadr-ryadu"[\s\S]*?<\/div>/g)][i][0];
+  const DOWN = '<path d="m6 9 6 6 6-6"/>';
+  const vtorayaKartinka = (h, iz, v) => h.replace(new RegExp(`(<img\\b[^>]*?\\ssrc="/_astro/${iz}[^>]*>)`), (i) => i + i.replaceAll(iz, v));
+  await progon(t, [
+    // V1-1 (пачка 1: все .kadr-ryadu в <main> против рядов с art).
+    { imya: 'V1-1 кадр ряда вне ряда — в <main> между рядами', s: media, html: (h) => h.replace(/(<section class="layer)/, kadrMedia(h, 0) + '$1'), prichina: 'kadr-ryadu в <main> 4 раз, кадров рядов к печати 3' },
+    { imya: 'V1-1 кадр ряда чужой игры в рамке героя', s: rm, html: (h) => h.replace('<div class="hero__scrim"', kadrMedia(media.html, 2) + '<div class="hero__scrim"'), prichina: 'kadr-ryadu в <main> 1 раз, кадров рядов к печати 0' },
+    // V1-2 (пачка 2: обёртка героя «вплотную», подпись кадра — последний узел героя).
+    { imya: 'V1-2 текст в обёртке героя перед героем', s: rm, html: (h) => h.replace(/(<div class="geroy[^"]*"[^>]*>)(?=<section class="hero")/, '$1Proba'), prichina: 'нет обёртки' },
+    { imya: 'V1-2 текст в обёртке героя после героя', s: rm, html: (h) => h.replace('</section></div>', '</section>Proba</div>'), prichina: 'нет обёртки' },
+    { imya: 'V1-2 текст в герое после подписи кадра', s: rm, html: (h) => h.replace(/(<p class="podpis-geroya[^>]*>[^<]*<\/p>)(<\/section>)/, '$1Proba$2'), prichina: 'последним элементом героя (место dopisek) — нет' },
+    // V1-3 (пачка 2: svg иконки главной кнопки целиком).
+    { imya: 'V1-3 лишний элемент в svg иконки главной кнопки', s: rm, html: (h) => h.replace(DOWN, DOWN + '<line x1="12" y1="3" x2="12" y2="15"/>'), prichina: 'иконка главной кнопки' },
+    { imya: 'V1-3 путь иконки вне svg', s: rm, html: (h) => h.replace(/(href="#release-date"[^>]*>When it comes out)<svg[\s\S]*?<\/svg>/, '$1<i>' + DOWN + '</i>'), prichina: 'иконка главной кнопки' },
+    // V1-4 (пачка 1: кнопка призыва — btn-primary).
+    { imya: 'V1-4 кнопка призыва не главная (btn-secondary)', s: pc, html: (h) => h.replace('class="btn btn-primary t-button cta__btn"', 'class="btn btn-secondary t-button cta__btn"'), prichina: 'кнопка призыва без btn-primary' },
+    // V1-5 (пачки 1 и 2: кадр ряда — div.foto).
+    { imya: 'V1-5 кадр ряда без оболочки .foto', s: media, html: (h) => h.replace('<div class="foto kadr-ryadu"', '<div class="kadr-ryadu"'), prichina: 'кадр ряда без .foto' },
+    // V1-6 (пределы прежней пачки 2 — теперь проверка: картинки <main> = кадры по файлу содержания).
+    { imya: 'V1-6 вторая картинка другой игры в рамке героя', s: rm, html: (h) => vtorayaKartinka(h, 'mp1-k13', 'mp3-k15'), prichina: 'картинок в <main> 2, кадров по файлу содержания 1' },
+    { imya: 'V1-6 вторая картинка в кадре ряда', s: media, html: (h) => vtorayaKartinka(h, 'mp2-k01', 'mp3-k01'), prichina: 'ключами вне кадров содержания: mp3-k01' },
+    { imya: 'V1-6 картинка кадра в тексте ряда', s: m2, html: (h) => h.replace(/(<div class="layer__body[^>]*>)/, '$1<img src="/_astro/mp3-k15.x.webp" alt="">'), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'V1-6 <picture><source> другого кадра вокруг картинки героя', s: rm, html: (h) => h.replace(/(<div class="hero__art"[^>]*><div class="foto">)(<img\b[^>]*>)/, (_x, a, i) => a + '<picture><source srcset="/_astro/mp3-k15.x.webp 1200w">' + i + '</picture>'), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    // V1-7 (предел прежней пачки 4 — теперь проверка: «Games:» и «License class:» — по одному).
+    { imya: 'V1-7 вторая нота «Games:» с чужой игрой', s: rm, html: (h) => h.replace(/(<p class="ft__art-note[^"]*"[^>]*>License class)/, '<p class="ft__art-note t-caption">Games: Max Payne 3.</p>$1'), prichina: '«Games:» 2 раз' },
+    { imya: 'V1-7 вторая фраза «Games:» в ноте', s: rm, html: (h) => h.replace('Games: Max Payne.', 'Games: Max Payne. Games: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+  ]);
+});
+
+test.todo('V1-8 предел: третья кнопка в герое (a.btn без primary/secondary) — не судится');
+test.todo('V1-8 предел: абзац в колонке героя или в ряду вне year/title/meta/body — не судится');
+test.todo('V1-8 предел: абзац в призыве вне заголовка, лида и кнопки — не судится');
+test.todo('V1-8 предел: section без класса блока между рядами — не судится');
+
+/** Зеркало входов сверки во временной папке: структура, записи кадров, иконки, файлы содержания. */
+function zerkalo() {
+  const k = mkdtempSync(join(tmpdir(), 'sverka-vhody-'));
+  for (const p of ['structure/structure.json', 'src/data/game-art.json', 'src/data/icons.ts', 'src/content/tresc']) {
+    mkdirSync(dirname(join(k, p)), { recursive: true });
+    cpSync(join(SAYT, p), join(k, p), { recursive: true });
+  }
+  return k;
+}
+
+test('V1-9 фронтматтер с пустой строкой до «---» и пробелом после — законная страница, замечаний нет', () => {
+  const k = zerkalo();
+  try {
+    const f = join(k, 'src/content/tresc/404.md');
+    writeFileSync(f, '\n' + readFileSync(f, 'utf8').replace(/^---\n/, '--- \n'));
+    assert.deepEqual(sverkaSborki(dist(), k, { obyazatelnaPodpis: OBYAZATELNA }).zamechaniya, []);
+  } finally {
+    rmSync(k, { recursive: true, force: true });
+  }
+});
+
+test('V1-10 ._404.md и .chernovik/x.md в src/content/tresc — сверка их не читает (загрузчик их не видит)', () => {
+  const k = zerkalo();
+  try {
+    writeFileSync(join(k, 'src/content/tresc/._404.md'), '\u0000\u0005\u0016\u0007Mac OS X');
+    mkdirSync(join(k, 'src/content/tresc/.chernovik'));
+    writeFileSync(join(k, 'src/content/tresc/.chernovik/privacy.md'), '---\nurl: /privacy/\n---\n');
+    assert.deepEqual(sverkaSborki(dist(), k, { obyazatelnaPodpis: OBYAZATELNA }).zamechaniya, []);
+  } finally {
+    rmSync(k, { recursive: true, force: true });
+  }
 });

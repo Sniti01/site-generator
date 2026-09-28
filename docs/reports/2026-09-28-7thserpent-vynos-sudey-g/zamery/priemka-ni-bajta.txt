@@ -1,0 +1,36 @@
+---- первый сайт против main (git diff --stat):
+(пусто — ни байта)
+---- ядро: файлы судей сессии 20 (main..5ed34b9): 21
+  core/gates/exceptions.mjs
+  core/gates/head.d.mts
+  core/gates/head.mjs
+  core/gates/head.test.mjs
+  core/gates/masters.d.mts
+  core/gates/masters.mjs
+  core/gates/masters.test.mjs
+  core/gates/phrases.d.mts
+  core/gates/phrases.mjs
+  core/gates/phrases.test.mjs
+  core/text/corpus.d.mts
+  core/text/corpus.mjs
+  core/text/corpus.test.mjs
+  core/text/extract.d.mts
+  core/text/extract.mjs
+  core/text/extract.test.mjs
+  core/text/html.d.mts
+  core/text/html.mjs
+  core/text/words.d.mts
+  core/text/words.mjs
+  core/text/words.test.mjs
+---- ядро в сессии 21 (5ed34b9..HEAD, A — новый, M — изменён, D — удалён):
+M	core/gates/exceptions.mjs
+M	core/gates/head.mjs
+M	core/gates/head.test.mjs
+M	core/gates/phrases.test.mjs
+M	core/text/corpus.mjs
+M	core/text/corpus.test.mjs
+M	core/text/extract.mjs
+M	core/text/extract.test.mjs
+---- в ядре вне файлов судей сессии 20 или не правкой: 0
+---- корень репозитория в сессии 21 (5ed34b9..HEAD: package.json, package-lock.json, .gitattributes):
+M	package-lock.json

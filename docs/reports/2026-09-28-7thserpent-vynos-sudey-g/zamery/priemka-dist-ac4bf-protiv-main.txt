@@ -1,0 +1,6 @@
+A (main): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\ref\dist-ac4bf-main — файлов 638
+B (сессия): D:\SEO\cloud\site-generator\sites\ac4bf-thewatch.com\dist — файлов 638
+только в A: 0
+только в B: 0
+различаются: 0
+HTML в A: 32; равны в B: 32

@@ -1,0 +1,7 @@
+$ node tools/znak.mjs --check
+(папка: D:/SEO/cloud/site-generator/sites/7thserpent.com)
+
+znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равны bodoni-moda-latin-600-normal.woff; краски, которые взяли три рисунка: ink #e5eaee, accent #eca84a, bg #090c11
+
+код выхода: 0
+время: 1 с

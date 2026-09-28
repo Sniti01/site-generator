@@ -1,0 +1,26 @@
+npm ci сессии 21 (П104, приёмка: «npm ci зелёный»). Два прогона, оба --offline, каждый — в отдельном рабочем дереве
+(git worktree add --detach, вне репозитория), после проверки дерево снято; вывод npm — дословно.
+
+1) Шаг 3 (`yaml` в dependencies сайта), рабочее дерево на df8b064:
+   до него — npm install --package-lock-only --offline --ignore-scripts в репозитории: «up to date in 1s», код 0
+   (package-lock.json изменился только записью зависимости сайта).
+
+$ npm ci --offline --no-audit --no-fund
+added 293 packages in 10s
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+код выхода: 0
+
+2) Итог сессии, рабочее дерево на 256fc72 (после df8b064 в package.json сайта менялись только скрипты: gates,
+   znak:selftest; package-lock.json, корневой package.json и core/package.json — нет):
+
+$ npm ci --offline --no-audit --no-fund
+added 293 packages in 9s
+npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to allow.
+код выхода: 0
+git status в рабочем дереве после npm ci: пусто — дерево чистое.

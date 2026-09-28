@@ -1,0 +1,51 @@
+A (старт): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\ref\build-ac4bf-fa0d94d.txt
+B (сессия): priemka-build-ac4bf.txt
+строк: 723 / 723
+различий по порядку: 505
+#111
+  A: ▶ /_astro/wlochy.9bvRWPtm_Z1yhBeR.webp (reused cache entry) (<t>) (2/571)
+  B: ▶ /_astro/jerozolima.wNHWNJjO_1fvUzq.webp (reused cache entry) (<t>) (2/571)
+#113
+  A: ▶ /_astro/jerozolima.wNHWNJjO_1fvUzq.webp (reused cache entry) (<t>) (4/571)
+  B: ▶ /_astro/wlochy.9bvRWPtm_Z1yhBeR.webp (reused cache entry) (<t>) (4/571)
+#114
+  A: ▶ /_astro/hero.DkEmF5ru_Zz2I7a.webp (reused cache entry) (<t>) (5/571)
+  B: ▶ /_astro/londyn.DCgL27Xp_Z1si26m.webp (reused cache entry) (<t>) (5/571)
+#115
+  A: ▶ /_astro/londyn.DCgL27Xp_Z1si26m.webp (reused cache entry) (<t>) (6/571)
+  B: ▶ /_astro/jerozolima-k03.DGH1N0ip_Z1sT2GC.webp (reused cache entry) (<t>) (6/571)
+#116
+  A: ▶ /_astro/jerozolima-k08.B6dRpR0O_bslfT.webp (reused cache entry) (<t>) (7/571)
+  B: ▶ /_astro/jerozolima-k10.4nn77574_Z2vqM2i.webp (reused cache entry) (<t>) (7/571)
+#117
+  A: ▶ /_astro/jerozolima-k04.D3F1RNGe_1PfoTR.webp (reused cache entry) (<t>) (8/571)
+  B: ▶ /_astro/hero.DkEmF5ru_Zz2I7a.webp (reused cache entry) (<t>) (8/571)
+#118
+  A: ▶ /_astro/jerozolima-k05.BDtjlwAc_23H4rY.webp (reused cache entry) (<t>) (9/571)
+  B: ▶ /_astro/foto-jerozolima.CbWDfg-j_Zk1SHQ.webp (reused cache entry) (<t>) (9/571)
+#119
+  A: ▶ /_astro/jerozolima-k03.DGH1N0ip_Z1sT2GC.webp (reused cache entry) (<t>) (10/571)
+  B: ▶ /_astro/jerozolima-k04.D3F1RNGe_1PfoTR.webp (reused cache entry) (<t>) (10/571)
+#120
+  A: ▶ /_astro/jerozolima-k10.4nn77574_Z2vqM2i.webp (reused cache entry) (<t>) (11/571)
+  B: ▶ /_astro/jerozolima-k05.BDtjlwAc_23H4rY.webp (reused cache entry) (<t>) (11/571)
+#121
+  A: ▶ /_astro/foto-jerozolima.CbWDfg-j_Zk1SHQ.webp (reused cache entry) (<t>) (12/571)
+  B: ▶ /_astro/jerozolima-k08.B6dRpR0O_bslfT.webp (reused cache entry) (<t>) (12/571)
+#122
+  A: ▶ /_astro/karaiby.C_iDLED__ZhTpq.webp (reused cache entry) (<t>) (13/571)
+  B: ▶ /_astro/jerozolima.wNHWNJjO_Z1mqHPH.webp (reused cache entry) (<t>) (13/571)
+#124
+  A: ▶ /_astro/wlochy.9bvRWPtm_Z1ng5SS.webp (reused cache entry) (<t>) (15/571)
+  B: ▶ /_astro/karaiby.C_iDLED__ZhTpq.webp (reused cache entry) (<t>) (15/571)
+#125
+  A: ▶ /_astro/jerozolima.wNHWNJjO_Z1mqHPH.webp (reused cache entry) (<t>) (16/571)
+  B: ▶ /_astro/londyn.DCgL27Xp_Z2d3cMd.webp (reused cache entry) (<t>) (16/571)
+#127
+  A: ▶ /_astro/londyn.DCgL27Xp_Z2d3cMd.webp (reused cache entry) (<t>) (18/571)
+  B: ▶ /_astro/jerozolima-k10.4nn77574_2beN6s.webp (reused cache entry) (<t>) (18/571)
+#128
+  A: ▶ /_astro/jerozolima-k08.B6dRpR0O_Zc3cph.webp (reused cache entry) (<t>) (19/571)
+  B: ▶ /_astro/jerozolima-k03.DGH1N0ip_Z1W83kC.webp (reused cache entry) (<t>) (19/571)
+без порядка: только в A 0, только в B 0
+гейты (до «Bramki: …» включительно): строк 63 / 63, различий 0

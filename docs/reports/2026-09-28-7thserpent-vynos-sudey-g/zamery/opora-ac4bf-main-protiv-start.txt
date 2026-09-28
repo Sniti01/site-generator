@@ -1,0 +1,6 @@
+A: ref/dist-ac4bf-main — файлов 638
+B: D:/SEO/cloud/site-generator/sites/ac4bf-thewatch.com/dist — файлов 638
+только в A: 0 (0 байт)
+только в B: 0
+различаются: 0
+HTML в A: 32; равны в B: 32

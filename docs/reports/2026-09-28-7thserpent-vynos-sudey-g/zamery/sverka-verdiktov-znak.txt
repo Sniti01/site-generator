@@ -1,0 +1,243 @@
+СВЕРКА ВЕРДИКТОВ: СТАРЫЙ СУДЬЯ ЗНАКА → НОВЫЙ (П104 блок Г; сборка 3b78f28 = опорная сборка сессии 21)
+
+1. СТАРЫЙ СУДЬЯ (tools/znak.mjs на 3b78f28) на сборке 3b78f28 — журналы ref/staryi-znak-*.txt сессии, сняты до правок:
+   --check          znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — ко | код выхода: 0
+   --check --dist   znak: сверено — 6 иконок public/ и dist/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписе | код выхода: 0
+   --selftest       znak --selftest: 94/94 проб | код выхода: 0
+
+2. НОВЫЕ СУДЬИ на той же сборке:
+   гейт сайта (tools/geity.mjs → znak --check): znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-to
+   Гейты сайта: 2/2 прошли (гейты ядра, знак).
+   сторож сборки: [sayt:znak-dist] знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема
+   тест знака без сборки (tools/testy/znak.test.mjs): ℹ tests 389; ℹ pass 386; ℹ fail 0; ℹ todo 3
+   пробы на копиях (tools/testy/znak-sborka.test.mjs, proverki): ✔ гейт сайта: отказ знака (иконка public/ не та) роняет npm run build до astro build; гейты ядра идут до конца | ✔ сторож сборки знака: иконка сборки не та (без гейтов) — astro build падает | ✔ R5-SVERKA-6: запись иконок и строка итога — новая краска токена попадает в файлы и в итог; при отказе не пишется ничего | ✔ сторож сборки знака: иконки папки сборки = то, что пишет инструмент, — сверено; иначе отказ
+
+3. ПОРЧИ СТАРЫХ ПРОБ → ТЕСТЫ НОВЫХ: 94 пробы прежнего --selftest → 94 теста «пробы прежнего --selftest (сессия 11) — тестами»,
+   текст проб дословно (сверка без пробельных знаков — instrumenty/znak/sverka-prob.mjs), то же строгое правило.
+   старых проб 94, тестов 94; совпало по итогу 94; расхождений 0
+
+4. СТРОКИ «ПРЕДЕЛОВ ПОСЛЕ РАУНДА 5» — одни и те же входы: старый судья (3b78f28, в памяти крюком загрузчика) и новый.
+   Для R5-SVERKA-1 — и оракул: снимает ли Tailwind сайта --font-display со страницы.
+   настоящие входы (--check)                                        старый сверено новый сверено 
+   настоящие входы и dist сборки 3b78f28 (--check --dist)           старый сверено новый сверено 
+   R5-SVERKA-1: ---* — поздний @theme                               старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — поздний @theme inline                        старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — поздний @theme static                        старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — поздний @theme reference                     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — поздний @theme default                       старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — основной @theme, после --font-display        старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: ---* — основной @theme, в начале                    старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: ---* — свой @theme перед основным                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --f-* — поздний @theme                              старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — поздний @theme inline                       старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — поздний @theme static                       старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — поздний @theme reference                    старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — поздний @theme default                      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — основной @theme, после --font-display       старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --f-* — основной @theme, в начале                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --f-* — свой @theme перед основным                  старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fo-* — поздний @theme                             старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — поздний @theme inline                      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — поздний @theme static                      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — поздний @theme reference                   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — поздний @theme default                     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — основной @theme, после --font-display      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fo-* — основной @theme, в начале                  старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fo-* — свой @theme перед основным                 старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fon-* — поздний @theme                            старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — поздний @theme inline                     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — поздний @theme static                     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — поздний @theme reference                  старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — поздний @theme default                    старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — основной @theme, после --font-display     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --fon-* — основной @theme, в начале                 старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fon-* — свой @theme перед основным                старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-* — поздний @theme                           старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт е
+   R5-SVERKA-1: --font-* — поздний @theme inline                    старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт е
+   R5-SVERKA-1: --font-* — поздний @theme static                    старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт е
+   R5-SVERKA-1: --font-* — поздний @theme reference                 старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-* — поздний @theme default                   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-* — основной @theme, после --font-display    старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт е
+   R5-SVERKA-1: --font-* — основной @theme, в начале                старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-* — свой @theme перед основным               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font--* — поздний @theme                          старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — поздний @theme inline                   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — поздний @theme static                   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — поздний @theme reference                старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — поздний @theme default                  старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — основной @theme, после --font-display   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font--* — основной @theme, в начале               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font--* — свой @theme перед основным              старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-d-* — поздний @theme                         старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — поздний @theme inline                  старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — поздний @theme static                  старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — поздний @theme reference               старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — поздний @theme default                 старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — основной @theme, после --font-display  старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-d-* — основной @theme, в начале              старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-d-* — свой @theme перед основным             старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-di-* — поздний @theme                        старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — поздний @theme inline                 старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — поздний @theme static                 старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — поздний @theme reference              старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — поздний @theme default                старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-di-* — основной @theme, в начале             старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-di-* — свой @theme перед основным            старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-dis-* — поздний @theme                       старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — поздний @theme inline                старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — поздний @theme static                старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — поздний @theme reference             старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — поздний @theme default               старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-dis-* — основной @theme, в начале            старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-dis-* — свой @theme перед основным           старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-disp-* — поздний @theme                      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — поздний @theme inline               старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — поздний @theme static               старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — поздний @theme reference            старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — поздний @theme default              старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-disp-* — основной @theme, в начале           старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-disp-* — свой @theme перед основным          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displ-* — поздний @theme                     старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — поздний @theme inline              старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — поздний @theme static              старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — поздний @theme reference           старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — поздний @theme default             старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displ-* — основной @theme, в начале          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displ-* — свой @theme перед основным         старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displa-* — поздний @theme                    старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — поздний @theme inline             старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — поздний @theme static             старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — поздний @theme reference          старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — поздний @theme default            старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-displa-* — основной @theme, в начале         старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displa-* — свой @theme перед основным        старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-display-* — поздний @theme                   старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — поздний @theme inline            старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — поздний @theme static            старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — поздний @theme reference         старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — поздний @theme default           старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — основной @theme, после --font-display старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --font-display-* — основной @theme, в начале        старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-display-* — свой @theme перед основным       старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --* — поздний @theme                                старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из
+   R5-SVERKA-1: --* — поздний @theme inline                         старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из
+   R5-SVERKA-1: --* — поздний @theme static                         старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из
+   R5-SVERKA-1: --* — поздний @theme reference                      старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --* — поздний @theme default                        старый сверено новый отказ   Tailwind: снимает | гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и ч
+   R5-SVERKA-1: --* — основной @theme, после --font-display         старый отказ   новый отказ   Tailwind: снимает | гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из
+   R5-SVERKA-1: --* — основной @theme, в начале                     старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --* — свой @theme перед основным                    старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — поздний @theme                          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — поздний @theme inline                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — поздний @theme static                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — поздний @theme reference                старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — поздний @theme default                  старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — основной @theme, после --font-display   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — основной @theme, в начале               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --color-* — свой @theme перед основным              старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — поздний @theme                          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — поздний @theme inline                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — поздний @theme static                   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — поздний @theme reference                старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — поздний @theme default                  старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — основной @theme, после --font-display   старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — основной @theme, в начале               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --fonts-* — свой @theme перед основным              старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — поздний @theme                  старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — поздний @theme inline           старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — поздний @theme static           старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — поздний @theme reference        старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — поздний @theme default          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — основной @theme, после --font-display старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — основной @theme, в начале       старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-displayx-* — свой @theme перед основным      старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — поздний @theme                      старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — поздний @theme inline               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — поздний @theme static               старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — поздний @theme reference            старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — поздний @theme default              старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — основной @theme, после --font-display старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — основной @theme, в начале           старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-1: --font-sans-* — свой @theme перед основным          старый сверено новый сверено Tailwind: оставляет
+   R5-SVERKA-5: 'Bodoni Moda',, serif                               старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda',, serif) — на 
+   R5-SVERKA-5: 'Bodoni Moda', 'Public Sans' 'X'                    старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', 'Public Sans'
+   R5-SVERKA-5: 'Bodoni Moda', 10px                                 старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', 10px) — на ст
+   R5-SVERKA-5: 'Bodoni Moda', serif,                               старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', serif,) — на 
+   R5-SVERKA-5: 'Bodoni Moda', initial                              старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', initial) — на
+   R5-SVERKA-5: 'Bodoni Moda', "x" y                                старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', "x" y) — на с
+   R5-SVERKA-5: 'Bodoni Moda', 3d                                   старый сверено новый отказ    | гарнитура: список --font-display не читается как font-family ('Bodoni Moda', 3d) — на стра
+   R5-SVERKA-5: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif старый сверено новый сверено 
+   R5-SVERKA-5: 'Bodoni Moda', Times New Roman, serif               старый сверено новый сверено 
+   R5-SVERKA-5: "Bodoni Moda", serif                                старый сверено новый сверено 
+   R5-SVERKA-5: 'Bodoni Moda'                                       старый сверено новый сверено 
+   R5-SVERKA-3: продолжение строки в имени своей @font-face         старый сверено новый отказ    | гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а 
+   R5-SVERKA-3: @font-f\61 ce                                       старый сверено новый отказ    | гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а 
+   R5-SVERKA-3: @\66ont-face                                        старый сверено новый отказ    | гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а 
+   R5-SVERKA-2: @property --acc\65nt                                старый сверено новый отказ    | краска: токен --accent зарегистрирован @property — наследование, синтаксис и начальное зна
+   R5-SVERKA-2: @prop\65rty --accent                                старый сверено новый отказ    | краска: токен --accent зарегистрирован @property — наследование, синтаксис и начальное зна
+   R5-SVERKA-4: экранированный пробел в имени своей @font-face      старый отказ   новый отказ    | гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а 
+   R5-SVERKA-4: --font-display в двойных кавычках                   старый сверено новый сверено 
+   R5-SVERKA-4: @property --font-display                            старый отказ   новый отказ    | краска: токен --font-display зарегистрирован @property — наследование, синтаксис и начальн
+   R5-SVERKA-4: @PROPERTY прописными                                старый отказ   новый отказ    | краска: токен --accent зарегистрирован @property — наследование, синтаксис и начальное зна
+   R5-SVERKA-7: своя @font-face 'Bodoni Moda Fallback'              старый отказ   новый сверено 
+   R5-SVERKA-7: своя @font-face Bodoni Moda SC                      старый отказ   новый сверено 
+
+   ИТОГ: случаев 168; вердикт тот же — 78; старый «сверено» → новый «отказ» — 88; старый «отказ» → новый «сверено» — 2
+   R5-SVERKA-1: новый «отказ» ровно там, где оракул «Tailwind: снимает», — 144 из 144
+
+5. РАСХОЖДЕНИЯ С РАЗБОРОМ
+   (а) старый «сверено» → новый «отказ» (88): это и есть строки R5 — пропуски старого судьи. Каждый случай R5-SVERKA-1
+       с «отказ» — там, где оракул говорит «Tailwind: снимает»; R5-SVERKA-5 — списки, которые font-family не читает;
+       R5-SVERKA-3, -2 — экранирование в имени правила, гарнитуры и @property; ложных новых отказов нет (оракул и законные списки).
+   (б) старый «отказ» → новый «сверено» (2): R5-SVERKA-7: своя @font-face 'Bodoni Moda Fallback'; R5-SVERKA-7: своя @font-face Bodoni Moda SC — ложные отказы старого
+       (R5-SVERKA-7: своя @font-face другой гарнитуры, имя которой только содержит «Bodoni Moda»), сняты.
+   (в) настоящие входы и 94 прежние пробы — вердикты совпали (разделы 1–3).
+
+6. СЛУЧАИ «СУДЬЮ СУДЯТ» БЛОКА Г (GR1…GR3) — те же входы, что в тестах: старый судья, новый и ожидание теста.
+   «унаследован — закрыт» — старый судья ошибался так же (пропуск или ложный отказ был до блока Г), новый равен ожиданию;
+   «старый тоже верен» — ошибку внёс промежуточный судья блока Г (ложные отказы: GR2-Z-1, GR2-Z-3 — правки раунда 1, 2f19988;
+   GR3-Z-1 — var() в списке, правка R5-SVERKA-5, 4034590; GR3-Z-2 — импорт по корню Vite, оракул 4034590) или случай — законная
+   форма; новый равен ожиданию.
+   GR1-K-1 произвольное свойство --font-display в разметке          ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-1 @utility с --font-display в импорте и класс в разметке   ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-2 в @theme импорта 'Bodoni Moda', 10px                     ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-3 экранированное имя в импорте --font-displ\61y            ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-4 своя @font-face Бодони в импорте                         ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-5 CDO перед @property --accent                             ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-K-5 CDC перед правилом                                       ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR1-Z-1 подпути tailwindcss без .css                             ждём сверено старый сверено новый сверено старый тоже верен
+   GR1-Z-2 @plugin                                                  ждём сверено старый сверено новый сверено старый тоже верен
+   GR1-Z-4 сброс и повторное объявление в позднем @theme            ждём сверено старый отказ   новый сверено унаследован — закрыт
+   GR1-Z-5 строка content со словами --font-display                 ждём сверено старый сверено новый сверено старый тоже верен
+   GR1-Z-7 @import несуществующего листа                            ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-1 @import url() в начале листа                             ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-1 удалённый @import в начале листа                         ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-2 @property --font-display в @layer base импорта           ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-3 local('Georgia') перед файлом темы                       ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-3 файл с тем же именем на другом хосте                     ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-K-3 файлы 700 под весом 600 в global.css                     ждём отказ   старый отказ   новый отказ   старый тоже верен
+   GR2-Z-1 после темы latin-400.css                                 ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-1 после темы latin-600-italic.css                          ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-1 после темы latin-ext-600.css (контроль проверяющего)     ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-Z-1 перед темой latin-ext-600.css                            ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-1 импорт гарнитуры с media и яд в разметке                 ждём отказ   старый отказ   новый отказ   старый тоже верен
+   GR2-Z-3 строка с «-->» в селекторе                               ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-3 имя «a--» перед «>»                                      ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-4 своя грань только с local('Georgia') в импорте           ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR2-Z-5 source(none) и @source на src                            ждём сверено старый сверено новый сверено старый тоже верен
+   GR2-Z-6 значение-блок в импорте                                  ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-1 весь tailwindcss с print                                 ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-1 тема Tailwind отдельным импортом с supports(display: nonsense) ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-2 псевдоним Vite на лист гарнитуры с local(Georgia)        ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-2 PostCSS в корне Vite                                     ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-Z-2 пакет с exports import → zlo, style → dobro              ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-3 'Bodoni Moda', serif Georgia                             ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   GR3-K-3 'Bodoni Moda', Georgia serif                             ждём сверено старый сверено новый сверено старый тоже верен
+   GR3-Z-1 'Bodoni Moda', var(--font-serif)                         ждём сверено старый сверено новый сверено старый тоже верен
+   GR3-Z-1 'Bodoni Moda', var(--net-takogo)                         ждём отказ   старый сверено новый отказ   унаследован — закрыт
+   ИТОГ: случаев 37; новый равен ожиданию — 37; старый ошибался — 24

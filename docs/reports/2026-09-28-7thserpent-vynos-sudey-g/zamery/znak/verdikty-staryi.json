@@ -1,0 +1,1096 @@
+[
+ {
+  "imya": "настоящие входы (--check)",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "настоящие входы и dist сборки 3b78f28 (--check --dist)",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: ---* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --f-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fo-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fon-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — поздний @theme",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — поздний @theme inline",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — поздний @theme static",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — основной @theme, после --font-display",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font--* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-d-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-di-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-dis-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-disp-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displ-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displa-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-display-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — поздний @theme",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — поздний @theme inline",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — поздний @theme static",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — основной @theme, после --font-display",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --color-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --fonts-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-displayx-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — поздний @theme",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — поздний @theme inline",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — поздний @theme static",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — поздний @theme reference",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — поздний @theme default",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — основной @theme, после --font-display",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — основной @theme, в начале",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-1: --font-sans-* — свой @theme перед основным",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda',, serif",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', 'Public Sans' 'X'",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', 10px",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', serif,",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', initial",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', \"x\" y",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', 3d",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda', Times New Roman, serif",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: \"Bodoni Moda\", serif",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-5: 'Bodoni Moda'",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-3: продолжение строки в имени своей @font-face",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-3: @font-f\\61 ce",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-3: @\\66ont-face",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-2: @property --acc\\65nt",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-2: @prop\\65rty --accent",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-4: экранированный пробел в имени своей @font-face",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-4: --font-display в двойных кавычках",
+  "otkaz": false,
+  "bledy": []
+ },
+ {
+  "imya": "R5-SVERKA-4: @property --font-display",
+  "otkaz": true,
+  "bledy": [
+   "краска: токен --font-display зарегистрирован @property — наследование, синтаксис и начальное значение меняют его на странице, иконки этого не знают"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-4: @PROPERTY прописными",
+  "otkaz": true,
+  "bledy": [
+   "краска: токен --accent зарегистрирован @property — наследование, синтаксис и начальное значение меняют его на странице, иконки этого не знают"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-7: своя @font-face 'Bodoni Moda Fallback'",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  ]
+ },
+ {
+  "imya": "R5-SVERKA-7: своя @font-face Bodoni Moda SC",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  ]
+ },
+ {
+  "imya": "GR1-K-1 произвольное свойство --font-display в разметке",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-1 @utility с --font-display в импорте и класс в разметке",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-2 в @theme импорта 'Bodoni Moda', 10px",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-3 экранированное имя в импорте --font-displ\\61y",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-4 своя @font-face Бодони в импорте",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-5 CDO перед @property --accent",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-K-5 CDC перед правилом",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR1-Z-1 подпути tailwindcss без .css",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR1-Z-2 @plugin",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR1-Z-4 сброс и повторное объявление в позднем @theme",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы"
+  ],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR1-Z-5 строка content со словами --font-display",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR1-Z-7 @import несуществующего листа",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-1 @import url() в начале листа",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-1 удалённый @import в начале листа",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-2 @property --font-display в @layer base импорта",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-3 local('Georgia') перед файлом темы",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-3 файл с тем же именем на другом хосте",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-K-3 файлы 700 под весом 600 в global.css",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  ],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-Z-1 после темы latin-400.css",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-1 после темы latin-600-italic.css",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-1 после темы latin-ext-600.css (контроль проверяющего)",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-Z-1 перед темой latin-ext-600.css",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-1 импорт гарнитуры с media и яд в разметке",
+  "otkaz": true,
+  "bledy": [
+   "гарнитура: среди операторов верхнего уровня global.css нет ровно @import '@fontsource/bodoni-moda/latin-600.css'; (есть: @import '@fontsource/bodoni-moda/latin-600.css' screen) — буквы знака не стоят на гарнитуре темы"
+  ],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-Z-3 строка с «-->» в селекторе",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-3 имя «a--» перед «>»",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-4 своя грань только с local('Georgia') в импорте",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR2-Z-5 source(none) и @source на src",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR2-Z-6 значение-блок в импорте",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-1 весь tailwindcss с print",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-1 тема Tailwind отдельным импортом с supports(display: nonsense)",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-2 псевдоним Vite на лист гарнитуры с local(Georgia)",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-2 PostCSS в корне Vite",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-Z-2 пакет с exports import → zlo, style → dobro",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-3 'Bodoni Moda', serif Georgia",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ },
+ {
+  "imya": "GR3-K-3 'Bodoni Moda', Georgia serif",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR3-Z-1 'Bodoni Moda', var(--font-serif)",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "сверено"
+ },
+ {
+  "imya": "GR3-Z-1 'Bodoni Moda', var(--net-takogo)",
+  "otkaz": false,
+  "bledy": [],
+  "zhdem": "отказ"
+ }
+]

@@ -33,7 +33,8 @@
     "znak:check": "node tools/znak.mjs --check",
     "brief": "node tools/brief-strony.mjs",
     "brief:check": "node tools/brief-strony.mjs --check",
-    "proverki": "node tools/proverki.mjs"
+    "proverki": "node tools/proverki.mjs",
+    "live:check": "node tools/check-live.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",

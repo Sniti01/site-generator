@@ -5,18 +5,20 @@
  * workflow уже получил (вывод `lftp`, скачанный `index.html`, ответы домена, `dist/`), и строка вердикта; код 0 —
  * проход, 1 — отказ (выкладка не идёт или не засчитана), 2 — ошибка входа. Сеть — только у сторожа домена
  * (`fetch`); к серверу FTP сторожа не ходят — это делает `lftp` в workflow. Значения секретов не печатаются.
- * «Судью судят», раунд 1 (SV1-O, SV1-Z — в пробах): папка робота — белым списком; «первая выкладка» — по входу
- * или по серверу; «не привязан» — только по положительным признакам; сверка сборки — с нормализацией cid ядра.
+ * «Судью судят», раунды 1–2 (SV1-*, SV2-* — в пробах): папка робота — белым списком по верху сборки; «первая
+ * выкладка» — по входу или по серверу (наш index.html и все ключевые файлы); «не привязан» — только по положительным
+ * признакам; сверка сборки — с нормализацией cid и имён CSS по содержимому, битые ссылки и метки cid — отказ.
  *
  *   node tools/storozha-vykladki.mjs sekrety                 — секреты на месте (SERPENT_FTP_*, SERPENT_CORPUS_KEY);
- *                                                              логин и хост без знаков, ломающих команду lftp;
+ *                                                              логин, хост и порт — без знаков, ломающих команду lftp;
  *                                                              робот — не робот первого сайта (AC4BF_FTP_USER)
- *   node tools/storozha-vykladki.mjs pervaya [<index.html>]  — первая ли выкладка: вход SERPENT_FIRST=on или на
- *                                                              сервере нет нашего index.html; pervaya=on|off —
- *                                                              в GITHUB_OUTPUT, если он задан
- *   node tools/storozha-vykladki.mjs domen                   — «домен уже привязан?» (бэклог 46 п. 2); при первой
- *                                                              выкладке (SERPENT_PERVAYA=on) домен, который отвечает, — отказ
- *   node tools/storozha-vykladki.mjs papka <список> [<index.html>]  — папка робота (`cls -1 -a -F` в корне)
+ *   node tools/storozha-vykladki.mjs pervaya [<index.html> [<find>]]  — первая ли выкладка: вход SERPENT_FIRST=on
+ *                                                              или на сервере нет нашей завершённой выкладки;
+ *                                                              pervaya=on|off — в GITHUB_OUTPUT
+ *   node tools/storozha-vykladki.mjs domen                   — «домен уже привязан?» (бэклог 46 п. 2); SERPENT_PERVAYA=on|off
+ *                                                              обязателен; при первой выкладке домен, который отвечает, — отказ
+ *   node tools/storozha-vykladki.mjs papka <список> [<index.html> [<dist>]]  — папка робота (`cls -1 -a -F` в корне;
+ *                                                              верх сборки — первый уровень dist и принятого списка)
  *   node tools/storozha-vykladki.mjs indeks [<index.html>]   — удалённый index.html до `mirror`: только наш
  *   node tools/storozha-vykladki.mjs sverka-dist <dist> <список сборки>  — первая выкладка: dist CI = принятый
  *   node tools/storozha-vykladki.mjs pereschet <find> <dist> — после выкладки: файлы на сервере = dist
@@ -32,15 +34,14 @@
 
 import { readFileSync, readdirSync, statSync, existsSync, appendFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { join, relative } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { dirname, join, relative } from 'node:path';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
+const SAYT = join(dirname(fileURLToPath(import.meta.url)), '..');
 export const KANON = 'https://www.7thserpent.com/';
 export const HOSTY = ['www.7thserpent.com', '7thserpent.com'];
 /** Файлы, без которых выкладка не засчитана, — как у первого сайта, плюс /privacy/. */
 export const KLYUCHEVYE = ['index.html', 'robots.txt', '.htaccess', '404/index.html', 'privacy/index.html', 'sitemap-index.xml', 'sitemap-0.xml'];
-/** Что может лежать в свежем каталоге сайта у хостера до первой выкладки: заглушка (её судит `indeks`) и служебные папки. */
-const SVEZHIY_KATALOG = new Set(['index.html', '.well-known/', 'cgi-bin/']);
 
 const itog = (ok, stroki) => ({ ok, stroki });
 
@@ -55,9 +56,14 @@ export function sekrety(env) {
   const imena = ['SERPENT_FTP_HOST', 'SERPENT_FTP_PORT', 'SERPENT_FTP_USER', 'SERPENT_FTP_PASSWORD', 'SERPENT_CORPUS_KEY'];
   const net = imena.filter((i) => !String(env[i] ?? '').trim());
   if (net.length) return itog(false, [`СТОП: нет секрета ${net.join(', ')} — выкладка не начата`]);
-  if (!/^\d{1,5}$/.test(String(env.SERPENT_FTP_PORT).trim())) return itog(false, ['СТОП: SERPENT_FTP_PORT — не номер порта']);
-  const lomayut = ['SERPENT_FTP_HOST', 'SERPENT_FTP_USER'].filter((i) => /["'\\\s;`$]/.test(String(env[i]).trim()));
-  if (lomayut.length) return itog(false, [`СТОП: в ${lomayut.join(', ')} кавычка, пробел, «;», «\\», «\`» или «$» — строка команды lftp сломалась бы; проверь значение секрета`]);
+  // Значения — как их подставит workflow, без обрезки краёв (SV2-Z-7): пробел или перевод строки по краям тоже ломают вход.
+  if (!/^\d{1,5}$/.test(String(env.SERPENT_FTP_PORT))) return itog(false, ['СТОП: SERPENT_FTP_PORT — не номер порта (только цифры, без пробелов и переводов строки по краям)']);
+  if (!/^[A-Za-z0-9.-]+$/.test(String(env.SERPENT_FTP_HOST))) {
+    return itog(false, ['СТОП: SERPENT_FTP_HOST — не имя хоста: только буквы, цифры, «.» и «-», без схемы ftp://, логина и порта — из строки доступа панели вставь часть между «@» и «:»']);
+  }
+  if (!/^[A-Za-z0-9._@-]+$/.test(String(env.SERPENT_FTP_USER))) {
+    return itog(false, ['СТОП: SERPENT_FTP_USER — в логине кавычка, пробел, перевод строки или другой знак, ломающий строку команды lftp; вставь логин из строки доступа панели (до «@») без пробелов по краям']);
+  }
   if (!String(env.AC4BF_FTP_USER ?? '').trim()) {
     return itog(false, ['СТОП: нет AC4BF_FTP_USER — не с чем сверить пользователя робота (робот первого сайта выкладывал бы в его корень)']);
   }
@@ -84,14 +90,18 @@ const nashIndex = (html) => {
 };
 
 /**
- * Первая ли выкладка (SV1-O-2): вход SERPENT_FIRST=on — или на сервере нет нашего index.html (нет файла, заглушка,
- * чужой). Защита первой выкладки не держится на одном слове входа: ручной запуск со входом по умолчанию в пустой
- * каталог — тоже первая выкладка.
+ * Первая ли выкладка (SV1-O-2, SV2-O-3): вход SERPENT_FIRST=on — или на сервере нет нашей завершённой выкладки: нет
+ * нашего index.html (нет файла, заглушка, чужой) или нет хоть одного ключевого файла (`find .` до выкладки; первая
+ * выкладка, оборванная после index.html, — всё ещё первая). Защита первой выкладки не держится на одном слове входа.
  */
-export function pervayaVykladka(vkhod, indexHtml) {
+export function pervayaVykladka(vkhod, indexHtml, findTekst) {
   if (vkhod === 'on') return { pervaya: true, pochemu: 'вход SERPENT_FIRST=on' };
   if (!nashIndex(indexHtml)) return { pervaya: true, pochemu: indexHtml === null || indexHtml === undefined ? 'на сервере нет index.html' : 'index.html на сервере не наш' };
-  return { pervaya: false, pochemu: 'на сервере наша сборка (index.html с canonical главной)' };
+  if (findTekst === null || findTekst === undefined) return { pervaya: true, pochemu: 'списка файлов сервера нет — не понять, закончена ли прежняя выкладка' };
+  const naServere = new Set(razobratFind(findTekst));
+  const net = KLYUCHEVYE.filter((f) => !naServere.has(f));
+  if (net.length) return { pervaya: true, pochemu: `на сервере нет ключевых файлов (${net.join(', ')}) — прежняя выкладка не закончена` };
+  return { pervaya: false, pochemu: 'на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)' };
 }
 
 /** Запрос одним скачком: `{ status, location, telo }`; ошибка сети — `{ oshibka: код }`. */
@@ -128,8 +138,11 @@ export async function sostoyanieHosta(poluchit, host) {
       url = new URL(r.location, url).href;
       continue;
     }
+    // Заглушка — в тексте тела без тегов и с неразрывными пробелами как пробелами (SV2-Z-6); имя — любое наше.
     const tekHost = new URL(url).host;
-    if (r.status === 404 && new RegExp(`Website\\s+${esc(tekHost)}\\s+not\\s+configured`, 'i').test(r.telo) && HOSTY.includes(tekHost)) {
+    const tekst = String(r.telo).replace(/<[^>]*>/g, ' ').replace(/&nbsp;|&#160;|&#xa0;| /gi, ' ');
+    const imena = HOSTY.map(esc).join('|');
+    if (r.status === 404 && HOSTY.includes(tekHost) && new RegExp(`Website\\s+(?:${imena})\\s+not\\s+configured`, 'i').test(tekst)) {
       return { sostoyanie: 'не привязан', pochemu: 'заглушка хостера «not configured»', put };
     }
     return { sostoyanie: 'отвечает', pochemu: `ответ ${r.status}`, put };
@@ -147,7 +160,10 @@ export async function domen({ poluchit, pervyi, hosty = HOSTY }) {
     stroki.push(`${h}: ${s.sostoyanie === 'не привязан' ? 'не привязан' : s.sostoyanie.toUpperCase()} — ${s.pochemu} (${s.put.join(' → ')})`);
   }
   if (sost.every((s) => s === 'не привязан')) return itog(true, [...stroki, 'домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет']);
-  if (!pervyi) return itog(true, [...stroki, 'домен отвечает: выкладка обновит живой сайт']);
+  if (!pervyi) {
+    if (!sost.includes('отвечает')) return itog(true, [...stroki, 'не удалось узнать, отвечает ли домен; выкладка не первая — идёт']);
+    return itog(true, [...stroki, 'домен отвечает: выкладка обновит живой сайт']);
+  }
   if (sost.includes('отвечает')) {
     return itog(false, [...stroki, 'СТОП: первая выкладка, а домен уже отвечает — выкладка сделала бы сайт живым раньше ящика (П52 п. 3). Сначала выясни, что отвечает, в панели и Cloudflare.']);
   }
@@ -168,19 +184,31 @@ export function razobratSpisok(tekst) {
 /** Хост canonical первого сайта. */
 const PERVYI_SAYT = /^https?:\/\/(www\.)?ac4bf-thewatch\.com(\/|$)/i;
 
+/** Служебные папки хостера: их не стирает `mirror` (исключения в workflow), не считает пересчёт; папкой или ссылкой. */
+export const SLUZHEBNYE = ['.well-known', 'cgi-bin'];
+const pokhozheNaDomen = (s) => /^[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+$/u.test(s) && !s.startsWith('.');
+/** Имена для строки отказа: имена доменов аккаунта не печатаются — только их число. */
+const pokazatImena = (a) => {
+  const vidno = a.filter((x) => !pokhozheNaDomen(x));
+  const skryto = a.length - vidno.length;
+  return [vidno.slice(0, 3).join(', '), skryto ? `${skryto} с именами доменов` : ''].filter(Boolean).join(' и ');
+};
+
 /**
- * Папка робота — белым списком (SV1-O-1): отказ — папки с именами доменов (и кириллицей), `www` в любом регистре,
- * с косой и без, ссылки (`@`), `index.*` кроме ровно `index.html`, корень первого сайта; проход — пустой корень,
- * свежий каталог хостера (только `index.html` — его судит `indeks` — и служебные `.well-known/`, `cgi-bin/`) или
- * прежняя наша выкладка (`index.html` с canonical главной). Всё прочее — непустой каталог без нашей сборки: отказ,
- * потому что `mirror --delete` стёр бы его. Имена доменов аккаунта не печатаются — только их число.
+ * Папка робота — белым списком (SV1-O-1, SV2-O-1): отказ — папки с именами доменов (и кириллицей), `www` в любом
+ * регистре, с косой и без, ссылки (`@`, кроме служебных), `index.*` кроме ровно `index.html`, корень первого сайта.
+ * Проход — пустой корень; свежий каталог хостера (только `index.html` — его судит `indeks` — и служебные папки);
+ * прежняя наша выкладка (`index.html` с canonical главной), в которой каждая запись корня — имя верха сборки
+ * (`verkh`: первый уровень `dist/` и принятого списка), служебная папка или временное имя lftp (`.in.*`). Часть нашей
+ * сборки без index.html — оборванная первая выкладка: отказ со своей причиной (SV2-Z-1). Всё прочее — непустой
+ * каталог без нашей сборки: отказ, потому что `mirror --delete` стёр бы его.
  */
-export function papka(spisokTekst, indexHtml) {
+export function papka(spisokTekst, indexHtml, verkh = []) {
   const imena = razobratSpisok(spisokTekst);
   const bez = (s) => s.replace(/[/@]$/, '');
   const katalogi = imena.filter((s) => s.endsWith('/')).map(bez);
-  const ssylki = imena.filter((s) => s.endsWith('@')).map(bez);
-  const domeny = katalogi.filter((k) => /^[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+$/u.test(k) && !k.startsWith('.'));
+  const ssylki = imena.filter((s) => s.endsWith('@')).map(bez).filter((s) => !SLUZHEBNYE.includes(s));
+  const domeny = katalogi.filter(pokhozheNaDomen);
   if (domeny.length) {
     return itog(false, [`СТОП: в корне робота папки с именами доменов (${domeny.length}) — робот видит аккаунт целиком, а не каталог сайта. Поправь «Каталог доступу» пользователя FTP на 7thserpent.com/www.`]);
   }
@@ -188,36 +216,47 @@ export function papka(spisokTekst, indexHtml) {
     return itog(false, ['СТОП: в корне робота папка www — робот стоит в каталоге домена, а не в его корневом каталоге. Поправь «Каталог доступу» на 7thserpent.com/www.']);
   }
   if (ssylki.length) {
-    return itog(false, [`СТОП: в корне робота ссылка (${ssylki.join(', ')}) — в сборке ссылок нет, mirror --delete заменил бы её; удали ссылку в файловом менеджере панели.`]);
+    return itog(false, [`СТОП: в корне робота ссылка (${pokazatImena(ssylki)}) — в сборке ссылок нет, mirror --delete заменил бы её; удали ссылку в файловом менеджере панели.`]);
   }
   const drugieIndex = imena.filter((s) => /^index\./i.test(bez(s)) && s !== 'index.html');
   if (drugieIndex.length) {
     return itog(false, [`СТОП: в корне робота ${drugieIndex.join(', ')} — страница чужого сайта или заглушка не той формы; mirror --delete стёр бы её. Удали в файловом менеджере, если это заглушка хостера.`]);
   }
+  const vse = imena.map(bez);
+  const nashVerkh = new Set([...verkh, ...SLUZHEBNYE]);
+  const vneSborki = vse.filter((s) => !nashVerkh.has(s) && !s.startsWith('.in.'));
   if (imena.includes('index.html')) {
     if (indexHtml === null || indexHtml === undefined) return itog(false, ['СТОП: index.html в корне есть, а его содержимого сторож не получил — не понять, чей это сайт.']);
     if (canonicalOf(indexHtml).some((h) => PERVYI_SAYT.test(h))) {
       return itog(false, ['СТОП: в корне робота — сайт ac4bf-thewatch.com (canonical его index.html). Это каталог первого сайта; mirror --delete стёр бы его.']);
     }
-    if (nashIndex(indexHtml)) return itog(true, [`папка робота: наша сборка (index.html с canonical главной), записей ${imena.length}`]);
+    if (nashIndex(indexHtml)) {
+      if (vneSborki.length) {
+        return itog(false, [`СТОП: рядом с нашей сборкой чужие записи (${vneSborki.length}: ${pokazatImena(vneSborki)}) — их нет в верхе сборки; mirror --delete стёр бы их. Проверь «Каталог доступу» и содержимое 7thserpent.com/www; своё удали в файловом менеджере панели.`]);
+      }
+      return itog(true, [`папка робота: наша сборка (index.html с canonical главной), записей ${imena.length}, чужих нет`]);
+    }
   }
   if (!imena.length) return itog(true, ['папка робота: пустой корень — первая выкладка']);
-  const chuzhoe = imena.filter((s) => !SVEZHIY_KATALOG.has(s));
-  if (chuzhoe.length) {
-    return itog(false, [`СТОП: в корне робота непустой каталог без нашей сборки (${chuzhoe.length} записей, например ${chuzhoe.slice(0, 3).join(', ')}) — чужой сайт или не тот каталог; mirror --delete стёр бы его. Проверь «Каталог доступу» и содержимое 7thserpent.com/www.`]);
+  if (vse.every((s) => s === 'index.html' || SLUZHEBNYE.includes(s))) {
+    return itog(true, [`папка робота: свежий каталог хостера — ${[imena.includes('index.html') && 'заглушка index.html (её судит сторож index.html)', vse.some((s) => s !== 'index.html') && `служебные папки ${vse.filter((s) => s !== 'index.html').join(', ')}`].filter(Boolean).join('; ')}`]);
   }
-  return itog(true, [`папка робота: свежий каталог хостера — ${imena.includes('index.html') ? 'заглушка index.html (её судит сторож index.html)' : ''}${imena.some((s) => s !== 'index.html') ? `${imena.includes('index.html') ? '; ' : ''}служебные папки ${imena.filter((s) => s !== 'index.html').join(', ')}` : ''}`]);
+  if (!imena.includes('index.html') && vse.includes('_astro') && vneSborki.length === 0) {
+    return itog(false, ['СТОП: в корне робота — часть нашей сборки без index.html: оборванная первая выкладка. Удали содержимое 7thserpent.com/www в файловом менеджере панели и запусти выкладку снова (вход SERPENT_FIRST=on).']);
+  }
+  return itog(false, [`СТОП: в корне робота непустой каталог без нашей сборки (${vse.length} записей, например ${pokazatImena(vneSborki.length ? vneSborki : vse)}) — чужой сайт, не тот каталог или файлы хостера (.htaccess, favicon.ico — удали их в файловом менеджере панели); mirror --delete стёр бы его. Проверь «Каталог доступу» и содержимое 7thserpent.com/www.`]);
 }
 
 /** Удалённый index.html до `mirror`: нет — проход; есть — только с одним canonical, равным KANON. */
 export function indeks(indexHtml) {
   if (indexHtml === null || indexHtml === undefined) return itog(true, ['index.html на сервере нет — первая выкладка в пустой каталог']);
   if (nashIndex(indexHtml)) return itog(true, [`index.html на сервере — наш (canonical ${KANON})`]);
-  // Пуст или оборван (SV1-Z-6): пустой файл или страница, начатая как документ, но без `</html>`.
-  if (!indexHtml.trim() || (/^\s*(<!doctype|<html)/i.test(indexHtml) && !/<\/html\s*>/i.test(indexHtml))) {
-    return itog(false, ['СТОП: index.html на сервере пуст или оборван — прошлая выкладка не закончилась или файл повреждён; удали его в файловом менеджере панели и запусти выкладку снова.']);
-  }
+  // Пуст или без `</html>` и без canonical (SV1-Z-6, SV2-Z-3): не наша сборка — заглушка хостера или повреждённый файл
+  // (наша выкладка пишет через временное имя и обрубка под настоящим именем не оставляет).
   const k = canonicalOf(indexHtml);
+  if (!indexHtml.trim() || (!k.length && /^\s*(<!doctype|<html)/i.test(indexHtml) && !/<\/html\s*>/i.test(indexHtml))) {
+    return itog(false, ['СТОП: index.html на сервере пуст или без </html> и без canonical — не наша сборка (заглушка хостера или повреждённый файл); удали его в файловом менеджере панели и запусти выкладку снова.']);
+  }
   if (!k.length) return itog(false, ['СТОП: index.html на сервере без canonical — заглушка хостера или чужая страница; если это заглушка хостера — удали её в файловом менеджере панели (mirror --delete заменил бы чужой сайт).']);
   return itog(false, [`СТОП: index.html на сервере не наш — canonical ${k.join(', ')} (ждём ровно ${KANON}). mirror --delete заменил бы чужой сайт.`]);
 }
@@ -227,46 +266,69 @@ export function indeks(indexHtml) {
 const obhod = (d) => readdirSync(d).flatMap((n) => (statSync(join(d, n)).isDirectory() ? obhod(join(d, n)) : [join(d, n)]));
 const sha = (b) => createHash('sha256').update(b).digest('hex');
 const CID = /data-astro-cid-([a-z0-9]+)/g;
-const CSS_IMYA = /(_astro\/[^/"'()\s]+?)\.[A-Za-z0-9_-]{8}\.css/g;
+const CSS_S_KHESHEM = /^(_astro\/.+)\.[A-Za-z0-9_-]{8}\.css$/;
 const TEKST = /\.(html|css|js|mjs|xml|txt|svg|json|webmanifest)$/i;
+const SSYLKA_ASTRO = /\/_astro\/[^"'\s)<>?#,]+/g;
 
 /**
- * Список файлов сборки: `{ fajlov, fajly: { путь: sha256 }, norm: { путь без хеша CSS: sha256 после нормализации } }`.
- * Нормализация (SV1-Z-1): значения `data-astro-cid-*` — порядковыми метками по первому появлению (файлы — по порядку
- * нормализованных путей), хеш в имени `_astro/*.css` — снят в путях и в ссылках. Причина: компилятор Astro считает
- * cid компонента от его пути, а для компонентов ядра (вне корня сайта) — от абсолютного пути, поэтому сборка CI
- * (`/home/runner/work/…`) отличается от принятой (`D:/SEO/cloud/…`) ровно этими значениями и именами CSS, чьё
- * содержимое их несёт. Всё прочее сверяется побайтно, в том числе порядок и число cid.
+ * Список файлов сборки: `{ fajlov, fajly: { путь: sha256 }, norm: { путь после нормализации: sha256 после
+ * нормализации }, bityeSsylki, metkiCid }`. Нормализация (SV1-Z-1, раунд 2 — SV2-O-5, SV2-O-6, SV2-Z-2): компилятор
+ * Astro считает `data-astro-cid` компонента от его пути, а для компонентов ядра (вне корня сайта) — от абсолютного
+ * пути, поэтому сборка CI (`/home/runner/work/…`) отличается от принятой (`D:/SEO/cloud/…`) значениями cid и именами
+ * CSS, чей хеш считается от содержимого с ними. Поэтому:
+ *   - имя `_astro/<имя>.<хеш>.css` → `_astro/<имя>.#<sha256 содержимого со всеми cid одной меткой>.css` — по файлам
+ *     самой сборки; в текстах заменяются только точные имена этих файлов (ссылка на файл, которого нет, остаётся
+ *     сырой и даёт расхождение);
+ *   - значения cid — порядковыми метками по первому появлению: сначала HTML по порядку путей, затем прочие тексты
+ *     по нормализованным путям (все cid, с точностью до согласованного переименования);
+ * всё прочее сверяется побайтно. `bityeSsylki` — ссылки `/_astro/…` в текстах сборки на файлы, которых в ней нет;
+ * `metkiCid` — тексты, где буквально стоит `data-astro-cid-#` (метка нормализации в сырой сборке) — оба — отказ сверки.
  */
 export function spisokSborki(dist) {
-  const puti = obhod(dist).map((x) => relative(dist, x).replace(/\\/g, '/'));
-  const normPut = (p) => p.replace(CSS_IMYA, '$1.#.css');
-  const poryadok = [...puti].sort((a, b) => (normPut(a) < normPut(b) ? -1 : normPut(a) > normPut(b) ? 1 : a < b ? -1 : 1));
+  const puti = obhod(dist).map((x) => relative(dist, x).replace(/\\/g, '/')).sort();
+  const est = new Set(puti);
+  const baity = new Map(puti.map((p) => [p, readFileSync(join(dist, p))]));
+  const imyaCss = new Map();
+  for (const p of puti) {
+    const m = CSS_S_KHESHEM.exec(p);
+    if (m) imyaCss.set(p, `${m[1]}.#${sha(Buffer.from(baity.get(p).toString('utf8').replace(CID, 'data-astro-cid-*'))).slice(0, 12)}.css`);
+  }
+  const normPut = (p) => imyaCss.get(p) ?? p;
+  const zamenaCss = (t) => [...imyaCss].reduce((s, [a, b]) => s.split(a).join(b), t);
+  const poryadok = [...puti].sort((a, b) => {
+    const [ha, hb] = [a.endsWith('.html') ? 0 : 1, b.endsWith('.html') ? 0 : 1];
+    if (ha !== hb) return ha - hb;
+    return normPut(a) < normPut(b) ? -1 : normPut(a) > normPut(b) ? 1 : 0;
+  });
   const cid = new Map();
   const fajly = {};
   const norm = {};
+  const bityeSsylki = [];
+  const metkiCid = [];
   for (const p of poryadok) {
-    const b = readFileSync(join(dist, p));
+    const b = baity.get(p);
     fajly[p] = sha(b);
-    const n = TEKST.test(p)
-      ? Buffer.from(
-          b
-            .toString('utf8')
-            .replace(CID, (_, v) => {
-              if (!cid.has(v)) cid.set(v, cid.size + 1);
-              return `data-astro-cid-#${cid.get(v)}`;
-            })
-            .replace(CSS_IMYA, '$1.#.css'),
-          'utf8'
-        )
-      : b;
-    norm[normPut(p) in norm ? `${normPut(p)}#${p}` : normPut(p)] = sha(n);
+    let n = b;
+    if (TEKST.test(p)) {
+      const t = b.toString('utf8');
+      if (t.includes('data-astro-cid-#')) metkiCid.push(p);
+      for (const m of t.matchAll(SSYLKA_ASTRO)) if (!est.has(m[0].slice(1))) bityeSsylki.push(`${p} → ${m[0]}`);
+      n = Buffer.from(
+        zamenaCss(t).replace(CID, (_, v) => {
+          if (!cid.has(v)) cid.set(v, cid.size + 1);
+          return `data-astro-cid-#${cid.get(v)}`;
+        }),
+        'utf8'
+      );
+    }
+    const kl = normPut(p);
+    norm[kl in norm ? `${kl}~${p}` : kl] = sha(n);
   }
   const uporyad = (o) => Object.fromEntries(Object.keys(o).sort().map((k) => [k, o[k]]));
-  return { fajlov: puti.length, fajly: uporyad(fajly), norm: uporyad(norm) };
+  return { fajlov: puti.length, fajly: uporyad(fajly), norm: uporyad(norm), bityeSsylki: [...new Set(bityeSsylki)], metkiCid };
 }
 
-/** Сборка CI против принятой: те же пути и sha256 после нормализации cid ядра и хешей имён CSS (SV1-Z-1). */
+/** Сборка CI против принятой: те же пути и sha256 после нормализации cid и имён CSS; битых ссылок и меток нет. */
 export function sverkaDist(dist, prinyatyi) {
   if (!prinyatyi || typeof prinyatyi.norm !== 'object' || prinyatyi.norm === null) throw new Error('в списке принятой сборки нет поля norm');
   const ci = spisokSborki(dist);
@@ -275,12 +337,12 @@ export function sverkaDist(dist, prinyatyi) {
   const lishnie = Object.keys(sei).filter((f) => !(f in prin));
   const inye = Object.keys(prin).filter((f) => f in sei && sei[f] !== prin[f]);
   const syrye = Object.keys(prinyatyi.fajly ?? {}).filter((f) => ci.fajly[f] !== prinyatyi.fajly[f]).length;
-  if (!net.length && !lishnie.length && !inye.length) {
-    return itog(true, [`сборка CI = принятая (${prinyatyi.sborka ?? '—'}): ${ci.fajlov} файлов, sha256 те же${syrye ? `; побайтно иных ${syrye} — только значения data-astro-cid компонентов ядра и хеши имён CSS (путь ядра на раннере другой)` : ', побайтно'}`]);
+  if (!net.length && !lishnie.length && !inye.length && !ci.bityeSsylki.length && !ci.metkiCid.length) {
+    return itog(true, [`сборка CI = принятая (${prinyatyi.sborka ?? '—'}): ${ci.fajlov} файлов, sha256 те же${syrye ? `; побайтно иных ${syrye} — только значения data-astro-cid (все, с точностью до согласованного переименования) и хеши имён CSS: путь ядра на раннере другой` : ', побайтно'}`]);
   }
   const pokazat = (a) => (a.length ? `${a.length}: ${a.slice(0, 8).join(', ')}${a.length > 8 ? ', …' : ''}` : '0');
   return itog(false, [
-    `СТОП: сборка CI не равна принятой (${prinyatyi.sborka ?? '—'}) — нет ${pokazat(net)}; лишние ${pokazat(lishnie)}; иные байты ${pokazat(inye)} (сверка — после нормализации cid ядра и хешей имён CSS). Сервер не тронут.`,
+    `СТОП: сборка CI не равна принятой (${prinyatyi.sborka ?? '—'}) — нет ${pokazat(net)}; лишние ${pokazat(lishnie)}; иные байты ${pokazat(inye)}; битые ссылки /_astro/ ${pokazat(ci.bityeSsylki)}; метки cid в сырой сборке ${pokazat(ci.metkiCid)} (сверка — после нормализации cid и имён CSS). Сервер не тронут.`,
     'список сборки CI (для разбора; принять его вместо принятого — решение владельца):',
     JSON.stringify({ sborka: 'CI', ...ci }),
   ]);
@@ -296,9 +358,10 @@ export function razobratFind(tekst) {
     .map((s) => s.replace(/^\.\//, ''));
 }
 
-/** После выкладки: файлы на сервере = файлы dist (набором), ключевые — на месте; служебные файлы сервера — названы. */
+/** После выкладки: файлы на сервере = файлы dist (набором), ключевые — на месте; служебные файлы сервера — названы;
+ *  служебные папки хостера (`.well-known/`, `cgi-bin/` — их mirror не трогает, SV2-O-2) — не считаются. */
 export function pereschet(findTekst, dist) {
-  const naServere = new Set(razobratFind(findTekst));
+  const naServere = new Set(razobratFind(findTekst).filter((f) => !SLUZHEBNYE.some((s) => f === s || f.startsWith(`${s}/`))));
   const lokalno = new Set(Object.keys(spisokSborki(dist).fajly));
   const net = [...lokalno].filter((f) => !naServere.has(f));
   const lishnie = [...naServere].filter((f) => !lokalno.has(f));
@@ -319,12 +382,30 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
   let r;
   try {
     if (komanda === 'sekrety' && argi.length === 0) r = sekrety(process.env);
-    else if (komanda === 'pervaya' && argi.length <= 1) {
-      const p = pervayaVykladka(process.env.SERPENT_FIRST ?? 'off', prochest(argi[0]));
+    else if (komanda === 'pervaya' && argi.length <= 2) {
+      // На GitHub признак обязан попасть в выход шага: без GITHUB_OUTPUT — ошибка входа, а не «да» без выхода (SV2-O-4).
+      if (process.env.GITHUB_ACTIONS === 'true' && !process.env.GITHUB_OUTPUT) {
+        console.error('нет GITHUB_OUTPUT — признак первой выкладки некуда записать');
+        process.exit(2);
+      }
+      const p = pervayaVykladka(process.env.SERPENT_FIRST ?? 'off', prochest(argi[0]), prochest(argi[1]));
       if (process.env.GITHUB_OUTPUT) appendFileSync(process.env.GITHUB_OUTPUT, `pervaya=${p.pervaya ? 'on' : 'off'}\n`);
       r = itog(true, [`первая выкладка: ${p.pervaya ? 'да' : 'нет'} — ${p.pochemu}`]);
-    } else if (komanda === 'domen' && argi.length === 0) r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA !== 'off' });
-    else if (komanda === 'papka' && (argi.length === 1 || argi.length === 2) && existsSync(argi[0])) r = papka(readFileSync(argi[0], 'utf8'), prochest(argi[1]));
+    } else if (komanda === 'domen' && argi.length === 0) {
+      // Признак первой выкладки обязателен (SV2-Z-5): без него «первая» или «нет» — догадка.
+      if (!['on', 'off'].includes(process.env.SERPENT_PERVAYA ?? '')) {
+        console.error('не задан признак первой выкладки: SERPENT_PERVAYA=on|off (выход шага «Первая выкладка?»)');
+        process.exit(2);
+      }
+      r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on' });
+    } else if (komanda === 'papka' && argi.length >= 1 && argi.length <= 3 && existsSync(argi[0])) {
+      // Верх сборки: первый уровень dist (третий аргумент) и принятого списка сайта (SV2-O-1).
+      const verkh = new Set();
+      if (argi[2] && existsSync(argi[2])) for (const n of readdirSync(argi[2])) verkh.add(n);
+      const prin = join(SAYT, 'gates/sborka-prinyataya.json');
+      if (existsSync(prin)) for (const f of Object.keys(JSON.parse(readFileSync(prin, 'utf8')).fajly ?? {})) verkh.add(f.split('/')[0]);
+      r = papka(readFileSync(argi[0], 'utf8'), prochest(argi[1]), [...verkh]);
+    }
     else if (komanda === 'indeks' && argi.length <= 1) r = indeks(prochest(argi[0]));
     else if (komanda === 'sverka-dist' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = sverkaDist(argi[0], JSON.parse(readFileSync(argi[1], 'utf8')));
     else if (komanda === 'pereschet' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = pereschet(readFileSync(argi[0], 'utf8'), argi[1]);
@@ -332,7 +413,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       console.log(JSON.stringify({ ...(argi[1] ? { sborka: argi[1] } : {}), ...spisokSborki(argi[0]) }, null, 1));
       process.exit(0);
     } else {
-      console.error('команды: sekrety | pervaya [<index.html>] | domen | papka <список> [<index.html>] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]');
+      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]');
       process.exit(2);
     }
   } catch (e) {

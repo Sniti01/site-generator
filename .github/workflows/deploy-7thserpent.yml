@@ -114,6 +114,10 @@ jobs:
           AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
         run: node $SITE/tools/storozha-vykladki.mjs sekrety
 
+      - name: Зависимости
+        run: npm ci
+
+      # Корпус — после npm ci (SV2-O-7): скрипты установки зависимостей идут без сырья на диске.
       - name: Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
         uses: actions/checkout@v5
         with:
@@ -121,9 +125,6 @@ jobs:
           ssh-key: ${{ secrets.SERPENT_CORPUS_KEY }}
           path: sites/7thserpent.com/input/corpus/raw
           persist-credentials: false
-
-      - name: Зависимости
-        run: npm ci
 
       - name: Сборка с гейтами и сторожами
         run: npm run build -w $SITE
@@ -140,22 +141,24 @@ jobs:
         run: |
           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
-          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html
+          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt
+          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist
           node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
 
       - name: Первая выкладка?
         id: pervaya
         env:
           SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}
-        run: node $SITE/tools/storozha-vykladki.mjs pervaya remote-top/index.html
+        run: node $SITE/tools/storozha-vykladki.mjs pervaya remote-top/index.html remote-before.txt
 
       - name: Домен уже привязан?
         env:
           SERPENT_PERVAYA: ${{ steps.pervaya.outputs.pervaya }}
         run: node $SITE/tools/storozha-vykladki.mjs domen
 
+      # Пустой признак — тоже первая (SV2-O-4): сверка пропускается только при явном «off».
       - name: Первая выкладка — сборка CI равна принятой
-        if: steps.pervaya.outputs.pervaya == 'on'
+        if: steps.pervaya.outputs.pervaya != 'off'
         run: node $SITE/tools/storozha-vykladki.mjs sverka-dist $SITE/dist $SITE/gates/sborka-prinyataya.json
 
       - name: Выкладка по FTPS
@@ -164,7 +167,8 @@ jobs:
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
-        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"
+        # Служебные папки хостера (сертификат, cgi) mirror не трогает и не удаляет (SV2-O-2, по документации lftp).
+        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known/ -X cgi-bin/ $SITE/dist/ .; bye"
 
       - name: Пересчёт на сервере
         env:

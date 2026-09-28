@@ -1,0 +1,10 @@
+держит — pervaya без папки remote-top: код 0, первая выкладка: да — на сервере нет index.html, выход "pervaya=on\n"
+держит — пустой корень без remote-top: papka и indeks: 0/0
+держит — push (вход пустой), на сервере наша сборка — не первая: на сервере наша сборка (index.html с canonical главной)
+держит — papka: вторая: папка робота: наша сборка (index.html с canonical главной), записей 28
+держит — papka: вторая после оборванной (.in.*): папка робота: наша сборка (index.html с canonical главной), записей 30
+держит — papka: вторая + cgi-bin/ + .well-known/: папка робота: наша сборка (index.html с canonical главной), записей 30
+держит — indeks: настоящий dist/index.html: index.html на сервере — наш (canonical https://www.7thserpent.com/)
+держит — pereschet: настоящая сборка, CRLF: на сервере ровно dist/: 165 файлов, ключевые на месте
+держит — имена webp не зависят от пути: хеш — по свойствам преобразования и src-метаданным; fsPath неперечислим, в JSON метаданных его нет
+держит — порядок sitemap-0.xml не зависит от порядка ФС: urls.sort(localeCompare)

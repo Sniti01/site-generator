@@ -23,10 +23,8 @@
  *     записи не «key art»; кадровка — `--fokus` ⇔ `artFocus`; подпись кадра — ровно одна
  *     `p.podpis-geroya.t-caption` в `<main>`, последним узлом секции героя (элемент или непустой
  *     текст) ⇔ `artCaption`, — ровно печать маршрута: `<p>`, классы ровно `podpis-geroya t-caption`, кроме class
- *     только метки области — как у `h1`, внутри только текст без невидимых знаков (Cf, Default_Ignorable); цепочка
- *     предков — ровно печать: подпись ← `section.hero` (class ровно `hero`, `aria-labelledby`, метки как у `.hero__text`)
- *     ← `div.geroy` (классы `geroy`, `geroy--stal`, `style`, метки) ← `<main>` (только `id="content"`) ← `<body>`
- *     (S2R1-K-1…K-5, S2R1-P-2, P-3, S2R2-K-1…K-5); у страниц, где кадр
+ *     только метки области — как у `h1`, внутри только текст без невидимых знаков (Cf), предки в `<main>` без
+ *     `hidden`, `aria-hidden`, `inert`, `popover` и классов скрытия (S2R1-K-1…K-5, S2R1-P-2, P-3); у страниц, где кадр
  *     можно принять за другое, обязательна видимым текстом (П96; данные сайта — `gates/sverka.mjs`: везде, где подпись
  *     стоит, П103 п. 4), и страница из списка без героя — замечание; адрес списка — страница содержания с героем
  *     (S2R1-P-1); кнопки — ровно одна `a.btn-primary` и одна `a.btn-secondary` в герое,
@@ -101,8 +99,8 @@
 import { readFileSync, readdirSync, existsSync, statSync, realpathSync } from 'node:fs';
 import { join, dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parse as yamlParse } from 'yaml';
-import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, tekstDetey, element, chasti, deti } from '@factory/core/text/html.mjs';
+import { parse as yamlParse } from 'file:///D:/SEO/cloud/site-generator/node_modules/yaml/dist/index.js';
+import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, tekstDetey, element, chasti, deti } from 'file:///D:/SEO/cloud/site-generator/core/text/html.mjs';
 
 /** Одна нормализация для обеих сторон сверки. */
 export const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
@@ -125,11 +123,11 @@ const nadpis = (u) => norm(tekstBez(u, (x) => ['title', 'desc'].includes(imya(x)
 const metki = (u) => (u?.attrs ?? []).map((a) => a.name).filter((n) => n.startsWith('data-astro-cid')).sort().join(' ');
 /** Элемент кратко — имя и классы («div.foto»). */
 const kratko = (u) => (u ? imya(u) + '.' + [...klassy(u)].join('.') : '—');
-/**
- * Есть ли видимый текст: без пробельных, невидимых (Cf и Default_Ignorable — селекторы вариантов, заполнители хангыль,
- * кхмерские и монгольские немые) и пустого брайля (S2R1-K-5, S2R2-K-5).
- */
-const vidimyi = (s) => String(s ?? '').normalize('NFKC').replace(/[\s\p{Z}\p{Cf}\p{Default_Ignorable_Code_Point}⠀]/gu, '') !== '';
+/** Атрибуты и классы, которые скрывают элемент от зрячего или от скринридера (классы — ядра `a11y.css` и Tailwind; S2R1-K-1, S2R1-P-2). */
+const SKRYTIE_ATR = ['hidden', 'aria-hidden', 'inert', 'popover'];
+const SKRYTIE_KLASSY = ['visually-hidden', 'skip-link', 'sr-only', 'hidden', 'invisible'];
+/** Есть ли видимый текст: без пробельных, невидимых (Cf) и знаков-пустышек (заполнители хангыль, пустой брайль; S2R1-K-5). */
+const vidimyi = (s) => String(s ?? '').normalize('NFKC').replace(/[\s\p{Z}\p{Cf}͏ᅟᅠㅤﾠ⠀]/gu, '') !== '';
 
 /**
  * Иконка кнопки: ровно один svg верхнего уровня (вложенные в него не в счёт); атрибуты корня — ровно печать Icon.astro
@@ -316,33 +314,16 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
           if (!metki(p) || (h1[0] && metki(p) !== metki(h1[0]))) zam.push(`метки области подписи кадра «${metki(p) || '—'}», у h1 «${metki(h1[0]) || '—'}» — правило маршрута подписи её не достаёт (подпись уходит под скрим)`);
           const vnutriP = elementy(p).filter((u) => u !== p);
           if (vnutriP.length) zam.push(`элементы в подписи кадра (${vnutriP.map(imya).join(', ')}) — маршрут печатает в ней только текст`);
-          // Цепочка предков — ровно печать маршрута и макета: подпись ← section.hero ← div.geroy ← <main> ← <body>, и у
-          // каждого звена — только его атрибуты печати. Закрытый список скрывающих атрибутов и классов класса не закрывал
-          // (раунд 2: нерисуемый элемент между <main> и героем или вокруг <main>, классы сайта и Tailwind, role с детьми-
-          // представлением; S2R2-K-1…K-4, Z-3, Z-5): белый список закрывает имена, атрибуты и классы разом (S2R1-K-1, P-2).
-          const vne = [];
-          const lishnie = (u, pechat) => (u.attrs ?? []).filter((a) => !pechat(a)).map((a) => `${a.name}${a.value ? `="${a.value.slice(0, 40)}"` : ''}`);
-          if (p.parentNode !== hero) vne.push(`родитель подписи — ${kratko(p.parentNode)}, ждали section.hero`);
-          const hA = lishnie(hero, (a) => (a.name === 'class' && a.value === 'hero') || (a.name === 'aria-labelledby' && a.value === 'page-title') || a.name.startsWith('data-astro-cid'));
-          if (hA.length) vne.push(`section.hero: ${hA.join(', ')}`);
-          const tekstGeroya = pervyi(hero, (u) => est(u, 'hero__text'));
-          if (!metki(hero) || metki(hero) !== metki(tekstGeroya)) vne.push(`section.hero: метки области «${metki(hero) || '—'}», у .hero__text «${metki(tekstGeroya) || '—'}» (оба печатает блок героя ядра)`);
-          const ob = hero.parentNode;
-          if (!(imya(ob) === 'div' && est(ob, 'geroy'))) vne.push(`родитель героя — ${kratko(ob)}, ждали div.geroy`);
-          else {
-            const oA = lishnie(ob, (a) => (a.name === 'class' && a.value.split(/\s+/).filter(Boolean).every((k) => k === 'geroy' || k === 'geroy--stal')) || a.name === 'style' || a.name.startsWith('data-astro-cid'));
-            if (oA.length) vne.push(`div.geroy: ${oA.join(', ')}`);
-          }
-          if (ob?.parentNode !== main) vne.push(`между <main> и героем — ${kratko(ob?.parentNode)}`);
-          const mA = lishnie(main, (a) => a.name === 'id' && a.value === 'content');
-          if (mA.length) vne.push(`<main>: ${mA.join(', ')}`);
-          if (imya(main.parentNode) !== 'body') vne.push(`вокруг <main> — ${kratko(main.parentNode)}, ждали <body>`);
-          if (vne.length) zam.push(`подпись кадра скрыта предком или вне печати маршрута: ${vne.join('; ')}`);
+          // Скрытие предком в <main>: подпись пропадает у читателя вместе с героем, обёрткой или <main> (S2R1-K-1, S2R1-P-2).
+          const skryt = predki(p)
+            .filter((u) => u === main || predki(u).includes(main))
+            .flatMap((u) => [...(u.attrs ?? []).filter((a) => SKRYTIE_ATR.includes(a.name)).map((a) => `${kratko(u)} ${a.name}`), ...[...klassy(u)].filter((k) => SKRYTIE_KLASSY.includes(k)).map((k) => `${kratko(u)} .${k}`)]);
+          if (skryt.length) zam.push(`подпись кадра скрыта предком: ${skryt.join(', ')}`);
         }
-        // Невидимые и управляющие знаки (Cf и Default_Ignorable: U+200B, мягкий перенос, U+202E, селекторы вариантов…)
-        // маршрут печатает как есть — строже CSS: и законный знак формата в подписи — замечание (S2R1-K-5, S2R1-P-3, S2R2-K-5).
-        const nevidimye = [...new Set([...String(dane.artCaption)].filter((c) => /[\p{Cf}\p{Default_Ignorable_Code_Point}]/u.test(c)))];
-        if (nevidimye.length) zam.push(`невидимые знаки в подписи кадра (${nevidimye.map((c) => 'U+' + c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')).join(', ')}) — подпись печатается с ними как есть, читатель видит её не так, как она записана`);
+        // Невидимые и управляющие знаки (Cf: U+200B, мягкий перенос, U+202E…) маршрут печатает как есть — читатель видит
+        // подпись иначе, чем она записана, или не видит вовсе (S2R1-K-5, S2R1-P-3).
+        const nevidimye = [...new Set([...String(dane.artCaption)].filter((c) => /\p{Cf}/u.test(c)))];
+        if (nevidimye.length) zam.push(`невидимые знаки в подписи кадра (${nevidimye.map((c) => 'U+' + c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')).join(', ')}) — читатель видит подпись не так, как она записана`);
       } else if (podpisi.length) zam.push('подпись кадра напечатана, а в содержании её нет');
       for (const [klass, pole] of [['btn-primary', 'primary'], ['btn-secondary', 'secondary']]) {
         const kn = elementy(hero, (u) => imya(u) === 'a' && est(u, klass));
@@ -725,7 +706,7 @@ export default function sverka({ obyazatelnaPodpis = [] } = {}) {
         koren = fileURLToPath(config.root);
       },
       'astro:build:done': ({ dir, logger }) => {
-        const r = sverkaSborki(fileURLToPath(dir), koren, { obyazatelnaPodpis: new Set(obyazatelnaPodpis) });
+        const r = sverkaSborki(fileURLToPath(dir), koren);
         if (r.zamechaniya.length) {
           logger.error(`сверка dist: замечаний ${r.zamechaniya.length}`);
           throw new Error(

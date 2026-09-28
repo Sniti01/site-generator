@@ -11,6 +11,7 @@ import assert from 'node:assert/strict';
 import { mkdtempSync, mkdirSync, cpSync, readFileSync, writeFileSync, rmSync, symlinkSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
+import { pathToFileURL } from 'node:url';
 import { sverkaStranicy, vhody, sverkaSborki } from '../sverka.mjs';
 import { stranica, SAYT, dist } from './obshchee.mjs';
 import { OBYAZATELNAYA_PODPIS } from '../../gates/sverka.mjs';
@@ -152,6 +153,80 @@ test('S2R1-Z-1, S2R1-K-7: сторож сборки из astro.config.mjs нес
   const integ = konfig.integrations.find((i) => i?.name === 'sayt:sverka-dist');
   assert.ok(integ, 'в astro.config.mjs нет сторожа sayt:sverka-dist');
   assert.deepEqual(integ.obyazatelnaPodpis, OBYAZATELNAYA_PODPIS);
+});
+
+// «Судью судят», раунд 2 по правке шага 2 (S2R2-*): предков подписи судили закрытыми списками и только внутри <main>.
+// Цепочка «подпись ← section.hero ← div.geroy ← main ← body» и атрибуты каждого звена — ровно печать маршрута и макета:
+// нерисуемый элемент между <main> и героем или вокруг <main>, классы сайта и Tailwind, role с детьми-представлением,
+// чужая метка у подписи; невидимые знаки не только Cf (Default_Ignorable); хук сторожа сборки судит своим списком.
+test('S2R2: подпись кадра на шести страницах — скрыта цепочкой предков или невидимым текстом — замечание', async (t) => {
+  const PODPIS_TEG = /<p class="podpis-geroya t-caption"( data-astro-cid-[a-z0-9]+)>/;
+  const PODPIS = /<p class="podpis-geroya t-caption"[^>]*>([\s\S]*?)<\/p>/;
+  const OBERTKA_S = /<div class="geroy[\s\S]*?<\/section><\/div>/;
+  const MAIN = /<main id="content">[\s\S]*<\/main>/;
+  const vObertku = (h, teg) => h.replace(OBERTKA_S, (x) => `<${teg}>${x}</${teg.split(' ')[0]}>`);
+  const vokrugMain = (h, teg) => h.replace(MAIN, (x) => `<${teg}>${x}</${teg.split(' ')[0]}>`);
+  const tekstPodpisi = (znaki) => [(h) => h.replace(PODPIS, (x, tekst) => x.replace(tekst, znaki)), (d) => { d.artCaption = znaki; return d; }];
+  const SKRYTA = 'подпись кадра скрыта предком';
+  const PORCHI = [
+    ...['details', 'dialog', 'noscript', 'datalist', 'canvas', 'video', 'audio', 'rp'].map((teg) => [`S2R2-K-1 <${teg}> между <main> и обёрткой героя`, (h) => vObertku(h, teg), null, SKRYTA]),
+    ...['div hidden', 'div aria-hidden="true"', 'div inert', 'div class="visually-hidden"', 'details', 'noscript'].map((teg) => [`S2R2-K-2 <${teg}> вокруг <main>`, (h) => vokrugMain(h, teg), null, SKRYTA]),
+    ['S2R2-K-3 класс шапки hdr__drawer с её меткой у героя', (h) => h.replace('<section class="hero"', '<section class="hero hdr__drawer" data-astro-cid-qu2zoq4f'), null, SKRYTA],
+    ['S2R2-K-3 класс шапки hdr__burger-close с её меткой у <main>', (h) => h.replace('<main id="content"', '<main class="hdr__burger-close" data-astro-cid-qu2zoq4f id="content"'), null, SKRYTA],
+    ['S2R2-Z-5 класс md:hidden у обёртки героя', (h) => h.replace('<div class="geroy', '<div class="md:hidden geroy'), null, SKRYTA],
+    ['S2R2-Z-5 класс opacity-0 у героя', (h) => h.replace('<section class="hero"', '<section class="hero opacity-0"'), null, SKRYTA],
+    ['S2R2-Z-3 класс visually-hidden у обёртки героя', (h) => h.replace('<div class="geroy', '<div class="visually-hidden geroy'), null, SKRYTA],
+    ['S2R2-Z-3 класс sr-only у героя', (h) => h.replace('<section class="hero"', '<section class="hero sr-only"'), null, SKRYTA],
+    ['S2R2-Z-3 класс hidden у <main>', (h) => h.replace('<main id="content"', '<main class="hidden" id="content"'), null, SKRYTA],
+    ['S2R2-Z-3 popover у героя', (h) => h.replace('<section class="hero"', '<section popover class="hero"'), null, SKRYTA],
+    ['S2R2-K-4 role="img" у героя', (h) => h.replace('<section class="hero"', '<section role="img" aria-label="Max Payne" class="hero"'), null, SKRYTA],
+    ['S2R2-K-4 role="img" у обёртки героя', (h) => h.replace('<div class="geroy', '<div role="img" aria-label="Max Payne" class="geroy'), null, SKRYTA],
+    ['S2R2-K-4 role="img" у <main>', (h) => h.replace('<main id="content"', '<main role="img" aria-label="Max Payne" id="content"'), null, SKRYTA],
+    ['S2R2-Z-2 чужая метка области у подписи (метка героя)', (h) => h.replace(PODPIS_TEG, '<p class="podpis-geroya t-caption" data-astro-cid-m3tnyskv>'), null, 'метки области подписи кадра'],
+    ...['️', '︀︁︎️', '឴', '឵', '᠋', '᠏', '\u{E0100}', '\u{E01EF}'].map((znaki) => [`S2R2-K-5 подпись из ${[...znaki].map((c) => 'U+' + c.codePointAt(0).toString(16).toUpperCase()).join(' ')}`, ...tekstPodpisi(znaki), 'подпись кадра обязательна у героя']),
+  ];
+  for (const url of S_PODPISYU) {
+    for (const [imya, html, dane, prichina] of PORCHI) {
+      await t.test(`${url}: ${imya}`, () => {
+        const x = po(url);
+        const h = html(x.html);
+        assert.notEqual(h, x.html, 'порча не применилась');
+        const z = sverit(x, h, dane ? dane(klon(x.dane)) : x.dane, x.page);
+        assert.ok(z.some((y) => y.includes(prichina)), `ждали «${prichina}», получено: ${z.join(' | ').slice(0, 400) || 'замечаний нет'}`);
+      });
+    }
+  }
+});
+
+test('S2R2-K-6, S2R2-Z-1: хук сторожа сборки из astro.config.mjs судит своим списком (мини-сайт: у /media/ снята подпись)', async () => {
+  const { default: konfig } = await import('../../astro.config.mjs');
+  const integ = konfig.integrations.find((i) => i?.name === 'sayt:sverka-dist');
+  const mini = mkdtempSync(join(tmpdir(), 's2r2-mini-'));
+  const distK = mkdtempSync(join(tmpdir(), 's2r2-dist-'));
+  try {
+    for (const put of ['structure/structure.json', 'src/data/game-art.json', 'src/data/icons.ts']) {
+      mkdirSync(dirname(join(mini, put)), { recursive: true });
+      cpSync(join(SAYT, put), join(mini, put));
+    }
+    cpSync(join(SAYT, 'src/content/tresc'), join(mini, 'src/content/tresc'), { recursive: true });
+    const media = join(mini, 'src/content/tresc/media.md');
+    const md = readFileSync(media, 'utf8');
+    assert.match(md, /^artCaption:.*\n/m, 'стенд: у media.md нет строки artCaption');
+    writeFileSync(media, md.replace(/^artCaption:.*\n/m, ''));
+    for (const s of V.soderzhanie) {
+      const u = s.dane.url;
+      const f = join(distK, u.slice(1), 'index.html');
+      mkdirSync(dirname(f), { recursive: true });
+      const h = stranica(u);
+      writeFileSync(f, u === '/media/' ? h.replace(/<p class="podpis-geroya[^"]*"[^>]*>[\s\S]*?<\/p>/, '') : h);
+    }
+    integ.hooks['astro:config:done']({ config: { root: pathToFileURL(mini + '/') } });
+    const logger = { error: () => {}, info: () => {} };
+    assert.throws(() => integ.hooks['astro:build:done']({ dir: pathToFileURL(distK + '/'), logger }), /подпись кадра обязательна у героя \/media\//);
+  } finally {
+    rmSync(mini, { recursive: true, force: true });
+    rmSync(distK, { recursive: true, force: true });
+  }
 });
 
 test('сверка пачки 1 (призыв, кадры рядов, нота): порчи', async (t) => {

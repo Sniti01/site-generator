@@ -109,7 +109,7 @@ try {
       console.log(`тестов: прошло ${itog.proshlo}, упало ${itog.upalo}`);
       kod = kodProverki(r.status ?? 2, itog);
       if (kod === 2 && r.status === 0) console.error('прошедших тестов ноль — «всё прошло» о пустом наборе не выдаётся (шаблон имён ни с чем не совпал?)');
-      if (kod === 1 && r.status === 0) console.error('node --test вышел с 0, а упавшие по счёту есть (skip с выполненным телом?) — прогон не прошёл');
+      if (kod === 1 && r.status === 0) console.error('node --test вышел с 0, а упавшие по счёту есть (skip с выполненным телом или выход файла тестов process.exit(0) посреди тестов?) — прогон не прошёл');
     }
   }
 } catch (e) {

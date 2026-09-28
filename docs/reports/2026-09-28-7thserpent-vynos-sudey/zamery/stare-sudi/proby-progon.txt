@@ -1,0 +1,12 @@
+$ node docs/reports/2026-09-27-7thserpent-pachka-5/instrumenty/proby.mjs C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\e8b64c4d-ff4b-42df-a1be-40d61fd8edaf\scratchpad\stare\proby
+(папка: D:/SEO/cloud/site-generator)
+
+пробы договора (33): код 1
+пробы пачки 1 Q1–Q9 и сверка: код 1
+пробы пачки 2 R1–R24 и сверка: код 1
+проба сверки пачки 2: код 1
+пробы ветви gallery и сверка: код 0
+проба сверки ветви gallery: код 1
+после проб: sites и core совпадают с HEAD
+
+код выхода: 0

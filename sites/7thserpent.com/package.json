@@ -34,9 +34,7 @@
     "znak:selftest": "node tools/znak.mjs --selftest",
     "brief": "node tools/brief-strony.mjs",
     "brief:check": "node tools/brief-strony.mjs --check",
-    "brief:selftest": "node tools/brief-strony.mjs --selftest",
-    "glowa": "node tools/glowa.mjs",
-    "glowa:selftest": "node tools/glowa.mjs --selftest",
+    "proverki": "node tools/proverki.mjs",
     "tresc:proby": "node tools/proby-tresci.mjs"
   },
   "dependencies": {

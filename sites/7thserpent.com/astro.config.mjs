@@ -6,6 +6,11 @@ import afterBuild from '@factory/core/gates/after-build.mjs';
 import anchors from '@factory/core/gates/anchors.mjs';
 import links from '@factory/core/gates/links.mjs';
 import corridor from '@factory/core/gates/corridor.mjs';
+import phrases from '@factory/core/gates/phrases.mjs';
+import head from '@factory/core/gates/head.mjs';
+import masters from '@factory/core/gates/masters.mjs';
+import { dannye as dannyeFraz } from './gates/phrases.mjs';
+import { ozhidanie as ozhidanieGolovy } from './gates/head.mjs';
 
 export default defineConfig({
   // Канонический адрес с `www` — слово владельца 2026-09-18 (П62 п. 4), как
@@ -32,12 +37,23 @@ export default defineConfig({
   // которого здесь недостижимы, давал бы зелёную строку о пустом множестве.
   // Условие П62 (бэклог 47 п. 9: ассеты в git) выполнено — вопрос вернётся,
   // если ветвь маршрута начнёт печатать кадр мимо `kadr()` или с запасом.
+  //
+  // С сессии 20 (П102 блок Б: «сторожа по dist/ — в сборку») — ещё три сторожа
+  // ядра, данные — в `gates/` сайта; выключателей нет:
+  // `phrases` — чужих 8-словных последовательностей в текстах страниц маршрута
+  // нет (точно и со срезом окончаний), кроме решённых исключений (реплики
+  // `/quotes/`, полные названия глав гайда); без корпуса `input/corpus/raw`
+  // (вне git) — громкий отказ; `head` — голова и крошки (прежний `tools/glowa.mjs`);
+  // `masters` — в сборке нет файлов, побайтно равных `src/assets/**` (П102 п. 1).
   integrations: [
     sitemap(),
     afterBuild(),
     anchors(),
     links({ structure: 'structure/structure.json' }),
     corridor({ structure: 'structure/structure.json' }),
+    head({ structure: 'structure/structure.json', ozhidanie: ozhidanieGolovy }),
+    masters({ assets: 'src/assets' }),
+    phrases({ corpus: 'input/corpus', dannye: dannyeFraz }),
   ],
   vite: {
     plugins: [tailwindcss()],

@@ -1,0 +1,36 @@
+сборка: C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\e8b64c4d-ff4b-42df-a1be-40d61fd8edaf\scratchpad\main\dist-p1; страниц 17
+
+== сторож 8 слов и судья исключений (core/gates/phrases.mjs, exceptions.mjs): документов корпуса 612, 8-грамм точно 510129, срез 509959
+  /404/                  строк 11, слов 128; исключений с совпадениями 0
+  /cheats/               строк 47, слов 835; исключений с совпадениями 0
+  /gameplay/             строк 47, слов 1070; исключений с совпадениями 0
+  /games-like-max-payne/ строк 34, слов 686; исключений с совпадениями 0
+  /max-payne-1/          строк 29, слов 564; исключений с совпадениями 0
+  /max-payne-2/          строк 84, слов 2182; исключений с совпадениями 0
+  /max-payne-3/          строк 48, слов 1101; исключений с совпадениями 0
+  /max-payne-3/guide/    строк 38, слов 836; исключений с совпадениями 2
+      «Here I Was Again, Halfway Down the World.» — 8-грамм 2: точно, срез окончаний
+      «A Fat Bald Dude with a Bad Temper.» — 8-грамм 2: точно, срез окончаний
+  /media/                строк 36, слов 615; исключений с совпадениями 0
+  /mods/                 строк 37, слов 757; исключений с совпадениями 0
+  /movie/                строк 62, слов 1489; исключений с совпадениями 0
+  /pc/                   строк 42, слов 908; исключений с совпадениями 0
+  /quotes/               строк 49, слов 1202; исключений с совпадениями 6
+      «My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.» — 8-грамм 24: точно, срез окончаний
+      «In a situation like mine, you can only think in metaphors.» — 8-грамм 8: точно, срез окончаний
+      «Her fashion sense didn’t leave a whole lot of room for imagination, let alone food» — 8-грамм 16: точно, срез окончаний
+      «This place was like Baghdad and G-strings» — 8-грамм 2: точно, срез окончаний
+      «I stood out in this place like a streetwalker in a monastery» — 8-грамм 10: точно, срез окончаний
+      «But the airport is the only place a fat gringo might blend in. Well, there or a sex club.» — 8-грамм 24: точно, срез окончаний
+  /remake/               строк 41, слов 872; исключений с совпадениями 0
+  /story/                строк 54, слов 1394; исключений с совпадениями 0
+  /voice-and-face/       строк 48, слов 856; исключений с совпадениями 0
+  итог: отказов 0
+
+== судья головы и крошек (core/gates/head.mjs): страниц 17
+  итог: отказов 0
+
+== сторож утечки мастеров (core/gates/masters.mjs): исходных картинок 21
+  итог: утечек 0
+
+== сторож брифов (tools/brief-strony.mjs на ядре): брифов 17; строк с чужой 8-граммой 0

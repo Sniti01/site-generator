@@ -8,7 +8,14 @@
  *   node tools/brief-strony.mjs /max-payne-3/ --stdout   — только печатает
  *   node tools/brief-strony.mjs --all                    — все страницы дерева, кроме главной
  *   node tools/brief-strony.mjs --check                  — сторож чужих формулировок по записанным брифам
- *   node tools/brief-strony.mjs --selftest               — пробы сторожа и сверки корпуса
+ *   тесты сторожа и сверки корпуса — tools/brief-strony.test.mjs (node:test, npm run proverki)
+ *
+ * ФУНДАМЕНТ СТОРОЖА — ЯДРА (сессия 20, П102 блок Б: «сторож брифов — на том же фундаменте»):
+ * извлечение текста документа корпуса, модель слов и указатель — `core/text/` (parse5, одно
+ * извлечение со сторожем страниц `core/gates/phrases.mjs`); имена игр — данные сайта
+ * `gates/phrases.mjs`. Свои функции слов и указателя (`slova`, `bezImen`, `ukazatel`,
+ * `tekstDokumenta`) у инструмента брифов ушли; 8-граммы — точно и со срезом окончаний, как
+ * у сторожа страниц. Отбор корпуса страницы (ниже) — прежний, анатомии.
  *
  * ОТКУДА ЧТО, и чего здесь НЕТ:
  *
@@ -55,19 +62,16 @@
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
-import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, join } from 'node:path';
 import { measureDoc, hostIn, docKey, wallOf, representatives, phrasesSha } from './anatomy-s3.mjs';
+import { N_GRAM, REZHIMY, slova, imenaSlovami, bezImen, vRezhime, bezAdresov } from '@factory/core/text/words.mjs';
+import { ukazatelKorpusa } from '@factory/core/text/corpus.mjs';
+import { IMENA } from '../gates/phrases.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const readJson = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
-
-/** Длина последовательности слов, совпадение которой — чужая формулировка. */
-export const N_GRAM = 8;
-/** Официальные названия игр (`CLAUDE.md` сайта, §2, «Правила текста о предмете»). */
-export const IMENA = ['Max Payne 2: The Fall of Max Payne', 'Max Payne 1 & 2 Remake', 'Max Payne Mobile', 'Max Payne 3', 'Max Payne (2008)'];
 
 /* ------------------------------------------------------------------ *
  * Корпус страницы — отбор анатомии
@@ -326,99 +330,29 @@ ${kadry.length ? `- Frames of ${igra.game} already in \`src/assets/gry/\`:\n${ka
  * Сторож чужих формулировок
  * ------------------------------------------------------------------ */
 
-/** Слова текста: строчные, буквы и цифры Юникода; апострофы сведены к одному. */
-export const slova = (s) => (s.toLowerCase().replace(/[’‘]/g, "'").match(/[\p{L}\p{N}']+/gu) ?? []).map((w) => w.replace(/^'+|'+$/g, '')).filter(Boolean);
-
-const imenaSlovami = IMENA.map((n) => slova(n)).sort((a, b) => b.length - a.length);
 /**
- * Имена собственные — одним знаком `§имя§`: имя идёт в n-грамму одним словом,
- * а не своими словами. Цена (раунд 1, R1-BRIFY-11): фраза конкурента, в которой
- * длинное название съедает больше половины слов, короче n-граммы и не ловится;
- * «Max Payne» без номера в список не входит — это делает сторож строже.
- */
-export function bezImen(ws) {
-  const out = [];
-  for (let i = 0; i < ws.length; ) {
-    const imya = imenaSlovami.find((n) => n.every((w, j) => ws[i + j] === w));
-    if (imya) {
-      out.push('§imya§');
-      i += imya.length;
-    } else out.push(ws[i++]);
-  }
-  return out;
-}
-
-const hash = (s) => createHash('sha1').update(s).digest().readUInt32LE(0);
-
-/**
- * Сущности текста документа — все частые именованные и числовые. `unescA`
- * (копия анатомии для `identityOf`) раскрывает только пять, и `Max&rsquo;s`
- * рвал n-грамму на «max rsquo s» (раунд 1, R1-BRIFY-10). Неизвестная
- * именованная сущность — пробелом.
- */
-const SUSHCHNOSTI = {
-  nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", rsquo: '’', lsquo: '‘', rdquo: '”', ldquo: '“',
-  sbquo: '‚', bdquo: '„', mdash: '—', ndash: '–', hellip: '…', laquo: '«', raquo: '»', copy: '©', reg: '®',
-  trade: '™', middot: '·', bull: '•', prime: '′', times: '×', eacute: 'é', egrave: 'è', ecirc: 'ê', aacute: 'á',
-  agrave: 'à', atilde: 'ã', auml: 'ä', ouml: 'ö', uuml: 'ü', ccedil: 'ç', ntilde: 'ñ', oacute: 'ó', iacute: 'í',
-  uacute: 'ú', szlig: 'ß', thinsp: ' ', ensp: ' ', emsp: ' ', zwj: '', zwnj: '', shy: '',
-};
-const raskrytVse = (s) =>
-  s.replace(/&(#x[0-9a-f]+|#\d+|[a-z][a-z0-9]*);/gi, (...g) => {
-    const k = g[1];
-    if (k[0] === '#') {
-      const n = k[1] === 'x' || k[1] === 'X' ? parseInt(k.slice(2), 16) : Number(k.slice(1));
-      try {
-        return String.fromCodePoint(n);
-      } catch {
-        return ' ';
-      }
-    }
-    return SUSHCHNOSTI[k] ?? SUSHCHNOSTI[k.toLowerCase()] ?? ' ';
-  });
-
-/** Видимый текст документа: скрипты, стили, комментарии и теги сняты, сущности раскрыты. */
-export const tekstDokumenta = (html) =>
-  raskrytVse(
-    html
-      .replace(/<script[\s\S]*?<\/script>/gi, ' ')
-      .replace(/<style[\s\S]*?<\/style>/gi, ' ')
-      .replace(/<!--[\s\S]*?-->/g, ' ')
-      .replace(/<[^>]+>/g, ' ')
-  );
-
-/** Указатель корпуса: хеши n-грамм и нормализованные тексты для подтверждения совпадения. */
-export function ukazatel(dokumenty) {
-  const h = new Set();
-  const teksty = [];
-  for (const d of dokumenty) {
-    const ws = bezImen(slova(d.tekst));
-    for (let i = 0; i + N_GRAM <= ws.length; i++) h.add(hash(ws.slice(i, i + N_GRAM).join(' ')));
-    teksty.push({ url: d.url, norm: ` ${ws.join(' ')} ` });
-  }
-  return { h, teksty };
-}
-
-/**
- * Строки брифа с чужой последовательностью: [{строка, документ}] — без самих слов.
+ * Строки брифа с чужой последовательностью: [{ stroka, dokument, rezhim }] — без самих слов.
  * Единица текста — отрезок строки между разделителями списка и таблицы (`·`, `|`):
  * ключи через «·» — отдельные запросы, и последовательность через их стык —
  * склейка, а не фраза (первый прогон `--check` поймал так строку ключей `/remake/`).
+ * Модель слов, свёртка имён игр, адреса и срез окончаний — ядра (`core/text/words.mjs`),
+ * как у сторожа страниц; указатель — `uk.nayti(g, rezhim)` (`core/text/corpus.mjs`).
+ * Одна находка на строку (первая по отрезкам и режимам).
  */
-export function chuzhie(tekstBrifa, uk) {
+export function chuzhie(tekstBrifa, uk, imena = IMENA) {
+  const imSl = imenaSlovami(imena);
   const out = [];
-  const stroki = tekstBrifa.split('\n');
-  stroki.forEach((stroka, i) => {
-    const bezAdresov = stroka.replace(/https?:\/\/\S+/g, ' ');
-    for (const otrezok of bezAdresov.split(/[·|]/)) {
-      const ws = bezImen(slova(otrezok));
-      for (let j = 0; j + N_GRAM <= ws.length; j++) {
-        const g = ws.slice(j, j + N_GRAM).join(' ');
-        if (!uk.h.has(hash(g))) continue;
-        const doc = uk.teksty.find((t) => t.norm.includes(` ${g} `));
-        if (doc) {
-          out.push({ stroka: i + 1, dokument: doc.url });
-          return;
+  tekstBrifa.split('\n').forEach((stroka, i) => {
+    for (const otrezok of bezAdresov(stroka).split(/[·|]/)) {
+      const ws0 = bezImen(slova(otrezok), imSl);
+      for (const rezhim of REZHIMY) {
+        const ws = vRezhime(ws0, rezhim);
+        for (let j = 0; j + N_GRAM <= ws.length; j++) {
+          const doc = uk.nayti(ws.slice(j, j + N_GRAM).join(' '), rezhim);
+          if (doc) {
+            out.push({ stroka: i + 1, dokument: doc, rezhim });
+            return;
+          }
         }
       }
     }
@@ -426,67 +360,11 @@ export function chuzhie(tekstBrifa, uk) {
   return out;
 }
 
-/** Весь скачанный корпус сайта — документы с файлом. */
-function vesKorpus(v) {
-  const out = [];
-  for (const r of v.last.values()) {
-    if (r.outcome !== 'ok' || !r.file) continue;
-    const html = v.htmlOf(r);
-    if (html) out.push({ url: r.url, tekst: tekstDokumenta(html) });
-  }
-  return out;
-}
+/** Указатель всего скачанного корпуса сайта — ядра; без корпуса или с неполным — громкий отказ. */
+export const ukazatelSayta = () => ukazatelKorpusa(join(root, 'input/corpus'), { imena: IMENA });
 
-/* ------------------------------------------------------------------ *
- * Самопроверка
- * ------------------------------------------------------------------ */
-
-function selftest(v) {
-  const p0 = (u) => v.struktura.pages.find((x) => x.url === u);
-  const cases = [];
-  const check = (imya, zhdali, fakt) => cases.push({ imya, ok: JSON.stringify(zhdali) === JSON.stringify(fakt), zhdali, fakt });
-  const korpus = vesKorpus(v);
-  const uk = ukazatel(korpus);
-  // Живой документ корпуса и его десять слов подряд — «чужая формулировка» пробы.
-  const obrazec = korpus.find((d) => slova(d.tekst).length > 200);
-  const ws = slova(obrazec.tekst);
-  const kusok = ws.slice(100, 110).join(' ');
-  const chistyi = brief(v.struktura.pages.find((p) => p.url === '/404/'), v, null);
-  check('чистый бриф /404/ — совпадений нет', 0, chuzhie(chistyi, uk).length);
-  check('бриф + 10 слов документа корпуса — пойман', 1, chuzhie(`${chistyi}\n${kusok}\n`, uk).length);
-  check('пойманный называет документ, а не слова', obrazec.url, chuzhie(`${chistyi}\n${kusok}\n`, uk)[0]?.dokument ?? null);
-  check('те же слова другим регистром и пунктуацией — пойман', 1, chuzhie(`${chistyi}\n${kusok.toUpperCase().replace(/ /g, ', ')}\n`, uk).length);
-  check('семь слов подряд — не n-грамма, не пойман', 0, chuzhie(`${chistyi}\n${ws.slice(100, 107).join(' ')}\n`, uk).length);
-  check('адрес документа в строке — не формулировка', 0, chuzhie(`${chistyi}\n- ${obrazec.url}\n`, uk).length);
-  check('официальное название игры — имя, не формулировка', 0, chuzhie('Max Payne 2: The Fall of Max Payne\n', ukazatel([{ url: 'x', tekst: 'the story of Max Payne 2: The Fall of Max Payne here' }])).length);
-  check('слова вокруг названия: имя — одно слово n-граммы', 1, chuzhie('in Max Payne 3 the hero moves to a new city\n', ukazatel([{ url: 'x', tekst: 'so in Max Payne 3 the hero moves to a new city now' }])).length);
-  check('сущность &rsquo; в документе — та же фраза с апострофом поймана', 1, chuzhie('alpha bravo charlie delta Max’s echo foxtrot golf hotel\n', ukazatel([{ url: 'x', tekst: tekstDokumenta('<p>alpha bravo charlie delta Max&rsquo;s echo foxtrot golf hotel india</p>') }])).length);
-  check('ветви маршрута в брифе = PORYADOK маршрута', 'hero-key-art,byline,story-row,gallery,link-list,cta-band', [...VETVI].join(','));
-  check('бриф /max-payne-3/: арт героя mp3-art с оговоркой мастера', true, /`mp3-art`[^|]*1920 master is small/.test(brief(p0('/max-payne-3/'), v, null)));
-  check('бриф /remake/: ключа героя нет — вопрос', true, brief(p0('/remake/'), v, null).includes('no key yet'));
-  check('бриф /quotes/: открытый вопрос коридора', true, brief(p0('/quotes/'), v, null).includes('**Open for this page:** The contract corridor 5093–6891'));
-  check('бриф /gameplay/: video — не в ядре, громкий пропуск', true, brief(p0('/gameplay/'), v, null).includes('`video` — manual, high. not in the core'));
-  const uk8 = ukazatel([{ url: 'x', tekst: 'one two three four five six seven eight nine' }]);
-  check('ключи через «·» — стык двух запросов не фраза', 0, chuzhie('one two three four · five six seven eight\n', uk8).length);
-  check('ячейки таблицы через «|» — стык не фраза', 0, chuzhie('| one two three four | five six seven eight |\n', uk8).length);
-  check('восемь слов внутри одного отрезка — поймано', 1, chuzhie('· one two three four five six seven eight ·\n', uk8).length);
-  // Сверка отбора: подменённая запись анатомии — расхождение названо.
-  const p = v.struktura.pages.find((x) => x.url === '/max-payne-3/');
-  const an = v.anatomia.страницы.find((a) => a.url === p.url);
-  const k = korpusStranicy(p, v);
-  check('отбор /max-payne-3/ сходится с анатомией', [], sverkaSAnatomiej(p, an, k));
-  check('документов на один больше — расхождение', true, sverkaSAnatomiej(p, { ...an, документов: an.документов + 1 }, k).some((s) => s.startsWith('документов')));
-  check('дублей иначе — расхождение', true, sverkaSAnatomiej(p, { ...an, пропущено: { ...an.пропущено, дублей: an.пропущено.дублей + 1 } }, k).some((s) => s.startsWith('пропущено.дублей')));
-  check('чужой набор фраз — расхождение', true, sverkaSAnatomiej({ ...p, keywords: [...p.keywords, 'x'] }, an, k).some((s) => s.includes('фразы_sha256')));
-  check('имя файла второго уровня', 'max-payne-3-guide.md', imyaFajla('/max-payne-3/guide/'));
-  let plokho = 0;
-  for (const c of cases) {
-    if (!c.ok) plokho += 1;
-    console.log(`${c.ok ? 'ok  ' : 'ПЛОХО'} ${c.imya.padEnd(58)} ждали ${JSON.stringify(c.zhdali)} — факт ${JSON.stringify(c.fakt)}`);
-  }
-  console.log(`\nсамопроверка брифа: ${cases.length - plokho}/${cases.length}`);
-  return plokho === 0;
-}
+/** Для тестов (`tools/brief-strony.test.mjs`): входы, генератор и ветви маршрута. */
+export { vkhody, brief, VETVI };
 
 /* ------------------------------------------------------------------ *
  * Запуск
@@ -496,8 +374,6 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
   const args = process.argv.slice(2);
   const v = vkhody();
   const outDir = join(root, 'input/briefs');
-
-  if (args.includes('--selftest')) process.exit(selftest(v) ? 0 : 1);
 
   if (args.includes('--check')) {
     // Состав и побайтность: ровно по брифу на страницу дерева кроме главной,
@@ -518,8 +394,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
     const fajly = existsSync(outDir) ? readdirSync(outDir).filter((f) => f.endsWith('.md')).sort(cmp) : [];
     const net = [...ozhidaemye.keys()].filter((f) => !fajly.includes(f));
     const lishnie = fajly.filter((f) => !ozhidaemye.has(f));
-    const korpus = vesKorpus(v);
-    const uk = ukazatel(korpus);
+    const uk = ukazatelSayta();
     let plokho = rashozhdenie + net.length + lishnie.length;
     for (const f of net) console.log(`НЕТ   ${f} — брифа страницы нет (npm run brief -- --all)`);
     for (const f of lishnie) console.log(`ЛИШНИЙ ${f} — страницы с таким брифом в структуре нет`);
@@ -528,10 +403,15 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       const otstal = tekst !== ozhidaemye.get(f);
       const r = chuzhie(tekst, uk);
       if (r.length || otstal) plokho += 1;
-      const pometki = [...(otstal ? ['≠ выводу генератора (правлен рукой или отстал — npm run brief -- --all)'] : []), ...r.map((x) => `чужое: строка ${x.stroka} (документ ${x.dokument})`)];
+      const pometki = [
+        ...(otstal ? ['≠ выводу генератора (правлен рукой или отстал — npm run brief -- --all)'] : []),
+        ...r.map((x) => `чужое (${x.rezhim === 'srez' ? 'срез окончаний' : 'точно'}): строка ${x.stroka} (документ ${x.dokument})`),
+      ];
       console.log(`${pometki.length ? 'ПЛОХО' : 'ok   '} ${f}${pometki.length ? ' — ' + pometki.join('; ') : ''}`);
     }
-    console.log(`\nсторож: брифов ${fajly.filter((f) => ozhidaemye.has(f)).length} из ${ozhidaemye.size} (лишних ${lishnie.length}), документов корпуса ${korpus.length}, n-грамма ${N_GRAM} слов; отказов — ${plokho}`);
+    console.log(
+      `\nсторож: брифов ${fajly.filter((f) => ozhidaemye.has(f)).length} из ${ozhidaemye.size} (лишних ${lishnie.length}), документов корпуса ${uk.dokumentov}${uk.izKesha ? ' (указатель из кеша)' : ''}, n-грамма ${N_GRAM} слов, точно и со срезом окончаний; отказов — ${plokho}`
+    );
     process.exit(plokho ? 1 : 0);
   }
 
@@ -560,7 +440,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
         return p;
       });
   if (!cele.length) {
-    console.error('node tools/brief-strony.mjs </адрес/> [--stdout] | --all | --check | --selftest');
+    console.error('node tools/brief-strony.mjs </адрес/> [--stdout] | --all | --check');
     process.exit(2);
   }
   if (!stdout) mkdirSync(outDir, { recursive: true });

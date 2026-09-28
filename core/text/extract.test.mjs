@@ -80,6 +80,7 @@ test('голова: title, description, og из head; meta между концо
     'twitter:title': [],
     'twitter:description': [],
     'og:image:alt': [],
+    'twitter:image:alt': [],
   });
 });
 
@@ -263,4 +264,9 @@ test('A1-IZ-21: документ корпуса — код и шаблон не 
 test('A1-IZ-22: узел строки — первый непустой текст; вложенный main — ошибка', () => {
   assert.equal(izvlechStranicu(stranica('<p> <em>x</em> y</p>')).vplotnuyu[0].uzel.parentNode.tagName, 'em');
   assert.throws(() => izvlechStranicu('<html><body><main><main>x</main></main></body></html>'), OshibkaIzvlecheniya);
+});
+
+test('A3-6: twitter:image:alt — в голове, как og:image:alt (TEXT_META первого сайта)', () => {
+  const h = '<html><head><title>T</title><meta name="twitter:image:alt" content="ALT"></head><body><main><p>x</p></main></body></html>';
+  assert.deepEqual(izvlechStranicu(h).golova['twitter:image:alt'], ['ALT']);
 });

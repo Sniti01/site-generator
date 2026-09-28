@@ -43,7 +43,7 @@ import { paryKavychek, sudIsklyucheniy } from './exceptions.mjs';
 import { plikStrony } from './after-build.mjs';
 
 /** Поля головы, которых ровно по одному и непустые; прочие поля головы извлечения (`twitter:*`,
- *  `og:image:alt`) необязательны, но если есть — судятся так же строго. */
+ *  `og:image:alt`, `twitter:image:alt`) необязательны, но если есть — судятся так же строго. */
 export const POLYA_GOLOVY = ['title', 'description', 'og:title', 'og:description'];
 
 /**

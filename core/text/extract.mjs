@@ -45,9 +45,10 @@
  * и головы (шапка, крошки, подвал) и JSON-LD судьи страниц не судят.
  *
  * СТРАНИЦА (`izvlechStranicu`): строки единственного HTML-`<main>` в двух прочтениях; голова —
- * HTML-`<title>` вне `<main>` (как `document.title`: и в `foreignObject`) и HTML-`<meta>`
+ * все HTML-`<title>` вне `<main>` (и в `foreignObject`, и в теневом корне; `document.title` берёт
+ * первый — судья, требующий ровно один, на лишнем громко отказывает, строже) и HTML-`<meta>`
  * (`description`, `og:title`, `og:description`, а также `twitter:title`, `twitter:description`,
- * `og:image:alt`) по всему документу — и в `<main>`: meta, которую разборщик без скриптов вынес
+ * `og:image:alt`, `twitter:image:alt` — A3-6) по всему документу — и в `<main>`: meta, которую разборщик без скриптов вынес
  * в `<body>` (`<noscript>` с картинкой закрывает голову), тоже голова для скребка (A1-IZ-5, A2-1);
  * атрибуты самого `<main>` и его тегов — `alt`, `title`, `aria-label`, `aria-description`,
  * `aria-roledescription`, `aria-valuetext`, `aria-placeholder`, `aria-braillelabel`,
@@ -101,7 +102,7 @@ export const ATRIBUTY_TEKSTA = [
   'summary',
 ];
 /** Поля головы: `name` или `property` `<meta>` (и `title` — элемент). */
-export const POLYA_META = ['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description', 'og:image:alt'];
+export const POLYA_META = ['description', 'og:title', 'og:description', 'twitter:title', 'twitter:description', 'og:image:alt', 'twitter:image:alt'];
 
 /** Строка, как её видит читатель: см. шапку, «ЗНАКИ». */
 export function chistit(s) {

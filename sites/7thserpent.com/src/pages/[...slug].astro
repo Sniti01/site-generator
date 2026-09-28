@@ -55,7 +55,7 @@ import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import { getPage } from '../lib/structure';
-import { kadr, credits } from '../data/media';
+import { kadr, credits, type GameCredit } from '../data/media';
 import slownik from '@factory/core/structure/blocks.json';
 import HeroKeyArt from '@factory/core/blocks/HeroKeyArt.astro';
 import Byline from '@factory/core/blocks/Byline.astro';
@@ -240,14 +240,31 @@ const geroy =
  * (до ×1,43 при 24 px, P3-R1-MARSHRUT-3, P3-R2-MARSHRUT). Числа — в докладе
  * сессии 16.
  * ПРОПОРЦИЯ — ИЗ ЗАПИСИ КРЕДИТОВ (размеры мастера в `game-art.json`), а не из
- * импортированной картинки, как у панелей `GameRow.astro`: чтение `width`
- * и `height` импорта помечает оригинал используемым, и Astro кладёт мастер-JPEG
+ * импортированной картинки, как у панелей `GameRow.astro`: чтение любого свойства
+ * импорта (кроме служебных `clone` и `fsPath`, которые берёт сам `getImage`),
+ * в том числе `width`, `height`, `src`, `format`, разворот `{...}` и
+ * `JSON.stringify`, помечает оригинал используемым, и Astro кладёт мастер-JPEG
  * в сборку («Дополнение к П81» п. 3). Первая редакция читала `src.width`
- * и `src.height` — 14 мастеров героев уходили в `dist/_astro` (П102 п. 1);
- * размеры записей равны размерам файлов (сверка на старте сессии 20, 21 из 21).
+ * и `src.height` — 14 мастеров героев уходили в `dist/_astro` (П102 п. 1).
+ * Тип параметра — запись кредитов (с полем `file`): вызов с импортом
+ * (`ImageMetadata`, поля `file` нет) — ошибка `astro check`, а не тихий возврат
+ * утечки («судью судят» п. 1, R1-P1-3). Размеры записи — положительные числа,
+ * иначе отказ сборки с ключом: без проверки `NaN` и `Infinity` уходили
+ * в `sizes`, браузер пропускал запись и молча брал прежнее правило (R1-P1-1).
+ * Предел (R1-P1-2, R1-P1-6): `sizes` верен, пока запись равна мастеру —
+ * на старте сессии 20 равны 21 из 21; их равенство в каждой сборке судит
+ * сверка `dist/` сайта (атрибуты `width` и `height` картинок кадров — метаданные
+ * Astro о мастере — против записи).
  */
 const vverkh = (x: number) => Math.ceil(x * 100) / 100;
-function sizesGeroya(zapis: { width: number; height: number }) {
+function sizesGeroya(zapis: Pick<GameCredit, 'file' | 'width' | 'height'>, klyuch: string) {
+  const razmer = (v: unknown) => typeof v === 'number' && Number.isFinite(v) && v > 0;
+  if (!razmer(zapis.width) || !razmer(zapis.height)) {
+    throw new Error(
+      `Запись кадра героя «${klyuch}» в game-art.json без размеров мастера (width ${JSON.stringify(zapis.width)}, height ${JSON.stringify(zapis.height)}): ` +
+        'sizes героя считается по ним — впишите размеры файла src/assets/gry/' + zapis.file + '.'
+    );
+  }
   const p = zapis.width / zapis.height;
   const vysota = `clamp(${vverkh(600 * p)}px, ${vverkh(90 * p)}vh, ${vverkh(920 * p)}px)`;
   return [
@@ -517,7 +534,7 @@ const ikonaGlavnoy = geroyPechati?.primary.href.startsWith('#') ? 'arrow-down' :
             src={geroyPechati.kadr.src}
             alt={geroyPechati.kadr.alt}
             widths={[1200, 1600, 2400, 3200]}
-            sizes={sizesGeroya(credits[geroyPechati.klyuch])}
+            sizes={sizesGeroya(credits[geroyPechati.klyuch], geroyPechati.klyuch)}
             loading="eager"
             quality={80}
           />

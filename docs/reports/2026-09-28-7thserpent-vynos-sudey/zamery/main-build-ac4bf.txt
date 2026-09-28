@@ -1,0 +1,736 @@
+
+> ac4bf-thewatch.com@0.1.0 build
+> npm run gates && astro build
+
+
+> ac4bf-thewatch.com@0.1.0 gates
+> node ../../core/gates/run.mjs
+
+Zapis palety: 14 par @theme/:root, zgodnych 14.
+ok   tekst główny na tle strony                                            16.01:1  (min 4.5:1)  --ink / --bg
+ok   tekst główny na paśmie                                                15.42:1  (min 4.5:1)  --ink / --bg-band
+ok   tekst główny na karcie                                                14.75:1  (min 4.5:1)  --ink / --surface
+ok   tekst główny na karcie podniesionej                                   13.70:1  (min 4.5:1)  --ink / --surface-2
+ok   tekst drugorzędny na tle strony                                       7.66:1  (min 4.5:1)  --ink-muted / --bg
+ok   tekst drugorzędny na paśmie                                           7.37:1  (min 4.5:1)  --ink-muted / --bg-band
+ok   tekst drugorzędny na karcie                                           7.05:1  (min 4.5:1)  --ink-muted / --surface
+ok   tekst drugorzędny na karcie podniesionej                              6.55:1  (min 4.5:1)  --ink-muted / --surface-2
+ok   link/akcent tekstowy na tle strony                                    6.86:1  (min 4.5:1)  --accent-text / --bg
+ok   link/akcent tekstowy na paśmie                                        6.60:1  (min 4.5:1)  --accent-text / --bg-band
+ok   link/akcent tekstowy na karcie                                        6.32:1  (min 4.5:1)  --accent-text / --surface
+ok   link/akcent tekstowy na karcie podniesionej                           5.87:1  (min 4.5:1)  --accent-text / --surface-2
+ok   napis w wypełnionym przycisku                                         4.69:1  (min 4.5:1)  --ink-on-accent / --accent
+ok   wypełnienie akcentu jako element UI                                   4.85:1  (min 3:1)  --accent / --bg
+ok   suwak paska przewijania na torze — element UI (core/styles/base.css)  7.37:1  (min 3:1)  --ink-muted / --bg-band
+ok   mosiądz: element UI i licznik grupy 21px/600                          6.33:1  (min 3:1)  --accent-2 / --bg
+ok   mosiądz na karcie                                                     5.83:1  (min 3:1)  --accent-2 / --surface
+ok   tekst na pergaminie                                                   12.57:1  (min 4.5:1)  --ink-parchment / --parchment
+ok   tekst drugorzędny na pergaminie                                       7.20:1  (min 4.5:1)  --ink-parchment-muted / --parchment
+ok   komunikat o zagrożeniu                                                5.32:1  (min 4.5:1)  --danger / --bg
+ok   akcent tekstowy epoki jerozolima na tle strony                        12.23:1  (min 4.5:1)  --era-jerozolima-text / --bg
+ok   akcent tekstowy epoki jerozolima na paśmie                            11.78:1  (min 4.5:1)  --era-jerozolima-text / --bg-band
+ok   akcent tekstowy epoki jerozolima na karcie                            11.26:1  (min 4.5:1)  --era-jerozolima-text / --surface
+ok   wypełnienie epoki jerozolima i rok warstwy na tle strony              9.66:1  (min 3:1)  --era-jerozolima / --bg
+ok   napis na wypełnieniu epoki jerozolima                                 9.34:1  (min 4.5:1)  --era-jerozolima-ink / --era-jerozolima
+ok   akcent tekstowy epoki wlochy na tle strony                            11.20:1  (min 4.5:1)  --era-wlochy-text / --bg
+ok   akcent tekstowy epoki wlochy na paśmie                                10.79:1  (min 4.5:1)  --era-wlochy-text / --bg-band
+ok   akcent tekstowy epoki wlochy na karcie                                10.32:1  (min 4.5:1)  --era-wlochy-text / --surface
+ok   wypełnienie epoki wlochy i rok warstwy na tle strony                  8.08:1  (min 3:1)  --era-wlochy / --bg
+ok   napis na wypełnieniu epoki wlochy                                     7.82:1  (min 4.5:1)  --era-wlochy-ink / --era-wlochy
+ok   akcent tekstowy epoki karaiby na tle strony                           11.23:1  (min 4.5:1)  --era-karaiby-text / --bg
+ok   akcent tekstowy epoki karaiby na paśmie                               10.81:1  (min 4.5:1)  --era-karaiby-text / --bg-band
+ok   akcent tekstowy epoki karaiby na karcie                               10.34:1  (min 4.5:1)  --era-karaiby-text / --surface
+ok   wypełnienie epoki karaiby i rok warstwy na tle strony                 6.73:1  (min 3:1)  --era-karaiby / --bg
+ok   napis na wypełnieniu epoki karaiby                                    6.64:1  (min 4.5:1)  --era-karaiby-ink / --era-karaiby
+ok   akcent tekstowy epoki londyn na tle strony                            11.79:1  (min 4.5:1)  --era-londyn-text / --bg
+ok   akcent tekstowy epoki londyn na paśmie                                11.35:1  (min 4.5:1)  --era-londyn-text / --bg-band
+ok   akcent tekstowy epoki londyn na karcie                                10.86:1  (min 4.5:1)  --era-londyn-text / --surface
+ok   wypełnienie epoki londyn i rok warstwy na tle strony                  7.54:1  (min 3:1)  --era-londyn / --bg
+ok   napis na wypełnieniu epoki londyn                                     7.31:1  (min 4.5:1)  --era-londyn-ink / --era-londyn
+ok   akcent tekstowy epoki japonia na tle strony                           6.86:1  (min 4.5:1)  --era-japonia-text / --bg
+ok   akcent tekstowy epoki japonia na paśmie                               6.60:1  (min 4.5:1)  --era-japonia-text / --bg-band
+ok   akcent tekstowy epoki japonia na karcie                               6.32:1  (min 4.5:1)  --era-japonia-text / --surface
+ok   wypełnienie epoki japonia i rok warstwy na tle strony                 4.85:1  (min 3:1)  --era-japonia / --bg
+ok   napis na wypełnieniu epoki japonia                                    4.69:1  (min 4.5:1)  --era-japonia-ink / --era-japonia
+
+45/45 par przechodzi.
+
+Tokeny: 45 plików (18 w src/ + 27 w core/), wszystkie rozmiary w rolach, wszystkie odstępy na skali.
+
+ok   gry/hero.jpg        kadr pierwszego ekranu
+ok   gry/jerozolima.jpg  kadr epoki jerozolima
+ok   gry/wlochy.jpg      kadr epoki wlochy
+ok   gry/karaiby.jpg     kadr epoki karaiby
+ok   gry/londyn.jpg      kadr epoki londyn
+ok   gry/japonia.jpg     kadr epoki japonia
+
+6/6 zadeklarowanych zasobów na miejscu.
+
+Struktura: 32 stron (fala 1: 32, fala 2: 0), zagnieżdżenie 2, 2 dozwolone.
+Rozliczenie zapytań: 1081 na stronach + 34 exclusions + 311 no_page wobec 1426 w wyliczeniu.
+Struktura: zgodna z kontraktem.
+
+Bramki: 4/4 przechodzi.
+[2m08:02:07[22m [34m[content][39m Syncing content
+[2m08:02:07[22m [34m[content][39m Synced content
+[2m08:02:07[22m [34m[types][39m Generated [2m816ms[22m
+[2m08:02:07[22m [34m[build][39m output: [34m"static"[39m
+[2m08:02:07[22m [34m[build][39m mode: [34m"static"[39m
+[2m08:02:07[22m [34m[build][39m directory: [34mD:\SEO\cloud\site-generator\sites\ac4bf-thewatch.com\dist\[39m
+[2m08:02:07[22m [34m[build][39m Collecting build info...
+[2m08:02:07[22m [34m[build][39m [32m✓ Completed in 839ms.[39m
+[2m08:02:08[22m [34m[build][39m Building static entrypoints...
+[2m08:02:09[22m [34m[vite][39m [32m✓ built in 953ms[39m
+[2m08:02:09[22m [34m[vite][39m [32m✓ built in 22ms[39m
+[2m08:02:09[22m [34m[build][39m Rearranging server assets...
+
+[42m[30m generating static routes [39m[49m
+[2m08:02:11[22m   [34m├─[39m [2m/index.html[22m [2m(+42ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/404/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-1/index.html[22m [2m(+6ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-2/index.html[22m [2m(+6ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-3/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-4-black-flag/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-bloodlines/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-brotherhood/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-chronicles/index.html[22m [2m(+14ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-world-war-2/index.html[22m [2m(+8ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-liberation/index.html[22m [2m(+7ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-mirage/index.html[22m [2m(+26ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-odyssey/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-origins/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-pirates/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-revelations/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-lineage/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-rogue/index.html[22m [2m(+7ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-shadows/index.html[22m [2m(+3ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-syndicate/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-unity/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-valhalla/index.html[22m [2m(+4ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-free/index.html[22m [2m(+3ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-valhalla/dawn-of-ragnarok/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-2/discovery/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-valhalla/eivor/index.html[22m [2m(+6ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/ezio-auditore/index.html[22m [2m(+6ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/assassins-creed-4-black-flag/freedom-cry/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/historical-locations-map/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/guides/where-to-start/index.html[22m [2m(+7ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/guides/index.html[22m [2m(+5ms)[22m 
+[2m08:02:11[22m   [34m├─[39m [2m/privacy/index.html[22m [2m(+3ms)[22m 
+[2m08:02:11[22m [32m✓ Completed in 301ms.
+[39m
+[42m[30m generating optimized images [39m[49m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_Z1yhBeR.webp [2m(reused cache entry)[22m [2m(+14ms)[22m [2m(1/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_1fvUzq.webp [2m(reused cache entry)[22m [2m(+25ms)[22m [2m(2/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_ZrK6Rg.webp [2m(reused cache entry)[22m [2m(+46ms)[22m [2m(3/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/hero.DkEmF5ru_Zz2I7a.webp [2m(reused cache entry)[22m [2m(+60ms)[22m [2m(4/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__Z2cjUtA.webp [2m(reused cache entry)[22m [2m(+66ms)[22m [2m(5/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_Z1si26m.webp [2m(reused cache entry)[22m [2m(+74ms)[22m [2m(6/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k03.DGH1N0ip_Z1sT2GC.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(7/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_Zk1SHQ.webp [2m(reused cache entry)[22m [2m(+112ms)[22m [2m(8/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k05.BDtjlwAc_23H4rY.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(9/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k04.D3F1RNGe_1PfoTR.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(10/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k08.B6dRpR0O_bslfT.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(11/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k10.4nn77574_Z2vqM2i.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(12/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_Z1ng5SS.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(13/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_1JgTbT.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(14/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_Z1mqHPH.webp [2m(reused cache entry)[22m [2m(+150ms)[22m [2m(15/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/hero.DkEmF5ru_qWiFb.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(16/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__ZhTpq.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(17/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_Z2d3cMd.webp [2m(reused cache entry)[22m [2m(+135ms)[22m [2m(18/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_Z1OU053.webp [2m(reused cache entry)[22m [2m(+111ms)[22m [2m(19/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k05.BDtjlwAc_1FbvLN.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(20/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k03.DGH1N0ip_Z1W83kC.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(21/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k08.B6dRpR0O_Zc3cph.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(22/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k04.D3F1RNGe_1rIQeG.webp [2m(reused cache entry)[22m [2m(+138ms)[22m [2m(23/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k10.4nn77574_2beN6s.webp [2m(reused cache entry)[22m [2m(+138ms)[22m [2m(24/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_ybPPa.webp [2m(reused cache entry)[22m [2m(+117ms)[22m [2m(25/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/hero.DkEmF5ru_ZaheAG.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(26/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_Z5sz0j.webp [2m(reused cache entry)[22m [2m(+182ms)[22m [2m(27/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_2pmKp3.webp [2m(reused cache entry)[22m [2m(+135ms)[22m [2m(28/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__Z1bmWLa.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(29/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k08.B6dRpR0O_Z123P4M.webp [2m(reused cache entry)[22m [2m(+75ms)[22m [2m(30/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_tloUv.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(31/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k05.BDtjlwAc_15e23t.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(32/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k10.4nn77574_Z2s9sC4.webp [2m(reused cache entry)[22m [2m(+70ms)[22m [2m(33/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k03.DGH1N0ip_ZwMxqV.webp [2m(reused cache entry)[22m [2m(+103ms)[22m [2m(34/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_Z296ytp.webp [2m(reused cache entry)[22m [2m(+145ms)[22m [2m(35/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima-k04.D3F1RNGe_ZECpW9.webp [2m(reused cache entry)[22m [2m(+109ms)[22m [2m(36/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_1NKORV.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(37/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__4c1gB.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(38/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/hero.DkEmF5ru_Z1x5jpd.webp [2m(reused cache entry)[22m [2m(+105ms)[22m [2m(39/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_1fiQMK.webp [2m(reused cache entry)[22m [2m(+83ms)[22m [2m(40/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_ZORlzB.webp [2m(reused cache entry)[22m [2m(+84ms)[22m [2m(41/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_1oNzjO.webp [2m(reused cache entry)[22m [2m(+76ms)[22m [2m(42/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_ZliLj6.webp [2m(reused cache entry)[22m [2m(+19ms)[22m [2m(43/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-florencja-1470.DFSf_k63_1Uo5QG.webp [2m(reused cache entry)[22m [2m(+19ms)[22m [2m(44/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_A2y6z.webp [2m(reused cache entry)[22m [2m(+20ms)[22m [2m(45/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy-k01.CPrIEOBJ_1Xcbq3.webp [2m(reused cache entry)[22m [2m(+40ms)[22m [2m(46/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-savonarola.Djghe6nf_Z2nqeHt.webp [2m(reused cache entry)[22m [2m(+40ms)[22m [2m(47/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_1M7TiH.webp [2m(reused cache entry)[22m [2m(+47ms)[22m [2m(48/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy-k03.CP2Hkgla_2fcT6S.webp [2m(reused cache entry)[22m [2m(+49ms)[22m [2m(49/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_1JgWJo.webp [2m(reused cache entry)[22m [2m(+31ms)[22m [2m(50/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_Z1kxPm8.webp [2m(reused cache entry)[22m [2m(+32ms)[22m [2m(51/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__2mwV8G.webp [2m(reused cache entry)[22m [2m(+57ms)[22m [2m(52/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_Z20QjSe.webp [2m(reused cache entry)[22m [2m(+82ms)[22m [2m(53/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_ZiEg6T.webp [2m(reused cache entry)[22m [2m(+83ms)[22m [2m(54/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_Z7QDMN.webp [2m(reused cache entry)[22m [2m(+84ms)[22m [2m(55/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/hero.DkEmF5ru_Z1sGW9q.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(56/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-savonarola.Djghe6nf_ZJ3GTr.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(57/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy-k01.CPrIEOBJ_1flk7t.webp [2m(reused cache entry)[22m [2m(+134ms)[22m [2m(58/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_Z1zh89T.webp [2m(reused cache entry)[22m [2m(+141ms)[22m [2m(59/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-florencja-1470.DFSf_k63_Z20rfTG.webp [2m(reused cache entry)[22m [2m(+172ms)[22m [2m(60/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/wlochy-k03.CP2Hkgla_1wm2Nj.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(61/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/karaiby.C_iDLED__1jL0jn.webp [2m(reused cache entry)[22m [2m(+141ms)[22m [2m(62/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_Z1U3HRY.webp [2m(reused cache entry)[22m [2m(+107ms)[22m [2m(63/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_YNPd1.webp [2m(reused cache entry)[22m [2m(+168ms)[22m [2m(64/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/jerozolima.wNHWNJjO_1X9I6k.webp [2m(reused cache entry)[22m [2m(+158ms)[22m [2m(65/571)[22m
+[2m08:02:11[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_Z2o5csN.webp [2m(reused cache entry)[22m [2m(+107ms)[22m [2m(66/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_1DBTLl.webp [2m(reused cache entry)[22m [2m(+117ms)[22m [2m(67/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy-k05.FUgYzsnM_AhgS4.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(68/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy-k01.CPrIEOBJ_Z22iLF9.webp [2m(reused cache entry)[22m [2m(+45ms)[22m [2m(69/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-savonarola.Djghe6nf_Z1EKex5.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(70/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby.C_iDLED__Z8ykPR.webp [2m(reused cache entry)[22m [2m(+55ms)[22m [2m(71/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy-k03.CP2Hkgla_1vQgKP.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(72/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_OiK9b.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(73/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy.9bvRWPtm_Z1zthpz.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(74/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-jerozolima.CbWDfg-j_1ov5x2.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(75/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-florencja-1470.DFSf_k63_1FJPm3.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(76/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy-k05.FUgYzsnM_Z7yzpv.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(77/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-savonarola.Djghe6nf_1sAwIP.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(78/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_2hGIQB.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(79/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z2ekQ6S.webp [2m(reused cache entry)[22m [2m(+154ms)[22m [2m(80/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby.C_iDLED__Z2to0CD.webp [2m(reused cache entry)[22m [2m(+106ms)[22m [2m(81/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/japonia.BDo2gH9e_Z206qsV.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(82/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_1dr4q6.webp [2m(reused cache entry)[22m [2m(+176ms)[22m [2m(83/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k02.CJB0nrij_1NA2f5.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(84/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k04.BocnUwka_Z7nQTD.webp [2m(reused cache entry)[22m [2m(+112ms)[22m [2m(85/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_fb37j.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(86/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k09.M90LeZ3G_1XNAWp.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(87/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/wlochy-k05.FUgYzsnM_154hUL.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(88/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k08.CaG8TnG8_1no8Ea.webp [2m(reused cache entry)[22m [2m(+66ms)[22m [2m(89/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_Z2qoRAX.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(90/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z1FVog2.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(91/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_ZRJmRC.webp [2m(reused cache entry)[22m [2m(+57ms)[22m [2m(92/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k02.CJB0nrij_15kpfT.webp [2m(reused cache entry)[22m [2m(+58ms)[22m [2m(93/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-florencja-1470.DFSf_k63_Z2uEqJy.webp [2m(reused cache entry)[22m [2m(+192ms)[22m [2m(94/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_Z1jVDaN.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(95/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k04.BocnUwka_ZPDtSO.webp [2m(reused cache entry)[22m [2m(+110ms)[22m [2m(96/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-okladka.Cr_Zxedn_ZR3M0k.webp [2m(reused cache entry)[22m [2m(+136ms)[22m [2m(97/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby.C_iDLED__ZdB3qO.webp [2m(reused cache entry)[22m [2m(+177ms)[22m [2m(98/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k08.CaG8TnG8_E8vEY.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(99/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k09.M90LeZ3G_1fxXXe.webp [2m(reused cache entry)[22m [2m(+153ms)[22m [2m(100/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z1uDjmw.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(101/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k02.CJB0nrij_Z2f9JHN.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(102/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-wlochy.DmpgmF8o_Z1IFM2e.webp [2m(reused cache entry)[22m [2m(+144ms)[22m [2m(103/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/londyn.DCgL27Xp_FaHPr.webp [2m(reused cache entry)[22m [2m(+138ms)[22m [2m(104/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_Z2qjokl.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(105/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k01.BCoCLiVZ_Z1oGLie.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(106/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k09.M90LeZ3G_Z28sfvz.webp [2m(reused cache entry)[22m [2m(+45ms)[22m [2m(107/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k04.BocnUwka_Z1bd2OW.webp [2m(reused cache entry)[22m [2m(+110ms)[22m [2m(108/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k08.CaG8TnG8_ZiB3vs.webp [2m(reused cache entry)[22m [2m(+76ms)[22m [2m(109/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k06.MWZyFo32_ZW20xv.webp [2m(reused cache entry)[22m [2m(+210ms)[22m [2m(110/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_Z2bb41G.webp [2m(reused cache entry)[22m [2m(+93ms)[22m [2m(111/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z20K46S.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(112/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/freedom-cry-k01.CxOO5uPE_1OnxBW.webp [2m(reused cache entry)[22m [2m(+105ms)[22m [2m(113/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k03.C2EPhAer_Z28nKrc.webp [2m(reused cache entry)[22m [2m(+152ms)[22m [2m(114/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_Z2m40KS.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(115/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k04.DnZv7FZx_1tjovM.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(116/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k01.BCoCLiVZ_Zcthf8.webp [2m(reused cache entry)[22m [2m(+141ms)[22m [2m(117/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k02.CJB0nrij_Z1adJeJ.webp [2m(reused cache entry)[22m [2m(+210ms)[22m [2m(118/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k09.M90LeZ3G_Z13wf2v.webp [2m(reused cache entry)[22m [2m(+175ms)[22m [2m(119/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k04.BocnUwka_Z6h2lS.webp [2m(reused cache entry)[22m [2m(+178ms)[22m [2m(120/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_2qXHrX.webp [2m(reused cache entry)[22m [2m(+144ms)[22m [2m(121/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3-k08.CaG8TnG8_LjVWB.webp [2m(reused cache entry)[22m [2m(+162ms)[22m [2m(122/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k06.MWZyFo32_fbtuA.webp [2m(reused cache entry)[22m [2m(+166ms)[22m [2m(123/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Zl75JI.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(124/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k04.DnZv7FZx_Z2oEff3.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(125/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/freedom-cry-k01.CxOO5uPE_Z26eHQE.webp [2m(reused cache entry)[22m [2m(+153ms)[22m [2m(126/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k03.C2EPhAer_ZVago6.webp [2m(reused cache entry)[22m [2m(+144ms)[22m [2m(127/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_SxJHI.webp [2m(reused cache entry)[22m [2m(+143ms)[22m [2m(128/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k05.BJcu7euA_1gbc04.webp [2m(reused cache entry)[22m [2m(+70ms)[22m [2m(129/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_1o1zPh.webp [2m(reused cache entry)[22m [2m(+80ms)[22m [2m(130/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_Z1m07lo.webp [2m(reused cache entry)[22m [2m(+88ms)[22m [2m(131/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-akka.BvLs2jb1_ZAOkcQ.webp [2m(reused cache entry)[22m [2m(+101ms)[22m [2m(132/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z1meHED.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(133/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k04.DnZv7FZx_3MFSH.webp [2m(reused cache entry)[22m [2m(+62ms)[22m [2m(134/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k06.MWZyFo32_VT6Yz.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(135/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k01.BCoCLiVZ_28LMd1.webp [2m(reused cache entry)[22m [2m(+198ms)[22m [2m(136/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-psp.C7T0NDz4_mgGtq.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(137/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k05.BJcu7euA_2soG3a.webp [2m(reused cache entry)[22m [2m(+90ms)[22m [2m(138/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/freedom-cry-k01.CxOO5uPE_Z25Kj5Q.webp [2m(reused cache entry)[22m [2m(+111ms)[22m [2m(139/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k03.C2EPhAer_ZdKc4e.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(140/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_ZKJQwW.webp [2m(reused cache entry)[22m [2m(+132ms)[22m [2m(141/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_Z1AAGT0.webp [2m(reused cache entry)[22m [2m(+134ms)[22m [2m(142/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-akka.BvLs2jb1_1SyXHw.webp [2m(reused cache entry)[22m [2m(+125ms)[22m [2m(143/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k04.DnZv7FZx_ZAYCSA.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(144/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_2cNVDU.webp [2m(reused cache entry)[22m [2m(+163ms)[22m [2m(145/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_Z3yHFn.webp [2m(reused cache entry)[22m [2m(+149ms)[22m [2m(146/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k01.BCoCLiVZ_1sYspI.webp [2m(reused cache entry)[22m [2m(+125ms)[22m [2m(147/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-psp.C7T0NDz4_1Osg8r.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(148/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k06.MWZyFo32_h6Mch.webp [2m(reused cache entry)[22m [2m(+172ms)[22m [2m(149/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k05.BJcu7euA_Z1wawoI.webp [2m(reused cache entry)[22m [2m(+150ms)[22m [2m(150/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/freedom-cry-k01.CxOO5uPE_Z25idSe.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(151/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_Zdrzyz.webp [2m(reused cache entry)[22m [2m(+111ms)[22m [2m(152/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_edOaN.webp [2m(reused cache entry)[22m [2m(+85ms)[22m [2m(153/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_Z2q8hFp.webp [2m(reused cache entry)[22m [2m(+136ms)[22m [2m(154/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-akka.BvLs2jb1_EKcTm.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(155/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/jerozolima-k06.laadTOEC_Z1pf2oO.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(156/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-psp.C7T0NDz4_1TnAFx.webp [2m(reused cache entry)[22m [2m(+76ms)[22m [2m(157/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-3.emYMln8l_1Ygg6C.webp [2m(reused cache entry)[22m [2m(+109ms)[22m [2m(158/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_Z3xLXT.webp [2m(reused cache entry)[22m [2m(+63ms)[22m [2m(159/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/karaiby-k05.BJcu7euA_Z2bWQc1.webp [2m(reused cache entry)[22m [2m(+72ms)[22m [2m(160/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/foto-karaiby.Ctn049qo_1cLU8d.webp [2m(reused cache entry)[22m [2m(+45ms)[22m [2m(161/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k09.9-8aNmmo_1uyNXS.webp [2m(reused cache entry)[22m [2m(+68ms)[22m [2m(162/571)[22m
+[2m08:02:12[22m   [32m▶[39m /_astro/assassins-creed-liberation.DGuDav_t_Zmsg9X.webp [2m(reused cache entry)[22m [2m(+65ms)[22m [2m(163/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_1tANpn.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(164/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k11.oz1dGLKV_1FMMkz.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(165/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/jerozolima-k06.laadTOEC_Zo2aT3.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(166/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_Z1eM4Vp.webp [2m(reused cache entry)[22m [2m(+101ms)[22m [2m(167/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-psp.C7T0NDz4_2hh78S.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(168/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-akka.BvLs2jb1_Z2tfPs5.webp [2m(reused cache entry)[22m [2m(+168ms)[22m [2m(169/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k09.9-8aNmmo_Fp4GQ.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(170/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-rzym-piranesi.DoIg-GxM_2m754.webp [2m(reused cache entry)[22m [2m(+143ms)[22m [2m(171/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k04.B4cqN-38_ZHHfkB.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(172/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-leonardo-czolg.Bi38Dp7X_1AXnd9.webp [2m(reused cache entry)[22m [2m(+153ms)[22m [2m(173/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k11.oz1dGLKV_24soGw.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(174/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_1hBsbn.webp [2m(reused cache entry)[22m [2m(+139ms)[22m [2m(175/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/jerozolima-k06.laadTOEC_uqrft.webp [2m(reused cache entry)[22m [2m(+146ms)[22m [2m(176/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_RFeHi.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(177/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-kopernik.CqsD9wf8_Z8xyos.webp [2m(reused cache entry)[22m [2m(+167ms)[22m [2m(178/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k09.9-8aNmmo_2pYFaY.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(179/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/karaiby-k03.C2EPhAer_ZSxvQw.webp [2m(reused cache entry)[22m [2m(+443ms)[22m [2m(180/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k04.B4cqN-38_Z1wQYBD.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(181/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-rzym-piranesi.DoIg-GxM_Z2u4OSk.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(182/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-leonardo-czolg.Bi38Dp7X_wlR5V.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(183/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-monteriggioni.BTXdG8Ub_Z17D4dA.webp [2m(reused cache entry)[22m [2m(+143ms)[22m [2m(184/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k11.oz1dGLKV_Z1SNb8U.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(185/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_2ss0Qi.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(186/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_PxagL.webp [2m(reused cache entry)[22m [2m(+174ms)[22m [2m(187/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_G945R.webp [2m(reused cache entry)[22m [2m(+159ms)[22m [2m(188/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/karaiby-k03.C2EPhAer_1JzSjD.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(189/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-kopernik.CqsD9wf8_REi6j.webp [2m(reused cache entry)[22m [2m(+155ms)[22m [2m(190/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-rzym-piranesi.DoIg-GxM_Z1qaOYG.webp [2m(reused cache entry)[22m [2m(+138ms)[22m [2m(191/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_1exxvf.webp [2m(reused cache entry)[22m [2m(+246ms)[22m [2m(192/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k04.B4cqN-38_Zd5D57.webp [2m(reused cache entry)[22m [2m(+161ms)[22m [2m(193/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__k4ctQ.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(194/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-leonardo-czolg.Bi38Dp7X_2d3usl.webp [2m(reused cache entry)[22m [2m(+132ms)[22m [2m(195/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-monteriggioni.BTXdG8Ub_Z2sKHTa.webp [2m(reused cache entry)[22m [2m(+132ms)[22m [2m(196/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_Z1UooM9.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(197/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_Z1pwjkO.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(198/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_2q3T1g.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(199/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-kopernik.CqsD9wf8_ZlmGJ2.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(200/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles-k04.aHAfIggL_BMeCz.webp [2m(reused cache entry)[22m [2m(+183ms)[22m [2m(201/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__20Si6k.webp [2m(reused cache entry)[22m [2m(+78ms)[22m [2m(202/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_Z29OuGd.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(203/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-rzym-piranesi.DoIg-GxM_1oqpFt.webp [2m(reused cache entry)[22m [2m(+101ms)[22m [2m(204/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k03.DVRcJxK6_Z1cIn3I.webp [2m(reused cache entry)[22m [2m(+103ms)[22m [2m(205/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-leonardo-czolg.Bi38Dp7X_Z1WMOMQ.webp [2m(reused cache entry)[22m [2m(+85ms)[22m [2m(206/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_Z2kLJyh.webp [2m(reused cache entry)[22m [2m(+68ms)[22m [2m(207/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k10.CYAF-Zvv_Zk0qCL.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(208/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_Z1oBAKG.webp [2m(reused cache entry)[22m [2m(+84ms)[22m [2m(209/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-monteriggioni.BTXdG8Ub_17EXz1.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(210/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-kopernik.CqsD9wf8_1lWTxc.webp [2m(reused cache entry)[22m [2m(+67ms)[22m [2m(211/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__273aL5.webp [2m(reused cache entry)[22m [2m(+40ms)[22m [2m(212/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-bloodlines.uPTGBB5e_1lQO7b.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(213/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles-k04.aHAfIggL_ZcmuDs.webp [2m(reused cache entry)[22m [2m(+90ms)[22m [2m(214/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k03.DVRcJxK6_Z1eb4ai.webp [2m(reused cache entry)[22m [2m(+80ms)[22m [2m(215/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_ZEbzW2.webp [2m(reused cache entry)[22m [2m(+80ms)[22m [2m(216/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_ZYOz51.webp [2m(reused cache entry)[22m [2m(+88ms)[22m [2m(217/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_Z23EC1s.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(218/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k06.aRyPz_Wy_Zs7AGm.webp [2m(reused cache entry)[22m [2m(+112ms)[22m [2m(219/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k07.B0IzUV85_1hiAsu.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(220/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-monteriggioni.BTXdG8Ub_aihi6.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(221/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k10.CYAF-Zvv_Z13g3BW.webp [2m(reused cache entry)[22m [2m(+144ms)[22m [2m(222/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__Z1mVk9b.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(223/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_194BLc.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(224/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-brotherhood.B2FHE7tm_ZxWOdp.webp [2m(reused cache entry)[22m [2m(+78ms)[22m [2m(225/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k03.DVRcJxK6_Z1yilAK.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(226/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles-k04.aHAfIggL_ZcbI5V.webp [2m(reused cache entry)[22m [2m(+117ms)[22m [2m(227/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_1oJU3C.webp [2m(reused cache entry)[22m [2m(+68ms)[22m [2m(228/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k07.B0IzUV85_1fPTlU.webp [2m(reused cache entry)[22m [2m(+68ms)[22m [2m(229/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_Z1baF6X.webp [2m(reused cache entry)[22m [2m(+110ms)[22m [2m(230/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k06.aRyPz_Wy_Z1bndFx.webp [2m(reused cache entry)[22m [2m(+89ms)[22m [2m(231/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-ii-wojna-swiatowa.Q_a4qESz_ZSlfpX.webp [2m(reused cache entry)[22m [2m(+131ms)[22m [2m(232/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__195xbs.webp [2m(reused cache entry)[22m [2m(+90ms)[22m [2m(233/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_iS53C.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(234/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k10.CYAF-Zvv_Z2v6xr5.webp [2m(reused cache entry)[22m [2m(+125ms)[22m [2m(235/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k02.9EVbw_t2_Zkw4un.webp [2m(reused cache entry)[22m [2m(+107ms)[22m [2m(236/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles-k04.aHAfIggL_Hl2vJ.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(237/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k07.B0IzUV85_Zzhgva.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(238/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_1lKJel.webp [2m(reused cache entry)[22m [2m(+164ms)[22m [2m(239/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/foto-paryz-1940.DMM4WH8f_Z1Ot2Bh.webp [2m(reused cache entry)[22m [2m(+164ms)[22m [2m(240/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-india-k03.DVRcJxK6_2gTTxe.webp [2m(reused cache entry)[22m [2m(+171ms)[22m [2m(241/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__Z1tHl33.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(242/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_ZChcEV.webp [2m(reused cache entry)[22m [2m(+173ms)[22m [2m(243/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/assassins-creed-ii-wojna-swiatowa.Q_a4qESz_UnMax.webp [2m(reused cache entry)[22m [2m(+155ms)[22m [2m(244/571)[22m
+[2m08:02:13[22m   [32m▶[39m /_astro/chronicles-russia-k06.aRyPz_Wy_Z1xxvrr.webp [2m(reused cache entry)[22m [2m(+186ms)[22m [2m(245/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k01.CtJ7-orX_ZDGfj3.webp [2m(reused cache entry)[22m [2m(+343ms)[22m [2m(246/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k02.9EVbw_t2_27vKYW.webp [2m(reused cache entry)[22m [2m(+354ms)[22m [2m(247/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/chronicles-russia-k10.CYAF-Zvv_Z1qawX1.webp [2m(reused cache entry)[22m [2m(+374ms)[22m [2m(248/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_Afk7w.webp [2m(reused cache entry)[22m [2m(+491ms)[22m [2m(249/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/chronicles-india-k07.B0IzUV85_Z1Og9b7.webp [2m(reused cache entry)[22m [2m(+436ms)[22m [2m(250/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k04.BE_tj6Zn_3xQIQ.webp [2m(reused cache entry)[22m [2m(+511ms)[22m [2m(251/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/foto-paryz-1940.DMM4WH8f_Z20jrft.webp [2m(reused cache entry)[22m [2m(+523ms)[22m [2m(252/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_Zp8GLx.webp [2m(reused cache entry)[22m [2m(+536ms)[22m [2m(253/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-revelations.B8gvRKX__Z2dUE2W.webp [2m(reused cache entry)[22m [2m(+541ms)[22m [2m(254/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_Z1bDDjM.webp [2m(reused cache entry)[22m [2m(+586ms)[22m [2m(255/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-ii-wojna-swiatowa.Q_a4qESz_1ndbuo.webp [2m(reused cache entry)[22m [2m(+638ms)[22m [2m(256/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k01.CtJ7-orX_ZtgSlR.webp [2m(reused cache entry)[22m [2m(+449ms)[22m [2m(257/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/chronicles-russia-k06.aRyPz_Wy_ZsBuXn.webp [2m(reused cache entry)[22m [2m(+694ms)[22m [2m(258/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k02.9EVbw_t2_1t19H7.webp [2m(reused cache entry)[22m [2m(+452ms)[22m [2m(259/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_Z1jrj1y.webp [2m(reused cache entry)[22m [2m(+286ms)[22m [2m(260/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_Z7BYIn.webp [2m(reused cache entry)[22m [2m(+435ms)[22m [2m(261/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k04.BE_tj6Zn_WgkFn.webp [2m(reused cache entry)[22m [2m(+350ms)[22m [2m(262/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k02._lNI46UD_1zxyJ8.webp [2m(reused cache entry)[22m [2m(+473ms)[22m [2m(263/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_ZzpQKC.webp [2m(reused cache entry)[22m [2m(+394ms)[22m [2m(264/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-mirage-k02.BW7amtk2_ZsEcfk.webp [2m(reused cache entry)[22m [2m(+405ms)[22m [2m(265/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-mirage-k08.D4ckq1ar_Z276it7.webp [2m(reused cache entry)[22m [2m(+418ms)[22m [2m(266/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-rogue.73hEAszp_102vB8.webp [2m(reused cache entry)[22m [2m(+444ms)[22m [2m(267/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-liberation-k01.CtJ7-orX_ZW8JBw.webp [2m(reused cache entry)[22m [2m(+327ms)[22m [2m(268/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k02.9EVbw_t2_Z1AAQqA.webp [2m(reused cache entry)[22m [2m(+325ms)[22m [2m(269/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_23RFBs.webp [2m(reused cache entry)[22m [2m(+287ms)[22m [2m(270/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-mirage-k06.BXAPFoec_zYA8V.webp [2m(reused cache entry)[22m [2m(+322ms)[22m [2m(271/571)[22m
+[2m08:02:14[22m   [32m▶[39m /_astro/assassins-creed-chronicles.DrKruVnP_XPpXy.webp [2m(reused cache entry)[22m [2m(+336ms)[22m [2m(272/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-samarra.CBE_SeET_AiinG.webp [2m(reused cache entry)[22m [2m(+436ms)[22m [2m(273/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k02._lNI46UD_1JWUGj.webp [2m(reused cache entry)[22m [2m(+361ms)[22m [2m(274/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_Z2scq5H.webp [2m(reused cache entry)[22m [2m(+308ms)[22m [2m(275/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k04.BE_tj6Zn_Z3CVrn.webp [2m(reused cache entry)[22m [2m(+400ms)[22m [2m(276/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k01.CtJ7-orX_Z2mhLzo.webp [2m(reused cache entry)[22m [2m(+286ms)[22m [2m(277/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-londyn.B5x_nnXm_Z1JFkz6.webp [2m(reused cache entry)[22m [2m(+232ms)[22m [2m(278/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k02.BW7amtk2_Z1cRvfe.webp [2m(reused cache entry)[22m [2m(+416ms)[22m [2m(279/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k08.D4ckq1ar_2dRwkU.webp [2m(reused cache entry)[22m [2m(+405ms)[22m [2m(280/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-samarra.CBE_SeET_14KkTq.webp [2m(reused cache entry)[22m [2m(+250ms)[22m [2m(281/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_ZhIbxP.webp [2m(reused cache entry)[22m [2m(+309ms)[22m [2m(282/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-hegra.Bpvt7qis_qNtdU.webp [2m(reused cache entry)[22m [2m(+279ms)[22m [2m(283/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k02._lNI46UD_2aMNlU.webp [2m(reused cache entry)[22m [2m(+217ms)[22m [2m(284/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k06.BXAPFoec_Z9dHPX.webp [2m(reused cache entry)[22m [2m(+334ms)[22m [2m(285/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_Zunsfq.webp [2m(reused cache entry)[22m [2m(+238ms)[22m [2m(286/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k09.C1neB2PR_Z2v4FpN.webp [2m(reused cache entry)[22m [2m(+244ms)[22m [2m(287/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k02.BW7amtk2_2hqlmM.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(288/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-samarra.CBE_SeET_hR2rW.webp [2m(reused cache entry)[22m [2m(+90ms)[22m [2m(289/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k08.D4ckq1ar_25DCxJ.webp [2m(reused cache entry)[22m [2m(+175ms)[22m [2m(290/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_1QuCL9.webp [2m(reused cache entry)[22m [2m(+106ms)[22m [2m(291/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-hegra.Bpvt7qis_Z2o2Id2.webp [2m(reused cache entry)[22m [2m(+109ms)[22m [2m(292/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k04.BE_tj6Zn_OjqW9.webp [2m(reused cache entry)[22m [2m(+299ms)[22m [2m(293/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_1DtgSl.webp [2m(reused cache entry)[22m [2m(+123ms)[22m [2m(294/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k06.BXAPFoec_ZrJ41C.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(295/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_ZGbBsK.webp [2m(reused cache entry)[22m [2m(+134ms)[22m [2m(296/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k09.C1neB2PR_1OT9oe.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(297/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-liberation-k02._lNI46UD_KDLo3.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(298/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_iY3kG.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(299/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_17hjLf.webp [2m(reused cache entry)[22m [2m(+58ms)[22m [2m(300/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-samarra.CBE_SeET_1mCyjR.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(301/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k02.BW7amtk2_Z2mQim5.webp [2m(reused cache entry)[22m [2m(+145ms)[22m [2m(302/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k08.D4ckq1ar_2vy7CN.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(303/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-hegra.Bpvt7qis_2q05mJ.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(304/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k06.BXAPFoec_Z1OyVy.webp [2m(reused cache entry)[22m [2m(+82ms)[22m [2m(305/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_Z1XkG3t.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(306/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_2vdX16.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(307/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k09.C1neB2PR_4RfRg.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(308/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_ZC6DCj.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(309/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_2f65Uh.webp [2m(reused cache entry)[22m [2m(+75ms)[22m [2m(310/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_Z1JxS9u.webp [2m(reused cache entry)[22m [2m(+74ms)[22m [2m(311/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k05.tRuKtDlt_AN3Ft.webp [2m(reused cache entry)[22m [2m(+74ms)[22m [2m(312/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-hegra.Bpvt7qis_EWi5m.webp [2m(reused cache entry)[22m [2m(+83ms)[22m [2m(313/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k00.CYgFl1an_2qyt3s.webp [2m(reused cache entry)[22m [2m(+93ms)[22m [2m(314/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k01.BLdvRuRp_Z1y3zDh.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(315/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k04.D1A0V8lO_2ePyD8.webp [2m(reused cache entry)[22m [2m(+132ms)[22m [2m(316/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_ZB9cWy.webp [2m(reused cache entry)[22m [2m(+125ms)[22m [2m(317/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_2LmjI.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(318/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_2qWlhl.webp [2m(reused cache entry)[22m [2m(+137ms)[22m [2m(319/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k04.DP1byW-y_1m0iwo.webp [2m(reused cache entry)[22m [2m(+141ms)[22m [2m(320/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k09.C1neB2PR_uLJWk.webp [2m(reused cache entry)[22m [2m(+154ms)[22m [2m(321/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_ZeLbUj.webp [2m(reused cache entry)[22m [2m(+138ms)[22m [2m(322/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k05.tRuKtDlt_Z21leD8.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(323/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_Z1jDo4q.webp [2m(reused cache entry)[22m [2m(+145ms)[22m [2m(324/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k00.CYgFl1an_ZbzOg9.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(325/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k01.BLdvRuRp_SYfQ3.webp [2m(reused cache entry)[22m [2m(+64ms)[22m [2m(326/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k04.D1A0V8lO_ZniIFt.webp [2m(reused cache entry)[22m [2m(+65ms)[22m [2m(327/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k03.COmqPS7i_Z1jszQF.webp [2m(reused cache entry)[22m [2m(+65ms)[22m [2m(328/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k04.DP1byW-y_Z1g8YMd.webp [2m(reused cache entry)[22m [2m(+45ms)[22m [2m(329/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_Z15Gj8l.webp [2m(reused cache entry)[22m [2m(+67ms)[22m [2m(330/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_Z18nAff.webp [2m(reused cache entry)[22m [2m(+78ms)[22m [2m(331/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_1S5RC9.webp [2m(reused cache entry)[22m [2m(+60ms)[22m [2m(332/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k05.tRuKtDlt_63riV.webp [2m(reused cache entry)[22m [2m(+60ms)[22m [2m(333/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k00.CYgFl1an_WrJY9.webp [2m(reused cache entry)[22m [2m(+42ms)[22m [2m(334/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_2htEQ3.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(335/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k02.Dm1pDa1D_Z2uXt0I.webp [2m(reused cache entry)[22m [2m(+74ms)[22m [2m(336/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k04.D1A0V8lO_5kIUU.webp [2m(reused cache entry)[22m [2m(+59ms)[22m [2m(337/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k03.COmqPS7i_18zfCE.webp [2m(reused cache entry)[22m [2m(+60ms)[22m [2m(338/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k04.DP1byW-y_Z1PHIoh.webp [2m(reused cache entry)[22m [2m(+51ms)[22m [2m(339/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_2m8b7k.webp [2m(reused cache entry)[22m [2m(+25ms)[22m [2m(340/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_Og0OD.webp [2m(reused cache entry)[22m [2m(+35ms)[22m [2m(341/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k01.BLdvRuRp_ZN6E5i.webp [2m(reused cache entry)[22m [2m(+71ms)[22m [2m(342/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k05.tRuKtDlt_26CyYa.webp [2m(reused cache entry)[22m [2m(+32ms)[22m [2m(343/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_LsYb9.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(344/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_Z1bE7YM.webp [2m(reused cache entry)[22m [2m(+47ms)[22m [2m(345/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k02.Dm1pDa1D_Z2UCvo.webp [2m(reused cache entry)[22m [2m(+61ms)[22m [2m(346/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k00.CYgFl1an_Z27ag9y.webp [2m(reused cache entry)[22m [2m(+80ms)[22m [2m(347/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k04.D1A0V8lO_25TQB9.webp [2m(reused cache entry)[22m [2m(+88ms)[22m [2m(348/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k04.DP1byW-y_9QogW.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(349/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage.DqUPpDZW_9dNHl.webp [2m(reused cache entry)[22m [2m(+119ms)[22m [2m(350/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k03.COmqPS7i_1vY5hz.webp [2m(reused cache entry)[22m [2m(+105ms)[22m [2m(351/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k01.BLdvRuRp_1csszV.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(352/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_Z1Xvg0P.webp [2m(reused cache entry)[22m [2m(+117ms)[22m [2m(353/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_1FRBup.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(354/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_1oEHXy.webp [2m(reused cache entry)[22m [2m(+136ms)[22m [2m(355/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_1pTG54.webp [2m(reused cache entry)[22m [2m(+157ms)[22m [2m(356/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-origins-k02.Dm1pDa1D_gFzpA.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(357/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_ZzPFiC.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(358/571)[22m
+[2m08:02:15[22m   [32m▶[39m /_astro/foto-bitwa-morska.He1W535l_1B791C.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(359/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-karaiby-mapa.D6RSb5sH_Z21U9MU.webp [2m(reused cache entry)[22m [2m(+223ms)[22m [2m(360/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins-k03.COmqPS7i_Z1xCUQ8.webp [2m(reused cache entry)[22m [2m(+224ms)[22m [2m(361/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k05.CIrVGxu0_Ztkyh6.webp [2m(reused cache entry)[22m [2m(+229ms)[22m [2m(362/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_Z23VTxE.webp [2m(reused cache entry)[22m [2m(+217ms)[22m [2m(363/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-la-buse.BlA3ZSgD_hiQqd.webp [2m(reused cache entry)[22m [2m(+261ms)[22m [2m(364/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_1H2lwo.webp [2m(reused cache entry)[22m [2m(+219ms)[22m [2m(365/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_laPmS.webp [2m(reused cache entry)[22m [2m(+193ms)[22m [2m(366/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-mirage-k00.v3tHsw_U_Z2ttc2S.webp [2m(reused cache entry)[22m [2m(+197ms)[22m [2m(367/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k01.CbyhiOTw_Z7YeK1.webp [2m(reused cache entry)[22m [2m(+272ms)[22m [2m(368/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_Z2Aqbh.webp [2m(reused cache entry)[22m [2m(+218ms)[22m [2m(369/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k05.CIrVGxu0_1AVQeP.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(370/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_1ynPsQ.webp [2m(reused cache entry)[22m [2m(+106ms)[22m [2m(371/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-karaiby-mapa.D6RSb5sH_13C0KR.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(372/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins-k02.Dm1pDa1D_2hfH5O.webp [2m(reused cache entry)[22m [2m(+275ms)[22m [2m(373/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-la-buse.BlA3ZSgD_1pO48f.webp [2m(reused cache entry)[22m [2m(+107ms)[22m [2m(374/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-bitwa-morska.He1W535l_ZTpCb.webp [2m(reused cache entry)[22m [2m(+256ms)[22m [2m(375/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k01.CbyhiOTw_ZW8Y23.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(376/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_ZE4dKr.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(377/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rodowod.Bh1cf3cj_12ERrk.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(378/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-odyssey.vwyO76Ee_1piGtt.webp [2m(reused cache entry)[22m [2m(+152ms)[22m [2m(379/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-signoria.nC1Wx0uW_25xDeb.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(380/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k05.CIrVGxu0_1rrRUS.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(381/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_1dKevx.webp [2m(reused cache entry)[22m [2m(+137ms)[22m [2m(382/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-karaiby-mapa.D6RSb5sH_Z1KYPxk.webp [2m(reused cache entry)[22m [2m(+134ms)[22m [2m(383/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-la-buse.BlA3ZSgD_ZKvlS7.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(384/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k01.CbyhiOTw_Z2ovUgy.webp [2m(reused cache entry)[22m [2m(+106ms)[22m [2m(385/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-bitwa-morska.He1W535l_aXNj2.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(386/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-valhalla.Bc41r_Qo_pex5I.webp [2m(reused cache entry)[22m [2m(+137ms)[22m [2m(387/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_1GokVh.webp [2m(reused cache entry)[22m [2m(+202ms)[22m [2m(388/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rodowod.Bh1cf3cj_2i1s84.webp [2m(reused cache entry)[22m [2m(+170ms)[22m [2m(389/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k02.BBjrpaTl_ZP9jYj.webp [2m(reused cache entry)[22m [2m(+196ms)[22m [2m(390/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-revelations-k05.CIrVGxu0_Z17qKOA.webp [2m(reused cache entry)[22m [2m(+127ms)[22m [2m(391/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-signoria.nC1Wx0uW_1IiNi2.webp [2m(reused cache entry)[22m [2m(+151ms)[22m [2m(392/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_1Ab1MH.webp [2m(reused cache entry)[22m [2m(+103ms)[22m [2m(393/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_ZLhD4k.webp [2m(reused cache entry)[22m [2m(+132ms)[22m [2m(394/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-karaiby-mapa.D6RSb5sH_Z1dGsY.webp [2m(reused cache entry)[22m [2m(+154ms)[22m [2m(395/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_Z2lDSQ8.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(396/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k07.Qoqnqndb_1O1u0Q.webp [2m(reused cache entry)[22m [2m(+185ms)[22m [2m(397/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rodowod.Bh1cf3cj_Z2ajEFS.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(398/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-bitwa-morska.He1W535l_ZACuiH.webp [2m(reused cache entry)[22m [2m(+197ms)[22m [2m(399/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k04.DcvFLtqM_gqMQm.webp [2m(reused cache entry)[22m [2m(+128ms)[22m [2m(400/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k02.BBjrpaTl_Z1y0bhS.webp [2m(reused cache entry)[22m [2m(+136ms)[22m [2m(401/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k03.DfPx9TjT_oMXx1.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(402/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_ZTOvko.webp [2m(reused cache entry)[22m [2m(+139ms)[22m [2m(403/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k02.fIdv_axg_Z1uUii0.webp [2m(reused cache entry)[22m [2m(+156ms)[22m [2m(404/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_1oIbL4.webp [2m(reused cache entry)[22m [2m(+153ms)[22m [2m(405/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-signoria.nC1Wx0uW_Z1ylRtF.webp [2m(reused cache entry)[22m [2m(+170ms)[22m [2m(406/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k07.Qoqnqndb_16aCHh.webp [2m(reused cache entry)[22m [2m(+88ms)[22m [2m(407/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-origins.DvVKWico_UkarG.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(408/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-nowy-jork-1750.rVyNd-1H_11iAse.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(409/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k02.BBjrpaTl_2pkQau.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(410/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k05.L-tw6Y51_27T8dp.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(411/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k03.DfPx9TjT_1wm8e5.webp [2m(reused cache entry)[22m [2m(+111ms)[22m [2m(412/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k04.DcvFLtqM_1nYWxq.webp [2m(reused cache entry)[22m [2m(+137ms)[22m [2m(413/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-japonia.DfhHMfMT_Z157I8z.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(414/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_Z1sF2z2.webp [2m(reused cache entry)[22m [2m(+151ms)[22m [2m(415/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k02.fIdv_axg_Znm8AV.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(416/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-pirates.BOCO_cQA_Z15ShkK.webp [2m(reused cache entry)[22m [2m(+156ms)[22m [2m(417/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/wlochy-k07.Qoqnqndb_Z1BxbEj.webp [2m(reused cache entry)[22m [2m(+155ms)[22m [2m(418/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k05.L-tw6Y51_Z1K4vxq.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(419/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-signoria.nC1Wx0uW_Z18hj6A.webp [2m(reused cache entry)[22m [2m(+172ms)[22m [2m(420/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k03.DfPx9TjT_Z2mLc8F.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(421/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k07.DHn447ry_4E0Bg.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(422/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-nowy-jork-1750.rVyNd-1H_1gk88x.webp [2m(reused cache entry)[22m [2m(+146ms)[22m [2m(423/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k04.DcvFLtqM_Z1wPtu4.webp [2m(reused cache entry)[22m [2m(+111ms)[22m [2m(424/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/londyn-k07.CnZOff5I_1VdeTI.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(425/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k05.L-tw6Y51_Z9PaHI.webp [2m(reused cache entry)[22m [2m(+49ms)[22m [2m(426/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-japonia.DfhHMfMT_Zf2N9r.webp [2m(reused cache entry)[22m [2m(+123ms)[22m [2m(427/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k07.DHn447ry_1gRuEm.webp [2m(reused cache entry)[22m [2m(+43ms)[22m [2m(428/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k02.fIdv_axg_ZES1eX.webp [2m(reused cache entry)[22m [2m(+93ms)[22m [2m(429/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_2djiYW.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(430/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k03.DfPx9TjT_M7J8P.webp [2m(reused cache entry)[22m [2m(+73ms)[22m [2m(431/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-unity-k01.D5dWUyoy_1LHWHx.webp [2m(reused cache entry)[22m [2m(+74ms)[22m [2m(432/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_ZmIcMD.webp [2m(reused cache entry)[22m [2m(+139ms)[22m [2m(433/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/londyn-k05.YbFEQs5Y_Z1DKxh8.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(434/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/londyn-k07.CnZOff5I_ZjtmWx.webp [2m(reused cache entry)[22m [2m(+75ms)[22m [2m(435/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k04.DcvFLtqM_1C3rMr.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(436/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-nowy-jork-1750.rVyNd-1H_Z11Uz4E.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(437/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-japonia.DfhHMfMT_IksOO.webp [2m(reused cache entry)[22m [2m(+102ms)[22m [2m(438/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k05.L-tw6Y51_ZOCuv1.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(439/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/japonia-k07.DHn447ry_2i3P2Q.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(440/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_Z2ujuV5.webp [2m(reused cache entry)[22m [2m(+83ms)[22m [2m(441/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-rogue-k02.fIdv_axg_2u0U2x.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(442/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/londyn-k05.YbFEQs5Y_1aIXEx.webp [2m(reused cache entry)[22m [2m(+82ms)[22m [2m(443/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_Tx0p7.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(444/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-paryz-1739.DlX5Kga1_HQw1N.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(445/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/londyn-k07.CnZOff5I_Z1P3u2y.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(446/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/assassins-creed-unity-k01.D5dWUyoy_Z2aU1pk.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(447/571)[22m
+[2m08:02:16[22m   [32m▶[39m /_astro/foto-japonia.DfhHMfMT_ZS2A5D.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(448/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-nowy-jork-1750.rVyNd-1H_Zm6TTx.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(449/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/japonia-k07.DHn447ry_1Cgvfy.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(450/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k02.CYmWoCrG_1pKC2T.webp [2m(reused cache entry)[22m [2m(+145ms)[22m [2m(451/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/londyn-k05.YbFEQs5Y_Z1f3N3q.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(452/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/discovery.BoZ1V6dt_Z2mAF7R.webp [2m(reused cache entry)[22m [2m(+162ms)[22m [2m(453/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_1OpGM0.webp [2m(reused cache entry)[22m [2m(+146ms)[22m [2m(454/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-paryz-1739.DlX5Kga1_Z9mjLO.webp [2m(reused cache entry)[22m [2m(+166ms)[22m [2m(455/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_Z1TCY4l.webp [2m(reused cache entry)[22m [2m(+191ms)[22m [2m(456/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/londyn-k07.CnZOff5I_Z24gkm1.webp [2m(reused cache entry)[22m [2m(+157ms)[22m [2m(457/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k02.C4LcvsQa_Z2NHDE.webp [2m(reused cache entry)[22m [2m(+195ms)[22m [2m(458/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k01.D5dWUyoy_1xlssX.webp [2m(reused cache entry)[22m [2m(+184ms)[22m [2m(459/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k02.CYmWoCrG_Z2wRm4X.webp [2m(reused cache entry)[22m [2m(+99ms)[22m [2m(460/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/londyn-k05.YbFEQs5Y_Z1tgDmS.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(461/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k00.B9jE-1zq_2qQQUF.webp [2m(reused cache entry)[22m [2m(+109ms)[22m [2m(462/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k02.DHy2Mlrc_ZCzyAY.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(463/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_Z1Ozz1m.webp [2m(reused cache entry)[22m [2m(+58ms)[22m [2m(464/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k01.CI-bFRel_1XEnM.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(465/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/wlochy-k04.Cw3pcoDp_IWFgJ.webp [2m(reused cache entry)[22m [2m(+65ms)[22m [2m(466/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_2cUDOG.webp [2m(reused cache entry)[22m [2m(+94ms)[22m [2m(467/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-paryz-1739.DlX5Kga1_2dTbeo.webp [2m(reused cache entry)[22m [2m(+101ms)[22m [2m(468/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k04.BWASFU-n_QyTvx.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(469/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k01.D5dWUyoy_ZmVJ3s.webp [2m(reused cache entry)[22m [2m(+81ms)[22m [2m(470/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k00.B9jE-1zq_2q8Dpq.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(471/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k02.C4LcvsQa_Z3wV9T.webp [2m(reused cache entry)[22m [2m(+107ms)[22m [2m(472/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k02.CYmWoCrG_y6fs1.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(473/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k02.DHy2Mlrc_ZE2fHy.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(474/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_Z18cNKS.webp [2m(reused cache entry)[22m [2m(+102ms)[22m [2m(475/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/wlochy-k04.Cw3pcoDp_16NXa.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(476/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_23jdxJ.webp [2m(reused cache entry)[22m [2m(+96ms)[22m [2m(477/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-nintendo-ds.kh1I9nes_2e3uRt.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(478/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-paryz-1739.DlX5Kga1_ZFplaN.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(479/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k04.BWASFU-n_P7doX.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(480/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k01.CI-bFRel_vXhd.webp [2m(reused cache entry)[22m [2m(+175ms)[22m [2m(481/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k02.C4LcvsQa_ZncKEV.webp [2m(reused cache entry)[22m [2m(+118ms)[22m [2m(482/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k00.B9jE-1zq_pV90d.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(483/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity-k02.CYmWoCrG_Z1mbW4p.webp [2m(reused cache entry)[22m [2m(+129ms)[22m [2m(484/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k02.DHy2Mlrc_12zl2j.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(485/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_2gfm.webp [2m(reused cache entry)[22m [2m(+131ms)[22m [2m(486/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/wlochy-k04.Cw3pcoDp_oTx8F.webp [2m(reused cache entry)[22m [2m(+139ms)[22m [2m(487/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-nintendo-ds.kh1I9nes_7yVtO.webp [2m(reused cache entry)[22m [2m(+135ms)[22m [2m(488/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_Z1Guzh.webp [2m(reused cache entry)[22m [2m(+163ms)[22m [2m(489/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k01.D0h8-OgD_Z2wQDrq.webp [2m(reused cache entry)[22m [2m(+183ms)[22m [2m(490/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k04.BWASFU-n_1AAPua.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(491/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k02.C4LcvsQa_Z5XsMX.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(492/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k01.CI-bFRel_1jaRDs.webp [2m(reused cache entry)[22m [2m(+133ms)[22m [2m(493/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k02.DHy2Mlrc_ZcowCD.webp [2m(reused cache entry)[22m [2m(+91ms)[22m [2m(494/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k00.B9jE-1zq_HaqRb.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(495/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k03.sCqXLQgy_c181l.webp [2m(reused cache entry)[22m [2m(+129ms)[22m [2m(496/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_Z1plFI7.webp [2m(reused cache entry)[22m [2m(+105ms)[22m [2m(497/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k03.Bp4Z262I_Z1NBtSs.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(498/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k12.D06RAzJo_Z4r1Q4.webp [2m(reused cache entry)[22m [2m(+104ms)[22m [2m(499/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k01.D0h8-OgD_2wBgQg.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(500/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k04.BWASFU-n_lBWOd.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(501/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-nintendo-ds.kh1I9nes_Z1GH0lE.webp [2m(reused cache entry)[22m [2m(+160ms)[22m [2m(502/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k08.Bj4EZLgy_ZvG4CW.webp [2m(reused cache entry)[22m [2m(+94ms)[22m [2m(503/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k03.sCqXLQgy_bhTv6.webp [2m(reused cache entry)[22m [2m(+86ms)[22m [2m(504/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_JYu5Y.webp [2m(reused cache entry)[22m [2m(+79ms)[22m [2m(505/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_2ikfTU.webp [2m(reused cache entry)[22m [2m(+162ms)[22m [2m(506/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k03.Bp4Z262I_Z1QsWQi.webp [2m(reused cache entry)[22m [2m(+94ms)[22m [2m(507/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k02.JKvjmy6v_1go1Mq.webp [2m(reused cache entry)[22m [2m(+139ms)[22m [2m(508/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_WEPfq.webp [2m(reused cache entry)[22m [2m(+112ms)[22m [2m(509/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k01.D0h8-OgD_Z1mHsaN.webp [2m(reused cache entry)[22m [2m(+98ms)[22m [2m(510/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-nintendo-ds.kh1I9nes_1l6Ah4.webp [2m(reused cache entry)[22m [2m(+68ms)[22m [2m(511/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k12.D06RAzJo_jdzuS.webp [2m(reused cache entry)[22m [2m(+151ms)[22m [2m(512/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok-k01.CI-bFRel_4bYXv.webp [2m(reused cache entry)[22m [2m(+204ms)[22m [2m(513/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry-k02.CDOIoIIL_1jQSpA.webp [2m(reused cache entry)[22m [2m(+106ms)[22m [2m(514/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k08.Bj4EZLgy_Z1kPNTY.webp [2m(reused cache entry)[22m [2m(+129ms)[22m [2m(515/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-unity.DarR6vfX_ZzqYNl.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(516/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_14po9w.webp [2m(reused cache entry)[22m [2m(+146ms)[22m [2m(517/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k02.JKvjmy6v_1dfvzG.webp [2m(reused cache entry)[22m [2m(+131ms)[22m [2m(518/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k03.sCqXLQgy_24qll8.webp [2m(reused cache entry)[22m [2m(+175ms)[22m [2m(519/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k01.D0h8-OgD_Z15taiP.webp [2m(reused cache entry)[22m [2m(+122ms)[22m [2m(520/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry-k05.DmzK46-a_Z1tJ6DF.webp [2m(reused cache entry)[22m [2m(+144ms)[22m [2m(521/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry-k02.CDOIoIIL_2tqKJU.webp [2m(reused cache entry)[22m [2m(+83ms)[22m [2m(522/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_23hp1N.webp [2m(reused cache entry)[22m [2m(+157ms)[22m [2m(523/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k08.Bj4EZLgy_NiDLh.webp [2m(reused cache entry)[22m [2m(+72ms)[22m [2m(524/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/dawn-of-ragnarok.CZs5Ndwy_1kC94.webp [2m(reused cache entry)[22m [2m(+66ms)[22m [2m(525/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/mapa-miejsc-historycznych.C-bfgm42_ZxMnr7.webp [2m(reused cache entry)[22m [2m(+95ms)[22m [2m(526/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-brotherhood-k12.D06RAzJo_Zs963s.webp [2m(reused cache entry)[22m [2m(+165ms)[22m [2m(527/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k02.JKvjmy6v_iS3Hl.webp [2m(reused cache entry)[22m [2m(+94ms)[22m [2m(528/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-valhalla-k03.sCqXLQgy_2lEDd6.webp [2m(reused cache entry)[22m [2m(+92ms)[22m [2m(529/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-delfy.CWqNjy4A_Z1YTSYv.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(530/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/foto-stonehenge.CNGtk5sP_Z1Xn1cl.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(531/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry-k02.CDOIoIIL_Z2lfiUe.webp [2m(reused cache entry)[22m [2m(+114ms)[22m [2m(532/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k06.BXYPwG3s_Z1gD9Mp.webp [2m(reused cache entry)[22m [2m(+124ms)[22m [2m(533/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_Z1WYc7f.webp [2m(reused cache entry)[22m [2m(+130ms)[22m [2m(534/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/mapa-miejsc-historycznych.C-bfgm42_1eIPoV.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(535/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-revelations-k02.JKvjmy6v_27j9uz.webp [2m(reused cache entry)[22m [2m(+115ms)[22m [2m(536/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/freedom-cry-k05.DmzK46-a_1OCYe9.webp [2m(reused cache entry)[22m [2m(+199ms)[22m [2m(537/571)[22m
+[2m08:02:17[22m   [32m▶[39m /_astro/assassins-creed-origins-k01.VasZqgbF_2odAIO.webp [2m(reused cache entry)[22m [2m(+155ms)[22m [2m(538/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-stonehenge.CNGtk5sP_46tQN.webp [2m(reused cache entry)[22m [2m(+136ms)[22m [2m(539/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-delfy.CWqNjy4A_Z1WLFrs.webp [2m(reused cache entry)[22m [2m(+156ms)[22m [2m(540/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/chronicles-india-k02.ChRa_lmJ_2iJ3q2.webp [2m(reused cache entry)[22m [2m(+173ms)[22m [2m(541/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry-k02.CDOIoIIL_Z2kMdHB.webp [2m(reused cache entry)[22m [2m(+148ms)[22m [2m(542/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k00.BRcu7yk1_AdovA.webp [2m(reused cache entry)[22m [2m(+202ms)[22m [2m(543/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k06.BXYPwG3s_1boFGU.webp [2m(reused cache entry)[22m [2m(+152ms)[22m [2m(544/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_Z2iItnu.webp [2m(reused cache entry)[22m [2m(+153ms)[22m [2m(545/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry-k05.DmzK46-a_Z1lNRph.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(546/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/poradniki.CzfKoem4_ZqRkys.webp [2m(reused cache entry)[22m [2m(+218ms)[22m [2m(547/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k01.VasZqgbF_ZdUGzM.webp [2m(reused cache entry)[22m [2m(+129ms)[22m [2m(548/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-stonehenge.CNGtk5sP_1iYccr.webp [2m(reused cache entry)[22m [2m(+120ms)[22m [2m(549/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-delfy.CWqNjy4A_Z23QqTM.webp [2m(reused cache entry)[22m [2m(+116ms)[22m [2m(550/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/chronicles-india-k02.ChRa_lmJ_2hhmjs.webp [2m(reused cache entry)[22m [2m(+121ms)[22m [2m(551/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k00.BRcu7yk1_Z21USN1.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(552/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/mapa-miejsc-historycznych.C-bfgm42_Z2x11zU.webp [2m(reused cache entry)[22m [2m(+256ms)[22m [2m(553/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k06.BXYPwG3s_Z27zNme.webp [2m(reused cache entry)[22m [2m(+142ms)[22m [2m(554/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k01.VasZqgbF_Ze9kYF.webp [2m(reused cache entry)[22m [2m(+87ms)[22m [2m(555/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_2au3pu.webp [2m(reused cache entry)[22m [2m(+149ms)[22m [2m(556/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-stonehenge.CNGtk5sP_1QHOjQ.webp [2m(reused cache entry)[22m [2m(+97ms)[22m [2m(557/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/chronicles-india-k02.ChRa_lmJ_CX4k0.webp [2m(reused cache entry)[22m [2m(+94ms)[22m [2m(558/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/foto-delfy.CWqNjy4A_19UYJe.webp [2m(reused cache entry)[22m [2m(+126ms)[22m [2m(559/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k00.BRcu7yk1_Zc3WHv.webp [2m(reused cache entry)[22m [2m(+113ms)[22m [2m(560/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/poradniki.CzfKoem4_ZKgiQB.webp [2m(reused cache entry)[22m [2m(+181ms)[22m [2m(561/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/mapa-miejsc-historycznych.C-bfgm42_1gBbjl.webp [2m(reused cache entry)[22m [2m(+108ms)[22m [2m(562/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-odyssey-k06.BXYPwG3s_Z70FG0.webp [2m(reused cache entry)[22m [2m(+100ms)[22m [2m(563/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_GKBl9.webp [2m(reused cache entry)[22m [2m(+93ms)[22m [2m(564/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k01.VasZqgbF_1LpLFy.webp [2m(reused cache entry)[22m [2m(+117ms)[22m [2m(565/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/assassins-creed-origins-k00.BRcu7yk1_1Nv9WI.webp [2m(reused cache entry)[22m [2m(+59ms)[22m [2m(566/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/poradniki.CzfKoem4_2wJ7la.webp [2m(reused cache entry)[22m [2m(+53ms)[22m [2m(567/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/mapa-miejsc-historycznych.C-bfgm42_1pBSnf.webp [2m(reused cache entry)[22m [2m(+51ms)[22m [2m(568/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/chronicles-india-k02.ChRa_lmJ_ZB0NkW.webp [2m(reused cache entry)[22m [2m(+125ms)[22m [2m(569/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_1TYrDA.webp [2m(reused cache entry)[22m [2m(+67ms)[22m [2m(570/571)[22m
+[2m08:02:18[22m   [32m▶[39m /_astro/freedom-cry.5zbJ9HFq_Z1CV9Ac.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(571/571)[22m
+[2m08:02:18[22m [32m✓ Completed in 6.97s.
+[39m
+[2m08:02:18[22m [34m[build][39m [32m✓ Completed in 9.48s.[39m
+[2m08:02:18[22m [34m[@astrojs/sitemap][39m `sitemap-index.xml` created at `dist`
+[2m08:02:18[22m [34m[factory:after-build][39m h1: 32 stron, na każdej dokładnie jeden nagłówek
+[2m08:02:18[22m [34m[factory:anchors][39m kotwice: 32 stron, każda kotwica ma cel, żaden id się nie powtarza
+[2m08:02:18[22m [34m[factory:links][39m linki: 32 stron, 979 linków wewnętrznych, każdy na adres ze struktury (32 stron) albo istniejący plik
+[2m08:02:18[22m [34m[factory:corridor][39m korytarz: 32 stron — w korytarzu 28, bez korytarza (null w umowie) 4; znaki bez spacji
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-1/: 8060 w 6724–9098
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-2/: 7327 w 5768–7803
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-3/: 6880 w 5576–7544
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-4-black-flag/: 7577 w 5615–7598
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-bloodlines/: 3844 w 3196–4325
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-brotherhood/: 5950 w 4715–6380
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-chronicles/: 6243 w 4848–6559
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-world-war-2/: 3803 w 2825–3823
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-liberation/: 8765 w 6825–9234
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-mirage/: 8968 w 7579–10254
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-odyssey/: 5751 w 4439–6006
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-origins/: 4241 w 3261–4413
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-pirates/: 3384 w 2590–3505
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-revelations/: 4481 w 3553–4807
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-lineage/: 4605 w 4053–5483
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-rogue/: 13950 w 12542–16970
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-shadows/: 5181 w 4053–5483
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-syndicate/: 4846 w 3758–5084
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-unity/: 6084 w 4691–6346
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-valhalla/: 5015 w 3560–5015
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-free/: 668 w 493–668
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-valhalla/dawn-of-ragnarok/: 3439 w 2685–3632
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-2/discovery/: 3416 w 2559–3463
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-valhalla/eivor/: 4866 w 3480–4866
+[2m08:02:18[22m [34m[factory:corridor][39m   /ezio-auditore/: 4590 w 3156–4590
+[2m08:02:18[22m [34m[factory:corridor][39m   /assassins-creed-4-black-flag/freedom-cry/: 3805 w 2852–3858
+[2m08:02:18[22m [34m[factory:corridor][39m   /historical-locations-map/: 3031 w 2203–3031
+[2m08:02:18[22m [34m[factory:corridor][39m   /guides/where-to-start/: 12548 w 7977–12991
+[2m08:02:18[22m [34m[factory:corridor][39m   /: 4533 — bez korytarza, liczba do raportu
+[2m08:02:18[22m [34m[factory:corridor][39m   /404/: 551 — bez korytarza, liczba do raportu
+[2m08:02:18[22m [34m[factory:corridor][39m   /guides/: 2022 — bez korytarza, liczba do raportu
+[2m08:02:18[22m [34m[factory:corridor][39m   /privacy/: 2472 — bez korytarza, liczba do raportu
+[2m08:02:18[22m [34m[factory:art][39m art: 32 strony, każdy klucz artu rozwiązał się w plik — zapasu i pustych ram nie ma; ram galerii 52, rzędów z kadrem 150, bohaterów 29
+[2m08:02:18[22m [34m[build][39m 32 page(s) built in [1m11.58s[22m
+[2m08:02:18[22m [34m[build][39m [1mComplete![22m

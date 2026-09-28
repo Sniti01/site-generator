@@ -1,0 +1,7 @@
+файлов разобрано (HTML, SVG, CSS, JS): 20
+внешних загрузок: 0
+подозрений в исполняемом JS: 0
+загрузок по абсолютному адресу своего хоста (ушли бы на боевой сайт): 0
+внешних ссылок <a> (переходы, не загрузки): 2
+  /gameplay/index.html: https://www.rockstargames.com/videos/ka956139
+  /media/index.html: https://www.youtube.com/rockstargames

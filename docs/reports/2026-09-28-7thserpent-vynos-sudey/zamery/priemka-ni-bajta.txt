@@ -1,0 +1,27 @@
+---- первый сайт против main (git diff --stat):
+(пусто — ни байта)
+---- ядро против main (A — новый файл, M — изменён):
+A	core/gates/exceptions.mjs
+A	core/gates/head.d.mts
+A	core/gates/head.mjs
+A	core/gates/head.test.mjs
+A	core/gates/masters.d.mts
+A	core/gates/masters.mjs
+A	core/gates/masters.test.mjs
+A	core/gates/phrases.d.mts
+A	core/gates/phrases.mjs
+A	core/gates/phrases.test.mjs
+M	core/package.json
+A	core/text/corpus.d.mts
+A	core/text/corpus.mjs
+A	core/text/corpus.test.mjs
+A	core/text/extract.d.mts
+A	core/text/extract.mjs
+A	core/text/extract.test.mjs
+A	core/text/html.d.mts
+A	core/text/html.mjs
+A	core/text/words.d.mts
+A	core/text/words.mjs
+A	core/text/words.test.mjs
+---- корень репозитория против main (package.json, package-lock.json, .gitattributes):
+M	package-lock.json

@@ -1,0 +1,10 @@
+build                  код 0
+check                  код 0
+accept                 код 0
+tree-check             код 0
+brief-check            код 0
+dist-protiv-main       только в main 14, только в сессии 0, различаются 0
+build-ac4bf            код 0
+dist-ac4bf-protiv-main только в main 0, только в сессии 0, различаются 0
+ni-bajta               первый сайт: ни байта
+okonchaniya            файлов 79, не LF 0, после перенормализации дерево чистое

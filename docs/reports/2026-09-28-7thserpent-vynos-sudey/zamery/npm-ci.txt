@@ -1,0 +1,17 @@
+$ npm ci --offline --no-audit --no-fund
+(отдельное рабочее дерево git на коммите 3e46eb6 — последний коммит перед приёмкой; пакеты — из кеша npm, без сети;
+вывод — через PowerShell 5.1: обёртка NativeCommandError вокруг предупреждения npm — от PowerShell, не ошибка npm)
+код выхода: 0; git status --short после — пусто
+
+added 293 packages in 12s
+node.exe : npm warn allow-scripts 1 package has install scripts not yet covered by allowScripts:
+At line:1 char:1
++ & "C:\Users\MSI\google-del/node.exe" "C:\Users\MSI\google-del/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (npm warn allow-...y allowScripts::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+npm warn allow-scripts   esbuild@0.28.2 (postinstall: node install.js)
+npm warn allow-scripts
+npm warn allow-scripts Run `npm approve-scripts --allow-scripts-pending` to review, or `npm approve-scripts <pkg>` to
+allow.

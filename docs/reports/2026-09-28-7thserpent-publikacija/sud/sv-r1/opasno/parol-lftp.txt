@@ -1,0 +1,5 @@
+пароль образца: Kq7"mZ;v9Tr2 (в нём «"» и «;»)
+строка lftp после bash: $LFTP_SET open -u "ax572417_serpent","Kq7"mZ;v9Tr2" -p "21" ftp://ax572417.ftp.tools; cls -1 -a -F; bye
+модель: open получает -u «ax572417_serpent,Kq7mZ» — пароль обрезан
+модель: неизвестная команда «v9Tr2 -p 21 ftp://ax572417.ftp.tools; cls -1 -a -F; bye» → lftp печатает её имя в журнал (Unknown command) — это кусок пароля «v9Tr2», маскировка GitHub ловит только значение секрета целиком
+модель: кавычка в конце НЕ закрыта

@@ -1,0 +1,1552 @@
+TAP version 13
+# Subtest: секреты: все шесть, пользователи разные — проход
+ok 1 - секреты: все шесть, пользователи разные — проход
+  ---
+  duration_ms: 2.3076
+  type: 'test'
+  ...
+# Subtest: секреты: нет пароля — отказ
+ok 2 - секреты: нет пароля — отказ
+  ---
+  duration_ms: 0.2609
+  type: 'test'
+  ...
+# Subtest: секреты: пароль из пробелов — отказ
+ok 3 - секреты: пароль из пробелов — отказ
+  ---
+  duration_ms: 0.1272
+  type: 'test'
+  ...
+# Subtest: секреты: нет хоста — отказ
+ok 4 - секреты: нет хоста — отказ
+  ---
+  duration_ms: 0.0942
+  type: 'test'
+  ...
+# Subtest: секреты: SV1-Z-4 нет ключа корпуса — отказ
+not ok 5 - секреты: SV1-Z-4 нет ключа корпуса — отказ
+  ---
+  duration_ms: 0.9339
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:50:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:52:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: секреты: порт не число — отказ
+ok 6 - секреты: порт не число — отказ
+  ---
+  duration_ms: 0.1291
+  type: 'test'
+  ...
+# Subtest: секреты: SV1-O-6 логин с кавычкой — отказ
+not ok 7 - секреты: SV1-O-6 логин с кавычкой — отказ
+  ---
+  duration_ms: 0.2204
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:50:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:52:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: секреты: SV1-O-6 хост с пробелом — отказ
+not ok 8 - секреты: SV1-O-6 хост с пробелом — отказ
+  ---
+  duration_ms: 0.1645
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:50:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:52:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: секреты: пользователь = пользователь первого сайта — отказ
+ok 9 - секреты: пользователь = пользователь первого сайта — отказ
+  ---
+  duration_ms: 0.14
+  type: 'test'
+  ...
+# Subtest: секреты: пользователь = первого сайта, другой регистр и пробел — отказ
+ok 10 - секреты: пользователь = первого сайта, другой регистр и пробел — отказ
+  ---
+  duration_ms: 0.208
+  type: 'test'
+  ...
+# Subtest: секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ
+ok 11 - секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ
+  ---
+  duration_ms: 0.1025
+  type: 'test'
+  ...
+# Subtest: SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD)
+ok 12 - SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD)
+  ---
+  duration_ms: 0.151
+  type: 'test'
+  ...
+# Subtest: SV1-O-2 первая выкладка: вход on или на сервере нет нашего index.html
+not ok 13 - SV1-O-2 первая выкладка: вход on или на сервере нет нашего index.html
+  ---
+  duration_ms: 0.3258
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:65:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    нет функции pervayaVykladka
+    + actual - expected
+    
+    + 'undefined'
+    - 'function'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'function'
+  actual: 'undefined'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:67:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: имя не разрешается (оба хоста)
+ok 14 - домен: имя не разрешается (оба хоста)
+  ---
+  duration_ms: 0.3187
+  type: 'test'
+  ...
+# Subtest: домен: заглушка «not configured» через https → http
+ok 15 - домен: заглушка «not configured» через https → http
+  ---
+  duration_ms: 0.1838
+  type: 'test'
+  ...
+# Subtest: домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп
+not ok 16 - домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп
+  ---
+  duration_ms: 0.2631
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    www.7thserpent.com: не привязан — 404 не нашей сборки (хостер) (https://www.7thserpent.com/ — 404) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:106:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп
+not ok 17 - домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп
+  ---
+  duration_ms: 0.432
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    www.7thserpent.com: не привязан — 404 не нашей сборки (хостер) (https://www.7thserpent.com/ — 404) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:106:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп
+not ok 18 - домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп
+  ---
+  duration_ms: 0.1939
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    www.7thserpent.com: не привязан — заглушка хостера «not configured» (https://www.7thserpent.com/ — 404) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:106:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: наша сборка отвечает, первая выкладка — стоп
+ok 19 - домен: наша сборка отвечает, первая выкладка — стоп
+  ---
+  duration_ms: 0.1176
+  type: 'test'
+  ...
+# Subtest: домен: наша сборка отвечает, не первая — проход со строкой
+ok 20 - домен: наша сборка отвечает, не первая — проход со строкой
+  ---
+  duration_ms: 0.0843
+  type: 'test'
+  ...
+# Subtest: домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп
+ok 21 - домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп
+  ---
+  duration_ms: 0.1308
+  type: 'test'
+  ...
+# Subtest: домен: голый хост отвечает парковкой, www не разрешается — первая — стоп
+ok 22 - домен: голый хост отвечает парковкой, www не разрешается — первая — стоп
+  ---
+  duration_ms: 0.08
+  type: 'test'
+  ...
+# Subtest: домен: 403 пустого каталога — первая — стоп
+ok 23 - домен: 403 пустого каталога — первая — стоп
+  ---
+  duration_ms: 0.0974
+  type: 'test'
+  ...
+# Subtest: домен: ошибка сертификата — не понять, первая — стоп
+ok 24 - домен: ошибка сертификата — не понять, первая — стоп
+  ---
+  duration_ms: 0.0889
+  type: 'test'
+  ...
+# Subtest: домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори»
+not ok 25 - домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори»
+  ---
+  duration_ms: 0.198
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: 'www.7thserpent.com: ОТВЕЧАЕТ — ошибка сети TimeoutError — не понять, что за доменом (https://www.7thserpent.com/ — сеть: TimeoutError) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | СТОП: первая выкладка (SERPENT_FIRST=on), а домен уже отвечает — выкладка сделала бы сайт живым раньше ящика (П52 п. 3). Сначала выясни, что отвечает, в панели и Cloudflare.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:107:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать»
+not ok 26 - домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать»
+  ---
+  duration_ms: 0.1367
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: 'www.7thserpent.com: ОТВЕЧАЕТ — ошибка сети EAI_AGAIN — не понять, что за доменом (https://www.7thserpent.com/ — сеть: EAI_AGAIN) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | СТОП: первая выкладка (SERPENT_FIRST=on), а домен уже отвечает — выкладка сделала бы сайт живым раньше ящика (П52 п. 3). Сначала выясни, что отвечает, в панели и Cloudflare.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:107:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп
+not ok 27 - домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп
+  ---
+  duration_ms: 0.1794
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:104:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    www.7thserpent.com: не привязан — имя не разрешается (https://www.7thserpent.com/ — 301 → https://parked.example/ — сеть: ENOTFOUND) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:106:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: домен: петля редиректов — первая — стоп
+ok 28 - домен: петля редиректов — первая — стоп
+  ---
+  duration_ms: 0.0927
+  type: 'test'
+  ...
+# Subtest: папка робота: корень аккаунта с папками доменов
+ok 29 - папка робота: корень аккаунта с папками доменов
+  ---
+  duration_ms: 0.4886
+  type: 'test'
+  ...
+# Subtest: папка робота: папка домена с www/
+ok 30 - папка робота: папка домена с www/
+  ---
+  duration_ms: 0.0977
+  type: 'test'
+  ...
+# Subtest: папка робота: папка домена с WWW/ заглавными
+ok 31 - папка робота: папка домена с WWW/ заглавными
+  ---
+  duration_ms: 0.0579
+  type: 'test'
+  ...
+# Subtest: папка робота: корень первого сайта
+ok 32 - папка робота: корень первого сайта
+  ---
+  duration_ms: 0.1737
+  type: 'test'
+  ...
+# Subtest: папка робота: index.html в списке, содержимого нет
+ok 33 - папка робота: index.html в списке, содержимого нет
+  ---
+  duration_ms: 0.0855
+  type: 'test'
+  ...
+# Subtest: папка робота: SV1-O-1 A1 корень первого сайта без index.html
+not ok 34 - папка робота: SV1-O-1 A1 корень первого сайта без index.html
+  ---
+  duration_ms: 0.1612
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 7, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-1 A2 робот в папке _astro первого сайта
+not ok 35 - папка робота: SV1-O-1 A2 робот в папке _astro первого сайта
+  ---
+  duration_ms: 0.1409
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 3, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-1 A3 сайт на PHP
+not ok 36 - папка робота: SV1-O-1 A3 сайт на PHP
+  ---
+  duration_ms: 0.146
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 3, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-1 A4 Index.html первого сайта
+not ok 37 - папка робота: SV1-O-1 A4 Index.html первого сайта
+  ---
+  duration_ms: 0.1294
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 2, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-1 A5 INDEX.HTML
+not ok 38 - папка робота: SV1-O-1 A5 INDEX.HTML
+  ---
+  duration_ms: 0.1134
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 1, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-1 A6 index.htm
+not ok 39 - папка робота: SV1-O-1 A6 index.htm
+  ---
+  duration_ms: 0.1063
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 1, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-4 A8 папки доменов без отметки типа
+not ok 40 - папка робота: SV1-O-4 A8 папки доменов без отметки типа
+  ---
+  duration_ms: 0.1084
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 3, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN)
+not ok 41 - папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN)
+  ---
+  duration_ms: 0.2565
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 2, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-O-4 A10 www без косой
+not ok 42 - папка робота: SV1-O-4 A10 www без косой
+  ---
+  duration_ms: 0.1172
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    папка робота: записей 1, папок доменов и www нет, первого сайта нет
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:141:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов»
+not ok 43 - папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов»
+  ---
+  duration_ms: 0.1005
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: в корне робота папки с именами доменов (robots.txt) — робот видит аккаунт целиком, а не каталог сайта. Поправь «Каталог доступу» пользователя FTP на 7thserpent.com/www.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: пустой корень
+not ok 44 - папка робота: пустой корень
+  ---
+  duration_ms: 0.0953
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 0, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: пустой корень с CRLF
+not ok 45 - папка робота: пустой корень с CRLF
+  ---
+  duration_ms: 0.0918
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 0, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: пустой вывод lftp (MLSD без ./ ../)
+not ok 46 - папка робота: пустой вывод lftp (MLSD без ./ ../)
+  ---
+  duration_ms: 0.0974
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 0, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: заглушка хостера (index.html без canonical)
+not ok 47 - папка робота: заглушка хостера (index.html без canonical)
+  ---
+  duration_ms: 0.1628
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 1, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: свежий каталог хостера: .well-known/ и cgi-bin/
+not ok 48 - папка робота: свежий каталог хостера: .well-known/ и cgi-bin/
+  ---
+  duration_ms: 0.1007
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 2, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: прежняя наша выкладка
+not ok 49 - папка робота: прежняя наша выкладка
+  ---
+  duration_ms: 0.1464
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 6, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: прежняя наша выкладка и .well-known/ сертификата
+not ok 50 - папка робота: прежняя наша выкладка и .well-known/ сертификата
+  ---
+  duration_ms: 0.1152
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:139:3'
+  failureType: 'testCodeFailure'
+  error: 'папка робота: записей 5, папок доменов и www нет, первого сайта нет'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:142:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: папка робота: отказ не печатает имён доменов аккаунта
+not ok 51 - папка робота: отказ не печатает имён доменов аккаунта
+  ---
+  duration_ms: 0.1358
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:146:1'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: в корне робота папки с именами доменов (7dtd.com.pl, ac4bf-thewatch.com) — робот видит аккаунт целиком, а не каталог сайта. Поправь «Каталог доступу» пользователя FTP на 7thserpent.com/www.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:148:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: index.html до mirror: index.html нет
+ok 52 - index.html до mirror: index.html нет
+  ---
+  duration_ms: 0.1237
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: наш
+ok 53 - index.html до mirror: наш
+  ---
+  duration_ms: 0.0598
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки
+ok 54 - index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки
+  ---
+  duration_ms: 0.0596
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: первого сайта
+ok 55 - index.html до mirror: первого сайта
+  ---
+  duration_ms: 0.0595
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: заглушка хостера без canonical
+ok 56 - index.html до mirror: заглушка хостера без canonical
+  ---
+  duration_ms: 0.055
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: canonical http без www
+ok 57 - index.html до mirror: canonical http без www
+  ---
+  duration_ms: 0.0514
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: canonical страницы, не главной
+ok 58 - index.html до mirror: canonical страницы, не главной
+  ---
+  duration_ms: 0.0948
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: два canonical
+ok 59 - index.html до mirror: два canonical
+  ---
+  duration_ms: 0.0973
+  type: 'test'
+  ...
+# Subtest: index.html до mirror: SV1-Z-6 пустой файл — «пуст или оборван»
+not ok 60 - index.html до mirror: SV1-Z-6 пустой файл — «пуст или оборван»
+  ---
+  duration_ms: 0.158
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:164:3'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: index.html на сервере не наш — canonical нет (ждём ровно https://www.7thserpent.com/). mirror --delete заменил бы чужой сайт или заглушку; если это заглушка хостера — удали её в файловом менеджере панели.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:167:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: index.html до mirror: SV1-Z-6 оборванный файл без <html — «пуст или оборван»
+not ok 61 - index.html до mirror: SV1-Z-6 оборванный файл без <html — «пуст или оборван»
+  ---
+  duration_ms: 0.1544
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:164:3'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: index.html на сервере не наш — canonical нет (ждём ровно https://www.7thserpent.com/). mirror --delete заменил бы чужой сайт или заглушку; если это заглушка хостера — удали её в файловом менеджере панели.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:167:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF
+ok 62 - разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF
+  ---
+  duration_ms: 1.2382
+  type: 'test'
+  ...
+# Subtest: сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ
+not ok 63 - сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ
+  ---
+  duration_ms: 32.0175
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:197:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /norm/. Input:
+    
+    'Error: в списке принятой сборки нет поля fajly'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  error: 'в списке принятой сборки нет поля fajly'
+  stack: |-
+    sverkaDist (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:177:92)
+    file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:213:25
+    getActual (node:assert:580:5)
+    strict.throws (node:assert:728:24)
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:213:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:213:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-Z-1 сборка CI отличается только значениями cid ядра и хешем имени CSS — проход, названо
+not ok 64 - SV1-Z-1 сборка CI отличается только значениями cid ядра и хешем имени CSS — проход, названо
+  ---
+  duration_ms: 155.1635
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:219:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    СТОП: сборка CI не равна принятой (abc1234) — нет 1: _astro/index.Cz6femgl.css; лишние 1: _astro/index.Q1w2E3r4.css; иные байты 3: 404/index.html, index.html, privacy/index.html
+    
+    false !== true
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:225:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI
+not ok 65 - SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI
+  ---
+  duration_ms: 24.9658
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:232:1'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: сборка CI не равна принятой (abc1234) — нет 1: _astro/index.Cz6femgl.css; лишние 1: _astro/index.Q1w2E3r4.css; иные байты 3: 404/index.html, index.html, privacy/index.html'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:240:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления)
+ok 66 - SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления)
+  ---
+  duration_ms: 18.4633
+  type: 'test'
+  ...
+# Subtest: пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ
+not ok 67 - пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ
+  ---
+  duration_ms: 27.3449
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:261:1'
+  failureType: 'testCodeFailure'
+  error: 'СТОП: на сервере не dist/ — файлов локально 9, на сервере 11; нет на сервере: —; лишние: _astro/.nfs000000000284a1c200000017, .in.index.html.; ключевых нет: —'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:272:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: команда: неверные аргументы и нечитаемый вход — код 2
+ok 68 - команда: неверные аргументы и нечитаемый вход — код 2
+  ---
+  duration_ms: 436.2638
+  type: 'test'
+  ...
+# Subtest: команда: папка и index.html — коды 0 и 1; домен пишет признак первой выкладки в GITHUB_OUTPUT
+not ok 69 - команда: папка и index.html — коды 0 и 1; домен пишет признак первой выкладки в GITHUB_OUTPUT
+  ---
+  duration_ms: 358.8244
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:290:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    команды: sekrety | domen | papka <список> [<index.html>] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]
+    
+    
+    2 !== 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:303:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST
+ok 70 - workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST
+  ---
+  duration_ms: 0.16
+  type: 'test'
+  ...
+# Subtest: workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on
+ok 71 - workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on
+  ---
+  duration_ms: 0.1262
+  type: 'test'
+  ...
+# Subtest: SV1-O-2 workflow: первая выкладка — по входу или по серверу; домен и сверка сборки — после сторожа папки, перед выкладкой
+not ok 72 - SV1-O-2 workflow: первая выкладка — по входу или по серверу; домен и сверка сборки — после сторожа папки, перед выкладкой
+  ---
+  duration_ms: 0.15
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:332:1'
+  failureType: 'testCodeFailure'
+  error: "Cannot read properties of undefined (reading 'id')"
+  code: 'ERR_TEST_FAILURE'
+  name: 'TypeError'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:334:18)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл
+not ok 73 - workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл
+  ---
+  duration_ms: 0.1666
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:344:1'
+  failureType: 'testCodeFailure'
+  error: 'set xfer:use-temp-file yes;'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:347:181)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет
+not ok 74 - SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет
+  ---
+  duration_ms: 0.9218
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:350:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input was expected to not match the regular expression /\$SERPENT_FTP_PASSWORD/. Input:
+    
+    '# Выкладка 7thserpent.com на хостинг — GitHub Actions → FTPS (П106; форма deploy-ac4bf.yml, П54 п. 4\n' +
+      '# и его дополнение).\n' +
+      '#\n' +
+      '# ПРОТОКОЛ — FTPS (FTP с явным шифрованием TLS, порт 21), как у первого сайта: хостер тот же (П52 п. 1),\n' +
+      '# отдельный сайт 7thserpent.com в панели. Робот — отдельный пользователь FTP («Користувачі FTP») с «Каталогом\n' +
+      '# доступу» 7thserpent.com/www: SSH/SFTP у этого хостера — доступ основного аккаунта, который видит все сайты\n' +
+      '# аккаунта. Шифрование команд и данных принудительное (`ftp:ssl-force`, `ssl-protect-data`), сертификат\n' +
+      '# проверяется — незашифрованного соединения не будет.\n' +
+      '#\n' +
+      '# Когда работает:\n' +
+      '#   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая\n' +
+      '#     выкладка (домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22);\n' +
+      '#   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets\n' +
+      '#     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https\n' +
+      '#     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после\n' +
+      '#     выкладки — только при SERPENT_LIVE = `on`. Обе переменные — только после зелёного `npm run live:check`.\n' +
+      '#\n' +
+      '# Секреты (Settings → Secrets and variables → Actions → Secrets); лист владельца —\n' +
+      '# docs/reports/2026-09-28-7thserpent-publikacija/ruki-vladelca.md:\n' +
+      '#   SERPENT_FTP_HOST      хост FTP из панели\n' +
+      '#   SERPENT_FTP_PORT      порт (21)\n' +
+      '#   SERPENT_FTP_USER      логин пользователя FTP робота второго сайта\n' +
+      '#   SERPENT_FTP_PASSWORD  его пароль\n' +
+      '#   SERPENT_CORPUS_KEY    закрытый ключ развёртывания (deploy key, только чтение) приватного репозитория корпуса\n' +
+      '#   AC4BF_FTP_USER        секрет первого сайта — читается только для сверки «робот не тот же», не печатается\n' +
+      '# Каталога на сервере в секретах НЕТ намеренно: выкладка идёт в корень того, что видит робот, а сторож\n' +
+      '# папки отказывает, если робот видит больше (папки доменов, www/, корень первого сайта), — `mirror --delete`\n' +
+      '# стирает всё, чего нет в dist/.\n' +
+      '#\n' +
+      '# КОРПУС (П106 — отступление от «сырой HTML в git не идёт» словом владельца: только приватный репозиторий,\n' +
+      '# только для сборки). Сторож 8 слов в сборке без input/corpus/raw отказывает громко (П102), выключателей\n' +
+      '# нет. На CI сырьё приходит из приватного репозитория Sniti01/7thserpent-corpus (его корень — содержимое\n' +
+      '# input/corpus/raw как есть) ключом только для чтения. В журнал и на сервер сырьё не попадает: checkout\n' +
+      '# имён файлов не печатает, сторож 8 слов печатает только наши страницы, на сервер едет только dist/.\n' +
+      '#\n' +
+      '# Что делает: checkout → корпус → npm ci → сторож секретов → «домен уже привязан?» (бэклог 46 п. 2) →\n' +
+      '# сборка сайта с гейтами и сторожами (TZ Europe/Warsaw — день подписи byline, П92 п. 5) → при первой\n' +
+      '# выкладке: сборка CI = принятая (sha256) → lftp → сторож папки робота и удалённого index.html →\n' +
+      '# mirror -R --delete dist/ → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE).\n' +
+      '# Красный гейт, сторож сборки или сторож выкладки останавливает прогон до того, как тронут сервер.\n' +
+      '# Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы — tools/testy/storozha-vykladki.test.mjs);\n' +
+      '# циклов оболочки нет.\n' +
+      '#\n' +
+      '# Сторонних actions нет: lftp из репозитория Ubuntu, checkout и setup-node — от GitHub. Журнал выкладки\n' +
+      '# в публичном репозитории виден всем: секреты GitHub маскирует, имена файлов сайта и так публичны.\n' +
+      '\n' +
+      'name: Deploy 7thserpent.com\n' +
+      '\n' +
+      'on:\n' +
+      '  workflow_dispatch:\n' +
+      '    inputs:\n' +
+      '      SERPENT_FIRST:\n' +
+      "        description: 'Первая выкладка: on — домен обязан не отвечать, сборка CI обязана равняться принятой'\n" +
+      '        type: choice\n' +
+      "        options: ['off', 'on']\n" +
+      "        default: 'off'\n" +
+      '  push:\n' +
+      '    branches: [main]\n' +
+      '    paths:\n' +
+      "      - 'sites/7thserpent.com/**'\n" +
+      "      - 'core/**'\n" +
+      "      - 'package.json'\n" +
+      "      - 'package-lock.json'\n" +
+      "      - '.github/workflows/deploy-7thserpent.yml'\n" +
+      '\n' +
+      'concurrency:\n' +
+      '  group: deploy-7thserpent\n' +
+      '  cancel-in-progress: false\n' +
+      '\n' +
+      'permissions:\n' +
+      '  contents: read\n' +
+      '\n' +
+      'jobs:\n' +
+      '  deploy:\n' +
+      "    if: github.event_name == 'workflow_dispatch' || vars.SERPENT_DEPLOY == 'on'\n" +
+      '    # Ubuntu закреплена: с 19 октября 2026 ubuntu-latest — Ubuntu 26, lftp из её репозитория не проверялся.\n' +
+      '    runs-on: ubuntu-24.04\n' +
+      '    timeout-minutes: 25\n' +
+      '    env:\n' +
+      '      SITE: sites/7thserpent.com\n' +
+      '      TZ: Europe/Warsaw\n' +
+      '      # Общие настройки lftp: FTPS принудительно, сертификат проверяется, пассивный режим (робот за NAT\n' +
+      '      # GitHub), таймауты и повторы, выход при первой ошибке команды.\n' +
+      '      LFTP_SET: >-\n' +
+      '        set ftp:ssl-force true;\n' +
+      '        set ftp:ssl-protect-data true;\n' +
+      '        set ssl:verify-certificate yes;\n' +
+      '        set ftp:passive-mode true;\n' +
+      '        set net:timeout 30;\n' +
+      '        set net:max-retries 3;\n' +
+      '        set cmd:fail-exit yes;\n' +
+      '    steps:\n' +
+      '      - uses: actions/checkout@v5\n' +
+      '        with:\n' +
+      '          persist-credentials: false\n' +
+      '\n' +
+      '      - name: Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения\n' +
+      '        uses: actions/checkout@v5\n' +
+      '        with:\n' +
+      '          repository: Sniti01/7thserpent-corpus\n' +
+      '          ssh-key: ${{ secrets.SERPENT_CORPUS_KEY }}\n' +
+      '          path: sites/7thserpent.com/input/corpus/raw\n' +
+      '          persist-credentials: false\n' +
+      '\n' +
+      '      - uses: actions/setup-node@v5\n' +
+      '        with:\n' +
+      '          node-version: 24\n' +
+      '          cache: npm\n' +
+      '\n' +
+      '      - name: Зависимости\n' +
+      '        run: npm ci\n' +
+      '\n' +
+      '      - name: Секреты на месте, робот — не робот первого сайта\n' +
+      '        env:\n' +
+      '          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}\n' +
+      '          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}\n' +
+      '          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}\n' +
+      '          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}\n' +
+      '          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}\n' +
+      '        run: node $SITE/tools/storozha-vykladki.mjs sekrety\n' +
+      '\n' +
+      '      - name: Домен уже привязан?\n' +
+      '        env:\n' +
+      "          SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}\n" +
+      '        run: node $SITE/tools/storozha-vykladki.mjs domen\n' +
+      '\n' +
+      '      - name: Сборка с гейтами и сторожами\n' +
+      '        run: npm run build -w $SITE\n' +
+      '\n' +
+      '      - name: Первая выкладка — сборка CI равна принятой\n' +
+      "        if: inputs.SERPENT_FIRST == 'on'\n" +
+      '        run: node $SITE/tools/storozha-vykladki.mjs sverka-dist $SITE/dist $SITE/gates/sborka-prinyataya.json\n' +
+      '\n' +
+      '      - name: lftp\n' +
+      '        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp\n' +
+      '\n' +
+      '      - name: Сторож папки робота и удалённого index.html\n' +
+      '        env:\n' +
+      '          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}\n' +
+      '          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}\n' +
+      '          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}\n' +
+      '          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}\n' +
+      '        run: |\n' +
+      '          lftp -e "$LFTP_SET open -u \\"$SERPENT_FTP_USER\\",\\"$SERPENT_FTP_PASSWORD\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt\n' +
+      '          lftp -e "$LFTP_SET open -u \\"$SERPENT_FTP_USER\\",\\"$SERPENT_FTP_PASSWORD\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"\n' +
+      '          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html\n' +
+      '          node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html\n' +
+      '\n' +
+      '      - name: Выкладка по FTPS\n' +
+      '        env:\n' +
+      '          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}\n' +
+      '          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}\n' +
+      '          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}\n' +
+      '          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}\n' +
+      '        run: lftp -e "$LFTP_SET open -u \\"$SERPENT_FTP_USER\\",\\"$SERPENT_FTP_PASSWORD\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"\n' +
+      '\n' +
+      '      - name: Пересчёт на сервере\n' +
+      '        env:\n' +
+      '          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}\n' +
+      '          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}\n' +
+      '          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}\n' +
+      '          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}\n' +
+      '        run: |\n' +
+      '          lftp -e "$LFTP_SET open -u \\"$SERPENT_FTP_USER\\",\\"$SERPENT_FTP_PASSWORD\\" -p \\"$SERPENT_FTP_PORT\\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-files.txt\n' +
+      '          node $SITE/tools/storozha-vykladki.mjs pereschet remote-files.txt $SITE/dist\n' +
+      '\n' +
+      '      - name: Проверка живого сайта\n' +
+      "        if: vars.SERPENT_LIVE == 'on'\n" +
+      '        run: npm run live:check -w $SITE\n'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: |-
+    # Выкладка 7thserpent.com на хостинг — GitHub Actions → FTPS (П106; форма deploy-ac4bf.yml, П54 п. 4
+    # и его дополнение).
+    #
+    # ПРОТОКОЛ — FTPS (FTP с явным шифрованием TLS, порт 21), как у первого сайта: хостер тот же (П52 п. 1),
+    # отдельный сайт 7thserpent.com в панели. Робот — отдельный пользователь FTP («Користувачі FTP») с «Каталогом
+    # доступу» 7thserpent.com/www: SSH/SFTP у этого хостера — доступ основного аккаунта, который видит все сайты
+    # аккаунта. Шифрование команд и данных принудительное (`ftp:ssl-force`, `ssl-protect-data`), сертификат
+    # проверяется — незашифрованного соединения не будет.
+    #
+    # Когда работает:
+    #   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая
+    #     выкладка (домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22);
+    #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
+    #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
+    #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
+    #     выкладки — только при SERPENT_LIVE = `on`. Обе переменные — только после зелёного `npm run live:check`.
+    #
+    # Секреты (Settings → Secrets and variables → Actions → Secrets); лист владельца —
+    # docs/reports/2026-09-28-7thserpent-publikacija/ruki-vladelca.md:
+    #   SERPENT_FTP_HOST      хост FTP из панели
+    #   SERPENT_FTP_PORT      порт (21)
+    #   SERPENT_FTP_USER      логин пользователя FTP робота второго сайта
+    #   SERPENT_FTP_PASSWORD  его пароль
+    #   SERPENT_CORPUS_KEY    закрытый ключ развёртывания (deploy key, только чтение) приватного репозитория корпуса
+    #   AC4BF_FTP_USER        секрет первого сайта — читается только для сверки «робот не тот же», не печатается
+    # Каталога на сервере в секретах НЕТ намеренно: выкладка идёт в корень того, что видит робот, а сторож
+    # папки отказывает, если робот видит больше (папки доменов, www/, корень первого сайта), — `mirror --delete`
+    # стирает всё, чего нет в dist/.
+    #
+    # КОРПУС (П106 — отступление от «сырой HTML в git не идёт» словом владельца: только приватный репозиторий,
+    # только для сборки). Сторож 8 слов в сборке без input/corpus/raw отказывает громко (П102), выключателей
+    # нет. На CI сырьё приходит из приватного репозитория Sniti01/7thserpent-corpus (его корень — содержимое
+    # input/corpus/raw как есть) ключом только для чтения. В журнал и на сервер сырьё не попадает: checkout
+    # имён файлов не печатает, сторож 8 слов печатает только наши страницы, на сервер едет только dist/.
+    #
+    # Что делает: checkout → корпус → npm ci → сторож секретов → «домен уже привязан?» (бэклог 46 п. 2) →
+    # сборка сайта с гейтами и сторожами (TZ Europe/Warsaw — день подписи byline, П92 п. 5) → при первой
+    # выкладке: сборка CI = принятая (sha256) → lftp → сторож папки робота и удалённого index.html →
+    # mirror -R --delete dist/ → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE).
+    # Красный гейт, сторож сборки или сторож выкладки останавливает прогон до того, как тронут сервер.
+    # Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы — tools/testy/storozha-vykladki.test.mjs);
+    # циклов оболочки нет.
+    #
+    # Сторонних actions нет: lftp из репозитория Ubuntu, checkout и setup-node — от GitHub. Журнал выкладки
+    # в публичном репозитории виден всем: секреты GitHub маскирует, имена файлов сайта и так публичны.
+    
+    name: Deploy 7thserpent.com
+    
+    on:
+      workflow_dispatch:
+        inputs:
+          SERPENT_FIRST:
+            description: 'Первая выкладка: on — домен обязан не отвечать, сборка CI обязана равняться принятой'
+            type: choice
+            options: ['off', 'on']
+            default: 'off'
+      push:
+        branches: [main]
+        paths:
+          - 'sites/7thserpent.com/**'
+          - 'core/**'
+          - 'package.json'
+          - 'package-lock.json'
+          - '.github/workflows/deploy-7thserpent.yml'
+    
+    concurrency:
+      group: deploy-7thserpent
+      cancel-in-progress: false
+    
+    permissions:
+      contents: read
+    
+    jobs:
+      deploy:
+        if: github.event_name == 'workflow_dispatch' || vars.SERPENT_DEPLOY == 'on'
+        # Ubuntu закреплена: с 19 октября 2026 ubuntu-latest — Ubuntu 26, lftp из её репозитория не проверялся.
+        runs-on: ubuntu-24.04
+        timeout-minutes: 25
+        env:
+          SITE: sites/7thserpent.com
+          TZ: Europe/Warsaw
+          # Общие настройки lftp: FTPS принудительно, сертификат проверяется, пассивный режим (робот за NAT
+          # GitHub), таймауты и повторы, выход при первой ошибке команды.
+          LFTP_SET: >-
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate yes;
+            set ftp:passive-mode true;
+            set net:timeout 30;
+            set net:max-retries 3;
+            set cmd:fail-exit yes;
+        steps:
+          - uses: actions/checkout@v5
+            with:
+              persist-credentials: false
+    
+          - name: Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
+            uses: actions/checkout@v5
+            with:
+              repository: Sniti01/7thserpent-corpus
+              ssh-key: ${{ secrets.SERPENT_CORPUS_KEY }}
+              path: sites/7thserpent.com/input/corpus/raw
+              persist-credentials: false
+    
+          - uses: actions/setup-node@v5
+            with:
+              node-version: 24
+              cache: npm
+    
+          - name: Зависимости
+            run: npm ci
+    
+          - name: Секреты на месте, робот — не робот первого сайта
+            env:
+              SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+              SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+              SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+              SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+              AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+            run: node $SITE/tools/storozha-vykladki.mjs sekrety
+    
+          - name: Домен уже привязан?
+            env:
+              SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}
+            run: node $SITE/tools/storozha-vykladki.mjs domen
+    
+          - name: Сборка с гейтами и сторожами
+            run: npm run build -w $SITE
+    
+          - name: Первая выкладка — сборка CI равна принятой
+            if: inputs.SERPENT_FIRST == 'on'
+            run: node $SITE/tools/storozha-vykladki.mjs sverka-dist $SITE/dist $SITE/gates/sborka-prinyataya.json
+    
+          - name: lftp
+            run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+    
+          - name: Сторож папки робота и удалённого index.html
+            env:
+              SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+              SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+              SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+              SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+            run: |
+              lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
+              lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
+              node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html
+              node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
+    
+          - name: Выкладка по FTPS
+            env:
+              SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+              SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+              SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+              SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+            run: lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"
+    
+          - name: Пересчёт на сервере
+            env:
+              SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+              SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+              SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+              SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+            run: |
+              lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-files.txt
+              node $SITE/tools/storozha-vykladki.mjs pereschet remote-files.txt $SITE/dist
+    
+          - name: Проверка живого сайта
+            if: vars.SERPENT_LIVE == 'on'
+            run: npm run live:check -w $SITE
+    
+  operator: 'doesNotMatch'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:351:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: SV1-Z-4 workflow: сторож секретов (с ключом корпуса) — до выгрузки корпуса; корпус — ключом в input/corpus/raw, без сохранения ключа
+not ok 75 - SV1-Z-4 workflow: сторож секретов (с ключом корпуса) — до выгрузки корпуса; корпус — ключом в input/corpus/raw, без сохранения ключа
+  ---
+  duration_ms: 4.2537
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:358:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(i('Секреты на месте') < shagi.indexOf(k))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:364:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после
+ok 76 - workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после
+  ---
+  duration_ms: 0.1354
+  type: 'test'
+  ...
+# Subtest: workflow: команды сторожей — те, что знает сторож; циклов оболочки нет
+not ok 77 - workflow: команды сторожей — те, что знает сторож; циклов оболочки нет
+  ---
+  duration_ms: 0.6845
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\storozha-vykladki.test.mjs:376:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        'domen',
+        'indeks',
+        'papka',
+        'pereschet',
+    -   'pervaya',
+        'sekrety',
+        'sverka-dist'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'domen'
+    1: 'indeks'
+    2: 'papka'
+    3: 'pereschet'
+    4: 'pervaya'
+    5: 'sekrety'
+    6: 'sverka-dist'
+  actual:
+    0: 'domen'
+    1: 'indeks'
+    2: 'papka'
+    3: 'pereschet'
+    4: 'sekrety'
+    5: 'sverka-dist'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:379:10)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+1..77
+# tests 77
+# suites 0
+# pass 37
+# fail 40
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1287.3025

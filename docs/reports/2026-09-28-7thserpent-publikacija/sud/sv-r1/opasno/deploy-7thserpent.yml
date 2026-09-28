@@ -1,19 +1,15 @@
 # Выкладка 7thserpent.com на хостинг — GitHub Actions → FTPS (П106; форма deploy-ac4bf.yml, П54 п. 4
-# и его дополнение; «судью судят», раунд 1 — сторожа и порядок шагов).
+# и его дополнение).
 #
 # ПРОТОКОЛ — FTPS (FTP с явным шифрованием TLS, порт 21), как у первого сайта: хостер тот же (П52 п. 1),
 # отдельный сайт 7thserpent.com в панели. Робот — отдельный пользователь FTP («Користувачі FTP») с «Каталогом
 # доступу» 7thserpent.com/www: SSH/SFTP у этого хостера — доступ основного аккаунта, который видит все сайты
 # аккаунта. Шифрование команд и данных принудительное (`ftp:ssl-force`, `ssl-protect-data`), сертификат
-# проверяется — незашифрованного соединения не будет. Пароль в строку команды lftp не идёт: `open --env-password`
-# берёт его из переменной LFTP_PASSWORD (кавычка или «;» в пароле команду не ломают и в журнал не попадают).
-# Файлы пишутся через временное имя (`xfer:use-temp-file`): оборванная выкладка не оставляет обрубок под
-# настоящим именем.
+# проверяется — незашифрованного соединения не будет.
 #
 # Когда работает:
 #   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая
-#     выкладка. Первой считается и выкладка, у которой на сервере нет нашего index.html (вход по умолчанию её
-#     не отменяет): домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22;
+#     выкладка (домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22);
 #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
 #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
 #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
@@ -28,7 +24,7 @@
 #   SERPENT_CORPUS_KEY    закрытый ключ развёртывания (deploy key, только чтение) приватного репозитория корпуса
 #   AC4BF_FTP_USER        секрет первого сайта — читается только для сверки «робот не тот же», не печатается
 # Каталога на сервере в секретах НЕТ намеренно: выкладка идёт в корень того, что видит робот, а сторож
-# папки пропускает только пустой корень, свежий каталог хостера или прежнюю нашу выкладку — `mirror --delete`
+# папки отказывает, если робот видит больше (папки доменов, www/, корень первого сайта), — `mirror --delete`
 # стирает всё, чего нет в dist/.
 #
 # КОРПУС (П106 — отступление от «сырой HTML в git не идёт» словом владельца: только приватный репозиторий,
@@ -37,13 +33,13 @@
 # input/corpus/raw как есть) ключом только для чтения. В журнал и на сервер сырьё не попадает: checkout
 # имён файлов не печатает, сторож 8 слов печатает только наши страницы, на сервер едет только dist/.
 #
-# Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
-# Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
-# первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2) → при первой: сборка CI = принятая (sha256
-# после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ → пересчёт файлов на сервере против
-# dist/ → live:check (SERPENT_LIVE). Красный гейт, сторож сборки или сторож выкладки останавливает прогон до
-# того, как тронут сервер. Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы —
-# tools/testy/storozha-vykladki.test.mjs); циклов оболочки нет.
+# Что делает: checkout → корпус → npm ci → сторож секретов → «домен уже привязан?» (бэклог 46 п. 2) →
+# сборка сайта с гейтами и сторожами (TZ Europe/Warsaw — день подписи byline, П92 п. 5) → при первой
+# выкладке: сборка CI = принятая (sha256) → lftp → сторож папки робота и удалённого index.html →
+# mirror -R --delete dist/ → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE).
+# Красный гейт, сторож сборки или сторож выкладки останавливает прогон до того, как тронут сервер.
+# Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы — tools/testy/storozha-vykladki.test.mjs);
+# циклов оболочки нет.
 #
 # Сторонних actions нет: lftp из репозитория Ubuntu, checkout и setup-node — от GitHub. Журнал выкладки
 # в публичном репозитории виден всем: секреты GitHub маскирует, имена файлов сайта и так публичны.
@@ -84,7 +80,7 @@ jobs:
       SITE: sites/7thserpent.com
       TZ: Europe/Warsaw
       # Общие настройки lftp: FTPS принудительно, сертификат проверяется, пассивный режим (робот за NAT
-      # GitHub), таймауты и повторы, выход при первой ошибке команды, запись через временное имя.
+      # GitHub), таймауты и повторы, выход при первой ошибке команды.
       LFTP_SET: >-
         set ftp:ssl-force true;
         set ftp:ssl-protect-data true;
@@ -93,26 +89,10 @@ jobs:
         set net:timeout 30;
         set net:max-retries 3;
         set cmd:fail-exit yes;
-        set xfer:use-temp-file yes;
     steps:
       - uses: actions/checkout@v5
         with:
           persist-credentials: false
-
-      - uses: actions/setup-node@v5
-        with:
-          node-version: 24
-          cache: npm
-
-      - name: Секреты на месте, робот — не робот первого сайта
-        env:
-          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
-          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
-          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
-          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
-          SERPENT_CORPUS_KEY: ${{ secrets.SERPENT_CORPUS_KEY }}
-          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
-        run: node $SITE/tools/storozha-vykladki.mjs sekrety
 
       - name: Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
         uses: actions/checkout@v5
@@ -122,11 +102,34 @@ jobs:
           path: sites/7thserpent.com/input/corpus/raw
           persist-credentials: false
 
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          cache: npm
+
       - name: Зависимости
         run: npm ci
 
+      - name: Секреты на месте, робот — не робот первого сайта
+        env:
+          SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+          SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+          SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+          AC4BF_FTP_USER: ${{ secrets.AC4BF_FTP_USER }}
+        run: node $SITE/tools/storozha-vykladki.mjs sekrety
+
+      - name: Домен уже привязан?
+        env:
+          SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}
+        run: node $SITE/tools/storozha-vykladki.mjs domen
+
       - name: Сборка с гейтами и сторожами
         run: npm run build -w $SITE
+
+      - name: Первая выкладка — сборка CI равна принятой
+        if: inputs.SERPENT_FIRST == 'on'
+        run: node $SITE/tools/storozha-vykladki.mjs sverka-dist $SITE/dist $SITE/gates/sborka-prinyataya.json
 
       - name: lftp
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
@@ -136,44 +139,29 @@ jobs:
           SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
-          LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
         run: |
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
+          lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
+          lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html . remote-top; bye"
           node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html
           node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
-
-      - name: Первая выкладка?
-        id: pervaya
-        env:
-          SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}
-        run: node $SITE/tools/storozha-vykladki.mjs pervaya remote-top/index.html
-
-      - name: Домен уже привязан?
-        env:
-          SERPENT_PERVAYA: ${{ steps.pervaya.outputs.pervaya }}
-        run: node $SITE/tools/storozha-vykladki.mjs domen
-
-      - name: Первая выкладка — сборка CI равна принятой
-        if: steps.pervaya.outputs.pervaya == 'on'
-        run: node $SITE/tools/storozha-vykladki.mjs sverka-dist $SITE/dist $SITE/gates/sborka-prinyataya.json
 
       - name: Выкладка по FTPS
         env:
           SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
-          LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
-        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"
+          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+        run: lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 $SITE/dist/ .; bye"
 
       - name: Пересчёт на сервере
         env:
           SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
-          LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+          SERPENT_FTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
         run: |
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-files.txt
+          lftp -e "$LFTP_SET open -u \"$SERPENT_FTP_USER\",\"$SERPENT_FTP_PASSWORD\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-files.txt
           node $SITE/tools/storozha-vykladki.mjs pereschet remote-files.txt $SITE/dist
 
       - name: Проверка живого сайта

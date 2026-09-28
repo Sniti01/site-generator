@@ -12,7 +12,8 @@
  * РАСКЛАДКА КОПИИ (во временной папке, вне репозитория — иначе отказ):
  *   <копия>/sites/<сайт>/   — копия `src/`, `public/`, `structure/`, `gates/`, `tools/`, конфигурации
  *                             (`astro.config.mjs`, `package.json`, `tsconfig.json`); `input/corpus` —
- *                             ссылкой-переходом (корпус только читается сторожем 8 слов);
+ *                             ссылкой-переходом (корпус только читается сторожем 8 слов); выгрузка
+ *                             семантики `site.semantics` структуры — копией (её читает гейт структуры);
  *                             своя пустая `node_modules` (кеши Vite и Astro копии — свои);
  *   <копия>/core/           — ссылкой на ядро репозитория или копией (`sYadrom`: мутации ядра);
  *   <копия>/node_modules/   — папка ссылок на каждый пакет корневой `node_modules`, кроме
@@ -124,6 +125,14 @@ export function sdelatKopiyu(kuda, { sYadrom = false } = {}) {
     }
     mkdirSync(join(sayt, 'input'), { recursive: true });
     if (existsSync(join(SAYT, 'input/corpus'))) ssylka(join(SAYT, 'input/corpus'), join(sayt, 'input/corpus'), ssylki);
+    // Выгрузка семантики (`site.semantics` структуры) — её читает гейт структуры ядра: копия с гейтами сайта
+    // (`sobrat(k, { sGeityami })`) без неё отказывала «semantyka nie istnieje» (П104 блок Г, проба знака в гейтах).
+    const semantika = JSON.parse(readFileSync(join(SAYT, 'structure/structure.json'), 'utf8')).site?.semantics;
+    const vnutri = (koren2, p) => !isAbsolute(p) && !relative(koren2, join(koren2, p)).startsWith('..');
+    if (typeof semantika === 'string' && vnutri(SAYT, semantika) && vnutri(sayt, semantika) && existsSync(join(SAYT, semantika))) {
+      mkdirSync(dirname(join(sayt, semantika)), { recursive: true });
+      cpSync(join(SAYT, semantika), join(sayt, semantika));
+    }
     mkdirSync(join(sayt, 'node_modules'));
     if (sYadrom) cpSync(join(REPO, 'core'), join(koren, 'core'), { recursive: true });
     else ssylka(join(REPO, 'core'), join(koren, 'core'), ssylki);

@@ -1,0 +1,2061 @@
+▶ S2R3: подпись кадра на шести страницах — теневой корень, сосед, скрипт без <script>, refresh, печать — замечание
+  ✖ /remake/: S2R3-K-1 теневой корень у героя (30.925ms)
+  ✖ /remake/: S2R3-K-1 теневой корень у <main> (10.8733ms)
+  ✖ /remake/: S2R3-K-1 теневой корень у <body> (11.4575ms)
+  ✖ /remake/: S2R3-K-1 теневой корень с именованным слотом у героя (9.9656ms)
+  ✖ /remake/: S2R3-P-1 закрытый теневой корень в <main> (8.4003ms)
+  ✖ /remake/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.9164ms)
+  ✖ /remake/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (5.2491ms)
+  ✖ /remake/: S2R3-P-2 .foto__credit в скриме героя (5.769ms)
+  ✖ /remake/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (6.1307ms)
+  ✖ /remake/: S2R3-P-3 класс шапки hdr в рамке арта (9.5486ms)
+  ✖ /remake/: S2R3-K-3 iframe srcdoc в <main> после героя (4.4431ms)
+  ✖ /remake/: S2R3-K-3 iframe srcdoc в герое перед подписью (4.65ms)
+  ✖ /remake/: S2R3-K-3 iframe src=javascript: в <main> (5.5925ms)
+  ✖ /remake/: S2R3-K-3 iframe srcdoc перед подвалом (5.0643ms)
+  ✖ /remake/: S2R3-K-4 meta refresh в <main> после героя (6.014ms)
+  ✖ /remake/: S2R3-K-4 meta refresh перед подвалом (4.3381ms)
+  ✔ /remake/: S2R3-Z-2 метка героя — метка маршрута (4.3278ms)
+  ✖ /remake/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (7.9094ms)
+  ✖ /movie/: S2R3-K-1 теневой корень у героя (4.9929ms)
+  ✖ /movie/: S2R3-K-1 теневой корень у <main> (4.5705ms)
+  ✖ /movie/: S2R3-K-1 теневой корень у <body> (6.0123ms)
+  ✖ /movie/: S2R3-K-1 теневой корень с именованным слотом у героя (4.9788ms)
+  ✖ /movie/: S2R3-P-1 закрытый теневой корень в <main> (4.9588ms)
+  ✖ /movie/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.017ms)
+  ✖ /movie/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (4.6128ms)
+  ✖ /movie/: S2R3-P-2 .foto__credit в скриме героя (4.7878ms)
+  ✖ /movie/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (4.7915ms)
+  ✖ /movie/: S2R3-P-3 класс шапки hdr в рамке арта (4.7957ms)
+  ✖ /movie/: S2R3-K-3 iframe srcdoc в <main> после героя (4.7446ms)
+  ✖ /movie/: S2R3-K-3 iframe srcdoc в герое перед подписью (5.4835ms)
+  ✖ /movie/: S2R3-K-3 iframe src=javascript: в <main> (6.765ms)
+  ✖ /movie/: S2R3-K-3 iframe srcdoc перед подвалом (4.6601ms)
+  ✖ /movie/: S2R3-K-4 meta refresh в <main> после героя (4.3324ms)
+  ✖ /movie/: S2R3-K-4 meta refresh перед подвалом (5.0987ms)
+  ✔ /movie/: S2R3-Z-2 метка героя — метка маршрута (4.6671ms)
+  ✖ /movie/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (4.8613ms)
+  ✖ /media/: S2R3-K-1 теневой корень у героя (6.2237ms)
+  ✖ /media/: S2R3-K-1 теневой корень у <main> (3.3794ms)
+  ✖ /media/: S2R3-K-1 теневой корень у <body> (3.6936ms)
+  ✖ /media/: S2R3-K-1 теневой корень с именованным слотом у героя (3.1626ms)
+  ✖ /media/: S2R3-P-1 закрытый теневой корень в <main> (3.0547ms)
+  ✖ /media/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (3.0592ms)
+  ✖ /media/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.0518ms)
+  ✖ /media/: S2R3-P-2 .foto__credit в скриме героя (3.516ms)
+  ✖ /media/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.6037ms)
+  ✖ /media/: S2R3-P-3 класс шапки hdr в рамке арта (6.3709ms)
+  ✖ /media/: S2R3-K-3 iframe srcdoc в <main> после героя (3.3404ms)
+  ✖ /media/: S2R3-K-3 iframe srcdoc в герое перед подписью (3.0129ms)
+  ✖ /media/: S2R3-K-3 iframe src=javascript: в <main> (3.0589ms)
+  ✖ /media/: S2R3-K-3 iframe srcdoc перед подвалом (3.1636ms)
+  ✖ /media/: S2R3-K-4 meta refresh в <main> после героя (2.9856ms)
+  ✖ /media/: S2R3-K-4 meta refresh перед подвалом (3.506ms)
+  ✔ /media/: S2R3-Z-2 метка героя — метка маршрута (3.4874ms)
+  ✖ /media/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (6.9646ms)
+  ✖ /mods/: S2R3-K-1 теневой корень у героя (3.786ms)
+  ✖ /mods/: S2R3-K-1 теневой корень у <main> (3.1153ms)
+  ✖ /mods/: S2R3-K-1 теневой корень у <body> (3.096ms)
+  ✖ /mods/: S2R3-K-1 теневой корень с именованным слотом у героя (3.3803ms)
+  ✖ /mods/: S2R3-P-1 закрытый теневой корень в <main> (3.8204ms)
+  ✖ /mods/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (4.1384ms)
+  ✖ /mods/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.6451ms)
+  ✖ /mods/: S2R3-P-2 .foto__credit в скриме героя (6.3705ms)
+  ✖ /mods/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.6035ms)
+  ✖ /mods/: S2R3-P-3 класс шапки hdr в рамке арта (3.0916ms)
+  ✖ /mods/: S2R3-K-3 iframe srcdoc в <main> после героя (3.0181ms)
+  ✖ /mods/: S2R3-K-3 iframe srcdoc в герое перед подписью (2.9599ms)
+  ✖ /mods/: S2R3-K-3 iframe src=javascript: в <main> (2.9448ms)
+  ✖ /mods/: S2R3-K-3 iframe srcdoc перед подвалом (3.1886ms)
+  ✖ /mods/: S2R3-K-4 meta refresh в <main> после героя (3.1131ms)
+  ✖ /mods/: S2R3-K-4 meta refresh перед подвалом (3.0318ms)
+  ✔ /mods/: S2R3-Z-2 метка героя — метка маршрута (6.0168ms)
+  ✖ /mods/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.4334ms)
+  ✖ /quotes/: S2R3-K-1 теневой корень у героя (4.403ms)
+  ✖ /quotes/: S2R3-K-1 теневой корень у <main> (3.8102ms)
+  ✖ /quotes/: S2R3-K-1 теневой корень у <body> (3.703ms)
+  ✖ /quotes/: S2R3-K-1 теневой корень с именованным слотом у героя (4.2131ms)
+  ✖ /quotes/: S2R3-P-1 закрытый теневой корень в <main> (3.9866ms)
+  ✖ /quotes/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.4484ms)
+  ✖ /quotes/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (4.4747ms)
+  ✖ /quotes/: S2R3-P-2 .foto__credit в скриме героя (7.2886ms)
+  ✖ /quotes/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (4.062ms)
+  ✖ /quotes/: S2R3-P-3 класс шапки hdr в рамке арта (3.9065ms)
+  ✖ /quotes/: S2R3-K-3 iframe srcdoc в <main> после героя (3.7081ms)
+  ✖ /quotes/: S2R3-K-3 iframe srcdoc в герое перед подписью (6.8728ms)
+  ✖ /quotes/: S2R3-K-3 iframe src=javascript: в <main> (4.9493ms)
+  ✖ /quotes/: S2R3-K-3 iframe srcdoc перед подвалом (3.8503ms)
+  ✖ /quotes/: S2R3-K-4 meta refresh в <main> после героя (4.0299ms)
+  ✖ /quotes/: S2R3-K-4 meta refresh перед подвалом (4.0335ms)
+  ✔ /quotes/: S2R3-Z-2 метка героя — метка маршрута (3.7954ms)
+  ✖ /quotes/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.9476ms)
+  ✖ /voice-and-face/: S2R3-K-1 теневой корень у героя (5.9688ms)
+  ✖ /voice-and-face/: S2R3-K-1 теневой корень у <main> (3.7435ms)
+  ✖ /voice-and-face/: S2R3-K-1 теневой корень у <body> (8.0273ms)
+  ✖ /voice-and-face/: S2R3-K-1 теневой корень с именованным слотом у героя (3.8999ms)
+  ✖ /voice-and-face/: S2R3-P-1 закрытый теневой корень в <main> (4.8871ms)
+  ✖ /voice-and-face/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (4.3629ms)
+  ✖ /voice-and-face/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.9322ms)
+  ✖ /voice-and-face/: S2R3-P-2 .foto__credit в скриме героя (3.5088ms)
+  ✖ /voice-and-face/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.4717ms)
+  ✖ /voice-and-face/: S2R3-P-3 класс шапки hdr в рамке арта (3.3266ms)
+  ✖ /voice-and-face/: S2R3-K-3 iframe srcdoc в <main> после героя (3.3388ms)
+  ✖ /voice-and-face/: S2R3-K-3 iframe srcdoc в герое перед подписью (5.2979ms)
+  ✖ /voice-and-face/: S2R3-K-3 iframe src=javascript: в <main> (4.1808ms)
+  ✖ /voice-and-face/: S2R3-K-3 iframe srcdoc перед подвалом (3.5366ms)
+  ✖ /voice-and-face/: S2R3-K-4 meta refresh в <main> после героя (3.3327ms)
+  ✖ /voice-and-face/: S2R3-K-4 meta refresh перед подвалом (3.3125ms)
+  ✔ /voice-and-face/: S2R3-Z-2 метка героя — метка маршрута (3.615ms)
+  ✖ /voice-and-face/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.5218ms)
+✖ S2R3: подпись кадра на шести страницах — теневой корень, сосед, скрипт без <script>, refresh, печать — замечание (541.4118ms)
+✔ S2R3 (предел): подпись кадра перекрыта элементом вне героя — шапка, подвал, ряд, <body> после <main> с классом сайта, у которого position и z-index больше, чем у подписи (.foto__credit — 3, .hdr — 50, .skip-link — 100, .grain — 60); по разметке наложение не судится — его видит только браузер (elementFromPoint), судьи в браузере ручные (П84 п. 6) (0.0568ms) # TODO
+ℹ tests 110
+ℹ suites 0
+ℹ pass 6
+ℹ fail 103
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 1
+ℹ duration_ms 782.2138
+
+✖ failing tests:
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-1 теневой корень у героя (30.925ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-1 теневой корень у <main> (10.8733ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-1 теневой корень у <body> (11.4575ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-1 теневой корень с именованным слотом у героя (9.9656ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-P-1 закрытый теневой корень в <main> (8.4003ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.9164ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (5.2491ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-P-2 .foto__credit в скриме героя (5.769ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (6.1307ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-P-3 класс шапки hdr в рамке арта (9.5486ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-3 iframe srcdoc в <main> после героя (4.4431ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-3 iframe srcdoc в герое перед подписью (4.65ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-3 iframe src=javascript: в <main> (5.5925ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-3 iframe srcdoc перед подвалом (5.0643ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-4 meta refresh в <main> после героя (6.014ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-K-4 meta refresh перед подвалом (4.3381ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /remake/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (7.9094ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-1 теневой корень у героя (4.9929ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-1 теневой корень у <main> (4.5705ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-1 теневой корень у <body> (6.0123ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-1 теневой корень с именованным слотом у героя (4.9788ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-P-1 закрытый теневой корень в <main> (4.9588ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.017ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (4.6128ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-P-2 .foto__credit в скриме героя (4.7878ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (4.7915ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-P-3 класс шапки hdr в рамке арта (4.7957ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-3 iframe srcdoc в <main> после героя (4.7446ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-3 iframe srcdoc в герое перед подписью (5.4835ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-3 iframe src=javascript: в <main> (6.765ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-3 iframe srcdoc перед подвалом (4.6601ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-4 meta refresh в <main> после героя (4.3324ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-K-4 meta refresh перед подвалом (5.0987ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /movie/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (4.8613ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-1 теневой корень у героя (6.2237ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-1 теневой корень у <main> (3.3794ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-1 теневой корень у <body> (3.6936ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-1 теневой корень с именованным слотом у героя (3.1626ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-P-1 закрытый теневой корень в <main> (3.0547ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (3.0592ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.0518ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-P-2 .foto__credit в скриме героя (3.516ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.6037ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-P-3 класс шапки hdr в рамке арта (6.3709ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-3 iframe srcdoc в <main> после героя (3.3404ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-3 iframe srcdoc в герое перед подписью (3.0129ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-3 iframe src=javascript: в <main> (3.0589ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-3 iframe srcdoc перед подвалом (3.1636ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-4 meta refresh в <main> после героя (2.9856ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-K-4 meta refresh перед подвалом (3.506ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /media/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (6.9646ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-1 теневой корень у героя (3.786ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-1 теневой корень у <main> (3.1153ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-1 теневой корень у <body> (3.096ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-1 теневой корень с именованным слотом у героя (3.3803ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-P-1 закрытый теневой корень в <main> (3.8204ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (4.1384ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.6451ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-P-2 .foto__credit в скриме героя (6.3705ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.6035ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-P-3 класс шапки hdr в рамке арта (3.0916ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-3 iframe srcdoc в <main> после героя (3.0181ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-3 iframe srcdoc в герое перед подписью (2.9599ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-3 iframe src=javascript: в <main> (2.9448ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-3 iframe srcdoc перед подвалом (3.1886ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-4 meta refresh в <main> после героя (3.1131ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-K-4 meta refresh перед подвалом (3.0318ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /mods/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.4334ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-1 теневой корень у героя (4.403ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-1 теневой корень у <main> (3.8102ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-1 теневой корень у <body> (3.703ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-1 теневой корень с именованным слотом у героя (4.2131ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-P-1 закрытый теневой корень в <main> (3.9866ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (6.4484ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (4.4747ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-P-2 .foto__credit в скриме героя (7.2886ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (4.062ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-P-3 класс шапки hdr в рамке арта (3.9065ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-3 iframe srcdoc в <main> после героя (3.7081ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-3 iframe srcdoc в герое перед подписью (6.8728ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-3 iframe src=javascript: в <main> (4.9493ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-3 iframe srcdoc перед подвалом (3.8503ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-4 meta refresh в <main> после героя (4.0299ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-K-4 meta refresh перед подвалом (4.0335ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /quotes/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.9476ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-1 теневой корень у героя (5.9688ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-1 теневой корень у <main> (3.7435ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-1 теневой корень у <body> (8.0273ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-1 теневой корень с именованным слотом у героя (3.8999ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-P-1 закрытый теневой корень в <main> (4.8871ms)
+  AssertionError [ERR_ASSERTION]: ждали «теневой корень», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-2 .foto__credit — ребёнок героя перед подписью (4.3629ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью (3.9322ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-P-2 .foto__credit в скриме героя (3.5088ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-P-2 вторая рамка арта с кредитом перед подписью (3.4717ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-P-3 класс шапки hdr в рамке арта (3.3266ms)
+  AssertionError [ERR_ASSERTION]: ждали «в герое вне печати», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-3 iframe srcdoc в <main> после героя (3.3388ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-3 iframe srcdoc в герое перед подписью (5.2979ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-3 iframe src=javascript: в <main> (4.1808ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-3 iframe srcdoc перед подвалом (3.5366ms)
+  AssertionError [ERR_ASSERTION]: ждали «носитель скрипта», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-4 meta refresh в <main> после героя (3.3327ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-K-4 meta refresh перед подвалом (3.3125ms)
+  AssertionError [ERR_ASSERTION]: ждали «meta в <body>», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\sverka.test.mjs:237:15
+✖ /voice-and-face/: S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи (3.5218ms)
+  AssertionError [ERR_ASSERTION]: ждали «невидимые знаки в подписи кадра», получено: замечаний нет
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:242:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:237:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

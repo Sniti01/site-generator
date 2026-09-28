@@ -198,6 +198,54 @@ test('S2R2: подпись кадра на шести страницах — с�
   }
 });
 
+// «Судью судят», раунд 3 (последний) по правке шага 2 (S2R3-*): белый список держит цепочку предков, мимо неё —
+// теневой корень у звена, сосед в герое и поддерево рамки арта и скрима (перекрытие по CSS сайта), носители скрипта
+// без <script>, meta refresh в <body>, невидимые знаки только в печати. Перекрытие элементом вне героя (шапка, подвал,
+// ряды — любое правило сайта с position и z-index) по разметке не судится — предел, test.todo ниже.
+test('S2R3: подпись кадра на шести страницах — теневой корень, сосед, скрипт без <script>, refresh, печать — замечание', async (t) => {
+  const PODPIS = /<p class="podpis-geroya t-caption"[^>]*>([\s\S]*?)<\/p>/;
+  const pered = (h, chto, vstavka) => {
+    const i = h.indexOf(chto);
+    assert.ok(i >= 0, `стенд: нет «${chto}»`);
+    return h.slice(0, i) + vstavka + h.slice(i);
+  };
+  const TEN ='<template shadowrootmode="open"></template>';
+  const IFRAME = `<iframe hidden srcdoc="&lt;script&gt;parent.document.querySelector('.podpis-geroya').textContent='PODMENA'&lt;/script&gt;"></iframe>`;
+  const PORCHI = [
+    ['S2R3-K-1 теневой корень у героя', (h) => h.replace(/(<section class="hero"[^>]*>)/, `$1${TEN}`), 'теневой корень'],
+    ['S2R3-K-1 теневой корень у <main>', (h) => h.replace('<main id="content">', `<main id="content">${TEN}`), 'теневой корень'],
+    ['S2R3-K-1 теневой корень у <body>', (h) => h.replace(/(<body[^>]*>)/, `$1${TEN}`), 'теневой корень'],
+    ['S2R3-K-1 теневой корень с именованным слотом у героя', (h) => h.replace(/(<section class="hero"[^>]*>)/, '$1<template shadowrootmode="open"><slot name="x"></slot></template>'), 'теневой корень'],
+    ['S2R3-P-1 закрытый теневой корень в <main>', (h) => h.replace('<main id="content">', '<main id="content"><template shadowrootmode="closed"><p>x</p></template>'), 'теневой корень'],
+    ['S2R3-K-2 .foto__credit — ребёнок героя перед подписью', (h) => pered(h, '<p class="podpis-geroya', '<div class="foto__credit t-caption">Pictured: Max Payne 3 (2012), a scene from the game</div>'), 'в герое вне печати'],
+    ['S2R3-Z-1 p.foto__credit — ребёнок героя перед подписью', (h) => pered(h, '<p class="podpis-geroya', '<p class="foto__credit t-caption">Pictured: official Max Payne cover art</p>'), 'в герое вне печати'],
+    ['S2R3-P-2 .foto__credit в скриме героя', (h) => h.replace(/(<div class="hero__scrim"[^>]*>)/, '$1<div class="foto__credit t-caption">Pictured: X</div>'), 'в герое вне печати'],
+    ['S2R3-P-2 вторая рамка арта с кредитом перед подписью', (h) => pered(h, '<p class="podpis-geroya', '<div class="hero__art"><div class="foto__credit">Pictured: X</div></div>'), 'в герое вне печати'],
+    ['S2R3-P-3 класс шапки hdr в рамке арта', (h) => h.replace(/(<div class="hero__art"[^>]*>)/, '$1<div class="hdr" data-astro-cid-qu2zoq4f>Pictured: official Max Payne cover art</div>'), 'в герое вне печати'],
+    ['S2R3-K-3 iframe srcdoc в <main> после героя', (h) => h.replace('</section></div>', `</section></div>${IFRAME}`), 'носитель скрипта'],
+    ['S2R3-K-3 iframe srcdoc в герое перед подписью', (h) => pered(h, '<p class="podpis-geroya', IFRAME), 'носитель скрипта'],
+    ['S2R3-K-3 iframe src=javascript: в <main>', (h) => h.replace('</section></div>', `</section></div><iframe hidden src="javascript:parent.document.querySelector('.podpis-geroya').textContent='PODMENA'"></iframe>`), 'носитель скрипта'],
+    ['S2R3-K-3 iframe srcdoc перед подвалом', (h) => h.replace('</main>', `</main>${IFRAME}`), 'носитель скрипта'],
+    ['S2R3-K-4 meta refresh в <main> после героя', (h) => h.replace('</section></div>', '</section></div><meta http-equiv="refresh" content="0; url=/max-payne-3/">'), 'meta в <body>'],
+    ['S2R3-K-4 meta refresh перед подвалом', (h) => h.replace('</main>', '</main><meta http-equiv="refresh" content="0; url=/max-payne-3/">'), 'meta в <body>'],
+    ['S2R3-Z-2 метка героя — метка маршрута', (h) => h.replace(/(<section class="hero" aria-labelledby="page-title") data-astro-cid-[a-z0-9]+>/, '$1 data-astro-cid-n67f4zmd>'), 'подпись кадра скрыта предком'],
+    ['S2R3-Z-3 U+FEFF вместо пробелов в печатной подписи', (h) => h.replace(PODPIS, (x, tekst) => x.replace(tekst, tekst.replace(/ /g, '﻿'))), 'невидимые знаки в подписи кадра'],
+  ];
+  for (const url of S_PODPISYU) {
+    for (const [imya, html, prichina] of PORCHI) {
+      await t.test(`${url}: ${imya}`, () => {
+        const x = po(url);
+        const h = html(x.html);
+        assert.notEqual(h, x.html, 'порча не применилась');
+        const z = sverit(x, h, x.dane, x.page);
+        assert.ok(z.some((y) => y.includes(prichina)), `ждали «${prichina}», получено: ${z.join(' | ').slice(0, 400) || 'замечаний нет'}`);
+      });
+    }
+  }
+});
+
+test.todo('S2R3 (предел): подпись кадра перекрыта элементом вне героя — шапка, подвал, ряд, <body> после <main> с классом сайта, у которого position и z-index больше, чем у подписи (.foto__credit — 3, .hdr — 50, .skip-link — 100, .grain — 60); по разметке наложение не судится — его видит только браузер (elementFromPoint), судьи в браузере ручные (П84 п. 6)');
+
 test('S2R2-K-6, S2R2-Z-1: хук сторожа сборки из astro.config.mjs судит своим списком (мини-сайт: у /media/ снята подпись)', async () => {
   const { default: konfig } = await import('../../astro.config.mjs');
   const integ = konfig.integrations.find((i) => i?.name === 'sayt:sverka-dist');

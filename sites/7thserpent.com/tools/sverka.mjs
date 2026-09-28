@@ -26,7 +26,10 @@
  *     только метки области — как у `h1`, внутри только текст без невидимых знаков (Cf, Default_Ignorable); цепочка
  *     предков — ровно печать: подпись ← `section.hero` (class ровно `hero`, `aria-labelledby`, метки как у `.hero__text`)
  *     ← `div.geroy` (классы `geroy`, `geroy--stal`, `style`, метки) ← `<main>` (только `id="content"`) ← `<body>`
- *     (S2R1-K-1…K-5, S2R1-P-2, P-3, S2R2-K-1…K-5); у страниц, где кадр
+ *     (S2R1-K-1…K-5, S2R1-P-2, P-3, S2R2-K-1…K-5); поддерево героя — ровно печать: дети `div.hero__art`,
+ *     `div.hero__scrim`, `div.hero__inner` и последней подпись, рамка арта — `div.foto` с одной `img`, скрим пуст;
+ *     теневого корня в документе нет; невидимых знаков нет и в печатном тексте подписи (S2R3-K-1, K-2, Z-1, Z-3,
+ *     P-1…P-3); у страниц, где кадр
  *     можно принять за другое, обязательна видимым текстом (П96; данные сайта — `gates/sverka.mjs`: везде, где подпись
  *     стоит, П103 п. 4), и страница из списка без героя — замечание; адрес списка — страница содержания с героем
  *     (S2R1-P-1); кнопки — ровно одна `a.btn-primary` и одна `a.btn-secondary` в герое,
@@ -69,7 +72,9 @@
  *     `<main>` — замечание, `<style>` и `<link rel=stylesheet>` в `<main>` — замечание (V3-3), и в `<body>` вне
  *     `<main>` — тоже (R4-V-K-3); вне `<main>` `style` — только `--farba: var(--…)` у фигур знака `svg.znak` (R4-V-P-2);
  *     атрибуты `<html>` — только `lang`, у `<body>` — ни одного (R4-V-K-7); `<script>` любого пространства имён
- *     и атрибут `on*` в `<main>`, обработчик `on*` где угодно в документе — замечание (R4-V-K-4);
+ *     и атрибут `on*` в `<main>`, обработчик `on*` где угодно в документе — замечание (R4-V-K-4); носители скрипта
+ *     без `<script>` (`iframe`, `frame`, `object`, `embed`, `srcdoc`, адрес `javascript:`), `<meta>` в `<body>`
+ *     и `meta refresh` где угодно — замечание (S2R3-K-3, K-4);
  *   - НОТА ПОДВАЛА — игры ноты («Games: …») = игры всех кадров страницы (герой, ряды, галерея)
  *     по записям, классы строки лицензии («License class: …») = классы тех же записей; «Games:»
  *     и «License class:» — по одному разу по тексту `<body>` вне `<main>` и нот (R4-V-K-14), записью, как
@@ -95,14 +100,17 @@
  * (`mp1-k10`) не судятся — главная вне сверки (P2-4, test.todo). `<style>` и `<link rel=stylesheet>` в `<head>` —
  * печать сайта, их правила (например, для `.geroy` или иконки) не читаются (R4-V-P-8, test.todo); `<script>` вне
  * `<main>` — модуль шапки печатает сайт, содержание скрипта не читается (R4-V-K-4, test.todo); буквы-двойники других
- * алфавитов в «Games:» и «License class:» не судятся (R4-V-K-13, test.todo).
+ * алфавитов в «Games:» и «License class:» не судятся (R4-V-K-13, test.todo). Перекрытие подписи кадра элементом вне
+ * героя — шапка, подвал, ряд, `<body>` после `<main>` с классом сайта, у которого `position` и `z-index` выше, чем у
+ * подписи (`.foto__credit`, `.hdr`, `.skip-link`, `.grain`), — по разметке не судится: наложение видит только браузер
+ * (S2R3, test.todo; «судью судят» правки шага 2 — три раунда, класс «подпись пропадает молча» до конца не закрыт).
  */
 
 import { readFileSync, readdirSync, existsSync, statSync, realpathSync } from 'node:fs';
 import { join, dirname, resolve, relative, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parse as yamlParse } from 'yaml';
-import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, tekstDetey, element, chasti, deti } from '@factory/core/text/html.mjs';
+import { razobrat, elementy, pervyi, imya, atr, klassy, predki, tekstVsego, tekstDetey, element, chasti, deti, tenevoyShablon } from '@factory/core/text/html.mjs';
 
 /** Одна нормализация для обеих сторон сверки. */
 export const norm = (s) => String(s ?? '').replace(/\s+/g, ' ').trim();
@@ -338,6 +346,28 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
           if (mA.length) vne.push(`<main>: ${mA.join(', ')}`);
           if (imya(main.parentNode) !== 'body') vne.push(`вокруг <main> — ${kratko(main.parentNode)}, ждали <body>`);
           if (vne.length) zam.push(`подпись кадра скрыта предком или вне печати маршрута: ${vne.join('; ')}`);
+          // Поддерево героя — ровно печать блока героя ядра и маршрута: дети — div.hero__art, div.hero__scrim,
+          // div.hero__inner и последней подпись; рамка арта — div.foto с одной img; скрим пуст. Сосед или потомок рамки
+          // с классом сайта (.foto__credit — z-index 3, .hdr — 50) ложится поверх подписи (S2R3-K-2, Z-1, P-2, P-3).
+          const vneGeroya = [];
+          const detiG = hero.childNodes.filter(element);
+          const ZHDEM_DETI = ['div.hero__art', 'div.hero__scrim', 'div.hero__inner', 'p.podpis-geroya'];
+          if (detiG.length !== ZHDEM_DETI.length || detiG.some((u, i) => `${imya(u)}.${ZHDEM_DETI[i].split('.')[1]}` !== ZHDEM_DETI[i] || !est(u, ZHDEM_DETI[i].split('.')[1]))) vneGeroya.push(`дети героя [${detiG.map(kratko).join(', ')}], ждали ${ZHDEM_DETI.join(', ')}`);
+          if (hero.childNodes.some((x) => x.nodeName === '#text' && neProbel(x.value))) vneGeroya.push('текст в герое вне его детей');
+          const artG = detiG.find((u) => est(u, 'hero__art'));
+          const podArt = artG ? elementy(artG).filter((u) => u !== artG).map((u) => imya(u) + [...klassy(u)].map((k) => '.' + k).join('')).join(' ') : '';
+          if (artG && podArt !== 'div.foto img') vneGeroya.push(`рамка арта: ${podArt || 'пусто'}, ждали div.foto с одной img`);
+          const skrim = detiG.find((u) => est(u, 'hero__scrim'));
+          if (skrim && skrim.childNodes.some((x) => element(x) || (x.nodeName === '#text' && neProbel(x.value)))) vneGeroya.push('скрим героя не пуст');
+          if (vneGeroya.length) zam.push(`в герое вне печати: ${vneGeroya.join('; ')} — может перекрыть подпись кадра`);
+          // Теневой корень где угодно в документе: светлые дети хозяина без <slot> не рисуются — со звеном цепочки пропадает
+          // и подпись; печать сайта теневых корней не несёт (S2R3-K-1, P-1).
+          const teni = elementy(doc, tenevoyShablon);
+          if (teni.length) zam.push(`теневой корень в документе (у ${teni.map((u) => kratko(u.parentNode)).join(', ')}) — светлые дети хозяина, и подпись с ними, могут не рисоваться`);
+          // Невидимые знаки и в печатном тексте подписи: norm сводит U+FEFF с пробелами, и печать без пробелов равнялась бы
+          // содержанию (S2R3-Z-3).
+          const nevidimyePechat = [...new Set([...tekstVsego(p)].filter((c) => /[\p{Cf}\p{Default_Ignorable_Code_Point}]/u.test(c)))];
+          if (nevidimyePechat.length) zam.push(`невидимые знаки в подписи кадра на странице (${nevidimyePechat.map((c) => 'U+' + c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')).join(', ')}) — читатель видит её не так, как она записана`);
         }
         // Невидимые и управляющие знаки (Cf и Default_Ignorable: U+200B, мягкий перенос, U+202E, селекторы вариантов…)
         // маршрут печатает как есть — строже CSS: и законный знак формата в подписи — замечание (S2R1-K-5, S2R1-P-3, S2R2-K-5).
@@ -615,6 +645,18 @@ export function sverkaStranicy({ page, dane, html, kredity, ikony, obyazatelnaPo
   if (skriptyMain.length) zam.push(`скрипт в <main>: ${skriptyMain.join(', ')} — печать маршрута скриптов не несёт`);
   const obrabotchikiVne = elementy(doc, vneMain).flatMap(naOn);
   if (obrabotchikiVne.length) zam.push(`обработчик on* вне <main>: ${obrabotchikiVne.join(', ')} — печать сайта обработчиков не несёт`);
+  // Носители скрипта без <script> — iframe, frame, object, embed, атрибут srcdoc, адрес javascript: в адресном атрибуте
+  // (после снятия пробельных и управляющих знаков, без учёта регистра) — где угодно в документе: подменяют подпись и текст
+  // у читателя со скриптами; печать сайта их не несёт (S2R3-K-3).
+  const ADRESNYE = ['src', 'href', 'data', 'action', 'formaction', 'poster', 'xlink:href', 'background', 'codebase', 'cite'];
+  const nositeli = elementy(doc, (u) => ['iframe', 'frame', 'object', 'embed'].includes(imya(u)) || (u.attrs ?? []).some((a) => a.name === 'srcdoc' || (ADRESNYE.includes(a.name) && /^javascript:/i.test(a.value.replace(/[\u0000- ]/g, '')))));
+  if (nositeli.length) zam.push(`носитель скрипта без <script>: ${nositeli.map(kratko).join(', ')} — печать сайта таких элементов и адресов не несёт`);
+  // <meta> в <body> (refresh уводит читателя на чужую страницу — с чужим героем и подписью) и refresh в <head> — печать
+  // сайта их не несёт (S2R3-K-4).
+  const metaBody = body ? elementy(body, (u) => imya(u) === 'meta') : [];
+  if (metaBody.length) zam.push(`meta в <body>: ${metaBody.map((u) => (u.attrs ?? []).map((a) => a.name).join(' ')).join('; ')} — печать сайта meta в теле не несёт`);
+  const refresh = elementy(doc, (u) => imya(u) === 'meta' && (atr(u, 'http-equiv') ?? '').trim().toLowerCase() === 'refresh');
+  if (refresh.length) zam.push(`meta refresh в документе: ${refresh.length} — уводит читателя со страницы`);
   const noty = elementy(doc, (u) => imya(u) === 'p' && est(u, 'ft__art-note')).map(txt);
   // «Games:» и «License class:» — по одному разу по тексту <body> вне <main> (абзац подвала без класса ноты — тоже
   // вторая строка; R4-V-K-14) и нот в <main>; пробел после двоеточия не обязателен (предел прежней пачки 4; V1-7, V2-4,

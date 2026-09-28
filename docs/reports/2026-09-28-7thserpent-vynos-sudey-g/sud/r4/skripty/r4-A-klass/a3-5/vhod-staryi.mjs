@@ -1,0 +1,4 @@
+import "file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/r4-A-klass/a3-5/pravshchik.mjs";
+import { ukazatelKorpusa } from "file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/r4-A-klass/a3-5/text/corpus.mjs";
+const u = ukazatelKorpusa("C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\r4-A-klass\\a3-5\\korpus", { kesh: "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\r4-A-klass\\a3-5\\kesh" });
+console.log(JSON.stringify({ kod: 'загружен до правки', izKesha: u.izKesha, oshibkaKesha: u.oshibkaKesha, g: u.nayti("alpha bravo charlie delta echo foxtrot golf hotel", 'tochno') }));

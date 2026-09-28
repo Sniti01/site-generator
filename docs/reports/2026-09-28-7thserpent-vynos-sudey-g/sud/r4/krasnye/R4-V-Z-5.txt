@@ -1,0 +1,37 @@
+мутация: vse-svg — в счёт все svg, и вложенные (копия модуля — mutacii/R4-V-Z-5/<вариант>/sverka.mjs)
+
+===== vse-svg (в счёт все svg, и вложенные): код 1, tests 1, pass 0, fail 1
+✖ R4-V-Z-5 законная иконка с вложенным svg в icons.ts и в печати — замечаний нет (вложенные svg не в счёт) (145.9427ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 336.7321
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-5\vse-svg\testy\sverka.test.mjs:827:1
+✖ R4-V-Z-5 законная иконка с вложенным svg в icons.ts и в печати — замечаний нет (вложенные svg не в счёт) (145.9427ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'иконка главной кнопки — не arrow-down (адрес #release-date): напечатано svg: 2; вне svg: svg, svg, path'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-5/vse-svg/testy/sverka.test.mjs:829:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'иконка главной кнопки — не arrow-down (адрес #release-date): напечатано svg: 2; вне svg: svg, svg, path' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

@@ -1,0 +1,35 @@
+✖ R4-B-P-1: члены проверяющего — <ul><li> и <h3 class="t-label"> в <noscript> внутри <p> — «не в своём ряду» (16.6233ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.9735
+
+✖ failing tests:
+
+test at ..\..\core\gates\phrases.test.mjs:146:1
+✖ R4-B-P-1: члены проверяющего — <ul><li> и <h3 class="t-label"> в <noscript> внутри <p> — «не в своём ряду» (16.6233ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'ul закрывает p',
+  +   'h3.t-label вынесен, видна «Other»'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/core/gates/phrases.test.mjs:151:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ul закрывает p', 'h3.t-label вынесен, видна «Other»' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

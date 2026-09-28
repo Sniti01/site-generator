@@ -1,0 +1,4 @@
+import { ukazatelKorpusa } from "file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/r4-A-klass/a3-5/text/corpus.mjs";
+const u = ukazatelKorpusa("C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\r4-A-klass\\a3-5\\korpus", { kesh: "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\r4-A-klass\\a3-5\\kesh" });
+const b = ukazatelKorpusa("C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\r4-A-klass\\a3-5\\korpus", { kesh: null });
+console.log(JSON.stringify({ kod: 'новый', izKesha: u.izKesha, g: u.nayti("alpha bravo charlie delta echo foxtrot golf hotel", 'tochno'), bezKesha: b.nayti("alpha bravo charlie delta echo foxtrot golf hotel", 'tochno') }));

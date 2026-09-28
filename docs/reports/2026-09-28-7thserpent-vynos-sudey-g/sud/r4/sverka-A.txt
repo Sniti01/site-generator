@@ -1,0 +1,6 @@
+D:/SEO/cloud/site-generator/sites/7thserpent.com/input/corpus документов 612 текст иной 0 
+D:/SEO/cloud/site-generator/sites/ac4bf-thewatch.com/input/corpus документов 2098 текст иной 0 
+новый документов 612 пустых 19 восьмиграмм {"tochno":510119,"srez":509950} страниц 16 отказов 0
+новый отпечаток итогов 739eb191fd8ff3a7 длина 957
+прежний документов 612 пустых 19 восьмиграмм {"tochno":510119,"srez":509950} страниц 16 отказов 0
+прежний отпечаток итогов 739eb191fd8ff3a7 длина 957

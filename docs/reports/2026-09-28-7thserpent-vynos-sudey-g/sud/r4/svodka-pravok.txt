@@ -1,0 +1,101 @@
+
+=== A: файлов 3
+  файл: D:\SEO\cloud\site-generator\core\text\corpus.mjs
+  файл: D:\SEO\cloud\site-generator\core\text\corpus.test.mjs
+  файл: D:\SEO\cloud\site-generator\core\text\extract.test.mjs
+  R4-A-K-1   исправлено
+  R4-A-K-2   исправлено
+  R4-A-K-3   исправлено
+  R4-A-K-4   исправлено
+  R4-A-K-5   только тест
+  R4-A-K-6   только тест
+  R4-A-K-7   предел todo
+  R4-A-Z-1   только тест
+  R4-A-Z-2   только тест
+  R4-A-Z-3   только тест
+  R4-A-Z-4   только тест
+  R4-A-Z-5   только тест
+  R4-A-Z-6   исправлено
+  R4-A-Z-7   проза
+  R4-A-P-1   исправлено
+  R4-A-P-2   не сделано
+  R4-A-P-3   предел todo
+  R4-A-P-4   исправлено
+  R4-A-P-5   не сделано
+  R4-A-P-6   не сделано
+  по статусам: {"исправлено":7,"только тест":7,"предел todo":2,"проза":1,"не сделано":3}
+  итог тестов: core/text/corpus.test.mjs, extract.test.mjs и words.test.mjs запускателем testy.mjs без сборки: tests 112, pass 104, fail 0, todo 8 (новые todo: R4-A-K-7, R4-A-P-1 предел, R4-A-P-3). Журнал: C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\itog-A.txt. Зелёные прогоны по находкам после правки — scratchpad\r4\zelenye-posle-A\, до правки для «только тест» — scratchpad\r4\zelenye-do-A\. Законная печать, журнал scratchpad\r4\sverka-A.txt (скрипт sverka-A.mjs). Прежний код (HEAD) и новый дают одинаковый текст всех 612 документов корпуса 7thserpent и всех 2098 документов корпуса ac4bf, расхождений 0. Сторож 8 слов на dist-7th-3b78f28 с новым указателем без кеша: 16 страниц, 0 отказов. Отпечаток итогов совпадает с прежним кодом (739eb191fd8ff3a7), указатель тот же (пустых 19, tochno 510119, srez 509950). Окончания строк: три файла LF, i/lf = w/lf, CR 0
+  не проверил: npm run build и гейт phrases внутри сборки не запускал. Судью на dist-7th-3b78f28 вызвал своим скриптом через sudSborki, без кеша. Живой кеш %TEMP%\site-generator-ukazatel не трогал. Первая сборка новым кодом запишет файл формата v4 и снимет все файлы раундов 2–3 (15331f73…, e392e0ea…, cfdc3d6f…, файл раунда 3 b8c77b23…, файлы ac4bf). Это один пересчёт около 30 с, вживую не наблюдал. Тесты core/gates и других блоков не прогонял: они не мои, а phrases.mjs вызывает ukazatelKorpusa через прежний вывоз, он не менялся. Поэтому corpus.d.mts не тронут. Вне объёма, строкой в отчёт: (1) <meta charset> в теле браузер слышит (предпросмотр идёт дальше <body>, разборщик меняет кодировку), а указатель читает такой документ запасной windows-1252, потому что окно кончается на <body>, как и до правки. Предел назван в комментарии predprosmotr, на живых корпусах расхождений 0. (2) Для R4-A-P-3 нужна строка в ПРЕДЕЛЫ шапки core/text/extract.mjs, файл не мой. (3) В рабочем дереве изменены sites/7thserpent.com/tools/sverka.mjs и sites/7thserpent.com/tools/testy/sverka.test.mjs, это не мои правки (другой блок). Раскрытие: одна читающая команда в начале (git show --stat 0e1add1) ограничила вывод конвейером через head, хотя по правилу нужен head_limit. Файлы от этого не менялись
+
+=== B: файлов 11
+  файл: D:\SEO\cloud\site-generator\core\gates\exceptions.mjs
+  файл: D:\SEO\cloud\site-generator\core\gates\head.mjs
+  файл: D:\SEO\cloud\site-generator\core\gates\head.test.mjs
+  файл: D:\SEO\cloud\site-generator\core\gates\phrases.test.mjs
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\schet-testov.mjs
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\proverki.mjs
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\sborka.test.mjs
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\sravnenie.mjs (новый)
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\sravnenie.test.mjs (новый)
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\schet.test.mjs (новый)
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\uborka.test.mjs (новый)
+  R4-B-K-1   исправлено
+  R4-B-P-1   исправлено
+  R4-B-P-5   только тест
+  R4-B-Z-1   только тест
+  R4-B-K-6   проза
+  R4-B-K-4   исправлено
+  R4-B-Z-3   исправлено
+  R4-B-P-2   исправлено
+  R4-B-Z-4   только тест
+  R4-B-K-5   исправлено
+  R4-B-P-3   исправлено
+  R4-B-Z-6   проза
+  R4-B-Z-7   проза
+  R4-B-K-2   исправлено
+  R4-B-Z-8   исправлено
+  R4-B-P-4   исправлено
+  R4-B-K-3   только тест
+  R4-B-Z-5   только тест
+  R4-B-Z-2   только тест
+  по статусам: {"исправлено":10,"только тест":6,"проза":3}
+  итог тестов: C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\itog-B.txt. Запускатель testy.mjs на dist-7th-3b78f28, файлы: core/gates/head.test.mjs, phrases.test.mjs, masters.test.mjs и tools/testy/frazy.test.mjs, glowa.test.mjs, sverka.test.mjs, schet.test.mjs, sravnenie.test.mjs, uborka.test.mjs. Итог: tests 667, pass 653, fail 0, todo 14. Контроли «все страницы без замечаний» (frazy, glowa) зелёные: новых замечаний и отказов на законной печати нет, <noscript> в этой сборке нет вообще. Все 12 файлов, которые я правил или создал, пишутся с LF; git ls-files --eol у правленых файлов даёт i/lf w/lf. Красные прогоны — …\r4\krasnye\R4-B-*.txt. Скрипт мутаций — …\r4\mutacii-B.mjs, скрипт перечня — …\r4\krasnye-B.mjs. Зелёные после правки — …\r4\ispolnitel-B\zelenye\, zel-K1.txt, zel-head.txt, zel-sravnenie.txt, proverki-schet.txt.
+  не проверил: Не запускались тесты, которые собирают копии: 1) B1-G-12 в sborka.test.mjs — теперь sravnitSborki(dist(), dist копии с ядром-копией) должен дать []; проверены синтаксис (node --check) и подобие копии на настоящей сборке в sravnenie.test.mjs (новые значения cid и хеши имён CSS), настоящую сборку с ядром-копией — нет. 2) proverki.test.mjs целиком: его утверждения о schet и kodProverki прогнаны копией без теста запуска proverki, 7/7 зелёные. Тест «B2-1: шаблон имён ни с чем не совпал — proverki даёт код 2» не запускался; по опыту --test-name-pattern= виден в execArgv репортёра, поэтому файлы без совпавших тестов остаются пропуском. 3) kopiya.test.mjs — не менялся и не запускался. Вне объёма, строкой в отчёт: в tools/proverki.mjs:109 подсказка «(skip с выполненным телом?)» не называет выход process.exit(0) (код proverki.mjs не мой, правил только шапку); в шапке sborka.test.mjs, строка 3, «собирают побайтно одно и то же» неточно для копии с ядром-копией (прежняя проза). R4-B-K-1 закрыт строгой стороной, без второго прочтения: у sudIsklyucheniy нет исходного HTML, а phrases.mjs и core/text/* не мои файлы. Если владелец захочет второе прочтение метки, как у судьи головы, izvl должен нести html или его разбор со скриптами — это правка extract.mjs или phrases.mjs.
+
+=== V: файлов 2
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\sverka.mjs
+  файл: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\sverka.test.mjs
+  R4-V-K-1   исправлено
+  R4-V-K-2   исправлено
+  R4-V-K-3   исправлено
+  R4-V-K-4   исправлено
+  R4-V-K-5   исправлено
+  R4-V-K-6   исправлено
+  R4-V-K-7   исправлено
+  R4-V-K-8   исправлено
+  R4-V-K-9   исправлено
+  R4-V-K-10  исправлено
+  R4-V-K-11  исправлено
+  R4-V-K-12  исправлено
+  R4-V-K-13  исправлено
+  R4-V-K-14  исправлено
+  R4-V-Z-1   исправлено
+  R4-V-Z-2   только тест
+  R4-V-Z-3   только тест
+  R4-V-Z-4   только тест
+  R4-V-Z-5   только тест
+  R4-V-Z-6   только тест
+  R4-V-Z-7   только тест
+  R4-V-Z-8   не сделано
+  R4-V-P-1   исправлено
+  R4-V-P-2   исправлено
+  R4-V-P-3   исправлено
+  R4-V-P-4   исправлено
+  R4-V-P-5   исправлено
+  R4-V-P-6   исправлено
+  R4-V-P-7   исправлено
+  R4-V-P-8   предел todo
+  R4-V-P-9   исправлено
+  по статусам: {"исправлено":23,"только тест":6,"не сделано":1,"предел todo":1}
+  итог тестов: tools/testy/sverka.test.mjs, запускатель testy.mjs со сборкой dist-7th-3b78f28: tests 331, pass 322, fail 0, todo 9 (прежние 6 и новые R4-V-K-4, R4-V-K-13, R4-V-P-8). Контроль «все страницы маршрута сборки без замечаний» зелёный. Контроль копии сборки без добавленных файлов (R4-V-K-9к) даёт [], то есть законная печать не дала ни одного нового замечания. Журнал: C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\itog-V.txt. Красные прогоны и мутации — scratchpad\r4\krasnye\*.txt, зелёные прогоны по номерам — scratchpad\r4\zelenye-V\*.txt, копии мутантов — scratchpad\r4\mutacii\R4-V-Z-*\. Оба файла LF (git ls-files --eol: i/lf w/lf). В рабочем дереве также изменены core/text/corpus.mjs, corpus.test.mjs и extract.test.mjs — это не мои правки, их делают исполнители других блоков.
+  не проверил: Сборку сайта (npm run build, интеграция astro:build:done) не запускал: зелёная законная печать проверена только на готовой сборке dist-7th-3b78f28. Тесты, которые собирают копии (proby-p1, proby-p2, proby-p4, kopiya, sborka, proverki), не запускались. Они вызывают сверку при сборке порченых копий, и если какая-то проба ждёт точный текст отказа или зелёную сборку на форме, которую теперь судят строже, это покажет только npm run proverki. Строже теперь судятся: атрибуты у <html>/<body>, style вне <main> (кроме знака), <style>/<link> в <body>, on* во всём документе, повтор id заголовков, элементы во второй кнопке, иконка призыва. astro check на sverka.mjs не прогонял.

@@ -1,0 +1,33 @@
+мутация Z-4: порог «старше часа» в уборке .tmp снят (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-4\text\corpus.mjs)
+✖ R4-A-K-5, R4-A-Z-4 (A3-4): брошенный .tmp своего корпуса старше часа убирается, свежий (идёт запись другим процессом) — нет (26.9259ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 195.021
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-4\text\corpus.test.mjs:493:1
+✖ R4-A-K-5, R4-A-Z-4 (A3-4): брошенный .tmp своего корпуса старше часа убирается, свежий (идёт запись другим процессом) — нет (26.9259ms)
+  AssertionError [ERR_ASSERTION]: свежий .tmp
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-4/text/corpus.test.mjs:505:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

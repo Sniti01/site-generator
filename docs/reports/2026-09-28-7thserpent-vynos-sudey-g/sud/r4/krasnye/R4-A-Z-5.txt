@@ -1,0 +1,70 @@
+мутация Z-5-zapis: первая половина A3-5 снята: сменившиеся после загрузки исходники не мешают записи кеша (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-5-zapis\text\corpus.mjs)
+✖ R4-A-Z-5 (A3-5, запись): исходники сменились после загрузки — старый код кеш не пишет и говорит об этом (83.1967ms)
+✔ R4-A-Z-5 (A3-5, чтение): кеш нового кода старый загруженный код не берёт (167.8104ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 426.5496
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-5-zapis\text\corpus.test.mjs:567:1
+✖ R4-A-Z-5 (A3-5, запись): исходники сменились после загрузки — старый код кеш не пишет и говорит об этом (83.1967ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'aa576ef5bcc99f61-aea0dc3d942c7828efbde6feb51da3d585ed3d73f524dfe3c1dc6a0c1235fa67.json.gz'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-5-zapis/text/corpus.test.mjs:572:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'aa576ef5bcc99f61-aea0dc3d942c7828efbde6feb51da3d585ed3d73f524dfe3c1dc6a0c1235fa67.json.gz' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1
+
+==========
+мутация Z-5-chtenie: вторая половина A3-5 снята: ключ — по исходникам на диске (versiya()), а не по версии при загрузке (VERSIYA) (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-5-chtenie\text\corpus.mjs)
+✔ R4-A-Z-5 (A3-5, запись): исходники сменились после загрузки — старый код кеш не пишет и говорит об этом (109.845ms)
+✖ R4-A-Z-5 (A3-5, чтение): кеш нового кода старый загруженный код не берёт (178.732ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 458.382
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-5-chtenie\text\corpus.test.mjs:576:1
+✖ R4-A-Z-5 (A3-5, чтение): кеш нового кода старый загруженный код не берёт (178.732ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-5-chtenie/text/corpus.test.mjs:584:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

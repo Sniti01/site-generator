@@ -1,0 +1,32 @@
+✖ R4-A-K-3 (A3-1): charset= в content без http-equiv=content-type — не метка, как у браузера (17.5687ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 122.814
+
+✖ failing tests:
+
+test at ..\..\core\text\corpus.test.mjs:439:1
+✖ R4-A-K-3 (A3-1): charset= в content без http-equiv=content-type — не метка, как у браузера (17.5687ms)
+  AssertionError [ERR_ASSERTION]: name="x"
+  
+  null !== 'u'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/core/text/corpus.test.mjs:440:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'u',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

@@ -1,0 +1,33 @@
+мутация R4-B-Z-1: текст цели aria-labelledby — через tekstVsego, а не tekst прочтения (head.mjs, imyaPoSsylke) (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-1\head.mjs)
+✖ R4-B-P-5: часть текста цели aria-labelledby в <noscript> — имя у двух читателей разное: отказ «noscript»; текст в цели и <noscript> с картинкой — чисто (14.8232ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 115.062
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-1\head.test.mjs:153:1
+✖ R4-B-P-5: часть текста цели aria-labelledby в <noscript> — имя у двух читателей разное: отказ «noscript»; текст в цели и <noscript> с картинкой — чисто (14.8232ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(vidy('/a/b/', stranicaB({ imyaNav: 'aria-labelledby="im"', telo: '<span id="im">Crumbs<noscript> (без JS)</noscript></span>' })).includes('noscript'))
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-B-Z-1/head.test.mjs:154:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+код возврата: 1

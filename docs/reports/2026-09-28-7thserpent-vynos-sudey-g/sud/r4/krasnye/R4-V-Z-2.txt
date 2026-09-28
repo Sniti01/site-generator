@@ -1,0 +1,154 @@
+мутация: без-html — style у <html> не судится; без-body — style у <body> не судится; bez-prochih — style у прочих элементов <main> не судится; bez-link — <link rel=stylesheet> в <main> не судится (копия модуля — mutacii/R4-V-Z-2/<вариант>/sverka.mjs)
+
+===== без-html (style у <html> не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main>
+  ✖ R4-V-Z-2 style у <html> (22.9959ms)
+  ✔ R4-V-Z-2 style у <body> (7.0403ms)
+  ✔ R4-V-Z-2 style у ряда вне героя (6.6131ms)
+  ✔ R4-V-Z-2 <link rel=stylesheet> в <main> (6.22ms)
+✖ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main> (45.8094ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 230.9373
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-2\без-html\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-2 style у <html> (22.9959ms)
+  AssertionError [ERR_ASSERTION]: ждали «style у html», получено: атрибуты <html>/<body> вне печати сайта: html style — у <html> только lang, у <body> ни одного
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-html/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-html/testy/sverka.test.mjs:30:13)
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-html/testy/sverka.test.mjs:781:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== без-body (style у <body> не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main>
+  ✔ R4-V-Z-2 style у <html> (25.6666ms)
+  ✖ R4-V-Z-2 style у <body> (7.5686ms)
+  ✔ R4-V-Z-2 style у ряда вне героя (7.2212ms)
+  ✔ R4-V-Z-2 <link rel=stylesheet> в <main> (6.3494ms)
+✖ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main> (49.8784ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 243.9415
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-2\без-body\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-2 style у <body> (7.5686ms)
+  AssertionError [ERR_ASSERTION]: ждали «style у body», получено: атрибуты <html>/<body> вне печати сайта: body style — у <html> только lang, у <body> ни одного
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-body/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-body/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/%D0%B1%D0%B5%D0%B7-body/testy/sverka.test.mjs:781:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-prochih (style у прочих элементов <main> не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main>
+  ✔ R4-V-Z-2 style у <html> (22.1897ms)
+  ✔ R4-V-Z-2 style у <body> (6.4628ms)
+  ✖ R4-V-Z-2 style у ряда вне героя (7.5999ms)
+  ✔ R4-V-Z-2 <link rel=stylesheet> в <main> (6.0608ms)
+✖ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main> (44.8791ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 227.3797
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-2\bez-prochih\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-2 style у ряда вне героя (7.5999ms)
+  AssertionError [ERR_ASSERTION]: ждали «style у section.layer», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-prochih/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-prochih/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-prochih/testy/sverka.test.mjs:781:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-link (<link rel=stylesheet> в <main> не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main>
+  ✔ R4-V-Z-2 style у <html> (25.8256ms)
+  ✔ R4-V-Z-2 style у <body> (7.6758ms)
+  ✔ R4-V-Z-2 style у ряда вне героя (7.3098ms)
+  ✖ R4-V-Z-2 <link rel=stylesheet> в <main> (7.1701ms)
+✖ R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main> (51.0708ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.8485
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-2\bez-link\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-2 <link rel=stylesheet> в <main> (7.1701ms)
+  AssertionError [ERR_ASSERTION]: ждали «<style> в <main>: 1 (link)», получено: картинки <main> с ключами вне кадров содержания: proba
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-link/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-link/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-2/bez-link/testy/sverka.test.mjs:781:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

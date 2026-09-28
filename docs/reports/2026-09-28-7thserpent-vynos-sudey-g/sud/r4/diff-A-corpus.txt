@@ -1,0 +1,324 @@
+diff --git a/core/text/corpus.mjs b/core/text/corpus.mjs
+index 87a44a9..a7d38a6 100644
+--- a/core/text/corpus.mjs
++++ b/core/text/corpus.mjs
+@@ -14,10 +14,13 @@
+  * `<body>`, два прочтения строчных тегов; оба идут в указатель. Слова — по строке, как у страницы
+  * (адреса пробелом, имена сайта одним словом), затем строки сводятся в один поток. Кодировка —
+  * BOM, затем `charset` записи манифеста (метка WHATWG: `iso-8859-1` — это windows-1252); без метки —
+- * валидный UTF-8 как UTF-8, иначе `<meta charset>` головы, иначе windows-1252 (`tekstSyrya`). Прежний
+- * довод предела «`<meta charset>` не читается — у корпуса три документа с `iso-8859-1`, байтов выше
+- * 0x7F в них нет» был неверен: проверялись только документы с меткой в HTTP, а документ blu-ray.com
+- * без метки — windows-1252 с `<meta http-equiv>`, и его фраза с «façades» не ловилась (раунд 3, A3-1).
++ * валидный UTF-8 как UTF-8, иначе кодировка головы по предпросмотру WHATWG (`predprosmotr`:
++ * комментарии пропускаются, `charset=` из `content` — только при `http-equiv="content-type"`,
++ * неизвестная метка — следующая `<meta>`, UTF-16 — это UTF-8, `x-user-defined` — windows-1252;
++ * раунд 4, R4-A-K-1…3, R4-A-Z-6, R4-A-P-4), иначе windows-1252 (`tekstSyrya`). Прежний довод предела
++ * «`<meta charset>` не читается — у корпуса три документа с `iso-8859-1`, байтов выше 0x7F в них нет»
++ * был неверен: проверялись только документы с меткой в HTTP, а документ blu-ray.com без метки —
++ * windows-1252 с `<meta http-equiv>`, и его фраза с «façades» не ловилась (раунд 3, A3-1).
+  *
+  * СТРОЕНИЕ. Хеши 8-грамм — отсортированный `Float64Array` на режим (поиск делением пополам)
+  * и рядом — номер первого документа с этой 8-граммой. Совпадение хеша ПОДТВЕРЖДАЕТСЯ словами этого
+@@ -33,13 +36,21 @@
+  * каждого сырого файла (в порядке документов), имён сайта (JSON), исходников `core/text/*.mjs`
+  * на момент загрузки модуля, версий parse5 и `entities`, версии Node и её таблиц Юникода; ключ лежит
+  * и внутри файла. Испорченный или несогласованный файл кеша (чужой ключ, пустой режим, длины, порядок
+- * хешей, номера документов) — пересчёт, не вечный отказ и не ложное «чисто»; ошибка записи кеша судью
+- * не роняет (указатель уже посчитан), временный файл при перехваченной ошибке убирается сразу,
+- * брошенный убитым процессом — уборкой через час; сырьё, сменившееся во время построения, и исходники
+- * `core/text`, сменившиеся после загрузки, в кеш не пишутся. Имя файла начинается отпечатком
+- * настоящего пути папки корпуса (ссылка копии сайта ведёт к тому же кешу): после записи убираются
+- * старые файлы только этого корпуса и файлы прежнего формата (раунды 2 и 3 «судью судят», A2-5…A2-10,
+- * A3-2…A3-5).
++ * хешей, значение не хеш, номера документов) — пересчёт, не вечный отказ и не ложное «чисто»; ошибка
++ * записи кеша судью не роняет (указатель уже посчитан), временный файл при перехваченной ошибке
++ * убирается сразу, брошенный убитым процессом — уборкой при следующей записи кеша, если ему больше
++ * часа (уборка идёт только после записи: пока кеш берётся, файл лежит — до смены ключа, R4-A-Z-7);
++ * сырьё, сменившееся во время построения, и исходники `core/text`, сменившиеся после загрузки, в кеш
++ * не пишутся. Имя файла — `<отпечаток настоящего пути папки корпуса>-<ключ>.v4.json.gz` (ссылка
++ * копии сайта ведёт к тому же кешу; `v4` — метка формата): после записи убираются старые файлы только
++ * этого корпуса и файлы прежних форматов любого корпуса — раунда 1 без отпечатка, раундов 2 и 3 без
++ * метки (раунды 2–4 «судью судят», A2-5…A2-10, A3-2…A3-5, R4-A-K-4).
++ * ПРЕДЕЛЫ КЕША (тесты `todo`): версия исходников снимается при вычислении модуля, а загрузчик ESM
++ * читает исходники всего графа раньше — правка `core/text` на диске в этом окне (миллисекунды старта:
++ * `git checkout`, сохранение в редакторе) даёт кеш под ключом нового исходника с указателем старого
++ * кода, и новый код берёт его (R4-A-K-7); ключ — не подпись: файл со своим ключом и подделанным
++ * содержимым (номера документов в пределах, но не те; хеши возможные, но не те) принимается, ложное
++ * «чисто» — только подделкой или этим окном (R4-A-P-1).
+  */
+ 
+ import { readFileSync, writeFileSync, existsSync, mkdirSync, renameSync, readdirSync, unlinkSync, realpathSync, statSync } from 'node:fs';
+@@ -117,13 +128,170 @@ const dekoder = (metka) => {
+   }
+ };
+ 
++/** Пробел WHATWG (TAB, LF, FF, CR, SPACE) и строчные только ASCII — как в «prescan» по байтам. */
++const PROBEL = /[\t\n\f\r ]/;
++const nizhnieAscii = (s) => s.replace(/[A-Z]/g, (c) => c.toLowerCase());
++
++/** Декодер по метке `<meta>` («get an encoding» WHATWG: пробелы по краям, регистр ASCII) или `null`. */
++const dekoderMeta = (metka) => {
++  try {
++    return new TextDecoder(metka);
++  } catch {
++    return null;
++  }
++};
++
++/**
++ * Метка из `content` («extract a character encoding from a meta element», WHATWG): первое `charset`,
++ * за которым через пробелы идёт `=`; значение — в кавычках (без пары — ничего) или до пробела или `;`.
++ */
++function metkaIzContent(s) {
++  const niz = nizhnieAscii(s);
++  for (let i = 0; ; ) {
++    const j = niz.indexOf('charset', i);
++    if (j < 0) return null;
++    let k = j + 'charset'.length;
++    while (k < s.length && PROBEL.test(s[k])) k++;
++    if (s[k] !== '=') {
++      i = k;
++      continue;
++    }
++    k++;
++    while (k < s.length && PROBEL.test(s[k])) k++;
++    if (k >= s.length) return null;
++    if (s[k] === '"' || s[k] === "'") {
++      const e = s.indexOf(s[k], k + 1);
++      return e < 0 ? null : s.slice(k + 1, e);
++    }
++    return /^[^\t\n\f\r ;]*/.exec(s.slice(k))[0];
++  }
++}
++
++/**
++ * Атрибут тега с позиции `i` («get an attribute», WHATWG): `[имя, значение, позиция после]`, `null` —
++ * атрибутов больше нет (`>`), `undefined` — окно кончилось (предпросмотр без итога).
++ */
++function atributTega(s, i) {
++  while (i < s.length && (PROBEL.test(s[i]) || s[i] === '/')) i++;
++  if (i >= s.length) return undefined;
++  if (s[i] === '>') return null;
++  let imya = '';
++  let znach = '';
++  for (;;) {
++    if (i >= s.length) return undefined;
++    const c = s[i];
++    if (c === '=' && imya) {
++      i++;
++      break;
++    }
++    if (PROBEL.test(c)) {
++      while (i < s.length && PROBEL.test(s[i])) i++;
++      if (i >= s.length) return undefined;
++      if (s[i] !== '=') return [imya, '', i];
++      i++;
++      break;
++    }
++    if (c === '/' || c === '>') return [imya, '', i];
++    imya += nizhnieAscii(c);
++    i++;
++  }
++  while (i < s.length && PROBEL.test(s[i])) i++;
++  if (i >= s.length) return undefined;
++  if (s[i] === '"' || s[i] === "'") {
++    const kav = s[i];
++    const e = s.indexOf(kav, i + 1);
++    if (e < 0) return undefined;
++    return [imya, nizhnieAscii(s.slice(i + 1, e)), e + 1];
++  }
++  if (s[i] === '>') return [imya, '', i];
++  while (i < s.length && !PROBEL.test(s[i]) && s[i] !== '>') znach += nizhnieAscii(s[i++]);
++  if (i >= s.length) return undefined;
++  return [imya, znach, i];
++}
++
++/**
++ * Кодировка из головы: «prescan a byte stream to determine its encoding» WHATWG по окну байтов
++ * (строка latin1 — байт на знак), раунд 4 (R4-A-K-1…3, R4-A-Z-6, R4-A-P-4): комментарии `<!-- -->`
++ * пропускаются; атрибуты `<meta>` — по одному: `charset`, либо `charset=` из `content` только при
++ * `http-equiv="content-type"`; неизвестная метка — следующая `<meta>`; UTF-16 — это UTF-8,
++ * `x-user-defined` — windows-1252. Прочие теги и их атрибуты пропускаются; `<body>` — конец головы,
++ * как прежде. ПРЕДЕЛ: браузер слышит `<meta charset>` и в теле (предпросмотр идёт дальше `<body>`,
++ * разборщик меняет кодировку, пока она не окончательна) — такой документ указатель читает запасной
++ * windows-1252 (раунд 4: найдено при сверке, вне находок раунда). Метки кодировки `replacement`
++ * (`iso-2022-kr` и др.) декодер Node не знает — следующая `<meta>` (браузер не показал бы текста;
++ * указатель видит больше — строже). Итог — декодер или `null`.
++ */
++function predprosmotr(s) {
++  for (let i = 0; i < s.length; i++) {
++    if (s.startsWith('<!--', i)) {
++      const e = s.indexOf('-->', i + 2);
++      if (e < 0) return null;
++      i = e + 2;
++      continue;
++    }
++    if (/^<meta[\t\n\f\r /]$/i.test(s.slice(i, i + 6))) {
++      i += 5;
++      const bylo = new Set();
++      let pragma = false;
++      let nuzhnaPragma = null;
++      let kod = null;
++      for (;;) {
++        const a = atributTega(s, i);
++        if (a === undefined) return null;
++        if (a === null) break;
++        const [imya, znach] = a;
++        i = a[2];
++        if (bylo.has(imya)) continue;
++        bylo.add(imya);
++        if (imya === 'http-equiv') {
++          if (znach === 'content-type') pragma = true;
++        } else if (imya === 'content') {
++          const metka = metkaIzContent(znach);
++          const d = metka === null ? null : dekoderMeta(metka);
++          if (d && kod === null) {
++            kod = d;
++            nuzhnaPragma = true;
++          }
++        } else if (imya === 'charset') {
++          kod = dekoderMeta(znach) ?? false;
++          nuzhnaPragma = false;
++        }
++      }
++      if (nuzhnaPragma === null || (nuzhnaPragma && !pragma) || !kod) continue;
++      if (kod.encoding === 'utf-16le' || kod.encoding === 'utf-16be') return new TextDecoder('utf-8');
++      if (kod.encoding === 'x-user-defined') return new TextDecoder('windows-1252');
++      return kod;
++    }
++    const teg = /^<\/?([A-Za-z])/.exec(s.slice(i, i + 3));
++    if (teg) {
++      let k = i + 1;
++      while (k < s.length && !PROBEL.test(s[k]) && s[k] !== '>') k++;
++      if (s[i + 1] !== '/' && /^body\/?$/.test(nizhnieAscii(s.slice(i + 1, k)))) return null;
++      i = k;
++      for (;;) {
++        const a = atributTega(s, i);
++        if (a === undefined) return null;
++        if (a === null) break;
++        i = a[2];
++      }
++      continue;
++    }
++    if (s.startsWith('<!', i) || s.startsWith('</', i) || s.startsWith('<?', i)) {
++      const e = s.indexOf('>', i);
++      if (e < 0) return null;
++      i = e;
++    }
++  }
++  return null;
++}
++
+ /**
+  * Текст сырого документа: BOM главнее метки (WHATWG «decode», раунд 2, A2-4), затем `charset` записи
+- * (метка WHATWG). Без метки или с неизвестной (раунд 3, A3-1: документ blu-ray.com корпуса второго
+- * сайта — windows-1252 без метки в HTTP, с `<meta http-equiv>`): байты — валидный UTF-8 — UTF-8
+- * (строже браузера, который поверил бы `<meta>`: намеренный текст документа); иначе `<meta charset>`
+- * или `http-equiv` головы (до `<body>` в первых 8 КБ); иначе windows-1252 (запасная браузера для
+- * латинской локали).
++ * (метка WHATWG; UTF-16 из HTTP законна и остаётся). Без метки или с неизвестной (раунд 3, A3-1:
++ * документ blu-ray.com корпуса второго сайта — windows-1252 без метки в HTTP, с `<meta http-equiv>`):
++ * байты — валидный UTF-8 — UTF-8 (строже браузера, который поверил бы `<meta>`: намеренный текст
++ * документа); иначе кодировка из головы по предпросмотру WHATWG (`predprosmotr`, первые 8 КБ до
++ * `<body>`); иначе windows-1252 (запасная браузера для латинской локали).
+  */
+ function tekstSyrya(bajty, charset) {
+   if (bajty[0] === 0xef && bajty[1] === 0xbb && bajty[2] === 0xbf) return new TextDecoder('utf-8').decode(bajty);
+@@ -136,9 +304,7 @@ function tekstSyrya(bajty, charset) {
+   } catch {
+     // не UTF-8 — ищем метку в голове
+   }
+-  const golova = bajty.subarray(0, 8192).toString('latin1').split(/<body\b/i)[0];
+-  const m = /<meta\b[^>]*?charset\s*=\s*["']?\s*([-\w.:]+)/i.exec(golova);
+-  const poMeta = m ? dekoder(m[1]) : null;
++  const poMeta = predprosmotr(bajty.subarray(0, 8192).toString('latin1'));
+   return (poMeta ?? new TextDecoder('windows-1252')).decode(bajty);
+ }
+ 
+@@ -248,7 +414,9 @@ export function ukazatelIzTekstov(teksty, { imena = [] } = {}) {
+ /**
+  * Версия извлечения для ключа кеша: исходники `core/text/*.mjs`, parse5, entities, Node и Юникод.
+  * Ключ берёт версию, снятую при загрузке модуля (`VERSIYA`): указатель строит загруженный код, а не
+- * исходники на диске; сменились исходники после загрузки — кеш не пишется (раунд 3, A3-5).
++ * исходники на диске; сменились исходники после загрузки — кеш не пишется (раунд 3, A3-5). ПРЕДЕЛ:
++ * «при загрузке» — при вычислении этого модуля, после того как загрузчик прочёл исходники графа
++ * (окно, R4-A-K-7 — см. шапку).
+  */
+ function versiya() {
+   const zdes = dirname(fileURLToPath(import.meta.url));
+@@ -272,10 +440,21 @@ const VERSIYA = versiya();
+ /** Папка кеша по умолчанию — временная папка системы. */
+ export const KESH_PO_UMOLCHANIYU = join(tmpdir(), 'site-generator-ukazatel');
+ 
++/**
++ * Метка формата в имени файла кеша (раунд 4, R4-A-K-4): формат раундов 2 и 3 — одно имя
++ * `<отпечаток>-<ключ>.json.gz`, но у раунда 2 ключа внутри нет, и такой файл под отпечатком пути
++ * ссылки не примет и не уберёт никто. Файлы прежних форматов (и раунда 1 — `<ключ>.json.gz`, и их
++ * временные) — мёртвые у всякого корпуса: уборка снимает их, временные — старше часа.
++ */
++const FORMAT_KESHA = 'v4';
++const PREZHNIY_FORMAT = /^(?:[0-9a-f]{64}|[0-9a-f]{16}-[0-9a-f]{64})\.json\.gz(?:\.\d+\.tmp)?$/;
++
+ /**
+  * Хеши из кеша, проверенные на согласованность (раунд 2, A2-6; раунд 3, A3-2): ключ внутри файла —
+- * ключ этого корпуса; у каждого режима 8-граммы есть, длины `h` и `d` равны, `h` строго растёт,
+- * номер документа меньше их числа; `pustyh` — целое от 0 до числа документов — иначе `null` (пересчёт).
++ * ключ этого корпуса; у каждого режима 8-граммы есть, длины `h` и `d` равны, каждый хеш — целое от 0
++ * до 2^53 − 1, как у `hesh` (NaN первым, Infinity последним, дробное — не хеш; раунд 4, R4-A-P-1),
++ * `h` строго растёт, номер документа меньше их числа; `pustyh` — целое от 0 до числа документов —
++ * иначе `null` (пересчёт).
+  */
+ function heshiIzKesha(k, n, klyuch) {
+   if (k?.klyuch !== klyuch) return null;
+@@ -286,7 +465,7 @@ function heshiIzKesha(k, n, klyuch) {
+     const h = iz(k[r]?.h ?? '', Float64Array);
+     const d = iz(k[r]?.d ?? '', Uint32Array);
+     if (!h.length || h.length !== d.length) return null;
+-    for (let i = 0; i < h.length; i++) if (d[i] >= n || (i && !(h[i] > h[i - 1]))) return null;
++    for (let i = 0; i < h.length; i++) if (d[i] >= n || !Number.isSafeInteger(h[i]) || h[i] < 0 || (i && !(h[i] > h[i - 1]))) return null;
+     heshi[r] = { h, d };
+   }
+   return heshi;
+@@ -296,9 +475,9 @@ function heshiIzKesha(k, n, klyuch) {
+  * Указатель корпуса сайта: папка `input/corpus`, имена сайта. Ошибки корпуса — громко.
+  * `kesh` — папка кеша (`null` — без кеша). Возвращает и `izKesha` — был ли указатель в кеше,
+  * `oshibkaKesha` — текст ошибки чтения, записи или уборки кеша (судья её печатает, но не падает).
+- * Файл кеша — `<отпечаток папки корпуса>-<ключ>.json.gz`: уборка трогает только файлы своего
+- * корпуса, кеш второго сайта в общей папке не вытесняется (A2-5). `chitat` — чтение сырого файла
+- * (шов для теста смены сырья во время построения, A2-10).
++ * Файл кеша — `<отпечаток папки корпуса>-<ключ>.v4.json.gz`: уборка трогает только файлы своего
++ * корпуса и файлы прежних форматов, кеш второго сайта в общей папке не вытесняется (A2-5). `chitat` —
++ * чтение сырого файла (шов для теста смены сырья во время построения, A2-10).
+  */
+ export function ukazatelKorpusa(papka, { imena = [], kesh = KESH_PO_UMOLCHANIYU, chitat = readFileSync } = {}) {
+   const manifest = chitatManifest(papka);
+@@ -312,7 +491,7 @@ export function ukazatelKorpusa(papka, { imena = [], kesh = KESH_PO_UMOLCHANIYU,
+   // Отпечаток папки — по настоящему пути: копия сайта со ссылкой на корпус берёт кеш корпуса (A3-4).
+   const put = realpathSync(resolve(papka));
+   const prefiks = createHash('sha256').update(process.platform === 'win32' ? put.toLowerCase() : put).digest('hex').slice(0, 16);
+-  const fajlKesha = kesh ? join(kesh, `${prefiks}-${klyuch}.json.gz`) : null;
++  const fajlKesha = kesh ? join(kesh, `${prefiks}-${klyuch}.${FORMAT_KESHA}.json.gz`) : null;
+   const urls = docs.map((d) => d.url);
+   const oshibki = [];
+   if (fajlKesha && existsSync(fajlKesha)) {
+@@ -342,14 +521,15 @@ export function ukazatelKorpusa(papka, { imena = [], kesh = KESH_PO_UMOLCHANIYU,
+       const b64 = (a) => Buffer.from(a.buffer, a.byteOffset, a.byteLength).toString('base64');
+       writeFileSync(vremennyi, gzipSync(JSON.stringify({ klyuch, pustyh: heshi.pustyh, ...Object.fromEntries(REZHIMY.map((r) => [r, { h: b64(heshi[r].h), d: b64(heshi[r].d) }])) })));
+       renameSync(vremennyi, fajlKesha);
+-      // Уборка: прежние файлы этого корпуса, файлы прежнего формата (без отпечатка папки) и временные
+-      // файлы этого корпуса старше часа (убитый процесс, A3-4).
++      // Уборка: прежние файлы этого корпуса, файлы прежних форматов любого корпуса (R4-A-K-4) и временные
++      // файлы этого корпуса и прежних форматов старше часа (убитый процесс, A3-4; свежий — запись идёт).
+       try {
+         for (const f of readdirSync(kesh)) {
+           const p = join(kesh, f);
+           const svoy = f.startsWith(`${prefiks}-`);
+-          if ((svoy && /\.json\.gz$/.test(f) && p !== fajlKesha) || /^[0-9a-f]{64}\.json\.gz$/.test(f)) unlinkSync(p);
+-          else if (svoy && /\.tmp$/.test(f) && Date.now() - statSync(p).mtimeMs > 3600 * 1000) unlinkSync(p);
++          if (/\.tmp$/.test(f)) {
++            if ((svoy || PREZHNIY_FORMAT.test(f)) && Date.now() - statSync(p).mtimeMs > 3600 * 1000) unlinkSync(p);
++          } else if ((svoy && /\.json\.gz$/.test(f) && p !== fajlKesha) || PREZHNIY_FORMAT.test(f)) unlinkSync(p);
+         }
+       } catch (e) {
+         oshibki.push(`старые файлы кеша не убраны (${e.message})`);

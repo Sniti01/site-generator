@@ -1,0 +1,1 @@
+export default async function* (s) { for await (const e of s) if (e.type === 'test:pass' || e.type === 'test:fail') yield `${e.type} «${e.data.name}» ${e.data.details?.type ?? ''} ${e.data.details?.error?.failureType ?? ''} skip=${JSON.stringify(e.data.skip)} todo=${JSON.stringify(e.data.todo)}\n`; }

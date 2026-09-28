@@ -1,0 +1,27 @@
+✖ R4-V-P-5 формы V3-7 проверяющего: index.htm в папке, .xhtml, REMAKE.HTM — замечания (488.0737ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 667.6711
+
+✖ failing tests:
+
+test at tools\testy\sverka.test.mjs:690:1
+✖ R4-V-P-5 формы V3-7 проверяющего: index.htm в папке, .xhtml, REMAKE.HTM — замечания (488.0737ms)
+  AssertionError [ERR_ASSERTION]: proba-b/index.htm: []
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:692:78)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

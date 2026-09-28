@@ -1,0 +1,32 @@
+✖ R4-A-K-2 (A3-1): UTF-16 из <meta> в документе не UTF-8 — UTF-8, x-user-defined — windows-1252, как у браузера (16.6517ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.6196
+
+✖ failing tests:
+
+test at ..\..\core\text\corpus.test.mjs:422:1
+✖ R4-A-K-2 (A3-1): UTF-16 из <meta> в документе не UTF-8 — UTF-8, x-user-defined — windows-1252, как у браузера (16.6517ms)
+  AssertionError [ERR_ASSERTION]: <meta http-equiv="Content-Type" content="text/html; charset=utf-16">
+  
+  null !== 'u'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/core/text/corpus.test.mjs:425:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'u',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

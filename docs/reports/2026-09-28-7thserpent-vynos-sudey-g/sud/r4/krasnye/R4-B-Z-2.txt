@@ -1,0 +1,34 @@
+мутация R4-B-Z-2: processZhiv: любой pid жив — return true вместо return e.code === 'EPERM' (kopiya.mjs) (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-2\kopiya.mjs)
+✖ R4-B-Z-2: копия нового вида (метка JSON с pid умершего процесса) старше 12 часов — уборка убирает (60.4728ms)
+✔ R4-B-Z-2 (контроль): копия нового вида с pid живого процесса (этого) — не убирается; pid строкой и битая метка — убираются (12.415ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 165.9253
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-2\uborka.test.mjs:29:1
+✖ R4-B-Z-2: копия нового вида (метка JSON с pid умершего процесса) старше 12 часов — уборка убирает (60.4728ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-B-Z-2/uborka.test.mjs:36:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

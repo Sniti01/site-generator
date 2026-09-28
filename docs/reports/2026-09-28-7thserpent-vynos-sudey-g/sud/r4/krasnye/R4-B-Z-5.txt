@@ -1,0 +1,37 @@
+мутация R4-B-Z-5: прежний Map по имени без хеша: последний файл группы затирает первый (fajly.slice(-1)) (sravnenie.mjs, sravnitSborki) (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-5\sravnenie.mjs)
+✖ R4-B-Z-5: две поддельные сборки, первый из двух CSS группы испорчен (index, Layout) — группа в различиях (9.707ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 115.9822
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-B-Z-5\sravnenie.test.mjs:53:1
+✖ R4-B-Z-5: две поддельные сборки, первый из двух CSS группы испорчен (index, Layout) — группа в различиях (9.707ms)
+  AssertionError [ERR_ASSERTION]: index
+  + actual - expected
+  
+  + []
+  - [
+  -   '_astro/index.css'
+  - ]
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-B-Z-5/sravnenie.test.mjs:58:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '_astro/index.css' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

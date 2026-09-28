@@ -1,0 +1,74 @@
+мутация: bez-i — ASTRO без флага i; bez-kosoy — без замены обратной косой на прямую (копия модуля — mutacii/R4-V-Z-3/<вариант>/sverka.mjs)
+
+===== bez-i (ASTRO без флага i): код 1, tests 3, pass 1, fail 2
+▶ R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ прописными и обратная косая после _astro
+  ✖ R4-V-Z-3 video poster с /_ASTRO/ прописными (24.0463ms)
+  ✔ R4-V-Z-3 video poster с /_astro\ (обратная косая) (7.3794ms)
+✖ R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ прописными и обратная косая после _astro (33.9367ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 223.9671
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-3\bez-i\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-3 video poster с /_ASTRO/ прописными (24.0463ms)
+  AssertionError [ERR_ASSERTION]: ждали «ключами вне кадров содержания: mp3-k15», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-i/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-i/testy/sverka.test.mjs:30:13)
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-i/testy/sverka.test.mjs:791:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-kosoy (без замены обратной косой на прямую): код 1, tests 3, pass 1, fail 2
+▶ R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ прописными и обратная косая после _astro
+  ✔ R4-V-Z-3 video poster с /_ASTRO/ прописными (25.1009ms)
+  ✖ R4-V-Z-3 video poster с /_astro\ (обратная косая) (7.6339ms)
+✖ R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ прописными и обратная косая после _astro (35.1007ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 1
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 222.6675
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-3\bez-kosoy\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-3 video poster с /_astro\ (обратная косая) (7.6339ms)
+  AssertionError [ERR_ASSERTION]: ждали «ключами вне кадров содержания: mp3-k15», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-kosoy/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-kosoy/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-3/bez-kosoy/testy/sverka.test.mjs:791:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

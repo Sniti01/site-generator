@@ -1,0 +1,602 @@
+{
+ "r4-pravki-V": {
+  "nahodki": [
+   {
+    "id": "R4-V-K-1",
+    "status": "исправлено",
+    "test": "tools/testy/sverka.test.mjs, «R4-V-K-1 обёртка героя без метки области маршрута…» (/remake/ и /max-payne-2/)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-1.txt: без data-astro-cid-n67f4zmd у обёртки судья не дал ни одного замечания (2 из 2 подтестов упали)",
+    "pravka": "sverka.mjs: хелпер metki(); внутри if (obertkaVerna) метки data-astro-cid-* у обёртки не пусты и равны меткам h1 героя, иначе замечание «…правила маршрута (кадровка, тон, скрим) обёртку не достают»",
+    "primechanie": "В законной печати метки обёртки равны меткам h1 у всех героев (проба scratchpad/r4/ispolnitel-V/zakonno.mjs); контроль всех страниц зелёный."
+   },
+   {
+    "id": "R4-V-K-2",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-2 рамка арта героя без .foto…»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-2.txt: рамка .foto заменена на .kadr, судья молчит",
+    "pravka": "sverka.mjs: у картинки героя ближайший предок с классом foto должен быть div внутри .hero__art (так же, как правило CSS .hero__art .foto img), иначе замечание «кадр героя без .foto»",
+    "primechanie": "Правило взято по селектору CSS, а не по прямому родителю: .foto > picture > img остаётся законным."
+   },
+   {
+    "id": "R4-V-K-3",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-3 <style> и <link rel=stylesheet> в <body> вне <main>…» (3 порчи)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-3.txt: <style> после </main>, svg <style> в знаке и <link> в подвале проходят молча",
+    "pravka": "sverka.mjs: хелпер listStiley вынесен; новый список listyVne — по всему <body> вне <main>; замечание «<style> в <body> вне <main>: N (…)». Прежнее замечание для <main> не менялось",
+    "primechanie": "<head> не судится: там печать сайта (link stylesheet и встроенный <style>), это предел R4-V-P-8."
+   },
+   {
+    "id": "R4-V-K-4",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-4 скрипт в <main>…» (<script>, onload у картинки, а также из класса onload у <body> и onclick в шапке)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-4.txt: <script> и on* проходят молча (4 из 4 подтестов упали)",
+    "pravka": "sverka.mjs: <script> любого пространства имён и атрибуты on* у <main> и его элементов дают «скрипт в <main>: …»; атрибут on* где угодно вне <main> даёт «обработчик on* вне <main>: …»",
+    "primechanie": "В законной печати on* нет нигде (0). Сам <script> вне <main> — модуль шапки, печать сайта: test.todo «R4-V-K-4 (предел)» и строка в ПРЕДЕЛАХ."
+   },
+   {
+    "id": "R4-V-K-5",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-5 таб и перевод строки внутри «_astro»…» (poster с &#9;, svg image с &#10;)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-5.txt: адреса с табом или переводом строки внутри _astro не распознаются",
+    "pravka": "sverka.mjs, iskatAstro: до раскрытия процентов из значения убираются [\\t\\n\\r], как это делает URL-разборщик WHATWG",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-K-6",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-6 неполная процентная запись…» (?% и #%zz)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-6.txt: decodeURIComponent бросает исключение, и /%5Fastro/ проходит молча",
+    "pravka": "sverka.mjs, iskatAstro: вместо одного decodeURIComponent на всё значение каждая полная запись %XX в диапазоне ASCII раскрывается отдельно (replace(/%([0-7][0-9a-f])/gi)); неполные записи остаются как есть",
+    "primechanie": "Для «_astro» и ключа [a-z0-9-] нужен только ASCII."
+   },
+   {
+    "id": "R4-V-K-7",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-7 атрибуты <body> и <html> вне печати сайта…» (background, из класса также bgcolor и <html hidden>)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-7.txt: <body background>, <body bgcolor> и <html hidden> проходят молча",
+    "pravka": "sverka.mjs: белый список атрибутов корня: у <html> допустим только lang, у <body> ни одного, иначе «атрибуты <html>/<body> вне печати сайта: …»",
+    "primechanie": "Белый список закрывает весь класс презентационных атрибутов и атрибутов скрытия. Законная печать: <html lang=en>, <body> без атрибутов на всех страницах."
+   },
+   {
+    "id": "R4-V-K-8",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-8 первый элемент документа с id заголовка…» (related-title в шапке, из класса также page-title и gallery-title)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-8.txt: span с id заголовка раньше блока проходит молча (3 из 3)",
+    "pravka": "sverka.mjs: sId() ищет по всему документу; у «связанных» заголовок — первый элемент документа с id related-title, он же единственный и внутри раздела; у героя id page-title и у галереи id gallery-title в документе по одному",
+    "primechanie": "Повтор id в законной печати: 0. Span после раздела (безвредный для браузера) теперь тоже даёт замечание, то есть громкий отказ в безопасную сторону."
+   },
+   {
+    "id": "R4-V-K-9",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-9 встречная проверка: страница .htm в сборке — замечание»; контроль «R4-V-K-9к … молчит»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-9.txt: remake-old.htm в копии сборки встречная проверка пропускает",
+    "pravka": "sverka.mjs, obhodDist: страница — любой файл по /\\.(x?html?|shtml)$/i; адрес — как у прочего файла не index.html",
+    "primechanie": "В сборке таких файлов нет, контроль копии без добавленных файлов — []."
+   },
+   {
+    "id": "R4-V-K-10",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-10 svg-текст во второй кнопке и в кнопке призыва…» (4 порчи)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-10.txt: svg <text> и foreignObject во второй кнопке и в кнопке призыва проходят молча",
+    "pravka": "sverka.mjs: nadpis отбрасывает внутри svg только <title> и <desc>; во второй кнопке любой элемент даёт «secondary: элементы в кнопке»; иконка призыва судится как иконка главной кнопки через новую функцию sverkaIkony (arrow-right, корень Icon.astro, элементов вне svg нет)",
+    "primechanie": "Маршрут печатает у призыва всегда arrow-right ([...slug].astro:623). Сообщение иконки главной кнопки не изменилось."
+   },
+   {
+    "id": "R4-V-K-11",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-11 надпись в теневом корне кнопки…»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-11.txt: текст теневого корня в надпись не идёт, судья молчит",
+    "pravka": "sverka.mjs, tekstBez: обход детей через deti ядра (теневой корень раскрыт, инертный template — нет), как у tekstVsego. Заодно исправлен и «текст вне кадров» галереи того же класса; <template> во второй кнопке даёт ещё и «элементы в кнопке»",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-K-12",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-12 элемент формы во второй кнопке…» (input value)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-12.txt: <input value> во второй кнопке проходит молча",
+    "pravka": "sverka.mjs: во второй кнопке элементов нет; кнопку призыва судит sverkaIkony (элемент вне svg — замечание)",
+    "primechanie": "В законной печати во второй кнопке нет ни одного элемента, в кнопке призыва — svg и path."
+   },
+   {
+    "id": "R4-V-K-13",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-13 вторая «Games:» или «License class:» другой записью…» (5 порч)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-13.txt: &shy;, U+200B, прописные, «Games :» и «Li&shy;cense class:» проходят молча",
+    "pravka": "sverka.mjs: текст перед счётом проходит NFKC и чистку [\\p{Cf}͏︀-️]; счёт без учёта регистра по /games\\s*[:двойники]/ и /license\\s*class\\s*[:двойники]/, двойники двоеточия — U+2236, U+A789, U+02D0, U+02F8, U+0589, U+05C3, U+205A, U+FE30",
+    "primechanie": "Буквы-двойники других алфавитов закрыть нельзя: test.todo «R4-V-K-13 (предел)» и строка в ПРЕДЕЛАХ. Разбор строк ноты (igryNoty, stroka) остался строгим."
+   },
+   {
+    "id": "R4-V-K-14",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-K-14 «Games:» в абзаце подвала вне p.ft__art-note…»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-K-14.txt: «Games: Max Payne 3.» в p.t-caption подвала проходит молча",
+    "pravka": "sverka.mjs: «Games:» и «License class:» считаются по тексту <body> вне <main> (tekstBez(body, u === main)) и по нотам внутри <main>",
+    "primechanie": "Законная печать даёт 1/1 на всех страницах с кадрами и 0/0 на /404/. <main> целиком в счёт не берётся, чтобы будущий текст «…games:» в рядах не дал ложного отказа."
+   },
+   {
+    "id": "R4-V-Z-1",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-Z-1 регресс V3-8: видимый <text> в svg кнопки призыва и контурной кнопки…»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-1.txt: <text>FREE DOWNLOAD</text> в svg призыва и svg с <text> во второй кнопке проходят молча",
+    "pravka": "sverka.mjs, nadpis: исключаются только title и desc с предком svg (вариант 1 скептика); плюс правки K-10 и K-12 (иконка призыва, запрет элементов во второй кнопке)",
+    "primechanie": "Законный тест V3-8 с <title>/<desc> остался зелёным."
+   },
+   {
+    "id": "R4-V-Z-2",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-2 части V3-3 без сторожа…» (style у <html>, у <body>, у ряда, <link> в <main>)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-2.txt (мутация, первая строка): четыре мутанта — без html в chuzhieStili, без body, без прочих элементов <main>, listyStiley без link; каждый роняет свой подтест",
+    "pravka": "код не менялся",
+    "primechanie": "Копии мутантов лежат в scratchpad/r4/mutacii/R4-V-Z-2/<вариант>/."
+   },
+   {
+    "id": "R4-V-Z-3",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ и обратная косая»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-3.txt (мутация): ASTRO без флага i; без замены \\ на / — оба красные",
+    "pravka": "код не менялся",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-Z-4",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-4 части V3-6 без сторожа…» (aria на чужой id, h3, без link-list__title, без t-headline)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-4.txt (мутация): четыре мутанта — сняты проверка aria, имя h2, класс link-list__title, класс t-headline; каждый красный",
+    "pravka": "код не менялся",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-Z-5",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-5 законная иконка с вложенным svg… — замечаний нет»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-5.txt (мутация): в sverkaIkony в счёт идут все svg — законная иконка получает отказ",
+    "pravka": "код не менялся (проверка переехала в sverkaIkony без изменения смысла)",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-Z-6",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-6 текст <title> иконки не как в icons.ts — замечание»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-6.txt (мутация): podpisIkony без tekstDetey — судья молчит",
+    "pravka": "код не менялся",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-Z-7",
+    "status": "только тест",
+    "test": "sverka.test.mjs, «R4-V-Z-7 петля ссылок: … страниц столько же, сколько без петли»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-Z-7.txt (мутация): без if (proydeno.has(…)) return — stranic 1024 вместо 16",
+    "pravka": "код не менялся; добавлен новый тест, прежний тест V3-10 о петле не тронут",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-Z-8",
+    "status": "не сделано",
+    "test": "—",
+    "krasnyi": "—",
+    "pravka": "—",
+    "primechanie": "Опровергнута проверяющим (style в словаре иконок — вопрос политики, а отказ громкий), поэтому не делается."
+   },
+   {
+    "id": "R4-V-P-1",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-1 формы V3-2 проверяющего…» (чужая метка обёртки на /movie/, .Foto, img без рамки на /max-payne-2/)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-1.txt: все три порчи проходят молча",
+    "pravka": "закрыто правками R4-V-K-1 и R4-V-K-2",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-P-2",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-2 формы V3-3 проверяющего…» (<style> в .ft__inner, <link rel=Stylesheet> в шапке, <style> после <body>, onerror, svg <script> в иконке призыва, <body background>, style у <header>, style у фигуры знака не --farba)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-2.txt: все восемь порч проходят молча",
+    "pravka": "правки K-3, K-4, K-7 и новая: style у элементов <body> вне <main> — замечание «style вне <main>…», кроме печати знака (style строго --farba: var(--…) у элемента внутри svg.znak)",
+    "primechanie": "В законной печати вне <main> style есть только у polygon и path знака, значения --farba: var(--ink|--accent)."
+   },
+   {
+    "id": "R4-V-P-3",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-3 формы V3-4 проверяющего…» (&#13; в <object data>, /%5fastro/ с ?q=100%, #%)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-3.txt: все три порчи проходят молча",
+    "pravka": "закрыто правками R4-V-K-5 и R4-V-K-6",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-P-4",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-4 формы V3-5, V3-6 проверяющего…» (span в колонке героя на /movie/, ID=related-title в шапке)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-4.txt: обе порчи проходят молча",
+    "pravka": "закрыто правкой R4-V-K-8 (parse5 сводит ID= к id)",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-P-5",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-5 формы V3-7 проверяющего: index.htm в папке, .xhtml, REMAKE.HTM»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-5.txt: ни один из трёх файлов не дал замечания",
+    "pravka": "закрыто правкой R4-V-K-9",
+    "primechanie": "Сюда же относится index.htm из формы V3-7 со стороны закона."
+   },
+   {
+    "id": "R4-V-P-6",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-6 формы V3-8 проверяющего…» (tspan, textPath, теневой корень closed и open, input submit)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-6.txt: все пять порч проходят молча",
+    "pravka": "закрыто правками R4-V-K-10, K-11, K-12 и R4-V-Z-1",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-P-7",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-7 формы V3-9 проверяющего (класс)…» (WORD JOINER, полноширинное двоеточие, строчные, License&shy; class:, div подвала)",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-7.txt: все пять порч проходят молча",
+    "pravka": "закрыто правками R4-V-K-13 (NFKC закрывает полноширинное двоеточие) и R4-V-K-14",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-V-P-8",
+    "status": "предел todo",
+    "test": "sverka.test.mjs, test.todo «R4-V-P-8 (предел): <style> и <link rel=stylesheet> в <head>…»",
+    "krasnyi": "—",
+    "pravka": "строка в ПРЕДЕЛАХ шапки sverka.mjs",
+    "primechanie": "Из формы V3-2 закона и формы V3-1 класса. В <head> законно стоят link stylesheet сайта и встроенный <style>; правила CSS сверка не читает."
+   },
+   {
+    "id": "R4-V-P-9",
+    "status": "исправлено",
+    "test": "sverka.test.mjs, «R4-V-P-9 формы V3-9 проверяющего (закон): «Games :», «GAMES:», «License class :»»",
+    "krasnyi": "scratchpad/r4/krasnye/R4-V-P-9.txt: все три порчи проходят молча",
+    "pravka": "закрыто правкой R4-V-K-13",
+    "primechanie": "Формы «да» V3-1 и V3-10 (класс), V3-1, V3-5 и V3-7 (закон) дыр вне перечисленного не показали, отдельных находок по ним нет."
+   }
+  ],
+  "faily": [
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\sverka.mjs",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sverka.test.mjs"
+  ],
+  "itog_testov": "tools/testy/sverka.test.mjs, запускатель testy.mjs со сборкой dist-7th-3b78f28: tests 331, pass 322, fail 0, todo 9 (прежние 6 и новые R4-V-K-4, R4-V-K-13, R4-V-P-8). Контроль «все страницы маршрута сборки без замечаний» зелёный. Контроль копии сборки без добавленных файлов (R4-V-K-9к) даёт [], то есть законная печать не дала ни одного нового замечания. Журнал: C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\itog-V.txt. Красные прогоны и мутации — scratchpad\\r4\\krasnye\\*.txt, зелёные прогоны по номерам — scratchpad\\r4\\zelenye-V\\*.txt, копии мутантов — scratchpad\\r4\\mutacii\\R4-V-Z-*\\. Оба файла LF (git ls-files --eol: i/lf w/lf). В рабочем дереве также изменены core/text/corpus.mjs, corpus.test.mjs и extract.test.mjs — это не мои правки, их делают исполнители других блоков.",
+  "ne_proveril": "Сборку сайта (npm run build, интеграция astro:build:done) не запускал: зелёная законная печать проверена только на готовой сборке dist-7th-3b78f28. Тесты, которые собирают копии (proby-p1, proby-p2, proby-p4, kopiya, sborka, proverki), не запускались. Они вызывают сверку при сборке порченых копий, и если какая-то проба ждёт точный текст отказа или зелёную сборку на форме, которую теперь судят строже, это покажет только npm run proverki. Строже теперь судятся: атрибуты у <html>/<body>, style вне <main> (кроме знака), <style>/<link> в <body>, on* во всём документе, повтор id заголовков, элементы во второй кнопке, иконка призыва. astro check на sverka.mjs не прогонял."
+ },
+ "r4-pravki-A": {
+  "nahodki": [
+   {
+    "id": "R4-A-K-1",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-1 (A3-1): <meta charset> в комментарии головы не слушается, как у браузера (WHATWG prescan)». Два случая: закомментированная meta и условный комментарий IE",
+    "krasnyi": "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\krasnye\\R4-A-K-1.txt: случай «комментарий» — nayti дал null, ожидалось 'u'",
+    "pravka": "core/text/corpus.mjs: регулярка по сырой голове в tekstSyrya заменена малым предпросмотром по WHATWG «prescan a byte stream» (predprosmotr, atributTega, metkaIzContent, dekoderMeta). Комментарии пропускаются, атрибуты meta разбираются по одному, повторный атрибут не учитывается, прочие теги пропускаются вместе с атрибутами, <body> кончает голову, как и прежде. Окно — прежние 8 КБ. Шапка (ТЕКСТ ДОКУМЕНТА) и докстрока tekstSyrya приведены в согласие с кодом",
+    "primechanie": "Тот же предпросмотр закрывает K-2, K-3, Z-6 и P-4, то есть класс «текст указателя ≠ тексту браузера по голове», а не один случай. Проверил 18 форм головы (scratchpad\\r4\\kodirovki-A.mjs): 17 совпадают с ожиданием браузера. Одна расходится: <meta charset> в теле. Браузер её слышит, указатель читает запасной windows-1252, потому что окно кончается на <body>, как и до правки. Это вне находок раунда: предел назван в комментарии predprosmotr, строка в отчёт"
+   },
+   {
+    "id": "R4-A-K-2",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-2 (A3-1): UTF-16 из <meta> в документе не UTF-8 — UTF-8, x-user-defined — windows-1252, как у браузера». Случаи: http-equiv utf-16, charset utf-16be, UTF-16LE, x-user-defined",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-K-2.txt: случай <meta http-equiv … charset=utf-16> — nayti ASCII-фразы дал null (документ прочитан как UTF-16LE)",
+    "pravka": "core/text/corpus.mjs, predprosmotr: декодер из meta с encoding utf-16le или utf-16be заменяется на UTF-8, x-user-defined — на windows-1252. Ветку HTTP-метки манифеста не трогал, там UTF-16 законна (оговорено в докстроке tekstSyrya)",
+    "primechanie": "Метки replacement (iso-2022-kr и др.) Node не знает, декодер бросает. Указатель идёт к следующей meta, браузер показал бы U+FFFD. Направление строже, названо в комментарии"
+   },
+   {
+    "id": "R4-A-K-3",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-3 (A3-1): charset= в content без http-equiv=content-type — не метка, как у браузера». Случаи: name=\"x\" и name=\"Content-Type\"",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-K-3.txt: случай name=\"x\" — nayti дал null (взята utf-8 из content без pragma)",
+    "pravka": "core/text/corpus.mjs, predprosmotr: charset= из content учитывается только при http-equiv=\"content-type\" (need pragma и got pragma по WHATWG). Атрибут charset снимает нужду в pragma",
+    "primechanie": "Та же правка, что у K-1"
+   },
+   {
+    "id": "R4-A-K-4",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-4 (A3-4): файлы кеша прежних форматов под чужим отпечатком (раунд 2 — без ключа внутри) убираются, другого корпуса текущего формата — нет». Проверяет файл раунда 2, брошенный .tmp раунда 2 старше часа и уцелевший кеш другого корпуса (A2-5)",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-K-4.txt: «файл раунда 2» — после записи файл остался (existsSync true)",
+    "pravka": "core/text/corpus.mjs: в имени файла кеша — метка формата, теперь <отпечаток>-<ключ>.v4.json.gz (константа FORMAT_KESHA). Прежние форматы описаны PREZHNIY_FORMAT: раунд 1 — <64 hex>.json.gz, раунды 2–3 — <16>-<64>.json.gz, плюс их .tmp. Уборка снимает прежние форматы любого корпуса, а их .tmp — только старше часа. Своё и чужое текущего формата уборка трактует как прежде. Шапка (КЕШ) и докстрока ukazatelKorpusa описывают новое имя. В corpus.test.mjs тест A2-7 переписан: имя чужого файла строится заменой ключа, а не хвоста .json.gz, так он годен для обоих форматов",
+    "primechanie": "Класс «мёртвые файлы прежних форматов никто не убирает» закрыт перечнем прежних форматов. Неизвестные будущие .vN других корпусов уборка не трогает. Первая запись новым кодом снимет в %TEMP%\\site-generator-ukazatel и действующие файлы раунда 3 других корпусов (например, ac4bf): один пересчёт. Ключ всё равно сменился, потому что corpus.mjs изменён. Живой кеш я не трогал"
+   },
+   {
+    "id": "R4-A-K-5",
+    "status": "только тест",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-5, R4-A-Z-4 (A3-4): брошенный .tmp своего корпуса старше часа убирается, свежий (идёт запись другим процессом) — нет». Один тест на две находки: шаблон R4-A-Z-4 его тоже выбирает",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-K-5.txt. Первая строка — мутация K-5: снята строка уборки .tmp своего корпуса. Упало «брошенный .tmp»: файл остался. Копия — scratchpad\\r4\\mutacii\\K-5\\text",
+    "pravka": "Код не менялся, уборка была верна",
+    "primechanie": "До правки тест зелёный: scratchpad\\r4\\zelenye-do-A\\R4-A-K-5.txt. Мутации брались от копии всего core/text (все модули и тест), а не от одного модуля с file:///-импортами: тесты A3-5 и Z-5 копируют папку своих модулей. node_modules копий — ссылка, снята после прогона"
+   },
+   {
+    "id": "R4-A-K-6",
+    "status": "только тест",
+    "test": "core/text/corpus.test.mjs, «R4-A-K-6, R4-A-Z-2 (A3-2): pustyh вне 0…n в кеше со своим ключом — пересчёт». n = 2, pustyh −1, 3 и 5, ожидается izKesha false и pustyh 1",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-K-6.txt. Первая строка — мутация K-6: в проверке pustyh оставлен только Number.isInteger. Упало «pustyh -1»: кеш принят",
+    "pravka": "Код не менялся",
+    "primechanie": "Зелёный до правки: zelenye-do-A\\R4-A-K-6.txt"
+   },
+   {
+    "id": "R4-A-K-7",
+    "status": "предел todo",
+    "test": "core/text/corpus.test.mjs: test.todo('R4-A-K-7 (предел): исходники core/text сменились между чтением загрузчиком ESM и вычислением corpus.mjs — кеш под новым ключом со старым указателем (окно загрузки, миллисекунды при старте)')",
+    "krasnyi": "Не нужен: предел, окно не закрывается внутри модуля. Воспроизведение проверяющего — r4-A-klass-prov\\okno-zagruzki.mjs",
+    "pravka": "core/text/corpus.mjs: в шапке новый раздел «ПРЕДЕЛЫ КЕША» (окно между чтением графа загрузчиком и вычислением VERSIYA), в докстроке versiya — ПРЕДЕЛ со ссылкой на шапку",
+    "primechanie": "Закрыть окно можно двумя путями, оба вне моих файлов. Первый: версию снимает вызывающий до динамического import() ядра и сверяет после, это правка core/gates/phrases.mjs. Второй: Function.prototype.toString, но он не покрывает констант"
+   },
+   {
+    "id": "R4-A-Z-1",
+    "status": "только тест",
+    "test": "core/text/corpus.test.mjs, «R4-A-Z-1 (A3-1): <meta charset> головы решает, когда он не windows-1252 (iso-8859-2, как miastogier.pl корпуса ac4bf)». В комментарии теста сказано, что ISO-8859-1 теста A3-1 совпадает с запасной",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-1.txt. Первая строка — мутация Z-1: ветка <meta charset> в tekstSyrya снята (m = null). nayti дал не 'u'",
+    "pravka": "Код не менялся под эту находку. После правки K-1 тест сторожит уже predprosmotr",
+    "primechanie": "Зелёный до правки (zelenye-do-A\\R4-A-Z-1.txt) и после (zelenye-posle-A\\R4-A-Z-1.txt)"
+   },
+   {
+    "id": "R4-A-Z-2",
+    "status": "только тест",
+    "test": "Тот же тест, что у K-6: «R4-A-K-6, R4-A-Z-2 (A3-2): pustyh вне 0…n …»",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-2.txt. Первая строка — мутация Z-2: снята верхняя половина диапазона (k.pustyh > n). Упало «pustyh 3»",
+    "pravka": "Код не менялся",
+    "primechanie": "Вместе с K-6 сторожатся обе половины диапазона по отдельности"
+   },
+   {
+    "id": "R4-A-Z-3",
+    "status": "только тест",
+    "test": "core/text/corpus.test.mjs, «R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом»",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-3.txt: три мутации подряд, у каждой первая строка — её имя. Z-3-nomer: снята d[i] >= n, упало «номер документа». Z-3-poryadok: снят строгий рост h, упало «порядок хешей». Z-3-dliny: снято равенство длин, упало «длины h и d»",
+    "pravka": "Код не менялся",
+    "primechanie": "Тест A2-6 оставлен как есть, новый добавлен рядом"
+   },
+   {
+    "id": "R4-A-Z-4",
+    "status": "только тест",
+    "test": "Тот же тест, что у K-5: «R4-A-K-5, R4-A-Z-4 (A3-4): брошенный .tmp …, свежий — нет»",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-4.txt. Первая строка — мутация Z-4: снят порог «старше часа». Упало «свежий .tmp»: удалён",
+    "pravka": "Код не менялся",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-A-Z-5",
+    "status": "только тест",
+    "test": "core/text/corpus.test.mjs: «R4-A-Z-5 (A3-5, запись): исходники сменились после загрузки — старый код кеш не пишет и говорит об этом» и «R4-A-Z-5 (A3-5, чтение): кеш нового кода старый загруженный код не берёт». Подготовка общая, функция staryiKod. Тест A3-5 переведён на неё, суть та же",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-5.txt: две мутации. Z-5-zapis: снята строка «versiya() !== VERSIYA — кеш не записан», красный тест «запись» (файл кеша есть). Z-5-chtenie: ключ по versiya(), а не по VERSIYA, красный тест «чтение» (izKesha true)",
+    "pravka": "Код не менялся",
+    "primechanie": "Тесты запускают дочерний node и копию core/text во временной папке, сборки не требуют. Ссылка node_modules копии снимается"
+   },
+   {
+    "id": "R4-A-Z-6",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-Z-6 (A3-1): <meta charset=\"utf-16\"> в байтах UTF-8 с одним битым байтом — UTF-8, как у браузера»",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-Z-6.txt: nayti фразы с «façades» дал null",
+    "pravka": "Та же правка, что у K-2: UTF-16 из meta становится UTF-8 (predprosmotr в core/text/corpus.mjs)",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-A-Z-7",
+    "status": "проза",
+    "test": "Нет (проза)",
+    "krasnyi": "Не нужен: находка о прозе",
+    "pravka": "core/text/corpus.mjs, шапка КЕШ. Было: «брошенный убитым процессом — уборкой через час». Стало: «уборкой при следующей записи кеша, если ему больше часа (уборка идёт только после записи: пока кеш берётся, файл лежит — до смены ключа, R4-A-Z-7)»",
+    "primechanie": "Правку кодом (уборка и на пути «кеш взят») не делал: для находки вида «проза» самая узкая правка — проза"
+   },
+   {
+    "id": "R4-A-P-1",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs: «R4-A-P-1 (A3-2): хеш — не целое от 0 (NaN единственным, Infinity последним, дробные) в кеше со своим ключом — пересчёт» и test.todo('R4-A-P-1 (предел): кеш со своим ключом и подделанным содержимым … принимается — ключ не подпись …')",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-P-1.txt: «NaN единственным» — izKesha true, кеш принят",
+    "pravka": "core/text/corpus.mjs, heshiIzKesha: каждый хеш обязан быть Number.isSafeInteger и не меньше 0, как у hesh. Так закрыт класс «значение не хеш»: NaN на первом месте, Infinity, дробные, отрицательные, больше 2^53−1. Докстрока и шапка дополнены. Член (б) формы, правдоподобные, но не те номера и хеши, — предел: ключ не подпись. Он назван в «ПРЕДЕЛАХ КЕША» и тестом todo",
+    "primechanie": "Форма проверяющего A3-2 «да» (линза klass). Оба члена требуют подделки при своём ключе"
+   },
+   {
+    "id": "R4-A-P-2",
+    "status": "не сделано",
+    "test": "Нет",
+    "krasnyi": "Нет: дефекта нет",
+    "pravka": "Нет",
+    "primechanie": "Форма A3-3 «да» (линза klass). Проверяющий подтвердил закрытость: null бросает в imenaSlovami до ключа, у разреженного массива свёртка верна, NFD и NFC дают разные ключи (безвредно), от локали words.mjs не зависит. Ни дефекта, ни несторожимой строки нет"
+   },
+   {
+    "id": "R4-A-P-3",
+    "status": "предел todo",
+    "test": "core/text/extract.test.mjs: test.todo('R4-A-P-3 (предел): описание головы под другим именем — <meta itemprop=\"description\"> (микроданные), <meta name=\"description \"> (пробел в имени), <meta name=\"DC.description\"> — не попадает ни в одно поле головы и не судится (вне POLYA_META; в сборке 3b78f28 таких форм нет)')",
+    "krasnyi": "Не нужен: предел. Закрыть его можно только правкой extract.mjs, а этот файл мне запрещён",
+    "pravka": "Только todo в extract.test.mjs. Строку в ПРЕДЕЛЫ шапки core/text/extract.mjs не вписал: файл не мой. Нужна ведущему",
+    "primechanie": "Форма A3-6 «частично» (линза klass). Против нынешнего сайта находки нет"
+   },
+   {
+    "id": "R4-A-P-4",
+    "status": "исправлено",
+    "test": "core/text/corpus.test.mjs, «R4-A-P-4 (A3-1): неизвестная метка — следующая <meta>; «<body>» в комментарии голову не обрывает (windows-1251)». Текст кириллицей, байты windows-1251 даёт помощник cp1251",
+    "krasnyi": "scratchpad\\r4\\krasnye\\R4-A-P-4.txt: «неизвестная метка» — nayti дал null (взята запасная windows-1252)",
+    "pravka": "Тот же predprosmotr в core/text/corpus.mjs: неизвестная метка ведёт к следующей meta, комментарий пропускается до поиска <body>",
+    "primechanie": "Форма A3-1 «частично» (линза klass)"
+   },
+   {
+    "id": "R4-A-P-5",
+    "status": "не сделано",
+    "test": "Нет",
+    "krasnyi": "Нет: дефекта нет",
+    "pravka": "Нет",
+    "primechanie": "Форма A3-3 «да» (линза zakon). Тест проверяющего F-A33 (['x y','r\\ns'] против ['x y\\nr','s']) краснеет на той же мутации K10 (join), что и действующий тест A3-3, так что сторожа он не прибавляет. Склейка остального ключа без столкновений"
+   },
+   {
+    "id": "R4-A-P-6",
+    "status": "не сделано",
+    "test": "Нет",
+    "krasnyi": "Нет: дефекта нет",
+    "pravka": "Нет",
+    "primechanie": "Форма A3-6 «да» (линза zakon). Тест проверяющего F-A36 (property, регистр, meta в body) — живой тест в extract.test.mjs, а туда мне разрешены только todo для A3-6. Мутацию K17 (поле снято) и так сторожит действующий тест A3-6"
+   }
+  ],
+  "faily": [
+   "D:\\SEO\\cloud\\site-generator\\core\\text\\corpus.mjs",
+   "D:\\SEO\\cloud\\site-generator\\core\\text\\corpus.test.mjs",
+   "D:\\SEO\\cloud\\site-generator\\core\\text\\extract.test.mjs"
+  ],
+  "itog_testov": "core/text/corpus.test.mjs, extract.test.mjs и words.test.mjs запускателем testy.mjs без сборки: tests 112, pass 104, fail 0, todo 8 (новые todo: R4-A-K-7, R4-A-P-1 предел, R4-A-P-3). Журнал: C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\itog-A.txt. Зелёные прогоны по находкам после правки — scratchpad\\r4\\zelenye-posle-A\\, до правки для «только тест» — scratchpad\\r4\\zelenye-do-A\\. Законная печать, журнал scratchpad\\r4\\sverka-A.txt (скрипт sverka-A.mjs). Прежний код (HEAD) и новый дают одинаковый текст всех 612 документов корпуса 7thserpent и всех 2098 документов корпуса ac4bf, расхождений 0. Сторож 8 слов на dist-7th-3b78f28 с новым указателем без кеша: 16 страниц, 0 отказов. Отпечаток итогов совпадает с прежним кодом (739eb191fd8ff3a7), указатель тот же (пустых 19, tochno 510119, srez 509950). Окончания строк: три файла LF, i/lf = w/lf, CR 0",
+  "ne_proveril": "npm run build и гейт phrases внутри сборки не запускал. Судью на dist-7th-3b78f28 вызвал своим скриптом через sudSborki, без кеша. Живой кеш %TEMP%\\site-generator-ukazatel не трогал. Первая сборка новым кодом запишет файл формата v4 и снимет все файлы раундов 2–3 (15331f73…, e392e0ea…, cfdc3d6f…, файл раунда 3 b8c77b23…, файлы ac4bf). Это один пересчёт около 30 с, вживую не наблюдал. Тесты core/gates и других блоков не прогонял: они не мои, а phrases.mjs вызывает ukazatelKorpusa через прежний вывоз, он не менялся. Поэтому corpus.d.mts не тронут. Вне объёма, строкой в отчёт: (1) <meta charset> в теле браузер слышит (предпросмотр идёт дальше <body>, разборщик меняет кодировку), а указатель читает такой документ запасной windows-1252, потому что окно кончается на <body>, как и до правки. Предел назван в комментарии predprosmotr, на живых корпусах расхождений 0. (2) Для R4-A-P-3 нужна строка в ПРЕДЕЛЫ шапки core/text/extract.mjs, файл не мой. (3) В рабочем дереве изменены sites/7thserpent.com/tools/sverka.mjs и sites/7thserpent.com/tools/testy/sverka.test.mjs, это не мои правки (другой блок). Раскрытие: одна читающая команда в начале (git show --stat 0e1add1) ограничила вывод конвейером через head, хотя по правилу нужен head_limit. Файлы от этого не менялись"
+ },
+ "r4-pravki-B": {
+  "nahodki": [
+   {
+    "id": "R4-B-K-1",
+    "status": "исправлено",
+    "test": "core/gates/phrases.test.mjs — 'R4-B-K-1: метка ряда в <noscript>, который разборщик без скриптов выносит (<p> закрывает <p>), — «не в своём ряду»' (оба случая скептика), контроль 'R4-B-K-1 (контроль правки): …' (законные формы: <noscript> с картинкой внутри метки и вынесенный <noscript> после метки дают чисто), test.todo 'R4-B-K-1 (предел): </noscript> внутри комментария, атрибута или скрипта…'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-K-1.txt — оба случая («текст метки», «элемент метки, видна Other») без отказа «не в своём ряду»",
+    "pravka": "core/gates/exceptions.mjs: ryadStroki возвращает neyasno — строку исходника <noscript> без конца тега в дереве без скриптов (разборщик закрыл его раньше </noscript>), начатого до конца метки (vynesennye(doc), кеш WeakMap по документу); sudIsklyucheniy при neyasno даёт «не в своём ряду» с пометкой «у читателя со скриптами метку не определить: <noscript> строки N…». Второго прочтения нет: у sudIsklyucheniy есть только izvl.doc, без исходного HTML, а phrases.mjs и core/text/* не мои файлы. Поэтому класс закрыт с СТРОГОЙ стороны: законная метка после такого <noscript> получает громкий ложный отказ. В сборке dist-7th-3b78f28 нет ни одного <noscript>. Шапка: пункт ryad, отдельный абзац «<noscript> под двумя прочтениями», ПРЕДЕЛ.",
+    "primechanie": "Способ (конец тега у элемента noscript) проверен опытом на parse5: endTag есть только при закрытии своим </noscript>; <p> внутри <p>, </div>, конец файла и <p> в noscript головы дают элемент без endTag. Остаток: </noscript> внутри комментария, атрибута или скрипта в <noscript> — предел, test.todo и шапка."
+   },
+   {
+    "id": "R4-B-P-1",
+    "status": "исправлено",
+    "test": "core/gates/phrases.test.mjs — 'R4-B-P-1: члены проверяющего — <ul><li> и <h3 class=\"t-label\"> в <noscript> внутри <p> — «не в своём ряду»'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-P-1.txt — оба члена формы B3-2 без отказа",
+    "pravka": "та же правка, что в R4-B-K-1 (exceptions.mjs)",
+    "primechanie": "Форма B3-2 «частично», в свою попытку проверяющий вписал члены <ul><li> и <h3 class=t-label>."
+   },
+   {
+    "id": "R4-B-P-5",
+    "status": "только тест",
+    "test": "core/gates/head.test.mjs — 'R4-B-P-5: часть текста цели aria-labelledby в <noscript> — …отказ «noscript»; текст в цели и <noscript> с картинкой — чисто'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-P-5.txt, первая строка — мутация (цель имени через tekstVsego в imyaPoSsylke, копия …\\r4\\mutacii\\R4-B-Z-1\\head.mjs); тест падает",
+    "pravka": "кода нет (поведение верное)",
+    "primechanie": "Форма B3-1 «частично» (закон): член «часть текста цели в <noscript>»."
+   },
+   {
+    "id": "R4-B-Z-1",
+    "status": "только тест",
+    "test": "core/gates/head.test.mjs — 'R4-B-Z-1: текст цели aria-labelledby только в <noscript> внутри цели — у читателя со скриптами имени нет: отказ «noscript»'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-1.txt, первая строка — мутация «текст цели aria-labelledby через tekstVsego» (…\\r4\\mutacii\\R4-B-Z-1\\head.mjs); тест падает",
+    "pravka": "кода нет; в тесте — комментарий о мутанте",
+    "primechanie": "На нынешнем коде тест зелёный: …\\r4\\ispolnitel-B\\zel-head.txt."
+   },
+   {
+    "id": "R4-B-K-6",
+    "status": "проза",
+    "test": "core/gates/head.test.mjs — test.todo('R4-B-K-6 (предел): ярлык звена крошек только в скрытом потомке ссылки или текущего звена (атрибут hidden, CSS) — засчитывается…')",
+    "krasnyi": "не нужен (проза и предел)",
+    "pravka": "core/gates/head.mjs, шапка ПРЕДЕЛЫ: ярлыки звеньев и текст цели имени судятся по дереву, скрытое (hidden, CSS) засчитывается как видимое, в том числе ярлык звена только в скрытом потомке ссылки или текущего звена; снято только содержимое <noscript> (B3-1)",
+    "primechanie": "Судить скрытое не стал: это решение владельца, скептик предлагал его как вариант."
+   },
+   {
+    "id": "R4-B-K-4",
+    "status": "исправлено",
+    "test": "sites/7thserpent.com/tools/testy/schet.test.mjs (новый, без сборки) — 'R4-B-K-4: набор, чьё тело падает само (не хук, детей нет), — в упавших'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-K-4.txt — upalo 0 при async-отказе тела describe",
+    "pravka": "tools/schet-testov.mjs: упавший набор не считается только при failureType === 'subtestsFailed' (своё падение — хук, тело, таймаут — считается); шапка «УПАЛ» переписана",
+    "primechanie": "Тест положен в schet.test.mjs: proverki.test.mjs собирает копию. Формы из опыта (…\\r4\\ispolnitel-B\\nabory-posle.txt): тело бросает после it — 0/2, как «before бросает» — 0/3 было и раньше (отменённые родителем дети считаются упавшими, как их пишет Node). Утверждения proverki.test.mjs о schet прогнаны копией без теста запуска proverki — 7/7 зелёные (…\\ispolnitel-B\\proverki-schet.txt)."
+   },
+   {
+    "id": "R4-B-Z-3",
+    "status": "исправлено",
+    "test": "schet.test.mjs — 'R4-B-Z-3: тело набора describe бросает (вложенный набор, детей нет) — в упавших, не «упало 0»'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-3.txt — upalo 0",
+    "pravka": "та же строка schet-testov.mjs, что в R4-B-K-4",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-B-P-2",
+    "status": "исправлено",
+    "test": "schet.test.mjs — 'R4-B-P-2: синхронный throw в теле describe без детей — в упавших'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-P-2.txt — upalo 0",
+    "pravka": "та же правка, что в R4-B-K-4",
+    "primechanie": "Форма B3-4 «частично» (класс): член — синхронный throw."
+   },
+   {
+    "id": "R4-B-Z-4",
+    "status": "только тест",
+    "test": "schet.test.mjs — 'R4-B-Z-4: набор с упавшим ребёнком — упал один тест, набор не считается дважды' (и beforeEach: 0/1)",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-4.txt, первая строка — мутация «строка пропуска subtestsFailed снята» (…\\r4\\mutacii\\R4-B-Z-4\\schet-testov.mjs): upalo 2 вместо 1",
+    "pravka": "кода сверх R4-B-Z-3 нет",
+    "primechanie": "Мутация — на правленой строке (=== 'subtestsFailed'); по смыслу это та же строка 32, что называл скептик."
+   },
+   {
+    "id": "R4-B-K-5",
+    "status": "исправлено",
+    "test": "schet.test.mjs — 'R4-B-K-5: файл, вышедший process.exit(0) посреди тестов, — прогон не 0'; контроль 'R4-B-K-5 (контроль правки)…' (с шаблоном файл без совпавших тестов не падает; без шаблона обычные файлы дают 2/0 и код 0); test.todo 'R4-B-K-5 (предел)…'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-K-5.txt — upalo 0, kodProverki 0",
+    "pravka": "tools/schet-testov.mjs: SHABLON = в process.execArgv репортёра есть --test-name-pattern, --test-skip-pattern или --test-only (опыт …\\ispolnitel-B\\zapis-fajla.mjs: оба вида записи шаблона видны в execArgv родителя); запись уровня файла test:pass без шаблона считается упавшей. kodProverki (комментарий) и шапка — с этим случаем, ПРЕДЕЛЫ — с остатком.",
+    "primechanie": "Опыт показал: запись уровня файла ставится только файлу без событий тестов (вышел или пуст). Все *.test.mjs прогона proverki объявляют тесты безусловно. Остатки: с шаблоном файл, вышедший до событий, неотличим (мягче, todo); шаблон в NODE_OPTIONS репортёр не видит (строже)."
+   },
+   {
+    "id": "R4-B-P-3",
+    "status": "исправлено",
+    "test": "schet.test.mjs — 'R4-B-P-3: process.exit(0) на верхнем уровне файла после объявления падающего теста — прогон не 0'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-P-3.txt — kodProverki 0",
+    "pravka": "та же правка, что в R4-B-K-5",
+    "primechanie": "Форма B3-5 «частично» (класс)."
+   },
+   {
+    "id": "R4-B-Z-6",
+    "status": "проза",
+    "test": "не тест: сверка шапки с kodProverki",
+    "krasnyi": "не нужен",
+    "pravka": "tools/proverki.mjs, шапка: код выхода — kodProverki. Ненулевой код node — как есть; код 0 при упавших по счёту (skip '' с упавшим телом — B3-5, process.exit(0) посреди тестов — R4-B-K-5) — 1; 2 — копия, ошибка входа, нет итога счёта или ноль прошедших; 130 — Ctrl+C",
+    "primechanie": "Вне объёма (код proverki.mjs не мой): подсказка на строке 109 «(skip с выполненным телом?)» не называет выход process.exit(0)."
+   },
+   {
+    "id": "R4-B-Z-7",
+    "status": "проза",
+    "test": "не тест (предел закреплён test.todo B1-F-1, B1-F-2)",
+    "krasnyi": "не нужен",
+    "pravka": "core/gates/exceptions.mjs, шапка СКРЫТОЕ: «МЯГЧЕ — скрытые (атрибут hidden, CSS) кавычки вокруг исключения, скрытая метка ряда, скрытый сосед засчитываются; кавычки и сосед в <noscript> — тоже; метка ряда в <noscript> и её текст в <noscript> — нет»",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-B-K-2",
+    "status": "исправлено",
+    "test": "sites/7thserpent.com/tools/testy/sravnenie.test.mjs (новый, без сборки) — 'R4-B-K-2: две страницы обменялись CSS одной группы — копии разные'; контроли 'R4-B-K-2 (контроль правки)…': поддельные сборки с другими хешами и значениями cid равны, и настоящая dist-7th-3b78f28 равна своему подобию копии с ядром-копией (новые значения cid и хеши имён CSS); если главная подключает другой CSS — различие ['index.html']",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-K-2.txt, первая строка: сравнение до правки — B1-G-12 раунда 3, вынесенное дословно в sravnenie.mjs; итог []",
+    "pravka": "Новый tools/testy/sravnenie.mjs: faily, bezCid, gruppy, sravnitSborki(a, b) → список разных групп. Ссылка на CSS в HTML сводится к «имя.отпечаток содержимого» (sha256 от bezCid(css), по файлам своей сборки). ПРЕДЕЛЫ в шапке модуля. tools/testy/sborka.test.mjs: B1-G-12 зовёт sravnitSborki(a, dist копии), и результат должен быть []; местные faily, bezCid, gruppy и тест B3-8 сняты (его место — sravnenie.test.mjs).",
+    "primechanie": "Синтаксис sborka.test.mjs проверен node --check. Сам B1-G-12 не запускался (собирает копию)."
+   },
+   {
+    "id": "R4-B-Z-8",
+    "status": "исправлено",
+    "test": "sravnenie.test.mjs — 'R4-B-Z-8: страницы обменялись index.*.css — сравнение видит (хеш в HTML — отпечаток содержимого)'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-8.txt (сравнение раунда 3, вынесенное дословно): []",
+    "pravka": "та же правка, что в R4-B-K-2: предел снят, а не назван",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-B-P-4",
+    "status": "исправлено",
+    "test": "sravnenie.test.mjs — 'R4-B-P-4: обе страницы на первый CSS группы, второй лежит без ссылок — копии разные'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-P-4.txt (сравнение раунда 3): []",
+    "pravka": "та же правка, что в R4-B-K-2",
+    "primechanie": "Форма B3-8 «частично» (класс)."
+   },
+   {
+    "id": "R4-B-K-3",
+    "status": "только тест",
+    "test": "sravnenie.test.mjs — 'R4-B-K-3 (B3-8): во второй сборке другое содержимое второго CSS группы — группа разная' (deepEqual ['_astro/X.css'])",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-K-3.txt, первая строка — мутация fajly.slice(0, 1) в копии sravnenie.mjs (…\\r4\\mutacii\\R4-B-K-3\\): []",
+    "pravka": "Сравнение вынесено в функцию (см. R4-B-K-2). Тест B3-8 на помощнике gruppy заменён этим тестом.",
+    "primechanie": ""
+   },
+   {
+    "id": "R4-B-Z-5",
+    "status": "только тест",
+    "test": "sravnenie.test.mjs — 'R4-B-Z-5: две поддельные сборки, первый из двух CSS группы испорчен (index, Layout) — группа в различиях'",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-5.txt, первая строка — мутация «прежний Map: последний файл группы затирает первый» (fajly.slice(-1), …\\r4\\mutacii\\R4-B-Z-5\\): []",
+    "pravka": "Сравнение B1-G-12 — общая функция sravnitSborki, её зовут B1-G-12 и тесты",
+    "primechanie": "Член Layout из формы B3-8 (закон) — в этом же тесте."
+   },
+   {
+    "id": "R4-B-Z-2",
+    "status": "только тест",
+    "test": "sites/7thserpent.com/tools/testy/uborka.test.mjs (новый, без sdelatKopiyu) — 'R4-B-Z-2: копия нового вида (метка JSON с pid умершего процесса) старше 12 часов — уборка убирает'; контроль: живой pid остаётся, pid строкой и битая метка убираются",
+    "krasnyi": "…\\r4\\krasnye\\R4-B-Z-2.txt, первая строка — мутация processZhiv «return true» (…\\r4\\mutacii\\R4-B-Z-2\\kopiya.mjs): убрано 0 вместо 1",
+    "pravka": "кода нет (kopiya.mjs не менялся)",
+    "primechanie": "Тест положен в uborka.test.mjs: kopiya.test.mjs собирает копии."
+   }
+  ],
+  "faily": [
+   "D:\\SEO\\cloud\\site-generator\\core\\gates\\exceptions.mjs",
+   "D:\\SEO\\cloud\\site-generator\\core\\gates\\head.mjs",
+   "D:\\SEO\\cloud\\site-generator\\core\\gates\\head.test.mjs",
+   "D:\\SEO\\cloud\\site-generator\\core\\gates\\phrases.test.mjs",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\schet-testov.mjs",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\proverki.mjs",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sborka.test.mjs",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sravnenie.mjs (новый)",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sravnenie.test.mjs (новый)",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\schet.test.mjs (новый)",
+   "D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\uborka.test.mjs (новый)"
+  ],
+  "itog_testov": "C:\\Users\\MSI\\AppData\\Local\\Temp\\claude\\d--SEO-cloud-site-generator\\65dd1ec1-d282-489e-807d-18603cf0e02f\\scratchpad\\r4\\itog-B.txt. Запускатель testy.mjs на dist-7th-3b78f28, файлы: core/gates/head.test.mjs, phrases.test.mjs, masters.test.mjs и tools/testy/frazy.test.mjs, glowa.test.mjs, sverka.test.mjs, schet.test.mjs, sravnenie.test.mjs, uborka.test.mjs. Итог: tests 667, pass 653, fail 0, todo 14. Контроли «все страницы без замечаний» (frazy, glowa) зелёные: новых замечаний и отказов на законной печати нет, <noscript> в этой сборке нет вообще. Все 12 файлов, которые я правил или создал, пишутся с LF; git ls-files --eol у правленых файлов даёт i/lf w/lf. Красные прогоны — …\\r4\\krasnye\\R4-B-*.txt. Скрипт мутаций — …\\r4\\mutacii-B.mjs, скрипт перечня — …\\r4\\krasnye-B.mjs. Зелёные после правки — …\\r4\\ispolnitel-B\\zelenye\\, zel-K1.txt, zel-head.txt, zel-sravnenie.txt, proverki-schet.txt.",
+  "ne_proveril": "Не запускались тесты, которые собирают копии: 1) B1-G-12 в sborka.test.mjs — теперь sravnitSborki(dist(), dist копии с ядром-копией) должен дать []; проверены синтаксис (node --check) и подобие копии на настоящей сборке в sravnenie.test.mjs (новые значения cid и хеши имён CSS), настоящую сборку с ядром-копией — нет. 2) proverki.test.mjs целиком: его утверждения о schet и kodProverki прогнаны копией без теста запуска proverki, 7/7 зелёные. Тест «B2-1: шаблон имён ни с чем не совпал — proverki даёт код 2» не запускался; по опыту --test-name-pattern= виден в execArgv репортёра, поэтому файлы без совпавших тестов остаются пропуском. 3) kopiya.test.mjs — не менялся и не запускался. Вне объёма, строкой в отчёт: в tools/proverki.mjs:109 подсказка «(skip с выполненным телом?)» не называет выход process.exit(0) (код proverki.mjs не мой, правил только шапку); в шапке sborka.test.mjs, строка 3, «собирают побайтно одно и то же» неточно для копии с ядром-копией (прежняя проза). R4-B-K-1 закрыт строгой стороной, без второго прочтения: у sudIsklyucheniy нет исходного HTML, а phrases.mjs и core/text/* не мои файлы. Если владелец захочет второе прочтение метки, как у судьи головы, izvl должен нести html или его разбор со скриптами — это правка extract.mjs или phrases.mjs."
+ }
+}

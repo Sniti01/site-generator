@@ -1,0 +1,33 @@
+мутация K-6: проверка pustyh — только Number.isInteger (диапазон 0…n снят) (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\K-6\text\corpus.mjs)
+✖ R4-A-K-6, R4-A-Z-2 (A3-2): pustyh вне 0…n в кеше со своим ключом — пересчёт (31.669ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 199.0789
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\K-6\text\corpus.test.mjs:508:1
+✖ R4-A-K-6, R4-A-Z-2 (A3-2): pustyh вне 0…n в кеше со своим ключом — пересчёт (31.669ms)
+  AssertionError [ERR_ASSERTION]: pustyh -1
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/K-6/text/corpus.test.mjs:517:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

@@ -1,0 +1,27 @@
+✖ R4-V-K-9 встречная проверка: страница .htm в сборке — замечание (480.6449ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 676.4093
+
+✖ failing tests:
+
+test at tools\testy\sverka.test.mjs:685:1
+✖ R4-V-K-9 встречная проверка: страница .htm в сборке — замечание (480.6449ms)
+  AssertionError [ERR_ASSERTION]: []
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sverka.test.mjs:687:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

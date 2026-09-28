@@ -1,0 +1,32 @@
+✖ R4-B-K-4: набор, чьё тело падает само (не хук, детей нет), — в упавших (163.2177ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 250.6998
+
+✖ failing tests:
+
+test at tools\testy\schet.test.mjs:32:1
+✖ R4-B-K-4: набор, чьё тело падает само (не хук, детей нет), — в упавших (163.2177ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(schet(`${T}test('a', () => {});\ndescribe('g', async () => { await 0; throw new Error('x'); });\n`).upalo > 0)
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/schet.test.mjs:33:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+код возврата: 1

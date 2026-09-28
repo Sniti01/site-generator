@@ -1,0 +1,36 @@
+✖ R4-B-K-1: метка ряда в <noscript>, который разборщик без скриптов выносит (<p> закрывает <p>), — «не в своём ряду» (16.1162ms)
+✔ R4-B-K-1 (контроль правки): <noscript> после метки, закрытый разборщиком, и <noscript> с картинкой внутри метки — свой ряд, чисто (2.4584ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 1
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 121.8319
+
+✖ failing tests:
+
+test at ..\..\core\gates\phrases.test.mjs:138:1
+✖ R4-B-K-1: метка ряда в <noscript>, который разборщик без скриптов выносит (<p> закрывает <p>), — «не в своём ряду» (16.1162ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'текст метки',
+  +   'элемент метки, видна «Other»'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/core/gates/phrases.test.mjs:143:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'текст метки', 'элемент метки, видна «Other»' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

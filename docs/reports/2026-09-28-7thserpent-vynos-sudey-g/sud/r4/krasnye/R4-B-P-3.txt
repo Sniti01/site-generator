@@ -1,0 +1,29 @@
+✖ R4-B-P-3: process.exit(0) на верхнем уровне файла после объявления падающего теста — прогон не 0 (157.4417ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 236.1812
+
+✖ failing tests:
+
+test at tools\testy\schet.test.mjs:59:1
+✖ R4-B-P-3: process.exit(0) на верхнем уровне файла после объявления падающего теста — прогон не 0 (157.4417ms)
+  AssertionError [ERR_ASSERTION]: {"kod":0,"itog":{"proshlo":1,"upalo":0}}
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/schet.test.mjs:61:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+код возврата: 1

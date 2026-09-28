@@ -1,0 +1,154 @@
+мутация: bez-aria — проверка aria-labelledby «связанных» снята; bez-h2 — имя h2 заголовка «связанных» не судится; bez-title — класс link-list__title не судится; bez-headline — класс t-headline не судится (копия модуля — mutacii/R4-V-Z-4/<вариант>/sverka.mjs)
+
+===== bez-aria (проверка aria-labelledby «связанных» снята): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка
+  ✖ R4-V-Z-4 aria-labelledby «связанных» на чужой id (24.8305ms)
+  ✔ R4-V-Z-4 заголовок «связанных» — h3 с классами (8.1649ms)
+  ✔ R4-V-Z-4 без link-list__title (6.8974ms)
+  ✔ R4-V-Z-4 без t-headline (6.4029ms)
+✖ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка (49.3599ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 234.2096
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-4\bez-aria\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-4 aria-labelledby «связанных» на чужой id (24.8305ms)
+  AssertionError [ERR_ASSERTION]: ждали «aria-labelledby «связанных»», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-aria/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-aria/testy/sverka.test.mjs:30:13)
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-aria/testy/sverka.test.mjs:800:9)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-h2 (имя h2 заголовка «связанных» не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка
+  ✔ R4-V-Z-4 aria-labelledby «связанных» на чужой id (23.3111ms)
+  ✖ R4-V-Z-4 заголовок «связанных» — h3 с классами (7.6427ms)
+  ✔ R4-V-Z-4 без link-list__title (6.7648ms)
+  ✔ R4-V-Z-4 без t-headline (6.1947ms)
+✖ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка (47.2914ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 230.5604
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-4\bez-h2\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-4 заголовок «связанных» — h3 с классами (7.6427ms)
+  AssertionError [ERR_ASSERTION]: ждали «(«h3.link-list__title.t-headline»)», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-h2/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-h2/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-h2/testy/sverka.test.mjs:800:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-title (класс link-list__title не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка
+  ✔ R4-V-Z-4 aria-labelledby «связанных» на чужой id (23.7965ms)
+  ✔ R4-V-Z-4 заголовок «связанных» — h3 с классами (6.3119ms)
+  ✖ R4-V-Z-4 без link-list__title (7.1859ms)
+  ✔ R4-V-Z-4 без t-headline (5.7378ms)
+✖ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка (45.9742ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 229.0558
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-4\bez-title\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-4 без link-list__title (7.1859ms)
+  AssertionError [ERR_ASSERTION]: ждали «(«h2.t-headline»)», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-title/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-title/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-title/testy/sverka.test.mjs:800:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+===== bez-headline (класс t-headline не судится): код 1, tests 5, pass 3, fail 2
+▶ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка
+  ✔ R4-V-Z-4 aria-labelledby «связанных» на чужой id (22.3657ms)
+  ✔ R4-V-Z-4 заголовок «связанных» — h3 с классами (6.7739ms)
+  ✔ R4-V-Z-4 без link-list__title (6.6264ms)
+  ✖ R4-V-Z-4 без t-headline (6.4854ms)
+✖ R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка (44.838ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 3
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 229.1867
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\R4-V-Z-4\bez-headline\testy\sverka.test.mjs:30:13
+✖ R4-V-Z-4 без t-headline (6.4854ms)
+  AssertionError [ERR_ASSERTION]: ждали «(«h2.link-list__title»)», получено: замечаний нет
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-headline/testy/sverka.test.mjs:37:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at TestContext.test (node:internal/test_runner/test:394:20)
+      at progon (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-headline/testy/sverka.test.mjs:30:13)
+      at async TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/R4-V-Z-4/bez-headline/testy/sverka.test.mjs:800:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

@@ -1,0 +1,40 @@
+до правки: sravnitSborki в tools/testy/sravnenie.mjs — сравнение B1-G-12 раунда 3 (ec74257), вынесенное дословно (bezCid стирает хеш ссылки на CSS в HTML)
+✖ R4-B-K-2: две страницы обменялись CSS одной группы — копии разные (11.8241ms)
+✔ R4-B-K-2 (контроль правки): те же страницы и CSS с другими хешами и значениями cid — равны; лишний файл — различие (10.7483ms)
+✔ R4-B-K-2 (контроль правки): настоящая сборка с собой — равна (78.0414ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 2
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 208.8909
+
+✖ failing tests:
+
+test at tools\testy\sravnenie.test.mjs:28:1
+✖ R4-B-K-2: две страницы обменялись CSS одной группы — копии разные (11.8241ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'p1/index.html',
+  -   'p2/index.html'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/sravnenie.test.mjs:31:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'p1/index.html', 'p2/index.html' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

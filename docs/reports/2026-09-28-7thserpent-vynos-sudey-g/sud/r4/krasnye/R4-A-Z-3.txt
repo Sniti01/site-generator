@@ -1,0 +1,103 @@
+мутация Z-3-nomer: проверка «номер документа меньше их числа» (d[i] >= n) снята (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-nomer\text\corpus.mjs)
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (25.9217ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 200.2194
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-nomer\text\corpus.test.mjs:522:1
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (25.9217ms)
+  AssertionError [ERR_ASSERTION]: номер документа
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-3-nomer/text/corpus.test.mjs:536:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1
+
+==========
+мутация Z-3-poryadok: проверка «h строго растёт» снята (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-poryadok\text\corpus.mjs)
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (38.2188ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 222.0802
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-poryadok\text\corpus.test.mjs:522:1
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (38.2188ms)
+  AssertionError [ERR_ASSERTION]: порядок хешей
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-3-poryadok/text/corpus.test.mjs:536:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1
+
+==========
+мутация Z-3-dliny: проверка «длины h и d равны» снята (копия C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-dliny\text\corpus.mjs)
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (48.832ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 211.5097
+
+✖ failing tests:
+
+test at C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\65dd1ec1-d282-489e-807d-18603cf0e02f\scratchpad\r4\mutacii\Z-3-dliny\text\corpus.test.mjs:522:1
+✖ R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом (48.832ms)
+  AssertionError [ERR_ASSERTION]: длины h и d
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/r4/mutacii/Z-3-dliny/text/corpus.test.mjs:536:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

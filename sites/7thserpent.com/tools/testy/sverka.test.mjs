@@ -528,3 +528,324 @@ test('V1-10 ._404.md и .chernovik/x.md в src/content/tresc — сверка и
     rmSync(k, { recursive: true, force: true });
   }
 });
+
+/* — «судью судят», блок В, раунд 4 (R4-V-*): находки скептиков (K — класс, Z — закон) и проверяющих к формам
+   раунда 3 (P). Каждая находка — свой тест верхнего уровня: имя начинается с номера (прогон по шаблону имени). — */
+
+let R4 = null;
+/** Стенды раунда 4: страницы, адрес кадра другой игры и места порч (сборка читается при первом тесте). */
+const r4 = () => {
+  if (R4) return R4;
+  const m3 = po('/max-payne-3/');
+  const m2 = po('/max-payne-2/');
+  R4 = {
+    rm: po('/remake/'), m2, m3, mv: po('/movie/'), q: po('/quotes/'),
+    K15: m3.html.match(/\/_astro\/mp3-k15\.[^" ,]+/)[0],
+    NOTA2: m2.html.match(/Games: [^<.]+\./)[0],
+  };
+  return R4;
+};
+const vHeroj4 = (h, x) => h.replace('<div class="hero__scrim"', () => x + '<div class="hero__scrim"');
+const posle4 = (h, metka, x) => h.replace(metka, () => metka + x);
+const obertka4 = (s) => s.html.match(/<div class="geroy[^>]*>/)[0];
+const HDR4 = '<header class="hdr" data-astro-cid-qu2zoq4f>';
+const FT4 = '<div class="ft__inner container" data-astro-cid-eghvtlpg>';
+const SEC4 = 'The 2001 original</a>';
+const CTA_SVG4 = /(See Max Payne \(2001\)<svg\b[^>]*>)/;
+const NOTA4 = 'Games: Max Payne.';
+const ART4 = /(<div class="hero__art"[^>]*>)<div class="foto">/;
+const IMG_GEROYA4 = /(<div class="hero__art"[^>]*><div class="foto"><img\b)/;
+
+test('R4-V-K-1 обёртка героя без метки области маршрута — правила .geroy[data-astro-cid-…] её не достают', async (t) => {
+  const { rm, m2 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-1 /remake/: обёртка без data-astro-cid-n67f4zmd', s: rm, html: (h) => h.replace(obertka4(rm), obertka4(rm).replace(' data-astro-cid-n67f4zmd', '')), prichina: 'обёртку не достают' },
+    { imya: 'R4-V-K-1 /max-payne-2/: обёртка без метки', s: m2, html: (h) => h.replace(obertka4(m2), obertka4(m2).replace(' data-astro-cid-n67f4zmd', '')), prichina: 'обёртку не достают' },
+  ]);
+});
+
+test('R4-V-K-2 рамка арта героя без .foto — кадровка и тон маршрута кадр не достают', async (t) => {
+  const { rm } = r4();
+  await progon(t, [{ imya: 'R4-V-K-2 /remake/: рамка .foto → .kadr', s: rm, html: (h) => h.replace(ART4, '$1<div class="kadr">'), prichina: 'кадр героя без .foto' }]);
+});
+
+test('R4-V-P-1 формы V3-2 проверяющего: чужая метка обёртки, .Foto, картинка без рамки', async (t) => {
+  const { mv, m2 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-P-1 /movie/: метка обёртки чужая (data-astro-cid-m3tnyskv)', s: mv, html: (h) => h.replace(obertka4(mv), obertka4(mv).replace('data-astro-cid-n67f4zmd', 'data-astro-cid-m3tnyskv')), prichina: 'обёртку не достают' },
+    { imya: 'R4-V-P-1 /movie/: .foto → .Foto (класс чувствителен к регистру)', s: mv, html: (h) => h.replace(ART4, '$1<div class="Foto">'), prichina: 'кадр героя без .foto' },
+    { imya: 'R4-V-P-1 /max-payne-2/: рамки нет, img прямо в .hero__art', s: m2, html: (h) => h.replace(/(<div class="hero__art"[^>]*>)<div class="foto">(<img[^>]*>)<\/div>/, '$1$2'), prichina: 'кадр героя без .foto' },
+  ]);
+});
+
+test('R4-V-K-3 <style> и <link rel=stylesheet> в <body> вне <main> — оформление всей страницы', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-3 <style> после </main>', s: rm, html: (h) => h.replace('</main>', '</main><style>.geroy .hero__art .foto img{object-position:10% 50% !important}</style>'), prichina: '<style> в <body> вне <main>' },
+    {
+      imya: 'R4-V-K-3 svg <style> в знаке подвала', s: rm,
+      html: (h) => h.replace('<svg class="znak" width="138" height="38" viewBox="0 0 138 38" focusable="false" role="img"', '<svg class="znak" width="138" height="38" viewBox="0 0 138 38" focusable="false" role="img"><style>.geroy .hero__art .foto img{object-position:10% 50% !important}</style></svg><svg'),
+      prichina: '<style> в <body> вне <main>',
+    },
+    { imya: 'R4-V-K-3 <link rel=stylesheet> в подвале', s: rm, html: (h) => h.replace('<footer class="ft"', '<link rel="stylesheet" href="/_astro/proba.css"><footer class="ft"'), prichina: '<style> в <body> вне <main>' },
+  ]);
+});
+
+test('R4-V-P-2 формы V3-3 проверяющего: оформление и скрипт мимо обёртки в других местах', async (t) => {
+  const { rm, mv, m2, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-P-2 /movie/: <style> внутри .ft__inner подвала', s: mv, html: (h) => posle4(h, FT4, '<style>.geroy .hero__art .foto img{object-position:0 0!important}</style>'), prichina: '<style> в <body> вне <main>' },
+    { imya: 'R4-V-P-2 /max-payne-2/: <link rel="Stylesheet"> в шапке', s: m2, html: (h) => posle4(h, HDR4, '<link rel="Stylesheet" href="/_astro/x.css">'), prichina: '<style> в <body> вне <main>' },
+    { imya: 'R4-V-P-2 /remake/: <style> сразу после <body>', s: rm, html: (h) => posle4(h, '<body>', '<style>.btn-primary svg{transform:rotate(180deg)}</style>'), prichina: '<style> в <body> вне <main>' },
+    { imya: 'R4-V-P-2 /movie/: onerror у картинки героя', s: mv, html: (h) => h.replace(IMG_GEROYA4, `$1 onerror="this.closest('.geroy').style.cssText='--fokus: 0% 0%'"`), prichina: 'скрипт в <main>' },
+    { imya: 'R4-V-P-2 /remake/: svg <script> в иконке кнопки призыва', s: rm, html: (h) => h.replace('<path d="M4 12h15"/>', '<script>1</script><path d="M4 12h15"/>'), prichina: 'скрипт в <main>' },
+    { imya: 'R4-V-P-2 /movie/: <body background> с кадром mp3-k15', s: mv, html: (h) => h.replace('<body>', `<body background="${K15}">`), prichina: 'атрибуты <html>/<body>' },
+    { imya: 'R4-V-P-2 /remake/: style у <header> (вне <main>)', s: rm, html: (h) => h.replace(HDR4, `<header class="hdr" style="position:fixed;inset:0;background:url(${K15}) center/cover" data-astro-cid-qu2zoq4f>`), prichina: 'style вне <main>' },
+    { imya: 'R4-V-P-2 /remake/: style у фигуры знака не --farba', s: rm, html: (h) => h.replace('style="--farba: var(--ink)"', 'style="--farba: var(--ink); display: none"'), prichina: 'style вне <main>' },
+  ]);
+});
+
+test('R4-V-K-4 скрипт в <main> (и обработчик on* где угодно) — кадровку и оформление задают мимо атрибута style', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-4 <script> в <main>: style.setProperty(--fokus)', s: rm, html: (h) => h.replace('<section class="layer section layer--bez-kadru" id="what-it-is"', (x) => `<script>document.querySelector('.geroy').style.setProperty('--fokus','10% 50%')</script>` + x), prichina: 'скрипт в <main>' },
+    { imya: 'R4-V-K-4 onload у картинки героя', s: rm, html: (h) => h.replace(IMG_GEROYA4, `$1 onload="this.style.objectPosition='10% 50%'"`), prichina: 'скрипт в <main>' },
+    { imya: 'R4-V-K-4 onload у <body> (класс: обработчик вне <main>)', s: rm, html: (h) => h.replace('<body>', `<body onload="document.querySelector('.geroy').style.cssText='--fokus: 0% 0%'">`), prichina: 'обработчик on* вне <main>' },
+    { imya: 'R4-V-K-4 onclick у ссылки шапки (класс: обработчик вне <main>)', s: rm, html: (h) => h.replace('<a class="hdr__brand" href="/"', '<a class="hdr__brand" href="/" onclick="1"'), prichina: 'обработчик on* вне <main>' },
+  ]);
+});
+test.todo('R4-V-K-4 (предел): <script> вне <main> не судится — модуль шапки печатает сайт, содержание скрипта сверка не читает');
+
+test('R4-V-K-5 таб и перевод строки внутри «_astro» — URL-разборщик браузера их выбрасывает', async (t) => {
+  const { rm, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-5 poster с табом внутри _astro', s: rm, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/_ast&#9;ro/')}"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'R4-V-K-5 svg image href с переводом строки внутри _astro', s: rm, html: (h) => vHeroj4(h, `<svg width="100%" height="100%"><image href="${K15.replace('/_astro/', '/_as&#10;tro/')}" width="100%" height="100%"/></svg>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+  ]);
+});
+
+test('R4-V-K-6 неполная процентная запись в запросе или фрагменте не мешает раскрыть /%5Fastro/', async (t) => {
+  const { rm, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-6 /%5Fastro/ с ?% в запросе', s: rm, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/%5Fastro/')}?%"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'R4-V-K-6 /%5Fastro/ с #%zz во фрагменте', s: rm, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/%5Fastro/')}#%zz"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+  ]);
+});
+
+test('R4-V-P-3 формы V3-4 проверяющего: &#13; внутри _astro, хвост ?q=100% и #%', async (t) => {
+  const { mv, m2, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-P-3 /movie/: <object data> с &#13; внутри _astro', s: mv, html: (h) => vHeroj4(h, `<object data="${K15.replace('/_astro/', '/_a&#13;stro/')}"></object>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'R4-V-P-3 /movie/: /%5fastro/ строчными и хвост ?q=100%', s: mv, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/%5fastro/')}?q=100%"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'R4-V-P-3 /max-payne-2/: /%5Fastro/ и хвост #%', s: m2, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/%5Fastro/')}#%"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+  ]);
+});
+
+test('R4-V-K-7 атрибуты <body> и <html> вне печати сайта — фон под всей страницей', async (t) => {
+  const { rm, m2, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-7 <body background> с кадром mp3-k15', s: rm, html: (h) => h.replace('<body>', `<body background="${K15}">`), prichina: 'атрибуты <html>/<body>' },
+    { imya: 'R4-V-K-7 <body bgcolor> (класс: презентационный атрибут)', s: m2, html: (h) => h.replace('<body>', '<body bgcolor="#ff0000">'), prichina: 'атрибуты <html>/<body>' },
+    { imya: 'R4-V-K-7 <html hidden> (класс: атрибут корня)', s: rm, html: (h) => h.replace('<html lang="en">', '<html lang="en" hidden>'), prichina: 'атрибуты <html>/<body>' },
+  ]);
+});
+
+test('R4-V-K-8 первый элемент документа с id заголовка — не заголовок блока (браузер разрешает IDREF по первому)', async (t) => {
+  const { rm, q } = r4();
+  await progon(t, [
+    { imya: "R4-V-K-8 id='related-title' раньше раздела (в шапке)", s: rm, html: (h) => posle4(h, HDR4, "<span id='related-title' hidden>Sponsored links</span>"), prichina: 'id related-title' },
+    { imya: 'R4-V-K-8 id page-title раньше героя (класс: заголовок героя)', s: rm, html: (h) => posle4(h, HDR4, '<span id="page-title" hidden>Sponsored</span>'), prichina: 'id page-title' },
+    { imya: 'R4-V-K-8 id gallery-title раньше галереи (класс: заголовок галереи)', s: q, html: (h) => posle4(h, HDR4, '<span id="gallery-title" hidden>Sponsored</span>'), prichina: 'id gallery-title' },
+  ]);
+});
+
+test('R4-V-P-4 формы V3-5, V3-6 проверяющего: span id=related-title в колонке героя, ID= в шапке', async (t) => {
+  const { rm, mv } = r4();
+  await progon(t, [
+    { imya: 'R4-V-P-4 /movie/: скрытый span id="related-title" в колонке героя', s: mv, html: (h) => h.replace(/(<div class="hero__text"[^>]*>)/, '$1<span id="related-title" hidden>Sponsored links</span>'), prichina: 'id related-title' },
+    { imya: 'R4-V-P-4 /remake/: span ID=related-title без кавычек в шапке', s: rm, html: (h) => posle4(h, HDR4, '<span ID=related-title hidden>Sponsored links</span>'), prichina: 'id related-title' },
+  ]);
+});
+
+/** Копия сборки без `_astro` во временной папке с добавленными файлами; замечания сверки сборки. */
+function vstrechno4(dobavit) {
+  const d = mkdtempSync(join(tmpdir(), 'sverka-dist-'));
+  try {
+    cpSync(dist(), d, { recursive: true, filter: (p) => !/[\\/]_astro([\\/]|$)/.test(p.slice(dist().length)) });
+    for (const [put, html] of dobavit) {
+      mkdirSync(dirname(join(d, put)), { recursive: true });
+      writeFileSync(join(d, put), html);
+    }
+    return sverkaSborki(d, SAYT, { obyazatelnaPodpis: OBYAZATELNA }).zamechaniya;
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+}
+
+test('R4-V-K-9 встречная проверка: страница .htm в сборке — замечание', () => {
+  const z = vstrechno4([['remake-old.htm', stranica('/remake/')]]);
+  assert.ok(z.some((x) => x.url.includes('remake-old.htm') && x.chto.includes('без файла содержания')), JSON.stringify(z));
+});
+
+test('R4-V-P-5 формы V3-7 проверяющего: index.htm в папке, .xhtml, REMAKE.HTM — замечания', () => {
+  const z = vstrechno4([['proba-b/index.htm', stranica('/remake/')], ['proba.xhtml', stranica('/remake/')], ['REMAKE.HTM', stranica('/remake/')]]);
+  for (const f of ['proba-b/index.htm', 'proba.xhtml', 'REMAKE.HTM']) assert.ok(z.some((x) => x.url.includes(f) && x.chto.includes('без файла содержания')), `${f}: ${JSON.stringify(z)}`);
+});
+
+test('R4-V-K-9к контроль: копия сборки без добавленных файлов — встречная проверка молчит', () => {
+  assert.deepEqual(vstrechno4([]), []);
+});
+
+test('R4-V-K-10 svg-текст во второй кнопке и в кнопке призыва — рисуется, в надпись идёт', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-10 вторая кнопка: svg <text> после надписи', s: rm, html: (h) => h.replace(SEC4, 'The 2001 original<svg width="120" height="18"><text x="0" y="14">and the remake</text></svg></a>'), prichina: 'secondary: надпись' },
+    { imya: 'R4-V-K-10 вторая кнопка: svg foreignObject с текстом', s: rm, html: (h) => h.replace(SEC4, 'The 2001 original<svg width="120" height="18"><foreignObject width="120" height="18"><span>and the remake</span></foreignObject></svg></a>'), prichina: 'secondary: надпись' },
+    { imya: 'R4-V-K-10 кнопка призыва: svg <text> вместо пути иконки', s: rm, html: (h) => h.replace(/(See Max Payne \(2001\)<svg\b[^>]*>)[\s\S]*?(<\/svg>)/, '$1<text x="0" y="14" font-size="6">remake</text>$2'), prichina: 'кнопки призыва' },
+    { imya: 'R4-V-K-10 кнопка призыва: вторая svg с <text>', s: rm, html: (h) => h.replace(CTA_SVG4, (x) => x.replace('See Max Payne (2001)', 'See Max Payne (2001)<svg width="120" height="18"><text x="0" y="14">and the remake</text></svg>')), prichina: 'кнопки призыва' },
+  ]);
+});
+
+test('R4-V-Z-1 регресс V3-8: видимый <text> в svg кнопки призыва и контурной кнопки — замечание, как до раунда 3', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-Z-1 видимый <text> в svg кнопки призыва', s: rm, html: (h) => h.replace(/(See Max Payne \(2001\)<svg\b[^>]*>[\s\S]*?)(<\/svg>)/, '$1<text x="0" y="16">FREE DOWNLOAD</text>$2'), prichina: 'надпись кнопки призыва' },
+    { imya: 'R4-V-Z-1 svg с <text> в контурной кнопке', s: rm, html: (h) => h.replace(SEC4, 'The 2001 original<svg width="120" height="18"><text y="14">— FREE DOWNLOAD</text></svg></a>'), prichina: 'secondary: надпись' },
+  ]);
+});
+
+test('R4-V-K-11 надпись в теневом корне кнопки — рисуется, в надпись идёт', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-11 вторая кнопка: надпись в теневом корне span', s: rm, html: (h) => h.replace(SEC4, '<span><template shadowrootmode="open">Play the remake</template>The 2001 original</span></a>'), prichina: 'secondary: надпись' },
+  ]);
+});
+
+test('R4-V-K-12 элемент формы во второй кнопке — рисует своё значение', async (t) => {
+  const { rm } = r4();
+  await progon(t, [{ imya: 'R4-V-K-12 вторая кнопка: input value', s: rm, html: (h) => h.replace(SEC4, 'The 2001 original<input type="button" value="and the remake"></a>'), prichina: 'secondary: элементы в кнопке' }]);
+});
+
+test('R4-V-P-6 формы V3-8 проверяющего: tspan, textPath, теневой корень closed и open, input submit', async (t) => {
+  const { mv, m2 } = r4();
+  const CTA = /(<a class="btn btn-primary t-button cta__btn"[^>]*>[^<]*)/;
+  await progon(t, [
+    { imya: 'R4-V-P-6 /movie/: вторая кнопка, svg <text><tspan>', s: mv, html: (h) => h.replace('>The cast</a>', '>The cast<svg width="90" height="18"><text y="14"><tspan>and crew</tspan></text></svg></a>'), prichina: 'secondary: надпись' },
+    { imya: 'R4-V-P-6 /max-payne-2/: призыв, <textPath> во второй svg', s: m2, html: (h) => h.replace(CTA, '$1<svg width="90" height="18"><path id="d" d="M0 14h90"/><text><textPath href="#d">free now</textPath></text></svg>'), prichina: 'кнопки призыва' },
+    { imya: 'R4-V-P-6 /max-payne-2/: вторая кнопка, теневой корень closed', s: m2, html: (h) => h.replace('>The first game</a>', '><span><template shadowrootmode="closed">Buy Max Payne 3</template>The first game</span></a>'), prichina: 'secondary: надпись' },
+    { imya: 'R4-V-P-6 /movie/: кнопка призыва, надпись в теневом корне span', s: mv, html: (h) => h.replace(/(<a class="btn btn-primary t-button cta__btn"[^>]*>)([^<]*)/, '$1<span><template shadowrootmode="open">Buy now</template>$2</span>'), prichina: 'кнопки призыва' },
+    { imya: 'R4-V-P-6 /max-payne-2/: кнопка призыва, <input type=submit value>', s: m2, html: (h) => h.replace(CTA, '$1<input type="submit" value="free now">'), prichina: 'кнопки призыва' },
+  ]);
+});
+
+test('R4-V-K-13 вторая «Games:» или «License class:» другой записью — читатель видит ту же строку', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-K-13 вторая Ga&shy;mes:', s: rm, html: (h) => h.replace(NOTA4, 'Games: Max Payne. Ga&shy;mes: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-K-13 вторая Games&#8203;: (U+200B)', s: rm, html: (h) => h.replace(NOTA4, 'Games: Max Payne. Games&#8203;: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-K-13 вторая GAMES: прописными', s: rm, html: (h) => h.replace(NOTA4, 'Games: Max Payne. GAMES: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-K-13 вторая Games : с пробелом до двоеточия', s: rm, html: (h) => h.replace(NOTA4, 'Games: Max Payne. Games : Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-K-13 вторая Li&shy;cense class:', s: rm, html: (h) => h.replace(NOTA4, 'Games: Max Payne. Li&shy;cense class: CC BY-SA 4.0.'), prichina: '«License class:» 2 раз' },
+  ]);
+});
+test.todo('R4-V-K-13 (предел): буквы-двойники других алфавитов в «Games:» и «License class:» (кириллическая «а») не судятся');
+
+test('R4-V-P-7 формы V3-9 проверяющего (класс): WORD JOINER, полноширинное двоеточие, строчные, License&shy; class:, div подвала', async (t) => {
+  const { m2, NOTA2 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-P-7 Games&#8288;: (WORD JOINER)', s: m2, html: (h) => h.replace(NOTA2, NOTA2 + ' Games&#8288;: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-P-7 Games&#xFF1A; (полноширинное двоеточие)', s: m2, html: (h) => h.replace(NOTA2, NOTA2 + ' Games&#xFF1A; Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-P-7 games: строчными', s: m2, html: (h) => h.replace(NOTA2, NOTA2 + ' games: Max Payne 3.'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-P-7 License&shy; class:', s: m2, html: (h) => h.replace(NOTA2, NOTA2 + ' License&shy; class: CC BY 4.0.'), prichina: '«License class:» 2 раз' },
+    { imya: 'R4-V-P-7 div подвала с «Games: Max Payne 3.»', s: m2, html: (h) => h.replace('<p class="t-caption ft__copy tabular"', '<div class="t-caption">Games: Max Payne 3.</div><p class="t-caption ft__copy tabular"'), prichina: '«Games:» 2 раз' },
+  ]);
+});
+
+test('R4-V-P-9 формы V3-9 проверяющего (закон): «Games :», «GAMES:», «License class :»', async (t) => {
+  const { rm } = r4();
+  const NOTA_LIC = /(<p class="ft__art-note[^"]*"[^>]*>License class[^<]*<\/p>)/;
+  await progon(t, [
+    { imya: 'R4-V-P-9 вторая нота «Games : Max Payne 3.»', s: rm, html: (h) => h.replace(NOTA_LIC, '<p class="ft__art-note t-caption">Games : Max Payne 3.</p>$1'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-P-9 вторая нота «GAMES: Max Payne 3.»', s: rm, html: (h) => h.replace(NOTA_LIC, '<p class="ft__art-note t-caption">GAMES: Max Payne 3.</p>$1'), prichina: '«Games:» 2 раз' },
+    { imya: 'R4-V-P-9 вторая нота «License class :CC BY-SA 4.0.»', s: rm, html: (h) => h.replace(NOTA_LIC, '$1<p class="ft__art-note t-caption">License class :CC BY-SA 4.0.</p>'), prichina: '«License class:» 2 раз' },
+  ]);
+});
+
+test('R4-V-K-14 «Games:» в абзаце подвала вне p.ft__art-note — читается как вторая нота', async (t) => {
+  const { rm } = r4();
+  await progon(t, [{ imya: 'R4-V-K-14 «Games:» в абзаце ft__legal', s: rm, html: (h) => h.replace('<p class="t-caption ft__copy tabular"', '<p class="t-caption">Games: Max Payne 3.</p><p class="t-caption ft__copy tabular"'), prichina: '«Games:» 2 раз' }]);
+});
+
+test('R4-V-Z-2 части V3-3 без сторожа: style у <html>, у <body>, у ряда вне героя, <link rel=stylesheet> в <main>', async (t) => {
+  const { rm } = r4();
+  await progon(t, [
+    { imya: 'R4-V-Z-2 style у <html>', s: rm, html: (h) => h.replace('<html lang="en">', '<html lang="en" style="filter: invert(1)">'), prichina: 'style у html' },
+    { imya: 'R4-V-Z-2 style у <body>', s: rm, html: (h) => h.replace('<body>', '<body style="display: none">'), prichina: 'style у body' },
+    { imya: 'R4-V-Z-2 style у ряда вне героя', s: rm, html: (h) => h.replace('id="what-it-is"', 'id="what-it-is" style="display: none"'), prichina: 'style у section.layer' },
+    { imya: 'R4-V-Z-2 <link rel=stylesheet> в <main>', s: rm, html: (h) => h.replace('<main id="content">', '<main id="content"><link rel="stylesheet" href="/_astro/proba.css">'), prichina: '<style> в <main>: 1 (link)' },
+  ]);
+});
+
+test('R4-V-Z-3 части V3-4 без сторожа: /_ASTRO/ прописными и обратная косая после _astro', async (t) => {
+  const { rm, K15 } = r4();
+  await progon(t, [
+    { imya: 'R4-V-Z-3 video poster с /_ASTRO/ прописными', s: rm, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/_ASTRO/')}"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+    { imya: 'R4-V-Z-3 video poster с /_astro\\ (обратная косая)', s: rm, html: (h) => vHeroj4(h, `<video poster="${K15.replace('/_astro/', '/_astro\\')}"></video>`), prichina: 'ключами вне кадров содержания: mp3-k15' },
+  ]);
+});
+
+test('R4-V-Z-4 части V3-6 без сторожа: aria-labelledby «связанных», имя h2 и каждый класс заголовка', async (t) => {
+  const { rm } = r4();
+  const ZAG = 'class="link-list__title t-headline" id="related-title"';
+  await progon(t, [
+    { imya: 'R4-V-Z-4 aria-labelledby «связанных» на чужой id', s: rm, html: (h) => h.replace(/(<section class="link-list[^>]*?)aria-labelledby="related-title"/, '$1aria-labelledby="release-date-title"'), prichina: 'aria-labelledby «связанных»' },
+    { imya: 'R4-V-Z-4 заголовок «связанных» — h3 с классами', s: rm, html: (h) => h.replace(/<h2 class="link-list__title t-headline" id="related-title"([^>]*)>([^<]*)<\/h2>/, '<h3 class="link-list__title t-headline" id="related-title"$1>$2</h3>'), prichina: '(«h3.link-list__title.t-headline»)' },
+    { imya: 'R4-V-Z-4 без link-list__title', s: rm, html: (h) => h.replace(ZAG, 'class="t-headline" id="related-title"'), prichina: '(«h2.t-headline»)' },
+    { imya: 'R4-V-Z-4 без t-headline', s: rm, html: (h) => h.replace(ZAG, 'class="link-list__title" id="related-title"'), prichina: '(«h2.link-list__title»)' },
+  ]);
+});
+
+/** Сверка /remake/ с иконками зеркала, где разметка arrow-down в icons.ts заменена на `na` (порча HTML — `html`). */
+function sIkonoyVniz4(na, html) {
+  const k = zerkalo();
+  try {
+    const DOWN = '<path d="m6 9 6 6 6-6"/>';
+    const f = join(k, 'src/data/icons.ts');
+    const byl = readFileSync(f, 'utf8');
+    writeFileSync(f, byl.replace(`'arrow-down': '${DOWN}'`, `'arrow-down': '${na}'`));
+    assert.notEqual(readFileSync(f, 'utf8'), byl, 'правка icons.ts не применилась');
+    const Vk = vhody(k);
+    const x = po('/remake/');
+    const h = html(x.html, DOWN);
+    assert.notEqual(h, x.html, 'порча не применилась');
+    return sverkaStranicy({ page: x.page, dane: x.dane, html: h, kredity: Vk.kredity, ikony: Vk.ikony, obyazatelnaPodpis: OBYAZATELNA });
+  } finally {
+    rmSync(k, { recursive: true, force: true });
+  }
+}
+
+test('R4-V-Z-5 законная иконка с вложенным svg в icons.ts и в печати — замечаний нет (вложенные svg не в счёт)', () => {
+  const VLOZH = '<svg x="0" y="0"><path d="m6 9 6 6 6-6"/></svg>';
+  assert.deepEqual(sIkonoyVniz4(VLOZH, (h, DOWN) => h.replace(DOWN, VLOZH)), []);
+});
+
+test('R4-V-Z-6 текст <title> иконки не как в icons.ts — замечание (подпись иконки — с текстом элементов)', () => {
+  const z = sIkonoyVniz4('<title>Down</title><path d="m6 9 6 6 6-6"/>', (h, DOWN) => h.replace(DOWN, '<title>Download the full game</title>' + DOWN));
+  assert.ok(z.some((x) => x.includes('иконка главной кнопки')), z.join(' | ') || 'замечаний нет');
+});
+
+test('R4-V-Z-7 петля ссылок: файлы содержания читаются по разу — страниц столько же, сколько без петли', () => {
+  const k = zerkalo();
+  const svyaz = join(k, 'src/content/tresc/petlya');
+  try {
+    symlinkSync(join(k, 'src/content/tresc'), svyaz, 'junction');
+    const r = sverkaSborki(dist(), k, { obyazatelnaPodpis: OBYAZATELNA });
+    assert.deepEqual(r.zamechaniya, []);
+    assert.equal(r.stranic, sverkaSborki(dist(), SAYT, { obyazatelnaPodpis: OBYAZATELNA }).stranic);
+  } finally {
+    unlinkSync(svyaz);
+    rmSync(k, { recursive: true, force: true });
+  }
+});
+
+test.todo('R4-V-P-8 (предел): <style> и <link rel=stylesheet> в <head> (печать сайта) не судятся — правило для .geroy или иконки там сверка не читает');

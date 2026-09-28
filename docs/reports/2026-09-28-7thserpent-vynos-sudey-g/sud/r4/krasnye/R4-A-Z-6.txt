@@ -1,0 +1,32 @@
+✖ R4-A-Z-6 (A3-1): <meta charset="utf-16"> в байтах UTF-8 с одним битым байтом — UTF-8, как у браузера (15.1338ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 117.3182
+
+✖ failing tests:
+
+test at ..\..\core\text\corpus.test.mjs:430:1
+✖ R4-A-Z-6 (A3-1): <meta charset="utf-16"> в байтах UTF-8 с одним битым байтом — UTF-8, как у браузера (15.1338ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  null !== 'u'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/core/text/corpus.test.mjs:436:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.start (node:internal/test_runner/test:1242:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: null,
+    expected: 'u',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+код возврата: 1

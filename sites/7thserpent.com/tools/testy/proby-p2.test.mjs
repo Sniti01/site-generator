@@ -7,7 +7,7 @@
 import { test } from 'node:test';
 import { parse as yamlParse } from 'yaml';
 import { proba, pravit, struktura, bloki } from './proba.mjs';
-import { prochest } from '../kopiya.mjs';
+import { prochest, zapisat } from '../kopiya.mjs';
 
 const STEND = 'src/content/tresc/404.md';
 const MP3 = 'src/content/tresc/max-payne-3.md';
@@ -24,6 +24,15 @@ const BYLINE = (k) => {
   return `  date: '${b.date}'\n  dateLabel: ${b.dateLabel}\n`;
 };
 const byline = (date, label) => (k) => pravit(k, MP2, BYLINE(k), `  date: '${date}'\n  dateLabel: ${label}\n`);
+// Запись кредитов кадра в копии (раунд 2 «судью судят» правки маршрута П102 п. 1, P2-1, P2-2).
+const ART = 'src/data/game-art.json';
+const zapisKadra = (klyuch, f) => (k) => {
+  const o = JSON.parse(prochest(k, ART));
+  if (!o[klyuch]) throw new Error(`проба: нет записи ${klyuch} в ${ART}`);
+  f(o[klyuch]);
+  zapisat(k, ART, JSON.stringify(o, null, 2) + '\n');
+};
+const RAZMERY = 'Запись кадра героя «mp1-k09» в game-art.json без размеров мастера';
 
 const PROBY = [
   ['R1', 'поле героя lead в содержании, а hero-key-art у страницы нет', (k) => pravit(k, STEND, 'related:\n', 'lead: Proba lead.\nrelated:\n'), ['Поле без блока', '`lead`', '`hero-key-art`']],
@@ -75,6 +84,12 @@ const PROBY = [
   ['R22', 'дата словами — не та же дата — схема', byline('2026-09-26', 'September 25, 2026'), [MP2_NE, 'byline.dateLabel', 'не та же дата словами']],
   ['R23', 'дата подписи позже дня сборки — схема', byline('2099-01-01', 'January 1, 2099'), [MP2_NE, 'byline.date', 'дата подписи 2099-01-01 позже дня сборки']],
   ['R24', 'дата подписи раньше 2000 года — схема', byline('1999-12-31', 'December 31, 1999'), [MP2_NE, 'byline.date', 'дата подписи раньше 2000 года']],
+  // Правка маршрута П102 п. 1 (sizesGeroya — пропорция из записи кредитов): раунд 2 «судью судят», P2-1…P2-3.
+  ['R25', 'запись кадра героя без height — отказ sizesGeroya', zapisKadra('mp1-k09', (z) => { delete z.height; }), [RAZMERY, '(width 1280, height undefined)']],
+  ['R26', 'запись кадра героя с height 0 — отказ sizesGeroya', zapisKadra('mp1-k09', (z) => { z.height = 0; }), [RAZMERY, '(width 1280, height 0)']],
+  ['R27', 'width записи строкой «1280» — отказ sizesGeroya (сверка по String() его пропускает)', zapisKadra('mp1-k09', (z) => { z.width = '1280'; }), [RAZMERY, '(width "1280", height 960)']],
+  ['R28', 'запись без file и height — отказ называет файл разрешателя <ключ>.jpg', zapisKadra('mp1-k09', (z) => { delete z.file; delete z.height; }), [RAZMERY, 'src/assets/gry/mp1-k09.jpg']],
+  ['R29', 'запись кадра героя ≠ мастеру (width 1281) — сверка dist роняет сборку', zapisKadra('mp1-k09', (z) => { z.width = 1281; }), ['Страницы разошлись с файлами содержания', 'кадр героя: размеры картинки 1280×960 ≠ записи кадра mp1-k09 1281×960']],
 ];
 
 for (const [id, imya, izmenit, zhdem] of PROBY) test(`${id}: ${imya}`, () => proba({ izmenit, kod: 'не 0', zhdem }));

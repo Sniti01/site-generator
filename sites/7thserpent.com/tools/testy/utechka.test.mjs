@@ -75,6 +75,22 @@ test('отрицательный контроль: «width» in импорт и 
   assert.match(r.vyvod, /утечка мастеров: исходных картинок 21 \(src\), в сборке ни одной/);
 });
 
+// Раунд 2 «судью судят» правки маршрута П102 п. 1 (P2-7): что помечает оригинал — закрепы уточнённой прозы.
+test('P2-7: чтение отсутствующего свойства импорта (orientation у JPEG без EXIF) оригинал не помечает', () => {
+  const r = sborkaS((k) => pravka(k, 'src/components/HomeHero.astro', "const art = kadr('hero');", "const art = kadr('hero');\nconst orient = art.src.orientation;\nvoid orient;"));
+  assert.equal(r.kod, 0, r.vyvod.slice(-2000));
+  assert.match(r.vyvod, /утечка мастеров: исходных картинок 21 \(src\), в сборке ни одной/);
+});
+
+test('P2-7: унаследованное свойство (String(импорт) — toString) помечает — сборка падает', () => {
+  const r = sborkaS((k) => pravka(k, 'src/components/HomeHero.astro', "const art = kadr('hero');", "const art = kadr('hero');\nconst stroka = String(art.src);\nvoid stroka;"));
+  assert.notEqual(r.kod, 0);
+  assert.match(r.vyvod, /= assets\/gry\/hero\.jpg/);
+});
+
+test.todo('P2-5 (предел): непечатаемый кадр .apng (и bmp, ico, jfif — входные форматы Astro и Vite) — сторож считает мастерами только jpg, jpeg, png, webp, avif, gif, tif, tiff');
+test.todo('P2-6 (предел): растр src/ меньше 4096 Б через CSS url(), ?url или любой через ?inline — встроен data:-адресом (base64), файла-копии нет, сторож его не видит');
+
 test('сторож громко: нет папки исходников или в ней ноль картинок', () => {
   const pusto = mkdtempSync(join(tmpdir(), 'utechka-pusto-'));
   assert.throws(() => utechki(pusto, join(pusto, 'net')), /нет папки/);

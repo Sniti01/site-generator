@@ -1,0 +1,7 @@
+latin-600.css: font-style normal, font-weight 600, unicode-range нет
+latin-600-italic.css: font-style italic, font-weight 600, unicode-range нет
+latin-400.css: font-style normal, font-weight 400, unicode-range нет
+latin-700.css: font-style normal, font-weight 700, unicode-range нет
+latin-ext-600.css: font-style normal, font-weight 600, unicode-range нет
+lightningcss: .q[data-strelka="-->"] { color: red; } → .q[data-strelka="-->"] { color: red; } (предупреждений: 0)
+lightningcss: .q[title^="<!--"] { color: red; } → .q[title^="<!--"] { color: red; } (предупреждений: 0)

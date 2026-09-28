@@ -1,0 +1,31 @@
+кандидатов: 5438 с font-display: [
+  '--font-display',
+  '--font-display-',
+  '--font-displayx-',
+  '[--font-display:Georgia]',
+  'font-display'
+]
+файлов зоны: 119 ; с «--font-display:Georgia»: [
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\znak.test.mjs'
+]
+tools/testy в зоне: [
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\utechka.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sborka.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proby-p1.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proby-dogovora.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sverka.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\obshchee.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proby-p4.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sravnenie.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\glowa.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\sravnenie.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\znak.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proverki.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\znak-sborka.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\schet.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\uborka.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\kopiya.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proba.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\proby-p2.test.mjs',
+  'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\frazy.test.mjs'
+]

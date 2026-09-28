@@ -1,0 +1,9 @@
+== контроль
+   судья: сверено
+   плагин Vite (build): в выводе плагина --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+== только тема Tailwind: @import 'tailwindcss/theme.css'; (ноль утилит, сброс — reset.css ядра)
+   судья: сверено
+   плагин Vite (build): в выводе плагина --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif
+== без импорта Tailwind вовсе
+   судья: сверено
+   плагин Vite (build): в выводе плагина --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif

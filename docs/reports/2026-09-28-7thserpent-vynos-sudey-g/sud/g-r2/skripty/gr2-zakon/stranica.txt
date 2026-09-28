@@ -1,0 +1,7 @@
+код 0
+судья: ошибок разбора 0; --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif; @font-face Бодони: 1; правил 108
+сборка: ошибок разбора 0; --font-display: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif; @font-face Бодони: 1; правил 278
+правила только у судьи (2): button,input:where([type="button"],[type="reset"],[type="submit"])  [hidden]:where(:not([hidden="until-found"]))
+правила только в сборке (172): button,input:where([type=button],[type=reset],[type=submit])  [hidden]:where(:not([hidden=until-found]))  .grain[data-astro-cid-ztqmn5of]  .grain[data-astro-cid-ztqmn5of]svg[data-astro-cid-ztqmn5of]  .crumbs[data-astro-cid-woptr46g]  .crumbs__list[data-astro-cid-woptr46g]  .crumbs__item[data-astro-cid-woptr46g]  .crumbs__link[data-astro-cid-woptr46g]  .crumbs__link[data-astro-cid-woptr46g]:hover,.crumbs__link[data-astro-cid-woptr46g]:focus-visible  .crumbs__sep[data-astro-cid-woptr46g]  .crumbs__current[data-astro-cid-woptr46g]  .hdr[data-astro-cid-qu2zoq4f]  .hdr__inner[data-astro-cid-qu2zoq4f]  .hdr__brand[data-astro-cid-qu2zoq4f]  .hdr__nav[data-astro-cid-qu2zoq4f]
+сторож: знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема
+

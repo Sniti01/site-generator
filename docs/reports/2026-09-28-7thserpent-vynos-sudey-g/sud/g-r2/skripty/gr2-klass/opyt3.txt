@@ -1,0 +1,10 @@
+vite 8.2.2
+--- вход:
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@import url('./zlo.css');
+@layer theme { :root { --font-display: "Bodoni Moda", serif; } }
+.t-headline { font-family: var(--font-display); }
+--- после конвейера CSS Vite:
+/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */ :root { --font-display: Georgia, serif; } @layer theme { :root { --font-display: "Bodoni Moda", serif; } }
+.t-headline { font-family: var(--font-display); }
+

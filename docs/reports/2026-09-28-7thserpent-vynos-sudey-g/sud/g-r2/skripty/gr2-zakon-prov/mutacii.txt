@@ -1,0 +1,48 @@
+== K0 контроль: код 0; tests 307, pass 306, fail 0, todo 1
+== M1 ветвь «вывод не читается» снята: код 0; tests 307, pass 306, fail 0, todo 1
+   под мутантом, случаи «Z6»:
+     == Z6/M1 :root { --x: { a: b }; } в импорте (ждём «не читается»): сверено [54 мс]
+     (node:33504) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+     (Use `node --trace-deprecation ...` to show where the warning was created)
+     
+== M2 грань без url() не судится: код 0; tests 307, pass 306, fail 0, todo 1
+   под мутантом, случаи «Z4/M2»:
+     == Z4/M2 грань Бодони 600 src: local(Georgia) в импорте (ждём отказ): сверено [38 мс]
+     (node:13516) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+     (Use `node --trace-deprecation ...` to show where the warning was created)
+     
+== M3 root null — сканер пуст: код 0; tests 307, pass 306, fail 0, todo 1
+   под мутантом, случаи «Z2»:
+     == Z2 @import 'tailwindcss'; без source(): сверено [66 мс]
+     == Z2 source('../..'): ОТКАЗ (1) [114 мс]
+        - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia) — сброс, вид @theme, импорт, 
+     (node:35324) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+     (Use `node --trace-deprecation ...` to show where the warning was created)
+     
+== M4 root 'none' — сканер по корню: код 0; tests 307, pass 306, fail 0, todo 1
+   под мутантом, случаи «Z5»:
+     == Z5 source(none) + @source '../../src' (ждём сверено): ОТКАЗ (1) [97 мс]
+        - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia) — сброс, вид @theme, импорт, 
+     (node:12912) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+     (Use `node --trace-deprecation ...` to show where the warning was created)
+     
+== M5 обход граней — только верхний уровень: код 0; tests 307, pass 306, fail 0, todo 1
+   под мутантом, случаи «Z4/M5»:
+     == Z4/M5 грань Бодони внутри @media в импорте (ждём отказ): сверено [45 мс]
+     == Z4/M5 грань Бодони в импорте с layer(base) (ждём отказ): сверено [35 мс]
+     (node:40836) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+     (Use `node --trace-deprecation ...` to show where the warning was created)
+     
+== M7 без кандидатов (контроль красноты): код 1; tests 307, pass 301, fail 5, todo 1
+   ✖ GR1-K-1 произвольное свойство [--font-display:Georgia] в разметке (62.2599ms)
+   ✖ GR1-K-1 @utility с --font-display в импортированном листе и класс в разметке (37.839ms)
+   ✖ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO) (410.0347ms)
+   ✖ GR1-Z-3 роль .t-headline без var(--font-display) в листе (переменную держат компоненты ядра) (30.8031ms)
+   ✖ GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка) (237.0463ms)
+   ✖ failing tests:
+== СВОЙ M9 CDO/CDC не судится вовсе: код 1; tests 307, pass 302, fail 4, todo 1
+   ✖ GR1-K-5 CDO перед @property --accent (46.1584ms)
+   ✖ GR1-K-5 CDO перед своей @font-face Бодони (42.4789ms)
+   ✖ GR1-K-5 CDC перед правилом (54.2148ms)
+   ✖ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO) (650.5536ms)
+   ✖ failing tests:

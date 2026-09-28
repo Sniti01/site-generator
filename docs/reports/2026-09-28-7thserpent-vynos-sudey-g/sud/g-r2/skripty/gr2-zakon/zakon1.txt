@@ -1,0 +1,14 @@
+== контроль: чистые входы: сверено
+== Бодони latin-ext 600 рядом с latin 600 (имена с Ł, ő): ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-ext-600-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda) — она подменит файл темы, а контуры знака считаются из файла темы
+== Бодони latin 600 italic рядом с latin 600 (курсив заголовка): ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-italic.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+== Бодони latin 400 рядом с latin 600 (цитаты): ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-400-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+== Бодони latin 700 рядом с latin 600: ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-700-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+== Public Sans latin-ext 400 (чужая гарнитура, контроль): сверено
+== селектор со строкой «-->» на верхнем уровне: ОТКАЗ (1)
+   - лист: CDO или CDC («<!--», «-->») перед правилом «.q[data-strelka="-->"]» — браузер читает такой лист не так, как разбор сверки
+== селектор со строкой «<!--» на верхнем уровне: ОТКАЗ (1)
+   - лист: CDO или CDC («<!--», «-->») перед правилом «.q[title^="<!--"]» — браузер читает такой лист не так, как разбор сверки

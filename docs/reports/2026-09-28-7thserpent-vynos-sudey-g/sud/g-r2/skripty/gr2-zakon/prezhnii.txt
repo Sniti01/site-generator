@@ -1,0 +1,12 @@
+код 0
+== контроль: чистые входы: сверено
+== Бодони latin-ext 600 рядом с latin 600 (имена с Ł, ő): сверено
+== Бодони latin 600 italic рядом с latin 600 (курсив заголовка): сверено
+== Бодони latin 400 рядом с latin 600 (цитаты): сверено
+== Бодони latin 700 рядом с latin 600: сверено
+== Public Sans latin-ext 400 (чужая гарнитура, контроль): сверено
+== селектор со строкой «-->» на верхнем уровне: сверено
+== селектор со строкой «<!--» на верхнем уровне: сверено
+(node:43436) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+

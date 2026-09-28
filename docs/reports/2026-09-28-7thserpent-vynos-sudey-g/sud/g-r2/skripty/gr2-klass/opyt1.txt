@@ -1,0 +1,119 @@
+== контроль: чистые входы
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+== контроль: :root { --font-display: Georgia } обычным @import
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia, serif) — сброс, вид @theme, импорт
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif",":root: Georgia, serif"]
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l2.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+== А1 @import url() в global.css
+   судья: СВЕРЕНО
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l2.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url(C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l3.css);
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+== А2 @import url() без кавычек в global.css
+   судья: СВЕРЕНО
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url(C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l3.css);
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+== А3 @import с media screen в global.css
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia, serif) — сброс, вид @theme, импорт
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif","вложенный блок: Georgia, serif"]
+== А4 @import с supports() в global.css
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia, serif) — сброс, вид @theme, импорт
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif","вложенный блок: Georgia, serif"]
+== А5 @import с layer(x) в global.css
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia, serif) — сброс, вид @theme, импорт
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif","вложенный блок: Georgia, serif"]
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l7.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+== А6 @import url() внутри импортированного листа
+   судья: СВЕРЕНО
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/l7.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @property --tw-rotate-x {[22m
+[2m│   syntax: "*";[22m
+
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+== Б1 своя @font-face: local(Georgia) перед файлом темы (импортированный лист)
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @font-face Bodoni в выводе: ["@font-face { font-family: Bodoni Moda; font-style: normal; font-display: swap; font-weight: 600; src: url(\"../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2\") format(\"woff2\"), url(\"../../../../node_modules/@fontsource/bo","@font-face { font-family: Bodoni Moda; font-weight: 600; src: local(Georgia), url(\"../../../../../../../../C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/D:/SEO/cloud/site-"]
+== Б2 своя @font-face: файл с тем же именем на другом хосте
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @font-face Bodoni в выводе: ["@font-face { font-family: Bodoni Moda; font-style: normal; font-display: swap; font-weight: 600; src: url(\"../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2\") format(\"woff2\"), url(\"../../../../node_modules/@fontsource/bo","@font-face { font-family: Bodoni Moda; font-weight: 600; src: url(\"https://cdn.example.net/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2\") format(\"woff2\"); }"]
+== Б3 контроль: своя @font-face только local(Georgia)
+   судья: ОТКАЗ (1): гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контуры знака считаются из файла темы
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @font-face Bodoni в выводе: ["@font-face { font-family: Bodoni Moda; font-style: normal; font-display: swap; font-weight: 600; src: url(\"../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2\") format(\"woff2\"), url(\"../../../../node_modules/@fontsource/bo","@font-face { font-family: Bodoni Moda; font-weight: 600; src: local(Georgia); }"]
+== В1 style="--font-display: Georgia" в разметке
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+== Г1 @property --font-display (верх импорта), inherits:false
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: initial | "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif) — сброс, вид @theme, импорт, утили
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: initial","вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @property в выводе: ["@property --font-display { syntax: \"*\"; inherits: false }"]
+== Г2 @property --font-display в @layer base
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @property в выводе: ["@property --font-display { syntax: \"*\"; inherits: false }"]
+== Г3 @property --font-display в @supports
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @property в выводе: ["@property --font-display { syntax: \"*\"; inherits: false }"]
+== Г4 @property --font-display в @media all
+   судья: СВЕРЕНО
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @property в выводе: ["@property --font-display { syntax: \"*\"; inherits: false }"]
+== Г5 @property --font-display <length> initial 0px
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: 0px | "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif) — сброс, вид @theme, импорт, утилита и
+   вывод пути сборки: операторы ["@layer components"]; --font-display: ["вложенный блок: 0px","вложенный блок: \"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif"]
+   @property в выводе: ["@property --font-display { syntax: \"<length>\"; inherits: true; initial-value: 0; }"]

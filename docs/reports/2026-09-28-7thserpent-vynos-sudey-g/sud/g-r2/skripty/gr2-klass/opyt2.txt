@@ -1,0 +1,44 @@
+== А7 @import url() первым в global.css
+   судья: СВЕРЕНО
+   вывод (minify false): операторы верхнего уровня ["@import \"C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/zlo-a7.css\"","@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@import \"C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e"
+   вывод (minify true): операторы верхнего уровня ["@import \"C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/zlo-a7.css\"","@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@import \"C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e"
+== А8 @import "https://…" первым в global.css
+   судья: СВЕРЕНО
+   вывод (minify false): операторы верхнего уровня ["@import \"https://fonts.example.net/zlo.css\"","@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@import \"https://fonts.example.net/zlo.css\";\n\n@layer properties {\n  @supports (((-webkit-hyphe"
+   вывод (minify true): операторы верхнего уровня ["@import \"https://fonts.example.net/zlo.css\"","@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@import \"https://fonts.example.net/zlo.css\";@layer properties{@supports (((-webkit-hyphens:non"
+Found 1 warning while optimizing generated CSS:
+
+[2m│   }[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/zlo-a7.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @font-face {[22m
+[2m│   font-family: 'Bodoni Moda';[22m
+
+== А9 @import url() после @import tailwindcss
+   судья: СВЕРЕНО
+Found 1 warning while optimizing generated CSS:
+
+[2m│   }[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/zlo-a7.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @font-face {[22m
+[2m│   font-family: 'Bodoni Moda';[22m
+
+   вывод (minify false): операторы верхнего уровня ["@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@layer properties {\n  @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or"
+Found 1 warning while optimizing generated CSS:
+
+[2m│   }[22m
+[2m│ }[22m
+[2m│[22m @import url('C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-klass/listy/zlo-a7.css');
+[2m┆[22m        [33m[2m^--[22m @import rules must precede all rules aside from @charset and @layer statements[39m
+[2m┆[22m
+[2m│ @font-face {[22m
+[2m│   font-family: 'Bodoni Moda';[22m
+
+   вывод (minify true): операторы верхнего уровня ["@layer components"]; первые 160 знаков: "/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */\n@layer properties{@supports (((-webkit-hyphens:none)) and (not (margin-trim:inline))) or ((-mo"
+== Д сторож sayt:znak-dist на сборке с CSS страницы --font-display: Georgia
+   сторож: ПРОШЁЛ — info: знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема

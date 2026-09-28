@@ -1,0 +1,18 @@
+== .q[data-strelka="-->"] { color: red; }
+   → .q[data-strelka="-->"] { color: red; }
+   предупреждений: 0
+== .q[title^="<!--"] { color: red; }
+   → .q[title^="<!--"] { color: red; }
+   предупреждений: 0
+== .a-->.b { color: red; }
+   → .a-- > .b { color: red; }
+   предупреждений: 0
+== @supports (content: "-->") { .b { color: red; } }
+   → @supports (content: "-->") { .b { color: red; } }
+   предупреждений: 0
+== --> .x { color: red; }
+   → .x { color: red; }
+   предупреждений: 0
+== <!-- .x { color: red; }
+   → .x { color: red; }
+   предупреждений: 0

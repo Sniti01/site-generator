@@ -1,0 +1,4 @@
+== сводный 600.css рядом с latin-600 (Ł, ő в именах): ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math-600-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math
+== latin-ext 600 файлом пакета с unicode-range U+0100-024F: ОТКАЗ (1)
+   - гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/65dd1ec1-d282-489e-807d-18603cf0e02f/scratchpad/gr2/gr2-zakon-prov/vh

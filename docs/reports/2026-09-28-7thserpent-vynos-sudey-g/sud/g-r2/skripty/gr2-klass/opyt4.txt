@@ -1,0 +1,5 @@
+== Г2 @layer base: на странице (minify) НЕТ; @property --font-display верхнего уровня с запасным значением: нет
+== Г3 @supports: на странице (minify) "@supports (display:grid){@property --font-display{syntax:\"*\";inherits:false}}"; @property --font-display верхнего уровня с запасным значением: нет
+== Г4 @media all: на странице (minify) "@property --font-display{syntax:\"*\";inherits:false}"; @property --font-display верхнего уровня с запасным значением: нет
+== Б1 local(Georgia): на странице (minify) "@font-face{font-family:Bodoni Moda;font-weight:600;src:local(Georgia),url(/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\")}"; @property --font-display верхнего уровня с запасным значением: нет
+== Б2 другой хост: на странице (minify) "@font-face{font-family:Bodoni Moda;font-weight:600;src:url(https://cdn.example.net/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\")}"; @property --font-display верхнего уровня с запасным значением: нет

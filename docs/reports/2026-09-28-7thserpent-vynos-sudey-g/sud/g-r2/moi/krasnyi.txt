@@ -1,0 +1,444 @@
+▶ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO)
+  ✔ GR1-K-1 произвольное свойство --font-display:Georgia в квадратных скобках в разметке (69.2417ms)
+  ✔ GR1-K-1 @utility с --font-display в импортированном листе и класс в разметке (66.501ms)
+  ✔ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', 10px (42.0119ms)
+  ✔ GR1-K-2 в @theme импортированного листа 'Bodoni Moda',, serif (37.8852ms)
+  ✔ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', initial (36.5349ms)
+  ✔ GR1-K-2 в :root импортированного листа 'Bodoni Moda',, serif (46.2174ms)
+  ✔ GR1-K-3 экранированное имя в импортированном листе --font-displ\61y (62.6683ms)
+  ✔ GR1-K-3 экранированное имя в импортированном листе \2d-font-display (57.7083ms)
+  ✔ GR1-K-3 экранированное имя в импортированном листе --font-d\69splay (51.0547ms)
+  ✔ GR1-K-4 своя @font-face Бодони в импортированном листе (37.3971ms)
+  ✔ GR1-K-5 CDO перед @property --accent (17.5326ms)
+  ✔ GR1-K-5 CDO перед своей @font-face Бодони (16.8756ms)
+  ✔ GR1-K-5 CDC перед правилом (17.3176ms)
+✔ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO) (562.6002ms)
+▶ GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка)
+  ✔ GR1-Z-1 подпути tailwindcss без .css (40.4107ms)
+  ✔ GR1-Z-2 @plugin (58.9317ms)
+  ✔ GR1-Z-3 роль .t-headline без var(--font-display) в листе (переменную держат компоненты ядра) (28.5337ms)
+  ✔ GR1-Z-4 сброс и повторное объявление в позднем @theme (30.5233ms)
+  ✔ GR1-Z-5 комментарий /*! */ с прежней гарнитурой (39.365ms)
+  ✔ GR1-Z-5 строка content со словами --font-display (35.3562ms)
+✔ GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка) (235.1831ms)
+✔ GR1-Z-6: продолжение строки внутри слова в имени своей @font-face — отказ (52.3943ms)
+✔ GR1-Z-7: Tailwind не собирает лист, принятый моделью (@import несуществующего листа), — отказ «не собрал» (25.9637ms)
+▶ GR1-Z-8: CSS-wide keywords и default в списке — отказ; экранирование в имени и в строке — сверено
+  ✔ отказ: 'Bodoni Moda', inherit (20.5302ms)
+  ✔ отказ: 'Bodoni Moda', unset (18.612ms)
+  ✔ отказ: 'Bodoni Moda', revert (18.6943ms)
+  ✔ отказ: 'Bodoni Moda', revert-layer (19.8008ms)
+  ✔ отказ: 'Bodoni Moda', default (19.0124ms)
+  ✔ сверено: 'Bodoni Moda', Noto\ Serif, serif (34.7525ms)
+  ✔ сверено: 'Bodoni Moda', 'Times\' New', serif (33.4063ms)
+✔ GR1-Z-8: CSS-wide keywords и default в списке — отказ; экранирование в имени и в строке — сверено (166.3738ms)
+✔ GR1-Z-10: прежняя команда --selftest — код 2 и «перенесён в тесты» (выход раньше записи) (202.2865ms)
+▶ GR2: гарнитура на странице — импорт, который сборка не раскрыла, @property, src целиком, скрытые ветви
+  ✖ GR2-K-1 @import url() в начале листа (путь сборки его не раскрыл) (31.458ms)
+  ✖ GR2-K-1 удалённый @import в начале листа (32.1958ms)
+  ✖ GR2-K-2 @property --font-display внутри @layer base импортированного листа (49.3749ms)
+  ✖ GR2-K-2 @property --font-display внутри @supports (display: grid) импортированного листа (36.2366ms)
+  ✖ GR2-K-2 @property --font-display внутри @media all импортированного листа (31.4986ms)
+  ✖ GR2-K-3 своя грань: local('Georgia') перед файлом темы (39.6364ms)
+  ✖ GR2-K-3 своя грань: файл с тем же именем на другом хосте (30.6183ms)
+  ✖ GR2-K-3 своя грань: два src, последний local('Georgia') (29.929ms)
+  ✔ GR2-Z-4 своя грань только с local('Georgia') (33.977ms)
+  ✔ GR2-Z-4 своя грань внутри @media импортированного листа (29.0357ms)
+  ✔ GR2-Z-6 значение-блок в импортированном листе — вывод не читается (36.8996ms)
+  ✔ GR2-Z-4 лист со своей гранью, импортированный в слой layer(base) (36.5967ms)
+✖ GR2: гарнитура на странице — импорт, который сборка не раскрыла, @property, src целиком, скрытые ветви (420.859ms)
+▶ GR2: законные листы — сверено (грани пакета темы, строки и имена с «-->», раскладки источников)
+  ✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-600-italic.css (30.4776ms)
+  ✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-400.css (29.717ms)
+  ✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-700.css (33.2376ms)
+  ✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/600.css (30.4393ms)
+  ✖ GR2-Z-3 строка с «-->» в селекторе (15.9085ms)
+  ✖ GR2-Z-3 строка с «<!--» в селекторе (16.1189ms)
+  ✖ GR2-Z-3 имя «a--» перед комбинатором «>» (16.1685ms)
+  ✖ GR2-Z-3 строка с «-->» в прелюдии @supports (19.4241ms)
+  ✔ GR2-Z-2 раскладка без source() — корень сайта (яда в зоне сканера нет) (75.573ms)
+  ✔ GR2-Z-5 source(none) и @source на src (28.0396ms)
+✖ GR2: законные листы — сверено (грани пакета темы, строки и имена с «-->», раскладки источников) (297.1741ms)
+✔ GR2-Z-5: source(none) — сканер не идёт по корню; яд только в своём @source — отказ (46.7354ms)
+▶ GR2-K-3: своя грань в global.css — законна на странице, только если она ровно грань пакета темы
+  ✔ ровно грань latin-600 — отказ только модели («в global.css своя») (29.9388ms)
+  ✔ файлы начертания 700 под весом 600 — отказ и модели, и страницы (28.5216ms)
+  ✖ без font-display: swap — отказ и модели, и страницы (27.5046ms)
+✖ GR2-K-3: своя грань в global.css — законна на странице, только если она ровно грань пакета темы (86.7995ms)
+✖ GR2-Z-7: отказ сторожа — «npm run znak» только у иконок; иначе сначала источник (0.1738ms)
+✔ GR2-K-4 (предел): CSS страницы не из global.css — <style> компонентов Astro (сайта и ядра) и style= в разметке — судья знака не судит: гейт судит CSS, который вырастает из global.css, сторож sayt:znak-dist — иконки сборки (слова владельца); style= вне <main> и у <html>/<body> страниц маршрута судит сверка dist (0.0447ms) # TODO
+✔ GR2-Z-2 (предел): кандидат с --font-display текстом в любом файле зоны сканера (и мёртвый, на элементах не стоит) — отказ: судится каждое --font-display вывода, а не только действующее на документ (0.0383ms) # TODO
+✔ GR1-K-6 (предел): правило роли заголовка с другой гарнитурой (.t-headline { font-family: Georgia }) — не судится: судья знака судит --font-display, а не то, что роль берёт гарнитуру темы (строка «все» «Пределов после раунда 5»; её видят кадры эталона) (0.0344ms) # TODO
+ℹ tests 65
+ℹ suites 0
+ℹ pass 41
+ℹ fail 21
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 3
+ℹ duration_ms 2459.3282
+
+✖ failing tests:
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-1 @import url() в начале листа (путь сборки его не раскрыл) (31.458ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «не раскрыл импорт», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-1 удалённый @import в начале листа (32.1958ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «не раскрыл импорт», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-2 @property --font-display внутри @layer base импортированного листа (49.3749ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «зарегистрирован @property», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-2 @property --font-display внутри @supports (display: grid) импортированного листа (36.2366ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «зарегистрирован @property», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-2 @property --font-display внутри @media all импортированного листа (31.4986ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «зарегистрирован @property», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-3 своя грань: local('Georgia') перед файлом темы (39.6364ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-3 своя грань: файл с тем же именем на другом хосте (30.6183ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:458:53
+✖ GR2-K-3 своя грань: два src, последний local('Georgia') (29.929ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:47:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:458:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-600-italic.css (30.4776ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-italic.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-italic.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-600-italic.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-400.css (29.717ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-400-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-400-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-400-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/latin-700.css (33.2376ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-700-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-700-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-latin-700-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-lat) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-1 рядом с темой ещё @fontsource/bodoni-moda/600.css (30.4393ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math-600-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math-600-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math-600-normal.woff2 ../../../../node_modules/@fontsource/bodoni-moda/files/bodoni-moda-math) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-3 строка с «-->» в селекторе (15.9085ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: лист: CDO или CDC («<!--», «-->») перед правилом «.q[data-strelka="-->"]» — браузер читает такой лист не так, как разбор сверки
+  + actual - expected
+  
+  + [
+  +   'лист: CDO или CDC («<!--», «-->») перед правилом «.q[data-strelka="-->"]» — браузер читает такой лист не так, как разбор сверки'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'лист: CDO или CDC («<!--», «-->») перед правилом «.q[data-strelka="-->"]» — браузер читает такой лист не так, как разбор сверки' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-3 строка с «<!--» в селекторе (16.1189ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: лист: CDO или CDC («<!--», «-->») перед правилом «.q[title^="<!--"]» — браузер читает такой лист не так, как разбор сверки
+  + actual - expected
+  
+  + [
+  +   'лист: CDO или CDC («<!--», «-->») перед правилом «.q[title^="<!--"]» — браузер читает такой лист не так, как разбор сверки'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'лист: CDO или CDC («<!--», «-->») перед правилом «.q[title^="<!--"]» — браузер читает такой лист не так, как разбор сверки' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-3 имя «a--» перед комбинатором «>» (16.1685ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: лист: CDO или CDC («<!--», «-->») перед правилом «.a-->.b» — браузер читает такой лист не так, как разбор сверки
+  + actual - expected
+  
+  + [
+  +   'лист: CDO или CDC («<!--», «-->») перед правилом «.a-->.b» — браузер читает такой лист не так, как разбор сверки'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'лист: CDO или CDC («<!--», «-->») перед правилом «.a-->.b» — браузер читает такой лист не так, как разбор сверки' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:477:46
+✖ GR2-Z-3 строка с «-->» в прелюдии @supports (19.4241ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: лист: CDO или CDC («<!--», «-->») перед правилом «@supports (content: "-->")» — браузер читает такой лист не так, как разбор сверки
+  + actual - expected
+  
+  + [
+  +   'лист: CDO или CDC («<!--», «-->») перед правилом «@supports (content: "-->")» — браузер читает такой лист не так, как разбор сверки'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:46:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:477:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'лист: CDO или CDC («<!--», «-->») перед правилом «@supports (content: "-->")» — браузер читает такой лист не так, как разбор сверки' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:502:11
+✖ без font-display: swap — отказ и модели, и страницы (27.5046ms)
+  AssertionError [ERR_ASSERTION]: названный вид не встретился; отказ: гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "своя @font-face для 'Bodoni Moda' на странице"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:51:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:505:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:502:3)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "своя @font-face для 'Bodoni Moda' на странице" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:508:1
+✖ GR2-Z-7: отказ сторожа — «npm run znak» только у иконок; иначе сначала источник (0.1738ms)
+  TypeError: otkazStorozha is not a function
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:511:16)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7)

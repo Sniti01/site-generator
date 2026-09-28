@@ -1,0 +1,8 @@
+== контроль: сверено за 38 мс
+== @import 'tailwindcss'; (автоматическое обнаружение источников): ОТКАЗ (1) за 383 мс
+   - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака
+== @import 'tailwindcss' source('../..'); (корень сайта явно): ОТКАЗ (1) за 74 мс
+   - гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif | Georgia) — сброс, вид @theme, импорт, утилита или разметка убрали гарнитуру знака
+
+кандидаты сканера с --font-display: --font-display --font-display- --font-displayx- [--font-display:Georgia]
+файлы тестов в зоне сканера: D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\znak.test.mjs | D:\SEO\cloud\site-generator\sites\7thserpent.com\tools\testy\znak-sborka.test.mjs

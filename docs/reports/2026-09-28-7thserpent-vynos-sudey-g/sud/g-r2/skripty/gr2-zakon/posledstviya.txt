@@ -1,0 +1,48 @@
+== K0 контроль (без мутации) (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контур
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M4: @import tailwindcss source(none) и @source '../../src': сверено
+   M5: своя @font-face Бодони внутри @media в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M1: значение-блок у custom property в импортированном листе: ОТКАЗ — гарнитура: вывод Tailwind сайта не читается разбором сверки (лист: у --x значение-блок «{…}» — браузер читает это как объявление, сверка его не судит)
+
+== M1 вывод Tailwind не читается — ветвь отказа снята (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контур
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M4: @import tailwindcss source(none) и @source '../../src': сверено
+   M5: своя @font-face Бодони внутри @media в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M1: значение-блок у custom property в импортированном листе: сверено
+
+== M2 своя @font-face на странице без url() — не судится (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: сверено
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M4: @import tailwindcss source(none) и @source '../../src': сверено
+   M5: своя @font-face Бодони внутри @media в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M1: значение-блок у custom property в импортированном листе: ОТКАЗ — гарнитура: вывод Tailwind сайта не читается разбором сверки (лист: у --x значение-блок «{…}» — браузер читает это как объявление, сверка его не судит)
+
+== M3 root null (без source()) — сканер ничего не читает (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контур
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: сверено
+   M4: @import tailwindcss source(none) и @source '../../src': сверено
+   M5: своя @font-face Бодони внутри @media в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M1: значение-блок у custom property в импортированном листе: ОТКАЗ — гарнитура: вывод Tailwind сайта не читается разбором сверки (лист: у --x значение-блок «{…}» — браузер читает это как объявление, сверка его не судит)
+
+== M4 root 'none' (source(none)) — сканер читает корень сайта (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контур
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M4: @import tailwindcss source(none) и @source '../../src': ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M5: своя @font-face Бодони внутри @media в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: ../../../../../../../../C:/Users/MSI/AppData/Local
+   M1: значение-блок у custom property в импортированном листе: ОТКАЗ — гарнитура: вывод Tailwind сайта не читается разбором сверки (лист: у --x значение-блок «{…}» — браузер читает это как объявление, сверка его не судит)
+
+== M5 обход своей @font-face на странице — только верхний уровень (код 0)
+   M2: своя @font-face Бодони 600 с src: local() в импортированном листе: ОТКАЗ — гарнитура: своя @font-face для 'Bodoni Moda' на странице (в листах, которые импортирует global.css: local(Georgia)) — она подменит файл темы, а контур
+   M3/M4: @import tailwindcss без source() — автоматическое обнаружение: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым и читаемым списком (выводит: "Bodoni Moda", ui-serif, Georgia, 
+   M4: @import tailwindcss source(none) и @source '../../src': сверено
+   M5: своя @font-face Бодони внутри @media в импортированном листе: сверено
+   M5: своя @font-face Бодони в листе, импортированном в слой (layer(base)): сверено
+   M1: значение-блок у custom property в импортированном листе: ОТКАЗ — гарнитура: вывод Tailwind сайта не читается разбором сверки (лист: у --x значение-блок «{…}» — браузер читает это как объявление, сверка его не судит)
+

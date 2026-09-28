@@ -1,7 +1,7 @@
 // Тесты указателя корпуса (П102 блок А): node --test core/text/
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync, appendFileSync, readFileSync, readdirSync, symlinkSync, copyFileSync, unlinkSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, appendFileSync, readFileSync, readdirSync, symlinkSync, copyFileSync, unlinkSync, utimesSync, existsSync } from 'node:fs';
 import { gzipSync, gunzipSync } from 'node:zlib';
 import { join, dirname } from 'node:path';
 import { tmpdir } from 'node:os';
@@ -238,7 +238,7 @@ test('A2-7: неудачная запись кеша не оставляет .tm
   assert.deepEqual(readdirSync(kesh).filter((x) => x.endsWith('.tmp')), []);
   const kesh2 = mkdtempSync(join(tmpdir(), 'kesh-test-'));
   const u1 = ukazatelKorpusa(p, { kesh: kesh2 });
-  const imyaChuzhogo = readdirSync(kesh2).find((x) => x.endsWith('.json.gz')).replace(/-[0-9a-f]{64}\.json\.gz$/, '-' + '0'.repeat(64) + '.json.gz');
+  const imyaChuzhogo = readdirSync(kesh2).find((x) => x.endsWith('.json.gz')).replace(/-[0-9a-f]{64}/, '-' + '0'.repeat(64));
   mkdirSync(join(kesh2, imyaChuzhogo));
   const u2 = ukazatelKorpusa(p, { imena: ['x y'], kesh: kesh2 });
   assert.equal(u1.oshibkaKesha, null);
@@ -357,7 +357,12 @@ test('A3-4: файлы кеша прежнего формата (без отпе
   assert.deepEqual(readdirSync(kesh).filter((x) => /^[0-9a-f]{64}\.json\.gz$/.test(x)), []);
 });
 
-test('A3-5: исходники core/text сменились после загрузки — кеш не пишется под новым ключом со старым указателем', async () => {
+/**
+ * Старый загруженный код (A3-5; общая подготовка — R4-A-Z-5): копия `core/text` загружена, затем её
+ * `extract.mjs` на диске правится (`<style>` становится текстом). `staryi` — загруженный код, `novyi(p, kesh)` —
+ * новый процесс с кодом с диска (`{ izKesha, g }`), `snyat` — снять ссылку на `node_modules` (её цель не трогать).
+ */
+async function staryiKod() {
   const kopiya = mkdtempSync(join(tmpdir(), 'core-text-'));
   const p5 = createRequire(join(ZDES, 'corpus.mjs')).resolve('parse5');
   symlinkSync(p5.slice(0, p5.lastIndexOf('node_modules') + 'node_modules'.length), join(kopiya, 'node_modules'), 'junction');
@@ -365,16 +370,25 @@ test('A3-5: исходники core/text сменились после загр�
   for (const f of readdirSync(ZDES).filter((x) => x.endsWith('.mjs') && !x.endsWith('.test.mjs'))) copyFileSync(join(ZDES, f), join(kopiya, 'text', f));
   const url = pathToFileURL(join(kopiya, 'text', 'corpus.mjs')).href;
   const { ukazatelKorpusa: staryi } = await import(url);
-  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
-  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight</p><style>alpha bravo charlie delta echo foxtrot golf hotel</style>' }]);
   const ex = join(kopiya, 'text', 'extract.mjs');
   const src = readFileSync(ex, 'utf8');
   assert.ok(src.includes("new Set(['script', 'style', 'template'])"));
   writeFileSync(ex, src.replace("new Set(['script', 'style', 'template'])", "new Set(['script', 'template'])"));
+  const novyi = (p, kesh) => {
+    const kod = `const { ukazatelKorpusa } = await import(${JSON.stringify(url)}); const u = ukazatelKorpusa(${JSON.stringify(p)}, { kesh: ${JSON.stringify(kesh)} }); console.log(JSON.stringify({ izKesha: u.izKesha, g: u.nayti('alpha bravo charlie delta echo foxtrot golf hotel', 'tochno') }));`;
+    return JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', kod], { encoding: 'utf8' }));
+  };
+  return { staryi, novyi, snyat: () => unlinkSync(join(kopiya, 'node_modules')) };
+}
+const KORPUS_A35 = '<p>one two three four five six seven eight</p><style>alpha bravo charlie delta echo foxtrot golf hotel</style>';
+
+test('A3-5: исходники core/text сменились после загрузки — кеш не пишется под новым ключом со старым указателем', async () => {
+  const { staryi, novyi, snyat } = await staryiKod();
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: KORPUS_A35 }]);
   staryi(p, { kesh }); // код загружен старый, исходники на диске — новые
-  const kod = `const { ukazatelKorpusa } = await import(${JSON.stringify(url)}); const u = ukazatelKorpusa(${JSON.stringify(p)}, { kesh: ${JSON.stringify(kesh)} }); console.log(JSON.stringify({ izKesha: u.izKesha, g: u.nayti('alpha bravo charlie delta echo foxtrot golf hotel', 'tochno') }));`;
-  const r = JSON.parse(execFileSync(process.execPath, ['--input-type=module', '-e', kod], { encoding: 'utf8' }));
-  unlinkSync(join(kopiya, 'node_modules')); // ссылка — снять, её цель не трогать
+  const r = novyi(p, kesh);
+  snyat();
   assert.equal(r.g, 'u', `новый код взял указатель старого (izKesha: ${r.izKesha})`);
 });
 
@@ -384,4 +398,188 @@ test('A1-UK-15: kesh: null — файлы кеша не пишутся; сыро
   writeFileSync(join(papka, 'raw', 'd0.html'), '<p>one two three four five six seven eight</p>');
   writeFileSync(join(papka, 'manifest.jsonl'), JSON.stringify({ url: 'u', outcome: 'ok', file: 'raw/d0.html' }) + '\n');
   assert.equal(ukazatelKorpusa(papka, { kesh: null }).nayti('one two three four five six seven eight', 'tochno'), 'u');
+});
+
+/* — «судью судят», блок А, раунд 4 (R4-A-*) — */
+
+// Документ без метки в HTTP, не UTF-8 (0xE7 — «ç» в windows-1252): голова — разной формы.
+const FASAD = 'as faces building façades clothing and all sorts';
+const sFasadom = (golova) =>
+  Buffer.concat([
+    Buffer.from(`<html><head>${golova}</head><body><p>the results often blow viewers away, as much as faces, building fa`),
+    Buffer.from([0xe7]),
+    Buffer.from('ades, clothing, and all sorts of objects appear realistic.</p></body></html>'),
+  ]);
+const naytiBezKesha = (b, g) => ukazatelKorpusa(korpusCs(b, 'text/html'), { kesh: null }).nayti(g, 'tochno');
+/** Байты windows-1251: строчная кириллица и ASCII (там, где windows-1252 читает иначе). */
+const cp1251 = (s) => Buffer.from([...s].map((c) => ((k) => (k >= 0x430 && k <= 0x44f ? k - 0x430 + 0xe0 : k === 0x451 ? 0xb8 : k))(c.codePointAt(0))));
+
+test('R4-A-K-1 (A3-1): <meta charset> в комментарии головы не слушается, как у браузера (WHATWG prescan)', () => {
+  assert.equal(naytiBezKesha(sFasadom('<!-- <meta charset="utf-8"> --><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">'), FASAD), 'u', 'комментарий');
+  assert.equal(naytiBezKesha(sFasadom('<!--[if IE]><meta charset="utf-8"><![endif]--><meta charset="windows-1252">'), FASAD), 'u', 'условный комментарий IE');
+});
+
+test('R4-A-K-2 (A3-1): UTF-16 из <meta> в документе не UTF-8 — UTF-8, x-user-defined — windows-1252, как у браузера', () => {
+  const ASCII = 'the results often blow viewers away as much';
+  for (const g of ['<meta http-equiv="Content-Type" content="text/html; charset=utf-16">', '<meta charset="utf-16be">', '<meta charset="UTF-16LE">']) {
+    assert.equal(naytiBezKesha(sFasadom(g), ASCII), 'u', g);
+  }
+  assert.equal(naytiBezKesha(sFasadom('<meta charset="x-user-defined">'), FASAD), 'u', 'x-user-defined');
+});
+
+test('R4-A-Z-6 (A3-1): <meta charset="utf-16"> в байтах UTF-8 с одним битым байтом — UTF-8, как у браузера', () => {
+  const html = Buffer.concat([
+    Buffer.from('<html><head><meta charset="utf-16"><!-- '),
+    Buffer.from([0xff]),
+    Buffer.from(' --></head><body><p>Detail is never washed out, as faces, building façades, clothing, and all sorts of objects appear realistic.</p></body></html>', 'utf8'),
+  ]);
+  assert.equal(naytiBezKesha(html, FASAD), 'u');
+});
+
+test('R4-A-K-3 (A3-1): charset= в content без http-equiv=content-type — не метка, как у браузера', () => {
+  assert.equal(naytiBezKesha(sFasadom('<meta name="x" content="text/html; charset=utf-8"><meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">'), FASAD), 'u', 'name="x"');
+  // Content-Type в name вместо http-equiv — ошибка вёрстки.
+  assert.equal(naytiBezKesha(sFasadom('<meta name="Content-Type" content="text/html; charset=utf-8"><meta charset="iso-8859-1">'), FASAD), 'u', 'name="Content-Type"');
+});
+
+test('R4-A-P-4 (A3-1): неизвестная метка — следующая <meta>; «<body>» в комментарии голову не обрывает (windows-1251)', () => {
+  const RYCAR = 'рыцарь шёл через лес и видел там много';
+  const doc = (golova) => cp1251(`<html><head>${golova}</head><body><p>рыцарь шёл через лес и видел там много деревьев вокруг</p></body></html>`);
+  assert.equal(naytiBezKesha(doc('<meta charset="x-no-such"><meta charset="windows-1251">'), RYCAR), 'u', 'неизвестная метка');
+  assert.equal(naytiBezKesha(doc('<!-- <body> --><meta charset="windows-1251">'), RYCAR), 'u', '<body> в комментарии');
+});
+
+test('R4-A-Z-1 (A3-1): <meta charset> головы решает, когда он не windows-1252 (iso-8859-2, как miastogier.pl корпуса ac4bf)', () => {
+  // «Rycerz szedł przez las i widział tam dużo» в iso-8859-2: ł — 0xB3, ż — 0xBF; байт 0xB3 — не UTF-8.
+  // ISO-8859-1 теста A3-1 — та же windows-1252, что запасная: ветку <meta> сторожит этот тест.
+  const html = Buffer.concat([
+    Buffer.from('<html><head><meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2"></head><body><p>Rycerz szed'),
+    Buffer.from([0xb3]),
+    Buffer.from(' przez las i widzia'),
+    Buffer.from([0xb3]),
+    Buffer.from(' tam du'),
+    Buffer.from([0xbf]),
+    Buffer.from('o drzew i krzewow</p></body></html>'),
+  ]);
+  assert.equal(naytiBezKesha(html, 'rycerz szedł przez las i widział tam dużo'), 'u');
+});
+
+/** Файл кеша (единственный `.json.gz` папки), его содержимое и запись. */
+const fajlKesha = (kesh) => join(kesh, readdirSync(kesh).find((x) => x.endsWith('.json.gz')));
+const chitatKesh = (f) => JSON.parse(gunzipSync(readFileSync(f)).toString('utf8'));
+const pisatKesh = (f, k) => writeFileSync(f, gzipSync(JSON.stringify(k)));
+const u32 = (b) => new Uint32Array(new Uint8Array(Buffer.from(b, 'base64')).buffer);
+const f64 = (b) => new Float64Array(new Uint8Array(Buffer.from(b, 'base64')).buffer);
+const b64 = (a) => Buffer.from(a.buffer, a.byteOffset, a.byteLength).toString('base64');
+const DVA_CHASA = () => new Date(Date.now() - 2 * 3600 * 1000);
+
+test('R4-A-K-4 (A3-4): файлы кеша прежних форматов под чужим отпечатком (раунд 2 — без ключа внутри) убираются, другого корпуса текущего формата — нет', () => {
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight</p>' }]);
+  const p2 = korpus([{ url: 'v', html: '<p>alpha bravo charlie delta echo foxtrot golf hotel</p>' }]);
+  ukazatelKorpusa(p2, { kesh });
+  // Как оставила копия сайта со ссылкой на корпус, пока отпечаток брался по пути ссылки (раунд 2).
+  const r2 = join(kesh, `${'1'.repeat(16)}-${'2'.repeat(64)}.json.gz`);
+  pisatKesh(r2, { pustyh: 0, tochno: { h: '', d: '' }, srez: { h: '', d: '' } });
+  const r2tmp = join(kesh, `${'1'.repeat(16)}-${'3'.repeat(64)}.json.gz.77.tmp`);
+  writeFileSync(r2tmp, 'x');
+  utimesSync(r2tmp, DVA_CHASA(), DVA_CHASA());
+  ukazatelKorpusa(p, { kesh });
+  assert.equal(existsSync(r2), false, 'файл раунда 2');
+  assert.equal(existsSync(r2tmp), false, 'брошенный .tmp раунда 2');
+  assert.equal(ukazatelKorpusa(p2, { kesh }).izKesha, true, 'кеш другого корпуса (A2-5)');
+});
+
+test('R4-A-K-5, R4-A-Z-4 (A3-4): брошенный .tmp своего корпуса старше часа убирается, свежий (идёт запись другим процессом) — нет', () => {
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight</p>' }]);
+  ukazatelKorpusa(p, { kesh });
+  const imya = readdirSync(kesh).find((x) => x.endsWith('.json.gz'));
+  const staryi = join(kesh, imya.replace(/-[0-9a-f]{64}/, '-' + '1'.repeat(64)) + '.111.tmp');
+  const svezhiy = join(kesh, imya.replace(/-[0-9a-f]{64}/, '-' + '2'.repeat(64)) + '.222.tmp');
+  writeFileSync(staryi, 'x');
+  writeFileSync(svezhiy, 'x');
+  utimesSync(staryi, DVA_CHASA(), DVA_CHASA());
+  ukazatelKorpusa(p, { imena: ['x y'], kesh }); // другой ключ — запись и уборка
+  assert.equal(existsSync(staryi), false, 'брошенный .tmp');
+  assert.equal(existsSync(svezhiy), true, 'свежий .tmp');
+});
+
+test('R4-A-K-6, R4-A-Z-2 (A3-2): pustyh вне 0…n в кеше со своим ключом — пересчёт', () => {
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight</p>' }, { url: 'v', html: '<p>short</p>' }]);
+  ukazatelKorpusa(p, { kesh });
+  const f = fajlKesha(kesh);
+  const k = chitatKesh(f);
+  for (const pustyh of [-1, 3, 5]) {
+    pisatKesh(f, { ...k, pustyh });
+    const u = ukazatelKorpusa(p, { kesh });
+    assert.equal(u.izKesha, false, `pustyh ${pustyh}`);
+    assert.equal(u.pustyh, 1);
+  }
+});
+
+test('R4-A-Z-3 (A2-6 под ключом A3-2): номер документа, порядок и длины — пересчёт и у кеша со своим ключом', () => {
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight nine ten</p>' }]);
+  ukazatelKorpusa(p, { kesh });
+  const f = fajlKesha(kesh);
+  const k = chitatKesh(f);
+  const porchi = {
+    'номер документа': { ...k, tochno: { h: k.tochno.h, d: b64(u32(k.tochno.d).fill(7)) } },
+    'порядок хешей': { ...k, tochno: { h: b64(f64(k.tochno.h).reverse()), d: k.tochno.d } },
+    'длины h и d': { ...k, tochno: { h: k.tochno.h, d: b64(u32(k.tochno.d).subarray(0, 1).slice()) } },
+  };
+  for (const [chto, porcha] of Object.entries(porchi)) {
+    pisatKesh(f, porcha);
+    const u = ukazatelKorpusa(p, { kesh });
+    assert.equal(u.izKesha, false, chto);
+    assert.equal(u.nayti('three four five six seven eight nine ten', 'tochno'), 'u', chto);
+  }
+});
+
+test('R4-A-P-1 (A3-2): хеш — не целое от 0 (NaN единственным, Infinity последним, дробные) в кеше со своим ключом — пересчёт', () => {
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: '<p>one two three four five six seven eight nine ten</p>' }]);
+  ukazatelKorpusa(p, { kesh });
+  const f = fajlKesha(kesh);
+  const k = chitatKesh(f);
+  const h = [...f64(k.tochno.h)];
+  const d = [...u32(k.tochno.d)];
+  const porchi = {
+    'NaN единственным': { ...k, tochno: { h: b64(Float64Array.of(NaN)), d: b64(Uint32Array.of(0)) } },
+    'Infinity последним': { ...k, tochno: { h: b64(Float64Array.from([...h, Infinity])), d: b64(Uint32Array.from([...d, 0])) } },
+    // Деление на степень двойки точно: порядок строго растёт, как у настоящих хешей.
+    'дробные': { ...k, tochno: { h: b64(Float64Array.from(h.map((x) => x / 2 ** 60))), d: k.tochno.d } },
+  };
+  for (const [chto, porcha] of Object.entries(porchi)) {
+    pisatKesh(f, porcha);
+    const u = ukazatelKorpusa(p, { kesh });
+    assert.equal(u.izKesha, false, chto);
+    assert.equal(u.nayti('three four five six seven eight nine ten', 'tochno'), 'u', chto);
+  }
+});
+
+test.todo('R4-A-P-1 (предел): кеш со своим ключом и подделанным содержимым (номера документов в пределах, но не те; хеши — возможные, но не те) принимается — ключ не подпись; ложное «чисто» только подделкой или окном R4-A-K-7');
+
+test.todo('R4-A-K-7 (предел): исходники core/text сменились между чтением загрузчиком ESM и вычислением corpus.mjs — кеш под новым ключом со старым указателем (окно загрузки, миллисекунды при старте)');
+
+test('R4-A-Z-5 (A3-5, запись): исходники сменились после загрузки — старый код кеш не пишет и говорит об этом', async () => {
+  const { staryi, snyat } = await staryiKod();
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const u = staryi(korpus([{ url: 'u', html: KORPUS_A35 }]), { kesh });
+  snyat();
+  assert.deepEqual(readdirSync(kesh).filter((x) => x.endsWith('.json.gz')), []);
+  assert.match(u.oshibkaKesha ?? '', /после загрузки/);
+});
+
+test('R4-A-Z-5 (A3-5, чтение): кеш нового кода старый загруженный код не берёт', async () => {
+  const { staryi, novyi, snyat } = await staryiKod();
+  const kesh = mkdtempSync(join(tmpdir(), 'kesh-test-'));
+  const p = korpus([{ url: 'u', html: KORPUS_A35 }]);
+  const r = novyi(p, kesh); // новый код пишет кеш под своим ключом
+  const u = staryi(p, { kesh });
+  snyat();
+  assert.equal(r.izKesha, false);
+  assert.equal(u.izKesha, false);
 });

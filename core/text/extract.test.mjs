@@ -270,3 +270,5 @@ test('A3-6: twitter:image:alt — в голове, как og:image:alt (TEXT_MET
   const h = '<html><head><title>T</title><meta name="twitter:image:alt" content="ALT"></head><body><main><p>x</p></main></body></html>';
   assert.deepEqual(izvlechStranicu(h).golova['twitter:image:alt'], ['ALT']);
 });
+
+test.todo('R4-A-P-3 (предел): описание головы под другим именем — <meta itemprop="description"> (микроданные), <meta name="description "> (пробел в имени), <meta name="DC.description"> — не попадает ни в одно поле головы и не судится (вне POLYA_META; в сборке 3b78f28 таких форм нет)');

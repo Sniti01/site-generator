@@ -131,6 +131,33 @@ test('B3-2: текст метки ряда только в <noscript> внутр
   assert.ok(sudStranicy('/q/', html, uk, dannye).otkazy.some((o) => o.includes('не в своём ряду')));
 });
 
+// Раунд 4: <noscript>, который разборщик без скриптов закрывает раньше его </noscript> (блочный тег внутри
+// закрывает внешний <p>), выносит своё содержимое наружу; у читателя со скриптами оно — сырой текст до </noscript>.
+const neVSvoem = (sluchai) => Object.entries(sluchai).filter(([, m]) => !sudStranicy('/q/', stranica(m), uk, dannye).otkazy.some((o) => o.includes('не в своём ряду'))).map(([k]) => k);
+
+test('R4-B-K-1: метка ряда в <noscript>, который разборщик без скриптов выносит (<p> закрывает <p>), — «не в своём ряду»', () => {
+  const sluchai = {
+    'текст метки': `<section class="layer" id="r3"><div class="t-label"><p><noscript><p>Game · 2001</noscript></p></div><p>${REP}</p></section>`,
+    'элемент метки, видна «Other»': `<section class="layer" id="r3"><div><p><noscript><p class="t-label">Game · 2001</noscript></p></div><p class="t-label">Other · 2012</p><p>${REP}</p></section>`,
+  };
+  assert.deepEqual(neVSvoem(sluchai), []);
+});
+
+test('R4-B-P-1: члены проверяющего — <ul><li> и <h3 class="t-label"> в <noscript> внутри <p> — «не в своём ряду»', () => {
+  const sluchai = {
+    'ul закрывает p': `<section class="layer" id="r3"><div class="t-label"><p><noscript><ul><li>Game · 2001</li></ul></noscript></p></div><p>${REP}</p></section>`,
+    'h3.t-label вынесен, видна «Other»': `<section class="layer" id="r3"><div><p><noscript><h3 class="t-label">Game · 2001</h3></noscript></p></div><p class="t-label">Other · 2012</p><p>${REP}</p></section>`,
+  };
+  assert.deepEqual(neVSvoem(sluchai), []);
+});
+
+test('R4-B-K-1 (контроль правки): <noscript> после метки, закрытый разборщиком, и <noscript> с картинкой внутри метки — свой ряд, чисто', () => {
+  const html = stranica(`<section class="layer" id="r1"><p class="t-label">Game<noscript><img src="/p.gif" alt=""></noscript> · 2001</p><div class="layer__body"><p>${REP}</p><div><p><noscript><p>x</noscript></p></div></div></section>`);
+  assert.deepEqual(sudStranicy('/q/', html, uk, dannye).otkazy, []);
+});
+
+test.todo('R4-B-K-1 (предел): </noscript> внутри комментария, атрибута или скрипта в <noscript> — у читателя со скриптами сырой текст кончается на нём, дерево без скриптов этого не видит (метка за ним — строже, .t-label перед засчитанной — мягче)');
+
 test('B1-F-4: метка ряда с <br> — <br> пробел, как в строках', () => {
   const html = stranica(`<section class="layer" id="r1"><p class="t-label">Game<br>· 2001</p><div class="layer__body"><p>${REP}</p></div></section>`);
   assert.deepEqual(sudStranicy('/q/', html, uk, dannye).otkazy, []);

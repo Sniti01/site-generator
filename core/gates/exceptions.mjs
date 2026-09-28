@@ -16,7 +16,9 @@
  *     вложенная секция — свой ряд) с `id`, равным `ryad.id` (если задан), и первой в документе
  *     с этим `id`; её метка — первый HTML-элемент `.t-label` секции (не скрипт, не стиль, не в
  *     `<noscript>`, не метка вложенной секции), текст по модели строк — подходит под `ryad.metka` (регулярное выражение,
- *     с регистром: метка прописными в исходнике — ложный отказ, громкий);
+ *     с регистром: метка прописными в исходнике — ложный отказ, громкий); метка судится за оба
+ *     прочтения: `<noscript>`, который разборщик без скриптов закрыл раньше его `</noscript>`, начатый
+ *     до конца метки, — метку у читателя со скриптами не определить: отказ (R4-B-K-1, ниже);
  *   - `posle` — текст сразу за закрывающей кавычкой до следующей открывающей (или конца строки)
  *     подходит под выражение (глава за репликой);
  *   - `pered` — текст от предыдущей закрывающей кавычки (или начала строки) до открывающей
@@ -34,13 +36,24 @@
  * CSS `content`), не видны — исключение в `<q>` получит отказ (строже); немецкая закрывающая “
  * открывает пару (строже); что текст исключения верен и его глава верна, судит сверка с документами,
  * не этот судья. СКРЫТОЕ (атрибут `hidden`, CSS, и содержимое `<noscript>` — его не видит читатель
- * со скриптами) извлечение считает видимым: для сторожа это строже, а здесь МЯГЧЕ — скрытые кавычки
- * вокруг исключения, скрытый сосед засчитываются; метка ряда в `<noscript>` и её текст в `<noscript>` —
- * нет (B2-11, B3-2) (путь — только через шаблон сайта, содержание экранируется; прежний разбор глав
- * называл так же, izv-N3; раунды 1 и 3 блока Б, B1-F-2 — test.todo).
+ * со скриптами) извлечение считает видимым: для сторожа это строже, а здесь МЯГЧЕ — скрытые (атрибут
+ * `hidden`, CSS) кавычки вокруг исключения, скрытая метка ряда, скрытый сосед засчитываются; кавычки
+ * и сосед в `<noscript>` — тоже; метка ряда в `<noscript>` и её текст в `<noscript>` — нет (B2-11, B3-2)
+ * (путь — только через шаблон сайта, содержание экранируется; прежний разбор глав называл так же,
+ * izv-N3; раунды 1, 3 и 4 блока Б, B1-F-2 — test.todo, R4-B-Z-7).
+ * `<noscript>` ПОД ДВУМЯ ПРОЧТЕНИЯМИ (раунд 4, R4-B-K-1): разборщик без скриптов закрывает `<noscript>`
+ * раньше его `</noscript>`, когда блочный тег внутри закрывает внешний `<p>` (`<p><noscript><p>…`),
+ * `</div>` закрывает обёртку, файл кончается; содержимое выходит из `<noscript>`, а у читателя
+ * со скриптами оно — сырой текст до `</noscript>`, где тот кончается, дерево без скриптов не говорит.
+ * Такой `<noscript>`, начатый до конца метки ряда (где угодно выше в документе или в самой метке), —
+ * отказ «не в своём ряду» с пометкой (СТРОЖЕ: законная метка после такого `<noscript>` — ложный
+ * отказ, громкий; у сайта `<noscript>` нет). ПРЕДЕЛ: `</noscript>` внутри комментария, атрибута или
+ * скрипта в `<noscript>` (у читателя со скриптами сырой текст кончается на нём) — не виден: метка
+ * за ним внутри `<noscript>` дерева без скриптов не засчитывается (строже), а `.t-label` в той же
+ * `<noscript>`, видимая читателю со скриптами раньше засчитанной, — не видна (мягче).
  */
 
-import { klassy, predki, imya, atr, pervyi, vHtml } from '../text/html.mjs';
+import { klassy, predki, imya, atr, pervyi, vHtml, elementy, strokaIshodnika } from '../text/html.mjs';
 import { potok, stroki, NE_TEKST } from '../text/extract.mjs';
 import { APOSTROFY } from '../text/words.mjs';
 
@@ -71,7 +84,8 @@ const sekciyaRyada = (u) => vHtml(u) && imya(u) === 'section' && klassy(u).has('
  * ближайшая секция ряда — она сама (метка вложенной секции — метка того ряда); текст метки — по модели
  * строк, `<br>` — пробел, без текста в `<noscript>` внутри метки (раунды 1–3 «судью судят» блока Б,
  * B1-F-1, B1-F-4, B3-2). `pervyiId` — секция первая в документе с этим `id` (как `getElementById`;
- * дубль id — не свой ряд, B1-F-5).
+ * дубль id — не свой ряд, B1-F-5). `neyasno` — строка исходника `<noscript>`, вынесенного разборщиком
+ * без скриптов и начатого до конца метки (метку у читателя со скриптами не определить, R4-B-K-1), или `null`.
  */
 export function ryadStroki(stroka, doc) {
   const sek = predki(stroka.uzel).find(sekciyaRyada);
@@ -79,11 +93,27 @@ export function ryadStroki(stroka, doc) {
   // Метка в <noscript> — не метка: читатель со скриптами её не видит (раунд 2 блока Б, B2-11).
   const metka = pervyi(sek, (u) => vHtml(u) && !NE_TEKST.has(imya(u)) && klassy(u).has('t-label') && predki(u).find(sekciyaRyada) === sek && !predki(u).some((p) => imya(p) === 'noscript'));
   const id = atr(sek, 'id') ?? null;
+  const konec = (metka ?? sek).sourceCodeLocation?.endOffset ?? Infinity;
+  const vynesennyi = doc ? vynesennye(doc).find((n) => n.nachalo < konec) : undefined;
   return {
     id,
     pervyiId: id !== null && doc ? pervyi(doc, (u) => atr(u, 'id') === id) === sek : false,
     metka: metka ? stroki(potok(metka).filter((t) => t.tip !== 'tekst' || !predki(t.uzel).some((p) => imya(p) === 'noscript')), '').map((s) => s.tekst).join(' ') : '',
+    neyasno: vynesennyi ? vynesennyi.stroka : null,
   };
+}
+
+const VYNESENNYE = new WeakMap();
+/**
+ * `<noscript>` документа без конца тега в дереве без скриптов — разборщик закрыл его раньше его
+ * `</noscript>` и вынес содержимое наружу (R4-B-K-1): начала в исходнике и строки, по порядку документа.
+ */
+function vynesennye(doc) {
+  if (!VYNESENNYE.has(doc)) {
+    const ns = elementy(doc, (u) => vHtml(u) && imya(u) === 'noscript' && !u.sourceCodeLocation?.endTag);
+    VYNESENNYE.set(doc, ns.map((u) => ({ nachalo: u.sourceCodeLocation?.startOffset ?? 0, stroka: strokaIshodnika(u) ?? '?' })));
+  }
+  return VYNESENNYE.get(doc);
 }
 
 /**
@@ -124,9 +154,10 @@ export function sudIsklyucheniy(izvl, sovpadeniya, isklyucheniya) {
       for (const { st, a, b } of vhozhdeniya) {
         const r = ryadStroki(st, izvl.doc);
         if (!r) otkazy.add(`${gde}: не в ряду story-row (над строкой нет section.layer)`);
-        else if ((e.ryad.id !== undefined && (r.id !== e.ryad.id || !r.pervyiId)) || !e.ryad.metka.test(r.metka)) {
+        else if (r.neyasno !== null || (e.ryad.id !== undefined && (r.id !== e.ryad.id || !r.pervyiId)) || !e.ryad.metka.test(r.metka)) {
           const dubl = e.ryad.id !== undefined && r.id === e.ryad.id && !r.pervyiId ? ' (не первый элемент документа с этим id)' : '';
-          otkazy.add(`${gde}: не в своём ряду — ряд id «${r.id ?? '—'}»${dubl} с меткой «${r.metka}», ждали${e.ryad.id !== undefined ? ` id «${e.ryad.id}»,` : ''} метку ${e.ryad.metka}`);
+          const ns = r.neyasno !== null ? ` (у читателя со скриптами метку не определить: <noscript> строки ${r.neyasno} разборщик без скриптов закрыл раньше его </noscript>)` : '';
+          otkazy.add(`${gde}: не в своём ряду — ряд id «${r.id ?? '—'}»${dubl} с меткой «${r.metka}»${ns}, ждали${e.ryad.id !== undefined ? ` id «${e.ryad.id}»,` : ''} метку ${e.ryad.metka}`);
         }
         if (e.posle) {
           const sled = st.tekst.indexOf('“', b + 1);

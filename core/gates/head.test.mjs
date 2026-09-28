@@ -143,6 +143,20 @@ test('B3-3: <noscript> с картинкой внутри nav.crumbs до зве
   assert.deepEqual(vidy('/a/b/', stranicaB().replace('<ol>', '<noscript><img src="/p.gif" alt=""></noscript><ol>')), []);
 });
 
+/* — «судью судят», блок Б, раунд 4 (R4-B-*) — */
+
+test('R4-B-Z-1: текст цели aria-labelledby только в <noscript> внутри цели — у читателя со скриптами имени нет: отказ «noscript»', () => {
+  // Краснота проверена мутантом: цель имени через tekstVsego (head.mjs, imyaPoSsylke) — отказа нет.
+  assert.ok(vidy('/a/b/', stranicaB({ imyaNav: 'aria-labelledby="im"', telo: '<span id="im"><noscript>Crumbs</noscript></span>' })).includes('noscript'));
+});
+
+test('R4-B-P-5: часть текста цели aria-labelledby в <noscript> — имя у двух читателей разное: отказ «noscript»; текст в цели и <noscript> с картинкой — чисто', () => {
+  assert.ok(vidy('/a/b/', stranicaB({ imyaNav: 'aria-labelledby="im"', telo: '<span id="im">Crumbs<noscript> (без JS)</noscript></span>' })).includes('noscript'));
+  assert.deepEqual(vidy('/a/b/', stranicaB({ imyaNav: 'aria-labelledby="im"', telo: '<span id="im">Crumbs<noscript><img src="/p.gif" alt=""></noscript></span>' })), []);
+});
+
+test.todo('R4-B-K-6 (предел): ярлык звена крошек только в скрытом потомке ссылки или текущего звена (атрибут hidden, CSS) — засчитывается, как видимый (на экране его нет, accname скрытого потомка отбрасывает)');
+
 test('страница вне структуры; пустая сборка; сборка без главной', () => {
   assert.deepEqual(vidy('/net/', stranicaB()), ['вне структуры']);
   assert.equal(suditNabor([], struktura, ozhidanie)[0].vid, 'пусто');

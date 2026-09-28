@@ -42,22 +42,42 @@ test('B1-G-5: отказ сторожа 8 слов роняет сборку (р
   assert.match(r.vyvod, /\/quotes\/: в кавычках, но не исключение сайта/);
 });
 
-const faily = (d) =>
-  readdirSync(d, { withFileTypes: true })
-    .flatMap((e) => (e.isDirectory() ? faily(join(d, e.name)) : [join(d, e.name)]))
-    .map((f) => relative(d, f).replace(/\\/g, '/'))
-    .sort();
+/** Файлы сборки — пути от её корня. */
+function faily(koren) {
+  const out = [];
+  const obhod = (d) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      if (e.isDirectory()) obhod(join(d, e.name));
+      else out.push(relative(koren, join(d, e.name)).replace(/\\/g, '/'));
+    }
+  };
+  obhod(koren);
+  return out.sort();
+}
 
-test('B1-G-12: копия с ядром-копией собирает побайтно то же, что копия с ядром-ссылкой (сборка proverki)', () => {
+// Значение `data-astro-cid-*` компонента ядра зависит от того, где лежит файл ядра: у копии с ядром-копией
+// оно своё на каждую копию (замер сессии 20: CSS той же длины, правила те же, разнятся только эти значения
+// и хеши в именах CSS). Копия с ядром-ссылкой (сборка proverki) побайтно равна сборке сайта (замер — в папке
+// доклада). Здесь — всё остальное: те же файлы, те же байты картинок и шрифтов, тот же текст CSS и HTML.
+const bezCid = (s) => s.replace(/data-astro-cid-[a-z0-9]+/g, 'data-astro-cid-X').replace(/(\/_astro\/[A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+\.css/g, '$1.css');
+const imyaBezHesha = (f) => (f.endsWith('.css') ? f.replace(/^(_astro\/[A-Za-z0-9_-]+)\.[A-Za-z0-9_-]+\.css$/, '$1.css') : f);
+
+test('B1-G-12: копия с ядром-копией = копия с ядром-ссылкой (сборка proverki), кроме значений data-astro-cid ядра', () => {
   const a = dist();
   sborkaS(() => {}, {
     sYadrom: true,
     posle: (k, r) => {
       assert.equal(r.kod, 0, r.vyvod.slice(-2000));
       const b = join(k.sayt, 'dist');
-      assert.deepEqual(faily(b), faily(a));
-      const raznye = faily(a).filter((f) => !readFileSync(join(a, f)).equals(readFileSync(join(b, f))));
-      assert.deepEqual(raznye, []);
+      const fa = new Map(faily(a).map((f) => [imyaBezHesha(f), f]));
+      const fb = new Map(faily(b).map((f) => [imyaBezHesha(f), f]));
+      assert.deepEqual([...fb.keys()], [...fa.keys()]);
+      const raznye = [...fa].filter(([klyuch, f]) => {
+        const x = readFileSync(join(a, f));
+        const y = readFileSync(join(b, fb.get(klyuch)));
+        return /\.(css|html)$/.test(f) ? bezCid(x.toString('utf8')) !== bezCid(y.toString('utf8')) : !x.equals(y);
+      });
+      assert.deepEqual(raznye.map(([klyuch]) => klyuch), []);
     },
   });
 });

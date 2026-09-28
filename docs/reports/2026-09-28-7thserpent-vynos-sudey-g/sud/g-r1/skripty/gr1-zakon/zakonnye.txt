@@ -1,0 +1,27 @@
+== контроль: чистый лист
+   судья: сверено
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== tailwindcss по частям, подпути без .css (выводы пакета: ./theme, ./preflight, ./utilities)
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-generator\node_modules\tailwindcss\theme') — гарнитуру на странице судить нечем
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== tailwindcss по частям, подпути с .css (как в документации)
+   судья: сверено
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== @plugin (любой модуль-плагин)
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на странице судить нечем
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== .t-headline: font-family через --theme(--font-display)
+   судья: сверено
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== .t-headline: @apply font-display
+   судья: сверено
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== лицензионный комментарий /*! с именем токена */
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Libre Bodoni' | 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif) — сброс пространства темы или вид @theme убрал гарнитуру знака
+   сборка: на странице --font-display: 'Libre Bodoni' | 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони НЕТ (кандидатов 1244)
+== обычный комментарий с именем токена
+   судья: сверено
+   сборка: на странице --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif → Бодони первым (кандидатов 1244)
+== поздний @theme: сброс --font-* и новое объявление --font-display (Бодони первым)
+   судья: ОТКАЗ (1): гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы
+   сборка: на странице --font-display: 'Bodoni Moda', serif → Бодони первым (кандидатов 1244)

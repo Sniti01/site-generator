@@ -1,0 +1,9 @@
+== своё --hero-font-display в :root
+   судья: сверено
+   как Vite: точным именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; регулярным выражением судьи: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; строки вывода: --hero-font-display: 'Libre Bodoni', serif;
+== своё --hero-font-display в правиле
+   судья: сверено
+   как Vite: точным именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; регулярным выражением судьи: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; строки вывода: --hero-font-display: 'Libre Bodoni', serif; ¦ font-family: var(--hero-font-display);
+== строка с текстом «--font-display:»
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif) — сброс пространства темы или вид @theme убрал гарнитуру знака
+   как Vite: точным именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif; регулярным выражением судьи: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif; строки вывода: content: "--font-display: serif;";

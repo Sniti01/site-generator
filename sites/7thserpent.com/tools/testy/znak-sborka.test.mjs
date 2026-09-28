@@ -37,6 +37,21 @@ test('гейт сайта: отказ знака (иконка public/ не та
   });
 });
 
+test('GR1-Z-9: отказали и гейт ядра (контраст), и знак — оба идут до конца и оба названы', () => {
+  naKopii((k) => {
+    // Контраст: второстепенный текст темным на тёмном — отказ гейта ядра; знак этой краски не берёт.
+    let css = prochest(k, 'src/styles/global.css');
+    css = zamena(css, '  --color-ink-muted: #a1abb3;', '  --color-ink-muted: #2a3036;');
+    css = zamena(css, '  --ink-muted: #a1abb3;', '  --ink-muted: #2a3036;');
+    zapisat(k, 'src/styles/global.css', css);
+    zapisat(k, 'public/favicon.svg', prochest(k, 'public/favicon.svg').replace('#eca84a', '#eca84b'));
+    const r = sobrat(k, { sGeityami: true });
+    assert.notEqual(r.kod, 0);
+    assert.match(r.vyvod, /Гейты сайта: не прошли — гейты ядра \(код 1\), знак \(код 1\)/);
+    assert.match(r.vyvod, /public\/favicon\.svg: байты не равны/, 'знак не запускался после отказа ядра');
+  });
+});
+
 test('сторож сборки знака: иконка сборки не та (без гейтов) — astro build падает', () => {
   naKopii((k) => {
     zapisat(k, 'public/favicon.svg', prochest(k, 'public/favicon.svg').replace('#eca84a', '#eca84b'));

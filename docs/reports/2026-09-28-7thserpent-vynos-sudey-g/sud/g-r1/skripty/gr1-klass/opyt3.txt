@@ -1,0 +1,35 @@
+=== 0 контроль
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}"]
+  @property --accent: []
+
+=== 1 кандидат [--font-display:Georgia]
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;",".\\[--font-display\\:Georgia\\]{--font-display:Georgia}","font-family:var(--font-display);"]
+  @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}"]
+  @property --accent: []
+
+=== 2б лист ядра: @theme --font-display: Bodoni Moda, 10px
+  --font-display*: ["--font-display:\"Bodoni Moda\", 10px;","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}"]
+  @property --accent: []
+
+=== 3 лист ядра: своя @font-face Bodoni
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}","@font-face{font-family:Bodoni Moda;font-weight:600;src:url(x.woff2)}"]
+  @property --accent: []
+
+=== 4 лист ядра: --font-displ\61y
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia, serif}","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}"]
+  @property --accent: []
+
+=== 6 CDO перед @property --accent
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}"]
+  @property --accent: ["@property --accent{syntax:\"<color>\";inherits:false;initial-value:red}"]
+
+=== 6б CDO перед @font-face Bodoni
+  --font-display*: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+  @font-face Bodoni: ["ilities;@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-moda-latin-600-normal.woff2)format(\"woff2\"),url(./files/bodoni-moda-latin-600-normal.woff)format(\"woff\")}","@font-face{font-family:Bodoni Moda;font-weight:600;src:url(x.woff2)}"]
+  @property --accent: []
+

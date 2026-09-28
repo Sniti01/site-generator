@@ -1,0 +1,24 @@
+== prefix(tw)
+   судья: ОТКАЗ (1): гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: ничего) — сброс пространства темы или вид @theme убрал гарнитуру знака
+   как Vite: объявления «--font-display» ровно этим именем: НЕТ; все *font-display: нет; .t-headline { font-family: var(--font-display); font-size: c
+== important
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== theme(static)
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== source(none) и @source
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== @utility с var(--font-display)
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== @custom-variant
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== подключ --font-display--font-feature-settings
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; все *font-display: --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif; .t-headline { font-family: var(--font-display); font-size: c
+== --font-display без пробелов
+   судья: сверено
+   как Vite: объявления «--font-display» ровно этим именем: 'Bodoni Moda',serif; все *font-display: --font-display: 'Bodoni Moda',serif; .t-headline { font-family: var(--font-display); font-size: c

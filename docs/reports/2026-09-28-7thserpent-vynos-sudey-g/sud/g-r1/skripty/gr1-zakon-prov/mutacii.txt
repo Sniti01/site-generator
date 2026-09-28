@@ -1,0 +1,159 @@
+== контроль: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:16040) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M1 продолжение строки → пробел: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: сверено
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:25640) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M2 без U+FFFD: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:36064) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M3 catch compile() глотает: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): сверено
+   M3: @import несуществующего листа: сверено
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:42828) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M4 CSS-wide — только initial: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: сверено
+   M4: список с default: сверено
+   M4: список с revert-layer: сверено
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:19228) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M5 ветвь tailwindcss/ убрана: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:38188) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M6 IDENT без экранирования: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', Noto\ Serif, serif) — на странице
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:27176) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M7 строка списка без пропуска экранирования: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', 'Times\' New', serif) — на страни
+   stderr: (node:6132) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== M13 --selftest кодом 0: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:34644) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== N1 Tailwind не судит при любом отказе «гарнитура:»: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:19408) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== N2 every → some у вывода Tailwind: pass 272, fail 2 → красный; код 1
+   ✖ ✖ @property --font-display (23.4833ms)
+   ✖ ✖ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (94.3315ms)
+   ✖ ✖ failing tests:
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:29172) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== N3 ветвь относительного пути резолвера убрана: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (Cannot find module './net-takogo.css') — гарнитуру на странице
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:36112) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+== N4 сторож: dist из хука, но без public: pass 274, fail 0 → ВЫЖИЛА; код 0
+   M1: своя @font-face, продолжение строки внутри слова: ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаю
+   M2: своя @font-face «Bodoni\0 Moda» (U+FFFD — другая гарнитура): сверено
+   M3: @plugin (compile() бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на
+   M3: @import несуществующего листа: ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-gen
+   M4: список с inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура 
+   M4: список с default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура 
+   M4: список с revert-layer: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', revert-layer) — на странице гарни
+   M5: tailwindcss/theme.css по частям: сверено
+   M6: список с Noto\ Serif: сверено
+   M7: список со строкой с экранированной кавычкой: сверено
+   stderr: (node:39164) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.

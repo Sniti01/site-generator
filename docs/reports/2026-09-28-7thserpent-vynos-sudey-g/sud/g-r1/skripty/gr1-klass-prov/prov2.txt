@@ -1,0 +1,24 @@
+=== K3а ekran61
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  --font-display:Georgia, serif  @6975  блоки: [":root"]
+  @font-face @4298: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+=== M2 ekran2d
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  --font-display:Georgia, serif  @6975  блоки: [":root"]
+  @font-face @4298: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+=== M3 ekran69
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  --font-display:Georgia, serif  @6975  блоки: [":root"]
+  @font-face @4298: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+=== K1б utility
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  --font-display:Georgia  @4312  блоки: ["@layer utilities",".zag-x"]
+  @font-face @4336: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+=== K1а kandidat
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  --font-display:Georgia  @4334  блоки: ["@layer utilities",".\\[--font-display\\:Georgia\\]"]
+  @font-face @4358: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+=== K4 fontface
+  --font-display:"Bodoni Moda", ui-serif, Georgia, "Times New Roman", serif  @515  блоки: ["4.3.3 | MIT License | https://tailwindcss.com */@layer theme",":root,:host"]
+  @font-face @4298: @font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./fil  блоки: []
+  @font-face @6969: @font-face{font-family:Bodoni Moda;font-weight:600;src:url(x.woff2)}  блоки: []

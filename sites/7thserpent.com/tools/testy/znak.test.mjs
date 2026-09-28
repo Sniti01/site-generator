@@ -9,6 +9,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
+import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import znakDist, { sverka, wejscie, ico, SYG_PNG, IMPORT_GARNITURY } from '../znak.mjs';
@@ -358,3 +359,79 @@ test('знак в сборке: сторож sayt:znak-dist подключён �
   assert.match(geity, /core\/gates\/run\.mjs/);
   assert.match(geity, /tools\/znak\.mjs'\), '--check'/);
 });
+
+// ── Часть 4. «Судью судят» по блоку Г, раунд 1 (GR1-*): оракул спрашивал Tailwind не так, как сборка ─────────
+// Сборка (плагин Vite) зовёт compile() @tailwindcss/node (свой разрешатель, loadModule), кандидаты сканера oxide
+// по источникам листа, build(кандидаты) и optimize(); оракул звал compile() tailwindcss без кандидатов и искал
+// --font-display регулярным выражением по тексту. Отсюда пропуски в импортированных листах и разметке и ложные
+// отказы на законных листах. Импортированный лист и разметка — временными файлами (лист — после импортов ядра).
+/** Точная замена единственного вхождения — порча, которая не применилась, громко падает. */
+function zamenitStroku(s, iz, na) {
+  const n = s.split(iz).length - 1;
+  if (n !== 1) throw new Error(`порча: «${iz.slice(0, 60)}» встречается ${n} раз, а нужен один`);
+  return s.replace(iz, () => na);
+}
+const POSLE_YADRA = "@import '@factory/core/styles/a11y.css';";
+const vremennaya = () => mkdtempSync(join(tmpdir(), 'znak-gr1-'));
+const put = (p) => p.replace(/\\/g, '/');
+const sListom = (w, tekst) => {
+  const d = vremennaya();
+  writeFileSync(join(d, 'list.css'), tekst);
+  w.css = w.css.replace(POSLE_YADRA, `${POSLE_YADRA}\n@import '${put(join(d, 'list.css'))}';`);
+  return w;
+};
+const sRazmetkoy = (w, html) => {
+  const d = vremennaya();
+  writeFileSync(join(d, 'x.html'), html);
+  w.css = w.css.replace("@import 'tailwindcss' source('../../src');", `@import 'tailwindcss' source('../../src');\n@source '${put(d)}';`);
+  return w;
+};
+test('GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO)', async (t) => {
+  const SLUCHAI = [
+    ['GR1-K-1 произвольное свойство [--font-display:Georgia] в разметке', (w) => sRazmetkoy(w, '<p class="[--font-display:Georgia]">x</p>'), 'Tailwind сайта не выводит'],
+    ['GR1-K-1 @utility с --font-display в импортированном листе и класс в разметке', (w) => sRazmetkoy(sListom(w, '@utility zag-x { --font-display: Georgia; }\n'), '<p class="zag-x">x</p>'), 'Tailwind сайта не выводит'],
+    ...["'Bodoni Moda', 10px", "'Bodoni Moda',, serif", "'Bodoni Moda', initial"].map((v) => [`GR1-K-2 в @theme импортированного листа ${v}`, (w) => sListom(w, `@theme { --font-display: ${v}; }\n`), 'Tailwind сайта не выводит']),
+    ["GR1-K-2 в :root импортированного листа 'Bodoni Moda',, serif", (w) => sListom(w, ":root { --font-display: 'Bodoni Moda',, serif; }\n"), 'Tailwind сайта не выводит'],
+    ['GR1-K-3 экранированное имя в импортированном листе --font-displ\\61y', (w) => sListom(w, ':root { --font-displ\\61y: Georgia, serif; }\n'), 'Tailwind сайта не выводит'],
+    ['GR1-K-3 экранированное имя в импортированном листе \\2d-font-display', (w) => sListom(w, ':root { \\2d-font-display: Georgia, serif; }\n'), 'Tailwind сайта не выводит'],
+    ['GR1-K-3 экранированное имя в импортированном листе --font-d\\69splay', (w) => sListom(w, ':root { --font-d\\69splay: Georgia, serif; }\n'), 'Tailwind сайта не выводит'],
+    ['GR1-K-4 своя @font-face Бодони в импортированном листе', (w) => sListom(w, "@font-face { font-family: 'Bodoni Moda'; font-weight: 600; src: url(x.woff2); }\n"), 'своя @font-face'],
+    ['GR1-K-5 CDO перед @property --accent', (w) => { w.css += "\n<!-- @property --accent { syntax: '<color>'; inherits: false; initial-value: red; }"; return w; }, 'CDO или CDC'],
+    ['GR1-K-5 CDO перед своей @font-face Бодони', (w) => { w.css += "\n<!-- @font-face { font-family: 'Bodoni Moda'; font-weight: 600; src: url(x.woff2); }"; return w; }, 'CDO или CDC'],
+    ['GR1-K-5 CDC перед правилом', (w) => { w.css += '\n--> .x { color: red; }'; return w; }, 'CDO или CDC'],
+  ];
+  for (const [imya, mut, zhdem] of SLUCHAI) await t.test(imya, async () => sudit((await sverka(mut(czyste()))).bledy, zhdem));
+});
+test('GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка)', async (t) => {
+  const d = vremennaya();
+  writeFileSync(join(d, 'plagin.mjs'), 'export default function () {}\n');
+  const SLUCHAI = [
+    ['GR1-Z-1 подпути tailwindcss без .css', (w) => { w.css = zamenitStroku(w.css, "@import 'tailwindcss' source('../../src');", "@import 'tailwindcss/theme' layer(theme);\n@import 'tailwindcss/preflight' layer(base);\n@import 'tailwindcss/utilities' layer(utilities) source('../../src');"); return w; }],
+    ['GR1-Z-2 @plugin', (w) => { w.css = zamenitStroku(w.css, "@import 'tailwindcss' source('../../src');", `@import 'tailwindcss' source('../../src');\n@plugin '${put(join(d, 'plagin.mjs'))}';`); return w; }],
+    ['GR1-Z-3 роль .t-headline без var(--font-display) в листе (переменную держат компоненты ядра)', (w) => { w.css = zamenitStroku(w.css, '.t-headline {\n  font-family: var(--font-display);\n', '.t-headline {\n'); return w; }],
+    ['GR1-Z-4 сброс и повторное объявление в позднем @theme', (w) => { w.css += "\n@theme { --font-*: initial; --font-display: 'Bodoni Moda', serif; }"; return w; }],
+    ["GR1-Z-5 комментарий /*! */ с прежней гарнитурой", (w) => { w.css = zamenitStroku(w.css, '\n@theme {', "\n/*! прежде: --font-display: 'Libre Bodoni'; */\n@theme {"); return w; }],
+    ['GR1-Z-5 строка content со словами --font-display', (w) => { w.css += '\n.otladka::after { content: "--font-display: serif;"; }'; return w; }],
+  ];
+  for (const [imya, mut] of SLUCHAI) await t.test(imya, async () => sudit((await sverka(mut(czyste()))).bledy, null));
+});
+test('GR1-Z-6: продолжение строки внутри слова в имени своей @font-face — отказ', async () => {
+  const w = czyste();
+  w.css += "\n@font-face { font-family: 'Bodoni Mo\\\nda'; src: url(x.woff2); }";
+  sudit((await sverka(w)).bledy, 'своя @font-face');
+});
+test('GR1-Z-7: Tailwind не собирает лист, принятый моделью (@import несуществующего листа), — отказ «не собрал»', async () => {
+  const w = czyste();
+  w.css = zamenitStroku(w.css, POSLE_YADRA, `${POSLE_YADRA}\n@import './net-takogo-lista.css';`);
+  sudit((await sverka(w)).bledy, 'Tailwind сайта не собрал');
+});
+test('GR1-Z-8: CSS-wide keywords и default в списке — отказ; экранирование в имени и в строке — сверено', async (t) => {
+  for (const k of ['inherit', 'unset', 'revert', 'revert-layer', 'default']) await t.test(`отказ: 'Bodoni Moda', ${k}`, async () => sudit((await sverka(SPISOK_ZAMENA(`'Bodoni Moda', ${k}`)(czyste()))).bledy, 'список --font-display не читается'));
+  for (const v of ["'Bodoni Moda', Noto\\ Serif, serif", "'Bodoni Moda', 'Times\\' New', serif"]) await t.test(`сверено: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, null));
+});
+test('GR1-Z-10: прежняя команда --selftest — код 2 и «перенесён в тесты» (выход раньше записи)', () => {
+  const r = spawnSync(process.execPath, [join(SAYT, 'tools/znak.mjs'), '--check', '--selftest'], { cwd: SAYT, encoding: 'utf8' });
+  assert.equal(r.status, 2);
+  assert.match(r.stderr, /--selftest перенесён в тесты/);
+});
+test.todo('GR1-K-6 (предел): правило роли заголовка с другой гарнитурой (.t-headline { font-family: Georgia }) — не судится: судья знака судит --font-display, а не то, что роль берёт гарнитуру темы (строка «все» «Пределов после раунда 5»; её видят кадры эталона)');

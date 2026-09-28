@@ -1,0 +1,12 @@
+=== D: заглавная, абсолютный путь
+код 0; вывод: znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равн
+
+=== d: строчная, абсолютный путь
+код 0; вывод: znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равн
+
+=== папка запуска d: строчная, путь относительный
+код 0; вывод: znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равн
+
+=== регистр папки другой (sites → SITES)
+код 0; вывод: znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равн
+

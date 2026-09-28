@@ -1,0 +1,206 @@
+
+=== 0 контроль
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 0б контроль: base.css через копию без добавки
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 1 произвольное свойство-кандидат [--font-display:Georgia] в разметке
+судья: СВЕРЕНО
+Tailwind (build(["[--font-display:Georgia]"])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;",
+  "--font-display\\:Georgia\\] {\n    --font-display: Georgia;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 2 лист ядра: список --font-display, который CSS не читает (R5-SVERKA-5)
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;",
+  "--font-display: 'Bodoni Moda',, serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 2б лист ядра: @theme со списком, который CSS не читает
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', 10px;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 3 лист ядра: своя @font-face Bodoni Moda 600
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }",
+  "@font-face { font-family: 'Bodoni Moda'; font-weight: 600; src: url(x.woff2); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 4 лист ядра: --font-displ\61y (экранирование в имени)
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;",
+  "--font-displ\\61y: Georgia, serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 5 global.css: своя @font-face, имя разорвано комментарием Bodoni/**/Moda
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }",
+  "@font-face { font-family: BodoniModa; font-weight: 600; src: url(x.woff2); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 6 global.css: CDO перед @property --accent
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [
+  "<!-- @property --accent {"
+ ],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 6б global.css: CDO перед @font-face Bodoni
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }",
+  "@font-face { font-family: 'Bodoni Moda'; font-weight: 600; src: url(x.woff2); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 7 global.css: .t-headline с другой гарнитурой
+судья: СВЕРЕНО
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }",
+  ".t-headline { font-family: Georgia, serif; }"
+ ]
+}
+
+=== 8 global.css: @apply произвольного свойства в html
+судья: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | Georgia) — сброс пространства темы или вид @theme убрал гарнитуру знака
+Tailwind (build([])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;",
+  "--font-display: Georgia;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}
+
+=== 9 лист ядра: @utility с --font-display и кандидат
+судья: СВЕРЕНО
+Tailwind (build(["zagolovok-x"])): {
+ "fd": [
+  "--font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;",
+  "--font-display: Georgia;"
+ ],
+ "ff": [
+  "@font-face { font-family: 'Bodoni Moda'; font-style: normal; font-display: swap; font-weight: 600; src: url(./files/bodoni-moda-latin-600-normal.woff2) format('woff2'), url(./files/bodoni-moda-latin-600-normal.woff) format('woff'); }"
+ ],
+ "pr": [],
+ "th": [
+  ".t-headline { font-family: var(--font-display); font-size: clamp(1.75rem, 1.25rem + 2.2vw, 2.75rem); font-weight: 600; line-height: 1.14; letter-spacing: 0.05em; text-transform: uppercase; text-wrap: balance; margin: 0; }"
+ ]
+}

@@ -1,0 +1,172 @@
+
+=== K0 контроль
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K0б контроль: свой пустой импортированный лист
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K1а кандидат [--font-display:Georgia] (разметка)
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build(["[--font-display:Georgia]"]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," .\\[--font-display\\:Georgia\\] { --font-display: Georgia;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;",".\\[--font-display\\:Georgia\\]{--font-display:Georgia}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K1б импортированный лист: @utility с --font-display + кандидат
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build(["zag-x"]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," --font-display: Georgia;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K1в контроль того же @utility без кандидата
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K2а импортированный лист: @theme --font-display: Bodoni Moda, 10px
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', 10px;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", 10px;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K2б импортированный лист: :root --font-display: Bodoni Moda,, serif
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," --font-display: 'Bodoni Moda',, serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:\"Bodoni Moda\",, serif}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K2в импортированный лист: @theme --font-display: Bodoni Moda, initial
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', initial;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", initial;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K3а импортированный лист: :root --font-displ\61y: Georgia
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," --font-displ\\61y: Georgia, serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia, serif}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K3б контроль: импортированный :root --font-display: Georgia (без экранирования)
+судья: ОТКАЗ — гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | Georgia, serif) — сброс пространства темы или вид @theme убрал гарнитуру знака
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," --font-display: Georgia, serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia, serif}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K4 импортированный лист: своя @font-face Bodoni Moda 600
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-","@font-face{font-family:Bodoni Moda;font-weight:600;src:url(x.woff2)}"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K5а global.css: CDO перед @property --accent
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"rule","prelude":"<!-- @property --accent"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: ["eY(0)}@property --accent{syntax:\"<color>\";inherits:false;initial-value:red}"]; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K5б global.css: CDO перед @font-face Bodoni
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"rule","prelude":"<!-- @font-face"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-","@font-face{font-family:Bodoni Moda;font-weight:600;src:url(x.woff2)}"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K5в контроль: @property --accent без CDO
+судья: ОТКАЗ — краска: токен --accent зарегистрирован @property — наследование, синтаксис и начальное значение меняют его на странице, иконки этого не знают
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@property --accent"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: ["eY(0)}@property --accent{syntax:\"<color>\";inherits:false;initial-value:red}"]; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== K6 global.css: .t-headline { font-family: Georgia }
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"rule","prelude":".t-headline"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)",".t-headline{font-family:Georgia,serif"]
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m : ;
+[2m┆[22m   [33m[2m^--[22m Invalid token in pseudo element: WhiteSpace(" ")[39m
+[2m┆[22m
+[2m│ -> @property --accent {[22m
+[2m│   syntax: '<color>';[22m
+
+
+=== M1а global.css: CDC --> перед @property --accent
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"rule","prelude":"--> @property --accent"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+Found 1 warning while optimizing generated CSS:
+
+[2m│   transform: translateY(0);[22m
+[2m│ }[22m
+[2m│[22m : ;
+[2m┆[22m   [33m[2m^--[22m Invalid token in pseudo element: WhiteSpace(" ")[39m
+[2m┆[22m
+[2m│ -> @font-face {[22m
+[2m│   font-family: 'Bodoni Moda';[22m
+
+
+=== M1б global.css: CDC --> перед @font-face Bodoni
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"rule","prelude":"--> @font-face"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== M2 импортированный лист: :root \2d-font-display: Georgia
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," \\2d-font-display: Georgia, serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia, serif}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]
+
+=== M3 импортированный лист: :root --font-d\69splay (прописное экранирование другой буквы)
+судья: СВЕРЕНО
+разбор судьи: ошибок 0; последний узел верхнего уровня: {"tip":"at","prelude":"@import '@factory/core/styles/a11y.css'"}
+build([]), сырой: --font-displ*: [" --font-display: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif;"," --font-d\\69splay: Georgia, serif;"," font-family: var(--font-display);"]
+страница (optimize+esbuild): --font-display: ["--font-display:\"Bodoni Moda\", ui-serif, Georgia, \"Times New Roman\", serif;","--font-display:Georgia, serif}","font-family:var(--font-display);"]
+страница: @font-face Bodoni: ["@font-face{font-family:Bodoni Moda;font-style:normal;font-display:swap;font-weight:600;src:url(./files/bodoni-"]
+страница: @property --accent: []; .t-headline: [".t-headline{font-family:var(--font-display)"]

@@ -1,0 +1,3 @@
+кандидаты сканера: ["--font-display","[--font-display:Georgia]","class","en","lang","t-headline"]
+судья (входы: global.css, znak.json, гарнитура; разметки во входах нет): СВЕРЕНО
+ключи входов wejscie(): css, znak, fontPlik, fontBuf, publiczne

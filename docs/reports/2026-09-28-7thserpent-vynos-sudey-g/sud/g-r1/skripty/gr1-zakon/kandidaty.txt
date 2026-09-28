@@ -1,0 +1,5 @@
+правка применилась: true
+build([]) (как судья): нет
+build(кандидаты сканера, 1244; есть «--font-display»: true) (как плагин Vite): 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif
+build(['--font-display']): 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif
+файлы-источники с «--font-display»: sites/7thserpent.com/src/styles/global.css, core/blocks/ChipNav.astro, core/blocks/LinkColumns.astro

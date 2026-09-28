@@ -1,0 +1,411 @@
+▶ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO)
+  ✖ GR1-K-1 произвольное свойство [--font-display:Georgia] в разметке (36.4962ms)
+  ✖ GR1-K-1 @utility с --font-display в импортированном листе и класс в разметке (30.7492ms)
+  ✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', 10px (30.4353ms)
+  ✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda',, serif (32.2669ms)
+  ✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', initial (27.305ms)
+  ✖ GR1-K-2 в :root импортированного листа 'Bodoni Moda',, serif (31.9047ms)
+  ✖ GR1-K-3 экранированное имя в импортированном листе --font-displ\61y (30.9956ms)
+  ✖ GR1-K-3 экранированное имя в импортированном листе \2d-font-display (25.9959ms)
+  ✖ GR1-K-3 экранированное имя в импортированном листе --font-d\69splay (29.1893ms)
+  ✖ GR1-K-4 своя @font-face Бодони в импортированном листе (25.1652ms)
+  ✖ GR1-K-5 CDO перед @property --accent (25.8371ms)
+  ✖ GR1-K-5 CDO перед своей @font-face Бодони (25.3529ms)
+  ✖ GR1-K-5 CDC перед правилом (29.8588ms)
+✖ GR1: гарнитура на странице — как её собирает сборка (импорты, кандидаты, экранирование, своя @font-face, CDO) (384.333ms)
+▶ GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка)
+  ✖ GR1-Z-1 подпути tailwindcss без .css (23.1604ms)
+  ✖ GR1-Z-2 @plugin (22.2417ms)
+  ✖ GR1-Z-3 роль .t-headline без var(--font-display) в листе (переменную держат компоненты ядра) (30.3545ms)
+  ✖ GR1-Z-4 сброс и повторное объявление в позднем @theme (22.471ms)
+  ✖ GR1-Z-5 комментарий /*! */ с прежней гарнитурой (31.326ms)
+  ✖ GR1-Z-5 строка content со словами --font-display (24.035ms)
+✖ GR1: законные листы — сверено (подпути Tailwind, @plugin, var(--font-display) только у ядра, повторное объявление, комментарий, строка) (155.5733ms)
+✔ GR1-Z-6: продолжение строки внутри слова в имени своей @font-face — отказ (29.6797ms)
+✔ GR1-Z-7: Tailwind не собирает лист, принятый моделью (@import несуществующего листа), — отказ «не собрал» (22.71ms)
+▶ GR1-Z-8: CSS-wide keywords и default в списке — отказ; экранирование в имени и в строке — сверено
+  ✔ отказ: 'Bodoni Moda', inherit (15.8142ms)
+  ✔ отказ: 'Bodoni Moda', unset (15.2511ms)
+  ✔ отказ: 'Bodoni Moda', revert (14.8779ms)
+  ✔ отказ: 'Bodoni Moda', revert-layer (15.1482ms)
+  ✔ отказ: 'Bodoni Moda', default (17.3441ms)
+  ✔ сверено: 'Bodoni Moda', Noto\ Serif, serif (30.2912ms)
+  ✔ сверено: 'Bodoni Moda', 'Times\' New', serif (25.7429ms)
+✔ GR1-Z-8: CSS-wide keywords и default в списке — отказ; экранирование в имени и в строке — сверено (135.6995ms)
+✔ GR1-Z-10: прежняя команда --selftest — код 2 и «перенесён в тесты» (выход раньше записи) (120.5407ms)
+✔ GR1-K-6 (предел): правило роли заголовка с другой гарнитурой (.t-headline { font-family: Georgia }) — не судится: судья знака судит --font-display, а не то, что роль берёт гарнитуру темы (строка «все» «Пределов после раунда 5»; её видят кадры эталона) (0.064ms) # TODO
+ℹ tests 33
+ℹ suites 0
+ℹ pass 11
+ℹ fail 21
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 1
+ℹ duration_ms 1063.5182
+
+✖ failing tests:
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-1 произвольное свойство [--font-display:Georgia] в разметке (36.4962ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-1 @utility с --font-display в импортированном листе и класс в разметке (30.7492ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', 10px (30.4353ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda',, serif (32.2669ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-2 в @theme импортированного листа 'Bodoni Moda', initial (27.305ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-2 в :root импортированного листа 'Bodoni Moda',, serif (31.9047ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-3 экранированное имя в импортированном листе --font-displ\61y (30.9956ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-3 экранированное имя в импортированном листе \2d-font-display (25.9959ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-3 экранированное имя в импортированном листе --font-d\69splay (29.1893ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «Tailwind сайта не выводит», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-4 своя @font-face Бодони в импортированном листе (25.1652ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-5 CDO перед @property --accent (25.8371ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «CDO или CDC», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-5 CDO перед своей @font-face Бодони (25.3529ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «CDO или CDC», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:403:53
+✖ GR1-K-5 CDC перед правилом (29.8588ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «CDO или CDC», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:45:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:76)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:403:45)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-1 подпути tailwindcss без .css (23.1604ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\SEO\cloud\site-generator\node_modules\tailwindcss\theme') — гарнитуру на странице судить нечем
+  + actual - expected
+  
+  + [
+  +   "гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\\SEO\\cloud\\site-generator\\node_modules\\tailwindcss\\theme') — гарнитуру на странице судить нечем"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: Tailwind сайта не собрал global.css (ENOENT: no such file or directory, open 'D:\\SEO\\cloud\\site-generator\\node_modules\\tailwindcss\\theme') — гарнитуру на странице судить нечем" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-2 @plugin (22.2417ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на странице судить нечем
+  + actual - expected
+  
+  + [
+  +   'гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на странице судить нечем'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на странице судить нечем' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-3 роль .t-headline без var(--font-display) в листе (переменную держат компоненты ядра) (30.3545ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: ничего) — сброс пространства темы или вид @theme убрал гарнитуру знака
+  + actual - expected
+  
+  + [
+  +   "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: ничего) — сброс пространства темы или вид @theme убрал гарнитуру знака"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: ничего) — сброс пространства темы или вид @theme убрал гарнитуру знака" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-4 сброс и повторное объявление в позднем @theme (22.471ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы
+  + actual - expected
+  
+  + [
+  +   'гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы'
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'гарнитура: сброс --font-*: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-5 комментарий /*! */ с прежней гарнитурой (31.326ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Libre Bodoni' | 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif) — сброс пространства темы или вид @theme убрал гарнитуру знака
+  + actual - expected
+  
+  + [
+  +   "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Libre Bodoni' | 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif) — сброс пространства темы или вид @theme убрал гарнитуру знака"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Libre Bodoni' | 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif) — сброс пространства темы или вид @theme убрал гарнитуру знака" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:416:46
+✖ GR1-Z-5 строка content со словами --font-display (24.035ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif) — сброс пространства темы или вид @theme убрал гарнитуру знака
+  + actual - expected
+  
+  + [
+  +   "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif) — сброс пространства темы или вид @theme убрал гарнитуру знака"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:44:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:69)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:416:38)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif | serif) — сброс пространства темы или вид @theme убрал гарнитуру знака" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

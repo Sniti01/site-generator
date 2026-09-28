@@ -1,0 +1,28 @@
+== настоящий судья
+M1 своя @font-face 'Bodoni Mo\<перевод строки>da': ОТКАЗ — гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+M3 @plugin (compile() судьи бросает): ОТКАЗ — гарнитура: Tailwind сайта не собрал global.css (No `loadModule` function provided to `compile`) — гарнитуру на странице судить нечем
+M4 --font-display: 'Bodoni Moda', inherit: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', inherit) — на странице гарнитура заголовков падает на наследуемую
+M4 --font-display: 'Bodoni Moda', default: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', default) — на странице гарнитура заголовков падает на наследуемую
+M6 --font-display: 'Bodoni Moda', Noto\ Serif, serif: сверено
+M7 --font-display: 'Bodoni Moda', 'Times\' New', serif: сверено
+== мутант M1
+M1 своя @font-face 'Bodoni Mo\<перевод строки>da': сверено
+(node:38080) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== мутант M3
+M3 @plugin (compile() судьи бросает): сверено
+(node:40748) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== мутант M4
+M4 --font-display: 'Bodoni Moda', inherit: сверено
+M4 --font-display: 'Bodoni Moda', default: сверено
+(node:42552) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== мутант M6
+M6 --font-display: 'Bodoni Moda', Noto\ Serif, serif: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', Noto\ Serif, serif) — на странице гарнитура заголовков падает на наследуемую
+(node:30580) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+== мутант M7
+M7 --font-display: 'Bodoni Moda', 'Times\' New', serif: ОТКАЗ — гарнитура: список --font-display не читается как font-family ('Bodoni Moda', 'Times\' New', serif) — на странице гарнитура заголовков падает на наследуемую
+(node:41924) [DEP0205] DeprecationWarning: `module.register()` is deprecated. Use `module.registerHooks()` instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)

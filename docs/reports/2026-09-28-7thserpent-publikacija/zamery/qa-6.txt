@@ -1,0 +1,30 @@
+страниц 18 (dist sites/7thserpent.com/dist)
+адрес | h1 | заголовков в <main> | пропусков уровня | title (знаков) | description (знаков) | og | twitter | JSON-LD | img (без alt / alt="") | самый длинный абзац <main> | входящих ссылок со страниц
+/ | 1 | 14 | 0 | 61 | 163 | og:type,og:site_name,og:title,og:description,og:locale | 0 | WebSite | 20 (0 / 1) | 166 | 17
+/404/ | 1 | 3 | 0 | 31 | 132 | og:type,og:site_name,og:title,og:description,og:locale | 0 | — | 0 (0 / 0) | 172 | 0
+/cheats/ | 1 | 11 | 0 | 59 | 136 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 465 | 7
+/gameplay/ | 1 | 10 | 0 | 63 | 138 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 4 (0 / 0) | 447 | 4
+/games-like-max-payne/ | 1 | 8 | 0 | 61 | 153 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 464 | 2
+/max-payne-1/ | 1 | 7 | 0 | 63 | 157 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 2 (0 / 0) | 559 | 17
+/max-payne-2/ | 1 | 17 | 0 | 65 | 158 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 5 (0 / 0) | 578 | 17
+/max-payne-3/ | 1 | 10 | 0 | 65 | 169 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 3 (0 / 0) | 438 | 17
+/max-payne-3/guide/ | 1 | 9 | 0 | 62 | 167 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 600 | 3
+/media/ | 1 | 8 | 0 | 62 | 176 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 4 (0 / 0) | 450 | 3
+/mods/ | 1 | 8 | 0 | 62 | 181 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 497 | 17
+/movie/ | 1 | 13 | 0 | 63 | 171 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 588 | 17
+/pc/ | 1 | 9 | 0 | 64 | 166 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 458 | 6
+/privacy/ | 1 | 10 | 0 | 31 | 118 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 0 (0 / 0) | 350 | 17
+/quotes/ | 1 | 9 | 0 | 70 | 164 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 4 (0 / 0) | 571 | 17
+/remake/ | 1 | 9 | 0 | 65 | 160 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 1 (0 / 0) | 517 | 17
+/story/ | 1 | 11 | 0 | 65 | 172 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 4 (0 / 0) | 480 | 17
+/voice-and-face/ | 1 | 10 | 0 | 63 | 171 | og:type,og:site_name,og:title,og:description,og:locale | 0 | BreadcrumbList | 2 (0 / 0) | 418 | 6
+
+h1 ровно один: true
+пропуски уровня заголовков в <main>: нет
+title повторы: нет; длиннее 60: / 61, /gameplay/ 63, /games-like-max-payne/ 61, /max-payne-1/ 63, /max-payne-2/ 65, /max-payne-3/ 65, /max-payne-3/guide/ 62, /media/ 62, /mods/ 62, /movie/ 63, /pc/ 64, /quotes/ 70, /remake/ 65, /story/ 65, /voice-and-face/ 63
+description повторы: нет; длиннее 160: / 163, /max-payne-3/ 169, /max-payne-3/guide/ 167, /media/ 176, /mods/ 181, /movie/ 171, /pc/ 166, /quotes/ 164, /story/ 172, /voice-and-face/ 171; короче 70: нет
+og:url есть: 0; og:image есть: 0; twitter:* есть: 0
+картинок всего 55, без alt 0, alt="" 1
+абзацы длиннее 900 знаков: нет
+страницы без входящих ссылок с других страниц (сироты): /404/
+внешние ссылки: https://www.rockstargames.com/videos/ka956139 (/gameplay/); https://www.youtube.com/rockstargames (/media/)

@@ -1,0 +1,8 @@
+Кадры /privacy/ — instrumenty/kadry-privacy.js (Playwright MCP, browser_run_code_unsafe), сервер instrumenty/server.mjs
+на копии dist сборки bbfce3d. privacy/index.html нынешней сборки (1e15a10, исходники 816ba46) побайтно равен снятому.
+Подпись — textContent строки byline (части в отдельных элементах, пробелы между ними рисует CSS).
+
+сборка bbfce3d, сервер http://127.0.0.1:4436, /privacy/
+1440x900: ответ 200, высота 5396, ширина документа 1440 при окне 1440, рядов 9, подпись «Written by7th SerpentSeptember 28, 2026», запросов 7, внешних 0
+390x844: ответ 200, высота 5806, ширина документа 390 при окне 390, рядов 9, подпись «Written by7th SerpentSeptember 28, 2026», запросов 7, внешних 0
+320x640: ответ 200, высота 6371, ширина документа 320 при окне 320, рядов 9, подпись «Written by7th SerpentSeptember 28, 2026», запросов 7, внешних 0

@@ -1,0 +1,1884 @@
+▶ R5-SVERKA-1: сброс пространства темы — судья отказывает ровно тогда, когда Tailwind сайта снимает --font-display
+  ✖ ---* — поздний @theme (35.42ms)
+  ✖ ---* — поздний @theme inline (24.4412ms)
+  ✖ ---* — поздний @theme static (27.684ms)
+  ✖ ---* — поздний @theme reference (25.8009ms)
+  ✖ ---* — поздний @theme default (23.5769ms)
+  ✖ ---* — основной @theme, после --font-display (23.8097ms)
+  ✔ ---* — основной @theme, в начале (23.5151ms)
+  ✔ ---* — свой @theme перед основным (23.5114ms)
+  ✖ --f-* — поздний @theme (27.3215ms)
+  ✖ --f-* — поздний @theme inline (22.6224ms)
+  ✖ --f-* — поздний @theme static (25.3479ms)
+  ✖ --f-* — поздний @theme reference (22.6803ms)
+  ✖ --f-* — поздний @theme default (24.4382ms)
+  ✖ --f-* — основной @theme, после --font-display (25.9317ms)
+  ✔ --f-* — основной @theme, в начале (22.5177ms)
+  ✔ --f-* — свой @theme перед основным (26.2261ms)
+  ✖ --fo-* — поздний @theme (22.2832ms)
+  ✖ --fo-* — поздний @theme inline (26.2416ms)
+  ✖ --fo-* — поздний @theme static (26.3794ms)
+  ✖ --fo-* — поздний @theme reference (21.7564ms)
+  ✖ --fo-* — поздний @theme default (23.7694ms)
+  ✖ --fo-* — основной @theme, после --font-display (23.1994ms)
+  ✔ --fo-* — основной @theme, в начале (26.9724ms)
+  ✔ --fo-* — свой @theme перед основным (21.9619ms)
+  ✖ --fon-* — поздний @theme (22.1221ms)
+  ✖ --fon-* — поздний @theme inline (23.0301ms)
+  ✖ --fon-* — поздний @theme static (24.4443ms)
+  ✖ --fon-* — поздний @theme reference (24.8707ms)
+  ✖ --fon-* — поздний @theme default (22.9697ms)
+  ✖ --fon-* — основной @theme, после --font-display (22.3874ms)
+  ✔ --fon-* — основной @theme, в начале (22.3734ms)
+  ✔ --fon-* — свой @theme перед основным (24.2027ms)
+  ✔ --font-* — поздний @theme (22.2096ms)
+  ✔ --font-* — поздний @theme inline (22.9902ms)
+  ✔ --font-* — поздний @theme static (23.0053ms)
+  ✖ --font-* — поздний @theme reference (23.2855ms)
+  ✖ --font-* — поздний @theme default (26.1225ms)
+  ✔ --font-* — основной @theme, после --font-display (22.7279ms)
+  ✔ --font-* — основной @theme, в начале (23.3597ms)
+  ✔ --font-* — свой @theme перед основным (21.2966ms)
+  ✖ --font--* — поздний @theme (21.3041ms)
+  ✖ --font--* — поздний @theme inline (25.5994ms)
+  ✖ --font--* — поздний @theme static (23.6944ms)
+  ✖ --font--* — поздний @theme reference (22.5118ms)
+  ✖ --font--* — поздний @theme default (20.9975ms)
+  ✖ --font--* — основной @theme, после --font-display (20.8344ms)
+  ✔ --font--* — основной @theme, в начале (26.6345ms)
+  ✔ --font--* — свой @theme перед основным (22.8761ms)
+  ✖ --font-d-* — поздний @theme (22.3391ms)
+  ✖ --font-d-* — поздний @theme inline (21.7954ms)
+  ✖ --font-d-* — поздний @theme static (21.3036ms)
+  ✖ --font-d-* — поздний @theme reference (23.1276ms)
+  ✖ --font-d-* — поздний @theme default (24.1132ms)
+  ✖ --font-d-* — основной @theme, после --font-display (22.3676ms)
+  ✔ --font-d-* — основной @theme, в начале (23.0626ms)
+  ✔ --font-d-* — свой @theme перед основным (21.1894ms)
+  ✖ --font-di-* — поздний @theme (24.4197ms)
+  ✖ --font-di-* — поздний @theme inline (21.8783ms)
+  ✖ --font-di-* — поздний @theme static (21.2703ms)
+  ✖ --font-di-* — поздний @theme reference (21.9858ms)
+  ✖ --font-di-* — поздний @theme default (21.1735ms)
+  ✖ --font-di-* — основной @theme, после --font-display (26.6394ms)
+  ✔ --font-di-* — основной @theme, в начале (22.1898ms)
+  ✔ --font-di-* — свой @theme перед основным (21.033ms)
+  ✖ --font-dis-* — поздний @theme (20.8859ms)
+  ✖ --font-dis-* — поздний @theme inline (23.6985ms)
+  ✖ --font-dis-* — поздний @theme static (25.2114ms)
+  ✖ --font-dis-* — поздний @theme reference (20.6055ms)
+  ✖ --font-dis-* — поздний @theme default (20.6792ms)
+  ✖ --font-dis-* — основной @theme, после --font-display (20.9715ms)
+  ✔ --font-dis-* — основной @theme, в начале (21.0597ms)
+  ✔ --font-dis-* — свой @theme перед основным (25.8936ms)
+  ✖ --font-disp-* — поздний @theme (21.3979ms)
+  ✖ --font-disp-* — поздний @theme inline (20.5891ms)
+  ✖ --font-disp-* — поздний @theme static (22.2264ms)
+  ✖ --font-disp-* — поздний @theme reference (21.1959ms)
+  ✖ --font-disp-* — поздний @theme default (23.7005ms)
+  ✖ --font-disp-* — основной @theme, после --font-display (20.6617ms)
+  ✔ --font-disp-* — основной @theme, в начале (20.6962ms)
+  ✔ --font-disp-* — свой @theme перед основным (21.3795ms)
+  ✖ --font-displ-* — поздний @theme (21.8686ms)
+  ✖ --font-displ-* — поздний @theme inline (25.392ms)
+  ✖ --font-displ-* — поздний @theme static (23.3778ms)
+  ✖ --font-displ-* — поздний @theme reference (21.2395ms)
+  ✖ --font-displ-* — поздний @theme default (20.9181ms)
+  ✖ --font-displ-* — основной @theme, после --font-display (21.3722ms)
+  ✔ --font-displ-* — основной @theme, в начале (21.9081ms)
+  ✔ --font-displ-* — свой @theme перед основным (23.5111ms)
+  ✖ --font-displa-* — поздний @theme (21.657ms)
+  ✖ --font-displa-* — поздний @theme inline (21.6444ms)
+  ✖ --font-displa-* — поздний @theme static (21.0475ms)
+  ✖ --font-displa-* — поздний @theme reference (24.8648ms)
+  ✖ --font-displa-* — поздний @theme default (21.6575ms)
+  ✖ --font-displa-* — основной @theme, после --font-display (21.9879ms)
+  ✔ --font-displa-* — основной @theme, в начале (21.6108ms)
+  ✔ --font-displa-* — свой @theme перед основным (21.3682ms)
+  ✖ --font-display-* — поздний @theme (24.6386ms)
+  ✖ --font-display-* — поздний @theme inline (22.7541ms)
+  ✖ --font-display-* — поздний @theme static (21.412ms)
+  ✖ --font-display-* — поздний @theme reference (22.0977ms)
+  ✖ --font-display-* — поздний @theme default (22.8426ms)
+  ✖ --font-display-* — основной @theme, после --font-display (24.8836ms)
+  ✔ --font-display-* — основной @theme, в начале (21.1656ms)
+  ✔ --font-display-* — свой @theme перед основным (20.7249ms)
+  ✔ --* — поздний @theme (20.1205ms)
+  ✔ --* — поздний @theme inline (19.5971ms)
+  ✔ --* — поздний @theme static (23.1951ms)
+  ✖ --* — поздний @theme reference (21.7934ms)
+  ✖ --* — поздний @theme default (20.6666ms)
+  ✔ --* — основной @theme, после --font-display (20.2651ms)
+  ✔ --* — основной @theme, в начале (28.6291ms)
+  ✔ --* — свой @theme перед основным (24.4068ms)
+  ✔ --color-* — поздний @theme (24.1675ms)
+  ✔ --color-* — поздний @theme inline (20.1606ms)
+  ✔ --color-* — поздний @theme static (20.1173ms)
+  ✔ --color-* — поздний @theme reference (19.9332ms)
+  ✔ --color-* — поздний @theme default (19.9885ms)
+  ✔ --color-* — основной @theme, после --font-display (25.458ms)
+  ✔ --color-* — основной @theme, в начале (21.8486ms)
+  ✔ --color-* — свой @theme перед основным (20.9498ms)
+  ✔ --fonts-* — поздний @theme (21.5981ms)
+  ✔ --fonts-* — поздний @theme inline (24.7618ms)
+  ✔ --fonts-* — поздний @theme static (21.1066ms)
+  ✔ --fonts-* — поздний @theme reference (24.8139ms)
+  ✔ --fonts-* — поздний @theme default (23.3897ms)
+  ✔ --fonts-* — основной @theme, после --font-display (28.3204ms)
+  ✔ --fonts-* — основной @theme, в начале (27.8207ms)
+  ✔ --fonts-* — свой @theme перед основным (29.9712ms)
+  ✔ --font-displayx-* — поздний @theme (27.5646ms)
+  ✔ --font-displayx-* — поздний @theme inline (26.5557ms)
+  ✔ --font-displayx-* — поздний @theme static (28.3438ms)
+  ✔ --font-displayx-* — поздний @theme reference (23.464ms)
+  ✔ --font-displayx-* — поздний @theme default (26.9589ms)
+  ✔ --font-displayx-* — основной @theme, после --font-display (30.9261ms)
+  ✔ --font-displayx-* — основной @theme, в начале (30.0965ms)
+  ✔ --font-displayx-* — свой @theme перед основным (26.0565ms)
+  ✔ --font-sans-* — поздний @theme (28.8739ms)
+  ✔ --font-sans-* — поздний @theme inline (28.1037ms)
+  ✔ --font-sans-* — поздний @theme static (21.8935ms)
+  ✔ --font-sans-* — поздний @theme reference (21.0879ms)
+  ✔ --font-sans-* — поздний @theme default (23.9959ms)
+  ✔ --font-sans-* — основной @theme, после --font-display (29.1494ms)
+  ✔ --font-sans-* — основной @theme, в начале (23.9997ms)
+  ✔ --font-sans-* — свой @theme перед основным (20.34ms)
+✖ R5-SVERKA-1: сброс пространства темы — судья отказывает ровно тогда, когда Tailwind сайта снимает --font-display (3423.0514ms)
+▶ R5-SVERKA-5: хвост списка --font-display, который CSS не читает, — отказ; законный — сверено
+  ✖ отказ: 'Bodoni Moda',, serif (13.6817ms)
+  ✖ отказ: 'Bodoni Moda', 'Public Sans' 'X' (13.6356ms)
+  ✖ отказ: 'Bodoni Moda', 10px (13.5399ms)
+  ✖ отказ: 'Bodoni Moda', serif, (13.7775ms)
+  ✖ отказ: 'Bodoni Moda', initial (13.7714ms)
+  ✖ отказ: 'Bodoni Moda', "x" y (16.5907ms)
+  ✖ отказ: 'Bodoni Moda', 3d (14.0402ms)
+  ✔ сверено: 'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif (14.1705ms)
+  ✔ сверено: 'Bodoni Moda', Times New Roman, serif (14.3948ms)
+  ✔ сверено: "Bodoni Moda", serif (18.5321ms)
+  ✔ сверено: 'Bodoni Moda' (16.334ms)
+✖ R5-SVERKA-5: хвост списка --font-display, который CSS не читает, — отказ; законный — сверено (164.0211ms)
+▶ R5-SVERKA-3: своя @font-face с продолжением строки в имени гарнитуры или экранированием в имени правила — отказ
+  ✖ продолжение строки в имени (14.47ms)
+  ✖ @font-f\61 ce (14.6413ms)
+  ✖ @\66ont-face (15.7659ms)
+✖ R5-SVERKA-3: своя @font-face с продолжением строки в имени гарнитуры или экранированием в имени правила — отказ (45.6445ms)
+▶ R5-SVERKA-2: @property токена знака с экранированием в имени — отказ
+  ✖ --acc\65nt (14.7221ms)
+  ✖ @prop\65rty --accent (19.13ms)
+✖ R5-SVERKA-2: @property токена знака с экранированием в имени — отказ (34.559ms)
+▶ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property
+  ✔ экранированный пробел в имени своей @font-face (14.9371ms)
+  ✔ --font-display в двойных кавычках (13.3805ms)
+  ✔ @property --font-display (15.7263ms)
+  ✔ @PROPERTY прописными (14.6589ms)
+✔ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (59.4759ms)
+▶ R5-SVERKA-7: своя @font-face другой гарнитуры, в имени которой есть «Bodoni Moda», — сверено
+  ✖ 'Bodoni Moda Fallback' (14.2501ms)
+  ✖ Bodoni Moda SC без кавычек (15.1885ms)
+✖ R5-SVERKA-7: своя @font-face другой гарнитуры, в имени которой есть «Bodoni Moda», — сверено (30.014ms)
+ℹ tests 172
+ℹ suites 0
+ℹ pass 77
+ℹ fail 95
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 4047.9242
+
+✖ failing tests:
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — поздний @theme (35.42ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — поздний @theme inline (24.4412ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — поздний @theme static (27.684ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — поздний @theme reference (25.8009ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — поздний @theme default (23.5769ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ ---* — основной @theme, после --font-display (23.8097ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — поздний @theme (27.3215ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — поздний @theme inline (22.6224ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — поздний @theme static (25.3479ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — поздний @theme reference (22.6803ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — поздний @theme default (24.4382ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --f-* — основной @theme, после --font-display (25.9317ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — поздний @theme (22.2832ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — поздний @theme inline (26.2416ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — поздний @theme static (26.3794ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — поздний @theme reference (21.7564ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — поздний @theme default (23.7694ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fo-* — основной @theme, после --font-display (23.1994ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — поздний @theme (22.1221ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — поздний @theme inline (23.0301ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — поздний @theme static (24.4443ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — поздний @theme reference (24.8707ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — поздний @theme default (22.9697ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --fon-* — основной @theme, после --font-display (22.3874ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-* — поздний @theme reference (23.2855ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-* — поздний @theme default (26.1225ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — поздний @theme (21.3041ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — поздний @theme inline (25.5994ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — поздний @theme static (23.6944ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — поздний @theme reference (22.5118ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — поздний @theme default (20.9975ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font--* — основной @theme, после --font-display (20.8344ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — поздний @theme (22.3391ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — поздний @theme inline (21.7954ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — поздний @theme static (21.3036ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — поздний @theme reference (23.1276ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — поздний @theme default (24.1132ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-d-* — основной @theme, после --font-display (22.3676ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — поздний @theme (24.4197ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — поздний @theme inline (21.8783ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — поздний @theme static (21.2703ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — поздний @theme reference (21.9858ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — поздний @theme default (21.1735ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-di-* — основной @theme, после --font-display (26.6394ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — поздний @theme (20.8859ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — поздний @theme inline (23.6985ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — поздний @theme static (25.2114ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — поздний @theme reference (20.6055ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — поздний @theme default (20.6792ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-dis-* — основной @theme, после --font-display (20.9715ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — поздний @theme (21.3979ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — поздний @theme inline (20.5891ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — поздний @theme static (22.2264ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — поздний @theme reference (21.1959ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — поздний @theme default (23.7005ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-disp-* — основной @theme, после --font-display (20.6617ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — поздний @theme (21.8686ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — поздний @theme inline (25.392ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — поздний @theme static (23.3778ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — поздний @theme reference (21.2395ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — поздний @theme default (20.9181ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displ-* — основной @theme, после --font-display (21.3722ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — поздний @theme (21.657ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — поздний @theme inline (21.6444ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — поздний @theme static (21.0475ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — поздний @theme reference (24.8648ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — поздний @theme default (21.6575ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-displa-* — основной @theme, после --font-display (21.9879ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — поздний @theme (24.6386ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — поздний @theme inline (22.7541ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — поздний @theme static (21.412ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — поздний @theme reference (22.0977ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — поздний @theme default (22.8426ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --font-display-* — основной @theme, после --font-display (24.8836ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --* — поздний @theme reference (21.7934ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:227:15
+✖ --* — поздний @theme default (20.6666ms)
+  AssertionError [ERR_ASSERTION]: Tailwind снимает --font-display, а судья сверил: —
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:233:16)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:227:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda',, serif (13.6817ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', 'Public Sans' 'X' (13.6356ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', 10px (13.5399ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', serif, (13.7775ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', initial (13.7714ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', "x" y (16.5907ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:250:35
+✖ отказ: 'Bodoni Moda', 3d (14.0402ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «список --font-display не читается», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:67)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:250:27)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:263:13
+✖ продолжение строки в имени (14.47ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:266:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:263:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:263:13
+✖ @font-f\61 ce (14.6413ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:266:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:263:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:263:13
+✖ @\66ont-face (15.7659ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «своя @font-face», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:266:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:263:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:276:13
+✖ --acc\65nt (14.7221ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «зарегистрирован @property», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:279:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:276:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:276:13
+✖ @prop\65rty --accent (19.13ms)
+  AssertionError [ERR_ASSERTION]: ждали отказ «зарегистрирован @property», факт — сверено
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:43:10)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:279:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:276:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:303:13
+✖ 'Bodoni Moda Fallback' (14.2501ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:42:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:306:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:303:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\znak.test.mjs:303:13
+✖ Bodoni Moda SC без кавычек (15.1885ms)
+  AssertionError [ERR_ASSERTION]: ждали «сверено», факт — отказ: гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы
+  + actual - expected
+  
+  + [
+  +   "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы"
+  + ]
+  - []
+  
+      at sudit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:42:37)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:306:7)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/znak.test.mjs:303:5)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ "гарнитура: в global.css своя @font-face для 'Bodoni Moda' (1) — она подменит файл темы, а контуры знака считаются из файла темы" ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

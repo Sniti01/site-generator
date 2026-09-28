@@ -1,0 +1,36 @@
+== мутация: R5-SVERKA-4 (а): экранирование прочим знаком не раскрывается
+   подтест «экранированный пробел в имени своей @font-face»: УПАЛ (красный); код node 1
+   ✖ экранированный пробел в имени своей @font-face (32.4152ms)
+   ✔ --font-display в двойных кавычках (30.1894ms)
+   ✔ @property --font-display (27.7301ms)
+   ✔ @PROPERTY прописными (27.0559ms)
+   ✖ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (118.7503ms)
+   ✖ failing tests:
+   ✖ экранированный пробел в имени своей @font-face (32.4152ms)
+== мутация: R5-SVERKA-4 (б): обратная ссылка кавычек — только одинарные
+   подтест «--font-display в двойных кавычках»: УПАЛ (красный); код node 1
+   ✔ экранированный пробел в имени своей @font-face (35.0876ms)
+   ✖ --font-display в двойных кавычках (16.9871ms)
+   ✔ @property --font-display (28.719ms)
+   ✔ @PROPERTY прописными (29.1645ms)
+   ✖ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (111.1707ms)
+   ✖ failing tests:
+   ✖ --font-display в двойных кавычках (16.9871ms)
+== мутация: R5-SVERKA-4 (в): @property --font-display не судится
+   подтест «@property --font-display»: УПАЛ (красный); код node 1
+   ✔ экранированный пробел в имени своей @font-face (33.1177ms)
+   ✔ --font-display в двойных кавычках (26.2306ms)
+   ✖ @property --font-display (31.4371ms)
+   ✔ @PROPERTY прописными (27.0796ms)
+   ✖ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (119.185ms)
+   ✖ failing tests:
+   ✖ @property --font-display (31.4371ms)
+== мутация: R5-SVERKA-4 (г): имя @property с учётом регистра
+   подтест «@PROPERTY прописными»: УПАЛ (красный); код node 1
+   ✔ экранированный пробел в имени своей @font-face (33.3456ms)
+   ✔ --font-display в двойных кавычках (24.4878ms)
+   ✔ @property --font-display (29.1509ms)
+   ✖ @PROPERTY прописными (31.2608ms)
+   ✖ R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property (120.1605ms)
+   ✖ failing tests:
+   ✖ @PROPERTY прописными (31.2608ms)

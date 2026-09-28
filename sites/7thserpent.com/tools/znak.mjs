@@ -35,8 +35,19 @@
  *        регистр, кавычки, пробелы, экранирование), а `--font-display` объявлен
  *        только в верхнем `@theme` (голом, `inline` или `static`; `@theme reference`
  *        в CSS не выходит), первым в списке стоит ровно 'Bodoni Moda' (за ним —
- *        запятая или конец), сброса `--font-*` или `--*` после него в `@theme` нет
- *        и `@property --font-display` нет; файл контуров — woff из `@font-face`
+ *        запятая или конец), весь список читается как `font-family` (строка или
+ *        имена через запятую, без пустых элементов, чисел и CSS-wide keywords —
+ *        R5-SVERKA-5), сброса `--font-*` или `--*` после него в `@theme` нет
+ *        и `@property --font-display` нет; ПОСЛЕДНЕЕ СЛОВО — самому Tailwind сайта:
+ *        `compile()` пакета сайта без сети по `global.css` с его импортами обязан
+ *        вывести на страницу `--font-display` с 'Bodoni Moda' первым — так судятся
+ *        сбросы любым префиксом ключа (`--f-*`, `---*`, `--font-display-*`), в любом
+ *        виде `@theme` (и `reference`, и `default`) и в импортированных листах
+ *        (R5-SVERKA-1; лист, который модель уже отвергла, Tailwind не судит); своя
+ *        `@font-face` — с раскрытым экранированием в имени правила и гарнитуры
+ *        (и продолжение строки) и ровно 'Bodoni Moda', а не имя, которое его
+ *        содержит (R5-SVERKA-3, -7); имя `@property` — с раскрытым экранированием
+ *        (R5-SVERKA-2); файл контуров — woff из `@font-face`
  *        листа гарнитуры (normal, 600); контур каждой надписи равен пересчёту
  *        из него по `size`, `track`, `x`, `y`;
  *     3) файлы: иконочных имён в `public/` (`favicon*`, `icon-*`,
@@ -58,7 +69,8 @@
  * эскиз A), ссылки иконок в `<head>` собранной страницы и запросы браузера,
  * подписи ссылки знака и картинки подвала против видимого имени. Листы,
  * которые `global.css` импортирует (ядро, `tailwindcss`, `@fontsource`), сверка
- * не читает: переопределение токена там видит только судья в браузере
+ * для красок не читает (гарнитуру на странице — читает, через Tailwind сайта,
+ * R5-SVERKA-1): переопределение токена там видит только судья в браузере
  * (краска частей знака = литералы иконки). Разбор — модель CSS, а не CSS:
  * то, что он понимает, он судит строго, а для форм, которых не знает сегодня,
  * последний судья — вычисленные краски на собранной странице (`wiernosc.mjs`).
@@ -76,7 +88,14 @@
  *
  * ПРЕДЕЛЫ (названы): контуры считает `fontkitten` — зависимость Astro, а не
  * сайта; пропадёт из дерева — инструмент не запустится ни в каком режиме
- * (ошибка импорта Node, а не отказ сверки). Кернинга у контуров нет (fontkitten
+ * (ошибка импорта Node, а не отказ сверки). Гарнитуру на странице судит
+ * `compile()` пакета `tailwindcss` сайта (его API, версия — по lock): смена
+ * поведения Tailwind меняет вердикт вместе со страницей — это и нужно. Запас
+ * в безопасную сторону (ложный отказ, R5-SVERKA-7): пробелы в имени своей
+ * `@font-face` сводятся и в кавычках (`'bodoni   moda'` — отказ, хотя для CSS это
+ * другая гарнитура); имя из `--` в списке `--font-display` не читается; не-ASCII
+ * принимается только в именах custom property; `@theme default` у основного
+ * `--font-display` — отказ «вне верхнего @theme», хотя Tailwind его выводит. Кернинга у контуров нет (fontkitten
  * без раскладки) — ни у эскиза, ни у пересчёта: проверка 2 ловит дрейф данных
  * от гарнитуры, а не ошибку способа. Контуры пересчитывает и помощник эскиза
  * `docs/reports/2026-09-24-7thserpent-znak/instrumenty/glify.mjs`; новый контур —
@@ -92,13 +111,16 @@
  */
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, lstatSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { dirname, join } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const siteRoot = dirname(dirname(fileURLToPath(import.meta.url)));
 const require = createRequire(join(siteRoot, 'package.json'));
 const sharp = require('sharp');
 const fk = await import(pathToFileURL(require.resolve('fontkitten')).href);
+// Tailwind сайта — оракул гарнитуры на странице (R5-SVERKA-1).
+const twModul = await import(pathToFileURL(require.resolve('tailwindcss')).href);
+const twCompile = twModul.compile ?? twModul.default?.compile;
 
 export const IMPORT_GARNITURY = '@fontsource/bodoni-moda/latin-600.css';
 const IKONOCHNY = /^(favicon|icon-|apple-touch-icon)|\.webmanifest$/;
@@ -211,6 +233,81 @@ function kraska(dekl, imie, gdzie, bledy) {
   return rozne[0];
 }
 
+/**
+ * Экранирование CSS раскрыто, как читает браузер (CSS Syntax, «consume an escaped code point»): `\` + 1–6 hex
+ * (+ один пробельный) — знак (0, суррогат и больше U+10FFFF — U+FFFD); `\` + перевод строки — ничего
+ * (продолжение строки в строке CSS); `\` + прочий знак — сам знак (R5-SVERKA-2, -3).
+ */
+export const razekranirovat = (s) =>
+  String(s).replace(/\\(?:([0-9a-fA-F]{1,6})(?:\r\n|[ \t\n\r\f])?|(\r\n|[\n\r\f])|([\s\S]))/g, (_, h, nl, c) => {
+    if (h) {
+      const n = parseInt(h, 16);
+      return n === 0 || n > 0x10ffff || (n >= 0xd800 && n <= 0xdfff) ? '�' : String.fromCodePoint(n);
+    }
+    return nl ? '' : c ?? '';
+  });
+
+const CSS_SHIROKIE = new Set(['initial', 'inherit', 'unset', 'revert', 'revert-layer', 'default']);
+const IDENT = /^-?(?:[a-zA-Z_\u0080-￿]|\\[0-9a-fA-F]{1,6}[ \t\n\r\f]?|\\[^\n\r\f0-9a-fA-F])(?:[-\w\u0080-￿]|\\[0-9a-fA-F]{1,6}[ \t\n\r\f]?|\\[^\n\r\f0-9a-fA-F])*/;
+/**
+ * Читается ли значение как `font-family` (R5-SVERKA-5): элементы через запятую, каждый — ровно одна строка или
+ * одно и больше имён (`<family-name> = <string> | <custom-ident>+`), без CSS-wide keywords и `default`; пустой
+ * элемент, две строки подряд, число, функция — не читается.
+ */
+export function spisokGarniturChitaetsya(v) {
+  const s = String(v).trim();
+  const elementy = [[]];
+  for (let i = 0; i < s.length; ) {
+    if (/\s/.test(s[i])) {
+      i++;
+      continue;
+    }
+    if (s[i] === ',') {
+      elementy.push([]);
+      i++;
+      continue;
+    }
+    if (s[i] === '"' || s[i] === "'") {
+      let j = i + 1;
+      while (j < s.length && s[j] !== s[i]) j += s[j] === '\\' ? 2 : 1;
+      if (j >= s.length) return false;
+      elementy.at(-1).push({ stroka: true });
+      i = j + 1;
+      continue;
+    }
+    const m = IDENT.exec(s.slice(i));
+    if (!m) return false;
+    elementy.at(-1).push({ stroka: false, imya: razekranirovat(m[0]).toLowerCase() });
+    i += m[0].length;
+  }
+  return elementy.every((e) => e.length > 0 && ((e.length === 1 && e[0].stroka) || e.every((x) => !x.stroka && !CSS_SHIROKIE.has(x.imya))));
+}
+
+/**
+ * Значения `--font-display`, которые Tailwind сайта выводит на страницу по этому листу `global.css`
+ * (`compile()` пакета сайта; импорты — из `node_modules` и ядра, без сети; R5-SVERKA-1).
+ */
+async function fontDisplayTailwind(css) {
+  const cssPut = join(siteRoot, 'src/styles/global.css');
+  const twPapka = dirname(require.resolve('tailwindcss/package.json'));
+  const nayti = (id, base) => {
+    if (id.startsWith('.') || id.startsWith('/')) return resolve(base, id);
+    if (id === 'tailwindcss') return join(twPapka, 'index.css');
+    if (id.startsWith('tailwindcss/')) return join(twPapka, id.slice('tailwindcss/'.length));
+    return createRequire(join(base, 'x.js')).resolve(id);
+  };
+  const c = await twCompile(css, {
+    base: dirname(cssPut),
+    from: cssPut,
+    loadStylesheet: async (id, base) => {
+      const f = nayti(id, base);
+      return { path: f, base: dirname(f), content: readFileSync(f, 'utf8') };
+    },
+    onDependency: () => {},
+  });
+  return [...c.build([]).matchAll(/--font-display\s*:\s*([^;}]*)[;}]/g)].map((m) => m[1].trim());
+}
+
 // ── Рисунки и файлы ──────────────────────────────────────────────────────
 function ikonaSvg(ik, farba) {
   const s = ik.siatka;
@@ -309,15 +406,18 @@ export async function sverka(w) {
   const vlozhennye = [];
   const svoiFontFace = [];
   const property = [];
-  // Имя гарнитуры — как его читает CSS: экранирование раскрыто, кавычки сняты,
-  // пробелы сведены, регистр не важен (R4-SVERKA-3).
-  const imyaGarnitury = (v) => v.replace(/\\([0-9a-f]{1,6})\s?/gi, (_, h) => String.fromCodePoint(parseInt(h, 16))).replace(/\\(.)/g, '$1').replace(/["']/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
+  // Имя гарнитуры — как его читает CSS: экранирование раскрыто (и продолжение строки, R5-SVERKA-3), кавычки сняты,
+  // пробелы сведены, регистр не важен (R4-SVERKA-3); своя гарнитура — ровно 'bodoni moda', а не имя, которое его
+  // только содержит (метрическая замена 'Bodoni Moda Fallback' законна, R5-SVERKA-7).
+  const imyaGarnitury = (v) => razekranirovat(v).replace(/["']/g, '').replace(/\s+/g, ' ').trim().toLowerCase();
   const iskat = (lista) => {
     for (const u of lista) {
-      if (!u.oper && /^@font-face$/i.test(u.prelude) && (u.decls ?? []).some((d) => d.imie.toLowerCase() === 'font-family' && imyaGarnitury(d.wartosc).includes('bodoni moda'))) svoiFontFace.push(u.prelude);
+      // Имя правила — с раскрытым экранированием: `@font-f\61 ce` — это @font-face (R5-SVERKA-3).
+      const prelude = razekranirovat(u.prelude ?? '').trim();
+      if (!u.oper && /^@font-face$/i.test(prelude) && (u.decls ?? []).some((d) => d.imie.toLowerCase() === 'font-family' && imyaGarnitury(d.wartosc) === 'bodoni moda')) svoiFontFace.push(u.prelude);
       // @property у токена знака меняет его на странице (наследование, синтаксис,
-      // начальное значение) — R4-SVERKA-2.
-      const pr = /^@property\s+--([-\w\u0080-￿]+)$/i.exec(u.prelude);
+      // начальное значение) — R4-SVERKA-2; имя — с раскрытым экранированием (R5-SVERKA-2).
+      const pr = /^@property\s+--([-\w\u0080-￿]+)$/i.exec(prelude);
       if (pr && (imenaKrasok.has(pr[1]) || pr[1] === 'font-display')) property.push(`--${pr[1]}`);
       for (const c of u.children ?? []) if (c.oper && c.prelude.includes('bodoni-moda')) vlozhennye.push(`${u.prelude} { ${c.prelude} }`);
       iskat(u.children ?? []);
@@ -329,14 +429,33 @@ export async function sverka(w) {
   if (property.length) bledy.push(`краска: токен ${property.join(', ')} зарегистрирован @property — наследование, синтаксис и начальное значение меняют его на странице, иконки этого не знают`);
   const fd = dekl.filter((d) => d.imie === 'font-display');
   const fdTheme = fd.filter((d) => d.gde === '@theme');
-  // Список гарнитур начинается ровно с 'Bodoni Moda' — за ним запятая или конец (R4-SVERKA-8).
+  // Список гарнитур начинается ровно с 'Bodoni Moda' — за ним запятая или конец (R4-SVERKA-8), и весь список
+  // читается как font-family (R5-SVERKA-5: недействительный список через var() на странице отбрасывается).
   if (!fdTheme.length || !fdTheme.every((d) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(d.wartosc))) bledy.push(`гарнитура: --font-display в верхнем @theme не начинается с 'Bodoni Moda' (${fdTheme.length ? fdTheme.map((d) => d.wartosc).join(' | ') : 'нет'})`);
+  else {
+    const nechitaemye = fdTheme.filter((d) => !spisokGarniturChitaetsya(d.wartosc));
+    if (nechitaemye.length) bledy.push(`гарнитура: список --font-display не читается как font-family (${nechitaemye.map((d) => d.wartosc).join(' | ')}) — на странице гарнитура заголовков падает на наследуемую`);
+  }
   if (fd.some((d) => d.gde !== '@theme')) bledy.push(`гарнитура: --font-display объявлен вне верхнего @theme (${fd.filter((d) => d.gde !== '@theme').map((d) => d.gde).join(', ')})`);
   // Сброс пространства имён в @theme после --font-display его убирает (R4-SVERKA-9);
   // сброс до него и сброс чужого пространства — законная идиома Tailwind.
   const poFd = dekl.findIndex((d) => d.imie === 'font-display' && d.gde === '@theme');
   const sbrosy = dekl.map((d, k) => ({ ...d, k })).filter((d) => d.gde === '@theme' && (d.imie === '*' || d.imie === 'font-*') && d.k > poFd && poFd >= 0);
   if (sbrosy.length) bledy.push(`гарнитура: сброс --${sbrosy[0].imie}: initial в @theme стоит после --font-display — Tailwind уберёт его из CSS страницы`);
+  // Последнее слово — самому Tailwind сайта (R5-SVERKA-1): сброс пространства темы убирает всякий ключ, который
+  // начинается его префиксом (`--f-*`, `---*`, `--font-display-*`), в любом виде @theme (и reference, и default),
+  // и в листах, которые global.css импортирует. Модель выше этого не знает — судья спрашивает `compile()` Tailwind
+  // сайта без сети, что выйдет на страницу. Лист, который модель уже отвергла, Tailwind не судит.
+  if (!bledy.some((b) => /^(лист:|гарнитура: (--font-display|сброс|список))/.test(b))) {
+    try {
+      const naStranice = await fontDisplayTailwind(w.css);
+      if (!naStranice.length || !naStranice.every((v) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(v))) {
+        bledy.push(`гарнитура: Tailwind сайта не выводит на страницу --font-display с 'Bodoni Moda' первым (выводит: ${naStranice.join(' | ') || 'ничего'}) — сброс пространства темы или вид @theme убрал гарнитуру знака`);
+      }
+    } catch (e) {
+      bledy.push(`гарнитура: Tailwind сайта не собрал global.css (${String(e.message).split('\n')[0]}) — гарнитуру на странице судить нечем`);
+    }
+  }
   const napisy = w.znak.shapka.napisy ?? [];
   if (!napisy.length) bledy.push('надписи: у знака нет надписей — имя знака не нарисовано');
   if (!w.fontBuf) bledy.push(`гарнитура: в ${IMPORT_GARNITURY} нет @font-face normal 600 с woff`);

@@ -9,7 +9,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { createRequire } from 'node:module';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { sverka, wejscie, ico, SYG_PNG, IMPORT_GARNITURY } from '../znak.mjs';
 
 const SAYT = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
@@ -176,6 +176,136 @@ test('пробы прежнего --selftest (сессия 11) — тестам�
     await t.test(nazwa, async () => {
       const { bledy } = await sverka(mut(czyste()));
       sudit(bledy, zhdem);
+    });
+  }
+});
+
+// ── Часть 2. Строки таблицы «Пределы после раунда 5» доклада сессии 11 о `znak.mjs` (П104 блок Г) ─────────────
+// Оракул R5-SVERKA-1 — сам Tailwind сайта: `compile()` без сети по `global.css` с импортами из node_modules (замер
+// сессии 20, бэклог 69 п. 1). Судья обязан отказать ⇔ на странице нет `--font-display` с 'Bodoni Moda' первым.
+const twReq = createRequire(join(SAYT, 'package.json'));
+const tw = await import(pathToFileURL(twReq.resolve('tailwindcss')).href);
+const twCompile = tw.compile ?? tw.default?.compile;
+const TW_PAPKA = dirname(twReq.resolve('tailwindcss/package.json'));
+const CSS_PUT = join(SAYT, 'src/styles/global.css');
+const naytiList = (id, base) => {
+  if (id.startsWith('.') || id.startsWith('/')) return resolve(base, id);
+  if (id === 'tailwindcss') return join(TW_PAPKA, 'index.css');
+  if (id.startsWith('tailwindcss/')) return join(TW_PAPKA, id.slice('tailwindcss/'.length));
+  return createRequire(join(base, 'x.js')).resolve(id);
+};
+/** Значения `--font-display`, которые Tailwind сайта выводит на страницу по этому листу. */
+async function fontDisplayNaStranice(css) {
+  const c = await twCompile(css, {
+    base: dirname(CSS_PUT),
+    from: CSS_PUT,
+    loadStylesheet: async (id, base) => {
+      const f = naytiList(id, base);
+      return { path: f, base: dirname(f), content: readFileSync(f, 'utf8') };
+    },
+    onDependency: () => {},
+  });
+  return [...c.build([]).matchAll(/--font-display\s*:\s*([^;}]*)[;}]/g)].map((m) => m[1].trim());
+}
+const bodoniPervoy = (vse) => vse.length > 0 && vse.every((v) => /^(['"])Bodoni Moda\1\s*(,|$)/.test(v));
+const otkazGarnitury = (bledy) => bledy.some((b) => b.startsWith('гарнитура'));
+
+test('R5-SVERKA-1: сброс пространства темы — судья отказывает ровно тогда, когда Tailwind сайта снимает --font-display', async (t) => {
+  assert.ok(bodoniPervoy(await fontDisplayNaStranice(baza.css)), 'оракул: на чистом листе --font-display с Бодони первым');
+  const FD = '--font-display';
+  const klyuchi = [];
+  for (let n = 2; n <= FD.length; n++) klyuchi.push(`${FD.slice(0, n)}-*`);
+  klyuchi.push('--*', '--color-*', '--fonts-*', '--font-displayx-*', '--font-sans-*');
+  const mesta = [
+    ...['', ' inline', ' static', ' reference', ' default'].map((vid) => [`поздний @theme${vid}`, (css, k) => `${css}\n@theme${vid} { ${k}: initial; }`]),
+    ['основной @theme, после --font-display', (css, k) => css.replace(/(\n\s*--font-display:[^;]*;)/, `$1\n  ${k}: initial;`)],
+    ['основной @theme, в начале', (css, k) => css.replace('\n@theme {', `\n@theme {\n  ${k}: initial;`)],
+    ['свой @theme перед основным', (css, k) => css.replace('\n@theme {', `\n@theme { ${k}: initial; }\n@theme {`)],
+  ];
+  for (const k of klyuchi) {
+    for (const [gde, mut] of mesta) {
+      await t.test(`${k} — ${gde}`, async () => {
+        const w = czyste();
+        w.css = mut(w.css, k);
+        assert.notEqual(w.css, baza.css, 'порча не применилась');
+        const snyal = !bodoniPervoy(await fontDisplayNaStranice(w.css));
+        const { bledy } = await sverka(w);
+        assert.equal(otkazGarnitury(bledy), snyal, `Tailwind ${snyal ? 'снимает' : 'оставляет'} --font-display, а судья ${otkazGarnitury(bledy) ? 'отказал' : 'сверил'}: ${bledy.join(' | ') || '—'}`);
+      });
+    }
+  }
+});
+
+// R5-SVERKA-5: судился только первый элемент списка --font-display. Список, который CSS не читает (font-family
+// недействителен — значение var() на странице отбрасывается), — отказ; законные списки — сверено. Доказательство
+// «не читается» — спецификация (<family-name> = <string> | <custom-ident>+, CSS-wide keywords не custom-ident) и
+// lightningcss сайта (недействительный список он оставляет как есть, действительный — перепечатывает).
+const SPISOK_ZAMENA = (v) => (w) => {
+  w.css = w.css.replace(/--font-display:[^;]*;/, `--font-display: ${v};`);
+  return w;
+};
+test('R5-SVERKA-5: хвост списка --font-display, который CSS не читает, — отказ; законный — сверено', async (t) => {
+  const PLOHIE = ["'Bodoni Moda',, serif", "'Bodoni Moda', 'Public Sans' 'X'", "'Bodoni Moda', 10px", "'Bodoni Moda', serif,", "'Bodoni Moda', initial", "'Bodoni Moda', \"x\" y", "'Bodoni Moda', 3d"];
+  const ZAKONNYE = ["'Bodoni Moda', ui-serif, Georgia, 'Times New Roman', serif", "'Bodoni Moda', Times New Roman, serif", '"Bodoni Moda", serif', "'Bodoni Moda'"];
+  for (const v of PLOHIE) await t.test(`отказ: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, 'список --font-display не читается'));
+  for (const v of ZAKONNYE) await t.test(`сверено: ${v}`, async () => sudit((await sverka(SPISOK_ZAMENA(v)(czyste()))).bledy, null));
+});
+
+// R5-SVERKA-3, R5-SVERKA-2: имена сравнивались без раскрытия экранирования CSS (продолжение строки в имени
+// гарнитуры, экранирование в имени правила и в имени @property).
+test('R5-SVERKA-3: своя @font-face с продолжением строки в имени гарнитуры или экранированием в имени правила — отказ', async (t) => {
+  const SLUCHAI = [
+    ['продолжение строки в имени', "\n@font-face { font-family: 'Bodoni \\\nModa'; src: url(x.woff2); }"],
+    ['@font-f\\61 ce', "\n@font-f\\61 ce { font-family: 'Bodoni Moda'; src: url(x.woff2); }"],
+    ['@\\66ont-face', "\n@\\66ont-face { font-family: 'Bodoni Moda'; src: url(x.woff2); }"],
+  ];
+  for (const [imya, css] of SLUCHAI) {
+    await t.test(imya, async () => {
+      const w = czyste();
+      w.css += css;
+      sudit((await sverka(w)).bledy, 'своя @font-face');
+    });
+  }
+});
+test('R5-SVERKA-2: @property токена знака с экранированием в имени — отказ', async (t) => {
+  const SLUCHAI = [
+    ['--acc\\65nt', "\n@property --acc\\65nt { syntax: '<color>'; inherits: false; initial-value: #ff0000; }"],
+    ['@prop\\65rty --accent', "\n@prop\\65rty --accent { syntax: '<color>'; inherits: false; initial-value: #ff0000; }"],
+  ];
+  for (const [imya, css] of SLUCHAI) {
+    await t.test(imya, async () => {
+      const w = czyste();
+      w.css += css;
+      sudit((await sverka(w)).bledy, 'зарегистрирован @property');
+    });
+  }
+});
+
+// R5-SVERKA-4: ветви без своей пробы (краснота — мутацией ветви, журнал доклада).
+test('R5-SVERKA-4: ветви без пробы — экранированный пробел в имени, двойные кавычки, @property --font-display, регистр @property', async (t) => {
+  const SLUCHAI = [
+    ['экранированный пробел в имени своей @font-face', (w) => { w.css += "\n@font-face { font-family: Bodoni\\ Moda; src: url(x.woff2); }"; return w; }, 'своя @font-face'],
+    ['--font-display в двойных кавычках', SPISOK_ZAMENA('"Bodoni Moda", ui-serif, Georgia, serif'), null],
+    // Tailwind для @property выводит запасное `--font-display: initial` на все элементы (браузеры без @property) —
+    // оракул видит и это: два отказа законны.
+    ['@property --font-display', (w) => { w.css += "\n@property --font-display { syntax: '*'; inherits: true; }"; return w; }, ['зарегистрирован @property', 'Tailwind сайта не выводит']],
+    ['@PROPERTY прописными', (w) => { w.css += "\n@PROPERTY --accent { syntax: '<color>'; inherits: false; initial-value: #ff0000; }"; return w; }, 'зарегистрирован @property'],
+  ];
+  for (const [imya, mut, zhdem] of SLUCHAI) await t.test(imya, async () => sudit((await sverka(mut(czyste()))).bledy, zhdem));
+});
+
+// R5-SVERKA-7: модель с запасом давала ложный отказ — своя @font-face гарнитуры, имя которой только содержит
+// «bodoni moda» (метрическая замена под другим именем), — законна.
+test('R5-SVERKA-7: своя @font-face другой гарнитуры, в имени которой есть «Bodoni Moda», — сверено', async (t) => {
+  const SLUCHAI = [
+    ["'Bodoni Moda Fallback'", "\n@font-face { font-family: 'Bodoni Moda Fallback'; src: local('Georgia'); size-adjust: 104%; }"],
+    ['Bodoni Moda SC без кавычек', '\n@font-face { font-family: Bodoni Moda SC; src: url(x.woff2); }'],
+  ];
+  for (const [imya, css] of SLUCHAI) {
+    await t.test(imya, async () => {
+      const w = czyste();
+      w.css += css;
+      sudit((await sverka(w)).bledy, null);
     });
   }
 });

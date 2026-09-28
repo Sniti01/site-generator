@@ -8,10 +8,12 @@
  * (parse5, `html.mjs`) и одна функция строк на всех.
  *
  * СТРОКИ. Видимый текст режется на строки по блочным HTML-элементам (`BLOCHNYE`: список судьи глав
- * сессии 19 и блоки браузера по умолчанию — ячейки и части таблиц, `center`, `menu`, `dir`,
- * `hgroup`, `search`, `xmp`, `listing`, `plaintext`, `dialog`, пункты `<select>`; раунд 1 «судью
- * судят» блока А, A1-IZ-6): 8-грамма судится внутри одной строки, фраза, которую разрезал
- * заголовок или абзац, — две фразы. Любой другой элемент, комментарий, скрипт и стиль СТРОЧНЫЕ,
+ * сессии 19 и блоки браузера по умолчанию — ряды и части таблиц, `center`, `menu`, `dir`, `hgroup`,
+ * `search`, `xmp`, `listing`, `plaintext`, `dialog`, пункты `<select>`; раунд 1 «судью судят»
+ * блока А, A1-IZ-6): 8-грамма судится внутри одной строки, фраза, которую разрезал заголовок или
+ * абзац, — две фразы. Ячейка (`td`, `th`) — пробел в обоих прочтениях, как `<br>`: ряд таблицы —
+ * одна строка, фраза через ячейки ряда ловится (так было и у прежнего судьи), а тег внутри слова
+ * ячейки её не рвёт (раунд 2, A2-3). Любой другой элемент, комментарий, скрипт и стиль СТРОЧНЫЕ,
  * и строка читается ДВАЖДЫ: вплотную (ссылка или `<em>` внутри слова не рвут его:
  * «Wo<em>r</em>ld» — «World») и через пробел (соседние строчные элементы, стоящие на экране
  * раздельно, не склеиваются: «Remix</span><span>Guide»). Судьи судят оба прочтения. `<br>` —
@@ -43,14 +45,15 @@
  * и головы (шапка, крошки, подвал) и JSON-LD судьи страниц не судят.
  *
  * СТРАНИЦА (`izvlechStranicu`): строки единственного HTML-`<main>` в двух прочтениях; голова —
- * `<title>` и `<meta>` (`description`, `og:title`, `og:description`, а также `twitter:title`,
- * `twitter:description`, `og:image:alt`) — по всему документу вне `<main>` и вне SVG/MathML: meta,
- * которую разборщик без скриптов вынес в `<body>` (`<noscript>` с картинкой закрывает голову),
- * тоже голова для скребка (A1-IZ-5); атрибуты самого `<main>` и его тегов — `alt`, `title`,
- * `aria-label`, `aria-description`, `aria-roledescription`, `aria-valuetext`, `aria-placeholder`,
- * `aria-braillelabel`, `aria-brailleroledescription`, `value`, `placeholder`, `label`, `alttext`
- * (MathML), `abbr` (`<th>`), `summary` (`<table>`) — то, что читатель видит или слышит (A1-IZ-1,
- * A1-IZ-10). `value=` судится у любого тега, и там, где значение не видно (строже). Голова
+ * HTML-`<title>` вне `<main>` (как `document.title`: и в `foreignObject`) и HTML-`<meta>`
+ * (`description`, `og:title`, `og:description`, а также `twitter:title`, `twitter:description`,
+ * `og:image:alt`) по всему документу — и в `<main>`: meta, которую разборщик без скриптов вынес
+ * в `<body>` (`<noscript>` с картинкой закрывает голову), тоже голова для скребка (A1-IZ-5, A2-1);
+ * атрибуты самого `<main>` и его тегов — `alt`, `title`, `aria-label`, `aria-description`,
+ * `aria-roledescription`, `aria-valuetext`, `aria-placeholder`, `aria-braillelabel`,
+ * `aria-brailleroledescription`, `aria-rowindextext`, `aria-colindextext`, `value`, `placeholder`,
+ * `label`, `alttext` (MathML), `abbr` (`<th>`), `summary` (`<table>`) — то, что читатель видит или
+ * слышит (A1-IZ-1, A1-IZ-10, A2-15). `value=` судится у любого тега, и там, где значение не видно (строже). Голова
  * и атрибуты — отдельными строками, каждая сама по себе.
  *
  * ДОКУМЕНТ КОРПУСА (`izvlechDokument`) — ТЕ ЖЕ строки, но всего `<body>` и с `<title>` впереди,
@@ -69,10 +72,12 @@ import { razobrat, element, vHtml, imya, atr, chasti, elementy, tekstVsego, deti
 export const BLOCHNYE = new Set(
   (
     'html body p h1 h2 h3 h4 h5 h6 li dd dt dl figcaption figure blockquote div section article aside header footer nav ul ol main pre hr ' +
-    'address details summary form fieldset legend table caption thead tbody tfoot tr td th center menu dir hgroup search xmp listing ' +
+    'address details summary form fieldset legend table caption thead tbody tfoot tr center menu dir hgroup search xmp listing ' +
     'plaintext dialog optgroup option'
   ).split(' ')
 );
+/** Ячейки ряда таблицы: пробел в обоих прочтениях (ряд — одна строка). */
+export const YACHEYKI = new Set(['td', 'th']);
 /** Не текст: содержимое не читается, сам элемент — строчный (два прочтения вокруг него). */
 export const NE_TEKST = new Set(['script', 'style', 'template']);
 /** Атрибуты тегов `<main>`, которые читатель видит или слышит как текст. */
@@ -86,6 +91,8 @@ export const ATRIBUTY_TEKSTA = [
   'aria-placeholder',
   'aria-braillelabel',
   'aria-brailleroledescription',
+  'aria-rowindextext',
+  'aria-colindextext',
   'value',
   'placeholder',
   'label',
@@ -134,7 +141,7 @@ export function potok(koren) {
         out.push({ tip: 'probel' });
         continue;
       }
-      const tip = vHtml(d) && BLOCHNYE.has(im) ? 'blok' : 'strochnyi';
+      const tip = vHtml(d) && BLOCHNYE.has(im) ? 'blok' : vHtml(d) && YACHEYKI.has(im) ? 'probel' : 'strochnyi';
       out.push({ tip, uzel: d });
       stek.push({ u: d, zakryt: true, tip });
       const ch = deti(d);
@@ -175,13 +182,13 @@ export function stroki(tok, na) {
 export class OshibkaIzvlecheniya extends Error {}
 
 /**
- * Голова документа: `title` и `<meta>` по полям `POLYA_META` — HTML-элементы вне `<main>` (и вне
- * SVG/MathML). Списками: «ровно по одному и непустые» решает судья.
+ * Голова документа: HTML-`title` вне `<main>` (его текст внутри `<main>` уже в строках) и HTML-`<meta>`
+ * по полям `POLYA_META` по всему документу. Списками: «ровно по одному и непустые» решает судья.
  */
 function golovaDokumenta(doc, main) {
-  const vne = elementy(doc, (u) => vHtml(u) && (imya(u) === 'title' || imya(u) === 'meta')).filter((u) => !predki(u).includes(main));
-  const golova = { title: vne.filter((u) => imya(u) === 'title').map((t) => chistit(tekstVsego(t))) };
-  const meta = vne.filter((u) => imya(u) === 'meta');
+  const vse = elementy(doc, (u) => vHtml(u) && (imya(u) === 'title' || imya(u) === 'meta'));
+  const golova = { title: vse.filter((u) => imya(u) === 'title' && !predki(u).includes(main)).map((t) => chistit(tekstVsego(t))) };
+  const meta = vse.filter((u) => imya(u) === 'meta');
   for (const pole of POLYA_META) {
     golova[pole] = meta.filter((m) => [atr(m, 'name'), atr(m, 'property')].some((v) => (v ?? '').toLowerCase() === pole)).map((m) => chistit(atr(m, 'content') ?? ''));
   }

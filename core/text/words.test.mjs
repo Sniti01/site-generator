@@ -61,6 +61,11 @@ test('A1-UK-15: имена — пустые отброшены, имя в кон
   assert.deepEqual(bezImen(slova('now play Max Payne'), imenaSlovami(['Max Payne 3'])), ['now', 'play', 'max', 'payne']);
 });
 
+test('A2-12: свёртка объектов с притяжательным — ot/do', () => {
+  const ws = slova("a Max Payne 3's b").map((w, i) => ({ w, i }));
+  assert.deepEqual(bezImen(ws, imenaSlovami(['Max Payne 3'])), [{ w: 'a', i: 0 }, { w: '§imya§', i: 1, ot: 1, do: 3 }, { w: 'b', i: 4 }]);
+});
+
 test('A1-UK-5: притяжательное на последнем слове имени — имя', () => {
   assert.deepEqual(bezImen(slova("in Max Payne 3's story"), imenaSlovami(['Max Payne 3'])), ['in', '§imya§', 'story']);
 });

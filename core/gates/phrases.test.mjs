@@ -88,6 +88,10 @@ test('кавычки и нормализация: пары «“ ”», проб
   assert.equal(normN('Here I Was Again , Halfway Down the World .'), 'Here I Was Again, Halfway Down the World.');
 });
 
+test('A2 (следствие A1-UK-8): апострофы исключения — те же, что у модели слов', () => {
+  for (const a of ['’', '‘', '`', 'ʼ', '´', '′', '‛', '＇']) assert.equal(normN(`Max${a}s gun`), "Max's gun", `U+${a.codePointAt(0).toString(16)}`);
+});
+
 test('судья исключений без совпадений и без исключений — пусто', () => {
   const izvl = { vplotnuyu: [], cherezProbel: [] };
   assert.deepEqual(sudIsklyucheniy(izvl, [], []).otkazy, []);

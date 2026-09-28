@@ -3,11 +3,9 @@
 //   npm run proverki
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { chuzhie, ukazatelSayta, vkhody, brief, VETVI, korpusStranicy, sverkaSAnatomiej, imyaFajla } from './brief-strony.mjs';
-import { ukazatelIzTekstov, dokumentyKorpusa } from '@factory/core/text/corpus.mjs';
+import { ukazatelIzTekstov, dokumentyKorpusa, tekstDokumentaKorpusa } from '@factory/core/text/corpus.mjs';
 import { izvlechDokument } from '@factory/core/text/extract.mjs';
 import { slova } from '@factory/core/text/words.mjs';
 import { IMENA } from '../gates/phrases.mjs';
@@ -25,7 +23,7 @@ test('сторож брифов: чужие формулировки', async (t)
   // Живой документ корпуса (текст извлечения ядра) и его десять слов подряд — «чужая формулировка» пробы.
   const obrazec = (() => {
     for (const d of dokumentyKorpusa(join(SAYT, 'input/corpus'))) {
-      const tekst = izvlechDokument(gunzipSync(readFileSync(d.fajl)).toString('utf8')).vplotnuyu.join(' ');
+      const tekst = izvlechDokument(tekstDokumentaKorpusa(d)).vplotnuyu.join(' ');
       if (slova(tekst).length > 200) return { url: d.url, tekst };
     }
     throw new Error('в корпусе нет документа длиннее 200 слов');

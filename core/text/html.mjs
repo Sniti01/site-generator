@@ -18,8 +18,14 @@
  * обход ниже раскрывает сам (браузер его рисует); прочий `<template>` — инертный фрагмент: его
  * содержимое лежит в `content`, не среди детей, и обход его не видит.
  *
- * ПРОСТРАНСТВО ИМЁН: элемент внутри `<svg>` и `<math>` — не HTML, даже если зовётся `nav` или
- * `main` (`vHtml`): блоком и `<main>` судьи считают только HTML-элементы.
+ * ПРОСТРАНСТВО ИМЁН: элемент SVG или MathML — не HTML, даже если зовётся `nav` или `main` (`vHtml`
+ * судит пространство имён самого элемента, как браузер: HTML внутри `foreignObject` и теги, которые
+ * разборщик выносит из SVG, — HTML): блоком и `<main>` судьи считают только HTML-элементы.
+ *
+ * ТЕНЕВОЙ КОРЕНЬ: у фрагмента `template.content` в дереве parse5 нет родителя; `deti` запоминает
+ * хозяина фрагмента, и `predki` идут через него к хозяину и выше (раунд 2 «судью судят» блока А,
+ * A2-2). ПРЕДЕЛ: браузер рисует светлых детей хозяина на месте `<slot>` теневого корня, обход идёт
+ * в порядке документа — сначала теневое содержимое, потом светлые дети (A2-9).
  *
  * ОБХОД — без рекурсии (явный стек): документ корпуса с вложенностью в десятки тысяч элементов
  * не роняет судью переполнением стека (раунд 1 «судью судят» блока А, A1-IZ-13).
@@ -60,12 +66,19 @@ export function klassy(u) {
 /** Шаблон теневого корня (`<template shadowrootmode>`) — его содержимое браузер рисует. */
 export const tenevoyShablon = (u) => vHtml(u) && imya(u) === 'template' && atr(u, 'shadowrootmode') !== undefined;
 
+/** Фрагмент теневого корня → его шаблон (у фрагмента нет `parentNode`). */
+const HOZYAIN = new WeakMap();
+
 /**
  * Дети узла для обхода: у шаблона теневого корня — его содержимое, у прочего `<template>` —
  * никого (инертен), у остальных — `childNodes`.
  */
 export function deti(u) {
-  if (vHtml(u) && imya(u) === 'template') return tenevoyShablon(u) ? u.content?.childNodes ?? [] : [];
+  if (vHtml(u) && imya(u) === 'template') {
+    if (!tenevoyShablon(u) || !u.content) return [];
+    HOZYAIN.set(u.content, u);
+    return u.content.childNodes ?? [];
+  }
   return u.childNodes ?? [];
 }
 
@@ -99,10 +112,18 @@ export function pervyi(koren, pred) {
   return null;
 }
 
-/** Предки узла снизу вверх (без самого узла, до документа). */
+/** Предки узла снизу вверх (без самого узла, до документа); через теневой корень — к хозяину. */
 export function predki(u) {
   const out = [];
-  for (let p = u?.parentNode; p && p.nodeName !== '#document'; p = p.parentNode) out.push(p);
+  let p = u?.parentNode;
+  while (p && p.nodeName !== '#document') {
+    if (p.nodeName === '#document-fragment') {
+      p = HOZYAIN.get(p);
+      continue;
+    }
+    out.push(p);
+    p = p.parentNode;
+  }
   return out;
 }
 
@@ -130,7 +151,8 @@ export function tekstVsego(u) {
     const x = stek.pop();
     if (x.nodeName === '#text') s += x.value;
     else if (element(x)) {
-      if (vHtml(x) && (imya(x) === 'script' || imya(x) === 'style')) continue;
+      // Скрипт и стиль любого пространства имён (SVG тоже), как у строк извлечения (A2-8).
+      if (imya(x) === 'script' || imya(x) === 'style') continue;
       const d = deti(x);
       for (let i = d.length - 1; i >= 0; i--) stek.push(d[i]);
     }

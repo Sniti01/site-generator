@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { izvlechStranicu, izvlechDokument, chistit, OshibkaIzvlecheniya, BLOCHNYE } from './extract.mjs';
-import { razobrat, pervyi, imya, tekstVsego } from './html.mjs';
+import { razobrat, pervyi, imya, tekstVsego, predki } from './html.mjs';
 
 const stranica = (main, { head = '', body = '' } = {}) =>
   `<!doctype html><html><head><title>T</title><meta name="description" content="D">${head}</head><body>${body}<main>${main}</main></body></html>`;
@@ -166,13 +166,57 @@ test('A1-IZ-14: twitter:title, twitter:description, og:image:alt — в голо
   assert.deepEqual(g['twitter:title'], []);
 });
 
-test('A1-IZ-15: каждый блочный режет строку, ячейки — тоже', () => {
+test('A1-IZ-15: каждый блочный режет строку; ячейки ряда таблицы — пробел (A2-3)', () => {
   for (const b of BLOCHNYE) {
-    if (['html', 'body', 'main', 'table', 'tr', 'td', 'th', 'thead', 'tbody', 'tfoot', 'caption', 'option', 'optgroup', 'plaintext'].includes(b)) continue;
+    if (['html', 'body', 'main', 'table', 'tr', 'thead', 'tbody', 'tfoot', 'caption', 'option', 'optgroup', 'plaintext'].includes(b)) continue;
     const h = b === 'hr' ? '<div>aa<hr>cc</div>' : `<div>aa<${b}>bb</${b}>cc</div>`;
     assert.deepEqual(stroki(h, 'cherezProbel'), b === 'hr' ? ['aa', 'cc'] : ['aa', 'bb', 'cc'], b);
   }
-  assert.deepEqual(stroki('<table><tr><td>aa</td><td>bb</td></tr></table>'), ['aa', 'bb']);
+  assert.deepEqual(stroki('<table><tr><td>aa</td><td>bb</td></tr><tr><th>cc</th><td>dd</td></tr></table>'), ['aa bb', 'cc dd']);
+});
+
+/* — «судью судят», блок А, раунд 2 (A2-*) — */
+
+test('A2-1: meta полей головы внутри main судится', () => {
+  const r = izvlechStranicu(stranica('<p>x</p><meta name="description" content="Чужое описание">'));
+  assert.deepEqual(r.golova.description, ['D', 'Чужое описание']);
+});
+
+test('A2-2: предки узла теневого корня доходят до хозяина; title теневого корня в main — не голова', () => {
+  const h = '<html><head><title>T</title></head><body><main><section class="layer"><template shadowrootmode="open"><title>S</title><p>x</p></template></section></main></body></html>';
+  const r = izvlechStranicu(h);
+  assert.deepEqual(r.golova.title, ['T']);
+  const p = r.vplotnuyu.find((s) => s.tekst === 'x');
+  assert.ok(predki(p.uzel).includes(r.main));
+});
+
+test('A2-3: ряд таблицы — 8-грамма через ячейки ловится', () => {
+  const s = izvlechStranicu(stranica('<table><tr><td>alpha beta gamma delta</td><td>epsilon zeta eta theta</td></tr></table>'));
+  assert.ok([...s.vplotnuyu, ...s.cherezProbel].some((x) => ` ${x.tekst} `.includes(' alpha beta gamma delta epsilon zeta eta theta ')));
+});
+
+test('A2-8: текст ярлыка — без SVG-стиля и SVG-скрипта, как у строк', () => {
+  const p = pervyi(razobrat('<p>Chap<svg><style>.a{}</style><script>x()</script></svg>ters</p>'), (u) => imya(u) === 'p');
+  assert.equal(tekstVsego(p), 'Chapters');
+});
+
+test.todo('A2-9: теневой корень со <slot> браузер рисует в порядке слотов, обход — в порядке документа (предел)');
+
+test('A2-12: th, option, plaintext — границы; три aria-атрибута судятся', () => {
+  assert.deepEqual(stroki('<select><option>aa<option>bb</select>'), ['aa', 'bb']);
+  assert.deepEqual(izvlechDokument('<body><div>aa<plaintext>bb').vplotnuyu, ['aa', 'bb']);
+  const a = izvlechStranicu(stranica('<div aria-placeholder="Раз" aria-braillelabel="Два" aria-brailleroledescription="Три">x</div>')).atributy.map((x) => x.atr);
+  assert.deepEqual(a.sort(), ['aria-braillelabel', 'aria-brailleroledescription', 'aria-placeholder']);
+});
+
+test('A2-13: HTML-title в foreignObject вне main — голова (как document.title)', () => {
+  const h = '<html><head><title>T</title></head><body><svg><foreignObject><title>F</title></foreignObject></svg><main><p>x</p></main></body></html>';
+  assert.deepEqual(izvlechStranicu(h).golova.title, ['T', 'F']);
+});
+
+test('A2-15: aria-rowindextext и aria-colindextext судятся', () => {
+  const a = izvlechStranicu(stranica('<div role="row" aria-rowindextext="Раз"><div role="cell" aria-colindextext="Два">x</div></div>')).atributy.map((x) => x.atr);
+  assert.deepEqual(a.sort(), ['aria-colindextext', 'aria-rowindextext']);
 });
 
 test('A1-IZ-16: template — строчная граница; main и атрибуты в нём не считаются', () => {

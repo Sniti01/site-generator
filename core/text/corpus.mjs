@@ -29,15 +29,17 @@
  * каждой сборке и каждой пробе на копии сайта. Готовые хеши кладутся в кеш вне git (по умолчанию —
  * временная папка системы, `site-generator-ukazatel/`); ключ — SHA-256 байтов манифеста, байтов
  * каждого сырого файла (в порядке документов), имён сайта, исходников `core/text/*.mjs`, версий
- * parse5 и `entities`, версии Node и её таблиц Юникода. Испорченный файл кеша — пересчёт, не вечный
- * отказ; ошибка записи кеша судью не роняет (указатель уже посчитан); старые файлы кеша в папке
- * убираются после записи нового.
+ * parse5 и `entities`, версии Node и её таблиц Юникода. Испорченный или несогласованный файл кеша
+ * (длины, порядок хешей, номера документов) — пересчёт, не вечный отказ и не ложное «чисто»; ошибка
+ * записи кеша судью не роняет (указатель уже посчитан), временный файл за собой убирается; сырьё,
+ * сменившееся во время построения, в кеш не пишется. Имя файла начинается отпечатком папки корпуса:
+ * после записи убираются старые файлы только этого корпуса (раунд 2 «судью судят», A2-5…A2-10).
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync, renameSync, readdirSync, unlinkSync } from 'node:fs';
 import { gunzipSync, gzipSync } from 'node:zlib';
 import { createHash } from 'node:crypto';
-import { join, dirname } from 'node:path';
+import { join, dirname, resolve } from 'node:path';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { createRequire } from 'node:module';
@@ -100,17 +102,27 @@ const bajtySyrya = (fajl) => {
   return fajl.endsWith('.gz') ? gunzipSync(b) : b;
 };
 
-/** Текст сырого документа по `charset` записи (метка WHATWG), иначе UTF-8. */
+/**
+ * Текст сырого документа: BOM главнее метки (WHATWG «decode», раунд 2, A2-4), затем `charset` записи
+ * (метка WHATWG), иначе UTF-8. Неизвестная метка — UTF-8 (браузер без метки смотрит ещё
+ * `<meta charset>` и кодировку локали — предел).
+ */
 function tekstSyrya(bajty, charset) {
+  if (bajty[0] === 0xef && bajty[1] === 0xbb && bajty[2] === 0xbf) return new TextDecoder('utf-8').decode(bajty);
+  if (bajty[0] === 0xfe && bajty[1] === 0xff) return new TextDecoder('utf-16be').decode(bajty);
+  if (bajty[0] === 0xff && bajty[1] === 0xfe) return new TextDecoder('utf-16le').decode(bajty);
   if (charset) {
     try {
       return new TextDecoder(charset.toLowerCase().replace(/^["']|["']$/g, '')).decode(bajty);
     } catch {
-      // неизвестная метка — как у браузера без неё: UTF-8
+      // неизвестная метка — UTF-8
     }
   }
   return bajty.toString('utf8');
 }
+
+/** Текст документа корпуса (`{ fajl, charset }` из `dokumentyKorpusa`) — как его читает указатель. */
+export const tekstDokumentaKorpusa = (d) => tekstSyrya(bajtySyrya(d.fajl), d.charset);
 
 /**
  * Слова документа в двух прочтениях: строки делятся на слова по одной (адреса пробелом, имена
@@ -120,11 +132,13 @@ function tekstSyrya(bajty, charset) {
 const slovaDokumenta = (t, imSl) => [t.vplotnuyu, t.cherezProbel].map((p) => [p].flat().flatMap((s) => bezImen(slova(bezAdresov(s)), imSl)));
 
 /**
- * Хеши и первые документы по режимам: `{ tochno: { h: Float64Array, d: Uint32Array }, srez: … }`.
- * Документы идут по одному (`slovaPoNomeru(d)` — слова двух прочтений), слова не копятся.
+ * Хеши и первые документы по режимам: `{ tochno: { h: Float64Array, d: Uint32Array }, srez: …,
+ * pustyh }` (`pustyh` — документов без единой 8-граммы, A2-14). Документы идут по одному
+ * (`slovaPoNomeru(d)` — слова двух прочтений), слова не копятся.
  */
 function postroitHeshi(n, slovaPoNomeru) {
   const vse = Object.fromEntries(REZHIMY.map((r) => [r, []]));
+  let pustyh = 0;
   for (let d = 0; d < n; d++) {
     const prochteniya = slovaPoNomeru(d);
     for (const r of REZHIMY) {
@@ -134,10 +148,11 @@ function postroitHeshi(n, slovaPoNomeru) {
         const ws = vRezhime(ws0, r);
         for (let i = 0; i + N_GRAM <= ws.length; i++) svoi.add(hesh(ws.slice(i, i + N_GRAM).join(' ')));
       }
+      if (r === 'tochno' && !svoi.size) pustyh += 1;
       for (const x of svoi) vse[r].push([x, d]);
     }
   }
-  const out = {};
+  const out = { pustyh };
   for (const r of REZHIMY) {
     const pary = vse[r];
     pary.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
@@ -185,6 +200,7 @@ function ukazatel(urls, heshi, slovaPoNomeru) {
   };
   return {
     dokumentov: urls.length,
+    pustyh: heshi.pustyh,
     vosmigramm: Object.fromEntries(REZHIMY.map((r) => [r, heshi[r].h.length])),
     nayti(g, rezhim) {
       const d = poisk(heshi[rezhim], hesh(g));
@@ -229,50 +245,86 @@ function versiya() {
 
 /** Папка кеша по умолчанию — временная папка системы. */
 export const KESH_PO_UMOLCHANIYU = join(tmpdir(), 'site-generator-ukazatel');
-const IMYA_KESHA = /^[0-9a-f]{64}\.json\.gz$/;
+
+/**
+ * Хеши из кеша, проверенные на согласованность (раунд 2, A2-6): у режима длины `h` и `d` равны,
+ * `h` строго растёт, номер документа меньше их числа, 8-граммы есть — иначе `null` (пересчёт).
+ */
+function heshiIzKesha(k, n) {
+  const iz = (b64, T) => new T(new Uint8Array(Buffer.from(String(b64), 'base64')).buffer);
+  const heshi = { pustyh: Number.isInteger(k.pustyh) ? k.pustyh : null };
+  for (const r of REZHIMY) {
+    const h = iz(k[r]?.h ?? '', Float64Array);
+    const d = iz(k[r]?.d ?? '', Uint32Array);
+    if (h.length !== d.length) return null;
+    for (let i = 0; i < h.length; i++) if (d[i] >= n || (i && !(h[i] > h[i - 1]))) return null;
+    heshi[r] = { h, d };
+  }
+  if (heshi.pustyh === null || REZHIMY.every((r) => heshi[r].h.length === 0)) return null;
+  return heshi;
+}
 
 /**
  * Указатель корпуса сайта: папка `input/corpus`, имена сайта. Ошибки корпуса — громко.
  * `kesh` — папка кеша (`null` — без кеша). Возвращает и `izKesha` — был ли указатель в кеше,
- * `oshibkaKesha` — текст ошибки чтения или записи кеша (судья её печатает, но не падает).
+ * `oshibkaKesha` — текст ошибки чтения, записи или уборки кеша (судья её печатает, но не падает).
+ * Файл кеша — `<отпечаток папки корпуса>-<ключ>.json.gz`: уборка трогает только файлы своего
+ * корпуса, кеш второго сайта в общей папке не вытесняется (A2-5). `chitat` — чтение сырого файла
+ * (шов для теста смены сырья во время построения, A2-10).
  */
-export function ukazatelKorpusa(papka, { imena = [], kesh = KESH_PO_UMOLCHANIYU } = {}) {
+export function ukazatelKorpusa(papka, { imena = [], kesh = KESH_PO_UMOLCHANIYU, chitat = readFileSync } = {}) {
   const manifest = chitatManifest(papka);
   const docs = proverennye(papka, manifest);
   const imSl = imenaSlovami(imena);
-  const slovaPoNomeru = (d) => slovaDokumenta(izvlechDokument(tekstSyrya(bajtySyrya(docs[d].fajl), docs[d].charset)), imSl);
-  const klyuch = createHash('sha256').update(manifest.bajty);
-  for (const d of docs) klyuch.update(createHash('sha256').update(readFileSync(d.fajl)).digest());
-  klyuch.update('\0' + imena.join('\n') + '\0' + versiya());
-  const fajlKesha = kesh ? join(kesh, `${klyuch.digest('hex')}.json.gz`) : null;
+  const slovaIz = (b, d) => slovaDokumenta(izvlechDokument(tekstSyrya(docs[d].fajl.endsWith('.gz') ? gunzipSync(b) : b, docs[d].charset)), imSl);
+  const slovaPoNomeru = (d) => slovaIz(chitat(docs[d].fajl), d);
+  const otpechatki = docs.map((d) => createHash('sha256').update(chitat(d.fajl)).digest('hex'));
+  const klyuch = createHash('sha256').update(manifest.bajty).update(otpechatki.join('')).update('\0' + imena.join('\n') + '\0' + versiya()).digest('hex');
+  const prefiks = createHash('sha256').update(resolve(papka).toLowerCase()).digest('hex').slice(0, 16);
+  const fajlKesha = kesh ? join(kesh, `${prefiks}-${klyuch}.json.gz`) : null;
   const urls = docs.map((d) => d.url);
-  let oshibkaKesha = null;
+  const oshibki = [];
   if (fajlKesha && existsSync(fajlKesha)) {
     try {
-      const k = JSON.parse(gunzipSync(readFileSync(fajlKesha)).toString('utf8'));
-      const iz = (b64, T) => new T(new Uint8Array(Buffer.from(b64, 'base64')).buffer);
-      const heshi = Object.fromEntries(REZHIMY.map((r) => [r, { h: iz(k[r].h, Float64Array), d: iz(k[r].d, Uint32Array) }]));
-      return { ...ukazatel(urls, heshi, slovaPoNomeru), izKesha: true, oshibkaKesha };
+      const heshi = heshiIzKesha(JSON.parse(gunzipSync(readFileSync(fajlKesha)).toString('utf8')), docs.length);
+      if (heshi) return { ...ukazatel(urls, heshi, slovaPoNomeru), izKesha: true, oshibkaKesha: null };
+      oshibki.push(`кеш ${fajlKesha} несогласован — пересчёт`);
     } catch (e) {
-      if (e instanceof OshibkaKorpusa) throw e;
-      oshibkaKesha = `кеш ${fajlKesha} не читается (${e.message}) — пересчёт`;
+      oshibki.push(`кеш ${fajlKesha} не читается (${e.message}) — пересчёт`);
     }
   }
-  const heshi = postroitHeshi(docs.length, slovaPoNomeru);
+  // Указатель строится по тем же байтам сырья, что вошли в ключ: сырьё сменилось во время построения
+  // (npm run corpus параллельно) — кеш не пишется (A2-10).
+  let syryoMenyalos = false;
+  const heshi = postroitHeshi(docs.length, (d) => {
+    const b = chitat(docs[d].fajl);
+    if (createHash('sha256').update(b).digest('hex') !== otpechatki[d]) syryoMenyalos = true;
+    return slovaIz(b, d);
+  });
   const uk = ukazatel(urls, heshi, slovaPoNomeru);
-  if (fajlKesha) {
+  if (fajlKesha && syryoMenyalos) oshibki.push('сырьё корпуса менялось во время построения указателя — кеш не записан');
+  else if (fajlKesha) {
+    const vremennyi = `${fajlKesha}.${process.pid}.tmp`;
     try {
       mkdirSync(kesh, { recursive: true });
       const b64 = (a) => Buffer.from(a.buffer, a.byteOffset, a.byteLength).toString('base64');
-      const vremennyi = `${fajlKesha}.${process.pid}.tmp`;
-      writeFileSync(vremennyi, gzipSync(JSON.stringify(Object.fromEntries(REZHIMY.map((r) => [r, { h: b64(heshi[r].h), d: b64(heshi[r].d) }])))));
+      writeFileSync(vremennyi, gzipSync(JSON.stringify({ pustyh: heshi.pustyh, ...Object.fromEntries(REZHIMY.map((r) => [r, { h: b64(heshi[r].h), d: b64(heshi[r].d) }])) })));
       renameSync(vremennyi, fajlKesha);
-      for (const f of readdirSync(kesh)) {
-        if (IMYA_KESHA.test(f) && join(kesh, f) !== fajlKesha) unlinkSync(join(kesh, f));
+      try {
+        for (const f of readdirSync(kesh)) {
+          if (f.startsWith(`${prefiks}-`) && /\.json\.gz$/.test(f) && join(kesh, f) !== fajlKesha) unlinkSync(join(kesh, f));
+        }
+      } catch (e) {
+        oshibki.push(`старые файлы кеша не убраны (${e.message})`);
       }
     } catch (e) {
-      oshibkaKesha = `${oshibkaKesha ? oshibkaKesha + '; ' : ''}кеш не записан (${e.message})`;
+      oshibki.push(`кеш не записан (${e.message})`);
+      try {
+        if (existsSync(vremennyi)) unlinkSync(vremennyi);
+      } catch {
+        // временный файл уберёт следующая запись
+      }
     }
   }
-  return { ...uk, izKesha: false, oshibkaKesha };
+  return { ...uk, izKesha: false, oshibkaKesha: oshibki.length ? oshibki.join('; ') : null };
 }

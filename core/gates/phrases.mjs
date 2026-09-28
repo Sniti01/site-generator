@@ -14,8 +14,9 @@
  *     тоже чужая). Совпадение внутри кавычек исключения сайта — разрешено судьёй исключений
  *     (`exceptions.mjs`), любое другое — отказ;
  *   - голова (`<title>`, `description`, `og:title`, `og:description` — каждого ровно по одному
- *     и непустые) и атрибуты тегов `<main>` (`alt`, `title`, `aria-label`, `value`, `placeholder`,
- *     `label`) — отдельными строками, строго: исключений там нет.
+ *     и непустые) и текстовые атрибуты тегов `<main>` (`alt`, `title`, `aria-label` и прочие
+ *     текстовые `aria-*`, `value`, `placeholder`, `label` — список `ATRIBUTY_TEKSTA` извлечения) —
+ *     отдельными строками, строго: исключений там нет.
  * Строка не режется по «·» и «|» (строже сторожа брифов: у брифа это разделители ключей и ячеек).
  * Адреса `https?://…` — пробелом (не формулировка). Имена сайта (`dannye.imena`) — одним словом.
  *
@@ -201,8 +202,9 @@ export default function phrases({ corpus = 'input/corpus', dannye }) {
           );
         }
         const razr = itogi.reduce((n, x) => n + x.razresheno.size, 0);
+        if (uk.oshibkaKesha) logger.warn(`8 слов: ${uk.oshibkaKesha}`);
         logger.info(
-          `8 слов: страниц ${itogi.length}, документов корпуса ${uk.dokumentov}${uk.izKesha ? ' (указатель из кеша)' : ''}; чужих 8-грамм вне исключений — 0; исключений с совпадениями — ${razr}`
+          `8 слов: страниц ${itogi.length}, документов корпуса ${uk.dokumentov} (без 8-грамм — ${uk.pustyh})${uk.izKesha ? ', указатель из кеша' : ''}; чужих 8-грамм вне исключений — 0; исключений с совпадениями — ${razr}`
         );
       },
     },

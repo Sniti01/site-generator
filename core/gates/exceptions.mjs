@@ -34,11 +34,12 @@
 
 import { klassy, predki, imya, atr, pervyi, tekstVsego } from '../text/html.mjs';
 import { chistit } from '../text/extract.mjs';
+import { APOSTROFY } from '../text/words.mjs';
 
 /** Пробел перед знаком препинания и после открывающей скобки — след строчного тега в прочтении «через пробел». */
 export const normP = (s) => s.replace(/\s+([.,:;!?)\]”])/g, '$1').replace(/([(\[“])\s+/g, '$1');
-/** Сравнение текста в кавычках с исключением: пробелы сведены, апострофы — один знак. */
-export const normN = (s) => normP(s).replace(/\s+/g, ' ').replace(/[’‘]/g, "'").trim();
+/** Сравнение текста в кавычках с исключением: пробелы сведены, апострофы — один знак, тот же набор, что у модели слов. */
+export const normN = (s) => normP(s).replace(/\s+/g, ' ').replace(APOSTROFY, "'").trim();
 
 /** Пары «“ ”» строки: первая “ и первая ” после неё, `[начало, конец]`. */
 export function paryKavychek(s) {

@@ -7,10 +7,9 @@
  */
 
 import { readFileSync, existsSync } from 'node:fs';
-import { gunzipSync } from 'node:zlib';
 import { join, resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { ukazatelKorpusa, dokumentyKorpusa } from '@factory/core/text/corpus.mjs';
+import { ukazatelKorpusa, dokumentyKorpusa, tekstDokumentaKorpusa } from '@factory/core/text/corpus.mjs';
 import { izvlechDokument } from '@factory/core/text/extract.mjs';
 import { IMENA } from '../../gates/phrases.mjs';
 
@@ -43,7 +42,7 @@ export function ukazatel() {
 export function dokumentVikipedii() {
   for (const d of dokumentyKorpusa(join(SAYT, 'input/corpus'))) {
     if (!/wikipedia/.test(d.url)) continue;
-    const tekst = izvlechDokument(gunzipSync(readFileSync(d.fajl)).toString('utf8')).vplotnuyu.join(' ');
+    const tekst = izvlechDokument(tekstDokumentaKorpusa(d)).vplotnuyu.join(' ');
     const ws = tekst.replace(/\s+/g, ' ').trim().split(' ');
     if (ws.length > 2000) return { url: d.url, slova: ws };
   }

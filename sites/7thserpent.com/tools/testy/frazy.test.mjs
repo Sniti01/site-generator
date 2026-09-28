@@ -6,12 +6,10 @@
 //   npm run proverki (сборка копии, корпус input/corpus/raw)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
-import { gunzipSync } from 'node:zlib';
 import { join } from 'node:path';
 import { sudStranicy } from '@factory/core/gates/phrases.mjs';
 import { OshibkaIzvlecheniya, izvlechDokument } from '@factory/core/text/extract.mjs';
-import { dokumentyKorpusa } from '@factory/core/text/corpus.mjs';
+import { dokumentyKorpusa, tekstDokumentaKorpusa } from '@factory/core/text/corpus.mjs';
 import { bezImen, slova, imenaSlovami } from '@factory/core/text/words.mjs';
 import { dannye, IMENA } from '../../gates/phrases.mjs';
 import { stranica, ukazatel, frazaKorpusa, SAYT } from './obshchee.mjs';
@@ -47,7 +45,7 @@ function zhdat(url, html, zhdem, iskhod) {
 function izKorpusa(re) {
   const imSl = imenaSlovami(IMENA);
   for (const d of dokumentyKorpusa(join(SAYT, 'input/corpus'))) {
-    const t = izvlechDokument(gunzipSync(readFileSync(d.fajl)).toString('utf8')).vplotnuyu.join(' ').replace(/\s+/g, ' ');
+    const t = izvlechDokument(tekstDokumentaKorpusa(d)).vplotnuyu.join(' ').replace(/\s+/g, ' ');
     const m = t.match(re);
     if (m && uk.nayti(bezImen(slova(m[1]), imSl).slice(0, 8).join(' '), 'tochno')) return m[1];
   }
@@ -140,7 +138,7 @@ test('названия глав гайда: порчи разбора глав',
   // как у прежнего судьи (буквы, допустимы «,» и «.» в конце слова).
   const sI = (() => {
     for (const d of dokumentyKorpusa(join(SAYT, 'input/corpus'))) {
-      const w = izvlechDokument(gunzipSync(readFileSync(d.fajl)).toString('utf8')).vplotnuyu.join(' ').replace(/\s+/g, ' ').trim().split(' ');
+      const w = izvlechDokument(tekstDokumentaKorpusa(d)).vplotnuyu.join(' ').replace(/\s+/g, ' ').trim().split(' ');
       const j = w.findIndex((x) => /^\p{L}*İ\p{L}+$/u.test(x));
       if (j < 6 || j + 6 > w.length) continue;
       const kus = w.slice(j - 5, j + 7);

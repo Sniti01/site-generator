@@ -43,6 +43,7 @@ export const minSlov = 100;
 /** Сразу за репликой — глава. */
 const GLAVA_POSLE = /^\s*[—–]\s*(also\s+)?(Part I,\s*)?Chapter \d+\b/;
 
+/** @type {[string, RegExp][]} */
 const REPLIKI = [
   ['My cover had been blown. The door slammed shut behind me. And then I was dodging bullets like raindrops.', /^Max Payne · 2001/],
   ['Karaoke was never my strong point', /^Max Payne · 2001/],
@@ -62,6 +63,7 @@ const REPLIKI = [
 const nomerGlavy = (nomer) =>
   new RegExp(`^\\s*${nomer}\\.\\s(?:(?!(?<![\\p{L}\\p{N}])[IVXLC]+\\.(?![\\p{L}\\p{N}]))[A-Za-z0-9 ,.’'&\\-–—])*\\(\\d+\\s*/\\s*\\d+\\):\\s*$`, 'u');
 
+/** @type {[string, string][]} */
 const GLAVY = [
   ['Here I Was Again, Halfway Down the World.', 'IX'],
   ['A Fat Bald Dude with a Bad Temper.', 'XIII'],

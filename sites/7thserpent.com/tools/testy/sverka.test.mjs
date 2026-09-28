@@ -19,7 +19,7 @@ const po = (url) => {
   const dane = V.soderzhanie.find((s) => s.dane?.url === url)?.dane;
   return { page, dane, html: stranica(url) };
 };
-const sverit = (s, html, dane, page) => sverkaStranicy({ page, dane, html, kredity: V.kredity, ikony: V.ikony, obyazatelnaPodpis: OBYAZATELNA });
+const sverit = (_s, html, dane, page) => sverkaStranicy({ page, dane, html, kredity: V.kredity, ikony: V.ikony, obyazatelnaPodpis: OBYAZATELNA });
 
 async function progon(t, PORCHI) {
   for (const x of PORCHI) {
@@ -154,7 +154,7 @@ test('сверка пачки 2 (герой, подпись, ряды, нота)
     { imya: 'ряд с layer--flip', s: m2, html: (h) => h.replace('class="layer section" id="story"', 'class="layer section layer--flip" id="story"'), prichina: 'ряд story: класс layer--flip' },
     { imya: 'ряд без кадра с кадром', s: rm, html: (h) => h.replace('class="layer section layer--bez-kadru" id="progress"', 'class="layer section" id="progress"'), prichina: 'ряд progress: класс layer--bez-kadru' },
     { imya: 'кадр ряда другой', s: m2, html: (h) => h.replace(/(<section class="layer[^"]*" id="story"[\s\S]*?<img\b[^>]*?\ssrc="\/_astro\/)mp2-k01/, '$1mp2-k02'), prichina: 'ряд story: кадр ряда: в src или srcset ключи mp2-k02' },
-    { imya: 'кадр ряда без art', s: rm, html: (h) => h.replace(/(<section class="layer[^"]*" id="progress"[\s\S]*?)<\/section>/, (x, a) => a + '<div class="foto kadr-ryadu"><img src="/_astro/mp1-k13.x.webp" alt=""></div></section>'), prichina: 'ряд progress: кадр ряда напечатан, а art нет' },
+    { imya: 'кадр ряда без art', s: rm, html: (h) => h.replace(/(<section class="layer[^"]*" id="progress"[\s\S]*?)<\/section>/, (_x, a) => a + '<div class="foto kadr-ryadu"><img src="/_astro/mp1-k13.x.webp" alt=""></div></section>'), prichina: 'ряд progress: кадр ряда напечатан, а art нет' },
     { imya: 'поле ряда пусто у сверки', s: rm, html: (h) => h.replace(/(<section class="layer[^"]*" id="voice"[\s\S]*?<p class="t-label"[^>]*>)[^<]*/, '$1'), dane: (d) => { d.rows.find((r) => r.id === 'voice').year = '  '; return d; }, prichina: 'ряд voice: поле ряда пусто' },
     { imya: 'кадр ряда снят', s: m2, html: (h) => h.replace(/(<section class="layer[^"]*" id="story"[\s\S]*?)<div class="foto kadr-ryadu"[^>]*>\s*<img\b[^>]*>/, '$1<div class="foto">'), prichina: 'ряд story: кадров ряда 0' },
     { imya: 'игра ноты другая', s: rm, html: (h) => h.replace(/Games: Max Payne\./, 'Games: Max Payne 3.'), prichina: 'игры ноты' },

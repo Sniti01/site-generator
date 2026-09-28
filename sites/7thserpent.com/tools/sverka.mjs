@@ -408,6 +408,7 @@ export function sverkaSborki(dist, sayt, { obyazatelnaPodpis = new Set() } = {})
 /**
  * Интеграция Astro — сторож сборки сайта. `obyazatelnaPodpis` — адреса, где подпись кадра героя
  * обязательна (кадр — не игра страницы).
+ * @param {{ obyazatelnaPodpis?: string[] }} [opcii]
  * @returns {import('astro').AstroIntegration}
  */
 export default function sverka({ obyazatelnaPodpis = [] } = {}) {

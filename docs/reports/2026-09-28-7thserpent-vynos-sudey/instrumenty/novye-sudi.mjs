@@ -40,8 +40,8 @@ console.log(`\n== судья головы и крошек (core/gates/head.mjs):
 for (const o of golova) console.log(`  ОТКАЗ ${o.url}: [${o.vid}] ${o.chto}`);
 console.log(`  итог: отказов ${golova.length}`);
 
-// 3. Сторож утечки мастеров (новый; бэклог 59 п. 6, 61 п. 2).
-const ut = M.utechki(dist, join(sayt, 'src/assets'));
+// 3. Сторож утечки мастеров (новый; бэклог 59 п. 6, 61 п. 2). Круг — растровые картинки всего src/ (раунд 1 блока Б, B1-G-13).
+const ut = M.utechki(dist, join(sayt, 'src'));
 console.log(`\n== сторож утечки мастеров (core/gates/masters.mjs): исходных картинок ${ut.masterov}`);
 for (const u of ut.utechki) console.log(`  УТЕЧКА ${u.fajl} = ${u.master}`);
 console.log(`  итог: утечек ${ut.utechki.length}`);
@@ -56,3 +56,9 @@ for (const f of brify) {
   for (const x of r) console.log(`  ЧУЖОЕ ${f}: строка ${x.stroka} (${x.rezhim}) — ${x.dokument}`);
 }
 console.log(`\n== сторож брифов (tools/brief-strony.mjs на ядре): брифов ${brify.length}; строк с чужой 8-граммой ${chuzhih}`);
+
+// 5. Одна сверка dist (блок В; вместо сверок пачек 1, 2, 4).
+const S = await imp('sites/7thserpent.com/tools/sverka.mjs');
+const sv = S.sverkaSborki(dist, sayt, { obyazatelnaPodpis: new Set(['/remake/', '/movie/']) });
+console.log(`\n== сверка dist (tools/sverka.mjs): страниц маршрута ${sv.stranic}; замечаний ${sv.zamechaniya.length}`);
+for (const o of sv.zamechaniya) console.log(`  ЗАМЕЧАНИЕ ${o.url}: ${o.chto}`);

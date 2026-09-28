@@ -101,6 +101,33 @@ test('B1-G-8: U+FEFF на краю ярлыка — другой ярлык, к�
   assert.deepEqual(vidy('/a/b/', stranicaB().replace('href="/a/">Page A<', 'href="/a/">Page&nbsp;A<')), ['крошки']);
 });
 
+/* — «судью судят», блок Б, раунд 2 (B2-*) — */
+
+test('B2-2: крошки только в <noscript> головы — разборщик без скриптов выносит их в тело, читатель со скриптами их не видит: отказ', () => {
+  const nav = stranicaB().match(/<nav class="crumbs"[\s\S]*?<\/nav>/)[0];
+  const html = stranicaB().replace(nav, '').replace('</head>', `<noscript>${nav}</noscript></head>`);
+  assert.ok(vidy('/a/b/', html).includes('noscript'), JSON.stringify(sudit('/a/b/', html, struktura, ozhidanie)));
+});
+
+test('B2-5: цель aria-labelledby только в <noscript> — у читателя со скриптами имени нет: отказ', () => {
+  const html = stranicaB({ imyaNav: 'aria-labelledby="im"', telo: '<noscript><span id="im">Crumbs</span></noscript>' });
+  assert.notDeepEqual(vidy('/a/b/', html), []);
+});
+
+test('B2-6: разметка головы только внутри <template shadowrootmode> в <head> — у браузера шаблон инертен: отказ', () => {
+  const html = glavnaya.replace(/(<link rel="canonical"[\s\S]*<\/script>)<\/head>/, '<template shadowrootmode="open">$1</template></head>');
+  assert.notEqual(html, glavnaya);
+  assert.notDeepEqual(vidy('/', html), []);
+});
+
+test('B2-8: aria-label из одних невидимых знаков (U+200B) — имени нет: отказ «крошки»', () => {
+  assert.deepEqual(vidy('/a/b/', stranicaB({ imyaNav: 'aria-label="&#x200B;"' })), ['крошки']);
+});
+
+test('B2-2 (контроль): крошки в теле и <noscript> с таблицей стилей в голове — чисто', () => {
+  assert.deepEqual(vidy('/a/b/', stranicaB({ golova: spisok([['Home', '/'], ['Page A', '/a/'], ['Page B', '/a/b/']]) + '<noscript><link rel="stylesheet" href="/x.css"></noscript>' })), []);
+});
+
 test('страница вне структуры; пустая сборка; сборка без главной', () => {
   assert.deepEqual(vidy('/net/', stranicaB()), ['вне структуры']);
   assert.equal(suditNabor([], struktura, ozhidanie)[0].vid, 'пусто');

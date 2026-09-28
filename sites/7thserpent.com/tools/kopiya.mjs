@@ -56,25 +56,51 @@ const vRepo = (p) => {
 
 /** Метка корня копии: по ней уборка отличает копию от чужой папки. */
 export const METKA = '.kopiya-sayta';
+/** Отметка копии, оставленной по `--ostavit`: уборка старых копий её не трогает (B2-4). */
+export const OSTAVLENA = '.ostavlena';
 
 const ssylka = (cel, put, spisok) => {
   symlinkSync(cel, put, 'junction');
   spisok.push(put);
 };
 
-/** Удалить дерево, не заходя в ссылки: ссылка снимается, её цель не трогается. */
-function bezopasnoUdalit(put) {
-  let st;
+const lstatIliNull = (p) => {
   try {
-    st = lstatSync(put);
+    return lstatSync(p);
   } catch {
+    return null;
+  }
+};
+
+/** Снять все ссылки дерева, не заходя в них (их цели не трогаются). */
+function snyatSsylki(put) {
+  const st = lstatIliNull(put);
+  if (!st) return;
+  if (st.isSymbolicLink()) unlinkSync(put);
+  else if (st.isDirectory()) for (const x of readdirSync(put)) snyatSsylki(join(put, x));
+}
+
+/** Удалить дерево без ссылок (снятых первым проходом); `posledniy` — имя в корне, удаляемое последним. */
+function udalitDerevo(put, posledniy = null) {
+  const st = lstatIliNull(put);
+  if (!st) return;
+  if (st.isSymbolicLink() || !st.isDirectory()) {
+    unlinkSync(put);
     return;
   }
-  if (st.isSymbolicLink()) unlinkSync(put);
-  else if (st.isDirectory()) {
-    for (const x of readdirSync(put)) bezopasnoUdalit(join(put, x));
-    rmdirSync(put);
-  } else unlinkSync(put);
+  for (const x of readdirSync(put)) if (x !== posledniy) udalitDerevo(join(put, x));
+  if (posledniy) udalitDerevo(join(put, posledniy));
+  rmdirSync(put);
+}
+
+/**
+ * Удалить копию, не заходя в ссылки, в два прохода (раунд 2 блока Б, B2-3): сначала снять ВСЕ ссылки
+ * дерева, затем удалить остальное; метка копии — последней, перед корнем. Удаление, сорванное посреди
+ * (занятая папка), оставляет остаток без ссылок и с меткой — следующая уборка его видит.
+ */
+function bezopasnoUdalit(put) {
+  snyatSsylki(put);
+  udalitDerevo(put, METKA);
 }
 
 /**
@@ -134,14 +160,15 @@ export function udalitKopiyu(k) {
 
 /**
  * Убрать копии прерванных прогонов: папки в `papka` (временная папка системы) с меткой `METKA`
- * в корне, изменённые раньше `starshe` мс назад. Возвращает убранные пути.
+ * в корне, изменённые раньше `starshe` мс назад; копии, оставленные по `--ostavit` (отметка
+ * `OSTAVLENA`), не трогаются — их удаляет тот, кто оставил (`udalitKopiyu`). Возвращает убранные пути.
  */
 export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 } = {}) {
   const ubrano = [];
   for (const x of readdirSync(papka)) {
     const p = join(papka, x);
     try {
-      if (!lstatSync(p).isDirectory() || !existsSync(join(p, METKA)) || vRepo(p)) continue;
+      if (!lstatSync(p).isDirectory() || !existsSync(join(p, METKA)) || existsSync(join(p, OSTAVLENA)) || vRepo(p)) continue;
       if (Date.now() - statSync(p).mtimeMs < starshe) continue;
       bezopasnoUdalit(p);
       ubrano.push(p);
@@ -152,11 +179,28 @@ export function ubratStaryeKopii({ papka = tmpdir(), starshe = 12 * 3600 * 1000 
   return ubrano;
 }
 
-/** Файл копии: прочитать, записать (путь — от папки сайта в копии). */
+/**
+ * Путь записи в копию: внутри папки сайта копии и не сквозь ссылку-переход (ядро, корпус, пакеты —
+ * живое дерево репозитория; раунд 2 блока Б, B2-7). Иначе — отказ.
+ */
+function putZapisi(k, put) {
+  const p = resolve(k.sayt, put);
+  const r = relative(k.sayt, p);
+  if (!r || r === '..' || r.startsWith('..' + sep) || r.startsWith('../') || isAbsolute(r)) throw new Error(`запись вне папки сайта копии: ${put}`);
+  let tek = k.sayt;
+  for (const chast of r.split(sep)) {
+    tek = join(tek, chast);
+    if (lstatIliNull(tek)?.isSymbolicLink()) throw new Error(`запись сквозь ссылку-переход копии (${relative(k.sayt, tek)}): ${put} — это живое дерево репозитория`);
+  }
+  return p;
+}
+
+/** Файл копии: прочитать, записать (путь — от папки сайта в копии; запись — только в саму копию). */
 export const prochest = (k, put) => readFileSync(join(k.sayt, put), 'utf8');
 export const zapisat = (k, put, tekst) => {
-  mkdirSync(dirname(join(k.sayt, put)), { recursive: true });
-  writeFileSync(join(k.sayt, put), tekst);
+  const p = putZapisi(k, put);
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, tekst);
 };
 /** Файл ядра копии (только при `sYadrom`: иначе это ядро репозитория). */
 export const zapisatVYadro = (k, put, tekst) => {

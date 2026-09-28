@@ -121,6 +121,11 @@ test('B1-F-1: метка ряда — своя .t-label секции: не ск�
 
 test.todo('B1-F-1, B1-F-2 (предел): скрытое атрибутом hidden — метка, кавычки, сосед — засчитывается как видимое (мягче; путь только через шаблон; прежний разбор глав — izv-N3)');
 
+test('B2-11: метка «своего» ряда только в <noscript> чужого ряда — «не в своём ряду»', () => {
+  const html = stranica(`<section class="layer" id="r3"><noscript><p class="t-label">Game · 2001</p></noscript><p class="t-label">Other · 2012</p><p>${REP}</p></section>`);
+  assert.ok(sudStranicy('/q/', html, uk, dannye).otkazy.some((o) => o.includes('не в своём ряду')));
+});
+
 test('B1-F-4: метка ряда с <br> — <br> пробел, как в строках', () => {
   const html = stranica(`<section class="layer" id="r1"><p class="t-label">Game<br>· 2001</p><div class="layer__body"><p>${REP}</p></div></section>`);
   assert.deepEqual(sudStranicy('/q/', html, uk, dannye).otkazy, []);

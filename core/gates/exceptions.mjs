@@ -14,8 +14,8 @@
  *     пробел»);
  *   - `ryad` — `{ id?, metka }`: ближайшая над строкой HTML-секция `section.layer` (ряд `story-row`;
  *     вложенная секция — свой ряд) с `id`, равным `ryad.id` (если задан), и первой в документе
- *     с этим `id`; её метка — первый HTML-элемент `.t-label` секции (не скрипт, не стиль, не метка
- *     вложенной секции), текст по модели строк — подходит под `ryad.metka` (регулярное выражение,
+ *     с этим `id`; её метка — первый HTML-элемент `.t-label` секции (не скрипт, не стиль, не в
+ *     `<noscript>`, не метка вложенной секции), текст по модели строк — подходит под `ryad.metka` (регулярное выражение,
  *     с регистром: метка прописными в исходнике — ложный отказ, громкий);
  *   - `posle` — текст сразу за закрывающей кавычкой до следующей открывающей (или конца строки)
  *     подходит под выражение (глава за репликой);
@@ -74,7 +74,8 @@ const sekciyaRyada = (u) => vHtml(u) && imya(u) === 'section' && klassy(u).has('
 export function ryadStroki(stroka, doc) {
   const sek = predki(stroka.uzel).find(sekciyaRyada);
   if (!sek) return null;
-  const metka = pervyi(sek, (u) => vHtml(u) && !NE_TEKST.has(imya(u)) && klassy(u).has('t-label') && predki(u).find(sekciyaRyada) === sek);
+  // Метка в <noscript> — не метка: читатель со скриптами её не видит (раунд 2 блока Б, B2-11).
+  const metka = pervyi(sek, (u) => vHtml(u) && !NE_TEKST.has(imya(u)) && klassy(u).has('t-label') && predki(u).find(sekciyaRyada) === sek && !predki(u).some((p) => imya(p) === 'noscript'));
   const id = atr(sek, 'id') ?? null;
   return {
     id,

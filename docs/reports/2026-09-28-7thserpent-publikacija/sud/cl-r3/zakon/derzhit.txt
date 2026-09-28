@@ -1,0 +1,14 @@
+  HTML: Cf-Cache-Status MISS / EXPIRED / REVALIDATED (правило кэша со сверкой) — справка: Cloudflare кэширует HTML и сверяет с сервером: / MISS, /cheats/ EXPIRED, /gameplay/ MISS — правило кэша зоны проверить (HIT без сверки был бы отказом)
+301 с X-Robots-Tag: noindex (хостер на редиректах): 44/44
+301 и 404 без cf-ray и server: 44/44
+HTML: Cf-Cache-Status MISS / EXPIRED / REVALIDATED (правило кэша со сверкой): 44/44
+HTML: Cache-Control в другом регистре и порядке, CDN-Cache-Control: max-age=0: 44/44
+HTML: X-Robots-Tag max-image-preview:large, noarchive: 44/44
+robots мимо кэша: BYPASS; без параметра: EXPIRED с тем же телом: 44/44
+хостер: группа * с Crawl-delay и пустым Disallow: 44/44
+хостер: Googlebot — Allow: /: 44/44
+ящик с + и сущностями, ссылкой mailto: 44/44 (адрес на странице: box+logs@7thserpent.com)
+ящик прописными, перед &nbsp; и точкой: 44/44 (адрес на странице: BOX@7THSERPENT.COM)
+ящик в скобках, в <strong>: 44/44 (адрес на странице: box@7thserpent.com)
+настоящий HTTP (gzip, chunked, ETag), два прогона подряд: 44/44, 44/44
+ИТОГ: 12 из 12 форм — 44/44

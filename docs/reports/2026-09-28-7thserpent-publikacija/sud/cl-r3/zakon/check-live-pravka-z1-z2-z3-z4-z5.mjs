@@ -2,8 +2,7 @@
 /**
  * Проверка живого сайта после привязки домена — шаг «проверка https» порядка запуска П52 п. 3
  * (ящик → привязка домена → проверка https → Search Console). Форма — `tools/check-live.mjs` первого
- * сайта (П54 п. 7, П55) с бэклогом 46 п. 1 и П106; «судью судят», раунды 1–3 (находки CL1-*, CL2-*, CL3-* —
- * в пробах; раунд 3 — последний, пределы — тестами todo).
+ * сайта (П54 п. 7, П55) с бэклогом 46 п. 1 и П106; «судью судят», раунды 1–2 (находки CL1-*, CL2-* — в пробах).
  *
  *   npm run live:check                          — домен из structure.json (site.domain); сборка — dist/ сайта
  *   npm run live:check -- --host example.test   — другой хост (например, до переключения DNS)
@@ -17,38 +16,29 @@
  *      сработал (не HIT/STALE/UPDATING; REVALIDATED — сверено с сервером); наш файл (`public/robots.txt`)
  *      целиком, отдельными строками (иначе — первая расходящаяся строка); блока Cloudflare нет (управляемый
  *      robots.txt зоны снимает владелец, П106); вне нашего файла — только управляемые блоки «# BEGIN <имя>
- *      Managed content … # END …» (комментарии вне блоков — справка), и ни одно правило блока в группе для `*`,
- *      Googlebot, Bingbot или msnbot (группы по всему файлу — правило блока без своего User-agent продолжает
- *      предыдущую) не запрещает путь сборки (запрет вне сборки — справка); Googlebot, Googlebot-Image и Bingbot
- *      (следует группе msnbot) по правилам Google (разбор как у robots.cc: ключи по началу слова и с опечатками,
- *      без двоеточия — два слова, `*` с пробелом — общая группа; длиннейшее правило, Allow при равенстве; `*`
- *      и `$`) не закрыты ни от одного пути сборки (без файлов с точкой); строка `Sitemap:` на канонический
- *      sitemap-index;
- *   4. robots.txt без параметра — тот, что берут роботы: 200, блока Cloudflare, вредного чужого текста
- *      и ограничений нет, поисковики не закрыты; равен ответу мимо кэша — или пришёл из кэша Cloudflare (разница
- *      без вреда — прежняя редакция нашего файла, справка «кэш», не отказ); ответ мимо кэша не пришёл — судится сам;
+ *      Managed content … # END …» (комментарии вне блоков — справка), и ни одна их группа для `*`, Googlebot,
+ *      Bingbot или msnbot ничего не запрещает (наш файл обещает: запрещать нечего); Googlebot, Googlebot-Image
+ *      и Bingbot по правилам Google (разбор как у robots.cc: ключи по началу слова и с опечатками, без двоеточия
+ *      — два слова, `*` с пробелом — общая группа; группы по всему файлу; длиннейшее правило, Allow при
+ *      равенстве; `*` и `$`) не закрыты ни от одного пути сборки; строка `Sitemap:` на канонический sitemap-index;
+ *   4. robots.txt без параметра — тот, что берут роботы: 200, блока Cloudflare, чужого текста и ограничений
+ *      нет, поисковики не закрыты; равен ответу мимо кэша — или пришёл из кэша Cloudflare (разница без вреда —
+ *      справка «кэш», не отказ); ответ мимо кэша не пришёл — судится сам;
  *   5. sitemap-index.xml ведёт ровно на sitemap-0.xml; в sitemap-0.xml адреса = страницы структуры без
  *      `/404/` (набором, не счётом), и каждый отвечает 200 со своим `canonical` (из `<head>`, не из комментария);
  *   6. несуществующий адрес страницы — 404 и наша страница (её `<title>` из структуры); `/404/` напрямую —
  *      200 и свой `canonical`; страница игры — 200 и свой `canonical`;
  *   7. `/privacy/` — 200, свой `canonical`, без обфускации почты Cloudflare (П77 п. 6), адрес ящика на домене
- *      сайта — в видимом тексте `<body>` (без `<title>`, `<noscript>`, `hidden`; ящик и строка адреса — до
- *      привязки домена, П52 п. 3, П43 п. 4);
- *   8. HTML каждой полученной страницы (ответ 200 и наша 404) равен сборке `dist/` — побайтно или после
- *      нормализации сборки другой машины (значения cid и хеши имён CSS, как у сторожа выкладки: сайт выложен
- *      сборкой раннера) — справкой; Content-Type — text/html, utf-8; вставки Cloudflare, чужие ресурсы и скрипты,
- *      `<base>`, `<meta robots>` — ПЛОХО с первым расхождением и «N из M» (`/privacy/` обещает: два своих скрипта,
- *      запросов наружу нет); причина — переключатель Cloudflare или «вставка на пути или dist/ не из выложенного
- *      коммита»;
- *   9. HTML: `Cache-Control` — `must-revalidate`, все `max-age` и `s-maxage` = 0 (разбор директив, кавычки
- *      принимаются), `CDN-Cache-Control` — нет или 0; не из кэша Cloudflare без сверки (HIT/STALE/UPDATING — отказ;
- *      MISS/EXPIRED — один повторный запрос страницы: повтор из кэша — отказ; REVALIDATED — справка); все —
- *      у каждой страницы прогона;
+ *      сайта — в видимом тексте страницы (ящик и строка адреса — до привязки домена, П52 п. 3, П43 п. 4);
+ *   8. HTML каждой полученной страницы (ответ 200 и наша 404) побайтно равен сборке `dist/`: вставки
+ *      Cloudflare, чужие ресурсы и скрипты, `<base>`, `<meta robots>` — всё, чего нет в сборке, — ПЛОХО
+ *      (`/privacy/` обещает: два своих скрипта, запросов наружу нет); причина названа переключателем Cloudflare;
+ *   9. HTML: `Cache-Control` — `must-revalidate`, все `max-age` = 0, без `s-maxage` > 0, `CDN-Cache-Control` —
+ *      нет или `max-age=0`; не из кэша Cloudflare без сверки (HIT/STALE/UPDATING; MISS/EXPIRED/REVALIDATED —
+ *      справка); все — у каждой страницы прогона;
  *  10. страницы — без запрета индексации (`noindex`, `none`, `unavailable_after` в `X-Robots-Tag` и в `<meta>`
- *      robots, googlebot, bingbot; только ответы 200; директива после префикса чужого бота без своего префикса —
- *      строго запрет: fetch склеивает поля заголовка);
- *  11. запросы идут через Cloudflare (`cf-ray` или `server: cloudflare` у каждого ответа прогона, с адресом) —
- *      ряд 05 `/privacy/`;
+ *      robots, googlebot, bingbot; только ответы 200);
+ *  11. запросы идут через Cloudflare (`cf-ray` или `server: cloudflare` у страниц) — ряд 05 `/privacy/`;
  *  12. ни один ответ прогона — без `Set-Cookie` (`/privacy/` обещает, что сайт cookies не ставит).
  * Проверка, которая читает тело, при ответе не 200 — ПЛОХО, а не «в пустом теле ничего нет»; причина
  * ответа (вызов Cloudflare, коды 52x, сеть) — в строке. Код 1 при любом ПЛОХО, 2 — ошибка входа. Сеть —
@@ -66,8 +56,7 @@ import { dirname, join, relative } from 'node:path';
 
 export const SAYT = join(dirname(fileURLToPath(import.meta.url)), '..');
 
-/** Один запрос без редиректов: `{ status, location, zagolovok(имя), telo, baity }`; ошибка сети — `status` «сеть: КОД».
- *  Тело — байтами (`baity`) и текстом UTF-8 (`telo`): равенство сборке судится по байтам (CL3-P-4). */
+/** Один запрос без редиректов: `{ status, location, zagolovok(имя), telo }`; ошибка сети — `status` «сеть: КОД». */
 export async function poluchitSetyu(url) {
   try {
     const r = await fetch(url, {
@@ -75,19 +64,19 @@ export async function poluchitSetyu(url) {
       signal: AbortSignal.timeout(15000),
       headers: { 'user-agent': 'factory-check-live/2' },
     });
-    const baity = Buffer.from(await r.arrayBuffer());
-    return { status: r.status, location: r.headers.get('location') ?? '', zagolovok: (i) => r.headers.get(i) ?? '', telo: baity.toString('utf8'), baity };
+    const telo = await r.text();
+    return { status: r.status, location: r.headers.get('location') ?? '', zagolovok: (i) => r.headers.get(i) ?? '', telo };
   } catch (e) {
     return { status: `сеть: ${e.cause?.code ?? e.name}`, location: '', zagolovok: () => '', telo: '' };
   }
 }
 
-/** Сборка `dist/`: HTML страницы по адресу (`/x/` → `x/index.html`) и пути файлов как адреса — без файлов и папок
- *  с точкой в начале имени (`.htaccess` сервер роботам не отдаёт, CL3-Z-4). */
+/** Сборка `dist/`: HTML страницы по адресу (`/x/` → `x/index.html`) и пути всех файлов как адреса. */
 export function sborkaIzDist(dist) {
   if (!existsSync(join(dist, 'index.html'))) return null;
   const obhod = (d) => readdirSync(d).flatMap((n) => (statSync(join(d, n)).isDirectory() ? obhod(join(d, n)) : [join(d, n)]));
-  const fajly = obhod(dist).map((f) => relative(dist, f).replace(/\\/g, '/')).filter((f) => !f.split('/').some((s) => s.startsWith('.')));
+  // Служебные файлы сервера (`.htaccess`) — не адреса сайта: сервер их не отдаёт (403), роботам они не нужны.
+  const fajly = obhod(dist).map((f) => relative(dist, f).replace(/\\/g, '/')).filter((f) => !f.split('/').some((c) => c.startsWith('.')));
   return {
     stranica: (put) => {
       const f = join(dist, put.replace(/^\/+/, ''), 'index.html');
@@ -97,6 +86,23 @@ export function sborkaIzDist(dist) {
   };
 }
 
+/** HTML сборки без того, что зависит от машины сборки (SV1-Z-1): значения data-astro-cid — метками по порядку, хеш в имени _astro/*.css снят. */
+const normSborki = (html) => {
+  const cid = new Map();
+  return html
+    .replace(/data-astro-cid-([a-z0-9]+)/g, (_, v) => {
+      if (!cid.has(v)) cid.set(v, cid.size + 1);
+      return `data-astro-cid-#${cid.get(v)}`;
+    })
+    .replace(/(_astro\/[^/"'()\s]+?)\.[A-Za-z0-9_-]{8}\.css/g, '$1.#.css');
+};
+/** Первое расхождение двух текстов: позиция и фрагменты. */
+const pervoeRaskhozhdenie = (a, b) => {
+  let i = 0;
+  while (i < a.length && a[i] === b[i]) i += 1;
+  const kusok = (t) => t.slice(Math.max(0, i - 20), i + 40).replace(/\s+/g, ' ');
+  return `с знака ${i}: сборка «${kusok(a)}», сайт «${kusok(b)}»`;
+};
 const norm = (s) => s.replace(/\r\n?/g, '\n').replace(/^﻿/, '');
 const IZ_KESHA = /^(HIT|STALE|UPDATING)$/i;
 const OSHIBKI_CF = {
@@ -152,48 +158,13 @@ const suschnosti = (s) =>
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
     .replace(/&rsquo;/g, '’').replace(/&lsquo;/g, '‘').replace(/&mdash;/g, '—').replace(/&nbsp;/g, ' ')
     .replace(/&apos;/g, "'").replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&amp;/g, '&');
-/** Видимый текст: только `<body>` (после `</head>`, без `<title>`), без комментариев, скриптов, стилей, шаблонов,
- *  `<noscript>` и элементов с `hidden` (CL3-P-6; вложенные одноимённые элементы — предел), теги сняты, сущности раскрыты. */
-const vidimyyTekst = (html) => {
-  const h = bezKommentariev(html);
-  const k = h.search(/<\/head\s*>/i);
-  return suschnosti(
-    (k < 0 ? h : h.slice(k))
-      .replace(/<(script|style|template|noscript|title)\b[\s\S]*?<\/\1\s*>/gi, ' ')
-      .replace(/<([a-z][a-z0-9-]*)\b[^>]*\shidden(?=[\s=>/])[^>]*>[\s\S]*?<\/\1\s*>/gi, ' ')
+/** Видимый текст: без комментариев, скриптов, стилей, шаблонов и тегов, сущности раскрыты. */
+const vidimyyTekst = (html) =>
+  suschnosti(
+    bezKommentariev(html)
+      .replace(/<(script|style|template)\b[\s\S]*?<\/\1\s*>/gi, ' ')
       .replace(/<[^>]*>/g, ' ')
   );
-};
-
-/** Директивы заголовка кэша: имя → все значения (токен или строка в кавычках — без кавычек); CL3-P-7. */
-function direktivy(znachenie) {
-  const out = new Map();
-  for (const t of String(znachenie).split(',')) {
-    const m = /^\s*([A-Za-z-]+)\s*(?:=\s*(?:"([^"]*)"|([^\s,]*)))?\s*$/.exec(t);
-    const [imya, v] = m ? [m[1].toLowerCase(), m[2] ?? m[3] ?? ''] : [`?${t.trim()}`, ''];
-    out.set(imya, [...(out.get(imya) ?? []), v]);
-  }
-  return out;
-}
-
-/** HTML после нормализации сборки другой машины (CL3-Z-1, SV1-Z-1): значения `data-astro-cid` — порядковыми метками
- *  внутри страницы, хеш снят в ссылках `/_astro/<имя>.<хеш>.css`. */
-function normHtml(t) {
-  const cid = new Map();
-  return t
-    .replace(/data-astro-cid-([a-z0-9]+)/g, (_, v) => {
-      if (!cid.has(v)) cid.set(v, cid.size + 1);
-      return `data-astro-cid-#${cid.get(v)}`;
-    })
-    .replace(/(\/_astro\/[^"'\s)<>?#,]+?)\.[A-Za-z0-9_-]{8}\.css/g, '$1.#.css');
-}
-/** Первое расхождение двух текстов: знак и окрестности. */
-function pervoeRaskhozhdenie(a, b) {
-  let i = 0;
-  while (i < a.length && i < b.length && a[i] === b[i]) i += 1;
-  const kus = (s) => s.slice(Math.max(0, i - 20), i + 40).replace(/\s+/g, ' ');
-  return `с знака ${i}: сборка «${kus(a)}», сайт «${kus(b)}»`;
-}
 
 /* ---------- robots.txt по правилам Google (robots.cc) ---------- */
 
@@ -205,14 +176,30 @@ function klyuch(k) {
   if (x.startsWith('allow')) return 'allow';
   return 'drugoe';
 }
+/** Строка копии robots.txt вне нашего файла, которая сама вреда не несёт: User-agent, Allow, пустой Disallow, Sitemap на хост
+ *  сайта (прежняя редакция нашего файла в кэше Cloudflare). Запреты и неизвестные ключи — вред (судятся как раньше). */
+const bezvrednayaStroka = (s, golyy) => {
+  const d = s.indexOf(':');
+  if (d < 0) return false;
+  const [k, v] = [s.slice(0, d).trim(), s.slice(d + 1).trim()];
+  const vid = klyuch(k);
+  if (vid === 'ua' || vid === 'allow' || (vid === 'disallow' && v === '')) return true;
+  if (/^sitemap$/i.test(k)) {
+    try {
+      return new URL(v).host.replace(/^www\./, '') === golyy;
+    } catch {
+      return false;
+    }
+  }
+  return false;
+};
 /** Группы файла как у robots.cc: подряд идущие User-agent, затем правила до следующего User-agent после правила;
- *  комментарии, пустые строки, Sitemap и прочие ключи групп не рвут; правило до первого User-agent не действует.
- *  `otkuda(nomerStroki)` — происхождение строки (наш файл, блок, чужой текст): правило помнит, откуда оно (CL3-P-5). */
-function gruppy(telo, otkuda = () => null) {
+ *  комментарии, пустые строки, Sitemap и прочие ключи групп не рвут; правило до первого User-agent не действует. */
+function gruppy(telo) {
   const out = [];
   let tek = null;
   let pravilo = false;
-  for (const [nomer, s0] of norm(telo).split('\n').entries()) {
+  for (const s0 of norm(telo).split('\n')) {
     const s = s0.replace(/#.*$/, '').trim();
     if (!s) continue;
     let k;
@@ -235,7 +222,7 @@ function gruppy(telo, otkuda = () => null) {
       tek.agenty.push(obshchiy ? '*' : (/^[A-Za-z_-]+/.exec(v)?.[0] ?? '').toLowerCase());
     } else if (vid === 'allow' || vid === 'disallow') {
       pravilo = true;
-      if (tek) tek.pravila.push({ allow: vid === 'allow', put: v, otkuda: otkuda(nomer) });
+      if (tek) tek.pravila.push({ allow: vid === 'allow', put: v });
     }
   }
   return out;
@@ -245,8 +232,7 @@ const sovpadaet = (obrazec, put) => {
   const telo = (konec ? obrazec.slice(0, -1) : obrazec).split('*').map((c) => c.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*');
   return new RegExp(`^${telo}${konec ? '$' : ''}`).test(put);
 };
-/** Цепочка групп бота: своё имя, для googlebot-image — затем googlebot, bingbot следует группе msnbot (CL3-Z-3);
- *  в конце — `*`. */
+/** Цепочка групп бота: своё имя, для googlebot-image — затем googlebot, в конце — `*`. */
 const TSEPOCHKA = { googlebot: ['googlebot'], 'googlebot-image': ['googlebot-image', 'googlebot'], bingbot: ['bingbot', 'msnbot'] };
 function razreshen(gr, bot, put) {
   let svoi = [];
@@ -273,12 +259,10 @@ export function zakrytoPoiskovikam(telo, puti) {
  * ogranicheniya }`. Наш файл — одним куском, от начала строки до конца строки; иначе `raskhozhdenie` — первая строка
  * нашего файла, которой в ответе нет на своём месте. Остаток — строки вне нашего файла: управляемые блоки по меткам
  * BEGIN/END, комментарии вне блоков (справка) и прочее непустое — чужой текст (строки, которые есть в нашем файле,
- * при повреждённом файле чужими не считаются). Незакрытый блок — чужой текст. `ogranicheniya` — непустые Disallow из
- * строк блоков (кроме Cloudflare — у него своя проверка) в группах для `*`, Googlebot*, Bingbot* или msnbot — группы
- * по всему файлу, как у robots.cc (правило блока без своего User-agent продолжает предыдущую группу, CL3-P-5), — только
- * совпадающие хоть с одним путём `puti` (сборки); запреты вне сборки — `zapretyVneSborki`, справкой (CL3-Z-3).
+ * при повреждённом файле чужими не считаются). Незакрытый блок — чужой текст. `ogranicheniya` — группы блоков
+ * (кроме Cloudflare — у него своя проверка) для `*`, Googlebot*, Bingbot* или msnbot с непустым Disallow.
  */
-export function razobratRobots(telo, nash, puti = ['/']) {
+export function razobratRobots(telo, nash, puti = null) {
   const t = norm(telo);
   const n = norm(nash).replace(/\n+$/, '');
   let i = -1;
@@ -321,32 +305,15 @@ export function razobratRobots(telo, nash, puti = ['/']) {
     if (tek) chuzhoyTekst.push(`# BEGIN ${tek.imya} Managed content (без END)`, ...tek.stroki.filter(Boolean));
   }
   const vid = (imya) => (/cloudflare/i.test(imya) ? 'cloudflare' : /^adm\.tools$/i.test(imya) ? 'хостер' : 'чужой');
-  // Происхождение каждой строки файла: наш файл, блок (имя), прочее.
-  const stroki = t.split('\n');
-  const nashOt = i >= 0 ? t.slice(0, i).split('\n').length - 1 : -1;
-  const nashDo = i >= 0 ? nashOt + n.split('\n').length : -1;
-  const proiskhozhdenie = [];
-  let blok = null;
-  for (const [nomer, s0] of stroki.entries()) {
-    const s = s0.trim();
-    if (nomer >= nashOt && nomer < nashDo) {
-      proiskhozhdenie.push({ vid: 'наш' });
-      continue;
-    }
-    const nachalo = /^#\s*BEGIN\s+(.+?)\s+Managed\s+content\s*$/i.exec(s);
-    const konec = /^#\s*END\s+(.+?)\s+Managed\s+content\s*$/i.exec(s);
-    if (!blok && nachalo) blok = nachalo[1];
-    proiskhozhdenie.push(blok ? { vid: 'блок', imya: blok } : { vid: 'прочее' });
-    if (blok && konec && konec[1].toLowerCase() === blok.toLowerCase()) blok = null;
-  }
   const ogranicheniya = [];
-  const zapretyVneSborki = [];
-  for (const g of gruppy(t, (nomer) => proiskhozhdenie[nomer])) {
-    const komu = g.agenty.filter((a) => a === '*' || /^(googlebot|bingbot|msnbot)/.test(a));
-    if (!komu.length) continue;
-    for (const p of g.pravila.filter((x) => !x.allow && x.put !== '' && x.otkuda?.vid === 'блок' && vid(x.otkuda.imya) !== 'cloudflare')) {
-      const zapis = `«${p.otkuda.imya}»: ${komu.join(', ')} — Disallow: ${p.put}`;
-      (puti.some((put) => sovpadaet(p.put, put)) ? ogranicheniya : zapretyVneSborki).push(zapis);
+  const sluzhebnye = [];
+  for (const b of bloki.filter((x) => vid(x.imya) !== 'cloudflare')) {
+    for (const g of gruppy(b.stroki.join('\n'))) {
+      const komu = g.agenty.filter((a) => a === '*' || /^(googlebot|bingbot|msnbot)/.test(a));
+      const zaprety = g.pravila.filter((p) => !p.allow && p.put !== '' && (!puti || puti.some((x) => sovpadaet(p.put, x))));
+      const vne = puti ? g.pravila.filter((p) => !p.allow && p.put !== '' && !puti.some((x) => sovpadaet(p.put, x))) : [];
+      if (komu.length && vne.length) sluzhebnye.push(`«${b.imya}»: ${komu.join(', ')} — Disallow: ${vne.map((p) => p.put).join(', ')}`);
+      if (komu.length && zaprety.length) ogranicheniya.push(`«${b.imya}»: ${komu.join(', ')} — Disallow: ${zaprety.map((p) => p.put).join(', ')}`);
     }
   }
   return {
@@ -356,7 +323,7 @@ export function razobratRobots(telo, nash, puti = ['/']) {
     chuzhoyTekst,
     kommentarii,
     ogranicheniya,
-    zapretyVneSborki,
+    sluzhebnye,
   };
 }
 
@@ -370,19 +337,13 @@ function zapretyIndeksacii(znachenie, otKogo = '') {
   let bot = otKogo === 'robots' ? '' : otKogo;
   for (const t0 of znachenie.split(',')) {
     let t = t0.trim().toLowerCase();
-    let svoy = false;
     const m = /^([a-z0-9_-]+)\s*:\s*(.*)$/.exec(t);
     if (m && !DIREKTIVY_S_ZNACHENIEM.test(m[1])) {
       bot = m[1];
       t = m[2].trim();
-      svoy = true;
     }
-    const zapret = t === 'noindex' || t === 'none' || t.startsWith('unavailable_after');
-    if (!zapret) continue;
-    if (!bot || /^(googlebot|bingbot)/.test(bot)) out.push(`${bot ? bot + ': ' : ''}${t}`);
-    // Директива без своего префикса после префикса чужого бота: fetch склеивает поля X-Robots-Tag через запятую, и
-    // «otherbot: noarchive» + отдельное поле «noindex» не различить — строго, как запрет (CL3-P-3).
-    else if (!svoy && !otKogo) out.push(`${t} (после «${bot}:» — поля X-Robots-Tag склеены, не различить)`);
+    if (bot && !/^(googlebot|bingbot)/.test(bot)) continue;
+    if (t === 'noindex' || t === 'none' || t.startsWith('unavailable_after')) out.push(`${bot ? bot + ': ' : ''}${t}`);
   }
   return out;
 }
@@ -455,8 +416,8 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   check('robots.txt: строка Sitemap', true, mimo.status === 200 && norm(mimo.telo).split('\n').some((s) => s.trim() === `Sitemap: ${base}/sitemap-index.xml`), neChitan('строка на канонический sitemap-index'));
   spravki.push(`robots.txt мимо кэша: Cf-Cache-Status ${cfMimo || '—'}`);
   for (const b of rb ? rb.bloki.filter((x) => x.vid === 'хостер') : []) spravki.push(`robots.txt: блок хостера «${b.imya} Managed content» ${b.polozhenie}, строк ${b.strok} — не наш, не отключается`);
+  for (const z of rb ? rb.sluzhebnye : []) spravki.push(`robots.txt: блок запрещает пути вне сборки — ${z} (ни одного пути сборки не закрывает)`);
   for (const k of rb ? rb.kommentarii : []) spravki.push(`robots.txt: комментарий вне нашего файла и блоков — «${k}» (правил не несёт)`);
-  for (const z of rb ? rb.zapretyVneSborki : []) spravki.push(`robots.txt: блок запрещает путь вне сборки — ${z} (страниц сайта не касается)`);
 
   /* 4 — robots.txt без параметра: его берут роботы */
   const bez = await poluchit(`${base}/robots.txt`);
@@ -468,13 +429,9 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   if (bez.status !== 200) [bezFakt, bezOtkuda] = [false, sPrichinoy(bez, `ответ ${bez.status} — роботы robots.txt не получают`)];
   else if (!ravny) {
     const rbBez = razobratRobots(bez.telo, nashRobots, PUTI);
-    // Безвредные строки копии (CL3-Z-5): прежняя редакция нашего файла — User-agent, Allow, пустой Disallow, Sitemap
-    // на хост сайта. Есть вредная строка — чужой текст печатается целиком (иначе теряется, кому она адресована).
-    const bezvredna = (s) =>
-      /^user-?agent\s*:/i.test(s) || /^allow\s*:/i.test(s) || /^disallow\s*:\s*$/i.test(s.replace(/#.*$/, '')) || new RegExp(`^sitemap\\s*:\\s*https?://(www\\.)?${golyy.replace(/\./g, '\\.')}/`, 'i').test(s);
     const vred = [
       ...rbBez.bloki.filter((b) => b.vid === 'cloudflare').map((b) => `блок «${b.imya}»`),
-      ...(rbBez.chuzhoyTekst.every(bezvredna) ? [] : rbBez.chuzhoyTekst),
+      ...rbBez.chuzhoyTekst.filter((s) => !bezvrednayaStroka(s, golyy)),
       ...rbBez.bloki.filter((b) => b.vid === 'чужой').map((b) => `блок «${b.imya}»`),
       ...rbBez.ogranicheniya,
       ...zakrytoPoiskovikam(bez.telo, PUTI).map((z) => `закрыто: ${z}`),
@@ -554,75 +511,49 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   const svoi = stranicy.filter(([, r]) => r.status === 200 || (r.status === 404 && zagl(r.telo) === t404));
   const kratko = (u) => u.slice(base.length) || '/';
 
-  // HTML = сборка: байты (или текст, если байтов нет); иначе — после нормализации сборки другой машины (CL3-Z-1:
-  // сайт выложен сборкой раннера, а сверка идёт с dist этой машины); Content-Type — text/html, charset utf-8 или нет (CL3-P-4).
   const raznye = [];
-  let normRavny = 0;
+  const drugayaMashina = [];
   const neSudimy = stranicy.filter(([, r]) => !svoi.some(([, x]) => x === r)).map(([u, r]) => `${kratko(u)} — ${sPrichinoy(r, `ответ ${r.status}`)}`);
   for (const [u, r] of svoi) {
     const put = r.status === 404 ? '/404/' : new URL(u).pathname;
     const nasha = sborka ? sborka.stranica(put) : null;
-    const ct = r.zagolovok('content-type');
-    if (!/^text\/html\s*(;\s*charset\s*=\s*"?utf-8"?\s*)?$/i.test(ct.trim())) {
-      raznye.push(`${kratko(u)}: Content-Type «${ct || '—'}» — ждём text/html (utf-8): браузер прочтёт или покажет иначе`);
-      continue;
-    }
-    if (nasha !== null && (r.baity ? r.baity.equals(Buffer.from(nasha, 'utf8')) : nasha === r.telo)) continue;
-    if (nasha !== null && normHtml(nasha) === normHtml(r.telo)) {
-      normRavny += 1;
+    if (nasha !== null && nasha === r.telo) continue;
+    if (nasha !== null && normSborki(nasha) === normSborki(r.telo)) {
+      drugayaMashina.push(kratko(u));
       continue;
     }
     const vstavka = VSTAVKI_CF.find(([m]) => r.telo.includes(m) && !(nasha ?? '').includes(m));
-    raznye.push(`${kratko(u)}: ${nasha === null ? 'в сборке такой страницы нет' : vstavka ? `${vstavka[1]}; ${pervoeRaskhozhdenie(normHtml(nasha), normHtml(r.telo))}` : pervoeRaskhozhdenie(normHtml(nasha), normHtml(r.telo))}`);
+    raznye.push(`${kratko(u)}: ${nasha === null ? 'в сборке такой страницы нет' : vstavka ? vstavka[1] : `HTML отличается от сборки ${typeof normSborki === 'function' ? pervoeRaskhozhdenie(normSborki(nasha), normSborki(r.telo)) : pervoeRaskhozhdenie(nasha, r.telo)}`}`);
   }
-  if (normRavny) spravki.push(`HTML: страниц, равных сборке после нормализации cid и имён CSS (сайт выложен сборкой другой машины), — ${normRavny}`);
   check(
     'HTML страниц = сборка (dist)',
     true,
     !osnova && Boolean(sborka) && raznye.length === 0,
-    osnova ||
-      (!sborka
-        ? 'сборки dist/ нет — сверять не с чем; собери сайт из выложенного коммита (main) перед live:check'
-        : raznye.length
-          ? `${raznye.length} из ${svoi.length} страниц: ${raznye.slice(0, 2).join(' | ')} — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет`
-          : `страниц ${svoi.length}${neSudimy.length ? `; не судились (не наши ответы): ${neSudimy.slice(0, 2).join(', ')}` : ''}`)
+    osnova || (!sborka ? 'сборки dist/ нет — сверять не с чем; собери сайт перед live:check' : raznye.length ? `${raznye.slice(0, 3).join(' | ')} — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет` : `страниц ${svoi.length}${neSudimy.length ? `; не судились (не наши ответы): ${neSudimy.slice(0, 2).join(', ')}` : ''}`)
   );
 
+  if (drugayaMashina.length) spravki.push(`HTML = сборка после нормализации cid ядра и хешей имён CSS (сборка другой машины, SV1-Z-1): ${drugayaMashina.length} стр.`);
   const sto = svoi.filter(([, r]) => r.status === 200);
-  // Cache-Control и CDN-заголовки — одним разбором директив: все max-age и s-maxage — «0», значение в кавычках
-  // принимается, неразобранное — отказ (CL3-P-7).
   const plokhoCC = [];
   for (const [u, r] of sto) {
-    const cc = direktivy(r.zagolovok('cache-control'));
-    const cdnZ = [r.zagolovok('cdn-cache-control'), r.zagolovok('cloudflare-cdn-cache-control')].filter(Boolean).join(', ');
-    const cdn = cdnZ ? direktivy(cdnZ) : new Map();
-    const ne0 = (d, imya) => (d.get(imya) ?? []).filter((v) => v !== '0');
+    const cc = r.zagolovok('cache-control').toLowerCase();
+    const maxAge = (cc.match(/(?:^|[\s,])max-age\s*=\s*\d+/g) ?? []).map((x) => x.replace(/[\s,]/g, ''));
+    const sMaxAge = (cc.match(/s-maxage\s*=\s*(\d+)/) ?? [])[1];
+    const cdn = [r.zagolovok('cdn-cache-control'), r.zagolovok('cloudflare-cdn-cache-control')].filter(Boolean).join(', ').toLowerCase();
+    const cdnMaxAge = (cdn.match(/max-age\s*=\s*(\d+)/g) ?? []).map((x) => x.replace(/\s/g, ''));
     const oshibki = [
-      !cc.has('must-revalidate') && 'нет must-revalidate',
-      (!cc.has('max-age') || ne0(cc, 'max-age').length) && `max-age: ${(cc.get('max-age') ?? ['—']).join(' ')}`,
-      ne0(cc, 's-maxage').length && `s-maxage: ${cc.get('s-maxage').join(' ')}`,
-      [...cc.keys()].some((k) => k.startsWith('?')) && 'директива не разобрана',
-      cdnZ && (ne0(cdn, 'max-age').length || ne0(cdn, 's-maxage').length || [...cdn.keys()].some((k) => k.startsWith('?'))) && `CDN-Cache-Control: ${cdnZ}`,
+      !/must-revalidate/.test(cc) && 'нет must-revalidate',
+      (maxAge.length === 0 || maxAge.some((x) => x !== 'max-age=0')) && `max-age: ${maxAge.join(' ') || '—'}`,
+      sMaxAge !== undefined && sMaxAge !== '0' && `s-maxage=${sMaxAge}`,
+      cdn && (cdnMaxAge.length === 0 || cdnMaxAge.some((x) => x !== 'max-age=0')) && `CDN-Cache-Control: ${cdn}`,
     ].filter(Boolean);
     if (oshibki.length) plokhoCC.push(`${kratko(u)}: ${oshibki.join(', ')} (пришло «${r.zagolovok('cache-control') || '—'}»)`);
   }
   check('HTML: Cache-Control (max-age=0, must-revalidate)', true, !osnova && plokhoCC.length === 0, osnova || (plokhoCC.length ? `${plokhoCC.slice(0, 2).join(' | ')} — .htaccess обещает: правка доходит до читателя при следующем заходе` : `страниц ${sto.length}`));
-  // Кэш HTML: HIT/STALE/UPDATING — отказ; MISS/EXPIRED — «положено в кэш»: один повторный запрос той же страницы
-  // (исключение из «одного запроса на адрес», CL3-P-1) — повтор из кэша без сверки — отказ.
-  const keshHtml = [];
-  const sverka = [];
-  for (const [u, r] of sto) {
-    const st = r.zagolovok('cf-cache-status');
-    if (IZ_KESHA.test(st)) keshHtml.push(`${kratko(u)} (${st}, Age ${r.zagolovok('age') || '—'})`);
-    else if (/^(MISS|EXPIRED)$/i.test(st)) {
-      const povtor = await poluchitOdin(u);
-      const st2 = povtor.zagolovok('cf-cache-status');
-      if (IZ_KESHA.test(st2)) keshHtml.push(`${kratko(u)} (${st} → повтор ${st2}, Age ${povtor.zagolovok('age') || '—'})`);
-      else sverka.push(`${kratko(u)} ${st} → повтор ${st2 || '—'}`);
-    } else if (/^REVALIDATED$/i.test(st)) sverka.push(`${kratko(u)} ${st}`);
-  }
-  if (sverka.length) spravki.push(`Cloudflare кладёт HTML в кэш, повтор — не из кэша без сверки: ${sverka.slice(0, 3).join(', ')} — правило кэша зоны проверить`);
-  check('HTML не из кэша Cloudflare', true, !osnova && keshHtml.length === 0, osnova || (keshHtml.length ? `${keshHtml.slice(0, 3).join(', ')} — правило кэша Cloudflare (Edge TTL) держит HTML; правка не дойдёт до читателя` : `страниц ${sto.length}`));
+  const keshHtml = sto.filter(([, r]) => IZ_KESHA.test(r.zagolovok('cf-cache-status'))).map(([u, r]) => `${kratko(u)} (${r.zagolovok('cf-cache-status')}, Age ${r.zagolovok('age') || '—'})`);
+  const sverka = sto.filter(([, r]) => /^(MISS|EXPIRED|REVALIDATED)$/i.test(r.zagolovok('cf-cache-status'))).map(([u, r]) => `${kratko(u)} ${r.zagolovok('cf-cache-status')}`);
+  if (sverka.length) spravki.push(`Cloudflare кэширует HTML и сверяет с сервером: ${sverka.slice(0, 3).join(', ')} — правило кэша зоны проверить (HIT без сверки был бы отказом)`);
+  check('HTML не из кэша Cloudflare', true, !osnova && keshHtml.length === 0, osnova || (keshHtml.length ? `${keshHtml.slice(0, 3).join(', ')} — правило кэша Cloudflare держит HTML; правка не дойдёт до читателя` : `страниц ${sto.length}`));
 
   const zaprety = [];
   for (const [u, r] of sto) {
@@ -634,9 +565,8 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   }
   check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt обещает: всё открыто для индекса` : `страниц ${sto.length}`));
 
-  // Cloudflare — у каждого ответа прогона (редиректы обоих хостов, robots.txt, карты, 404), с адресом (CL3-P-2).
-  const bezCf = [...otvety].filter(([, r]) => typeof r.status === 'number' && !r.zagolovok('cf-ray') && !/cloudflare/i.test(r.zagolovok('server'))).map(([u, r]) => `${u} (${r.status})`);
-  check('запросы идут через Cloudflare', true, !osnova && bezCf.length === 0, osnova || (bezCf.length ? `без cf-ray: ${bezCf.slice(0, 3).join(', ')}${bezCf.length > 3 ? ` и ещё ${bezCf.length - 3}` : ''} — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты` : `ответов ${otvety.size}`));
+  const bezCf = sto.filter(([, r]) => !r.zagolovok('cf-ray') && !/cloudflare/i.test(r.zagolovok('server'))).map(([u]) => kratko(u));
+  check('запросы идут через Cloudflare', true, !osnova && bezCf.length === 0, osnova || (bezCf.length ? `без cf-ray: ${bezCf.slice(0, 3).join(', ')}${bezCf.length > 3 ? ` и ещё ${bezCf.length - 3}` : ''} — Cloudflare не проксирует (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты` : `страниц ${sto.length}`));
 
   const kuki = [];
   for (const [u, r] of otvety) {

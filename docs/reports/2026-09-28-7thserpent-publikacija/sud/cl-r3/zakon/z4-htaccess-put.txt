@@ -1,0 +1,25 @@
+
+=== Z4 * — /. (служебные файлы с точкой) — как есть: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /. — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /.htaccess, googlebot-image /.htaccess, bingbot /.htaccess
+
+=== Z4 * — /. (служебные файлы с точкой) — с правкой z3 (строгость по делу): 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /. — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /.htaccess, googlebot-image /.htaccess, bingbot /.htaccess
+
+=== Z4 * — /. (служебные файлы с точкой) — с правками z3 + z4 (без служебных файлов в путях): 44/44
+
+=== Z4 * — /.*  — как есть: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /.* — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /.htaccess, googlebot-image /.htaccess, bingbot /.htaccess
+
+=== Z4 * — /.*  — с правкой z3 (строгость по делу): 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /.* — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /.htaccess, googlebot-image /.htaccess, bingbot /.htaccess
+
+=== Z4 * — /.*  — с правками z3 + z4 (без служебных файлов в путях): 44/44
+
+=== Z4 контроль: Googlebot — / — с правкой z4: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /404/, googlebot /apple-touch-icon.png, googlebot /cheats/, googlebot /favicon-16x16.png и ещё 324
+ИТОГ: * — /. (служебные файлы с точкой): 42/44 → z3 42/44 → z3+z4 44/44; * — /.*: 42/44 → z3 42/44 → z3+z4 44/44; [контроль] Googlebot закрыт целиком с z4: 42/44

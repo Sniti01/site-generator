@@ -1,0 +1,11 @@
+
+=== Z2 выложен другой коммит (текст /max-payne-1/), dist/ — этой ветки, та же машина: 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /max-payne-1/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет
+  тронут абзац: «New York, 2001: a murdered family, a drug called Valkyr and …»
+
+=== Z2 с правкой z2: 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /max-payne-1/: HTML отличается от сборки с знака 15480: сборка «out who is behind it. Remedy’s original, from the 2001 PC re», сайт «out who is behind it — first published wording. Remedy’s ori» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+
+=== Z2 + Z1 (сайт CI, другой коммит) с правками z1, z2: 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /max-payne-1/: HTML отличается от сборки с знака 15023: сборка «out who is behind it. Remedy’s original, from the 2001 PC re», сайт «out who is behind it — first published wording. Remedy’s ori» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+ИТОГ: как есть 43/44 — «/max-payne-1/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет»; с правкой z2 43/44 — «/max-payne-1/: HTML отличается от сборки с знака 15480: сборка «out who is behind it. Remedy’s original, from the 2001 PC re», сайт «out who is behind it — first published wording. Remedy’s ori» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выл»

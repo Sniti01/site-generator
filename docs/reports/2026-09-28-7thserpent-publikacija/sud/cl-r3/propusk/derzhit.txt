@@ -1,0 +1,29 @@
+держит: лишний перевод строки в конце главной → «HTML страниц = сборка (dist)» ПЛОХО; итог 43/44
+держит: /movie/ отдаёт HTML /story/ (свой canonical заменён на /movie/) → «HTML страниц = сборка (dist)» ПЛОХО; итог 43/44
+держит: 404 с нашим title и баннером хостера → «HTML страниц = сборка (dist)» ПЛОХО; итог 43/44
+держит: комментарий Cloudflare в конце страницы → «HTML страниц = сборка (dist)» ПЛОХО; итог 43/44
+держит: стиль переписан на media=print и onload (приём Cloudflare/оптимизаторов) → «HTML страниц = сборка (dist)» ПЛОХО; итог 43/44
+держит: блок: User-agent: Googlebot-News, Disallow: /x/ → «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; итог 43/44
+держит: блок: User-agent: msnbot-media → «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; итог 43/44
+держит: блок: «User-agent: * » и «Disallow: /nowhere/» (путь вне сборки) → «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; итог 43/44
+держит: блок: MJ12bot и Googlebot одной группой → «robots.txt: вне нашего файла — только блок хостера» ПЛОХО; итог 42/44
+держит: без параметра из кэша — HTML-страница со статусом 200 → «robots.txt без параметра (его берут роботы)» ПЛОХО; итог 43/44
+держит: без параметра из кэша — Sitemap на чужой хост → «robots.txt без параметра (его берут роботы)» ПЛОХО; итог 43/44
+держит: без параметра из кэша — наш файл, но «Allow: /» заменён «Disallow: /nowhere/» → «robots.txt без параметра (его берут роботы)» ПЛОХО; итог 43/44
+держит: X-Robots-Tag: GoogleBot : noindex → «страницы без запрета индексации» ПЛОХО; итог 43/44
+держит: X-Robots-Tag: googlebot: unavailable_after: Wednesday, 03-Nov-2021 15:00:00 GMT → «страницы без запрета индексации» ПЛОХО; итог 43/44
+держит: X-Robots-Tag: max-snippet: 0, noindex → «страницы без запрета индексации» ПЛОХО; итог 43/44
+держит: X-Robots-Tag: otherbot: nofollow, googlebot: noindex → «страницы без запрета индексации» ПЛОХО; итог 43/44
+держит: <meta name="GOOGLEBOT" content="NoIndex"> в сборке → «страницы без запрета индексации» ПЛОХО; итог 43/44
+держит: CDN-Cache-Control: s-maxage=86400 → «HTML: Cache-Control (max-age=0, must-revalidate)» ПЛОХО; итог 43/44
+держит: Cloudflare-CDN-Cache-Control: max-age=600 → «HTML: Cache-Control (max-age=0, must-revalidate)» ПЛОХО; итог 43/44
+держит: Cache-Control: public,max-age=0,must-revalidate,max-age=600 (без пробелов) → «HTML: Cache-Control (max-age=0, must-revalidate)» ПЛОХО; итог 43/44
+держит: одна страница /404/ напрямую — STALE → «HTML не из кэша Cloudflare» ПЛОХО; итог 43/44
+держит: адрес box@7thserpent.com-evil.example → «/privacy/: адрес ящика открытым текстом» ПЛОХО; итог 43/44
+держит: адрес box@not7thserpent.com → «/privacy/: адрес ящика открытым текстом» ПЛОХО; итог 43/44
+держит: адрес только в строке скрипта → «/privacy/: адрес ящика открытым текстом» ПЛОХО; итог 43/44
+держит: адрес только в style → «/privacy/: адрес ящика открытым текстом» ПЛОХО; итог 43/44
+держит: адрес только в href mailto → «/privacy/: адрес ящика открытым текстом» ПЛОХО; итог 43/44
+держит: одна страница без cf-ray (server: nginx) → «запросы идут через Cloudflare» ПЛОХО; итог 43/44
+держит? canonical в <body> — []
+держит? canonical в комментарии головы — []

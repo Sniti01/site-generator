@@ -1,0 +1,16 @@
+cid ядра, иные на раннере: 18 (4cdyqehe→7byt4eav, d6goylod→ohwvoupt, 6su6tgaw→ndkybkek, u5aheva6→avyxdv3t, rtqd6vyo→wmkpzxc4, t52d27wz→2lfahnq2, m3tnyskv→545q7pxz, umvjcdrc→cqwrbi7j, m2yyudgx→qhxgrowg, ko6adimc→jowbvszs, wjmdlggq→7rmboj34, r4u7jggd→ims4xlfd, woptr46g→pzsdtxnk, eghvtlpg→vqe227ya, qu2zoq4f→7t2eulcz, ztqmn5of→xlmlu6kt, yg4u7eke→tl5j7dky, mjxqbgup→pfey42wo)
+CSS с иным именем: CtaBand.BMbqpUCi.css→CtaBand.Qy-ELmUw.css, index.Cz6femgl.css→index.yYy1H4qG.css
+HTML сборки иные на раннере: 18 из 18
+
+=== Z1 живой сайт — сборка CI, dist/ — этой машины (тот же коммит): 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /: HTML отличается от сборки | /cheats/: HTML отличается от сборки | /gameplay/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет
+
+=== Z1 с правкой z1: 44/44
+  справка: HTML = сборка после нормализации cid ядра и хешей имён CSS (сборка другой машины, SV1-Z-1): 19 стр.
+
+=== Z1 с правкой z1: сайт CI + вставка Web Analytics — ловится: 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /: Web Analytics (Cloudflare) — /privacy/ обещает: два своих скрипта, запросов наружу нет
+
+=== Z1 с правкой z1: сайт CI + лишняя таблица стилей — ловится: 43/44
+ПЛОХО HTML страниц = сборка (dist)  ждём true  факт false  — /: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет
+ИТОГ: как есть 43/44 (ПЛОХО: HTML страниц = сборка (dist); факт строки: «/: HTML отличается от сборки | /cheats/: HTML отличается от сборки | /gameplay/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов нару…»); с правкой z1 44/44; вставка WA с правкой — 43/44 (/: Web Analytics (Cloudflare) — /privacy); лишний CSS с правкой — 43/44

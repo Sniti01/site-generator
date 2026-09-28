@@ -1,0 +1,12 @@
+— первый ответ каждой страницы MISS, дальше HIT (Edge TTL) —
+итог инструмента: 44/44
+ok «HTML не из кэша Cloudflare» — факт true — страниц 18
+ok «HTML: Cache-Control (max-age=0, must-revalidate)» — факт true — страниц 18
+  справка: Cloudflare кэширует HTML и сверяет с сервером: / MISS, /cheats/ MISS, /gameplay/ MISS — правило кэша зоны проверить (HIT без сверки был бы отказом)
+следующий читатель главной (второй запрос того же адреса): Cf-Cache-Status HIT, Age 7200 — правка до него не дойдёт
+— первый ответ каждой страницы EXPIRED, дальше HIT (Edge TTL) —
+итог инструмента: 44/44
+ok «HTML не из кэша Cloudflare» — факт true — страниц 18
+ok «HTML: Cache-Control (max-age=0, must-revalidate)» — факт true — страниц 18
+  справка: Cloudflare кэширует HTML и сверяет с сервером: / EXPIRED, /cheats/ EXPIRED, /gameplay/ EXPIRED — правило кэша зоны проверить (HIT без сверки был бы отказом)
+следующий читатель главной (второй запрос того же адреса): Cf-Cache-Status HIT, Age 7200 — правка до него не дойдёт

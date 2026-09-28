@@ -1,0 +1,10 @@
+— Content-Type: text/html; charset=windows-1251 на всех страницах —
+итог инструмента: 44/44
+ok «HTML страниц = сборка (dist)» — факт true — страниц 19
+— Content-Type: text/plain; charset=utf-8 на всех страницах —
+итог инструмента: 44/44
+ok «HTML страниц = сборка (dist)» — факт true — страниц 19
+— Content-Type: application/octet-stream на всех страницах —
+итог инструмента: 44/44
+ok «HTML страниц = сборка (dist)» — факт true — страниц 19
+заголовок главной, как его раскодирует браузер по charset=windows-1251: «Max Payne вЂ” all games in order, the 2008 movie and the remake» (в сборке — «Max Payne — all games in order, the 2008 movie and the remake»)

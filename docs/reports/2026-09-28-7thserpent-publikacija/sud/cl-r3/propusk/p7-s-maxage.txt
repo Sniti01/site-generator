@@ -1,0 +1,8 @@
+— Cache-Control: public, max-age=0, must-revalidate, s-maxage="86400" —
+итог инструмента: 44/44; ok «HTML: Cache-Control (max-age=0, must-revalidate)» — факт true — страниц 18
+— Cache-Control: public, max-age=0, must-revalidate, s-maxage=0, s-maxage=86400 —
+итог инструмента: 44/44; ok «HTML: Cache-Control (max-age=0, must-revalidate)» — факт true — страниц 18
+— Cache-Control: контроль: public, max-age="86400", must-revalidate —
+итог инструмента: 43/44; ПЛОХО «HTML: Cache-Control (max-age=0, must-revalidate)» — факт false — /: max-age: — (пришло «public, max-age="86400", must-revalidate») | /movie/: max-age: — (пришло «public, max-age="86400", must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе
+— Cache-Control: контроль: public, max-age=0, must-revalidate, s-maxage=86400 —
+итог инструмента: 43/44; ПЛОХО «HTML: Cache-Control (max-age=0, must-revalidate)» — факт false — /: s-maxage=86400 (пришло «public, max-age=0, must-revalidate, s-maxage=86400») | /movie/: s-maxage=86400 (пришло «public, max-age=0, must-revalidate, s-maxage=86400») — .htaccess обещает: правка доходит до читателя при следующем заходе

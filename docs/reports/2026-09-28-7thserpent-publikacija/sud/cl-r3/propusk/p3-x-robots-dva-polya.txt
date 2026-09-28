@@ -1,0 +1,12 @@
+— два поля: «otherbot: noarchive» и «noindex» на всех 17 страницах —
+poluchitSetyu → zagolovok('x-robots-tag') = «otherbot: noarchive, noindex»
+итог инструмента: 44/44
+ok «страницы без запрета индексации» — факт true — страниц 18
+— два поля: «GPTBot: noindex» и «none» на всех 17 страницах —
+poluchitSetyu → zagolovok('x-robots-tag') = «GPTBot: noindex, none»
+итог инструмента: 44/44
+ok «страницы без запрета индексации» — факт true — страниц 18
+— контроль — одно поле «noindex» на всех 17 страницах —
+poluchitSetyu → zagolovok('x-robots-tag') = «noindex»
+итог инструмента: 43/44
+ПЛОХО «страницы без запрета индексации» — факт false — /: X-Robots-Tag noindex | /cheats/: X-Robots-Tag noindex | /gameplay/: X-Robots-Tag noindex — robots.txt обещает: всё открыто для индекса

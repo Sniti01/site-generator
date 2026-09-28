@@ -7,8 +7,9 @@
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
 import * as CL from '../check-live.mjs';
 
@@ -30,7 +31,7 @@ const otvet = (status, telo = '', zag = {}, location = '') => ({
 const title404 = struktura.pages.find((p) => p.url === '/404/').title;
 const igra = struktura.pages.find((p) => p.type === 'game').url;
 const stranica = (url, title = 'x', telo = '<p>text</p>', golova = '') =>
-  `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title}</title><link rel="canonical" href="${B}${url}">${golova}<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/_astro/index.Cz6femgl.css"><script type="module">document.querySelector('.hdr__burger')</script></head><body><main>${telo}<img src="/_astro/hero.webp" alt="x" srcset="/_astro/hero.webp 1200w"></main></body></html>`;
+  `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title}</title><link rel="canonical" href="${B}${url}">${golova}<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/_astro/index.Cz6femgl.css"><script type="module">document.querySelector('.hdr__burger')</script></head><body><header class="hdr" data-astro-cid-m3tnyskv></header><main>${telo}<img src="/_astro/hero.webp" alt="x" srcset="/_astro/hero.webp 1200w"></main></body></html>`;
 const CF = { 'cf-ray': '8c1a2b3c4d5e6f70-WAW', server: 'cloudflare' };
 const HTML = { 'cache-control': 'public, max-age=0, must-revalidate', 'x-ray': 'p542:wal', 'cf-cache-status': 'DYNAMIC', 'content-type': 'text/html', ...CF };
 const HOSTER = '# BEGIN adm.tools Managed content\nUser-agent: AhrefsBot\nDisallow: /\n\nUser-agent: MJ12bot\nDisallow: /\n# END adm.tools Managed content\n\n';
@@ -77,10 +78,12 @@ async function progon(izmenit = () => {}, { vse, vSborke } = {}) {
   const karta = zdorovyy();
   if (vSborke) vSborke(karta);
   izmenit(karta);
+  // Значение образца — ответ или список ответов на повторные запросы того же адреса (CL3-P-1).
   const poluchit = async (url) => {
     if (vse) return vse(url);
     if (!karta.has(url)) throw new Error(`запрос вне образца: ${url}`);
-    return karta.get(url);
+    const o = karta.get(url);
+    return Array.isArray(o) ? (o.length > 1 ? o.shift() : o[0]) : o;
   };
   const r = await proverit({ poluchit, host: HOST, struktura, nashRobots, metka: METKA, sborka });
   return {
@@ -142,13 +145,17 @@ const PORCHI = [
   ['CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /'), [POISK, VNE]],
   ['CL1-P-9b блок хостера: Googlebot, «Dissallow: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /'), [POISK, VNE]],
   ['CL1-P-9c блок хостера: «User agent: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot'), [POISK, VNE]],
-  ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK]],
+  ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+  ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /movie/\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+  ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*?\nDisallow: /wp-admin/\n# END adm.tools Managed content\n' })), []],
+  ['CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /cgi-bin/\nDisallow: /.well-known/'), []],
+  ['CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /.'), []],
   ['CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: # nothing is blocked for other robots'), []],
   ['CL1-Z-5 комментарий хостера вне меток — справка, не отказ', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: '# robots.txt served by adm.tools hosting\n' + HOSTER + '#\n' + nashRobots })), []],
   ['CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /movie/\nDisallow: /cheats/'), [POISK, VNE]],
   ['CL2-P-1b блок хостера: * закрывает CSS', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /*.css$'), [POISK, VNE]],
   ['CL2-P-1c блок хостера: Googlebot-Image закрыт', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot-Image'), [POISK, VNE]],
-  ['CL2-P-1 блок хостера: msnbot закрыт — строгость к блоку', vBlokKhostera('User-agent: MJ12bot', 'User-agent: msnbot'), [VNE]],
+  ['CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3)', vBlokKhostera('User-agent: MJ12bot', 'User-agent: msnbot'), [POISK, VNE]],
   ['CL2-P-5a «User-agents: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User-agents: Googlebot'), [POISK, VNE]],
   ['CL2-P-5b «Disallowed: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallowed: /'), [POISK, VNE]],
   ['CL2-P-5c «User-agent: * (all robots)»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: * (all robots)\nDisallow: /*'), [POISK, VNE]],
@@ -166,6 +173,8 @@ const PORCHI = [
   // строку Sitemap — та же безвредная разница, что «старая версия без Sitemap»: справка, не отказ.
   ['CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER })), []],
   ['адрес ящика на поддомене-двойнике — не наш', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to box@7thserpent.com.evil.example.</p>'), HTML)) }],
+  ['CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://7thserpent.com/') })), []],
+  ['CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://evil.example/') })), [BEZ_P]],
   ['CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам', (k) => { zamenit(k, MIMO, () => otvet(403, '<title>Just a moment...</title>', { 'cf-mitigated': 'challenge', ...CF })); zamenit(k, BEZ, (o) => sZag(o, { 'cf-cache-status': 'MISS' })); }, MIMO_PROVERKI],
   // — HTML (CL1-P-3, CL1-P-4, CL2-P-2): все страницы —
   ['CL1-P-3a Cache-Control: max-age=14400 и must-revalidate', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=14400, must-revalidate' })), [CC]],
@@ -175,6 +184,14 @@ const PORCHI = [
   ['CL2-P-2 CDN-Cache-Control: max-age=86400', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cdn-cache-control': 'max-age=86400' })), [CC]],
   ['CL2-P-2 max-age=86400 на странице фильма', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cache-control': 'max-age=86400' })), [CC]],
   ['CL1-P-4 главная из кэша Cloudflare', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '5400' })), [KESH_HTML]],
+  ['CL3-P-1 главная MISS, повтор — HIT (Edge TTL)', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'HIT', age: '7200' })]); }, [KESH_HTML]],
+  ['CL3-P-1 главная MISS, повтор — REVALIDATED — чисто', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'REVALIDATED' })]); }, []],
+  ['CL3-P-7 s-maxage в кавычках', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=0, s-maxage="86400", must-revalidate' })), [CC]],
+  ['CL3-P-7 два s-maxage: 0 и 86400', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=0, s-maxage=0, s-maxage=86400, must-revalidate' })), [CC]],
+  ['CL3-P-4 Content-Type: windows-1251 на странице фильма', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'content-type': 'text/html; charset=windows-1251' })), [HTML_SB]],
+  ['CL3-P-4 Content-Type: text/plain на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'content-type': 'text/plain' })), [HTML_SB]],
+  ['CL3-P-2 голый хост — «серое облако»: редиректы без cf-ray', (k) => { for (const put of ['/', igra]) for (const u of [`https://7thserpent.com${put}`, `http://7thserpent.com${put}`]) zamenit(k, u, (o) => sZag(o, { 'cf-ray': '', server: 'nginx' })); }, ['запросы идут через Cloudflare']],
+  ['CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто', (k) => { for (const p of [...STRANICY.map((x) => x.url), '/404/', `/net-takoy-stranicy-${METKA}/`]) zamenit(k, `${B}${p}`, (o) => ({ ...o, telo: o.telo.split('data-astro-cid-m3tnyskv').join('data-astro-cid-545q7pxz').split('index.Cz6femgl.css').join('index.Q1w2E3r4.css') })); }, []],
   ['CL2-P-2 страница фильма из кэша Cloudflare', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '86400' })), [KESH_HTML]],
   ['CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), []],
   ['canonical главной на голый хост', (k) => zamenit(k, `${B}/`, vTelo(`${B}/"`, 'https://7thserpent.com/"')), ['главная: canonical', S_VSE, HTML_SB]],
@@ -195,6 +212,8 @@ const PORCHI = [
   ['CL2-P-6 X-Robots-Tag: unavailable_after', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'x-robots-tag': 'unavailable_after: 2020-01-01' })), [ZAPRET]],
   ['CL2-P-6 X-Robots-Tag: googlebot: none', (k) => zamenit(k, `${B}/privacy/`, (o) => sZag(o, { 'x-robots-tag': 'googlebot: none' })), [ZAPRET]],
   ['CL2-P-6 meta robots noindex в самой сборке', () => {}, [ZAPRET], { vSborke: (k) => zamenit(k, `${B}/movie/`, vTelo('<meta charset="utf-8">', '<meta charset="utf-8"><meta name="robots" content="noindex">')) }],
+  ['CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex»', (k) => zamenit(k, `${B}/privacy/`, (o) => sZag(o, { 'x-robots-tag': 'otherbot: noarchive, noindex' })), [ZAPRET]],
+  ['X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто', (k) => zamenit(k, `${B}/privacy/`, (o) => sZag(o, { 'x-robots-tag': 'GPTBot: noindex' })), []],
   ['CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто', (k) => { for (const p of STRANICY) zamenit(k, `${B}${p.url}`, (o) => sZag(o, { 'x-robots-tag': 'max-image-preview:none, noarchive' })); }, []],
   ['CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто', (k) => zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => sZag(o, { 'x-robots-tag': 'noindex' })), []],
   // — cookies (CL1-P-12) —
@@ -226,6 +245,9 @@ const PORCHI = [
   ['CL2-P-7 адрес ящика первого сайта', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to jakub@ac4bf-thewatch.com.</p>'), HTML)) }],
   ['CL2-P-7 адрес ящика только в комментарии', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to us.</p><!-- ${YASHCHIK} -->`), HTML)) }],
   ['/privacy/ — 404', (k) => zamenit(k, `${B}/privacy/`, () => otvet(404, stranica('/404/', title404), HTML)), ['/privacy/: статус', '/privacy/: canonical', '/privacy/: без обфускации почты Cloudflare', ADRES, S_VSE]],
+  ['CL3-P-6 адрес ящика только в <title>', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', `Privacy policy — ${YASHCHIK}`), HTML)) }],
+  ['CL3-P-6 адрес ящика только в <p hidden>', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to us.</p><p hidden>${YASHCHIK}</p>`), HTML)) }],
+  ['CL3-P-6 адрес ящика только в <noscript>', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to us.</p><noscript>${YASHCHIK}</noscript>`), HTML)) }],
 ];
 
 for (const [imya, izmenit, zhdem, opcii] of PORCHI) {
@@ -246,7 +268,7 @@ test('справки: кэш, положение блока хостера, ко
   assert.ok(komm.spravki.some((s) => s.includes('# robots.txt served by adm.tools hosting')), komm.spravki.join(' | '));
   const miss = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'MISS' })));
   assert.deepEqual(miss.plokho, []);
-  assert.ok(miss.spravki.some((s) => s.includes('Cloudflare кэширует HTML')), miss.spravki.join(' | '));
+  assert.ok(miss.spravki.some((s) => s.includes('Cloudflare кладёт HTML в кэш')), miss.spravki.join(' | '));
 });
 
 test('CL1-Z-1 обход кэша не удался — причина названа в строке', async () => {
@@ -280,6 +302,32 @@ test('подсказки причин: вызов Cloudflare, 526, cookies и и
   assert.match(wa.otkuda, /Web Analytics/);
 });
 
+test('CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита»', async () => {
+  const r = await progon((k) => zamenit(k, `${B}/movie/`, vTelo('<p>text</p>', '<p>first published wording</p>')));
+  assert.deepEqual(r.plokho, [HTML_SB]);
+  assert.match(r.otkuda, /1 из \d+ страниц/);
+  assert.match(r.otkuda, /с знака \d+: сборка «[^»]*text[^»]*», сайт «[^»]*first published[^»]*»/);
+  assert.match(r.otkuda, /вставка на пути .*или dist\/ собран не из выложенного коммита/);
+  const bezSborki = await proverit({ poluchit: async (u) => zdorovyy().get(u), host: HOST, struktura, nashRobots, metka: METKA, sborka: null });
+  const s = bezSborki.proverki.find((c) => c.imya === HTML_SB);
+  assert.equal(s.ok, false);
+  assert.match(s.otkuda, /из выложенного коммита \(main\)/);
+});
+
+test('CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт)', () => {
+  const { sborkaIzDist } = CL;
+  const d = mkdtempSync(join(tmpdir(), 'check-live-'));
+  try {
+    for (const [f, t] of [['index.html', 'x'], ['.htaccess', 'x'], ['_astro/a.css', 'x'], ['pc/index.html', 'x'], ['.well-known/x', 'x']]) {
+      mkdirSync(join(d, f, '..'), { recursive: true });
+      writeFileSync(join(d, f), t);
+    }
+    assert.deepEqual(sborkaIzDist(d).puti.sort(), ['/', '/_astro/a.css', '/pc/']);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
 test('разбор robots.txt: наш файл только отдельными строками', () => {
   assert.equal(razobratRobots('# ' + nashRobots, nashRobots).nashCelikom, false);
   assert.equal(razobratRobots(nashRobots, nashRobots).nashCelikom, true);
@@ -304,6 +352,18 @@ test('canonical: порядок атрибутов и кавычки; в ком�
   assert.deepEqual(canonicalOf('<link rel="icon" href="/x.svg">'), []);
   assert.deepEqual(canonicalOf(`<head><!-- <link rel="canonical" href="${B}/a/"> --></head>`), []);
   assert.deepEqual(canonicalOf(`<head></head><body><link rel="canonical" href="${B}/a/"></body>`), []);
+});
+
+/* — Пределы после раунда 3 (последнего, П106: не больше трёх раундов) — тестами todo. — */
+
+test('ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом)', { todo: 'видимый текст без дерева parse5: вложенные одноимённые элементы с hidden' }, async () => {
+  const r = await progon(() => {}, { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to us.</p><div hidden><div>x</div>${YASHCHIK}</div>`), HTML)) });
+  assert.deepEqual(r.plokho, [ADRES]);
+});
+
+test('ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц', { todo: 'подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist' }, async () => {
+  const r = await progon((k) => k.set(`${B}/_astro/index.Cz6femgl.css`, otvet(200, 'body{display:none}', CF)));
+  assert.ok(r.plokho.length > 0);
 });
 
 test('команда: неверные аргументы — код 2, без сети', () => {

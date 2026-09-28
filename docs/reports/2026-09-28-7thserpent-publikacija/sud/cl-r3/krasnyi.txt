@@ -1,0 +1,1084 @@
+TAP version 13
+# Subtest: здоровый живой сайт — все 44 проверки ok
+ok 1 - здоровый живой сайт — все 44 проверки ok
+  ---
+  duration_ms: 12.3104
+  type: 'test'
+  ...
+# Subtest: домен не подключён (имя не разрешается) — 0 из 44
+ok 2 - домен не подключён (имя не разрешается) — 0 из 44
+  ---
+  duration_ms: 1.8052
+  type: 'test'
+  ...
+# Subtest: домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44
+ok 3 - домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44
+  ---
+  duration_ms: 0.9368
+  type: 'test'
+  ...
+# Subtest: порча: блок Cloudflare (управляемый robots.txt не снят)
+ok 4 - порча: блок Cloudflare (управляемый robots.txt не снят)
+  ---
+  duration_ms: 3.0576
+  type: 'test'
+  ...
+# Subtest: порча: чужая группа вне блоков
+ok 5 - порча: чужая группа вне блоков
+  ---
+  duration_ms: 2.1635
+  type: 'test'
+  ...
+# Subtest: порча: наш файл изменён (Allow → Disallow)
+ok 6 - порча: наш файл изменён (Allow → Disallow)
+  ---
+  duration_ms: 1.5146
+  type: 'test'
+  ...
+# Subtest: порча: блок хостера закрывает Googlebot
+ok 7 - порча: блок хостера закрывает Googlebot
+  ---
+  duration_ms: 1.4402
+  type: 'test'
+  ...
+# Subtest: порча: блок хостера без END
+ok 8 - порча: блок хостера без END
+  ---
+  duration_ms: 1.149
+  type: 'test'
+  ...
+# Subtest: порча: robots.txt мимо кэша — 404
+ok 9 - порча: robots.txt мимо кэша — 404
+  ---
+  duration_ms: 1.0388
+  type: 'test'
+  ...
+# Subtest: порча: robots.txt с CRLF — чисто
+ok 10 - порча: robots.txt с CRLF — чисто
+  ---
+  duration_ms: 1.2254
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия
+ok 11 - порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия
+  ---
+  duration_ms: 1.0639
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /»
+ok 12 - порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /»
+  ---
+  duration_ms: 1.0862
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-9c блок хостера: «User agent: Googlebot»
+ok 13 - порча: CL1-P-9c блок хостера: «User agent: Googlebot»
+  ---
+  duration_ms: 1.3272
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу
+not ok 14 - порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу
+  ---
+  duration_ms: 2.8216
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 68
+    + actual - expected
+    
+      [
+    -   'robots.txt: вне нашего файла — только блок хостера',
+        'robots.txt: поисковики не закрыты'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+    1: 'robots.txt: поисковики не закрыты'
+  actual:
+    0: 'robots.txt: поисковики не закрыты'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/
+not ok 15 - порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/
+  ---
+  duration_ms: 2.4998
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt: поисковики не закрыты: false — закрыто: googlebot /movie/, googlebot-image /movie/, bingbot /movie/
+    + actual - expected
+    
+      [
+    -   'robots.txt: вне нашего файла — только блок хостера',
+        'robots.txt: поисковики не закрыты'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+    1: 'robots.txt: поисковики не закрыты'
+  actual:
+    0: 'robots.txt: поисковики не закрыты'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка
+ok 16 - порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка
+  ---
+  duration_ms: 2.417
+  type: 'test'
+  ...
+# Subtest: порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка
+not ok 17 - порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка
+  ---
+  duration_ms: 2.75
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /cgi-bin/, /.well-known/ — наш файл обещает: запрещать нечего
+    + actual - expected
+    
+    + [
+    +   'robots.txt: вне нашего файла — только блок хостера'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки
+not ok 18 - порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки
+  ---
+  duration_ms: 2.0899
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /. — наш файл обещает: запрещать нечего
+    + actual - expected
+    
+    + [
+    +   'robots.txt: вне нашего файла — только блок хостера'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL1-Z-2 «Disallow: \# комментарий» в группе * хостера — чисто
+ok 19 - порча: CL1-Z-2 «Disallow: \# комментарий» в группе * хостера — чисто
+  ---
+  duration_ms: 1.9708
+  type: 'test'
+  ...
+# Subtest: порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ
+ok 20 - порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ
+  ---
+  duration_ms: 1.8287
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/
+ok 21 - порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/
+  ---
+  duration_ms: 1.5291
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-1b блок хостера: * закрывает CSS
+ok 22 - порча: CL2-P-1b блок хостера: * закрывает CSS
+  ---
+  duration_ms: 1.7134
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-1c блок хостера: Googlebot-Image закрыт
+ok 23 - порча: CL2-P-1c блок хостера: Googlebot-Image закрыт
+  ---
+  duration_ms: 0.9681
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3)
+not ok 24 - порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3)
+  ---
+  duration_ms: 1.4829
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: msnbot — Disallow: / — наш файл обещает: запрещать нечего
+    + actual - expected
+    
+      [
+        'robots.txt: вне нашего файла — только блок хостера',
+    -   'robots.txt: поисковики не закрыты'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+    1: 'robots.txt: поисковики не закрыты'
+  actual:
+    0: 'robots.txt: вне нашего файла — только блок хостера'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-5a «User-agents: Googlebot»
+ok 25 - порча: CL2-P-5a «User-agents: Googlebot»
+  ---
+  duration_ms: 1.3302
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-5b «Disallowed: /»
+ok 26 - порча: CL2-P-5b «Disallowed: /»
+  ---
+  duration_ms: 0.9323
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-5c «User-agent: * (all robots)»
+ok 27 - порча: CL2-P-5c «User-agent: * (all robots)»
+  ---
+  duration_ms: 1.4645
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла
+ok 28 - порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла
+  ---
+  duration_ms: 0.9917
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — чисто
+ok 29 - порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — чисто
+  ---
+  duration_ms: 1.021
+  type: 'test'
+  ...
+# Subtest: порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ
+ok 30 - порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ
+  ---
+  duration_ms: 1.2888
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех
+ok 31 - порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех
+  ---
+  duration_ms: 1.5972
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша
+ok 32 - порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша
+  ---
+  duration_ms: 2.2296
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-1c без параметра — 503
+ok 33 - порча: CL1-P-1c без параметра — 503
+  ---
+  duration_ms: 1.3534
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare
+ok 34 - порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare
+  ---
+  duration_ms: 0.9702
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков
+ok 35 - порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков
+  ---
+  duration_ms: 0.9645
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка
+ok 36 - порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка
+  ---
+  duration_ms: 1.1299
+  type: 'test'
+  ...
+# Subtest: порча: адрес ящика на поддомене-двойнике — не наш
+ok 37 - порча: адрес ящика на поддомене-двойнике — не наш
+  ---
+  duration_ms: 1.0097
+  type: 'test'
+  ...
+# Subtest: порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка
+not ok 38 - порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка
+  ---
+  duration_ms: 1.5739
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    robots.txt без параметра (его берут роботы): false — роботы видят: Sitemap: https://7thserpent.com/sitemap-index.xml (из кэша Cloudflare, HIT — Purge by URL)
+    + actual - expected
+    
+    + [
+    +   'robots.txt без параметра (его берут роботы)'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'robots.txt без параметра (его берут роботы)'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред
+ok 39 - порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред
+  ---
+  duration_ms: 0.9542
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам
+ok 40 - порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам
+  ---
+  duration_ms: 0.8561
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate
+ok 41 - порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate
+  ---
+  duration_ms: 0.8695
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-3b два Cache-Control, склеенные fetch
+ok 42 - порча: CL1-P-3b два Cache-Control, склеенные fetch
+  ---
+  duration_ms: 0.8449
+  type: 'test'
+  ...
+# Subtest: порча: Cache-Control без must-revalidate
+ok 43 - порча: Cache-Control без must-revalidate
+  ---
+  duration_ms: 0.7745
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-2 s-maxage=86400 на главной
+ok 44 - порча: CL2-P-2 s-maxage=86400 на главной
+  ---
+  duration_ms: 1.567
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-2 CDN-Cache-Control: max-age=86400
+ok 45 - порча: CL2-P-2 CDN-Cache-Control: max-age=86400
+  ---
+  duration_ms: 1.2071
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-2 max-age=86400 на странице фильма
+ok 46 - порча: CL2-P-2 max-age=86400 на странице фильма
+  ---
+  duration_ms: 1.0349
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-4 главная из кэша Cloudflare
+ok 47 - порча: CL1-P-4 главная из кэша Cloudflare
+  ---
+  duration_ms: 1.0964
+  type: 'test'
+  ...
+# Subtest: порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL)
+not ok 48 - порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL)
+  ---
+  duration_ms: 1.2372
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'HTML не из кэша Cloudflare'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'HTML не из кэша Cloudflare'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-1 главная MISS, повтор — REVALIDATED — чисто
+ok 49 - порча: CL3-P-1 главная MISS, повтор — REVALIDATED — чисто
+  ---
+  duration_ms: 1.0336
+  type: 'test'
+  ...
+# Subtest: порча: CL3-P-7 s-maxage в кавычках
+not ok 50 - порча: CL3-P-7 s-maxage в кавычках
+  ---
+  duration_ms: 1.2224
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'HTML: Cache-Control (max-age=0, must-revalidate)'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'HTML: Cache-Control (max-age=0, must-revalidate)'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-7 два s-maxage: 0 и 86400
+not ok 51 - порча: CL3-P-7 два s-maxage: 0 и 86400
+  ---
+  duration_ms: 1.5923
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'HTML: Cache-Control (max-age=0, must-revalidate)'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'HTML: Cache-Control (max-age=0, must-revalidate)'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-4 Content-Type: windows-1251 на странице фильма
+not ok 52 - порча: CL3-P-4 Content-Type: windows-1251 на странице фильма
+  ---
+  duration_ms: 1.05
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'HTML страниц = сборка (dist)'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'HTML страниц = сборка (dist)'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-4 Content-Type: text/plain на главной
+not ok 53 - порча: CL3-P-4 Content-Type: text/plain на главной
+  ---
+  duration_ms: 0.8785
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'HTML страниц = сборка (dist)'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'HTML страниц = сборка (dist)'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-2 голый хост — «серое облако»: редиректы без cf-ray
+not ok 54 - порча: CL3-P-2 голый хост — «серое облако»: редиректы без cf-ray
+  ---
+  duration_ms: 0.8555
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'запросы идут через Cloudflare'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'запросы идут через Cloudflare'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто
+not ok 55 - порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто
+  ---
+  duration_ms: 1.0405
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    HTML страниц = сборка (dist): false — /: HTML отличается от сборки | /cheats/: HTML отличается от сборки | /gameplay/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет
+    + actual - expected
+    
+    + [
+    +   'HTML страниц = сборка (dist)'
+    + ]
+    - []
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0: 'HTML страниц = сборка (dist)'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL2-P-2 страница фильма из кэша Cloudflare
+ok 56 - порча: CL2-P-2 страница фильма из кэша Cloudflare
+  ---
+  duration_ms: 0.8723
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто
+ok 57 - порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто
+  ---
+  duration_ms: 1.1746
+  type: 'test'
+  ...
+# Subtest: порча: canonical главной на голый хост
+ok 58 - порча: canonical главной на голый хост
+  ---
+  duration_ms: 1.4988
+  type: 'test'
+  ...
+# Subtest: порча: два canonical на главной
+ok 59 - порча: два canonical на главной
+  ---
+  duration_ms: 1.2498
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-8 canonical игры только в комментарии (и в сборке)
+ok 60 - порча: CL2-P-8 canonical игры только в комментарии (и в сборке)
+  ---
+  duration_ms: 1.2333
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections
+ok 61 - порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections
+  ---
+  duration_ms: 0.9048
+  type: 'test'
+  ...
+# Subtest: порча: чужая таблица стилей на главной
+ok 62 - порча: чужая таблица стилей на главной
+  ---
+  duration_ms: 0.8984
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-3 srcset на чужой хост
+ok 63 - порча: CL2-P-3 srcset на чужой хост
+  ---
+  duration_ms: 1.1944
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-3 base href на чужой хост
+ok 64 - порча: CL2-P-3 base href на чужой хост
+  ---
+  duration_ms: 0.9616
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie
+ok 65 - порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie
+  ---
+  duration_ms: 0.7318
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-3 вставка только на 404
+ok 66 - порча: CL2-P-3 вставка только на 404
+  ---
+  duration_ms: 0.799
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»
+ok 67 - порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»
+  ---
+  duration_ms: 0.8385
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-13 X-Robots-Tag: noindex на страницах
+ok 68 - порча: CL1-P-13 X-Robots-Tag: noindex на страницах
+  ---
+  duration_ms: 0.9005
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-6 X-Robots-Tag: unavailable_after
+ok 69 - порча: CL2-P-6 X-Robots-Tag: unavailable_after
+  ---
+  duration_ms: 1.1602
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-6 X-Robots-Tag: googlebot: none
+ok 70 - порча: CL2-P-6 X-Robots-Tag: googlebot: none
+  ---
+  duration_ms: 0.8288
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-6 meta robots noindex в самой сборке
+ok 71 - порча: CL2-P-6 meta robots noindex в самой сборке
+  ---
+  duration_ms: 0.8653
+  type: 'test'
+  ...
+# Subtest: порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex»
+not ok 72 - порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex»
+  ---
+  duration_ms: 0.9308
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   'страницы без запрета индексации'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: 'страницы без запрета индексации'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто
+ok 73 - порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто
+  ---
+  duration_ms: 0.9352
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто
+ok 74 - порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто
+  ---
+  duration_ms: 1.5343
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто
+ok 75 - порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто
+  ---
+  duration_ms: 1.2832
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-12 Set-Cookie на странице игры и на 404
+ok 76 - порча: CL1-P-12 Set-Cookie на странице игры и на 404
+  ---
+  duration_ms: 1.5441
+  type: 'test'
+  ...
+# Subtest: порча: Set-Cookie на главной
+ok 77 - порча: Set-Cookie на главной
+  ---
+  duration_ms: 1.0389
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-9 ни одного cf-ray — Cloudflare не проксирует
+ok 78 - порча: CL2-P-9 ни одного cf-ray — Cloudflare не проксирует
+  ---
+  duration_ms: 0.9433
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-5 редирект страницы теряет путь
+ok 79 - порча: CL1-P-5 редирект страницы теряет путь
+  ---
+  duration_ms: 0.7681
+  type: 'test'
+  ...
+# Subtest: порча: Always Use HTTPS: http://голый → https://голый
+ok 80 - порча: Always Use HTTPS: http://голый → https://голый
+  ---
+  duration_ms: 0.7385
+  type: 'test'
+  ...
+# Subtest: порча: 302 вместо 301
+ok 81 - порча: 302 вместо 301
+  ---
+  duration_ms: 0.8098
+  type: 'test'
+  ...
+# Subtest: порча: карта без /privacy/
+ok 82 - порча: карта без /privacy/
+  ---
+  duration_ms: 1.2159
+  type: 'test'
+  ...
+# Subtest: порча: карта с /404/
+ok 83 - порча: карта с /404/
+  ---
+  duration_ms: 0.7592
+  type: 'test'
+  ...
+# Subtest: порча: карта: дубль вместо /privacy/ (тот же счёт)
+ok 84 - порча: карта: дубль вместо /privacy/ (тот же счёт)
+  ---
+  duration_ms: 0.838
+  type: 'test'
+  ...
+# Subtest: порча: индекс ведёт на sitemap-1.xml
+ok 85 - порча: индекс ведёт на sitemap-1.xml
+  ---
+  duration_ms: 0.7359
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-14 14 из 17 адресов карты — 404
+ok 86 - порча: CL1-P-14 14 из 17 адресов карты — 404
+  ---
+  duration_ms: 0.6649
+  type: 'test'
+  ...
+# Subtest: порча: несуществующий адрес — 404 хостера
+ok 87 - порча: несуществующий адрес — 404 хостера
+  ---
+  duration_ms: 0.8597
+  type: 'test'
+  ...
+# Subtest: порча: несуществующий адрес — наша страница со статусом 200
+ok 88 - порча: несуществующий адрес — наша страница со статусом 200
+  ---
+  duration_ms: 1.2549
+  type: 'test'
+  ...
+# Subtest: порча: /404/ напрямую — 404
+ok 89 - порча: /404/ напрямую — 404
+  ---
+  duration_ms: 1.4627
+  type: 'test'
+  ...
+# Subtest: порча: страница игры — 500
+ok 90 - порча: страница игры — 500
+  ---
+  duration_ms: 1.0071
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-7 страница игры — список каталога Apache
+ok 91 - порча: CL1-P-7 страница игры — список каталога Apache
+  ---
+  duration_ms: 0.7902
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто
+ok 92 - порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто
+  ---
+  duration_ms: 0.8059
+  type: 'test'
+  ...
+# Subtest: порча: CL2-Z-1 адрес ящика с &\#64; — чисто
+ok 93 - порча: CL2-Z-1 адрес ящика с &\#64; — чисто
+  ---
+  duration_ms: 0.7894
+  type: 'test'
+  ...
+# Subtest: порча: /privacy/ с __cf_email__ вместо адреса
+ok 94 - порча: /privacy/ с __cf_email__ вместо адреса
+  ---
+  duration_ms: 0.7523
+  type: 'test'
+  ...
+# Subtest: порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке)
+ok 95 - порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке)
+  ---
+  duration_ms: 1.1465
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-7 адрес ящика первого сайта
+ok 96 - порча: CL2-P-7 адрес ящика первого сайта
+  ---
+  duration_ms: 0.8994
+  type: 'test'
+  ...
+# Subtest: порча: CL2-P-7 адрес ящика только в комментарии
+ok 97 - порча: CL2-P-7 адрес ящика только в комментарии
+  ---
+  duration_ms: 0.7398
+  type: 'test'
+  ...
+# Subtest: порча: /privacy/ — 404
+ok 98 - порча: /privacy/ — 404
+  ---
+  duration_ms: 0.722
+  type: 'test'
+  ...
+# Subtest: порча: CL3-P-6 адрес ящика только в <title>
+not ok 99 - порча: CL3-P-6 адрес ящика только в <title>
+  ---
+  duration_ms: 0.9816
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   '/privacy/: адрес ящика открытым текстом'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '/privacy/: адрес ящика открытым текстом'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-6 адрес ящика только в <p hidden>
+not ok 100 - порча: CL3-P-6 адрес ящика только в <p hidden>
+  ---
+  duration_ms: 1.1276
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   '/privacy/: адрес ящика открытым текстом'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '/privacy/: адрес ящика открытым текстом'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: порча: CL3-P-6 адрес ящика только в <noscript>
+not ok 101 - порча: CL3-P-6 адрес ящика только в <noscript>
+  ---
+  duration_ms: 2.1783
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:254:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+    + []
+    - [
+    -   '/privacy/: адрес ящика открытым текстом'
+    - ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '/privacy/: адрес ящика открытым текстом'
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:257:12)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: справки: кэш, положение блока хостера, комментарии вне меток
+ok 102 - справки: кэш, положение блока хостера, комментарии вне меток
+  ---
+  duration_ms: 5.0684
+  type: 'test'
+  ...
+# Subtest: CL1-Z-1 обход кэша не удался — причина названа в строке
+ok 103 - CL1-Z-1 обход кэша не удался — причина названа в строке
+  ---
+  duration_ms: 1.5459
+  type: 'test'
+  ...
+# Subtest: подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare
+ok 104 - подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare
+  ---
+  duration_ms: 7.7731
+  type: 'test'
+  ...
+# Subtest: CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита»
+not ok 105 - CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита»
+  ---
+  duration_ms: 5.1415
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:305:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The input did not match the regular expression /1 из \d+ страниц/. Input:
+    
+    'HTML страниц = сборка (dist): false — /movie/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual: 'HTML страниц = сборка (dist): false — /movie/: HTML отличается от сборки — /privacy/ обещает: два своих скрипта, запросов наружу нет'
+  operator: 'match'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:308:10)
+    async Test.run (node:internal/test_runner/test:1389:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт)
+not ok 106 - CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт)
+  ---
+  duration_ms: 7.9834
+  type: 'test'
+  location: 'D:\\SEO\\cloud\\site-generator\\sites\\7thserpent.com\\tools\\testy\\check-live.test.mjs:317:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    
+      [
+        '/',
+    +   '/.htaccess',
+    +   '/.well-known/x',
+        '/_astro/a.css',
+        '/pc/'
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0: '/'
+    1: '/_astro/a.css'
+    2: '/pc/'
+  actual:
+    0: '/'
+    1: '/.htaccess'
+    2: '/.well-known/x'
+    3: '/_astro/a.css'
+    4: '/pc/'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:325:12)
+    Test.runInAsyncScope (node:async_hooks:226:14)
+    Test.run (node:internal/test_runner/test:1382:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+    Test.postRun (node:internal/test_runner/test:1522:19)
+    Test.run (node:internal/test_runner/test:1447:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:960:7)
+  ...
+# Subtest: разбор robots.txt: наш файл только отдельными строками
+ok 107 - разбор robots.txt: наш файл только отдельными строками
+  ---
+  duration_ms: 0.2247
+  type: 'test'
+  ...
+# Subtest: поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image
+ok 108 - поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image
+  ---
+  duration_ms: 0.3974
+  type: 'test'
+  ...
+# Subtest: canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается
+ok 109 - canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается
+  ---
+  duration_ms: 0.2114
+  type: 'test'
+  ...
+# Subtest: команда: неверные аргументы — код 2, без сети
+ok 110 - команда: неверные аргументы — код 2, без сети
+  ---
+  duration_ms: 132.645
+  type: 'test'
+  ...
+1..110
+# tests 110
+# suites 0
+# pass 91
+# fail 19
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 429.4841

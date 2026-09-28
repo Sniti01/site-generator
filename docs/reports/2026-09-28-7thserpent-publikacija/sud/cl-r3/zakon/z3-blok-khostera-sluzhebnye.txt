@@ -1,0 +1,56 @@
+
+=== Z3 * — /cgi-bin/ — как есть: 43/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /cgi-bin/ — наш файл обещает: запрещать нечего
+
+=== Z3 * — /cgi-bin/ — с правкой z3: 44/44
+  справка: robots.txt: блок запрещает пути вне сборки — «adm.tools»: * — Disallow: /cgi-bin/ (ни одного пути сборки не закрывает)
+
+=== Z3 * — /.well-known/ и /wp-admin/ — как есть: 43/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /.well-known/, /wp-admin/ — наш файл обещает: запрещать нечего
+
+=== Z3 * — /.well-known/ и /wp-admin/ — с правкой z3: 44/44
+  справка: robots.txt: блок запрещает пути вне сборки — «adm.tools»: * — Disallow: /.well-known/, /wp-admin/ (ни одного пути сборки не закрывает)
+
+=== Z3 * — адреса с параметром /*? — как есть: 43/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /*? — наш файл обещает: запрещать нечего
+
+=== Z3 * — адреса с параметром /*? — с правкой z3: 44/44
+  справка: robots.txt: блок запрещает пути вне сборки — «adm.tools»: * — Disallow: /*? (ни одного пути сборки не закрывает)
+
+=== Z3 Googlebot — /cgi-bin/ (Crawl-delay не рвёт) — как есть: 43/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: googlebot — Disallow: /cgi-bin/ — наш файл обещает: запрещать нечего
+
+=== Z3 Googlebot — /cgi-bin/ (Crawl-delay не рвёт) — с правкой z3: 44/44
+  справка: robots.txt: блок запрещает пути вне сборки — «adm.tools»: googlebot — Disallow: /cgi-bin/ (ни одного пути сборки не закрывает)
+
+=== Z3 * — /movie/ (путь сборки) — должно краснеть — как есть: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /movie/ — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /movie/, googlebot-image /movie/, bingbot /movie/
+
+=== Z3 * — /movie/ (путь сборки) — должно краснеть — с правкой z3: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /movie/ — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /movie/, googlebot-image /movie/, bingbot /movie/
+
+=== Z3 * — /*.css$ — должно краснеть — как есть: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /*.css$ — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /_astro/CtaBand.BMbqpUCi.css, googlebot /_astro/index.Cz6femgl.css, googlebot-image /_astro/CtaBand.BMbqpUCi.css, googlebot-image /_astro/index.Cz6femgl.css и ещё 2
+
+=== Z3 * — /*.css$ — должно краснеть — с правкой z3: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: * — Disallow: /*.css$ — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot /_astro/CtaBand.BMbqpUCi.css, googlebot /_astro/index.Cz6femgl.css, googlebot-image /_astro/CtaBand.BMbqpUCi.css, googlebot-image /_astro/index.Cz6femgl.css и ещё 2
+
+=== Z3 msnbot — / — должно краснеть — как есть: 43/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: msnbot — Disallow: / — наш файл обещает: запрещать нечего
+
+=== Z3 msnbot — / — должно краснеть — с правкой z3: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: msnbot — Disallow: / — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: bingbot /.htaccess, bingbot /404/, bingbot /apple-touch-icon.png, bingbot /cheats/ и ещё 161
+
+=== Z3 Googlebot-Image — / — должно краснеть — как есть: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: googlebot-image — Disallow: / — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot-image /.htaccess, googlebot-image /404/, googlebot-image /apple-touch-icon.png, googlebot-image /cheats/ и ещё 161
+
+=== Z3 Googlebot-Image — / — должно краснеть — с правкой z3: 42/44
+ПЛОХО robots.txt: вне нашего файла — только блок хостера  ждём true  факт false  — чужое или запрет: «adm.tools»: googlebot-image — Disallow: / — наш файл обещает: запрещать нечего
+ПЛОХО robots.txt: поисковики не закрыты  ждём true  факт false  — закрыто: googlebot-image /.htaccess, googlebot-image /404/, googlebot-image /apple-touch-icon.png, googlebot-image /cheats/ и ещё 161
+ИТОГ: * — /cgi-bin/: 43/44 → 44/44; * — /.well-known/ и /wp-admin/: 43/44 → 44/44; * — адреса с параметром /*?: 43/44 → 44/44; Googlebot — /cgi-bin/ (Crawl-delay не рвёт): 43/44 → 44/44; [контроль] * — /movie/ (путь сборки) — должно краснеть: 42/44 → 42/44; [контроль] * — /*.css$ — должно краснеть: 42/44 → 42/44; [контроль] msnbot — / — должно краснеть: 43/44 → 42/44; [контроль] Googlebot-Image — / — должно краснеть: 42/44 → 42/44

@@ -1,0 +1,5 @@
+здоровый образец: 44/44
+  справка: x-ray p542:wal — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt мимо кэша: Cf-Cache-Status DYNAMIC
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 4 — не наш, не отключается
+  справка: robots.txt без параметра: Cf-Cache-Status HIT, Age 120

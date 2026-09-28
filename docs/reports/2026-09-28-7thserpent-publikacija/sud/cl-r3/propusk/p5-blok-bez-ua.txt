@@ -1,0 +1,18 @@
+— блок после нашего файла без User-agent: «Disallow: /*?» и «Disallow: /wp-admin/» —
+итог инструмента: 44/44
+ok «robots.txt: вне нашего файла — только блок хостера» — факт true — вне нашего файла — управляемые блоки без запретов поисковикам и комментарии
+ok «robots.txt: поисковики не закрыты» — факт true — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша
+razobratRobots(…).ogranicheniya = []
+Google (robots.cc) Googlebot /movie/?utm_source=youtube: ЗАКРЫТ
+Google (robots.cc) Googlebot /?fbclid=abc: ЗАКРЫТ
+Google (robots.cc) Googlebot /wp-admin/: ЗАКРЫТ
+— контроль — те же правила со своей строкой «User-agent: *» —
+итог инструмента: 43/44
+ПЛОХО «robots.txt: вне нашего файла — только блок хостера» — факт false — чужое или запрет: «adm.tools»: * — Disallow: /*?, /wp-admin/ — наш файл обещает: запрещать нечего
+ok «robots.txt: поисковики не закрыты» — факт true — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+ok «robots.txt без параметра (его берут роботы)» — факт true — как ответ мимо кэша
+razobratRobots(…).ogranicheniya = ["«adm.tools»: * — Disallow: /*?, /wp-admin/"]
+Google (robots.cc) Googlebot /movie/?utm_source=youtube: ЗАКРЫТ
+Google (robots.cc) Googlebot /?fbclid=abc: ЗАКРЫТ
+Google (robots.cc) Googlebot /wp-admin/: ЗАКРЫТ

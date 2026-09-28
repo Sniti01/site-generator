@@ -1,0 +1,5 @@
+голый домен без Cloudflare (4 ответа 301 от nginx, без cf-ray):
+итог инструмента: 44/44
+ok «запросы идут через Cloudflare» — факт true — страниц 18
+ok «голый → www /: статус» — факт 301 — https://7thserpent.com/
+ok «http голый → https www /: Location» — факт https://www.7thserpent.com/ — один скачок на канонический адрес с тем же путём

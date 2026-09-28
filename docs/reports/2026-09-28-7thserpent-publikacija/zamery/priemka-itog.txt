@@ -1,0 +1,17 @@
+build                      код 0
+check                      код 0
+accept                     код 0
+tree-check                 код 0
+brief-check                код 0
+dist-protiv-main           как ждали: файлов 162/165, только в A 0, только в B 3, различаются 1
+build-ac4bf                код 0
+dist-ac4bf-protiv-main     как ждали: файлов 638/638, только в A 0, только в B 0, различаются 0
+build-ac4bf-sravnenie      строк 723/723; без порядка — только в A 0, только в B 0; гейты — 63/63 строк, различий 0
+ni-bajta: первый сайт      ни байта
+ni-bajta: ядро             ни байта
+ni-bajta: корень: package.json, package-lock.json, .gitattri ни байта
+ni-bajta: deploy-ac4bf.yml ни байта
+ni-bajta: зона Tailwind второго сайта (global.css) ни байта
+ni-bajta: маршрут, схема, структура второго сайта ни байта
+ni-bajta: замороженные судьи второго сайта (sverka, znak, ge ни байта
+okonchaniya                файлов 242, не LF 0, после перенормализации дерево чистое

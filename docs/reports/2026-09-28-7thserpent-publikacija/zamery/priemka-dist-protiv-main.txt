@@ -1,0 +1,12 @@
+A (сборка main 75f467d): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\2a2fa1b5-b706-4952-b80c-ce6acb0f1174\scratchpad\opora\dist-7th — файлов 162
+B (сессия): D:\SEO\cloud\site-generator\sites\7thserpent.com\dist — файлов 165
+только в A: 0
+только в B: 3
+  .htaccess
+  privacy/index.html
+  robots.txt
+различаются: 1
+  sitemap-0.xml
+  sitemap-0.xml: ушли —; пришли <url><loc>https://www.7thserpent.com/privacy/</loc></url>
+HTML в A: 17; побайтно равны в B: 17
+ждали: только в B — .htaccess, privacy/index.html, robots.txt; различаются — sitemap-0.xml; итог — как ждали

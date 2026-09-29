@@ -12,9 +12,9 @@
 #             missing page address, the sitemap leaves it out, and no page
 #             links to it.
 #   AI crawlers — they are not blocked either. Blocks that the hosting
-#             provider or Cloudflare may prepend to this file on the live
-#             server are not part of it (`npm run live:check` tells them
-#             apart from this file).
+#             provider may prepend to this file on the live server are not
+#             part of it (`npm run live:check` tells them apart from this
+#             file).
 #
 # The Sitemap line carries the full address, because the file is also read
 # from outside the domain. The canonical address is https WITH www (`site` in

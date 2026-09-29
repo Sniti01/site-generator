@@ -46,8 +46,8 @@ ErrorDocument 404 /404/index.html
 # without www and for http:// without www — never two hops.
 #
 # `%{HTTPS}` can be `off` despite the padlock in the browser when TLS ends at
-# a proxy (here: Cloudflare), so the proxy's header is asked too; otherwise
-# the redirect would loop.
+# a proxy (here: the hosting provider's nginx in front of Apache), so the
+# proxy's header is asked too; otherwise the redirect would loop.
 # ─────────────────────────────────────────────────────────────────────────
 <IfModule mod_rewrite.c>
   RewriteEngine On

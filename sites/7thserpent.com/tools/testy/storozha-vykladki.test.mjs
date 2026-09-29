@@ -142,9 +142,9 @@ const DOMEN_VKHOD = [
   ['наша сборка отвечает (повтор оборванной первой), первая, согласие — проход', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, true, true, true, ['ОТВЕЧАЕТ', 'SERPENT_DOMAIN_BOUND'], []],
   ['домен не привязан, первая, согласие — проход, как без входа', { [W]: oshibka('ENOTFOUND'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['домен не привязан'], []],
   ['не первая, согласие — как без входа: обновит живой сайт', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, false, true, true, ['обновит живой сайт'], []],
-  ['SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('CERT_HAS_EXPIRED') }, true, true, false, ['СТОП', 'ошибка сертификата ERR_TLS_CERT_ALTNAME_INVALID', 'Let\'s Encrypt'], []],
-  ['SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается', { [W]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT'), [G]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT') }, true, false, false, ['СТОП', 'ошибка сертификата', 'Let\'s Encrypt'], ['SERPENT_DOMAIN_BOUND']],
-  ['SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: повтори', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, false, ['СТОП', 'TimeoutError', 'повтори'], []],
+  ['SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('CERT_HAS_EXPIRED') }, true, true, false, ['СТОП', 'ошибка TLS или сертификата ERR_TLS_CERT_ALTNAME_INVALID', 'Let\'s Encrypt'], []],
+  ['SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается', { [W]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT'), [G]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT') }, true, false, false, ['СТОП', 'ошибка TLS или сертификата', 'Let\'s Encrypt'], ['SERPENT_DOMAIN_BOUND']],
+  ['SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: новый Run workflow (SV23-Z2-1)', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, false, ['СТОП', 'TimeoutError', 'Run workflow'], []],
   ['SV23-O-1 таймаут, первая, без согласия — стоп, вход не предлагается', { [W]: oshibka('TimeoutError'), [G]: oshibka('ENOTFOUND') }, true, false, false, ['не удалось узнать', 'повтори'], ['SERPENT_DOMAIN_BOUND']],
   ['SV23-O-2 www не разрешается, голое имя — заглушка, первая, согласие — стоп: имя не привязано', { [W]: oshibka('ENOTFOUND'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'не привязано'], []],
   ['SV23-O-2 www ведёт на чужой хост, первая, согласие — стоп: не этот сайт', { [W]: otv(302, '', 'https://parked.example/'), 'https://parked.example/': otv(200, '<title>Parked</title>'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'parked.example', 'не на этот сайт'], []],
@@ -164,6 +164,11 @@ for (const [imya, karta, pervyi, soglasen, zhdem, kuski, zapret] of DOMEN_VKHOD)
   });
 }
 
+/** Знаки из кодов (в исходнике проб их нет сырыми): управляющие, разделители строк, двунаправленные, заполнители. */
+const z = (...k) => String.fromCharCode(...k);
+/** Чему не место в строке журнала GitHub: знаки выше и начала команд раннера. */
+const ZHURNAL_ZLO = new RegExp(`[${z(0)}-${z(0x1f)}${z(0x7f)}-${z(0x9f)}${z(0x2028, 0x2029)}${z(0x202a)}-${z(0x202e)}${z(0x2066)}-${z(0x2069)}${z(0x3164, 0x2800)}]|##\\[|::`);
+
 test('SV23-O-3, Z-5 строка ответа в публичный журнал: <title> вне комментариев, svg и скриптов, сущности раскрыты, без управляющих знаков и команд раннера, обрез с «…»', async () => {
   const s = (telo) => domen({ poluchit: iz({ [W]: otv(200, telo), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: false }).then((r) => r.stroki[0]);
   assert.match(await s('<title>&laquo;Сайт&raquo; &#1055;&#x41F; &amp; ok</title>'), /«Сайт» ПП & ok/);
@@ -171,9 +176,92 @@ test('SV23-O-3, Z-5 строка ответа в публичный журнал
   assert.match(await s('<title>a < b</title>'), /«a < b»/);
   const dlinnyy = await s(`<title>${'я'.repeat(150)}</title>`);
   assert.match(dlinnyy, new RegExp(`«${'я'.repeat(100)}…»`));
-  const zloy = await s('<title>\u001b[30;40mскрыто ##[warning]подмена ::set-output name=x::y ‮обратно&#10;::error::вторая строка</title>');
-  assert.doesNotMatch(zloy, /[\u0000-\u001f\u007f-\u009f‪-‮⁦-⁩]|##\[|::/, JSON.stringify(zloy));
+  const zloy = await s(`<title>${z(0x1b)}[30;40mскрыто ##[warning]подмена ::set-output name=x::y ${z(0x202e)}обратно&#10;::error::вторая строка</title>`);
+  assert.doesNotMatch(zloy, ZHURNAL_ZLO, JSON.stringify(zloy));
   assert.match(zloy, /скрыто/);
+});
+
+/* — раунд 2 (SV23-O2, SV23-Z2; последний раунд, П108) — */
+
+test('SV23-O2-3, O2-1 редирект через чужой хост: ошибка сети или сертификата на чужом хосте — «не этот сайт», не «сертификат в панели»; возврат на наше имя через чужой хост — не свой', async () => {
+  const tlsChuzhoy = await domen({ poluchit: iz({ [W]: otv(302, '', 'https://parked.example/'), [G]: otv(302, '', 'https://parked.example/'), 'https://parked.example/': oshibka('ERR_TLS_CERT_ALTNAME_INVALID') }), pervyi: true, soglasen: true });
+  assert.equal(tlsChuzhoy.ok, false);
+  assert.match(tlsChuzhoy.stroki.join(' '), /не на этот сайт/);
+  assert.doesNotMatch(tlsChuzhoy.stroki.join(' '), /Let's Encrypt/);
+  const cherez = await domen({ poluchit: iz({ [W]: otv(302, '', 'https://tracker.example/r'), 'https://tracker.example/r': otv(302, '', W + 'x'), [`${W}x`]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: true, soglasen: true });
+  assert.equal(cherez.ok, false, cherez.stroki.join(' | '));
+  assert.match(cherez.stroki.join(' '), /tracker\.example/);
+});
+
+test('SV23-O2-2 без входа вход предлагается, только когда он поможет: сертификат, неразрешимое имя, чужой хост, canonical первого сайта — стоп своей причиной', async () => {
+  for (const [karta, prichina] of [
+    [{ [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, /Let's Encrypt/],
+    [{ [W]: oshibka('ENOTFOUND'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, /не привязано/],
+    [{ [W]: otv(302, '', 'https://parked.example/'), 'https://parked.example/': otv(200, '<title>Parked</title>'), [G]: otv(302, '', 'https://parked.example/') }, /не на этот сайт/],
+    [{ [W]: otv(200, pervogo), [G]: otv(200, pervogo) }, /не на этот сайт/],
+  ]) {
+    const r = await domen({ poluchit: iz(karta), pervyi: true });
+    assert.equal(r.ok, false, r.stroki.join(' | '));
+    assert.match(r.stroki.join(' '), prichina, r.stroki.join(' | '));
+    assert.doesNotMatch(r.stroki.join(' '), /SERPENT_DOMAIN_BOUND/, r.stroki.join(' | '));
+  }
+  const pomozhet = await domen({ poluchit: iz({ [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: true });
+  assert.match(pomozhet.stroki.join(' '), /SERPENT_DOMAIN_BOUND = on/);
+});
+
+test('SV23-Z2-1 со входом при сети или сертификате — «новый запуск кнопкой Run workflow с теми же входами (не Re-run)»', async () => {
+  for (const karta of [{ [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, { [W]: oshibka('CERT_HAS_EXPIRED'), [G]: oshibka('CERT_HAS_EXPIRED') }]) {
+    const r = await domen({ poluchit: iz(karta), pervyi: true, soglasen: true });
+    assert.equal(r.ok, false);
+    assert.match(r.stroki.join(' '), /новый запуск кнопкой Run workflow с теми же входами \(не Re-run\)/, r.stroki.join(' | '));
+  }
+});
+
+test('SV23-O2-5 коды TLS и сертификата Node — «ошибка TLS или сертификата»', async () => {
+  for (const kod of ['INVALID_PURPOSE', 'PATH_LENGTH_EXCEEDED', 'INVALID_CA', 'ERROR_IN_CERT_NOT_BEFORE_FIELD', 'CRL_HAS_EXPIRED', 'UNSPECIFIED', 'ERR_SSL_WRONG_VERSION_NUMBER', 'CERT_NOT_YET_VALID', 'SELF_SIGNED_CERT_IN_CHAIN', 'UNABLE_TO_VERIFY_LEAF_SIGNATURE', 'HOSTNAME_MISMATCH']) {
+    const r = await domen({ poluchit: iz({ [W]: oshibka(kod), [G]: oshibka(kod) }), pervyi: true });
+    assert.match(r.stroki[0], /ошибка TLS или сертификата/, `${kod}: ${r.stroki[0]}`);
+    assert.match(r.stroki.join(' '), /Let's Encrypt/, kod);
+  }
+  const set = await domen({ poluchit: iz({ [W]: oshibka('ECONNRESET'), [G]: oshibka('ECONNRESET') }), pervyi: true });
+  assert.doesNotMatch(set.stroki.join(' '), /сертификат/);
+});
+
+test('SV23-O2-6, O2-7 журнал: «:::», U+2028, заполнители, два «##[», команды в canonical и Location, длинный canonical — ни управляющих знаков, ни «::», ни «##[»; сущности — одним проходом, без свойств объекта', async () => {
+  const s = (telo, dop = {}) => domen({ poluchit: iz({ [W]: otv(200, telo), [G]: otv(200, ZAGLUSHKA_SOZDAN), ...dop }), pervyi: false }).then((r) => r.stroki[0]);
+  for (const t of [`<title>a:::b ##[x] ##[y] ${z(0x2028)}::error::z${z(0x2029)} ${z(0x3164, 0x2800)}</title>`, `<link rel="canonical" href="https://evil.example/::error::x${z(7)}##[debug]${'я'.repeat(200000)}">`]) {
+    const stroka = await s(t);
+    assert.doesNotMatch(stroka, ZHURNAL_ZLO, JSON.stringify(stroka.slice(0, 300)));
+    assert.ok(stroka.length < 1500, `длина ${stroka.length}`);
+  }
+  const loc = await domen({ poluchit: iz({ [W]: otv(301, '', 'http://[::1:bad]/::error::x##[debug]'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: false });
+  assert.doesNotMatch(loc.stroki[0], ZHURNAL_ZLO, loc.stroki[0]);
+  assert.match(await s('<title>&#x26;lt;b&#x26;gt; &constructor; &toString; &rsquo;&copy;</title>'), /«&lt;b&gt; &constructor; &toString; ’©»/);
+  assert.match(await s('<title>a <b>b</b></title>'), /«a <b>b<\/b>»/);
+});
+
+test('SV23-Z2-3 имя с точкой в конце — своё; canonical только в комментарии — не в счёт; петля — своя подсказка', async () => {
+  const tochka = await domen({ poluchit: iz({ [W]: otv(301, '', 'https://www.7thserpent.com./'), 'https://www.7thserpent.com./': otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: true, soglasen: true });
+  assert.equal(tochka.ok, true, tochka.stroki.join(' | '));
+  const komm = await domen({ poluchit: iz({ [W]: otv(200, `<!-- ${pervogo} -->${ZAGLUSHKA_SOZDAN}`), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: true, soglasen: true });
+  assert.equal(komm.ok, true, komm.stroki.join(' | '));
+  const petlya = await domen({ poluchit: iz({ [W]: otv(301, '', G), [G]: otv(301, '', W) }), pervyi: true, soglasen: true });
+  assert.equal(petlya.ok, false);
+  assert.match(petlya.stroki.join(' '), /петля редиректов/, petlya.stroki.join(' | '));
+});
+
+test('SV23-O2-4 команда domen на GitHub снимает сопоставители проблем setup-node до строк ответа', () => {
+  const d = mkdtempSync(join(tmpdir(), 'storozha-sopost-'));
+  try {
+    const { SERPENT_DOMAIN_BOUND, ...env } = process.env;
+    const r = spawnSync(process.execPath, ['--import', BEZ_SETI, STOROZH, 'domen'], { encoding: 'utf8', env: { ...env, SETI_ZHURNAL: join(d, 'seti.txt'), SERPENT_PERVAYA: 'off', GITHUB_ACTIONS: 'true' } });
+    assert.equal(r.status, 0, r.stdout + r.stderr);
+    const stroki = r.stdout.split(/\r?\n/);
+    assert.deepEqual(stroki.slice(0, 3), ['::remove-matcher owner=tsc::', '::remove-matcher owner=eslint-stylish::', '::remove-matcher owner=eslint-compact::']);
+    assert.match(stroki[3], /^www\.7thserpent\.com: /);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
 });
 
 test('SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108)', async () => {
@@ -720,6 +808,8 @@ test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привяза�
   // SV23-Z-3: форма Run workflow подписывает поля описанием — оно начинается с имени входа.
   assert.match(v.description, /^SERPENT_DOMAIN_BOUND — /);
   assert.match(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.description, /^SERPENT_FIRST — /);
+  // SV23-Z2-2: повтор согласия не несёт — описание поля говорит, как повторять.
+  assert.match(v.description, /после красного прогона — новый Run workflow с обоими входами/);
 });
 
 test('SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108)', () => {

@@ -1,0 +1,2 @@
+?? docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/priemka.mjs
+?? docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/schet-komand.mjs

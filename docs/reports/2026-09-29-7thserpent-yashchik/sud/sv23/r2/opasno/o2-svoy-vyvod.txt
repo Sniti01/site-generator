@@ -1,0 +1,36 @@
+Первая выкладка, вход SERPENT_DOMAIN_BOUND = on (soglasen: true). Ответы — образцы, сети нет.
+
+контроль: 302 на чужой сайт (правка раунда 1 его держит): сторож — СТОП; www.7thserpent.com: svoy=false, 7thserpent.com: svoy=false
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Домен 7thserpent.com продаётся», конечный хост prodazha-domenov.example — не имя сайта (https://www.7thserpent.com/ — 302 → https://prodazha-domenov.example/lot/7thserpent — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Домен 7thserpent.com продаётся», конечный хост prodazha-domenov.example — не имя сайта (https://7thserpent.com/ — 302 → https://prodazha-domenov.example/lot/7thserpent — 200)
+  итог: СТОП: первая выкладка со входом SERPENT_DOMAIN_BOUND = on, но согласие покрывает только домен, который отвечает по обоим именам с этого хоста: домен ведёт не на этот сайт (конечный хост, canonical или редирект — в строках выше) — проверь привязку в панели хостера.
+
+meta refresh на чужой сайт (переадресация регистратора): сторож — ПРОХОД; www.7thserpent.com: svoy=true, 7thserpent.com: svoy=true
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://www.7thserpent.com/ — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://7thserpent.com/ — 200)
+  итог: первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+
+фрейм с чужим сайтом (маскированная переадресация): сторож — ПРОХОД; www.7thserpent.com: svoy=true, 7thserpent.com: svoy=true
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://www.7thserpent.com/ — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://7thserpent.com/ — 200)
+  итог: первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+
+скрипт уводит на чужой сайт: сторож — ПРОХОД; www.7thserpent.com: svoy=true, 7thserpent.com: svoy=true
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://www.7thserpent.com/ — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://7thserpent.com/ — 200)
+  итог: первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+
+цепочка через чужой хост с возвратом на наше имя (проверка парковки): сторож — ПРОХОД; www.7thserpent.com: svoy=true, 7thserpent.com: svoy=true
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com — домен продаётся» (https://www.7thserpent.com/ — 302 → https://parking.example/check?d=7thserpent.com — 302 → https://www.7thserpent.com/?pk=1 — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com — домен продаётся» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 302 → https://parking.example/check?d=7thserpent.com — 302 → https://www.7thserpent.com/?pk=1 — 200)
+  итог: первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+
+заголовок Refresh: 0;url=https://prodazha-domenov.example/lot/7thserpent — poluchitSetyu вернул ключи: status, location, telo
+  сторож (poluchitSetyu над подменённым fetch) — ПРОХОД; запросы подмены: https://www.7thserpent.com/ https://www.7thserpent.com/ https://7thserpent.com/
+  www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://www.7thserpent.com/ — 200)
+  7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «7thserpent.com» (https://7thserpent.com/ — 200)
+  итог: первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+
+Вывод: svoy = «конечный хост — имя сайта и нет чужого canonical». Переадресация не HTTP-статусом (meta refresh, Refresh,
+фрейм, скрипт) и цепочка через чужой хост с возвратом на наше имя дают svoy = true: со входом on первая выкладка идёт,
+хотя домен ведёт не на этот сайт — тот же класс, что SV23-O-2 (302 на чужой хост — стоп, контроль выше).

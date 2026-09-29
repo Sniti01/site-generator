@@ -1,0 +1,111 @@
+выражение шага домена (YAML): ${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}
+описание поля SERPENT_DOMAIN_BOUND в форме Run workflow: SERPENT_DOMAIN_BOUND — домен привязан, согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и не останавливает, если оба имени отвечают с этого хоста (П108)
+о повторе в описании поля: НЕТ
+
+== S1 лист соблюдён: заглушка удалена, Run workflow с обоими входами on
+ - Run workflow: проход сторожей до выкладки
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: проход | первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+== S2 заглушка ещё на месте: стоп сторожа index.html; владелец удаляет заглушку
+ - Run workflow: стоп indeks
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: СТОП | СТОП: index.html на сервере без canonical — заглушка хостера или чужая страница; если это заглушка хостера — удали её в файловом менеджере панели (mirror --delete заменил бы чужой сайт).
+    → как запускать снова — не сказано
+ - Re-run (кнопка на странице красного прогона): стоп domen
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+ - новый Run workflow с обоими входами: проход сторожей до выкладки
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: проход | первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+== S3 таймаут домена при первой выкладке со входом on; сеть вернулась
+ - Run workflow: стоп domen
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка со входом SERPENT_DOMAIN_BOUND = on, но согласие покрывает только домен, который отвечает по обоим именам с этого хоста: по имени не удалось получить ответ (сеть, таймаут) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера.
+    → велено повторить, кнопка не названа (под рукой — Re-run)
+ - Re-run («повтори запуск»): стоп domen
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+== S4 ошибка сертификата при первой выкладке со входом on; сертификат выпущен
+ - Run workflow: стоп domen
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка со входом SERPENT_DOMAIN_BOUND = on, но согласие покрывает только домен, который отвечает по обоим именам с этого хоста: https — с ошибкой сертификата: выпусти сертификат Let's Encrypt в панели хостера для обоих имён — .htaccess ведёт всех на https, без сертификата сайт не откроется; затем запусти снова.
+    → велено повторить, кнопка не названа (под рукой — Re-run)
+ - Re-run («затем запусти снова»): стоп domen
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+== S5 выкладка по FTPS оборвалась до главной (домен прошёл в попытке 1)
+ - Re-run: стоп papka
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: СТОП | СТОП: в корне робота только имена нашей сборки, без index.html (27 записей) — оборванная первая выкладка или файлы хостера с теми же именами (.htaccess, favicon.ico); чьи они — не понять. Удали содержимое 7thserpent.com/www в файловом менеджере панели и запусти выкладку снова (вход SERPENT_FIRST=on).
+    → велено повторить, кнопка не названа (под рукой — Re-run)
+ - владелец очистил www; новый Run workflow по строке papka «(вход SERPENT_FIRST=on)»: стоп domen
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=off → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+ - Re-run того же: стоп domen
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=off → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+ - новый Run workflow с обоими входами: проход сторожей до выкладки
+  попытка 1; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=on
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: проход | первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт
+== S6 выкладка легла целиком, упал «Пересчёт на сервере» (.nfs: «повтори пересчёт или выкладку через минуту»)
+ - Re-run: стоп domen
+  попытка 2; входы: SERPENT_FIRST=on, SERPENT_DOMAIN_BOUND=on → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: on — вход SERPENT_FIRST=on
+  domen: СТОП | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → указан новый запуск Run workflow
+ - новый Run workflow, SERPENT_FIRST=off: проход сторожей до выкладки
+  попытка 1; входы: SERPENT_FIRST=off, SERPENT_DOMAIN_BOUND=off → шагу домена SERPENT_DOMAIN_BOUND=off
+  papka: проход
+  indeks: проход
+  glubina: проход
+  pervaya: off — на сервере наша завершённая выкладка (index.html с canonical главной и все ключевые файлы)
+  domen: проход | домен отвечает: выкладка обновит живой сайт

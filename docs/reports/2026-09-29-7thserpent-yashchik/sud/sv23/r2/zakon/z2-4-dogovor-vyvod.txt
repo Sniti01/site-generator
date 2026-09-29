@@ -1,0 +1,7 @@
+как есть (9ca1aa2): договор ДЕРЖИТ
+то же выражение со скобками: (run_attempt == 1 && вход) || off: договор ПАДАЕТ — Expected values to be strictly equal:
+то же выражение: run_attempt == '1': договор ПАДАЕТ — Expected values to be strictly equal:
+третий ключ env шага домена — номер попытки (сторож печатает «Re-run: согласие снято»): договор ПАДАЕТ — Expected values to be strictly deep-equal:
+сторожу домена — файлы сервера (согласие в повторе — только без нашей завершённой выкладки): договор ПАДАЕТ — Expected values to be strictly equal:
+имя входа в имени шага домена: договор ПАДАЕТ — Expected values to be strictly deep-equal:
+шаг-подсказка при красном прогоне: «новый Run workflow с теми же входами, не Re-run»: договор ПАДАЕТ — Expected values to be strictly deep-equal:

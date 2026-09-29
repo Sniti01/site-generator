@@ -213,7 +213,7 @@ test('SV23-Z2-1 со входом при сети или сертификате 
   for (const karta of [{ [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, { [W]: oshibka('CERT_HAS_EXPIRED'), [G]: oshibka('CERT_HAS_EXPIRED') }]) {
     const r = await domen({ poluchit: iz(karta), pervyi: true, soglasen: true });
     assert.equal(r.ok, false);
-    assert.match(r.stroki.join(' '), /новый запуск кнопкой Run workflow с теми же входами \(не Re-run\)/, r.stroki.join(' | '));
+    assert.match(r.stroki.join(' '), /новый запуск кнопкой Run workflow с теми же входами \(не Re-run/, r.stroki.join(' | '));
   }
 });
 
@@ -234,7 +234,9 @@ test('SV23-O2-6, O2-7 журнал: «:::», U+2028, заполнители, д�
     assert.doesNotMatch(stroka, ZHURNAL_ZLO, JSON.stringify(stroka.slice(0, 300)));
     assert.ok(stroka.length < 1500, `длина ${stroka.length}`);
   }
-  const loc = await domen({ poluchit: iz({ [W]: otv(301, '', 'http://[::1:bad]/::error::x##[debug]'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: false });
+  // Негодный IPv6 (`zz` — не шестнадцатеричное): new URL бросает — Location печатается строкой «негодный адрес».
+  const loc = await domen({ poluchit: iz({ [W]: otv(301, '', 'http://[::1:zz]/::error::x##[debug]'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: false });
+  assert.match(loc.stroki[0], /негодный адрес/, loc.stroki[0]);
   assert.doesNotMatch(loc.stroki[0], ZHURNAL_ZLO, loc.stroki[0]);
   assert.match(await s('<title>&#x26;lt;b&#x26;gt; &constructor; &toString; &rsquo;&copy;</title>'), /«&lt;b&gt; &constructor; &toString; ’©»/);
   assert.match(await s('<title>a <b>b</b></title>'), /«a <b>b<\/b>»/);

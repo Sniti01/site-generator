@@ -1,0 +1,17 @@
+(1) модель выражения: попытка × значение входа → значение SERPENT_DOMAIN_BOUND шагу домена
+  run_attempt="1": "on" → "on"; "off" → "off"; "" → "off"; нет (push) → "off"
+  run_attempt="2": "on" → "off"; "off" → "off"; "" → "off"; нет (push) → "off"
+  run_attempt="3": "on" → "off"; "off" → "off"; "" → "off"; нет (push) → "off"
+  run_attempt="10": "on" → "off"; "off" → "off"; "" → "off"; нет (push) → "off"
+
+(2) триггеры: workflow_dispatch, push; workflow_call/workflow_run/repository_dispatch — нет
+  строки с именем входа или run_attempt:
+    .on.workflow_dispatch.inputs.SERPENT_FIRST.description = "SERPENT_FIRST — первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равня
+    .on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND.description = "SERPENT_DOMAIN_BOUND — домен привязан, согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и
+    .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND = "${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  deploy-ac4bf.yml: упоминает deploy-7thserpent, «gh workflow run» или dispatches — нет
+
+(3) a836697 (на сервере: origin/7thserpent-yashchik): env шага домена — "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"; run_attempt в файле — нет
+  Повтор запуска идёт по файлу и коду его коммита: запуск Run workflow с ветки 7thserpent-yashchik на a836697 со входами
+  on/on, если он был, при повторе несёт согласие, а его сторож домена (до раунда 1) пропускает и «не понять». Проверить
+  список запусков в Actions отсюда нельзя (сети нет).

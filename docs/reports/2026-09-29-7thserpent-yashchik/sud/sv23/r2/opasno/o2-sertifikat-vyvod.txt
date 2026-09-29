@@ -1,0 +1,29 @@
+Часть 1 — классификация кодов сторожем (sostoyanieHosta, подставной poluchit):
+  коды проверки сертификата Node ВНЕ шаблона (причина «ошибка сети — повтори; проверь DNS»): CRL_SIGNATURE_FAILURE, CRL_NOT_YET_VALID, CRL_HAS_EXPIRED, ERROR_IN_CERT_NOT_BEFORE_FIELD, ERROR_IN_CERT_NOT_AFTER_FIELD, ERROR_IN_CRL_LAST_UPDATE_FIELD, ERROR_IN_CRL_NEXT_UPDATE_FIELD, OUT_OF_MEM, INVALID_CA, PATH_LENGTH_EXCEEDED, INVALID_PURPOSE, UNSPECIFIED
+  коды протокола TLS (не сертификат сайта) В шаблоне (причина «ошибка сертификата — браузер откроет только с предупреждением», совет — Let's Encrypt): ERR_SSL_WRONG_VERSION_NUMBER, ERR_SSL_PACKET_LENGTH_TOO_LONG, ERR_SSL_TLSV1_ALERT_PROTOCOL_VERSION, ERR_SSL_SSLV3_ALERT_HANDSHAKE_FAILURE, ERR_SSL_TLSV13_ALERT_CERTIFICATE_REQUIRED, ERR_SSL_TLSV1_ALERT_INTERNAL_ERROR, ERR_SSL_TLSV1_UNRECOGNIZED_NAME
+
+Часть 2 — замер на петле (Node v26.4.0; на раннере — Node 24), код дочернего процесса 0:
+  контроль: верная цепочка (корень проб — в NODE_EXTRA_CA_CERTS): код fetch — ответ 200; сторож — отвечает, sertifikat=false
+    причина: ответ 200 — «Поздравляем, сайт создан!», конечный хост 127.0.0.1:54229 — не имя сайта
+  сертификат на другое имя (DNS:example.test): код fetch — ERR_TLS_CERT_ALTNAME_INVALID; сторож — не понять, sertifikat=true
+    причина: ошибка сертификата ERR_TLS_CERT_ALTNAME_INVALID — https по этому имени браузер откроет только с предупреждением
+  самоподписанный: код fetch — DEPTH_ZERO_SELF_SIGNED_CERT; сторож — не понять, sertifikat=true
+    причина: ошибка сертификата DEPTH_ZERO_SELF_SIGNED_CERT — https по этому имени браузер откроет только с предупреждением
+  промежуточный без CA:TRUE: код fetch — INVALID_PURPOSE; сторож — не понять, sertifikat=false
+    причина: ошибка сети INVALID_PURPOSE
+  лист только для clientAuth (не serverAuth): код fetch — INVALID_PURPOSE; сторож — не понять, sertifikat=false
+    причина: ошибка сети INVALID_PURPOSE
+  корень pathlen:0, под ним промежуточный CA: код fetch — PATH_LENGTH_EXCEEDED; сторож — не понять, sertifikat=false
+    причина: ошибка сети PATH_LENGTH_EXCEEDED
+  просроченный (2020-01-01…02): код fetch — CERT_HAS_EXPIRED; сторож — не понять, sertifikat=true
+    причина: ошибка сертификата CERT_HAS_EXPIRED — https по этому имени браузер откроет только с предупреждением
+  на порту https — простой http (TLS на имени не настроен): код fetch — ERR_SSL_WRONG_VERSION_NUMBER; сторож — не понять, sertifikat=true
+    причина: ошибка сертификата ERR_SSL_WRONG_VERSION_NUMBER — https по этому имени браузер откроет только с предупреждением
+  сервер требует сертификат КЛИЕНТА (у сайта сертификат верный): код fetch — UND_ERR_SOCKET; сторож — не понять, sertifikat=false
+    причина: ошибка сети UND_ERR_SOCKET
+
+Вывод: шаблон по началу имени кода не совпадает с классом ошибки. Замерено: INVALID_PURPOSE (промежуточный без CA:TRUE,
+лист только для clientAuth) и PATH_LENGTH_EXCEEDED — «ошибка сети — повтори; проверь записи DNS»; простой http на порту 443
+(ERR_SSL_WRONG_VERSION_NUMBER) — «ошибка сертификата — браузер откроет только с предупреждением» (браузер не откроет вовсе).
+По перечню Node вне шаблона также INVALID_CA, ERROR_IN_CERT_NOT_*_FIELD, CRL_*, UNSPECIFIED; в шаблоне — все ERR_SSL_*
+протокола. Требование сертификата клиента — UND_ERR_SOCKET, «ошибка сети» (контроль). Все исходы — стоп; неверны причина и совет.

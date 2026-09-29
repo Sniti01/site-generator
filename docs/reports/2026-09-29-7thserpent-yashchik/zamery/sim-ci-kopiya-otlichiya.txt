@@ -1,0 +1,6 @@
+источник: D:/SEO/cloud/site-generator/docs/reports/2026-09-28-7thserpent-publikacija/sud/sv-r3/zakon/sim-ci-r3.mjs (63 строк)
+копия:    D:/SEO/cloud/site-generator/docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/sim-ci-r3-kopiya.mjs (63 строк)
+различных строк: 1
+строка 14:
+  источник: const ZDES = 'C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/2a2fa1b5-b706-4952-b80c-ce6acb0f1174/scratchpad/sud/sv-r3/zakon';
+  копия:    const ZDES = 'C:/Users/MSI/AppData/Local/Temp/claude/d--SEO-cloud-site-generator/e23fb3af-937c-42f5-91ca-cf6567cf6a1c/scratchpad/sim-ci';

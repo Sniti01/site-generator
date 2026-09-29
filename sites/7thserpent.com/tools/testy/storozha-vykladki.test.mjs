@@ -3,6 +3,7 @@
 // каталоге. Последний блок — договор самого workflow `.github/workflows/deploy-7thserpent.yml` (разбор YAML):
 // триггеры, предохранители, TZ, корпус, пароль, команды сторожей — те, что есть у сторожа, циклов оболочки нет.
 // «Судью судят»: раунд 1 (SV1-O — «опасный проход», SV1-Z — «законные формы»), раунд 2 (SV2-O, SV2-Z) — пробами с их id.
+// Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа домена; «судью судят» — SV23-*.
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -126,6 +127,49 @@ for (const [imya, karta, pervyi, zhdem, kusok] of DOMEN) {
     assert.ok(r.stroki.join(' ').includes(kusok), r.stroki.join(' | '));
   });
 }
+
+/* — сессия 23 (П108): вход SERPENT_DOMAIN_BOUND — владелец согласен, что домен привязан — */
+// Заглушка хостера — по замеру домена 2026-09-29: 200, <title> «Поздравляем, сайт создан!», без canonical.
+const ZAGLUSHKA_SOZDAN = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Поздравляем, сайт создан!</title></head><body><h1>Поздравляем, сайт создан!</h1></body></html>';
+const S403 = '<html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1></body></html>';
+const DOMEN_VKHOD = [
+  // [имя, ответы, первая выкладка, согласие, ждём ok, куски строки]
+  ['заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, true, ['ОТВЕЧАЕТ', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
+  ['та же заглушка, первая, без согласия — стоп, как прежде, с именем входа', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, false, false, ['СТОП', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
+  ['403 пустого каталога (заглушку удалили), первая, согласие — проход', { [W]: otv(403, S403), [G]: otv(403, S403) }, true, true, true, ['ОТВЕЧАЕТ', 'ответ 403', 'SERPENT_DOMAIN_BOUND']],
+  ['ошибка сертификата — не понять, первая, согласие — проход, ошибка в строке', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['ERR_TLS_CERT_ALTNAME_INVALID', 'SERPENT_DOMAIN_BOUND']],
+  ['таймаут на обоих хостах, первая, согласие — проход', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, true, ['TimeoutError', 'SERPENT_DOMAIN_BOUND']],
+  ['таймаут, первая, без согласия — стоп с именем входа', { [W]: oshibka('TimeoutError'), [G]: oshibka('ENOTFOUND') }, true, false, false, ['не удалось узнать', 'SERPENT_DOMAIN_BOUND']],
+  ['наша сборка отвечает (повтор оборванной первой), первая, согласие — проход', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, true, true, true, ['ОТВЕЧАЕТ', 'SERPENT_DOMAIN_BOUND']],
+  ['домен не привязан, первая, согласие — проход, как без входа', { [W]: oshibka('ENOTFOUND'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['домен не привязан']],
+  ['не первая, согласие — как без входа: обновит живой сайт', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, false, true, true, ['обновит живой сайт']],
+];
+for (const [imya, karta, pervyi, soglasen, zhdem, kuski] of DOMEN_VKHOD) {
+  test(`домен, вход SERPENT_DOMAIN_BOUND: ${imya}`, async () => {
+    const r = await domen({ poluchit: iz(karta), pervyi, soglasen });
+    assert.equal(r.ok, zhdem, r.stroki.join(' | '));
+    for (const kusok of kuski) assert.ok(r.stroki.join(' ').includes(kusok), `${kusok}: ${r.stroki.join(' | ')}`);
+  });
+}
+
+test('SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108)', async () => {
+  for (const [, karta, pervyi] of DOMEN) {
+    const r = await domen({ poluchit: iz(karta), pervyi });
+    assert.doesNotMatch(r.stroki.join(' '), /cloudflare/i, r.stroki.join(' | '));
+  }
+  for (const [, karta, pervyi, soglasen] of DOMEN_VKHOD) {
+    const r = await domen({ poluchit: iz(karta), pervyi, soglasen });
+    assert.doesNotMatch(r.stroki.join(' '), /cloudflare/i, r.stroki.join(' | '));
+  }
+});
+
+test('SV23 вход SERPENT_DOMAIN_BOUND: on — согласие; off, пусто и нет — нет; иное — ошибка входа', () => {
+  const { soglasieIzVkhoda } = SV;
+  assert.equal(typeof soglasieIzVkhoda, 'function', 'нет функции soglasieIzVkhoda');
+  assert.equal(soglasieIzVkhoda('on'), true);
+  for (const z of ['off', '', undefined]) assert.equal(soglasieIzVkhoda(z), false, String(z));
+  for (const z of ['yes', 'ON', 'true', ' on', 'on ']) assert.equal(soglasieIzVkhoda(z), null, JSON.stringify(z));
+});
 
 /* ---------- папка робота и index.html ---------- */
 
@@ -521,6 +565,27 @@ test('SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2,
   }
 });
 
+// Сеть в дочернем процессе подменена до запуска сторожа: fetch бросает — сторож видит «не понять» без единого запроса наружу.
+const BEZ_SETI = `data:text/javascript;base64,${Buffer.from("globalThis.fetch = async () => { throw new Error('сеть в пробе запрещена'); };").toString('base64')}`;
+test('SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети', () => {
+  const { SERPENT_DOMAIN_BOUND, ...env } = process.env;
+  const zapusk = (vkhod) => spawnSync(process.execPath, ['--import', BEZ_SETI, STOROZH, 'domen'], { encoding: 'utf8', env: { ...env, SERPENT_PERVAYA: 'on', ...(vkhod === undefined ? {} : { SERPENT_DOMAIN_BOUND: vkhod }) } });
+  const da = zapusk('on');
+  assert.equal(da.status, 0, da.stdout + da.stderr);
+  assert.match(da.stdout, /SERPENT_DOMAIN_BOUND/);
+  assert.match(da.stdout, /сеть в пробе запрещена|Error/);
+  for (const net of ['off', '', undefined]) {
+    const r = zapusk(net);
+    assert.equal(r.status, 1, `${net}: ${r.stdout}${r.stderr}`);
+    assert.match(r.stdout, /СТОП/);
+  }
+  for (const plokho of ['yes', 'ON', 'true']) {
+    const r = zapusk(plokho);
+    assert.equal(r.status, 2, `${plokho}: ${r.stdout}${r.stderr}`);
+    assert.match(r.stderr, /SERPENT_DOMAIN_BOUND/);
+  }
+});
+
 test('команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT', () => {
   const d = mkdtempSync(join(tmpdir(), 'storozha-vykladki-'));
   try {
@@ -564,6 +629,21 @@ test('workflow: триггеры — push в main по путям сайта, я
   assert.deepEqual(WF.on.push.paths, ['sites/7thserpent.com/**', 'core/**', 'package.json', 'package-lock.json', '.github/workflows/deploy-7thserpent.yml']);
   assert.deepEqual(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.options, ['off', 'on']);
   assert.equal(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.default, 'off');
+});
+
+test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; доходит только до сторожа домена, push — off', () => {
+  const v = WF.on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND;
+  assert.ok(v, 'нет входа SERPENT_DOMAIN_BOUND');
+  assert.equal(v.type, 'choice');
+  assert.deepEqual(v.options, ['off', 'on']);
+  assert.equal(v.default, 'off');
+  const d = shag('Домен уже привязан');
+  assert.equal(d.env.SERPENT_DOMAIN_BOUND, "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}");
+  for (const s of shagi.filter((x) => x !== d)) assert.ok(!JSON.stringify(s).includes('SERPENT_DOMAIN_BOUND'), s.name ?? s.uses);
+});
+
+test('SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108)', () => {
+  assert.doesNotMatch(WF_TEKST, /cloudflare/i);
 });
 
 test('workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on', () => {

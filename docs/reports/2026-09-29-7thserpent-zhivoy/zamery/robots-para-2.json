@@ -1,0 +1,82 @@
+{
+  "para": 2,
+  "metka": "1790713791678",
+  "s": {
+    "url": "https://www.7thserpent.com/robots.txt?live-check=1790713791678",
+    "vremya": "2026-09-29T20:29:51.678Z",
+    "status": 200,
+    "zagolovki": [
+      [
+        "content-encoding",
+        "br"
+      ],
+      [
+        "content-type",
+        "text/plain"
+      ],
+      [
+        "date",
+        "Tue, 29 Sep 2026 20:29:51 GMT"
+      ],
+      [
+        "etag",
+        "W/\"4d1-65ca47e341b80\""
+      ],
+      [
+        "last-modified",
+        "Tue, 29 Sep 2026 19:50:22 GMT"
+      ],
+      [
+        "server",
+        "nginx"
+      ],
+      [
+        "x-ray",
+        "wnp190:0.000/wn190:0.000/wa190:D=736"
+      ]
+    ],
+    "dlina": 1582,
+    "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+    "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n",
+    "teloBase64": "IyBCRUdJTiBhZG0udG9vbHMgTWFuYWdlZCBjb250ZW50CgpVc2VyLWFnZW50OiAqCkFsbG93OiAvCgpVc2VyLUFnZW50OiBBaHJlZnNCb3QKVXNlci1BZ2VudDogTUoxMmJvdApVc2VyLUFnZW50OiBEYXRhRm9yU2VvQm90ClVzZXItQWdlbnQ6IGJhcmtyb3dsZXIKVXNlci1BZ2VudDogQnl0ZXNwaWRlcgpVc2VyLUFnZW50OiBHUFRCb3QKVXNlci1BZ2VudDogbWV0YS1leHRlcm5hbGFnZW50ClVzZXItQWdlbnQ6IEJhaWR1c3BpZGVyClVzZXItQWdlbnQ6IG1ldGEtd2ViaW5kZXhlcgpVc2VyLUFnZW50OiBBaHJlZnNTaXRlQXVkaXQKRGlzYWxsb3c6IC8KCiMgRU5EIGFkbS50b29scyBNYW5hZ2VkIGNvbnRlbnQKCiMgcm9ib3RzLnR4dCDigJQgd3d3Ljd0aHNlcnBlbnQuY29tICg3dGggU2VycGVudCkKIwojIEEgc3RhdGljIHNpdGUgKEFzdHJvKS4gRXZlcnkgcGFnZSBpcyBvcGVuIHRvIGluZGV4aW5nOiB0aGVyZSBpcyBubyBhZG1pbgojIGFyZWEsIG5vIGxvZ2luLCBubyBvbi1zaXRlIHNlYXJjaCwgbm8gcGFnaW5hdGlvbiBhbmQgbm8gYWRkcmVzc2VzIHdpdGgKIyBwYXJhbWV0ZXJzLCBzbyB0aGVyZSBpcyBub3RoaW5nIHRvIGRpc2FsbG93LgojCiMgV2hhdCBpcyBkZWxpYmVyYXRlbHkgTk9UIGJsb2NrZWQgKHNvIG5vYm9keSAiZml4ZXMiIGl0IGxhdGVyKToKIyAgIC9fYXN0cm8vICBzdHlsZXNoZWV0cywgZm9udHMgYW5kIGltYWdlcyB3aXRoIGEgY29udGVudCBoYXNoIGluIHRoZSBuYW1lOwojICAgICAgICAgICAgIEdvb2dsZSByZW5kZXJzIGEgcGFnZSB0aGUgd2F5IGEgYnJvd3NlciBkb2VzLCBhbmQgYmxvY2tlZCBDU1MKIyAgICAgICAgICAgICBsb29rcyB0byBpdCBsaWtlIGEgcGFnZSB3aXRob3V0IGEgbGF5b3V0LgojICAgLzQwNC8gICAgIHRoZSBlcnJvciBwYWdlOyB0aGUgc2VydmVyIHJldHVybnMgaXQgd2l0aCBzdGF0dXMgNDA0IGZvciBldmVyeQojICAgICAgICAgICAgIG1pc3NpbmcgcGFnZSBhZGRyZXNzLCB0aGUgc2l0ZW1hcCBsZWF2ZXMgaXQgb3V0LCBhbmQgbm8gcGFnZQojICAgICAgICAgICAgIGxpbmtzIHRvIGl0LgojICAgQUkgY3Jhd2xlcnMg4oCUIHRoZXkgYXJlIG5vdCBibG9ja2VkIGVpdGhlci4gQmxvY2tzIHRoYXQgdGhlIGhvc3RpbmcKIyAgICAgICAgICAgICBwcm92aWRlciBtYXkgcHJlcGVuZCB0byB0aGlzIGZpbGUgb24gdGhlIGxpdmUgc2VydmVyIGFyZSBub3QKIyAgICAgICAgICAgICBwYXJ0IG9mIGl0IChgbnBtIHJ1biBsaXZlOmNoZWNrYCB0ZWxscyB0aGVtIGFwYXJ0IGZyb20gdGhpcwojICAgICAgICAgICAgIGZpbGUpLgojCiMgVGhlIFNpdGVtYXAgbGluZSBjYXJyaWVzIHRoZSBmdWxsIGFkZHJlc3MsIGJlY2F1c2UgdGhlIGZpbGUgaXMgYWxzbyByZWFkCiMgZnJvbSBvdXRzaWRlIHRoZSBkb21haW4uIFRoZSBjYW5vbmljYWwgYWRkcmVzcyBpcyBodHRwcyBXSVRIIHd3dyAoYHNpdGVgIGluCiMgYXN0cm8uY29uZmlnLm1qczsgdGhlIG93bmVyJ3MgZGVjaXNpb24g0J82MiBwLiA0KS4KClVzZXItYWdlbnQ6ICoKQWxsb3c6IC8KClNpdGVtYXA6IGh0dHBzOi8vd3d3Ljd0aHNlcnBlbnQuY29tL3NpdGVtYXAtaW5kZXgueG1sCg=="
+  },
+  "bez": {
+    "url": "https://www.7thserpent.com/robots.txt",
+    "vremya": "2026-09-29T20:29:52.051Z",
+    "status": 200,
+    "zagolovki": [
+      [
+        "content-encoding",
+        "br"
+      ],
+      [
+        "content-type",
+        "text/plain"
+      ],
+      [
+        "date",
+        "Tue, 29 Sep 2026 20:29:52 GMT"
+      ],
+      [
+        "etag",
+        "W/\"4d1-65ca47e341b80\""
+      ],
+      [
+        "last-modified",
+        "Tue, 29 Sep 2026 19:50:22 GMT"
+      ],
+      [
+        "server",
+        "nginx"
+      ],
+      [
+        "x-ray",
+        "wnp190:0.000/wn190:0.000/wa190:D=724"
+      ]
+    ],
+    "dlina": 1582,
+    "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+    "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n",
+    "teloBase64": "IyBCRUdJTiBhZG0udG9vbHMgTWFuYWdlZCBjb250ZW50CgpVc2VyLWFnZW50OiAqCkFsbG93OiAvCgpVc2VyLUFnZW50OiBBaHJlZnNCb3QKVXNlci1BZ2VudDogTUoxMmJvdApVc2VyLUFnZW50OiBEYXRhRm9yU2VvQm90ClVzZXItQWdlbnQ6IGJhcmtyb3dsZXIKVXNlci1BZ2VudDogQnl0ZXNwaWRlcgpVc2VyLUFnZW50OiBHUFRCb3QKVXNlci1BZ2VudDogbWV0YS1leHRlcm5hbGFnZW50ClVzZXItQWdlbnQ6IEJhaWR1c3BpZGVyClVzZXItQWdlbnQ6IG1ldGEtd2ViaW5kZXhlcgpVc2VyLUFnZW50OiBBaHJlZnNTaXRlQXVkaXQKRGlzYWxsb3c6IC8KCiMgRU5EIGFkbS50b29scyBNYW5hZ2VkIGNvbnRlbnQKCiMgcm9ib3RzLnR4dCDigJQgd3d3Ljd0aHNlcnBlbnQuY29tICg3dGggU2VycGVudCkKIwojIEEgc3RhdGljIHNpdGUgKEFzdHJvKS4gRXZlcnkgcGFnZSBpcyBvcGVuIHRvIGluZGV4aW5nOiB0aGVyZSBpcyBubyBhZG1pbgojIGFyZWEsIG5vIGxvZ2luLCBubyBvbi1zaXRlIHNlYXJjaCwgbm8gcGFnaW5hdGlvbiBhbmQgbm8gYWRkcmVzc2VzIHdpdGgKIyBwYXJhbWV0ZXJzLCBzbyB0aGVyZSBpcyBub3RoaW5nIHRvIGRpc2FsbG93LgojCiMgV2hhdCBpcyBkZWxpYmVyYXRlbHkgTk9UIGJsb2NrZWQgKHNvIG5vYm9keSAiZml4ZXMiIGl0IGxhdGVyKToKIyAgIC9fYXN0cm8vICBzdHlsZXNoZWV0cywgZm9udHMgYW5kIGltYWdlcyB3aXRoIGEgY29udGVudCBoYXNoIGluIHRoZSBuYW1lOwojICAgICAgICAgICAgIEdvb2dsZSByZW5kZXJzIGEgcGFnZSB0aGUgd2F5IGEgYnJvd3NlciBkb2VzLCBhbmQgYmxvY2tlZCBDU1MKIyAgICAgICAgICAgICBsb29rcyB0byBpdCBsaWtlIGEgcGFnZSB3aXRob3V0IGEgbGF5b3V0LgojICAgLzQwNC8gICAgIHRoZSBlcnJvciBwYWdlOyB0aGUgc2VydmVyIHJldHVybnMgaXQgd2l0aCBzdGF0dXMgNDA0IGZvciBldmVyeQojICAgICAgICAgICAgIG1pc3NpbmcgcGFnZSBhZGRyZXNzLCB0aGUgc2l0ZW1hcCBsZWF2ZXMgaXQgb3V0LCBhbmQgbm8gcGFnZQojICAgICAgICAgICAgIGxpbmtzIHRvIGl0LgojICAgQUkgY3Jhd2xlcnMg4oCUIHRoZXkgYXJlIG5vdCBibG9ja2VkIGVpdGhlci4gQmxvY2tzIHRoYXQgdGhlIGhvc3RpbmcKIyAgICAgICAgICAgICBwcm92aWRlciBtYXkgcHJlcGVuZCB0byB0aGlzIGZpbGUgb24gdGhlIGxpdmUgc2VydmVyIGFyZSBub3QKIyAgICAgICAgICAgICBwYXJ0IG9mIGl0IChgbnBtIHJ1biBsaXZlOmNoZWNrYCB0ZWxscyB0aGVtIGFwYXJ0IGZyb20gdGhpcwojICAgICAgICAgICAgIGZpbGUpLgojCiMgVGhlIFNpdGVtYXAgbGluZSBjYXJyaWVzIHRoZSBmdWxsIGFkZHJlc3MsIGJlY2F1c2UgdGhlIGZpbGUgaXMgYWxzbyByZWFkCiMgZnJvbSBvdXRzaWRlIHRoZSBkb21haW4uIFRoZSBjYW5vbmljYWwgYWRkcmVzcyBpcyBodHRwcyBXSVRIIHd3dyAoYHNpdGVgIGluCiMgYXN0cm8uY29uZmlnLm1qczsgdGhlIG93bmVyJ3MgZGVjaXNpb24g0J82MiBwLiA0KS4KClVzZXItYWdlbnQ6ICoKQWxsb3c6IC8KClNpdGVtYXA6IGh0dHBzOi8vd3d3Ljd0aHNlcnBlbnQuY29tL3NpdGVtYXAtaW5kZXgueG1sCg=="
+  }
+}

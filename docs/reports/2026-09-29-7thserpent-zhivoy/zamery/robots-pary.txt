@@ -1,0 +1,16 @@
+robots.txt хостера — две пары запросов с параметром и без (instrumenty/robots-para.mjs; сессия 24, П111 «Как прочитано» п. 5).
+Форма запросов — проверок 3 и 4 check-live: GET https://www.7thserpent.com/robots.txt?live-check=<метка> и GET …/robots.txt,
+без редиректов, user-agent factory-check-live/2. Сырые ответы (тела base64 и строкой, заголовки) — robots-para-1.json,
+robots-para-2.json. Третья пара — запросы самого прогона 1 live:check (20:22:50 UTC, otvety-progon-1.json).
+
+пара 1, с параметром: 2026-09-29T20:26:33.860Z 200 1582 байт sha256 c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295 = тело прогона 1; content-encoding: br | content-type: text/plain | date: Tue, 29 Sep 2026 20:26:34 GMT | etag: W/"4d1-65ca47e341b80" | last-modified: Tue, 29 Sep 2026 19:50:22 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.001/wa190:D=576
+пара 1, без: 2026-09-29T20:26:34.234Z 200 1582 байт sha256 c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295 = тело прогона 1; content-encoding: br | content-type: text/plain | date: Tue, 29 Sep 2026 20:26:34 GMT | etag: W/"4d1-65ca47e341b80" | last-modified: Tue, 29 Sep 2026 19:50:22 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/wa190:D=963
+тела внутри пары: побайтно равны; после CR и BOM равны
+
+пара 2, с параметром: 2026-09-29T20:29:51.678Z 200 1582 байт sha256 c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295 = тело прогона 1; content-encoding: br | content-type: text/plain | date: Tue, 29 Sep 2026 20:29:51 GMT | etag: W/"4d1-65ca47e341b80" | last-modified: Tue, 29 Sep 2026 19:50:22 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/wa190:D=736
+пара 2, без: 2026-09-29T20:29:52.051Z 200 1582 байт sha256 c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295 = тело прогона 1; content-encoding: br | content-type: text/plain | date: Tue, 29 Sep 2026 20:29:52 GMT | etag: W/"4d1-65ca47e341b80" | last-modified: Tue, 29 Sep 2026 19:50:22 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/wa190:D=724
+тела внутри пары: побайтно равны; после CR и BOM равны
+
+Итог: три пары (20:22:50, 20:26:34, 20:29:51 UTC) — одно тело, 1582 байта, sha256 c93c53ed…1295: блок хостера
+«adm.tools Managed content» (строки 1–19 тела, 349 байт) и за ним public/robots.txt сборки add241a байт в байт (1233 байта =
+0x4d1 из ETag — размер нашего файла на диске: блок приписывает сервер при отдаче). Разбор строк — razbor-progon-1.txt.

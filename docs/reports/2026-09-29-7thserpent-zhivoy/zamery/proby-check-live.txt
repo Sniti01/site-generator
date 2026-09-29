@@ -1,0 +1,235 @@
+✔ здоровый живой сайт без Cloudflare (П108) — все 44 проверки ok (9.5035ms)
+✔ CL2-P-9 (П108 — наоборот) образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare» (2.6302ms)
+✔ домен не подключён (имя не разрешается) — 0 из 44 (0.5871ms)
+✔ домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44 (0.4168ms)
+✔ живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — нынешний public/robots.txt; внутри пар тела равны, у HTML нет Age и X-Cache-Status (0.7494ms)
+✔ живой образец хостера: ответы прогона 1 — 44 из 44 (1.4952ms)
+✔ живой образец хостера: ответы прогона 1, robots.txt — пара 1 — 44 из 44 (1.4348ms)
+✔ живой образец хостера: ответы прогона 1, robots.txt — пара 2 — 44 из 44 (1.1337ms)
+✔ порча: блок Cloudflare (Cloudflare включили с управляемым robots.txt) (1.6526ms)
+✔ порча: чужая группа вне блоков (1.3256ms)
+✔ порча: наш файл изменён (Allow → Disallow) (1.3482ms)
+✔ порча: блок хостера закрывает Googlebot (1.3749ms)
+✔ порча: блок хостера без END (1.0307ms)
+✔ порча: robots.txt мимо кэша — 404 (0.9318ms)
+✔ порча: robots.txt с CRLF — чисто (1.0502ms)
+✔ порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия (0.9625ms)
+✔ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (1.2882ms)
+✔ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (0.8677ms)
+✔ порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу (0.981ms)
+✔ порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/ (0.8962ms)
+✔ порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка (1.0911ms)
+✔ порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка (1.2949ms)
+✔ порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки (0.9588ms)
+✔ порча: CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто (0.7054ms)
+✔ порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ (0.7996ms)
+✔ порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/ (0.8468ms)
+✔ порча: CL2-P-1b блок хостера: * закрывает CSS (1.249ms)
+✔ порча: CL2-P-1c блок хостера: Googlebot-Image закрыт (1.0348ms)
+✔ порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3) (1.3005ms)
+✔ порча: CL2-P-5a «User-agents: Googlebot» (2.1393ms)
+✔ порча: CL2-P-5b «Disallowed: /» (2.1513ms)
+✔ порча: CL2-P-5c «User-agent: * (all robots)» (1.1888ms)
+✔ порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла (1.5975ms)
+✔ порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare (0.8904ms)
+✔ порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ (0.9633ms)
+✔ порча: П108 без Cloudflare: без параметра — другой файл, кэша на пути нет — отдаёт не наш сервер (1.0034ms)
+✔ порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех (1.4908ms)
+✔ порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша (0.948ms)
+✔ порча: CL1-P-1c без параметра — 503 (0.7359ms)
+✔ порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare (1.1823ms)
+✔ порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков (1.0406ms)
+✔ порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка (1.2056ms)
+✔ порча: адрес ящика на поддомене-двойнике — не наш (0.7895ms)
+✔ порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка (1.3757ms)
+✔ порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред (1.4617ms)
+✔ порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам (1.2169ms)
+✔ порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate (0.8364ms)
+✔ порча: CL1-P-3b два Cache-Control, склеенные fetch (0.8125ms)
+✔ порча: Cache-Control без must-revalidate (0.7862ms)
+✔ порча: CL2-P-2 s-maxage=86400 на главной (0.7939ms)
+✔ порча: CL2-P-2 CDN-Cache-Control: max-age=86400 (0.7633ms)
+✔ порча: CL2-P-2 max-age=86400 на странице фильма (1.0775ms)
+✔ порча: CL1-P-4 главная из кэша Cloudflare (0.8108ms)
+✔ порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL) (0.8492ms)
+✔ порча: CL3-P-1 главная MISS, повтор — REVALIDATED — краснеет только след Cloudflare (0.9258ms)
+✔ порча: CL3-P-7 s-maxage в кавычках (0.8167ms)
+✔ порча: CL3-P-7 два s-maxage: 0 и 86400 (1.2181ms)
+✔ порча: CL3-P-4 Content-Type: windows-1251 на странице фильма (0.7597ms)
+✔ порча: CL3-P-4 Content-Type: text/plain на главной (0.7775ms)
+✔ порча: CL3-P-2 (П108 — наоборот) через Cloudflare только голый хост: его редиректы с cf-ray (0.7624ms)
+✔ порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто (1.1713ms)
+✔ порча: CL2-P-2 страница фильма из кэша Cloudflare (1.2387ms)
+✔ порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, краснеет только след Cloudflare (0.8066ms)
+✔ порча: canonical главной на голый хост (0.9869ms)
+✔ порча: два canonical на главной (0.9431ms)
+✔ порча: CL2-P-8 canonical игры только в комментарии (и в сборке) (0.8234ms)
+✔ порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections (1.1866ms)
+✔ порча: чужая таблица стилей на главной (0.8161ms)
+✔ порча: CL2-P-3 srcset на чужой хост (0.8654ms)
+✔ порча: CL2-P-3 base href на чужой хост (0.7456ms)
+✔ порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie (0.7451ms)
+✔ порча: CL2-P-3 вставка Cloudflare (Zaraz) только на 404 (0.8656ms)
+✔ порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка» (1.4663ms)
+✔ порча: CL1-P-13 X-Robots-Tag: noindex на страницах (0.974ms)
+✔ порча: CL2-P-6 X-Robots-Tag: unavailable_after (0.7786ms)
+✔ порча: CL2-P-6 X-Robots-Tag: googlebot: none (0.7698ms)
+✔ порча: CL2-P-6 meta robots noindex в самой сборке (0.7993ms)
+✔ порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex» (1.134ms)
+✔ порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто (0.7775ms)
+✔ порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто (0.7621ms)
+✔ порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто (0.7812ms)
+✔ порча: CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404 (0.942ms)
+✔ порча: Set-Cookie Cloudflare на главной (0.8101ms)
+✔ порча: П108 Set-Cookie сервера хостера на главной (1.0703ms)
+✔ порча: П108 след Cloudflare только server: cloudflare — у главной (0.7357ms)
+✔ порча: П108 след Cloudflare только cf-ray — у robots.txt без параметра (0.7569ms)
+✔ порча: П108 след Cloudflare только Cf-Cache-Status — у карты сайта (0.7324ms)
+✔ порча: П108 след Cloudflare только cf-mitigated — у страницы фильма (0.7898ms)
+✔ порча: CL1-P-5 редирект страницы теряет путь (1.1104ms)
+✔ порча: П108 переадресация на https у хостера: http://голый → https://голый (второй скачок) (1.3268ms)
+✔ порча: Always Use HTTPS (Cloudflare включили): http://голый → https://голый (0.7796ms)
+✔ порча: 302 вместо 301 (0.8286ms)
+✔ порча: карта без /privacy/ (0.8126ms)
+✔ порча: карта с /404/ (0.7717ms)
+✔ порча: карта: дубль вместо /privacy/ (тот же счёт) (1.2129ms)
+✔ порча: индекс ведёт на sitemap-1.xml (0.7171ms)
+✔ порча: CL1-P-14 14 из 17 адресов карты — 404 (0.7299ms)
+✔ порча: несуществующий адрес — 404 хостера (0.805ms)
+✔ порча: несуществующий адрес — наша страница со статусом 200 (0.7258ms)
+✔ порча: /404/ напрямую — 404 (0.7365ms)
+✔ порча: страница игры — 500 (1.1104ms)
+✔ порча: CL1-P-7 страница игры — список каталога Apache (0.7707ms)
+✔ порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто (0.72ms)
+✔ порча: CL2-Z-1 адрес ящика с &#64; — чисто (0.874ms)
+✔ порча: /privacy/ с __cf_email__ вместо адреса (обфускация Cloudflare) (0.7978ms)
+✔ порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке) (0.8385ms)
+✔ порча: CL2-P-7 адрес ящика первого сайта (1.4055ms)
+✔ порча: CL2-P-7 адрес ящика только в комментарии (0.855ms)
+✔ порча: /privacy/ — 404 (0.7049ms)
+✔ порча: CL3-P-6 адрес ящика только в <title> (0.7237ms)
+✔ порча: CL3-P-6 адрес ящика только в <p hidden> (0.7706ms)
+✔ порча: CL3-P-6 адрес ящика только в <noscript> (1.1558ms)
+✔ справки: кэш, положение блока хостера, комментарии вне меток (3.1344ms)
+✔ CL1-Z-1 обход кэша не удался — причина названа в строке (1.0241ms)
+✔ подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare (8.9651ms)
+✔ CL23-P-1 причина вставки — по следам Cloudflare: есть — «Cloudflare», нет — без догадки о посреднике (1.5554ms)
+✔ CL23-Z-3 robots.txt без параметра не равен ответу с параметром, кэша Cloudflare нет — первая расходящаяся строка, причина без догадки (0.8681ms)
+✔ CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита» (2.1682ms)
+✔ CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт) (5.9247ms)
+✔ разбор robots.txt: наш файл только отдельными строками (0.287ms)
+✔ поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image (0.2575ms)
+✔ canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается (0.2042ms)
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (2.0506ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+⚠ ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц (4.1122ms) # подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist
+⚠ ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра» (1.4992ms) # живой образец сессии 24 (П111): тела robots.txt с параметром и без побайтно равны в трёх парах — смягчать по замеру нечего; безвредная разница блока хостера — предел
+⚠ ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра» (1.049ms) # сравнение ответов проверки 4 — только CR и BOM; живой образец сессии 24 (П111): тела побайтно равны — смягчать нечего, разница в пробелах — предел
+⚠ ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status (0.943ms) # живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел
+✔ команда: неверные аргументы — код 2, без сети (112.178ms)
+ℹ tests 128
+ℹ suites 0
+ℹ pass 123
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 5
+ℹ duration_ms 383.0638
+
+✖ failing tests:
+
+test at tools\testy\check-live.test.mjs:483:1
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (2.0506ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   '/privacy/: адрес ящика открытым текстом'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:485:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:488:1
+⚠ ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц (4.1122ms) # подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.plokho.length > 0)
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:490:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:496:1
+⚠ ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра» (1.4992ms) # живой образец сессии 24 (П111): тела robots.txt с параметром и без побайтно равны в трёх парах — смягчать по замеру нечего; безвредная разница блока хостера — предел
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'robots.txt без параметра (его берут роботы)'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:498:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:501:1
+⚠ ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра» (1.049ms) # сравнение ответов проверки 4 — только CR и BOM; живой образец сессии 24 (П111): тела побайтно равны — смягчать нечего, разница в пробелах — предел
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'robots.txt без параметра (его берут роботы)'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:503:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:506:1
+⚠ ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status (0.943ms) # живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.plokho.length > 0)
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:508:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

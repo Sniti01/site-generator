@@ -3,7 +3,8 @@
  * Проверка живого сайта после привязки домена — шаг «проверка https» порядка запуска П52 п. 3
  * (ящик → привязка домена → проверка https → Search Console). Форма — `tools/check-live.mjs` первого
  * сайта (П54 п. 7, П55) с бэклогом 46 п. 1 и П106; «судью судят», раунды 1–3 (находки CL1-*, CL2-*, CL3-* —
- * в пробах; раунд 3 — последний, пределы — тестами todo).
+ * в пробах; раунд 3 — последний, пределы — тестами todo). Сессия 23 (П108): Cloudflare на сайте нет (DNS и почта —
+ * у хостера) — проверка 11 наоборот, подсказки — под сайт без него; «судью судят» этой правки — находки CL23-*.
  *
  *   npm run live:check                          — домен из structure.json (site.domain); сборка — dist/ сайта
  *   npm run live:check -- --host example.test   — другой хост (например, до переключения DNS)
@@ -13,10 +14,11 @@
  *   1. http → https, второй хост → канонический (у канонического с `www` — голый, П62 п. 4), http://второй →
  *      https канонический — по одному скачку 301 и с тем же путём, для главной и страницы игры;
  *   2. главная — 200, `canonical` один и равен адресу; `x-ray` хостера — справочно;
- *   3. robots.txt мимо кэша Cloudflare (свой параметр запроса, бэклог 46 п. 1): 200; обход кэша на деле
- *      сработал (не HIT/STALE/UPDATING; REVALIDATED — сверено с сервером); наш файл (`public/robots.txt`)
- *      целиком, отдельными строками (иначе — первая расходящаяся строка); блока Cloudflare нет (управляемый
- *      robots.txt зоны снимает владелец, П106); вне нашего файла — только управляемые блоки «# BEGIN <имя>
+ *   3. robots.txt мимо кэша (свой параметр запроса, бэклог 46 п. 1; кэш на пути бывает только у Cloudflare,
+ *      а его на сайте нет — П108): 200; обход кэша на деле сработал (не HIT/STALE/UPDATING; REVALIDATED —
+ *      сверено с сервером); наш файл (`public/robots.txt`) целиком, отдельными строками (иначе — первая
+ *      расходящаяся строка); блока Cloudflare нет (Cloudflare на сайте нет, П108: блок значит, что его включили
+ *      с управляемым robots.txt); вне нашего файла — только управляемые блоки «# BEGIN <имя>
  *      Managed content … # END …» (комментарии вне блоков — справка), и ни одно правило блока в группе для `*`,
  *      Googlebot, Bingbot или msnbot (группы по всему файлу — правило блока без своего User-agent продолжает
  *      предыдущую) не запрещает путь сборки (запрет вне сборки — справка); Googlebot, Googlebot-Image и Bingbot
@@ -47,8 +49,9 @@
  *  10. страницы — без запрета индексации (`noindex`, `none`, `unavailable_after` в `X-Robots-Tag` и в `<meta>`
  *      robots, googlebot, bingbot; только ответы 200; директива после префикса чужого бота без своего префикса —
  *      строго запрет: fetch склеивает поля заголовка);
- *  11. запросы идут через Cloudflare (`cf-ray` или `server: cloudflare` у каждого ответа прогона, с адресом) —
- *      ряд 05 `/privacy/`;
+ *  11. запросы не идут через Cloudflare (П108): ни у одного ответа прогона нет следа Cloudflare — `cf-ray`,
+ *      `server: cloudflare`, `cf-cache-status`, `cf-mitigated` (иначе — адреса со следами); `/privacy/` обещает,
+ *      что страница не шлёт запросов никому, кроме сервера сайта;
  *  12. ни один ответ прогона — без `Set-Cookie` (`/privacy/` обещает, что сайт cookies не ставит).
  * Проверка, которая читает тело, при ответе не 200 — ПЛОХО, а не «в пустом теле ничего нет»; причина
  * ответа (вызов Cloudflare, коды 52x, сеть) — в строке. Код 1 при любом ПЛОХО, 2 — ошибка входа. Сеть —
@@ -421,7 +424,7 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
       check(`${imya} ${put}: статус`, 301, r.status, sPrichinoy(r, otkuda));
       const zhdem = `${base}${put}`;
       const always = otkuda.startsWith('http://') && r.location === otkuda.replace('http://', 'https://') && r.location !== zhdem;
-      check(`${imya} ${put}: Location`, zhdem, r.location || '—', always ? 'Always Use HTTPS на Cloudflare включён — выключить (второй скачок)' : 'один скачок на канонический адрес с тем же путём');
+      check(`${imya} ${put}: Location`, zhdem, r.location || '—', always ? 'второй скачок: http → https того же хоста делает не .htaccess, а сервер перед ним — переадресация на https в панели хостера (или Always Use HTTPS, если включили Cloudflare); выключить' : 'один скачок на канонический адрес с тем же путём');
     }
   }
 
@@ -441,13 +444,13 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   const cfMimo = mimo.zagolovok('cf-cache-status');
   const izKeshaMimo = IZ_KESHA.test(cfMimo);
   const pochemuMimo = izKeshaMimo ? `ответ из кэша Cloudflare (${cfMimo}, Age ${mimo.zagolovok('age') || '—'}) — обход не удался: строка запроса вне ключа кэша; Purge by URL и повторить` : '';
-  check('robots.txt мимо кэша: статус', 200, mimo.status, sPrichinoy(mimo, 'параметр запроса мимо кэша Cloudflare'));
+  check('robots.txt мимо кэша: статус', 200, mimo.status, sPrichinoy(mimo, 'параметр запроса — мимо кэша'));
   check('robots.txt мимо кэша: обход кэша сработал', true, mimo.status === 200 && !izKeshaMimo, mimo.status !== 200 ? sPrichinoy(mimo, `ответ ${mimo.status}`) : `Cf-Cache-Status ${cfMimo || '—'}${pochemuMimo ? ' — ' + pochemuMimo : ''}`);
   const rb = mimo.status === 200 ? razobratRobots(mimo.telo, nashRobots, PUTI) : null;
   const neChitan = (tekst) => [rb ? tekst : sPrichinoy(mimo, iskh(mimo)), pochemuMimo].filter(Boolean).join('; ');
   check('robots.txt: наш файл целиком', true, rb ? rb.nashCelikom : iskh(mimo), neChitan(rb && !rb.nashCelikom ? `public/robots.txt; первая расходящаяся строка: ${rb.raskhozhdenie}` : 'public/robots.txt одним куском, отдельными строками'));
   const cf = rb ? rb.bloki.filter((b) => b.vid === 'cloudflare') : [];
-  check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — управляемый robots.txt зоны не снят (Security → Bots)` : 'управляемый robots.txt Cloudflare снят (П106)'));
+  check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — robots.txt отдаёт Cloudflare со своим управляемым блоком: его включили, а на сайте его быть не должно (П108)` : 'Cloudflare на сайте нет (П108)'));
   const chuzhie = rb ? [...rb.chuzhoyTekst, ...rb.bloki.filter((b) => b.vid === 'чужой').map((b) => `блок «${b.imya}»`), ...rb.ogranicheniya] : [];
   check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — наш файл обещает: запрещать нечего` : 'вне нашего файла — управляемые блоки без запретов поисковикам и комментарии'));
   const zakryto = mimo.status === 200 ? zakrytoPoiskovikam(mimo.telo, PUTI) : [];
@@ -634,9 +637,11 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   }
   check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt обещает: всё открыто для индекса` : `страниц ${sto.length}`));
 
-  // Cloudflare — у каждого ответа прогона (редиректы обоих хостов, robots.txt, карты, 404), с адресом (CL3-P-2).
-  const bezCf = [...otvety].filter(([, r]) => typeof r.status === 'number' && !r.zagolovok('cf-ray') && !/cloudflare/i.test(r.zagolovok('server'))).map(([u, r]) => `${u} (${r.status})`);
-  check('запросы идут через Cloudflare', true, !osnova && bezCf.length === 0, osnova || (bezCf.length ? `без cf-ray: ${bezCf.slice(0, 3).join(', ')}${bezCf.length > 3 ? ` и ещё ${bezCf.length - 3}` : ''} — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты` : `ответов ${otvety.size}`));
+  // Cloudflare на сайте нет (П108): след Cloudflare у любого ответа прогона (редиректы обоих хостов, robots.txt, карты,
+  // 404) — ПЛОХО с адресом (CL3-P-2 — наоборот); /privacy/ обещает, что страница не шлёт запросов никому, кроме сервера сайта.
+  const sledCf = (r) => [r.zagolovok('cf-ray') && 'cf-ray', /cloudflare/i.test(r.zagolovok('server')) && 'server: cloudflare', r.zagolovok('cf-cache-status') && 'cf-cache-status', r.zagolovok('cf-mitigated') && 'cf-mitigated'].filter(Boolean);
+  const sCf = [...otvety].filter(([, r]) => typeof r.status === 'number' && sledCf(r).length).map(([u, r]) => `${u} (${r.status}; ${sledCf(r).join(', ')})`);
+  check('запросы не идут через Cloudflare', true, !osnova && sCf.length === 0, osnova || (sCf.length ? `через Cloudflare: ${sCf.slice(0, 3).join(', ')}${sCf.length > 3 ? ` и ещё ${sCf.length - 3}` : ''} — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)` : `ответов ${otvety.size}, следов Cloudflare нет`));
 
   const kuki = [];
   for (const [u, r] of otvety) {

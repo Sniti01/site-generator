@@ -1,0 +1,49 @@
+ok    http → https /: статус                                   ждём 301  факт 301  — http://www.7thserpent.com/
+ok    http → https /: Location                                 ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — один скачок на канонический адрес с тем же путём
+ok    голый → www /: статус                                    ждём 301  факт 301  — https://7thserpent.com/
+ok    голый → www /: Location                                  ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — один скачок на канонический адрес с тем же путём
+ok    http голый → https www /: статус                         ждём 301  факт 301  — http://7thserpent.com/
+ok    http голый → https www /: Location                       ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — один скачок на канонический адрес с тем же путём
+ok    http → https /max-payne-1/: статус                       ждём 301  факт 301  — http://www.7thserpent.com/max-payne-1/
+ok    http → https /max-payne-1/: Location                     ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — один скачок на канонический адрес с тем же путём
+ok    голый → www /max-payne-1/: статус                        ждём 301  факт 301  — https://7thserpent.com/max-payne-1/
+ok    голый → www /max-payne-1/: Location                      ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — один скачок на канонический адрес с тем же путём
+ok    http голый → https www /max-payne-1/: статус             ждём 301  факт 301  — http://7thserpent.com/max-payne-1/
+ok    http голый → https www /max-payne-1/: Location           ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — один скачок на канонический адрес с тем же путём
+ok    главная: статус                                          ждём 200  факт 200  — https://www.7thserpent.com/
+ok    главная: canonical                                       ждём https://www.7thserpent.com/  факт https://www.7thserpent.com/  — Base.astro от Astro.site
+ok    robots.txt мимо кэша: статус                             ждём 200  факт 200  — параметр запроса — мимо кэша
+ok    robots.txt мимо кэша: обход кэша сработал                ждём true  факт true  — заголовка кэша нет — ответ сервера
+ok    robots.txt: наш файл целиком                             ждём true  факт true  — public/robots.txt одним куском, отдельными строками
+ok    robots.txt: блока Cloudflare нет                         ждём true  факт true  — управляемого блока Cloudflare нет (Cloudflare на сайте быть не должно, П108)
+ok    robots.txt: вне нашего файла — только блок хостера       ждём true  факт true  — вне нашего файла — управляемые блоки без запретов поисковикам и комментарии
+ok    robots.txt: поисковики не закрыты                        ждём true  факт true  — Googlebot, Googlebot-Image и Bingbot: все 164 путей сборки — открыты
+ok    robots.txt: строка Sitemap                               ждём true  факт true  — строка на канонический sitemap-index
+ok    robots.txt без параметра (его берут роботы)              ждём true  факт true  — как ответ мимо кэша
+ok    sitemap-index.xml: статус                                ждём 200  факт 200
+ok    sitemap-index.xml: ведёт на sitemap-0.xml                ждём https://www.7thserpent.com/sitemap-0.xml  факт https://www.7thserpent.com/sitemap-0.xml
+ok    sitemap-0.xml: статус                                    ждём 200  факт 200
+ok    sitemap-0.xml: адресов                                   ждём 17  факт 17  — страницы структуры без /404/
+ok    sitemap-0.xml: адреса = структура                        ждём true  факт true  — лишние: —; нет: —
+ok    sitemap-0.xml: адреса отвечают 200 со своим canonical    ждём true  факт true  — адресов карты 17
+ok    несуществующий адрес: статус                             ждём 404  факт 404  — ErrorDocument 404 /404/index.html
+ok    несуществующий адрес: наша страница                      ждём Page not found — 7thserpent.com  факт Page not found — 7thserpent.com  — title /404/ из структуры, не заглушка хостера
+ok    /404/ напрямую: статус                                   ждём 200  факт 200  — страница структуры, вне карты
+ok    /404/ напрямую: canonical                                ждём https://www.7thserpent.com/404/  факт https://www.7thserpent.com/404/  — своя страница, не список каталога
+ok    страница /max-payne-1/: статус                           ждём 200  факт 200
+ok    страница /max-payne-1/: canonical                        ждём https://www.7thserpent.com/max-payne-1/  факт https://www.7thserpent.com/max-payne-1/  — своя страница, не список каталога
+ok    /privacy/: статус                                        ждём 200  факт 200
+ok    /privacy/: canonical                                     ждём https://www.7thserpent.com/privacy/  факт https://www.7thserpent.com/privacy/
+ok    /privacy/: без обфускации почты Cloudflare               ждём true  факт true  — маркеров обфускации нет
+ok    /privacy/: адрес ящика открытым текстом                  ждём true  факт true  — адрес на странице: contact@7thserpent.com
+ok    HTML страниц = сборка (dist)                             ждём true  факт true  — страниц 19
+ok    HTML: Cache-Control (max-age=0, must-revalidate)         ждём true  факт true  — страниц 18
+ok    HTML не из кэша Cloudflare                               ждём true  факт true  — страниц 18
+ok    страницы без запрета индексации                          ждём true  факт true  — страниц 18
+ok    запросы не идут через Cloudflare                         ждём true  факт true  — ответов 29, следов Cloudflare нет
+ok    ответы без Set-Cookie                                    ждём true  факт true  — ответов 29
+  справка: x-ray wnp190:0.000/wn190:0.000/wa190:D=820 — сегмент «wa» значит, что HTML обслужил Apache
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 13 — не наш, не отключается
+  справка: HTML: страниц, равных сборке после нормализации cid и имён CSS (сайт выложен сборкой другой машины), — 19
+
+44/44 проверок живого сайта www.7thserpent.com

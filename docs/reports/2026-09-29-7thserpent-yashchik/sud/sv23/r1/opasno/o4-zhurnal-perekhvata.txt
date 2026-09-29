@@ -1,0 +1,2 @@
+fetch https://www.7thserpent.com/
+fetch https://7thserpent.com/

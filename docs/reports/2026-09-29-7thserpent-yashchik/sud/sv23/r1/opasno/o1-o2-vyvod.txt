@@ -1,0 +1,76 @@
+.htaccess сборки (едет первой выкладкой) — правило одного адреса:
+  # WHEN BINDING THE DOMAIN: the SSL certificate in the panel (Let's Encrypt)
+  # FIRST, traffic to this build AFTER — a redirect to https without a working
+  # certificate gives a page nobody can open.
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ - [E=NO_HTTPS:1]
+    RewriteCond %{ENV:NO_HTTPS} =1 [OR]
+    RewriteCond %{HTTP_HOST} !^www\.7thserpent\.com$ [NC]
+    RewriteRule ^(.*)$ https://www.7thserpent.com/$1 [R=301,L]
+
+O-1 · www: сертификат не на это имя; голое: заглушка хостера 200
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-1 · оба: сертификат просрочен
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://www.7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-1 · оба: порт https не принимает соединение
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ECONNREFUSED (https://www.7thserpent.com/ — сеть: ECONNREFUSED)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ECONNREFUSED (https://7thserpent.com/ — сеть: ECONNREFUSED)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-1 · оба: временная ошибка имени
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети EAI_AGAIN (https://www.7thserpent.com/ — сеть: EAI_AGAIN)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети EAI_AGAIN (https://7thserpent.com/ — сеть: EAI_AGAIN)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-2 · канонический www не разрешается; голое: заглушка хостера 200
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: не привязан — имя не разрешается (https://www.7thserpent.com/ — сеть: ENOTFOUND)
+    7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-2 · оба: 302 на чужой хост, там «домен продаётся»
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Домен 7thserpent.com продаётся» (https://www.7thserpent.com/ — 302 → https://prodazha-domenov.example/lot/7thserpent — 200)
+    7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Домен 7thserpent.com продаётся» (https://7thserpent.com/ — 302 → https://prodazha-domenov.example/lot/7thserpent — 200)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-2 · www: страница первого сайта (canonical ac4bf); голое: 301 на www
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4BF — The Watch» (https://www.7thserpent.com/ — 200)
+    7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4BF — The Watch» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 200)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-2 · www: петля редиректов; голое не разрешается
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301)
+    7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+O-2 · www: редирект на имя, которого нет; голое не разрешается
+  без входа: СТОП; со входом on: ПРОХОД
+    www.7thserpent.com: ОТВЕЧАЕТ — домен отвечает редиректом на имя, которого нет (https://www.7thserpent.com/ — 301 → https://net-takogo-imeni.example/ — сеть: ENOTFOUND)
+    7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND)
+    первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  подсказка стопа без входа зовёт ко входу: да
+
+ИТОГ: со входом on проходят все образцы O-1 (4 из 4) и O-2 (5 из 5); без входа каждый — стоп.
+Строка прохода утверждает «домен покажет её сразу» во всех образцах — и там, где домен не ответил, и там, где он ведёт на чужой хост или на имя, которого нет.

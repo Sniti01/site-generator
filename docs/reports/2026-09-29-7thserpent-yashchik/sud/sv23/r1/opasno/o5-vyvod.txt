@@ -1,0 +1,17 @@
+Нынешний workflow — где стоит имя входа:
+  .on.workflow_dispatch.inputs.SERPENT_FIRST.description = "Первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равняться принятой"
+  .on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND (ключ)
+  .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND (ключ)
+  .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  условие пробы: выполнено
+  env задания: ["SITE","TZ","LFTP_SET"]; env workflow: null; if задания: "github.event_name == 'workflow_dispatch' || vars.SERPENT_DEPLOY == 'on'"
+
+порча: вход в env задания — его видят все шаги, и выкладка, и пересчёт
+  где имя входа: .jobs.deploy.env.SERPENT_DOMAIN_BOUND (ключ) | .jobs.deploy.env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}" | .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND (ключ) | .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  условие пробы: ВЫПОЛНЕНО — проба не ловит
+порча: вход в env всего workflow
+  где имя входа: .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND (ключ) | .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}" | .env.SERPENT_DOMAIN_BOUND (ключ) | .env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  условие пробы: ВЫПОЛНЕНО — проба не ловит
+порча: вход в if задания — решает, идёт ли задание вообще
+  где имя входа: .jobs.deploy.if = "github.event_name == 'workflow_dispatch' || vars.SERPENT_DEPLOY == 'on' || inputs.SERPENT_DOMAIN_BOUND == 'on'" | .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND (ключ) | .jobs.deploy.steps.9.env.SERPENT_DOMAIN_BOUND = "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  условие пробы: ВЫПОЛНЕНО — проба не ловит

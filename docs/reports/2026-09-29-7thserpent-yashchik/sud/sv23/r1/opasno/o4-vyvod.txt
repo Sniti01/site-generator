@@ -1,0 +1,105 @@
+А. Заглушка пробы (исходник из файла пробы) + замок сети первым
+  да  on: код 0
+  да  on: в выводе SERPENT_DOMAIN_BOUND
+  да  on: /сеть в пробе запрещена|Error/
+  да  "off": код 1
+  да  "off": СТОП
+  да  "": код 1
+  да  "": СТОП
+  да  нет входа: код 1
+  да  нет входа: СТОП
+  да  yes: код 2
+  да  yes: имя входа в stderr
+  да  ON: код 2
+  да  ON: имя входа в stderr
+  да  true: код 2
+  да  true: имя входа в stderr
+  все условия пробы выполнены: ДА
+  журнал замка (попытки сокетов): 0 — пусто, подмена держит
+  «сеть в пробе запрещена» в выводе хоть одного прогона: НЕТ — первая половина регулярки пробы мертва
+  вывод при on:
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети Error (https://www.7thserpent.com/ — сеть: Error)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети Error (https://7thserpent.com/ — сеть: Error)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+
+Б. БЕЗ заглушки пробы — настоящий fetch, его останавливает только замок (ошибка сокета без кода)
+  да  on: код 0
+  да  on: в выводе SERPENT_DOMAIN_BOUND
+  да  on: /сеть в пробе запрещена|Error/
+  да  "off": код 1
+  да  "off": СТОП
+  да  "": код 1
+  да  "": СТОП
+  да  нет входа: код 1
+  да  нет входа: СТОП
+  да  yes: код 2
+  да  yes: имя входа в stderr
+  да  ON: код 2
+  да  ON: имя входа в stderr
+  да  true: код 2
+  да  true: имя входа в stderr
+  все условия пробы выполнены: ДА
+  журнал замка — куда шла команда (8 попыток за 7 прогонов):
+    сокет www.7thserpent.com:443
+    сокет 7thserpent.com:443
+  вывод при on:
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TypeError (https://www.7thserpent.com/ — сеть: TypeError)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TypeError (https://7thserpent.com/ — сеть: TypeError)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+
+Г. Заглушка, бросающая DOMException TimeoutError (так отказывает настоящий fetch по AbortSignal.timeout)
+  да  on: код 0
+  да  on: в выводе SERPENT_DOMAIN_BOUND
+  да  on: /сеть в пробе запрещена|Error/
+  да  "off": код 1
+  да  "off": СТОП
+  да  "": код 1
+  да  "": СТОП
+  да  нет входа: код 1
+  да  нет входа: СТОП
+  да  yes: код 2
+  да  yes: имя входа в stderr
+  да  ON: код 2
+  да  ON: имя входа в stderr
+  да  true: код 2
+  да  true: имя входа в stderr
+  все условия пробы выполнены: ДА
+  журнал замка: 0 попыток
+  вывод при on:
+    www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://www.7thserpent.com/ — сеть: TimeoutError)
+    7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://7thserpent.com/ — сеть: TimeoutError)
+    первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+
+В. Порча (копия сторожа вне репозитория: domen до проверки входа, код 2 — после): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\e23fb3af-937c-42f5-91ca-cf6567cf6a1c\scratchpad\sud-sv23-o\porcha\storozha-vykladki.mjs
+  порча — строки ветки domen:
+          // Вход «домен привязан — согласен» (П108): только on, off или пусто — иное — ошибка входа до сети.
+          const soglasen = soglasieIzVkhoda(process.env.SERPENT_DOMAIN_BOUND);
+          r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on', soglasen: soglasen === true });
+          if (soglasen === null) {
+            console.error('SERPENT_DOMAIN_BOUND — только on или off (вход «домен привязан — согласен»)');
+            process.exit(2);
+          }
+  да  on: код 0
+  да  on: в выводе SERPENT_DOMAIN_BOUND
+  да  on: /сеть в пробе запрещена|Error/
+  да  "off": код 1
+  да  "off": СТОП
+  да  "": код 1
+  да  "": СТОП
+  да  нет входа: код 1
+  да  нет входа: СТОП
+  да  yes: код 2
+  да  yes: имя входа в stderr
+  да  ON: код 2
+  да  ON: имя входа в stderr
+  да  true: код 2
+  да  true: имя входа в stderr
+  все условия пробы выполнены: ДА
+  вход "on": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход "off": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход "": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход нет входа: запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход "yes": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход "ON": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  вход "true": запросов fetch до выхода — 2 (fetch https://www.7thserpent.com/; fetch https://7thserpent.com/)
+  журнал замка: 0 попыток сокетов (перехват fetch стоит до замка)

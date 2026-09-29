@@ -1,0 +1,193 @@
+== 403 на обоих именах (пустой www, Apache)
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== 404 сервера на обоих
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 404 — «404 Not Found» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 404 — «404 Not Found» (https://7thserpent.com/ — 404)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 404 — «404 Not Found» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 404 — «404 Not Found» (https://7thserpent.com/ — 404)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== 404 «Website … not configured» на обоих
+  согласие on: проход
+    | www.7thserpent.com: не привязан — заглушка хостера «not configured» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: не привязан — заглушка хостера «not configured» (https://7thserpent.com/ — 404)
+    | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+  согласие off: проход
+    | www.7thserpent.com: не привязан — заглушка хостера «not configured» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: не привязан — заглушка хостера «not configured» (https://7thserpent.com/ — 404)
+    | домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет
+== пустая страница 200 на обоих
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://7thserpent.com/ — 200)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://7thserpent.com/ — 200)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== листинг каталога 200 «Index of /»
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Index of /» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Index of /» (https://7thserpent.com/ — 200)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Index of /» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Index of /» (https://7thserpent.com/ — 200)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== голое имя → 301 → www → 403 (канонизация хостера)
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 403)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 403)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== заглушка из кэша nginx 200
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== 503 на обоих (хостер пересоздаёт сайт)
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 503 — «503 Service Unavailable» (https://www.7thserpent.com/ — 503)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 503 — «503 Service Unavailable» (https://7thserpent.com/ — 503)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: обосновано (оба имени отвечают с нашего хоста)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 503 — «503 Service Unavailable» (https://www.7thserpent.com/ — 503)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 503 — «503 Service Unavailable» (https://7thserpent.com/ — 503)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== TLS до выпуска: чужой сертификат хостера (ERR_TLS_CERT_ALTNAME_INVALID) на обоих
+  согласие on: проход
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»); 7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»)
+  согласие off: СТОП
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → подсказка стопа при ошибке сертификата: посылает к записям DNS, о сертификате (SSL) — ни слова
+== TLS до выпуска: самоподписанный (DEPTH_ZERO_SELF_SIGNED_CERT) на обоих
+  согласие on: проход
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://www.7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT)
+    | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»); 7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»)
+  согласие off: СТОП
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://www.7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT)
+    | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → подсказка стопа при ошибке сертификата: посылает к записям DNS, о сертификате (SSL) — ни слова
+== TLS: сертификат истёк (CERT_HAS_EXPIRED) на обоих
+  согласие on: проход
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://www.7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»); 7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»)
+  согласие off: СТОП
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://www.7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://7thserpent.com/ — сеть: CERT_HAS_EXPIRED)
+    | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → подсказка стопа при ошибке сертификата: посылает к записям DNS, о сертификате (SSL) — ни слова
+== таймаут на обоих
+  согласие on: проход
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://www.7thserpent.com/ — сеть: TimeoutError)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://7thserpent.com/ — сеть: TimeoutError)
+    | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не понять; 7thserpent.com: не понять
+  согласие off: СТОП
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://www.7thserpent.com/ — сеть: TimeoutError)
+    | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://7thserpent.com/ — сеть: TimeoutError)
+    | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+== www не разрешается, голое 403
+  согласие on: проход
+    | www.7thserpent.com: не привязан — имя не разрешается (https://www.7thserpent.com/ — сеть: ENOTFOUND)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не привязан
+  согласие off: СТОП
+    | www.7thserpent.com: не привязан — имя не разрешается (https://www.7thserpent.com/ — сеть: ENOTFOUND)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== www «not configured», голое 403 (www не привязан к сайту)
+  согласие on: проход
+    | www.7thserpent.com: не привязан — заглушка хостера «not configured» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не привязан
+  согласие off: СТОП
+    | www.7thserpent.com: не привязан — заглушка хостера «not configured» (https://www.7thserpent.com/ — 404)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== www — ошибка сертификата, голое не разрешается
+  согласие on: проход
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND)
+    | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: не понять (сертификат, а в строке — «ошибка сети»); 7thserpent.com: не привязан
+  согласие off: СТОП
+    | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+    | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND)
+    | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+    → подсказка стопа при ошибке сертификата: посылает к записям DNS, о сертификате (SSL) — ни слова
+== www → 302 на чужую парковку
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Domain parking» (https://www.7thserpent.com/ — 302 → https://parking.example/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Domain parking» (https://7thserpent.com/ — 302 → https://parking.example/ — 200)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: конечный ответ не с нашего имени (parking.example); 7thserpent.com: конечный ответ не с нашего имени (parking.example)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Domain parking» (https://www.7thserpent.com/ — 302 → https://parking.example/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Domain parking» (https://7thserpent.com/ — 302 → https://parking.example/ — 200)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== www → 301 на имя, которого нет
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — домен отвечает редиректом на имя, которого нет (https://www.7thserpent.com/ — 301 → https://nety.example/ — сеть: ENOTFOUND)
+    | 7thserpent.com: ОТВЕЧАЕТ — домен отвечает редиректом на имя, которого нет (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://nety.example/ — сеть: ENOTFOUND)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: конечный ответ не с нашего имени (nety.example); 7thserpent.com: конечный ответ не с нашего имени (nety.example)
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — домен отвечает редиректом на имя, которого нет (https://www.7thserpent.com/ — 301 → https://nety.example/ — сеть: ENOTFOUND)
+    | 7thserpent.com: ОТВЕЧАЕТ — домен отвечает редиректом на имя, которого нет (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://nety.example/ — сеть: ENOTFOUND)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== петля редиректов на обоих
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301)
+    | 7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: больше 5 редиректов; 7thserpent.com: больше 5 редиректов
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301)
+    | 7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301 → https://7thserpent.com/ — 301)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== домен отвечает первым сайтом (имя привязано не к тому каталогу в панели)
+  согласие on: проход
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4 Black Flag» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4 Black Flag» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 200)
+    | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+    → «покажет её сразу»: НЕ ОБОСНОВАНО — www.7thserpent.com: отвечает чужой сайт (canonical https://www.ac4bf-thewatch.com/) — имя смотрит не в наш каталог; 7thserpent.com: отвечает чужой сайт (canonical https://www.ac4bf-thewatch.com/) — имя смотрит не в наш каталог
+  согласие off: СТОП
+    | www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4 Black Flag» (https://www.7thserpent.com/ — 200)
+    | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «AC4 Black Flag» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 200)
+    | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).

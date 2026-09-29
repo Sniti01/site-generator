@@ -14,8 +14,9 @@
 #   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая
 #     выкладка. Первой считается и выкладка, у которой на сервере нет нашего index.html (вход по умолчанию её
 #     не отменяет): домен обязан не отвечать — или вход SERPENT_DOMAIN_BOUND = `on` (владелец согласен, что домен
-#     уже привязан: сторож домена печатает, что тот отвечает, и не останавливает, П108); сборка CI обязана равняться
-#     принятой (gates/sborka-prinyataya.json);
+#     уже привязан: сторож домена печатает, что тот отвечает, и не останавливает, если домен отвечает по обоим именам
+#     с этого хоста, П108; вход действует только в первой попытке запуска — Re-run согласия не несёт); сборка CI
+#     обязана равняться принятой (gates/sborka-prinyataya.json);
 #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
 #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
 #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
@@ -58,12 +59,12 @@ on:
   workflow_dispatch:
     inputs:
       SERPENT_FIRST:
-        description: 'Первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равняться принятой'
+        description: 'SERPENT_FIRST — первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равняться принятой'
         type: choice
         options: ['off', 'on']
         default: 'off'
       SERPENT_DOMAIN_BOUND:
-        description: 'Домен привязан — согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и не останавливает (П108)'
+        description: 'SERPENT_DOMAIN_BOUND — домен привязан, согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и не останавливает, если оба имени отвечают с этого хоста (П108)'
         type: choice
         options: ['off', 'on']
         default: 'off'
@@ -163,10 +164,12 @@ jobs:
           SERPENT_FIRST: ${{ inputs.SERPENT_FIRST || 'off' }}
         run: node $SITE/tools/storozha-vykladki.mjs pervaya remote-top/index.html remote-before.txt
 
+      # Согласие владельца (вход SERPENT_DOMAIN_BOUND, П108) — только в первой попытке запуска (SV23-O-6): Re-run старого
+      # запуска первой выкладки после более новых выкладок откатил бы живой сайт, а сторож домена без согласия его держит.
       - name: Домен уже привязан?
         env:
           SERPENT_PERVAYA: ${{ steps.pervaya.outputs.pervaya }}
-          SERPENT_DOMAIN_BOUND: ${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}
+          SERPENT_DOMAIN_BOUND: ${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}
         run: node $SITE/tools/storozha-vykladki.mjs domen
 
       # Пустой признак — тоже первая (SV2-O-4): сверка пропускается только при явном «off».

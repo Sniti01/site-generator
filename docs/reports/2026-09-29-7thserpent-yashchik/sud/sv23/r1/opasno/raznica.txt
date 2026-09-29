@@ -1,0 +1,264 @@
+diff --git a/.github/workflows/deploy-7thserpent.yml b/.github/workflows/deploy-7thserpent.yml
+index 27068b9..6385100 100644
+--- a/.github/workflows/deploy-7thserpent.yml
++++ b/.github/workflows/deploy-7thserpent.yml
+@@ -13,14 +13,16 @@
+ # Когда работает:
+ #   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая
+ #     выкладка. Первой считается и выкладка, у которой на сервере нет нашего index.html (вход по умолчанию её
+-#     не отменяет): домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22;
++#     не отменяет): домен обязан не отвечать — или вход SERPENT_DOMAIN_BOUND = `on` (владелец согласен, что домен
++#     уже привязан: сторож домена печатает, что тот отвечает, и не останавливает, П108); сборка CI обязана равняться
++#     принятой (gates/sborka-prinyataya.json);
+ #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
+ #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
+ #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
+ #     выкладки — только при SERPENT_LIVE = `on`. Обе переменные — только после зелёного `npm run live:check`.
+ #
+ # Секреты (Settings → Secrets and variables → Actions → Secrets); лист владельца —
+-# docs/reports/2026-09-28-7thserpent-publikacija/ruki-vladelca.md:
++# docs/reports/2026-09-29-7thserpent-yashchik/ruki-vladelca.md (прежний — …/2026-09-28-7thserpent-publikacija/):
+ #   SERPENT_FTP_HOST      хост FTP из панели
+ #   SERPENT_FTP_PORT      порт (21)
+ #   SERPENT_FTP_USER      логин пользователя FTP робота второго сайта
+@@ -39,7 +41,8 @@
+ #
+ # Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
+ # Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
+-# глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2) → при
++# глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2; при первой
++# выкладке и входе SERPENT_DOMAIN_BOUND = on — строка ответа домена, без стопа, П108) → при
+ # первой: сборка CI = принятая (sha256 после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ без
+ # главной, затем главная → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE). Красный
+ # гейт, сторож сборки или сторож выкладки останавливает прогон до
+@@ -55,7 +58,12 @@ on:
+   workflow_dispatch:
+     inputs:
+       SERPENT_FIRST:
+-        description: 'Первая выкладка: on — домен обязан не отвечать, сборка CI обязана равняться принятой'
++        description: 'Первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равняться принятой'
++        type: choice
++        options: ['off', 'on']
++        default: 'off'
++      SERPENT_DOMAIN_BOUND:
++        description: 'Домен привязан — согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и не останавливает (П108)'
+         type: choice
+         options: ['off', 'on']
+         default: 'off'
+@@ -158,6 +166,7 @@ jobs:
+       - name: Домен уже привязан?
+         env:
+           SERPENT_PERVAYA: ${{ steps.pervaya.outputs.pervaya }}
++          SERPENT_DOMAIN_BOUND: ${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}
+         run: node $SITE/tools/storozha-vykladki.mjs domen
+ 
+       # Пустой признак — тоже первая (SV2-O-4): сверка пропускается только при явном «off».
+diff --git a/sites/7thserpent.com/tools/storozha-vykladki.mjs b/sites/7thserpent.com/tools/storozha-vykladki.mjs
+index 5ac07a7..1c0129a 100644
+--- a/sites/7thserpent.com/tools/storozha-vykladki.mjs
++++ b/sites/7thserpent.com/tools/storozha-vykladki.mjs
+@@ -9,7 +9,8 @@
+  * сборки и карте прежней выкладки, глубина — по `find .` после суда корня; «первая выкладка» — по входу или по
+  * серверу (наш index.html и все ключевые файлы; index.html workflow кладёт последним); «не привязан» — только по
+  * положительным признакам; сверка сборки — с нормализацией cid и имён CSS по содержимому с метками HTML, битые
+- * ссылки и метки cid — отказ.
++ * ссылки и метки cid — отказ. Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа
++ * домена — при первой выкладке он печатает, что отвечает домен, и не останавливает; «судью судят» — SV23-*.
+  *
+  *   node tools/storozha-vykladki.mjs sekrety                 — секреты на месте (SERPENT_FTP_*, SERPENT_CORPUS_KEY);
+  *                                                              логин, хост и порт — без знаков, ломающих команду lftp;
+@@ -18,7 +19,9 @@
+  *                                                              или на сервере нет нашей завершённой выкладки;
+  *                                                              pervaya=on|off — в GITHUB_OUTPUT
+  *   node tools/storozha-vykladki.mjs domen                   — «домен уже привязан?» (бэклог 46 п. 2); SERPENT_PERVAYA=on|off
+- *                                                              обязателен; при первой выкладке домен, который отвечает, — отказ
++ *                                                              обязателен; при первой выкладке домен, который отвечает
++ *                                                              или не проверяется, — отказ, а при SERPENT_DOMAIN_BOUND=on
++ *                                                              (владелец согласен, П108) — строка ответа, выкладка идёт
+  *   node tools/storozha-vykladki.mjs papka <список> [<index.html> [<dist> [<карта>]]]  — папка робота (`cls -1 -a -F`
+  *                                                              в корне; первый уровень dist и принятого списка,
+  *                                                              карта — sitemap-0.xml прежней выкладки)
+@@ -29,8 +32,8 @@
+  *   node tools/storozha-vykladki.mjs pereschet <find> <dist> — после выкладки: файлы на сервере = dist
+  *   node tools/storozha-vykladki.mjs spisok <dist> [<метка>] — список файлов и sha256 сборки (JSON в вывод);
+  *                                                              так пишется gates/sborka-prinyataya.json — сборка,
+- *                                                              принятая в сессии 22 (правка сайта до первой
+- *                                                              выкладки — новый список, иначе первая выкладка — стоп)
++ *                                                              принятая сессией (правка сайта до первой выкладки —
++ *                                                              новый список, иначе первая выкладка — стоп)
+  *
+  * Пробы — `tools/testy/storozha-vykladki.test.mjs`: образцы вывода `lftp` и ответов домена, без сети.
+  * Пределы: пересчёт после выкладки сверяет имена файлов, не размеры (формат длинного списка lftp у этого сервера
+@@ -153,13 +156,26 @@ export async function sostoyanieHosta(poluchit, host) {
+     if (r.status === 404 && HOSTY.includes(tekHost) && new RegExp(`Website\\s+(?:${imena})\\s+not\\s+configured`, 'i').test(tekst)) {
+       return { sostoyanie: 'не привязан', pochemu: 'заглушка хостера «not configured»', put };
+     }
+-    return { sostoyanie: 'отвечает', pochemu: `ответ ${r.status}`, put };
++    // Что отвечает — `<title>` ответа одной строкой (П108: при согласии владельца сторож печатает ответ домена).
++    const zagolovok = /<title\b[^>]*>([^<]*)<\/title\s*>/i.exec(String(r.telo))?.[1].replace(/\s+/g, ' ').trim().slice(0, 100);
++    return { sostoyanie: 'отвечает', pochemu: `ответ ${r.status}${zagolovok ? ` — «${zagolovok}»` : ''}`, put };
+   }
+   return { sostoyanie: 'отвечает', pochemu: 'больше 5 редиректов', put };
+ }
+ 
+-/** «Домен уже привязан?» по обоим хостам; `pervyi` — первая выкладка (признак `pervaya`). */
+-export async function domen({ poluchit, pervyi, hosty = HOSTY }) {
++/**
++ * Вход «домен привязан — согласен» (SERPENT_DOMAIN_BOUND, П108): `on` — владелец знает, что домен привязан, и согласен
++ * на первую выкладку в домен, который уже отвечает; `off`, пусто или нет входа — нет; иное — `null` (ошибка входа).
++ */
++export function soglasieIzVkhoda(znachenie) {
++  if (znachenie === undefined || znachenie === '' || znachenie === 'off') return false;
++  if (znachenie === 'on') return true;
++  return null;
++}
++
++/** «Домен уже привязан?» по обоим хостам; `pervyi` — первая выкладка (признак `pervaya`); `soglasen` — вход
++ *  SERPENT_DOMAIN_BOUND=on: при первой выкладке домен, который отвечает или не проверяется, печатается и не останавливает. */
++export async function domen({ poluchit, pervyi, soglasen = false, hosty = HOSTY }) {
+   const stroki = [];
+   const sost = [];
+   for (const h of hosty) {
+@@ -172,10 +188,13 @@ export async function domen({ poluchit, pervyi, hosty = HOSTY }) {
+     if (!sost.includes('отвечает')) return itog(true, [...stroki, 'не удалось узнать, отвечает ли домен; выкладка не первая — идёт']);
+     return itog(true, [...stroki, 'домен отвечает: выкладка обновит живой сайт']);
+   }
++  if (soglasen) {
++    return itog(true, [...stroki, `первая выкладка, а домен ${sost.includes('отвечает') ? 'уже отвечает (что — в строках выше)' : 'проверить не удалось (ошибка — в строках выше)'}: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу`]);
++  }
+   if (sost.includes('отвечает')) {
+-    return itog(false, [...stroki, 'СТОП: первая выкладка, а домен уже отвечает — выкладка сделала бы сайт живым раньше ящика (П52 п. 3). Сначала выясни, что отвечает, в панели и Cloudflare.']);
++    return itog(false, [...stroki, 'СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).']);
+   }
+-  return itog(false, [...stroki, 'СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь зону и NS в Cloudflare.']);
++  return itog(false, [...stroki, 'СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).']);
+ }
+ 
+ /* ---------- папка робота ---------- */
+@@ -484,7 +503,13 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
+         console.error('не задан признак первой выкладки: SERPENT_PERVAYA=on|off (выход шага «Первая выкладка?»)');
+         process.exit(2);
+       }
+-      r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on' });
++      // Вход «домен привязан — согласен» (П108): только on, off или пусто — иное — ошибка входа до сети.
++      const soglasen = soglasieIzVkhoda(process.env.SERPENT_DOMAIN_BOUND);
++      if (soglasen === null) {
++        console.error('SERPENT_DOMAIN_BOUND — только on или off (вход «домен привязан — согласен»)');
++        process.exit(2);
++      }
++      r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on', soglasen });
+     } else if (komanda === 'papka' && argi.length >= 1 && argi.length <= 4 && existsSync(argi[0])) {
+       // Первый уровень сборки: dist (третий аргумент) и принятый список сайта (SV2-O-1); карта прежней выкладки — четвёртый.
+       const verkh = new Set();
+diff --git a/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs b/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs
+index 7201318..3d782aa 100644
+--- a/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs
++++ b/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs
+@@ -3,6 +3,7 @@
+ // каталоге. Последний блок — договор самого workflow `.github/workflows/deploy-7thserpent.yml` (разбор YAML):
+ // триггеры, предохранители, TZ, корпус, пароль, команды сторожей — те, что есть у сторожа, циклов оболочки нет.
+ // «Судью судят»: раунд 1 (SV1-O — «опасный проход», SV1-Z — «законные формы»), раунд 2 (SV2-O, SV2-Z) — пробами с их id.
++// Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа домена; «судью судят» — SV23-*.
+ //   npm run proverki (сборка копии не нужна)
+ import { test } from 'node:test';
+ import assert from 'node:assert/strict';
+@@ -127,6 +128,49 @@ for (const [imya, karta, pervyi, zhdem, kusok] of DOMEN) {
+   });
+ }
+ 
++/* — сессия 23 (П108): вход SERPENT_DOMAIN_BOUND — владелец согласен, что домен привязан — */
++// Заглушка хостера — по замеру домена 2026-09-29: 200, <title> «Поздравляем, сайт создан!», без canonical.
++const ZAGLUSHKA_SOZDAN = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Поздравляем, сайт создан!</title></head><body><h1>Поздравляем, сайт создан!</h1></body></html>';
++const S403 = '<html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1></body></html>';
++const DOMEN_VKHOD = [
++  // [имя, ответы, первая выкладка, согласие, ждём ok, куски строки]
++  ['заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, true, ['ОТВЕЧАЕТ', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
++  ['та же заглушка, первая, без согласия — стоп, как прежде, с именем входа', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, false, false, ['СТОП', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
++  ['403 пустого каталога (заглушку удалили), первая, согласие — проход', { [W]: otv(403, S403), [G]: otv(403, S403) }, true, true, true, ['ОТВЕЧАЕТ', 'ответ 403', 'SERPENT_DOMAIN_BOUND']],
++  ['ошибка сертификата — не понять, первая, согласие — проход, ошибка в строке', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['ERR_TLS_CERT_ALTNAME_INVALID', 'SERPENT_DOMAIN_BOUND']],
++  ['таймаут на обоих хостах, первая, согласие — проход', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, true, ['TimeoutError', 'SERPENT_DOMAIN_BOUND']],
++  ['таймаут, первая, без согласия — стоп с именем входа', { [W]: oshibka('TimeoutError'), [G]: oshibka('ENOTFOUND') }, true, false, false, ['не удалось узнать', 'SERPENT_DOMAIN_BOUND']],
++  ['наша сборка отвечает (повтор оборванной первой), первая, согласие — проход', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, true, true, true, ['ОТВЕЧАЕТ', 'SERPENT_DOMAIN_BOUND']],
++  ['домен не привязан, первая, согласие — проход, как без входа', { [W]: oshibka('ENOTFOUND'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['домен не привязан']],
++  ['не первая, согласие — как без входа: обновит живой сайт', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, false, true, true, ['обновит живой сайт']],
++];
++for (const [imya, karta, pervyi, soglasen, zhdem, kuski] of DOMEN_VKHOD) {
++  test(`домен, вход SERPENT_DOMAIN_BOUND: ${imya}`, async () => {
++    const r = await domen({ poluchit: iz(karta), pervyi, soglasen });
++    assert.equal(r.ok, zhdem, r.stroki.join(' | '));
++    for (const kusok of kuski) assert.ok(r.stroki.join(' ').includes(kusok), `${kusok}: ${r.stroki.join(' | ')}`);
++  });
++}
++
++test('SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108)', async () => {
++  for (const [, karta, pervyi] of DOMEN) {
++    const r = await domen({ poluchit: iz(karta), pervyi });
++    assert.doesNotMatch(r.stroki.join(' '), /cloudflare/i, r.stroki.join(' | '));
++  }
++  for (const [, karta, pervyi, soglasen] of DOMEN_VKHOD) {
++    const r = await domen({ poluchit: iz(karta), pervyi, soglasen });
++    assert.doesNotMatch(r.stroki.join(' '), /cloudflare/i, r.stroki.join(' | '));
++  }
++});
++
++test('SV23 вход SERPENT_DOMAIN_BOUND: on — согласие; off, пусто и нет — нет; иное — ошибка входа', () => {
++  const { soglasieIzVkhoda } = SV;
++  assert.equal(typeof soglasieIzVkhoda, 'function', 'нет функции soglasieIzVkhoda');
++  assert.equal(soglasieIzVkhoda('on'), true);
++  for (const z of ['off', '', undefined]) assert.equal(soglasieIzVkhoda(z), false, String(z));
++  for (const z of ['yes', 'ON', 'true', ' on', 'on ']) assert.equal(soglasieIzVkhoda(z), null, JSON.stringify(z));
++});
++
+ /* ---------- папка робота и index.html ---------- */
+ 
+ const PAPKA = [
+@@ -521,6 +565,27 @@ test('SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2,
+   }
+ });
+ 
++// Сеть в дочернем процессе подменена до запуска сторожа: fetch бросает — сторож видит «не понять» без единого запроса наружу.
++const BEZ_SETI = `data:text/javascript;base64,${Buffer.from("globalThis.fetch = async () => { throw new Error('сеть в пробе запрещена'); };").toString('base64')}`;
++test('SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети', () => {
++  const { SERPENT_DOMAIN_BOUND, ...env } = process.env;
++  const zapusk = (vkhod) => spawnSync(process.execPath, ['--import', BEZ_SETI, STOROZH, 'domen'], { encoding: 'utf8', env: { ...env, SERPENT_PERVAYA: 'on', ...(vkhod === undefined ? {} : { SERPENT_DOMAIN_BOUND: vkhod }) } });
++  const da = zapusk('on');
++  assert.equal(da.status, 0, da.stdout + da.stderr);
++  assert.match(da.stdout, /SERPENT_DOMAIN_BOUND/);
++  assert.match(da.stdout, /сеть в пробе запрещена|Error/);
++  for (const net of ['off', '', undefined]) {
++    const r = zapusk(net);
++    assert.equal(r.status, 1, `${net}: ${r.stdout}${r.stderr}`);
++    assert.match(r.stdout, /СТОП/);
++  }
++  for (const plokho of ['yes', 'ON', 'true']) {
++    const r = zapusk(plokho);
++    assert.equal(r.status, 2, `${plokho}: ${r.stdout}${r.stderr}`);
++    assert.match(r.stderr, /SERPENT_DOMAIN_BOUND/);
++  }
++});
++
+ test('команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT', () => {
+   const d = mkdtempSync(join(tmpdir(), 'storozha-vykladki-'));
+   try {
+@@ -566,6 +631,21 @@ test('workflow: триггеры — push в main по путям сайта, я
+   assert.equal(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.default, 'off');
+ });
+ 
++test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; доходит только до сторожа домена, push — off', () => {
++  const v = WF.on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND;
++  assert.ok(v, 'нет входа SERPENT_DOMAIN_BOUND');
++  assert.equal(v.type, 'choice');
++  assert.deepEqual(v.options, ['off', 'on']);
++  assert.equal(v.default, 'off');
++  const d = shag('Домен уже привязан');
++  assert.equal(d.env.SERPENT_DOMAIN_BOUND, "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}");
++  for (const s of shagi.filter((x) => x !== d)) assert.ok(!JSON.stringify(s).includes('SERPENT_DOMAIN_BOUND'), s.name ?? s.uses);
++});
++
++test('SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108)', () => {
++  assert.doesNotMatch(WF_TEKST, /cloudflare/i);
++});
++
+ test('workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on', () => {
+   assert.equal(job.if, "github.event_name == 'workflow_dispatch' || vars.SERPENT_DEPLOY == 'on'");
+   assert.equal(shag('Проверка живого сайта').if, "vars.SERPENT_LIVE == 'on'");

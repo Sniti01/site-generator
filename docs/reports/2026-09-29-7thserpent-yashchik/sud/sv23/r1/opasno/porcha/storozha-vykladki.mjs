@@ -10,9 +10,7 @@
  * серверу (наш index.html и все ключевые файлы; index.html workflow кладёт последним); «не привязан» — только по
  * положительным признакам; сверка сборки — с нормализацией cid и имён CSS по содержимому с метками HTML, битые
  * ссылки и метки cid — отказ. Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа
- * домена — при первой выкладке он печатает, что отвечает домен, и не останавливает, если домен отвечает по обоим
- * именам с этого хоста (раунд 1 «судью судят» — SV23-O-1, O-2, Z-1); вход действует только в первой попытке запуска
- * (github.run_attempt, SV23-O-6); строки ответа в журнал — без управляющих знаков и команд раннера (SV23-O-3).
+ * домена — при первой выкладке он печатает, что отвечает домен, и не останавливает; «судью судят» — SV23-*.
  *
  *   node tools/storozha-vykladki.mjs sekrety                 — секреты на месте (SERPENT_FTP_*, SERPENT_CORPUS_KEY);
  *                                                              логин, хост и порт — без знаков, ломающих команду lftp;
@@ -23,8 +21,7 @@
  *   node tools/storozha-vykladki.mjs domen                   — «домен уже привязан?» (бэклог 46 п. 2); SERPENT_PERVAYA=on|off
  *                                                              обязателен; при первой выкладке домен, который отвечает
  *                                                              или не проверяется, — отказ, а при SERPENT_DOMAIN_BOUND=on
- *                                                              (владелец согласен, П108) и ответе обоих имён с этого
- *                                                              хоста — строки ответа, выкладка идёт
+ *                                                              (владелец согласен, П108) — строка ответа, выкладка идёт
  *   node tools/storozha-vykladki.mjs papka <список> [<index.html> [<dist> [<карта>]]]  — папка робота (`cls -1 -a -F`
  *                                                              в корне; первый уровень dist и принятого списка,
  *                                                              карта — sitemap-0.xml прежней выкладки)
@@ -129,40 +126,12 @@ export async function poluchitSetyu(url) {
 }
 
 const esc = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-/** Коды ошибок сертификата и TLS у fetch Node (SV23-O-1, Z-1): такое имя браузер откроет только с предупреждением. */
-const SERTIFIKAT = /^(ERR_TLS_|ERR_SSL_|CERT_|DEPTH_ZERO_|SELF_SIGNED_|UNABLE_TO_|HOSTNAME_MISMATCH)/;
-/** Знак кода по его номеру; вне Юникода — «�». */
-const znak = (n) => (Number.isInteger(n) && n >= 0 && n <= 0x10ffff ? String.fromCodePoint(n) : '�');
-const IMENOVANNYE = { laquo: '«', raquo: '»', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ', mdash: '—', ndash: '–', hellip: '…' };
-/**
- * `<title>` ответа одной строкой (П108: при согласии владельца сторож печатает ответ домена; SV23-Z-5): вне комментариев,
- * скриптов, стилей и `<svg>`, до `</title>`, сущности раскрыты, пробелы сжаты, обрез по кодовым точкам с «…».
- */
-function zagolovokOtveta(telo) {
-  const t = String(telo).replace(/<!--[\s\S]*?(-->|$)/g, ' ').replace(/<(script|style|svg|template|noscript)\b[\s\S]*?<\/\1\s*>/gi, ' ');
-  const m = /<title\b[^>]*>([\s\S]*?)<\/title\s*>/i.exec(t);
-  if (!m) return '';
-  const s = m[1]
-    .replace(/<[^>]*>/g, ' ')
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => znak(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => znak(Number(d)))
-    .replace(/&([a-z]+);/gi, (v, i) => IMENOVANNYE[i.toLowerCase()] ?? v)
-    .replace(/\s+/g, ' ')
-    .trim();
-  const z = [...s];
-  return z.length > 100 ? `${z.slice(0, 100).join('')}…` : s;
-}
-/** Строка в публичный журнал GitHub (SV23-O-3): без управляющих и невидимых знаков, без начала команд раннера `##[` и `::`. */
-const bezopasno = (s) => String(s).replace(/[\p{Cc}\p{Cf}]/gu, ' ').replace(/##\[/g, '# #[').replace(/::/g, ': :');
-
 /**
  * Что отвечает хост: идём по редиректам (не больше 5 скачков) до конечного ответа. «Не привязан» — только по
  * положительным признакам (SV1-O-3): имя хоста не разрешается (ENOTFOUND на первом запросе) или 404 с измеренной
  * заглушкой хостера «Website <этот хост> not configured» (доклад 2026-09-15, первый сайт). Всё прочее — «отвечает»:
- * наша сборка, чужая страница, пустой каталог (403, 404 сервера), редирект куда угодно, в том числе на негодный адрес
- * (SV23-Z-4 — строка, а не код 2); «не понять» — ошибки сети и временные ошибки имени (EAI_AGAIN, таймаут) и ошибки
- * сертификата (отдельная причина, SV23-Z-1) — при первой выкладке это стоп. `svoy` — ответ пришёл с имени сайта и без
- * чужого canonical: только такой ответ покрывает согласие владельца (SV23-O-2).
+ * наша сборка, чужая страница, пустой каталог (403, 404 сервера), редирект куда угодно; «не понять» — ошибки сети
+ * и временные ошибки имени (EAI_AGAIN, таймаут, TLS) — при первой выкладке это стоп.
  */
 export async function sostoyanieHosta(poluchit, host) {
   let url = `https://${host}/`;
@@ -172,17 +141,12 @@ export async function sostoyanieHosta(poluchit, host) {
     if (r.oshibka) {
       put.push(`${url} — сеть: ${r.oshibka}`);
       if (r.oshibka === 'ENOTFOUND' && skachok === 0) return { sostoyanie: 'не привязан', pochemu: 'имя не разрешается', put };
-      if (r.oshibka === 'ENOTFOUND') return { sostoyanie: 'отвечает', pochemu: 'домен отвечает редиректом на имя, которого нет', put, svoy: false };
-      if (SERTIFIKAT.test(r.oshibka)) return { sostoyanie: 'не понять', pochemu: `ошибка сертификата ${r.oshibka} — https по этому имени браузер откроет только с предупреждением`, put, sertifikat: true };
+      if (r.oshibka === 'ENOTFOUND') return { sostoyanie: 'отвечает', pochemu: 'домен отвечает редиректом на имя, которого нет', put };
       return { sostoyanie: 'не понять', pochemu: `ошибка сети ${r.oshibka}`, put };
     }
     put.push(`${url} — ${r.status}`);
     if ([301, 302, 303, 307, 308].includes(r.status) && r.location) {
-      try {
-        url = new URL(r.location, url).href;
-      } catch {
-        return { sostoyanie: 'отвечает', pochemu: `редирект ${r.status} на негодный адрес «${String(r.location).slice(0, 100)}»`, put, svoy: false };
-      }
+      url = new URL(r.location, url).href;
       continue;
     }
     // Заглушка — в тексте тела без тегов и с неразрывными пробелами как пробелами (SV2-Z-6); имя — любое наше.
@@ -192,23 +156,11 @@ export async function sostoyanieHosta(poluchit, host) {
     if (r.status === 404 && HOSTY.includes(tekHost) && new RegExp(`Website\\s+(?:${imena})\\s+not\\s+configured`, 'i').test(tekst)) {
       return { sostoyanie: 'не привязан', pochemu: 'заглушка хостера «not configured»', put };
     }
-    const zagolovok = zagolovokOtveta(r.telo);
-    const chuzhoyKanon = canonicalOf(r.telo).find((h) => {
-      try {
-        return !HOSTY.includes(new URL(h, url).host);
-      } catch {
-        return true;
-      }
-    });
-    const svoyKhost = HOSTY.includes(tekHost);
-    return {
-      sostoyanie: 'отвечает',
-      pochemu: `ответ ${r.status}${zagolovok ? ` — «${zagolovok}»` : ''}${chuzhoyKanon === undefined ? '' : `, canonical чужого сайта ${chuzhoyKanon}`}${svoyKhost ? '' : `, конечный хост ${tekHost} — не имя сайта`}`,
-      put,
-      svoy: svoyKhost && chuzhoyKanon === undefined,
-    };
+    // Что отвечает — `<title>` ответа одной строкой (П108: при согласии владельца сторож печатает ответ домена).
+    const zagolovok = /<title\b[^>]*>([^<]*)<\/title\s*>/i.exec(String(r.telo))?.[1].replace(/\s+/g, ' ').trim().slice(0, 100);
+    return { sostoyanie: 'отвечает', pochemu: `ответ ${r.status}${zagolovok ? ` — «${zagolovok}»` : ''}`, put };
   }
-  return { sostoyanie: 'отвечает', pochemu: 'больше 5 редиректов', put, svoy: false };
+  return { sostoyanie: 'отвечает', pochemu: 'больше 5 редиректов', put };
 }
 
 /**
@@ -221,46 +173,28 @@ export function soglasieIzVkhoda(znachenie) {
   return null;
 }
 
-const SERT_V_PANELI = 'выпусти сертификат Let\'s Encrypt в панели хостера для обоих имён — .htaccess ведёт всех на https, без сертификата сайт не откроется; затем запусти снова';
-/**
- * «Домен уже привязан?» по обоим хостам; `pervyi` — первая выкладка (признак `pervaya`); `soglasen` — вход
- * SERPENT_DOMAIN_BOUND=on (П108). Согласие покрывает домен, который отвечает по обоим именам с этого хоста (SV23-O-1, O-2,
- * Z-1): тогда первая выкладка идёт, ответ напечатан. Ошибка сети или сертификата, неразрешимое имя, чужой конечный хост
- * или canonical, петля, негодный редирект — стоп и со входом, с причиной. Без входа — стоп, как до сессии 23; вход
- * предлагается, только когда домен отвечает. Строки — через `bezopasno` (журнал GitHub публичный, SV23-O-3).
- */
+/** «Домен уже привязан?» по обоим хостам; `pervyi` — первая выкладка (признак `pervaya`); `soglasen` — вход
+ *  SERPENT_DOMAIN_BOUND=on: при первой выкладке домен, который отвечает или не проверяется, печатается и не останавливает. */
 export async function domen({ poluchit, pervyi, soglasen = false, hosty = HOSTY }) {
   const stroki = [];
-  const vse = [];
+  const sost = [];
   for (const h of hosty) {
     const s = await sostoyanieHosta(poluchit, h);
-    vse.push(s);
-    stroki.push(bezopasno(`${h}: ${s.sostoyanie === 'не привязан' ? 'не привязан' : s.sostoyanie.toUpperCase()} — ${s.pochemu} (${s.put.join(' → ')})`));
+    sost.push(s.sostoyanie);
+    stroki.push(`${h}: ${s.sostoyanie === 'не привязан' ? 'не привязан' : s.sostoyanie.toUpperCase()} — ${s.pochemu} (${s.put.join(' → ')})`);
   }
-  const sost = vse.map((s) => s.sostoyanie);
   if (sost.every((s) => s === 'не привязан')) return itog(true, [...stroki, 'домен не привязан: выкладка ляжет в каталог сайта, домен её не покажет']);
   if (!pervyi) {
     if (!sost.includes('отвечает')) return itog(true, [...stroki, 'не удалось узнать, отвечает ли домен; выкладка не первая — идёт']);
     return itog(true, [...stroki, 'домен отвечает: выкладка обновит живой сайт']);
   }
-  const sertifikat = vse.some((s) => s.sertifikat);
   if (soglasen) {
-    if (vse.every((s) => s.sostoyanie === 'отвечает' && s.svoy)) {
-      return itog(true, [...stroki, 'первая выкладка: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108), оба имени отвечают с этого хоста (что — в строках выше) — выкладка идёт']);
-    }
-    const prichina = sertifikat
-      ? `https — с ошибкой сертификата: ${SERT_V_PANELI}`
-      : sost.includes('не понять')
-        ? 'по имени не удалось получить ответ (сеть, таймаут) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера'
-        : sost.includes('не привязан')
-          ? 'одно из имён не привязано — привяжи оба имени к сайту в панели хостера'
-          : 'домен ведёт не на этот сайт (конечный хост, canonical или редирект — в строках выше) — проверь привязку в панели хостера';
-    return itog(false, [...stroki, `СТОП: первая выкладка со входом SERPENT_DOMAIN_BOUND = on, но согласие покрывает только домен, который отвечает по обоим именам с этого хоста: ${prichina}.`]);
+    return itog(true, [...stroki, `первая выкладка, а домен ${sost.includes('отвечает') ? 'уже отвечает (что — в строках выше)' : 'проверить не удалось (ошибка — в строках выше)'}: владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу`]);
   }
   if (sost.includes('отвечает')) {
-    return itog(false, [...stroki, 'СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — новый запуск кнопкой Run workflow (не Re-run: повтор согласия не несёт) со входом SERPENT_DOMAIN_BOUND = on (П108).']);
+    return itog(false, [...stroki, 'СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).']);
   }
-  return itog(false, [...stroki, sertifikat ? `СТОП: первая выкладка, а https домена — с ошибкой сертификата: ${SERT_V_PANELI}.` : 'СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени или таймаут) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера.']);
+  return itog(false, [...stroki, 'СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).']);
 }
 
 /* ---------- папка робота ---------- */
@@ -571,11 +505,11 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       }
       // Вход «домен привязан — согласен» (П108): только on, off или пусто — иное — ошибка входа до сети.
       const soglasen = soglasieIzVkhoda(process.env.SERPENT_DOMAIN_BOUND);
+      r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on', soglasen: soglasen === true });
       if (soglasen === null) {
         console.error('SERPENT_DOMAIN_BOUND — только on или off (вход «домен привязан — согласен»)');
         process.exit(2);
       }
-      r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on', soglasen });
     } else if (komanda === 'papka' && argi.length >= 1 && argi.length <= 4 && existsSync(argi[0])) {
       // Первый уровень сборки: dist (третий аргумент) и принятый список сайта (SV2-O-1); карта прежней выкладки — четвёртый.
       const verkh = new Set();

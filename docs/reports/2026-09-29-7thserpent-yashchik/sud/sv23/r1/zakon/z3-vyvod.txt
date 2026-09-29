@@ -1,0 +1,37 @@
+== 403 после удаления заглушки, первая, вход on
+  код: 0 (ждём 0)
+  stdout | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+  stdout | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+  stdout | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+== 403, первая, вход off
+  код: 1 (ждём 1)
+  stdout | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+  stdout | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+  stdout | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== 403, первая, входа нет (push)
+  код: 1 (ждём 1)
+  stdout | www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403)
+  stdout | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403)
+  stdout | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+== ошибка сертификата, первая, вход on
+  код: 0 (ждём 0)
+  stdout | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+  stdout | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+  stdout | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+== ошибка сертификата, первая, вход off
+  код: 1 (ждём 1)
+  stdout | www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+  stdout | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID)
+  stdout | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+== 301 с Location «http://» (редирект панели с пустой целью), первая, вход on
+  код: 2 (ждём 0)  ← РАСХОЖДЕНИЕ
+  stderr | сторож не смог прочесть вход: Invalid URL
+== 301 с Location «https://www.7thserpent.com:99999/», первая, вход on
+  код: 2 (ждём 0)  ← РАСХОЖДЕНИЕ
+  stderr | сторож не смог прочесть вход: Invalid URL
+== 301 с Location «https://exa mple.com/», первая, вход on
+  код: 2 (ждём 0)  ← РАСХОЖДЕНИЕ
+  stderr | сторож не смог прочесть вход: Invalid URL
+== 301 с Location «http://», не первая, вход off
+  код: 2 (ждём 0)  ← РАСХОЖДЕНИЕ
+  stderr | сторож не смог прочесть вход: Invalid URL

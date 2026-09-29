@@ -1,0 +1,7 @@
+obrazcy.mjs: 0
+pravka.mjs: 0
+proverka-baitov.mjs: 0
+schet.mjs: 0
+zapros-lokalno.mjs: 0
+pravka/vstavka-1.txt: 0
+pravka/vstavka-2.txt: 0

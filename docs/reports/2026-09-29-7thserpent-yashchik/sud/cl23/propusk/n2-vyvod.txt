@@ -1,0 +1,44 @@
+== а) cookie __cf_bm на главной без cf-ray (проба «подсказки причин», kuki)
+итог: 43/44
+ПЛОХО: ответы без Set-Cookie
+  ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+  ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+  ok    HTML страниц = сборка (dist): true — страниц 19
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+  ПЛОХО ответы без Set-Cookie: false — ставят: a (главная); __cf_bm (главная, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+
+== б) cookie __cf_bm у 301 без cf-ray (проба «подсказки причин», kuki301)
+итог: 43/44
+ПЛОХО: ответы без Set-Cookie
+  ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+  ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+  ok    HTML страниц = сборка (dist): true — страниц 19
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+  ПЛОХО ответы без Set-Cookie: false — ставят: __cf_bm (http://www.7thserpent.com/max-payne-1/ — 301, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+
+== в) обфускация почты на /privacy/ без cf-ray (проба «подсказки причин», obf)
+итог: 41/44
+ПЛОХО: /privacy/: адрес ящика открытым текстом ; /privacy/: без обфускации почты Cloudflare ; HTML страниц = сборка (dist)
+  ПЛОХО /privacy/: без обфускации почты Cloudflare: false — найдено: __cf_email__, data-cfemail, /cdn-cgi/l/email-protection — Scrape Shield → Email Address Obfuscation включена (П77 п. 6)
+  ПЛОХО /privacy/: адрес ящика открытым текстом: false — адрес скрыт обфускацией Cloudflare — см. строку об обфускации
+  ПЛОХО HTML страниц = сборка (dist): false — 1 из 19 страниц: /privacy/: Email Address Obfuscation (Scrape Shield); с знака 454: сборка « hosting logs go to contact@7thserpent.com.</p><img src="/_a», сайт « hosting logs go to <a href="/cdn-cgi/l/email-protection" cl» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+  ok    ответы без Set-Cookie: true — ответов 29
+
+== г) маяк Web Analytics на главной без cf-ray (проба «подсказки причин», wa)
+итог: 43/44
+ПЛОХО: HTML страниц = сборка (dist)
+  ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+  ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+  ПЛОХО HTML страниц = сборка (dist): false — 1 из 19 страниц: /: Web Analytics (Cloudflare); с знака 524: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script defer src="https://static.cloudfl» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+  ok    ответы без Set-Cookie: true — ответов 29
+
+== д) сниппет Web Analytics на всех страницах без cf-ray: запросы к Cloudflare шлёт страница
+итог: 43/44
+ПЛОХО: HTML страниц = сборка (dist)
+  ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+  ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+  ПЛОХО HTML страниц = сборка (dist): false — 19 из 19 страниц: /: Web Analytics (Cloudflare); с знака 524: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script defer src="https://static.cloudfl» | /cheats/: Web Analytics (Cloudflare); с знака 529: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script defer src="https://static.cloudfl» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+  ok    ответы без Set-Cookie: true — ответов 29

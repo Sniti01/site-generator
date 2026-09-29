@@ -1,0 +1,3 @@
+    // CL23-Z-1, CL23-Z-2 (правило скептика): без блоков хостера adm.tools и пробельной разницы — тот же ответ сервера.
+    const bezKhostera = (t) => { const out = []; let v = false; for (const s0 of norm(t).split('\n')) { const s = s0.trim(); const n = /^#\s*BEGIN\s+(.+?)\s+Managed\s+content\s*$/i.exec(s); const e = /^#\s*END\s+(.+?)\s+Managed\s+content\s*$/i.exec(s); if (!v && n && /^adm\.tools$/i.test(n[1])) { v = true; continue; } if (v) { if (e && /^adm\.tools$/i.test(e[1])) v = false; continue; } if (s) out.push(s); } return out.join('\n'); };
+    const tolkoBlokKhostera = mimo.status === 200 && rbBez.nashCelikom && bezKhostera(bez.telo) === bezKhostera(mimo.telo);

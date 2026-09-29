@@ -1,0 +1,24 @@
+== cf-ray только у ответа 404 несуществующего адреса
+итог: 43/44
+ПЛОХО: запросы не идут через Cloudflare
+  ПЛОХО запросы не идут через Cloudflare: false — через Cloudflare: https://www.7thserpent.com/net-takoy-stranicy-m1/ (404; cf-ray) — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)
+
+== server: Cloudflare (заглавная) только у sitemap-index.xml
+итог: 43/44
+ПЛОХО: запросы не идут через Cloudflare
+  ПЛОХО запросы не идут через Cloudflare: false — через Cloudflare: https://www.7thserpent.com/sitemap-index.xml (200; server: cloudflare) — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)
+
+== cf-cache-status только у /404/ напрямую
+итог: 43/44
+ПЛОХО: запросы не идут через Cloudflare
+  ПЛОХО запросы не идут через Cloudflare: false — через Cloudflare: https://www.7thserpent.com/404/ (200; cf-cache-status) — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)
+
+== лишний адрес карты (вне структуры) через Cloudflare
+итог: 40/44
+ПЛОХО: sitemap-0.xml: адреса = структура ; sitemap-0.xml: адреса отвечают 200 со своим canonical ; sitemap-0.xml: адресов ; запросы не идут через Cloudflare
+  ПЛОХО запросы не идут через Cloudflare: false — через Cloudflare: https://www.7thserpent.com/lishniy/ (404; cf-ray, server: cloudflare) — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)
+
+== главная 503 (сервер хостера), голый хост через Cloudflare — причина в строке 11
+итог: 35/44
+ПЛОХО: HTML не из кэша Cloudflare ; HTML страниц = сборка (dist) ; HTML: Cache-Control (max-age=0, must-revalidate) ; sitemap-0.xml: адреса отвечают 200 со своим canonical ; главная: canonical ; главная: статус ; запросы не идут через Cloudflare ; ответы без Set-Cookie ; страницы без запрета индексации
+  ПЛОХО запросы не идут через Cloudflare: false — главная — ответ 503

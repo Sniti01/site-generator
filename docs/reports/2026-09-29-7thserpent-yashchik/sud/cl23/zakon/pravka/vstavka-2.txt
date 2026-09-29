@@ -1,0 +1,4 @@
+    else if (tolkoBlokKhostera) {
+      bezOtkuda = 'наш файл тот же; разница — только блок хостера или пробелы';
+      spravki.push('robots.txt без параметра отличается от ответа мимо кэша только блоком хостера (adm.tools) или пробелами — вреда нет, не отказ');
+    } else if (mimo.status === 200 && !keshBez) [bezFakt, bezOtkuda] = [false, 'не равен ответу мимо кэша (' + (rbBez.nashCelikom ? 'разница вне блока хостера' : 'наш файл не целиком: ' + rbBez.raskhozhdenie) + '); кэша Cloudflare на пути нет — кэш или фронт хостера либо другой сервер: повторить через минуту'];

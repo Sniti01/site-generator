@@ -1,0 +1,26 @@
+== а) HTML из кэша nginx хостера (Age 86400, X-Cache-Status: HIT), тело = сборка
+итог: 44/44
+ПЛОХО: —
+  ok    robots.txt без параметра (его берут роботы): true — как ответ мимо кэша
+  ok    HTML страниц = сборка (dist): true — страниц 19
+  ok    HTML: Cache-Control (max-age=0, must-revalidate): true — страниц 18
+  ok    HTML не из кэша Cloudflare: true — страниц 18
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+
+== б) главная из кэша (X-Cache: HIT from nginx, Age 172800)
+итог: 44/44
+ПЛОХО: —
+  ok    robots.txt без параметра (его берут роботы): true — как ответ мимо кэша
+  ok    HTML страниц = сборка (dist): true — страниц 19
+  ok    HTML: Cache-Control (max-age=0, must-revalidate): true — страниц 18
+  ok    HTML не из кэша Cloudflare: true — страниц 18
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет
+
+== в) robots.txt без параметра из кэша хостера (Age 3600, X-Cache-Status: HIT), прежняя безвредная редакция
+итог: 43/44
+ПЛОХО: robots.txt без параметра (его берут роботы)
+  ПЛОХО robots.txt без параметра (его берут роботы): false — не равен ответу мимо кэша и не из кэша (Cf-Cache-Status —) — отдаёт не наш сервер
+  ok    HTML страниц = сборка (dist): true — страниц 19
+  ok    HTML: Cache-Control (max-age=0, must-revalidate): true — страниц 18
+  ok    HTML не из кэша Cloudflare: true — страниц 18
+  ok    запросы не идут через Cloudflare: true — ответов 29, следов Cloudflare нет

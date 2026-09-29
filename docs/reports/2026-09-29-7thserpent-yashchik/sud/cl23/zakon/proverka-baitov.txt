@@ -1,0 +1,2 @@
+norm(): const norm = (s) => s.replace(/\r\n?/g, '\n').replace(/^<U+FEFF>/, '');
+robots.txt: байт 1233, CR 0, LF 26, BOM нет, последний байт 10, не-ASCII знаки: U+2014 U+2014 U+41F

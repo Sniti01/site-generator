@@ -1,0 +1,83 @@
+
+здоровый сайт без Cloudflare (П108): ok 44 из 44
+  ok    запросы не идут через Cloudflare: ответов 29, следов Cloudflare нет
+
+образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё): ok 43 из 44
+  ПЛОХО запросы не идут через Cloudflare: false — через Cloudflare: http://www.7thserpent.com/ (301; cf-ray, server: cloudflare), https://7thserpent.com/ (301; cf-ray, server: cloudflare), http://7thserpent.com/ (301; cf-ray, server: cloudflare) и ещё 26 — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте быть не должно (П108)
+
+домен не подключён (имя не разрешается): ok 0 из 44
+  ПЛОХО http → https /: статус: сеть: ENOTFOUND — http://www.7thserpent.com/; сеть: ENOTFOUND
+  ПЛОХО http → https /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО голый → www /: статус: сеть: ENOTFOUND — https://7thserpent.com/; сеть: ENOTFOUND
+  ПЛОХО голый → www /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http голый → https www /: статус: сеть: ENOTFOUND — http://7thserpent.com/; сеть: ENOTFOUND
+  ПЛОХО http голый → https www /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http → https /max-payne-1/: статус: сеть: ENOTFOUND — http://www.7thserpent.com/max-payne-1/; сеть: ENOTFOUND
+  ПЛОХО http → https /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО голый → www /max-payne-1/: статус: сеть: ENOTFOUND — https://7thserpent.com/max-payne-1/; сеть: ENOTFOUND
+  ПЛОХО голый → www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http голый → https www /max-payne-1/: статус: сеть: ENOTFOUND — http://7thserpent.com/max-payne-1/; сеть: ENOTFOUND
+  ПЛОХО http голый → https www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО главная: статус: сеть: ENOTFOUND — https://www.7thserpent.com/; сеть: ENOTFOUND
+  ПЛОХО главная: canonical: 0 шт. — Base.astro от Astro.site
+  ПЛОХО robots.txt мимо кэша: статус: сеть: ENOTFOUND — параметр запроса — мимо кэша; сеть: ENOTFOUND
+  ПЛОХО robots.txt мимо кэша: обход кэша сработал: false — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt: наш файл целиком: ответ сеть: ENOTFOUND — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt: блока Cloudflare нет: ответ сеть: ENOTFOUND — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt: вне нашего файла — только блок хостера: ответ сеть: ENOTFOUND — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt: поисковики не закрыты: ответ сеть: ENOTFOUND — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt: строка Sitemap: false — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО robots.txt без параметра (его берут роботы): false — ответ сеть: ENOTFOUND — роботы robots.txt не получают; сеть: ENOTFOUND
+  ПЛОХО sitemap-index.xml: статус: сеть: ENOTFOUND — сеть: ENOTFOUND
+  ПЛОХО sitemap-index.xml: ведёт на sitemap-0.xml: — — 
+  ПЛОХО sitemap-0.xml: статус: сеть: ENOTFOUND — сеть: ENOTFOUND
+  ПЛОХО sitemap-0.xml: адресов: ответ сеть: ENOTFOUND — страницы структуры без /404/
+  ПЛОХО sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/, https://www.7thserpent.com/cheats/, https://www.7thserpent.com/gameplay/
+  ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical: false — адресов карты 0
+  ПЛОХО несуществующий адрес: статус: сеть: ENOTFOUND — ErrorDocument 404 /404/index.html; сеть: ENOTFOUND
+  ПЛОХО несуществующий адрес: наша страница: — — title /404/ из структуры, не заглушка хостера
+  ПЛОХО /404/ напрямую: статус: сеть: ENOTFOUND — страница структуры, вне карты; сеть: ENOTFOUND
+  ПЛОХО /404/ напрямую: canonical: — — ответ сеть: ENOTFOUND
+  ПЛОХО страница /max-payne-1/: статус: сеть: ENOTFOUND — сеть: ENOTFOUND
+  ПЛОХО страница /max-payne-1/: canonical: ответ сеть: ENOTFOUND — своя страница, не список каталога
+  ПЛОХО /privacy/: статус: сеть: ENOTFOUND — сеть: ENOTFOUND
+  ПЛОХО /privacy/: canonical: ответ сеть: ENOTFOUND — 
+  ПЛОХО /privacy/: без обфускации почты Cloudflare: ответ сеть: ENOTFOUND — маркеров обфускации нет
+  ПЛОХО /privacy/: адрес ящика открытым текстом: false — ответ сеть: ENOTFOUND
+  ПЛОХО HTML страниц = сборка (dist): false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО HTML: Cache-Control (max-age=0, must-revalidate): false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО HTML не из кэша Cloudflare: false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО страницы без запрета индексации: false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО запросы не идут через Cloudflare: false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+  ПЛОХО ответы без Set-Cookie: false — главная — ответ сеть: ENOTFOUND; сеть: ENOTFOUND
+
+заглушка хостера «Поздравляем, сайт создан!» на всех адресах (домен сейчас, до первой выкладки; заголовки — по замеру): ok 16 из 44
+  ПЛОХО http → https /: статус: 200 — http://www.7thserpent.com/
+  ПЛОХО http → https /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО голый → www /: статус: 200 — https://7thserpent.com/
+  ПЛОХО голый → www /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http голый → https www /: статус: 200 — http://7thserpent.com/
+  ПЛОХО http голый → https www /: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http → https /max-payne-1/: статус: 200 — http://www.7thserpent.com/max-payne-1/
+  ПЛОХО http → https /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО голый → www /max-payne-1/: статус: 200 — https://7thserpent.com/max-payne-1/
+  ПЛОХО голый → www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО http голый → https www /max-payne-1/: статус: 200 — http://7thserpent.com/max-payne-1/
+  ПЛОХО http голый → https www /max-payne-1/: Location: — — один скачок на канонический адрес с тем же путём
+  ПЛОХО главная: canonical: 0 шт. — Base.astro от Astro.site
+  ПЛОХО robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: нет первой строки «# robots.txt — www.7thserpent.com (7th Serpent)»
+  ПЛОХО robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: <!DOCTYPE html><html><head><meta charset="utf-8"><title>Поздравляем, сайт создан!</title></head><body><h1>Поздравляем, сайт создан!</h1></body></html> — наш файл обещает: запрещать нечего
+  ПЛОХО robots.txt: строка Sitemap: false — строка на канонический sitemap-index
+  ПЛОХО sitemap-index.xml: ведёт на sitemap-0.xml: — — 
+  ПЛОХО sitemap-0.xml: адресов: 0 — страницы структуры без /404/
+  ПЛОХО sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/, https://www.7thserpent.com/cheats/, https://www.7thserpent.com/gameplay/
+  ПЛОХО sitemap-0.xml: адреса отвечают 200 со своим canonical: false — адресов карты 0
+  ПЛОХО несуществующий адрес: статус: 200 — ErrorDocument 404 /404/index.html
+  ПЛОХО несуществующий адрес: наша страница: Поздравляем, сайт создан! — title /404/ из структуры, не заглушка хостера
+  ПЛОХО /404/ напрямую: canonical: — — своя страница, не список каталога
+  ПЛОХО страница /max-payne-1/: canonical: — — своя страница, не список каталога
+  ПЛОХО /privacy/: canonical: — — 
+  ПЛОХО /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена
+  ПЛОХО HTML страниц = сборка (dist): false — 5 из 5 страниц: /: с знака 2: сборка «<!doctype html><html lang="en"><head><meta», сайт «<!DOCTYPE html><html><head><meta charset="» | /net-takoy-stranicy-m1/: с знака 2: сборка «<!doctype html><html lang="en"><head><meta», сайт «<!DOCTYPE html><html><head><meta charset="» — вставка на пути или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  ПЛОХО HTML: Cache-Control (max-age=0, must-revalidate): false — /: нет must-revalidate, max-age: —, директива не разобрана (пришло «—») | /net-takoy-stranicy-m1/: нет must-revalidate, max-age: —, директива не разобрана (пришло «—») — .htaccess обещает: правка доходит до читателя при следующем заходе
+  ok    запросы не идут через Cloudflare: ответов 15, следов Cloudflare нет

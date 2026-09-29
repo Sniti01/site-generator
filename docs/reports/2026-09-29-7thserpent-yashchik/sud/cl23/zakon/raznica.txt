@@ -1,0 +1,417 @@
+diff --git a/sites/7thserpent.com/tools/check-live.mjs b/sites/7thserpent.com/tools/check-live.mjs
+index cbd7618..66f6226 100644
+--- a/sites/7thserpent.com/tools/check-live.mjs
++++ b/sites/7thserpent.com/tools/check-live.mjs
+@@ -3,7 +3,8 @@
+  * Проверка живого сайта после привязки домена — шаг «проверка https» порядка запуска П52 п. 3
+  * (ящик → привязка домена → проверка https → Search Console). Форма — `tools/check-live.mjs` первого
+  * сайта (П54 п. 7, П55) с бэклогом 46 п. 1 и П106; «судью судят», раунды 1–3 (находки CL1-*, CL2-*, CL3-* —
+- * в пробах; раунд 3 — последний, пределы — тестами todo).
++ * в пробах; раунд 3 — последний, пределы — тестами todo). Сессия 23 (П108): Cloudflare на сайте нет (DNS и почта —
++ * у хостера) — проверка 11 наоборот, подсказки — под сайт без него; «судью судят» этой правки — находки CL23-*.
+  *
+  *   npm run live:check                          — домен из structure.json (site.domain); сборка — dist/ сайта
+  *   npm run live:check -- --host example.test   — другой хост (например, до переключения DNS)
+@@ -13,10 +14,11 @@
+  *   1. http → https, второй хост → канонический (у канонического с `www` — голый, П62 п. 4), http://второй →
+  *      https канонический — по одному скачку 301 и с тем же путём, для главной и страницы игры;
+  *   2. главная — 200, `canonical` один и равен адресу; `x-ray` хостера — справочно;
+- *   3. robots.txt мимо кэша Cloudflare (свой параметр запроса, бэклог 46 п. 1): 200; обход кэша на деле
+- *      сработал (не HIT/STALE/UPDATING; REVALIDATED — сверено с сервером); наш файл (`public/robots.txt`)
+- *      целиком, отдельными строками (иначе — первая расходящаяся строка); блока Cloudflare нет (управляемый
+- *      robots.txt зоны снимает владелец, П106); вне нашего файла — только управляемые блоки «# BEGIN <имя>
++ *   3. robots.txt мимо кэша (свой параметр запроса, бэклог 46 п. 1; кэш на пути бывает только у Cloudflare,
++ *      а его на сайте нет — П108): 200; обход кэша на деле сработал (не HIT/STALE/UPDATING; REVALIDATED —
++ *      сверено с сервером); наш файл (`public/robots.txt`) целиком, отдельными строками (иначе — первая
++ *      расходящаяся строка); блока Cloudflare нет (Cloudflare на сайте нет, П108: блок значит, что его включили
++ *      с управляемым robots.txt); вне нашего файла — только управляемые блоки «# BEGIN <имя>
+  *      Managed content … # END …» (комментарии вне блоков — справка), и ни одно правило блока в группе для `*`,
+  *      Googlebot, Bingbot или msnbot (группы по всему файлу — правило блока без своего User-agent продолжает
+  *      предыдущую) не запрещает путь сборки (запрет вне сборки — справка); Googlebot, Googlebot-Image и Bingbot
+@@ -47,8 +49,9 @@
+  *  10. страницы — без запрета индексации (`noindex`, `none`, `unavailable_after` в `X-Robots-Tag` и в `<meta>`
+  *      robots, googlebot, bingbot; только ответы 200; директива после префикса чужого бота без своего префикса —
+  *      строго запрет: fetch склеивает поля заголовка);
+- *  11. запросы идут через Cloudflare (`cf-ray` или `server: cloudflare` у каждого ответа прогона, с адресом) —
+- *      ряд 05 `/privacy/`;
++ *  11. запросы не идут через Cloudflare (П108): ни у одного ответа прогона нет следа Cloudflare — `cf-ray`,
++ *      `server: cloudflare`, `cf-cache-status`, `cf-mitigated` (иначе — адреса со следами); `/privacy/` обещает,
++ *      что страница не шлёт запросов никому, кроме сервера сайта;
+  *  12. ни один ответ прогона — без `Set-Cookie` (`/privacy/` обещает, что сайт cookies не ставит).
+  * Проверка, которая читает тело, при ответе не 200 — ПЛОХО, а не «в пустом теле ничего нет»; причина
+  * ответа (вызов Cloudflare, коды 52x, сеть) — в строке. Код 1 при любом ПЛОХО, 2 — ошибка входа. Сеть —
+@@ -421,7 +424,7 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
+       check(`${imya} ${put}: статус`, 301, r.status, sPrichinoy(r, otkuda));
+       const zhdem = `${base}${put}`;
+       const always = otkuda.startsWith('http://') && r.location === otkuda.replace('http://', 'https://') && r.location !== zhdem;
+-      check(`${imya} ${put}: Location`, zhdem, r.location || '—', always ? 'Always Use HTTPS на Cloudflare включён — выключить (второй скачок)' : 'один скачок на канонический адрес с тем же путём');
++      check(`${imya} ${put}: Location`, zhdem, r.location || '—', always ? 'второй скачок: http → https того же хоста делает не .htaccess, а сервер перед ним — переадресация на https в панели хостера (или Always Use HTTPS, если включили Cloudflare); выключить' : 'один скачок на канонический адрес с тем же путём');
+     }
+   }
+ 
+@@ -441,13 +444,13 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
+   const cfMimo = mimo.zagolovok('cf-cache-status');
+   const izKeshaMimo = IZ_KESHA.test(cfMimo);
+   const pochemuMimo = izKeshaMimo ? `ответ из кэша Cloudflare (${cfMimo}, Age ${mimo.zagolovok('age') || '—'}) — обход не удался: строка запроса вне ключа кэша; Purge by URL и повторить` : '';
+-  check('robots.txt мимо кэша: статус', 200, mimo.status, sPrichinoy(mimo, 'параметр запроса мимо кэша Cloudflare'));
++  check('robots.txt мимо кэша: статус', 200, mimo.status, sPrichinoy(mimo, 'параметр запроса — мимо кэша'));
+   check('robots.txt мимо кэша: обход кэша сработал', true, mimo.status === 200 && !izKeshaMimo, mimo.status !== 200 ? sPrichinoy(mimo, `ответ ${mimo.status}`) : `Cf-Cache-Status ${cfMimo || '—'}${pochemuMimo ? ' — ' + pochemuMimo : ''}`);
+   const rb = mimo.status === 200 ? razobratRobots(mimo.telo, nashRobots, PUTI) : null;
+   const neChitan = (tekst) => [rb ? tekst : sPrichinoy(mimo, iskh(mimo)), pochemuMimo].filter(Boolean).join('; ');
+   check('robots.txt: наш файл целиком', true, rb ? rb.nashCelikom : iskh(mimo), neChitan(rb && !rb.nashCelikom ? `public/robots.txt; первая расходящаяся строка: ${rb.raskhozhdenie}` : 'public/robots.txt одним куском, отдельными строками'));
+   const cf = rb ? rb.bloki.filter((b) => b.vid === 'cloudflare') : [];
+-  check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — управляемый robots.txt зоны не снят (Security → Bots)` : 'управляемый robots.txt Cloudflare снят (П106)'));
++  check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — robots.txt отдаёт Cloudflare со своим управляемым блоком: его включили, а на сайте его быть не должно (П108)` : 'Cloudflare на сайте нет (П108)'));
+   const chuzhie = rb ? [...rb.chuzhoyTekst, ...rb.bloki.filter((b) => b.vid === 'чужой').map((b) => `блок «${b.imya}»`), ...rb.ogranicheniya] : [];
+   check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — наш файл обещает: запрещать нечего` : 'вне нашего файла — управляемые блоки без запретов поисковикам и комментарии'));
+   const zakryto = mimo.status === 200 ? zakrytoPoiskovikam(mimo.telo, PUTI) : [];
+@@ -634,9 +637,11 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
+   }
+   check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt обещает: всё открыто для индекса` : `страниц ${sto.length}`));
+ 
+-  // Cloudflare — у каждого ответа прогона (редиректы обоих хостов, robots.txt, карты, 404), с адресом (CL3-P-2).
+-  const bezCf = [...otvety].filter(([, r]) => typeof r.status === 'number' && !r.zagolovok('cf-ray') && !/cloudflare/i.test(r.zagolovok('server'))).map(([u, r]) => `${u} (${r.status})`);
+-  check('запросы идут через Cloudflare', true, !osnova && bezCf.length === 0, osnova || (bezCf.length ? `без cf-ray: ${bezCf.slice(0, 3).join(', ')}${bezCf.length > 3 ? ` и ещё ${bezCf.length - 3}` : ''} — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты` : `ответов ${otvety.size}`));
++  // Cloudflare на сайте нет (П108): след Cloudflare у любого ответа прогона (редиректы обоих хостов, robots.txt, карты,
++  // 404) — ПЛОХО с адресом (CL3-P-2 — наоборот); /privacy/ обещает, что страница не шлёт запросов никому, кроме сервера сайта.
++  const sledCf = (r) => [r.zagolovok('cf-ray') && 'cf-ray', /cloudflare/i.test(r.zagolovok('server')) && 'server: cloudflare', r.zagolovok('cf-cache-status') && 'cf-cache-status', r.zagolovok('cf-mitigated') && 'cf-mitigated'].filter(Boolean);
++  const sCf = [...otvety].filter(([, r]) => typeof r.status === 'number' && sledCf(r).length).map(([u, r]) => `${u} (${r.status}; ${sledCf(r).join(', ')})`);
++  check('запросы не идут через Cloudflare', true, !osnova && sCf.length === 0, osnova || (sCf.length ? `через Cloudflare: ${sCf.slice(0, 3).join(', ')}${sCf.length > 3 ? ` и ещё ${sCf.length - 3}` : ''} — /privacy/ обещает: страница не шлёт запросов никому, кроме сервера сайта; Cloudflare на сайте нет (П108)` : `ответов ${otvety.size}, следов Cloudflare нет`));
+ 
+   const kuki = [];
+   for (const [u, r] of otvety) {
+diff --git a/sites/7thserpent.com/tools/testy/check-live.test.mjs b/sites/7thserpent.com/tools/testy/check-live.test.mjs
+index c816cd1..b598ee9 100644
+--- a/sites/7thserpent.com/tools/testy/check-live.test.mjs
++++ b/sites/7thserpent.com/tools/testy/check-live.test.mjs
+@@ -4,6 +4,11 @@
+ // Сборка (`dist/`) в пробах — те же страницы, что у здорового сайта (живой HTML обязан быть равен ей побайтно).
+ // У каждой порчи — ровно какие проверки краснеют. Запрос вне образца — ошибка теста, а не тихий ответ.
+ // «Судью судят»: раунд 1 (CL1-P — «ложный ok», CL1-Z — «законные формы»), раунд 2 (CL2-P, CL2-Z) — порчами с их id.
++// Сессия 23 (П108): Cloudflare на сайте нет — здоровый образец без него (заголовки хостера: `server: nginx`, замер
++// 2026-09-29); образец с Cloudflare (`{ cf: true }` — прежний здоровый: Cloudflare проксирует все ответы) краснеет
++// проверкой «запросы не идут через Cloudflare»; порчи возможностей Cloudflare (кэш, вызов, вставки, обфускация, cookies
++// `__cf_*`, управляемый блок, Always Use HTTPS) идут на нём. Без кэша на пути robots.txt с параметром и без него — один
++// ответ сервера: порча файла на сервере меняет оба (`oba`).
+ //   npm run proverki (сборка копии не нужна)
+ import { test } from 'node:test';
+ import assert from 'node:assert/strict';
+@@ -33,7 +38,9 @@ const igra = struktura.pages.find((p) => p.type === 'game').url;
+ const stranica = (url, title = 'x', telo = '<p>text</p>', golova = '') =>
+   `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title}</title><link rel="canonical" href="${B}${url}">${golova}<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/_astro/index.Cz6femgl.css"><script type="module">document.querySelector('.hdr__burger')</script></head><body><header class="hdr" data-astro-cid-m3tnyskv></header><main>${telo}<img src="/_astro/hero.webp" alt="x" srcset="/_astro/hero.webp 1200w"></main></body></html>`;
+ const CF = { 'cf-ray': '8c1a2b3c4d5e6f70-WAW', server: 'cloudflare' };
+-const HTML = { 'cache-control': 'public, max-age=0, must-revalidate', 'x-ray': 'p542:wal', 'cf-cache-status': 'DYNAMIC', 'content-type': 'text/html', ...CF };
++// Сервер хостера без Cloudflare (П108; замер 2026-09-29 — `server: nginx`, `cf-ray` нет).
++const SRV = { server: 'nginx' };
++const HTML = { 'cache-control': 'public, max-age=0, must-revalidate', 'x-ray': 'p542:wal', 'content-type': 'text/html', ...SRV };
+ const HOSTER = '# BEGIN adm.tools Managed content\nUser-agent: AhrefsBot\nDisallow: /\n\nUser-agent: MJ12bot\nDisallow: /\n# END adm.tools Managed content\n\n';
+ const CLOUDFLARE =
+   '# BEGIN Cloudflare Managed content\n# As a condition of accessing this website, you agree to abide by the following content signals:\nUser-agent: *\nContent-Signal: search=yes,ai-train=no\nAllow: /\n\nUser-agent: ClaudeBot\nDisallow: /\n# END Cloudflare Managed Content\n\n';
+@@ -44,25 +51,37 @@ const KARTA = STRANICY.map((p) => `${B}${p.url}`);
+ const PRIVACY = stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Requests about the hosting logs go to ${YASHCHIK}.</p>`);
+ const PUTI_SBORKI = [...struktura.pages.map((p) => p.url), '/_astro/index.Cz6femgl.css', '/_astro/hero.webp', '/favicon.svg', '/robots.txt', '/sitemap-index.xml', '/sitemap-0.xml'];
+ 
+-/** Образец здорового сайта: адрес → ответ. */
++/** Образец здорового сайта без Cloudflare (П108): адрес → ответ. */
+ function zdorovyy() {
+   const k = new Map();
+   for (const put of ['/', igra]) {
+-    k.set(`http://${HOST}${put}`, otvet(301, '', CF, `${B}${put}`));
+-    k.set(`https://7thserpent.com${put}`, otvet(301, '', CF, `${B}${put}`));
+-    k.set(`http://7thserpent.com${put}`, otvet(301, '', CF, `${B}${put}`));
++    k.set(`http://${HOST}${put}`, otvet(301, '', SRV, `${B}${put}`));
++    k.set(`https://7thserpent.com${put}`, otvet(301, '', SRV, `${B}${put}`));
++    k.set(`http://7thserpent.com${put}`, otvet(301, '', SRV, `${B}${put}`));
+   }
+   for (const p of STRANICY) k.set(`${B}${p.url}`, otvet(200, stranica(p.url, p.title), HTML));
+   k.set(`${B}/privacy/`, otvet(200, PRIVACY, HTML));
+-  k.set(`${B}/robots.txt?live-check=${METKA}`, otvet(200, HOSTER + nashRobots, { 'cf-cache-status': 'DYNAMIC', ...CF }));
+-  k.set(`${B}/robots.txt`, otvet(200, HOSTER + nashRobots, { 'cf-cache-status': 'HIT', age: '120', ...CF }));
+-  k.set(`${B}/sitemap-index.xml`, otvet(200, `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>${B}/sitemap-0.xml</loc></sitemap></sitemapindex>`, CF));
+-  k.set(`${B}/sitemap-0.xml`, otvet(200, urlset(KARTA), CF));
++  k.set(`${B}/robots.txt?live-check=${METKA}`, otvet(200, HOSTER + nashRobots, SRV));
++  k.set(`${B}/robots.txt`, otvet(200, HOSTER + nashRobots, SRV));
++  k.set(`${B}/sitemap-index.xml`, otvet(200, `<?xml version="1.0" encoding="UTF-8"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>${B}/sitemap-0.xml</loc></sitemap></sitemapindex>`, SRV));
++  k.set(`${B}/sitemap-0.xml`, otvet(200, urlset(KARTA), SRV));
+   k.set(`${B}/net-takoy-stranicy-${METKA}/`, otvet(404, stranica('/404/', title404), HTML));
+   k.set(`${B}/404/`, otvet(200, stranica('/404/', title404), HTML));
+   return k;
+ }
+ 
++/** Образец с Cloudflare — прежний здоровый образец (до П108): Cloudflare проксирует все ответы (`cf-ray`, `server:
++ *  cloudflare`), у страниц и robots.txt мимо кэша — `Cf-Cache-Status: DYNAMIC`, robots.txt без параметра — из кэша
++ *  (HIT, Age 120). Всё остальное здорово: краснеет ровно «запросы не идут через Cloudflare». */
++function sCloudflare(k) {
++  for (const [u, o] of k) {
++    const zag = { ...CF };
++    if (/^text\/html/.test(o.zagolovok('content-type')) || u === `${B}/robots.txt?live-check=${METKA}`) zag['cf-cache-status'] = 'DYNAMIC';
++    if (u === `${B}/robots.txt`) Object.assign(zag, { 'cf-cache-status': 'HIT', age: '120' });
++    k.set(u, sZag(o, zag));
++  }
++}
++
+ /** Сборка из образца: HTML страниц по адресу (404 — `/404/`) и пути файлов. */
+ function sborkaIz(k) {
+   return {
+@@ -71,12 +90,13 @@ function sborkaIz(k) {
+   };
+ }
+ 
+-async function progon(izmenit = () => {}, { vse, vSborke } = {}) {
++async function progon(izmenit = () => {}, { vse, vSborke, cf } = {}) {
+   const chistyy = zdorovyy();
+   if (vSborke) vSborke(chistyy);
+   const sborka = sborkaIz(chistyy);
+   const karta = zdorovyy();
+   if (vSborke) vSborke(karta);
++  if (cf) sCloudflare(karta);
+   izmenit(karta);
+   // Значение образца — ответ или список ответов на повторные запросы того же адреса (CL3-P-1).
+   const poluchit = async (url) => {
+@@ -98,6 +118,12 @@ const sZag = (o, zag) => ({ ...o, zagolovok: (i) => (i.toLowerCase() in zag ? za
+ const vTelo = (iz, na) => (o) => ({ ...o, telo: o.telo.replace(iz, na) });
+ const MIMO = `${B}/robots.txt?live-check=${METKA}`;
+ const BEZ = `${B}/robots.txt`;
++/** Порча файла robots.txt на сервере без кэша на пути (П108): оба запроса — один ответ сервера. */
++const oba = (f) => (k) => {
++  zamenit(k, MIMO, f);
++  zamenit(k, BEZ, f);
++};
++const BEZ_CF = 'запросы не идут через Cloudflare';
+ const S_VSE = 'sitemap-0.xml: адреса отвечают 200 со своим canonical';
+ const HTML_SB = 'HTML страниц = сборка (dist)';
+ const ZAPRET = 'страницы без запрета индексации';
+@@ -108,15 +134,26 @@ const KESH_HTML = 'HTML не из кэша Cloudflare';
+ const ADRES = '/privacy/: адрес ящика открытым текстом';
+ const BEZ_P = 'robots.txt без параметра (его берут роботы)';
+ 
+-test('здоровый живой сайт — все 44 проверки ok', async () => {
++test('здоровый живой сайт без Cloudflare (П108) — все 44 проверки ok', async () => {
+   const r = await progon();
+   assert.equal(r.proverki.length, VSEGO);
+   assert.deepEqual(r.plokho, [], r.otkuda);
+   assert.ok(r.spravki.some((s) => s.includes('блок хостера «adm.tools Managed content» перед нашим файлом')), r.spravki.join(' | '));
+-  assert.ok(r.spravki.some((s) => s.includes('мимо кэша: Cf-Cache-Status DYNAMIC')), r.spravki.join(' | '));
+-  assert.ok(r.spravki.some((s) => s.includes('без параметра: Cf-Cache-Status HIT, Age 120')), r.spravki.join(' | '));
++  assert.ok(r.spravki.some((s) => s.includes('мимо кэша: Cf-Cache-Status —')), r.spravki.join(' | '));
++  assert.ok(r.spravki.some((s) => s.includes('без параметра: Cf-Cache-Status —, Age —')), r.spravki.join(' | '));
+   // CL2-Z-3: ни одна зелёная строка не говорит «Always Use HTTPS включён».
+   assert.doesNotMatch(r.vse, /Always Use HTTPS/);
++  // П108, подсказки «по делу»: зелёные строки не называют Cloudflare частью здорового сайта или настройкой его зоны.
++  assert.doesNotMatch(r.vse, /Cloudflare снят|мимо кэша Cloudflare/, r.vse);
++  assert.match(r.vse, new RegExp(`ok ${BEZ_CF}: true — ответов \\d+, следов Cloudflare нет`), r.vse);
++});
++
++test('образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare»', async () => {
++  const r = await progon(() => {}, { cf: true });
++  assert.equal(r.proverki.length, VSEGO);
++  assert.deepEqual(r.plokho, [BEZ_CF], r.otkuda);
++  assert.match(r.otkuda, /через Cloudflare: http:\/\/www\.7thserpent\.com\/ \(301; cf-ray, server: cloudflare\)/, r.otkuda);
++  assert.match(r.otkuda, /и ещё \d+ — \/privacy\/ обещает/, r.otkuda);
+ });
+ 
+ test('домен не подключён (имя не разрешается) — 0 из 44', async () => {
+@@ -132,26 +169,26 @@ test('домен ведёт на хостер, сайт не заведён («n
+ });
+ 
+ const MIMO_PROVERKI = ['robots.txt мимо кэша: статус', 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', 'robots.txt: блока Cloudflare нет', VNE, POISK, 'robots.txt: строка Sitemap'];
+-const vBlokKhostera = (iz, na) => (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: HOSTER.replace(iz, na) + nashRobots }));
++const vBlokKhostera = (iz, na) => oba((o) => ({ ...o, telo: HOSTER.replace(iz, na) + nashRobots }));
+ const PORCHI = [
+   // — robots.txt мимо кэша —
+-  ['блок Cloudflare (управляемый robots.txt не снят)', (k) => zamenit(k, MIMO, vTelo(HOSTER, CLOUDFLARE + HOSTER)), ['robots.txt: блока Cloudflare нет']],
+-  ['чужая группа вне блоков', (k) => zamenit(k, MIMO, vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)), [VNE]],
+-  ['наш файл изменён (Allow → Disallow)', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: HOSTER + nashRobots.replace('Allow: /', 'Disallow: /') })), [VNE, 'robots.txt: наш файл целиком', POISK]],
++  ['блок Cloudflare (Cloudflare включили с управляемым robots.txt)', (k) => zamenit(k, MIMO, vTelo(HOSTER, CLOUDFLARE + HOSTER)), ['robots.txt: блока Cloudflare нет', BEZ_CF], { cf: true }],
++  ['чужая группа вне блоков', oba(vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)), [VNE]],
++  ['наш файл изменён (Allow → Disallow)', oba((o) => ({ ...o, telo: HOSTER + nashRobots.replace('Allow: /', 'Disallow: /') })), [VNE, 'robots.txt: наш файл целиком', POISK]],
+   ['блок хостера закрывает Googlebot', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot'), [POISK, VNE]],
+-  ['блок хостера без END', (k) => zamenit(k, MIMO, vTelo('# END adm.tools Managed content', '')), [VNE]],
+-  ['robots.txt мимо кэша — 404', (k) => zamenit(k, MIMO, () => otvet(404, stranica('/404/', title404), CF)), MIMO_PROVERKI],
+-  ['robots.txt с CRLF — чисто', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: o.telo.replace(/\n/g, '\r\n') })), []],
++  ['блок хостера без END', oba(vTelo('# END adm.tools Managed content', '')), [VNE]],
++  ['robots.txt мимо кэша — 404', (k) => zamenit(k, MIMO, () => otvet(404, stranica('/404/', title404), SRV)), MIMO_PROVERKI],
++  ['robots.txt с CRLF — чисто', oba((o) => ({ ...o, telo: o.telo.replace(/\n/g, '\r\n') })), []],
+   ['CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /'), [POISK, VNE]],
+   ['CL1-P-9b блок хостера: Googlebot, «Dissallow: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /'), [POISK, VNE]],
+   ['CL1-P-9c блок хостера: «User agent: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot'), [POISK, VNE]],
+-  ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+-  ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /movie/\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+-  ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*?\nDisallow: /wp-admin/\n# END adm.tools Managed content\n' })), []],
++  ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK, VNE]],
++  ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /movie/\n# END adm.tools Managed content\n' })), [POISK, VNE]],
++  ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*?\nDisallow: /wp-admin/\n# END adm.tools Managed content\n' })), []],
+   ['CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /cgi-bin/\nDisallow: /.well-known/'), []],
+   ['CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /.'), []],
+   ['CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: # nothing is blocked for other robots'), []],
+-  ['CL1-Z-5 комментарий хостера вне меток — справка, не отказ', (k) => zamenit(k, MIMO, (o) => ({ ...o, telo: '# robots.txt served by adm.tools hosting\n' + HOSTER + '#\n' + nashRobots })), []],
++  ['CL1-Z-5 комментарий хостера вне меток — справка, не отказ', oba((o) => ({ ...o, telo: '# robots.txt served by adm.tools hosting\n' + HOSTER + '#\n' + nashRobots })), []],
+   ['CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /movie/\nDisallow: /cheats/'), [POISK, VNE]],
+   ['CL2-P-1b блок хостера: * закрывает CSS', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /*.css$'), [POISK, VNE]],
+   ['CL2-P-1c блок хостера: Googlebot-Image закрыт', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot-Image'), [POISK, VNE]],
+@@ -160,22 +197,23 @@ const PORCHI = [
+   ['CL2-P-5b «Disallowed: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallowed: /'), [POISK, VNE]],
+   ['CL2-P-5c «User-agent: * (all robots)»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: * (all robots)\nDisallow: /*'), [POISK, VNE]],
+   // CL1-P-2, CL1-Z-1: «мимо кэша» пришло из кэша — обход не удался; свои строки не «чужие».
+-  ['CL1-P-2 мимо кэша — HIT старой версии нашего файла', (k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), ['robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком']],
+-  ['CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — чисто', (k) => zamenit(k, MIMO, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), []],
+-  // — robots.txt без параметра (CL1-P-1, CL2-P-4, CL2-Z-9): его берут роботы —
+-  ['из кэша — старая безвредная версия без Sitemap: справка, не отказ', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })), []],
+-  ['CL1-P-1a без параметра — HIT, «Disallow: /» для всех', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: 'User-agent: *\nDisallow: /\n' })), [BEZ_P]],
+-  ['CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша', (k) => zamenit(k, BEZ, () => otvet(200, HOSTER + 'User-agent: *\nAllow: /\n', { 'cf-cache-status': 'DYNAMIC', ...CF })), [BEZ_P]],
+-  ['CL1-P-1c без параметра — 503', (k) => zamenit(k, BEZ, () => otvet(503, 'Service Unavailable', CF)), [BEZ_P]],
+-  ['CL2-P-4a без параметра из кэша — с блоком Cloudflare', (k) => zamenit(k, BEZ, vTelo(HOSTER, CLOUDFLARE + HOSTER)), [BEZ_P]],
+-  ['CL2-P-4b без параметра из кэша — группы GPTBot вне блоков', (k) => zamenit(k, BEZ, vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)), [BEZ_P]],
++  ['CL1-P-2 мимо кэша — HIT старой версии нашего файла', (k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), ['robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', BEZ_CF], { cf: true }],
++  ['CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare', (k) => zamenit(k, MIMO, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), [BEZ_CF], { cf: true }],
++  // — robots.txt без параметра (CL1-P-1, CL2-P-4, CL2-Z-9): его берут роботы; кэш на пути — только у Cloudflare —
++  ['из кэша — старая безвредная версия без Sitemap: справка, не отказ', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })), [BEZ_CF], { cf: true }],
++  ['П108 без Cloudflare: без параметра — другой файл, кэша на пути нет — отдаёт не наш сервер', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })), [BEZ_P]],
++  ['CL1-P-1a без параметра — HIT, «Disallow: /» для всех', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: 'User-agent: *\nDisallow: /\n' })), [BEZ_P, BEZ_CF], { cf: true }],
++  ['CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша', (k) => zamenit(k, BEZ, () => otvet(200, HOSTER + 'User-agent: *\nAllow: /\n', { 'cf-cache-status': 'DYNAMIC', ...CF })), [BEZ_P, BEZ_CF], { cf: true }],
++  ['CL1-P-1c без параметра — 503', (k) => zamenit(k, BEZ, () => otvet(503, 'Service Unavailable', SRV)), [BEZ_P]],
++  ['CL2-P-4a без параметра из кэша — с блоком Cloudflare', (k) => zamenit(k, BEZ, vTelo(HOSTER, CLOUDFLARE + HOSTER)), [BEZ_P, BEZ_CF], { cf: true }],
++  ['CL2-P-4b без параметра из кэша — группы GPTBot вне блоков', (k) => zamenit(k, BEZ, vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)), [BEZ_P, BEZ_CF], { cf: true }],
+   // Решение раунда 2: копия из кэша без нашего файла, но и без вреда (ничего не закрыто, чужого нет) теряет только
+   // строку Sitemap — та же безвредная разница, что «старая версия без Sitemap»: справка, не отказ.
+-  ['CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER })), []],
++  ['CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER })), [BEZ_CF], { cf: true }],
+   ['адрес ящика на поддомене-двойнике — не наш', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to box@7thserpent.com.evil.example.</p>'), HTML)) }],
+-  ['CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://7thserpent.com/') })), []],
+-  ['CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://evil.example/') })), [BEZ_P]],
+-  ['CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам', (k) => { zamenit(k, MIMO, () => otvet(403, '<title>Just a moment...</title>', { 'cf-mitigated': 'challenge', ...CF })); zamenit(k, BEZ, (o) => sZag(o, { 'cf-cache-status': 'MISS' })); }, MIMO_PROVERKI],
++  ['CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://7thserpent.com/') })), [BEZ_CF], { cf: true }],
++  ['CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://evil.example/') })), [BEZ_P, BEZ_CF], { cf: true }],
++  ['CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам', (k) => { zamenit(k, MIMO, () => otvet(403, '<title>Just a moment...</title>', { 'cf-mitigated': 'challenge', ...CF })); zamenit(k, BEZ, (o) => sZag(o, { 'cf-cache-status': 'MISS' })); }, [...MIMO_PROVERKI, BEZ_CF], { cf: true }],
+   // — HTML (CL1-P-3, CL1-P-4, CL2-P-2): все страницы —
+   ['CL1-P-3a Cache-Control: max-age=14400 и must-revalidate', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=14400, must-revalidate' })), [CC]],
+   ['CL1-P-3b два Cache-Control, склеенные fetch', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'max-age=14400, public, max-age=0, must-revalidate' })), [CC]],
+@@ -183,30 +221,30 @@ const PORCHI = [
+   ['CL2-P-2 s-maxage=86400 на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=0, s-maxage=86400, must-revalidate' })), [CC]],
+   ['CL2-P-2 CDN-Cache-Control: max-age=86400', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cdn-cache-control': 'max-age=86400' })), [CC]],
+   ['CL2-P-2 max-age=86400 на странице фильма', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cache-control': 'max-age=86400' })), [CC]],
+-  ['CL1-P-4 главная из кэша Cloudflare', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '5400' })), [KESH_HTML]],
+-  ['CL3-P-1 главная MISS, повтор — HIT (Edge TTL)', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'HIT', age: '7200' })]); }, [KESH_HTML]],
+-  ['CL3-P-1 главная MISS, повтор — REVALIDATED — чисто', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'REVALIDATED' })]); }, []],
++  ['CL1-P-4 главная из кэша Cloudflare', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '5400' })), [KESH_HTML, BEZ_CF], { cf: true }],
++  ['CL3-P-1 главная MISS, повтор — HIT (Edge TTL)', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'HIT', age: '7200' })]); }, [KESH_HTML, BEZ_CF], { cf: true }],
++  ['CL3-P-1 главная MISS, повтор — REVALIDATED — краснеет только след Cloudflare', (k) => { const o = k.get(`${B}/`); k.set(`${B}/`, [sZag(o, { 'cf-cache-status': 'MISS' }), sZag(o, { 'cf-cache-status': 'REVALIDATED' })]); }, [BEZ_CF], { cf: true }],
+   ['CL3-P-7 s-maxage в кавычках', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=0, s-maxage="86400", must-revalidate' })), [CC]],
+   ['CL3-P-7 два s-maxage: 0 и 86400', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=0, s-maxage=0, s-maxage=86400, must-revalidate' })), [CC]],
+   ['CL3-P-4 Content-Type: windows-1251 на странице фильма', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'content-type': 'text/html; charset=windows-1251' })), [HTML_SB]],
+   ['CL3-P-4 Content-Type: text/plain на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'content-type': 'text/plain' })), [HTML_SB]],
+-  ['CL3-P-2 голый хост — «серое облако»: редиректы без cf-ray', (k) => { for (const put of ['/', igra]) for (const u of [`https://7thserpent.com${put}`, `http://7thserpent.com${put}`]) zamenit(k, u, (o) => sZag(o, { 'cf-ray': '', server: 'nginx' })); }, ['запросы идут через Cloudflare']],
++  ['CL3-P-2 (П108 — наоборот) через Cloudflare только голый хост: его редиректы с cf-ray', (k) => { for (const put of ['/', igra]) for (const u of [`https://7thserpent.com${put}`, `http://7thserpent.com${put}`]) zamenit(k, u, (o) => sZag(o, CF)); }, [BEZ_CF]],
+   ['CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто', (k) => { for (const p of [...STRANICY.map((x) => x.url), '/404/', `/net-takoy-stranicy-${METKA}/`]) zamenit(k, `${B}${p}`, (o) => ({ ...o, telo: o.telo.split('data-astro-cid-m3tnyskv').join('data-astro-cid-545q7pxz').split('index.Cz6femgl.css').join('index.Q1w2E3r4.css') })); }, []],
+-  ['CL2-P-2 страница фильма из кэша Cloudflare', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '86400' })), [KESH_HTML]],
+-  ['CL2-Z-5 главная REVALIDATED — сверено с сервером, чисто', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), []],
++  ['CL2-P-2 страница фильма из кэша Cloudflare', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cf-cache-status': 'HIT', age: '86400' })), [KESH_HTML, BEZ_CF], { cf: true }],
++  ['CL2-Z-5 главная REVALIDATED — сверено с сервером, краснеет только след Cloudflare', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), [BEZ_CF], { cf: true }],
+   ['canonical главной на голый хост', (k) => zamenit(k, `${B}/`, vTelo(`${B}/"`, 'https://7thserpent.com/"')), ['главная: canonical', S_VSE, HTML_SB]],
+   ['два canonical на главной', (k) => zamenit(k, `${B}/`, vTelo('</head>', `<link rel="canonical" href="${B}/x/"></head>`)), ['главная: canonical', S_VSE, HTML_SB]],
+   ['CL2-P-8 canonical игры только в комментарии (и в сборке)', () => {}, [`страница ${igra}: canonical`, S_VSE], { vSborke: (k) => zamenit(k, `${B}${igra}`, vTelo(/<link rel="canonical"[^>]*>/, (m) => `<!-- ${m} -->`)) }],
+   // — вставки и чужие ресурсы (CL1-P-6, CL2-P-3): HTML = сборка —
+   ['CL1-P-6 вставки Cloudflare: Web Analytics и JS detections', (k) => {
+     for (const u of [`${B}/`, `${B}/privacy/`]) zamenit(k, u, vTelo('</main>', "</main><script defer src=\"https://static.cloudflareinsights.com/beacon.min.js/v8b\" data-cf-beacon='{\"token\":\"x\"}'></script><script>a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js'</script>"));
+-  }, [HTML_SB]],
++  }, [HTML_SB, BEZ_CF], { cf: true }],
+   ['чужая таблица стилей на главной', (k) => zamenit(k, `${B}/`, vTelo('</head>', '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=X"></head>')), [HTML_SB]],
+   ['CL2-P-3 srcset на чужой хост', (k) => zamenit(k, `${B}/privacy/`, vTelo('/_astro/hero.webp 1200w', 'https://cdn.tracker.example/x.webp 1200w')), [HTML_SB]],
+   ['CL2-P-3 base href на чужой хост', (k) => zamenit(k, `${B}/privacy/`, vTelo('<meta charset="utf-8">', '<meta charset="utf-8"><base href="https://cdn.tracker.example/">')), [HTML_SB]],
+   ['CL2-P-3 встроенный скрипт: sendBeacon и cookie', (k) => zamenit(k, `${B}/privacy/`, vTelo('</main>', "</main><script>navigator.sendBeacon('https://t.example/b');document.cookie='x=1'</script>")), [HTML_SB]],
+-  ['CL2-P-3 вставка только на 404', (k) => zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, vTelo('</main>', '</main><script src="/cdn-cgi/zaraz/i.js"></script>')), [HTML_SB]],
+-  ['CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»', (k) => { for (const u of ['/pc/', '/quotes/']) k.set(`${B}${u}`, otvet(403, '<html><head><title>Just a moment...</title></head><body><script src="/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1"></script></body></html>', { 'cf-mitigated': 'challenge', ...CF })); }, [S_VSE]],
++  ['CL2-P-3 вставка Cloudflare (Zaraz) только на 404', (k) => zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, vTelo('</main>', '</main><script src="/cdn-cgi/zaraz/i.js"></script>')), [HTML_SB, BEZ_CF], { cf: true }],
++  ['CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка»', (k) => { for (const u of ['/pc/', '/quotes/']) k.set(`${B}${u}`, otvet(403, '<html><head><title>Just a moment...</title></head><body><script src="/cdn-cgi/challenge-platform/h/b/orchestrate/chl_page/v1"></script></body></html>', { 'cf-mitigated': 'challenge', ...CF })); }, [S_VSE, BEZ_CF], { cf: true }],
+   // — запрет индексации (CL1-P-13, CL2-P-6, CL2-Z-6) —
+   ['CL1-P-13 X-Robots-Tag: noindex на страницах', (k) => { for (const p of STRANICY) zamenit(k, `${B}${p.url}`, (o) => sZag(o, { 'x-robots-tag': 'noindex, nofollow' })); }, [ZAPRET]],
+   ['CL2-P-6 X-Robots-Tag: unavailable_after', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'x-robots-tag': 'unavailable_after: 2020-01-01' })), [ZAPRET]],
+@@ -217,30 +255,36 @@ const PORCHI = [
+   ['CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто', (k) => { for (const p of STRANICY) zamenit(k, `${B}${p.url}`, (o) => sZag(o, { 'x-robots-tag': 'max-image-preview:none, noarchive' })); }, []],
+   ['CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто', (k) => zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => sZag(o, { 'x-robots-tag': 'noindex' })), []],
+   // — cookies (CL1-P-12) —
+-  ['CL1-P-12 Set-Cookie на странице игры и на 404', (k) => { zamenit(k, `${B}${igra}`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); }, ['ответы без Set-Cookie']],
+-  ['Set-Cookie на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': '__cf_bm=abc; path=/' })), ['ответы без Set-Cookie']],
+-  // — Cloudflare проксирует (CL2-P-9) —
+-  ['CL2-P-9 ни одного cf-ray — Cloudflare не проксирует', (k) => { for (const [u, o] of k) k.set(u, sZag(o, { 'cf-ray': '', server: 'nginx', 'cf-cache-status': '' })); }, ['запросы идут через Cloudflare']],
++  ['CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404', (k) => { zamenit(k, `${B}${igra}`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); }, ['ответы без Set-Cookie', BEZ_CF], { cf: true }],
++  ['Set-Cookie Cloudflare на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': '__cf_bm=abc; path=/' })), ['ответы без Set-Cookie', BEZ_CF], { cf: true }],
++  ['П108 Set-Cookie сервера хостера на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': 'PHPSESSID=abc; path=/' })), ['ответы без Set-Cookie']],
++  // — Cloudflare на пути (CL2-P-9; П108 — наоборот: следа Cloudflare быть не должно ни у одного ответа) —
++  ['CL2-P-9 (П108 — наоборот) Cloudflare проксирует все ответы — образец с Cloudflare', () => {}, [BEZ_CF], { cf: true }],
++  ['П108 след Cloudflare только server: cloudflare — у главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { server: 'cloudflare' })), [BEZ_CF]],
++  ['П108 след Cloudflare только cf-ray — у robots.txt без параметра', (k) => zamenit(k, BEZ, (o) => sZag(o, { 'cf-ray': '8c1a2b3c4d5e6f70-WAW' })), [BEZ_CF]],
++  ['П108 след Cloudflare только Cf-Cache-Status — у карты сайта', (k) => zamenit(k, `${B}/sitemap-0.xml`, (o) => sZag(o, { 'cf-cache-status': 'DYNAMIC' })), [BEZ_CF]],
++  ['П108 след Cloudflare только cf-mitigated — у страницы фильма', (k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'cf-mitigated': 'challenge' })), [BEZ_CF]],
+   // — редиректы (CL1-P-5) —
+-  ['CL1-P-5 редирект страницы теряет путь', (k) => { for (const u of [`http://${HOST}${igra}`, `https://7thserpent.com${igra}`, `http://7thserpent.com${igra}`]) k.set(u, otvet(301, '', CF, `${B}/`)); }, [`http → https ${igra}: Location`, `голый → www ${igra}: Location`, `http голый → https www ${igra}: Location`]],
+-  ['Always Use HTTPS: http://голый → https://голый', (k) => k.set('http://7thserpent.com/', otvet(301, '', CF, 'https://7thserpent.com/')), ['http голый → https www /: Location']],
++  ['CL1-P-5 редирект страницы теряет путь', (k) => { for (const u of [`http://${HOST}${igra}`, `https://7thserpent.com${igra}`, `http://7thserpent.com${igra}`]) k.set(u, otvet(301, '', SRV, `${B}/`)); }, [`http → https ${igra}: Location`, `голый → www ${igra}: Location`, `http голый → https www ${igra}: Location`]],
++  ['П108 переадресация на https у хостера: http://голый → https://голый (второй скачок)', (k) => k.set('http://7thserpent.com/', otvet(301, '', SRV, 'https://7thserpent.com/')), ['http голый → https www /: Location']],
++  ['Always Use HTTPS (Cloudflare включили): http://голый → https://голый', (k) => k.set('http://7thserpent.com/', otvet(301, '', CF, 'https://7thserpent.com/')), ['http голый → https www /: Location', BEZ_CF], { cf: true }],
+   ['302 вместо 301', (k) => zamenit(k, `http://${HOST}/`, (o) => ({ ...o, status: 302 })), ['http → https /: статус']],
+   // — карта (CL1-P-14) —
+-  ['карта без /privacy/', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset(KARTA.filter((u) => !u.endsWith('/privacy/'))), CF)), ['sitemap-0.xml: адресов', 'sitemap-0.xml: адреса = структура']],
+-  ['карта с /404/', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset([...KARTA, `${B}/404/`]), CF)), ['sitemap-0.xml: адресов', 'sitemap-0.xml: адреса = структура']],
+-  ['карта: дубль вместо /privacy/ (тот же счёт)', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset([...KARTA.filter((u) => !u.endsWith('/privacy/')), `${B}/`]), CF)), ['sitemap-0.xml: адреса = структура']],
++  ['карта без /privacy/', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset(KARTA.filter((u) => !u.endsWith('/privacy/'))), SRV)), ['sitemap-0.xml: адресов', 'sitemap-0.xml: адреса = структура']],
++  ['карта с /404/', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset([...KARTA, `${B}/404/`]), SRV)), ['sitemap-0.xml: адресов', 'sitemap-0.xml: адреса = структура']],
++  ['карта: дубль вместо /privacy/ (тот же счёт)', (k) => k.set(`${B}/sitemap-0.xml`, otvet(200, urlset([...KARTA.filter((u) => !u.endsWith('/privacy/')), `${B}/`]), SRV)), ['sitemap-0.xml: адреса = структура']],
+   ['индекс ведёт на sitemap-1.xml', (k) => zamenit(k, `${B}/sitemap-index.xml`, vTelo('sitemap-0.xml', 'sitemap-1.xml')), ['sitemap-index.xml: ведёт на sitemap-0.xml']],
+   ['CL1-P-14 14 из 17 адресов карты — 404', (k) => { for (const p of STRANICY.filter((x) => !['/', igra, '/privacy/'].includes(x.url))) k.set(`${B}${p.url}`, otvet(404, stranica('/404/', title404), HTML)); }, [S_VSE]],
+   // — 404, страница игры, /privacy/ (CL1-P-7) —
+-  ['несуществующий адрес — 404 хостера', (k) => k.set(`${B}/net-takoy-stranicy-${METKA}/`, otvet(404, '<html><head><title>404 Not Found</title></head></html>', CF)), ['несуществующий адрес: наша страница']],
++  ['несуществующий адрес — 404 хостера', (k) => k.set(`${B}/net-takoy-stranicy-${METKA}/`, otvet(404, '<html><head><title>404 Not Found</title></head></html>', SRV)), ['несуществующий адрес: наша страница']],
+   ['несуществующий адрес — наша страница со статусом 200', (k) => zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => ({ ...o, status: 200 })), ['несуществующий адрес: статус']],
+   ['/404/ напрямую — 404', (k) => zamenit(k, `${B}/404/`, (o) => ({ ...o, status: 404 })), ['/404/ напрямую: статус']],
+-  ['страница игры — 500', (k) => k.set(`${B}${igra}`, otvet(500, '', CF)), [`страница ${igra}: статус`, `страница ${igra}: canonical`, S_VSE]],
++  ['страница игры — 500', (k) => k.set(`${B}${igra}`, otvet(500, '', SRV)), [`страница ${igra}: статус`, `страница ${igra}: canonical`, S_VSE]],
+   ['CL1-P-7 страница игры — список каталога Apache', (k) => k.set(`${B}${igra}`, otvet(200, `<html><head><title>Index of ${igra}</title></head><body><h1>Index of ${igra}</h1></body></html>`, HTML)), [`страница ${igra}: canonical`, S_VSE, HTML_SB]],
+   // — ящик (CL1-P-8, CL2-Z-1, CL2-Z-2, CL2-P-7) —
+   ['CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто', () => {}, [], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to <a href="mailto:${YASHCHIK}">${YASHCHIK}</a>.</p>`), HTML)) }],
+   ['CL2-Z-1 адрес ящика с &#64; — чисто', () => {}, [], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to box&#64;7thserpent.com.</p>'), HTML)) }],
+-  ['/privacy/ с __cf_email__ вместо адреса', (k) => zamenit(k, `${B}/privacy/`, vTelo(YASHCHIK, '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a2b">[email&#160;protected]</a><script src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>')), [ADRES, '/privacy/: без обфускации почты Cloudflare', HTML_SB]],
++  ['/privacy/ с __cf_email__ вместо адреса (обфускация Cloudflare)', (k) => zamenit(k, `${B}/privacy/`, vTelo(YASHCHIK, '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a2b">[email&#160;protected]</a><script src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>')), [ADRES, '/privacy/: без обфускации почты Cloudflare', HTML_SB, BEZ_CF], { cf: true }],
+   ['CL1-P-8 /privacy/ без адреса ящика (и в сборке)', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com'), HTML)) }],
+   ['CL2-P-7 адрес ящика первого сайта', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to jakub@ac4bf-thewatch.com.</p>'), HTML)) }],
+   ['CL2-P-7 адрес ящика только в комментарии', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', `<p>Write to us.</p><!-- ${YASHCHIK} -->`), HTML)) }],
+@@ -259,20 +303,20 @@ for (const [imya, izmenit, zhdem, opcii] of PORCHI) {
+ }
+ 
+ test('справки: кэш, положение блока хостера, комментарии вне меток', async () => {
+-  const kesh = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })));
++  const kesh = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })), { cf: true });
+   assert.ok(kesh.spravki.some((s) => s.includes('это кэш Cloudflare, не отказ')), kesh.spravki.join(' | '));
+-  const posle = await progon((k) => zamenit(k, MIMO, (o) => ({ ...o, telo: nashRobots + '\n' + HOSTER })));
++  const posle = await progon(oba((o) => ({ ...o, telo: nashRobots + '\n' + HOSTER })));
+   assert.deepEqual(posle.plokho, []);
+   assert.ok(posle.spravki.some((s) => s.includes('после нашего файла')), posle.spravki.join(' | '));
+-  const komm = await progon((k) => zamenit(k, MIMO, (o) => ({ ...o, telo: '# robots.txt served by adm.tools hosting\n' + HOSTER + nashRobots })));
++  const komm = await progon(oba((o) => ({ ...o, telo: '# robots.txt served by adm.tools hosting\n' + HOSTER + nashRobots })));
+   assert.ok(komm.spravki.some((s) => s.includes('# robots.txt served by adm.tools hosting')), komm.spravki.join(' | '));
+-  const miss = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'MISS' })));
+-  assert.deepEqual(miss.plokho, []);
++  const miss = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cf-cache-status': 'MISS' })), { cf: true });
++  assert.deepEqual(miss.plokho, [BEZ_CF]);
+   assert.ok(miss.spravki.some((s) => s.includes('Cloudflare кладёт HTML в кэш')), miss.spravki.join(' | '));
+ });
+ 
+ test('CL1-Z-1 обход кэша не удался — причина названа в строке', async () => {
+-  const r = await progon((k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })));
++  const r = await progon((k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), { cf: true });
+   assert.match(r.otkuda, /robots\.txt: наш файл целиком: false — .*ответ из кэша Cloudflare \(HIT, Age 9120\)/);
+   assert.match(r.otkuda, /первая расходящаяся строка/);
+ });
+@@ -289,8 +333,11 @@ test('подсказки причин: вызов Cloudflare, 526, cookies и и
+   // CL2-Z-7: cookie ответа 301 — с адресом и статусом.
+   const kuki301 = await progon((k) => zamenit(k, `http://${HOST}${igra}`, (o) => sZag(o, { 'set-cookie': '__cf_bm=2; path=/' })));
+   assert.match(kuki301.otkuda, new RegExp(`__cf_bm \\(http://${HOST.replace(/\./g, '\\.')}${igra} — 301`));
+-  const always = await progon((k) => k.set('http://7thserpent.com/', otvet(301, '', CF, 'https://7thserpent.com/')));
++  const always = await progon((k) => k.set('http://7thserpent.com/', otvet(301, '', CF, 'https://7thserpent.com/')), { cf: true });
+   assert.match(always.otkuda, /Always Use HTTPS/);
++  // П108: без Cloudflare тот же второй скачок делает сервер перед .htaccess — подсказка называет панель хостера.
++  const khoster = await progon((k) => k.set('http://7thserpent.com/', otvet(301, '', SRV, 'https://7thserpent.com/')));
++  assert.match(khoster.otkuda, /http голый → https www \/: Location: https:\/\/7thserpent\.com\/ — второй скачок[^|]*панели хостера/, khoster.otkuda);
+   // CL2-Z-8: главная не 200 — ответ назван в строках кэша HTML.
+   const s503 = await progon((k) => zamenit(k, `${B}/`, (o) => ({ ...o, status: 503 })));
+   assert.match(s503.otkuda, new RegExp(`${CC.replace(/[()]/g, '\\$&')}: false — главная — ответ 503`));

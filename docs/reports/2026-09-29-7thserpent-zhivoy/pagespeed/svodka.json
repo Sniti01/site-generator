@@ -1,0 +1,9 @@
+[
+  {
+    "imya": "glavnaya",
+    "url": "https://www.7thserpent.com/",
+    "rezhim": "MOBILE",
+    "nachalo": "2026-09-29T20:33:00.112Z",
+    "oshibka": "429: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.\",\n    \"errors\": [\n      {\n        \"message\": \"Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:58379"
+  }
+]

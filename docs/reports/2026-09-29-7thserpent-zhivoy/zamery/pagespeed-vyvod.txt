@@ -1,0 +1,2 @@
+glavnaya MOBILE: ответ 429 — { "error": { "code": 429, "message": "Quota exceeded for quota metric 'Queries' and limit 'Queries per day' of service 'pagespeedonline.googleapis.com' for consumer 'project_number:583797351490'.", "errors": [ { "message": "Quota exceeded for quota metric 'Queries' and li
+отказ квоты — стоп по пункту (П111): следующие запуски не делаются

@@ -13,14 +13,16 @@
 # Когда работает:
 #   • руками: Actions → «Deploy 7thserpent.com» → Run workflow — всегда; вход SERPENT_FIRST = `on` — первая
 #     выкладка. Первой считается и выкладка, у которой на сервере нет нашего index.html (вход по умолчанию её
-#     не отменяет): домен обязан не отвечать, сборка CI обязана равняться принятой в сессии 22;
+#     не отменяет): домен обязан не отвечать — или вход SERPENT_DOMAIN_BOUND = `on` (владелец согласен, что домен
+#     уже привязан: сторож домена печатает, что тот отвечает, и не останавливает, П108); сборка CI обязана равняться
+#     принятой (gates/sborka-prinyataya.json);
 #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
 #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
 #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
 #     выкладки — только при SERPENT_LIVE = `on`. Обе переменные — только после зелёного `npm run live:check`.
 #
 # Секреты (Settings → Secrets and variables → Actions → Secrets); лист владельца —
-# docs/reports/2026-09-28-7thserpent-publikacija/ruki-vladelca.md:
+# docs/reports/2026-09-29-7thserpent-yashchik/ruki-vladelca.md (прежний — …/2026-09-28-7thserpent-publikacija/):
 #   SERPENT_FTP_HOST      хост FTP из панели
 #   SERPENT_FTP_PORT      порт (21)
 #   SERPENT_FTP_USER      логин пользователя FTP робота второго сайта
@@ -39,7 +41,8 @@
 #
 # Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
 # Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
-# глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2) → при
+# глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2; при первой
+# выкладке и входе SERPENT_DOMAIN_BOUND = on — строка ответа домена, без стопа, П108) → при
 # первой: сборка CI = принятая (sha256 после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ без
 # главной, затем главная → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE). Красный
 # гейт, сторож сборки или сторож выкладки останавливает прогон до
@@ -55,7 +58,12 @@ on:
   workflow_dispatch:
     inputs:
       SERPENT_FIRST:
-        description: 'Первая выкладка: on — домен обязан не отвечать, сборка CI обязана равняться принятой'
+        description: 'Первая выкладка: on — домен обязан не отвечать (или SERPENT_DOMAIN_BOUND = on), сборка CI обязана равняться принятой'
+        type: choice
+        options: ['off', 'on']
+        default: 'off'
+      SERPENT_DOMAIN_BOUND:
+        description: 'Домен привязан — согласен: on — при первой выкладке сторож домена печатает, что отвечает домен, и не останавливает (П108)'
         type: choice
         options: ['off', 'on']
         default: 'off'
@@ -158,6 +166,7 @@ jobs:
       - name: Домен уже привязан?
         env:
           SERPENT_PERVAYA: ${{ steps.pervaya.outputs.pervaya }}
+          SERPENT_DOMAIN_BOUND: ${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}
         run: node $SITE/tools/storozha-vykladki.mjs domen
 
       # Пустой признак — тоже первая (SV2-O-4): сверка пропускается только при явном «off».

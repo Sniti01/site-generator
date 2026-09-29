@@ -1,0 +1,1295 @@
+{
+  "_": [
+    "Живой образец хостера www.7thserpent.com — сессия 24 (П111), 2026-09-29, после первой выкладки (прогон #4, add241a).",
+    "otvety — ответы прогона 1 live:check (регистратор ответов через node --import: docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/zapis-otvetov.mjs): время, статус, заголовки как их отдаёт fetch (имена строчными), длина и sha256 тела.",
+    "Тела robots.txt — строкой UTF-8, байт в байт (sha256 строки = sha256 записи); тела HTML и карт не записаны: в пробах страница = сборка, карта = структура.",
+    "robotsPary — две пары robots.txt с параметром ?live-check=<метка> и без, с промежутком (instrumenty/robots-para.mjs). Наш файл в телах — public/robots.txt сборки add241a."
+  ],
+  "metka": "1790713369257",
+  "otvety": {
+    "http://www.7thserpent.com/": {
+      "vremya": "2026-09-29T20:22:49.258Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "connection",
+          "keep-alive"
+        ],
+        [
+          "content-length",
+          "275"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:49 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=604"
+        ]
+      ],
+      "dlina": 275,
+      "sha256": "4c879ba9fa0bbc3aa3e3bd811f67955a6bb401841c0e31281cd74c4bbf439b9a"
+    },
+    "https://7thserpent.com/": {
+      "vremya": "2026-09-29T20:22:49.674Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "content-length",
+          "275"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:49 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=648"
+        ]
+      ],
+      "dlina": 275,
+      "sha256": "4c879ba9fa0bbc3aa3e3bd811f67955a6bb401841c0e31281cd74c4bbf439b9a"
+    },
+    "http://7thserpent.com/": {
+      "vremya": "2026-09-29T20:22:49.897Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "connection",
+          "keep-alive"
+        ],
+        [
+          "content-length",
+          "275"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.000/wa190:D=610"
+        ]
+      ],
+      "dlina": 275,
+      "sha256": "4c879ba9fa0bbc3aa3e3bd811f67955a6bb401841c0e31281cd74c4bbf439b9a"
+    },
+    "http://www.7thserpent.com/max-payne-1/": {
+      "vremya": "2026-09-29T20:22:50.032Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "connection",
+          "keep-alive"
+        ],
+        [
+          "content-length",
+          "287"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/max-payne-1/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=672"
+        ]
+      ],
+      "dlina": 287,
+      "sha256": "861dcd82dc3438f042ebb65720b181da182f91c10a9bc1b032bddf9b056b7d9e"
+    },
+    "https://7thserpent.com/max-payne-1/": {
+      "vremya": "2026-09-29T20:22:50.118Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "content-length",
+          "287"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/max-payne-1/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.010/wa190:D=612"
+        ]
+      ],
+      "dlina": 287,
+      "sha256": "861dcd82dc3438f042ebb65720b181da182f91c10a9bc1b032bddf9b056b7d9e"
+    },
+    "http://7thserpent.com/max-payne-1/": {
+      "vremya": "2026-09-29T20:22:50.180Z",
+      "status": 301,
+      "zagolovki": [
+        [
+          "connection",
+          "keep-alive"
+        ],
+        [
+          "content-length",
+          "287"
+        ],
+        [
+          "content-type",
+          "text/html; charset=iso-8859-1"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "location",
+          "https://www.7thserpent.com/max-payne-1/"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.000/wa190:D=606"
+        ]
+      ],
+      "dlina": 287,
+      "sha256": "861dcd82dc3438f042ebb65720b181da182f91c10a9bc1b032bddf9b056b7d9e"
+    },
+    "https://www.7thserpent.com/": {
+      "vremya": "2026-09-29T20:22:50.252Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"c068-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=820"
+        ]
+      ],
+      "dlina": 49256,
+      "sha256": "67666031e99baf91cf7f626c714e631a769e01b9c8f43644a0d0fb22511ac3fe"
+    },
+    "https://www.7thserpent.com/sitemap-0.xml": {
+      "vremya": "2026-09-29T20:22:50.456Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "accept-ranges",
+          "bytes"
+        ],
+        [
+          "content-length",
+          "1321"
+        ],
+        [
+          "content-type",
+          "application/xml"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "\"529-65ca47e8066c0\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:27 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.010/wa190:D=1099"
+        ]
+      ],
+      "dlina": 1321,
+      "sha256": "044be05c29cf29a936390baa69464590de1c24f7e6877be6576980ae9673f8f2"
+    },
+    "https://www.7thserpent.com/robots.txt?live-check=1790713369257": {
+      "vremya": "2026-09-29T20:22:50.522Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/plain"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"4d1-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.010/wa190:D=1016"
+        ]
+      ],
+      "dlina": 1582,
+      "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+      "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+    },
+    "https://www.7thserpent.com/robots.txt": {
+      "vremya": "2026-09-29T20:22:50.593Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/plain"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"4d1-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=1022"
+        ]
+      ],
+      "dlina": 1582,
+      "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+      "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+    },
+    "https://www.7thserpent.com/sitemap-index.xml": {
+      "vremya": "2026-09-29T20:22:50.659Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "accept-ranges",
+          "bytes"
+        ],
+        [
+          "content-length",
+          "189"
+        ],
+        [
+          "content-type",
+          "application/xml"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "\"bd-65ca47e8066c0\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:27 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=943"
+        ]
+      ],
+      "dlina": 189,
+      "sha256": "e70b4cbb4cd147a55131b2b1d9338bc49fe132779cb0fb9d1ffbc5103d415ab5"
+    },
+    "https://www.7thserpent.com/cheats/": {
+      "vremya": "2026-09-29T20:22:50.724Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"8e5f-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=1612"
+        ]
+      ],
+      "dlina": 36447,
+      "sha256": "993b5daf15ee196f3dba146d2a499112a16927be05d6a12dd0f77ed89b9e7c96"
+    },
+    "https://www.7thserpent.com/gameplay/": {
+      "vremya": "2026-09-29T20:22:50.793Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"97cd-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=814"
+        ]
+      ],
+      "dlina": 38861,
+      "sha256": "71284de536820400aa8aa261b5d516c2d3b39b85f63d70da974b9825c9727e22"
+    },
+    "https://www.7thserpent.com/games-like-max-payne/": {
+      "vremya": "2026-09-29T20:22:50.858Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"82dd-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=1192"
+        ]
+      ],
+      "dlina": 33501,
+      "sha256": "9182a6a7b0b2f24838f47dfd770946a330cd0e59172196719ee19ae113c990bd"
+    },
+    "https://www.7thserpent.com/max-payne-1/": {
+      "vremya": "2026-09-29T20:22:50.923Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:50 GMT"
+        ],
+        [
+          "etag",
+          "W/\"81f3-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.011/wa190:D=1158"
+        ]
+      ],
+      "dlina": 33267,
+      "sha256": "e196f2ba6bc2b62212b155f3cadcbdd3d024ed95318cd0edb4c995ebc8d6bba2"
+    },
+    "https://www.7thserpent.com/max-payne-2/": {
+      "vremya": "2026-09-29T20:22:50.989Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"c2c4-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=561"
+        ]
+      ],
+      "dlina": 49860,
+      "sha256": "809303344e004554b971f0b97a9f83fe63b418c4d790c3572082a46a55fcf6f0"
+    },
+    "https://www.7thserpent.com/max-payne-3/": {
+      "vremya": "2026-09-29T20:22:51.053Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"97a5-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.010/wa190:D=724"
+        ]
+      ],
+      "dlina": 38821,
+      "sha256": "d3e7bbff21da8380fe4f6535a8896160363025f30796c4b4d4e6d25b98eb38c3"
+    },
+    "https://www.7thserpent.com/max-payne-3/guide/": {
+      "vremya": "2026-09-29T20:22:51.121Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"8b25-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=808"
+        ]
+      ],
+      "dlina": 35621,
+      "sha256": "281deba05507314c35b9a74c6f5452e82b73aec51d3bd247dbfb6d450ab03ae9"
+    },
+    "https://www.7thserpent.com/media/": {
+      "vremya": "2026-09-29T20:22:51.189Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"886f-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=781"
+        ]
+      ],
+      "dlina": 34927,
+      "sha256": "b8293b7698051de1a560587adf8ff74089c79d880a5a3dbbbda6d70d6dd2debe"
+    },
+    "https://www.7thserpent.com/mods/": {
+      "vremya": "2026-09-29T20:22:51.253Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"8675-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.010/wa190:D=832"
+        ]
+      ],
+      "dlina": 34421,
+      "sha256": "a40e15ec6026c42dfc01efe2b6d766bc7a403db20a8daf0fe74c2fd222d717d6"
+    },
+    "https://www.7thserpent.com/movie/": {
+      "vremya": "2026-09-29T20:22:51.317Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"9fa4-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.000/wa190:D=552"
+        ]
+      ],
+      "dlina": 40868,
+      "sha256": "9a85de3fd57ba873c2c9b305406025ecd2f42ec38515c4a49147f9a1aeae6320"
+    },
+    "https://www.7thserpent.com/pc/": {
+      "vremya": "2026-09-29T20:22:51.382Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"8b38-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=958"
+        ]
+      ],
+      "dlina": 35640,
+      "sha256": "6f08691b20c08d2fc32612a24f9a87f5f7728386bac9aa3cf83dd20a4c783f75"
+    },
+    "https://www.7thserpent.com/privacy/": {
+      "vremya": "2026-09-29T20:22:51.448Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"751d-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.012/wn190:0.000/wa190:D=760"
+        ]
+      ],
+      "dlina": 29981,
+      "sha256": "a690cb9e1d6c9dd4bca2f368d64800bd09b9512afd8cb3b5d801272af2c8362b"
+    },
+    "https://www.7thserpent.com/quotes/": {
+      "vremya": "2026-09-29T20:22:51.513Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"9a00-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=785"
+        ]
+      ],
+      "dlina": 39424,
+      "sha256": "7124ac36592971a9b0477b655a58c034edb3ac2df4dd35b9f1d31cc5cb50f8d9"
+    },
+    "https://www.7thserpent.com/remake/": {
+      "vremya": "2026-09-29T20:22:51.579Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"8996-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.011/wa190:D=681"
+        ]
+      ],
+      "dlina": 35222,
+      "sha256": "25321946e9b39add2d822c974f8c353484ee577389491f5cb247c645a778d643"
+    },
+    "https://www.7thserpent.com/story/": {
+      "vremya": "2026-09-29T20:22:51.643Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"a258-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=839"
+        ]
+      ],
+      "dlina": 41560,
+      "sha256": "7ccad1e0b5bf9eac41cc7ec9685473a104dfea55e09c8744d5d41e25e88c2c35"
+    },
+    "https://www.7thserpent.com/voice-and-face/": {
+      "vremya": "2026-09-29T20:22:51.707Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"91c4-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.000/wa190:D=1219"
+        ]
+      ],
+      "dlina": 37316,
+      "sha256": "cb6e8f3ed9dd6e45f95078733632d8b23d79e80a371d71676d6546fabd444c95"
+    },
+    "https://www.7thserpent.com/net-takoy-stranicy-1790713369257/": {
+      "vremya": "2026-09-29T20:22:51.777Z",
+      "status": 404,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"6054-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.010/wn190:0.000/wa190:D=456"
+        ]
+      ],
+      "dlina": 24660,
+      "sha256": "b237dd8e4f3aa94e16ab31b62dc6c4eaf96d7ec1d8a0afc0f96f7ebc02cf93e6"
+    },
+    "https://www.7thserpent.com/404/": {
+      "vremya": "2026-09-29T20:22:51.844Z",
+      "status": 200,
+      "zagolovki": [
+        [
+          "cache-control",
+          "public, max-age=0, must-revalidate"
+        ],
+        [
+          "content-encoding",
+          "br"
+        ],
+        [
+          "content-type",
+          "text/html"
+        ],
+        [
+          "date",
+          "Tue, 29 Sep 2026 20:22:51 GMT"
+        ],
+        [
+          "etag",
+          "W/\"6054-65ca47e341b80\""
+        ],
+        [
+          "last-modified",
+          "Tue, 29 Sep 2026 19:50:22 GMT"
+        ],
+        [
+          "server",
+          "nginx"
+        ],
+        [
+          "x-ray",
+          "wnp190:0.000/wn190:0.000/wa190:D=609"
+        ]
+      ],
+      "dlina": 24660,
+      "sha256": "b237dd8e4f3aa94e16ab31b62dc6c4eaf96d7ec1d8a0afc0f96f7ebc02cf93e6"
+    }
+  },
+  "robotsPary": [
+    {
+      "para": 1,
+      "metka": "1790713593860",
+      "s": {
+        "url": "https://www.7thserpent.com/robots.txt?live-check=1790713593860",
+        "vremya": "2026-09-29T20:26:33.860Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "content-encoding",
+            "br"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Tue, 29 Sep 2026 20:26:34 GMT"
+          ],
+          [
+            "etag",
+            "W/\"4d1-65ca47e341b80\""
+          ],
+          [
+            "last-modified",
+            "Tue, 29 Sep 2026 19:50:22 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.001/wa190:D=576"
+          ]
+        ],
+        "dlina": 1582,
+        "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+        "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+      },
+      "bez": {
+        "url": "https://www.7thserpent.com/robots.txt",
+        "vremya": "2026-09-29T20:26:34.234Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "content-encoding",
+            "br"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Tue, 29 Sep 2026 20:26:34 GMT"
+          ],
+          [
+            "etag",
+            "W/\"4d1-65ca47e341b80\""
+          ],
+          [
+            "last-modified",
+            "Tue, 29 Sep 2026 19:50:22 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/wa190:D=963"
+          ]
+        ],
+        "dlina": 1582,
+        "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+        "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+      }
+    },
+    {
+      "para": 2,
+      "metka": "1790713791678",
+      "s": {
+        "url": "https://www.7thserpent.com/robots.txt?live-check=1790713791678",
+        "vremya": "2026-09-29T20:29:51.678Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "content-encoding",
+            "br"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Tue, 29 Sep 2026 20:29:51 GMT"
+          ],
+          [
+            "etag",
+            "W/\"4d1-65ca47e341b80\""
+          ],
+          [
+            "last-modified",
+            "Tue, 29 Sep 2026 19:50:22 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/wa190:D=736"
+          ]
+        ],
+        "dlina": 1582,
+        "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+        "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+      },
+      "bez": {
+        "url": "https://www.7thserpent.com/robots.txt",
+        "vremya": "2026-09-29T20:29:52.051Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "content-encoding",
+            "br"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Tue, 29 Sep 2026 20:29:52 GMT"
+          ],
+          [
+            "etag",
+            "W/\"4d1-65ca47e341b80\""
+          ],
+          [
+            "last-modified",
+            "Tue, 29 Sep 2026 19:50:22 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/wa190:D=724"
+          ]
+        ],
+        "dlina": 1582,
+        "sha256": "c93c53ed70d9c4664eba58ca21d946a6a7a22e6e81f0d433fc06ecaefaf01295",
+        "telo": "# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+      }
+    }
+  ]
+}

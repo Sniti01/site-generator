@@ -9,6 +9,8 @@
 // проверкой «запросы не идут через Cloudflare»; порчи возможностей Cloudflare (кэш, вызов, вставки, обфускация, cookies
 // `__cf_*`, управляемый блок, Always Use HTTPS) идут на нём. Без кэша на пути robots.txt с параметром и без него — один
 // ответ сервера: порча файла на сервере меняет оба (`oba`).
+// Сессия 24 (П111): живой образец хостера — ответы прогона 1 live:check после первой выкладки и две пары robots.txt
+// с параметром и без, байт в байт (`obrazec-khostera.json`): здоровый, 44 из 44; порчи идут на прежнем образце.
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -16,6 +18,7 @@ import { readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'nod
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import * as CL from '../check-live.mjs';
 
 const { proverit, razobratRobots, canonicalOf, SAYT } = CL;
@@ -172,6 +175,60 @@ test('домен ведёт на хостер, сайт не заведён («n
   const r = await progon(() => {}, { vse: (url) => (url.startsWith('https://') ? otvet(302, '', {}, url.replace('https://', 'http://')) : zaglushka) });
   assert.equal(r.plokho.length, VSEGO, r.vse);
 });
+
+/* — Живой образец хостера (сессия 24, П111): ответы прогона 1 live:check 2026-09-29 после первой выкладки и две пары
+ *   robots.txt с параметром и без — замер байт в байт (`obrazec-khostera.json`; бэклог 71 п. 6, 72 п. 1–2). Статусы,
+ *   Location и заголовки — замера, тела robots.txt — замера; тела HTML и карт — здорового образца (страница = сборка,
+ *   карта = структура). — */
+const OBRAZEC = JSON.parse(readFileSync(join(SAYT, 'tools/testy/obrazec-khostera.json'), 'utf8'));
+/** Ответ замера: статус, Location и заголовки (fetch отдаёт имена строчными); тело — записанное или `telo`. */
+const izZamera = (o, telo = '') => {
+  const zag = Object.fromEntries(o.zagolovki);
+  return otvet(o.status, o.telo ?? telo, zag, zag.location ?? '');
+};
+/** Здоровый образец → ответы замера по тем же адресам (метка прогона 1 → METKA); пара robots.txt — поверх. */
+const sZamerom = (para) => (k) => {
+  for (const [u, o] of Object.entries(OBRAZEC.otvety)) {
+    const url = u.replace(OBRAZEC.metka, METKA);
+    assert.ok(k.has(url), `адрес замера вне образца: ${url}`);
+    k.set(url, izZamera(o, k.get(url).telo));
+  }
+  if (para) {
+    k.set(MIMO, izZamera(para.s));
+    k.set(BEZ, izZamera(para.bez));
+  }
+};
+const PARY_ZAMERA = [
+  { para: 'прогона 1', s: OBRAZEC.otvety[`${B}/robots.txt?live-check=${OBRAZEC.metka}`], bez: OBRAZEC.otvety[`${B}/robots.txt`] },
+  ...OBRAZEC.robotsPary,
+];
+
+test('живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — нынешний public/robots.txt; внутри пар тела равны, у HTML нет Age и X-Cache-Status', () => {
+  const sha = (t) => createHash('sha256').update(Buffer.from(t, 'utf8')).digest('hex');
+  for (const p of PARY_ZAMERA) {
+    for (const o of [p.s, p.bez]) {
+      assert.equal(sha(o.telo), o.sha256, `пара ${p.para}: тело не то, что записано`);
+      // Образец снят с public/robots.txt сборки add241a: наш файл изменился — снять образец заново после выкладки.
+      assert.ok(o.telo.endsWith(nashRobots), `пара ${p.para}: в образце не нынешний public/robots.txt`);
+    }
+    // CL23-Z-1, CL23-Z-2 — пределы: по замеру тела с параметром и без равны, смягчать проверку 4 нечего (П111).
+    assert.equal(p.s.telo, p.bez.telo, `пара ${p.para}: тела с параметром и без различаются`);
+  }
+  // CL23-P-3 — предел: по замеру признаков кэша у HTML нет (П111).
+  const html = Object.entries(OBRAZEC.otvety).filter(([, o]) => o.status !== 301 && /^text\/html/.test(Object.fromEntries(o.zagolovki)['content-type'] ?? ''));
+  assert.equal(html.length, 19);
+  for (const [u, o] of html) assert.ok(!o.zagolovki.some(([k]) => k === 'age' || k === 'x-cache-status'), `${u}: признак кэша в замере`);
+});
+
+for (const para of [null, ...OBRAZEC.robotsPary]) {
+  test(`живой образец хостера: ответы прогона 1${para ? `, robots.txt — пара ${para.para}` : ''} — 44 из 44`, async () => {
+    const r = await progon(sZamerom(para));
+    assert.equal(r.proverki.length, VSEGO);
+    assert.deepEqual(r.plokho, [], r.otkuda);
+    assert.ok(r.spravki.some((s) => s.includes('блок хостера «adm.tools Managed content» перед нашим файлом, строк 13')), r.spravki.join(' | '));
+    assert.ok(r.spravki.some((s) => s.startsWith('x-ray wnp190:')), r.spravki.join(' | '));
+  });
+}
 
 const MIMO_PROVERKI = ['robots.txt мимо кэша: статус', 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', 'robots.txt: блока Cloudflare нет', VNE, POISK, 'robots.txt: строка Sitemap'];
 const vBlokKhostera = (iz, na) => oba((o) => ({ ...o, telo: HOSTER.replace(iz, na) + nashRobots }));
@@ -433,19 +490,20 @@ test('ПРЕДЕЛ: CSS, картинки и шрифты живого сайт�
   assert.ok(r.plokho.length > 0);
 });
 
-/* — Пределы сессии 23 (П108: один раунд; правка логики проверок — «прочее не трогать», П107 п. 6 — по живому образцу). — */
+/* — Пределы сессии 23 (П108: один раунд; правка логики проверок — «прочее не трогать», П107 п. 6 — по живому образцу).
+ *   Живой образец сессии 24 (П111) пределы не снял: смягчать и судить по замеру нечего. — */
 
-test('ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра»', { todo: 'смягчение проверки 4 — сессия 24 по живому образцу robots.txt хостера (две пары запросов, с параметром и без)' }, async () => {
+test('ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра»', { todo: 'живой образец сессии 24 (П111): тела robots.txt с параметром и без побайтно равны в трёх парах — смягчать по замеру нечего; безвредная разница блока хостера — предел' }, async () => {
   const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER.replace('# END adm.tools', 'User-agent: SemrushBot\nDisallow: /\n# END adm.tools') + nashRobots })));
   assert.deepEqual(r.plokho, []);
 });
 
-test('ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра»', { todo: 'сравнение ответов проверки 4 — только CR и BOM; смягчение — по живому образцу, сессия 24' }, async () => {
+test('ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра»', { todo: 'сравнение ответов проверки 4 — только CR и BOM; живой образец сессии 24 (П111): тела побайтно равны — смягчать нечего, разница в пробелах — предел' }, async () => {
   const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: `${o.telo}\n\n` })));
   assert.deepEqual(r.plokho, []);
 });
 
-test('ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status', { todo: 'кэш хостера на пути не измерен (в x-ray замера перед wn/wa — слой wnp); признаки — по живому образцу, сессия 24' }, async () => {
+test('ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status', { todo: 'живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел' }, async () => {
   const r = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { age: '86400', 'x-cache-status': 'HIT' })));
   assert.ok(r.plokho.length > 0);
 });

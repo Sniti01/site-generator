@@ -139,8 +139,8 @@ test('здоровый живой сайт без Cloudflare (П108) — все 
   assert.equal(r.proverki.length, VSEGO);
   assert.deepEqual(r.plokho, [], r.otkuda);
   assert.ok(r.spravki.some((s) => s.includes('блок хостера «adm.tools Managed content» перед нашим файлом')), r.spravki.join(' | '));
-  assert.ok(r.spravki.some((s) => s.includes('мимо кэша: Cf-Cache-Status —')), r.spravki.join(' | '));
-  assert.ok(r.spravki.some((s) => s.includes('без параметра: Cf-Cache-Status —, Age —')), r.spravki.join(' | '));
+  // CL23-Z-4, CL23-P-1: без Cloudflare полей его кэша нет ни в строках проверок, ни в справках.
+  assert.doesNotMatch(`${r.vse} | ${r.spravki.join(' | ')}`, /Cf-Cache-Status|Age —/, r.spravki.join(' | '));
   // CL2-Z-3: ни одна зелёная строка не говорит «Always Use HTTPS включён».
   assert.doesNotMatch(r.vse, /Always Use HTTPS/);
   // П108, подсказки «по делу»: зелёные строки не называют Cloudflare частью здорового сайта или настройкой его зоны.
@@ -148,12 +148,17 @@ test('здоровый живой сайт без Cloudflare (П108) — все 
   assert.match(r.vse, new RegExp(`ok ${BEZ_CF}: true — ответов \\d+, следов Cloudflare нет`), r.vse);
 });
 
-test('образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare»', async () => {
+test('CL2-P-9 (П108 — наоборот) образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare»', async () => {
   const r = await progon(() => {}, { cf: true });
   assert.equal(r.proverki.length, VSEGO);
   assert.deepEqual(r.plokho, [BEZ_CF], r.otkuda);
   assert.match(r.otkuda, /через Cloudflare: http:\/\/www\.7thserpent\.com\/ \(301; cf-ray, server: cloudflare\)/, r.otkuda);
   assert.match(r.otkuda, /и ещё \d+ — \/privacy\/ обещает/, r.otkuda);
+  // CL23-P-1: при Cloudflare на пути ни одна строка не утверждает «Cloudflare на сайте нет»; поля его кэша — в справках.
+  assert.doesNotMatch(r.vse, /Cloudflare на сайте нет/, r.vse);
+  assert.match(r.otkuda, /Cloudflare на сайте быть не должно \(П108\)/, r.otkuda);
+  assert.ok(r.spravki.some((s) => s.includes('мимо кэша: Cf-Cache-Status DYNAMIC')), r.spravki.join(' | '));
+  assert.ok(r.spravki.some((s) => s.includes('без параметра: Cf-Cache-Status HIT, Age 120')), r.spravki.join(' | '));
 });
 
 test('домен не подключён (имя не разрешается) — 0 из 44', async () => {
@@ -258,8 +263,7 @@ const PORCHI = [
   ['CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404', (k) => { zamenit(k, `${B}${igra}`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); zamenit(k, `${B}/net-takoy-stranicy-${METKA}/`, (o) => sZag(o, { 'set-cookie': '_cfuvid=abc; path=/' })); }, ['ответы без Set-Cookie', BEZ_CF], { cf: true }],
   ['Set-Cookie Cloudflare на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': '__cf_bm=abc; path=/' })), ['ответы без Set-Cookie', BEZ_CF], { cf: true }],
   ['П108 Set-Cookie сервера хостера на главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': 'PHPSESSID=abc; path=/' })), ['ответы без Set-Cookie']],
-  // — Cloudflare на пути (CL2-P-9; П108 — наоборот: следа Cloudflare быть не должно ни у одного ответа) —
-  ['CL2-P-9 (П108 — наоборот) Cloudflare проксирует все ответы — образец с Cloudflare', () => {}, [BEZ_CF], { cf: true }],
+  // — Cloudflare на пути (П108: следа Cloudflare быть не должно ни у одного ответа; весь образец с Cloudflare — отдельный тест CL2-P-9) —
   ['П108 след Cloudflare только server: cloudflare — у главной', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { server: 'cloudflare' })), [BEZ_CF]],
   ['П108 след Cloudflare только cf-ray — у robots.txt без параметра', (k) => zamenit(k, BEZ, (o) => sZag(o, { 'cf-ray': '8c1a2b3c4d5e6f70-WAW' })), [BEZ_CF]],
   ['П108 след Cloudflare только Cf-Cache-Status — у карты сайта', (k) => zamenit(k, `${B}/sitemap-0.xml`, (o) => sZag(o, { 'cf-cache-status': 'DYNAMIC' })), [BEZ_CF]],
@@ -327,11 +331,12 @@ test('подсказки причин: вызов Cloudflare, 526, cookies и и
   assert.match(vyzov.otkuda, /вызов Cloudflare/);
   const s526 = await progon(() => {}, { vse: () => otvet(526, 'Invalid SSL certificate', CF) });
   assert.match(s526.otkuda, /526: Cloudflare не принял сертификат сервера/);
-  const kuki = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': 'a=1; path=/, __cf_bm=2; path=/; HttpOnly' })));
+  // CL23-P-2: cookies, обфускация и вставка Cloudflare — на образце с Cloudflare, как обещает шапка проб.
+  const kuki = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'set-cookie': 'a=1; path=/, __cf_bm=2; path=/; HttpOnly' })), { cf: true });
   assert.match(kuki.otkuda, /a \(главная\)/);
   assert.match(kuki.otkuda, /__cf_bm \(главная, Cloudflare/);
   // CL2-Z-7: cookie ответа 301 — с адресом и статусом.
-  const kuki301 = await progon((k) => zamenit(k, `http://${HOST}${igra}`, (o) => sZag(o, { 'set-cookie': '__cf_bm=2; path=/' })));
+  const kuki301 = await progon((k) => zamenit(k, `http://${HOST}${igra}`, (o) => sZag(o, { 'set-cookie': '__cf_bm=2; path=/' })), { cf: true });
   assert.match(kuki301.otkuda, new RegExp(`__cf_bm \\(http://${HOST.replace(/\./g, '\\.')}${igra} — 301`));
   const always = await progon((k) => k.set('http://7thserpent.com/', otvet(301, '', CF, 'https://7thserpent.com/')), { cf: true });
   assert.match(always.otkuda, /Always Use HTTPS/);
@@ -342,11 +347,26 @@ test('подсказки причин: вызов Cloudflare, 526, cookies и и
   const s503 = await progon((k) => zamenit(k, `${B}/`, (o) => ({ ...o, status: 503 })));
   assert.match(s503.otkuda, new RegExp(`${CC.replace(/[()]/g, '\\$&')}: false — главная — ответ 503`));
   // CL2-Z-2: обфускация — строка адреса называет её.
-  const obf = await progon((k) => zamenit(k, `${B}/privacy/`, vTelo(YASHCHIK, '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a2b">[email&#160;protected]</a>')));
+  const obf = await progon((k) => zamenit(k, `${B}/privacy/`, vTelo(YASHCHIK, '<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a2b">[email&#160;protected]</a>')), { cf: true });
   assert.match(obf.otkuda, /адрес ящика открытым текстом: false — .*обфускаци/);
   // CL2-Z-4: вставка названа переключателем Cloudflare.
-  const wa = await progon((k) => zamenit(k, `${B}/`, vTelo('</main>', '</main><script defer src="https://static.cloudflareinsights.com/beacon.min.js"></script>')));
+  const wa = await progon((k) => zamenit(k, `${B}/`, vTelo('</main>', '</main><script defer src="https://static.cloudflareinsights.com/beacon.min.js"></script>')), { cf: true });
   assert.match(wa.otkuda, /Web Analytics/);
+});
+
+test('CL23-P-1 причина вставки — по следам Cloudflare: есть — «Cloudflare», нет — без догадки о посреднике', async () => {
+  const bez = await progon((k) => zamenit(k, `${B}/`, vTelo('</head>', '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=X"></head>')));
+  assert.deepEqual(bez.plokho, [HTML_SB]);
+  assert.match(bez.otkuda, /1 из \d+ страниц: [^|]* — вставка на пути или dist\/ собран не из выложенного коммита/, bez.otkuda);
+  const cf = await progon((k) => zamenit(k, `${B}/`, vTelo('</main>', '</main><script defer src="https://static.cloudflareinsights.com/beacon.min.js"></script>')), { cf: true });
+  assert.match(cf.otkuda, /вставка на пути \(Cloudflare/, cf.otkuda);
+});
+
+test('CL23-Z-3 robots.txt без параметра не равен ответу с параметром, кэша Cloudflare нет — первая расходящаяся строка, причина без догадки', async () => {
+  const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })));
+  assert.deepEqual(r.plokho, [BEZ_P]);
+  assert.match(r.otkuda, /первая расходящаяся строка/, r.otkuda);
+  assert.doesNotMatch(r.otkuda, /Cf-Cache-Status|не наш сервер/, r.otkuda);
 });
 
 test('CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита»', async () => {
@@ -410,6 +430,23 @@ test('ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скр
 
 test('ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц', { todo: 'подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist' }, async () => {
   const r = await progon((k) => k.set(`${B}/_astro/index.Cz6femgl.css`, otvet(200, 'body{display:none}', CF)));
+  assert.ok(r.plokho.length > 0);
+});
+
+/* — Пределы сессии 23 (П108: один раунд; правка логики проверок — «прочее не трогать», П107 п. 6 — по живому образцу). — */
+
+test('ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра»', { todo: 'смягчение проверки 4 — сессия 24 по живому образцу robots.txt хостера (две пары запросов, с параметром и без)' }, async () => {
+  const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER.replace('# END adm.tools', 'User-agent: SemrushBot\nDisallow: /\n# END adm.tools') + nashRobots })));
+  assert.deepEqual(r.plokho, []);
+});
+
+test('ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра»', { todo: 'сравнение ответов проверки 4 — только CR и BOM; смягчение — по живому образцу, сессия 24' }, async () => {
+  const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: `${o.telo}\n\n` })));
+  assert.deepEqual(r.plokho, []);
+});
+
+test('ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status', { todo: 'кэш хостера на пути не измерен (в x-ray замера перед wn/wa — слой wnp); признаки — по живому образцу, сессия 24' }, async () => {
+  const r = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { age: '86400', 'x-cache-status': 'HIT' })));
   assert.ok(r.plokho.length > 0);
 });
 

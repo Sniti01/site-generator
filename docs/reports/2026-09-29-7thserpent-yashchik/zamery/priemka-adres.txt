@@ -1,0 +1,9 @@
+$ node "D:\SEO\cloud\site-generator\docs\reports\2026-09-29-7thserpent-yashchik\instrumenty\adres-proverka.mjs" "D:\SEO\cloud\site-generator\sites\7thserpent.com"
+(папка: .)
+
+ok    /privacy/: статус: 200 — 
+ok    /privacy/: canonical: https://www.7thserpent.com/privacy/ — 
+ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+
+код выхода: 0

@@ -1,0 +1,170 @@
+---- первый сайт (b8016eb..HEAD):
+(пусто — ни байта)
+---- ядро (b8016eb..HEAD):
+(пусто — ни байта)
+---- корень: package.json, package-lock.json, .gitattributes (b8016eb..HEAD):
+(пусто — ни байта)
+---- deploy-ac4bf.yml (b8016eb..HEAD):
+(пусто — ни байта)
+---- зона Tailwind второго сайта (global.css) (b8016eb..HEAD):
+(пусто — ни байта)
+---- маршрут, схема, структура второго сайта (b8016eb..HEAD):
+(пусто — ни байта)
+---- прочие файлы содержания второго сайта (кроме privacy.md) (b8016eb..HEAD):
+(пусто — ни байта)
+---- замороженные судьи второго сайта (sverka, znak, geity, gates/sverka, gates/head, gates/phrases) (b8016eb..HEAD):
+(пусто — ни байта)
+---- лист владельца сессии 22 и материалы прежних докладов (b8016eb..HEAD):
+(пусто — ни байта)
+---- все изменения ветки (b8016eb..HEAD):
+M	.github/workflows/deploy-7thserpent.yml
+M	DECISIONS.md
+M	docs/UNRESOLVED.md
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/adres-proverka.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/domen-zamer.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/kadry-privacy.js
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/kopiya-otlichiya.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/priemka.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/schet-komand.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/server.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/sim-ci-r3-kopiya.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/sravnit-dist.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/verdikty-cl.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/instrumenty/verdikty-domen.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/kadry/privacy-1440-celikom.jpg
+A	docs/reports/2026-09-29-7thserpent-yashchik/kadry/privacy-1440-ekran.png
+A	docs/reports/2026-09-29-7thserpent-yashchik/kadry/privacy-390-celikom.jpg
+A	docs/reports/2026-09-29-7thserpent-yashchik/kadry/privacy-390-ekran.png
+A	docs/reports/2026-09-29-7thserpent-yashchik/ruki-vladelca.md
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/krasnyi-do-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/krasnyi-raund.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n1-proza.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n1-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n2-sledy-v-tele.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n2-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n3-kesh-hostera.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n3-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n4-dubl-proby.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n4-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n5-proverka-11.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/n5-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/obshchee.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/propusk/proby-kopii.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/svodka.md
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/obrazcy-pravka.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/obrazcy.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/obrazcy.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/pravka.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/pravka/check-live-pravka.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/pravka/vstavka-1.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/pravka/vstavka-2.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/proby-kopii.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/proby-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/proverka-baitov.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/proverka-baitov.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/raznica.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/schet.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/schet.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/zapros-lokalno.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zakon/zapros-lokalno.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zelenyi-posle-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/cl23/zelenyi-raund.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/krasnyi-do-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/krasnyi-raund1.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/krasnyi-raund2.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o1-o2-soglasie.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o1-o2-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o3-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o3-zagolovok.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o4-proba-komandy.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o4-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o4-zhurnal-perekhvata.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o5-dogovor.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o5-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o6-povtor.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/o6-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/obshchee-o.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/perekhvat.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/porcha/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/proby-predmeta.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/proverka-zamka-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/proverka-zamka-zhurnal.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/proverka-zamka.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/razbor-vkhoda-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/razbor-vkhoda.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/raznica.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/zamok-rebenok.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/opasno/zamok-seti.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/proby-predmeta.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z1-sostoyaniya.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z1-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z2-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z2-zagolovki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z3-komanda.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z3-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z4-dogovor.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r1/zakon/z4-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/diff-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/git-status.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/itog.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-porcha-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-porcha.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-povtor-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-povtor.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-prichina-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-prichina.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-sertifikat-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-sertifikat.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-snova-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-snova.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-sopostaviteli-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-sopostaviteli.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-svoy-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-svoy.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-tls-rebenok.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-zhurnal-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/o2-zhurnal.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/obshchee-o2.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha-kryuchok.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/K0/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/K1/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/K2/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/M1/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/M2/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/M3/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/porcha/M4/storozha-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/opasno/proby-predmeta.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/diff-r1.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/proby-predmeta.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-1-formy-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-1-formy.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-2-povtory-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-2-povtory.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-3-zagolovki-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-3-zagolovki.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-4-dogovor-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/r2/zakon/z2-4-dogovor.mjs
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/svodka-r1.md
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/svodka-r2.md
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/zelenyi-posle-pravki.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/zelenyi-raund1.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/sud/sv23/zelenyi-raund2.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/domen-2026-09-29.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/kadry-privacy.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/proverki-shag1.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/shag2-privacy.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/sim-ci-kopiya-otlichiya.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/sim-ci-r3-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/verdikty-cl.txt
+A	docs/reports/2026-09-29-7thserpent-yashchik/zamery/verdikty-domen.txt
+M	sites/7thserpent.com/CLAUDE.md
+M	sites/7thserpent.com/gates/sborka-prinyataya.json
+M	sites/7thserpent.com/public/.htaccess
+M	sites/7thserpent.com/public/robots.txt
+M	sites/7thserpent.com/src/content/tresc/privacy.md
+M	sites/7thserpent.com/tools/check-live.mjs
+M	sites/7thserpent.com/tools/storozha-vykladki.mjs
+M	sites/7thserpent.com/tools/testy/check-live.test.mjs
+M	sites/7thserpent.com/tools/testy/proba.mjs
+M	sites/7thserpent.com/tools/testy/proby-dogovora.test.mjs
+M	sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs

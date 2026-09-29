@@ -1,0 +1,4 @@
+метка списка: 2f64543
+spisok dist 2f64543: код 0
+gates/sborka-prinyataya.json = spisok этой сборки побайтно: да
+файлов в списке: 165

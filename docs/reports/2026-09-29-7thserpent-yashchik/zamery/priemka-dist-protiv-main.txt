@@ -1,0 +1,10 @@
+A (сборка main b8016eb): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\e23fb3af-937c-42f5-91ca-cf6567cf6a1c\scratchpad\opora-7s-dist — файлов 165
+B (сессия): D:\SEO\cloud\site-generator\sites\7thserpent.com\dist — файлов 165
+только в A: 0
+только в B: 0
+различаются: 3
+  .htaccess
+  privacy/index.html
+  robots.txt
+HTML в A: 18; побайтно равны в B: 17
+ждали: только в B — —; различаются — .htaccess, privacy/index.html, robots.txt; итог — как ждали

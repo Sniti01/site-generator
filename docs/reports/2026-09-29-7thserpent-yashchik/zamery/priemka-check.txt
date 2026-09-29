@@ -1,0 +1,19 @@
+$ npx astro check
+(папка: sites/7thserpent.com)
+
+14:42:59 [content] Syncing content
+14:42:59 [content] Synced content
+14:42:59 [types] Generated 696ms
+14:42:59 [check] Getting diagnostics for Astro files in D:\SEO\cloud\site-generator\sites\7thserpent.com...
+[96mtools/fetch-corpus.mjs[0m:[93m471[0m:[93m25[0m - [93mwarning[0m[90m ts(6198): [0mAll destructured elements are unused.
+
+[7m471[0m function writeRun(done, { attempted, counts, startedAt, hosts }) {
+[7m   [0m [93m                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (119 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+
+
+код выхода: 0

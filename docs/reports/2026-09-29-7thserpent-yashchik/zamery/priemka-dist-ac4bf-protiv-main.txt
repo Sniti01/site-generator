@@ -1,0 +1,7 @@
+A (сборка main b8016eb): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\e23fb3af-937c-42f5-91ca-cf6567cf6a1c\scratchpad\opora-ac4bf-dist — файлов 638
+B (сессия): D:\SEO\cloud\site-generator\sites\ac4bf-thewatch.com\dist — файлов 638
+только в A: 0
+только в B: 0
+различаются: 0
+HTML в A: 32; побайтно равны в B: 32
+ждали: только в B — —; различаются — —; итог — как ждали

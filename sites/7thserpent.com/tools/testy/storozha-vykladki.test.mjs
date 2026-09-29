@@ -132,25 +132,49 @@ for (const [imya, karta, pervyi, zhdem, kusok] of DOMEN) {
 // Заглушка хостера — по замеру домена 2026-09-29: 200, <title> «Поздравляем, сайт создан!», без canonical.
 const ZAGLUSHKA_SOZDAN = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Поздравляем, сайт создан!</title></head><body><h1>Поздравляем, сайт создан!</h1></body></html>';
 const S403 = '<html><head><title>403 Forbidden</title></head><body><h1>Forbidden</h1></body></html>';
+// Согласие покрывает домен, который отвечает по обоим именам с этого хоста (SV23-O-1, O-2, Z-1): ошибка сети или
+// сертификата, неразрешимое имя, чужой конечный хост, чужой canonical, петля, негодный Location — стоп и со входом.
 const DOMEN_VKHOD = [
-  // [имя, ответы, первая выкладка, согласие, ждём ok, куски строки]
-  ['заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, true, ['ОТВЕЧАЕТ', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
-  ['та же заглушка, первая, без согласия — стоп, как прежде, с именем входа', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, false, false, ['СТОП', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND']],
-  ['403 пустого каталога (заглушку удалили), первая, согласие — проход', { [W]: otv(403, S403), [G]: otv(403, S403) }, true, true, true, ['ОТВЕЧАЕТ', 'ответ 403', 'SERPENT_DOMAIN_BOUND']],
-  ['ошибка сертификата — не понять, первая, согласие — проход, ошибка в строке', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['ERR_TLS_CERT_ALTNAME_INVALID', 'SERPENT_DOMAIN_BOUND']],
-  ['таймаут на обоих хостах, первая, согласие — проход', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, true, ['TimeoutError', 'SERPENT_DOMAIN_BOUND']],
-  ['таймаут, первая, без согласия — стоп с именем входа', { [W]: oshibka('TimeoutError'), [G]: oshibka('ENOTFOUND') }, true, false, false, ['не удалось узнать', 'SERPENT_DOMAIN_BOUND']],
-  ['наша сборка отвечает (повтор оборванной первой), первая, согласие — проход', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, true, true, true, ['ОТВЕЧАЕТ', 'SERPENT_DOMAIN_BOUND']],
-  ['домен не привязан, первая, согласие — проход, как без входа', { [W]: oshibka('ENOTFOUND'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['домен не привязан']],
-  ['не первая, согласие — как без входа: обновит живой сайт', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, false, true, true, ['обновит живой сайт']],
+  // [имя, ответы, первая выкладка, согласие, ждём ok, куски строки, куски, которых быть не должно]
+  ['заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, true, ['ОТВЕЧАЕТ', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND'], ['СТОП']],
+  ['та же заглушка, первая, без согласия — стоп, как прежде, с именем входа и «Run workflow, не Re-run»', { [W]: otv(200, ZAGLUSHKA_SOZDAN), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, false, false, ['СТОП', '«Поздравляем, сайт создан!»', 'SERPENT_DOMAIN_BOUND', 'Run workflow', 'не Re-run'], []],
+  ['403 пустого каталога (заглушку удалили), первая, согласие — проход', { [W]: otv(403, S403), [G]: otv(403, S403) }, true, true, true, ['ОТВЕЧАЕТ', 'ответ 403', 'SERPENT_DOMAIN_BOUND'], []],
+  ['наша сборка отвечает (повтор оборванной первой), первая, согласие — проход', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, true, true, true, ['ОТВЕЧАЕТ', 'SERPENT_DOMAIN_BOUND'], []],
+  ['домен не привязан, первая, согласие — проход, как без входа', { [W]: oshibka('ENOTFOUND'), [G]: oshibka('ENOTFOUND') }, true, true, true, ['домен не привязан'], []],
+  ['не первая, согласие — как без входа: обновит живой сайт', { [W]: otv(200, nash('/')), [G]: otv(301, '', W) }, false, true, true, ['обновит живой сайт'], []],
+  ['SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера', { [W]: oshibka('ERR_TLS_CERT_ALTNAME_INVALID'), [G]: oshibka('CERT_HAS_EXPIRED') }, true, true, false, ['СТОП', 'ошибка сертификата ERR_TLS_CERT_ALTNAME_INVALID', 'Let\'s Encrypt'], []],
+  ['SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается', { [W]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT'), [G]: oshibka('DEPTH_ZERO_SELF_SIGNED_CERT') }, true, false, false, ['СТОП', 'ошибка сертификата', 'Let\'s Encrypt'], ['SERPENT_DOMAIN_BOUND']],
+  ['SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: повтори', { [W]: oshibka('TimeoutError'), [G]: oshibka('TimeoutError') }, true, true, false, ['СТОП', 'TimeoutError', 'повтори'], []],
+  ['SV23-O-1 таймаут, первая, без согласия — стоп, вход не предлагается', { [W]: oshibka('TimeoutError'), [G]: oshibka('ENOTFOUND') }, true, false, false, ['не удалось узнать', 'повтори'], ['SERPENT_DOMAIN_BOUND']],
+  ['SV23-O-2 www не разрешается, голое имя — заглушка, первая, согласие — стоп: имя не привязано', { [W]: oshibka('ENOTFOUND'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'не привязано'], []],
+  ['SV23-O-2 www ведёт на чужой хост, первая, согласие — стоп: не этот сайт', { [W]: otv(302, '', 'https://parked.example/'), 'https://parked.example/': otv(200, '<title>Parked</title>'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'parked.example', 'не на этот сайт'], []],
+  ['SV23-O-2 отвечает первый сайт (canonical ac4bf), первая, согласие — стоп: не этот сайт', { [W]: otv(200, pervogo), [G]: otv(200, pervogo) }, true, true, false, ['СТОП', 'canonical чужого сайта', 'не на этот сайт'], []],
+  ['SV23-O-2 петля редиректов, первая, согласие — стоп', { [W]: otv(301, '', W), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'больше 5 редиректов'], []],
+  ['SV23-Z-4 редирект на негодный Location, первая, согласие — стоп строкой, не код 2', { [W]: otv(301, '', 'http://'), [G]: otv(200, ZAGLUSHKA_SOZDAN) }, true, true, false, ['СТОП', 'негодный адрес «http://»'], []],
+  ['SV23-Z-4 редирект на негодный Location, не первая — проход строкой, не код 2', { [W]: otv(301, '', 'https://www.7thserpent.com:99999/'), [G]: otv(301, '', W) }, false, false, true, ['негодный адрес', 'обновит живой сайт'], []],
 ];
-for (const [imya, karta, pervyi, soglasen, zhdem, kuski] of DOMEN_VKHOD) {
+for (const [imya, karta, pervyi, soglasen, zhdem, kuski, zapret] of DOMEN_VKHOD) {
   test(`домен, вход SERPENT_DOMAIN_BOUND: ${imya}`, async () => {
     const r = await domen({ poluchit: iz(karta), pervyi, soglasen });
     assert.equal(r.ok, zhdem, r.stroki.join(' | '));
     for (const kusok of kuski) assert.ok(r.stroki.join(' ').includes(kusok), `${kusok}: ${r.stroki.join(' | ')}`);
+    for (const kusok of zapret) assert.ok(!r.stroki.join(' ').includes(kusok), `лишнее «${kusok}»: ${r.stroki.join(' | ')}`);
+    // SV23-Z-2: обещания «покажет её сразу» нет ни в одном исходе.
+    assert.doesNotMatch(r.stroki.join(' '), /покажет её сразу/, r.stroki.join(' | '));
   });
 }
+
+test('SV23-O-3, Z-5 строка ответа в публичный журнал: <title> вне комментариев, svg и скриптов, сущности раскрыты, без управляющих знаков и команд раннера, обрез с «…»', async () => {
+  const s = (telo) => domen({ poluchit: iz({ [W]: otv(200, telo), [G]: otv(200, ZAGLUSHKA_SOZDAN) }), pervyi: false }).then((r) => r.stroki[0]);
+  assert.match(await s('<title>&laquo;Сайт&raquo; &#1055;&#x41F; &amp; ok</title>'), /«Сайт» ПП & ok/);
+  assert.match(await s('<!-- <title>ложный</title> --><svg><title>иконка</title></svg><script>"<title>x</title>"</script><title>настоящий</title>'), /«настоящий»/);
+  assert.match(await s('<title>a < b</title>'), /«a < b»/);
+  const dlinnyy = await s(`<title>${'я'.repeat(150)}</title>`);
+  assert.match(dlinnyy, new RegExp(`«${'я'.repeat(100)}…»`));
+  const zloy = await s('<title>\u001b[30;40mскрыто ##[warning]подмена ::set-output name=x::y ‮обратно&#10;::error::вторая строка</title>');
+  assert.doesNotMatch(zloy, /[\u0000-\u001f\u007f-\u009f‪-‮⁦-⁩]|##\[|::/, JSON.stringify(zloy));
+  assert.match(zloy, /скрыто/);
+});
 
 test('SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108)', async () => {
   for (const [, karta, pervyi] of DOMEN) {
@@ -565,24 +589,48 @@ test('SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2,
   }
 });
 
-// Сеть в дочернем процессе подменена до запуска сторожа: fetch бросает — сторож видит «не понять» без единого запроса наружу.
-const BEZ_SETI = `data:text/javascript;base64,${Buffer.from("globalThis.fetch = async () => { throw new Error('сеть в пробе запрещена'); };").toString('base64')}`;
-test('SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети', () => {
+// Сеть в дочернем процессе подменена до запуска сторожа (SV23-O-4): fetch не ходит наружу, а пишет адрес в журнал
+// SETI_ZHURNAL и отвечает заглушкой хостера — проба считает запросы, а не только код выхода.
+const BEZ_SETI = `data:text/javascript;base64,${Buffer.from(
+  "import { appendFileSync } from 'node:fs';\n" +
+    "globalThis.fetch = async (url) => { appendFileSync(process.env.SETI_ZHURNAL, String(url) + '\\n'); return new Response('<title>Поздравляем, сайт создан!</title>', { status: 200 }); };\n"
+).toString('base64')}`;
+test('SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети; наружу — ни одного запроса', () => {
   const { SERPENT_DOMAIN_BOUND, ...env } = process.env;
-  const zapusk = (vkhod) => spawnSync(process.execPath, ['--import', BEZ_SETI, STOROZH, 'domen'], { encoding: 'utf8', env: { ...env, SERPENT_PERVAYA: 'on', ...(vkhod === undefined ? {} : { SERPENT_DOMAIN_BOUND: vkhod }) } });
-  const da = zapusk('on');
-  assert.equal(da.status, 0, da.stdout + da.stderr);
-  assert.match(da.stdout, /SERPENT_DOMAIN_BOUND/);
-  assert.match(da.stdout, /сеть в пробе запрещена|Error/);
-  for (const net of ['off', '', undefined]) {
-    const r = zapusk(net);
-    assert.equal(r.status, 1, `${net}: ${r.stdout}${r.stderr}`);
-    assert.match(r.stdout, /СТОП/);
-  }
-  for (const plokho of ['yes', 'ON', 'true']) {
-    const r = zapusk(plokho);
-    assert.equal(r.status, 2, `${plokho}: ${r.stdout}${r.stderr}`);
-    assert.match(r.stderr, /SERPENT_DOMAIN_BOUND/);
+  const d = mkdtempSync(join(tmpdir(), 'storozha-domen-'));
+  try {
+    let n = 0;
+    const zapusk = (vkhod) => {
+      n += 1;
+      const zhurnal = join(d, `seti-${n}.txt`);
+      const r = spawnSync(process.execPath, ['--import', BEZ_SETI, STOROZH, 'domen'], { encoding: 'utf8', env: { ...env, SETI_ZHURNAL: zhurnal, SERPENT_PERVAYA: 'on', ...(vkhod === undefined ? {} : { SERPENT_DOMAIN_BOUND: vkhod }) } });
+      let zaprosy = [];
+      try {
+        zaprosy = readFileSync(zhurnal, 'utf8').split('\n').filter(Boolean);
+      } catch {
+        zaprosy = [];
+      }
+      return { ...r, zaprosy };
+    };
+    const da = zapusk('on');
+    assert.equal(da.status, 0, da.stdout + da.stderr);
+    assert.match(da.stdout, /SERPENT_DOMAIN_BOUND/);
+    assert.match(da.stdout, /«Поздравляем, сайт создан!»/);
+    assert.deepEqual(da.zaprosy, ['https://www.7thserpent.com/', 'https://7thserpent.com/']);
+    for (const net of ['off', '', undefined]) {
+      const r = zapusk(net);
+      assert.equal(r.status, 1, `${net}: ${r.stdout}${r.stderr}`);
+      assert.match(r.stdout, /СТОП/);
+      assert.equal(r.zaprosy.length, 2, `${net}: ${r.zaprosy.join(' ')}`);
+    }
+    for (const plokho of ['yes', 'ON', 'true', 'on\n']) {
+      const r = zapusk(plokho);
+      assert.equal(r.status, 2, `${JSON.stringify(plokho)}: ${r.stdout}${r.stderr}`);
+      assert.match(r.stderr, /SERPENT_DOMAIN_BOUND/);
+      assert.deepEqual(r.zaprosy, [], `${JSON.stringify(plokho)}: запросы до проверки входа`);
+    }
+  } finally {
+    rmSync(d, { recursive: true, force: true });
   }
 });
 
@@ -631,15 +679,47 @@ test('workflow: триггеры — push в main по путям сайта, я
   assert.equal(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.default, 'off');
 });
 
-test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; доходит только до сторожа домена, push — off', () => {
+test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; только сторожу домена и только в первой попытке запуска (SV23-O-6); push — off', () => {
   const v = WF.on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND;
   assert.ok(v, 'нет входа SERPENT_DOMAIN_BOUND');
   assert.equal(v.type, 'choice');
   assert.deepEqual(v.options, ['off', 'on']);
   assert.equal(v.default, 'off');
   const d = shag('Домен уже привязан');
-  assert.equal(d.env.SERPENT_DOMAIN_BOUND, "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}");
-  for (const s of shagi.filter((x) => x !== d)) assert.ok(!JSON.stringify(s).includes('SERPENT_DOMAIN_BOUND'), s.name ?? s.uses);
+  // Повтор (Re-run) не несёт согласия: повтор старого запуска первой выкладки откатил бы живой сайт (SV23-O-6).
+  assert.equal(d.env.SERPENT_DOMAIN_BOUND, "${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}");
+  // SV23-Z-6: шаг домена — ровно команда сторожа, без условия, без продолжения при ошибке, без глушителей.
+  assert.equal(d.run, 'node $SITE/tools/storozha-vykladki.mjs domen');
+  assert.equal(d.if, undefined);
+  assert.equal(d['continue-on-error'], undefined);
+  assert.deepEqual(Object.keys(d.env).sort(), ['SERPENT_DOMAIN_BOUND', 'SERPENT_PERVAYA']);
+  assert.equal(job['continue-on-error'], undefined);
+  // SV23-O-5: имя входа в дереве YAML — только во входах (свой ключ, своё и SERPENT_FIRST описания) и в env шага домена.
+  const gde = [];
+  const obhod = (o, put) => {
+    if (typeof o === 'string') {
+      if (o.includes('SERPENT_DOMAIN_BOUND')) gde.push(put);
+      return;
+    }
+    if (o && typeof o === 'object') {
+      for (const [k, x] of Object.entries(o)) {
+        if (k.includes('SERPENT_DOMAIN_BOUND')) gde.push(`${put}.${k}#ключ`);
+        obhod(x, `${put}.${k}`);
+      }
+    }
+  };
+  obhod(WF, '');
+  const iD = shagi.indexOf(d);
+  assert.deepEqual(gde.sort(), [
+    '.on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND#ключ',
+    '.on.workflow_dispatch.inputs.SERPENT_DOMAIN_BOUND.description',
+    '.on.workflow_dispatch.inputs.SERPENT_FIRST.description',
+    `.jobs.deploy.steps.${iD}.env.SERPENT_DOMAIN_BOUND#ключ`,
+    `.jobs.deploy.steps.${iD}.env.SERPENT_DOMAIN_BOUND`,
+  ].sort());
+  // SV23-Z-3: форма Run workflow подписывает поля описанием — оно начинается с имени входа.
+  assert.match(v.description, /^SERPENT_DOMAIN_BOUND — /);
+  assert.match(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.description, /^SERPENT_FIRST — /);
 });
 
 test('SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108)', () => {

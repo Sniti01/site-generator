@@ -1,0 +1,412 @@
+✔ секреты: все шесть, пользователи разные — проход (3.1013ms)
+✔ секреты: нет пароля — отказ (0.2153ms)
+✔ секреты: пароль из пробелов — отказ (0.1628ms)
+✔ секреты: нет хоста — отказ (0.1259ms)
+✔ секреты: SV1-Z-4 нет ключа корпуса — отказ (0.1332ms)
+✔ секреты: порт не число — отказ (0.1373ms)
+✔ секреты: SV1-O-6 логин с кавычкой — отказ (0.1585ms)
+✔ секреты: SV1-O-6 хост с пробелом — отказ (0.1138ms)
+✔ секреты: SV2-Z-7 логин с переводом строки в конце — отказ (0.1379ms)
+✔ секреты: SV2-Z-7 порт с пробелом — отказ (0.1987ms)
+✔ секреты: SV2-Z-7 хост со схемой ftp:// — отказ (0.18ms)
+✔ секреты: SV2-Z-7 хост строкой доступа user@host:21 — отказ (0.0888ms)
+✔ секреты: пользователь = пользователь первого сайта — отказ (0.1485ms)
+✔ секреты: пользователь = первого сайта, другой регистр — отказ (0.2156ms)
+✔ секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ (0.1ms)
+✔ SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD) (0.1541ms)
+✔ SV2-Z-7 логины вида ax572417_claude, с точкой, дефисом и @ — проход (0.118ms)
+✔ SV1-O-2, SV2-O-3 первая выкладка: вход on, или нет нашего index.html, или на сервере нет всех ключевых файлов (0.8017ms)
+✔ домен: имя не разрешается (оба хоста) (0.4661ms)
+✔ домен: заглушка «not configured» через https → http (0.396ms)
+✔ домен: SV2-Z-6 заглушка: имя в <b>, &nbsp; и голое имя на запрос www — не привязан (0.1263ms)
+✔ домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп (0.2213ms)
+✔ домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп (1.0243ms)
+✔ домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп (0.3257ms)
+✔ домен: наша сборка отвечает, первая выкладка — стоп (0.2162ms)
+✔ домен: наша сборка отвечает, не первая — проход со строкой (0.1107ms)
+✔ домен: SV2-Z-4 не первая, оба хоста — таймаут: проход, «не удалось узнать» (0.0946ms)
+✔ домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп (0.1032ms)
+✔ домен: голый хост отвечает парковкой, www не разрешается — первая — стоп (0.0872ms)
+✔ домен: 403 пустого каталога — первая — стоп (0.0799ms)
+✔ домен: ошибка сертификата — не понять, первая — стоп (0.0793ms)
+✔ домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори» (0.066ms)
+✔ домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать» (0.0656ms)
+✔ домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп (0.0779ms)
+✔ домен: петля редиректов — первая — стоп (0.0951ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан (1.2444ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: та же заглушка, первая, без согласия — стоп, как прежде, с именем входа и «Run workflow, не Re-run» (0.2461ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: 403 пустого каталога (заглушку удалили), первая, согласие — проход (0.1894ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: наша сборка отвечает (повтор оборванной первой), первая, согласие — проход (0.1732ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: домен не привязан, первая, согласие — проход, как без входа (0.091ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: не первая, согласие — как без входа: обновит живой сайт (0.125ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера (0.5074ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается (0.1614ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: повтори (0.1814ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут, первая, без согласия — стоп, вход не предлагается (0.1917ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www не разрешается, голое имя — заглушка, первая, согласие — стоп: имя не привязано (0.2098ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www ведёт на чужой хост, первая, согласие — стоп: не этот сайт (0.2562ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 отвечает первый сайт (canonical ac4bf), первая, согласие — стоп: не этот сайт (0.2119ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 петля редиректов, первая, согласие — стоп (0.2474ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, первая, согласие — стоп строкой, не код 2 (0.1373ms)
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, не первая — проход строкой, не код 2 (0.0972ms)
+✖ SV23-O-3, Z-5 строка ответа в публичный журнал: <title> вне комментариев, svg и скриптов, сущности раскрыты, без управляющих знаков и команд раннера, обрез с «…» (0.4382ms)
+✖ SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108) (1.2858ms)
+✔ SV23 вход SERPENT_DOMAIN_BOUND: on — согласие; off, пусто и нет — нет; иное — ошибка входа (0.1689ms)
+✔ папка робота: корень аккаунта с папками доменов (1.434ms)
+✔ папка робота: папка домена с www/ (0.1173ms)
+✔ папка робота: папка домена с WWW/ заглавными (0.0809ms)
+✔ папка робота: корень первого сайта (0.3486ms)
+✔ папка робота: index.html в списке, содержимого нет (0.1105ms)
+✔ папка робота: SV1-O-1 A1 корень первого сайта без index.html (0.2005ms)
+✔ папка робота: SV1-O-1 A2 робот в папке _astro первого сайта (0.2878ms)
+✔ папка робота: SV1-O-1 A3 сайт на PHP (0.0867ms)
+✔ папка робота: SV1-O-1 A4 Index.html первого сайта (0.1054ms)
+✔ папка робота: SV1-O-1 A5 INDEX.HTML (0.0818ms)
+✔ папка робота: SV1-O-1 A6 index.htm (0.0887ms)
+✔ папка робота: SV1-O-4 A8 папки доменов без отметки типа (0.1025ms)
+✔ папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN) (5.0124ms)
+✔ папка робота: SV1-O-4 A10 www без косой (0.0789ms)
+✔ папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов» (0.1682ms)
+✔ папка робота: SV2-O-1 P1a наш index.html и WordPress рядом (0.3067ms)
+✔ папка робота: SV2-O-1 P1b копия нашей главной в корне первого сайта (guides/) (0.188ms)
+✔ папка робота: SV2-O-1 P1d папка поддомена blog/ рядом с нашей выкладкой (0.116ms)
+✔ папка робота: SV2-O-1 P1e .ssh/, mail/, tmp/ рядом с нашей выкладкой (0.105ms)
+✔ папка робота: SV2-Z-1 оборванная первая выкладка: часть нашей сборки без index.html — отказ с верной причиной (0.0789ms)
+✔ папка робота: SV2-Z-1 оборванная на index.html (.in.index.html.) (0.0948ms)
+✔ папка робота: SV2-Z-1 файлы хостера .htaccess и favicon.ico — удалить (0.0724ms)
+✔ папка робота: пустой корень (0.0639ms)
+✔ папка робота: пустой корень с CRLF (0.0658ms)
+✔ папка робота: пустой вывод lftp (MLSD без ./ ../) (0.0539ms)
+✔ папка робота: заглушка хостера (index.html без canonical) (0.1527ms)
+✔ папка робота: свежий каталог хостера: .well-known/ и cgi-bin/ (0.0986ms)
+✔ папка робота: прежняя наша выкладка (0.0926ms)
+✔ папка робота: прежняя наша выкладка и .well-known/ сертификата (0.0977ms)
+✔ папка робота: SV2-Z-8 прежняя наша выкладка и ссылка .well-known@ хостера (0.0801ms)
+✔ папка робота: прежняя наша выкладка и остаток .in. оборванной второй (0.1086ms)
+✔ SV3-O-2 приставка .in. пропускает только временный файл lftp для файла сборки (0.371ms)
+✔ SV3-Z-1 своя старая страница (есть в карте прежней выкладки) рядом с нашей сборкой — проход (0.4861ms)
+✔ SV3-Z-2 оборванная первая выкладка без _astro (файлы корня легли первыми) — своя причина (0.1169ms)
+✔ SV3-Z-3 имена файлов в отказе печатаются, имена доменов — нет (0.1905ms)
+✔ SV3-O-3 глубина: чужое внутри наших папок при прежней выкладке — отказ; старые ассеты и своя старая страница — проход (0.9429ms)
+✔ папка робота: отказ не печатает имён доменов аккаунта (0.1766ms)
+✔ index.html до mirror: index.html нет (0.1681ms)
+✔ index.html до mirror: наш (0.071ms)
+✔ index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки (0.0756ms)
+✔ index.html до mirror: первого сайта (0.085ms)
+✔ index.html до mirror: заглушка хостера без canonical (0.1802ms)
+✔ index.html до mirror: canonical http без www (0.0674ms)
+✔ index.html до mirror: canonical страницы, не главной (0.1029ms)
+✔ index.html до mirror: два canonical (0.0916ms)
+✔ index.html до mirror: SV1-Z-6, SV2-Z-3 пустой файл (0.0596ms)
+✔ index.html до mirror: SV1-Z-6 оборванный файл (0.1404ms)
+✔ index.html до mirror: SV2-Z-3 заглушка хостера без </html> — не «прошлая выкладка» (0.0848ms)
+✔ разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF (0.8704ms)
+✔ сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ (29.2445ms)
+✔ SV1-Z-1 сборка CI отличается только значениями cid и хешем имени CSS — проход, названо (30.651ms)
+✔ SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI (23.0056ms)
+✔ SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления) (11.9014ms)
+✔ SV2-O-5 N1 CSS переименован, а страницы ссылаются на старое имя — отказ (битая ссылка) (11.6517ms)
+✔ SV2-O-5 N1b одна страница ссылается на несуществующий CSS — отказ (13.279ms)
+✔ SV2-O-5 N2 два CSS с одним именем, ссылки переставлены — отказ (30.9106ms)
+✔ SV2-Z-2 N2b законная пара index.*.css с одним именем на раннере — проход (23.2311ms)
+✔ SV3-O-6 пара CSS, различная только значением cid, ссылки переставлены — отказ (21.1052ms)
+✔ SV3-Z-4 та же пара на раннере (иной cid ядра и хеш одного имени) — проход (30.6453ms)
+✔ SV3-Z-5 «/_astro/» в robots.txt и комментариях — не ссылки; битая ссылка — код 1 у spisok (86.2157ms)
+✔ SV3-Z-6 .well-known в сборке — отказ папки до выкладки (mirror его не выложит); пересчёт фильтрует обе стороны (92.5197ms)
+✔ SV2-O-6 N5 метка нормализации «data-astro-cid-#1» буквально в сборке — отказ (20.1042ms)
+✔ пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ; служебные папки хостера — не считаются (33.9372ms)
+✔ команда: неверные аргументы и нечитаемый вход — код 2 (437.0093ms)
+✔ SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2, без сети (221.4329ms)
+✔ SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети; наружу — ни одного запроса (680.959ms)
+✔ команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT (730.4884ms)
+✔ workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST (0.1755ms)
+✖ SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; только сторожу домена и только в первой попытке запуска (SV23-O-6); push — off (0.5041ms)
+✔ SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108) (0.0841ms)
+✔ workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on (0.0775ms)
+✔ SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по входу или по серверу (index.html и ключевые файлы); пустой признак — первая (0.1592ms)
+✔ SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал (0.1463ms)
+✔ SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put (0.1271ms)
+✔ workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл (0.086ms)
+✔ SV2-O-2, SV2-Z-8, SV3-O-1 workflow: mirror --delete не трогает служебные записи хостера — ни папкой, ни ссылкой или файлом (0.0641ms)
+✔ SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет (0.1487ms)
+✔ SV1-Z-4, SV2-O-7 workflow: сторож секретов — до выгрузки корпуса; корпус — после npm ci, перед сборкой, ключом, без сохранения ключа (0.1168ms)
+✔ workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после (0.0844ms)
+✔ workflow: команды сторожей — те, что знает сторож; циклов оболочки нет (0.4014ms)
+ℹ tests 134
+ℹ suites 0
+ℹ pass 117
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2808.161
+
+✖ failing tests:
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан (1.2444ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://www.7thserpent.com/ — 200) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:163:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://www.7thserpent.com/ — 200) 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу',
+    expected: /покажет её сразу/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: та же заглушка, первая, без согласия — стоп, как прежде, с именем входа и «Run workflow, не Re-run» (0.2461ms)
+  AssertionError [ERR_ASSERTION]: Run workflow: www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://www.7thserpent.com/ — 200) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) | СТОП: первая выкладка, а домен уже отвечает — выкладка сразу сделает сайт живым (П52 п. 3). Выясни в панели хостера, что отвечает; если домен привязан намеренно и ты согласен — запусти выкладку снова со входом SERPENT_DOMAIN_BOUND = on (П108).
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:160:39)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: 403 пустого каталога (заглушку удалили), первая, согласие — проход (0.1894ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403) | 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:163:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'www.7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://www.7thserpent.com/ — 403) 7thserpent.com: ОТВЕЧАЕТ — ответ 403 — «403 Forbidden» (https://7thserpent.com/ — 403) первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу',
+    expected: /покажет её сразу/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: наша сборка отвечает (повтор оборванной первой), первая, согласие — проход (0.1732ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «x» (https://www.7thserpent.com/ — 200) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «x» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:163:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «x» (https://www.7thserpent.com/ — 200) 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «x» (https://7thserpent.com/ — 301 → https://www.7thserpent.com/ — 200) первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу',
+    expected: /покажет её сразу/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера (0.5074ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети ERR_TLS_CERT_ALTNAME_INVALID (https://www.7thserpent.com/ — сеть: ERR_TLS_CERT_ALTNAME_INVALID) | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети CERT_HAS_EXPIRED (https://7thserpent.com/ — сеть: CERT_HAS_EXPIRED) | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается (0.1614ms)
+  AssertionError [ERR_ASSERTION]: ошибка сертификата: www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://www.7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT) | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети DEPTH_ZERO_SELF_SIGNED_CERT (https://7thserpent.com/ — сеть: DEPTH_ZERO_SELF_SIGNED_CERT) | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:160:39)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: повтори (0.1814ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://www.7thserpent.com/ — сеть: TimeoutError) | 7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://7thserpent.com/ — сеть: TimeoutError) | первая выкладка, а домен проверить не удалось (ошибка — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут, первая, без согласия — стоп, вход не предлагается (0.1917ms)
+  AssertionError [ERR_ASSERTION]: лишнее «SERPENT_DOMAIN_BOUND»: www.7thserpent.com: НЕ ПОНЯТЬ — ошибка сети TimeoutError (https://www.7thserpent.com/ — сеть: TimeoutError) | 7thserpent.com: не привязан — имя не разрешается (https://7thserpent.com/ — сеть: ENOTFOUND) | СТОП: первая выкладка, а не удалось узнать, отвечает ли домен (временная ошибка имени, таймаут или TLS) — повтори запуск; повторяется — проверь записи DNS домена в панели хостера; если домен привязан намеренно и ты согласен — запусти со входом SERPENT_DOMAIN_BOUND = on (П108).
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:161:40)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www не разрешается, голое имя — заглушка, первая, согласие — стоп: имя не привязано (0.2098ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: не привязан — имя не разрешается (https://www.7thserpent.com/ — сеть: ENOTFOUND) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www ведёт на чужой хост, первая, согласие — стоп: не этот сайт (0.2562ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Parked» (https://www.7thserpent.com/ — 302 → https://parked.example/ — 200) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 отвечает первый сайт (canonical ac4bf), первая, согласие — стоп: не этот сайт (0.2119ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://www.7thserpent.com/ — 200) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 (https://7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 петля редиректов, первая, согласие — стоп (0.2474ms)
+  AssertionError [ERR_ASSERTION]: www.7thserpent.com: ОТВЕЧАЕТ — больше 5 редиректов (https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301 → https://www.7thserpent.com/ — 301) | 7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «Поздравляем, сайт создан!» (https://7thserpent.com/ — 200) | первая выкладка, а домен уже отвечает (что — в строках выше): владелец согласен, что домен привязан (вход SERPENT_DOMAIN_BOUND = on, П108) — выкладка идёт, домен покажет её сразу
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:159:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, первая, согласие — стоп строкой, не код 2 (0.1373ms)
+  TypeError: Invalid URL
+      at new URL (node:internal/url:840:25)
+      at sostoyanieHosta (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:149:13)
+      at async domen (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:182:15)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:158:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'ERR_INVALID_URL',
+    input: 'http://',
+    base: 'https://www.7thserpent.com/'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:157:3
+✖ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, не первая — проход строкой, не код 2 (0.0972ms)
+  TypeError: Invalid URL
+      at new URL (node:internal/url:840:25)
+      at sostoyanieHosta (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:149:13)
+      at async domen (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:182:15)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:158:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'ERR_INVALID_URL',
+    input: 'https://www.7thserpent.com:99999/',
+    base: 'https://www.7thserpent.com/'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:167:1
+✖ SV23-O-3, Z-5 строка ответа в публичный журнал: <title> вне комментариев, svg и скриптов, сущности раскрыты, без управляющих знаков и команд раннера, обрез с «…» (0.4382ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /«Сайт» ПП & ok/. Input:
+  
+  'www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «&laquo;Сайт&raquo; &#1055;&#x41F; &amp; ok» (https://www.7thserpent.com/ — 200)'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:169:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'www.7thserpent.com: ОТВЕЧАЕТ — ответ 200 — «&laquo;Сайт&raquo; &#1055;&#x41F; &amp; ok» (https://www.7thserpent.com/ — 200)',
+    expected: /«Сайт» ПП & ok/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:179:1
+✖ SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108) (1.2858ms)
+  TypeError: Invalid URL
+      at new URL (node:internal/url:840:25)
+      at sostoyanieHosta (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:149:13)
+      at async domen (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/storozha-vykladki.mjs:182:15)
+      at async TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:185:15)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    code: 'ERR_INVALID_URL',
+    input: 'http://',
+    base: 'https://www.7thserpent.com/'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:682:1
+✖ SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; только сторожу домена и только в первой попытке запуска (SV23-O-6); push — off (0.5041ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  - "${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}"
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:690:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: "${{ inputs.SERPENT_DOMAIN_BOUND || 'off' }}",
+    expected: "${{ github.run_attempt == 1 && inputs.SERPENT_DOMAIN_BOUND || 'off' }}",
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

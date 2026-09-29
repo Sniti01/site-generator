@@ -1,0 +1,2501 @@
+✖ здоровый живой сайт без Cloudflare (П108) — все 44 проверки ok (10.9809ms)
+✖ образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare» (2.1133ms)
+✔ домен не подключён (имя не разрешается) — 0 из 44 (0.8772ms)
+✔ домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44 (0.5322ms)
+✖ порча: блок Cloudflare (Cloudflare включили с управляемым robots.txt) (2.7123ms)
+✖ порча: чужая группа вне блоков (1.8478ms)
+✖ порча: наш файл изменён (Allow → Disallow) (2.2736ms)
+✖ порча: блок хостера закрывает Googlebot (1.3927ms)
+✖ порча: блок хостера без END (1.6646ms)
+✖ порча: robots.txt мимо кэша — 404 (1.2332ms)
+✖ порча: robots.txt с CRLF — чисто (1.2616ms)
+✖ порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия (1.5898ms)
+✖ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (1.1742ms)
+✖ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (1.4045ms)
+✖ порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу (1.1392ms)
+✖ порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/ (1.2724ms)
+✖ порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка (1.5303ms)
+✖ порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка (1.1568ms)
+✖ порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки (1.2092ms)
+✖ порча: CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто (1.2476ms)
+✖ порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ (1.1983ms)
+✖ порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/ (1.4824ms)
+✖ порча: CL2-P-1b блок хостера: * закрывает CSS (1.0726ms)
+✖ порча: CL2-P-1c блок хостера: Googlebot-Image закрыт (1.0051ms)
+✖ порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3) (1.0712ms)
+✖ порча: CL2-P-5a «User-agents: Googlebot» (1.0505ms)
+✖ порча: CL2-P-5b «Disallowed: /» (1.5618ms)
+✖ порча: CL2-P-5c «User-agent: * (all robots)» (1.0078ms)
+✖ порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла (1.5021ms)
+✖ порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare (1.1082ms)
+✖ порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ (1.1591ms)
+✖ порча: П108 без Cloudflare: без параметра — другой файл, кэша на пути нет — отдаёт не наш сервер (1.4588ms)
+✖ порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех (1.2052ms)
+✖ порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша (0.9997ms)
+✖ порча: CL1-P-1c без параметра — 503 (0.9552ms)
+✖ порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare (1.1334ms)
+✖ порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков (1.537ms)
+✖ порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка (1.0155ms)
+✖ порча: адрес ящика на поддомене-двойнике — не наш (0.9225ms)
+✖ порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка (1.4201ms)
+✖ порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред (1.6896ms)
+✖ порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам (1.063ms)
+✖ порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate (1.0769ms)
+✖ порча: CL1-P-3b два Cache-Control, склеенные fetch (0.9923ms)
+✖ порча: Cache-Control без must-revalidate (1.0734ms)
+✖ порча: CL2-P-2 s-maxage=86400 на главной (1.2731ms)
+✖ порча: CL2-P-2 CDN-Cache-Control: max-age=86400 (1.3231ms)
+✖ порча: CL2-P-2 max-age=86400 на странице фильма (0.8846ms)
+✖ порча: CL1-P-4 главная из кэша Cloudflare (0.8774ms)
+✖ порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL) (0.8947ms)
+✖ порча: CL3-P-1 главная MISS, повтор — REVALIDATED — краснеет только след Cloudflare (0.8592ms)
+✖ порча: CL3-P-7 s-maxage в кавычках (1.282ms)
+✖ порча: CL3-P-7 два s-maxage: 0 и 86400 (0.8978ms)
+✖ порча: CL3-P-4 Content-Type: windows-1251 на странице фильма (0.85ms)
+✖ порча: CL3-P-4 Content-Type: text/plain на главной (0.8643ms)
+✖ порча: CL3-P-2 (П108 — наоборот) через Cloudflare только голый хост: его редиректы с cf-ray (1.3192ms)
+✖ порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто (1.8571ms)
+✖ порча: CL2-P-2 страница фильма из кэша Cloudflare (0.994ms)
+✖ порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, краснеет только след Cloudflare (0.883ms)
+✖ порча: canonical главной на голый хост (1.0459ms)
+✖ порча: два canonical на главной (0.9131ms)
+✖ порча: CL2-P-8 canonical игры только в комментарии (и в сборке) (1.306ms)
+✖ порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections (1.0137ms)
+✖ порча: чужая таблица стилей на главной (1.0821ms)
+✖ порча: CL2-P-3 srcset на чужой хост (0.8557ms)
+✖ порча: CL2-P-3 base href на чужой хост (0.8596ms)
+✖ порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie (0.8457ms)
+✖ порча: CL2-P-3 вставка Cloudflare (Zaraz) только на 404 (1.316ms)
+✖ порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка» (0.9779ms)
+✖ порча: CL1-P-13 X-Robots-Tag: noindex на страницах (1.1501ms)
+✖ порча: CL2-P-6 X-Robots-Tag: unavailable_after (1.1529ms)
+✖ порча: CL2-P-6 X-Robots-Tag: googlebot: none (0.9736ms)
+✖ порча: CL2-P-6 meta robots noindex в самой сборке (1.4444ms)
+✖ порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex» (0.8633ms)
+✖ порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто (0.8189ms)
+✖ порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто (0.9137ms)
+✖ порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто (0.8209ms)
+✖ порча: CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404 (1.3591ms)
+✖ порча: Set-Cookie Cloudflare на главной (0.9318ms)
+✖ порча: П108 Set-Cookie сервера хостера на главной (0.9113ms)
+✖ порча: CL2-P-9 (П108 — наоборот) Cloudflare проксирует все ответы — образец с Cloudflare (0.8277ms)
+✖ порча: П108 след Cloudflare только server: cloudflare — у главной (0.8367ms)
+✖ порча: П108 след Cloudflare только cf-ray — у robots.txt без параметра (0.8539ms)
+✖ порча: П108 след Cloudflare только Cf-Cache-Status — у карты сайта (1.7736ms)
+✖ порча: П108 след Cloudflare только cf-mitigated — у страницы фильма (1.0202ms)
+✖ порча: CL1-P-5 редирект страницы теряет путь (1.0822ms)
+✖ порча: П108 переадресация на https у хостера: http://голый → https://голый (второй скачок) (1.001ms)
+✖ порча: Always Use HTTPS (Cloudflare включили): http://голый → https://голый (1.0532ms)
+✖ порча: 302 вместо 301 (1.5329ms)
+✖ порча: карта без /privacy/ (1.0206ms)
+✖ порча: карта с /404/ (1.3751ms)
+✖ порча: карта: дубль вместо /privacy/ (тот же счёт) (1.0297ms)
+✖ порча: индекс ведёт на sitemap-1.xml (0.8183ms)
+✖ порча: CL1-P-14 14 из 17 адресов карты — 404 (0.7516ms)
+✖ порча: несуществующий адрес — 404 хостера (1.5758ms)
+✖ порча: несуществующий адрес — наша страница со статусом 200 (1.35ms)
+✖ порча: /404/ напрямую — 404 (1.3015ms)
+✖ порча: страница игры — 500 (1.2032ms)
+✖ порча: CL1-P-7 страница игры — список каталога Apache (1.6666ms)
+✖ порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто (1.0331ms)
+✖ порча: CL2-Z-1 адрес ящика с &#64; — чисто (1.2578ms)
+✖ порча: /privacy/ с __cf_email__ вместо адреса (обфускация Cloudflare) (1.0287ms)
+✖ порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке) (1.0276ms)
+✖ порча: CL2-P-7 адрес ящика первого сайта (0.8942ms)
+✖ порча: CL2-P-7 адрес ящика только в комментарии (0.9048ms)
+✖ порча: /privacy/ — 404 (0.9416ms)
+✖ порча: CL3-P-6 адрес ящика только в <title> (1.3401ms)
+✖ порча: CL3-P-6 адрес ящика только в <p hidden> (0.8436ms)
+✖ порча: CL3-P-6 адрес ящика только в <noscript> (0.8065ms)
+✖ справки: кэш, положение блока хостера, комментарии вне меток (1.8276ms)
+✔ CL1-Z-1 обход кэша не удался — причина названа в строке (1.8776ms)
+✖ подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare (4.056ms)
+✖ CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита» (3.6487ms)
+✔ CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт) (6.1152ms)
+✔ разбор robots.txt: наш файл только отдельными строками (0.3318ms)
+✔ поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image (0.2879ms)
+✔ canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается (0.1575ms)
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (1.2243ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+✔ ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц (0.7659ms) # подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist
+✔ команда: неверные аргументы — код 2, без сети (114.0776ms)
+ℹ tests 120
+ℹ suites 0
+ℹ pass 8
+ℹ fail 110
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 2
+ℹ duration_ms 417.9806
+
+✖ failing tests:
+
+test at tools\testy\check-live.test.mjs:137:1
+✖ здоровый живой сайт без Cloudflare (П108) — все 44 проверки ok (10.9809ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:140:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:151:1
+✖ образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare» (2.1133ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:154:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: блок Cloudflare (Cloudflare включили с управляемым robots.txt) (2.7123ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: блока Cloudflare нет: false — «Cloudflare Managed content» — управляемый robots.txt зоны не снят (Security → Bots)
+  + actual - expected
+  
+    [
+      'robots.txt: блока Cloudflare нет',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: блока Cloudflare нет' ],
+    expected: [ 'robots.txt: блока Cloudflare нет', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: чужая группа вне блоков (1.8478ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-agent: GPTBot | Disallow: / — наш файл обещает: запрещать нечего | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: наш файл изменён (Allow → Disallow) (2.2736ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: «Allow: /» (в ответе: «Disallow: /») | robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 68 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: наш файл целиком',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: блок хостера закрывает Googlebot (1.3927ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: блок хостера без END (1.6646ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: # BEGIN adm.tools Managed content (без END) | User-agent: AhrefsBot | Disallow: / — наш файл обещает: запрещать нечего | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: robots.txt мимо кэша — 404 (1.2332ms)
+  AssertionError [ERR_ASSERTION]: robots.txt мимо кэша: статус: 404 — параметр запроса мимо кэша Cloudflare | robots.txt мимо кэша: обход кэша сработал: false — ответ 404 | robots.txt: наш файл целиком: ответ 404 — ответ 404 | robots.txt: блока Cloudflare нет: ответ 404 — ответ 404 | robots.txt: вне нашего файла — только блок хостера: ответ 404 — ответ 404 | robots.txt: поисковики не закрыты: ответ 404 — ответ 404 | robots.txt: строка Sitemap: false — ответ 404 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'robots.txt мимо кэша: обход кэша сработал',
+      'robots.txt мимо кэша: статус',
+      'robots.txt: блока Cloudflare нет',
+      'robots.txt: вне нашего файла — только блок хостера',
+  ...
+      'robots.txt: строка Sitemap',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt мимо кэша: статус', 'robots.txt: блока Cloudflare нет', 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты', 'robots.txt: строка Sitemap', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt мимо кэша: статус', 'robots.txt: блока Cloudflare нет', 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты', 'robots.txt: строка Sitemap' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: robots.txt с CRLF — чисто (1.2616ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия (1.5898ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (1.1742ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (1.4045ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу (1.1392ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /* — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 68 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/ (1.2724ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /movie/ — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /movie/, googlebot-image /movie/, bingbot /movie/ | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка (1.5303ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка (1.1568ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки (1.2092ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто (1.2476ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ (1.1983ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/ (1.4824ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /movie/ | «adm.tools»: * — Disallow: /cheats/ — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /movie/, googlebot /cheats/, googlebot-image /movie/, googlebot-image /cheats/ и ещё 2 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-1b блок хостера: * закрывает CSS (1.0726ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /*.css$ — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /_astro/index.Cz6femgl.css, googlebot-image /_astro/index.Cz6femgl.css, bingbot /_astro/index.Cz6femgl.css | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-1c блок хостера: Googlebot-Image закрыт (1.0051ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot-image — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot-image /, googlebot-image /max-payne-1/, googlebot-image /max-payne-2/, googlebot-image /max-payne-3/ и ещё 20 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3) (1.0712ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: msnbot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: bingbot /, bingbot /max-payne-1/, bingbot /max-payne-2/, bingbot /max-payne-3/ и ещё 20 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-5a «User-agents: Googlebot» (1.0505ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-5b «Disallowed: /» (1.5618ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-5c «User-agent: * (all robots)» (1.0078ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: * — Disallow: /* — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 68 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: поисковики не закрыты',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла (1.5021ms)
+  AssertionError [ERR_ASSERTION]: robots.txt мимо кэша: обход кэша сработал: false — Cf-Cache-Status HIT — ответ из кэша Cloudflare (HIT, Age 9120) — обход не удался: строка запроса вне ключа кэша; Purge by URL и повторить | robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: «# A static site (Astro). Every page is open to indexing: there is no admin» (в ответе: «# A static site. Every page is open to indexing: there is no admin»); ответ из кэша Cloudflare (HIT, Age 9120) — обход не удался: строка запроса вне ключа кэша; Purge by URL и повторить
+  + actual - expected
+  
+    [
+      'robots.txt мимо кэша: обход кэша сработал',
+      'robots.txt: наш файл целиком',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком' ],
+    expected: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare (1.1082ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ (1.1591ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 без Cloudflare: без параметра — другой файл, кэша на пути нет — отдаёт не наш сервер (1.4588ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — не равен ответу мимо кэша и не из кэша (Cf-Cache-Status —) — отдаёт не наш сервер | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех (1.2052ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — роботы видят: Disallow: / | закрыто: googlebot / | закрыто: googlebot /max-payne-1/ (из кэша Cloudflare, HIT — Purge by URL)
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша (0.9997ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — не равен ответу мимо кэша и не из кэша (Cf-Cache-Status DYNAMIC) — отдаёт не наш сервер
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-1c без параметра — 503 (0.9552ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — ответ 503 — роботы robots.txt не получают | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)', 'запросы идут через Cloudflare' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare (1.1334ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — роботы видят: блок «Cloudflare» (из кэша Cloudflare, HIT — Purge by URL)
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков (1.537ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — роботы видят: User-agent: GPTBot | Disallow: / (из кэша Cloudflare, HIT — Purge by URL)
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка (1.0155ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: адрес ящика на поддомене-двойнике — не наш (0.9225ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка (1.4201ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред (1.6896ms)
+  AssertionError [ERR_ASSERTION]: robots.txt без параметра (его берут роботы): false — роботы видят: Sitemap: https://evil.example/sitemap-index.xml (из кэша Cloudflare, HIT — Purge by URL)
+  + actual - expected
+  
+    [
+      'robots.txt без параметра (его берут роботы)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [ 'robots.txt без параметра (его берут роботы)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам (1.063ms)
+  AssertionError [ERR_ASSERTION]: robots.txt мимо кэша: статус: 403 — параметр запроса мимо кэша Cloudflare; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt мимо кэша: обход кэша сработал: false — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt: наш файл целиком: ответ 403 — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt: блока Cloudflare нет: ответ 403 — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt: вне нашего файла — только блок хостера: ответ 403 — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt: поисковики не закрыты: ответ 403 — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен | robots.txt: строка Sitemap: false — ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен
+  + actual - expected
+  ... Skipped lines
+  
+    [
+      'robots.txt мимо кэша: обход кэша сработал',
+      'robots.txt мимо кэша: статус',
+      'robots.txt: блока Cloudflare нет',
+      'robots.txt: вне нашего файла — только блок хостера',
+  ...
+      'robots.txt: строка Sitemap',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt мимо кэша: статус', 'robots.txt: блока Cloudflare нет', 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты', 'robots.txt: строка Sitemap' ],
+    expected: [ 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt мимо кэша: статус', 'robots.txt: блока Cloudflare нет', 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты', 'robots.txt: строка Sitemap', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate (1.0769ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: max-age: 14400 (пришло «public, max-age=14400, must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-3b два Cache-Control, склеенные fetch (0.9923ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: max-age: 14400 0 (пришло «max-age=14400, public, max-age=0, must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: Cache-Control без must-revalidate (1.0734ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: нет must-revalidate (пришло «max-age=0») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-2 s-maxage=86400 на главной (1.2731ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: s-maxage: 86400 (пришло «public, max-age=0, s-maxage=86400, must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-2 CDN-Cache-Control: max-age=86400 (1.3231ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: CDN-Cache-Control: max-age=86400 (пришло «public, max-age=0, must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-2 max-age=86400 на странице фильма (0.8846ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /movie/: нет must-revalidate, max-age: 86400 (пришло «max-age=86400») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-4 главная из кэша Cloudflare (0.8774ms)
+  AssertionError [ERR_ASSERTION]: HTML не из кэша Cloudflare: false — / (HIT, Age 5400) — правило кэша Cloudflare (Edge TTL) держит HTML; правка не дойдёт до читателя
+  + actual - expected
+  
+    [
+      'HTML не из кэша Cloudflare',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML не из кэша Cloudflare' ],
+    expected: [ 'HTML не из кэша Cloudflare', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL) (0.8947ms)
+  AssertionError [ERR_ASSERTION]: HTML не из кэша Cloudflare: false — / (MISS → повтор HIT, Age 7200) — правило кэша Cloudflare (Edge TTL) держит HTML; правка не дойдёт до читателя
+  + actual - expected
+  
+    [
+      'HTML не из кэша Cloudflare',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML не из кэша Cloudflare' ],
+    expected: [ 'HTML не из кэша Cloudflare', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-1 главная MISS, повтор — REVALIDATED — краснеет только след Cloudflare (0.8592ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-7 s-maxage в кавычках (1.282ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: s-maxage: 86400 (пришло «public, max-age=0, s-maxage="86400", must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-7 два s-maxage: 0 и 86400 (0.8978ms)
+  AssertionError [ERR_ASSERTION]: HTML: Cache-Control (max-age=0, must-revalidate): false — /: s-maxage: 0 86400 (пришло «public, max-age=0, s-maxage=0, s-maxage=86400, must-revalidate») — .htaccess обещает: правка доходит до читателя при следующем заходе | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML: Cache-Control (max-age=0, must-revalidate)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML: Cache-Control (max-age=0, must-revalidate)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML: Cache-Control (max-age=0, must-revalidate)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-4 Content-Type: windows-1251 на странице фильма (0.85ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /movie/: Content-Type «text/html; charset=windows-1251» — ждём text/html (utf-8): браузер прочтёт или покажет иначе — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-4 Content-Type: text/plain на главной (0.8643ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /: Content-Type «text/plain» — ждём text/html (utf-8): браузер прочтёт или покажет иначе — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-2 (П108 — наоборот) через Cloudflare только голый хост: его редиректы с cf-ray (1.3192ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), http://www.7thserpent.com/max-payne-1/ (301), https://www.7thserpent.com/ (200) и ещё 22 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто (1.8571ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-2 страница фильма из кэша Cloudflare (0.994ms)
+  AssertionError [ERR_ASSERTION]: HTML не из кэша Cloudflare: false — /movie/ (HIT, Age 86400) — правило кэша Cloudflare (Edge TTL) держит HTML; правка не дойдёт до читателя
+  + actual - expected
+  
+    [
+      'HTML не из кэша Cloudflare',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML не из кэша Cloudflare' ],
+    expected: [ 'HTML не из кэша Cloudflare', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, краснеет только след Cloudflare (0.883ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: canonical главной на голый хост (1.0459ms)
+  AssertionError [ERR_ASSERTION]: главная: canonical: https://7thserpent.com/ — Base.astro от Astro.site | sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: / (canonical https://7thserpent.com/) | HTML страниц = сборка (dist): false — 1 из 19 страниц: /: с знака 171: сборка «ical" href="https://www.7thserpent.com/"><link rel="icon" hr», сайт «ical" href="https://7thserpent.com/"><link rel="icon" href="» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+      'главная: canonical',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'главная: canonical', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'главная: canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: два canonical на главной (0.9131ms)
+  AssertionError [ERR_ASSERTION]: главная: canonical: 2 шт.: https://www.7thserpent.com/ https://www.7thserpent.com/x/ — Base.astro от Astro.site | sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: / (canonical https://www.7thserpent.com/ https://www.7thserpent.com/x/) | HTML страниц = сборка (dist): false — 1 из 19 страниц: /: с знака 370: сборка «__burger')</script></head><body><header class="hdr" data-ast», сайт «__burger')</script><link rel="canonical" href="https://www.7» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+      'главная: canonical',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'главная: canonical', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'главная: canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-8 canonical игры только в комментарии (и в сборке) (1.306ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: /max-payne-1/ (canonical —) | страница /max-payne-1/: canonical: — — своя страница, не список каталога | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  +   'запросы идут через Cloudflare',
+      'страница /max-payne-1/: canonical'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы идут через Cloudflare', 'страница /max-payne-1/: canonical' ],
+    expected: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'страница /max-payne-1/: canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections (1.0137ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 2 из 19 страниц: /: Web Analytics (Cloudflare); с знака 524: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script defer src="https://static.cloudfl» | /privacy/: Web Analytics (Cloudflare); с знака 555: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script defer src="https://static.cloudfl» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)' ],
+    expected: [ 'HTML страниц = сборка (dist)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: чужая таблица стилей на главной (1.0821ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /: с знака 370: сборка «__burger')</script></head><body><header class="hdr" data-ast», сайт «__burger')</script><link rel="stylesheet" href="https://font» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-3 srcset на чужой хост (0.8557ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /privacy/: с знака 522: сборка «bp" alt="x" srcset="/_astro/hero.webp 1200w"></main></body><», сайт «bp" alt="x" srcset="https://cdn.tracker.example/x.webp 1200w» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-3 base href на чужой хост (0.8596ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /privacy/: с знака 60: сборка «ta charset="utf-8"><title>Privacy policy — 7thserpent.com</t», сайт «ta charset="utf-8"><base href="https://cdn.tracker.example/"» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie (0.8457ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /privacy/: с знака 555: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script>navigator.sendBeacon('https://t.e» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-3 вставка Cloudflare (Zaraz) только на 404 (1.316ms)
+  AssertionError [ERR_ASSERTION]: HTML страниц = сборка (dist): false — 1 из 19 страниц: /net-takoy-stranicy-m1/: Zaraz; с знака 498: сборка «webp 1200w"></main></body></html>», сайт «webp 1200w"></main><script src="/cdn-cgi/zaraz/i.js"></scrip» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)' ],
+    expected: [ 'HTML страниц = сборка (dist)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка» (0.9779ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 2 из 17: /pc/ (ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен), /quotes/ (ответ 403; вызов Cloudflare (cf-mitigated: challenge) — Bot Fight Mode или правило WAF; сайт за ним не проверен)
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical' ],
+    expected: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-13 X-Robots-Tag: noindex на страницах (1.1501ms)
+  AssertionError [ERR_ASSERTION]: страницы без запрета индексации: false — /: X-Robots-Tag noindex | /cheats/: X-Robots-Tag noindex | /gameplay/: X-Robots-Tag noindex — robots.txt обещает: всё открыто для индекса | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'страницы без запрета индексации'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'страницы без запрета индексации' ],
+    expected: [ 'страницы без запрета индексации' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-6 X-Robots-Tag: unavailable_after (1.1529ms)
+  AssertionError [ERR_ASSERTION]: страницы без запрета индексации: false — /movie/: X-Robots-Tag unavailable_after: 2020-01-01 — robots.txt обещает: всё открыто для индекса | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'страницы без запрета индексации'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'страницы без запрета индексации' ],
+    expected: [ 'страницы без запрета индексации' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-6 X-Robots-Tag: googlebot: none (0.9736ms)
+  AssertionError [ERR_ASSERTION]: страницы без запрета индексации: false — /privacy/: X-Robots-Tag googlebot: none — robots.txt обещает: всё открыто для индекса | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'страницы без запрета индексации'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'страницы без запрета индексации' ],
+    expected: [ 'страницы без запрета индексации' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-6 meta robots noindex в самой сборке (1.4444ms)
+  AssertionError [ERR_ASSERTION]: страницы без запрета индексации: false — /movie/: <meta robots> noindex — robots.txt обещает: всё открыто для индекса | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'страницы без запрета индексации'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'страницы без запрета индексации' ],
+    expected: [ 'страницы без запрета индексации' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex» (0.8633ms)
+  AssertionError [ERR_ASSERTION]: страницы без запрета индексации: false — /privacy/: X-Robots-Tag noindex (после «otherbot:» — поля X-Robots-Tag склеены, не различить) — robots.txt обещает: всё открыто для индекса | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'страницы без запрета индексации'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'страницы без запрета индексации' ],
+    expected: [ 'страницы без запрета индексации' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто (0.8189ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто (0.9137ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто (0.8209ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404 (1.3591ms)
+  AssertionError [ERR_ASSERTION]: ответы без Set-Cookie: false — ставят: _cfuvid (/max-payne-1/, Cloudflare — защита от ботов или вызов); _cfuvid (/net-takoy-stranicy-m1/, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+  + actual - expected
+  
+    [
+  -   'запросы не идут через Cloudflare',
+      'ответы без Set-Cookie'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ответы без Set-Cookie' ],
+    expected: [ 'запросы не идут через Cloudflare', 'ответы без Set-Cookie' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: Set-Cookie Cloudflare на главной (0.9318ms)
+  AssertionError [ERR_ASSERTION]: ответы без Set-Cookie: false — ставят: __cf_bm (главная, Cloudflare — защита от ботов или вызов) — /privacy/ обещает, что сайт cookies не ставит
+  + actual - expected
+  
+    [
+  -   'запросы не идут через Cloudflare',
+      'ответы без Set-Cookie'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'ответы без Set-Cookie' ],
+    expected: [ 'запросы не идут через Cloudflare', 'ответы без Set-Cookie' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 Set-Cookie сервера хостера на главной (0.9113ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты | ответы без Set-Cookie: false — ставят: PHPSESSID (главная) — /privacy/ обещает, что сайт cookies не ставит
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'ответы без Set-Cookie'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'ответы без Set-Cookie' ],
+    expected: [ 'ответы без Set-Cookie' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-9 (П108 — наоборот) Cloudflare проксирует все ответы — образец с Cloudflare (0.8277ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   'запросы не идут через Cloudflare'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 след Cloudflare только server: cloudflare — у главной (0.8367ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 25 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 след Cloudflare только cf-ray — у robots.txt без параметра (0.8539ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 25 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 след Cloudflare только Cf-Cache-Status — у карты сайта (1.7736ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 след Cloudflare только cf-mitigated — у страницы фильма (1.0202ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-5 редирект страницы теряет путь (1.0822ms)
+  AssertionError [ERR_ASSERTION]: http → https /max-payne-1/: Location: https://www.7thserpent.com/ — один скачок на канонический адрес с тем же путём | голый → www /max-payne-1/: Location: https://www.7thserpent.com/ — один скачок на канонический адрес с тем же путём | http голый → https www /max-payne-1/: Location: https://www.7thserpent.com/ — один скачок на канонический адрес с тем же путём | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'http голый → https www /max-payne-1/: Location',
+      'http → https /max-payne-1/: Location',
+      'голый → www /max-payne-1/: Location',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'http голый → https www /max-payne-1/: Location', 'http → https /max-payne-1/: Location', 'голый → www /max-payne-1/: Location', 'запросы идут через Cloudflare' ],
+    expected: [ 'http голый → https www /max-payne-1/: Location', 'http → https /max-payne-1/: Location', 'голый → www /max-payne-1/: Location' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: П108 переадресация на https у хостера: http://голый → https://голый (второй скачок) (1.001ms)
+  AssertionError [ERR_ASSERTION]: http голый → https www /: Location: https://7thserpent.com/ — Always Use HTTPS на Cloudflare включён — выключить (второй скачок) | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'http голый → https www /: Location',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'http голый → https www /: Location', 'запросы идут через Cloudflare' ],
+    expected: [ 'http голый → https www /: Location' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: Always Use HTTPS (Cloudflare включили): http://голый → https://голый (1.0532ms)
+  AssertionError [ERR_ASSERTION]: http голый → https www /: Location: https://7thserpent.com/ — Always Use HTTPS на Cloudflare включён — выключить (второй скачок)
+  + actual - expected
+  
+    [
+      'http голый → https www /: Location',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'http голый → https www /: Location' ],
+    expected: [ 'http голый → https www /: Location', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: 302 вместо 301 (1.5329ms)
+  AssertionError [ERR_ASSERTION]: http → https /: статус: 302 — http://www.7thserpent.com/ | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (302), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'http → https /: статус',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'http → https /: статус', 'запросы идут через Cloudflare' ],
+    expected: [ 'http → https /: статус' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: карта без /privacy/ (1.0206ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адресов: 16 — страницы структуры без /404/; Cf-Cache-Status —, Age — | sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/privacy/; Cf-Cache-Status —, Age — | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса = структура',
+      'sitemap-0.xml: адресов',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса = структура', 'sitemap-0.xml: адресов', 'запросы идут через Cloudflare' ],
+    expected: [ 'sitemap-0.xml: адреса = структура', 'sitemap-0.xml: адресов' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: карта с /404/ (1.3751ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адресов: 18 — страницы структуры без /404/; Cf-Cache-Status —, Age — | sitemap-0.xml: адреса = структура: false — лишние: https://www.7thserpent.com/404/; нет: —; Cf-Cache-Status —, Age — | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса = структура',
+      'sitemap-0.xml: адресов',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса = структура', 'sitemap-0.xml: адресов', 'запросы идут через Cloudflare' ],
+    expected: [ 'sitemap-0.xml: адреса = структура', 'sitemap-0.xml: адресов' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: карта: дубль вместо /privacy/ (тот же счёт) (1.0297ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса = структура: false — лишние: —; нет: https://www.7thserpent.com/privacy/; Cf-Cache-Status —, Age — | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса = структура',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса = структура', 'запросы идут через Cloudflare' ],
+    expected: [ 'sitemap-0.xml: адреса = структура' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: индекс ведёт на sitemap-1.xml (0.8183ms)
+  AssertionError [ERR_ASSERTION]: sitemap-index.xml: ведёт на sitemap-0.xml: https://www.7thserpent.com/sitemap-1.xml — Cf-Cache-Status — | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-index.xml: ведёт на sitemap-0.xml',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-index.xml: ведёт на sitemap-0.xml', 'запросы идут через Cloudflare' ],
+    expected: [ 'sitemap-index.xml: ведёт на sitemap-0.xml' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-14 14 из 17 адресов карты — 404 (0.7516ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 14 из 17: /cheats/ (ответ 404), /gameplay/ (ответ 404), /games-like-max-payne/ (ответ 404) | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы идут через Cloudflare' ],
+    expected: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: несуществующий адрес — 404 хостера (1.5758ms)
+  AssertionError [ERR_ASSERTION]: несуществующий адрес: наша страница: 404 Not Found — title /404/ из структуры, не заглушка хостера | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'несуществующий адрес: наша страница'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'несуществующий адрес: наша страница' ],
+    expected: [ 'несуществующий адрес: наша страница' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: несуществующий адрес — наша страница со статусом 200 (1.35ms)
+  AssertionError [ERR_ASSERTION]: несуществующий адрес: статус: 200 — ErrorDocument 404 /404/index.html | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare',
+      'несуществующий адрес: статус'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare', 'несуществующий адрес: статус' ],
+    expected: [ 'несуществующий адрес: статус' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: /404/ напрямую — 404 (1.3015ms)
+  AssertionError [ERR_ASSERTION]: /404/ напрямую: статус: 404 — страница структуры, вне карты | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/404/ напрямую: статус',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/404/ напрямую: статус', 'запросы идут через Cloudflare' ],
+    expected: [ '/404/ напрямую: статус' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: страница игры — 500 (1.2032ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: /max-payne-1/ (ответ 500) | страница /max-payne-1/: статус: 500 —  | страница /max-payne-1/: canonical: ответ 500 — своя страница, не список каталога | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  +   'запросы идут через Cloudflare',
+      'страница /max-payne-1/: canonical',
+      'страница /max-payne-1/: статус'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы идут через Cloudflare', 'страница /max-payne-1/: canonical', 'страница /max-payne-1/: статус' ],
+    expected: [ 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'страница /max-payne-1/: canonical', 'страница /max-payne-1/: статус' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-7 страница игры — список каталога Apache (1.6666ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: /max-payne-1/ (canonical —) | страница /max-payne-1/: canonical: — — своя страница, не список каталога | HTML страниц = сборка (dist): false — 1 из 19 страниц: /max-payne-1/: с знака 1: сборка «<!doctype html><html lang="en"><head><met», сайт «<html><head><title>Index of /max-payne-1/» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  +   'запросы идут через Cloudflare',
+      'страница /max-payne-1/: canonical'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы идут через Cloudflare', 'страница /max-payne-1/: canonical' ],
+    expected: [ 'HTML страниц = сборка (dist)', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'страница /max-payne-1/: canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто (1.0331ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-Z-1 адрес ящика с &#64; — чисто (1.2578ms)
+  AssertionError [ERR_ASSERTION]: запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: /privacy/ с __cf_email__ вместо адреса (обфускация Cloudflare) (1.0287ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: без обфускации почты Cloudflare: false — найдено: __cf_email__, email-decode, data-cfemail, /cdn-cgi/l/email-protection — Scrape Shield → Email Address Obfuscation включена (П77 п. 6) | /privacy/: адрес ящика открытым текстом: false — адрес скрыт обфускацией Cloudflare — см. строку об обфускации | HTML страниц = сборка (dist): false — 1 из 19 страниц: /privacy/: Email Address Obfuscation (Scrape Shield); с знака 454: сборка « hosting logs go to box@7thserpent.com.</p><img src="/_astro», сайт « hosting logs go to <a href="/cdn-cgi/l/email-protection" cl» — вставка на пути (Cloudflare, хостер) или dist/ собран не из выложенного коммита; /privacy/ обещает: два своих скрипта, запросов наружу нет
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+      '/privacy/: без обфускации почты Cloudflare',
+      'HTML страниц = сборка (dist)',
+  -   'запросы не идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', '/privacy/: без обфускации почты Cloudflare', 'HTML страниц = сборка (dist)' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом', '/privacy/: без обфускации почты Cloudflare', 'HTML страниц = сборка (dist)', 'запросы не идут через Cloudflare' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке) (1.0276ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-7 адрес ящика первого сайта (0.8942ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL2-P-7 адрес ящика только в комментарии (0.9048ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: /privacy/ — 404 (0.9416ms)
+  AssertionError [ERR_ASSERTION]: sitemap-0.xml: адреса отвечают 200 со своим canonical: false — 1 из 17: /privacy/ (ответ 404) | /privacy/: статус: 404 —  | /privacy/: canonical: ответ 404 —  | /privacy/: без обфускации почты Cloudflare: ответ 404 — маркеров обфускации нет | /privacy/: адрес ящика открытым текстом: false — ответ 404 | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: canonical',
+      '/privacy/: адрес ящика открытым текстом',
+      '/privacy/: без обфускации почты Cloudflare',
+      '/privacy/: статус',
+      'sitemap-0.xml: адреса отвечают 200 со своим canonical',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: canonical', '/privacy/: адрес ящика открытым текстом', '/privacy/: без обфускации почты Cloudflare', '/privacy/: статус', 'sitemap-0.xml: адреса отвечают 200 со своим canonical', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: canonical', '/privacy/: адрес ящика открытым текстом', '/privacy/: без обфускации почты Cloudflare', '/privacy/: статус', 'sitemap-0.xml: адреса отвечают 200 со своим canonical' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-6 адрес ящика только в <title> (1.3401ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-6 адрес ящика только в <p hidden> (0.8436ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:298:3
+✖ порча: CL3-P-6 адрес ящика только в <noscript> (0.8065ms)
+  AssertionError [ERR_ASSERTION]: /privacy/: адрес ящика открытым текстом: false — адреса ящика @7thserpent.com в тексте страницы нет — порядок П52 п. 3: ящик и строка адреса (П43 п. 4) до привязки домена | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+  + actual - expected
+  
+    [
+      '/privacy/: адрес ящика открытым текстом',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:301:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ '/privacy/: адрес ящика открытым текстом', 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:305:1
+✖ справки: кэш, положение блока хостера, комментарии вне меток (1.8276ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'запросы идут через Cloudflare'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:309:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:324:1
+✖ подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare (4.056ms)
+  AssertionError [ERR_ASSERTION]: http голый → https www /: Location: https://7thserpent.com/ — Always Use HTTPS на Cloudflare включён — выключить (второй скачок) | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:340:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'http голый → https www /: Location: https://7thserpent.com/ — Always Use HTTPS на Cloudflare включён — выключить (второй скачок) | запросы идут через Cloudflare: false — без cf-ray: http://www.7thserpent.com/ (301), https://7thserpent.com/ (301), http://7thserpent.com/ (301) и ещё 26 — Cloudflare не проксирует этот хост (серое облако?): ряд 05 /privacy/ неверен, проверки кэша пусты',
+    expected: /http голый → https www \/: Location: https:\/\/7thserpent\.com\/ — второй скачок[^|]*панели хостера/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:352:1
+✖ CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита» (3.6487ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      'HTML страниц = сборка (dist)',
+  +   'запросы идут через Cloudflare'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:354:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'HTML страниц = сборка (dist)', 'запросы идут через Cloudflare' ],
+    expected: [ 'HTML страниц = сборка (dist)' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:406:1
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (1.2243ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+  +   'запросы идут через Cloudflare'
+  -   '/privacy/: адрес ящика открытым текстом'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:408:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'запросы идут через Cloudflare' ],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

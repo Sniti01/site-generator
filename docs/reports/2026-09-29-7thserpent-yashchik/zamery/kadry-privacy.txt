@@ -1,0 +1,11 @@
+Кадры /privacy/ (сессия 23, шаг 2) — instrumenty/kadry-privacy.js через Playwright MCP (browser_run_code_unsafe, код строкой),
+сервер — instrumenty/server.mjs на копии dist/ сборки b33709d вне репозитория (порт 4437). Вывод съёмщика:
+
+сборка b33709d, сервер http://127.0.0.1:4437, /privacy/
+1440x900: ответ 200, высота 4869, ширина документа 1440 при окне 1440, рядов 8, подпись «Written by7th SerpentSeptember 29, 2026», адрес contact@7thserpent.com в видимом тексте — да, запросов 7, внешних 0
+390x844: ответ 200, высота 5231, ширина документа 390 при окне 390, рядов 8, подпись «Written by7th SerpentSeptember 29, 2026», адрес contact@7thserpent.com в видимом тексте — да, запросов 7, внешних 0
+
+(Подпись склеена textContent без пробелов между частями — так печатал и съёмщик сессии 22; на кадре части разделены.)
+
+Файлы: kadry/privacy-1440-ekran.png, kadry/privacy-1440-celikom.jpg, kadry/privacy-390-ekran.png, kadry/privacy-390-celikom.jpg.
+Сессия 22 снимала и 320 (П106); П108 называет 1440 и 390.

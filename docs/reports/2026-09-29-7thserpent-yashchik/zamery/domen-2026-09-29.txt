@@ -1,0 +1,41 @@
+Замер домена на старте сессии 23 (П108: «домен — только чтение, не больше нескольких запросов к главной, для доклада»):
+instrumenty/domen-zamer.mjs, 2026-09-29 — три запроса GET к главной, без редиректов, без cookies. Вывод:
+
+https://www.7thserpent.com/ — 200
+  server: nginx
+  cf-ray: —
+  cf-cache-status: —
+  x-ray: wnp190:0.000/wn190:0.000/wa190:D=723
+  content-type: text/html
+  cache-control: —
+  set-cookie: —
+  strict-transport-security: —
+  title: Поздравляем, сайт создан!; тело: 6646 байт; canonical: нет
+https://7thserpent.com/ — 200
+  server: nginx
+  cf-ray: —
+  cf-cache-status: —
+  x-ray: wnp190:0.003/wn190:0.000/wa190:D=1151
+  content-type: text/html
+  cache-control: —
+  set-cookie: —
+  strict-transport-security: —
+  title: Поздравляем, сайт создан!; тело: 6646 байт; canonical: нет
+http://www.7thserpent.com/ — 200
+  server: nginx
+  cf-ray: —
+  cf-cache-status: —
+  x-ray: wnp190:0.011/wn190:0.000/wa190:D=690
+  content-type: text/html
+  cache-control: —
+  set-cookie: —
+  strict-transport-security: —
+  title: Поздравляем, сайт создан!; тело: 6646 байт; canonical: нет
+
+Что из этого следует:
+- домен привязан к хостеру и отвечает заглушкой хостера по обоим именам (решение владельца П108);
+- сертификат https для www и голого имени есть и принят (fetch Node проверяет цепочку и имя);
+- Cloudflare на пути нет: server nginx, cf-ray и cf-cache-status нет;
+- x-ray с сегментом «wa» — главную обслужил Apache (как у первого сайта: nginx впереди, HTML — Apache);
+- http:// отвечает 200 без редиректа — нашего .htaccess на сервере ещё нет (первой выкладки не было);
+- заглушка без canonical: сторож index.html её не пропустит — лист владельца, шаг «удалить заглушку в www».

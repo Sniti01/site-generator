@@ -1,0 +1,32 @@
+Шаг 2 (коммит b33709d): /privacy/ — приёмка шага.
+
+Сборка второго сайта (npm run build -w 7thserpent.com, код 0), строки гейтов и сторожей:
+Гейты сайта: 2/2 прошли (гейты ядра, знак).
+[factory:after-build] h1: 18 stron, na każdej dokładnie jeden nagłówek
+[factory:anchors] kotwice: 18 stron, każda kotwica ma cel, żaden id się nie powtarza
+[factory:links] linki: 18 stron, 670 linków wewnętrznych, każdy na adres ze struktury (18 stron) albo istniejący plik
+[factory:corridor] korytarz: 18 stron — w korytarzu 14, bez korytarza (null w umowie) 4; znaki bez spacji
+[factory:corridor]   /privacy/: 2316 — bez korytarza, liczba do raportu   (было 2663 — ряд Cloudflare снят)
+[factory:head] glowa: 18 стр. — og:site_name «7th Serpent» на каждой, WebSite на главной, BreadcrumbList и крошки по договору
+[sayt:sverka-dist] сверка dist: страниц маршрута 17 — герой, подпись, ряды и кадры, галерея, призыв и нота подвала по файлам содержания
+[sayt:znak-dist] знак: сверено — 6 иконок public/ и сборки равны тому, что пишет инструмент; краски и гарнитура — тема
+[factory:masters] утечка мастеров: исходных картинок 21 (src), в сборке ни одной
+[factory:phrases] 8 слов: страниц 17, документов корпуса 612 (без 8-грамм — 19), указатель из кеша; чужих 8-грамм вне исключений — 0; исключений с совпадениями — 8
+
+Сборка против опорной сборки main (b8016eb) — instrumenty/sravnit-dist.mjs:
+опорная: 165 файлов; новая: 165 файлов
+равных побайтно: 164
+различных: 1 — privacy/index.html
+только в опорной (пропали): 0
+только в новой (новые): 0
+
+Адрес на /privacy/ правилом check-live (видимый текст <body>) — instrumenty/adres-proverka.mjs (dist/ как ответы живого сайта):
+ok    /privacy/: статус: 200 —
+ok    /privacy/: canonical: https://www.7thserpent.com/privacy/ —
+ok    /privacy/: без обфускации почты Cloudflare: true — маркеров обфускации нет
+ok    /privacy/: адрес ящика открытым текстом: true — адрес на странице: contact@7thserpent.com
+
+В HTML адрес — текстом абзаца ряда 07, не ссылкой:
+...the hosting logs described above. Any question or request about those logs can go to contact@7thserpent.com.</p>
+
+Сторож 8 слов на /privacy/ чужих фраз не нашёл — переписывать не пришлось.

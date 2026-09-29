@@ -1,0 +1,45 @@
+---- первый сайт (add241a..HEAD):
+(пусто — ни байта)
+---- ядро (add241a..HEAD):
+(пусто — ни байта)
+---- корень: package.json, package-lock.json, .gitattributes (add241a..HEAD):
+(пусто — ни байта)
+---- workflow: deploy-ac4bf.yml, deploy-7thserpent.yml (add241a..HEAD):
+(пусто — ни байта)
+---- зона Tailwind второго сайта (global.css) (add241a..HEAD):
+(пусто — ни байта)
+---- файлы сайта: src/, public/, structure/, astro.config.mjs, package.json сайта (add241a..HEAD):
+(пусто — ни байта)
+---- список принятой сборки и данные гейтов (gates/) (add241a..HEAD):
+(пусто — ни байта)
+---- check-live.mjs и сторожа выкладки (add241a..HEAD):
+(пусто — ни байта)
+---- замороженные судьи второго сайта (sverka, znak, geity) (add241a..HEAD):
+(пусто — ни байта)
+---- материалы прежних докладов (сессии 22, 23) (add241a..HEAD):
+(пусто — ни байта)
+---- все изменения ветки (add241a..HEAD):
+M	DECISIONS.md
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/obrazec-v-proby.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/obrezat-zapis.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/pagespeed.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/priemka.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/proba-registratora.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/progony-vykladki.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/razbor-otvetov.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/robots-para.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/zapis-otvetov.mjs
+A	docs/reports/2026-09-29-7thserpent-zhivoy/pagespeed/svodka.json
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/live-check-1.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/otvety-progon-1.json
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/pagespeed-vyvod.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/proby-check-live.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/progony-vykladki.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/razbor-progon-1.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-para-1.json
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-para-2.json
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-pary.txt
+A	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/sborka-opornaya.txt
+M	sites/7thserpent.com/CLAUDE.md
+M	sites/7thserpent.com/tools/testy/check-live.test.mjs
+A	sites/7thserpent.com/tools/testy/obrazec-khostera.json

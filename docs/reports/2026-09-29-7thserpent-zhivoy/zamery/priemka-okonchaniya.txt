@@ -1,0 +1,30 @@
+изменённых и новых файлов против add241a: 24
+i/lf    w/lf    attr/-text            	DECISIONS.md
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/obrazec-v-proby.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/obrezat-zapis.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/pagespeed.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/priemka.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/proba-registratora.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/progony-vykladki.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/razbor-otvetov.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/robots-para.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/zapis-otvetov.mjs
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/pagespeed/svodka.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/live-check-1.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/otvety-progon-1.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/pagespeed-vyvod.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/proby-check-live.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/progony-vykladki.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/razbor-progon-1.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-para-1.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-para-2.json
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/robots-pary.txt
+i/lf    w/lf    attr/-text            	docs/reports/2026-09-29-7thserpent-zhivoy/zamery/sborka-opornaya.txt
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/CLAUDE.md
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/testy/check-live.test.mjs
+i/lf    w/lf    attr/-text            	sites/7thserpent.com/tools/testy/obrazec-khostera.json
+
+не LF (i/ или w/): 0
+
+перенормализация (git add --renormalize .): код 0; git status --short после:
+(пусто)

@@ -1,0 +1,14 @@
+build                      код 0
+schet                      как в сессии 23
+dist-protiv-opornoy        ни байта: файлов 165/165, только в A 0, только в B 0, различаются 0
+ni-bajta: первый сайт      ни байта
+ni-bajta: ядро             ни байта
+ni-bajta: корень: package.json, package-lock.json, .gitattri ни байта
+ni-bajta: workflow: deploy-ac4bf.yml, deploy-7thserpent.yml ни байта
+ni-bajta: зона Tailwind второго сайта (global.css) ни байта
+ni-bajta: файлы сайта: src/, public/, structure/, astro.conf ни байта
+ni-bajta: список принятой сборки и данные гейтов (gates/) ни байта
+ni-bajta: check-live.mjs и сторожа выкладки ни байта
+ni-bajta: замороженные судьи второго сайта (sverka, znak, ge ни байта
+ni-bajta: материалы прежних докладов (сессии 22, 23) ни байта
+okonchaniya                файлов 24, не LF 0, после перенормализации дерево чистое

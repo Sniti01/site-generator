@@ -1,0 +1,6 @@
+A (опорная сборка add241a): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\af1b1d34-36f1-457e-b699-0bcfb6a85973\scratchpad\opornaya-dist — файлов 165
+B (итоговая сборка сессии): D:\SEO\cloud\site-generator\sites\7thserpent.com\dist — файлов 165
+только в A: 0
+только в B: 0
+различаются: 0
+ждали: ни байта — да

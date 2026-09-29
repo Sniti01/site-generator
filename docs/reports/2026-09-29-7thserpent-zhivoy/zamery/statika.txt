@@ -1,0 +1,28 @@
+Кеш статики сейчас — два запроса для доклада (instrumenty/statika.mjs; сессия 24, П111: «прочее — несколько запросов
+для доклада»), перед шагом 6 листа сессии 23. Имя таблицы стилей — из тела главной прогона 1 (на сервере — сборка
+раннера: хеш имени другой, чем у локальной сборки — index.Cz6femgl.css).
+
+таблицы стилей главной на сервере: /_astro/CtaBand.CjO2YDhE.css, /_astro/index.iyyUmbUu.css
+
+2026-09-29T20:37:42.737Z 200 https://www.7thserpent.com/favicon.svg — 302 байт
+    accept-ranges: bytes
+    content-length: 302
+    content-type: image/svg+xml
+    date: Tue, 29 Sep 2026 20:37:42 GMT
+    etag: "6abc167e-12e"
+    last-modified: Tue, 29 Sep 2026 19:50:22 GMT
+    server: nginx
+    x-ray: wnp190:0.000/wn190:0.000/
+
+2026-09-29T20:37:42.823Z 200 https://www.7thserpent.com/_astro/index.iyyUmbUu.css — 13041 байт
+    content-encoding: br
+    content-type: text/css
+    date: Tue, 29 Sep 2026 20:37:42 GMT
+    etag: W/"6abc167e-32f1"
+    last-modified: Tue, 29 Sep 2026 19:50:22 GMT
+    server: nginx
+    x-ray: wnp190:0.000/wn190:0.000/
+
+Итог: статику отдаёт nginx без Apache (в x-ray нет сегмента wa); Cache-Control и Expires нет ни у иконки без хеша,
+ни у таблицы стилей с хешем в имени — браузер кэширует эвристически и сверяет по ETag. Шаг 6 листа сессии 23
+(долгий кеш /_astro/*, короткий — иконкам без хеша) нужен как написан.

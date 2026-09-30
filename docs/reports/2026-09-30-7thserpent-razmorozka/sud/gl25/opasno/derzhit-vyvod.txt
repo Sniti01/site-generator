@@ -1,0 +1,54 @@
+== 1. golovaIzLsRemote: порченый вывод → null (СТОП), и со входом отката
+  верный: голова f22bb92; golova(вход on) ok=true (ОТКАТ)
+  верный с CRLF: голова f22bb92; golova(вход on) ok=true (ОТКАТ)
+  верный без перевода строки: голова f22bb92; golova(вход on) ok=true (ОТКАТ)
+  пустые строки вокруг: голова f22bb92; golova(вход on) ok=true (ОТКАТ)
+  BOM в начале: голова null; golova(вход on) ok=false
+  пробел в начале: голова null; golova(вход on) ok=false
+  пробел в конце: голова null; golova(вход on) ok=false
+  одиночный CR внутри: голова null; golova(вход on) ok=false
+  NUL в конце: голова null; golova(вход on) ok=false
+  разделитель строк U+2028 внутри: голова null; golova(вход on) ok=false
+  64 знака (SHA-256): голова null; golova(вход on) ok=false
+  41 знак: голова null; golova(вход on) ok=false
+  кириллическая «а» в хеше: голова null; golova(вход on) ok=false
+  refs/heads/main^{}: голова null; golova(вход on) ok=false
+  HEAD и main (--symref не задан — такого вывода нет, но): голова null; golova(вход on) ok=false
+  две строки хвостового совпадения: голова null; golova(вход on) ok=false
+
+== 2. строка СТОП со stderr git: одна строка, без «::» и «##[», без управляющих и невидимых, обрез 200
+  ::error::fatal: СТОП ok=false, строк 1, длина 247, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  ::add-mask:: и ::stop-commands::: СТОП ok=false, строк 1, длина 248, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  ##[error]: СТОП ok=false, строк 1, длина 220, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  ANSI: СТОП ok=false, строк 1, длина 219, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  bidi U+202E: СТОП ok=false, строк 1, длина 219, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  U+2028 внутри первой строки: СТОП ok=false, строк 1, длина 223, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  одиночный CR: СТОП ok=false, строк 1, длина 223, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  пустая первая, вторая — ошибка: СТОП ok=false, строк 1, длина 232, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  первая — только U+200B: СТОП ok=false, строк 1, длина 206, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  10 000 знаков: СТОП ok=false, строк 1, длина 406, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  суррогатная пара на краю обреза: СТОП ok=false, строк 1, длина 406, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  ::: подряд: СТОП ok=false, строк 1, длина 216, изъяны: нет; предупреждение ok=true, строк 2, изъяны: нет
+  образец: СТОП: голову main не узнать — git ls-remote с ошибкой (первая строка: : :error title=x: :fatal: unable to access); серве…
+
+== 3. модель выражения входа (документация GitHub Actions, не замер)
+  push (inputs пуст): SERPENT_ROLLBACK = "off" → otkatIzVkhoda = false
+  Run workflow, вход on: SERPENT_ROLLBACK = "on" → otkatIzVkhoda = true
+  Run workflow, вход off: SERPENT_ROLLBACK = "off" → otkatIzVkhoda = false
+  Re-run (попытка 2) запуска со входом on: SERPENT_ROLLBACK = "off" → otkatIzVkhoda = false
+  Re-run failed jobs (попытка 3): SERPENT_ROLLBACK = "off" → otkatIzVkhoda = false
+  run_attempt нет (null): SERPENT_ROLLBACK = "off" → otkatIzVkhoda = false
+  вход через API «yes» (если choice не проверен): SERPENT_ROLLBACK = "yes" → otkatIzVkhoda = null
+
+== 4. коды команды golova
+  голова, вход off: код 0; коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+  не голова, вход off: код 1; СТОП: коммит запуска 22878b2cc6ad69d11eee356e262e174849295090 — не голова main (f22bb92039
+  не голова, вход on: код 0; ОТКАТ: выкладывается коммит 22878b2cc6ad69d11eee356e262e174849295090, голова main — f22bb9
+  не голова, вход «on » (пробел): код 2; SERPENT_ROLLBACK — только on или off (вход отката)
+  не голова, вход «оn» (кириллица о): код 2; SERPENT_ROLLBACK — только on или off (вход отката)
+  не голова, вход «true»: код 2; SERPENT_ROLLBACK — только on или off (вход отката)
+  GITHUB_SHA заглавными: код 2; GITHUB_SHA — не коммит (40 строчных шестнадцатеричных знаков)
+  GITHUB_SHA 64 знака: код 2; GITHUB_SHA — не коммит (40 строчных шестнадцатеричных знаков)
+  вывод git — папка: код 2; сторож не смог прочесть вход: EISDIR: illegal operation on a directory, read
+  вывода git нет: код 2; команды: golova <вывод git ls-remote> [<ошибки git>] | sekrety | pervaya [<index.html> [<f
+  три аргумента: код 2; команды: golova <вывод git ls-remote> [<ошибки git>] | sekrety | pervaya [<index.html> [<f

@@ -1,0 +1,2 @@
+f22bb92:sites/7thserpent.com/tools/storozha-vykladki.mjs → rabochie-staryi/storozha-vykladki.mjs: 58378 байт, sha256 3ef6601d18ec55e8e1586e2f9082fa336a0582c7a4c9f992560a18d378ab0839
+f22bb92:.github/workflows/deploy-7thserpent.yml → rabochie-staryi/deploy-7thserpent.yml: 15669 байт, sha256 4c63add39985eaba867d5bdeb2e2b23d4e62ba107c7b784f25d8ad81ae0dfc31

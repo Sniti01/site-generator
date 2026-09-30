@@ -1,0 +1,77 @@
+origin/main = f22bb920398794800ae78474dbe5d5a839ce6c76; ветки origin/* и метки: 32
+
+ссылка | коммит | предок main? | workflow есть | workflow_dispatch | mirror --reverse | golova | вход SERPENT_ROLLBACK
+origin/7thserpent-brief | 23b6338 | да | нет | — | — | — | —
+origin/7thserpent-dogovor-p5 | 31678d1 | да | нет | — | — | — | —
+origin/7thserpent-glavnaya | 0162194 | да | нет | — | — | — | —
+origin/7thserpent-pachka-0 | 46f4a4a | да | нет | — | — | — | —
+origin/7thserpent-pachka-1 | ce6e3a5 | да | нет | — | — | — | —
+origin/7thserpent-pachka-2 | c0db37f | да | нет | — | — | — | —
+origin/7thserpent-pachka-3 | dd0117b | да | нет | — | — | — | —
+origin/7thserpent-pachka-4 | 2e13081 | да | нет | — | — | — | —
+origin/7thserpent-pachka-5 | c3e0cf0 | да | нет | — | — | — | —
+origin/7thserpent-publikacija | b8016eb | да | да | да | да | нет | нет
+origin/7thserpent-razmorozka | 22878b2 | нет | да | да | да | да | да
+origin/7thserpent-remake-paneli | fef35e9 | да | нет | — | — | — | —
+origin/7thserpent-s0 | 03b9ef1 | да | нет | — | — | — | —
+origin/7thserpent-s2 | cf27097 | да | нет | — | — | — | —
+origin/7thserpent-s3 | c86ef2b | да | нет | — | — | — | —
+origin/7thserpent-tailwind-zona | 7c8dc68 | да | нет | — | — | — | —
+origin/7thserpent-tema | 48243b8 | да | нет | — | — | — | —
+origin/7thserpent-tema-2 | 825ffc3 | да | нет | — | — | — | —
+origin/7thserpent-vynos-sudey | 5ed34b9 | да | нет | — | — | — | —
+origin/7thserpent-vynos-sudey-g | 75f467d | да | нет | — | — | — | —
+origin/7thserpent-yashchik | add241a | да | да | да | да | нет | нет
+origin/7thserpent-zhivoy | f22bb92 | да | да | да | да | нет | нет
+origin/7thserpent-znak | 8f75e03 | да | нет | — | — | — | —
+origin/ac4bf-en | 3e3b26c | да | нет | — | — | — | —
+origin/main | f22bb92 | да | да | да | да | нет | нет
+origin/phase-2-p1 | 38f086a | да | нет | — | — | — | —
+origin/phase-3 | 7f4b35a | да | нет | — | — | — | —
+origin/phase-4 | 5183c12 | да | нет | — | — | — | —
+origin/phase0-migration | af381d3 | да | нет | — | — | — | —
+origin/storozha-build-tree | d7b20d3 | да | нет | — | — | — | —
+origin/techdolg-kadry | 0b90bd4 | да | нет | — | — | — | —
+phase0-baseline | 5498d41 | да | нет | — | — | — | —
+
+Ветки и метки с workflow выкладки без сторожа головы и без входа отката (Run workflow из них выложит свой коммит):
+  origin/7thserpent-publikacija (b8016eb) — старый коммит main
+  origin/7thserpent-yashchik (add241a) — старый коммит main
+  origin/7thserpent-zhivoy (f22bb92) — сейчас голова main; после вливания сессии 25 — старый коммит main
+  origin/main (f22bb92) — сейчас голова main; после вливания сессии 25 — старый коммит main
+После вливания каждая из них — откат без входа и без строки «ОТКАТ»; сторож головы в их workflow не существует.
+
+Шаги workflow на origin/7thserpent-publikacija (b8016eb) до первого mirror --reverse:
+  - actions/checkout@v5
+  - actions/setup-node@v5
+  - Секреты на месте, робот — не робот первого сайта
+  - Зависимости
+  - Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
+  - Сборка с гейтами и сторожами
+  - lftp
+  - Сторож папки робота и удалённого index.html
+  - Первая выкладка?
+  - Домен уже привязан?
+  - Первая выкладка — сборка CI равна принятой
+  - Выкладка по FTPS
+
+Что держит сейчас (случайно): старый сторож папки против корня www с нашей выкладкой и файлом Google.
+  origin/7thserpent-publikacija (b8016eb): корень с файлом Google → ok=false: СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: google0123456789abcdef.html) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджер
+  origin/7thserpent-publikacija (b8016eb): тот же корень без файла Google → ok=true: папка робота: наша сборка (index.html с canonical главной), записей 6, чужих нет
+  origin/7thserpent-yashchik (add241a): корень с файлом Google → ok=false: СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: google0123456789abcdef.html) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджер
+  origin/7thserpent-yashchik (add241a): тот же корень без файла Google → ok=true: папка робота: наша сборка (index.html с canonical главной), записей 6, чужих нет
+  origin/7thserpent-zhivoy (f22bb92): корень с файлом Google → ok=false: СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: google0123456789abcdef.html) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджер
+  origin/7thserpent-zhivoy (f22bb92): тот же корень без файла Google → ok=true: папка робота: наша сборка (index.html с canonical главной), записей 6, чужих нет
+  origin/main (f22bb92): корень с файлом Google → ok=false: СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: google0123456789abcdef.html) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджер
+  origin/main (f22bb92): тот же корень без файла Google → ok=true: папка робота: наша сборка (index.html с canonical главной), записей 6, чужих нет
+  новый сторож (22878b2), тот же корень с файлом Google и верной копией → ok=true
+Итог: пока файл Google лежит в корне www, старый сторож папки останавливает такой запуск до mirror — защита случайная;
+без файла (например, подтверждение перенесено в TXT DNS) Run workflow из этих веток выкладывает старый коммит без стопа.
+
+Шапка нового workflow (22878b2) — строки о пределе:
+  #   • в любом запуске коммит запуска обязан быть головой main (П113): Re-run старого запуска или Run workflow не из main —
+  #     стоп до секретов и сервера. Откат — Run workflow из ветки или метки нужного коммита со входом SERPENT_ROLLBACK = on:
+  #     выкладка идёт и печатает, какой коммит выкладывает; вход действует только в первой попытке запуска. Re-run запусков,
+  #     созданных до этого сторожа, идёт их прежним workflow — без него;
+  # что сейчас в main, — стоп до секретов и сервера. Голова — git ls-remote публичного репозитория (без секретов; ошибки —
+О Run workflow из ветки или метки старше сторожа — ни слова: предел назван только для Re-run старых запусков.

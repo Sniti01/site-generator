@@ -1,0 +1,15 @@
+корень (cls -1 -a -F), записей 31: ./ ../ .htaccess 404/ _astro/ apple-touch-icon.png cheats/ favicon-16x16.png favicon-32x32.png favicon.ico favicon.svg gameplay/ games-like-max-payne/ icon-192.png index.html max-payne-1/ max-payne-2/ max-payne-3/ media/ mods/ movie/ pc/ privacy/ quotes/ remake/ robots.txt sitemap-0.xml sitemap-index.xml story/ voice-and-face/ google0123456789abcdef.html
+
+[сторож папки f22bb92 — Re-run #1–#5 или откат на коммит до вливания] ok = false
+  СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (1: google0123456789abcdef.html) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджере панели; если чужие — проверь «Каталог доступу» и содержимое 7thserpent.com/www.
+
+[сторож папки сессии 25 с верной копией файла Google] ok = true
+  папка робота: наша сборка (index.html с canonical главной), записей 29, чужих нет; файл подтверждения Google google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+
+[сторож папки f22bb92 на том же корне без файла Google — контроль] ok = true
+  папка робота: наша сборка (index.html с canonical главной), записей 28, чужих нет
+
+ИТОГ:
+  ДА — старый workflow останавливается сторожем папки именно на файле Google (без него — проход): Re-run старых прогонов и откат на коммит до вливания — стоп до mirror, сервер не тронут, файл Google цел
+  ДА — новый сторож папки тот же корень пропускает
+  Следствие для листа: откат входом SERPENT_ROLLBACK возможен только на коммиты с workflow этой сессии и позже; откат на коммит до вливания — стоп старого сторожа папки (без строки ОТКАТ), пока файл Google в корне.

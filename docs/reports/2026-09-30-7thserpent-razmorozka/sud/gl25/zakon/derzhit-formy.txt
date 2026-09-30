@@ -1,0 +1,47 @@
+голова main по настоящему выводу: f22bb920398794800ae78474dbe5d5a839ce6c76
+
+[ДЕРЖИТ] push в main (вливание перемоткой; несколько коммитов — GITHUB_SHA = верхний)
+  run_attempt 1, inputs null → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Run workflow из main, вход off
+  run_attempt 1, inputs "off" → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Run workflow из main, первая выкладка (SERPENT_FIRST = on — сторож головы его не читает)
+  run_attempt 1, inputs "off" → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Run workflow из main, вход on по ошибке
+  run_attempt 1, inputs "on" → SERPENT_ROLLBACK="on"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Re-run прогона головы после красного на другом шаге, main не двигался
+  run_attempt 2, inputs "off" → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Re-run failed jobs, третья попытка, main не двигался
+  run_attempt 3, inputs null → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] Run workflow из ветки сессии или метки на голове main
+  run_attempt 1, inputs "off" → SERPENT_ROLLBACK="off"; код 0 (ждём 0)
+  коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+
+[ДЕРЖИТ] откат: Run workflow из метки старого коммита, вход on
+  run_attempt 1, inputs "on" → SERPENT_ROLLBACK="on"; код 0 (ждём 0)
+  ОТКАТ: выкладывается коммит 10af0921aec3f2a4262292cdf0a4715609420d16, голова main — f22bb920398794800ae78474dbe5d5a839ce6c76 (вход SERPENT_ROLLBACK = on, П113)
+
+[ДЕРЖИТ] верный стоп: Re-run старого прогона (main ушёл вперёд)
+  run_attempt 2, inputs "off" → SERPENT_ROLLBACK="off"; код 1 (ждём 1)
+  СТОП: коммит запуска 10af0921aec3f2a4262292cdf0a4715609420d16 — не голова main (f22bb920398794800ae78474dbe5d5a839ce6c76): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+
+[ДЕРЖИТ] верный стоп: Re-run прогона отката — вход не переносится
+  run_attempt 2, inputs "on" → SERPENT_ROLLBACK="off"; код 1 (ждём 1)
+  СТОП: коммит запуска 10af0921aec3f2a4262292cdf0a4715609420d16 — не голова main (f22bb920398794800ae78474dbe5d5a839ce6c76): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+
+[ДЕРЖИТ] верный стоп: Run workflow из ветки не на голове, вход off
+  run_attempt 1, inputs "off" → SERPENT_ROLLBACK="off"; код 1 (ждём 1)
+  СТОП: коммит запуска 10af0921aec3f2a4262292cdf0a4715609420d16 — не голова main (f22bb920398794800ae78474dbe5d5a839ce6c76): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+
+ИТОГ: все формы — как ждём

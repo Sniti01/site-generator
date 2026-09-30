@@ -1,0 +1,29 @@
+run шага (из YAML копии):
+git ls-remote "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main > golova-main.txt 2> golova-main-oshibki.txt || echo "git ls-remote закончился ненулевым кодом" >> golova-main-oshibki.txt
+node $SITE/tools/storozha-vykladki.mjs golova golova-main.txt golova-main-oshibki.txt
+
+env шага: {"GIT_TERMINAL_PROMPT":"0","SERPENT_ROLLBACK":"${{ github.run_attempt == 1 && inputs.SERPENT_ROLLBACK || 'off' }}"}
+shell шага: (нет — по умолчанию bash -e {0}); defaults.run: null
+
+[set-push] {"GITHUB_SHA":"f22bb920398794800ae78474dbe5d5a839ce6c76","SERPENT_ROLLBACK":"off"}; .git в рабочей папке: нет
+код шага: 0
+stdout: коммит запуска f22bb920398794800ae78474dbe5d5a839ce6c76 = голова main — выкладывается он
+golova-main.txt: "f22bb920398794800ae78474dbe5d5a839ce6c76\trefs/heads/main\n"
+golova-main-oshibki.txt: ""
+
+[bez-seti] {"GITHUB_SERVER_URL":"file:///C:/net-takogo-repozitoriya-gl25","GITHUB_REPOSITORY":"x/y","GITHUB_SHA":"f22bb920398794800ae78474dbe5d5a839ce6c76","SERPENT_ROLLBACK":"off"}; .git в рабочей папке: нет
+код шага: 1
+stdout: СТОП: голову main не узнать — git ls-remote с ошибкой (первая строка: fatal: 'C:/net-takogo-repozitoriya-gl25/x/y' does not appear to be a git repository); сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.
+golova-main.txt: ""
+golova-main-oshibki.txt: "fatal: 'C:/net-takogo-repozitoriya-gl25/x/y' does not appear to be a git repository\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\ngit ls-remote закончился ненулевым кодом\n"
+
+[bez-seti-otkat] {"GITHUB_SERVER_URL":"file:///C:/net-takogo-repozitoriya-gl25","GITHUB_REPOSITORY":"x/y","GITHUB_SHA":"f22bb920398794800ae78474dbe5d5a839ce6c76","SERPENT_ROLLBACK":"on"}; .git в рабочей папке: нет
+код шага: 1
+stdout: СТОП: голову main не узнать — git ls-remote с ошибкой (первая строка: fatal: 'C:/net-takogo-repozitoriya-gl25/x/y' does not appear to be a git repository); сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.
+golova-main.txt: ""
+golova-main-oshibki.txt: "fatal: 'C:/net-takogo-repozitoriya-gl25/x/y' does not appear to be a git repository\nfatal: Could not read from remote repository.\n\nPlease make sure you have the correct access rights\nand the repository exists.\ngit ls-remote закончился ненулевым кодом\n"
+
+ИТОГ:
+  ДЕРЖИТ — настоящая сеть, push из main: проход с коммитом
+  ДЕРЖИТ — отказ git: bash -e не обрывается на git, код шага — от сторожа (1), строка СТОП с ошибкой git
+  ДЕРЖИТ — отказ git со входом отката: СТОП и со входом

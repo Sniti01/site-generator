@@ -1,0 +1,26 @@
+push-фильтр workflow: ["sites/7thserpent.com/**","core/**","package.json","package-lock.json",".github/workflows/deploy-7thserpent.yml"]
+concurrency: {"group":"deploy-7thserpent","cancel-in-progress":false}
+
+B = 10af0921aec3f2a4262292cdf0a4715609420d16 — файлы push-а B: sites/7thserpent.com/CLAUDE.md → фильтр СРАБАТЫВАЕТ (прогон B создан)
+C = f22bb920398794800ae78474dbe5d5a839ce6c76 — файлы между B и C: DECISIONS.md, docs/BACKLOG.md, docs/reports/2026-09-29-7thserpent-zhivoy.md, docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/schet-komand.mjs, docs/reports/2026-09-29-7thserpent-zhivoy/zamery/schet-komand.txt → фильтр НЕ срабатывает (прогона C нет, pending B не отменён)
+git diff B C -- sites/7thserpent.com core package.json package-lock.json .github/workflows/deploy-7thserpent.yml: (пусто — сборка и workflow B и C одни и те же)
+
+[прогон push B ждал в очереди, main = C] {"GITHUB_SHA":"10af0921aec3f2a4262292cdf0a4715609420d16","SERPENT_ROLLBACK":"off","GITHUB_EVENT_NAME":"push","GITHUB_REF":"refs/heads/main","GITHUB_RUN_ATTEMPT":"1"}
+код 1
+stdout: СТОП: коммит запуска 10af0921aec3f2a4262292cdf0a4715609420d16 — не голова main (f22bb920398794800ae78474dbe5d5a839ce6c76): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+
+[Run workflow из main (коммит B) ждал в очереди, main = C] {"GITHUB_SHA":"10af0921aec3f2a4262292cdf0a4715609420d16","SERPENT_ROLLBACK":"off","GITHUB_EVENT_NAME":"workflow_dispatch","GITHUB_REF":"refs/heads/main","GITHUB_RUN_ATTEMPT":"1"}
+код 1
+stdout: СТОП: коммит запуска 10af0921aec3f2a4262292cdf0a4715609420d16 — не голова main (f22bb920398794800ae78474dbe5d5a839ce6c76): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+
+ИТОГ:
+  ДА  — код 1 (красный крест) у законного push-прогона
+  ДА  — и у Run workflow из main
+  ДА  — строка называет причиной «повтор старого запуска (Re-run) или запуск не из main» — а это push из main, первая попытка
+  ДА  — строка говорит «откатила бы живой сайт к этому коммиту» — а сборка B = сборка C (дифф входов пуст)
+  ДА  — о причине «main ушёл вперёд, пока запуск ждал очереди» строка молчит
+
+Как выходит на GitHub (по документации, не измерено здесь): concurrency group deploy-7thserpent, cancel-in-progress: false —
+новый запуск ждёт (pending), пока идёт прежний; следующий запуск той же группы отменяет ждущий. Коммит вне путей
+push-фильтра прогона не создаёт — ждущий B не отменяется и стартует с GITHUB_SHA = B, когда голова уже C. Без очереди —
+то же, если C пришёл в первые ~0,5–1 мин прогона B (checkout и setup-node до сторожа).

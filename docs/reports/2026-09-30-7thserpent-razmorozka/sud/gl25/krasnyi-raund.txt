@@ -1,0 +1,313 @@
+$ node --test --test-reporter=spec tools/testy/storozha-vykladki.test.mjs
+(папка: sites/7thserpent.com)
+
+✔ секреты: все шесть, пользователи разные — проход (2.5638ms)
+✔ секреты: нет пароля — отказ (0.1894ms)
+✔ секреты: пароль из пробелов — отказ (0.104ms)
+✔ секреты: нет хоста — отказ (0.1243ms)
+✔ секреты: SV1-Z-4 нет ключа корпуса — отказ (0.1145ms)
+✔ секреты: порт не число — отказ (0.116ms)
+✔ секреты: SV1-O-6 логин с кавычкой — отказ (0.1264ms)
+✔ секреты: SV1-O-6 хост с пробелом — отказ (0.1192ms)
+✔ секреты: SV2-Z-7 логин с переводом строки в конце — отказ (0.1474ms)
+✔ секреты: SV2-Z-7 порт с пробелом — отказ (0.1848ms)
+✔ секреты: SV2-Z-7 хост со схемой ftp:// — отказ (0.1391ms)
+✔ секреты: SV2-Z-7 хост строкой доступа user@host:21 — отказ (0.0753ms)
+✔ секреты: пользователь = пользователь первого сайта — отказ (0.0799ms)
+✔ секреты: пользователь = первого сайта, другой регистр — отказ (0.0582ms)
+✔ секреты: нет AC4BF_FTP_USER — не с чем сверить — отказ (0.0566ms)
+✔ SV1-O-6 пароль с кавычкой и точкой с запятой — проход: пароль в команду lftp не идёт (LFTP_PASSWORD) (0.1141ms)
+✔ SV2-Z-7 логины вида ax572417_claude, с точкой, дефисом и @ — проход (0.0952ms)
+✔ SV1-O-2, SV2-O-3 первая выкладка: вход on, или нет нашего index.html, или на сервере нет всех ключевых файлов (0.814ms)
+✔ домен: имя не разрешается (оба хоста) (0.8089ms)
+✔ домен: заглушка «not configured» через https → http (0.5322ms)
+✔ домен: SV2-Z-6 заглушка: имя в <b>, &nbsp; и голое имя на запрос www — не привязан (0.1656ms)
+✔ домен: SV1-O-3 404 без заглушки «not configured» — отвечает, первая — стоп (0.8398ms)
+✔ домен: SV1-O-3 404 первого сайта — отвечает, первая — стоп (0.3453ms)
+✔ домен: SV1-O-3 «not configured» чужого домена — отвечает, первая — стоп (0.1687ms)
+✔ домен: наша сборка отвечает, первая выкладка — стоп (0.2122ms)
+✔ домен: наша сборка отвечает, не первая — проход со строкой (0.1914ms)
+✔ домен: SV2-Z-4 не первая, оба хоста — таймаут: проход, «не удалось узнать» (0.2093ms)
+✔ домен: наша 404 (canonical нашего сайта) — привязан, первая — стоп (0.1651ms)
+✔ домен: голый хост отвечает парковкой, www не разрешается — первая — стоп (0.1106ms)
+✔ домен: 403 пустого каталога — первая — стоп (0.1135ms)
+✔ домен: ошибка сертификата — не понять, первая — стоп (0.1083ms)
+✔ домен: SV1-Z-2 таймаут — стоп со словами «не удалось узнать» и «повтори» (0.0696ms)
+✔ домен: SV1-Z-2 EAI_AGAIN — стоп со словами «не удалось узнать» (0.0633ms)
+✔ домен: ENOTFOUND после редиректа — домен ответил редиректом, первая — стоп (0.0928ms)
+✔ домен: петля редиректов — первая — стоп (0.1152ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: заглушка хостера «Поздравляем, сайт создан!» на обоих хостах, первая, согласие — проход, ответ напечатан (0.7581ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: та же заглушка, первая, без согласия — стоп, как прежде, с именем входа и «Run workflow, не Re-run» (0.1258ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: 403 пустого каталога (заглушку удалили), первая, согласие — проход (0.1104ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: наша сборка отвечает (повтор оборванной первой), первая, согласие — проход (0.1391ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: домен не привязан, первая, согласие — проход, как без входа (0.0704ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: не первая, согласие — как без входа: обновит живой сайт (0.1273ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, согласие — стоп: сертификат в панели хостера (0.0851ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1, Z-1 ошибка сертификата, первая, без согласия — стоп, вход не предлагается (0.0745ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут на обоих хостах, первая, согласие — стоп: новый Run workflow (SV23-Z2-1) (0.0821ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-1 таймаут, первая, без согласия — стоп, вход не предлагается (0.0932ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www не разрешается, голое имя — заглушка, первая, согласие — стоп: имя не привязано (0.1298ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 www ведёт на чужой хост, первая, согласие — стоп: не этот сайт (0.2199ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 отвечает первый сайт (canonical ac4bf), первая, согласие — стоп: не этот сайт (0.1126ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-O-2 петля редиректов, первая, согласие — стоп (0.1084ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, первая, согласие — стоп строкой, не код 2 (0.1598ms)
+✔ домен, вход SERPENT_DOMAIN_BOUND: SV23-Z-4 редирект на негодный Location, не первая — проход строкой, не код 2 (0.1274ms)
+✔ SV23-O-3, Z-5 строка ответа в публичный журнал: <title> вне комментариев, svg и скриптов, сущности раскрыты, без управляющих знаков и команд раннера, обрез с «…» (0.6215ms)
+✔ SV23-O2-3, O2-1 редирект через чужой хост: ошибка сети или сертификата на чужом хосте — «не этот сайт», не «сертификат в панели»; возврат на наше имя через чужой хост — не свой (0.2555ms)
+✔ SV23-O2-2 без входа вход предлагается, только когда он поможет: сертификат, неразрешимое имя, чужой хост, canonical первого сайта — стоп своей причиной (0.4786ms)
+✔ SV23-Z2-1 со входом при сети или сертификате — «новый запуск кнопкой Run workflow с теми же входами (не Re-run)» (0.1635ms)
+✔ SV23-O2-5 коды TLS и сертификата Node — «ошибка TLS или сертификата» (0.3927ms)
+✔ SV23-O2-6, O2-7 журнал: «:::», U+2028, заполнители, два «##[», команды в canonical и Location, длинный canonical — ни управляющих знаков, ни «::», ни «##[»; сущности — одним проходом, без свойств объекта (13.1481ms)
+✔ SV23-Z2-3 имя с точкой в конце — своё; canonical только в комментарии — не в счёт; петля — своя подсказка (0.584ms)
+✔ SV23-O2-4 команда domen на GitHub снимает сопоставители проблем setup-node до строк ответа (102.449ms)
+✔ SV23 сторож домена: ни одна строка не посылает в Cloudflare — его на сайте нет (П108) (2.1321ms)
+✔ SV23 вход SERPENT_DOMAIN_BOUND: on — согласие; off, пусто и нет — нет; иное — ошибка входа (0.2188ms)
+✖ П113 сторож головы: коммит запуска = голова main — проход, коммит напечатан; со входом отката — тот же проход, не «ОТКАТ» (1.0985ms)
+✖ П113 сторож головы: коммит запуска не голова main — стоп с обоими коммитами (Re-run, откат — входом); со входом отката — проход «ОТКАТ» (0.4457ms)
+✖ GL25-O-4, Z-1 сторож головы: причина стопа — по запуску: push из main, попытка 1 — «main ушёл вперёд»; попытка 2+ — повтор (Re-run); ref не main — запуск не из main (0.2471ms)
+✖ GL25-Z-2 сторож головы: голову не узнать при входе отката — совет «из той же ветки или метки со входом», без входа — «из main» (0.2448ms)
+✔ П113 сторож головы: голову main не узнать — стоп и со входом отката (пусто, две строки, чужая ветка, метка, короткий или заглавный хеш, пробел вместо табуляции) (0.2946ms)
+✔ П113 сторож головы: ошибка git без вывода — стоп с первой строкой ошибки без команд раннера; предупреждение git при верном выводе — проход, строка напечатана (0.2108ms)
+✔ П113 вход SERPENT_ROLLBACK: on — откат; off, пусто и нет — нет; иное — ошибка входа (0.3257ms)
+✔ папка робота: корень аккаунта с папками доменов (1.816ms)
+✔ папка робота: папка домена с www/ (0.1757ms)
+✔ папка робота: папка домена с WWW/ заглавными (0.0826ms)
+✔ папка робота: корень первого сайта (0.382ms)
+✔ папка робота: index.html в списке, содержимого нет (0.1205ms)
+✔ папка робота: SV1-O-1 A1 корень первого сайта без index.html (0.2431ms)
+✔ папка робота: SV1-O-1 A2 робот в папке _astro первого сайта (0.3024ms)
+✔ папка робота: SV1-O-1 A3 сайт на PHP (0.0903ms)
+✔ папка робота: SV1-O-1 A4 Index.html первого сайта (0.1209ms)
+✔ папка робота: SV1-O-1 A5 INDEX.HTML (0.094ms)
+✔ папка робота: SV1-O-1 A6 index.htm (0.0737ms)
+✔ папка робота: SV1-O-4 A8 папки доменов без отметки типа (0.0918ms)
+✔ папка робота: SV1-O-4 A9 папки доменов кириллицей (IDN) (4.8882ms)
+✔ папка робота: SV1-O-4 A10 www без косой (0.1115ms)
+✔ папка робота: SV1-Z-3 ссылка на файл robots.txt@ — своя строка, не «папки доменов» (0.1575ms)
+✔ папка робота: SV2-O-1 P1a наш index.html и WordPress рядом (0.2503ms)
+✔ папка робота: SV2-O-1 P1b копия нашей главной в корне первого сайта (guides/) (0.1095ms)
+✔ папка робота: SV2-O-1 P1d папка поддомена blog/ рядом с нашей выкладкой (0.1042ms)
+✔ папка робота: SV2-O-1 P1e .ssh/, mail/, tmp/ рядом с нашей выкладкой (0.1041ms)
+✔ папка робота: SV2-Z-1 оборванная первая выкладка: часть нашей сборки без index.html — отказ с верной причиной (0.1238ms)
+✔ папка робота: SV2-Z-1 оборванная на index.html (.in.index.html.) (0.1119ms)
+✔ папка робота: SV2-Z-1 файлы хостера .htaccess и favicon.ico — удалить (0.0812ms)
+✔ папка робота: пустой корень (0.0643ms)
+✔ папка робота: пустой корень с CRLF (0.1065ms)
+✔ папка робота: пустой вывод lftp (MLSD без ./ ../) (0.0992ms)
+✔ папка робота: заглушка хостера (index.html без canonical) (0.1261ms)
+✔ папка робота: свежий каталог хостера: .well-known/ и cgi-bin/ (0.083ms)
+✔ папка робота: прежняя наша выкладка (0.1053ms)
+✔ папка робота: прежняя наша выкладка и .well-known/ сертификата (0.0926ms)
+✔ папка робота: SV2-Z-8 прежняя наша выкладка и ссылка .well-known@ хостера (0.0824ms)
+✔ папка робота: прежняя наша выкладка и остаток .in. оборванной второй (0.0874ms)
+✔ SV3-O-2 приставка .in. пропускает только временный файл lftp для файла сборки (0.3813ms)
+✔ SV3-Z-1 своя старая страница (есть в карте прежней выкладки) рядом с нашей сборкой — проход (0.5428ms)
+✔ SV3-Z-2 оборванная первая выкладка без _astro (файлы корня легли первыми) — своя причина (0.1304ms)
+✔ SV3-Z-3 имена файлов в отказе печатаются, имена доменов — нет (0.1554ms)
+✔ SV3-O-3 глубина: чужое внутри наших папок при прежней выкладке — отказ; старые ассеты и своя старая страница — проход (0.8385ms)
+✔ папка робота: отказ не печатает имён доменов аккаунта (0.1897ms)
+✔ П113 файл подтверждения Google в корне со строкой подтверждения того же имени — проход: рядом с нашей сборкой, один в пустом корне, в свежем каталоге хостера (0.6409ms)
+✔ П113, SV25-Z-1, Z-2 файл подтверждения Google: не скачан или внутри иное — стоп называет причину (без содержимого) и ведёт к верному действию (0.8665ms)
+✔ SV25-O-3 двойник имени файла Google с невидимым знаком по краю — стоп: после обрезки имя в списке дважды (0.2946ms)
+✔ SV25-Z-3, Z-4 тексты при файле Google: «удали содержимое» — кроме файла подтверждения, счёт — без него; один файл Google — «пустой корень, кроме файла подтверждения» (0.2034ms)
+✔ П113 файл подтверждения Google: имя не той формы, папка или ссылка с таким именем — стоп, как было (0.3302ms)
+✔ П113 файл подтверждения Google глубже корня — чужое внутри наших папок (глубина), как было; корень глубина не судит (0.2051ms)
+✔ П113 файл подтверждения Google в самой сборке — стоп сторожа папки до выкладки: mirror его не выложит (0.1194ms)
+✔ index.html до mirror: index.html нет (0.1592ms)
+✔ index.html до mirror: наш (0.071ms)
+✔ index.html до mirror: наш, атрибуты в другом порядке и одинарные кавычки (0.091ms)
+✔ index.html до mirror: первого сайта (0.0755ms)
+✔ index.html до mirror: заглушка хостера без canonical (0.1376ms)
+✔ index.html до mirror: canonical http без www (0.0802ms)
+✔ index.html до mirror: canonical страницы, не главной (0.0836ms)
+✔ index.html до mirror: два canonical (0.0723ms)
+✔ index.html до mirror: SV1-Z-6, SV2-Z-3 пустой файл (0.0733ms)
+✔ index.html до mirror: SV1-Z-6 оборванный файл (0.1471ms)
+✔ index.html до mirror: SV2-Z-3 заглушка хостера без </html> — не «прошлая выкладка» (0.091ms)
+✔ разбор списка: ./ и ../ отброшены, CRLF и пробелы по краям — как LF (0.1153ms)
+✔ сверка сборки CI с принятой: равна — проход; байт, лишний, недостающий — отказ (43.6933ms)
+✔ SV1-Z-1 сборка CI отличается только значениями cid и хешем имени CSS — проход, названо (33.0609ms)
+✔ SV1-Z-1 сборка CI с иным текстом страницы — отказ, в выводе — список сборки CI (22.3853ms)
+✔ SV1-Z-1 перестановка cid между элементами — отказ (нормализация по порядку появления) (21.9393ms)
+✔ SV2-O-5 N1 CSS переименован, а страницы ссылаются на старое имя — отказ (битая ссылка) (12.6966ms)
+✔ SV2-O-5 N1b одна страница ссылается на несуществующий CSS — отказ (22.9959ms)
+✔ SV2-O-5 N2 два CSS с одним именем, ссылки переставлены — отказ (38.1577ms)
+✔ SV2-Z-2 N2b законная пара index.*.css с одним именем на раннере — проход (44.4198ms)
+✔ SV3-O-6 пара CSS, различная только значением cid, ссылки переставлены — отказ (37.7926ms)
+✔ SV3-Z-4 та же пара на раннере (иной cid ядра и хеш одного имени) — проход (30.118ms)
+✔ SV3-Z-5 «/_astro/» в robots.txt и комментариях — не ссылки; битая ссылка — код 1 у spisok (91.7407ms)
+✔ SV3-Z-6 .well-known в сборке — отказ папки до выкладки (mirror его не выложит); пересчёт фильтрует обе стороны (94.3768ms)
+✔ SV2-O-6 N5 метка нормализации «data-astro-cid-#1» буквально в сборке — отказ (17.7652ms)
+✔ пересчёт на сервере: ровно dist — проход; лишний, недостающий, без ключевого — отказ; служебные папки хостера — не считаются (30.8392ms)
+✔ П113 пересчёт: файл подтверждения Google в корне сервера не считается и назван; глубже корня и не той формы — лишний (18.2592ms)
+✔ SV25-O-1, Z-5 пересчёт со списком корня до выкладки: файл подтверждения Google, сверенный до выкладки, обязан остаться; новый — стоп (24.0527ms)
+✔ команда: неверные аргументы и нечитаемый вход — код 2 (429.627ms)
+✔ SV2-Z-5 команда domen без SERPENT_PERVAYA (on|off) — код 2, без сети (192.1287ms)
+✔ SV23 команда domen: вход SERPENT_DOMAIN_BOUND доходит до сторожа; иное значение — код 2 до сети; наружу — ни одного запроса (659.0843ms)
+✔ команда: папка и index.html — коды 0 и 1; признак первой выкладки — в GITHUB_OUTPUT (517.6273ms)
+✔ П113 команда papka: пятый аргумент — папка скачанного; файл Google сверяется по содержимому (коды 0 и 1) (238.7423ms)
+✖ П113 команда golova: GITHUB_SHA и вход SERPENT_ROLLBACK — коды 0, 1, 2; без сети (220.1287ms)
+✔ SV25-O-1 команда pereschet: третий аргумент — список корня до выкладки (коды 0 и 1); без него — как было (315.1902ms)
+✔ workflow: триггеры — push в main по путям сайта, ядра, корневых манифестов и своего файла; ручной запуск со входом SERPENT_FIRST (0.2038ms)
+✔ SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») — выбор off/on, по умолчанию off; только сторожу домена и только в первой попытке запуска (SV23-O-6); push — off (0.4679ms)
+✖ П113 workflow: вход SERPENT_ROLLBACK (откат) — выбор off/on, по умолчанию off; только шагу головы main и только в первой попытке запуска; push — off (0.3512ms)
+✔ П113 workflow: шаг «Коммит запуска — голова main» — сразу после setup-node, до секретов, корпуса, сборки и любого lftp (0.2448ms)
+✔ GL25-O-5 workflow: выкладывается сверенный коммит и красный сторож останавливает выкладку — checkout без ref, у шагов нет условий со статус-функциями (0.3742ms)
+✖ GL25-O-1, O-3, Z-4 шапка workflow: пределы сторожа головы названы — одна сверка в начале, старые ветки и метки, файл подтверждения не удалять (0.1731ms)
+✔ SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108) (0.0979ms)
+✔ workflow: push выкладывает только при SERPENT_DEPLOY=on, живой — при SERPENT_LIVE=on (0.0732ms)
+✔ SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по входу или по серверу (index.html и ключевые файлы); пустой признак — первая (0.137ms)
+✔ SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал (0.151ms)
+✔ П113 workflow: файл подтверждения Google — скачивается с index.html и картой, сторож папки получает папку скачанного, mirror не трогает его (-x образцом имени сторожа) (0.189ms)
+✔ SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put (0.6871ms)
+✔ workflow: TZ Europe/Warsaw, FTPS принудительно, сертификат проверяется, запись через временный файл (0.1203ms)
+✔ SV2-O-2, SV2-Z-8, SV3-O-1 workflow: mirror --delete не трогает служебные записи хостера — ни папкой, ни ссылкой или файлом (0.0824ms)
+✔ SV1-O-6 workflow: пароль — только через LFTP_PASSWORD и open --env-password, в команде lftp его нет (0.1845ms)
+✔ SV1-Z-4, SV2-O-7 workflow: сторож секретов — до выгрузки корпуса; корпус — после npm ci, перед сборкой, ключом, без сохранения ключа (0.1342ms)
+✔ workflow: порядок — секреты, сборка, сторож папки, домен — до выкладки; пересчёт — после (0.0899ms)
+✔ workflow: команды сторожей — те, что знает сторож; циклов оболочки нет (0.3987ms)
+ℹ tests 165
+ℹ suites 0
+ℹ pass 158
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5226.2069
+
+✖ failing tests:
+
+test at tools\testy\storozha-vykladki.test.mjs:297:1
+✖ П113 сторож головы: коммит запуска = голова main — проход, коммит напечатан; со входом отката — тот же проход, не «ОТКАТ» (1.0985ms)
+  AssertionError [ERR_ASSERTION]: коммит запуска 0123456789abcdef0123456789abcdef01234567 = голова main — выкладывается он
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:306:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'коммит запуска 0123456789abcdef0123456789abcdef01234567 = голова main — выкладывается он',
+    expected: /вход SERPENT_ROLLBACK = on, но коммит запуска — голова main: отката нет/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:311:1
+✖ П113 сторож головы: коммит запуска не голова main — стоп с обоими коммитами (Re-run, откат — входом); со входом отката — проход «ОТКАТ» (0.4457ms)
+  AssertionError [ERR_ASSERTION]: The input was expected to not match the regular expression /откатила бы/. Input:
+  
+  'СТОП: коммит запуска 0123456789abcdef0123456789abcdef01234567 — не голова main (fedcba9876543210fedcba9876543210fedcba98): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:322:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'СТОП: коммит запуска 0123456789abcdef0123456789abcdef01234567 — не голова main (fedcba9876543210fedcba9876543210fedcba98): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).',
+    expected: /откатила бы/,
+    operator: 'doesNotMatch',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:333:1
+✖ GL25-O-4, Z-1 сторож головы: причина стопа — по запуску: push из main, попытка 1 — «main ушёл вперёд»; попытка 2+ — повтор (Re-run); ref не main — запуск не из main (0.2471ms)
+  AssertionError [ERR_ASSERTION]: СТОП: коммит запуска 0123456789abcdef0123456789abcdef01234567 — не голова main (fedcba9876543210fedcba9876543210fedcba98): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:336:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'СТОП: коммит запуска 0123456789abcdef0123456789abcdef01234567 — не голова main (fedcba9876543210fedcba9876543210fedcba98): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).',
+    expected: /main ушёл вперёд после запуска/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:351:1
+✖ GL25-Z-2 сторож головы: голову не узнать при входе отката — совет «из той же ветки или метки со входом», без входа — «из main» (0.2448ms)
+  AssertionError [ERR_ASSERTION]: СТОП: голову main не узнать — git ls-remote с ошибкой (первая строка: fatal: unable to access 'https://github.com/Sniti01/site-generator/': Could not resolve host: github.com); сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:354:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: "СТОП: голову main не узнать — git ls-remote с ошибкой (первая строка: fatal: unable to access 'https://github.com/Sniti01/site-generator/': Could not resolve host: github.com); сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.",
+    expected: /из той же ветки или метки со входом SERPENT_ROLLBACK = on/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:1043:1
+✖ П113 команда golova: GITHUB_SHA и вход SERPENT_ROLLBACK — коды 0, 1, 2; без сети (220.1287ms)
+  AssertionError [ERR_ASSERTION]: СТОП: коммит запуска fedcba9876543210fedcba9876543210fedcba98 — не голова main (0123456789abcdef0123456789abcdef01234567): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:1057:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'СТОП: коммит запуска fedcba9876543210fedcba9876543210fedcba98 — не голова main (0123456789abcdef0123456789abcdef01234567): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).\n',
+    expected: /main ушёл вперёд после запуска/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:1168:1
+✖ П113 workflow: вход SERPENT_ROLLBACK (откат) — выбор off/on, по умолчанию off; только шагу головы main и только в первой попытке запуска; push — off (0.3512ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /откат — только на коммиты с этим workflow/. Input:
+  
+  'SERPENT_ROLLBACK — откат: on — выкладка идёт, хотя коммит запуска не голова main (Run workflow из ветки или метки нужного коммита), и печатает, какой коммит выкладывает (П113); действует только в первой попытке запуска — Re-run отката не несёт'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:1177:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'SERPENT_ROLLBACK — откат: on — выкладка идёт, хотя коммит запуска не голова main (Run workflow из ветки или метки нужного коммита), и печатает, какой коммит выкладывает (П113); действует только в первой попытке запуска — Re-run отката не несёт',
+    expected: /откат — только на коммиты с этим workflow/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\storozha-vykladki.test.mjs:1243:1
+✖ GL25-O-1, O-3, Z-4 шапка workflow: пределы сторожа головы названы — одна сверка в начале, старые ветки и метки, файл подтверждения не удалять (0.1731ms)
+  AssertionError [ERR_ASSERTION]: шапка: одна сверка
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs:1244:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+код выхода: 1

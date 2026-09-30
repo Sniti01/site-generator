@@ -329,21 +329,41 @@ export function golovaIzLsRemote(tekst) {
  * Коммит запуска = голова main (П113; П109 п. 2, бэклог 72 п. 4): повтор (Re-run) старого запуска или запуск не из main
  * выложил бы не то, что сейчас в main, — стоп до секретов и сервера. `kommit` — GITHUB_SHA; `lsRemote` — вывод git ls-remote;
  * `oshibki` — его stderr (и строка о ненулевом коде); `otkat` — вход SERPENT_ROLLBACK = on (workflow даёт его только первой
- * попытке запуска). Голова — по выводу: не разобрать — стоп с первой строкой ошибки; ошибка при верном выводе —
- * предупреждение. Со входом отката выкладка идёт и печатает, какой коммит выкладывает. Строки git — через `bezopasno`.
+ * попытке запуска); `zapusk` — событие, попытка и ref запуска из переменных раннера (только для причины в строке стопа,
+ * GL25-O-4, Z-1). Голова — по выводу: не разобрать — стоп с первой строкой ошибки; ошибка при верном выводе —
+ * предупреждение. Со входом отката выкладка идёт и печатает, какой коммит выкладывает; из истории ли main этот коммит,
+ * сторож не проверяет (GL25-O-2 — вопрос владельцу). Строки git и ref — через `bezopasno`.
  */
-export function golova({ kommit, lsRemote, oshibki = '', otkat = false }) {
+export function golova({ kommit, lsRemote, oshibki = '', otkat = false, zapusk = {} }) {
   const g = golovaIzLsRemote(lsRemote);
   const osh = String(oshibki ?? '').split(/\r?\n/).map((s) => s.trim()).find(Boolean);
   if (!g) {
-    return itog(false, [bezopasno(`СТОП: голову main не узнать — git ls-remote ${osh ? `с ошибкой (первая строка: ${obrez(osh, 200)})` : 'дал не одну строку «<коммит> refs/heads/main»'}; сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.`)]);
+    // GL25-Z-2: при откате повтор — из той же ветки или метки и со входом, иначе новый запуск молча выложит голову.
+    const povtor = otkat ? 'Новый запуск кнопкой Run workflow из той же ветки или метки со входом SERPENT_ROLLBACK = on (не Re-run: откат повтор не несёт)' : 'Новый запуск кнопкой Run workflow из main';
+    return itog(false, [bezopasno(`СТОП: голову main не узнать — git ls-remote ${osh ? `с ошибкой (первая строка: ${obrez(osh, 200)})` : 'дал не одну строку «<коммит> refs/heads/main»'}; сервер не тронут. ${povtor}; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.`)]);
   }
   const pred = osh ? [bezopasno(`предупреждение git ls-remote: ${obrez(osh, 200)}`)] : [];
-  if (kommit === g) return itog(true, [...pred, `коммит запуска ${kommit} = голова main — выкладывается он`]);
-  if (otkat) return itog(true, [...pred, `ОТКАТ: выкладывается коммит ${kommit}, голова main — ${g} (вход SERPENT_ROLLBACK = on, П113)`]);
+  if (kommit === g) {
+    // GL25-Z-3: вход отката при запуске из головы ничего не откатывает — строка это говорит.
+    const bezOtkata = otkat ? ['вход SERPENT_ROLLBACK = on, но коммит запуска — голова main: отката нет, выкладывается голова; откат — Run workflow из ветки или метки нужного коммита'] : [];
+    return itog(true, [...pred, `коммит запуска ${kommit} = голова main — выкладывается он`, ...bezOtkata]);
+  }
+  if (otkat) {
+    return itog(true, [...pred, `ОТКАТ: выкладывается коммит ${kommit}, голова main — ${g} (вход SERPENT_ROLLBACK = on, П113); что этот коммит — из истории main, сторож не проверяет; откат держится до следующей выкладки головы main (push по путям сайта, ядра и корневых манифестов, Run workflow из main)`]);
+  }
+  // GL25-O-4, Z-1: причина — по запуску; без сведений о запуске — все три возможные.
+  const { popytka, ref } = zapusk;
+  const prichina =
+    popytka === undefined && ref === undefined
+      ? 'это повтор (Re-run) старого запуска, запуск не из main или main ушёл вперёд после запуска'
+      : Number(popytka) > 1
+        ? `это повтор (Re-run, попытка ${popytka}) запуска`
+        : ref && ref !== 'refs/heads/main'
+          ? `это запуск не из main (${obrez(ref, 100)})`
+          : 'main ушёл вперёд после запуска — пока запуск ждал очереди или шёл к этому шагу, в main пришёл новый коммит';
   return itog(false, [
     ...pred,
-    `СТОП: коммит запуска ${kommit} — не голова main (${g}): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).`,
+    bezopasno(`СТОП: коммит запуска ${kommit} — не голова main (${g}): ${prichina}; выкладка выложила бы не голову main. Сервер не тронут. Новая выкладка головы — Run workflow из main (новый коммит, если он меняет сайт, выложит свой прогон); откат на прежний коммит main — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).`),
   ]);
 }
 
@@ -773,7 +793,9 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
         console.error('SERPENT_ROLLBACK — только on или off (вход отката)');
         process.exit(2);
       }
-      r = golova({ kommit, lsRemote: readFileSync(argi[0], 'utf8'), oshibki: prochest(argi[1]) ?? '', otkat });
+      // Событие, попытка и ref запуска — переменные раннера по умолчанию, только для причины в строке стопа (GL25-O-4, Z-1).
+      const zapusk = { sobytie: process.env.GITHUB_EVENT_NAME, popytka: process.env.GITHUB_RUN_ATTEMPT, ref: process.env.GITHUB_REF };
+      r = golova({ kommit, lsRemote: readFileSync(argi[0], 'utf8'), oshibki: prochest(argi[1]) ?? '', otkat, zapusk });
     }
     else if (komanda === 'indeks' && argi.length <= 1) r = indeks(prochest(argi[0]));
     else if (komanda === 'sverka-dist' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = sverkaDist(argi[0], JSON.parse(readFileSync(argi[1], 'utf8')));

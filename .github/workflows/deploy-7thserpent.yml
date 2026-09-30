@@ -32,7 +32,8 @@
 #   AC4BF_FTP_USER        секрет первого сайта — читается только для сверки «робот не тот же», не печатается
 # Каталога на сервере в секретах НЕТ намеренно: выкладка идёт в корень того, что видит робот, а сторож
 # папки пропускает только пустой корень, свежий каталог хостера или прежнюю нашу выкладку — `mirror --delete`
-# стирает всё, чего нет в dist/.
+# стирает всё, чего нет в dist/. Кроме них — файл подтверждения Search Console в корне (google<код>.html, П113):
+# сторож папки сверяет его строку подтверждения, mirror его не стирает, пересчёт не считает.
 #
 # КОРПУС (П106 — отступление от «сырой HTML в git не идёт» словом владельца: только приватный репозиторий,
 # только для сборки). Сторож 8 слов в сборке без input/corpus/raw отказывает громко (П102), выключателей
@@ -41,11 +42,13 @@
 # имён файлов не печатает, сторож 8 слов печатает только наши страницы, на сервер едет только dist/.
 #
 # Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
-# Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
+# Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота (с файлом подтверждения Google,
+# П113) и удалённого index.html →
 # глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2; при первой
 # выкладке и входе SERPENT_DOMAIN_BOUND = on — строка ответа домена, без стопа, П108) → при
 # первой: сборка CI = принятая (sha256 после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ без
-# главной, затем главная → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE). Красный
+# главной (файл подтверждения Google не трогается), затем главная → пересчёт файлов на сервере против dist/ →
+# live:check (SERPENT_LIVE). Красный
 # гейт, сторож сборки или сторож выкладки останавливает прогон до
 # того, как тронут сервер. Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы —
 # tools/testy/storozha-vykladki.test.mjs); циклов оболочки нет.
@@ -150,10 +153,12 @@ jobs:
           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
         # Порядок (SV3-O-4): корень (cls) и главная с картой прежней выкладки → суд корня → find . только после него
         # (робот, который видит аккаунт, не обходит его целиком) → глубина. Ошибки find — в файл, их судит глубина.
+        # Файлы подтверждения Google корня (google*.html) скачиваются с главной и картой: сторож папки сверяет строку
+        # подтверждения в копии (П113).
         run: |
           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html --include-glob=sitemap-0.xml . remote-top; bye"
-          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml
+          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html --include-glob=sitemap-0.xml --include-glob=google*.html . remote-top; bye"
+          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml remote-top
           node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt 2> remote-before-oshibki.txt || echo "lftp: find закончился ненулевым кодом" >> remote-before-oshibki.txt
           node $SITE/tools/storozha-vykladki.mjs glubina remote-before.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml remote-before-oshibki.txt
@@ -184,9 +189,10 @@ jobs:
           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
         # Служебные записи хостера (сертификат, cgi) mirror не трогает и не удаляет — папкой, ссылкой или файлом (SV2-O-2,
-        # SV3-O-1, по документации lftp). Главная — последней (SV3-O-5): mirror без неё, затем put; оборванная первая
-        # выкладка остаётся без нашего index.html, и повтор снова первый — со сверкой сборки.
-        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/ -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye"
+        # SV3-O-1, по документации lftp); файл подтверждения Google корня — тоже (образец имени сторожа FAJL_GOOGLE, П113).
+        # Главная — последней (SV3-O-5): mirror без неё, затем put; оборванная первая выкладка остаётся без нашего
+        # index.html, и повтор снова первый — со сверкой сборки.
+        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/ -x '^google[0-9A-Za-z]+\.html$' -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye"
 
       - name: Пересчёт на сервере
         env:

@@ -14,6 +14,8 @@
  * именам с этого хоста (раунды 1–2 «судью судят» — SV23-*, SV23-*2: вся цепочка по именам сайта, ошибка сертификата —
  * своя причина); вход действует только в первой попытке запуска (github.run_attempt, SV23-O-6); строки ответа в журнал —
  * без управляющих и невидимых знаков и команд раннера (SV23-O-3, O2-6), сопоставители проблем сняты (SV23-O2-4).
+ * Сессия 25 (П113): файл подтверждения Google корня (`FAJL_GOOGLE`) — сторож папки пропускает его, только сверив скачанную
+ * копию со строкой подтверждения того же имени; mirror его не трогает (`-x`), пересчёт не считает; «судью судят» — SV25-*.
  *
  *   node tools/storozha-vykladki.mjs sekrety                 — секреты на месте (SERPENT_FTP_*, SERPENT_CORPUS_KEY);
  *                                                              логин, хост и порт — без знаков, ломающих команду lftp;
@@ -26,9 +28,11 @@
  *                                                              или не проверяется, — отказ, а при SERPENT_DOMAIN_BOUND=on
  *                                                              (владелец согласен, П108) и ответе обоих имён с этого
  *                                                              хоста — строки ответа, выкладка идёт
- *   node tools/storozha-vykladki.mjs papka <список> [<index.html> [<dist> [<карта>]]]  — папка робота (`cls -1 -a -F`
- *                                                              в корне; первый уровень dist и принятого списка,
- *                                                              карта — sitemap-0.xml прежней выкладки)
+ *   node tools/storozha-vykladki.mjs papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]]  — папка
+ *                                                              робота (`cls -1 -a -F` в корне; первый уровень dist
+ *                                                              и принятого списка, карта — sitemap-0.xml прежней
+ *                                                              выкладки; в папке скачанного — копии файлов
+ *                                                              подтверждения Google корня, П113)
  *   node tools/storozha-vykladki.mjs indeks [<index.html>]   — удалённый index.html до `mirror`: только наш
  *   node tools/storozha-vykladki.mjs glubina <find> <index.html> <dist> [<карта> [<ошибки find>]]  — внутри папок
  *                                                              сайта чужого нет (после papka и indeks)
@@ -311,6 +315,16 @@ const PERVYI_SAYT = /^https?:\/\/(www\.)?ac4bf-thewatch\.com(\/|$)/i;
 
 /** Служебные папки хостера: их не стирает `mirror` (исключения в workflow), не считает пересчёт; папкой или ссылкой. */
 export const SLUZHEBNYE = ['.well-known', 'cgi-bin'];
+/**
+ * Файл подтверждения Search Console в корне (П113): имя — «google» + буквы и цифры + «.html» (форма Google), внутри — ровно
+ * строка «google-site-verification: <то же имя>» (допустим один перевод строки в конце). Файл лежит на сервере отдельно
+ * от сборки: сторож папки пропускает его, только сверив содержимое (workflow скачивает его вместе с index.html), `mirror`
+ * его не стирает и не выкладывает (`-x` этим образцом), пересчёт не считает; такой файл в самой сборке — стоп сторожа папки.
+ */
+export const FAJL_GOOGLE = /^google[0-9A-Za-z]+\.html$/;
+/** Содержимое — строка подтверждения Google с этим именем (одна строка, без пробелов по краям, BOM и второй строки). */
+export const podtverzhdenieGoogle = (imya, tekst) =>
+  FAJL_GOOGLE.test(imya) && typeof tekst === 'string' && [`google-site-verification: ${imya}`, `google-site-verification: ${imya}\n`, `google-site-verification: ${imya}\r\n`].includes(tekst);
 const pokhozheNaDomen = (s) => /^[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+$/u.test(s) && !s.startsWith('.');
 /** Расширения файлов, которые не домены верхнего уровня (SV3-Z-3): такие имена в строке отказа печатаются. */
 const FAJL = /\.(html?|php\d?|png|jpe?g|gif|svg|ico|webp|avif|css|js|mjs|map|txt|xml|json|webmanifest|log|bak|old|orig|tmp|ini|conf|pdf|gz|tar|sql)$/i;
@@ -345,15 +359,31 @@ export function stranitsyKarty(karta) {
  * список), папка страницы из карты сайта прежней выкладки (`karta` — её `sitemap-0.xml`, SV3-Z-1), служебная папка
  * или временный файл lftp для файла сборки (`.in.<имя>.`, SV3-O-2). Только имена сборки без index.html — оборванная
  * первая выкладка или файлы хостера с теми же именами: отказ со своей причиной (SV2-Z-1, SV3-Z-2). Всё прочее —
- * непустой каталог без нашей сборки: отказ, потому что `mirror --delete` стёр бы его.
+ * непустой каталог без нашей сборки: отказ, потому что `mirror --delete` стёр бы его. Файл подтверждения Google корня
+ * (П113) — как служебная запись, только сверенный по скачанной копии (`skachano`: имя → содержимое); не скачан или
+ * внутри иное — отказ своей причиной; в сборке — отказ.
  */
-export function papka(spisokTekst, indexHtml, verkh = [], karta = null) {
+export function papka(spisokTekst, indexHtml, verkh = [], karta = null, skachano = null) {
   const imena = razobratSpisok(spisokTekst);
   const bez = (s) => s.replace(/[/@]$/, '');
   const sluzhVSborke = verkh.filter((n) => SLUZHEBNYE.includes(n));
   if (sluzhVSborke.length) {
     return itog(false, [`СТОП: в сборке служебная папка хостера (${sluzhVSborke.join(', ')}) — mirror её не выкладывает и не стирает (исключена, чтобы не тронуть папку хостера), пересчёт её не считает; такая сборка на сервер целиком не ляжет. Убери её из public/ сайта или вынеси владельцу, как её выкладывать.`]);
   }
+  const googleVSborke = verkh.filter((n) => FAJL_GOOGLE.test(n));
+  if (googleVSborke.length) {
+    return itog(false, [`СТОП: в сборке файл подтверждения Google (${googleVSborke.join(', ')}) — mirror такие имена не выкладывает и не стирает (исключены образцом имени, П113), пересчёт их не считает: из сборки на сервер он не ляжет. Убери его из public/ сайта — файл подтверждения Search Console лежит на сервере отдельно от сборки.`]);
+  }
+  // Файлы подтверждения Google корня — только сверенные по содержимому скачанной копии (П113); у папок и ссылок в выводе
+  // `cls -F` есть «/» или «@» — образец их не берёт.
+  const google = imena.filter((s) => FAJL_GOOGLE.test(s));
+  const skachan = (n) => (skachano && Object.hasOwn(skachano, n) ? skachano[n] : undefined);
+  const nesvereny = google.filter((n) => !podtverzhdenieGoogle(n, skachan(n)));
+  if (nesvereny.length) {
+    const pochemu = (n) => (typeof skachan(n) === 'string' ? 'внутри не строка подтверждения Google с этим именем' : 'не скачан — сверить нечем');
+    return itog(false, [`СТОП: в корне робота ${nesvereny.map((n) => `${n} (${pochemu(n)})`).join(', ')} — имя файла подтверждения Search Console, а строка подтверждения не сверена (П113); mirror --delete такие имена не трогает, и чужой файл под этим именем остался бы на сервере. Открой файл в файловом менеджере панели: внутри ровно «google-site-verification: <имя файла>»; иное — удали его и подтверди сайт в Search Console заново.`]);
+  }
+  const pripiska = google.length ? `; файл подтверждения Google ${google.join(', ')} — строка подтверждения сверена, mirror его не трогает (П113)` : '';
   const katalogi = imena.filter((s) => s.endsWith('/')).map(bez);
   const ssylki = imena.filter((s) => s.endsWith('@')).map(bez).filter((s) => !SLUZHEBNYE.includes(s));
   const domeny = katalogi.filter(pokhozheNaDomen);
@@ -371,7 +401,7 @@ export function papka(spisokTekst, indexHtml, verkh = [], karta = null) {
     return itog(false, [`СТОП: в корне робота ${drugieIndex.join(', ')} — страница чужого сайта или заглушка не той формы; mirror --delete стёр бы её. Удали в файловом менеджере, если это заглушка хостера.`]);
   }
   const vse = imena.map(bez);
-  const nashVerkh = new Set([...verkh, ...SLUZHEBNYE]);
+  const nashVerkh = new Set([...verkh, ...SLUZHEBNYE, ...google]);
   const nash = nashIndex(indexHtml);
   // Папки страниц прежней выкладки — только из её карты и только при нашем index.html.
   const staryePapki = new Set(nash ? stranitsyKarty(karta).map((p) => p.split('/')[1]).filter(Boolean) : []);
@@ -393,12 +423,13 @@ export function papka(spisokTekst, indexHtml, verkh = [], karta = null) {
       if (vneSborki.length) {
         return itog(false, [`СТОП: рядом с нашей сборкой записи, которых нет ни в этой сборке, ни в карте сайта прежней выкладки (${vneSborki.length}: ${pokazatImena(vneSborki)}) — mirror --delete стёр бы их. Если это наши старые файлы — удали их в файловом менеджере панели; если чужие — проверь «Каталог доступу» и содержимое 7thserpent.com/www.`]);
       }
-      return itog(true, [`папка робота: наша сборка (index.html с canonical главной), записей ${imena.length}, чужих нет`]);
+      return itog(true, [`папка робота: наша сборка (index.html с canonical главной), записей ${imena.length}, чужих нет${pripiska}`]);
     }
   }
   if (!imena.length) return itog(true, ['папка робота: пустой корень — первая выкладка']);
-  if (vse.every((s) => s === 'index.html' || SLUZHEBNYE.includes(s))) {
-    return itog(true, [`папка робота: свежий каталог хостера — ${[imena.includes('index.html') && 'заглушка index.html (её судит сторож index.html)', vse.some((s) => s !== 'index.html') && `служебные папки ${vse.filter((s) => s !== 'index.html').join(', ')}`].filter(Boolean).join('; ')}`]);
+  if (vse.every((s) => s === 'index.html' || SLUZHEBNYE.includes(s) || google.includes(s))) {
+    const sluzh = vse.filter((s) => s !== 'index.html' && !google.includes(s));
+    return itog(true, [`папка робота: свежий каталог хостера — ${[imena.includes('index.html') && 'заглушка index.html (её судит сторож index.html)', sluzh.length && `служебные папки ${sluzh.join(', ')}`].filter(Boolean).join('; ') || 'без нашей сборки'}${pripiska}`]);
   }
   if (!imena.includes('index.html') && vneSborki.length === 0) {
     return itog(false, [`СТОП: в корне робота только имена нашей сборки, без index.html (${vse.length} записей) — оборванная первая выкладка или файлы хостера с теми же именами (.htaccess, favicon.ico); чьи они — не понять. Удали содержимое 7thserpent.com/www в файловом менеджере панели и запусти выкладку снова (вход SERPENT_FIRST=on).`]);
@@ -562,16 +593,18 @@ export function razobratFind(tekst) {
 
 /** После выкладки: файлы на сервере = файлы dist (набором), ключевые — на месте; служебные файлы сервера — названы;
  *  служебные папки хостера (`.well-known/`, `cgi-bin/` — их mirror не трогает, SV2-O-2) не считаются ни на сервере,
- *  ни в dist (SV3-Z-6; служебную папку в сборке останавливает сторож папки до выкладки). */
+ *  ни в dist (SV3-Z-6; служебную папку в сборке останавливает сторож папки до выкладки); файл подтверждения Google корня
+ *  (П113; mirror его не трогает) — тоже, и он назван в строке прохода. */
 export function pereschet(findTekst, dist) {
-  const neSluzh = (f) => !SLUZHEBNYE.some((s) => f === s || f.startsWith(`${s}/`));
+  const neSluzh = (f) => !SLUZHEBNYE.some((s) => f === s || f.startsWith(`${s}/`)) && !FAJL_GOOGLE.test(f);
+  const google = razobratFind(findTekst).filter((f) => FAJL_GOOGLE.test(f));
   const naServere = new Set(razobratFind(findTekst).filter(neSluzh));
   const lokalno = new Set(Object.keys(spisokSborki(dist).fajly).filter(neSluzh));
   const net = [...lokalno].filter((f) => !naServere.has(f));
   const lishnie = [...naServere].filter((f) => !lokalno.has(f));
   const sluzhebnye = lishnie.filter((f) => /(^|\/)(\.in\.|\.nfs)/.test(f));
   const klyuchi = KLYUCHEVYE.filter((f) => !naServere.has(f));
-  if (!net.length && !lishnie.length && !klyuchi.length) return itog(true, [`на сервере ровно dist/: ${naServere.size} файлов, ключевые на месте`]);
+  if (!net.length && !lishnie.length && !klyuchi.length) return itog(true, [`на сервере ровно dist/: ${naServere.size} файлов, ключевые на месте${google.length ? `; не в счёте — файл подтверждения Google ${google.join(', ')} (корень, П113)` : ''}`]);
   return itog(false, [
     `СТОП: на сервере не dist/ — файлов локально ${lokalno.size}, на сервере ${naServere.size}; нет на сервере: ${net.slice(0, 8).join(', ') || '—'}; лишние: ${lishnie.slice(0, 8).join(', ') || '—'}; ключевых нет: ${klyuchi.join(', ') || '—'}`,
     ...(sluzhebnye.length ? [`из лишних — служебные файлы сервера (.nfs, .in.: ${sluzhebnye.length}) — оборванная запись или файл, который сервер ещё держит; повтори пересчёт или выкладку через минуту`] : []),
@@ -611,13 +644,22 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       // делать из них аннотации — снимаем их до печати (SV23-O2-4); следующим шагам они не нужны.
       if (process.env.GITHUB_ACTIONS === 'true') for (const vladelec of ['tsc', 'eslint-stylish', 'eslint-compact']) console.log(`::remove-matcher owner=${vladelec}::`);
       r = await domen({ poluchit: poluchitSetyu, pervyi: process.env.SERPENT_PERVAYA === 'on', soglasen });
-    } else if (komanda === 'papka' && argi.length >= 1 && argi.length <= 4 && existsSync(argi[0])) {
-      // Первый уровень сборки: dist (третий аргумент) и принятый список сайта (SV2-O-1); карта прежней выкладки — четвёртый.
+    } else if (komanda === 'papka' && argi.length >= 1 && argi.length <= 5 && existsSync(argi[0])) {
+      // Первый уровень сборки: dist (третий аргумент) и принятый список сайта (SV2-O-1); карта прежней выкладки — четвёртый;
+      // папка скачанного — пятый (П113): из неё — копии файлов подтверждения Google корня (только имена образца, только файлы).
       const verkh = new Set();
       if (argi[2] && existsSync(argi[2])) for (const n of readdirSync(argi[2])) verkh.add(n);
       const prin = join(SAYT, 'gates/sborka-prinyataya.json');
       if (existsSync(prin)) for (const f of Object.keys(JSON.parse(readFileSync(prin, 'utf8')).fajly ?? {})) verkh.add(f.split('/')[0]);
-      r = papka(readFileSync(argi[0], 'utf8'), prochest(argi[1]), [...verkh], prochest(argi[3]));
+      const spisok = readFileSync(argi[0], 'utf8');
+      const skachano = {};
+      if (argi[4] && existsSync(argi[4])) {
+        for (const n of razobratSpisok(spisok).filter((s) => FAJL_GOOGLE.test(s))) {
+          const f = join(argi[4], n);
+          if (existsSync(f) && statSync(f).isFile()) skachano[n] = readFileSync(f, 'utf8');
+        }
+      }
+      r = papka(spisok, prochest(argi[1]), [...verkh], prochest(argi[3]), skachano);
     } else if (komanda === 'glubina' && argi.length >= 3 && argi.length <= 5 && existsSync(argi[0]) && existsSync(argi[2])) {
       r = glubina(readFileSync(argi[0], 'utf8'), prochest(argi[1]), Object.keys(spisokSborki(argi[2]).fajly), prochest(argi[3]), prochest(argi[4]));
     }
@@ -634,7 +676,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       }
       process.exit(0);
     } else {
-      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта>]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]');
+      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]');
       process.exit(2);
     }
   } catch (e) {

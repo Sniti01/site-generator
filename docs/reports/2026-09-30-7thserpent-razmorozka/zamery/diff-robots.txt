@@ -1,0 +1,72 @@
+$ git diff --stat -p f22bb92 b1fd1e1 -- sites/7thserpent.com/public/robots.txt
+
+ sites/7thserpent.com/public/robots.txt | 59 ++++++++++++++++++++--------------
+ 1 file changed, 35 insertions(+), 24 deletions(-)
+
+diff --git a/sites/7thserpent.com/public/robots.txt b/sites/7thserpent.com/public/robots.txt
+index 5a3b04b..231662e 100644
+--- a/sites/7thserpent.com/public/robots.txt
++++ b/sites/7thserpent.com/public/robots.txt
+@@ -1,26 +1,37 @@
+-# robots.txt — www.7thserpent.com (7th Serpent)
+-#
+-# A static site (Astro). Every page is open to indexing: there is no admin
+-# area, no login, no on-site search, no pagination and no addresses with
+-# parameters, so there is nothing to disallow.
+-#
+-# What is deliberately NOT blocked (so nobody "fixes" it later):
+-#   /_astro/  stylesheets, fonts and images with a content hash in the name;
+-#             Google renders a page the way a browser does, and blocked CSS
+-#             looks to it like a page without a layout.
+-#   /404/     the error page; the server returns it with status 404 for every
+-#             missing page address, the sitemap leaves it out, and no page
+-#             links to it.
+-#   AI crawlers — they are not blocked either. Blocks that the hosting
+-#             provider may prepend to this file on the live server are not
+-#             part of it (`npm run live:check` tells them apart from this
+-#             file).
+-#
+-# The Sitemap line carries the full address, because the file is also read
+-# from outside the domain. The canonical address is https WITH www (`site` in
+-# astro.config.mjs; the owner's decision П62 p. 4).
+-
+-User-agent: *
++User-Agent: AhrefsBot
++Disallow: /
++
++User-Agent: MJ12bot
++Disallow: /
++
++User-Agent: DataForSeoBot
++Disallow: /
++
++User-Agent: barkrowler
++Disallow: /
++
++User-Agent: Bytespider
++Disallow: /
++
++User-Agent: meta-externalagent
++Disallow: /
++
++User-Agent: Baiduspider
++Disallow: /
++
++User-Agent: meta-webindexer
++Disallow: /
++
++User-Agent: AhrefsSiteAudit
++Disallow: /
++
++User-agent: SemrushBot
++Disallow: /
++
++User-agent: serpstatbot
++Disallow: /
++
++User-agent: Googlebot
+ Allow: /
+ 
+-Sitemap: https://www.7thserpent.com/sitemap-index.xml
++Sitemap: https://www.7thserpent.com/sitemap-index.xml
+\ No newline at end of file

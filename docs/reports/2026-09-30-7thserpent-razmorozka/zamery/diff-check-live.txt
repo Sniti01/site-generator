@@ -1,0 +1,572 @@
+$ git diff --stat -p f22bb92 b1fd1e1 -- sites/7thserpent.com/tools/check-live.mjs sites/7thserpent.com/tools/testy/check-live.test.mjs sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+
+ sites/7thserpent.com/tools/check-live.mjs          |  39 +++--
+ .../7thserpent.com/tools/testy/check-live.test.mjs | 178 +++++++++++++++++---
+ .../tools/testy/obrazec-vladelca.json              | 185 +++++++++++++++++++++
+ 3 files changed, 371 insertions(+), 31 deletions(-)
+
+diff --git a/sites/7thserpent.com/tools/check-live.mjs b/sites/7thserpent.com/tools/check-live.mjs
+index 203cb1b..b04bcc3 100644
+--- a/sites/7thserpent.com/tools/check-live.mjs
++++ b/sites/7thserpent.com/tools/check-live.mjs
+@@ -5,6 +5,8 @@
+  * сайта (П54 п. 7, П55) с бэклогом 46 п. 1 и П106; «судью судят», раунды 1–3 (находки CL1-*, CL2-*, CL3-* —
+  * в пробах; раунд 3 — последний, пределы — тестами todo). Сессия 23 (П108): Cloudflare на сайте нет (DNS и почта —
+  * у хостера) — проверка 11 наоборот, подсказки — под сайт без него; «судью судят» этой правки — находки CL23-*.
++ * Сессия 25 (П113): `public/robots.txt` — правила владельца (11 роботов закрыты, Googlebot — `Allow: /`; отступление
++ * от П106 его словом); логика проверок та же, подсказки и справка блока хостера — под них; «судью судят» — находки CL25-*.
+  *
+  *   npm run live:check                          — домен из structure.json (site.domain); сборка — dist/ сайта
+  *   npm run live:check -- --host example.test   — другой хост (например, до переключения DNS)
+@@ -14,12 +16,14 @@
+  *   1. http → https, второй хост → канонический (у канонического с `www` — голый, П62 п. 4), http://второй →
+  *      https канонический — по одному скачку 301 и с тем же путём, для главной и страницы игры;
+  *   2. главная — 200, `canonical` один и равен адресу; `x-ray` хостера — справочно;
+- *   3. robots.txt мимо кэша (свой параметр запроса, бэклог 46 п. 1; Cloudflare на сайте нет — П108, кэш хостера
+- *      на пути не измерен): 200; обход кэша на деле сработал (не HIT/STALE/UPDATING; REVALIDATED —
++ *   3. robots.txt мимо кэша (свой параметр запроса, бэклог 46 п. 1; Cloudflare на сайте нет — П108; кэша хостера на пути
++ *      по замерам сессий 24–25 не видно — с параметром и без одно тело): 200; обход кэша на деле сработал
++ *      (не HIT/STALE/UPDATING; REVALIDATED —
+  *      сверено с сервером); наш файл (`public/robots.txt`) целиком, отдельными строками (иначе — первая
+  *      расходящаяся строка); блока Cloudflare нет (Cloudflare на сайте нет, П108: блок значит, что его включили
+- *      с управляемым robots.txt); вне нашего файла — только управляемые блоки «# BEGIN <имя>
+- *      Managed content … # END …» (комментарии вне блоков — справка), и ни одно правило блока в группе для `*`,
++ *      с управляемым robots.txt); вне нашего файла — только блок хостера «# BEGIN adm.tools Managed content … # END …»
++ *      (чужой управляемый блок — отказ, блок Cloudflare — своя проверка; комментарии вне блоков — справка), и ни одно
++ *      правило блока в группе для `*`,
+  *      Googlebot, Bingbot или msnbot (группы по всему файлу — правило блока без своего User-agent продолжает
+  *      предыдущую) не запрещает путь сборки (запрет вне сборки — справка); Googlebot, Googlebot-Image и Bingbot
+  *      (следует группе msnbot) по правилам Google (разбор как у robots.cc: ключи по началу слова и с опечатками,
+@@ -28,7 +32,8 @@
+  *      sitemap-index;
+  *   4. robots.txt без параметра — тот, что берут роботы: 200, блока Cloudflare, вредного чужого текста
+  *      и ограничений нет, поисковики не закрыты; равен ответу мимо кэша — или пришёл из кэша Cloudflare (разница
+- *      без вреда — прежняя редакция нашего файла, справка «кэш», не отказ); ответ мимо кэша не пришёл — судится сам;
++ *      без вреда — прежняя редакция нашего файла, справка «кэш», не отказ; решения ботов копии с нашим файлом
++ *      не сверяются — предел CL25-P-6); ответ мимо кэша не пришёл — судится сам;
+  *      без кэша Cloudflare любая разница двух ответов — ПЛОХО с первой расходящейся строкой (пределы CL23-Z-1, CL23-Z-2 —
+  *      безвредная разница блока хостера и пробелов — тестами todo);
+  *   5. sitemap-index.xml ведёт ровно на sitemap-0.xml; в sitemap-0.xml адреса = страницы структуры без
+@@ -60,12 +65,24 @@
+  * `fetch` без редиректов (`redirect: 'manual'`): скачки считаются, а не прячутся; таймаут 15 с на запрос.
+  * Сборка — `dist/` сайта (в workflow — только что выложенная); её нет — проверки 3 и 8 судят без неё громко.
+  * Пробы — `tools/testy/check-live.test.mjs` на подставных ответах, без сети: `proverit()` принимает функцию
+- * запроса и сборку аргументами. Пределы: образец блока хостера в пробах собран по именам из доклада первой
+- * выкладки (байты живого блока не записаны); 404 статики (nginx) не проверяется — обещание сайта о 404 —
++ * запроса и сборку аргументами. Тела robots.txt живого сервера в пробах — байтами: сессия 24 — блок хостера «adm.tools»
++ * перед прежним файлом (`tools/testy/obrazec-khostera.json`; законная форма, судится своими байтами; у прочих ответов
++ * замера — статусы, заголовки, длины и sha256, тела HTML — здорового образца), сессия 25 — файл владельца без блока
++ * (`tools/testy/obrazec-vladelca.json`); подставной блок хостера здорового образца проб — по именам из доклада первой
++ * выкладки первого сайта. Пределы: 404 статики (nginx) не проверяется — обещание сайта о 404 —
+  * для адресов страниц; процентная запись путей в robots.txt не раскрывается (как у robots.cc). Сессия 23: след
+  * Cloudflare в теле без его заголовков (маяк Web Analytics, вставленный руками) ловит проверка 8, не 11; адрес ящика —
+  * любой на домене сайта (contact@ не закреплён); прочие CDN (Via, Surrogate-Control) и сторонние запросы из заголовков
+- * (Link, NEL, Report-To) не судятся; Cloudflare только в DNS или почте по HTTP не виден.
++ * (Link, NEL, Report-To) не судятся; Cloudflare только в DNS или почте по HTTP не виден. Сессия 25 (находки CL25-*;
++ * тестами todo — P-2, P-5, P-6, Z-2, Z-5, Z-6; без пробы — P-1 и Z-1): блок хостера поверх файла владельца меняет решения
++ * ботов (закрыл бы GPTBot) — 44 из 44 со справкой (CL25-P-1, вопрос владельцу; пробы нет до решения); блок, который
++ * открывает закрытого нашим файлом бота или несёт Sitemap на чужой хост, не судится (P-2); разбор шире robots.cc
++ * по пробелам: по краям строк снимает NBSP и BOM внутри файла (trim), строку без двоеточия делит по любому пробелу — \v,
++ * NBSP (\s) (P-5; проба todo — NBSP); копия из кэша Cloudflare, которая открывает закрытого бота, — «безвредная» (P-6);
++ * при блоке хостера указатель расхождения может уйти в блок, а положение блока при файле не целиком — «после» (Z-1,
++ * строкой в бэклог); приписка встык после файла без перевода строки клеится к строке Sitemap (Z-2); файл отличается
++ * только пробелами по краям строк — подсказка «наш файл целиком» печатает «undefined» (Z-5); ключ Sitemap сверяется
++ * буквально (Z-6).
+  */
+ 
+ import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
+@@ -467,12 +484,12 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
+   const cf = rb ? rb.bloki.filter((b) => b.vid === 'cloudflare') : [];
+   check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — robots.txt отдаёт Cloudflare со своим управляемым блоком: его включили, а на сайте его быть не должно (П108)` : 'управляемого блока Cloudflare нет (Cloudflare на сайте быть не должно, П108)'));
+   const chuzhie = rb ? [...rb.chuzhoyTekst, ...rb.bloki.filter((b) => b.vid === 'чужой').map((b) => `блок «${b.imya}»`), ...rb.ogranicheniya] : [];
+-  check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — наш файл обещает: запрещать нечего` : 'вне нашего файла — управляемые блоки без запретов поисковикам и комментарии'));
++  check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — наш файл — правила владельца (П113): вне него — только блок хостера (adm.tools) без запретов поисковикам` : 'вне нашего файла — блок хостера (adm.tools) без запретов поисковикам и комментарии'));
+   const zakryto = mimo.status === 200 ? zakrytoPoiskovikam(mimo.telo, PUTI) : [];
+   check('robots.txt: поисковики не закрыты', true, mimo.status === 200 ? zakryto.length === 0 : iskh(mimo), neChitan(zakryto.length ? `закрыто: ${zakryto.slice(0, 4).join(', ')}${zakryto.length > 4 ? ` и ещё ${zakryto.length - 4}` : ''}` : `Googlebot, Googlebot-Image и Bingbot: ${poPutyam} — открыты`));
+   check('robots.txt: строка Sitemap', true, mimo.status === 200 && norm(mimo.telo).split('\n').some((s) => s.trim() === `Sitemap: ${base}/sitemap-index.xml`), neChitan('строка на канонический sitemap-index'));
+   if (cfMimo) spravki.push(`robots.txt мимо кэша: Cf-Cache-Status ${cfMimo}`);
+-  for (const b of rb ? rb.bloki.filter((x) => x.vid === 'хостер') : []) spravki.push(`robots.txt: блок хостера «${b.imya} Managed content» ${b.polozhenie}, строк ${b.strok} — не наш, не отключается`);
++  for (const b of rb ? rb.bloki.filter((x) => x.vid === 'хостер') : []) spravki.push(`robots.txt: блок хостера «${b.imya} Managed content» ${b.polozhenie}, строк ${b.strok} — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)`);
+   for (const k of rb ? rb.kommentarii : []) spravki.push(`robots.txt: комментарий вне нашего файла и блоков — «${k}» (правил не несёт)`);
+   for (const z of rb ? rb.zapretyVneSborki : []) spravki.push(`robots.txt: блок запрещает путь вне сборки — ${z} (страниц сайта не касается)`);
+ 
+@@ -654,7 +671,7 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
+     ];
+     if (iz.length) zaprety.push(`${kratko(u)}: ${iz.join(', ')}`);
+   }
+-  check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt обещает: всё открыто для индекса` : `страниц ${sto.length}`));
++  check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt открывает страницы Google и Bing (П113): запрет индексации их закрыл бы` : `страниц ${sto.length}`));
+ 
+   // Проверка 11 (П108): следы Cloudflare — выше, у проверки 8; /privacy/ обещает, что страница не шлёт запросов никому,
+   // кроме сервера сайта.
+diff --git a/sites/7thserpent.com/tools/testy/check-live.test.mjs b/sites/7thserpent.com/tools/testy/check-live.test.mjs
+index b30fb35..c045cd9 100644
+--- a/sites/7thserpent.com/tools/testy/check-live.test.mjs
++++ b/sites/7thserpent.com/tools/testy/check-live.test.mjs
+@@ -11,6 +11,12 @@
+ // ответ сервера: порча файла на сервере меняет оба (`oba`).
+ // Сессия 24 (П111): живой образец хостера — ответы прогона 1 live:check после первой выкладки и две пары robots.txt
+ // с параметром и без, байт в байт (`obrazec-khostera.json`): здоровый, 44 из 44; порчи идут на прежнем образце.
++// Сессия 25 (П113): public/robots.txt — файл владельца с сервера (11 групп с Disallow: /, Googlebot — Allow: /, Sitemap;
++// без комментариев). Образец сессии 24 («блок хостера + прежний файл») судится на своих байтах: прежний файл — хвост его
++// тела после блока хостера (sha256 — константа). Новый живой образец — `obrazec-vladelca.json` (две пары robots.txt,
++// блока хостера нет): здоровый, 44 из 44. Порчи, которые правят текст нашего файла, — под файл владельца; где он меняет
++// исход, это сказано у порчи. «Судью судят» этой правки — один раунд (CL25-P — «ложный ok», CL25-Z — «законные формы»):
++// находки — пробами с их id, пределы — тестами todo.
+ //   npm run proverki (сборка копии не нужна)
+ import { test } from 'node:test';
+ import assert from 'node:assert/strict';
+@@ -24,6 +30,13 @@ import * as CL from '../check-live.mjs';
+ const { proverit, razobratRobots, canonicalOf, SAYT } = CL;
+ const struktura = JSON.parse(readFileSync(join(SAYT, 'structure/structure.json'), 'utf8'));
+ const nashRobots = readFileSync(join(SAYT, 'public/robots.txt'), 'utf8');
++/** Замена в тексте, которая обязана сработать (П113): образца нет в тексте — ошибка пробы, а не тихая порча без порчи. */
++const zamena = (t, iz, na) => {
++  assert.ok(t.includes(iz), `в тексте нет «${iz}» — порча не сработала бы`);
++  return t.replace(iz, na);
++};
++/** Прежняя редакция нашего файла — файл владельца без последней закрытой группы: каждая её строка — строка нашего файла. */
++const staraya = () => zamena(nashRobots, 'User-agent: serpstatbot\nDisallow: /\n\n', '');
+ const HOST = 'www.7thserpent.com';
+ const B = `https://${HOST}`;
+ const METKA = 'm1';
+@@ -93,7 +106,7 @@ function sborkaIz(k) {
+   };
+ }
+ 
+-async function progon(izmenit = () => {}, { vse, vSborke, cf } = {}) {
++async function progon(izmenit = () => {}, { vse, vSborke, cf, nash = nashRobots } = {}) {
+   const chistyy = zdorovyy();
+   if (vSborke) vSborke(chistyy);
+   const sborka = sborkaIz(chistyy);
+@@ -108,7 +121,7 @@ async function progon(izmenit = () => {}, { vse, vSborke, cf } = {}) {
+     const o = karta.get(url);
+     return Array.isArray(o) ? (o.length > 1 ? o.shift() : o[0]) : o;
+   };
+-  const r = await proverit({ poluchit, host: HOST, struktura, nashRobots, metka: METKA, sborka });
++  const r = await proverit({ poluchit, host: HOST, struktura, nashRobots: nash, metka: METKA, sborka });
+   return {
+     ...r,
+     plokho: r.proverki.filter((c) => !c.ok).map((c) => c.imya).sort(),
+@@ -202,14 +215,24 @@ const PARY_ZAMERA = [
+   { para: 'прогона 1', s: OBRAZEC.otvety[`${B}/robots.txt?live-check=${OBRAZEC.metka}`], bez: OBRAZEC.otvety[`${B}/robots.txt`] },
+   ...OBRAZEC.robotsPary,
+ ];
+-
+-test('живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — нынешний public/robots.txt; внутри пар тела равны, у HTML нет Age и X-Cache-Status', () => {
+-  const sha = (t) => createHash('sha256').update(Buffer.from(t, 'utf8')).digest('hex');
++const sha = (t) => createHash('sha256').update(Buffer.from(t, 'utf8')).digest('hex');
++/** Свои байты образца сессии 24 (П113): прежний public/robots.txt сборки add241a — хвост тела замера после блока хостера. */
++const KONEC_BLOKA = '# END adm.tools Managed content\n\n';
++const SHA_PREZHNEGO = 'aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6';
++// CL25-P-7: голова тел — живой блок хостера (349 байт) — тоже константой: на нём держится законная форма.
++const SHA_BLOKA_24 = '5c281351ffd17a6796958968418bfe829215208282dc37d8a593ad824eec1394';
++const PREZHNIY = PARY_ZAMERA[0].s.telo.slice(PARY_ZAMERA[0].s.telo.indexOf(KONEC_BLOKA) + KONEC_BLOKA.length);
++
++test('живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — прежний public/robots.txt (свои байты образца, П113); внутри пар тела равны, у HTML нет Age и X-Cache-Status', () => {
++  // Прежний файл — ровно 1233 байта с известным sha256, блок хостера перед ним — 349 байт.
++  assert.equal(sha(PREZHNIY), SHA_PREZHNEGO, 'хвост тела после блока хостера — не прежний public/robots.txt');
++  assert.equal(Buffer.byteLength(PREZHNIY), 1233);
++  assert.notEqual(PREZHNIY, nashRobots, 'образец сессии 24 не должен совпадать с нынешним файлом владельца');
+   for (const p of PARY_ZAMERA) {
+     for (const o of [p.s, p.bez]) {
+       assert.equal(sha(o.telo), o.sha256, `пара ${p.para}: тело не то, что записано`);
+-      // Образец снят с public/robots.txt сборки add241a: наш файл изменился — снять образец заново после выкладки.
+-      assert.ok(o.telo.endsWith(nashRobots), `пара ${p.para}: в образце не нынешний public/robots.txt`);
++      assert.ok(o.telo.endsWith(PREZHNIY) && Buffer.byteLength(o.telo) === 349 + 1233, `пара ${p.para}: в образце не «блок хостера + прежний файл»`);
++      assert.equal(sha(o.telo.slice(0, o.telo.length - PREZHNIY.length)), SHA_BLOKA_24, `пара ${p.para}: блок хостера не тот, что в замере`);
+     }
+     // CL23-Z-1, CL23-Z-2 — пределы: по замеру тела с параметром и без равны, смягчать проверку 4 нечего (П111).
+     assert.equal(p.s.telo, p.bez.telo, `пара ${p.para}: тела с параметром и без различаются`);
+@@ -221,8 +244,8 @@ test('живой образец хостера: замер цел — тела r
+ });
+ 
+ for (const para of [null, ...OBRAZEC.robotsPary]) {
+-  test(`живой образец хостера: ответы прогона 1${para ? `, robots.txt — пара ${para.para}` : ''} — 44 из 44`, async () => {
+-    const r = await progon(sZamerom(para));
++  test(`живой образец хостера: ответы прогона 1${para ? `, robots.txt — пара ${para.para}` : ''} — 44 из 44 на своих байтах (прежний файл, П113)`, async () => {
++    const r = await progon(sZamerom(para), { nash: PREZHNIY });
+     assert.equal(r.proverki.length, VSEGO);
+     assert.deepEqual(r.plokho, [], r.otkuda);
+     assert.ok(r.spravki.some((s) => s.includes('блок хостера «adm.tools Managed content» перед нашим файлом, строк 13')), r.spravki.join(' | '));
+@@ -230,20 +253,74 @@ for (const para of [null, ...OBRAZEC.robotsPary]) {
+   });
+ }
+ 
++test('П113 образец сессии 24 против нынешнего файла владельца — «наш файл целиком» краснеет: образец судится только своими байтами', async () => {
++  const r = await progon(sZamerom(null));
++  assert.ok(r.plokho.includes('robots.txt: наш файл целиком'), r.otkuda);
++});
++
++/* — Живой образец владельца (сессия 25, П113): блок хостера отключён в панели, на сервере — файл владельца; две пары
++ *   robots.txt с параметром и без, байт в байт (`obrazec-vladelca.json`). Статусы и заголовки — замера, тела robots.txt —
++ *   замера; прочие ответы — здорового образца. — */
++const VLADELEC = JSON.parse(readFileSync(join(SAYT, 'tools/testy/obrazec-vladelca.json'), 'utf8'));
++// CL25-P-7: замер владельца — константой (500 байт, sha256 замера П113): смена правил — явная правка константы и новый замер.
++const SHA_VLADELCA = 'd1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3';
++
++test('живой образец владельца: замер цел — тела байт в байт (sha256 замера П113, 500 байт), тело = нынешний public/robots.txt, внутри пар равны, блока хостера нет', () => {
++  assert.equal(VLADELEC.robotsPary.length, 2);
++  for (const p of VLADELEC.robotsPary) {
++    for (const o of [p.s, p.bez]) {
++      assert.equal(o.status, 200, `пара ${p.para}: статус ${o.status}`);
++      assert.equal(sha(o.telo), o.sha256, `пара ${p.para}: тело не то, что записано`);
++      assert.equal(o.sha256, SHA_VLADELCA, `пара ${p.para}: не замер владельца П113`);
++      assert.equal(Buffer.byteLength(o.telo), 500);
++      assert.equal(o.dlina, 500);
++      // CL25-Z-4: с нынешним файлом связана только эта проба; прогоны образца — на своих байтах.
++      assert.equal(o.telo, nashRobots, `пара ${p.para}: public/robots.txt изменён — образец владельца снять заново после выкладки (прогоны образца идут на своих байтах)`);
++      assert.doesNotMatch(o.telo, /Managed\s+content/i, `пара ${p.para}: в теле блок`);
++    }
++    assert.equal(p.s.telo, p.bez.telo, `пара ${p.para}: тела с параметром и без различаются`);
++  }
++});
++
++for (const para of VLADELEC.robotsPary) {
++  test(`живой образец владельца: robots.txt — пара ${para.para} — 44 из 44 на своих байтах, справки о блоке хостера нет`, async () => {
++    const r = await progon((k) => {
++      k.set(MIMO, izZamera(para.s));
++      k.set(BEZ, izZamera(para.bez));
++    }, { nash: para.s.telo });
++    assert.equal(r.proverki.length, VSEGO);
++    assert.deepEqual(r.plokho, [], r.otkuda);
++    assert.ok(!r.spravki.some((s) => s.includes('блок хостера')), r.spravki.join(' | '));
++  });
++}
++
+ const MIMO_PROVERKI = ['robots.txt мимо кэша: статус', 'robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', 'robots.txt: блока Cloudflare нет', VNE, POISK, 'robots.txt: строка Sitemap'];
+ const vBlokKhostera = (iz, na) => oba((o) => ({ ...o, telo: HOSTER.replace(iz, na) + nashRobots }));
+ const PORCHI = [
+   // — robots.txt мимо кэша —
+   ['блок Cloudflare (Cloudflare включили с управляемым robots.txt)', (k) => zamenit(k, MIMO, vTelo(HOSTER, CLOUDFLARE + HOSTER)), ['robots.txt: блока Cloudflare нет', BEZ_CF], { cf: true }],
+   ['чужая группа вне блоков', oba(vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)), [VNE]],
+-  ['наш файл изменён (Allow → Disallow)', oba((o) => ({ ...o, telo: HOSTER + nashRobots.replace('Allow: /', 'Disallow: /') })), [VNE, 'robots.txt: наш файл целиком', POISK]],
+-  ['блок хостера закрывает Googlebot', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot'), [POISK, VNE]],
++  // П113: в файле владельца «Disallow: /» — своя строка (у 11 групп), чужой её не назвать; порчу ловят «наш файл целиком»
++  // и «поисковики не закрыты» (Allow Googlebot стал Disallow).
++  ['наш файл изменён (Allow → Disallow)', oba((o) => ({ ...o, telo: HOSTER + zamena(nashRobots, 'Allow: /', 'Disallow: /') })), ['robots.txt: наш файл целиком', POISK]],
++  // П113: у Googlebot в файле владельца своя группа с Allow: / — правила одного бота складываются, при равной длине
++  // побеждает Allow (правила Google): «Disallow: /» блока Googlebot не закрывает; запрет блока ловит «вне нашего файла».
++  ['блок хостера закрывает Googlebot', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot'), [VNE]],
+   ['блок хостера без END', oba(vTelo('# END adm.tools Managed content', '')), [VNE]],
+   ['robots.txt мимо кэша — 404', (k) => zamenit(k, MIMO, () => otvet(404, stranica('/404/', title404), SRV)), MIMO_PROVERKI],
+   ['robots.txt с CRLF — чисто', oba((o) => ({ ...o, telo: o.telo.replace(/\n/g, '\r\n') })), []],
+-  ['CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /'), [POISK, VNE]],
+-  ['CL1-P-9b блок хостера: Googlebot, «Dissallow: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /'), [POISK, VNE]],
+-  ['CL1-P-9c блок хостера: «User agent: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot'), [POISK, VNE]],
++  // CL1-P-9a–c, CL2-P-5a, b — разбор форм строк: с файлом владельца запрет блока для Googlebot ловит «вне нашего файла»
++  // (Allow: / его группы побеждает при равной длине — П113); формы, которых разбор не узнал бы, прошли бы зелёными.
++  ['CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /'), [VNE]],
++  ['CL1-P-9b блок хостера: Googlebot, «Dissallow: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /'), [VNE]],
++  ['CL1-P-9c блок хостера: «User agent: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot'), [VNE]],
++  // Длиннее «Allow: /» — правило блока побеждает и у Googlebot с его группой: краснеют обе проверки (П113).
++  ['П113 блок хостера: Googlebot, «Disallow: /movie/» — длиннее Allow: / файла владельца', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow: /movie/'), [POISK, VNE]],
++  ['П113 блок хостера: Googlebot, «Disallow /movie/» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /movie/'), [POISK, VNE]],
++  // CL25-P-4: формы строк CL1-P-9b и 9c — и проверкой «поисковики не закрыты» (правило длиннее Allow: /, своя группа Googlebot-Image).
++  ['CL25-P-4 CL1-P-9b: Googlebot, «Dissallow: /movie/»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /movie/'), [POISK, VNE]],
++  ['CL25-P-4 CL1-P-9c: «User agent: Googlebot», Disallow: /movie/', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User agent: Googlebot\nDisallow: /movie/'), [POISK, VNE]],
++  ['CL25-P-4 «User agent: Googlebot-Image», Disallow: / — своя группа, Allow: / Googlebot файла владельца на неё не действует', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot-Image'), [POISK, VNE]],
+   ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+   ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /movie/\n# END adm.tools Managed content\n' })), [POISK, VNE]],
+   ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*?\nDisallow: /wp-admin/\n# END adm.tools Managed content\n' })), []],
+@@ -255,11 +332,12 @@ const PORCHI = [
+   ['CL2-P-1b блок хостера: * закрывает CSS', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: *\nDisallow: /*.css$'), [POISK, VNE]],
+   ['CL2-P-1c блок хостера: Googlebot-Image закрыт', vBlokKhostera('User-agent: MJ12bot', 'User-agent: Googlebot-Image'), [POISK, VNE]],
+   ['CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3)', vBlokKhostera('User-agent: MJ12bot', 'User-agent: msnbot'), [POISK, VNE]],
+-  ['CL2-P-5a «User-agents: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User-agents: Googlebot'), [POISK, VNE]],
+-  ['CL2-P-5b «Disallowed: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallowed: /'), [POISK, VNE]],
++  ['CL2-P-5a «User-agents: Googlebot»', vBlokKhostera('User-agent: MJ12bot', 'User-agents: Googlebot'), [VNE]],
++  ['CL2-P-5b «Disallowed: /»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallowed: /'), [VNE]],
++  ['П113 «User-agents: Googlebot» и «Disallowed: /cheats/» — длиннее Allow: /', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agents: Googlebot\nDisallowed: /cheats/'), [POISK, VNE]],
+   ['CL2-P-5c «User-agent: * (all robots)»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: * (all robots)\nDisallow: /*'), [POISK, VNE]],
+   // CL1-P-2, CL1-Z-1: «мимо кэша» пришло из кэша — обход не удался; свои строки не «чужие».
+-  ['CL1-P-2 мимо кэша — HIT старой версии нашего файла', (k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), ['robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', BEZ_CF], { cf: true }],
++  ['CL1-P-2 мимо кэша — HIT старой версии нашего файла', (k) => zamenit(k, MIMO, () => otvet(200, HOSTER + staraya(), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), ['robots.txt мимо кэша: обход кэша сработал', 'robots.txt: наш файл целиком', BEZ_CF], { cf: true }],
+   ['CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare', (k) => zamenit(k, MIMO, (o) => sZag(o, { 'cf-cache-status': 'REVALIDATED' })), [BEZ_CF], { cf: true }],
+   // — robots.txt без параметра (CL1-P-1, CL2-P-4, CL2-Z-9): его берут роботы; кэш на пути — только у Cloudflare —
+   ['из кэша — старая безвредная версия без Sitemap: справка, не отказ', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + 'User-agent: *\nAllow: /\n' })), [BEZ_CF], { cf: true }],
+@@ -273,8 +351,13 @@ const PORCHI = [
+   // строку Sitemap — та же безвредная разница, что «старая версия без Sitemap»: справка, не отказ.
+   ['CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER })), [BEZ_CF], { cf: true }],
+   ['адрес ящика на поддомене-двойнике — не наш', () => {}, [ADRES], { vSborke: (k) => k.set(`${B}/privacy/`, otvet(200, stranica('/privacy/', 'Privacy policy — 7thserpent.com', '<p>Write to box@7thserpent.com.evil.example.</p>'), HTML)) }],
+-  ['CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://7thserpent.com/') })), [BEZ_CF], { cf: true }],
+-  ['CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + nashRobots.replace(`Sitemap: ${B}/`, 'Sitemap: https://evil.example/') })), [BEZ_P, BEZ_CF], { cf: true }],
++  ['CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + zamena(nashRobots, `Sitemap: ${B}/`, 'Sitemap: https://7thserpent.com/') })), [BEZ_CF], { cf: true }],
++  ['CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + zamena(nashRobots, `Sitemap: ${B}/`, 'Sitemap: https://evil.example/') })), [BEZ_P, BEZ_CF], { cf: true }],
++  // П113: без кэша на пути прежняя редакция файла владельца (все строки — свои) — отказ «без параметра»: другой ответ сервера.
++  ['П113 без параметра — прежняя редакция файла владельца, кэша на пути нет', (k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + staraya() })), [BEZ_P]],
++  // П113: на сервере не наш файл — у Googlebot «Disallow: /movie/» вместо «Allow: /»: строки такой в нашем файле нет — она
++  // чужая; краснеют «наш файл целиком», «вне нашего файла» и «поисковики не закрыты».
++  ['П113 наш файл на сервере: Googlebot — Disallow: /movie/ вместо Allow: /', oba((o) => ({ ...o, telo: HOSTER + zamena(nashRobots, 'User-agent: Googlebot\nAllow: /', 'User-agent: Googlebot\nDisallow: /movie/') })), ['robots.txt: наш файл целиком', VNE, POISK]],
+   ['CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам', (k) => { zamenit(k, MIMO, () => otvet(403, '<title>Just a moment...</title>', { 'cf-mitigated': 'challenge', ...CF })); zamenit(k, BEZ, (o) => sZag(o, { 'cf-cache-status': 'MISS' })); }, [...MIMO_PROVERKI, BEZ_CF], { cf: true }],
+   // — HTML (CL1-P-3, CL1-P-4, CL2-P-2): все страницы —
+   ['CL1-P-3a Cache-Control: max-age=14400 и must-revalidate', (k) => zamenit(k, `${B}/`, (o) => sZag(o, { 'cache-control': 'public, max-age=14400, must-revalidate' })), [CC]],
+@@ -377,7 +460,7 @@ test('справки: кэш, положение блока хостера, ко
+ });
+ 
+ test('CL1-Z-1 обход кэша не удался — причина названа в строке', async () => {
+-  const r = await progon((k) => zamenit(k, MIMO, () => otvet(200, HOSTER + nashRobots.replace('# A static site (Astro).', '# A static site.'), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), { cf: true });
++  const r = await progon((k) => zamenit(k, MIMO, () => otvet(200, HOSTER + staraya(), { 'cf-cache-status': 'HIT', age: '9120', ...CF })), { cf: true });
+   assert.match(r.otkuda, /robots\.txt: наш файл целиком: false — .*ответ из кэша Cloudflare \(HIT, Age 9120\)/);
+   assert.match(r.otkuda, /первая расходящаяся строка/);
+ });
+@@ -426,6 +509,26 @@ test('CL23-Z-3 robots.txt без параметра не равен ответу
+   assert.doesNotMatch(r.otkuda, /Cf-Cache-Status|не наш сервер/, r.otkuda);
+ });
+ 
++test('П113 тексты под файл владельца: подсказки «вне нашего файла» и запрета индексации, справка блока хостера — без обещаний прежнего файла', async () => {
++  const vne = await progon(oba(vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)));
++  assert.deepEqual(vne.plokho, [VNE], vne.otkuda);
++  // CL25-P-3, CL25-Z-3: подсказка — по имени проверки: законен только блок хостера (adm.tools), и «правила задаёт наш файл»
++  // проверка не держит (блок хостера со своими правилами зелёный — вопрос владельцу, CL25-P-1).
++  assert.match(vne.otkuda, /наш файл — правила владельца \(П113\): вне него — только блок хостера \(adm\.tools\) без запретов поисковикам/, vne.otkuda);
++  const yoast = await progon(oba((o) => ({ ...o, telo: `# BEGIN Yoast Managed content\nUser-agent: *\nAllow: /\n# END Yoast Managed content\n\n${o.telo}` })));
++  assert.deepEqual(yoast.plokho, [VNE], yoast.otkuda);
++  assert.match(yoast.otkuda, /чужое или запрет: блок «Yoast» — наш файл — правила владельца \(П113\): вне него — только блок хостера \(adm\.tools\)/, yoast.otkuda);
++  assert.doesNotMatch(`${vne.otkuda} | ${yoast.otkuda}`, /только управляемые блоки|задаёт наш файл/);
++  const zapret = await progon((k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'x-robots-tag': 'noindex' })));
++  assert.deepEqual(zapret.plokho, [ZAPRET], zapret.otkuda);
++  assert.match(zapret.otkuda, /robots\.txt открывает страницы Google и Bing \(П113\): запрет индексации их закрыл бы/, zapret.otkuda);
++  const zdorov = await progon();
++  assert.ok(zdorov.spravki.some((s) => /^robots\.txt: блок хостера «adm\.tools Managed content» перед нашим файлом, строк \d+ — не наш: его приписывает хостер при отдаче, отключается в панели хостера \(П113\)$/.test(s)), zdorov.spravki.join(' | '));
++  assert.match(zdorov.vse, /ok robots\.txt: вне нашего файла — только блок хостера: true — вне нашего файла — блок хостера \(adm\.tools\) без запретов поисковикам и комментарии/, zdorov.vse);
++  const vse = [vne, zapret, zdorov].map((r) => `${r.vse} | ${r.spravki.join(' | ')}`).join(' | ');
++  assert.doesNotMatch(vse, /запрещать нечего|всё открыто для индекса|не отключается/, vse);
++});
++
+ test('CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита»', async () => {
+   const r = await progon((k) => zamenit(k, `${B}/movie/`, vTelo('<p>text</p>', '<p>first published wording</p>')));
+   assert.deepEqual(r.plokho, [HTML_SB]);
+@@ -508,6 +611,41 @@ test('ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) 
+   assert.ok(r.plokho.length > 0);
+ });
+ 
++/* — Пределы сессии 25 (П113: один раунд «судью судят», находки CL25-*; логика проверок в шаге 2 не менялась) — тестами todo. — */
++
++test('ПРЕДЕЛ CL25-P-2: блок хостера открывает бота, закрытого нашим файлом (Allow: / в блоке), или несёт Sitemap на чужой хост — не судится', { todo: 'решения ботов по блоку против нашего файла не сверяются (правка логики проверки 3); блок хостера закрывает ботов, а не открывает — форма неправдоподобна' }, async () => {
++  const r = await progon(vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: AhrefsBot\nAllow: /\nSitemap: https://evil.example/sitemap.xml'));
++  assert.deepEqual(r.plokho, [VNE]);
++});
++
++test('ПРЕДЕЛ CL25-P-5: пробел вне ASCII (NBSP) перед ключом в блоке после нашего файла — для check-live новая группа, для Google неизвестный ключ: Disallow: /* продолжает группу Googlebot', { todo: 'разбор снимает пробелы шире robots.cc (trim, \\s: NBSP, BOM внутри файла, \\v); было и до П113' }, async () => {
++  const nbsp = String.fromCharCode(0xa0);
++  const r = await progon(oba((o) => ({ ...o, telo: `${nashRobots}\n# BEGIN adm.tools Managed content\n${nbsp}User-agent: Foo\nDisallow: /*\n# END adm.tools Managed content\n` })));
++  assert.deepEqual(r.plokho, [POISK, VNE]);
++});
++
++test('ПРЕДЕЛ CL25-P-6: под кэшем Cloudflare прежняя редакция нашего файла, которая открывает закрытого владельцем бота, — «безвредная копия»', { todo: 'проверка 4 не сверяет решения ботов копии с нашим файлом; прогон и так красный следом Cloudflare (П108)' }, async () => {
++  const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + staraya() })), { cf: true });
++  assert.deepEqual(r.plokho, [BEZ_P, BEZ_CF]);
++});
++
++test('ПРЕДЕЛ CL25-Z-2: приписка после файла встык (у файла владельца нет перевода строки в конце) клеится к строке Sitemap — ПЛОХО трёх проверок, по правилам Google безвредна', { todo: 'хостер по замеру сессии 24 приписывает блок перед файлом; приписка встык после файла — не измерена' }, async () => {
++  const r = await progon(oba((o) => ({ ...o, telo: nashRobots + HOSTER })));
++  assert.deepEqual(r.plokho, []);
++});
++
++test('ПРЕДЕЛ CL25-Z-5: файл на сервере отличается только пробелом в конце строки — подсказка «наш файл целиком» печатает «undefined»', { todo: 'сравнение строк после trim не находит расхождения (k = -1); отказ верный, текст — нет; было и до П113' }, async () => {
++  const r = await progon(oba((o) => ({ ...o, telo: HOSTER + zamena(nashRobots, 'Allow: /', 'Allow: / ') })));
++  assert.deepEqual(r.plokho, ['robots.txt: наш файл целиком']);
++  assert.doesNotMatch(r.otkuda, /undefined/);
++});
++
++test('ПРЕДЕЛ CL25-Z-6: ключ Sitemap в другом регистре («sitemap:») и в репозитории, и на сервере — ПЛОХО «строка Sitemap», Google читает её так же', { todo: 'строка Sitemap сверяется буквально; было и до П113' }, async () => {
++  const nash = zamena(nashRobots, 'Sitemap:', 'sitemap:');
++  const r = await progon(oba((o) => ({ ...o, telo: HOSTER + nash })), { nash });
++  assert.deepEqual(r.plokho, []);
++});
++
+ test('команда: неверные аргументы — код 2, без сети', () => {
+   for (const argi of [['--bad'], ['--host']]) {
+     const r = spawnSync(process.execPath, [join(SAYT, 'tools/check-live.mjs'), ...argi], { encoding: 'utf8' });
+diff --git a/sites/7thserpent.com/tools/testy/obrazec-vladelca.json b/sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+new file mode 100644
+index 0000000..4641fe1
+--- /dev/null
++++ b/sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+@@ -0,0 +1,185 @@
++{
++  "_": [
++    "Живой образец robots.txt www.7thserpent.com — сессия 25 (П113), 2026-09-30: блок хостера отключён в панели, на сервере — файл владельца.",
++    "robotsPary — две пары robots.txt с параметром ?live-check=<метка> и без, с промежутком (docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-para.mjs): время, статус, заголовки как их отдаёт fetch (имена строчными), длина и sha256 тела.",
++    "Тела — строкой UTF-8, байт в байт (sha256 строки = sha256 записи). Наш файл в телах — public/robots.txt с сессии 25 (= файл сервера байт в байт)."
++  ],
++  "robotsPary": [
++    {
++      "para": 1,
++      "metka": "1790758089937",
++      "s": {
++        "url": "https://www.7thserpent.com/robots.txt?live-check=1790758089937",
++        "vremya": "2026-09-30T08:48:09.937Z",
++        "status": 200,
++        "zagolovki": [
++          [
++            "accept-ranges",
++            "bytes"
++          ],
++          [
++            "content-length",
++            "500"
++          ],
++          [
++            "content-type",
++            "text/plain"
++          ],
++          [
++            "date",
++            "Wed, 30 Sep 2026 08:48:10 GMT"
++          ],
++          [
++            "etag",
++            "\"6abcad59-1f4\""
++          ],
++          [
++            "last-modified",
++            "Wed, 30 Sep 2026 06:34:01 GMT"
++          ],
++          [
++            "server",
++            "nginx"
++          ],
++          [
++            "x-ray",
++            "wnp190:0.000/wn190:0.000/"
++          ]
++        ],
++        "dlina": 500,
++        "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
++        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
++      },
++      "bez": {
++        "url": "https://www.7thserpent.com/robots.txt",
++        "vremya": "2026-09-30T08:48:10.205Z",
++        "status": 200,
++        "zagolovki": [
++          [
++            "accept-ranges",
++            "bytes"
++          ],
++          [
++            "content-length",
++            "500"
++          ],
++          [
++            "content-type",
++            "text/plain"
++          ],
++          [
++            "date",
++            "Wed, 30 Sep 2026 08:48:10 GMT"
++          ],
++          [
++            "etag",
++            "\"6abcad59-1f4\""
++          ],
++          [
++            "last-modified",
++            "Wed, 30 Sep 2026 06:34:01 GMT"
++          ],
++          [
++            "server",
++            "nginx"
++          ],
++          [
++            "x-ray",
++            "wnp190:0.000/wn190:0.000/"
++          ]
++        ],
++        "dlina": 500,
++        "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
++        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
++      }
++    },
++    {
++      "para": 2,
++      "metka": "1790758185785",
++      "s": {
++        "url": "https://www.7thserpent.com/robots.txt?live-check=1790758185785",
++        "vremya": "2026-09-30T08:49:45.785Z",
++        "status": 200,
++        "zagolovki": [
++          [
++            "accept-ranges",
++            "bytes"
++          ],
++          [
++            "content-length",
++            "500"
++          ],
++          [
++            "content-type",
++            "text/plain"
++          ],
++          [
++            "date",
++            "Wed, 30 Sep 2026 08:49:46 GMT"
++          ],
++          [
++            "etag",
++            "\"6abcad59-1f4\""
++          ],
++          [
++            "last-modified",
++            "Wed, 30 Sep 2026 06:34:01 GMT"
++          ],
++          [
++            "server",
++            "nginx"
++          ],
++          [
++            "x-ray",
++            "wnp190:0.000/wn190:0.000/"
++          ]
++        ],
++        "dlina": 500,
++        "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
++        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
++      },
++      "bez": {
++        "url": "https://www.7thserpent.com/robots.txt",
++        "vremya": "2026-09-30T08:49:46.051Z",
++        "status": 200,
++        "zagolovki": [
++          [
++            "accept-ranges",
++            "bytes"
++          ],
++          [
++            "content-length",
++            "500"
++          ],
++          [
++            "content-type",
++            "text/plain"
++          ],
++          [
++            "date",
++            "Wed, 30 Sep 2026 08:49:46 GMT"
++          ],
++          [
++            "etag",
++            "\"6abcad59-1f4\""
++          ],
++          [
++            "last-modified",
++            "Wed, 30 Sep 2026 06:34:01 GMT"
++          ],
++          [
++            "server",
++            "nginx"
++          ],
++          [
++            "x-ray",
++            "wnp190:0.000/wn190:0.000/"
++          ]
++        ],
++        "dlina": 500,
++        "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
++        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
++      }
++    }
++  ]
++}

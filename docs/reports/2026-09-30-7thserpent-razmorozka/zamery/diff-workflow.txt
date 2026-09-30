@@ -1,0 +1,126 @@
+$ git diff --stat -p f22bb92 b1fd1e1 -- .github/workflows/deploy-7thserpent.yml
+
+ .github/workflows/deploy-7thserpent.yml | 54 +++++++++++++++++++++++++++------
+ 1 file changed, 44 insertions(+), 10 deletions(-)
+
+diff --git a/.github/workflows/deploy-7thserpent.yml b/.github/workflows/deploy-7thserpent.yml
+index c65775a..ba67f7d 100644
+--- a/.github/workflows/deploy-7thserpent.yml
++++ b/.github/workflows/deploy-7thserpent.yml
+@@ -17,6 +17,15 @@
+ #     уже привязан: сторож домена печатает, что тот отвечает, и не останавливает, если домен отвечает по обоим именам
+ #     с этого хоста, П108; вход действует только в первой попытке запуска — Re-run согласия не несёт); сборка CI
+ #     обязана равняться принятой (gates/sborka-prinyataya.json);
++#   • в любом запуске коммит запуска обязан быть головой main (П113): Re-run старого запуска или Run workflow не из main —
++#     стоп до секретов и сервера. Откат — Run workflow из ветки или метки нужного коммита со входом SERPENT_ROLLBACK = on:
++#     выкладка идёт и печатает, какой коммит выкладывает; вход действует только в первой попытке запуска. Пределы (судью
++#     судят GL25): сверка — один раз, в начале: push в main за время сборки этот прогон не останавливает — голову выложит
++#     следующий прогон из очереди; откат — только на коммиты с этим workflow (вливание сессии 25 и позже): Run workflow
++#     из старых веток (7thserpent-publikacija, -yashchik, -zhivoy) и меток и Re-run запусков до вливания идут прежним
++#     workflow без сторожа головы — сейчас их останавливает старый сторож папки на файле подтверждения Google (этот
++#     файл подтверждения не удалять, что бы ни советовала его строка СТОП); что откатный коммит — из истории main, сторож
++#     не проверяет; откат держится до следующей выкладки головы main;
+ #   • после push в `main` — ТОЛЬКО если переменная репозитория SERPENT_DEPLOY равна `on` (Settings → Secrets
+ #     and variables → Actions → Variables). Предохранитель П52 п. 3: ящик → привязка домена → проверка https
+ #     → Search Console; пока переменной нет, push в main ничего не выкладывает. Проверка живого сайта после
+@@ -32,7 +41,8 @@
+ #   AC4BF_FTP_USER        секрет первого сайта — читается только для сверки «робот не тот же», не печатается
+ # Каталога на сервере в секретах НЕТ намеренно: выкладка идёт в корень того, что видит робот, а сторож
+ # папки пропускает только пустой корень, свежий каталог хостера или прежнюю нашу выкладку — `mirror --delete`
+-# стирает всё, чего нет в dist/.
++# стирает всё, чего нет в dist/. Кроме них — файл подтверждения Search Console в корне (google<код>.html, П113):
++# сторож папки сверяет его строку подтверждения, mirror его не стирает, пересчёт не считает.
+ #
+ # КОРПУС (П106 — отступление от «сырой HTML в git не идёт» словом владельца: только приватный репозиторий,
+ # только для сборки). Сторож 8 слов в сборке без input/corpus/raw отказывает громко (П102), выключателей
+@@ -40,12 +50,15 @@
+ # input/corpus/raw как есть) ключом только для чтения. В журнал и на сервер сырьё не попадает: checkout
+ # имён файлов не печатает, сторож 8 слов печатает только наши страницы, на сервер едет только dist/.
+ #
+-# Что делает: checkout → сторож секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
+-# Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота и удалённого index.html →
++# Что делает: checkout → коммит запуска = голова main (П113; иначе стоп, откат — входом SERPENT_ROLLBACK) → сторож
++# секретов → корпус → npm ci → сборка сайта с гейтами и сторожами (TZ
++# Europe/Warsaw — день подписи byline, П92 п. 5) → lftp → сторож папки робота (с файлом подтверждения Google,
++# П113) и удалённого index.html →
+ # глубина (find . после суда корня) → первая ли выкладка → «домен уже привязан?» (бэклог 46 п. 2; при первой
+ # выкладке и входе SERPENT_DOMAIN_BOUND = on — строка ответа домена, без стопа, П108) → при
+ # первой: сборка CI = принятая (sha256 после нормализации cid ядра, SV1-Z-1) → mirror -R --delete dist/ без
+-# главной, затем главная → пересчёт файлов на сервере против dist/ → live:check (SERPENT_LIVE). Красный
++# главной (файл подтверждения Google не трогается), затем главная → пересчёт файлов на сервере против dist/ (файл
++# подтверждения Google — на месте) → live:check (SERPENT_LIVE). Красный
+ # гейт, сторож сборки или сторож выкладки останавливает прогон до
+ # того, как тронут сервер. Сторожа — `node tools/storozha-vykladki.mjs` сайта (пробы —
+ # tools/testy/storozha-vykladki.test.mjs); циклов оболочки нет.
+@@ -68,6 +81,11 @@ on:
+         type: choice
+         options: ['off', 'on']
+         default: 'off'
++      SERPENT_ROLLBACK:
++        description: 'SERPENT_ROLLBACK — откат: on — выкладка идёт, хотя коммит запуска не голова main (Run workflow из ветки или метки нужного коммита), и печатает, какой коммит выкладывает (П113); откат — только на коммиты с этим workflow (вливание сессии 25 и позже), держится до следующей выкладки головы main; действует только в первой попытке запуска — Re-run отката не несёт'
++        type: choice
++        options: ['off', 'on']
++        default: 'off'
+   push:
+     branches: [main]
+     paths:
+@@ -114,6 +132,17 @@ jobs:
+           node-version: 24
+           cache: npm
+ 
++      # Коммит запуска = голова main (П113; бэклог 72 п. 4): Re-run старого запуска или запуск не из main выложил бы не то,
++      # что сейчас в main, — стоп до секретов и сервера. Голова — git ls-remote публичного репозитория (без секретов; ошибки —
++      # в файл, их печатает сторож). Вход отката SERPENT_ROLLBACK — только в первой попытке запуска, как согласие «домен привязан».
++      - name: Коммит запуска — голова main
++        env:
++          GIT_TERMINAL_PROMPT: '0'
++          SERPENT_ROLLBACK: ${{ github.run_attempt == 1 && inputs.SERPENT_ROLLBACK || 'off' }}
++        run: |
++          git ls-remote "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main > golova-main.txt 2> golova-main-oshibki.txt || echo "git ls-remote закончился ненулевым кодом" >> golova-main-oshibki.txt
++          node $SITE/tools/storozha-vykladki.mjs golova golova-main.txt golova-main-oshibki.txt
++
+       - name: Секреты на месте, робот — не робот первого сайта
+         env:
+           SERPENT_FTP_HOST: ${{ secrets.SERPENT_FTP_HOST }}
+@@ -150,10 +179,12 @@ jobs:
+           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+         # Порядок (SV3-O-4): корень (cls) и главная с картой прежней выкладки → суд корня → find . только после него
+         # (робот, который видит аккаунт, не обходит его целиком) → глубина. Ошибки find — в файл, их судит глубина.
++        # Файлы подтверждения Google корня (google*.html) скачиваются с главной и картой: сторож папки сверяет строку
++        # подтверждения в копии (П113).
+         run: |
+           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; cls -1 -a -F; bye" > remote-root.txt
+-          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html --include-glob=sitemap-0.xml . remote-top; bye"
+-          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml
++          lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --no-recursion --include-glob=index.html --include-glob=sitemap-0.xml --include-glob=google*.html . remote-top; bye"
++          node $SITE/tools/storozha-vykladki.mjs papka remote-root.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml remote-top
+           node $SITE/tools/storozha-vykladki.mjs indeks remote-top/index.html
+           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-before.txt 2> remote-before-oshibki.txt || echo "lftp: find закончился ненулевым кодом" >> remote-before-oshibki.txt
+           node $SITE/tools/storozha-vykladki.mjs glubina remote-before.txt remote-top/index.html $SITE/dist remote-top/sitemap-0.xml remote-before-oshibki.txt
+@@ -184,9 +215,10 @@ jobs:
+           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
+         # Служебные записи хостера (сертификат, cgi) mirror не трогает и не удаляет — папкой, ссылкой или файлом (SV2-O-2,
+-        # SV3-O-1, по документации lftp). Главная — последней (SV3-O-5): mirror без неё, затем put; оборванная первая
+-        # выкладка остаётся без нашего index.html, и повтор снова первый — со сверкой сборки.
+-        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/ -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye"
++        # SV3-O-1, по документации lftp); файл подтверждения Google корня — тоже (образец имени сторожа FAJL_GOOGLE, П113).
++        # Главная — последней (SV3-O-5): mirror без неё, затем put; оборванная первая выкладка остаётся без нашего
++        # index.html, и повтор снова первый — со сверкой сборки.
++        run: lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; mirror --reverse --delete --verbose --parallel=4 -X .well-known -X .well-known/ -X cgi-bin -X cgi-bin/ -x '^google[0-9A-Za-z]+\.html$' -x '^index\.html$' $SITE/dist/ .; put $SITE/dist/index.html -o index.html; bye"
+ 
+       - name: Пересчёт на сервере
+         env:
+@@ -194,9 +226,11 @@ jobs:
+           SERPENT_FTP_PORT: ${{ secrets.SERPENT_FTP_PORT }}
+           SERPENT_FTP_USER: ${{ secrets.SERPENT_FTP_USER }}
+           LFTP_PASSWORD: ${{ secrets.SERPENT_FTP_PASSWORD }}
++        # Список корня до выкладки (remote-root.txt шага сторожа папки): файл подтверждения Google, сверенный до mirror,
++        # обязан остаться — исключение -x у lftp на этом сервере не измерено (П113, SV25-O-1).
+         run: |
+           lftp -e "$LFTP_SET open --env-password -u \"$SERPENT_FTP_USER\" -p \"$SERPENT_FTP_PORT\" ftp://$SERPENT_FTP_HOST; find .; bye" > remote-files.txt
+-          node $SITE/tools/storozha-vykladki.mjs pereschet remote-files.txt $SITE/dist
++          node $SITE/tools/storozha-vykladki.mjs pereschet remote-files.txt $SITE/dist remote-root.txt
+ 
+       - name: Проверка живого сайта
+         if: vars.SERPENT_LIVE == 'on'

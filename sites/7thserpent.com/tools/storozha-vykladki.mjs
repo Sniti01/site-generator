@@ -37,7 +37,9 @@
  *   node tools/storozha-vykladki.mjs glubina <find> <index.html> <dist> [<карта> [<ошибки find>]]  — внутри папок
  *                                                              сайта чужого нет (после papka и indeks)
  *   node tools/storozha-vykladki.mjs sverka-dist <dist> <список сборки>  — первая выкладка: dist CI = принятый
- *   node tools/storozha-vykladki.mjs pereschet <find> <dist> — после выкладки: файлы на сервере = dist
+ *   node tools/storozha-vykladki.mjs pereschet <find> <dist> [<список корня>]  — после выкладки: файлы на сервере = dist;
+ *                                                              файл подтверждения Google из списка корня до выкладки
+ *                                                              (cls) — на месте, новых нет (П113, SV25-O-1)
  *   node tools/storozha-vykladki.mjs spisok <dist> [<метка>] — список файлов и sha256 сборки (JSON в вывод);
  *                                                              так пишется gates/sborka-prinyataya.json — сборка,
  *                                                              принятая сессией (правка сайта до первой выкладки —
@@ -325,6 +327,26 @@ export const FAJL_GOOGLE = /^google[0-9A-Za-z]+\.html$/;
 /** Содержимое — строка подтверждения Google с этим именем (одна строка, без пробелов по краям, BOM и второй строки). */
 export const podtverzhdenieGoogle = (imya, tekst) =>
   FAJL_GOOGLE.test(imya) && typeof tekst === 'string' && [`google-site-verification: ${imya}`, `google-site-verification: ${imya}\n`, `google-site-verification: ${imya}\r\n`].includes(tekst);
+/** Имена невидимых знаков для строки отказа (SV25-Z-1): содержимое файла в публичный журнал не идёт — только имена и коды. */
+const IMENA_ZNAKOV = new Map([[' ', 'пробел'], ['\t', 'табуляция'], ['\r', 'CR'], ['\n', 'LF'], [String.fromCharCode(0xa0), 'неразрывный пробел']]);
+const imyaZnaka = (c) => IMENA_ZNAKOV.get(c) ?? `знак U+${c.codePointAt(0).toString(16).toUpperCase().padStart(4, '0')}`;
+/**
+ * Чем скачанная копия файла Google отличается от строки подтверждения (SV25-Z-1): пуст; BOM в начале; лишнее в конце — по именам
+ * знаков (до 8) или числом знаков; внутри имя другого файла (оно — по образцу, безопасно для журнала); иначе — не строка
+ * подтверждения с числом байтов. Содержимое не печатается.
+ */
+export function otlichieGoogle(imya, tekst) {
+  const s = `google-site-verification: ${imya}`;
+  if (tekst === '') return 'файл пуст';
+  if (tekst.charCodeAt(0) === 0xfeff) return 'в начале BOM (EF BB BF)';
+  if (tekst.startsWith(s)) {
+    const khvost = [...tekst.slice(s.length)];
+    return `в конце лишнее после строки подтверждения: ${khvost.length > 8 ? `текст, ${khvost.length} знаков` : khvost.map(imyaZnaka).join(', ')}`;
+  }
+  const m = /^google-site-verification: (google[0-9A-Za-z]+\.html)(\r?\n)?$/.exec(tekst);
+  if (m && FAJL_GOOGLE.test(m[1])) return `внутри имя другого файла ${m[1]}`;
+  return `внутри не строка подтверждения Google с этим именем (${Buffer.byteLength(tekst)} байт при ожидаемых ${s.length}–${s.length + 2})`;
+}
 const pokhozheNaDomen = (s) => /^[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)+$/u.test(s) && !s.startsWith('.');
 /** Расширения файлов, которые не домены верхнего уровня (SV3-Z-3): такие имена в строке отказа печатаются. */
 const FAJL = /\.(html?|php\d?|png|jpe?g|gif|svg|ico|webp|avif|css|js|mjs|map|txt|xml|json|webmanifest|log|bak|old|orig|tmp|ini|conf|pdf|gz|tar|sql)$/i;
@@ -377,11 +399,25 @@ export function papka(spisokTekst, indexHtml, verkh = [], karta = null, skachano
   // Файлы подтверждения Google корня — только сверенные по содержимому скачанной копии (П113); у папок и ссылок в выводе
   // `cls -F` есть «/» или «@» — образец их не берёт.
   const google = imena.filter((s) => FAJL_GOOGLE.test(s));
+  // SV25-O-3: имя, которое после обрезки краёв встречается дважды, — двойник с невидимым знаком по краю: не понять, какую
+  // запись сверили, а mirror --delete стёр бы другую.
+  const dvazhdy = [...new Set(google.filter((n, i) => google.indexOf(n) !== i))];
+  if (dvazhdy.length) {
+    return itog(false, [`СТОП: имя файла подтверждения Google ${dvazhdy.join(', ')} в списке корня дважды — у одной из записей невидимый знак по краю имени (пробел, табуляция), и не понять, какую из них сверили; mirror --delete стёр бы вторую (П113). Найди двойника в файловом менеджере панели и убери его — оставь файл, скачанный из Search Console.`]);
+  }
   const skachan = (n) => (skachano && Object.hasOwn(skachano, n) ? skachano[n] : undefined);
   const nesvereny = google.filter((n) => !podtverzhdenieGoogle(n, skachan(n)));
   if (nesvereny.length) {
-    const pochemu = (n) => (typeof skachan(n) === 'string' ? 'внутри не строка подтверждения Google с этим именем' : 'не скачан — сверить нечем');
-    return itog(false, [`СТОП: в корне робота ${nesvereny.map((n) => `${n} (${pochemu(n)})`).join(', ')} — имя файла подтверждения Search Console, а строка подтверждения не сверена (П113); mirror --delete такие имена не трогает, и чужой файл под этим именем остался бы на сервере. Открой файл в файловом менеджере панели: внутри ровно «google-site-verification: <имя файла>»; иное — удали его и подтверди сайт в Search Console заново.`]);
+    const inye = nesvereny.filter((n) => typeof skachan(n) === 'string');
+    const neSkachany = nesvereny.filter((n) => typeof skachan(n) !== 'string');
+    const chasti = nesvereny.map((n) => `${n} (${typeof skachan(n) === 'string' ? otlichieGoogle(n, skachan(n)) : 'не скачан — скачивание корня его не принесло, содержимое не проверено'})`);
+    // SV25-Z-1, Z-2: совет — по причине: иное содержимое — файл заново из Search Console поверх; не скачан — сбой шага.
+    const sovety = [
+      inye.length && 'скачай файл заново в Search Console (настройки → подтверждение права собственности → HTML-файл) и загрузи его в корень www поверх этого — загрузкой, а не редактором панели; удалять заранее не нужно',
+      neSkachany.length && 'файл в панели не трогай — новый запуск кнопкой Run workflow; повторяется — пришли строку СТОП',
+    ].filter(Boolean);
+    const sboy = neSkachany.length && imena.includes('index.html') && (indexHtml === null || indexHtml === undefined) ? 'скачивание корня не принесло ни index.html, ни файла подтверждения Google — сбой шага; ' : '';
+    return itog(false, [`СТОП: ${sboy}в корне робота ${chasti.join(', ')} — имя файла подтверждения Search Console, а строка подтверждения не сверена (П113); mirror --delete такие имена не трогает, и чужой файл под этим именем остался бы на сервере. ${sovety.join('; ')}.`]);
   }
   const pripiska = google.length ? `; файл подтверждения Google ${google.join(', ')} — строка подтверждения сверена, mirror его не трогает (П113)` : '';
   const katalogi = imena.filter((s) => s.endsWith('/')).map(bez);
@@ -427,12 +463,16 @@ export function papka(spisokTekst, indexHtml, verkh = [], karta = null, skachano
     }
   }
   if (!imena.length) return itog(true, ['папка робота: пустой корень — первая выкладка']);
+  // SV25-Z-4: в корне только сверенный файл Google — пустой корень, кроме него.
+  if (vse.every((s) => google.includes(s))) return itog(true, [`папка робота: пустой корень, кроме файла подтверждения Google — первая выкладка${pripiska}`]);
   if (vse.every((s) => s === 'index.html' || SLUZHEBNYE.includes(s) || google.includes(s))) {
     const sluzh = vse.filter((s) => s !== 'index.html' && !google.includes(s));
     return itog(true, [`папка робота: свежий каталог хостера — ${[imena.includes('index.html') && 'заглушка index.html (её судит сторож index.html)', sluzh.length && `служебные папки ${sluzh.join(', ')}`].filter(Boolean).join('; ') || 'без нашей сборки'}${pripiska}`]);
   }
   if (!imena.includes('index.html') && vneSborki.length === 0) {
-    return itog(false, [`СТОП: в корне робота только имена нашей сборки, без index.html (${vse.length} записей) — оборванная первая выкладка или файлы хостера с теми же именами (.htaccess, favicon.ico); чьи они — не понять. Удали содержимое 7thserpent.com/www в файловом менеджере панели и запусти выкладку снова (вход SERPENT_FIRST=on).`]);
+    // SV25-Z-3: сверенный файл Google — не имя сборки: не в счёте и не под удаление.
+    const krome = google.length ? `, кроме файла подтверждения Google ${google.join(', ')} (его не трогай)` : '';
+    return itog(false, [`СТОП: в корне робота только имена нашей сборки, без index.html (${vse.filter((s) => !google.includes(s)).length} записей) — оборванная первая выкладка или файлы хостера с теми же именами (.htaccess, favicon.ico); чьи они — не понять. Удали содержимое 7thserpent.com/www в файловом менеджере панели${krome} и запусти выкладку снова (вход SERPENT_FIRST=on).`]);
   }
   return itog(false, [`СТОП: в корне робота непустой каталог без нашей сборки (${vse.length} записей, например ${pokazatImena(vneSborki.length ? vneSborki : vse)}) — чужой сайт, не тот каталог или файлы хостера (.htaccess, favicon.ico — удали их в файловом менеджере панели); mirror --delete стёр бы его. Проверь «Каталог доступу» и содержимое 7thserpent.com/www.`]);
 }
@@ -594,8 +634,10 @@ export function razobratFind(tekst) {
 /** После выкладки: файлы на сервере = файлы dist (набором), ключевые — на месте; служебные файлы сервера — названы;
  *  служебные папки хостера (`.well-known/`, `cgi-bin/` — их mirror не трогает, SV2-O-2) не считаются ни на сервере,
  *  ни в dist (SV3-Z-6; служебную папку в сборке останавливает сторож папки до выкладки); файл подтверждения Google корня
- *  (П113; mirror его не трогает) — тоже, и он назван в строке прохода. */
-export function pereschet(findTekst, dist) {
+ *  (П113; mirror его не трогает) — тоже, и он назван в строке прохода. `spisokKornya` — вывод `cls` корня до выкладки
+ *  (SV25-O-1): файл Google, который был в корне до mirror (его сверил сторож папки), обязан остаться, новых быть не должно —
+ *  иначе стоп с именами (исключение `-x` у lftp на этом сервере не измерено: без этого файл пропал бы молча). */
+export function pereschet(findTekst, dist, spisokKornya = null) {
   const neSluzh = (f) => !SLUZHEBNYE.some((s) => f === s || f.startsWith(`${s}/`)) && !FAJL_GOOGLE.test(f);
   const google = razobratFind(findTekst).filter((f) => FAJL_GOOGLE.test(f));
   const naServere = new Set(razobratFind(findTekst).filter(neSluzh));
@@ -604,11 +646,20 @@ export function pereschet(findTekst, dist) {
   const lishnie = [...naServere].filter((f) => !lokalno.has(f));
   const sluzhebnye = lishnie.filter((f) => /(^|\/)(\.in\.|\.nfs)/.test(f));
   const klyuchi = KLYUCHEVYE.filter((f) => !naServere.has(f));
-  if (!net.length && !lishnie.length && !klyuchi.length) return itog(true, [`на сервере ровно dist/: ${naServere.size} файлов, ключевые на месте${google.length ? `; не в счёте — файл подтверждения Google ${google.join(', ')} (корень, П113)` : ''}`]);
-  return itog(false, [
-    `СТОП: на сервере не dist/ — файлов локально ${lokalno.size}, на сервере ${naServere.size}; нет на сервере: ${net.slice(0, 8).join(', ') || '—'}; лишние: ${lishnie.slice(0, 8).join(', ') || '—'}; ключевых нет: ${klyuchi.join(', ') || '—'}`,
-    ...(sluzhebnye.length ? [`из лишних — служебные файлы сервера (.nfs, .in.: ${sluzhebnye.length}) — оборванная запись или файл, который сервер ещё держит; повтори пересчёт или выкладку через минуту`] : []),
-  ]);
+  const googleDo = spisokKornya === null || spisokKornya === undefined ? null : razobratSpisok(spisokKornya).filter((s) => FAJL_GOOGLE.test(s));
+  const propali = googleDo ? googleDo.filter((n) => !google.includes(n)) : [];
+  const novye = googleDo ? google.filter((n) => !googleDo.includes(n)) : [];
+  if (!net.length && !lishnie.length && !klyuchi.length && !propali.length && !novye.length) {
+    return itog(true, [`на сервере ровно dist/: ${naServere.size} файлов, ключевые на месте${google.length ? `; не в счёте — файл подтверждения Google ${google.join(', ')} (корень, П113)` : ''}`]);
+  }
+  const stroki = [];
+  if (net.length || lishnie.length || klyuchi.length) {
+    stroki.push(`СТОП: на сервере не dist/ — файлов локально ${lokalno.size}, на сервере ${naServere.size}; нет на сервере: ${net.slice(0, 8).join(', ') || '—'}; лишние: ${lishnie.slice(0, 8).join(', ') || '—'}; ключевых нет: ${klyuchi.join(', ') || '—'}`);
+    if (sluzhebnye.length) stroki.push(`из лишних — служебные файлы сервера (.nfs, .in.: ${sluzhebnye.length}) — оборванная запись или файл, который сервер ещё держит; повтори пересчёт или выкладку через минуту`);
+  }
+  for (const n of propali) stroki.push(`СТОП: файл подтверждения Google ${n} был в корне до выкладки, а после неё его нет — mirror стёр его вопреки исключению -x (П113). Скачай файл в Search Console (настройки → подтверждение права собственности → HTML-файл), загрузи его в корень www и пришли строку СТОП.`);
+  for (const n of novye) stroki.push(`СТОП: новый файл подтверждения Google ${n} — его не было в корне до выкладки, сторож папки его не сверял (П113). Проверь в файловом менеджере панели, твой ли это файл из Search Console, и пришли строку СТОП.`);
+  return itog(false, stroki);
 }
 
 /* ---------- команда ---------- */
@@ -665,7 +716,10 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     }
     else if (komanda === 'indeks' && argi.length <= 1) r = indeks(prochest(argi[0]));
     else if (komanda === 'sverka-dist' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = sverkaDist(argi[0], JSON.parse(readFileSync(argi[1], 'utf8')));
-    else if (komanda === 'pereschet' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = pereschet(readFileSync(argi[0], 'utf8'), argi[1]);
+    else if (komanda === 'pereschet' && (argi.length === 2 || argi.length === 3) && existsSync(argi[0]) && existsSync(argi[1]) && (argi.length === 2 || existsSync(argi[2]))) {
+      // Третий аргумент — список корня до выкладки (SV25-O-1): файлы подтверждения Google обязаны остаться.
+      r = pereschet(readFileSync(argi[0], 'utf8'), argi[1], argi[2] ? readFileSync(argi[2], 'utf8') : null);
+    }
     else if (komanda === 'spisok' && (argi.length === 1 || argi.length === 2) && existsSync(argi[0])) {
       const s = spisokSborki(argi[0]);
       console.log(JSON.stringify({ ...(argi[1] ? { sborka: argi[1] } : {}), ...s }, null, 1));
@@ -676,7 +730,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       }
       process.exit(0);
     } else {
-      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> | spisok <dist> [<метка>]');
+      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> [<список корня до выкладки>] | spisok <dist> [<метка>]');
       process.exit(2);
     }
   } catch (e) {

@@ -5,7 +5,8 @@
 // «Судью судят»: раунд 1 (SV1-O — «опасный проход», SV1-Z — «законные формы»), раунд 2 (SV2-O, SV2-Z) — пробами с их id.
 // Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа домена; «судью судят» — SV23-*.
 // Сессия 25 (П113): файл подтверждения Google в корне — сторож папки сверяет скачанную копию, mirror его не трогает,
-// пересчёт не считает; «судью судят» — SV25-*.
+// пересчёт не считает и держит на месте; «судью судят» — SV25-*. Сторож «коммит запуска = голова main» со входом
+// отката SERPENT_ROLLBACK; «судью судят» — GL25-*.
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -285,6 +286,75 @@ test('SV23 вход SERPENT_DOMAIN_BOUND: on — согласие; off, пуст
   assert.equal(soglasieIzVkhoda('on'), true);
   for (const z of ['off', '', undefined]) assert.equal(soglasieIzVkhoda(z), false, String(z));
   for (const z of ['yes', 'ON', 'true', ' on', 'on ']) assert.equal(soglasieIzVkhoda(z), null, JSON.stringify(z));
+});
+
+/* ---------- коммит запуска = голова main (сессия 25, П113) ---------- */
+
+const SHA_1 = '0123456789abcdef0123456789abcdef01234567';
+const SHA_2 = 'fedcba9876543210fedcba9876543210fedcba98';
+const ls = (sha, ref = 'refs/heads/main') => `${sha}\t${ref}\n`;
+
+test('П113 сторож головы: коммит запуска = голова main — проход, коммит напечатан; со входом отката — тот же проход, не «ОТКАТ»', () => {
+  assert.equal(typeof SV.golova, 'function', 'нет функции golova');
+  const r = SV.golova({ kommit: SHA_1, lsRemote: ls(SHA_1) });
+  assert.equal(r.ok, true, r.stroki.join(' | '));
+  assert.ok(r.stroki.join(' ').includes(`коммит запуска ${SHA_1} = голова main`), r.stroki.join(' | '));
+  const s = SV.golova({ kommit: SHA_1, lsRemote: ls(SHA_1), otkat: true });
+  assert.equal(s.ok, true);
+  assert.doesNotMatch(s.stroki.join(' '), /ОТКАТ/);
+});
+
+test('П113 сторож головы: коммит запуска не голова main — стоп с обоими коммитами (Re-run, откат — входом); со входом отката — проход «ОТКАТ»', () => {
+  const r = SV.golova({ kommit: SHA_1, lsRemote: ls(SHA_2) });
+  const t = r.stroki.join(' ');
+  assert.equal(r.ok, false, t);
+  assert.match(t, /СТОП: коммит запуска/);
+  assert.ok(t.includes(SHA_1) && t.includes(SHA_2), t);
+  assert.match(t, /Re-run/);
+  assert.match(t, /Сервер не тронут/);
+  assert.match(t, /Run workflow из main/);
+  assert.match(t, /SERPENT_ROLLBACK = on/);
+  const o = SV.golova({ kommit: SHA_1, lsRemote: ls(SHA_2), otkat: true });
+  assert.equal(o.ok, true, o.stroki.join(' | '));
+  assert.ok(o.stroki.join(' ').includes(`ОТКАТ: выкладывается коммит ${SHA_1}, голова main — ${SHA_2}`), o.stroki.join(' | '));
+});
+
+test('П113 сторож головы: голову main не узнать — стоп и со входом отката (пусто, две строки, чужая ветка, метка, короткий или заглавный хеш, пробел вместо табуляции)', () => {
+  for (const [imya, vyvod] of [
+    ['пусто', ''],
+    ['две строки', ls(SHA_1) + ls(SHA_2)],
+    ['main и ещё ветка', ls(SHA_1) + ls(SHA_2, 'refs/heads/main2')],
+    ['чужая ветка', ls(SHA_1, 'refs/heads/mainline')],
+    ['метка вместо ветки', ls(SHA_1, 'refs/tags/main')],
+    ['короткий хеш', ls(SHA_1.slice(0, 39))],
+    ['заглавные', ls(SHA_1.toUpperCase())],
+    ['пробел вместо табуляции', `${SHA_1} refs/heads/main\n`],
+  ]) {
+    const r = SV.golova({ kommit: SHA_1, lsRemote: vyvod, otkat: true });
+    assert.equal(r.ok, false, `${imya}: ${r.stroki.join(' | ')}`);
+    assert.match(r.stroki.join(' '), /СТОП: голову main не узнать/, imya);
+  }
+  // CRLF в выводе — допустим.
+  assert.equal(SV.golova({ kommit: SHA_1, lsRemote: `${SHA_1}\trefs/heads/main\r\n` }).ok, true);
+});
+
+test('П113 сторож головы: ошибка git без вывода — стоп с первой строкой ошибки без команд раннера; предупреждение git при верном выводе — проход, строка напечатана', () => {
+  const e = SV.golova({ kommit: SHA_1, lsRemote: '', oshibki: '::error::fatal: unable to access\ngit ls-remote закончился ненулевым кодом\n', otkat: true });
+  const t = e.stroki.join(' ');
+  assert.equal(e.ok, false, t);
+  assert.match(t, /git ls-remote с ошибкой/);
+  assert.match(t, /unable to access/);
+  assert.doesNotMatch(t, /::|##\[/);
+  const w = SV.golova({ kommit: SHA_1, lsRemote: ls(SHA_1), oshibki: 'warning: redirecting to https://github.com/Sniti01/site-generator.git/\n' });
+  assert.equal(w.ok, true, w.stroki.join(' | '));
+  assert.match(w.stroki.join(' '), /предупреждение git ls-remote: warning: redirecting/);
+});
+
+test('П113 вход SERPENT_ROLLBACK: on — откат; off, пусто и нет — нет; иное — ошибка входа', () => {
+  assert.equal(typeof SV.otkatIzVkhoda, 'function', 'нет функции otkatIzVkhoda');
+  assert.equal(SV.otkatIzVkhoda('on'), true);
+  for (const v of ['off', '', undefined]) assert.equal(SV.otkatIzVkhoda(v), false, String(v));
+  for (const v of ['yes', 'ON', 'true', 'on\n', ' on']) assert.equal(SV.otkatIzVkhoda(v), null, JSON.stringify(v));
 });
 
 /* ---------- папка робота и index.html ---------- */
@@ -932,6 +1002,41 @@ test('П113 команда papka: пятый аргумент — папка с�
   }
 });
 
+test('П113 команда golova: GITHUB_SHA и вход SERPENT_ROLLBACK — коды 0, 1, 2; без сети', () => {
+  const d = mkdtempSync(join(tmpdir(), 'storozha-golova-'));
+  try {
+    writeFileSync(join(d, 'ls.txt'), ls(SHA_1));
+    writeFileSync(join(d, 'osh.txt'), '');
+    const { GITHUB_SHA, SERPENT_ROLLBACK, ...env } = process.env;
+    const zapusk = (e, argi = [join(d, 'ls.txt'), join(d, 'osh.txt')]) => spawnSync(process.execPath, [STOROZH, 'golova', ...argi], { encoding: 'utf8', env: { ...env, ...e } });
+    const da = zapusk({ GITHUB_SHA: SHA_1 });
+    assert.equal(da.status, 0, da.stdout + da.stderr);
+    assert.ok(da.stdout.includes(SHA_1), da.stdout);
+    assert.equal(zapusk({ GITHUB_SHA: SHA_2 }).status, 1);
+    const otkat = zapusk({ GITHUB_SHA: SHA_2, SERPENT_ROLLBACK: 'on' });
+    assert.equal(otkat.status, 0, otkat.stdout + otkat.stderr);
+    assert.match(otkat.stdout, /ОТКАТ/);
+    assert.equal(zapusk({ GITHUB_SHA: SHA_2, SERPENT_ROLLBACK: 'off' }).status, 1);
+    assert.equal(zapusk({ GITHUB_SHA: SHA_2, SERPENT_ROLLBACK: '' }).status, 1);
+    // Файла ошибок нет — как пустой (второй аргумент необязателен).
+    assert.equal(zapusk({ GITHUB_SHA: SHA_1 }, [join(d, 'ls.txt')]).status, 0);
+    for (const plokho of ['yes', 'ON', 'true', 'on\n']) {
+      const r = zapusk({ GITHUB_SHA: SHA_2, SERPENT_ROLLBACK: plokho });
+      assert.equal(r.status, 2, `${JSON.stringify(plokho)}: ${r.stdout}${r.stderr}`);
+      assert.match(r.stderr, /SERPENT_ROLLBACK/);
+    }
+    for (const sha of [undefined, '', 'abc', SHA_1.toUpperCase(), `${SHA_1}\n`]) {
+      const r = zapusk(sha === undefined ? {} : { GITHUB_SHA: sha });
+      assert.equal(r.status, 2, `${JSON.stringify(sha)}: ${r.stdout}${r.stderr}`);
+      assert.match(r.stderr, /GITHUB_SHA/);
+    }
+    // Вывода git нет — ошибка входа.
+    assert.equal(zapusk({ GITHUB_SHA: SHA_1 }, [join(d, 'net.txt')]).status, 2);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
 test('SV25-O-1 команда pereschet: третий аргумент — список корня до выкладки (коды 0 и 1); без него — как было', () => {
   const d = sborka();
   // Входы команды — вне папки сборки: пересчёт считает каждый файл сборки.
@@ -1014,6 +1119,62 @@ test('SV23 workflow: вход SERPENT_DOMAIN_BOUND («домен привяза�
   assert.match(WF.on.workflow_dispatch.inputs.SERPENT_FIRST.description, /^SERPENT_FIRST — /);
   // SV23-Z2-2: повтор согласия не несёт — описание поля говорит, как повторять.
   assert.match(v.description, /после красного прогона — новый Run workflow с обоими входами/);
+});
+
+test('П113 workflow: вход SERPENT_ROLLBACK (откат) — выбор off/on, по умолчанию off; только шагу головы main и только в первой попытке запуска; push — off', () => {
+  const v = WF.on.workflow_dispatch.inputs.SERPENT_ROLLBACK;
+  assert.ok(v, 'нет входа SERPENT_ROLLBACK');
+  assert.equal(v.type, 'choice');
+  assert.deepEqual(v.options, ['off', 'on']);
+  assert.equal(v.default, 'off');
+  assert.match(v.description, /^SERPENT_ROLLBACK — /);
+  assert.match(v.description, /Re-run/);
+  const g = shag('Коммит запуска — голова main');
+  assert.ok(g, 'нет шага «Коммит запуска — голова main»');
+  // Повтор (Re-run) отката не несёт — как вход «домен привязан» (SV23-O-6).
+  assert.equal(g.env.SERPENT_ROLLBACK, "${{ github.run_attempt == 1 && inputs.SERPENT_ROLLBACK || 'off' }}");
+  assert.deepEqual(Object.keys(g.env).sort(), ['GIT_TERMINAL_PROMPT', 'SERPENT_ROLLBACK']);
+  assert.equal(g.env.GIT_TERMINAL_PROMPT, '0');
+  assert.equal(g.if, undefined);
+  assert.equal(g['continue-on-error'], undefined);
+  assert.deepEqual(g.run.trim().split('\n'), [
+    'git ls-remote "$GITHUB_SERVER_URL/$GITHUB_REPOSITORY" refs/heads/main > golova-main.txt 2> golova-main-oshibki.txt || echo "git ls-remote закончился ненулевым кодом" >> golova-main-oshibki.txt',
+    'node $SITE/tools/storozha-vykladki.mjs golova golova-main.txt golova-main-oshibki.txt',
+  ]);
+  // Имя входа в дереве YAML — только во входе (ключ и описание) и в env шага головы.
+  const gde = [];
+  const obhod = (o, put) => {
+    if (typeof o === 'string') {
+      if (o.includes('SERPENT_ROLLBACK')) gde.push(put);
+      return;
+    }
+    if (o && typeof o === 'object') {
+      for (const [k, x] of Object.entries(o)) {
+        if (k.includes('SERPENT_ROLLBACK')) gde.push(`${put}.${k}#ключ`);
+        obhod(x, `${put}.${k}`);
+      }
+    }
+  };
+  obhod(WF, '');
+  const iG = shagi.indexOf(g);
+  assert.deepEqual(gde.sort(), [
+    '.on.workflow_dispatch.inputs.SERPENT_ROLLBACK#ключ',
+    '.on.workflow_dispatch.inputs.SERPENT_ROLLBACK.description',
+    `.jobs.deploy.steps.${iG}.env.SERPENT_ROLLBACK#ключ`,
+    `.jobs.deploy.steps.${iG}.env.SERPENT_ROLLBACK`,
+  ].sort());
+});
+
+test('П113 workflow: шаг «Коммит запуска — голова main» — сразу после setup-node, до секретов, корпуса, сборки и любого lftp', () => {
+  const iG = i('Коммит запуска — голова main');
+  const iNode = shagi.findIndex((s) => /^actions\/setup-node@/.test(s.uses ?? ''));
+  assert.ok(iNode >= 0 && iG === iNode + 1, `${iNode} ${iG}`);
+  for (const k of ['Секреты на месте', 'Зависимости', 'Корпус', 'Сборка с гейтами', 'Сторож папки робота', 'Выкладка по FTPS', 'Пересчёт на сервере']) assert.ok(i(k) > iG, k);
+  shagi.forEach((s, n) => {
+    if (/lftp/.test(s.run ?? '')) assert.ok(n > iG, s.name);
+  });
+  // Сторож головы — без секретов.
+  assert.doesNotMatch(JSON.stringify(shag('Коммит запуска — голова main')), /secrets\./);
 });
 
 test('SV23 workflow: без Cloudflare — ни в шапке, ни в шагах (П108)', () => {
@@ -1107,6 +1268,6 @@ test('workflow: порядок — секреты, сборка, сторож п
 test('workflow: команды сторожей — те, что знает сторож; циклов оболочки нет', () => {
   const run = shagi.map((s) => s.run ?? '').join('\n');
   const komandy = [...run.matchAll(/storozha-vykladki\.mjs (\S+)/g)].map((m) => m[1]);
-  assert.deepEqual(komandy.sort(), ['domen', 'glubina', 'indeks', 'papka', 'pereschet', 'pervaya', 'sekrety', 'sverka-dist'].sort());
+  assert.deepEqual(komandy.sort(), ['domen', 'glubina', 'golova', 'indeks', 'papka', 'pereschet', 'pervaya', 'sekrety', 'sverka-dist'].sort());
   assert.doesNotMatch(run, /(^|[\s;])(for|while|until)\s/m);
 });

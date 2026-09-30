@@ -6,7 +6,7 @@
 // 2026-09-30 06:35 UTC (500 байт, sha256 d1a2779c…8bb3, блока хостера нет): длина, начало и конец sha256, CR, BOM, перевод
 // строки в конце, метки «Managed content», закрытые роботы (Disallow: / их группы) против перечня владельца, Allow: /
 // у Googlebot, строка Sitemap; тело — целиком.
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, mkdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -28,7 +28,9 @@ const zapros = async (url) => {
 };
 const s = await zapros(`https://www.7thserpent.com/robots.txt?live-check=${metka}`);
 const bez = await zapros('https://www.7thserpent.com/robots.txt');
-writeFileSync(join(dirname(fileURLToPath(import.meta.url)), '../zamery', `robots-para-${nomer}.json`), JSON.stringify({ para: Number(nomer), metka: String(metka), s, bez }, null, 2) + '\n');
+const ZAMERY = join(dirname(fileURLToPath(import.meta.url)), '../zamery');
+mkdirSync(ZAMERY, { recursive: true });
+writeFileSync(join(ZAMERY, `robots-para-${nomer}.json`), JSON.stringify({ para: Number(nomer), metka: String(metka), s, bez }, null, 2) + '\n');
 
 /** Группы файла: подряд идущие User-agent и правила до следующего User-agent после правила. */
 function gruppy(telo) {

@@ -6,7 +6,7 @@
 // удаляется). Печать — код сборки, счёт, число файлов копии и sha256 её robots.txt. Порядок «коммит, сборка»: запускать
 // на чистом дереве.
 import { spawnSync } from 'node:child_process';
-import { readFileSync, writeFileSync, readdirSync, existsSync, rmSync, cpSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync, rmSync, cpSync, mkdirSync } from 'node:fs';
 import { join, relative, dirname, resolve, isAbsolute } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
@@ -21,6 +21,7 @@ if (!kopiya || !isAbsolute(kopiya) || resolve(kopiya).startsWith(REPO)) {
 }
 const r = spawnSync('npm run build -w 7thserpent.com', { cwd: REPO, shell: true, encoding: 'utf8', maxBuffer: 256 * 1024 * 1024, env: { ...process.env, FORCE_COLOR: '0', NO_COLOR: '1' } });
 const zhurnal = `${r.stdout ?? ''}${r.stderr ?? ''}`.replace(/\r/g, '').replace(/\x1b\[[0-9;]*m/g, '');
+mkdirSync(ZAMERY, { recursive: true });
 writeFileSync(join(ZAMERY, 'sborka-opornaya.txt'), `$ npm run build -w 7thserpent.com\n(папка: .; коммит — опорный код f22bb92)\n\n${zhurnal}\nкод выхода: ${r.status}\n`);
 const SCHET = [
   ['гейты сайта 2/2', /Гейты сайта: 2\/2 прошли/],

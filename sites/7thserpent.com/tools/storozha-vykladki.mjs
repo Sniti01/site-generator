@@ -16,7 +16,12 @@
  * без управляющих и невидимых знаков и команд раннера (SV23-O-3, O2-6), сопоставители проблем сняты (SV23-O2-4).
  * Сессия 25 (П113): файл подтверждения Google корня (`FAJL_GOOGLE`) — сторож папки пропускает его, только сверив скачанную
  * копию со строкой подтверждения того же имени; mirror его не трогает (`-x`), пересчёт не считает; «судью судят» — SV25-*.
+ * Сторож «коммит запуска = голова main» (`golova`, П113; бэклог 72 п. 4): Re-run старого запуска или запуск не из main —
+ * стоп до секретов и сервера; вход отката SERPENT_ROLLBACK — только в первой попытке запуска; «судью судят» — GL25-*.
  *
+ *   node tools/storozha-vykladki.mjs golova <ls-remote> [<ошибки>]  — коммит запуска (GITHUB_SHA) = голова main по выводу
+ *                                                              git ls-remote; иначе стоп, со входом SERPENT_ROLLBACK=on —
+ *                                                              откат: выкладка идёт и печатает коммит (П113)
  *   node tools/storozha-vykladki.mjs sekrety                 — секреты на месте (SERPENT_FTP_*, SERPENT_CORPUS_KEY);
  *                                                              логин, хост и порт — без знаков, ломающих команду lftp;
  *                                                              робот — не робот первого сайта (AC4BF_FTP_USER)
@@ -299,6 +304,47 @@ export async function domen({ poluchit, pervyi, soglasen = false, hosty = HOSTY 
           ? 'петля редиректов — проверь переадресацию между www и голым именем в панели хостера: она спорит с .htaccess сайта'
           : 'домен ведёт не на этот сайт (конечный хост, canonical или путь редиректов — в строках выше) — проверь привязку в панели хостера';
   return itog(false, [...stroki, `СТОП: первая выкладка${soglasen ? ' со входом SERPENT_DOMAIN_BOUND = on, но согласие покрывает только домен, который отвечает по обоим именам с этого хоста' : ''}: ${prichina}.`]);
+}
+
+/* ---------- коммит запуска = голова main (сессия 25, П113) ---------- */
+
+/** Вход отката SERPENT_ROLLBACK (П113): `on` — владелец выкладывает коммит, который не голова main; `off`, пусто или нет
+ *  входа — нет; иное — `null` (ошибка входа). */
+export function otkatIzVkhoda(znachenie) {
+  if (znachenie === undefined || znachenie === '' || znachenie === 'off') return false;
+  if (znachenie === 'on') return true;
+  return null;
+}
+
+/** Голова main из вывода `git ls-remote <репозиторий> refs/heads/main`: ровно одна непустая строка «<40 строчных
+ *  шестнадцатеричных><табуляция>refs/heads/main» (CR в конце строки допустим); иначе — null. */
+export function golovaIzLsRemote(tekst) {
+  const stroki = String(tekst ?? '').replace(/\r\n?/g, '\n').split('\n').filter((s) => s.trim());
+  if (stroki.length !== 1) return null;
+  const m = /^([0-9a-f]{40})\trefs\/heads\/main$/.exec(stroki[0]);
+  return m ? m[1] : null;
+}
+
+/**
+ * Коммит запуска = голова main (П113; П109 п. 2, бэклог 72 п. 4): повтор (Re-run) старого запуска или запуск не из main
+ * выложил бы не то, что сейчас в main, — стоп до секретов и сервера. `kommit` — GITHUB_SHA; `lsRemote` — вывод git ls-remote;
+ * `oshibki` — его stderr (и строка о ненулевом коде); `otkat` — вход SERPENT_ROLLBACK = on (workflow даёт его только первой
+ * попытке запуска). Голова — по выводу: не разобрать — стоп с первой строкой ошибки; ошибка при верном выводе —
+ * предупреждение. Со входом отката выкладка идёт и печатает, какой коммит выкладывает. Строки git — через `bezopasno`.
+ */
+export function golova({ kommit, lsRemote, oshibki = '', otkat = false }) {
+  const g = golovaIzLsRemote(lsRemote);
+  const osh = String(oshibki ?? '').split(/\r?\n/).map((s) => s.trim()).find(Boolean);
+  if (!g) {
+    return itog(false, [bezopasno(`СТОП: голову main не узнать — git ls-remote ${osh ? `с ошибкой (первая строка: ${obrez(osh, 200)})` : 'дал не одну строку «<коммит> refs/heads/main»'}; сервер не тронут. Новый запуск кнопкой Run workflow; повторяется — проверь, что репозиторий открыт для чтения, и пришли строку СТОП.`)]);
+  }
+  const pred = osh ? [bezopasno(`предупреждение git ls-remote: ${obrez(osh, 200)}`)] : [];
+  if (kommit === g) return itog(true, [...pred, `коммит запуска ${kommit} = голова main — выкладывается он`]);
+  if (otkat) return itog(true, [...pred, `ОТКАТ: выкладывается коммит ${kommit}, голова main — ${g} (вход SERPENT_ROLLBACK = on, П113)`]);
+  return itog(false, [
+    ...pred,
+    `СТОП: коммит запуска ${kommit} — не голова main (${g}): это повтор старого запуска (Re-run) или запуск не из main, и выкладка откатила бы живой сайт к этому коммиту. Сервер не тронут. Новая выкладка — Run workflow из main; откат на этот коммит — Run workflow из ветки или метки этого коммита со входом SERPENT_ROLLBACK = on (П113).`,
+  ]);
 }
 
 /* ---------- папка робота ---------- */
@@ -714,6 +760,21 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
     } else if (komanda === 'glubina' && argi.length >= 3 && argi.length <= 5 && existsSync(argi[0]) && existsSync(argi[2])) {
       r = glubina(readFileSync(argi[0], 'utf8'), prochest(argi[1]), Object.keys(spisokSborki(argi[2]).fajly), prochest(argi[3]), prochest(argi[4]));
     }
+    else if (komanda === 'golova' && argi.length >= 1 && argi.length <= 2 && existsSync(argi[0])) {
+      // Коммит запуска и вход отката (П113): коммит — 40 строчных шестнадцатеричных, вход — только on, off или пусто; иное —
+      // ошибка входа до разбора вывода git.
+      const kommit = process.env.GITHUB_SHA ?? '';
+      if (!/^[0-9a-f]{40}$/.test(kommit)) {
+        console.error('GITHUB_SHA — не коммит (40 строчных шестнадцатеричных знаков)');
+        process.exit(2);
+      }
+      const otkat = otkatIzVkhoda(process.env.SERPENT_ROLLBACK);
+      if (otkat === null) {
+        console.error('SERPENT_ROLLBACK — только on или off (вход отката)');
+        process.exit(2);
+      }
+      r = golova({ kommit, lsRemote: readFileSync(argi[0], 'utf8'), oshibki: prochest(argi[1]) ?? '', otkat });
+    }
     else if (komanda === 'indeks' && argi.length <= 1) r = indeks(prochest(argi[0]));
     else if (komanda === 'sverka-dist' && argi.length === 2 && existsSync(argi[0]) && existsSync(argi[1])) r = sverkaDist(argi[0], JSON.parse(readFileSync(argi[1], 'utf8')));
     else if (komanda === 'pereschet' && (argi.length === 2 || argi.length === 3) && existsSync(argi[0]) && existsSync(argi[1]) && (argi.length === 2 || existsSync(argi[2]))) {
@@ -730,7 +791,7 @@ if (import.meta.url === pathToFileURL(process.argv[1] ?? '').href) {
       }
       process.exit(0);
     } else {
-      console.error('команды: sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> [<список корня до выкладки>] | spisok <dist> [<метка>]');
+      console.error('команды: golova <вывод git ls-remote> [<ошибки git>] | sekrety | pervaya [<index.html> [<find>]] | domen | papka <список> [<index.html> [<dist> [<карта> [<папка скачанного>]]]] | glubina <find> <index.html> <dist> [<карта> [<ошибки find>]] | indeks [<index.html>] | sverka-dist <dist> <список> | pereschet <find> <dist> [<список корня до выкладки>] | spisok <dist> [<метка>]');
       process.exit(2);
     }
   } catch (e) {

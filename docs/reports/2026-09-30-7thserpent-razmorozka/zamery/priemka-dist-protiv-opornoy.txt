@@ -1,0 +1,8 @@
+A (опорная сборка f22bb92): C:\Users\MSI\AppData\Local\Temp\claude\d--SEO-cloud-site-generator\d51cae6c-d4e2-44ee-ba52-f824f5c9a8b9\scratchpad\opornaya-dist — файлов 165
+B (итоговая сборка сессии, cbe0586): D:\SEO\cloud\site-generator\sites\7thserpent.com\dist — файлов 165
+только в A: 0
+только в B: 0
+различаются: 1
+  robots.txt
+dist/robots.txt: 500 байт, sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3 — равен телу сервера (замер П113)
+ждали: различается ровно robots.txt, равный телу сервера — да

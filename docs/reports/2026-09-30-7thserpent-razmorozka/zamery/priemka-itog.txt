@@ -1,0 +1,18 @@
+kommit                     cbe0586; отслеживаемые файлы чистые
+build                      код 0
+schet                      как в сессии 24
+dist-protiv-opornoy        ровно robots.txt = тело сервера: файлов 165/165, только в A 0, только в B 0, различаются 1
+ni-bajta: первый сайт      ни байта
+ni-bajta: ядро             ни байта
+ni-bajta: корень: package.json, package-lock.json, .gitattri ни байта
+ni-bajta: workflow первого сайта (deploy-ac4bf.yml) ни байта
+ni-bajta: зона Tailwind второго сайта (global.css) ни байта
+ni-bajta: файлы сайта: src/, structure/, astro.config.mjs, p ни байта
+ni-bajta: список принятой сборки и данные гейтов (gates/) ни байта
+ni-bajta: замороженные судьи второго сайта (sverka, znak, ge ни байта
+ni-bajta: образец сессии 24 (obrazec-khostera.json) ни байта
+ni-bajta: материалы прежних докладов (сессии 22–24) ни байта
+ozhidaemo: public/ сайта — ровно robots.txt как ждали
+ozhidaemo: tools/ сайта — ровно check-live, сторожа, их проб как ждали
+ozhidaemo: workflow второго сайта — изменён (шаги 3–4) как ждали
+okonchaniya                файлов 208, не LF 0, после перенормализации дерево чистое

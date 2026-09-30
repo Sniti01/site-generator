@@ -1,0 +1,242 @@
+---- первый сайт (f22bb92..HEAD):
+(пусто — ни байта)
+---- ядро (f22bb92..HEAD):
+(пусто — ни байта)
+---- корень: package.json, package-lock.json, .gitattributes (f22bb92..HEAD):
+(пусто — ни байта)
+---- workflow первого сайта (deploy-ac4bf.yml) (f22bb92..HEAD):
+(пусто — ни байта)
+---- зона Tailwind второго сайта (global.css) (f22bb92..HEAD):
+(пусто — ни байта)
+---- файлы сайта: src/, structure/, astro.config.mjs, package.json сайта (f22bb92..HEAD):
+(пусто — ни байта)
+---- список принятой сборки и данные гейтов (gates/) (f22bb92..HEAD):
+(пусто — ни байта)
+---- замороженные судьи второго сайта (sverka, znak, geity) (f22bb92..HEAD):
+(пусто — ни байта)
+---- образец сессии 24 (obrazec-khostera.json) (f22bb92..HEAD):
+(пусто — ни байта)
+---- материалы прежних докладов (сессии 22–24) (f22bb92..HEAD):
+(пусто — ни байта)
+---- public/ сайта — ровно robots.txt (f22bb92..HEAD):
+M	sites/7thserpent.com/public/robots.txt
+ждали: M	sites/7thserpent.com/public/robots.txt — да
+---- tools/ сайта — ровно check-live, сторожа, их пробы и образец владельца (f22bb92..HEAD):
+A	sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+M	sites/7thserpent.com/tools/check-live.mjs
+M	sites/7thserpent.com/tools/storozha-vykladki.mjs
+M	sites/7thserpent.com/tools/testy/check-live.test.mjs
+M	sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs
+ждали: M	sites/7thserpent.com/tools/check-live.mjs | M	sites/7thserpent.com/tools/storozha-vykladki.mjs | M	sites/7thserpent.com/tools/testy/check-live.test.mjs | A	sites/7thserpent.com/tools/testy/obrazec-vladelca.json | M	sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs — да
+---- workflow второго сайта — изменён (шаги 3–4) (f22bb92..HEAD):
+M	.github/workflows/deploy-7thserpent.yml
+ждали: M	.github/workflows/deploy-7thserpent.yml — да
+---- все изменения ветки (f22bb92..HEAD):
+M	.github/workflows/deploy-7thserpent.yml
+M	DECISIONS.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/kopii-skeptikov.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/kopiya-suda.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/live-check.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/materialy-suda.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/mutanty-szhat.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/obrazec-v-proby.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/opornaya.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/priemka.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/proby.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/progony-vykladki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-para.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-v-public.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/sborka-shag.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/zapis-otvetov.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/ruki-vladelca.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/kopiruj.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/okonchaniya.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/proba-shapki-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/proba-shapki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/proby-posle-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/proby-posle-prozy.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/progon-tap.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/progon.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25-shapka/svodka.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/krasnyi-do-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/krasnyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-4-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-4.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-5-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-5.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-6-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-6.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-7-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/CL25-P-7.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/derzhit-obrazcy-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/derzhit-obrazcy.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/derzhit-poisk-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/derzhit-poisk.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d1/sites/7thserpent.com/public/robots.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d2/sites/7thserpent.com/public/robots.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d3/sites/7thserpent.com/tools/testy/obrazec-khostera.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d4/sites/7thserpent.com/tools/testy/obrazec-khostera.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d5/sites/7thserpent.com/public/robots.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d5/sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d6/sites/7thserpent.com/public/robots.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-d6/sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-p4/sites/7thserpent.com/tools/check-live.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-p7a/sites/7thserpent.com/tools/testy/obrazec-khostera.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-p7b/sites/7thserpent.com/public/robots.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-p7b/sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/mutant-p7c/sites/7thserpent.com/tools/testy/obrazec-khostera.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/progon-vseh-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/progon-vseh.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/razbor-obrazcov-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/razbor-obrazcov.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/robots-cc.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/propusk/stend.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/svodka.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-4-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-4.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-5-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-5.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-6-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/CL25-Z-6.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/formy-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/formy.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/nezavisimo-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/nezavisimo.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/obshchee.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/proby-kopii.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/razvedka-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/razvedka.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/vne-roli-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zakon/vne-roli.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zelenyi-posle-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/cl25/zelenyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/krasnyi-do-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/krasnyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-4-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-4.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-5-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-5.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-6-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/GL25-O-6.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/derzhit-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/derzhit.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/ls-remote-nastoyashchiy-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/ls-remote-nastoyashchiy.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/nastoyashchiy-ls-remote-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/nastoyashchiy-ls-remote.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/stare/add241a/storozha-vykladki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/stare/b8016eb/storozha-vykladki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/opasno/stare/f22bb92/storozha-vykladki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/svodka.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-4-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/GL25-Z-4.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-formy.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-formy.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-mutanty.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-mutanty.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-shag.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-shag.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-staryi.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/derzhit-staryi.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/proverka-podstroki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/proverka-podstroki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-ls/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-ls/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti-otkat/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti-otkat/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti-otkat/shag.sh
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-bez-seti/shag.sh
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-set-push/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-set-push/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-shag-set-push/shag.sh
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-staryi/deploy-7thserpent.yml
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-staryi/storozha-vykladki.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-z1/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-z1/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-z3/golova-main-oshibki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/rabochie-z3/golova-main.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/staryi-izvlech.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/staryi-izvlech.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/zelenyi-kopii.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/zelenyi-kopii.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/zhivoi-ls-remote.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zakon/zhivoi-ls-remote.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zelenyi-posle-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/gl25/zelenyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/krasnyi-do-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/krasnyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/SV25-O-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/derzhit.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/derzhit.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/mutanty.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/mutanty.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/obshchee-o.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/progon-kopii.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/opasno/progon-kopii.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/svodka.md
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-1-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-1.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-2-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-2.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-3-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-3.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-4-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-4.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-5-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/SV25-Z-5.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/derzhit-vyvod.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/derzhit.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/obshchee-z.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/proby-kopii.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/sverka-kopii.mjs
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zakon/sverka-kopii.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zelenyi-posle-pravki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/sud/sv25-google/zelenyi-raund.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/live-check-1.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/otvety-progon-1.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/progony-vykladki.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/proverki-shag2.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/robots-para-1.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/robots-para-2.json
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/robots-pary.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/sborka-opornaya.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/sborka-shag2-dist.txt
+A	docs/reports/2026-09-30-7thserpent-razmorozka/zamery/sborka-shag2.txt
+M	sites/7thserpent.com/CLAUDE.md
+M	sites/7thserpent.com/public/robots.txt
+M	sites/7thserpent.com/tools/check-live.mjs
+M	sites/7thserpent.com/tools/storozha-vykladki.mjs
+M	sites/7thserpent.com/tools/testy/check-live.test.mjs
+A	sites/7thserpent.com/tools/testy/obrazec-vladelca.json
+M	sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs

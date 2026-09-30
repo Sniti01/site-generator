@@ -1,0 +1,67 @@
+$ npm run gates
+(папка: sites/7thserpent.com; коммит c425bc2)
+
+
+> 7thserpent.com@0.1.0 gates
+> node tools/geity.mjs
+
+Zapis palety: 11 par @theme/:root, zgodnych 11.
+ok   основной текст на фоне страницы; знак в шапке — перекладина и имя                                                           16.17:1  (min 4.5:1)  --ink / --bg
+ok   основной текст на полосе, в подвале и ящике меню; знак в подвале — перекладина и имя                                        15.51:1  (min 4.5:1)  --ink / --bg-band
+ok   основной текст на карточке (на вырост)                                                                                      14.73:1  (min 4.5:1)  --ink / --surface
+ok   основной текст на поднятой поверхности, тихая кнопка (на вырост)                                                            13.53:1  (min 4.5:1)  --ink / --surface-2
+ok   второстепенный текст на фоне страницы                                                                                       8.39:1  (min 4.5:1)  --ink-muted / --bg
+ok   второстепенный текст на полосе и в подвале                                                                                  8.05:1  (min 4.5:1)  --ink-muted / --bg-band
+ok   второстепенный текст на карточке: приписка места и разделитель в ленте главной                                              7.64:1  (min 4.5:1)  --ink-muted / --surface
+ok   второстепенный текст на поднятой поверхности (на вырост)                                                                    7.02:1  (min 4.5:1)  --ink-muted / --surface-2
+ok   ссылка, текстовый акцент и обводка фокуса на фоне страницы                                                                  11.45:1  (min 4.5:1)  --accent-text / --bg
+ok   ссылка, текстовый акцент и обводка фокуса на полосе                                                                         10.99:1  (min 4.5:1)  --accent-text / --bg-band
+ok   текстовый акцент на карточке: предмет страницы в ленте главной                                                              10.43:1  (min 4.5:1)  --accent-text / --surface
+ok   ссылка/текстовый акцент на поднятой поверхности (на вырост)                                                                 9.58:1  (min 4.5:1)  --accent-text / --surface-2
+ok   надпись на заливке: кнопка, ссылка «к содержанию», выделение                                                                9.37:1  (min 4.5:1)  --ink-on-accent / --accent
+ok   заливка акцента как элемент интерфейса; ромб узла и вертикаль выхода трассы в герое на фоне; знак в шапке — трассер и ромб  9.57:1  (min 3:1)  --accent / --bg
+ok   ромб узла трассы главной на полосе; знак в подвале — трассер и ромб                                                         9.19:1  (min 3:1)  --accent / --bg-band
+ok   ползунок полосы прокрутки на дорожке — элемент интерфейса                                                                   8.05:1  (min 3:1)  --ink-muted / --bg-band
+ok   сталь: счётчик группы (текст 21px/600) и орнамент (на вырост)                                                               6.89:1  (min 4.5:1)  --accent-2 / --bg
+ok   сталь на карточке (на вырост)                                                                                               6.27:1  (min 4.5:1)  --accent-2 / --surface
+ok   сообщение об опасности (на вырост)                                                                                          5.69:1  (min 4.5:1)  --danger / --bg
+ok   текст цвета ночи на снежной плашке: подписи рядов, цитата, заголовки карточек ленты                                         16.17:1  (min 4.5:1)  --bg / --ink
+
+20/20 par przechodzi.
+
+Tokeny: 43 plików (16 w src/ + 27 w core/), wszystkie rozmiary w rolach, wszystkie odstępy na skali.
+
+ok   gry/hero.jpg     первый экран главной: ключевой арт Max Payne (2001)
+ok   gry/mp1-k13.jpg  ряд Max Payne: большая панель — снежная улица
+ok   gry/mp1-k14.jpg  ряд Max Payne: малая панель
+ok   gry/mp1-k09.jpg  ряд Max Payne: малая панель
+ok   gry/mp2-k00.jpg  ряд Max Payne 2: большая панель — улица с фонарём
+ok   gry/mp2-k03.jpg  ряд Max Payne 2: малая панель
+ok   gry/mp2-k01.jpg  ряд Max Payne 2: малая панель
+ok   gry/mp3-k15.jpg  ряд Max Payne 3: большая панель — Сан-Паулу
+ok   gry/mp3-k04.jpg  ряд Max Payne 3: малая панель
+ok   gry/mp3-k13.jpg  ряд Max Payne 3: малая панель
+ok   gry/mp1-k10.jpg  ряд ремейка: большая панель — Max Payne, мраморный коридор
+ok   gry/mp2-art.jpg  ряд ремейка: малая панель — ключевой арт Max Payne 2
+ok   gry/mp1-k06.jpg  ряд ремейка: малая панель — Max Payne, метро
+ok   gry/mp3-k01.jpg  карточка ленты /story/
+ok   gry/mp1-k12.jpg  карточка ленты /voice-and-face/
+ok   gry/mp2-k02.jpg  карточка ленты /gameplay/
+ok   gry/mp3-k06.jpg  карточка ленты /quotes/
+ok   gry/mp3-k10.jpg  карточка ленты /max-payne-3/guide/
+ok   gry/mp1-k05.jpg  карточка ленты /mods/
+ok   gry/mp1-k11.jpg  полоса призыва главной: Max Payne, выстрел в метро
+
+20/20 zadeklarowanych zasobów na miejscu.
+
+Struktura: 18 stron (fala 1: 18, fala 2: 0), zagnieżdżenie 2, 2 dozwolone.
+Rozliczenie zapytań: 441 na stronach + 8 exclusions + 59 no_page wobec 508 w wyliczeniu.
+Struktura: zgodna z kontraktem.
+
+Bramki: 4/4 przechodzi.
+
+znak: сверено — 6 иконок public/ (favicon.svg, favicon.ico, favicon-16x16.png, favicon-32x32.png, icon-192.png, apple-touch-icon.png); надписей 2 — контуры равны bodoni-moda-latin-600-normal.woff; краски, которые взяли три рисунка: ink #e5eaee, accent #eca84a, bg #090c11
+
+Гейты сайта: 2/2 прошли (гейты ядра, знак).
+
+код выхода: 0

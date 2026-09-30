@@ -1,0 +1,4 @@
+kommit     c425bc2; отслеживаемые файлы чистые
+build      код 0
+accept     код 0
+gates      код 0

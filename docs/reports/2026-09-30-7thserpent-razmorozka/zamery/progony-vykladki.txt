@@ -1,0 +1,34 @@
+Прогоны «Deploy 7thserpent.com» на старте сессии 25 (2026-09-30, до записи П113) — вывод instrumenty/progony-vykladki.mjs
+как есть (запуск из scratchpad тем же текстом; публичный API без токена).
+
+#5 id 36632951664 f22bb92 push попытка 1 completed/skipped 2026-09-29T21:23:32Z П112: сессия 24 принята — слова владельца «1. Б . Приемку пр
+#4 id 36621984543 add241a workflow_dispatch попытка 1 completed/success 2026-09-29T19:49:40Z Deploy 7thserpent.com
+#3 id 36591500450 add241a workflow_dispatch попытка 1 completed/failure 2026-09-29T15:36:34Z Deploy 7thserpent.com
+#2 id 36590301437 add241a push попытка 1 completed/skipped 2026-09-29T15:27:14Z П110: сессия 23 принята — слово владельца «вливай»: вливание
+#1 id 36477322635 b8016eb push попытка 1 completed/skipped 2026-09-28T20:10:34Z П107: сессия 22 — ответ на обзор: принята; вопросы 1–5 по ре
+
+#5 задание «deploy» skipped 2026-09-29T21:23:33Z → 2026-09-29T21:23:33Z
+
+#4 задание «deploy» success 2026-09-29T19:49:45Z → 2026-09-29T19:53:39Z
+   1 success  Set up job
+   2 success  Run actions/checkout@v5
+   3 success  Run actions/setup-node@v5
+   4 success  Секреты на месте, робот — не робот первого сайта
+   5 success  Зависимости
+   6 success  Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
+   7 success  Сборка с гейтами и сторожами
+   8 success  lftp
+   9 success  Сторож папки робота и удалённого index.html
+  10 success  Первая выкладка?
+  11 success  Домен уже привязан?
+  12 success  Первая выкладка — сборка CI равна принятой
+  13 success  Выкладка по FTPS
+  14 success  Пересчёт на сервере
+  15 skipped  Проверка живого сайта
+  28 success  Post Корпус для сторожа 8 слов — приватный репозиторий, ключ только для чтения
+  29 success  Post Run actions/setup-node@v5
+  30 success  Post Run actions/checkout@v5
+  31 success  Complete job
+
+Итог: после push f22bb92 (П112, #5 — skipped: переменных SERPENT_DEPLOY и SERPENT_LIVE тогда не было) прогонов нет;
+вливание сессии 25 — первый push при SERPENT_DEPLOY = on.

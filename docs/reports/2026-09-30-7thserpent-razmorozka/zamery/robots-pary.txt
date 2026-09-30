@@ -1,0 +1,78 @@
+Две пары robots.txt (сессия 25, П113 «Как прочитано» п. 4) — вывод instrumenty/robots-para.mjs как есть; записи — robots-para-1.json, robots-para-2.json.
+Между парами — опорная сборка (instrumenty/opornaya.mjs).
+
+$ node docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-para.mjs 1
+пара 1, с параметром: 2026-09-30T08:48:09.937Z 200 500 байт sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+  заголовки: accept-ranges: bytes | content-length: 500 | content-type: text/plain | date: Wed, 30 Sep 2026 08:48:10 GMT | etag: "6abcad59-1f4" | last-modified: Wed, 30 Sep 2026 06:34:01 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/
+  против замера владельца: длина та же, sha256 тот же (начало и конец)
+  CR нет; BOM нет; перевод строки в конце нет; не-ASCII байтов 0; «Managed content» нет
+  закрыты (Disallow: /): AhrefsBot, MJ12bot, DataForSeoBot, barkrowler, Bytespider, meta-externalagent, Baiduspider, meta-webindexer, AhrefsSiteAudit, SemrushBot, serpstatbot; перечень владельца — совпадает
+  Googlebot: allow:/; строка Sitemap есть; групп 12
+пара 1, без: 2026-09-30T08:48:10.205Z 200 500 байт sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+  заголовки: accept-ranges: bytes | content-length: 500 | content-type: text/plain | date: Wed, 30 Sep 2026 08:48:10 GMT | etag: "6abcad59-1f4" | last-modified: Wed, 30 Sep 2026 06:34:01 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/
+  против замера владельца: длина та же, sha256 тот же (начало и конец)
+  CR нет; BOM нет; перевод строки в конце нет; не-ASCII байтов 0; «Managed content» нет
+  закрыты (Disallow: /): AhrefsBot, MJ12bot, DataForSeoBot, barkrowler, Bytespider, meta-externalagent, Baiduspider, meta-webindexer, AhrefsSiteAudit, SemrushBot, serpstatbot; перечень владельца — совпадает
+  Googlebot: allow:/; строка Sitemap есть; групп 12
+тела внутри пары: побайтно равны; после CR и BOM равны
+тело (без параметра), как есть:
+User-Agent: AhrefsBot
+Disallow: /
+
+User-Agent: MJ12bot
+Disallow: /
+
+User-Agent: DataForSeoBot
+Disallow: /
+
+User-Agent: barkrowler
+Disallow: /
+
+User-Agent: Bytespider
+Disallow: /
+
+User-Agent: meta-externalagent
+Disallow: /
+
+User-Agent: Baiduspider
+Disallow: /
+
+User-Agent: meta-webindexer
+Disallow: /
+
+User-Agent: AhrefsSiteAudit
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://www.7thserpent.com/sitemap-index.xml
+[конец тела]
+
+$ node docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-para.mjs 2
+пара 2, с параметром: 2026-09-30T08:49:45.785Z 200 500 байт sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+  заголовки: accept-ranges: bytes | content-length: 500 | content-type: text/plain | date: Wed, 30 Sep 2026 08:49:46 GMT | etag: "6abcad59-1f4" | last-modified: Wed, 30 Sep 2026 06:34:01 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/
+  против замера владельца: длина та же, sha256 тот же (начало и конец)
+  CR нет; BOM нет; перевод строки в конце нет; не-ASCII байтов 0; «Managed content» нет
+  закрыты (Disallow: /): AhrefsBot, MJ12bot, DataForSeoBot, barkrowler, Bytespider, meta-externalagent, Baiduspider, meta-webindexer, AhrefsSiteAudit, SemrushBot, serpstatbot; перечень владельца — совпадает
+  Googlebot: allow:/; строка Sitemap есть; групп 12
+пара 2, без: 2026-09-30T08:49:46.051Z 200 500 байт sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+  заголовки: accept-ranges: bytes | content-length: 500 | content-type: text/plain | date: Wed, 30 Sep 2026 08:49:46 GMT | etag: "6abcad59-1f4" | last-modified: Wed, 30 Sep 2026 06:34:01 GMT | server: nginx | x-ray: wnp190:0.000/wn190:0.000/
+  против замера владельца: длина та же, sha256 тот же (начало и конец)
+  CR нет; BOM нет; перевод строки в конце нет; не-ASCII байтов 0; «Managed content» нет
+  закрыты (Disallow: /): AhrefsBot, MJ12bot, DataForSeoBot, barkrowler, Bytespider, meta-externalagent, Baiduspider, meta-webindexer, AhrefsSiteAudit, SemrushBot, serpstatbot; перечень владельца — совпадает
+  Googlebot: allow:/; строка Sitemap есть; групп 12
+тела внутри пары: побайтно равны; после CR и BOM равны
+тело (без параметра) — то же, что у пары 1 (sha256 d1a2779c…8bb3).
+
+Итог: четыре ответа — одно тело, 500 байт, sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3 = замер
+владельца 2026-09-30 06:35 UTC; LF, без BOM и без перевода строки в конце, только ASCII; блока хостера нет; 12 групп —
+11 закрытых роботов (перечень владельца) и Googlebot с Allow: /; строка Sitemap. ETag «6abcad59-1f4» — 0x1f4 = 500 байт
+файла на диске, Last-Modified 06:34:01 GMT: сервер отдаёт файл из www как есть (nginx, без Apache — в x-ray нет
+сегмента wa). Стопа по П113 «Как прочитано» п. 4 нет.

@@ -1,0 +1,90 @@
+{
+  "para": 1,
+  "metka": "1790758089937",
+  "s": {
+    "url": "https://www.7thserpent.com/robots.txt?live-check=1790758089937",
+    "vremya": "2026-09-30T08:48:09.937Z",
+    "status": 200,
+    "zagolovki": [
+      [
+        "accept-ranges",
+        "bytes"
+      ],
+      [
+        "content-length",
+        "500"
+      ],
+      [
+        "content-type",
+        "text/plain"
+      ],
+      [
+        "date",
+        "Wed, 30 Sep 2026 08:48:10 GMT"
+      ],
+      [
+        "etag",
+        "\"6abcad59-1f4\""
+      ],
+      [
+        "last-modified",
+        "Wed, 30 Sep 2026 06:34:01 GMT"
+      ],
+      [
+        "server",
+        "nginx"
+      ],
+      [
+        "x-ray",
+        "wnp190:0.000/wn190:0.000/"
+      ]
+    ],
+    "dlina": 500,
+    "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
+    "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml",
+    "teloBase64": "VXNlci1BZ2VudDogQWhyZWZzQm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBNSjEyYm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBEYXRhRm9yU2VvQm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBiYXJrcm93bGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBCeXRlc3BpZGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBtZXRhLWV4dGVybmFsYWdlbnQKRGlzYWxsb3c6IC8KClVzZXItQWdlbnQ6IEJhaWR1c3BpZGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBtZXRhLXdlYmluZGV4ZXIKRGlzYWxsb3c6IC8KClVzZXItQWdlbnQ6IEFocmVmc1NpdGVBdWRpdApEaXNhbGxvdzogLwoKVXNlci1hZ2VudDogU2VtcnVzaEJvdApEaXNhbGxvdzogLwoKVXNlci1hZ2VudDogc2VycHN0YXRib3QKRGlzYWxsb3c6IC8KClVzZXItYWdlbnQ6IEdvb2dsZWJvdApBbGxvdzogLwoKU2l0ZW1hcDogaHR0cHM6Ly93d3cuN3Roc2VycGVudC5jb20vc2l0ZW1hcC1pbmRleC54bWw="
+  },
+  "bez": {
+    "url": "https://www.7thserpent.com/robots.txt",
+    "vremya": "2026-09-30T08:48:10.205Z",
+    "status": 200,
+    "zagolovki": [
+      [
+        "accept-ranges",
+        "bytes"
+      ],
+      [
+        "content-length",
+        "500"
+      ],
+      [
+        "content-type",
+        "text/plain"
+      ],
+      [
+        "date",
+        "Wed, 30 Sep 2026 08:48:10 GMT"
+      ],
+      [
+        "etag",
+        "\"6abcad59-1f4\""
+      ],
+      [
+        "last-modified",
+        "Wed, 30 Sep 2026 06:34:01 GMT"
+      ],
+      [
+        "server",
+        "nginx"
+      ],
+      [
+        "x-ray",
+        "wnp190:0.000/wn190:0.000/"
+      ]
+    ],
+    "dlina": 500,
+    "sha256": "d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3",
+    "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml",
+    "teloBase64": "VXNlci1BZ2VudDogQWhyZWZzQm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBNSjEyYm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBEYXRhRm9yU2VvQm90CkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBiYXJrcm93bGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBCeXRlc3BpZGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBtZXRhLWV4dGVybmFsYWdlbnQKRGlzYWxsb3c6IC8KClVzZXItQWdlbnQ6IEJhaWR1c3BpZGVyCkRpc2FsbG93OiAvCgpVc2VyLUFnZW50OiBtZXRhLXdlYmluZGV4ZXIKRGlzYWxsb3c6IC8KClVzZXItQWdlbnQ6IEFocmVmc1NpdGVBdWRpdApEaXNhbGxvdzogLwoKVXNlci1hZ2VudDogU2VtcnVzaEJvdApEaXNhbGxvdzogLwoKVXNlci1hZ2VudDogc2VycHN0YXRib3QKRGlzYWxsb3c6IC8KClVzZXItYWdlbnQ6IEdvb2dsZWJvdApBbGxvdzogLwoKU2l0ZW1hcDogaHR0cHM6Ly93d3cuN3Roc2VycGVudC5jb20vc2l0ZW1hcC1pbmRleC54bWw="
+  }
+}

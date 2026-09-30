@@ -15,7 +15,8 @@
 // без комментариев). Образец сессии 24 («блок хостера + прежний файл») судится на своих байтах: прежний файл — хвост его
 // тела после блока хостера (sha256 — константа). Новый живой образец — `obrazec-vladelca.json` (две пары robots.txt,
 // блока хостера нет): здоровый, 44 из 44. Порчи, которые правят текст нашего файла, — под файл владельца; где он меняет
-// исход, это сказано у порчи.
+// исход, это сказано у порчи. «Судью судят» этой правки — один раунд (CL25-P — «ложный ok», CL25-Z — «законные формы»):
+// находки — пробами с их id, пределы — тестами todo.
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -218,6 +219,8 @@ const sha = (t) => createHash('sha256').update(Buffer.from(t, 'utf8')).digest('h
 /** Свои байты образца сессии 24 (П113): прежний public/robots.txt сборки add241a — хвост тела замера после блока хостера. */
 const KONEC_BLOKA = '# END adm.tools Managed content\n\n';
 const SHA_PREZHNEGO = 'aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6';
+// CL25-P-7: голова тел — живой блок хостера (349 байт) — тоже константой: на нём держится законная форма.
+const SHA_BLOKA_24 = '5c281351ffd17a6796958968418bfe829215208282dc37d8a593ad824eec1394';
 const PREZHNIY = PARY_ZAMERA[0].s.telo.slice(PARY_ZAMERA[0].s.telo.indexOf(KONEC_BLOKA) + KONEC_BLOKA.length);
 
 test('живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — прежний public/robots.txt (свои байты образца, П113); внутри пар тела равны, у HTML нет Age и X-Cache-Status', () => {
@@ -229,6 +232,7 @@ test('живой образец хостера: замер цел — тела r
     for (const o of [p.s, p.bez]) {
       assert.equal(sha(o.telo), o.sha256, `пара ${p.para}: тело не то, что записано`);
       assert.ok(o.telo.endsWith(PREZHNIY) && Buffer.byteLength(o.telo) === 349 + 1233, `пара ${p.para}: в образце не «блок хостера + прежний файл»`);
+      assert.equal(sha(o.telo.slice(0, o.telo.length - PREZHNIY.length)), SHA_BLOKA_24, `пара ${p.para}: блок хостера не тот, что в замере`);
     }
     // CL23-Z-1, CL23-Z-2 — пределы: по замеру тела с параметром и без равны, смягчать проверку 4 нечего (П111).
     assert.equal(p.s.telo, p.bez.telo, `пара ${p.para}: тела с параметром и без различаются`);
@@ -258,14 +262,20 @@ test('П113 образец сессии 24 против нынешнего фа�
  *   robots.txt с параметром и без, байт в байт (`obrazec-vladelca.json`). Статусы и заголовки — замера, тела robots.txt —
  *   замера; прочие ответы — здорового образца. — */
 const VLADELEC = JSON.parse(readFileSync(join(SAYT, 'tools/testy/obrazec-vladelca.json'), 'utf8'));
+// CL25-P-7: замер владельца — константой (500 байт, sha256 замера П113): смена правил — явная правка константы и новый замер.
+const SHA_VLADELCA = 'd1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3';
 
-test('живой образец владельца: замер цел — тела байт в байт, тело = нынешний public/robots.txt, внутри пар равны, блока хостера нет', () => {
+test('живой образец владельца: замер цел — тела байт в байт (sha256 замера П113, 500 байт), тело = нынешний public/robots.txt, внутри пар равны, блока хостера нет', () => {
   assert.equal(VLADELEC.robotsPary.length, 2);
   for (const p of VLADELEC.robotsPary) {
     for (const o of [p.s, p.bez]) {
       assert.equal(o.status, 200, `пара ${p.para}: статус ${o.status}`);
       assert.equal(sha(o.telo), o.sha256, `пара ${p.para}: тело не то, что записано`);
-      assert.equal(o.telo, nashRobots, `пара ${p.para}: тело не равно нынешнему public/robots.txt`);
+      assert.equal(o.sha256, SHA_VLADELCA, `пара ${p.para}: не замер владельца П113`);
+      assert.equal(Buffer.byteLength(o.telo), 500);
+      assert.equal(o.dlina, 500);
+      // CL25-Z-4: с нынешним файлом связана только эта проба; прогоны образца — на своих байтах.
+      assert.equal(o.telo, nashRobots, `пара ${p.para}: public/robots.txt изменён — образец владельца снять заново после выкладки (прогоны образца идут на своих байтах)`);
       assert.doesNotMatch(o.telo, /Managed\s+content/i, `пара ${p.para}: в теле блок`);
     }
     assert.equal(p.s.telo, p.bez.telo, `пара ${p.para}: тела с параметром и без различаются`);
@@ -273,11 +283,11 @@ test('живой образец владельца: замер цел — тел
 });
 
 for (const para of VLADELEC.robotsPary) {
-  test(`живой образец владельца: robots.txt — пара ${para.para} — 44 из 44, справки о блоке хостера нет`, async () => {
+  test(`живой образец владельца: robots.txt — пара ${para.para} — 44 из 44 на своих байтах, справки о блоке хостера нет`, async () => {
     const r = await progon((k) => {
       k.set(MIMO, izZamera(para.s));
       k.set(BEZ, izZamera(para.bez));
-    });
+    }, { nash: para.s.telo });
     assert.equal(r.proverki.length, VSEGO);
     assert.deepEqual(r.plokho, [], r.otkuda);
     assert.ok(!r.spravki.some((s) => s.includes('блок хостера')), r.spravki.join(' | '));
@@ -307,6 +317,10 @@ const PORCHI = [
   // Длиннее «Allow: /» — правило блока побеждает и у Googlebot с его группой: краснеют обе проверки (П113).
   ['П113 блок хостера: Googlebot, «Disallow: /movie/» — длиннее Allow: / файла владельца', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow: /movie/'), [POISK, VNE]],
   ['П113 блок хостера: Googlebot, «Disallow /movie/» без двоеточия', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDisallow /movie/'), [POISK, VNE]],
+  // CL25-P-4: формы строк CL1-P-9b и 9c — и проверкой «поисковики не закрыты» (правило длиннее Allow: /, своя группа Googlebot-Image).
+  ['CL25-P-4 CL1-P-9b: Googlebot, «Dissallow: /movie/»', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: Googlebot\nDissallow: /movie/'), [POISK, VNE]],
+  ['CL25-P-4 CL1-P-9c: «User agent: Googlebot», Disallow: /movie/', vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User agent: Googlebot\nDisallow: /movie/'), [POISK, VNE]],
+  ['CL25-P-4 «User agent: Googlebot-Image», Disallow: / — своя группа, Allow: / Googlebot файла владельца на неё не действует', vBlokKhostera('User-agent: MJ12bot', 'User agent: Googlebot-Image'), [POISK, VNE]],
   ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*\n# END adm.tools Managed content\n' })), [POISK, VNE]],
   ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /movie/\n# END adm.tools Managed content\n' })), [POISK, VNE]],
   ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*?\nDisallow: /wp-admin/\n# END adm.tools Managed content\n' })), []],
@@ -498,12 +512,19 @@ test('CL23-Z-3 robots.txt без параметра не равен ответу
 test('П113 тексты под файл владельца: подсказки «вне нашего файла» и запрета индексации, справка блока хостера — без обещаний прежнего файла', async () => {
   const vne = await progon(oba(vTelo(HOSTER, 'User-agent: GPTBot\nDisallow: /\n\n' + HOSTER)));
   assert.deepEqual(vne.plokho, [VNE], vne.otkuda);
-  assert.match(vne.otkuda, /правила robots\.txt задаёт наш файл \(правила владельца, П113\): вне него — только управляемые блоки без запретов поисковикам/, vne.otkuda);
+  // CL25-P-3, CL25-Z-3: подсказка — по имени проверки: законен только блок хостера (adm.tools), и «правила задаёт наш файл»
+  // проверка не держит (блок хостера со своими правилами зелёный — вопрос владельцу, CL25-P-1).
+  assert.match(vne.otkuda, /наш файл — правила владельца \(П113\): вне него — только блок хостера \(adm\.tools\) без запретов поисковикам/, vne.otkuda);
+  const yoast = await progon(oba((o) => ({ ...o, telo: `# BEGIN Yoast Managed content\nUser-agent: *\nAllow: /\n# END Yoast Managed content\n\n${o.telo}` })));
+  assert.deepEqual(yoast.plokho, [VNE], yoast.otkuda);
+  assert.match(yoast.otkuda, /чужое или запрет: блок «Yoast» — наш файл — правила владельца \(П113\): вне него — только блок хостера \(adm\.tools\)/, yoast.otkuda);
+  assert.doesNotMatch(`${vne.otkuda} | ${yoast.otkuda}`, /только управляемые блоки|задаёт наш файл/);
   const zapret = await progon((k) => zamenit(k, `${B}/movie/`, (o) => sZag(o, { 'x-robots-tag': 'noindex' })));
   assert.deepEqual(zapret.plokho, [ZAPRET], zapret.otkuda);
   assert.match(zapret.otkuda, /robots\.txt открывает страницы Google и Bing \(П113\): запрет индексации их закрыл бы/, zapret.otkuda);
   const zdorov = await progon();
   assert.ok(zdorov.spravki.some((s) => /^robots\.txt: блок хостера «adm\.tools Managed content» перед нашим файлом, строк \d+ — не наш: его приписывает хостер при отдаче, отключается в панели хостера \(П113\)$/.test(s)), zdorov.spravki.join(' | '));
+  assert.match(zdorov.vse, /ok robots\.txt: вне нашего файла — только блок хостера: true — вне нашего файла — блок хостера \(adm\.tools\) без запретов поисковикам и комментарии/, zdorov.vse);
   const vse = [vne, zapret, zdorov].map((r) => `${r.vse} | ${r.spravki.join(' | ')}`).join(' | ');
   assert.doesNotMatch(vse, /запрещать нечего|всё открыто для индекса|не отключается/, vse);
 });
@@ -588,6 +609,41 @@ test('ПРЕДЕЛ CL23-Z-2: без кэша на пути разница тол
 test('ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status', { todo: 'живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел' }, async () => {
   const r = await progon((k) => zamenit(k, `${B}/`, (o) => sZag(o, { age: '86400', 'x-cache-status': 'HIT' })));
   assert.ok(r.plokho.length > 0);
+});
+
+/* — Пределы сессии 25 (П113: один раунд «судью судят», находки CL25-*; логика проверок в шаге 2 не менялась) — тестами todo. — */
+
+test('ПРЕДЕЛ CL25-P-2: блок хостера открывает бота, закрытого нашим файлом (Allow: / в блоке), или несёт Sitemap на чужой хост — не судится', { todo: 'решения ботов по блоку против нашего файла не сверяются (правка логики проверки 3); блок хостера закрывает ботов, а не открывает — форма неправдоподобна' }, async () => {
+  const r = await progon(vBlokKhostera('User-agent: MJ12bot\nDisallow: /', 'User-agent: AhrefsBot\nAllow: /\nSitemap: https://evil.example/sitemap.xml'));
+  assert.deepEqual(r.plokho, [VNE]);
+});
+
+test('ПРЕДЕЛ CL25-P-5: пробел вне ASCII (NBSP) перед ключом в блоке после нашего файла — для check-live новая группа, для Google неизвестный ключ: Disallow: /* продолжает группу Googlebot', { todo: 'разбор снимает пробелы шире robots.cc (trim, \\s: NBSP, BOM внутри файла, \\v); было и до П113' }, async () => {
+  const nbsp = String.fromCharCode(0xa0);
+  const r = await progon(oba((o) => ({ ...o, telo: `${nashRobots}\n# BEGIN adm.tools Managed content\n${nbsp}User-agent: Foo\nDisallow: /*\n# END adm.tools Managed content\n` })));
+  assert.deepEqual(r.plokho, [POISK, VNE]);
+});
+
+test('ПРЕДЕЛ CL25-P-6: под кэшем Cloudflare прежняя редакция нашего файла, которая открывает закрытого владельцем бота, — «безвредная копия»', { todo: 'проверка 4 не сверяет решения ботов копии с нашим файлом; прогон и так красный следом Cloudflare (П108)' }, async () => {
+  const r = await progon((k) => zamenit(k, BEZ, (o) => ({ ...o, telo: HOSTER + staraya() })), { cf: true });
+  assert.deepEqual(r.plokho, [BEZ_P, BEZ_CF]);
+});
+
+test('ПРЕДЕЛ CL25-Z-2: приписка после файла встык (у файла владельца нет перевода строки в конце) клеится к строке Sitemap — ПЛОХО трёх проверок, по правилам Google безвредна', { todo: 'хостер по замеру сессии 24 приписывает блок перед файлом; приписка встык после файла — не измерена' }, async () => {
+  const r = await progon(oba((o) => ({ ...o, telo: nashRobots + HOSTER })));
+  assert.deepEqual(r.plokho, []);
+});
+
+test('ПРЕДЕЛ CL25-Z-5: файл на сервере отличается только пробелом в конце строки — подсказка «наш файл целиком» печатает «undefined»', { todo: 'сравнение строк после trim не находит расхождения (k = -1); отказ верный, текст — нет; было и до П113' }, async () => {
+  const r = await progon(oba((o) => ({ ...o, telo: HOSTER + zamena(nashRobots, 'Allow: /', 'Allow: / ') })));
+  assert.deepEqual(r.plokho, ['robots.txt: наш файл целиком']);
+  assert.doesNotMatch(r.otkuda, /undefined/);
+});
+
+test('ПРЕДЕЛ CL25-Z-6: ключ Sitemap в другом регистре («sitemap:») и в репозитории, и на сервере — ПЛОХО «строка Sitemap», Google читает её так же', { todo: 'строка Sitemap сверяется буквально; было и до П113' }, async () => {
+  const nash = zamena(nashRobots, 'Sitemap:', 'sitemap:');
+  const r = await progon(oba((o) => ({ ...o, telo: HOSTER + nash })), { nash });
+  assert.deepEqual(r.plokho, []);
 });
 
 test('команда: неверные аргументы — код 2, без сети', () => {

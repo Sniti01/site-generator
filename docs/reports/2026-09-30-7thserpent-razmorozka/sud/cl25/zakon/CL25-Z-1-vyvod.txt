@@ -1,0 +1,50 @@
+первая строка файла владельца: «User-Agent: AhrefsBot»; в живом блоке хостера та же строка — строка(и) блока №: 6
+первая строка прежнего файла: «# robots.txt — www.7thserpent.com (7th Serpent)» — в блоке: нет
+
+== T  подставной блок проб + на сервере добавлен GPTBot (как пробы видят эту форму) ==
+итог 42/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «User-agent: Googlebot» (в ответе: «User-agent: GPTBot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 4 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+  razobratRobots: nashCelikom false; bloki [{"imya":"adm.tools","vid":"хостер","strok":4,"polozhenie":"после нашего файла"}]
+
+== A0 контроль: без блока, на сервере добавлен GPTBot перед Googlebot ==
+итог 42/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «User-agent: Googlebot» (в ответе: «User-agent: GPTBot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  razobratRobots: nashCelikom false; bloki []
+
+== A  блок хостера + на сервере добавлен GPTBot перед Googlebot ==
+итог 42/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «Disallow: /» (в ответе: «User-Agent: MJ12bot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 13 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+  razobratRobots: nashCelikom false; bloki [{"imya":"adm.tools","vid":"хостер","strok":13,"polozhenie":"после нашего файла"}]
+
+== B0 контроль: без блока, на сервере убран serpstatbot ==
+итог 43/44; ПЛОХО: robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «User-agent: serpstatbot» (в ответе: «User-agent: Googlebot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  razobratRobots: nashCelikom false; bloki []
+
+== B  блок хостера + на сервере убран serpstatbot ==
+итог 43/44; ПЛОХО: robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «Disallow: /» (в ответе: «User-Agent: MJ12bot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 13 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+  razobratRobots: nashCelikom false; bloki [{"imya":"adm.tools","vid":"хостер","strok":13,"polozhenie":"после нашего файла"}]
+
+== C  блок хостера + у Googlebot Allow → Disallow (вред) ==
+итог 42/44; ПЛОХО: robots.txt: наш файл целиком | robots.txt: поисковики не закрыты
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «Disallow: /» (в ответе: «User-Agent: MJ12bot»)
+  поисковики не закрыты: ПЛОХО — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 13 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+  razobratRobots: nashCelikom false; bloki [{"imya":"adm.tools","vid":"хостер","strok":13,"polozhenie":"после нашего файла"}]
+
+== S24 контроль: образец сессии 24 (блок + прежний файл) с добавленным GPTBot, наш — прежний ==
+итог 42/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком
+  наш файл целиком: ПЛОХО — public/robots.txt; первая расходящаяся строка: «User-agent: *» (в ответе: «User-agent: GPTBot»)
+  поисковики не закрыты: ok — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+  справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 13 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+  razobratRobots: nashCelikom false; bloki [{"imya":"adm.tools","vid":"хостер","strok":13,"polozhenie":"после нашего файла"}]
+

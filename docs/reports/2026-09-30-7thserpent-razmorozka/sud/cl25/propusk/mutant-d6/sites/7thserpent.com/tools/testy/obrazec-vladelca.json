@@ -1,0 +1,185 @@
+{
+  "_": [
+    "Живой образец robots.txt www.7thserpent.com — сессия 25 (П113), 2026-09-30: блок хостера отключён в панели, на сервере — файл владельца.",
+    "robotsPary — две пары robots.txt с параметром ?live-check=<метка> и без, с промежутком (docs/reports/2026-09-30-7thserpent-razmorozka/instrumenty/robots-para.mjs): время, статус, заголовки как их отдаёт fetch (имена строчными), длина и sha256 тела.",
+    "Тела — строкой UTF-8, байт в байт (sha256 строки = sha256 записи). Наш файл в телах — public/robots.txt с сессии 25 (= файл сервера байт в байт)."
+  ],
+  "robotsPary": [
+    {
+      "para": 1,
+      "metka": "1790758089937",
+      "s": {
+        "url": "https://www.7thserpent.com/robots.txt?live-check=1790758089937",
+        "vremya": "2026-09-30T08:48:09.937Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "accept-ranges",
+            "bytes"
+          ],
+          [
+            "content-length",
+            "500"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Wed, 30 Sep 2026 08:48:10 GMT"
+          ],
+          [
+            "etag",
+            "\"6abcad59-1f4\""
+          ],
+          [
+            "last-modified",
+            "Wed, 30 Sep 2026 06:34:01 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/"
+          ]
+        ],
+        "dlina": 500,
+        "sha256": "dc90a38e83116864cd53e6c070c5bd53d74beb5b2454be4dfa3ec50f8f9e2d13",
+        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
+      },
+      "bez": {
+        "url": "https://www.7thserpent.com/robots.txt",
+        "vremya": "2026-09-30T08:48:10.205Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "accept-ranges",
+            "bytes"
+          ],
+          [
+            "content-length",
+            "500"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Wed, 30 Sep 2026 08:48:10 GMT"
+          ],
+          [
+            "etag",
+            "\"6abcad59-1f4\""
+          ],
+          [
+            "last-modified",
+            "Wed, 30 Sep 2026 06:34:01 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/"
+          ]
+        ],
+        "dlina": 500,
+        "sha256": "dc90a38e83116864cd53e6c070c5bd53d74beb5b2454be4dfa3ec50f8f9e2d13",
+        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
+      }
+    },
+    {
+      "para": 2,
+      "metka": "1790758185785",
+      "s": {
+        "url": "https://www.7thserpent.com/robots.txt?live-check=1790758185785",
+        "vremya": "2026-09-30T08:49:45.785Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "accept-ranges",
+            "bytes"
+          ],
+          [
+            "content-length",
+            "500"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Wed, 30 Sep 2026 08:49:46 GMT"
+          ],
+          [
+            "etag",
+            "\"6abcad59-1f4\""
+          ],
+          [
+            "last-modified",
+            "Wed, 30 Sep 2026 06:34:01 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/"
+          ]
+        ],
+        "dlina": 500,
+        "sha256": "dc90a38e83116864cd53e6c070c5bd53d74beb5b2454be4dfa3ec50f8f9e2d13",
+        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
+      },
+      "bez": {
+        "url": "https://www.7thserpent.com/robots.txt",
+        "vremya": "2026-09-30T08:49:46.051Z",
+        "status": 200,
+        "zagolovki": [
+          [
+            "accept-ranges",
+            "bytes"
+          ],
+          [
+            "content-length",
+            "500"
+          ],
+          [
+            "content-type",
+            "text/plain"
+          ],
+          [
+            "date",
+            "Wed, 30 Sep 2026 08:49:46 GMT"
+          ],
+          [
+            "etag",
+            "\"6abcad59-1f4\""
+          ],
+          [
+            "last-modified",
+            "Wed, 30 Sep 2026 06:34:01 GMT"
+          ],
+          [
+            "server",
+            "nginx"
+          ],
+          [
+            "x-ray",
+            "wnp190:0.000/wn190:0.000/"
+          ]
+        ],
+        "dlina": 500,
+        "sha256": "dc90a38e83116864cd53e6c070c5bd53d74beb5b2454be4dfa3ec50f8f9e2d13",
+        "telo": "User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml"
+      }
+    }
+  ]
+}

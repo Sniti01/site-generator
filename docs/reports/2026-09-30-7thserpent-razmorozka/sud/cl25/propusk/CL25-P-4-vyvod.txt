@@ -1,0 +1,15 @@
+Мутант: zakrytoPoiskovikam не узнаёт «Dissallow…» и прочие опечатки Disallow, «User agent», «useragent»; «вне нашего файла» — прежний разбор.
+
+Набор проб cbe35eb на мутанте: tests 138, pass 133, fail 0, todo 5 — мутант жив.
+   ✔ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (0.9505ms)
+   ✔ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (1.3197ms)
+
+Формы: check-live cbe35eb против мутанта
+CL1-P-9b (как в cbe35eb): Googlebot, «Dissallow: /»: cbe35eb — поисковики ok, вне ПЛОХО; мутант — поисковики ok, вне ПЛОХО
+CL1-P-9c (как в cbe35eb): «User agent: Googlebot», Disallow: /: cbe35eb — поисковики ok, вне ПЛОХО; мутант — поисковики ok, вне ПЛОХО
+предложено: Googlebot, «Dissallow: /movie/»: cbe35eb — поисковики ПЛОХО, вне ПЛОХО; мутант — поисковики ok, вне ПЛОХО
+предложено: «User agent: Googlebot», Disallow: /movie/: cbe35eb — поисковики ПЛОХО, вне ПЛОХО; мутант — поисковики ok, вне ПЛОХО
+предложено: «User agent: Googlebot-Image», Disallow: /: cbe35eb — поисковики ПЛОХО, вне ПЛОХО; мутант — поисковики ok, вне ПЛОХО
+предложено: Googlebot-Image, «Dissallow: /»: cbe35eb — поисковики ПЛОХО, вне ПЛОХО; мутант — поисковики ПЛОХО, вне ПЛОХО
+
+Строк проб с формами «Dissallow», «User agent», «useragent» и ожиданием POISK в cbe35eb: 0

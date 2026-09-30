@@ -1,0 +1,28 @@
+СОВПАЛО чужая группа вне блоков: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО наш файл изменён (Allow → Disallow): ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 48 (googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/); check-live закрыто 48
+СОВПАЛО блок хостера закрывает Googlebot: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО блок хостера без END: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL1-P-9a Googlebot, «Disallow /»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL1-P-9b Googlebot, «Dissallow: /»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL1-P-9c «User agent: Googlebot»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО П113 Googlebot, «Disallow: /movie/»: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (googlebot /movie/, googlebot-image /movie/); check-live закрыто 2
+СОВПАЛО П113 Googlebot, «Disallow /movie/»: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (googlebot /movie/, googlebot-image /movie/); check-live закрыто 2
+СОВПАЛО CL1-P-10 правило блока после файла: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 48 (googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/); check-live закрыто 48
+СОВПАЛО CL3-P-5 /movie/ после файла: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (googlebot /movie/, googlebot-image /movie/); check-live закрыто 2
+СОВПАЛО CL3-P-5, CL3-Z-3 /*?, /wp-admin/: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL3-Z-3 * /cgi-bin/, /.well-known/: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL3-Z-4 * /.: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL1-Z-2 «Disallow: # …»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL2-P-1a * /movie/, /cheats/: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (bingbot /movie/, bingbot /cheats/); check-live закрыто 2
+СОВПАЛО CL2-P-1b * CSS: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 1 (bingbot /_astro/index.Cz6femgl.css); check-live закрыто 1
+СОВПАЛО CL2-P-1c Googlebot-Image: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 24 (googlebot-image /, googlebot-image /max-payne-1/, googlebot-image /max-payne-2/); check-live закрыто 24
+СОВПАЛО CL2-P-1 msnbot: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 24 (bingbot /, bingbot /max-payne-1/, bingbot /max-payne-2/); check-live закрыто 24
+СОВПАЛО CL2-P-5a «User-agents: Googlebot»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО CL2-P-5b «Disallowed: /»: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО П113 «User-agents» + «Disallowed: /cheats/»: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (googlebot /cheats/, googlebot-image /cheats/); check-live закрыто 2
+СОВПАЛО CL2-P-5c «User-agent: * (all robots)»: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 24 (bingbot /, bingbot /max-payne-1/, bingbot /max-payne-2/); check-live закрыто 24
+СОВПАЛО П113 на сервере: Googlebot — Disallow: /movie/: ожидание пробы POISK=true; check-live POISK=true; независимо закрыто 2 (googlebot /movie/, googlebot-image /movie/); check-live закрыто 2
+СОВПАЛО файл владельца: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+СОВПАЛО живой блок хостера + файл владельца: ожидание пробы POISK=false; check-live POISK=false; независимо закрыто 0 (—); check-live закрыто 0
+
+расхождений: 0 из 26

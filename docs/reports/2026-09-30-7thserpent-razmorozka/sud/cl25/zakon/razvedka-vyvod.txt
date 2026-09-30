@@ -1,0 +1,40 @@
+== блок хостера (JSON-строкой) ==
+"# BEGIN adm.tools Managed content\n\nUser-agent: *\nAllow: /\n\nUser-Agent: AhrefsBot\nUser-Agent: MJ12bot\nUser-Agent: DataForSeoBot\nUser-Agent: barkrowler\nUser-Agent: Bytespider\nUser-Agent: GPTBot\nUser-Agent: meta-externalagent\nUser-Agent: Baiduspider\nUser-Agent: meta-webindexer\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\n# END adm.tools Managed content\n\n"
+байт 349
+== прежний файл (JSON-строкой) ==
+"# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody \"fixes\" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner's decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n"
+== пары образца 24: ключи ==
+["_","metka","otvety","robotsPary"]
+[{"para":1,"s":200,"bez":200},{"para":2,"s":200,"bez":200}]
+== файл владельца ==
+байт 500, CR 0, последний байт 108
+== адреса ответов образца 24 ==
+http://www.7thserpent.com/
+https://7thserpent.com/
+http://7thserpent.com/
+http://www.7thserpent.com/max-payne-1/
+https://7thserpent.com/max-payne-1/
+http://7thserpent.com/max-payne-1/
+https://www.7thserpent.com/
+https://www.7thserpent.com/sitemap-0.xml
+https://www.7thserpent.com/robots.txt?live-check=1790713369257
+https://www.7thserpent.com/robots.txt
+https://www.7thserpent.com/sitemap-index.xml
+https://www.7thserpent.com/cheats/
+https://www.7thserpent.com/gameplay/
+https://www.7thserpent.com/games-like-max-payne/
+https://www.7thserpent.com/max-payne-1/
+https://www.7thserpent.com/max-payne-2/
+https://www.7thserpent.com/max-payne-3/
+https://www.7thserpent.com/max-payne-3/guide/
+https://www.7thserpent.com/media/
+https://www.7thserpent.com/mods/
+https://www.7thserpent.com/movie/
+https://www.7thserpent.com/pc/
+https://www.7thserpent.com/privacy/
+https://www.7thserpent.com/quotes/
+https://www.7thserpent.com/remake/
+https://www.7thserpent.com/story/
+https://www.7thserpent.com/voice-and-face/
+https://www.7thserpent.com/net-takoy-stranicy-1790713369257/
+https://www.7thserpent.com/404/

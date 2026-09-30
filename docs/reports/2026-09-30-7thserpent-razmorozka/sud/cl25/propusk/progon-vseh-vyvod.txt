@@ -1,0 +1,10 @@
+razbor-obrazcov.mjs: код 0
+derzhit-poisk.mjs: код 0
+derzhit-obrazcy.mjs: код 0
+CL25-P-1.mjs: код 0
+CL25-P-2.mjs: код 0
+CL25-P-3.mjs: код 0
+CL25-P-4.mjs: код 0
+CL25-P-5.mjs: код 0
+CL25-P-6.mjs: код 0
+CL25-P-7.mjs: код 0

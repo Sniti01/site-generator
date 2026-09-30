@@ -1,0 +1,3 @@
+блок: "# BEGIN adm.tools Managed content\nUser-agent: AhrefsBot\nAllow: /\n# END adm.tools Managed content\n\n"
+итог 44/44; ПЛОХО: —
+  справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 2 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)

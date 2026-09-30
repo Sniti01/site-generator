@@ -1,0 +1,34 @@
+последний байт файла владельца: 0x6c (0x0a — перевод строки); прежнего файла: 0xa
+
+== G1 файл владельца + живой блок хостера встык (приписан после файла) ==
+итог 41/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком | robots.txt: строка Sitemap
+  ПЛОХО robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: «Sitemap: https://www.7thserpent.com/sitemap-index.xml» (в ответе: «Sitemap: https://www.7thserpent.com/sitemap-index.xml# BEGIN adm.tools Managed content»)
+  ПЛОХО robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: Sitemap: https://www.7thserpent.com/sitemap-index.xml# BEGIN adm.tools Managed content | User-agent: * | User-Agent: GPTBot — правила robots.txt задаёт наш файл (правила владельца, П113): вне него — только управляемые блоки без запретов поисковикам
+  ПЛОХО robots.txt: строка Sitemap: false — строка на канонический sitemap-index
+  по правилам Google строки Sitemap: [{"klyuch":"Sitemap","znachenie":"https://www.7thserpent.com/sitemap-index.xml"}]
+  по правилам Google закрыто (zakrytoPoiskovikam, пути сборки образца): []
+
+== G2 файл владельца + комментарий хостера встык ==
+итог 41/44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера | robots.txt: наш файл целиком | robots.txt: строка Sitemap
+  ПЛОХО robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: «Sitemap: https://www.7thserpent.com/sitemap-index.xml» (в ответе: «Sitemap: https://www.7thserpent.com/sitemap-index.xml# robots.txt served by adm.tools hosting»)
+  ПЛОХО robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: Sitemap: https://www.7thserpent.com/sitemap-index.xml# robots.txt served by adm.tools hosting — правила robots.txt задаёт наш файл (правила владельца, П113): вне него — только управляемые блоки без запретов поисковикам
+  ПЛОХО robots.txt: строка Sitemap: false — строка на канонический sitemap-index
+  по правилам Google строки Sitemap: [{"klyuch":"Sitemap","znachenie":"https://www.7thserpent.com/sitemap-index.xml"}]
+  по правилам Google закрыто (zakrytoPoiskovikam, пути сборки образца): []
+
+== G3 контроль: файл владельца + перевод строки + живой блок ==
+итог 44/44; ПЛОХО: —
+  по правилам Google строки Sitemap: [{"klyuch":"Sitemap","znachenie":"https://www.7thserpent.com/sitemap-index.xml"}]
+  по правилам Google закрыто (zakrytoPoiskovikam, пути сборки образца): []
+
+== G4 контроль: прежний файл (с переводом строки в конце) + живой блок встык, наш — прежний ==
+итог 44/44; ПЛОХО: —
+  по правилам Google строки Sitemap: [{"klyuch":"Sitemap","znachenie":"https://www.7thserpent.com/sitemap-index.xml"}]
+  по правилам Google закрыто (zakrytoPoiskovikam, пути сборки образца): []
+
+пробы «после нашего файла» — перевод строки вставлен самой пробой:
+  строка 310: ['CL1-P-10 правило в блоке после нашего файла продолжает нашу группу', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /*
+  строка 311: ['CL3-P-5 блок без User-agent после нашего файла закрывает /movie/', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed content\nDisallow: /mov
+  строка 312: ['CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка', oba((o) => ({ ...o, telo: nashRobots + '\n# BEGIN adm.tools Managed con
+  строка 438: const posle = await progon(oba((o) => ({ ...o, telo: nashRobots + '\n' + HOSTER })));
+встык (nashRobots + HOSTER или nashRobots + '#…') в пробах: нет

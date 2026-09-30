@@ -1,0 +1,36 @@
+Файл владельца (public/robots.txt копии, 500 байт): закрыты по robots.cc — AhrefsBot, MJ12bot, DataForSeoBot, barkrowler, Bytespider, meta-externalagent, Baiduspider, meta-webindexer, AhrefsSiteAudit, SemrushBot, serpstatbot
+Открыты — GPTBot, ClaudeBot, CCBot, PerplexityBot, Applebot, YandexBot, googlebot, googlebot-image, bingbot
+
+== A. блок хостера сессии 24 (байт в байт из obrazec-khostera.json) перед файлом владельца ==
+check-live: 44 из 44; ПЛОХО: —
+   ok    robots.txt мимо кэша: статус: 200 — параметр запроса — мимо кэша
+   ok    robots.txt мимо кэша: обход кэша сработал: true — заголовка кэша нет — ответ сервера
+   ok    robots.txt: наш файл целиком: true — public/robots.txt одним куском, отдельными строками
+   ok    robots.txt: блока Cloudflare нет: true — управляемого блока Cloudflare нет (Cloudflare на сайте быть не должно, П108)
+   ok    robots.txt: вне нашего файла — только блок хостера: true — вне нашего файла — управляемые блоки без запретов поисковикам и комментарии
+   ok    robots.txt: поисковики не закрыты: true — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+   ok    robots.txt: строка Sitemap: true — строка на канонический sitemap-index
+   ok    robots.txt без параметра (его берут роботы): true — как ответ мимо кэша
+   справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 13 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+robots.cc — чем правила отличаются от файла владельца: GPTBot: открыт → закрыт
+
+== B. блок хостера из одной строки «User-agent: GPTBot» перед файлом владельца ==
+check-live: 44 из 44; ПЛОХО: —
+   ok    robots.txt мимо кэша: статус: 200 — параметр запроса — мимо кэша
+   ok    robots.txt мимо кэша: обход кэша сработал: true — заголовка кэша нет — ответ сервера
+   ok    robots.txt: наш файл целиком: true — public/robots.txt одним куском, отдельными строками
+   ok    robots.txt: блока Cloudflare нет: true — управляемого блока Cloudflare нет (Cloudflare на сайте быть не должно, П108)
+   ok    robots.txt: вне нашего файла — только блок хостера: true — вне нашего файла — управляемые блоки без запретов поисковикам и комментарии
+   ok    robots.txt: поисковики не закрыты: true — Googlebot, Googlebot-Image и Bingbot: все 24 путей сборки — открыты
+   ok    robots.txt: строка Sitemap: true — строка на канонический sitemap-index
+   ok    robots.txt без параметра (его берут роботы): true — как ответ мимо кэша
+   справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 1 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+robots.cc — чем правила отличаются от файла владельца: GPTBot: открыт → закрыт
+
+== для сравнения: образец сессии 24 на своих байтах (блок хостера + прежний файл add241a) ==
+check-live: 44 из 44; robots.cc — чем правила отличаются от прежнего файла: AhrefsBot: открыт → закрыт; MJ12bot: открыт → закрыт; DataForSeoBot: открыт → закрыт; barkrowler: открыт → закрыт; Bytespider: открыт → закрыт; meta-externalagent: открыт → закрыт; Baiduspider: открыт → закрыт; meta-webindexer: открыт → закрыт; AhrefsSiteAudit: открыт → закрыт; GPTBot: открыт → закрыт
+То есть отказ «блок меняет правила нашего файла» покраснил бы и образец сессии 24 — законную форму по слову владельца (П113).
+
+Вывод: check-live зелёный (44 из 44), а действующие правила — не правила владельца: GPTBot закрыт блоком хостера.
+Проверка «вне нашего файла» судит в блоке хостера только Disallow для *, Googlebot*, Bingbot*, msnbot на путях сборки;
+прочие правила блока (и строки User-agent, которые входят в группы нашего файла) не судятся — справка в зелёном прогоне.

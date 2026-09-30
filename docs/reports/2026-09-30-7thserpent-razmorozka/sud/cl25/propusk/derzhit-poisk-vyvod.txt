@@ -1,0 +1,45 @@
+== 1. Порт robots.cc на известных случаях ==
+ok    Google: allow /p, disallow / → /page разрешён: false
+ok    Google: allow /folder, disallow /folder → равная длина, Allow: false
+ok    Google: allow /page, disallow /*.htm → /page.htm закрыт (длиннее): true
+ok    Google: allow /$, disallow / → / открыт: false
+ok    Google: allow /$, disallow / → /page.htm закрыт: true
+ok    группы одного бота складываются: true
+ok    своя группа — * не действует: false
+ok    правило до первого User-agent не действует: false
+ok    подряд идущие User-agent — одна группа: true
+ok    без двоеточия — два слова: true
+ok    Googlebot-Image без своей группы — группа Googlebot: true
+ok    Googlebot-Image со своей группой — только она: false
+ok    Bingbot без своей группы — группа msnbot: true
+ok    файл владельца: Googlebot /: false
+ok    файл владельца: Googlebot-Image /_astro/hero.webp: false
+ok    файл владельца: Bingbot /movie/: false
+ok    файл владельца: AhrefsBot /: true
+ok    файл владельца: MJ12bot /: true
+ok    файл владельца: DataForSeoBot /: true
+ok    файл владельца: barkrowler /: true
+ok    файл владельца: Bytespider /: true
+ok    файл владельца: meta-externalagent /: true
+ok    файл владельца: Baiduspider /: true
+ok    файл владельца: meta-webindexer /: true
+ok    файл владельца: AhrefsSiteAudit /: true
+ok    файл владельца: SemrushBot /: true
+ok    файл владельца: serpstatbot /: true
+ok    файл владельца: GPTBot / (владелец не закрывал): false
+ok    строгий разбор Google: «MJ12bot» в строке — имя «MJ» (цифр в имени нет): true
+
+== 2. Изменённые ожидания диффа: блок хостера перед файлом владельца ==
+блок хостера закрывает Googlebot: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+CL1-P-9a «Disallow /»: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+CL1-P-9b «Dissallow: /»: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+CL1-P-9c «User agent: Googlebot»: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+CL2-P-5a «User-agents: Googlebot»: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+CL2-P-5b «Disallowed: /»: robots.cc закрыто 0 (—); check-live «поисковики» ok (0); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /)
+П113 «Disallow: /movie/»: robots.cc закрыто 2 (googlebot /movie/, googlebot-image /movie/); check-live «поисковики» ПЛОХО (2); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /movie/)
+контроль: «Disallow: /*» (длиннее Allow: /): robots.cc закрыто 48 (googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/); check-live «поисковики» ПЛОХО (48); «вне нашего файла» ПЛОХО («adm.tools»: googlebot — Disallow: /*)
+
+== 3. Перебор: 20000 блоков хостера (ASCII) до, после или вокруг файла владельца ==
+тел: 20000; robots.cc закрывает поисковик на пути сборки — в 11158; расхождений «поисковики» check-live с robots.cc — 0; ложных ok (robots.cc закрывает, check-live: наш файл целиком, «вне» и «поисковики» ok) — 0
+
+ошибок сверки: 0

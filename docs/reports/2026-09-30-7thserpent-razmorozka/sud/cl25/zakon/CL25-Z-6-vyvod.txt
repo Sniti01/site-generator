@@ -1,0 +1,25 @@
+== M1 «sitemap:» строчными — в репозитории и на сервере: «sitemap: https://www.7thserpent.com/sitemap-index.xml» ==
+итог 43/44; ПЛОХО: robots.txt: строка Sitemap
+  строка Sitemap: ПЛОХО — строка на канонический sitemap-index
+  по правилам Google: {"klyuchSitemap":true,"adres":"https://www.7thserpent.com/sitemap-index.xml"}; закрыто: []
+
+== M2 «SITEMAP:» заглавными: «SITEMAP: https://www.7thserpent.com/sitemap-index.xml» ==
+итог 43/44; ПЛОХО: robots.txt: строка Sitemap
+  строка Sitemap: ПЛОХО — строка на канонический sitemap-index
+  по правилам Google: {"klyuchSitemap":true,"adres":"https://www.7thserpent.com/sitemap-index.xml"}; закрыто: []
+
+== M3 без пробела после двоеточия: «Sitemap:https://www.7thserpent.com/sitemap-index.xml» ==
+итог 43/44; ПЛОХО: robots.txt: строка Sitemap
+  строка Sitemap: ПЛОХО — строка на канонический sitemap-index
+  по правилам Google: {"klyuchSitemap":true,"adres":"https://www.7thserpent.com/sitemap-index.xml"}; закрыто: []
+
+== M4 комментарий в конце строки: «Sitemap: https://www.7thserpent.com/sitemap-index.xml # sitemap index» ==
+итог 43/44; ПЛОХО: robots.txt: строка Sitemap
+  строка Sitemap: ПЛОХО — строка на канонический sitemap-index
+  по правилам Google: {"klyuchSitemap":true,"adres":"https://www.7thserpent.com/sitemap-index.xml"}; закрыто: []
+
+== M5 табуляция после двоеточия: «Sitemap:	https://www.7thserpent.com/sitemap-index.xml» ==
+итог 43/44; ПЛОХО: robots.txt: строка Sitemap
+  строка Sitemap: ПЛОХО — строка на канонический sitemap-index
+  по правилам Google: {"klyuchSitemap":true,"adres":"https://www.7thserpent.com/sitemap-index.xml"}; закрыто: []
+

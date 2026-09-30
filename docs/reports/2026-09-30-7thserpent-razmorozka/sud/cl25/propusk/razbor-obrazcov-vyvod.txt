@@ -1,0 +1,60 @@
+== копия против cbe35eb ==
+tools/check-live.mjs равна
+tools/testy/check-live.test.mjs равна
+tools/testy/obrazec-khostera.json равна
+tools/testy/obrazec-vladelca.json равна
+public/robots.txt равна
+structure/structure.json равна
+
+== public/robots.txt по коммитам ==
+add241a 1233 байт aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6 CR: false конец \n: true
+b388547 1233 байт aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6 CR: false конец \n: true
+cbe35eb 500 байт d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3 CR: false конец \n: false
+SHA_PREZHNEGO в тесте: aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6
+
+== образец сессии 24: robots.txt ==
+ключи: _, metka, otvety, robotsPary
+шапка образца: ["Живой образец хостера www.7thserpent.com — сессия 24 (П111), 2026-09-29, после первой выкладки (прогон #4, add241a).","otvety — ответы прогона 1 live:check (регистратор ответов через node --import: docs/reports/2026-09-29-7thserpent-zhivoy/instrumenty/zapis-otvetov.mjs): время, статус, заголовки как их отдаёт fetch (имена строчными), длина и sha256 тела.","Тела robots.txt — строкой UTF-8, байт в байт (sha256 строки = sha256 записи); тела HTML и карт не записаны: в пробах страница = сборка, карта = структура.","robotsPary — две пары robots.txt с параметром ?live-check=<метка> и без, с промежутком (instrumenty/robots-para.mjs). Наш файл в телах — public/robots.txt сборки add241a."]
+пара прогона 1: https://www.7thserpent.com/robots.txt?live-check=1790713369257
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:22:50 GMT; x-ray wnp190:0.000/wn190:0.010/wa190:D=1016; server nginx
+пара прогона 1: https://www.7thserpent.com/robots.txt
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:22:50 GMT; x-ray wnp190:0.000/wn190:0.000/wa190:D=1022; server nginx
+пара 1: https://www.7thserpent.com/robots.txt?live-check=1790713593860
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:26:34 GMT; x-ray wnp190:0.000/wn190:0.001/wa190:D=576; server nginx
+пара 1: https://www.7thserpent.com/robots.txt
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:26:34 GMT; x-ray wnp190:0.000/wn190:0.000/wa190:D=963; server nginx
+пара 2: https://www.7thserpent.com/robots.txt?live-check=1790713791678
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:29:51 GMT; x-ray wnp190:0.000/wn190:0.000/wa190:D=736; server nginx
+пара 2: https://www.7thserpent.com/robots.txt
+   статус 200; тело 1582 байт (0x62e); etag W/"4d1-65ca47e341b80"; content-length —; last-modified Tue, 29 Sep 2026 19:50:22 GMT; date Tue, 29 Sep 2026 20:29:52 GMT; x-ray wnp190:0.000/wn190:0.000/wa190:D=724; server nginx
+
+== блок хостера (голова тела образца сессии 24) ==
+длина 349 байт
+# BEGIN adm.tools Managed content
+
+User-agent: *
+Allow: /
+
+User-Agent: AhrefsBot
+User-Agent: MJ12bot
+User-Agent: DataForSeoBot
+User-Agent: barkrowler
+User-Agent: Bytespider
+User-Agent: GPTBot
+User-Agent: meta-externalagent
+User-Agent: Baiduspider
+User-Agent: meta-webindexer
+User-Agent: AhrefsSiteAudit
+Disallow: /
+
+# END adm.tools Managed content
+
+
+хвост 1233 байт, sha256 aeb7e60216d550b8012dfba91b53fb07e106ce7cc27b6e896cf22d11da3c9ac6
+хвост = add241a:public/robots.txt: true
+
+== образец владельца ==
+пара 1: https://www.7thserpent.com/robots.txt?live-check=1790758089937: статус 200; тело 500 байт (0x1f4); etag "6abcad59-1f4"; last-modified Wed, 30 Sep 2026 06:34:01 GMT; sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+пара 1: https://www.7thserpent.com/robots.txt: статус 200; тело 500 байт (0x1f4); etag "6abcad59-1f4"; last-modified Wed, 30 Sep 2026 06:34:01 GMT; sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+пара 2: https://www.7thserpent.com/robots.txt?live-check=1790758185785: статус 200; тело 500 байт (0x1f4); etag "6abcad59-1f4"; last-modified Wed, 30 Sep 2026 06:34:01 GMT; sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3
+пара 2: https://www.7thserpent.com/robots.txt: статус 200; тело 500 байт (0x1f4); etag "6abcad59-1f4"; last-modified Wed, 30 Sep 2026 06:34:01 GMT; sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3

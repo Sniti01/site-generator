@@ -1,0 +1,37 @@
+== A. блок хостера: Allow: / для AhrefsBot и SemrushBot — перед файлом владельца ==
+check-live: 44 из 44; ПЛОХО: —
+   справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 4 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+   robots.cc AhrefsBot /: файл владельца — закрыт; этот ответ — открыт
+   robots.cc SemrushBot /: файл владельца — закрыт; этот ответ — открыт
+   строки Sitemap в ответе: Sitemap: https://www.7thserpent.com/sitemap-index.xml
+
+== B. блок хостера: те же Allow — после файла владельца ==
+check-live: 44 из 44; ПЛОХО: —
+   справка: robots.txt: блок хостера «adm.tools Managed content» после нашего файла, строк 4 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+   robots.cc AhrefsBot /: файл владельца — закрыт; этот ответ — открыт
+   robots.cc SemrushBot /: файл владельца — закрыт; этот ответ — открыт
+   строки Sitemap в ответе: Sitemap: https://www.7thserpent.com/sitemap-index.xml
+
+== C. блок хостера: строка Sitemap на чужой хост ==
+check-live: 44 из 44; ПЛОХО: —
+   справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 1 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+   robots.cc AhrefsBot /: файл владельца — закрыт; этот ответ — закрыт
+   robots.cc SemrushBot /: файл владельца — закрыт; этот ответ — закрыт
+   строки Sitemap в ответе: Sitemap: https://evil.example/sitemap.xml | Sitemap: https://www.7thserpent.com/sitemap-index.xml
+
+== контроль D. те же Allow вне блока (чужой текст) ==
+check-live: 43 из 44; ПЛОХО: robots.txt: вне нашего файла — только блок хостера
+   robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-agent: AhrefsBot | Allow: / | User-agent: SemrushBot — правила robots.txt задаёт наш файл (правила владельца, П113): вне него — только управляемые блоки без запретов поисковикам
+   robots.cc AhrefsBot /: файл владельца — закрыт; этот ответ — открыт
+   robots.cc SemrushBot /: файл владельца — закрыт; этот ответ — открыт
+   строки Sitemap в ответе: Sitemap: https://www.7thserpent.com/sitemap-index.xml
+
+== контроль E. блок хостера: пустой Disallow для AhrefsBot (не открывает) ==
+check-live: 44 из 44; ПЛОХО: —
+   справка: robots.txt: блок хостера «adm.tools Managed content» перед нашим файлом, строк 2 — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)
+   robots.cc AhrefsBot /: файл владельца — закрыт; этот ответ — закрыт
+   robots.cc SemrushBot /: файл владельца — закрыт; этот ответ — закрыт
+   строки Sitemap в ответе: Sitemap: https://www.7thserpent.com/sitemap-index.xml
+
+Вывод: обещание файла владельца «закрыты AhrefsBot … serpstatbot» check-live держит, пока всё вне нашего файла — чужой текст
+(краснеет «вне нашего файла»); правила блока хостера для этих ботов и прочие его строки (Sitemap) не судятся — 44 из 44.

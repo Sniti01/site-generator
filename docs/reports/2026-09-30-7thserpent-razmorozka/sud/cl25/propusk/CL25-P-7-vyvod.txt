@@ -1,0 +1,6 @@
+Голова образца сессии 24 (блок хостера): 349 байт, sha256 5c281351ffd17a6796958968418bfe829215208282dc37d8a593ad824eec1394 — в пробах константы нет.
+Файл владельца (public/robots.txt копии): 500 байт, sha256 d1a2779c345a3e8466362d2adc8f783df61d70c735ba21108a15d6b7618d8bb3 — в пробах константы нет.
+
+A. голова сессии 24: «User-Agent: GPTBot» → «User-Agent: CCBot1» (длина и 13 строк те же): tests 138, pass 133, fail 0, todo 5
+B. владелец: без группы Baiduspider — в public/robots.txt и в обеих парах образца: tests 138, pass 133, fail 0, todo 5
+контроль C. хвост сессии 24: «Every page is open» → «Every page is OPEN»: tests 138, pass 132, fail 1, todo 5; упали: ✖ живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — прежний public/robots.txt (свои байты образца, П113); внутри пар тела равны, у HTML нет Age и X-Cache-Status

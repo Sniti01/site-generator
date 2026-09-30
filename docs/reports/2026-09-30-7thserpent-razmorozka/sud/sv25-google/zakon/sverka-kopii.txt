@@ -1,0 +1,4 @@
+РАВНЫ  sites/7thserpent.com/tools/storozha-vykladki.mjs коммит 64121 байт, копия 64121 байт
+РАВНЫ  sites/7thserpent.com/tools/testy/storozha-vykladki.test.mjs коммит 78946 байт, копия 78946 байт
+РАВНЫ  .github/workflows/deploy-7thserpent.yml коммит 16542 байт, копия 16542 байт
+РАВНЫ  sites/7thserpent.com/gates/sborka-prinyataya.json коммит 35257 байт, копия 35257 байт

@@ -1,0 +1,19 @@
+Д1 пробел в конце "google0123456789abcdef.html ": сторож ПРОХОД — ОПАСНЫЙ ПРОХОД: mirror --delete сотрёт двойник; до П113 — стоп
+    имена после razobratSpisok: ["google0123456789abcdef.html","google0123456789abcdef.html"]; скачает ли двойника --include-glob=google*.html: false; модель mirror: стереть ["google0123456789abcdef.html "], не трогать ["google0123456789abcdef.html"]
+    строка сторожа: папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+Д2 пробел в начале " google0123456789abcdef.html": сторож ПРОХОД — ОПАСНЫЙ ПРОХОД: mirror --delete сотрёт двойник; до П113 — стоп
+    имена после razobratSpisok: ["google0123456789abcdef.html","google0123456789abcdef.html"]; скачает ли двойника --include-glob=google*.html: false; модель mirror: стереть [" google0123456789abcdef.html"], не трогать ["google0123456789abcdef.html"]
+    строка сторожа: папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+Д3 NBSP в конце "google0123456789abcdef.html\u00a0": сторож ПРОХОД — ОПАСНЫЙ ПРОХОД: mirror --delete сотрёт двойник; до П113 — стоп
+    имена после razobratSpisok: ["google0123456789abcdef.html","google0123456789abcdef.html"]; скачает ли двойника --include-glob=google*.html: false; модель mirror: стереть ["google0123456789abcdef.html\u00a0"], не трогать ["google0123456789abcdef.html"]
+    строка сторожа: папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+Д4 U+FEFF в начале "\ufeffgoogle0123456789abcdef.html": сторож ПРОХОД — ОПАСНЫЙ ПРОХОД: mirror --delete сотрёт двойник; до П113 — стоп
+    имена после razobratSpisok: ["google0123456789abcdef.html","google0123456789abcdef.html"]; скачает ли двойника --include-glob=google*.html: false; модель mirror: стереть ["\ufeffgoogle0123456789abcdef.html"], не трогать ["google0123456789abcdef.html"]
+    строка сторожа: папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+Д5 табуляция в конце "google0123456789abcdef.html\t": сторож ПРОХОД — ОПАСНЫЙ ПРОХОД: mirror --delete сотрёт двойник; до П113 — стоп
+    имена после razobratSpisok: ["google0123456789abcdef.html","google0123456789abcdef.html"]; скачает ли двойника --include-glob=google*.html: false; модель mirror: стереть ["google0123456789abcdef.html\t"], не трогать ["google0123456789abcdef.html"]
+    строка сторожа: папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+К0 двойник без настоящего файла: СТОП — СТОП: в корне робота google0123456789abcdef.html (не скачан — сверить нечем) — имя файла подтверждения Search Console, а строка подтверждени…
+К1 « favicon.ico» рядом с нашей выкладкой: сейчас проход, до П113 проход; модель mirror: [" favicon.ico"] — стереть
+команда papka (Д1): код 0 — папка робота: наша сборка (index.html с canonical главной), записей 30, чужих нет; файл подтверждения Google google0123456789abcdef.html, google0123456789abcdef.html — строка подтверждения сверена, mirror его не трогает (П113)
+ИТОГ: опасных проходов 5 из 5 (двойник стирается mirror --delete без стопа). Предел: как cls и MLSD/LIST этого сервера показывают имена с пробелами по краям, не измерено; класс «обрезка краёв имени» — прежний (К1).

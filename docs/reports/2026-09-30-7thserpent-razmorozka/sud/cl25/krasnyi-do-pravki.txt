@@ -1,0 +1,663 @@
+$ node --test --test-reporter=spec tools/testy/check-live.test.mjs
+(папка: sites/7thserpent.com)
+
+✔ здоровый живой сайт без Cloudflare (П108) — все 44 проверки ok (10.6308ms)
+✔ CL2-P-9 (П108 — наоборот) образец с Cloudflare (прежний здоровый: Cloudflare проксирует всё) — 43 из 44, ПЛОХО ровно «запросы не идут через Cloudflare» (3.0209ms)
+✔ домен не подключён (имя не разрешается) — 0 из 44 (0.5706ms)
+✔ домен ведёт на хостер, сайт не заведён («not configured») — 0 из 44 (0.4368ms)
+✖ живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — прежний public/robots.txt (свои байты образца, П113); внутри пар тела равны, у HTML нет Age и X-Cache-Status (1.2968ms)
+✔ живой образец хостера: ответы прогона 1 — 44 из 44 на своих байтах (прежний файл, П113) (1.7058ms)
+✔ живой образец хостера: ответы прогона 1, robots.txt — пара 1 — 44 из 44 на своих байтах (прежний файл, П113) (1.5872ms)
+✔ живой образец хостера: ответы прогона 1, robots.txt — пара 2 — 44 из 44 на своих байтах (прежний файл, П113) (1.2228ms)
+✖ П113 образец сессии 24 против нынешнего файла владельца — «наш файл целиком» краснеет: образец судится только своими байтами (1.6173ms)
+✖ живой образец владельца: замер цел — тела байт в байт, тело = нынешний public/robots.txt, внутри пар равны, блока хостера нет (1.7193ms)
+✖ живой образец владельца: robots.txt — пара 1 — 44 из 44, справки о блоке хостера нет (1.661ms)
+✖ живой образец владельца: robots.txt — пара 2 — 44 из 44, справки о блоке хостера нет (1.6192ms)
+✔ порча: блок Cloudflare (Cloudflare включили с управляемым robots.txt) (1.5279ms)
+✔ порча: чужая группа вне блоков (0.979ms)
+✖ порча: наш файл изменён (Allow → Disallow) (1.5973ms)
+✖ порча: блок хостера закрывает Googlebot (1.307ms)
+✔ порча: блок хостера без END (1.3426ms)
+✔ порча: robots.txt мимо кэша — 404 (0.9826ms)
+✔ порча: robots.txt с CRLF — чисто (0.959ms)
+✖ порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия (1.0025ms)
+✖ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (1.1724ms)
+✖ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (0.9526ms)
+✔ порча: П113 блок хостера: Googlebot, «Disallow: /movie/» — длиннее Allow: / файла владельца (1.3744ms)
+✔ порча: П113 блок хостера: Googlebot, «Disallow /movie/» без двоеточия (0.9003ms)
+✔ порча: CL1-P-10 правило в блоке после нашего файла продолжает нашу группу (0.9886ms)
+✔ порча: CL3-P-5 блок без User-agent после нашего файла закрывает /movie/ (0.8805ms)
+✔ порча: CL3-P-5, CL3-Z-3 блок без User-agent: запреты вне сборки (/*?, /wp-admin/) — справка (1.0841ms)
+✔ порча: CL3-Z-3 блок хостера: * закрывает /cgi-bin/ и /.well-known/ — вне сборки, справка (1.6516ms)
+✔ порча: CL3-Z-4 блок хостера: * закрывает файлы с точкой (/.) — их нет среди путей сборки (1.0654ms)
+✔ порча: CL1-Z-2 «Disallow: # комментарий» в группе * хостера — чисто (0.7906ms)
+✔ порча: CL1-Z-5 комментарий хостера вне меток — справка, не отказ (0.9808ms)
+✔ порча: CL2-P-1a блок хостера: * закрывает /movie/ и /cheats/ (1.4917ms)
+✔ порча: CL2-P-1b блок хостера: * закрывает CSS (1.4519ms)
+✔ порча: CL2-P-1c блок хостера: Googlebot-Image закрыт (0.8849ms)
+✔ порча: CL2-P-1 блок хостера: msnbot закрыт — Bingbot следует его группе (CL3-Z-3) (0.8896ms)
+✖ порча: CL2-P-5a «User-agents: Googlebot» (1.2343ms)
+✖ порча: CL2-P-5b «Disallowed: /» (1.1221ms)
+✔ порча: П113 «User-agents: Googlebot» и «Disallowed: /cheats/» — длиннее Allow: / (0.9056ms)
+✔ порча: CL2-P-5c «User-agent: * (all robots)» (1.2898ms)
+✖ порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла (0.3062ms)
+✔ порча: CL2-Z-5 мимо кэша — REVALIDATED (сверено с сервером) — краснеет только след Cloudflare (0.8738ms)
+✔ порча: из кэша — старая безвредная версия без Sitemap: справка, не отказ (1.0079ms)
+✔ порча: П108 без Cloudflare: без параметра — другой файл, кэша на пути нет — отдаёт не наш сервер (1.1736ms)
+✔ порча: CL1-P-1a без параметра — HIT, «Disallow: /» для всех (1.6168ms)
+✔ порча: CL1-P-1b без параметра — DYNAMIC, отличается от ответа мимо кэша (1.1268ms)
+✔ порча: CL1-P-1c без параметра — 503 (0.7731ms)
+✔ порча: CL2-P-4a без параметра из кэша — с блоком Cloudflare (1.1742ms)
+✔ порча: CL2-P-4b без параметра из кэша — группы GPTBot вне блоков (1.0921ms)
+✔ порча: CL2-P-4c без параметра из кэша — нашего файла нет, вреда нет: справка (1.2387ms)
+✔ порча: адрес ящика на поддомене-двойнике — не наш (0.8309ms)
+✔ порча: CL3-Z-5 без параметра из кэша — прежняя редакция нашего файла (Sitemap с голого хоста) — справка (1.4192ms)
+✔ порча: CL3-Z-5 без параметра из кэша — Sitemap на чужой хост — вред (1.0515ms)
+✖ порча: П113 без параметра — прежняя редакция файла владельца, кэша на пути нет (0.2038ms)
+✖ порча: П113 наш файл на сервере: Googlebot — Disallow: /movie/ вместо Allow: / (0.1698ms)
+✔ порча: CL2-Z-9 мимо кэша — вызов Cloudflare, без параметра здоров (MISS) — без параметра судится сам (0.8412ms)
+✔ порча: CL1-P-3a Cache-Control: max-age=14400 и must-revalidate (0.9218ms)
+✔ порча: CL1-P-3b два Cache-Control, склеенные fetch (0.8749ms)
+✔ порча: Cache-Control без must-revalidate (0.7934ms)
+✔ порча: CL2-P-2 s-maxage=86400 на главной (0.9055ms)
+✔ порча: CL2-P-2 CDN-Cache-Control: max-age=86400 (0.7623ms)
+✔ порча: CL2-P-2 max-age=86400 на странице фильма (1.1391ms)
+✔ порча: CL1-P-4 главная из кэша Cloudflare (0.8125ms)
+✔ порча: CL3-P-1 главная MISS, повтор — HIT (Edge TTL) (0.8648ms)
+✔ порча: CL3-P-1 главная MISS, повтор — REVALIDATED — краснеет только след Cloudflare (0.814ms)
+✔ порча: CL3-P-7 s-maxage в кавычках (0.9267ms)
+✔ порча: CL3-P-7 два s-maxage: 0 и 86400 (1.4132ms)
+✔ порча: CL3-P-4 Content-Type: windows-1251 на странице фильма (0.802ms)
+✔ порча: CL3-P-4 Content-Type: text/plain на главной (0.7558ms)
+✔ порча: CL3-P-2 (П108 — наоборот) через Cloudflare только голый хост: его редиректы с cf-ray (0.9471ms)
+✔ порча: CL3-Z-1 сайт выложен сборкой другой машины: иные cid ядра и хеш имени CSS — чисто (1.1909ms)
+✔ порча: CL2-P-2 страница фильма из кэша Cloudflare (1.3558ms)
+✔ порча: CL2-Z-5 главная REVALIDATED — сверено с сервером, краснеет только след Cloudflare (0.9157ms)
+✔ порча: canonical главной на голый хост (0.9653ms)
+✔ порча: два canonical на главной (0.8433ms)
+✔ порча: CL2-P-8 canonical игры только в комментарии (и в сборке) (1.1428ms)
+✔ порча: CL1-P-6 вставки Cloudflare: Web Analytics и JS detections (1.0631ms)
+✔ порча: чужая таблица стилей на главной (1.1918ms)
+✔ порча: CL2-P-3 srcset на чужой хост (0.7713ms)
+✔ порча: CL2-P-3 base href на чужой хост (0.743ms)
+✔ порча: CL2-P-3 встроенный скрипт: sendBeacon и cookie (0.7456ms)
+✔ порча: CL2-P-3 вставка Cloudflare (Zaraz) только на 404 (0.8165ms)
+✔ порча: CL2-Z-4 вызов Cloudflare на двух адресах карты — причина в строке карты, не «вставка» (1.3357ms)
+✔ порча: CL1-P-13 X-Robots-Tag: noindex на страницах (0.9092ms)
+✔ порча: CL2-P-6 X-Robots-Tag: unavailable_after (0.7983ms)
+✔ порча: CL2-P-6 X-Robots-Tag: googlebot: none (0.7975ms)
+✔ порча: CL2-P-6 meta robots noindex в самой сборке (0.8967ms)
+✔ порча: CL3-P-3 X-Robots-Tag двумя полями, склеенными fetch: «otherbot: noarchive, noindex» (1.1321ms)
+✔ порча: X-Robots-Tag: GPTBot: noindex — чужой бот своим префиксом — чисто (0.7877ms)
+✔ порча: CL2-Z-6 X-Robots-Tag: max-image-preview:none — чисто (0.8058ms)
+✔ порча: CL2-Z-6 X-Robots-Tag: noindex только на ответе 404 — чисто (0.7329ms)
+✔ порча: CL1-P-12 Set-Cookie Cloudflare на странице игры и на 404 (1.8917ms)
+✔ порча: Set-Cookie Cloudflare на главной (1.0691ms)
+✔ порча: П108 Set-Cookie сервера хостера на главной (1.5708ms)
+✔ порча: П108 след Cloudflare только server: cloudflare — у главной (1.2118ms)
+✔ порча: П108 след Cloudflare только cf-ray — у robots.txt без параметра (0.7819ms)
+✔ порча: П108 след Cloudflare только Cf-Cache-Status — у карты сайта (0.8648ms)
+✔ порча: П108 след Cloudflare только cf-mitigated — у страницы фильма (0.8251ms)
+✔ порча: CL1-P-5 редирект страницы теряет путь (0.8785ms)
+✔ порча: П108 переадресация на https у хостера: http://голый → https://голый (второй скачок) (1.1427ms)
+✔ порча: Always Use HTTPS (Cloudflare включили): http://голый → https://голый (1.254ms)
+✔ порча: 302 вместо 301 (1.3487ms)
+✔ порча: карта без /privacy/ (1.17ms)
+✔ порча: карта с /404/ (1.3462ms)
+✔ порча: карта: дубль вместо /privacy/ (тот же счёт) (1.261ms)
+✔ порча: индекс ведёт на sitemap-1.xml (0.835ms)
+✔ порча: CL1-P-14 14 из 17 адресов карты — 404 (0.7958ms)
+✔ порча: несуществующий адрес — 404 хостера (0.9174ms)
+✔ порча: несуществующий адрес — наша страница со статусом 200 (0.8885ms)
+✔ порча: /404/ напрямую — 404 (0.7714ms)
+✔ порча: страница игры — 500 (1.699ms)
+✔ порча: CL1-P-7 страница игры — список каталога Apache (0.9573ms)
+✔ порча: CL2-Z-1 адрес ящика ссылкой mailto — тоже чисто (0.8606ms)
+✔ порча: CL2-Z-1 адрес ящика с &#64; — чисто (0.7985ms)
+✔ порча: /privacy/ с __cf_email__ вместо адреса (обфускация Cloudflare) (0.8456ms)
+✔ порча: CL1-P-8 /privacy/ без адреса ящика (и в сборке) (1.0125ms)
+✔ порча: CL2-P-7 адрес ящика первого сайта (1.1889ms)
+✔ порча: CL2-P-7 адрес ящика только в комментарии (0.8534ms)
+✔ порча: /privacy/ — 404 (0.7713ms)
+✔ порча: CL3-P-6 адрес ящика только в <title> (0.9591ms)
+✔ порча: CL3-P-6 адрес ящика только в <p hidden> (0.829ms)
+✔ порча: CL3-P-6 адрес ящика только в <noscript> (0.7421ms)
+✔ справки: кэш, положение блока хостера, комментарии вне меток (6.0187ms)
+✖ CL1-Z-1 обход кэша не удался — причина названа в строке (0.2601ms)
+✔ подсказки причин: вызов Cloudflare, 526, cookies и их место, Always Use HTTPS, ответ главной, обфускация, вставка Cloudflare (7.328ms)
+✔ CL23-P-1 причина вставки — по следам Cloudflare: есть — «Cloudflare», нет — без догадки о посреднике (1.6056ms)
+✔ CL23-Z-3 robots.txt без параметра не равен ответу с параметром, кэша Cloudflare нет — первая расходящаяся строка, причина без догадки (0.9013ms)
+✖ П113 тексты под файл владельца: подсказки «вне нашего файла» и запрета индексации, справка блока хостера — без обещаний прежнего файла (0.9664ms)
+✔ CL3-Z-2 HTML не равен сборке: первое расхождение, «N из M», нейтральная причина; CL3-Z-6 без сборки — «из выложенного коммита» (2.4368ms)
+✔ CL3-Z-4 пути сборки для robots.txt — без файлов с точкой (.htaccess сервер не отдаёт) (6.8057ms)
+✔ разбор robots.txt: наш файл только отдельными строками (0.3985ms)
+✔ поисковики по правилам Google: длиннейшее правило, Allow при равенстве, * и $, Googlebot-Image (0.2458ms)
+✔ canonical: порядок атрибутов и кавычки; в комментарии и в <body> — не считается (0.1587ms)
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (0.9773ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+⚠ ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц (4.605ms) # подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist
+⚠ ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра» (1.3745ms) # живой образец сессии 24 (П111): тела robots.txt с параметром и без побайтно равны в трёх парах — смягчать по замеру нечего; безвредная разница блока хостера — предел
+⚠ ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра» (1.7401ms) # сравнение ответов проверки 4 — только CR и BOM; живой образец сессии 24 (П111): тела побайтно равны — смягчать нечего, разница в пробелах — предел
+⚠ ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status (1.3769ms) # живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел
+✔ команда: неверные аргументы — код 2, без сети (123.5069ms)
+ℹ tests 138
+ℹ suites 0
+ℹ pass 116
+ℹ fail 17
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 5
+ℹ duration_ms 423.9989
+
+✖ failing tests:
+
+test at tools\testy\check-live.test.mjs:223:1
+✖ живой образец хостера: замер цел — тела robots.txt байт в байт, наш файл — прежний public/robots.txt (свои байты образца, П113); внутри пар тела равны, у HTML нет Age и X-Cache-Status (1.2968ms)
+  AssertionError [ERR_ASSERTION]: образец сессии 24 не должен совпадать с нынешним файлом владельца
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:227:10)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: '# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody "fixes" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner\'s decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n',
+    expected: '# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody "fixes" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner\'s decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n',
+    operator: 'notStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:252:1
+✖ П113 образец сессии 24 против нынешнего файла владельца — «наш файл целиком» краснеет: образец судится только своими байтами (1.6173ms)
+  AssertionError [ERR_ASSERTION]
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:254:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:262:1
+✖ живой образец владельца: замер цел — тела байт в байт, тело = нынешний public/robots.txt, внутри пар равны, блока хостера нет (1.7193ms)
+  AssertionError [ERR_ASSERTION]: пара 1: тело не равно нынешнему public/robots.txt
+  + actual - expected
+  
+  + 'User-Agent: AhrefsBot\n' +
+  +   'Disallow: /\n' +
+  - '# robots.txt — www.7thserpent.com (7th Serpent)\n' +
+  -   '#\n' +
+  -   '# A static site (Astro). Every page is open to indexing: there is no admin\n' +
+  -   '# area, no login, no on-site search, no pagination and no addresses with\n' +
+  -   '# parameters, so there is nothing to disallow.\n' +
+  -   '#\n' +
+  -   '# What is deliberately NOT blocked (so nobody "fixes" it later):\n' +
+  -   '#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n' +
+  -   '#             Google renders a page the way a browser does, and blocked CSS\n' +
+  -   '#             looks to it like a page without a layout.\n' +
+  -   '#   /404/     the error page; the server returns it with status 404 for every\n' +
+  -   '#             missing page address, the sitemap leaves it out, and no page\n' +
+  -   '#             links to it.\n' +
+  -   '#   AI crawlers — they are not blocked either. Blocks that the hosting\n' +
+  -   '#             provider may prepend to this file on the live server are not\n' +
+  -   '#             part of it (`npm run live:check` tells them apart from this\n' +
+  -   '#             file).\n' +
+  -   '#\n' +
+  -   '# The Sitemap line carries the full address, because the file is also read\n' +
+  -   '# from outside the domain. The canonical address is https WITH www (`site` in\n' +
+  -   "# astro.config.mjs; the owner's decision П62 p. 4).\n" +
+      '\n' +
+  +   'User-Agent: MJ12bot\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: DataForSeoBot\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: barkrowler\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: Bytespider\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: meta-externalagent\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: Baiduspider\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: meta-webindexer\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-Agent: AhrefsSiteAudit\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-agent: SemrushBot\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-agent: serpstatbot\n' +
+  +   'Disallow: /\n' +
+  +   '\n' +
+  +   'User-agent: Googlebot\n' +
+  -   'User-agent: *\n' +
+      'Allow: /\n' +
+      '\n' +
+  +   'Sitemap: https://www.7thserpent.com/sitemap-index.xml'
+  -   'Sitemap: https://www.7thserpent.com/sitemap-index.xml\n'
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:268:14)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'User-Agent: AhrefsBot\nDisallow: /\n\nUser-Agent: MJ12bot\nDisallow: /\n\nUser-Agent: DataForSeoBot\nDisallow: /\n\nUser-Agent: barkrowler\nDisallow: /\n\nUser-Agent: Bytespider\nDisallow: /\n\nUser-Agent: meta-externalagent\nDisallow: /\n\nUser-Agent: Baiduspider\nDisallow: /\n\nUser-Agent: meta-webindexer\nDisallow: /\n\nUser-Agent: AhrefsSiteAudit\nDisallow: /\n\nUser-agent: SemrushBot\nDisallow: /\n\nUser-agent: serpstatbot\nDisallow: /\n\nUser-agent: Googlebot\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml',
+    expected: '# robots.txt — www.7thserpent.com (7th Serpent)\n#\n# A static site (Astro). Every page is open to indexing: there is no admin\n# area, no login, no on-site search, no pagination and no addresses with\n# parameters, so there is nothing to disallow.\n#\n# What is deliberately NOT blocked (so nobody "fixes" it later):\n#   /_astro/  stylesheets, fonts and images with a content hash in the name;\n#             Google renders a page the way a browser does, and blocked CSS\n#             looks to it like a page without a layout.\n#   /404/     the error page; the server returns it with status 404 for every\n#             missing page address, the sitemap leaves it out, and no page\n#             links to it.\n#   AI crawlers — they are not blocked either. Blocks that the hosting\n#             provider may prepend to this file on the live server are not\n#             part of it (`npm run live:check` tells them apart from this\n#             file).\n#\n# The Sitemap line carries the full address, because the file is also read\n# from outside the domain. The canonical address is https WITH www (`site` in\n# astro.config.mjs; the owner\'s decision П62 p. 4).\n\nUser-agent: *\nAllow: /\n\nSitemap: https://www.7thserpent.com/sitemap-index.xml\n',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:276:3
+✖ живой образец владельца: robots.txt — пара 1 — 44 из 44, справки о блоке хостера нет (1.661ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: нет первой строки «# robots.txt — www.7thserpent.com (7th Serpent)» | robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-Agent: AhrefsBot | Disallow: / | User-Agent: MJ12bot — наш файл обещает: запрещать нечего
+  + actual - expected
+  
+  + [
+  +   'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: наш файл целиком'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:282:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:276:3
+✖ живой образец владельца: robots.txt — пара 2 — 44 из 44, справки о блоке хостера нет (1.6192ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: нет первой строки «# robots.txt — www.7thserpent.com (7th Serpent)» | robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-Agent: AhrefsBot | Disallow: / | User-Agent: MJ12bot — наш файл обещает: запрещать нечего
+  + actual - expected
+  
+  + [
+  +   'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: наш файл целиком'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:282:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: наш файл изменён (Allow → Disallow) (1.5973ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: наш файл целиком: false — public/robots.txt; первая расходящаяся строка: «Allow: /» (в ответе: «Disallow: /») | robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 68
+  + actual - expected
+  
+    [
+  +   'robots.txt: вне нашего файла — только блок хостера',
+      'robots.txt: наш файл целиком',
+      'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: наш файл целиком', 'robots.txt: поисковики не закрыты' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: блок хостера закрывает Googlebot (1.307ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL1-P-9a блок хостера: Googlebot, «Disallow /» без двоеточия (1.0025ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL1-P-9b блок хостера: Googlebot, «Dissallow: /» (1.1724ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL1-P-9c блок хостера: «User agent: Googlebot» (0.9526ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL2-P-5a «User-agents: Googlebot» (1.2343ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL2-P-5b «Disallowed: /» (1.1221ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: «adm.tools»: googlebot — Disallow: / — наш файл обещает: запрещать нечего | robots.txt: поисковики не закрыты: false — закрыто: googlebot /, googlebot /max-payne-1/, googlebot /max-payne-2/, googlebot /max-payne-3/ и ещё 44
+  + actual - expected
+  
+    [
+      'robots.txt: вне нашего файла — только блок хостера',
+  +   'robots.txt: поисковики не закрыты'
+    ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:431:12)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt: вне нашего файла — только блок хостера', 'robots.txt: поисковики не закрыты' ],
+    expected: [ 'robots.txt: вне нашего файла — только блок хостера' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: CL1-P-2 мимо кэша — HIT старой версии нашего файла (0.3062ms)
+  AssertionError [ERR_ASSERTION]: в тексте нет «User-agent: serpstatbot
+  Disallow: /
+  
+  » — порча не сработала бы
+      at zamena (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:34:10)
+      at staraya (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:38:23)
+      at file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:326:108
+      at zamenit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:131:51)
+      at PORCHI.cf (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:326:65)
+      at progon (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:115:3)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:429:21)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: П113 без параметра — прежняя редакция файла владельца, кэша на пути нет (0.2038ms)
+  AssertionError [ERR_ASSERTION]: в тексте нет «User-agent: serpstatbot
+  Disallow: /
+  
+  » — порча не сработала бы
+      at zamena (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:34:10)
+      at staraya (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:38:23)
+      at file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:343:133
+      at zamenit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:131:51)
+      at oba (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:343:86)
+      at progon (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:115:3)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:429:21)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:428:3
+✖ порча: П113 наш файл на сервере: Googlebot — Disallow: /movie/ вместо Allow: / (0.1698ms)
+  AssertionError [ERR_ASSERTION]: в тексте нет «User-agent: Googlebot
+  Allow: /» — порча не сработала бы
+      at zamena (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:34:10)
+      at file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:346:114
+      at zamenit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:131:51)
+      at file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:138:3
+      at progon (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:115:3)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:429:21)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:448:1
+✖ CL1-Z-1 обход кэша не удался — причина названа в строке (0.2601ms)
+  AssertionError [ERR_ASSERTION]: в тексте нет «User-agent: serpstatbot
+  Disallow: /
+  
+  » — порча не сработала бы
+      at zamena (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:34:10)
+      at staraya (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:38:23)
+      at file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:449:76
+      at zamenit (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:131:51)
+      at progon.cf (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:449:33)
+      at progon (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:115:3)
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:449:19)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:498:1
+✖ П113 тексты под файл владельца: подсказки «вне нашего файла» и запрета индексации, справка блока хостера — без обещаний прежнего файла (0.9664ms)
+  AssertionError [ERR_ASSERTION]: robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-agent: GPTBot | Disallow: / — наш файл обещает: запрещать нечего
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:501:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 'robots.txt: вне нашего файла — только блок хостера: false — чужое или запрет: User-agent: GPTBot | Disallow: / — наш файл обещает: запрещать нечего',
+    expected: /правила robots\.txt задаёт наш файл \(правила владельца, П113\): вне него — только управляемые блоки без запретов поисковикам/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:565:1
+⚠ ПРЕДЕЛ CL3-P-6: адрес ящика во вложенном скрытом элементе засчитывается (разбор регулярным выражением, не деревом) (0.9773ms) # видимый текст без дерева parse5: вложенные одноимённые элементы с hidden
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + []
+  - [
+  -   '/privacy/: адрес ящика открытым текстом'
+  - ]
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:567:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '/privacy/: адрес ящика открытым текстом' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:570:1
+⚠ ПРЕДЕЛ: CSS, картинки и шрифты живого сайта со сборкой не сверяются — только HTML страниц (4.605ms) # подмена /_astro/*.css по пути — вне проверки; сверка файлов выкладки — пересчёт workflow и sverka-dist
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.plokho.length > 0)
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:572:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:578:1
+⚠ ПРЕДЕЛ CL23-Z-1: без кэша на пути безвредная разница блока хостера между robots.txt с параметром и без — ПЛОХО «без параметра» (1.3745ms) # живой образец сессии 24 (П111): тела robots.txt с параметром и без побайтно равны в трёх парах — смягчать по замеру нечего; безвредная разница блока хостера — предел
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'robots.txt без параметра (его берут роботы)'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:580:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:583:1
+⚠ ПРЕДЕЛ CL23-Z-2: без кэша на пути разница только в пробелах (лишние переводы строки в конце) — ПЛОХО «без параметра» (1.7401ms) # сравнение ответов проверки 4 — только CR и BOM; живой образец сессии 24 (П111): тела побайтно равны — смягчать нечего, разница в пробелах — предел
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   'robots.txt без параметра (его берут роботы)'
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:585:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ 'robots.txt без параметра (его берут роботы)' ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tools\testy\check-live.test.mjs:588:1
+⚠ ПРЕДЕЛ CL23-P-3: кэш не Cloudflare (Age, X-Cache-Status: HIT) у HTML не виден — проверки кэша знают только Cf-Cache-Status (1.3769ms) # живой образец сессии 24 (П111): у HTML нет Age и X-Cache-Status, x-ray wnp/wn/wa без признака кэша — кэш хостера не виден; проверка кэша не Cloudflare — предел
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(r.plokho.length > 0)
+  
+      at TestContext.<anonymous> (file:///D:/SEO/cloud/site-generator/sites/7thserpent.com/tools/testy/check-live.test.mjs:590:10)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+код выхода: 1

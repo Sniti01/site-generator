@@ -467,12 +467,12 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
   const cf = rb ? rb.bloki.filter((b) => b.vid === 'cloudflare') : [];
   check('robots.txt: блока Cloudflare нет', true, rb ? cf.length === 0 : iskh(mimo), neChitan(cf.length ? `«${cf.map((b) => b.imya).join('», «')} Managed content» — robots.txt отдаёт Cloudflare со своим управляемым блоком: его включили, а на сайте его быть не должно (П108)` : 'управляемого блока Cloudflare нет (Cloudflare на сайте быть не должно, П108)'));
   const chuzhie = rb ? [...rb.chuzhoyTekst, ...rb.bloki.filter((b) => b.vid === 'чужой').map((b) => `блок «${b.imya}»`), ...rb.ogranicheniya] : [];
-  check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — наш файл обещает: запрещать нечего` : 'вне нашего файла — управляемые блоки без запретов поисковикам и комментарии'));
+  check('robots.txt: вне нашего файла — только блок хостера', true, rb ? chuzhie.length === 0 : iskh(mimo), neChitan(chuzhie.length ? `чужое или запрет: ${chuzhie.slice(0, 3).join(' | ')} — правила robots.txt задаёт наш файл (правила владельца, П113): вне него — только управляемые блоки без запретов поисковикам` : 'вне нашего файла — управляемые блоки без запретов поисковикам и комментарии'));
   const zakryto = mimo.status === 200 ? zakrytoPoiskovikam(mimo.telo, PUTI) : [];
   check('robots.txt: поисковики не закрыты', true, mimo.status === 200 ? zakryto.length === 0 : iskh(mimo), neChitan(zakryto.length ? `закрыто: ${zakryto.slice(0, 4).join(', ')}${zakryto.length > 4 ? ` и ещё ${zakryto.length - 4}` : ''}` : `Googlebot, Googlebot-Image и Bingbot: ${poPutyam} — открыты`));
   check('robots.txt: строка Sitemap', true, mimo.status === 200 && norm(mimo.telo).split('\n').some((s) => s.trim() === `Sitemap: ${base}/sitemap-index.xml`), neChitan('строка на канонический sitemap-index'));
   if (cfMimo) spravki.push(`robots.txt мимо кэша: Cf-Cache-Status ${cfMimo}`);
-  for (const b of rb ? rb.bloki.filter((x) => x.vid === 'хостер') : []) spravki.push(`robots.txt: блок хостера «${b.imya} Managed content» ${b.polozhenie}, строк ${b.strok} — не наш, не отключается`);
+  for (const b of rb ? rb.bloki.filter((x) => x.vid === 'хостер') : []) spravki.push(`robots.txt: блок хостера «${b.imya} Managed content» ${b.polozhenie}, строк ${b.strok} — не наш: его приписывает хостер при отдаче, отключается в панели хостера (П113)`);
   for (const k of rb ? rb.kommentarii : []) spravki.push(`robots.txt: комментарий вне нашего файла и блоков — «${k}» (правил не несёт)`);
   for (const z of rb ? rb.zapretyVneSborki : []) spravki.push(`robots.txt: блок запрещает путь вне сборки — ${z} (страниц сайта не касается)`);
 
@@ -654,7 +654,7 @@ export async function proverit({ poluchit: poluchitOdin, host, struktura, nashRo
     ];
     if (iz.length) zaprety.push(`${kratko(u)}: ${iz.join(', ')}`);
   }
-  check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt обещает: всё открыто для индекса` : `страниц ${sto.length}`));
+  check('страницы без запрета индексации', true, !osnova && zaprety.length === 0, osnova || (zaprety.length ? `${zaprety.slice(0, 3).join(' | ')} — robots.txt открывает страницы Google и Bing (П113): запрет индексации их закрыл бы` : `страниц ${sto.length}`));
 
   // Проверка 11 (П108): следы Cloudflare — выше, у проверки 8; /privacy/ обещает, что страница не шлёт запросов никому,
   // кроме сервера сайта.

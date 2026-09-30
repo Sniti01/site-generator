@@ -4,6 +4,8 @@
 // триггеры, предохранители, TZ, корпус, пароль, команды сторожей — те, что есть у сторожа, циклов оболочки нет.
 // «Судью судят»: раунд 1 (SV1-O — «опасный проход», SV1-Z — «законные формы»), раунд 2 (SV2-O, SV2-Z) — пробами с их id.
 // Сессия 23 (П108): вход SERPENT_DOMAIN_BOUND («домен привязан — согласен») у сторожа домена; «судью судят» — SV23-*.
+// Сессия 25 (П113): файл подтверждения Google в корне — сторож папки сверяет скачанную копию, mirror его не трогает,
+// пересчёт не считает; «судью судят» — SV25-*.
 //   npm run proverki (сборка копии не нужна)
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -388,6 +390,77 @@ test('папка робота: отказ не печатает имён дом�
   }
 });
 
+/* — файл подтверждения Google (сессия 25, П113): имя — «google» + буквенно-цифровой код + «.html», внутри одна строка
+ *   «google-site-verification: <то же имя>» (по образцам Search Console — 16 шестнадцатеричных знаков, без перевода строки
+ *   в конце). Сторож папки пропускает его, только сверив содержимое скачанной копии; иное — стоп, как было. — */
+const GOOGLE = 'google0123456789abcdef.html';
+const STROKA_GOOGLE = `google-site-verification: ${GOOGLE}`;
+const SPISOK_G = `./\n../\n_astro/\n${GOOGLE}\nindex.html\n`;
+
+test('П113 файл подтверждения Google в корне со строкой подтверждения того же имени — проход: рядом с нашей сборкой, один в пустом корне, в свежем каталоге хостера', () => {
+  const ryadom = papka(SPISOK_G, nash('/'), VERKH, null, { [GOOGLE]: STROKA_GOOGLE });
+  assert.equal(ryadom.ok, true, ryadom.stroki.join(' | '));
+  assert.match(ryadom.stroki.join(' '), /наша сборка/);
+  assert.ok(ryadom.stroki.join(' ').includes(`файл подтверждения Google ${GOOGLE}`), ryadom.stroki.join(' | '));
+  for (const telo of [`${STROKA_GOOGLE}\n`, `${STROKA_GOOGLE}\r\n`]) {
+    assert.equal(papka(SPISOK_G, nash('/'), VERKH, null, { [GOOGLE]: telo }).ok, true, JSON.stringify(telo));
+  }
+  const odin = papka(`./\n../\n${GOOGLE}\n`, null, VERKH, null, { [GOOGLE]: STROKA_GOOGLE });
+  assert.equal(odin.ok, true, odin.stroki.join(' | '));
+  assert.ok(odin.stroki.join(' ').includes(`файл подтверждения Google ${GOOGLE}`), odin.stroki.join(' | '));
+  const svezhiy = papka(`./\n../\n.well-known/\n${GOOGLE}\nindex.html\n`, zaglushkaHostera, VERKH, null, { [GOOGLE]: STROKA_GOOGLE });
+  assert.equal(svezhiy.ok, true, svezhiy.stroki.join(' | '));
+  // Код — буквы и цифры (форма Google «буквенно-цифровая строка»), не только шестнадцатеричные.
+  const inoy = 'googleAbC123xyz.html';
+  assert.equal(papka(`./\n../\n_astro/\n${inoy}\nindex.html\n`, nash('/'), VERKH, null, { [inoy]: `google-site-verification: ${inoy}` }).ok, true);
+});
+
+test('П113 файл подтверждения Google: не скачан или внутри не строка подтверждения с тем же именем — стоп своей причиной', () => {
+  const sluchai = [
+    ['не скачан', undefined, 'не скачан'],
+    ['пустой', '', 'не строка подтверждения'],
+    ['чужое имя внутри', 'google-site-verification: googleffffffffffffffff.html', 'не строка подтверждения'],
+    ['страница HTML', `<html><body>${STROKA_GOOGLE}</body></html>`, 'не строка подтверждения'],
+    ['BOM', z(0xfeff) + STROKA_GOOGLE, 'не строка подтверждения'],
+    ['два перевода строки', `${STROKA_GOOGLE}\n\n`, 'не строка подтверждения'],
+    ['пробел в начале', ` ${STROKA_GOOGLE}`, 'не строка подтверждения'],
+    ['пробел в конце', `${STROKA_GOOGLE} `, 'не строка подтверждения'],
+    ['вторая строка', `${STROKA_GOOGLE}\n<script>alert(1)</script>`, 'не строка подтверждения'],
+    ['без пробела после двоеточия', `google-site-verification:${GOOGLE}`, 'не строка подтверждения'],
+    ['другой регистр ключа', `Google-Site-Verification: ${GOOGLE}`, 'не строка подтверждения'],
+  ];
+  for (const [imya, telo, kusok] of sluchai) {
+    const r = papka(SPISOK_G, nash('/'), VERKH, null, telo === undefined ? {} : { [GOOGLE]: telo });
+    assert.equal(r.ok, false, `${imya}: ${r.stroki.join(' | ')}`);
+    assert.match(r.stroki.join(' '), /^СТОП/, imya);
+    assert.ok(r.stroki.join(' ').includes(kusok), `${imya}: ${r.stroki.join(' | ')}`);
+    assert.ok(r.stroki.join(' ').includes(GOOGLE), `${imya}: имени файла нет в строке`);
+  }
+  // Без папки скачанного (вызов сторожа в прежней форме) — тоже стоп: сверить нечем.
+  assert.equal(papka(SPISOK_G, nash('/'), VERKH).ok, false);
+});
+
+test('П113 файл подтверждения Google: имя не той формы, папка или ссылка с таким именем — стоп, как было', () => {
+  for (const s of ['google-verify.html', 'Google0123456789abcdef.html', 'google0123456789abcdef.htm', 'google.html', 'google0123456789abcdef.html.bak', `${GOOGLE}/`, `${GOOGLE}@`]) {
+    const imya = s.replace(/[/@]$/, '');
+    const r = papka(`./\n../\n_astro/\n${s}\nindex.html\n`, nash('/'), VERKH, null, { [imya]: `google-site-verification: ${imya}` });
+    assert.equal(r.ok, false, `${s}: ${r.stroki.join(' | ')}`);
+  }
+});
+
+test('П113 файл подтверждения Google глубже корня — чужое внутри наших папок (глубина), как было; корень глубина не судит', () => {
+  const { glubina } = SV;
+  const fajly = ['index.html', 'privacy/index.html', '_astro/a.css'];
+  assert.equal(glubina(['./', ...fajly.map((f) => './' + f), `./privacy/${GOOGLE}`].join('\n'), nash('/'), fajly, null).ok, false);
+  assert.equal(glubina(['./', ...fajly.map((f) => './' + f), `./${GOOGLE}`].join('\n'), nash('/'), fajly, null).ok, true);
+});
+
+test('П113 файл подтверждения Google в самой сборке — стоп сторожа папки до выкладки: mirror его не выложит', () => {
+  const r = papka('./\n../\n', null, [...VERKH, GOOGLE], null, {});
+  assert.equal(r.ok, false, r.stroki.join(' | '));
+  assert.match(r.stroki.join(' '), /в сборке файл подтверждения Google/);
+});
+
 const INDEKS = [
   ['index.html нет', null, true, 'нет'],
   ['наш', nash('/'), true, 'наш'],
@@ -662,6 +735,19 @@ test('пересчёт на сервере: ровно dist — проход; л
   }
 });
 
+test('П113 пересчёт: файл подтверждения Google в корне сервера не считается и назван; глубже корня и не той формы — лишний', () => {
+  const d = sborka();
+  try {
+    const r = pereschet(findIz(d) + `./${GOOGLE}\n`, d);
+    assert.equal(r.ok, true, r.stroki.join(' | '));
+    assert.ok(r.stroki.join(' ').includes(`файл подтверждения Google ${GOOGLE}`), r.stroki.join(' | '));
+    assert.equal(pereschet(findIz(d) + `./privacy/${GOOGLE}\n`, d).ok, false);
+    assert.equal(pereschet(findIz(d) + './google-verify.html\n', d).ok, false);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
 /* ---------- команда ---------- */
 
 test('команда: неверные аргументы и нечитаемый вход — код 2', () => {
@@ -753,6 +839,31 @@ test('команда: папка и index.html — коды 0 и 1; призна
   }
 });
 
+test('П113 команда papka: пятый аргумент — папка скачанного; файл Google сверяется по содержимому (коды 0 и 1)', () => {
+  const d = mkdtempSync(join(tmpdir(), 'storozha-google-'));
+  try {
+    mkdirSync(join(d, 'remote-top'), { recursive: true });
+    mkdirSync(join(d, 'dist', '_astro'), { recursive: true });
+    writeFileSync(join(d, 'dist', 'index.html'), nash('/'));
+    writeFileSync(join(d, 'root.txt'), SPISOK_G);
+    writeFileSync(join(d, 'remote-top', 'index.html'), nash('/'));
+    writeFileSync(join(d, 'remote-top', GOOGLE), STROKA_GOOGLE);
+    const argi = ['papka', join(d, 'root.txt'), join(d, 'remote-top', 'index.html'), join(d, 'dist'), join(d, 'remote-top', 'sitemap-0.xml'), join(d, 'remote-top')];
+    const da = spawnSync(process.execPath, [STOROZH, ...argi], { encoding: 'utf8' });
+    assert.equal(da.status, 0, da.stdout + da.stderr);
+    assert.ok(da.stdout.includes(GOOGLE), da.stdout);
+    writeFileSync(join(d, 'remote-top', GOOGLE), '<html>not a verification file</html>');
+    const chuzhoy = spawnSync(process.execPath, [STOROZH, ...argi], { encoding: 'utf8' });
+    assert.equal(chuzhoy.status, 1, chuzhoy.stdout + chuzhoy.stderr);
+    rmSync(join(d, 'remote-top', GOOGLE));
+    const netu = spawnSync(process.execPath, [STOROZH, ...argi], { encoding: 'utf8' });
+    assert.equal(netu.status, 1, netu.stdout + netu.stderr);
+    assert.match(netu.stdout, /не скачан/);
+  } finally {
+    rmSync(d, { recursive: true, force: true });
+  }
+});
+
 /* ---------- договор workflow ---------- */
 
 const WF_TEKST = readFileSync(join(REPO, '.github/workflows/deploy-7thserpent.yml'), 'utf8');
@@ -839,12 +950,27 @@ test('SV1-O-2, SV2-O-3, SV2-O-4 workflow: первая выкладка — по
 
 test('SV2-O-1, SV3-Z-1, SV3-O-3, SV3-O-4 workflow: папка — по сборке и карте прежней выкладки; find и глубина — после суда корня; ошибки find — не в журнал', () => {
   const run = shag('Сторож папки робота').run;
-  assert.match(run, /mirror --no-recursion --include-glob=index\.html --include-glob=sitemap-0\.xml \. remote-top/);
+  // П113: вместе с index.html и картой — файлы подтверждения Google корня (их сверяет сторож папки).
+  assert.match(run, /mirror --no-recursion --include-glob=index\.html --include-glob=sitemap-0\.xml --include-glob=google\*\.html \. remote-top/);
   assert.match(run, /storozha-vykladki\.mjs papka remote-root\.txt remote-top\/index\.html \$SITE\/dist remote-top\/sitemap-0\.xml/);
   assert.match(run, /find \.; bye" > remote-before\.txt 2> remote-before-oshibki\.txt/);
   assert.match(run, /storozha-vykladki\.mjs glubina remote-before\.txt remote-top\/index\.html \$SITE\/dist remote-top\/sitemap-0\.xml/);
   const [iPapka, iIndeks, iFind, iGlubina] = ['papka remote-root', 'indeks remote-top', 'find .; bye', 'glubina remote-before'].map((k) => run.indexOf(k));
   assert.ok(iPapka < iIndeks && iIndeks < iFind && iFind < iGlubina, `${iPapka} ${iIndeks} ${iFind} ${iGlubina}`);
+});
+
+test('П113 workflow: файл подтверждения Google — скачивается с index.html и картой, сторож папки получает папку скачанного, mirror не трогает его (-x образцом имени сторожа)', () => {
+  const run = shag('Сторож папки робота').run;
+  assert.match(run, /mirror --no-recursion --include-glob=index\.html --include-glob=sitemap-0\.xml --include-glob=google\*\.html \. remote-top; bye/);
+  assert.match(run, /storozha-vykladki\.mjs papka remote-root\.txt remote-top\/index\.html \$SITE\/dist remote-top\/sitemap-0\.xml remote-top\n/);
+  assert.equal(typeof SV.FAJL_GOOGLE, 'object', 'нет образца имени FAJL_GOOGLE');
+  const v = shag('Выкладка по FTPS').run;
+  const x = ` -x '${SV.FAJL_GOOGLE.source}' `;
+  assert.ok(v.includes(x), v);
+  assert.ok(v.indexOf(x) < v.indexOf(' $SITE/dist/ .;'), v);
+  // Образец имени — только корень: начало и конец строки якорями.
+  assert.match(SV.FAJL_GOOGLE.source, /^\^google.*\\\.html\$$/);
+  assert.match(shag('Пересчёт на сервере').run, /storozha-vykladki\.mjs pereschet remote-files\.txt \$SITE\/dist/);
 });
 
 test('SV3-O-5 workflow: главная выкладывается последней — mirror без index.html, затем put', () => {
